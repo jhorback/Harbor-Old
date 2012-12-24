@@ -1,0 +1,13 @@
+﻿@using Harbor.UI.Extensions
+@{
+	ViewBag.Title = "Pages";
+}
+@section head{
+	@Html.Jst("Pages/PagesTemplates")		
+}
+@section scripts {
+	@Scripts.Render("~/Scripts/Apps/Pages.js")
+	<script>
+		Pages.start();
+	</script>
+}

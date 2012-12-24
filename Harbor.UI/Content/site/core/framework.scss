@@ -1,0 +1,85 @@
+@import "../mixins/clearfix";
+@import "../mixins/opacity";
+@import "../mixins/no-bullets";
+
+@mixin framework {
+	@include framework-formatting;
+	@include framework-text;
+}
+
+@mixin framework-formatting {
+	.clear			{ clear: both }
+	.stretch		{ width: 100% !important; }
+	.fit			{ max-width:100%; display:block; border:0; }
+	.centered		{ margin: auto; }
+	.display-none	{ display: none; }
+	.display-block	{ display: block; }
+	.display-inline { display: inline; }
+	.display-inline-block
+					{ display: inline-block; }
+	.relative		{ position : relative; }
+	.nowrap			{ white-space: nowrap;}
+	.nobullets		{ @include no-bullets; }
+	
+	.float-left		{ float: left; }
+	.float-right	{ float: right; }
+	
+	.clear-left		{ clear: left; }
+	.clear-right	{ clear: right; }
+	.clear-fix		{ @include clearfix; } 
+	
+	.text-left		{ text-align: left; }
+	.text-center	{ text-align:center; }
+	.text-right		{ text-align: right; }
+	.text-justify	{ text-align: justify; }
+	
+	.first			{ margin-left: 0; clear: left; }
+	.last			{ margin-right: 0; clear: right; }
+	.top			{ margin-top: 0; }
+	.bottom			{ margin-bottom: 0; }
+	
+	.pad-none		{ padding: 0 !important; }
+	.pad, .pad1		{ padding: 1em; }
+	.pad2			{ padding: 1.5em; }
+	.pad3			{ padding: 2em; }
+	.pad-left		{ padding-left: 1em; }
+	.pad-right		{ padding-right: 1em; }
+	.pad-top		{ padding-top: 1em; }
+	.pad-bottom		{ padding-bottom: 1em; }
+	
+	.margin-none	{ margin: 0; }
+	.margin, .margin1 { margin: 1em; }
+	.margin2		{ margin: 1.5em; }
+	.margin3		{ margin: 2em; }
+	.margin-left	{ margin-left: 1em; }
+	.margin-top		{ margin-top: 1em; }
+	.margin-right	{ margin-right: 1em; }
+	.margin-bottom	{ margin-bottom: 1em; }
+	
+	.height-5em		{ @include height(5em); }
+	.height-10em	{ @include height(10em); }
+}
+
+
+@mixin height($val) {
+	height: $val;
+	overflow-y: auto;
+}
+
+
+@mixin framework-text {
+	
+	.disabled,
+	[disabled]      { @include opacity(.6); }  
+	.text-small     { font-size: .7em; }
+	.text-large     { font-size: 1.3em; }
+	
+	.prettyprint    { 
+		border: 0 !important;
+		padding: .5em !important;
+		overflow: auto;
+		color: #555;
+		background-color: #eee; } 
+}
+
+@include framework;

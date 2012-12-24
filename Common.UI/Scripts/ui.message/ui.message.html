@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>message test</title>
+<style>
+	#message {
+		border: 2px solid #AAA;
+		background: #CCC;
+		width: 10em;
+		margin: auto;
+		padding: 1em;
+		font-size: 1.5em;
+		text-align: center;
+		border-radius: 8px;
+	}
+	.display-none {
+		display: none;
+	}
+</style>
+<script src="../jquery-1.6.2.js"></script>
+<script src="../jquery-ui-1.8.11.js"></script>
+<script src="ui.message.js"></script>
+<script>
+$(function () {
+
+	$("button").click(function () {
+
+		var id = $(this).attr("id");
+		var msg1 = $('<div id="#testmessage"/>').html("Here is a message");
+		var actions = {
+			show1: function () {
+				msg1.message();
+			},
+			
+			show2: function () {
+				msg1.message({ timer: 3 });
+			},
+			
+			show3: function () {
+				msg1.message({ closeText: false, timer: 3 });
+			},
+			
+			show4: function () {
+
+				$('<div id="#testmessage2"/>').html("Here is another message.").message();
+			}
+		};
+		
+		actions[id]();
+	});
+
+
+});
+</script>
+</head>
+<body>
+	
+
+	<button id="show1">Show the message</button>
+	
+	<button id="show2">Show the message for 3 seconds</button>
+	
+	<button id="show3">Show Message with no close button for 3 seconds</button>
+	
+	<button id="show4">Show a second message</button>
+
+</body>
+</html>

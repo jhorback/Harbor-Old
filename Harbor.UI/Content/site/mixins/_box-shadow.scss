@@ -1,0 +1,5 @@
+@import "shared";
+
+@mixin box-shadow ($top, $left, $blur, $spread, $color) {
+	@include experimental(box-shadow, $top $left $blur $spread $color);
+}

@@ -1,0 +1,16 @@
+
+$body-color-quiet:					lighten($body-color, 40%)	!default;
+$body-color-loud:					#2F5BB7						!default;
+$body-color-attn:					#D14836						!default;
+
+
+@mixin framework-theme {
+	@include framework-text;
+}
+
+
+@mixin framework-text {
+	.quiet          { color: $body-color-quiet; }
+	.loud           { color: $body-color-loud; }
+	.attn           { color: $body-color-attn; }
+}

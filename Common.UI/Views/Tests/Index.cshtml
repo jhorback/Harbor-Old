@@ -1,0 +1,24 @@
+﻿@model IEnumerable<Common.UI.Models.JsPackage>
+@{
+	ViewBag.Title = "Tests - Common Controls";
+	ViewBag.SelectedTab = "tests";
+}
+@section Head{
+	<link rel="stylesheet" href="~/Content/qunit.css"/>
+	<script src="~/Scripts/qunit.js"></script>
+	
+	@foreach (var package in Model)
+	{
+		@Html.Partial("_JsPackageScripts", package)
+	}
+}
+
+
+<div id="qunit">
+	<h1 id="qunit-header">Tests</h1>
+	<h2 id="qunit-banner"></h2>
+	<div id="qunit-testrunner-toolbar"></div>
+	<h2 id="qunit-userAgent"></h2>
+	<ol id="qunit-tests"></ol>
+	<div id="qunit-fixture">test markup, will be hidden</div>
+</div>

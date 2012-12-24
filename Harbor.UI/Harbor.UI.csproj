@@ -1,0 +1,688 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A0997DC8-C48F-42A8-BD43-94F216526FE7}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Harbor.UI</RootNamespace>
+    <AssemblyName>Harbor.UI</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <JSLintSkip>
+    </JSLintSkip>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime">
+      <HintPath>..\packages\WebGrease.1.1.0\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.2.1.267\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.9\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap">
+      <HintPath>..\packages\structuremap.2.6.4.1\lib\net40\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.1.0-alpha-120809\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Providers">
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.1.2\lib\net40\System.Web.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20710.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <HintPath>..\packages\WebGrease.1.1.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\Bootstrapper.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\DbConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IBootstrapperTask.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="App_Start\IoCConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\StructureMapDependencyResolver.cs" />
+    <Compile Include="App_Start\StructureMapHttpDependencyResolver.cs" />
+    <Compile Include="App_Start\StructureMapHttpDependencyScope.cs" />
+    <Compile Include="Attributes\FilePermitAttribute.cs" />
+    <Compile Include="Attributes\Http\AuthenticateAttribute.cs" />
+    <Compile Include="Attributes\Http\BadRequestFilterAttribute.cs" />
+    <Compile Include="Attributes\Http\FilePermitAttribute.cs" />
+    <Compile Include="Attributes\Http\PagePermitAttribute.cs" />
+    <Compile Include="Attributes\Http\PermitAttribute.cs" />
+    <Compile Include="Attributes\Http\ServerErrorExceptionFilterAttribute.cs" />
+    <Compile Include="Attributes\PagePermitAttribute.cs" />
+    <Compile Include="Attributes\PermitAttribute.cs" />
+    <Compile Include="Attributes\ServerErrorExceptionFilterAttribute.cs" />
+    <Compile Include="Controllers\Api\AppSettingsController.cs" />
+    <Compile Include="Controllers\Api\FilesController.cs" />
+    <Compile Include="Controllers\Api\PageComponentsController.cs" />
+    <Compile Include="Controllers\Api\PagesController.cs" />
+    <Compile Include="Controllers\Api\PageTypesController.cs" />
+    <Compile Include="Controllers\Api\UserRolesController.cs" />
+    <Compile Include="Controllers\Api\SettingsController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\StyleGuideController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\Api\UsersController.cs" />
+    <Compile Include="Extensions\HtmlHelper\ComponentPartial.cs" />
+    <Compile Include="Extensions\HtmlHelper\IsJst.cs" />
+    <Compile Include="Extensions\HtmlHelper\JstPartial.cs" />
+    <Compile Include="Extensions\HtmlHelper\Jst.cs" />
+    <Compile Include="Extensions\HtmlHelper\JstPropFor.cs" />
+    <Compile Include="Extensions\HttpRequestMessage\CreateUnauthorizedResponse.cs" />
+    <Compile Include="Extensions\HttpRequestMessage\CreateNoContentResponse.cs" />
+    <Compile Include="Extensions\HttpRequestMessage\CreateBadRequestResponse.cs" />
+    <Compile Include="Extensions\HttpRequestMessage\CreateInternalServerErrorResponse.cs" />
+    <Compile Include="Extensions\HttpRequestMessage\CreateNotFoundResponse.cs" />
+    <Compile Include="Extensions\HttpRequestMessage\CreateOKResponse.cs" />
+    <Compile Include="Extensions\HtmlHelper\UserHasPermit.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\File\FileDto.cs" />
+    <Compile Include="Models\File\FileUrls.cs" />
+    <Compile Include="Models\Page\ComponentViewModel.cs" />
+    <Compile Include="Models\Page\TemplateDto.cs" />
+    <Compile Include="Models\Page\PageComponentDto.cs" />
+    <Compile Include="Models\Page\PageDto.cs" />
+    <Compile Include="Models\Page\PagePropertyDto.cs" />
+    <Compile Include="Models\Page\PageTypeDto.cs" />
+    <Compile Include="Models\Setting\AppSettingDto.cs" />
+    <Compile Include="Models\Setting\HarborAppDto.cs" />
+    <Compile Include="Models\Shared\BadRequestDto.cs" />
+    <Compile Include="Models\Shared\InternalServerErrorDto.cs" />
+    <Compile Include="Models\Shared\NotFoundDto.cs" />
+    <Compile Include="Models\StyleGuide\StyleGuidePage.cs" />
+    <Compile Include="Models\StyleGuide\StyleGuidePageRepository.cs" />
+    <Compile Include="Models\User\UserRoleDto.cs" />
+    <Compile Include="Models\User\CurrentUserDto.cs" />
+    <Compile Include="Models\User\CurrentUserRepository.cs" />
+    <Compile Include="Models\User\UserDto.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\images\layoutcols\full.png" />
+    <Content Include="Content\images\layoutcols\half.png" />
+    <Content Include="Content\images\layoutcols\layoutcols.png" />
+    <Content Include="Content\images\layoutcols\onefourth.png" />
+    <Content Include="Content\images\layoutcols\third.png" />
+    <Content Include="Content\images\layoutcols\twothirds.png" />
+    <None Include="Content\redactor\redactor.scss">
+      <Compile>True</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </None>
+    <Content Include="Content\images\thumbs\audio.png" />
+    <Content Include="Content\images\thumbs\doc.png" />
+    <Content Include="Content\images\thumbs\file.png" />
+    <Content Include="Content\images\thumbs\video.png" />
+    <Content Include="Content\redactor\redactor.css">
+      <DependentUpon>redactor.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\site\core\button.css">
+      <DependentUpon>button.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\site\core\cols.css">
+      <DependentUpon>cols.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\site\core\dialog.css">
+      <DependentUpon>dialog.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\site\core\errorpage.css">
+      <DependentUpon>errorpage.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\site\core\fonticons.css">
+      <DependentUpon>fonticons.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\site\core\form.css">
+      <DependentUpon>form.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\site\core\foundation.css">
+      <DependentUpon>foundation.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\site\core\frame.css">
+      <DependentUpon>frame.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\site\core\framework.css">
+      <DependentUpon>framework.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\site\core\cols.scss">
+      <Compile>True</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </Content>
+    <Content Include="Content\site\core\menu.css">
+      <DependentUpon>menu.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\site\core\page.css">
+      <DependentUpon>page.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\site\core\richtext.css">
+      <DependentUpon>richtext.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\site\core\usermenu.css">
+      <DependentUpon>usermenu.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\site\ext\pageeditor.css">
+      <DependentUpon>pageeditor.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\site\ext\pageloader.css">
+      <DependentUpon>pageloader.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\site\ext\signinpage.css">
+      <DependentUpon>signinpage.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\site\font\fonticons.svg" />
+    <Content Include="Content\site\mixins\_opacity.scss">
+      <Compile>False</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </Content>
+    <Content Include="Content\site\mixins\_experimental.scss">
+      <Compile>False</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </Content>
+    <Content Include="Content\site\mixins\_box-sizing.scss">
+      <Compile>False</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </Content>
+    <Content Include="Content\themes\default\theme.css">
+      <DependentUpon>theme.scss</DependentUpon>
+    </Content>
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\Apps\Application\AjaxRequest.js" />
+    <Content Include="Scripts\Apps\Application\Application.js" />
+    <Content Include="Scripts\Apps\Application\model\BackupModelExtension.js" />
+    <Content Include="Scripts\Apps\Application\Controller.js" />
+    <Content Include="Scripts\Apps\Application\view\DisposeViewExtension.js" />
+    <Content Include="Scripts\Apps\Application\ui\Dialog.js" />
+    <Content Include="Scripts\Apps\Application\view\FormErrorHandler.js" />
+    <Content Include="Scripts\Apps\Application\model\GetSetModelExtension.js" />
+    <Content Include="Scripts\Apps\Application\view\JstViewExtension.js" />
+    <Content Include="Scripts\Apps\Application\ui\Menu.js" />
+    <Content Include="Scripts\Apps\Application\view\ModelBinder.js" />
+    <Content Include="Scripts\Apps\Application\model\ModelErrors.js" />
+    <Content Include="Scripts\Apps\Application\Region.js" />
+    <Content Include="Scripts\Apps\Application\model\ValidationModelExtension.js" />
+    <Content Include="Scripts\Apps\Application\view\ViewExtension.js" />
+    <Content Include="Scripts\Apps\Application\zeta.js" />
+    <Content Include="Scripts\Apps\FileAdmin\AlbumsView.js" />
+    <Content Include="Scripts\Apps\FileAdmin\EditView.js" />
+    <Content Include="Scripts\Apps\FileAdmin\FileAdmin.js" />
+    <Content Include="Scripts\Apps\FileAdmin\MainView.js" />
+    <Content Include="Scripts\Apps\FileAdmin\MainViewModel.js" />
+    <Content Include="Scripts\Apps\FileAdmin\UploadTargetView.js" />
+    <Content Include="Scripts\Apps\FileUploader\FileUploader.js" />
+    <Content Include="Scripts\Apps\PageAdder\PageAdder.js" />
+    <Content Include="Scripts\Apps\PageEditor\Actions.js" />
+    <Content Include="Scripts\Apps\PageEditor\AddComponentView.js" />
+    <Content Include="Scripts\Apps\PageEditor\Comps\title.js" />
+    <Content Include="Scripts\Apps\PageEditor\Comps\links.js" />
+    <Content Include="Scripts\Apps\PageEditor\Comps\default.js" />
+    <Content Include="Scripts\Apps\PageEditor\Comps\text.js" />
+    <Content Include="Scripts\Apps\PageEditor\ChangeLayoutView.js" />
+    <Content Include="Scripts\Apps\PageEditor\EditView.js" />
+    <Content Include="Scripts\Apps\PageEditor\PageEditor.js" />
+    <Content Include="Scripts\Apps\PageEditor\SettingsView.js" />
+    <Content Include="Scripts\Apps\PageEditor\UICMenu.js" />
+    <Content Include="Scripts\Apps\PageLoader\PageNav.js" />
+    <Content Include="Scripts\Apps\PageLoader\PageLoader.js" />
+    <Content Include="Scripts\Apps\Pages\PagesViews.js" />
+    <Content Include="Scripts\Apps\Pages\Pages.js" />
+    <Content Include="Scripts\Apps\Session\UserMenu.js" />
+    <Content Include="Scripts\Apps\Session\CurrentUser.js" />
+    <Content Include="Scripts\Apps\Session\ErrorView.js" />
+    <Content Include="Scripts\Apps\Session\SessionNav.js" />
+    <Content Include="Scripts\Apps\Session\Session.js" />
+    <Content Include="Scripts\Apps\Session\SignInModel.js" />
+    <Content Include="Scripts\Apps\Session\SignInView.js" />
+    <Content Include="Scripts\Apps\Settings\Settings.js" />
+    <Content Include="Scripts\Apps\shared\FileModel.js" />
+    <Content Include="Scripts\Apps\shared\PageModels.js" />
+    <Content Include="Scripts\Apps\shared\UserModel.js" />
+    <Content Include="Scripts\Apps\UserAdmin\ListView.js" />
+    <Content Include="Scripts\Apps\UserAccount\UserAccount.js" />
+    <Content Include="Scripts\Apps\UserAccount\EditViews.js" />
+    <Content Include="Scripts\Apps\UserAdmin\AddView.js" />
+    <Content Include="Scripts\Apps\UserAdmin\ABaseUserView.js" />
+    <Content Include="Scripts\Apps\UserAdmin\EditView.js" />
+    <Content Include="Scripts\Apps\UserAdmin\MainView.js" />
+    <Content Include="Scripts\Apps\UserAdmin\UserAdmin.js" />
+    <Content Include="Scripts\Apps\UserAdmin\UserAdminModels.js" />
+    <Content Include="Scripts\Apps\UserAdmin\UserListItemView.js" />
+    <Content Include="Scripts\backbone.js" />
+    <Content Include="Scripts\backbone.min.js" />
+    <Content Include="Scripts\jquery-1.8.0.js" />
+    <Content Include="Scripts\jquery-1.8.2-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.8.2.js" />
+    <Content Include="Scripts\jquery-1.8.2.min.js" />
+    <Content Include="Scripts\jquery.html5uploader.js" />
+    <Content Include="Scripts\jquery.ui.core.js" />
+    <Content Include="Scripts\jquery.ui.core.min.js" />
+    <Content Include="Scripts\jquery.ui.draggable.js" />
+    <Content Include="Scripts\jquery.ui.draggable.min.js" />
+    <Content Include="Scripts\jquery.ui.mouse.js" />
+    <Content Include="Scripts\jquery.ui.mouse.min.js" />
+    <Content Include="Scripts\jquery.ui.position.js" />
+    <Content Include="Scripts\jquery.ui.position.min.js" />
+    <Content Include="Scripts\jquery.ui.sortable.js" />
+    <Content Include="Scripts\jquery.ui.sortable.min.js" />
+    <Content Include="Scripts\jquery.ui.widget.js" />
+    <Content Include="Scripts\jquery.ui.widget.min.js" />
+    <Content Include="Scripts\json2.js" />
+    <Content Include="Scripts\json2.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2-custom.js" />
+    <Content Include="Scripts\redactor\redactor.js" />
+    <Content Include="Scripts\redactor\redactor.min.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\underscore.js" />
+    <Content Include="Scripts\underscore.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\FileAdmin\FileAdminTemplates.cshtml" />
+    <Content Include="Views\FileAdmin\_Main.cshtml" />
+    <Content Include="Views\FileAdmin\_Album.cshtml" />
+    <Content Include="Views\FileAdmin\_File.cshtml" />
+    <Content Include="Views\FileAdmin\_Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\users\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\site\core\menu.scss">
+      <Compile>True</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </None>
+    <None Include="Content\site\core\frame.scss">
+      <Compile>True</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </None>
+    <None Include="Content\site\core\framework.scss">
+      <Compile>True</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </None>
+    <None Include="Content\site\core\dialog.scss">
+      <Compile>True</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </None>
+    <None Include="Content\site\core\form.scss">
+      <Compile>True</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </None>
+    <None Include="Content\site\core\button.scss">
+      <Compile>True</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </None>
+    <None Include="Content\site\core\page.scss">
+      <Compile>True</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </None>
+    <None Include="Content\site\core\errorpage.scss">
+      <Compile>True</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </None>
+    <None Include="Content\site\core\richtext.scss">
+      <Compile>True</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </None>
+    <None Include="Content\site\core\usermenu.scss">
+      <Compile>True</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </None>
+    <None Include="Content\site\core\theme\_framework-theme.scss">
+      <Compile>False</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </None>
+    <None Include="Content\site\core\theme\_frame-theme.scss">
+      <Compile>False</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </None>
+    <None Include="Content\site\core\theme\_all-theme.scss">
+      <Compile>False</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </None>
+    <None Include="Content\site\core\theme\_foundation-theme.scss">
+      <Compile>False</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </None>
+    <None Include="Content\site\core\foundation.scss">
+      <Compile>True</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </None>
+    <None Include="Content\site\ext\pageloader.scss">
+      <Compile>True</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </None>
+    <None Include="Content\site\ext\pageeditor.scss">
+      <Compile>True</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </None>
+    <None Include="Content\site\ext\signinpage.scss">
+      <Compile>True</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </None>
+    <None Include="Content\site\font\fonticons.eot" />
+    <None Include="Content\site\font\fonticons.ttf" />
+    <None Include="Content\site\font\fonticons.woff" />
+    <None Include="Content\site\core\fonticons.scss">
+      <Compile>True</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </None>
+    <None Include="Content\site\mixins\_user-select.scss">
+      <Compile>False</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </None>
+    <None Include="Content\site\mixins\_box-shadow.scss">
+      <Compile>False</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </None>
+    <None Include="Content\site\mixins\_border-radius.scss">
+      <Compile>False</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </None>
+    <None Include="Content\site\mixins\_reset.scss">
+      <Compile>False</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </None>
+    <None Include="Content\site\mixins\_no-bullets.scss">
+      <Compile>False</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </None>
+    <None Include="Content\site\mixins\_clearfix.scss">
+      <Compile>False</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </None>
+    <None Include="Content\site\mixins\_inline-block-list.scss">
+      <Compile>False</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </None>
+    <None Include="Content\site\mixins\_shared.scss">
+      <Compile>False</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </None>
+    <None Include="Content\site\mixins\_support.scss">
+      <Compile>False</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </None>
+    <None Include="Content\site\mixins\_text-shadow.scss">
+      <Compile>False</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </None>
+    <None Include="Content\themes\default\theme.scss">
+      <Compile>True</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </None>
+    <Content Include="Views\StyleGuide\Home.cshtml" />
+    <Content Include="Views\StyleGuide\_ViewStart.cshtml" />
+    <Content Include="Views\StyleGuide\_StyleGuideLayout.cshtml" />
+    <Content Include="Views\StyleGuide\Forms.cshtml" />
+    <Content Include="Views\User\SignIn.cshtml" />
+    <Content Include="Views\User\_SignIn.cshtml" />
+    <Content Include="Views\User\SessionTemplates.cshtml" />
+    <Content Include="Views\User\SessionApp.cshtml" />
+    <Content Include="Views\Shared\404.cshtml" />
+    <Content Include="Views\Shared\_Error.cshtml" />
+    <Content Include="Views\Shared\_404.cshtml" />
+    <Content Include="Views\User\_UserMenu.cshtml" />
+    <Content Include="Views\User\Account.cshtml" />
+    <Content Include="Views\User\Files.cshtml" />
+    <Content Include="Views\User\Pages.cshtml" />
+    <Content Include="Views\User\Settings.cshtml" />
+    <Content Include="Views\StyleGuide\Page.cshtml" />
+    <Content Include="Views\StyleGuide\Framework.cshtml" />
+    <Content Include="Views\User\_EditName.cshtml" />
+    <Content Include="Views\User\UserAccountTemplates.cshtml" />
+    <Content Include="Views\User\_EditApplicationName.cshtml" />
+    <Content Include="Views\User\_EditEmail.cshtml" />
+    <Content Include="Views\User\Admin.cshtml" />
+    <Content Include="Views\User\SettingsTemplates.cshtml" />
+    <Content Include="Views\User\_ChangePassword.cshtml" />
+    <Content Include="Views\UserAdmin\UserAdminTemplates.cshtml" />
+    <Content Include="Views\UserAdmin\_ListItem.cshtml" />
+    <Content Include="Views\UserAdmin\_Main.cshtml" />
+    <Content Include="Views\UserAdmin\_Edit.cshtml" />
+    <Content Include="Views\UserAdmin\_Role.cshtml" />
+    <Content Include="Views\UserAdmin\_Add.cshtml" />
+    <Content Include="Views\Pages\PagesTemplates.cshtml" />
+    <Content Include="Views\Pages\_PageItem.cshtml" />
+    <Content Include="Views\User\Page.cshtml" />
+    <Content Include="Views\Pages\_Main.cshtml" />
+    <Content Include="Views\Pages\_AddPage.cshtml" />
+    <Content Include="Views\Pages\PageAdderTemplates.cshtml" />
+    <Content Include="Views\Page\PageEditorTemplates.cshtml" />
+    <Content Include="Views\Page\_PageLoader.cshtml" />
+    <Content Include="Views\Page\PageLoaderTemplates.cshtml" />
+    <Content Include="Views\Components\Title.cshtml" />
+    <Content Include="Scripts\Apps\Application\AjaxRequestDefaultHandler.js" />
+    <Content Include="Views\Components\Text.cshtml" />
+    <Content Include="Views\Components\Links.cshtml" />
+    <Content Include="Views\Page\_Settings.cshtml" />
+    <Content Include="Views\Page\_UICMenu.cshtml" />
+    <Content Include="Views\Page\_AddComponent.cshtml" />
+    <Content Include="Views\Components\AllComponentTemplates.cshtml" />
+    <Content Include="Views\Page\_ChangeLayout.cshtml" />
+    <Content Include="Views\Page\_ChangeVisibility.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Harbor.Data\Harbor.Data.csproj">
+      <Project>{F4453B6A-14D8-4B5B-85AF-8858FE48FFE2}</Project>
+      <Name>Harbor.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Harbor.Domain\Harbor.Domain.csproj">
+      <Project>{F42EF39F-2337-490C-88E7-9DCA84B6E8BD}</Project>
+      <Name>Harbor.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

@@ -1,0 +1,13 @@
+﻿@using Harbor.UI.Extensions
+@{
+	ViewBag.Title = "Files";
+}
+@section head{
+	@Html.Jst("FileAdmin/FileAdminTemplates")		
+}
+@section scripts {
+	@Scripts.Render("~/Scripts/Apps/FileAdmin.js")
+	<script>
+		FileAdmin.start({ todaysAlbumName: "@Harbor.Domain.Files.File.TodaysAlbumName()" });
+	</script>
+}

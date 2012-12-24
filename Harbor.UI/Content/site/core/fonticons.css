@@ -1,0 +1,53 @@
+/* http://fortawesome.github.com/Font-Awesome/#all-icons */
+@font-face {
+  font-family: 'FontIcons';
+  src: url("../font/fonticons.eot");
+  src: url("../font/fonticons.eot?#iefix") format("embedded-opentype"), url("../font/fonticons.woff") format("woff"), url("../font/fonticons.ttf") format("truetype"), url("../font/fonticons.svg#FontIcons") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+/*  Font Awesome styles
+	------------------------------------------------------- */
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  font-family: FontIcons;
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  text-decoration: inherit; }
+
+a [class^="icon-"],
+a [class*=" icon-"] {
+  display: inline-block;
+  text-decoration: inherit; }
+
+.icon-remove:before {
+  content: "\f00d"; }
+
+.icon-align-left:before {
+  content: "\f036"; }
+
+.icon-align-center:before {
+  content: "\f037"; }
+
+.icon-align-right:before {
+  content: "\f038"; }
+
+.icon-align-justify:before {
+  content: "\f039"; }
+
+.icon-edit:before {
+  content: "\f044"; }
+
+.icon-move:before {
+  content: "\f047"; }
+
+.icon-plus:before {
+  content: "\f067"; }
+
+.icon-reorder:before {
+  content: "\f0c9"; }
+
+.icon-columns:before {
+  content: "\f0db"; }
+

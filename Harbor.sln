@@ -1,0 +1,127 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Harbor.UI", "Harbor.UI\Harbor.UI.csproj", "{A0997DC8-C48F-42A8-BD43-94F216526FE7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Presentation Layer", "1. Presentation Layer", "{EB9AEB32-C83C-4AA4-A854-CFBDE691D125}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Business Layer", "2. Business Layer", "{376C9B4F-85F9-47F9-ADE6-CCCEA00EB22F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. Domain Layer", "3. Domain Layer", "{8AEB39CF-06C3-40FB-9FB6-C46CADE7E2E3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4. Data Layer", "4. Data Layer", "{C06A5E0F-6884-46F4-A0D6-77FE37A94D20}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5. Tests", "5. Tests", "{F3EE5D44-376A-4B2B-ADA7-7505BA0EE56E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Harbor.Domain", "Harbor.Domain\Harbor.Domain.csproj", "{F42EF39F-2337-490C-88E7-9DCA84B6E8BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Harbor.Data", "Harbor.Data\Harbor.Data.csproj", "{F4453B6A-14D8-4B5B-85AF-8858FE48FFE2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.UI", "Common.UI\Common.UI.csproj", "{F941B1D6-86A4-41F4-817A-63525C5C88EA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{A8129CE5-9616-4127-8C57-CE82EA121D80}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Harbor.Domain.Tests", "Harbor.Domain.Tests\Harbor.Domain.Tests.csproj", "{AAFDDC3A-0A93-4564-AE25-6CF36641311B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3E5C4C51-D7C8-4580-908C-144108A2A2B6}"
+	ProjectSection(SolutionItems) = preProject
+		Harbor.vsmdi = Harbor.vsmdi
+		Local.testsettings = Local.testsettings
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Harbor.Specs", "Harbor.Specs\Harbor.Specs.csproj", "{7260B6AA-2652-4D69-85B2-FBFF4C2B303C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Harbor.UI.Tests", "Harbor.UI.Tests\Harbor.UI.Tests.csproj", "{95B60B8D-5B60-45DA-8C7F-D24B097B1EB7}"
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = Harbor.vsmdi
+	EndGlobalSection
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 8
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Harbor.UI\\Harbor.UI.csproj
+		SccProjectTopLevelParentUniqueName1 = Harbor.sln
+		SccLocalPath1 = .
+		SccProjectFilePathRelativizedFromConnection1 = Harbor.UI\\
+		SccProjectUniqueName2 = Harbor.Domain\\Harbor.Domain.csproj
+		SccProjectTopLevelParentUniqueName2 = Harbor.sln
+		SccLocalPath2 = .
+		SccProjectFilePathRelativizedFromConnection2 = Harbor.Domain\\
+		SccProjectUniqueName3 = Harbor.Data\\Harbor.Data.csproj
+		SccProjectTopLevelParentUniqueName3 = Harbor.sln
+		SccLocalPath3 = .
+		SccProjectFilePathRelativizedFromConnection3 = Harbor.Data\\
+		SccProjectUniqueName4 = Common.UI\\Common.UI.csproj
+		SccProjectTopLevelParentUniqueName4 = Harbor.sln
+		SccLocalPath4 = .
+		SccProjectFilePathRelativizedFromConnection4 = Common.UI\\
+		SccProjectUniqueName5 = Harbor.Domain.Tests\\Harbor.Domain.Tests.csproj
+		SccProjectTopLevelParentUniqueName5 = Harbor.sln
+		SccLocalPath5 = .
+		SccProjectFilePathRelativizedFromConnection5 = Harbor.Domain.Tests\\
+		SccProjectUniqueName6 = Harbor.Specs\\Harbor.Specs.csproj
+		SccProjectTopLevelParentUniqueName6 = Harbor.sln
+		SccLocalPath6 = .
+		SccProjectFilePathRelativizedFromConnection6 = Harbor.Specs\\
+		SccProjectUniqueName7 = Harbor.UI.Tests\\Harbor.UI.Tests.csproj
+		SccProjectTopLevelParentUniqueName7 = Harbor.sln
+		SccLocalPath7 = .
+		SccProjectFilePathRelativizedFromConnection7 = Harbor.UI.Tests\\
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A0997DC8-C48F-42A8-BD43-94F216526FE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0997DC8-C48F-42A8-BD43-94F216526FE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0997DC8-C48F-42A8-BD43-94F216526FE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0997DC8-C48F-42A8-BD43-94F216526FE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F42EF39F-2337-490C-88E7-9DCA84B6E8BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F42EF39F-2337-490C-88E7-9DCA84B6E8BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F42EF39F-2337-490C-88E7-9DCA84B6E8BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F42EF39F-2337-490C-88E7-9DCA84B6E8BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4453B6A-14D8-4B5B-85AF-8858FE48FFE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4453B6A-14D8-4B5B-85AF-8858FE48FFE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4453B6A-14D8-4B5B-85AF-8858FE48FFE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4453B6A-14D8-4B5B-85AF-8858FE48FFE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F941B1D6-86A4-41F4-817A-63525C5C88EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F941B1D6-86A4-41F4-817A-63525C5C88EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F941B1D6-86A4-41F4-817A-63525C5C88EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F941B1D6-86A4-41F4-817A-63525C5C88EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAFDDC3A-0A93-4564-AE25-6CF36641311B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAFDDC3A-0A93-4564-AE25-6CF36641311B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAFDDC3A-0A93-4564-AE25-6CF36641311B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAFDDC3A-0A93-4564-AE25-6CF36641311B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7260B6AA-2652-4D69-85B2-FBFF4C2B303C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7260B6AA-2652-4D69-85B2-FBFF4C2B303C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7260B6AA-2652-4D69-85B2-FBFF4C2B303C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7260B6AA-2652-4D69-85B2-FBFF4C2B303C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95B60B8D-5B60-45DA-8C7F-D24B097B1EB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95B60B8D-5B60-45DA-8C7F-D24B097B1EB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95B60B8D-5B60-45DA-8C7F-D24B097B1EB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95B60B8D-5B60-45DA-8C7F-D24B097B1EB7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A0997DC8-C48F-42A8-BD43-94F216526FE7} = {EB9AEB32-C83C-4AA4-A854-CFBDE691D125}
+		{F941B1D6-86A4-41F4-817A-63525C5C88EA} = {376C9B4F-85F9-47F9-ADE6-CCCEA00EB22F}
+		{F42EF39F-2337-490C-88E7-9DCA84B6E8BD} = {8AEB39CF-06C3-40FB-9FB6-C46CADE7E2E3}
+		{F4453B6A-14D8-4B5B-85AF-8858FE48FFE2} = {C06A5E0F-6884-46F4-A0D6-77FE37A94D20}
+		{AAFDDC3A-0A93-4564-AE25-6CF36641311B} = {F3EE5D44-376A-4B2B-ADA7-7505BA0EE56E}
+		{7260B6AA-2652-4D69-85B2-FBFF4C2B303C} = {F3EE5D44-376A-4B2B-ADA7-7505BA0EE56E}
+		{95B60B8D-5B60-45DA-8C7F-D24B097B1EB7} = {F3EE5D44-376A-4B2B-ADA7-7505BA0EE56E}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.2\lib\NET35
+	EndGlobalSection
+EndGlobal

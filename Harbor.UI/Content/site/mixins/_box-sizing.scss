@@ -1,0 +1,9 @@
+@import "experimental";
+
+@mixin box-sizing($value: value) {
+	@include experimental(box-sizing, value);
+}
+
+@mixin box-sizing-border-box {
+	@include experimental(box-sizing, border-box)
+}

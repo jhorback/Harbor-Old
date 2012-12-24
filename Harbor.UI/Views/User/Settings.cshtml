@@ -1,0 +1,69 @@
+﻿@using Harbor.Domain.Security
+@using Harbor.UI.Extensions
+@{
+	ViewBag.Title = "Website Settings";
+	var canViewUsers = Html.UserHasPermit(UserFunctionalArea.Users, Permissions.Read);
+	var canUpdateSystemSettings = Html.UserHasPermit(UserFunctionalArea.SystemSettings, Permissions.Update);
+	var canUpdateSiteSettings = Html.UserHasPermit(UserFunctionalArea.SiteSettings, Permissions.Update);
+}
+@section scripts {
+	@Scripts.Render("~/Scripts/Apps/Settings.js")
+	<script>
+		Settings.start();
+	</script>
+}
+<div class="page-header readable centered">
+	<h1>Website Settings</h1>
+</div>
+<div class="page-body readable centered">
+	<div class="page-content display-none">
+	@if (canViewUsers)
+	{
+		<fieldset>
+			<legend>Website users</legend>
+			<div>
+				<a class="text-large" href="~/User/Admin">User Administration</a>
+			</div>
+			<div>
+				<p>
+					Add, edit, update users and their permissions.
+				</p>
+			</div>
+		</fieldset>
+	}
+	@if (canUpdateSiteSettings)
+	{
+		<fieldset class="col2"> @*jch* make col1 stacked by default and add a inline scope for fieldsets?*@
+			<legend>Sign in link</legend>
+			<div class="form-field">
+				<label for="showsigninlink">Show or hide the sign in link</label>
+				<div class="switch">
+					<input type="checkbox" name="showSignInLink" id="showSignInLink">
+					<label for="showSignInLink">
+						<span class="on">Show</span>
+						<span class="off">Hide</span>            
+					</label>
+				</div>
+			</div>
+			<div>
+				<p>
+					If it is hidden, you can go to
+					<a href="~/user/signin">@Url.Content("~/user/signin")</a> to sign in.
+				</p>
+			</div>
+		</fieldset>
+	}
+	@if (canUpdateSystemSettings)
+	{ 
+		<fieldset class="clear">
+			<legend>Application name</legend>
+			<div class="pad">
+				<div class="form-field editable display-inline-block" tabindex="0" id="settings-applicationName">
+					<span data-bind="applicationName"></span>
+				</div>
+			</div>
+		</fieldset>
+	}
+	</div>
+</div>
+@Html.Jst("User/SettingsTemplates")

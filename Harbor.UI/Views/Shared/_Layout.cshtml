@@ -1,0 +1,72 @@
+﻿@using Harbor.UI.Extensions
+@{
+	// make this an html helper?
+	if (ViewBag.Title == null) {
+		ViewBag.Title = Harbor.UI.HarborApplication.AppName;
+	} else {
+		ViewBag.Title += " - " + Harbor.UI.HarborApplication.AppName;	
+	}
+}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>@ViewBag.Title</title>
+		@Scripts.Render("~/Scripts/modernizr-2.6.2-custom.js")
+		@Styles.Render("~/Content/corecss")
+		@Styles.Render("~/Content/theme")
+		@RenderSection("head", required: false)
+	</head>
+	<body>
+		<div id="frame">
+			<header id="frame-header">
+				<div id="frame-logo">
+					<a href="@Url.Action("Index", "Home")">
+						@Harbor.UI.HarborApplication.AppName
+					</a>
+				</div>	
+				<nav id="frame-nav">
+					<ul>
+						<li><a href="@Url.Action("Index", "Home")">Home</a></li>
+						<li><a href="@Url.Action("Index", "StyleGuide", new { pageKey = "Home"})">Style Guide</a></li>
+					</ul>
+				</nav>
+				<nav id="frame-session">
+					@*<a id="signin-link" href="@Url.Action("SignIn", "User")">Sign In</a>*@
+				</nav>
+			</header>	
+			<div id="frame-body">
+			@RenderBody()
+			</div>
+			<footer id="frame-info">
+				<span title="@Harbor.UI.HarborApplication.Version - @DateTime.Now">
+					@Request.ServerVariables["SERVER_NAME"] &copy; @DateTime.Now.Year
+				</span>
+				<div class="quiet text-small">@Harbor.UI.HarborApplication.Version - @DateTime.Now</div>
+			</footer>
+		</div>
+		<script>
+			if (typeof window.JSON === 'undefined') { document.write('<script src="@Url.Content("~/Scripts/json2.min.js")"><\/script>'); }
+			window.baseUrl = "@Url.Content("~/")";
+		</script>
+		@Scripts.Render("~/Scripts/jquery.js")
+		@if (Request.Browser.Browser == "IE" && Request.Browser.MajorVersion < 9)
+		{
+			@* Add media query support to older versions of IE *@	
+			@Scripts.Render("~/Scripts/respond.js")
+		}
+		@Scripts.Render("~/Scripts/app.js")
+		@Html.Action("SessionApp", "User")
+		@Scripts.Render("~/Scripts/PageModels.js")
+		@Html.Jst("Pages/PageAdderTemplates")
+		@Scripts.Render("~/Scripts/Apps/PageAdder.js")
+
+		@RenderSection("scripts", required: false)
+
+		@Scripts.Render("~/Scripts/jquery.ui.js")
+		<script src="~/Scripts/jquery.ui.draggable.min.js"></script>
+		@* sortable is for the page editor *@
+		<script src="~/Scripts/jquery.ui.sortable.min.js"></script>
+	</body>
+</html>

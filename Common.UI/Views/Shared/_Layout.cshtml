@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+	<title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/Scripts/jquery")
+    @Scripts.Render("~/Scripts/backbone")
+	<script src="~/Scripts/sinon-1.4.2.js"></script>
+	@RenderSection("Head", false)
+</head>
+	<body>
+		<header class="page-header">
+			<div>
+				<h1><a href="@Url.Action("Index", "Packages")">
+						<img src="@Url.Content("~/Content/images/cc-large.png")" width="70" align="absmiddle">
+						Common Controls
+					</a>
+				</h1>
+				<h2>library</h2>
+			</div>
+		</header>
+		<nav class="page-nav">
+			<ul>
+				<li><a href="@Url.Action("index", "Packages")" class="@(ViewBag.SelectedTab == "packages" ? "selected" : "")">Packages</a></li>
+				<li><a href="@Url.Action("index", "Tests")" class="@(ViewBag.SelectedTab == "tests" ? "selected" : "")">Tests</a></li>
+			</ul>
+		</nav>
+		<div class="content">
+			@RenderBody()
+		</div>
+		<footer>
+			
+		</footer>
+	</body>
+</html>

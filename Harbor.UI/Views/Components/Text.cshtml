@@ -1,0 +1,13 @@
+﻿@using Harbor.Domain.Security
+@using Harbor.UI.Extensions
+@model Harbor.UI.Models.ComponentViewModel
+@{
+	string text = "";
+	if (Model != null)
+	{
+		text = 	Model.Page.GetProperty(Model.PageUIC.uicid + "-text");
+	}
+}
+<div class="richtext">
+	@Html.Raw(text)
+</div>

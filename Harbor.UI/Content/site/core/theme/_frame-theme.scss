@@ -1,0 +1,66 @@
+
+
+$framenav-color:						#EEE								!default;
+$framenav-background-color:				#345276								!default;
+$framenav-color-hover:					$body-color							!default;
+$framenav-background-color-hover:		$body-background-color				!default;
+$framenav-color-selected:				$framenav-color-hover				!default;
+$framenav-background-color-selected:	$framenav-background-color-hover	!default;
+$scrollbar-color:						#CCC								!default;
+
+
+
+
+@mixin frame-theme {
+	@include frame;
+}
+
+
+
+@mixin frame {
+	#frame-header {
+		color: $framenav-color;
+		background: $framenav-background-color;
+		a, a:visited {
+			color: $framenav-color;
+		}
+	}
+
+	#frame-nav {
+		ul {
+			li {		
+				&:hover {
+					background-color: $framenav-background-color-hover;
+					a {
+						color: $framenav-color-hover;
+					}
+				}
+				&.selected{
+					background-color: $framenav-background-color-selected;
+					a {
+						color: $framenav-color-selected;
+					}		
+				}
+			}
+		}
+	}
+
+	#frame-body {
+		::-webkit-scrollbar-thumb {
+			background: $scrollbar-color;
+			&:hover{
+				background: darken($scrollbar-color, 10%);				
+			}
+		}
+		
+//		scrollbar-face-color: $button-bg-color;
+//		scrollbar-arrow-color: $button-bg-color;
+//		scrollbar-track-color: $body-bg-color;
+//		scrollbar-shadow-color: $button-bg-color;
+//		scrollbar-highlight-color: $button-bg-color;
+//		scrollbar-3dlight-color: $button-bg-color;
+//		scrollbar-darkshadow-color: $button-bg-color;
+		
+	}
+	
+}

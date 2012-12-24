@@ -1,0 +1,75 @@
+﻿@using Harbor.Domain.Pages
+@using Harbor.UI.Extensions
+@model Harbor.Domain.Pages.Page
+@{
+	ViewBag.Title = Model.Title;
+	int x;
+	bool noAside = Model.Template.Layout.HasFlag(LayoutProperties.NoAside);
+	var asideClassName = noAside ? "" : "aside";
+	var layoutClassNames = "";
+	if (Model.Template.Layout.HasFlag(LayoutProperties.ContentCentered))
+	{
+		layoutClassNames = "centered";
+	}
+	if (Model.Template.Layout.HasFlag(LayoutProperties.ContentReadable))
+	{
+		layoutClassNames += " readable";
+	}
+	var pageAsideDisplayClass = noAside ? "display-none" : "";
+}
+@section head {
+	@if (ViewBag.HasWritePermissions)
+	{
+		@Html.Jst("Page/PageEditorTemplates")
+		@Html.Jst("Components/AllComponentTemplates")
+		@Html.Jst("Page/PageLoaderTemplates")
+		@Styles.Render("~/Content/site/ext/pageloader.css")
+		@Styles.Render("~/Content/redactor/redactor.css") @*jch* use Scripts loader*@
+	}
+}
+@section scripts {
+	@if (ViewBag.HasWritePermissions)
+	{ 
+		@Scripts.Render("~/Scripts/Apps/PageLoader.js")
+		@Scripts.Render("~/Scripts/Apps/PageEditor.js")
+		@Scripts.Render("~/Scripts/redactor/redactor.js") @*jch* use Scripts loader*@
+		<script>
+			PageLoader.start(@Html.Raw(Json.Encode(ViewBag.PageDto)));
+		</script>
+	}
+}
+<div class="page">
+	<header class="page-header @layoutClassNames">
+		@if (Model.Template.Header != null)
+		{
+			<div class="uic" id="@Model.Template.Header.uicid" data-type="@Model.Template.Header.key">
+				@Html.ComponentPartial(Model.Template.Header, Model)
+			</div>
+		}
+	</header>
+	<div class="page-body @asideClassName @layoutClassNames">
+		
+			<aside class="page-aside @pageAsideDisplayClass">
+				@foreach (var item in Model.Template.Aside)
+				{
+					<div class="uic" id="@item.uicid" data-type="@item.key">
+					@Html.ComponentPartial(item, Model)
+					</div>	
+				}
+			</aside>	 
+		
+		<div class="page-content">
+			@foreach (var item in Model.Template.Content)
+			{
+				<div class="uic @String.Join(" ", item.classNames)" id="@item.uicid" data-type="@item.key">
+				@Html.ComponentPartial(item, Model)
+				</div>
+			}
+		</div>
+		<div class="pad quiet float-right">@* jch* testing - remove when ready*@
+			Author: @Model.AuthorsUserName <br/>
+			Created: @Model.Created.ToShortDateString() <br/>
+			Modified: @Model.Modified.ToShortDateString()
+		</div>
+	</div>
+</div>

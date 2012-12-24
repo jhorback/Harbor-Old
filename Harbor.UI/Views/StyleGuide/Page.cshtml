@@ -1,0 +1,68 @@
+﻿@model List<Harbor.UI.Models.StyleGuide.StyleGuidePage>
+@{
+	string columns = ViewBag.Columns as string;
+	if (columns == null) { 
+		columns = "col2";
+	}
+}
+<style>
+	.page-header,
+	.page-aside,
+	.page-content {
+		border: 1px solid #AAA;	
+	}
+	.page-aside, .page-content {
+		border-top-width: 0;
+	}
+	.page-aside {
+		border-right-width: 0;	
+	}
+	
+</style>
+ <div class="page">
+	 <header class="page-header">
+		 <h1 class="float-left">Page</h1>
+		 <form class="float-right">
+			 <fieldset>
+				 <select id="page-options" name="options">
+					 <option value="aside">Default</option>
+					 <option value="aside readable">Constrain Width</option>
+					 <option value="aside readable centered">Centered</option>
+					 <option value="">No Sidebar</option>
+					 <option value="readable">No Sidebar, constrain width</option>
+					 <option value="readable centered">No Sidebar, centered</option>
+				 </select>
+			 </fieldset>
+		</form>
+	 </header>
+	<div class="page-body aside"> <!-- can have .aside, .readable, and .centered  -->
+		<aside class="page-aside">
+			This is the page aside.
+		</aside>
+		<div class="page-content">
+			This is the page content.
+		</div>
+	</div>
+ </div>
+
+
+@section scripts {
+	<script>
+		$(document).ready(function (event) {
+
+			var opts = $("#page-options");
+			var pageBody = $(".page-body");
+			var pageHeader = $(".page-header");
+
+			var udpateOptions = function () {
+				var val = opts.val();
+				pageBody.attr("class", val);
+				pageHeader.attr("class", val + " page-header");
+			};
+
+			udpateOptions();
+			opts.change(udpateOptions);
+
+		});
+	</script>
+}

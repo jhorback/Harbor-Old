@@ -1,0 +1,38 @@
+﻿@model List<Harbor.UI.Models.StyleGuide.StyleGuidePage>
+<style>
+	.page-content ul {
+		list-style-type: none;
+	}
+	.page-content li a {
+		font-size: 1.8em;
+	}
+</style>
+<header class="page-header">
+	<h1>Style Guide</h1>
+</header>
+<div class="page-content">
+	<ul>
+		@foreach (var page in Model)
+		{
+			<li>
+				@Html.ActionLink(page.Name, page.Key)
+				<p>
+					@page.Description
+				</p>
+					
+			</li>	
+		}
+		<li>
+			<a href="~/Home/ThrowError">Server Error</a>
+			<p>
+				A static link that will throw an error.
+			</p>
+		</li>
+		<li>
+			<a href="~/Foo">Page Not Found</a>
+			<p>
+				This links requests a page that does not exist.
+			</p>
+		</li>
+	</ul>
+</div>

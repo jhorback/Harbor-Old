@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>selectlist test</title>
+	<script src="../jquery-1.6.2.js"></script>
+	<script src="../jquery-ui-1.8.11.js"></script>
+	<script src="ui.selectlist.js"></script>
+	<script>
+		jQuery(function () {
+			var $ = jQuery;
+
+			$("#testlist1").selectlist();
+			
+			$("#testlist2").selectlist({
+				rowSelector: "li",
+				hideInputs: true
+			});
+			
+			$("#testlist3").selectlist({ rowSelector: "tr" });
+
+			$("#destroyLists").click(function () {
+				$("#testlist1").selectlist("destroy");
+				$("#testlist2").selectlist("destroy");
+				$("#testlist3").selectlist("destroy");
+			});
+
+			$("#alertValues").click(function () {
+				alert($("form").serialize());
+			});
+		});
+	</script>
+	<style>
+		
+		.selected {
+			background: #CCC;
+		}
+	</style>
+</head>
+	<body>
+		
+		<h1>Test selectlist.js</h1>
+		<form>
+			<input type="button" id="destroyLists" value="Destroy Lists"/>
+			<input type="button" id="alertValues" value="Alert Values"/>
+
+			<ul id="testlist1">
+				<li>
+					<input type="checkbox" name="test1	" value="test1-value1" data-role="checkall" />
+					<label>Test Selection - checkall</label>
+				</li>
+				<li>
+					<input type="checkbox" name="test1" value="test1-value2" />
+					<label>Test Selection</label>
+				</li>
+				<li>
+					<input type="checkbox" name="test1" value="test1-value3" />
+					<label>Test Selection</label>
+				</li>
+				<li>
+					<input type="checkbox" name="test1" value="test1-value4" />
+					<label>Test Selection</label>
+				</li>
+				<li>
+					<input type="checkbox" name="test1" value="test1-value5" />
+					<label>Test Selection</label>
+				</li>
+				<li>
+					<input type="checkbox" name="test1" value="test1-value6" />
+					<label>Test Selection</label>
+				</li>
+				<li data-selectable="false">
+					<input type="checkbox" name="test1" value="test1-value7" />
+					<label>Test Selection - Not Selectable</label>
+				</li>
+			</ul>
+		
+	
+			<h2>Radio</h2>
+			<ul id="testlist2">
+				<li>
+					<input type="radio" name="test2" value="test2-value1" />
+					<label>Test Selection</label>
+				</li>
+				<li data-selectable="false">
+					<input type="radio" name="test2" value="test2-value2" />
+					<label>Test Selection</label>
+				</li>
+				<li>
+					<input type="radio" name="test2" value="test2-value3" />
+					<label>Test Selection</label>
+				</li>
+				<li>
+					<input type="radio" name="test2" value="test2-value4" />
+					<label>Test Selection</label>
+				</li>
+				<li>
+					<input type="radio" name="test2" value="test2-value5" />
+					<label>Test Selection</label>
+				</li>
+				<li>
+					<input type="radio" name="test2" value="test2-value6" />
+					<label>Test Selection</label>
+				</li>
+				<li>
+					<input type="radio" name="test2" value="test2-value7" />
+					<label>Test Selection</label>
+				</li>
+			</ul>
+	
+			<h2>Table</h2>
+			<table id="testlist3">
+				<tr>
+					<th><input type="checkbox" data-role="checkall"/></th>
+					<th>Header</th>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="test3" value="test3-value1"/></td>
+					<td><label>Test Selection</label></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="test3" value="test3-value2"/></td>
+					<td>Test Selection</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="test3" value="test3-value3"/></td>
+					<td><label>Test Selection</label></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="test3" value="test3-value4"/></td>
+					<td><label>Test Selection</label></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="test3" value="test3-value5"/></td>
+					<td><label>Test Selection</label></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="test3" value="test3-value6"/></td>
+					<td><label>Test Selection</label></td>
+				</tr>
+			</table>
+		</form>
+	</body>
+</html>

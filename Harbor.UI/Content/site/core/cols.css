@@ -1,0 +1,58 @@
+.col1, .col2, .col3, .col4, .col5, .col6 {
+  width: 98%; }
+
+@media screen and (max-width: 480px) {
+  .col1,
+  .col2,
+  .col3,
+  .col3-2,
+  .col4,
+  .col5 {
+    width: 100%;
+    float: left;
+    padding: 1%; } }
+@media screen and (min-width: 480px) and (max-width: 1024px) {
+  .col1 {
+    width: 100%;
+    float: left;
+    padding: 1%; }
+
+  .col2,
+  .col3,
+  .col3-2,
+  .col4,
+  .col5 {
+    width: 50%;
+    float: left;
+    padding: 1%; } }
+@media screen and (min-width: 1024px) {
+  .col1 {
+    width: 100%;
+    float: left;
+    padding: 2%; }
+
+  .col2 {
+    width: 50%;
+    float: left;
+    padding: 1%; }
+
+  .col3 {
+    width: 33.33333%;
+    float: left;
+    padding: 0.5%; }
+
+  .col3-2 {
+    width: 66.66667%;
+    float: left;
+    padding: 0.5%; }
+
+  .col4 {
+    width: 25%;
+    float: left;
+    padding: 0.8%; }
+
+  .col5 {
+    width: 20%;
+    float: left;
+    padding: 0.5%; } }
+

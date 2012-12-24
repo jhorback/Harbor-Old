@@ -1,0 +1,199 @@
+﻿@model List<Harbor.UI.Models.StyleGuide.StyleGuidePage>
+@{
+	string columns = ViewBag.Columns as string;
+	if (columns == null) { 
+		columns = "col2";
+	}
+}
+<div class="page-header">
+<h1 class="float-left">Forms</h1>
+<form class="float-right">
+	
+	<fieldset>
+		<select id="columns" name="columns">
+			<option value="col1">One Column</option>
+			<option value="col2" selected>Two Columns</option>
+			<option value="col3">Three Columns</option>
+		</select>
+	</fieldset>
+
+</form>
+</div>
+
+<div class="page-content">
+
+	<form class="clear error">
+		<span class="validation-summary">This is a general form error.</span>
+		<fieldset data-role="column" class="@columns">
+			<legend>Form fieldset legend</legend>
+			<div class="form-field">
+				<label for="text">Text</label>
+				<input id="text" type="text" placeholder="Enter text..." size="30" />
+			</div>
+
+			<div class="form-field error">
+				<label for="text2">Text 2</label>
+				<input id="text2" type="text" size="5"/>
+				<span class="validation" data-validation-for="text2">The Text 2 field is required.</span>
+			</div>
+
+
+			<div class="form-field">
+				<label for="select">Select</label>
+				<select id="select">
+					<option>Option 1</option>
+					<option>Option 2</option>
+				</select>
+			</div>
+
+			<div class="form-field">
+				<input id="checkbox" type="checkbox" />
+				<label for="checkbox">Checkbox label</label>
+			</div>
+
+			<div class="form-field">
+				<label for="textarea">Text2</label>
+				<textarea id="textarea" class="stretch"></textarea>
+			</div>
+		</fieldset>
+
+		<fieldset  data-role="column" class="@columns">
+			<legend>Another fieldset</legend>
+			<div class="form-field">
+				<label for="password">Password</label>
+				<input id="password" type="password" placeholder="Enter a password..." />
+			</div>
+			<div class="form-field">
+				<input type="radio" id="rad_1" name="rad"  value="1" checked />
+				<label for="rad_1">Option 1</label>
+			</div>
+			<div class="form-field">
+				<input type="radio" id="rad_2" name="rad" value="2" />
+				<label for="rad_2">Option 2</label>
+			</div>
+		</fieldset>
+
+		<fieldset  data-role="column" class="@columns">
+			<legend>Radio and checkbox buttons</legend>
+			<div class="form-field">
+				<label>Test radioset</label>
+				<div class="radioset">
+					<label>
+						<input type="radio" name="toggle" value="blue" checked/>
+						<span>Blue</span>
+					</label>
+					<label>
+						<input type="radio" name="toggle" value="red" />
+						<span>Red</span>
+					</label>
+					<label>
+						<input type="radio" name="toggle" value="orage" />
+						<span>Orange</span>
+					</label>
+					<label>
+						<input type="radio" name="toggle" value="green" />
+						<span>Green</span>
+					</label>
+					<label>
+						<input type="radio" name="toggle" value="purple" />
+						<span>Purple</span>
+					</label>
+				</div>
+			</div>
+			<div class="form-field">
+				<label for="testcheckbox">Test switch</label>
+				<div class="switch">
+					<input type="checkbox" id="testcheckbox">
+					<label for="testcheckbox">
+						<span class="on">On</span>
+						<span class="off">Off</span>            
+					</label>
+				</div>
+			</div>
+		</fieldset>
+
+		<fieldset data-role="column" class="@columns">
+			<hr />
+			<div class="controls">
+				<a class="button loud" href="#">Loud link</a>
+				<a class="button attn" href="#">Attn link</a>
+				<button type="submit" value="Submit">Submit</button>
+			</div>
+		</fieldset>
+	</form>
+	
+	<section class="clear">
+		<header>
+			<h2>Class names</h2>
+		</header>
+		<p>This is a list of class names that work with forms. Check the markup for semantic structure.</p>
+		<ul>
+			<li>
+				<strong>.form-field</strong> - used to wrap label/input tags.
+			</li>
+			<li>
+				<strong>.nocol, .col2, .col3</strong> - keep the label on inner form-fields on top.
+			</li>
+			<li>
+				<strong>.error</strong> - Use on the form tag and on any .form-field that is in an error state.
+			</li>
+			<li>
+				<strong>.controls</strong> - used to identify the main form controls (e.g. OK/Cancel buttons).
+			</li>
+			<li>
+				<strong>.button</strong> - use to style non buttons as buttons.
+			</li>
+			<li>
+				<strong>.input</strong> - use to style non input types as an input type.
+			</li>
+			<li>
+				<strong>.editable</strong> - use on spans to mark a text field as editable (i.e. clicking it will make it editable).
+			</li>
+			<li>
+				<strong>.loud, .attn</strong> - use on buttons to change their visible priority
+			</li>
+			<li>
+				<strong>.disabled</strong> - use on any field to make it look disabled.
+			</li>
+			<li>
+				<strong>.validation-summary</strong> - add at the top of the form to display general form errors.
+			</li>
+			<li>
+				<strong>.validation</strong> - use in a .form-field (with a data-validation-for attribute) to contain error
+				messages specific to a single form field.
+			</li>
+			<li>
+				<strong>.nolabel</strong> - add to a .form-field when there is no label.
+			</li>
+			<li>
+				<strong>.radioset</strong> - Add to a div surrounding radio buttons for a grouped buttonset look (see markup).
+			</li>
+			<li>
+				<strong>.switch</strong> - Add to a div surrounding a checkbox for an on/off switch (see markup).
+			</li>
+			<li>
+				<strong>.label-margin</strong> - Adds a margin-left of the same width as a label.
+			</li>
+		</ul>
+	</section>
+</div>
+
+@section scripts {
+	<script>
+		$(document).ready(function (event) {
+
+			var colfield = $("#columns");
+			var cols = $("[data-role=column]");
+
+			var changeColumns = function () {
+				var val = colfield.val();
+				cols.attr("class", "");
+				cols.addClass(val);
+			};
+
+			changeColumns();
+			colfield.change(changeColumns);
+
+		});
+	</script>
+}

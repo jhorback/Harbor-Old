@@ -1,0 +1,9 @@
+﻿@model Common.UI.Models.JsPackage
+@using Common.UI.Extensions
+@foreach (var script in Model.Dependencies) {
+@Html.AddScript(script)
+}
+@Html.AddScript("~/Scripts/" + Model.Name + "/" + Model.JsName)
+@foreach (var script in Model.TestScripts) {
+@Html.AddScript(script)
+}

@@ -1,0 +1,226 @@
+form {
+  line-height: 2.5em; }
+  form:after {
+    content: "";
+    display: table;
+    clear: both; }
+
+label {
+  font-size: 1.3em; }
+
+fieldset {
+  border: 0;
+  position: relative;
+  padding: 0em .5em 2em 0 !important; }
+  fieldset:last-of-type {
+    padding-bottom: 0 !important; }
+
+legend {
+  font-size: 1.5em;
+  color: #db7100;
+  text-shadow: rgba(0, 0, 0, 0.2) 1px 1px 1px; }
+
+input[type=email], input[type=text], input[type=number], input[type=password] {
+  background: white;
+  color: black;
+  border: 1px solid #bbbbbb;
+  text-decoration: none;
+  margin: 0;
+  font-size: 1.2em;
+  padding: 5px;
+  line-height: 1.4em;
+  max-width: 100%;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -ms-border-radius: 3px;
+  border-radius: 3px; }
+  input[type=email]:focus, input[type=text]:focus, input[type=number]:focus, input[type=password]:focus {
+    border: 1px solid #92cae4 !important;
+    background-color: white;
+    -moz-box-shadow: 0 0 8px 4px #d5edf8;
+    -webkit-box-shadow: 0 0 8px 4px #d5edf8;
+    -ms-box-shadow: 0 0 8px 4px #d5edf8;
+    box-shadow: 0 0 8px 4px #d5edf8;
+    outline: none; }
+  input[type=email]:hover, input[type=text]:hover, input[type=number]:hover, input[type=password]:hover {
+    color: black;
+    border: 1px solid #92cae4;
+    background-color: white; }
+
+textarea {
+  background: white;
+  color: black;
+  border: 1px solid #bbbbbb;
+  text-decoration: none;
+  margin: 0;
+  font-size: 1.2em;
+  padding: 5px;
+  line-height: 1.4em;
+  max-width: 100%;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -ms-border-radius: 3px;
+  border-radius: 3px;
+  height: 4.5em; }
+  textarea:focus {
+    border: 1px solid #92cae4 !important;
+    background-color: white;
+    -moz-box-shadow: 0 0 8px 4px #d5edf8;
+    -webkit-box-shadow: 0 0 8px 4px #d5edf8;
+    -ms-box-shadow: 0 0 8px 4px #d5edf8;
+    box-shadow: 0 0 8px 4px #d5edf8;
+    outline: none; }
+  textarea:hover {
+    color: black;
+    border: 1px solid #92cae4;
+    background-color: white; }
+
+select {
+  background: white;
+  color: black;
+  border: 1px solid #bbbbbb;
+  text-decoration: none;
+  margin: 0;
+  font-size: 1.2em;
+  padding: 5px;
+  line-height: 1.4em;
+  max-width: 100%;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -ms-border-radius: 3px;
+  border-radius: 3px; }
+  select:focus {
+    border: 1px solid #92cae4 !important;
+    background-color: white;
+    -moz-box-shadow: 0 0 8px 4px #d5edf8;
+    -webkit-box-shadow: 0 0 8px 4px #d5edf8;
+    -ms-box-shadow: 0 0 8px 4px #d5edf8;
+    box-shadow: 0 0 8px 4px #d5edf8;
+    outline: none; }
+  select:hover {
+    color: black;
+    border: 1px solid #92cae4;
+    background-color: white; }
+
+.validation-summary {
+  display: none;
+  font-weight: bold;
+  font-size: 1.5em;
+  color: red; }
+
+.error .validation-summary {
+  display: block; }
+
+.form-field .validation {
+  display: none;
+  margin-left: 150px;
+  color: red;
+  font-size: 1.3em; }
+.form-field.nolabel .validation {
+  margin-left: 0; }
+.form-field.error input {
+  border: 1px solid red; }
+.form-field.error .validation {
+  display: block; }
+
+.nocol .label-margin, .col2 .label-margin, .col3 .label-margin {
+  margin-left: auto; }
+.nocol .form-field label, .col2 .form-field label, .col3 .form-field label {
+  width: 95%; }
+.nocol .form-field input[type=checkbox], .nocol .form-field input[type=radio], .col2 .form-field input[type=checkbox], .col2 .form-field input[type=radio], .col3 .form-field input[type=checkbox], .col3 .form-field input[type=radio] {
+  margin-left: 1em; }
+.nocol .form-field select, .col2 .form-field select, .col3 .form-field select {
+  min-width: 5em;
+  margin-left: auto; }
+.nocol .form-field .validation, .col2 .form-field .validation, .col3 .form-field .validation {
+  margin-left: inherit; }
+
+.nowrap .form-field {
+  white-space: nowrap; }
+
+.label-margin {
+  margin-left: 150px; }
+
+.form-field, .col2.nowrap {
+  position: relative;
+  padding: .4em .4em .1em 0; }
+  .form-field label, .col2.nowrap label {
+    width: 150px;
+    display: inline-block;
+    white-space: nowrap; }
+  .form-field select, .col2.nowrap select {
+    min-width: 50%;
+    max-width: 70%;
+    margin-left: 0; }
+  .form-field input[type=checkbox], .form-field input[type=radio], .col2.nowrap input[type=checkbox], .col2.nowrap input[type=radio] {
+    width: auto;
+    margin-left: 150px;
+    padding-right: 2%; }
+    .form-field input[type=checkbox].margin-none, .form-field input[type=radio].margin-none, .col2.nowrap input[type=checkbox].margin-none, .col2.nowrap input[type=radio].margin-none {
+      margin: 0; }
+
+.controls {
+  padding-top: 1em; }
+
+.form-field.nowrap {
+  white-space: nowrap; }
+
+@media screen and (max-width: 480px) {
+  .label-margin {
+    margin-left: auto; }
+
+  .form-field label {
+    width: 95%; }
+  .form-field input[type=checkbox], .form-field input[type=radio] {
+    margin-left: 1em; }
+  .form-field select {
+    min-width: 5em;
+    margin-left: auto; }
+  .form-field .validation {
+    margin-left: inherit; }
+
+  .form-field {
+    white-space: normal !important; }
+
+  .col1, .col2, .col3 {
+    width: 100% !important;
+    clear: left; } }
+.input {
+  background: white;
+  color: black;
+  border: 1px solid #bbbbbb;
+  text-decoration: none;
+  margin: 0;
+  font-size: 1.2em;
+  padding: 5px;
+  line-height: 1.4em;
+  max-width: 100%;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -ms-border-radius: 3px;
+  border-radius: 3px; }
+  .input:focus {
+    border: 1px solid #92cae4 !important;
+    background-color: white;
+    -moz-box-shadow: 0 0 8px 4px #d5edf8;
+    -webkit-box-shadow: 0 0 8px 4px #d5edf8;
+    -ms-box-shadow: 0 0 8px 4px #d5edf8;
+    box-shadow: 0 0 8px 4px #d5edf8;
+    outline: none; }
+  .input:hover {
+    color: black;
+    border: 1px solid #92cae4;
+    background-color: white; }
+
+.editable {
+  cursor: pointer;
+  padding: .2em .4em;
+  margin-left: -0.4em;
+  margin-top: -0.2em; }
+  .editable:hover {
+    background-color: #eee; }
+  .editable span {
+    font-size: 1.3em;
+    text-decoration: none;
+    color: #0066cc; }
+

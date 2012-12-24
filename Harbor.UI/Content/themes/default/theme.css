@@ -1,0 +1,57 @@
+html, body {
+  background-color: white;
+  color: #333333;
+  font-size: 14px;
+  font-family: "Segoe UI", "Helvetica Neue", Arial, Helvetica, sans-serif; }
+
+h2 {
+  color: #db7100;
+  text-shadow: rgba(51, 51, 51, 0.2) 1px 1px 1px; }
+
+a, .link {
+  text-decoration: underline;
+  color: #0066cc;
+  cursor: pointer; }
+  a:visited, a:focus, .link:visited, .link:focus {
+    color: #0066cc; }
+  a:hover, .link:hover {
+    color: #0099ff; }
+  a:active, .link:active {
+    color: red; }
+
+pre, code, tt {
+  font-family: "andale mono", Consolas, "lucida console", monospace; }
+
+hr {
+  color: #cccccc;
+  background-color: #cccccc; }
+
+#frame-header {
+  color: #eeeeee;
+  background: #345276; }
+  #frame-header a, #frame-header a:visited {
+    color: #eeeeee; }
+
+#frame-nav ul li:hover {
+  background-color: white; }
+  #frame-nav ul li:hover a {
+    color: #333333; }
+#frame-nav ul li.selected {
+  background-color: white; }
+  #frame-nav ul li.selected a {
+    color: #333333; }
+
+#frame-body ::-webkit-scrollbar-thumb {
+  background: #cccccc; }
+  #frame-body ::-webkit-scrollbar-thumb:hover {
+    background: #b3b3b3; }
+
+.quiet {
+  color: #999999; }
+
+.loud {
+  color: #2f5bb7; }
+
+.attn {
+  color: #d14836; }
+

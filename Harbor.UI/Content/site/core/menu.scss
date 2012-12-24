@@ -1,0 +1,40 @@
+@import "../mixins/clearfix";
+@import "../mixins/border-radius";
+@import "../mixins/box-shadow";
+
+$menu-color: #000;
+$menu-title-color: #09c;
+$menu-background-color: #FFF;
+$menu-box-shadow-color: #555;
+
+
+@mixin menu {
+	
+	.menu {
+		position: absolute;
+		z-index:100;
+		color: $menu-color;
+		background-color: $menu-background-color;
+		max-width: 600px;
+		padding: 1em;
+
+		@include clearfix;
+		@include box-shadow($top: 0px, $left: 0, $blur: 4px, $spread: 2px, $color:  rgba(#000, 0.4));
+		@include border-radius(3px);
+	}
+	
+	@media screen and (max-width: 600px) {
+		.menu {
+			border: 0;
+			position: fixed;
+			display: block;
+			top: 0 !important;
+			left: 0 !important;
+			right: 0 !important;
+			bottom: 0 !important;
+			@include border-radius(0);
+		}
+	}
+}
+
+@include menu;

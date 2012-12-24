@@ -1,0 +1,17 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+@using Harbor.UI.Models
+
+@{
+	var dto = new InternalServerErrorDto();
+	if (Model != null)
+	{
+		dto = new InternalServerErrorDto
+			{
+				exception = Model.Exception.Message,
+				exceptionType = Model.Exception.GetType().FullName,
+				stackTrace = Model.Exception.StackTrace
+			};
+	}
+}
+@Html.Partial("_Error", dto)
+

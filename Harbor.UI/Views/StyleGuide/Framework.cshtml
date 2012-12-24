@@ -1,0 +1,254 @@
+﻿@model List<Harbor.UI.Models.StyleGuide.StyleGuidePage>
+@{
+	string columns = ViewBag.Columns as string;
+	if (columns == null) { 
+		columns = "col2";
+	}
+}
+<div class="page">
+	<header class="page-header">
+		<h1>Framework</h1>
+	</header>
+	<div class="page-content">
+		
+
+		<div class="col2">
+			<section>
+				<header>
+					<h2>States</h2>
+				</header>
+				<ul>
+					<li>
+						<strong>.selected</strong> - use for selected elements such as selected rows, items, current page, etc.
+					</li>
+					<li>
+						<strong>.disabled</strong> - use for disabling text or items.
+					</li>
+					<li>
+						<strong>.error</strong> - used to indicate an error.
+					</li>
+				</ul>
+			</section>
+
+			<section>
+				<header>
+					<h2>Priority Indicators</h2>
+				</header>
+				<ul>
+					<li>
+						<strong>.quiet</strong> - use to dampen the text.
+					</li>
+					<li>
+						<strong>.loud</strong> - use to make text stand out.
+					</li>
+					<li>
+						<strong>.attn</strong> - use to make text stand out even more.
+					</li>	
+			
+				</ul>
+			</section>
+
+			
+			<section>
+				<header>
+					<h2>Impersonators</h2>
+				</header>
+				<ul>
+					<li>
+						<strong>.button</strong> - attempts to make the element look like a button.
+					</li>
+					<li>
+						<strong>.input</strong> - attempts to make the element look like an input element.
+					</li>
+					<li>
+						<strong>.link</strong> - attempts to make the element look like a hyperlink.
+					</li>
+				</ul>
+			</section>
+			<section>
+				<header>
+					<h2>Display</h2>
+				</header>
+				<ul>
+					<li>
+						<strong>.display-none</strong> - sets the display property to none.
+					</li>
+					<li>
+						<strong>.display-block</strong> - sets the display property to block.
+					</li>
+					<li>
+						<strong>.display-inline</strong> - sets the display property to inline.
+					</li>
+					<li>
+						<strong>.display-inline-block</strong> - sets the display property to inline-block.
+					</li>
+					<li>
+						<strong>.relative</strong> - sets the position to relative;
+					</li>
+					<li>
+						<strong>.stretch</strong> - sets a 100% width.
+					</li>
+					<li>
+						<strong>.fit</strong> - sets a max width to 100% (useful for responsive images).
+					</li>
+					<li>
+						<strong>.centered</strong> - sets the margin to auto.
+					</li>
+					<li>
+						<strong>.nowrap</strong> - sets white-space to nowrap.
+					</li>
+					<li>
+						<strong>.col1 - .col5</strong> - uses a floated column layout.
+					</li>
+					<li>
+						<strong>.nobullets</strong> - use on ul's to remove the bullet.
+					</li>
+					<li>
+						<strong>.height-5em</strong> - Sets overflow to auto with a height of 5em.
+					</li>
+					<li>
+						<strong>.height-10em</strong> - Sets overflow to auto with a height of 10em.
+					</li>
+				</ul>
+			</section>
+			<section>
+				<header>
+					<h2>Position Indicators</h2>
+				</header>
+				<ul>
+					<li>
+						<strong>.first</strong> - removes the left margin.
+					</li>
+					<li>
+						<strong>.last</strong> - removes the right margin.
+					</li>
+					<li>
+						<strong>.top</strong> - removes the top margin.
+					</li>
+					<li>
+						<strong>.bottom</strong> - removes the bottom margin.
+					</li>
+				</ul>
+			</section>
+
+		</div>
+
+<div class="col2">
+	
+	
+	<section>
+		<header>
+			<h2>Floats and Clears</h2>
+		</header>
+		<ul>
+			<li>
+				<strong>.float-left</strong> - adds float:left
+			</li>
+			<li>
+				<strong>.float-right</strong> -adds float: right
+			</li>
+			<li>
+				<strong>.clear</strong> - clears both left and right floats.
+			</li>
+			<li>
+				<strong>.clear-left</strong> - clears left floats.
+			</li>
+			<li>
+				<strong>.clear-right</strong> - clears both right floats.
+			</li>
+			<li>
+				<strong>.clear-fix</strong> - applies a clearfix to the element.
+			</li>
+			
+		</ul>
+	</section>
+	<section>
+		<header>
+			<h2>Text Formatting</h2>
+		</header>
+		<ul>
+			<li>
+				<strong>.text-left</strong> - left aligned text.
+			</li>
+			<li>
+				<strong>.text-center</strong> - center aligned text.
+			</li>
+			<li>
+				<strong>.text-right</strong> - right aligned text.
+			</li>
+			<li>
+				<strong>.text-justify</strong> - justified text alignement.
+			</li>
+			<li>
+				<strong>.text-small</strong> - a decrease in the default text size.
+			</li>
+			<li>
+				<strong>.text-large</strong> - an increase in the default text size.
+			</li>
+		</ul>
+	</section>
+
+	<section>
+		<header>
+			<h2>Padding</h2>
+		</header>
+		<ul>
+			<li>
+				<strong>.pad - .pad3</strong> - various levels of padding.
+			</li>
+			<li>
+				<strong>.pad-left</strong> - adds left padding.
+			</li>
+			<li>
+				<strong>.pad-right</strong> - adds right padding.
+			</li>
+			<li>
+				<strong>.pad-top</strong> - adds top padding.
+			</li>
+			<li>
+				<strong>.pad-bottom</strong> - adds bottom padding.
+			</li>
+		</ul>
+	</section>
+
+	<section>
+		<header>
+			<h2>Margin</h2>
+		</header>
+		<ul>
+			<li>
+				<strong>.margin - .margin3</strong> - various levels of margin.
+			</li>
+			<li>
+				<strong>.margin-left</strong> - adds left margin.
+			</li>
+			<li>
+				<strong>.margin-right</strong> - adds right margin.
+			</li>
+			<li>
+				<strong>.margin-top</strong> - adds top margin.
+			</li>
+			<li>
+				<strong>.margin-bottom</strong> - adds bottom margin.
+			</li>	
+		</ul>
+	</section>
+</div>
+
+		
+		
+		
+
+		
+		
+		
+
+	</div>
+</div>
+
+
+
+@section scripts {
+	<script>
+	</script>
+}

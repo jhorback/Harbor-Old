@@ -1,0 +1,14 @@
+﻿@using Harbor.Domain.Security
+@using Harbor.UI.Extensions
+@{
+	ViewBag.Title = "Website Settings";
+}
+@section head {
+	@Html.Jst("UserAdmin/UserAdminTemplates")	
+}
+@section scripts {
+	@Scripts.Render("~/Scripts/Apps/UserAdmin.js")
+	<script>
+		UserAdmin.start();
+	</script>
+}

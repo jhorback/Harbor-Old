@@ -1,0 +1,89 @@
+@import "../mixins/clearfix";
+@import "../mixins/border-radius";
+@import "../mixins/box-shadow";
+@import "../mixins/opacity";
+@import "../mixins/text-shadow";
+
+$dialog-color: #000;
+$dialog-title-color: #09c;
+$dialog-background-color: #FFF;
+$dialog-box-shadow-color: #555;
+
+
+@mixin dialog {
+	
+	.dialog-wrapper {
+		position: absolute;
+		z-index:100;
+	}
+	
+	.dialog {
+		color: $dialog-color;
+		background-color: $dialog-background-color;
+		max-width: 600px;
+
+		@include clearfix;
+		@include box-shadow(0, 0, 2em, .5em, $dialog-box-shadow-color);
+		@include border-radius(3px);
+		
+		.dialog-header {
+			overflow: hidden; // clearfix
+			padding: .5em 1em;			
+		
+			h1 {
+				font-family: "Segoe UI";
+				display: inline;
+				float: left;
+				font-size: 2.3em;
+				cursor: default;
+				color: $dialog-title-color;
+				margin: 0;
+				@include single-text-shadow(rgba(#111, 0.2), 2px, 2px, 2px); 
+			}
+		}
+
+		.dialog-content {
+			position: relative; 
+			padding: 1em;
+		}
+
+		.controls {
+			clear:both;
+			padding-top:1em;
+			.input, input, a, button, .link {
+				float: right;
+			}
+		}
+	}
+	
+	@media screen and (max-width: 600px) {
+		.dialog, .dialog-wrapper {
+			border: 0;
+			position: fixed;
+			display: block;
+			top: 0 !important;
+			left: 0 !important;
+			right: 0 !important;
+			bottom: 0 !important;
+			@include border-radius(0);
+		}
+	}
+
+	.dialog-close {		
+		color: $dialog-color;
+		font-family: arial;
+		text-decoration: none;
+		display:block;
+		cursor:default;
+		margin: -.7em -.55em 0 0;
+		float: right;
+		font-size: 3.5em;
+		font-weight: bold;		
+		@include opacity(.1);
+		&:hover {
+			@include opacity(.4);
+		}
+	}
+}
+
+@include dialog;

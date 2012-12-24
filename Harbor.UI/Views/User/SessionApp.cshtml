@@ -1,0 +1,7 @@
+﻿@using Harbor.UI.Extensions
+@model Harbor.UI.Models.User.CurrentUserDto
+@Scripts.Render("~/Scripts/Apps/Session.js")
+@Html.Jst("User/SessionTemplates")
+<script>
+	Session.start(@Html.Raw(Json.Encode(Model)));
+</script>

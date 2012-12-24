@@ -1,0 +1,55 @@
+﻿Session.UserMenu = Backbone.View.extend({
+
+	initialize: function () {
+		Session.ViewExtension.extend(this);
+		this.model = Session.currentUser;
+
+		this.render();
+	},
+
+	events: {
+		"click #usermenu-addpage": function () {
+			var menu;
+			Session.trigger("addPage");
+			menu = this.views("menu");
+			menu && menu.close && menu.close();
+		},
+
+		"click #usermenu-uploadfile": function () {
+			alert("Upload a file");
+		},
+
+		"click #usermenu-signout": function (event) {
+			event.preventDefault();
+			Session.signOut().then(function () {
+				window.location.reload();
+			});
+		}
+	},
+
+	render: function () {
+		var $el = this.$el,
+			model = this.model;
+
+		var html = this.JST("Session-UserMenu", this.model).then(function (result) {
+			$el.html(result);
+			$el.find("h1").html(model.get("usersDisplayName"));
+			if (model.get("hasDocPermissions") === false) {
+				$el.find("#usermenu-docslink,#usermenu-adddoc").remove();
+			}
+			if (model.get("hasFilePermissions") === false) {
+				$el.find("#usermenu-fileslink,#usermenu-uploadfile	").remove();
+			}
+			if (model.get("hasSettingsPermissions") === false) {
+				$el.find("#usermenu-settingslink").remove();
+			}
+		});
+
+		this.views("menu", Session.Menu(this.$el, {
+			transition: "fade",
+			anchor: "#profile-link"
+		}));
+
+		return this;
+	}
+});

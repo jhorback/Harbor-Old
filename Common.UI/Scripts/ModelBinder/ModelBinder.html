@@ -1,0 +1,190 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>ModelBinder Test</title>
+		<script src="../jquery-1.8.0.js" type="text/javascript"></script>
+		<script src="../underscore.min.js" type="text/javascript"></script>
+		<script src="../backbone.min.js" type="text/javascript"></script>
+		<script src="ModelBinder.js"></script>
+		<script>
+			var TestModel = Backbone.Model.extend({ });
+
+			var myTestModel = new TestModel({ 
+				name: "TestModel Name", // text
+				description: "Test Model Description", // textarea
+				isEnabled: true,     // use with checkbox
+				selectedColor: "red", // use with radio
+				selection: "value2",
+				selectedColorDisabled: false,
+				setIsEnabled: function (value) {
+					this.get("selectedColorDisabled", !value);
+					return value;
+				}
+			});
+
+			var ModelValuesControl = Backbone.View.extend({
+				initialize: function () {
+					var frag = _.template($("#template-modelvalues").html())({ model: myTestModel });
+					this.$el.html(frag);
+				}
+			});
+
+			var FormFieldsControl = Backbone.View.extend({
+				initialize: function () {
+					var frag = _.template($("#template-formfields").html())({ model: myTestModel });
+					this.$el.html(frag);
+					this.mb = ModelBinder(myTestModel, this.$el);
+				},
+
+				destroy: function () {
+					this.mb.unbind(); // doing this differently eventually
+				}
+			});
+
+			$(function () {
+				ModelBinder.config.attributes["style"] = "string";
+
+				var mv = new ModelValuesControl({ el: $("#modelvalues") });
+				var ff = new FormFieldsControl({el: $("#formfields") });
+				var smb = ModelBinder(myTestModel, $("#staticmodel"));
+
+				$("#unbind").click(function (event) {
+					event.preventDefault();
+					mv.destroy();
+					ff.destroy();
+					smb.unbind();
+				});
+
+				
+				$("#updatestyle").click(function () {
+					myTestModel.set("description", "color:#33c; font-family:arial;font-size:3em;text-shadow:2px 2px 4px #222222;"
+					);
+				});
+			});
+		</script>
+		<style>
+			
+			.section {
+				float:left;
+				margin:1em;
+			}
+		</style>
+</head>
+<body>
+	<h1>ModelBinder Test</h1>
+	
+	
+	<div class="section">
+		<h2>Rendered Form</h2>
+		<div id="formfields"></div>
+	</div>
+	
+	<div class="section">
+		<h2>Model Values</h2>
+		<div class="section" id="modelvalues"></div>
+	</div>
+	
+	<form class="section">
+		<h2>Static Form</h2>
+		<fieldset id="staticmodel">
+			<legend>ModelBinder Test Form</legend>
+			<div>
+				<label for="name2">Name</label>
+				<input type="text" name="name" id="name2"/>
+			</div>
+			<div>
+				<label for="description2">Description</label>
+				<textarea name="description" id="description2"></textarea>
+			</div>
+			<div>
+				<label for="isEnabled2">Is enabled?</label>
+				<input type="checkbox" name="isEnabled" id="isEnabled2" />
+			</div>
+	
+			<div>
+			
+				<input type="radio" name="selectedColor" id="selectedColor_green2" value="green"/>
+				<label for="selectedColor_green2">Green</label>
+				<input type="radio" name="selectedColor" id="selectedColor_red2" value="red"/>
+				<label for="selectedColor_red2">Red</label>
+				<input type="radio" name="selectedColor" id="selectedColor_blue2" value="blue"/>
+				<label for="selectedColor_blue2">Blue</label>
+			</div>
+		
+			<div>
+				<label for="selection2">Selection</label>
+				<select id="selection2" name="selection">
+					<option value="value1">Value 1</option>
+					<option value="value2">Value 2</option>
+					<option>Value 3</option>
+				</select>
+			</div>
+			<div>
+				<input type="button" id="unbind" value="Unbind">
+			</div>
+		</fieldset>
+	</form>
+	<div style="clear:both">
+		The legend of the Rendered Form style attribute is bound to the description property.
+		<button id="updatestyle">Update Style</button>
+
+	</div>
+	<script type="text/template" id="template-modelvalues">
+		<div>
+		Name: <%= model.get("name") %>
+			<span name="name"></span>
+		</div>
+		<div>
+		Description: <%= model.get("description") %>
+		</div>
+		<div>
+		Is enabled: <%= model.get("isEnabled") %>
+		</div>
+		<div>
+		Selected color: <%= model.get("selectedColor") %>
+		</div>
+		<div>
+		Selection: <%= model.get("selection") %>
+		</div>
+		<div>
+		Selected color disabled: <%= model.get("selectedColorDisabled") %>
+		</div>
+	</script>
+	<script type="text/template" id="template-formfields">
+		<form>	
+			<fieldset>
+				<legend data-bind-style="description">ModelBinder Test Form</legend>
+				<div name="name">asdf</div>		
+				<div data-bind-errorclass="errorclass">
+					<label for="name">Name</label>
+					<input type="text" name="name" id="name"/>
+				</div>
+				<div data-bind-errorclass="errorclass">
+					<label for="description">Description</label>
+					<textarea name="description" id="description"></textarea>
+				</div>
+				<div>
+					<label for="isEnabled">Is enabled?</label>
+					<input type="checkbox" name="isEnabled" id="isEnabled" />
+				</div>
+				<div>					
+					<input type="radio" name="selectedColor" id="selectedColor_green" value="green" data-bind-disabled="selectedColorDisabled" data-bind="{name :asdf}"/>
+					<label for="selectedColor_green">Green</label>
+					<input type="radio" name="selectedColor" id="selectedColor_red" value="red" data-bind-disabled="selectedColorDisabled"/>
+					<label for="selectedColor_red">Red</label>
+					<input type="radio" name="selectedColor" id="selectedColor_blue" value="blue" data-bind-disabled="selectedColorDisabled"/>
+					<label for="selectedColor_blue">Blue</label>
+				</div>		
+				<div>
+					<label for="selection">Selection</label>
+					<select id="selection" name="selection">
+						<option value="value1">Value 1</option>
+						<option value="value2">Value 2</option>
+						<option>Value 3</option>
+					</select>
+				</div>
+			</fieldset>
+		</form>
+	</script>
+</body>
+</html>

@@ -1,0 +1,262 @@
+.button,
+button,
+input.button,
+input[type=button],
+input[type=submit] {
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -ms-border-radius: 3px;
+  border-radius: 3px;
+  border: 0;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  display: inline-block;
+  text-align: center;
+  font-weight: 500;
+  font-family: "Segoe UI Web Semibold", "Segoe UI Web Regular", "Segoe UI", "Segoe UI Symbol", "Helvetica Neue", Arial;
+  font-size: 1.0em;
+  cursor: default;
+  text-decoration: none;
+  line-height: 1.6em;
+  border-width: 1px;
+  margin: 0.2em;
+  padding: .4em 2em;
+  margin-bottom: 6px;
+  color: black;
+  background-color: #cccccc; }
+  .button:hover,
+  button:hover,
+  input.button:hover,
+  input[type=button]:hover,
+  input[type=submit]:hover {
+    background-color: #e6e6e6; }
+  .button:active,
+  button:active,
+  input.button:active,
+  input[type=button]:active,
+  input[type=submit]:active {
+    color: white !important;
+    background-color: black; }
+  .button:visited,
+  button:visited,
+  input.button:visited,
+  input[type=button]:visited,
+  input[type=submit]:visited {
+    color: black; }
+  .button.loud,
+  button.loud,
+  input.button.loud,
+  input[type=button].loud,
+  input[type=submit].loud {
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -ms-border-radius: 3px;
+    border-radius: 3px;
+    border: 0;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    display: inline-block;
+    text-align: center;
+    font-weight: 500;
+    font-family: "Segoe UI Web Semibold", "Segoe UI Web Regular", "Segoe UI", "Segoe UI Symbol", "Helvetica Neue", Arial;
+    font-size: 1.0em;
+    cursor: default;
+    text-decoration: none;
+    line-height: 1.6em;
+    border-width: 1px;
+    margin: 0.2em;
+    padding: .4em 2em;
+    margin-bottom: 6px;
+    color: white;
+    background-color: #2f5bb7; }
+    .button.loud:hover,
+    button.loud:hover,
+    input.button.loud:hover,
+    input[type=button].loud:hover,
+    input[type=submit].loud:hover {
+      background-color: #4975d0; }
+    .button.loud:active,
+    button.loud:active,
+    input.button.loud:active,
+    input[type=button].loud:active,
+    input[type=submit].loud:active {
+      color: white !important;
+      background-color: black; }
+    .button.loud:visited,
+    button.loud:visited,
+    input.button.loud:visited,
+    input[type=button].loud:visited,
+    input[type=submit].loud:visited {
+      color: white; }
+  .button.attn,
+  button.attn,
+  input.button.attn,
+  input[type=button].attn,
+  input[type=submit].attn {
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -ms-border-radius: 3px;
+    border-radius: 3px;
+    border: 0;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    display: inline-block;
+    text-align: center;
+    font-weight: 500;
+    font-family: "Segoe UI Web Semibold", "Segoe UI Web Regular", "Segoe UI", "Segoe UI Symbol", "Helvetica Neue", Arial;
+    font-size: 1.0em;
+    cursor: default;
+    text-decoration: none;
+    line-height: 1.6em;
+    border-width: 1px;
+    margin: 0.2em;
+    padding: .4em 2em;
+    margin-bottom: 6px;
+    color: white;
+    background-color: #d14836; }
+    .button.attn:hover,
+    button.attn:hover,
+    input.button.attn:hover,
+    input[type=button].attn:hover,
+    input[type=submit].attn:hover {
+      background-color: #da6e60; }
+    .button.attn:active,
+    button.attn:active,
+    input.button.attn:active,
+    input[type=button].attn:active,
+    input[type=submit].attn:active {
+      color: white !important;
+      background-color: black; }
+    .button.attn:visited,
+    button.attn:visited,
+    input.button.attn:visited,
+    input[type=button].attn:visited,
+    input[type=submit].attn:visited {
+      color: white; }
+
+.switch {
+  display: inline-block;
+  font-size: .8em;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none; }
+  .switch input {
+    position: absolute;
+    left: -2000px; }
+  .switch label {
+    display: inline-block;
+    white-space: nowrap;
+    width: auto !important;
+    padding: 0;
+    margin: 0;
+    background-color: #cccccc;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -ms-border-radius: 3px;
+    border-radius: 3px; }
+    .switch label span {
+      margin: 0 !important;
+      min-width: 50px;
+      float: left;
+      -moz-border-radius: 3px;
+      -webkit-border-radius: 3px;
+      -ms-border-radius: 3px;
+      border-radius: 3px;
+      border: 0;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      user-select: none;
+      display: inline-block;
+      text-align: center;
+      font-weight: 500;
+      font-family: "Segoe UI Web Semibold", "Segoe UI Web Regular", "Segoe UI", "Segoe UI Symbol", "Helvetica Neue", Arial;
+      font-size: 1.0em;
+      cursor: default;
+      text-decoration: none;
+      line-height: 1.6em;
+      border-width: 1px;
+      margin: 0.2em;
+      padding: .4em 2em;
+      margin-bottom: 6px; }
+    .switch label .on {
+      text-indent: -9999px;
+      color: black;
+      background-color: #bfbfbf; }
+      .switch label .on:hover {
+        background-color: #d9d9d9; }
+      .switch label .on:active {
+        color: white !important;
+        background-color: black; }
+      .switch label .on:visited {
+        color: black; }
+    .switch label .off {
+      text-indent: 0;
+      color: black;
+      background-color: #cccccc; }
+      .switch label .off:hover {
+        background-color: #e6e6e6; }
+      .switch label .off:active {
+        color: white !important;
+        background-color: black; }
+      .switch label .off:visited {
+        color: black; }
+  .switch input:checked ~ label .off {
+    text-indent: -9999px;
+    color: black;
+    background-color: #cccccc; }
+    .switch input:checked ~ label .off:hover {
+      background-color: #e6e6e6; }
+    .switch input:checked ~ label .off:active {
+      color: white !important;
+      background-color: black; }
+    .switch input:checked ~ label .off:visited {
+      color: black; }
+  .switch input:checked ~ label .on {
+    text-indent: 0;
+    color: white;
+    background-color: #2f5bb7; }
+    .switch input:checked ~ label .on:hover {
+      background-color: #4975d0; }
+    .switch input:checked ~ label .on:active {
+      color: white !important;
+      background-color: black; }
+    .switch input:checked ~ label .on:visited {
+      color: white; }
+
+.radioset {
+  border-radius: 3px;
+  overflow: hidden;
+  display: inline-block;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none; }
+  .radioset label {
+    float: left;
+    font-size: 1em;
+    padding: 0 !important;
+    margin: 0;
+    width: auto !important;
+    display: block; }
+    .radioset label span {
+      display: inline-block;
+      background-color: #cccccc;
+      color: black;
+      padding: 0.15em 0.5em 0.25em;
+      min-width: 50px;
+      text-align: center;
+      border: none;
+      font-size: 1.0em;
+      line-height: 2.5em;
+      font-family: "Segoe UI Web Semibold", "Segoe UI Web Regular", "Segoe UI", "Segoe UI Symbol", "Helvetica Neue", Arial; }
+      .radioset label span:hover {
+        background-color: #e6e6e6; }
+    .radioset label input {
+      position: absolute;
+      left: -2000px; }
+      .radioset label input:checked + span {
+        background: #2f5bb7;
+        color: white; }
+
