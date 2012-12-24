@@ -65,8 +65,8 @@
 		@RenderSection("scripts", required: false)
 
 		@Scripts.Render("~/Scripts/jquery.ui.js")
-		<script src="~/Scripts/jquery.ui.draggable.min.js"></script>
+		@Scripts.Render("~/Scripts/jquery.ui.draggable.js")
 		@* sortable is for the page editor *@
-		<script src="~/Scripts/jquery.ui.sortable.min.js"></script>
+		@Scripts.Render("~/Scripts/jquery.ui.sortable.js")
 	</body>
 </html>
