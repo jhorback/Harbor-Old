@@ -45,10 +45,11 @@ namespace Harbor.UI
 
 
 			// style bundles
-			bundles.Add(new StyleBundle("~/Content/corecss")
+			bundles.Add(new StyleBundle("~/Content/site.min.css")
 				.Include("~/Content/site/core/foundation.css")
 				.IncludeDirectory("~/Content/site/core", "*.css"));
-			bundles.Add(new StyleBundle("~/Content/theme").Include("~/Content/themes/default/theme.css"));
+			bundles.Add(new StyleBundle("~/Content/theme.min.css")
+				.Include("~/Content/themes/default/theme.css"));
 		}
 
 		private static Bundle createAppBundle(string appName, string[] dependents = null)

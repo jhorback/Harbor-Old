@@ -279,7 +279,7 @@
     <Content Include="Content\site\ext\signinpage.css">
       <DependentUpon>signinpage.scss</DependentUpon>
     </Content>
-    <Content Include="Content\site\font\fonticons.svg" />
+    <Content Include="Content\font\fonticons.svg" />
     <Content Include="Content\site\mixins\_opacity.scss">
       <Compile>False</Compile>
       <Minify>False</Minify>
@@ -370,17 +370,11 @@
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <Content Include="Scripts\jquery.html5uploader.js" />
     <Content Include="Scripts\jquery.ui.core.js" />
-    <Content Include="Scripts\jquery.ui.core.min.js" />
     <Content Include="Scripts\jquery.ui.draggable.js" />
-    <Content Include="Scripts\jquery.ui.draggable.min.js" />
     <Content Include="Scripts\jquery.ui.mouse.js" />
-    <Content Include="Scripts\jquery.ui.mouse.min.js" />
     <Content Include="Scripts\jquery.ui.position.js" />
-    <Content Include="Scripts\jquery.ui.position.min.js" />
     <Content Include="Scripts\jquery.ui.sortable.js" />
-    <Content Include="Scripts\jquery.ui.sortable.min.js" />
     <Content Include="Scripts\jquery.ui.widget.js" />
-    <Content Include="Scripts\jquery.ui.widget.min.js" />
     <Content Include="Scripts\json2.js" />
     <Content Include="Scripts\json2.min.js" />
     <Content Include="Scripts\modernizr-2.6.2-custom.js" />
@@ -527,9 +521,9 @@
       <CompileStyle>Nested</CompileStyle>
       <DebugInfo>False</DebugInfo>
     </None>
-    <None Include="Content\site\font\fonticons.eot" />
-    <None Include="Content\site\font\fonticons.ttf" />
-    <None Include="Content\site\font\fonticons.woff" />
+    <None Include="Content\font\fonticons.eot" />
+    <None Include="Content\font\fonticons.ttf" />
+    <None Include="Content\font\fonticons.woff" />
     <None Include="Content\site\core\fonticons.scss">
       <Compile>True</Compile>
       <Minify>False</Minify>
