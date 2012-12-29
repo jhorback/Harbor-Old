@@ -23,22 +23,11 @@ namespace Harbor.UI.Controllers.Api
 		}
 
 		// use odata here?
-        public IEnumerable<PageDto> Get(string title = null, string author = null)
+        public IEnumerable<PageDto> Get([FromUri]PageQuery query)
 		{
-			var pages = pageRep.FindAll();
-			if (string.IsNullOrEmpty(title) == false)
-				pages = pages.Where(p => p.Title.Contains(title));
-
-			if (string.IsNullOrEmpty(author) == false)
-				pages = pages.Where((p => p.AuthorsUserName == author));
-
-        	var currentUser = User.Identity.Name;
-			pages = pages.Where(p => p.HasPermission(currentUser,
-				PageFunctionalArea.Page, Permissions.Read));
-			;
-			pages = pages.OrderByDescending(p => p.Modified);
-
-			return pages.Select(p => (PageDto)p);
+        	query.CurrentUserName = User.Identity.Name;
+        	query.OrderDesc = "Modified";
+			return pageRep.FindAll(query).Select(p => (PageDto)p);
 		}
 
 		[Http.PagePermit(Permissions.Read)]

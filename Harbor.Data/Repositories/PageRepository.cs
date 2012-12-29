@@ -25,22 +25,28 @@ namespace Harbor.Data.Repositories
 		public IEnumerable<Page> FindAll(Func<Page, bool> filter)
 		{
 			return filter == null ?
-				context.Pages
-				.Include("Properties")
-				.Include("PageRoles")
-				.AsEnumerable()
+				Query()
+					.AsEnumerable()
 				:
-				context.Pages
-				.Include("Properties")
-				.Include("PageRoles")
-				.Where(d => d.Enabled == true)
-				.Where(filter).AsEnumerable();
+				Query().Where(d => d.Enabled == true)
+					.Where(filter)
+					.AsEnumerable();
 		}
 
+		public IEnumerable<Page> FindAll(PageQuery pageQuery)
+		{
+			return pageQuery.Query(Query());
+		}
+
+		//return context.Pages.Where(d => d.Enabled == true).AsQueryable();
 		public IQueryable<Page> Query()
 		{
 			context.Configuration.ProxyCreationEnabled = false;
-			return context.Pages.Where(d => d.Enabled == true).AsQueryable();
+			var pages =  context.Pages
+				.Include("Properties")
+				.Include("PageRoles")
+				.AsQueryable();
+			return pages;
 		}
 
 		public Page FindById(int id, bool readOnly)

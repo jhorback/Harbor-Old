@@ -24,16 +24,13 @@ namespace Harbor.Data.Repositories
 		public IEnumerable<File> FindAll(Func<File, bool> filter = null)
 		{
 			return filter == null ?
-				context.Files
-				.AsEnumerable()
+				Query().AsEnumerable()
 				:
-				context.Files
-				.Where(filter).AsEnumerable();
+				Query().Where(filter).AsEnumerable();
 		}
 
 		public IQueryable<File> Query()
 		{
-			context.Configuration.ProxyCreationEnabled = false;
 			return context.Files.AsQueryable();
 		}
 

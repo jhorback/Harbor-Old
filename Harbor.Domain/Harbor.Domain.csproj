@@ -79,6 +79,7 @@
     <Compile Include="Pages\PageFunctionalRoleRepository.cs" />
     <Compile Include="Pages\PagePermissions.cs" />
     <Compile Include="Pages\PageProperty.cs" />
+    <Compile Include="Pages\PageQuery.cs" />
     <Compile Include="Pages\PageRole.cs" />
     <Compile Include="Pages\PageType.cs" />
     <Compile Include="Pages\PageTypeContext.cs" />
@@ -103,6 +104,7 @@
     <Compile Include="IRespository.cs" />
     <Compile Include="IValueObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RepositoryQuery.cs" />
     <Compile Include="Security\FunctionalPermissions.cs" />
     <Compile Include="Security\FunctionalRoleBase.cs" />
     <Compile Include="Security\IUserFunctionalRoleRepository.cs" />
