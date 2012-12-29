@@ -24,7 +24,7 @@
 		this.uploadTargetId = FileAdmin.slugify(options.todaysAlbumName);
 		
 		FileAdmin.files = new FileAdmin.Files();
-		FileAdmin.files.fetch();
+		return FileAdmin.files.fetch();
 	},
 	
 	main: function () {
@@ -39,7 +39,6 @@
 	},
 	
 	editFile: function (id) {
-		debugger;
 		var file = FileAdmin.files.find(function (f) {
 			return f.get("id") === id;
 		});

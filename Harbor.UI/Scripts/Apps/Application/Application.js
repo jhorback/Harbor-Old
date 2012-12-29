@@ -45,7 +45,7 @@ var Application = function (options) {
 
 	App = Controller.extend(options);
 	app = new App();
-	app.events = Application.events; // jch! - would still like to try on/off/destroy to be managed by the applicaiton - try this again
+	app.events = Application.events;
 	customStop = app.stop;
 	app.stop = function () {
 		app.destroy();

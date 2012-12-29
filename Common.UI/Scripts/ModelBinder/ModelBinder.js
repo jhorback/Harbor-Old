@@ -340,10 +340,35 @@
 			this.$el.find("[data-bind],[name],[id]").unbind(".modelbinder");
 			this.model.unbind("change", this._modelToViewProxy);
 			this.$el.data("modelbound", false);
+		},
+		
+		off: function () {
+			this.unbind();
 		}
 	};
 
 	window.ModelBinder = ModelBinder;
 	ModelBinder.config = config;
+
+
+	ModelBinder.extend = function (view) {
+		/// <summary>
+		/// Provide an extension that unbinds the model binder during
+		/// the .remove/stopListening view method call.
+		/// If an element is not passed, the views $el will be used.
+		/// If a model is not passed, this.model or this.collection will be used.
+		/// </summary>
+		_.extend(view, {
+			bindModelToView: function (model, el) {
+				var binder,
+					listeners = this._listeners || (this._listeners = {});
+				
+				el = el || this.$el;
+				model = model || this.model || this.collection;
+				binder = new ModelBinder(model, el);
+				listeners[_.uniqueId("ModelBinder")] = binder;
+			}		
+		});
+	};
 
 } (jQuery));

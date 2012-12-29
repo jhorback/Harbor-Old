@@ -22,10 +22,7 @@
 		UserAdmin.users = new UserAdmin.Users();
 		UserAdmin.userRoles = new UserAdmin.UserRoles();
 
-		loadData = $.when(UserAdmin.users.fetch(), UserAdmin.userRoles.fetch());
-//		loadData.then(function () {
-//			UserAdmin.controller.start();
-//		});
+		return $.when(UserAdmin.users.fetch(), UserAdmin.userRoles.fetch());
 	},
 	
 	main: function () {

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -32,7 +33,7 @@ namespace Harbor.UI.Controllers.Api
 
         // GET api/files/5
 		[FilePermit(Permissions.Read)]
-        public HttpResponseMessage Get(int id)
+        public HttpResponseMessage Get(Guid id)
         {
 			var file = fileRep.FindById(id);
 			if (file == null)
@@ -46,7 +47,7 @@ namespace Harbor.UI.Controllers.Api
 		[FilePermit(Permissions.Update)]
 		public HttpResponseMessage Put(FileDto file)
         {
-			var fileDo = fileRep.FindById(file.id);
+			var fileDo = fileRep.FindById(file.id, readOnly: false);
 			if (fileDo == null)
 				return Request.CreateNotFoundResponse();
 
@@ -70,7 +71,8 @@ namespace Harbor.UI.Controllers.Api
         }
 
         // DELETE api/files/5
-		public HttpResponseMessage Delete(int id)
+		[FilePermit(Permissions.Delete)]
+		public HttpResponseMessage Delete(Guid id)
         {
 			var fileDo = fileRep.FindById(id);
 			fileRep.Delete(fileDo);

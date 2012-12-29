@@ -1,8 +1,8 @@
 ﻿<div class="page-header readable centered">
-	<h1 class="float-left"><span  data-bind="name"></span></h1>
+	<h1 class="float-left"><span  data-bind="name" contenteditable data-type="contenteditable"></span></h1>
+	<div class="float-left quiet pad-left pad-top">(click title to rename)</div>
 	<div class="float-right">
-		<button type="button" data-rel="cancel">Cancel</button>		
-		<button class="loud">Save</button>
+		<button type="button" class="loud" data-rel="cancel">Done</button>
 	</div>
 </div>
 <div class="page-body readable centered"> 
@@ -10,9 +10,26 @@
 		<form class="display-inline-block">
 			<span class="validation-summary"></span>
 			<fieldset class="col1">
-				asdf
+				<a href="{{href}}" target="_blank">	
+					<img src="{{lowResUrl}}"/>
+				</a>
+				<br/>
+				This file was uploaded on {{uploaded}}.
 			</fieldset>
-			<fieldset>
+			<fieldset class="col2">
+				<legend>Visibility</legend>
+				<div class="form-field">
+					<label for="editFilePublicity">Make this file visible to the public.</label>
+					<div class="switch">
+						<input type="checkbox" name="public" id="editFilePublicity">
+						<label for="editFilePublicity">
+							<span class="on">Visible to everyone</span>
+							<span class="off">Hidden</span>            
+						</label>
+					</div>
+				</div>
+			</fieldset>
+			<fieldset class="clear">
 				<legend>Delete file</legend>
 				<p>
 					Permenantly delete this file.
@@ -20,8 +37,7 @@
 				</p>
 			</fieldset>
 			<div class="controls">
-				<button type="button" data-rel="cancel">Cancel</button>	
-				<button class="loud">Save</button>
+					<button type="button" class="loud" data-rel="cancel">Done</button>
 			</div>
 		</form>
 	</div>

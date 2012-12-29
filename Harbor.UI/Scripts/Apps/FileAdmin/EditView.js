@@ -1,9 +1,9 @@
 ﻿FileAdmin.EditView = Application.View.extend({
 	initialize: function () {
-
-		_.bindAll(this, "saveModel");
+		FormErrorHandler.extend(this);
 		
-		this.model.store();
+		this.listenTo(this.model, "change", this.saveModel);
+		_.bindAll(this, "saveModel");
 	},
 	
 	events: {
@@ -12,30 +12,21 @@
 			if (!answer) {
 				return;
 			}
-			this.model.destroy();
 			FileAdmin.main();
+			this.model.destroy();
 		},
 		"click [data-rel=cancel]": function () {
-			this.model.restore();
-			UserAdmin.main();			
-		},
-		"click button.loud": "saveModel",
-		"submit form": "saveModel"
+			FileAdmin.main();			
+		}
 	},
 	
 	saveModel: function (event) {
-		event.preventDefault();
-		
+
 		if (!this.isModelValid()) {
 			return;
 		}
 
-		Session.AjaxRequest.handle(this.model.save(), {
-			success: function () {
-				this.model.store();
-				this.options.onSuccess && this.options.onSuccess.apply(this, arguments);				
-				UserAdmin.main();		
-			},
+		AjaxRequest.handle(this.model.save(), {
 			clientError: function (error) {
 				this.displayErrors(error.errors);
 			}
@@ -43,16 +34,8 @@
 	},
 	
 	render: function () {
-		var $el = this.$el,
-			model = this.model,
-			self = this;
-
-		this.JST("FileAdmin-Edit", this.model).then(function (result) {
-			var rolesEl;
-			$el.html(result);
-			Session.ModelBinder(model, $el);
-		});
-		
+		this.template("FileAdmin-Edit", this.$el)(this.model.toJSON());
+		this.bindModelToView();
 		return this;
 	}
 });

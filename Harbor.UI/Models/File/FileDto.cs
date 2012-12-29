@@ -13,7 +13,7 @@ namespace Harbor.UI.Models
 				.ForMember(dest => dest.modified, opt => opt.MapFrom(src => src.Modified.ToShortDateString()))
 				.ForMember(dest => dest.isBitmap, opt => opt.MapFrom(src => src.IsBitmap()))
 				.ForMember(dest => dest.thumbUrl, opt => opt.MapFrom(src => FileUrls.GetThumbUrl(src)))
-				.ForMember(dest => dest.url, opt => opt.MapFrom(src => FileUrls.GetUrl(src)))
+				.ForMember(dest => dest.href, opt => opt.MapFrom(src => FileUrls.GetUrl(src)))
 				.ForMember(dest => dest.lowResUrl, opt => opt.MapFrom(src => FileUrls.GetLowResUrl(src)))
 				.ForMember(dest => dest.highResUrl, opt => opt.MapFrom(src => FileUrls.GetHighResUrl(src)))
 				;
@@ -47,7 +47,7 @@ namespace Harbor.UI.Models
 		public long totalSize { get; set; }
 		public bool isBitmap { get; set; }
 		public string thumbUrl { get; set; }
-		public string url { get; set; }
+		public string href { get; set; }
 		public string lowResUrl { get; set; }
 		public string highResUrl { get; set; }
 

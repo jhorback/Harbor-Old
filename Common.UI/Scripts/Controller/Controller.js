@@ -13,7 +13,7 @@
  *     SomeController = Controller.extend({
  *         root: "/Root/Url/",
  *         start: function () {
- *             // optional start method
+ *             // optional start method - can return a deferred which will delay the router start call
  *         },
  *         routes: {
  *             "": "main",
@@ -108,15 +108,19 @@
 			this.root = this.root || "";
 			this.start = function () {
 				/// <summary>Starts Backbone.history and calls any custom start method.</summary>
-				customStart && customStart.apply(this, arguments);
+				var dfd = customStart && customStart.apply(this, arguments);
 				if (controller._started === true) {
 					throw "Start has already been called.";
 				}
+				dfd = dfd || { then: function (callback) { callback.call(); }};
+				
 				controller._started = true;
-				controller.routes && Backbone.history.start({
-					pushState: true,
-					root: this.root
-					//, silent: true
+				dfd.then(function () {
+					controller.routes && Backbone.history.start({
+						pushState: true,
+						root: controller.root
+						//, silent: true
+					});
 				});
 			};
 
@@ -129,7 +133,7 @@
 		},
 		
 		handleLinkClick: function (event) {
-			var href = $(event.target).attr("href");
+			var href = $(event.target).closest("a").attr("href");
 			event.preventDefault();
 			this.navigate(href.toLowerCase().replace(this.root.toLowerCase(), ""), true);
 		}

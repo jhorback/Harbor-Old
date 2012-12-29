@@ -31,7 +31,7 @@
 				
 				var src = e.target.result;
 				var ext = file.name.substring(file.name.lastIndexOf("."), file.name.length);
-				if (_.contains([".bmp", ".gif", ".exif", ".jpg", ".png", ".tiff"], ext) === false) {
+				if (_.contains([".bmp", ".gif", ".exif", ".jpg", ".png", ".tiff"], ext.toLowerCase()) === false) {
 					src = Application.url("user/thumbnail?name=" + file.name);
 				}
 

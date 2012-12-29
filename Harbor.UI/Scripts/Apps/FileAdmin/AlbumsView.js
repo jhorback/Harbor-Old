@@ -4,6 +4,12 @@
 		_.bindAll(this, "renderAlbum", "renderFile");
 	},
 	
+	events: {
+		"click a": function (event) {
+			FileAdmin.handleLinkClick(event);
+		}
+	},
+	
 	render: function () {
 
 		var albums = this.collection.groupBy(function (file) {

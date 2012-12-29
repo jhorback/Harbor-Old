@@ -1,5 +1,7 @@
 ﻿var FileModel = Application.Model.extend({
+
 	urlRoot: Session.url("api/files"),
+
 	defaults: {
 		id: null,
 		userName: null,
@@ -15,16 +17,19 @@
 		isBitmap: false,
 		thumbUrl: null,
 		totalSize: null,
-		url: null,
+		href: null,
 		lowResUrl: null,
 		highResUrl: null,
 		//
 		editLink: null
 	},
 	
-	url: {
+	href: {
 		get: function (value) {
 			return value && Application.url(value);
+		},
+		set: function (value) {
+			return value;
 		}
 	},
 	

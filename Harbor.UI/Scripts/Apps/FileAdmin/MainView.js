@@ -73,7 +73,7 @@
 	},
 	
 	removeFile: function (file, collection, info) {
-		var el = this.$el.find("h3").eq(info.index).parent();
+		var el = this.$el.find("li").eq(info.index);
 		setTimeout(function () {
 			el.fadeOut("slow", function () {
 				el.remove();

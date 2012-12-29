@@ -360,12 +360,13 @@
 		/// </summary>
 		_.extend(view, {
 			bindModelToView: function (model, el) {
-				var binder;
+				var binder,
+					listeners = this._listeners || (this._listeners = {});
 				
 				el = el || this.$el;
 				model = model || this.model || this.collection;
 				binder = new ModelBinder(model, el);
-				this._listeners[_.uniqueId("ModelBinder")] = binder;
+				listeners[_.uniqueId("ModelBinder")] = binder;
 			}		
 		});
 	};

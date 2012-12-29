@@ -13,7 +13,7 @@
 
 	var extension = {
 			store: function () {
-				this.memento = this.toJSON();
+				this.memento = _.extend({}, this.attributes);
 				return this.memento;
 			},
 			restore: function () {
