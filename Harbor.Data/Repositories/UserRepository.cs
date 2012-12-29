@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Harbor.Domain;
+using Harbor.Domain.Files;
 using Harbor.Domain.Security;
 
 namespace Harbor.Data.Repositories
@@ -113,6 +114,10 @@ namespace Harbor.Data.Repositories
 
 		public void Delete(User entity)
 		{
+			var usersContentDir = File.UsersFolderPhysicalPath() + entity.UserName;
+			if (System.IO.Directory.Exists(usersContentDir))
+				System.IO.Directory.Delete(usersContentDir, recursive: true);
+
 			if (context.Entry(entity).State == System.Data.EntityState.Detached)
 			{
 				throw new Exception("The entity was in a detached state.");
