@@ -30,6 +30,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Harbor.Domain.Tests", "Harb
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3E5C4C51-D7C8-4580-908C-144108A2A2B6}"
 	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
 		Harbor.vsmdi = Harbor.vsmdi
 		Local.testsettings = Local.testsettings
 		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
