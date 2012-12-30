@@ -13,7 +13,8 @@
 
 			fetchPages = Pages.pages.fetch({
 				data: {
-					author: Session.currentUser.get("username")
+					author: Session.currentUser.get("username"),
+					orderDesc: "modified"
 				}
 			});
 			

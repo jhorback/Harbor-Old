@@ -1,14 +1,21 @@
-﻿@{
+﻿@model IEnumerable<Harbor.UI.Models.PageDto>
+@{
 	//ViewBag.Title = "Index";
 }
-
-<div class="page-header">
+<div class="page-header readable centered">
 	<h1>Home</h1>
 </div>
-<div class="page-content">
-	<h2>Index Page</h2>
-	
-	<p>
-		Default page to contain a list of last edited public documents.
-	</p>
+<div class="readable centered">
+	<div class="page-content">
+		<h2>Recently Updated</h2>
+		<ul>
+			@foreach (var page in Model)
+			{
+				<li>
+					<h3><a href="~/id/@page.id/@page.title">@page.title</a></h3>
+					<span>Created: @page.created</span>
+				</li>
+			}
+		</ul>
+	</div>
 </div>

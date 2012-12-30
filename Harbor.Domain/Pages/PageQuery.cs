@@ -7,6 +7,15 @@ namespace Harbor.Domain.Pages
 {
 	public class PageQuery : RepositoryQuery<Page>
 	{
+		public PageQuery()
+		{
+		}
+
+		public PageQuery(QueryAdjustment<Page> startingQuery)
+			: base(startingQuery)
+		{
+		}
+
 		public string Title { get; set; }
 		public string Author { get; set; }
 		public string CurrentUserName { get; set; }
@@ -14,9 +23,6 @@ namespace Harbor.Domain.Pages
 		public new IEnumerable<Page> Query(IQueryable<Page> queryable)
 		{
 			queryable = base.Query(queryable);
-
-			if (string.IsNullOrEmpty(CurrentUserName) == true)
-				throw new InvalidOperationException("The CurrentUserName is required for page queries.");
 
 			queryable = queryable.Where(d => d.Enabled == true);
 

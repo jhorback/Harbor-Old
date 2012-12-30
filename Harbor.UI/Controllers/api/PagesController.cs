@@ -26,7 +26,6 @@ namespace Harbor.UI.Controllers.Api
         public IEnumerable<PageDto> Get([FromUri]PageQuery query)
 		{
         	query.CurrentUserName = User.Identity.Name;
-        	query.OrderDesc = "Modified";
 			return pageRep.FindAll(query).Select(p => (PageDto)p);
 		}
 
