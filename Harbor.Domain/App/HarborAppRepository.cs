@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Harbor.Domain.Extensions;
+﻿using Harbor.Domain.Extensions;
 
 namespace Harbor.Domain.App
 {
@@ -27,6 +23,8 @@ namespace Harbor.Domain.App
 			if (appName != null)
 				app.ApplicationName = appName;
 
+			app.HomePageID = appSettings.GetSetting("HomePageID").AsInt();
+
 			return app;
 		}
 
@@ -34,6 +32,7 @@ namespace Harbor.Domain.App
 		{
 			setSetting("ShowSignInLink", app.ShowSignInLink);
 			setSetting("ApplicationName", app.ApplicationName);
+			setSetting("HomePageID", app.HomePageID);
 		}
 
 		private AppSetting setSetting(string name, object value)

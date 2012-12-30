@@ -58,6 +58,7 @@
     <Compile Include="App\IAppSettingRepository.cs" />
     <Compile Include="App\IHarborAppRepository.cs" />
     <Compile Include="DataAnnotations\EmailAttribute.cs" />
+    <Compile Include="Extensions\AppSetting\AsInt.cs" />
     <Compile Include="Files\File.cs" />
     <Compile Include="Files\FileResolution.cs" />
     <Compile Include="Files\FileFactory.cs" />

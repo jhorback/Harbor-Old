@@ -13,6 +13,7 @@ namespace Harbor.Domain.App
 			ApplicationName = "Test App";
 			Version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
 			ShowSignInLink = true;
+			HomePageID = null;
 		}
 
 		public string ApplicationName { get; set; }
@@ -20,5 +21,7 @@ namespace Harbor.Domain.App
 		public string Version { get; set; }
 
 		public bool ShowSignInLink { get; set; }
+
+		public int? HomePageID { get; set; }
 	}
 }
