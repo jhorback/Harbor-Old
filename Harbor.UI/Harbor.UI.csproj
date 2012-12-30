@@ -193,7 +193,9 @@
     <Compile Include="Models\Page\PagePropertyDto.cs" />
     <Compile Include="Models\Page\PageTypeDto.cs" />
     <Compile Include="Models\Setting\AppSettingDto.cs" />
+    <Compile Include="Models\Setting\SettingsViewModelRepository.cs" />
     <Compile Include="Models\Setting\HarborAppDto.cs" />
+    <Compile Include="Models\Setting\SettingsViewModel.cs" />
     <Compile Include="Models\Shared\BadRequestDto.cs" />
     <Compile Include="Models\Shared\InternalServerErrorDto.cs" />
     <Compile Include="Models\Shared\NotFoundDto.cs" />

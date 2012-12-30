@@ -2,9 +2,11 @@
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using Harbor.Domain.App;
 using Harbor.Domain.Pages;
 using Harbor.Domain.Security;
 using Harbor.UI.Models;
+using Harbor.UI.Models.Setting;
 using Harbor.UI.Models.User;
 using Harbor.Domain.Files;
 using System.IO;
@@ -18,13 +20,16 @@ namespace Harbor.UI.Controllers
 		CurrentUserRepository currentUserRep;
 		IPageRepository pageRep;
 		IFileRepository fileRep;
+		SettingsViewModelRepository settingsViewModelRepository;
 
-		public UserController(IUserRepository userRep, CurrentUserRepository currentUserRep, IPageRepository pageRep, IFileRepository fileRep)
+		public UserController(IUserRepository userRep, CurrentUserRepository currentUserRep,
+			IPageRepository pageRep, IFileRepository fileRep, SettingsViewModelRepository settingsViewModelRepository)
 		{
 			this.userRep = userRep;
 			this.currentUserRep = currentUserRep;
 			this.pageRep = pageRep;
 			this.fileRep = fileRep;
+			this.settingsViewModelRepository = settingsViewModelRepository;
 		}
 
 		public ViewResult SignIn()
@@ -92,7 +97,8 @@ namespace Harbor.UI.Controllers
 		[Authorize]
 		public ViewResult Settings()
 		{
-			return View("Settings");
+			var model = settingsViewModelRepository.GetSettingsViewModel(User.Identity.Name);
+			return View("Settings", model);
 		}
 
 		[PagePermit(Permissions.Read)]

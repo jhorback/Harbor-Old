@@ -5,6 +5,7 @@ using Harbor.Domain.Files;
 using Harbor.Domain.Pages;
 using Harbor.Domain.Security;
 using Harbor.UI.Controllers;
+using Harbor.UI.Models.Setting;
 using Harbor.UI.Models.User;
 using Moq;
 using NUnit.Framework;
@@ -20,6 +21,7 @@ namespace Harbor.Specs.StepDefinitions
 		Mock<CurrentUserRepository> currentUserRepository;
 		Mock<IPageRepository> pageRep;
 		Mock<IFileRepository> fileRep;
+		Mock<SettingsViewModelRepository> settingsViewModelRep;
 
 		HttpStatusCodeResult currentResult;
 		string enteredUsername;
@@ -34,7 +36,9 @@ namespace Harbor.Specs.StepDefinitions
 			currentUserRepository = new Mock<CurrentUserRepository>();
 			pageRep = new Mock<IPageRepository>();
 			fileRep = new Mock<IFileRepository>();
-			userController = new UserController(userRepository.Object, currentUserRepository.Object, pageRep.Object, fileRep.Object);
+			settingsViewModelRep = new Mock<SettingsViewModelRepository>();
+			userController = new UserController(userRepository.Object, currentUserRepository.Object,
+				pageRep.Object, fileRep.Object, settingsViewModelRep.Object);
 		}
 
         [Given(@"I have entered a valid username and password")]

@@ -1,10 +1,8 @@
-﻿@using Harbor.Domain.Security
+﻿@model Harbor.UI.Models.Setting.SettingsViewModel
+@using Harbor.Domain.Security
 @using Harbor.UI.Extensions
 @{
 	ViewBag.Title = "Website Settings";
-	var canViewUsers = Html.UserHasPermit(UserFunctionalArea.Users, Permissions.Read);
-	var canUpdateSystemSettings = Html.UserHasPermit(UserFunctionalArea.SystemSettings, Permissions.Update);
-	var canUpdateSiteSettings = Html.UserHasPermit(UserFunctionalArea.SiteSettings, Permissions.Update);
 }
 @section scripts {
 	@Scripts.Render("~/Scripts/Apps/Settings.js")
@@ -17,7 +15,29 @@
 </div>
 <div class="page-body readable centered">
 	<div class="page-content display-none">
-	@if (canViewUsers)
+	@if (Model.CanUpdateSiteSettings)
+	{
+		<fieldset>
+			<legend>Home page</legend>
+			<div class="pad">
+				@if (Model.HomePage == null)
+				{
+					<h3>Default Home Page</h3>
+					<div>
+						The default home page shows the last 20 pages updated that are public.
+					</div>
+				}
+				else
+				{
+					<h3>@Model.HomePage.title</h3>
+				}
+			</div>
+			<div>
+				<button id="settings-changehome">Change the home page</button>
+			</div>
+		</fieldset>
+	}
+	@if (Model.CanViewUsers)
 	{
 		<fieldset>
 			<legend>Website users</legend>
@@ -31,7 +51,7 @@
 			</div>
 		</fieldset>
 	}
-	@if (canUpdateSiteSettings)
+	@if (Model.CanUpdateSiteSettings)
 	{
 		<fieldset class="col2"> @*jch* make col1 stacked by default and add a inline scope for fieldsets?*@
 			<legend>Sign in link</legend>
@@ -53,7 +73,7 @@
 			</div>
 		</fieldset>
 	}
-	@if (canUpdateSystemSettings)
+	@if (Model.CanUpdateSystemSettings)
 	{ 
 		<fieldset class="clear">
 			<legend>Application name</legend>
