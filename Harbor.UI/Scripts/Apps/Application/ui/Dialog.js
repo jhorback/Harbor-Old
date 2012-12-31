@@ -165,7 +165,7 @@
 				};
 			this.element.trigger("close");
 			this._transition(this.dialogEl, false, destroyProxy);
-			this._transition(this.overlay, false, destroyProxy);
+			this._transition(this.overlay, false);
 		},
 
 		destroy: function () {

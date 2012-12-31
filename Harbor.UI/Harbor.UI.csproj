@@ -350,6 +350,9 @@
     <Content Include="Scripts\Apps\Session\Session.js" />
     <Content Include="Scripts\Apps\Session\SignInModel.js" />
     <Content Include="Scripts\Apps\Session\SignInView.js" />
+    <Content Include="Scripts\Apps\Settings\AppSettings.js" />
+    <Content Include="Scripts\Apps\Settings\EditNameView.js" />
+    <Content Include="Scripts\Apps\Settings\MainView.js" />
     <Content Include="Scripts\Apps\Settings\Settings.js" />
     <Content Include="Scripts\Apps\shared\FileModel.js" />
     <Content Include="Scripts\Apps\shared\PageModels.js" />

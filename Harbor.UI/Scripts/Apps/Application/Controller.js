@@ -1,5 +1,6 @@
 ﻿/*
  * Controller.js
+ * jch! update cui
  */
 /*
  * Description:
@@ -15,6 +16,7 @@
  *         start: function () {
  *             // optional start method - can return a deferred which will delay the router start call
  *         },
+ *         // actions: ["main"], // use if not needing routes to identify the methods that return views.
  *         routes: {
  *             "": "main",
  *             "item/:id": "item"
@@ -45,6 +47,7 @@
  *             view: view,
  *             navigate: "", // set if needing to keep the history in sync
  *             region: "someKey" // the region name (or region itself) to show the view in.
+ *             afterRender: callbackFn // optional callback to be called after render
  *         };
  *
  * 'root' property:
@@ -71,12 +74,13 @@
 		constructor: function (options) {
 			var customStart = this.start,
 				controller = this,
-				curriedMethods = { };
+				curriedMethods = { },
+				actionMethods = _.union(this.actions, _.values(this.routes));
 
 			Region.createRegions(this);
 
-			// curry the route methods
-			_.each(this.routes, function (methodName, route) {
+			// curry the actions
+			_.each(actionMethods, function (methodName) {
 				var method = controller[methodName];
 				
 				// ensure the method is only curried once
