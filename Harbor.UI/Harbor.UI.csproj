@@ -351,6 +351,7 @@
     <Content Include="Scripts\Apps\Session\SignInModel.js" />
     <Content Include="Scripts\Apps\Session\SignInView.js" />
     <Content Include="Scripts\Apps\Settings\AppSettings.js" />
+    <Content Include="Scripts\Apps\Settings\ChangeHomePageView.js" />
     <Content Include="Scripts\Apps\Settings\EditNameView.js" />
     <Content Include="Scripts\Apps\Settings\MainView.js" />
     <Content Include="Scripts\Apps\Settings\Settings.js" />
@@ -407,6 +408,7 @@
     <Content Include="Views\FileAdmin\_Album.cshtml" />
     <Content Include="Views\FileAdmin\_File.cshtml" />
     <Content Include="Views\FileAdmin\_Edit.cshtml" />
+    <Content Include="Views\User\_ChangeHomePage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\users\" />
