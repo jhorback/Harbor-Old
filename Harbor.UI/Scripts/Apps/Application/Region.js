@@ -29,6 +29,14 @@ Region.prototype = {
 		this.open(view);
 		this.getEl().html(view.el);
 	},
+	
+	showEl: function () {
+		this.getEl().show();
+	},
+	
+	hideEl: function () {
+		this.getEl().hide();
+	},
 
 	open: function (view) {
 		/// <summary>Closes any open view and sets the view property.</summary>
