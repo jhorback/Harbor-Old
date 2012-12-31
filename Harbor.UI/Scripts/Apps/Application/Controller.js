@@ -1,6 +1,5 @@
 ﻿/*
  * Controller.js
- * jch! update cui
  */
 /*
  * Description:
@@ -93,9 +92,13 @@
 
 					result = method.apply(controller, arguments);
 
+					if (!result) {
+						return;
+					}
+
 					if (result.view) {
 						view = result.view;
-						region =  result.region ? result.region : controller.regions["default"];
+						region =  result.region ? controller.regions[result.region] : controller.regions["default"];
 						navigate = result.navigate;
 					} else {
 						view = result;

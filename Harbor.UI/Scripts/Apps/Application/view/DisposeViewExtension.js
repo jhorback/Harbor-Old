@@ -1,9 +1,7 @@
 ﻿/*globals */
 /*
-* Desription:
+* Desription: - as of Backbone 0.9.9 this is no longer needed
 *     Adds cleanup to Backbone views; model bindings, child objects, element cleanup.
-*     jch* - since the edge version of BB implements a dispose method, this method will likely
-*     be renamed to destroy - DestroyViewExtension? CleanupViewExtension? ManagedViewExtension?
 *
 * Requires:
 *     jQuery, Underscore, Backbone
@@ -77,6 +75,7 @@
 		extend: function (instance) {
 			var customDispose = instance.dispose;
 
+			console.warn("The dispose view extension is deprecated.");
 			_.extend(instance, {
 				_bindings: [],
 				_tracked: []

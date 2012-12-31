@@ -5,7 +5,9 @@
  *
  * Usage:
  *     In the view initialize method use these extensions:
- *         FormErrorHandler.extend(this);
+ *         FormErrorHandler.extend(this, [model]);
+ *     If using the Application.View then in initialize or render call:
+ *         this.listenForErrors([model]);
  *
  *     The ModelBinder is required after the rendering of the view:
  *         ModelBinder(this.model, this.$el);
@@ -58,7 +60,23 @@
 			/// </summary>
 			model = model || this.model;
 			return this.displayErrors(model.getErrors(), false);
-        }
+        },
+		
+		listenForErrors: function (model) {
+			var instance = this;
+			
+			model = model || this.model;
+			this.listenTo(model, "error", function (model, errors, property) {
+				if (errors && errors.readyState) { // xhr error
+					return;
+				}
+			  	if ($.isPlainObject(property)) { // is it comming from backbones validate
+			  		instance.displayErrors(errors);
+			  	} else {
+			  		instance.displayError(property, errors);
+			  	}
+			});
+		}
 	};
 
 	var displayFieldError = function (view, attr, errorStr, showAll) {
@@ -117,17 +135,8 @@
 			/// </summary>
         	model = model || instance.model;
 			_.extend(instance, {}, extension);
-	        if (model && instance.displayError) {
-		        model.on("error", function (model, errors, property) {
-					if (errors && errors.readyState) { // xhr error
-						return;
-					}
-			        if ($.isPlainObject(property)) { // is it comming from backbones validate
-				        instance.displayErrors(errors);
-			        } else {
-				        instance.displayError(property, errors);
-			        }
-		        });
+	        if (model && instance.listenForErrors) {
+	        	instance.listenForErrors(model);
 	        }
         }
     };

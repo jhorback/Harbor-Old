@@ -11,7 +11,7 @@
 *
 * Options:
 *     title
-*     transition - "none", "fade", "slide"
+*     transition - "none", "fade", "slide", "fadein"
 *     modal - default is false
 *     draggable - default is true (if jquery.ui.draggable exists)
 *     position - jquery.ui.position options (the default is center of the window).
@@ -143,12 +143,14 @@
 				"fade": function () {
 					show ? el.fadeIn(callback) : el.fadeOut(callback);
 				},
+				"fadein": function () {
+					show ? el.fadeIn(callback) : el.hide(0, callback);
+				},
 				"slide": function () {
 					show ? el.slideDown(callback) : el.slideUp(callback);
 				},
 				"none": function () {
-					show ? el.show() : el.hide();
-					callback && callback.call();
+					show ? el.show(0, callback) : el.hide(0, callback);
 				}
 			};
 			if (!el) {

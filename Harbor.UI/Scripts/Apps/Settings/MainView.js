@@ -17,12 +17,12 @@
 				id = editable.attr("id");
 			
 			if (id === "settings-applicationName") {
-				Settings.editName(editable, this.model);
+				Settings.editName(editable);
 			}
 		},
 		
 		"click #settings-changehome": function () {
-			alert("here");
+			Settings.changeHomePage();
 		}
 	}
 });

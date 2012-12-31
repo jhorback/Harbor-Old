@@ -10,80 +10,83 @@
 		Settings.start();
 	</script>
 }
-<div class="page-header readable centered">
-	<h1>Website Settings</h1>
-</div>
-<div class="page-body readable centered">
-	<div class="page-content display-none">
-	@if (Model.CanUpdateSiteSettings)
-	{
-		<fieldset>
-			<legend>Home page</legend>
-			<div class="pad">
-				@if (Model.HomePage == null)
-				{
-					<h3 class="loud">Default Home Page</h3>
-					<div>
-						The default home page shows the last 20 pages updated that are public.
+<div id="settings-main">
+	<div class="page-header readable centered">
+		<h1>Website Settings</h1>
+	</div>
+	<div class="page-body readable centered">
+		<div class="page-content display-none">
+			@if (Model.CanUpdateSiteSettings)
+			{
+				<fieldset>
+					<legend>Home page</legend>
+					<div class="pad">
+						@if (Model.HomePage == null)
+						{
+							<h3 class="loud">Default Home Page</h3>
+							<div>
+								The default home page shows the last 20 pages updated that are public.
+							</div>
+						}
+						else
+						{
+							<h3 class="loud">@Model.HomePage.title</h3>
+						}
 					</div>
-				}
-				else
-				{
-					<h3 class="loud">@Model.HomePage.title</h3>
-				}
-			</div>
-			<div>
-				<button id="settings-changehome">Change the home page</button>
-			</div>
-		</fieldset>
-	}
-	@if (Model.CanViewUsers)
-	{
-		<fieldset>
-			<legend>Website users</legend>
-			<div>
-				<a class="text-large" href="~/User/Admin">User Administration</a>
-			</div>
-			<div>
-				<p>
-					Add, edit, update users and their permissions.
-				</p>
-			</div>
-		</fieldset>
-	}
-	@if (Model.CanUpdateSiteSettings)
-	{
-		<fieldset class="col2"> @*jch* make col1 stacked by default and add a inline scope for fieldsets?*@
-			<legend>Sign in link</legend>
-			<div class="form-field">
-				<label for="showsigninlink">Show or hide the sign in link</label>
-				<div class="switch">
-					<input type="checkbox" name="showSignInLink" id="showSignInLink">
-					<label for="showSignInLink">
-						<span class="on">Show</span>
-						<span class="off">Hide</span>            
-					</label>
-				</div>
-			</div>
-			<div>
-				<p>
-					If it is hidden, you can go to
-					<a href="~/user/signin">@Url.Content("~/user/signin")</a> to sign in.
-				</p>
-			</div>
-		</fieldset>
-	}
-	@if (Model.CanUpdateSystemSettings)
-	{ 
-		<fieldset class="clear">
-			<legend>Application name</legend>
-			<div class="pad">
-				<div class="form-field editable display-inline-block" tabindex="0" id="settings-applicationName">
-					<span data-bind="applicationName"></span>
-				</div>
-			</div>
-		</fieldset>
-	}
+					<div>
+						<button id="settings-changehome">Change the home page</button>
+					</div>
+				</fieldset>
+			}
+			@if (Model.CanViewUsers)
+			{
+				<fieldset>
+					<legend>Website users</legend>
+					<div>
+						<a class="text-large" href="~/User/Admin">User Administration</a>
+					</div>
+					<div>
+						<p>
+							Add, edit, update users and their permissions.
+						</p>
+					</div>
+				</fieldset>
+			}
+			@if (Model.CanUpdateSiteSettings)
+			{
+				<fieldset class="col2"> @*jch* make col1 stacked by default and add a inline scope for fieldsets?*@
+					<legend>Sign in link</legend>
+					<div class="form-field">
+						<label for="showsigninlink">Show or hide the sign in link</label>
+						<div class="switch">
+							<input type="checkbox" name="showSignInLink" id="showSignInLink">
+							<label for="showSignInLink">
+								<span class="on">Show</span>
+								<span class="off">Hide</span>
+							</label>
+						</div>
+					</div>
+					<div>
+						<p>
+							If it is hidden, you can go to
+							<a href="~/user/signin">@Url.Content("~/user/signin")</a> to sign in.
+						</p>
+					</div>
+				</fieldset>
+			}
+			@if (Model.CanUpdateSystemSettings)
+			{ 
+				<fieldset class="clear">
+					<legend>Application name</legend>
+					<div class="pad">
+						<div class="form-field editable display-inline-block" tabindex="0" id="settings-applicationName">
+							<span data-bind="applicationName"></span>
+						</div>
+					</div>
+				</fieldset>
+			}
+		</div>
 	</div>
 </div>
+<div id="settings-page"></div>
 @Html.Jst("User/SettingsTemplates")

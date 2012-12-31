@@ -1,39 +1,37 @@
-﻿Settings.EditNameView = Backbone.View.extend({
+﻿Settings.EditNameView = Application.View.extend({
 	initialize: function () {
-		Session.ViewExtension.extend(this);
-		Session.BackupModelExtension.extend(this.model);
-		Session.FormErrorHandler.extend(this, this.model);
-
-		_.bindAll(this, "saveModel", "dispose");
-		this.$el.bind("close", this.dispose);
+		this.listenForErrors();
 		this.model.store();
-		this.render();
 	},
+	
+	dialog: null,
 
 	events: {
 		"submit form": function (event) {
 			event.preventDefault();
 			this.saveModel();
+		},
+		
+		"close": function (event) {
+			this.model.restore();
+		},
+
+		"destroy": function (event) {
+			this.remove();
 		}
 	},
 
 	render: function () {
-		var $el = this.$el,
-			model = this.model,
-			editable = this.options.editable,
-			self = this;
-
-		this.JST("Settings-EditApplicationName", model).then(function (result) {
-			$el.html(result);
-			self.views("dialog", new Session.Dialog($el, {
-				title: "Application Name",
-				modal: true,
-				editorFor: editable,
-				transition: "fade"
-			}));
-
-			Session.ModelBinder(model, $el);
+		this.template("Settings-EditApplicationName", this.$el)(this.model);
+		
+		this.dialog = new Dialog(this.$el, {
+			title: "Application Name",
+			modal: true,
+			editorFor: this.options.editable,
+			transition: "fadein"
 		});
+
+		this.bindModelToView();
 	},
 
 	saveModel: function () {
@@ -48,18 +46,12 @@
 				document.title = title.replace(this.model.memento.applicationName, name);
 
 				this.model.store();
+				this.dialog.close();
 				$("#frame-logo a").html(name);
-				// this.views("dialog").close(_.bind(this.dispose, this));
-				this.dispose();
 			},
 			clientError: function (error) {
 				this.displayErrors(error.errors);
 			}
 		}, this);
-	},
-
-	dispose: function () {
-		this.model.restore();
-		Session.ViewExtension.dispose.apply(this);
 	}
 });

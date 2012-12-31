@@ -1,4 +1,4 @@
-﻿Settings.AppSettings = Backbone.Model.extend({
+﻿Settings.AppSettings = Application.Model.extend({
 	url: Session.url("api/appsettings"),
 	sync: function(method, model, options) {
 		if (method === "create") {

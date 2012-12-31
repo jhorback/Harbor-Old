@@ -142,7 +142,7 @@
 		extend: function (instance) {
 			var customDispose = instance.dispose;
 
-			console.warn("ViewExtension.extend is deprecated.", instance); // jch* - remove when unused
+			console.warn("ViewExtension.extend is deprecated.", instance);
 			_.extend(instance, {
 				_bindings: [],
 				_subviews: {}
