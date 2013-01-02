@@ -37,6 +37,7 @@ namespace Harbor.UI
 			bundles.Add(createAppBundle("Settings"));
 			bundles.Add(createAppBundle("UserAdmin", dependents: new[] {"~/Scripts/Apps/shared/UserModel.js"}));
 			bundles.Add(createAppBundle("Pages"));
+			bundles.Add(createAppBundle("PageSelector"));
 			bundles.Add(createAppBundle("PageAdder"));
 			bundles.Add(createAppBundle("PageEditor"));
 			bundles.Add(createAppBundle("PageLoader"));

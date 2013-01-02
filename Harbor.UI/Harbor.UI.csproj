@@ -341,6 +341,7 @@
     <Content Include="Scripts\Apps\PageEditor\UICMenu.js" />
     <Content Include="Scripts\Apps\PageLoader\PageNav.js" />
     <Content Include="Scripts\Apps\PageLoader\PageLoader.js" />
+    <Content Include="Scripts\Apps\PageSelector\PageSelector.js" />
     <Content Include="Scripts\Apps\Pages\PagesViews.js" />
     <Content Include="Scripts\Apps\Pages\Pages.js" />
     <Content Include="Scripts\Apps\Session\UserMenu.js" />
@@ -351,7 +352,6 @@
     <Content Include="Scripts\Apps\Session\SignInModel.js" />
     <Content Include="Scripts\Apps\Session\SignInView.js" />
     <Content Include="Scripts\Apps\Settings\AppSettings.js" />
-    <Content Include="Scripts\Apps\Settings\ChangeHomePageView.js" />
     <Content Include="Scripts\Apps\Settings\EditNameView.js" />
     <Content Include="Scripts\Apps\Settings\MainView.js" />
     <Content Include="Scripts\Apps\Settings\Settings.js" />
@@ -408,7 +408,11 @@
     <Content Include="Views\FileAdmin\_Album.cshtml" />
     <Content Include="Views\FileAdmin\_File.cshtml" />
     <Content Include="Views\FileAdmin\_Edit.cshtml" />
-    <Content Include="Views\User\_ChangeHomePage.cshtml" />
+    <Content Include="Views\PageSelector\_Main.cshtml" />
+    <Content Include="Views\PageSelector\PageSelectorTemplates.cshtml" />
+    <Content Include="Views\PageSelector\_PageListItem.cshtml" />
+    <Content Include="Views\User\_DefaultHomePage.cshtml" />
+    <Content Include="Views\User\_HomePageSetting.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\users\" />

@@ -28,12 +28,24 @@
 	},
 	
 	changeHomePage: function () {
-		return {
-			view: new Settings.ChangeHomePageView({
-				model: this.settingsModel			
-			}),
-			region: "page"
-		};
+		
+		// assumes PageSelector is already loaded
+		Settings.regions.main.hideEl();	
+		PageSelector.open({
+			region: this.regions.page,
+			close: function () {
+				Settings.regions.main.showEl();
+			},
+			select: function (selectedPage) {
+				this.settingsModel.setHomePage(selectedPage);
+				AjaxRequest.handle(this.settingsModel.save());
+			}
+		}, this);
+	},
+	
+	resetHomePage: function () {
+		this.settingsModel.setHomePage(null);
+		AjaxRequest.handle(this.settingsModel.save());
 	},
 	
 	main: function () {
@@ -41,5 +53,6 @@
 			model: this.settingsModel,
 			el: this.regions.pageContent.getEl().show()
 		});
+		view.render();
 	}
 });

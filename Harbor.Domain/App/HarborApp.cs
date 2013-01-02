@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
+﻿using System.Reflection;
+using Harbor.Domain.Pages;
 
 namespace Harbor.Domain.App
 {
@@ -23,5 +20,7 @@ namespace Harbor.Domain.App
 		public bool ShowSignInLink { get; set; }
 
 		public int? HomePageID { get; set; }
+
+		public Page HomePage { get; set; }
 	}
 }

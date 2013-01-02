@@ -3,10 +3,10 @@
 	ViewBag.Title = "Files";
 }
 @section head{
-	@Html.Jst("FileAdmin/FileAdminTemplates")		
+	@Html.Jst("FileAdmin/FileAdminTemplates")				
 }
 @section scripts {
-	@Scripts.Render("~/Scripts/Apps/FileAdmin.js")
+	@Scripts.Render("~/scripts/apps/FileAdmin.js")
 	<script>
 		FileAdmin.start({ todaysAlbumName: "@Harbor.Domain.Files.File.TodaysAlbumName()" });
 	</script>

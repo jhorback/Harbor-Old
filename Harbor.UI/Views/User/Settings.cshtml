@@ -1,11 +1,15 @@
 ﻿@model Harbor.UI.Models.Setting.SettingsViewModel
-@using Harbor.Domain.Security
 @using Harbor.UI.Extensions
 @{
 	ViewBag.Title = "Website Settings";
 }
+@section head {
+	@Html.Jst("User/SettingsTemplates")
+	@Html.Jst("PageSelector/PageSelectorTemplates")	
+}
 @section scripts {
 	@Scripts.Render("~/Scripts/Apps/Settings.js")
+	@Scripts.Render("~/scripts/apps/PageSelector.js")
 	<script>
 		Settings.start();
 	</script>
@@ -20,21 +24,19 @@
 			{
 				<fieldset>
 					<legend>Home page</legend>
-					<div class="pad">
-						@if (Model.HomePage == null)
+					<div class="pad settings-homepage">
+						@if (Model.HomePage != null)
 						{
-							<h3 class="loud">Default Home Page</h3>
-							<div>
-								The default home page shows the last 20 pages updated that are public.
-							</div>
+							@Html.Partial("~/Views/User/_HomePageSetting.cshtml", Model.HomePage)
 						}
 						else
 						{
-							<h3 class="loud">@Model.HomePage.title</h3>
+							@Html.Partial("~/Views/User/_DefaultHomePage.cshtml")
 						}
 					</div>
 					<div>
 						<button id="settings-changehome">Change the home page</button>
+						<button id="settings-resethome" class="@(Model.HomePage == null ? "display-none" : "")">Reset</button>
 					</div>
 				</fieldset>
 			}
@@ -89,4 +91,3 @@
 	</div>
 </div>
 <div id="settings-page"></div>
-@Html.Jst("User/SettingsTemplates")

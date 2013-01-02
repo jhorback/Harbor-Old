@@ -1,56 +1,50 @@
 ﻿/*
-	Creates a standard facade for common application components.
-
-	Usage:
-		var MyApp = new Application({
-			root: "path/to/app",
-			
-			routes: {
-				"": "main",				
-				"*defaultRoute": "main"
-			},
-	
-			regions: {
-				"default": "#some-container",				
-			},
-	
-			start: function () {
-				// fetch data, set up app, etc...
-			},
-	
-			main: function () {						
-				return {
-					view: view,
-					navigate: "/"
-				};
-			},
-
-			stop: function () {
-				// perform any neccessary cleanup
-			}
-		});
-
-	// shared event aggregation (all new Application objects will share the same 'events' channel);
-	MyApp.events.on("event", fn);
-	MyApp.events.trigger("event", arg1, arg2);
-	MyApp.events.off("event", fn);
-
-	// Application views and models that use all view and model extensions
-	var MyView = Application.View.extend({ ... });
-	var MyModel = Application.Model.extend({ ... });
-*/
-
+ *	Creates a standard facade for common application components.
+ *
+ *	Usage:
+ *		var MyApp = new Application({
+ *			root: "path/to/app",
+ *			
+ *			routes: {
+ *				"": "main",				
+ *				"*defaultRoute": "main"
+ *			},
+ *	
+ *			regions: {
+ *				"default": "#some-container",				
+ *			},
+ *	
+ *			start: function () {
+ *				// fetch data, set up app, etc...
+ *			},
+ *	
+ *			main: function () {						
+ *				return {
+ *					view: view,
+ *					navigate: "/"
+ *				};
+ *			}
+ *		});
+ *
+ *	Shared event aggregation (all new Application objects will share the same 'events' channel):
+ *	MyApp.events.on("event", fn);
+ *	MyApp.events.trigger("event", arg1, arg2);
+ *	MyApp.events.off("event", fn);
+ *
+ *	Application views and models that use all view and model extensions:
+ * 	    var MyView = Application.View.extend({ ... });
+ *	    var MyModel = Application.Model.extend({ ... });
+ *
+ *	Note:
+ *      There is no need of stop method since regions and self management perform cleanup as needed.
+ *
+ */
 var Application = function (options) {
-	var App, app, customStop;
+	var App, app;
 
 	App = Controller.extend(options);
 	app = new App();
 	app.events = Application.events;
-	customStop = app.stop;
-	app.stop = function () {
-		app.destroy();
-		customStop && customStop.apply(app, arguments);
-	};
 	return app;
 };
 

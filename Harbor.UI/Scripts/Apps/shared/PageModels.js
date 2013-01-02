@@ -145,7 +145,19 @@ PageModels.Page = Application.Model.extend({
 
 PageModels.Pages = Backbone.Collection.extend({
 	model: PageModels.Page,
-	url: Session.url("api/pages")	
+	url: Session.url("api/pages"),
+	search : function (title) {
+		var pattern;
+		
+		if (title === "") {
+			return this;
+		}
+		
+		pattern = new RegExp(title,"gi");
+		return _(this.filter(function (data) {
+		  	return pattern.test(data.get("title"));
+		}));
+	}
 });
 
 

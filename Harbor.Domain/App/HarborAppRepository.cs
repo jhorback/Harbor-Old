@@ -1,14 +1,17 @@
 ﻿using Harbor.Domain.Extensions;
+using Harbor.Domain.Pages;
 
 namespace Harbor.Domain.App
 {
 	public class HarborAppRepository : IHarborAppRepository
 	{
 		IAppSettingRepository appSettings;
+		IPageRepository pageRepository;
 
-		public HarborAppRepository(IAppSettingRepository appSettings)
+		public HarborAppRepository(IAppSettingRepository appSettings, IPageRepository pageRepository)
 		{
 			this.appSettings = appSettings;
+			this.pageRepository = pageRepository;
 		}
 
 		public HarborApp GetApp()
@@ -24,6 +27,10 @@ namespace Harbor.Domain.App
 				app.ApplicationName = appName;
 
 			app.HomePageID = appSettings.GetSetting("HomePageID").AsInt();
+			if (app.HomePageID != null)
+			{
+				app.HomePage = pageRepository.FindById(app.HomePageID);
+			}
 
 			return app;
 		}
