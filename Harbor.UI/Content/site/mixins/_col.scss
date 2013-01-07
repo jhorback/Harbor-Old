@@ -1,0 +1,19 @@
+
+@mixin col ($numberOfColumns: 1, $percentPadding: 0%, $percentBorder: 0%,  $percentMargin: 0%) {
+	@include col-span($numberOfColumns, 1, $percentPadding, $percentBorder,  $percentMargin);
+}
+
+
+@mixin col-span ($numberOfColumns: 1, $colspan: 1, $percentPadding: 0%, $percentBorder: 0%,  $percentMargin: 0%) {
+	width: (100% / $numberOfColumns) * $colspan;
+	float: left;
+	@if $percentPadding > 0 {
+		padding: $percentPadding;
+	}
+	@if $percentBorder > 0 {
+		border: $percentBorder;
+	}
+	@if $percentMargin > 0 {
+		margin: $percentMargin;
+	}
+}

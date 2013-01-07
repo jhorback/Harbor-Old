@@ -1,0 +1,31 @@
+.colgrid {
+  clear: both; }
+  .colgrid:after {
+    content: "";
+    display: table;
+    clear: both; }
+  .colgrid > ul {
+    list-style-type: none; }
+  .colgrid .col {
+    width: 98%; }
+    .colgrid .col:hover {
+      background-color: #6699ff; }
+  @media screen and (max-width: 480px) {
+    .colgrid .col {
+      width: 100%;
+      float: left;
+      padding: 1%;
+      margin: 1%; } }
+  @media screen and (min-width: 480px) and (max-width: 1024px) {
+    .colgrid .col {
+      width: 50%;
+      float: left;
+      padding: 1%;
+      margin: 1%; } }
+  @media screen and (min-width: 1024px) {
+    .colgrid .col {
+      width: 20%;
+      float: left;
+      padding: 0.5%;
+      margin: 0.5%; } }
+

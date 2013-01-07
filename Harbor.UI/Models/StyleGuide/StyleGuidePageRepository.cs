@@ -15,6 +15,7 @@ namespace Harbor.UI.Models.StyleGuide
 			registerPage("Framework", "A set of supported class names.");
 			registerPage("Forms", "The standard HTML form.");
 			registerPage("Page", "The page layout.");
+			registerPage("Collections", "The varous collection types: .colgrid, .menulist, .datalist, .datatable.");
 		}
 
 		public List<StyleGuidePage> GetPages()

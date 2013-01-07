@@ -1,0 +1,34 @@
+@import "../mixins/col";
+@import "../mixins/clearfix";
+
+$colgrid-col-backgrond-color-hover: #6699FF;
+
+
+// jch! - since using border-box can the paddings and margins be in ems?
+.colgrid {
+	clear: both;
+	@include clearfix;
+	& > ul {
+		list-style-type: none;
+	}
+
+	.col {
+		width: 98%;
+		&:hover {
+			background-color: $colgrid-col-backgrond-color-hover;
+		}
+	}
+
+	@media screen and (max-width: 480px) {
+		.col { @include col($numberOfColumns: 1, $percentPadding: 1%, $percentMargin: 1%); }
+	}
+	
+	@media screen and (min-width: 480px) and (max-width: 1024px) {
+		.col { @include col($numberOfColumns: 2, $percentPadding: 1%, $percentMargin: 1%); }
+	}
+	
+	@media screen and (min-width: 1024px) {
+		.col { @include col($numberOfColumns: 5, $percentPadding: .5%, $percentMargin: .5%); }	
+	}
+
+}

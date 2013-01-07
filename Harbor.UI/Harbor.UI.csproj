@@ -308,6 +308,7 @@
     <Content Include="Scripts\Apps\Application\Application.js" />
     <Content Include="Scripts\Apps\Application\model\BackupModelExtension.js" />
     <Content Include="Scripts\Apps\Application\Controller.js" />
+    <Content Include="Scripts\Apps\Application\ui\Selectable.js" />
     <Content Include="Scripts\Apps\Application\view\DisposeViewExtension.js" />
     <Content Include="Scripts\Apps\Application\ui\Dialog.js" />
     <Content Include="Scripts\Apps\Application\view\FormErrorHandler.js" />
@@ -413,6 +414,7 @@
     <Content Include="Views\PageSelector\_PageListItem.cshtml" />
     <Content Include="Views\User\_DefaultHomePage.cshtml" />
     <Content Include="Views\User\_HomePageSetting.cshtml" />
+    <Content Include="Views\StyleGuide\Collections.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\users\" />
