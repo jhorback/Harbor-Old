@@ -1,8 +1,12 @@
-﻿<li class="col margin pad" style="background:#F2F2F2;" title="Visible? {{public}}">
-	<a href="{{editLink}}">	
-		<img src="{{thumbUrl}}" style="max-width:100px;max-height:100px;" alt="{{name}}"/><br/>{{name}}
+﻿<li class="col text-center" title="Visible? {{public}}">
+	<a href="{{editLink}}" class="display-inline-block">
+		<span class="display-inline-block" style="width:100px;height:100px;">
+		
+			<img src="{{thumbUrl}}" style="max-width:100px; max-height:100px;" alt="{{name}}"/>
+		</span>
 	</a>
-	<span>
-		Visible? {{public}}
-	</span>
+	<br>
+	<span>{{name}}</span>
+	<br>
+	<span>Visible? {{public}}</span>
 </li>

@@ -230,6 +230,15 @@
     <Content Include="Content\site\core\button.css">
       <DependentUpon>button.scss</DependentUpon>
     </Content>
+    <Content Include="Content\site\core\colgrid.css">
+      <DependentUpon>colgrid.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\site\core\colgrid.scss">
+      <Compile>True</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </Content>
     <Content Include="Content\site\core\cols.css">
       <DependentUpon>cols.scss</DependentUpon>
     </Content>
@@ -282,6 +291,7 @@
       <DependentUpon>signinpage.scss</DependentUpon>
     </Content>
     <Content Include="Content\font\fonticons.svg" />
+    <Content Include="Content\site\mixins\_col.scss" />
     <Content Include="Content\site\mixins\_opacity.scss">
       <Compile>False</Compile>
       <Minify>False</Minify>

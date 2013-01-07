@@ -3,6 +3,20 @@
 	@include col-span($numberOfColumns, 1, $percentPadding, $percentBorder,  $percentMargin);
 }
 
+// for use with box-sizing-border-box
+@mixin col-box ($cols: 1, $padding: 0, $percentMargin: 0) {
+	$totalMargin: ($cols * 2) * $percentMargin;
+
+	width: ((100% - $totalMargin) / $cols);	
+	float: left;	
+	
+	@if $padding != 0 {
+		padding: $padding;
+	}
+	@if $percentMargin != 0 {
+		margin: $percentMargin;
+	}
+}
 
 @mixin col-span ($numberOfColumns: 1, $colspan: 1, $percentPadding: 0%, $percentBorder: 0%,  $percentMargin: 0%) {
 	width: (100% / $numberOfColumns) * $colspan;

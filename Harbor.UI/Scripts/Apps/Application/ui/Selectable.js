@@ -46,6 +46,7 @@ Focus and keyboard support.
  */
 (function ($) {
 
+	return;
 	var doc = $(document);
 
 	$.widget("ui.selectlist", {

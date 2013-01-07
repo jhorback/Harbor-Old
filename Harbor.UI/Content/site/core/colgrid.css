@@ -5,27 +5,39 @@
     display: table;
     clear: both; }
   .colgrid > ul {
-    list-style-type: none; }
+    list-style-type: none;
+    margin: 0;
+    padding: 0; }
+  .colgrid.selectable .col:hover {
+    background-color: #cccccc; }
   .colgrid .col {
-    width: 98%; }
-    .colgrid .col:hover {
-      background-color: #6699ff; }
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; }
   @media screen and (max-width: 480px) {
     .colgrid .col {
       width: 100%;
       float: left;
-      padding: 1%;
-      margin: 1%; } }
-  @media screen and (min-width: 480px) and (max-width: 1024px) {
+      padding: 1em; } }
+  @media screen and (min-width: 480px) and (max-width: 600px) {
     .colgrid .col {
       width: 50%;
       float: left;
-      padding: 1%;
-      margin: 1%; } }
+      padding: 1em; } }
+  @media screen and (min-width: 600px) and (max-width: 800px) {
+    .colgrid .col {
+      width: 33.33333%;
+      float: left;
+      padding: 1em; } }
+  @media screen and (min-width: 800px) and (max-width: 1024px) {
+    .colgrid .col {
+      width: 25%;
+      float: left;
+      padding: 1em; } }
   @media screen and (min-width: 1024px) {
     .colgrid .col {
       width: 20%;
       float: left;
-      padding: 0.5%;
-      margin: 0.5%; } }
+      padding: 0.5em; } }
 

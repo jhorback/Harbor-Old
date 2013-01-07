@@ -1,34 +1,53 @@
 @import "../mixins/col";
 @import "../mixins/clearfix";
 
-$colgrid-col-backgrond-color-hover: #6699FF;
+$colgrid-col-backgrond-color-hover: #CCC; // button background color
 
 
 // jch! - since using border-box can the paddings and margins be in ems?
 .colgrid {
 	clear: both;
+	//border: 1px solid green;
+
 	@include clearfix;
 	& > ul {
 		list-style-type: none;
+		margin: 0;
+		padding: 0;
 	}
 
-	.col {
-		width: 98%;
-		&:hover {
+	&.selectable {
+		.col:hover {
 			background-color: $colgrid-col-backgrond-color-hover;
 		}
 	}
 
-	@media screen and (max-width: 480px) {
-		.col { @include col($numberOfColumns: 1, $percentPadding: 1%, $percentMargin: 1%); }
+	.col {
+		width: 100%;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		//border: 1px solid red;
 	}
 	
-	@media screen and (min-width: 480px) and (max-width: 1024px) {
-		.col { @include col($numberOfColumns: 2, $percentPadding: 1%, $percentMargin: 1%); }
+	@media screen and (max-width: 480px) {
+		.col { @include col-box($cols: 1, $padding: 1em, $percentMargin: 0); }
+	}
+
+	@media screen and (min-width: 480px) and (max-width: 600px) {
+		.col { @include col-box($cols: 2, $padding: 1em, $percentMargin: 0); }
+	}
+	
+	@media screen and (min-width: 600px) and (max-width: 800px) {
+		.col { @include col-box($cols: 3, $padding: 1em, $percentMargin: 0); }
+	}
+
+	@media screen and (min-width: 800px) and (max-width: 1024px) {
+		.col { @include col-box($cols: 4, $padding: 1em, $percentMargin: 0); }
 	}
 	
 	@media screen and (min-width: 1024px) {
-		.col { @include col($numberOfColumns: 5, $percentPadding: .5%, $percentMargin: .5%); }	
+		.col { @include col-box($cols: 5, $padding: .5em, $percentMargin: 0); }
 	}
 
 }
