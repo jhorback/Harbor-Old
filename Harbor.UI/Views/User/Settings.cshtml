@@ -39,6 +39,15 @@
 						<button id="settings-resethome" class="@(Model.HomePage == null ? "display-none" : "")">Reset</button>
 					</div>
 				</fieldset>
+				<fieldset>
+					<legend>Navigation</legend>
+					<div class="pad-top settings-navigation">
+						<button>Update navigation</button>
+						<div class="quiet">
+							Update the website navigation.
+						</div>
+					</div>
+				</fieldset>			
 			}
 			@if (Model.CanViewUsers)
 			{

@@ -1,0 +1,23 @@
+.datalist > ul {
+  display: table;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid #ccc; }
+  .datalist > ul > li {
+    display: table-row;
+    border-top: 1px solid #CCC; }
+    .datalist > ul > li.heading {
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: .9em; }
+      .datalist > ul > li.heading:hover {
+        background: transparent; }
+    .datalist > ul > li:hover {
+      background: #CCC; }
+.datalist .col {
+  display: table-cell;
+  border-bottom: 1px solid #CCC;
+  width: auto;
+  padding: .7em; }
+

@@ -233,14 +233,11 @@
     <Content Include="Content\site\core\colgrid.css">
       <DependentUpon>colgrid.scss</DependentUpon>
     </Content>
-    <Content Include="Content\site\core\colgrid.scss">
-      <Compile>True</Compile>
-      <Minify>False</Minify>
-      <CompileStyle>Nested</CompileStyle>
-      <DebugInfo>False</DebugInfo>
-    </Content>
     <Content Include="Content\site\core\cols.css">
       <DependentUpon>cols.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\site\core\datalist.css">
+      <DependentUpon>datalist.scss</DependentUpon>
     </Content>
     <Content Include="Content\site\core\dialog.css">
       <DependentUpon>dialog.scss</DependentUpon>
@@ -291,7 +288,6 @@
       <DependentUpon>signinpage.scss</DependentUpon>
     </Content>
     <Content Include="Content\font\fonticons.svg" />
-    <Content Include="Content\site\mixins\_col.scss" />
     <Content Include="Content\site\mixins\_opacity.scss">
       <Compile>False</Compile>
       <Minify>False</Minify>
@@ -490,6 +486,18 @@
       <CompileStyle>Nested</CompileStyle>
       <DebugInfo>False</DebugInfo>
     </None>
+    <None Include="Content\site\core\colgrid.scss">
+      <Compile>True</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </None>
+    <None Include="Content\site\core\datalist.scss">
+      <Compile>True</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </None>
     <None Include="Content\site\core\usermenu.scss">
       <Compile>True</Compile>
       <Minify>False</Minify>
@@ -553,6 +561,7 @@
       <CompileStyle>Nested</CompileStyle>
       <DebugInfo>False</DebugInfo>
     </None>
+    <None Include="Content\site\mixins\_col.scss" />
     <None Include="Content\site\mixins\_user-select.scss">
       <Compile>False</Compile>
       <Minify>False</Minify>

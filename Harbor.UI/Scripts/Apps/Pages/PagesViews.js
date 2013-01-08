@@ -16,7 +16,7 @@
 
 		this.views("pages", new Pages.PagesView({
 			collection: Pages.pages,
-			el: $(".page-content")
+			el: $(".pages-list")
 		}));
 
 		this.views("pages").render();

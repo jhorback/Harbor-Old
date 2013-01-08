@@ -19,6 +19,12 @@
 	events: {
 		"click [name=uploadFiles]": function () {
 			this.model.toggleUploadState();
+		},
+		
+		"click .col": function (event) {
+			var col = $(event.target).closest(".col");
+			var link = col.find("[href]");
+			link.click();
 		}
 	},
 	

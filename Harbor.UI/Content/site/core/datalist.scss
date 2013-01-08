@@ -1,0 +1,40 @@
+
+
+.datalist {
+	
+	& > ul {
+		display: table;
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		border-top: 1px solid #ccc;
+
+		& > li {
+			display: table-row;
+			border-top: 1px solid #CCC;
+
+			&.heading {
+				font-weight: bold;
+				text-transform: uppercase;
+				font-size: .9em;
+
+				&:hover {
+					background: transparent;
+				}
+			}
+
+			&:hover {
+				background: #CCC;
+			}
+		}
+	}
+
+
+	.col {
+		display: table-cell;
+		// border: 1px solid red;
+		border-bottom: 1px solid #CCC;
+		width: auto;
+		padding: .7em;
+	}
+}

@@ -39,11 +39,13 @@ PageSelector.MainView = Application.View.extend({
 		},
 		
 		"click .pageselector-results li": function (event) {
-			this.selectAndClose($(event.target).data("id"));
+			this.selectAndClose($(event.target).closest("[data-id]").data("id"));
 		},
 		
 		"keypress li": function (event) {
-			this.selectAndClose($(event.target).data("id"));
+			if (event.keyCode == 13) {
+				this.selectAndClose($(event.target).data("id"));
+			}
 		}
 	},
 
@@ -68,7 +70,7 @@ PageSelector.MainView = Application.View.extend({
 	
 	selectAndClose: function (selectedPageID) {
 		var page;
-		
+
 		selectedPageID = parseInt(selectedPageID);
 		page = this.collection.find(function (item) {
 			return item.get("id") === selectedPageID;
