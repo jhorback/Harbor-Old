@@ -287,7 +287,7 @@
     <Content Include="Content\site\ext\signinpage.css">
       <DependentUpon>signinpage.scss</DependentUpon>
     </Content>
-    <Content Include="Content\font\fonticons.svg" />
+    <Content Include="Content\site\core\font\fonticons.svg" />
     <Content Include="Content\site\mixins\_opacity.scss">
       <Compile>False</Compile>
       <Minify>False</Minify>
@@ -552,15 +552,15 @@
       <CompileStyle>Nested</CompileStyle>
       <DebugInfo>False</DebugInfo>
     </None>
-    <None Include="Content\font\fonticons.eot" />
-    <None Include="Content\font\fonticons.ttf" />
-    <None Include="Content\font\fonticons.woff" />
     <None Include="Content\site\core\fonticons.scss">
       <Compile>True</Compile>
       <Minify>False</Minify>
       <CompileStyle>Nested</CompileStyle>
       <DebugInfo>False</DebugInfo>
     </None>
+    <None Include="Content\site\core\font\fonticons.eot" />
+    <None Include="Content\site\core\font\fonticons.ttf" />
+    <None Include="Content\site\core\font\fonticons.woff" />
     <None Include="Content\site\mixins\_col.scss" />
     <None Include="Content\site\mixins\_user-select.scss">
       <Compile>False</Compile>

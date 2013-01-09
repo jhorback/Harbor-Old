@@ -12,6 +12,7 @@
  *     transition - "none", "fade", "slide"
  *     anchor - an element to position against, if not set,
  *         the menu will open in the window center.
+ *     position - if not defining an anchor, can set the position manually.
  *
  */
 (function ($) {
@@ -114,7 +115,7 @@
 					show ? el.fadeIn(callback) : el.fadeOut(callback);
 				},
 				"slide": function () {
-					show ? el.slideDown(callback) : el.slideUp(callback);
+					show ? el.slideDown("fast", callback) : el.slideUp("fast", callback);
 				},
 				"none": function () {
 					show ? el.show() : el.hide();
@@ -127,8 +128,12 @@
 			methods[this.options.transition.toLowerCase()].call();
 		},
 
-		close: function () {
-			var destroyProxy = $.proxy(this.destroy, this);
+		close: function (callback) {
+			var self = this,
+				destroyProxy = function () {
+					_.isFunction(callback) && callback();
+					$.proxy(self.destroy, self)();
+				};
 			this.element.trigger("close");
 			this._transition(this.menuEl, false, destroyProxy);
 		},

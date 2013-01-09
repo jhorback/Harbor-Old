@@ -14,6 +14,7 @@
 *                            the model can have deferred properties which will be resolved before the callback.
 *     template(template, el) - returns the compiled template function.
 *                              el is an optional argument that will add the result of the template to the dom node. 
+*                              this.$el will be used if exists and el is not passed.
 */
 (function ($, _) {
 
@@ -30,6 +31,8 @@
 			var templateHtml,
 				templateFn = JstViewExtension.templates[template];
 			
+			el = el || this.$el;
+
 			if (!templateFn) {
 				templateHtml = $("#" + template).html();
 				if (!templateHtml) {
