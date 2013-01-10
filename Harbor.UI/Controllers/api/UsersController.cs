@@ -70,7 +70,7 @@ namespace Harbor.UI.Controllers.Api
 		[Http.Permit(UserFunctionalArea.Users, Permissions.Update)]
 		public HttpResponseMessage Put(UserDto user)
         {
-			var userDo = userRep.FindUserByName(user.userName);
+			var userDo = userRep.FindUserByName(user.userName, readOnly: false);
 			if (userDo == null)
 				return Request.CreateNotFoundResponse();
 

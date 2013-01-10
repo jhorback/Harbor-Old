@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Caching;
 using System.Text;
 using Harbor.Domain;
 using Harbor.Domain.Files;
@@ -40,15 +41,15 @@ namespace Harbor.Data.Repositories
 
 		public User FindById(object id)
 		{
-			if (id == null)
-				return null;
-			var users = FindAll(u => u.FirstName != null);
-			var user = FindAll(u => u.UserName.ToLower() == id.ToString().ToLower()).FirstOrDefault();
-			if (user == null)
-				return null;
+			return FindById(id, readOnly: true);
+		}
 
-			user.AllUserRoles = new UserFunctionalRoleRepository().GetUserRoles();
-			return user;
+		public User FindById(object id, bool readOnly)
+		{
+			var username = id as string;
+			if (readOnly)
+				return findCachedUser(username);
+			return findUser(username);
 		}
 
 		/// <summary>
@@ -131,12 +132,55 @@ namespace Harbor.Data.Repositories
 		#region IUserRepository
 		public User FindUserByName(string userName)
 		{
-			return this.FindById(userName);
+			return FindById(userName);
+		}
+
+		public User FindUserByName(string userName, bool readOnly)
+		{
+			return FindById(userName, readOnly);
 		}
 
 		private bool exists(string username)
 		{
 			return this.FindUserByName(username) != null;
+		}
+		#endregion
+
+		#region caching
+		string pageCacheKey = "Harbor.Data.Repositories.UserRepository.";
+
+		void clearCachedUser(string username)
+		{
+			var cacheKey = pageCacheKey + username;
+			MemoryCache.Default.Remove(cacheKey);
+		}
+
+		User findCachedUser(string username)
+		{
+			var cacheKey = pageCacheKey + username;
+			var user = MemoryCache.Default.Get(cacheKey) as User;
+			if (user == null)
+			{
+				user = findUser(username);
+				if (user != null)
+				{
+					MemoryCache.Default.Set(cacheKey, user, DateTime.Now.AddSeconds(10));
+				}
+			}
+			return user;
+		}
+
+		User findUser(string username)
+		{
+			if (username == null)
+				return null;
+
+			var user = FindAll(u => u.UserName.ToLower() == username.ToLower()).FirstOrDefault();
+			if (user == null)
+				return null;
+
+			user.AllUserRoles = new UserFunctionalRoleRepository().GetUserRoles();
+			return user;
 		}
 		#endregion
 	}
