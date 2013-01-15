@@ -1,4 +1,6 @@
-﻿using Harbor.Domain.Extensions;
+﻿using System;
+using System.Collections.Generic;
+using Harbor.Domain.Extensions;
 using Harbor.Domain.Pages;
 
 namespace Harbor.Domain.App
@@ -31,6 +33,8 @@ namespace Harbor.Domain.App
 			{
 				app.HomePage = pageRepository.FindById(app.HomePageID);
 			}
+			
+			app.NavigationLinks = GetNavigationLinks();
 
 			return app;
 		}
@@ -40,6 +44,7 @@ namespace Harbor.Domain.App
 			setSetting("ShowSignInLink", app.ShowSignInLink);
 			setSetting("ApplicationName", app.ApplicationName);
 			setSetting("HomePageID", app.HomePageID);
+			setSetting("NavigationLinks", JSON.Stringify(app.NavigationLinks));
 		}
 
 		private AppSetting setSetting(string name, object value)
@@ -56,6 +61,14 @@ namespace Harbor.Domain.App
 				settingDO = appSettings.Update(settingDO);
 			}
 			return settingDO;
+		}
+
+		public IEnumerable<NavigationLink> GetNavigationLinks()
+		{
+			IEnumerable<NavigationLink> links = null;
+			var navLinksSetting = appSettings.GetSetting("NavigationLinks");
+			links = JSON.Parse<IEnumerable<NavigationLink>>(navLinksSetting.Value);
+			return links;
 		}
 	}
 }

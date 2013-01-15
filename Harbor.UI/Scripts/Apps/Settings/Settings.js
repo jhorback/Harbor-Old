@@ -19,6 +19,14 @@
 	
 	actions: ["changeHomePage"],
 	
+	main: function () {
+		var view = new Settings.MainView({
+			model: this.settingsModel,
+			el: this.regions.pageContent.getEl().show()
+		});
+		view.render();
+	},
+	
 	editName: function (editable) {
 		var view = new Settings.EditNameView({
 			model: this.settingsModel,
@@ -48,11 +56,12 @@
 		AjaxRequest.handle(this.settingsModel.save());
 	},
 	
-	main: function () {
-		var view = new Settings.MainView({
-			model: this.settingsModel,
-			el: this.regions.pageContent.getEl().show()
+	updateNav: function () {
+		var view = new Settings.EditNavView({
+			el: $(document.body),
+			model: this.settingsModel
 		});
+		
 		view.render();
 	}
 });

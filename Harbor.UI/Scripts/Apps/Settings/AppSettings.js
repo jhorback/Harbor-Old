@@ -7,17 +7,18 @@
 			method = "update";
 		}
 		return Backbone.sync(method, model, options);
-    },
+	},
 	
 	defaults: {
 		applicationName: null,
 		showSignInLink: true,
 		homePageID: null,
-		homePage: null
+		homePage: null,
+		navigationLinks: []
 	},
 
 	initialize: function () {
-		this.homePage = new PageModels.Page(this.get("homePage"));	// jch! - here	
+		this.homePage = new PageModels.Page(this.get("homePage"));
 	},
 
 	setHomePage: function (page) {

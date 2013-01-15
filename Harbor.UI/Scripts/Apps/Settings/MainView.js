@@ -25,6 +25,10 @@ Settings.MainView = Application.View.extend({
 		
 		"click #settings-resethome": function () {
 			Settings.resetHomePage();
+		},
+		
+		"click #settings-updatenav": function () {
+			Settings.updateNav();
 		}
 	},
 

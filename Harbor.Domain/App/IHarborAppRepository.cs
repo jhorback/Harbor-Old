@@ -10,5 +10,7 @@ namespace Harbor.Domain.App
 		HarborApp GetApp();
 
 		void SetApp(HarborApp app);
+
+		IEnumerable<NavigationLink> GetNavigationLinks();
 	}
 }

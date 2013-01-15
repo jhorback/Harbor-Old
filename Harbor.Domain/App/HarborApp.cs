@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Collections.Generic;
+using System.Reflection;
 using Harbor.Domain.Pages;
 
 namespace Harbor.Domain.App
@@ -22,5 +23,7 @@ namespace Harbor.Domain.App
 		public int? HomePageID { get; set; }
 
 		public Page HomePage { get; set; }
+
+		public IEnumerable<NavigationLink> NavigationLinks { get; set; }
 	}
 }

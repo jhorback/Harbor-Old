@@ -8,7 +8,8 @@ namespace Harbor.UI.Models.Setting
 		public bool showSignInLink { get; set; }
 		public int? homePageID { get; set; }
 		public PageDto homePage { get; set; }
-		
+		public NavigationLinkDto[] navigationLinks { get; set; }
+
 		public static implicit operator HarborAppDto(Domain.App.HarborApp app)
 		{
 			var dto = Mapper.Map<Domain.App.HarborApp, HarborAppDto>(app);

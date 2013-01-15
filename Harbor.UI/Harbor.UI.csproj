@@ -193,6 +193,7 @@
     <Compile Include="Models\Page\PagePropertyDto.cs" />
     <Compile Include="Models\Page\PageTypeDto.cs" />
     <Compile Include="Models\Setting\AppSettingDto.cs" />
+    <Compile Include="Models\Setting\NavigationLinkDto.cs" />
     <Compile Include="Models\Setting\SettingsViewModelRepository.cs" />
     <Compile Include="Models\Setting\HarborAppDto.cs" />
     <Compile Include="Models\Setting\SettingsViewModel.cs" />
@@ -360,6 +361,7 @@
     <Content Include="Scripts\Apps\Session\SignInView.js" />
     <Content Include="Scripts\Apps\Settings\AppSettings.js" />
     <Content Include="Scripts\Apps\Settings\EditNameView.js" />
+    <Content Include="Scripts\Apps\Settings\EditNavView.js" />
     <Content Include="Scripts\Apps\Settings\MainView.js" />
     <Content Include="Scripts\Apps\Settings\Settings.js" />
     <Content Include="Scripts\Apps\shared\FileModel.js" />
