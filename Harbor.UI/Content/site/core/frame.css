@@ -42,12 +42,18 @@
       white-space: nowrap; }
     #frame-nav ul li {
       cursor: pointer;
-      float: left; }
+      float: left;
+      -webkit-transition-property: background;
+      -webkit-transition-duration: 0.3s; }
       #frame-nav ul li a {
         display: inline-block;
         padding: 1em; }
       #frame-nav ul li.selected a {
         text-shadow: rgba(68, 68, 68, 0.4) 1px 1px 1px 0px 0px 1px; }
+      #frame-nav ul li.attn {
+        background: #FF0000 !important; }
+        #frame-nav ul li.attn a {
+          color: white !important; }
 
 #frame-body {
   clear: both;

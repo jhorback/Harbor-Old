@@ -29,7 +29,10 @@
 			@include inline-block-list;
 			li {
 				cursor: pointer;	
-				float:left;				
+				float:left;
+				// jch* add mixin for transitions?
+				-webkit-transition-property: background;
+				-webkit-transition-duration: 0.3s;
 				a {
 					display: inline-block;
 					padding: 1em;
@@ -38,6 +41,10 @@
 					a {
 						@include single-text-shadow(rgba(#444, 0.4) 1px 1px 1px);
 					}		
+				}
+				&.attn {					
+					background: #FF0000 !important;
+					a { color: white !important; }
 				}
 			}
 		}

@@ -386,6 +386,7 @@
     <Content Include="Scripts\jquery.html5uploader.js" />
     <Content Include="Scripts\jquery.ui.core.js" />
     <Content Include="Scripts\jquery.ui.draggable.js" />
+    <Content Include="Scripts\jquery.ui.droppable.js" />
     <Content Include="Scripts\jquery.ui.mouse.js" />
     <Content Include="Scripts\jquery.ui.position.js" />
     <Content Include="Scripts\jquery.ui.sortable.js" />

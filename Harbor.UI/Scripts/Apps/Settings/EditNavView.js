@@ -3,31 +3,59 @@
 Settings.EditNavView = Application.View.extend({
 	
 	events: {
+		"sortupdate #frame-nav ul": function (event, ui) {
+			alert("sort updated!");	
+		},
+		
 		"click #settings-updatenav-done": "close",
 		
 		"click .session-addnavitem": function () {
-			alert("clicked");
+			alert("clicked add");
 		}
 	},
 	
 	render: function () {
+		var thisView = this;
 		
-		var frameNav = this.$("#frame-nav ul");
-		
-		var addItem = $('<li class="session-addnavitem"><a>Add +</a></li>');
-		frameNav.append(addItem);
-		frameNav.sortable({
-			//grid: [20, 10]
+		this.$("#frame-nav ul")
+			.append($('<li class="session-addnavitem"><a>Add +</a></li>'))
+			.sortable({
+				items: "li:not(.session-addnavitem)",
+				connectWith: "#frame-body",
+				tolerance: "pointer",
+				revert: true,
+				out: function (event, ui) {
+					ui.item.addClass("attn");
+				},
+				over: function (event, ui) {
+					ui.item.removeClass("attn");
+				},
+				stop: function (event, ui) {
+					ui.item.removeClass("attn");
+				}
+			});
+
+//		this.$("#frame-body").sortable({
+//			items: "li"
+//		});
+
+		// create the drop target for deletion
+		this.$("#frame-body").droppable({
+			accept: "#frame-nav li",
+			tolerance: "fit",
+			over: function (event, ui) {
+				ui.draggable.addClass("attn");
+			},
+			out: function (event, ui) {
+				ui.draggable.removeClass("attn");			
+			},
+			deactivate: function (event, ui) {
+				ui.draggable.removeClass("attn");			
+			},
+			drop: function (event, ui) {
+				thisView.deleteItem(ui.draggable);
+			}			
 		});
-		
-		/*
-		add a class to the #frame-nav to denote editing
-		position an + sign for add next to the #frame-nav
-		drag down for delete
-
-		disable the #settings-updatenav button
-		*/
-
 
 		// add done button
 		this.$("#settings-updatenav").after('<button id="settings-updatenav-done" class="margin-left attn">Done</button>');
@@ -39,10 +67,29 @@ Settings.EditNavView = Application.View.extend({
 		this.$("#settings-updatenav").attr("disabled", true);
 	},
 	
+	deleteItem: function (el) {
+		var view = this;
+		
+		// jch! - here - need to make sure the item is deleted from the list
+		// track by index??
+		el.fadeOut(function() {
+			el.remove();
+			view.saveOrder();
+		});
+	},
+	
+	saveOrder: function () {
+		var lis = this.$("#frame-nav li");
+		alert(lis.length);
+	},
+	
 	close: function () {
 		this.$("#settings-updatenav-done").remove();
 		this.$("#settings-updatemsg").html("");
 		this.$("#settings-updatenav").attr("disabled", false);
 		this.$(".session-addnavitem").remove();
+		this.$("#frame-nav ul").sortable("destroy");
+		//this.$("#frame-body").sortable("destroy");
+		this.$("#frame-body").droppable("destroy");		
 	}
 });
