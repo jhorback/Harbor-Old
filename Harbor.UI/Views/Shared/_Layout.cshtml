@@ -27,10 +27,7 @@
 					</a>
 				</div>	
 				<nav id="frame-nav">
-					<ul>
-						<li><a href="~/">Home</a></li>
-						<li><a href="@Url.Action("Index", "StyleGuide", new { pageKey = "Home"})">Style Guide</a></li>
-					</ul>
+					@Html.Action("FrameNav", "Home")
 				</nav>
 				<nav id="frame-session">
 					@*<a id="signin-link" href="@Url.Action("SignIn", "User")">Sign In</a>*@

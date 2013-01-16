@@ -2,9 +2,30 @@
 
 Settings.EditNavView = Application.View.extend({
 	
+	initialize: function () {
+		var links = this.model.get("navigationLinks");
+		this.$("#frame-nav li").each(function (index, item) {
+			if (index > links.length - 1) {
+				return false;
+			}
+
+			$(item).attr({
+				"data-pageid": links[index].pageID,
+				"data-text": links[index].text
+			});
+		});
+	},
+	
 	events: {
 		"sortupdate #frame-nav ul": function (event, ui) {
-			alert("sort updated!");	
+			var lis = this.$("#frame-nav .frame-navitem");
+			var links = [];
+			lis.each(function (index, item) {
+				item = $(item);
+				links.push({pageID: item.data("pageid"), text: item.data("text")});
+			});
+			this.model.set("navigationLinks", links);
+			this.saveModel();
 		},
 		
 		"click #settings-updatenav-done": "close",
@@ -17,10 +38,11 @@ Settings.EditNavView = Application.View.extend({
 	render: function () {
 		var thisView = this;
 		
+		// sortable nav with Add+
 		this.$("#frame-nav ul")
-			.append($('<li class="session-addnavitem"><a>Add +</a></li>'))
+			.append($('<li class="session-addnavitem frame-staticnavitem"><a>Add +</a></li>'))
 			.sortable({
-				items: "li:not(.session-addnavitem)",
+				items: "li:not(.frame-staticnavitem)",
 				connectWith: "#frame-body",
 				tolerance: "pointer",
 				revert: true,
@@ -35,11 +57,8 @@ Settings.EditNavView = Application.View.extend({
 				}
 			});
 
-//		this.$("#frame-body").sortable({
-//			items: "li"
-//		});
 
-		// create the drop target for deletion
+		// drop target for deletion
 		this.$("#frame-body").droppable({
 			accept: "#frame-nav li",
 			tolerance: "fit",
@@ -70,17 +89,18 @@ Settings.EditNavView = Application.View.extend({
 	deleteItem: function (el) {
 		var view = this;
 		
-		// jch! - here - need to make sure the item is deleted from the list
-		// track by index??
 		el.fadeOut(function() {
-			el.remove();
-			view.saveOrder();
+			var links = view.model.get("navigationLinks");
+			links.splice(el.index(), 1);
+			view.model.set("navigationLinks", links);
+			view.saveModel();
 		});
 	},
 	
-	saveOrder: function () {
-		var lis = this.$("#frame-nav li");
-		alert(lis.length);
+	saveModel: function () {
+
+		AjaxRequest.handle(this.model.save());
+		
 	},
 	
 	close: function () {
@@ -89,7 +109,6 @@ Settings.EditNavView = Application.View.extend({
 		this.$("#settings-updatenav").attr("disabled", false);
 		this.$(".session-addnavitem").remove();
 		this.$("#frame-nav ul").sortable("destroy");
-		//this.$("#frame-body").sortable("destroy");
 		this.$("#frame-body").droppable("destroy");		
 	}
 });

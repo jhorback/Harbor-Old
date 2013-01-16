@@ -37,6 +37,11 @@ namespace Harbor.UI.Controllers
 			return View("Index", pages);
 		}
 
+		public PartialViewResult FrameNav()
+		{
+			return PartialView("_FrameNav", appRep.GetNavigationLinks());
+		}
+
 		[ActionName("404")]
 		public ActionResult Error404()
 		{
