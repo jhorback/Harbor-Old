@@ -3,16 +3,14 @@
 Settings.EditNavView = Application.View.extend({
 	
 	initialize: function () {
-		var links = this.model.get("navigationLinks");
+		var links = this.model.get("navigationLinks"),
+			view = this;
+		
 		this.$("#frame-nav li").each(function (index, item) {
 			if (index > links.length - 1) {
 				return false;
 			}
-
-			$(item).attr({
-				"data-pageid": links[index].pageID,
-				"data-text": links[index].text
-			});
+			view.addDataAttrsToNavItem(item, links[index]);
 		});
 	},
 	
@@ -31,8 +29,15 @@ Settings.EditNavView = Application.View.extend({
 		"click #settings-updatenav-done": "close",
 		
 		"click .session-addnavitem": function () {
-			alert("clicked add");
+			this.selectPageToAdd();
 		}
+	},
+	
+	addDataAttrsToNavItem: function (item, link) {
+		$(item).attr({
+			"data-pageid": link.pageID,
+			"data-text": link.text
+		});
 	},
 	
 	render: function () {
@@ -95,6 +100,41 @@ Settings.EditNavView = Application.View.extend({
 			view.model.set("navigationLinks", links);
 			view.saveModel();
 		});
+	},
+	
+	selectPageToAdd: function () {
+		// assumes PageSelector is already loaded
+		Settings.regions.main.hideEl();	
+		PageSelector.open({
+			region: new Region("#settings-page"),
+			close: function () {
+				Settings.regions.main.showEl();
+			},
+			select: function (selectedPage) {
+				var links = this.model.get("navigationLinks"),
+					template = '<li class="frame-navitem"><a href="{{link}}">{{title}}</a></li>',
+					pageID = selectedPage.get("id"),
+					text = selectedPage.get("title"),
+					newLi = _.template(template)({
+						link: PageModels.getPageUrl(pageID, text),
+						title: text
+					}),
+					link = {
+						pageID: pageID,
+						text: text
+					};
+
+				newLi = $(newLi);
+				this.addDataAttrsToNavItem(newLi, link);
+				newLi.hide();
+				this.$("#frame-nav li.frame-staticnavitem:eq(0)").before(newLi);
+				newLi.fadeIn();
+				
+				links.push(link);
+				this.model.set("navigationLinks", links);
+				this.saveModel();
+			}
+		}, this);
 	},
 	
 	saveModel: function () {

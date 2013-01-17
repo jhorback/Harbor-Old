@@ -1,0 +1,11 @@
+﻿@using Harbor.UI.Models.Setting
+@model NavigationLinkDto
+@functions {
+	string getPageLink(NavigationLinkDto link)
+	{
+		if (link.pageID == 0)
+			return Url.Content("~/");
+		return Url.Content(string.Format("~/id/{0}/{1}", link.pageID, link.text.ToLower().Replace(' ', '-')));
+	}
+}
+<li class="frame-navitem"><a href="@getPageLink(Model)">@Model.text</a></li>

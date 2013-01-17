@@ -2,6 +2,10 @@
 var PageModels = {
 	pageTypes: null,
 	
+	getPageUrl: function (pageID, title) {
+		return title ? Application.url("id/" + pageID + "/" + title.toLowerCase().replace(/ /g, "-")) : null;
+	},
+	
 	init: function () {
 		var dfd = $.Deferred();
 		PageModels.pageTypes = new PageModels.PageTypes();
@@ -50,8 +54,7 @@ PageModels.Page = Application.Model.extend({
 	},
 
 	getUrl: function () {
-		var title = this.get("title");
-		return title ? Session.url("id/" + this.get("id") + "/" + title.toLowerCase().replace(/ /g, "-")) : null;
+		return PageModels.getPageUrl(this.get("id"), this.get("title"));
 	},
 	
 	pageTypeDescription: {

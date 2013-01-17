@@ -5,6 +5,7 @@ using Harbor.Domain.App;
 using Harbor.Domain.Pages;
 using System.Linq;
 using Harbor.UI.Models;
+using Harbor.UI.Models.Setting;
 
 namespace Harbor.UI.Controllers
 {
@@ -39,7 +40,8 @@ namespace Harbor.UI.Controllers
 
 		public PartialViewResult FrameNav()
 		{
-			return PartialView("_FrameNav", appRep.GetNavigationLinks());
+			var model = appRep.GetNavigationLinks().Select(i => (NavigationLinkDto)i).ToList();
+			return PartialView("_FrameNav", model);
 		}
 
 		[ActionName("404")]

@@ -1,17 +1,9 @@
-﻿@model IEnumerable<Harbor.Domain.App.NavigationLink>
-@using Harbor.Domain.App
-@functions {
-	string getPageLink(NavigationLink link)
-	{
-		if (link.PageID == 0)
-			return Url.Content("~/");
-		return Url.Content(string.Format("id/{0}/{1}", link.PageID, link.Text.ToLower().Replace(' ', '-')));
-	}
-}
+﻿@model IEnumerable<NavigationLinkDto>
+@using Harbor.UI.Models.Setting
 <ul>
 	@foreach (var link in Model)
 	{
-		<li class="frame-navitem"><a href="@getPageLink(link)">@link.Text</a></li>
+		@Html.Partial("_FrameNavItem", link)
 	}
 	<li class="frame-staticnavitem"><a href="@Url.Action("Index", "StyleGuide", new { pageKey = "Home"})">Style Guide</a></li>
 </ul>

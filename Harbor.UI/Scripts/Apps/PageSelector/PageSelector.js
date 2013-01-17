@@ -51,7 +51,7 @@ PageSelector.MainView = Application.View.extend({
 
 	render: function () {
 		//this.template("Settings-ChangeHomePage", this.$el)();
-		this.template("PageSelector-Main", this.$el)();
+		this.renderTemplate("PageSelector-Main")();
 		this.bindModelToView();
 	},
 	

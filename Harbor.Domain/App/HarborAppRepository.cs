@@ -73,8 +73,6 @@ namespace Harbor.Domain.App
 			if (linksList.Count == 0)
 			{
 				linksList.Add(new NavigationLink { PageID = 0, Text = "Home" });
-				linksList.Add(new NavigationLink { PageID = 0, Text = "Link 1" });
-				linksList.Add(new NavigationLink { PageID = 0, Text = "Link 2" });
 			}
 			return linksList;
 		}
