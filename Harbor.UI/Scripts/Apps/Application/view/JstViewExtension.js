@@ -25,13 +25,16 @@
 
 
 	extension = {
-
+		renderTemplate: function (template) {
+			return this.template(template, this.$el);	
+		},
+		
 		template: function (template, el) {
 			/// <summary>Executes the template and returns the result.</summary>
 			var templateHtml,
 				templateFn = JstViewExtension.templates[template];
 			
-			el = el || this.$el;
+			// jch! - el = el || this.$el;
 
 			if (!templateFn) {
 				templateHtml = $("#" + template).html();
@@ -50,6 +53,7 @@
 			return templateFn;
 		},
 
+		// jch! - remove this
 		JST: function (template, model) {
 			/// <summary>Returns a promise containing the html fragment result from the template rendering.</summary>
 			var dfd = $.Deferred(),
