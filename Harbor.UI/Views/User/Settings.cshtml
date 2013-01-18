@@ -23,6 +23,35 @@
 			@if (Model.CanUpdateSiteSettings)
 			{
 				<fieldset>
+					<legend>Navigation</legend>
+					<div class="pad-top settings-navigation">
+						<button id="settings-updatenav">Update navigation</button>
+						<div class="attn" id="settings-updatemsg">
+							
+						</div>
+						<div class="quiet">
+							Update the website navigation.
+						</div>
+					</div>
+				</fieldset>
+			}
+			@if (Model.CanViewUsers)
+			{
+				<fieldset>
+					<legend>Website users</legend>
+					<div>
+						<a class="text-large" href="~/User/Admin">User Administration</a>
+					</div>
+					<div>
+						<p>
+							Add, edit, update users and their permissions.
+						</p>
+					</div>
+				</fieldset>
+			}
+			@if (Model.CanUpdateSiteSettings)
+			{
+				<fieldset>
 					<legend>Home page</legend>
 					<div class="pad settings-homepage">
 						@if (Model.HomePage != null)
@@ -39,33 +68,9 @@
 						<button id="settings-resethome" class="@(Model.HomePage == null ? "display-none" : "")">Reset</button>
 					</div>
 				</fieldset>
-				<fieldset>
-					<legend>Navigation</legend>
-					<div class="pad-top settings-navigation">
-						<button id="settings-updatenav">Update navigation</button>
-						<div class="attn" id="settings-updatemsg">
 							
-						</div>
-						<div class="quiet">
-							Update the website navigation.
-						</div>
-					</div>
-				</fieldset>			
 			}
-			@if (Model.CanViewUsers)
-			{
-				<fieldset>
-					<legend>Website users</legend>
-					<div>
-						<a class="text-large" href="~/User/Admin">User Administration</a>
-					</div>
-					<div>
-						<p>
-							Add, edit, update users and their permissions.
-						</p>
-					</div>
-				</fieldset>
-			}
+			
 			@if (Model.CanUpdateSiteSettings)
 			{
 				<fieldset class="col2"> @*jch* make col1 stacked by default and add a inline scope for fieldsets?*@
@@ -96,6 +101,12 @@
 						<div class="form-field editable display-inline-block" tabindex="0" id="settings-applicationName">
 							<span data-bind="applicationName"></span>
 						</div>
+					</div>
+				</fieldset>
+				<fieldset>
+					<legend>Development</legend>
+					<div class="text-large pad-left">
+						<a href="@Url.Action("Index", "StyleGuide", new { pageKey = "Home"})">Style Guide</a>
 					</div>
 				</fieldset>
 			}

@@ -425,6 +425,7 @@
     <Content Include="Views\User\_HomePageSetting.cshtml" />
     <Content Include="Views\StyleGuide\Collections.cshtml" />
     <Content Include="Views\Home\_FrameNav.cshtml" />
+    <Content Include="Views\Home\_FrameNavItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\users\" />
