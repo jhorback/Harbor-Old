@@ -106,7 +106,7 @@ Settings.EditNavView = Application.View.extend({
 		// assumes PageSelector is already loaded
 		Settings.regions.main.hideEl();	
 		PageSelector.open({
-			region: new Region("#settings-page"),
+			region: new Region("#settings-modal"),
 			close: function () {
 				Settings.regions.main.showEl();
 			},

@@ -87,6 +87,16 @@ namespace Harbor.Domain.Pages
 		#endregion
 
 		#region methods
+		/// <summary>
+		/// Prepends the UICID to the property name.
+		/// </summary>
+		/// <param name="name"></param>
+		/// <returns></returns>
+		public string GetUICProperty(PageUIC uic, string name)
+		{
+			return GetProperty(uic.uicid + "-" + name);
+		}
+
 		public string GetProperty(string name)
 		{
 			var prop = Properties.FirstOrDefault(p => string.Compare(name, p.Name, true) == 0);

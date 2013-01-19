@@ -13,6 +13,11 @@ var PageEditor = {
 	
 	dialogRegion: new Region(),
 
+	regions: {
+		page: "#page",
+		modal: "#page-modal"
+	},
+
 	registerComponent: function (key, component) {
 		/// <summary>
 		/// component - a prototype containing create, open, close, destroy methods.
@@ -27,8 +32,14 @@ var PageEditor = {
 			$el;
 		if (!comp) {
 			$el = $("#" + uicid);
-			compType = PageEditor.componentTypes[$el.data("type")] || DefaultComponent;
-			comp = new compType($el, PageEditor.currentPage, uicid);
+			compType = PageEditor.componentTypes[$el.data("type")] || ContentComponent;
+			
+			comp = new compType({
+				type: compType,
+				uicid: uicid,
+				$el: $el,
+				page: PageEditor.currentPage
+			});
 			PageEditor.components[uicid] = comp;
 		}
 		return comp;
@@ -65,6 +76,8 @@ var PageEditor = {
 };
 
 _.extend(PageEditor, Backbone.Events);
+Region.createRegions(PageEditor);
+
 
 // update the class names if the layout is updated
 PageEditor.on("updateLayout", function () {

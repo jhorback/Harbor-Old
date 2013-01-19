@@ -1,13 +1,12 @@
 ﻿
 // jch* - simple for now - could have a view associated with this if needed later
-var TextComponent = function (el, page, uicid) {
+var TextComponent = function (options) {
 	JstViewExtension.extend(this);
 
-	this.$el = $(el);
-	this.uicid = uicid;
-	this.page = page;
+	this.$el = options.$el;
+	this.uicid = options.uicid;
+	this.page = options.page;
 	this.view = null;
-	console.log("JCH!", this.page.toJSON());
 };
 
 TextComponent.prototype = {

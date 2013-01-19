@@ -1,10 +1,10 @@
 ﻿
-var TitleComponent = function (el, page, uicid) {
+var TitleComponent = function (options) {
 	JstViewExtension.extend(this);
 
-	this.$el = $(el);
-	this.uicid = uicid;
-	this.page = page;
+	this.$el = options.$el;
+	this.uicid = options.uicid;
+	this.page = options.page;
 	this.view = null;
 	this.modelbinder = null;
 };

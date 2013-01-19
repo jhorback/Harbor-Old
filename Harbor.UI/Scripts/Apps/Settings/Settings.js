@@ -14,7 +14,7 @@
 	regions: {
 		main: "#settings-main",
 		pageContent: ".page-content",
-		page: "#settings-page"
+		modal: "#settings-modal"
 	},
 	
 	actions: ["changeHomePage"],
@@ -40,7 +40,7 @@
 		// assumes PageSelector is already loaded
 		Settings.regions.main.hideEl();	
 		PageSelector.open({
-			region: this.regions.page,
+			region: this.regions.modal,
 			close: function () {
 				Settings.regions.main.showEl();
 			},

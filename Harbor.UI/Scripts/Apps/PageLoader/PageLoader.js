@@ -20,7 +20,7 @@
 			});
 
 			nav.render();
-			pageEl = $(".page"); 
+			pageEl = $("#page"); 
 			frameBody = $("#frame-body");
 			frameBody.append(nav.el);
 		},

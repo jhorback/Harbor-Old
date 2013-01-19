@@ -1,11 +1,11 @@
 ﻿
 // jch* - simple for now - could have a view associated with this if needed later
-var LinksComponent = function (el, page, uicid) {
+var LinksComponent = function (options) {
 	JstViewExtension.extend(this);
 
-	this.$el = $(el);
-	this.uicid = uicid;
-	this.page = page;
+	this.$el = options.$el;
+	this.uicid = options.uicid;
+	this.page = options.page;
 	this.view = null;
 };
 
