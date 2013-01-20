@@ -1,0 +1,131 @@
+﻿/*
+ * Client methods:
+ *     JSPM.pkgSrc = "/packagemanager/path";
+ *     JSPM.instal("PackageName"); // can be an array
+ *     JSPM.register("ServerLoadedPackage");
+ * 
+ * Server configuration:
+ *     Need to set JSPM.pkgSrc and have it return the JavaScript package manafest in json.
+ *
+ *     Request "~/jspm/PackageName
+ *     Response // all arrays can also be a string if only one
+ *     {
+ *         name: "PackageName",
+ *         scripts: [],
+ *         styles: [],
+ *         templates: [], // the templates are appended to the body
+ *         dependencies: []
+ *     }
+ *
+ */
+(function ($, _) {
+
+	var root = this, _jspm, JSPM;
+	
+	JSPM = {
+		
+		pkgSrc: null,
+		
+		install: function (pkgs, success, proxy) {
+			/// <summary>
+			///     pkgs - A package name or array of package names to install.
+			///     success - a callback called when the package has been installed.
+			///     proxy - sets the context ('this') in the success callback.
+			/// Returns a promise which is resolved when the package has been installed.
+			/// </summary>
+			var dfds = [];
+			
+			pkgs = _jspm.asArray(pkgs);
+				
+			_.each(pkgs, function (pkg) {
+				var promise = _jspm.cache[pkg];
+				if (!promise) {
+					dfds.push(_jspm.promisePackage(pkg));
+				}
+				dfds.push(promise);
+			});
+			
+			success = success || function () { };
+			proxy = proxy || this;
+			return $.when.apply($, dfds).then(_.bind(success, proxy));
+		},
+		
+		register: function (pkg) {
+			_jspm.cache[pkg] = _jspm.resoved();
+		}
+	};
+	
+	_jspm = {
+		cache: {},
+		
+		asArray: function (obj) {
+			/// <summary>If not an array, will make the object the only item in a new array.</summary>
+			return _.isArray(obj) ? obj : [obj];
+		},
+		
+		resolved: function () {
+			return $.Deferred().resolve().promise();
+		},
+		
+		url: function (pkg) {
+			return JSPM.pkgSrc + "/" + pkg;
+		},
+		
+		promisePackage: function (pkg) {
+			var promisePackage = $.Deferred(),
+				getPackageManifest = $.get(_jspm.url(pkg)),
+				installDependencies = JSPM.install(pkg.dependencies || []);
+			
+			$.when(getPackageManifest, installDependencies)
+				.then(function (packageManifest) {
+					var promises = [
+						_jspm.promiseScripts(packageManifest.scripts),
+						_jspm.promiseStyles(packageManifest.styles),
+						_jspm.promiseTemplates(packageManifest.templates)
+					];
+					$.when.apply($, promises).then(promisePackage.resolve);
+				});
+
+			return promisePackage.promise();
+		},
+		
+		promiseScripts: function (scripts) {
+			var dfd = $.Deferred(),
+				toLoad = [];
+			scripts = _jspm.asArray(scripts);
+			_.each(scripts, function (script) {
+				toLoad.push($.getScript(script));
+			});
+			$.when.apply($, toLoad).then(dfd.resolve);
+			return dfd.promise();
+		},
+		
+		promiseStyles: function (styles) {
+			_.each(styles, function (style) {
+				 $("head").append($('<link/>').attr({
+					rel: "stylesheet",
+					type: "text/css",
+					href: style
+				}));
+			});
+			return _jspm.resolved();
+		},
+		
+		promiseTemplates: function (templates) {
+			var dfd = $.Deferred(),
+				toLoad = [];
+			
+			templates = _jspm.asArray(templates);
+			_.each(templates, function (template) {
+				toLoad.push($.get(template).then(function (response) {
+					$(root.document.body).append(response);
+				}));
+			});
+			$.when.apply($, toLoad).then(dfd.resolve);
+			return dfd.promise();
+		}
+	};
+
+	root.JSPM = JSPM;
+	
+}).call(this, jQuery, _);

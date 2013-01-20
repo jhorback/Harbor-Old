@@ -10,6 +10,9 @@ namespace Harbor.UI
 	{
 		public static void RegisterBundles(BundleCollection bundles)
 		{
+			// ignore any tests in bundles
+			bundles.IgnoreList.Ignore("*.test.js", OptimizationMode.Always);
+
 			bundles.Add(new ScriptBundle("~/Scripts/jquery.js")
 				.Include("~/Scripts/jquery-1.*")
 			);

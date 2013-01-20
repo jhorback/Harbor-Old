@@ -225,6 +225,7 @@
     <Content Include="Content\images\thumbs\doc.png" />
     <Content Include="Content\images\thumbs\file.png" />
     <Content Include="Content\images\thumbs\video.png" />
+    <Content Include="Content\qunit.css" />
     <Content Include="Content\redactor\redactor.css">
       <DependentUpon>redactor.scss</DependentUpon>
     </Content>
@@ -313,6 +314,7 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\Apps\Application\AjaxRequest.js" />
     <Content Include="Scripts\Apps\Application\Application.js" />
+    <Content Include="Scripts\Apps\Application\JSPM.js" />
     <Content Include="Scripts\Apps\Application\model\BackupModelExtension.js" />
     <Content Include="Scripts\Apps\Application\Controller.js" />
     <Content Include="Scripts\Apps\Application\ui\Selectable.js" />
@@ -328,6 +330,7 @@
     <Content Include="Scripts\Apps\Application\model\ValidationModelExtension.js" />
     <Content Include="Scripts\Apps\Application\view\ViewExtension.js" />
     <Content Include="Scripts\Apps\Application\zeta.js" />
+    <Content Include="Scripts\Apps\Application\_tests\JSPM.test.js" />
     <Content Include="Scripts\Apps\FileAdmin\AlbumsView.js" />
     <Content Include="Scripts\Apps\FileAdmin\EditView.js" />
     <Content Include="Scripts\Apps\FileAdmin\FileAdmin.js" />
@@ -395,6 +398,7 @@
     <Content Include="Scripts\json2.js" />
     <Content Include="Scripts\json2.min.js" />
     <Content Include="Scripts\modernizr-2.6.2-custom.js" />
+    <Content Include="Scripts\qunit.js" />
     <Content Include="Scripts\redactor\redactor.js" />
     <Content Include="Scripts\redactor\redactor.min.js" />
     <Content Include="Scripts\respond.js" />
