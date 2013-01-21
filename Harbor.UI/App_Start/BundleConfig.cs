@@ -12,9 +12,6 @@ namespace Harbor.UI
 	{
 		public static void RegisterBundles(BundleCollection bundles)
 		{
-			var jspr = DependencyResolver.Current.GetService<IJavaScriptPackageRepository>();
-			jspr.RegisterBundles(bundles);
-
 			// ignore any tests in bundles
 			bundles.IgnoreList.Ignore("*.test.js", OptimizationMode.Always);
 
@@ -41,16 +38,12 @@ namespace Harbor.UI
 			);
 
 			bundles.Add(createAppBundle("Session"));
-			bundles.Add(createAppBundle("UserAccount", dependents: new[] {"~/Scripts/Apps/shared/UserModel.js"}));
-			// bundles.Add(createAppBundle("Settings")); // have package...
-			bundles.Add(createAppBundle("UserAdmin", dependents: new[] {"~/Scripts/Apps/shared/UserModel.js"}));
 			bundles.Add(createAppBundle("Pages"));
 			bundles.Add(createAppBundle("PageSelector"));
 			bundles.Add(createAppBundle("PageAdder"));
 			bundles.Add(createAppBundle("PageEditor"));
 			bundles.Add(createAppBundle("PageLoader"));
 			bundles.Add(createAppBundle("FileAdmin", dependents: new[] { "~/Scripts/Apps/shared/FileModel.js", "~/Scripts/jquery.html5uploader.js" }));
-			// bundles.Add(createAppBundle("FileUploader", dependents: new[] { "~/Scripts/Apps/shared/FileModel.js", "~/Scripts/jquery.html5uploader.js" }));
 
 
 			// style bundles

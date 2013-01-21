@@ -34,18 +34,10 @@ namespace Harbor.UI.Extensions
 		/// <returns></returns>
 		public static HtmlString JstPartial(this HtmlHelper helper, string id, string viewpath, object model)
 		{
-			//var request = helper.ViewContext.HttpContext.Request;
 			var path = string.Format("{0}/{1}{2}", "~/Views/", viewpath, ".cshtml");
-			if (helper.IsJst())
-			{
-				return new HtmlString(
-					string.Format(@"<script type=""text/template"" id=""{0}"">{1}</script>", id, helper.Partial(path, model))
-					);
-			}
-			else
-			{
-				return new HtmlString(helper.Partial(path, model).ToString());
-			}
+			return new HtmlString(
+				string.Format(@"<script type=""text/template"" id=""{0}"">{1}</script>", id, helper.Partial(path, model))
+				);
 		}
 	}
 }

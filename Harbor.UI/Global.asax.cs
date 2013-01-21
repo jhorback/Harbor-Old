@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using Harbor.Domain.App;
+using Harbor.UI.Models.JSPM;
 
 namespace Harbor.UI
 {
@@ -32,6 +33,7 @@ namespace Harbor.UI
 			WebApiConfig.Register(GlobalConfiguration.Configuration);
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
 			BundleConfig.RegisterBundles(BundleTable.Bundles);
+			PackageConfig.RegisterPackages(PackageTable.Packages, BundleTable.Bundles);
 			DbConfig.SetupDatabase();
 			Bootstrapper.ExecuteTasks();
 		}

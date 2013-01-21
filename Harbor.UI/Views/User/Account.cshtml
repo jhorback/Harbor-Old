@@ -1,5 +1,7 @@
 ﻿@using Harbor.Domain.Security
 @using Harbor.UI.Extensions
+@using Harbor.UI.JSPkgs
+@using Harbor.UI.Models.JSPM.Extensions
 @{
 	ViewBag.Title = "Account";
 
@@ -7,11 +9,8 @@
 	var canViewFiles = Html.UserHasPermit(UserFunctionalArea.Files, Permissions.Read);
 	
 }
-@section head{
-
-}
 @section scripts {
-	@Scripts.Render("~/Scripts/Apps/UserAccount.js")
+	@Html.InstallJavaScriptPackage(UserAccountPkg.PackageName)
 	<script>
 		UserAccount.start();
 	</script>
@@ -60,4 +59,3 @@
 		</form>
 	</div>
 </div>
-@Html.Jst("User/UserAccountTemplates")

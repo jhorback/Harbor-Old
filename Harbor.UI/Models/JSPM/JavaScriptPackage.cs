@@ -2,12 +2,12 @@
 
 namespace Harbor.UI.Models.JSPM
 {
-	public class AppScriptBundle : ScriptBundle
+	public class JavaScriptPackage : IJavaScriptPackage
 	{
-		public AppScriptBundle(string appName) : base("~/Scripts/Apps/" + appName + ".js")
-		{
-			Include("~/Scripts/Apps/" + appName + "/" + appName + ".js");
-			IncludeDirectory("~/Scripts/Apps/" + appName, "*.js", searchSubdirectories: true);
-		}
+		public string Name { get; protected set; }
+		public Bundle ScriptBundle { get; protected set; }
+		public string[] Templates { get; protected set; }
+		public Bundle StyleBundle { get; protected set; }
+		public string[] Dependencies { get; protected set; }
 	}
 }

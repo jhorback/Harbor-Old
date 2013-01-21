@@ -34,7 +34,7 @@
 			var templateHtml,
 				templateFn = JstViewExtension.templates[template];
 			
-			// jch! - el = el || this.$el;
+			// jch* - el = el || this.$el;
 
 			if (!templateFn) {
 				templateHtml = $("#" + template).html();
@@ -53,7 +53,7 @@
 			return templateFn;
 		},
 
-		// jch! - remove this
+		// jch* - remove this when converting the old view extension
 		JST: function (template, model) {
 			/// <summary>Returns a promise containing the html fragment result from the template rendering.</summary>
 			var dfd = $.Deferred(),

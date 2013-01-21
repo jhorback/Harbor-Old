@@ -40,9 +40,10 @@ namespace Harbor.UI.Controllers
 			return View("Index", pages);
 		}
 
-		// jch! - if ajax request return 404?
-		public PartialViewResult FrameNav()
+		public ActionResult FrameNav()
 		{
+			if (Request.IsAjaxRequest())
+				return new HttpNotFoundResult();
 			var model = appRep.GetNavigationLinks().Select(i => (NavigationLinkDto)i).ToList();
 			return PartialView("_FrameNav", model);
 		}
@@ -95,10 +96,7 @@ namespace Harbor.UI.Controllers
 		[Permit(UserFunctionalArea.SystemSettings)]
 		public ViewResult JavaScriptPackages()
 		{
-			var rep = DependencyResolver.Current.GetService<IJavaScriptPackageRepository>();
-			var packages = rep.GetPackages().Select(p =>
-				JavaScriptPackageDto.FromIJavaScriptPackage(p, this)
-				).ToArray();
+			var packages = PackageTable.Packages.Select(JavaScriptPackageDto.FromIJavaScriptPackage).ToArray();
 			return View("JavaScriptPackages", packages);
 		}
 	}

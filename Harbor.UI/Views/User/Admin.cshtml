@@ -1,13 +1,11 @@
 ﻿@using Harbor.Domain.Security
 @using Harbor.UI.Extensions
+@using Harbor.UI.Models.JSPM.Extensions
 @{
 	ViewBag.Title = "Website Settings";
 }
-@section head {
-	@Html.Jst("UserAdmin/UserAdminTemplates")	
-}
 @section scripts {
-	@Scripts.Render("~/Scripts/Apps/UserAdmin.js")
+	@Html.InstallJavaScriptPackage(Harbor.UI.JSPkgs.UserAdminPkg.PackageName)
 	<script>
 		UserAdmin.start();
 	</script>

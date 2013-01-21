@@ -68,7 +68,11 @@ namespace Harbor.Domain.App
 			IEnumerable<NavigationLink> links = null;
 			var navLinksSetting = appSettings.GetSetting("NavigationLinks");
 			links = JSON.Parse<IEnumerable<NavigationLink>>(navLinksSetting.Value);
-			
+
+			if (links == null)
+			{
+				return new List<NavigationLink>();
+			}
 			var linksList = new List<NavigationLink>(links);
 			if (linksList.Count == 0)
 			{

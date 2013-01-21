@@ -1,57 +1,82 @@
-﻿@model IEnumerable<Harbor.UI.Models.JSPM.JavaScriptPackageDto>
+﻿@using Harbor.UI.Models.JSPM
+@model IEnumerable<Harbor.UI.Models.JSPM.JavaScriptPackageDto>
+@functions {
+	string getPkgContents(JavaScriptPackageDto pkg)
+	{
+		var contents = new List<string>();
+		if (pkg.scripts != null && pkg.scripts.Length > 0)
+		{
+			contents.Add("scripts: " + pkg.scripts.Length);
+		}
+		if (pkg.styles != null && pkg.styles.Length > 0)
+		{
+			contents.Add("styles: " + pkg.styles.Length);
+		}
+		if (pkg.templates != null && pkg.templates.Length > 0)
+		{
+			contents.Add("templates: " + pkg.templates.Length);
+		}
+		return string.Join(", ", contents);
+	}
+	
+	string getPkgContentsTitle(JavaScriptPackageDto pkg)
+	{
+		var contents = new List<string>();		
+		if (pkg.scripts != null && pkg.scripts.Length > 0)
+		{
+			var items = new List<string>();
+			items.Add("SCRIPTS");
+			items.AddRange(pkg.scripts);
+			contents.Add(string.Join("\n", items));
+		}
+		if (pkg.styles != null && pkg.styles.Length > 0)
+		{
+			var items = new List<string>();
+			items.Add("STYLES");
+			items.AddRange(pkg.styles);
+			contents.Add(string.Join("\n", items));
+		}
+		if (pkg.templates != null && pkg.templates.Length > 0)
+		{
+			var items = new List<string>();
+			items.Add("TEMPLATES");
+			items.AddRange(pkg.templates);
+			contents.Add(string.Join("\n", items));
+		}
+		return string.Join("\n\n", contents);
+	}
+}
 <div class="page-header">
 	<h1>JavaScript Packages</h1>
 </div>
 <div class="page-content">
-	@foreach (var pkg in Model)
-	{
-		<div class="pad">
-			<h2>@pkg.name</h2>
-			
-			@if (pkg.scripts != null && pkg.scripts.Length > 0)
+	<section>
+		Base layout packages are: <strong>jQuery, Application, jQueryUI, and Session</strong>.
+	</section>
+	<section class="datalist">
+		<ul class="stretch">
+			<li class="heading">
+				<span class="col">Package Name</span>
+				<span class="col">Contents</span>
+				<span class="col">Dependencies</span>
+			</li>
+			@foreach (var pkg in Model)
 			{
-				<h3>Scripts</h3>
-				<ul>
-					@foreach(var item in pkg.scripts)
-					{
-						<li>@item</li>
-					}
-				</ul>
+				<li>
+					<span class="col">@pkg.name</span>
+					<span class="col" title="@getPkgContentsTitle(pkg)">@getPkgContents(pkg)</span>
+					<span class="col">
+						@if (pkg.dependencies != null && pkg.dependencies.Length > 0)
+						{
+							@String.Join(", ", pkg.dependencies)
+						}
+						@*else
+						{
+							<text>None</text>
+						}*@
+					</span>
+				</li>
 			}
-			
-			@if (pkg.styles != null && pkg.styles.Length > 0)
-			{
-				<h3>Styles</h3>
-				<ul>
-					@foreach(var item in pkg.styles)
-					{
-						<li>@item</li>
-					}
-				</ul>
-			}
-			
-			@if (pkg.templates != null && pkg.templates.Length > 0)
-			{
-				<h3>Templates</h3>
-				<ul>
-					@foreach(var item in pkg.templates)
-					{
-						<li>@item</li>
-					}
-				</ul>
-			}
-			
-			@if (pkg.dependencies != null && pkg.dependencies.Length > 0)
-			{
-				<h3>Dependencies</h3>
-				<ul>
-					@foreach(var item in pkg.dependencies)
-					{
-						<li>@item</li>
-					}
-				</ul>
-			}
-
-		</div>
-	}
+		</ul>
+	</section>
 </div>

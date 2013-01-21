@@ -1,15 +1,16 @@
 ﻿@model Harbor.UI.Models.Setting.SettingsViewModel
 @using Harbor.UI.Extensions
+@using Harbor.UI.JSPkgs
+@using Harbor.UI.Models.JSPM.Extensions
 @{
 	ViewBag.Title = "Website Settings";
 }
 @section head {
-	@Html.Jst("User/SettingsTemplates")
 	@Html.Jst("PageSelector/PageSelectorTemplates")	
 }
 @section scripts {
-	@Scripts.Render("~/Scripts/Apps/Settings.js")
 	@Scripts.Render("~/scripts/apps/PageSelector.js")
+	@Html.InstallJavaScriptPackage(SettingsPkg.PackageName)
 	<script>
 		Settings.start();
 	</script>

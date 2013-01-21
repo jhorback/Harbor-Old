@@ -14,7 +14,7 @@ namespace Harbor.UI.Extensions
 		/// <returns></returns>
 		public static MvcHtmlString Jst(this HtmlHelper helper, string viewpath)
 		{
-			return helper.Action("JST", "Home", new { viewpath = viewpath, jst = true });
+			return helper.Action("JST", "Home", new { viewpath = viewpath });
 		}
 	}
 }

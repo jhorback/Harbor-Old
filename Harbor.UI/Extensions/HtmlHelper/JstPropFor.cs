@@ -23,26 +23,23 @@ namespace Harbor.UI.Extensions
 			string propName = "";
 			object propValue = defaultValue;
 
-			//if (helper.IsJst())
-			//{
-				// get the property name
-				var body = expression.Body;
-				if (body.NodeType == ExpressionType.Convert)
-					body = ((UnaryExpression) body).Operand;
+			
+			// get the property name
+			var body = expression.Body;
+			if (body.NodeType == ExpressionType.Convert)
+				body = ((UnaryExpression) body).Operand;
 				
-				if ((body as MemberExpression) != null)
-					propName = (body as MemberExpression).Member.Name;
-			//}
-			//else
-			//{
-				// get the property value
-				var metaData = helper.ViewContext.ViewData.ModelMetadata;
-				if (metaData != null)
-					propValue = expression.Compile().Invoke((TModel)metaData.Model);
+			if ((body as MemberExpression) != null)
+				propName = (body as MemberExpression).Member.Name;
+			
+			// get the property value
+			var metaData = helper.ViewContext.ViewData.ModelMetadata;
+			if (metaData != null)
+				propValue = expression.Compile().Invoke((TModel)metaData.Model);
 				
-				if (propValue == null)
-					propValue = "";
-			//}
+			if (propValue == null)
+				propValue = "";
+
 
 			html = string.Format(@"<span data-bind=""{0}"">{1}</span>", propName, propValue);
 			return new MvcHtmlString(html);

@@ -18,9 +18,9 @@ namespace Harbor.UI.Models.JSPM
 		public string[] templates { get; set; }
 		public string[] dependencies { get; set; }
 
-		public static JavaScriptPackageDto FromIJavaScriptPackage(IJavaScriptPackage package, Controller controller)
+		public static JavaScriptPackageDto FromIJavaScriptPackage(IJavaScriptPackage package)
 		{
-			var viewer = new JavaScriptPackageViewer(package, controller);
+			var viewer = new JavaScriptPackageViewer(package);
 			return new JavaScriptPackageDto
 			       	{
 			       		name = package.Name,

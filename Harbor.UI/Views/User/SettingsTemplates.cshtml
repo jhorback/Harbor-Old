@@ -1,4 +1,5 @@
 ﻿@using Harbor.UI.Extensions
+@using Harbor.UI.Models
 @Html.JstPartial("Settings-EditApplicationName", "User/_EditApplicationName")
 @Html.JstPartial("Settings-DefaultHomePage", "User/_DefaultHomePage")
-@Html.JstPartial("Settings-HomePageSetting", "User/_HomePageSetting")
+@Html.JstPartial("Settings-HomePageSetting", "User/_HomePageSetting", new PageDto())
