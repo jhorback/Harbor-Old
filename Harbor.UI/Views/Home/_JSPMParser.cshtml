@@ -1,0 +1,10 @@
+﻿@model Harbor.UI.Models.JSPM.IJavaScriptPackage
+@if (Model.ScriptBundle != null)
+{
+	@Scripts.Render(Model.ScriptBundle.Path);
+}
+<div></div>
+@if (Model.StyleBundle != null)
+{
+	@Styles.Render(Model.StyleBundle.Path);
+}

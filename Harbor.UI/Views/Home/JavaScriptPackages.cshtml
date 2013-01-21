@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Harbor.UI.Models.JSPM.JavaScriptPackageDto>
+<div class="page-header">
+	<h1>JavaScript Packages</h1>
+</div>
+<div class="page-content">
+	@foreach (var pkg in Model)
+	{
+		<div class="pad">
+			<h2>@pkg.name</h2>
+			
+			@if (pkg.scripts != null && pkg.scripts.Length > 0)
+			{
+				<h3>Scripts</h3>
+				<ul>
+					@foreach(var item in pkg.scripts)
+					{
+						<li>@item</li>
+					}
+				</ul>
+			}
+			
+			@if (pkg.styles != null && pkg.styles.Length > 0)
+			{
+				<h3>Styles</h3>
+				<ul>
+					@foreach(var item in pkg.styles)
+					{
+						<li>@item</li>
+					}
+				</ul>
+			}
+			
+			@if (pkg.templates != null && pkg.templates.Length > 0)
+			{
+				<h3>Templates</h3>
+				<ul>
+					@foreach(var item in pkg.templates)
+					{
+						<li>@item</li>
+					}
+				</ul>
+			}
+			
+			@if (pkg.dependencies != null && pkg.dependencies.Length > 0)
+			{
+				<h3>Dependencies</h3>
+				<ul>
+					@foreach(var item in pkg.dependencies)
+					{
+						<li>@item</li>
+					}
+				</ul>
+			}
+
+		</div>
+	}
+</div>

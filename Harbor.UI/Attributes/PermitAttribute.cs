@@ -10,7 +10,8 @@ namespace Harbor.UI
 		UserFunctionalArea functionalArea;
 		Permissions permissions;
 
-		public PermitAttribute(UserFunctionalArea functionalArea, Permissions permissions)
+
+		public PermitAttribute(UserFunctionalArea functionalArea, Permissions permissions = Permissions.All)
 		{
 			this.functionalArea = functionalArea;
 			this.permissions = permissions;

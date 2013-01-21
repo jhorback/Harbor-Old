@@ -4,7 +4,9 @@ using System.Web.Mvc;
 using Harbor.Domain.App;
 using Harbor.Domain.Pages;
 using System.Linq;
+using Harbor.Domain.Security;
 using Harbor.UI.Models;
+using Harbor.UI.Models.JSPM;
 using Harbor.UI.Models.Setting;
 
 namespace Harbor.UI.Controllers
@@ -38,6 +40,7 @@ namespace Harbor.UI.Controllers
 			return View("Index", pages);
 		}
 
+		// jch! - if ajax request return 404?
 		public PartialViewResult FrameNav()
 		{
 			var model = appRep.GetNavigationLinks().Select(i => (NavigationLinkDto)i).ToList();
@@ -74,6 +77,29 @@ namespace Harbor.UI.Controllers
 		{
 			var path = string.Format("{0}/{1}{2}", "~/Views/", viewpath, ".cshtml");
 			return PartialView(path);
+		}
+
+
+		public JsonResult JSPM(string packageName)
+		{
+			throw new NotImplementedException();
+		}
+
+
+		[Permit(UserFunctionalArea.SystemSettings)]
+		public ViewResult JavaScriptTests()
+		{
+			return View("JavaScriptTests");
+		}
+
+		[Permit(UserFunctionalArea.SystemSettings)]
+		public ViewResult JavaScriptPackages()
+		{
+			var rep = DependencyResolver.Current.GetService<IJavaScriptPackageRepository>();
+			var packages = rep.GetPackages().Select(p =>
+				JavaScriptPackageDto.FromIJavaScriptPackage(p, this)
+				).ToArray();
+			return View("JavaScriptPackages", packages);
 		}
 	}
 }
