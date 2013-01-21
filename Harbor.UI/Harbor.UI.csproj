@@ -142,6 +142,7 @@
     <Compile Include="App_Start\DbConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IBootstrapperTask.cs" />
+    <Compile Include="App_Start\JSPkgs\SettingsPkg.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="App_Start\IoCConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -186,6 +187,13 @@
     </Compile>
     <Compile Include="Models\File\FileDto.cs" />
     <Compile Include="Models\File\FileUrls.cs" />
+    <Compile Include="Models\JSPM\Extensions\HtmlHelper\InstallJavaScriptPackage.cs" />
+    <Compile Include="Models\JSPM\IJavaScriptPackageRepository.cs" />
+    <Compile Include="Models\JSPM\JavaScriptPackage.cs" />
+    <Compile Include="Models\JSPM\JavaScriptPackageDto.cs" />
+    <Compile Include="Models\JSPM\IJavaScriptPackage.cs" />
+    <Compile Include="Models\JSPM\JavaScriptPackageRepository.cs" />
+    <Compile Include="Models\JSPM\JavaScriptPackageViewer.cs" />
     <Compile Include="Models\Page\ComponentViewModel.cs" />
     <Compile Include="Models\Page\TemplateDto.cs" />
     <Compile Include="Models\Page\PageComponentDto.cs" />
@@ -330,6 +338,7 @@
     <Content Include="Scripts\Apps\Application\model\ValidationModelExtension.js" />
     <Content Include="Scripts\Apps\Application\view\ViewExtension.js" />
     <Content Include="Scripts\Apps\Application\zeta.js" />
+    <Content Include="Scripts\Apps\Application\_tests\JSMP.test.html" />
     <Content Include="Scripts\Apps\Application\_tests\JSPM.test.js" />
     <Content Include="Scripts\Apps\FileAdmin\AlbumsView.js" />
     <Content Include="Scripts\Apps\FileAdmin\EditView.js" />
@@ -432,6 +441,9 @@
     <Content Include="Views\Home\_FrameNav.cshtml" />
     <Content Include="Views\Home\_FrameNavItem.cshtml" />
     <Content Include="Views\Components\Image.cshtml" />
+    <Content Include="Views\Home\JavaScriptPackages.cshtml" />
+    <Content Include="Views\Home\JavaScriptTests.cshtml" />
+    <Content Include="Views\Home\_JSPMParser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\users\" />

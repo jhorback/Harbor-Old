@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Web;
+using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Linq;
+using Harbor.UI.Models.JSPM;
 
 namespace Harbor.UI
 {
@@ -10,6 +12,9 @@ namespace Harbor.UI
 	{
 		public static void RegisterBundles(BundleCollection bundles)
 		{
+			var jspr = DependencyResolver.Current.GetService<IJavaScriptPackageRepository>();
+			jspr.RegisterBundles(bundles);
+
 			// ignore any tests in bundles
 			bundles.IgnoreList.Ignore("*.test.js", OptimizationMode.Always);
 
@@ -37,7 +42,7 @@ namespace Harbor.UI
 
 			bundles.Add(createAppBundle("Session"));
 			bundles.Add(createAppBundle("UserAccount", dependents: new[] {"~/Scripts/Apps/shared/UserModel.js"}));
-			bundles.Add(createAppBundle("Settings"));
+			// bundles.Add(createAppBundle("Settings")); // have package...
 			bundles.Add(createAppBundle("UserAdmin", dependents: new[] {"~/Scripts/Apps/shared/UserModel.js"}));
 			bundles.Add(createAppBundle("Pages"));
 			bundles.Add(createAppBundle("PageSelector"));
