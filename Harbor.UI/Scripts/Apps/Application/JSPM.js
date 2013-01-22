@@ -68,7 +68,7 @@
 		},
 		
 		url: function (pkg) {
-			return JSPM.pkgSrc + "/" + pkg;
+			return JSPM.pkgSrc + "?name=" + pkg;
 		},
 		
 		promisePackage: function (pkg) {
@@ -77,7 +77,8 @@
 				installDependencies = JSPM.install(pkg.dependencies || []);
 			
 			$.when(getPackageManifest, installDependencies)
-				.then(function (packageManifest) {
+				.then(function (getPackageManifestArgs) {
+					var packageManifest = getPackageManifestArgs[0];
 					var promises = [
 						_jspm.promiseScripts(packageManifest.scripts),
 						_jspm.promiseStyles(packageManifest.styles),
@@ -92,6 +93,11 @@
 		promiseScripts: function (scripts) {
 			var dfd = $.Deferred(),
 				toLoad = [];
+			
+			if (!scripts || scripts.length === 0) {
+				return _jspm.resolved();
+			}
+			
 			scripts = _jspm.asArray(scripts);
 			_.each(scripts, function (script) {
 				toLoad.push($.getScript(script));
@@ -113,7 +119,11 @@
 		
 		promiseTemplates: function (templates) {
 			var dfd = $.Deferred(),
-				toLoad = [];
+			    toLoad = [];
+
+			if (!templates || templates.length === 0) {
+				return _jspm.resolved();
+			}
 			
 			templates = _jspm.asArray(templates);
 			_.each(templates, function (template) {

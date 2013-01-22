@@ -81,11 +81,11 @@ namespace Harbor.UI.Controllers
 		}
 
 
-		public JsonResult JSPM(string packageName)
+		public JsonResult JSPM(string name)
 		{
-			throw new NotImplementedException();
+			var package = PackageTable.Packages.GetPackage(name);
+			return Json(JavaScriptPackageDto.FromIJavaScriptPackage(package), JsonRequestBehavior.AllowGet);
 		}
-
 
 		[Permit(UserFunctionalArea.SystemSettings)]
 		public ViewResult JavaScriptTests()

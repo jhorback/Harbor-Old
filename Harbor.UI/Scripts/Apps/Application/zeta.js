@@ -11,3 +11,6 @@ Application.Model = Backbone.Model.extend({ });
 BackupModelExtension.extend(Application.Model.prototype);
 GetSetModelExtension.extend(Application.Model.prototype);
 ValidationModelExtension.extend(Application.Model.prototype);
+
+
+JSPM.pkgSrc = Application.url("home/jspm");

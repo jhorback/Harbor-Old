@@ -44,6 +44,8 @@ namespace Harbor.UI.Models.JSPM.Extensions
 				}
 			}
 
+			sb.Append(string.Format("<script>JSPM.register(\"{0}\");</script>\r\n", packageName));
+
 			return new MvcHtmlString(sb.ToString());
 		}
 	}
