@@ -5,12 +5,9 @@
 @{
 	ViewBag.Title = "Website Settings";
 }
-@section head {
-	@Html.Jst("PageSelector/PageSelectorTemplates")	
-}
 @section scripts {
-	@Scripts.Render("~/scripts/apps/PageSelector.js")
-	@Html.InstallJavaScriptPackage(SettingsPkg.PackageName)
+	@Html.InstallJavaScriptPackage(PageSelectorAppPkg.PackageName)
+	@Html.InstallJavaScriptPackage(SettingsAppPkg.PackageName)
 	<script>
 		Settings.start();
 	</script>

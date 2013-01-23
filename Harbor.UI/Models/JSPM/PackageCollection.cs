@@ -23,17 +23,25 @@ namespace Harbor.UI.Models.JSPM
 
 		public void Add(IJavaScriptPackage package)
 		{
-			packages.Add(package);
+			if (Bundles == null)
+				throw new InvalidOperationException("Cannot add a package without first setting the Bundles.");
+
+			Add(package, Bundles);
 		}
 
 		public void Add(IJavaScriptPackage package, BundleCollection bundles)
 		{
+			if (bundles == null)
+				throw new ArgumentException("Argument cannot be null.", "bundles");
+			
 			packages.Add(package);
 			if (package.ScriptBundle != null)
 				bundles.Add(package.ScriptBundle);
 			if (package.StyleBundle != null)
 				bundles.Add(package.StyleBundle);
 		}
+
+		public BundleCollection Bundles { get; set; }
 
 		public IJavaScriptPackage GetPackage(string name)
 		{

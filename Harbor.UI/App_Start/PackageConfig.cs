@@ -8,16 +8,31 @@ namespace Harbor.UI
 	{
 		public static void RegisterPackages(PackageCollection packages, BundleCollection bundles)
 		{
-			packages.Add(new ApplicationPkg(), bundles);
-			packages.Add(new JQueryPkg(), bundles);
-			packages.Add(new JQueryUICorePkg(), bundles);
-			packages.Add(new JQueryUIInteractionsPkg(), bundles);
-			packages.Add(new PageModelsPkg(), bundles);
-			packages.Add(new SessionPkg(), bundles);
-			packages.Add(new SettingsPkg(), bundles);
-			packages.Add(new UserAccountPkg(), bundles);
-			packages.Add(new UserAdminPkg(), bundles);
-			packages.Add(new UserModelPkg(), bundles);
+			// ignore any tests in bundles
+			bundles.IgnoreList.Ignore("*.test.js", OptimizationMode.Always);
+			
+			packages.Bundles = bundles;
+
+			packages.Add(new ApplicationPkg());
+			packages.Add(new JQueryPkg());
+			packages.Add(new FileAdminAppPkg());
+			packages.Add(new FileModelPkg());
+			packages.Add(new Html5UploaderPkg());
+			packages.Add(new JQueryUICorePkg());
+			packages.Add(new JQueryUIInteractionsPkg());
+			packages.Add(new PageAdderAppPkg());
+			packages.Add(new PageEditorAppPkg());
+			packages.Add(new PageLoaderAppPkg());
+			packages.Add(new PageModelsPkg());
+			packages.Add(new PagesAppPkg());
+			packages.Add(new PageSelectorAppPkg());
+			packages.Add(new RedactorPkg());
+			packages.Add(new SessionAppPkg());
+			packages.Add(new SettingsAppPkg());
+			packages.Add(new SiteStylePkg());
+			packages.Add(new UserAccountAppPkg());
+			packages.Add(new UserAdminAppPkg());
+			packages.Add(new UserModelPkg());
 		}
 	}
 }

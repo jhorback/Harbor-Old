@@ -3,15 +3,15 @@ using Harbor.UI.Models.JSPM;
 
 namespace Harbor.UI.JSPkgs
 {
-	public class UserAccountPkg : JavaScriptPackage
+	public class UserAdminAppPkg : JavaScriptPackage
 	{
-		public const string PackageName = "UserAccount";
+		public const string PackageName = "UserAdmin";
 
-		public UserAccountPkg()
+		public UserAdminAppPkg()
 		{
 			Name = PackageName;
 			ScriptBundle = new AppScriptBundle(PackageName);
-			Templates = new[] { "User/UserAccountTemplates" };
+			Templates = new JstTemplateAction("UserAdmin/UserAdminTemplates");
 			Dependencies = new[] { UserModelPkg.PackageName };
 		}
 	}

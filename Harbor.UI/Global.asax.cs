@@ -32,7 +32,6 @@ namespace Harbor.UI
 			FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
 			WebApiConfig.Register(GlobalConfiguration.Configuration);
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
-			BundleConfig.RegisterBundles(BundleTable.Bundles);
 			PackageConfig.RegisterPackages(PackageTable.Packages, BundleTable.Bundles);
 			DbConfig.SetupDatabase();
 			Bootstrapper.ExecuteTasks();

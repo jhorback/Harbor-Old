@@ -15,6 +15,7 @@ namespace Harbor.UI.JSPkgs
 				.Include("~/Scripts/jquery.ui.widget.js")
 				.Include("~/Scripts/jquery.ui.mouse.js")
 				.Include("~/Scripts/jquery.ui.position.js");
+			RequiresRegistration = false;
 		}
 	}
 }

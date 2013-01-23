@@ -1,12 +1,10 @@
-﻿@using Harbor.UI.Extensions
+﻿@using Harbor.UI.JSPkgs
+@using Harbor.UI.Models.JSPM.Extensions
 @{
 	ViewBag.Title = "Pages";
 }
-@section head{
-	@Html.Jst("Pages/PagesTemplates")		
-}
 @section scripts {
-	@Scripts.Render("~/Scripts/Apps/Pages.js")
+	@Html.InstallJavaScriptPackage(PagesAppPkg.PackageName);
 	<script>
 		Pages.start();
 	</script>

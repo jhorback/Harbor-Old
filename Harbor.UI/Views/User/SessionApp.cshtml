@@ -1,8 +1,6 @@
-﻿@using Harbor.UI.Extensions
+﻿@using Harbor.UI.Models.JSPM.Extensions
 @model Harbor.UI.Models.User.CurrentUserDto
-@Scripts.Render("~/Scripts/Apps/Session.js")
-@Html.Jst("User/SessionTemplates")
-@*@Html.InstallJavaScriptPackage(Harbor.UI.JSPkgs.SessionPkg.PackageName)*@
+@Html.InstallJavaScriptPackage(Harbor.UI.JSPkgs.SessionAppPkg.PackageName)
 <script>
 	Session.start(@Html.Raw(Json.Encode(Model)));
 </script>

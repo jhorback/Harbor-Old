@@ -17,7 +17,7 @@
 		<title>@ViewBag.Title</title>
 		@Scripts.Render("~/Scripts/modernizr-2.6.2-custom.js")
 		@Styles.Render("~/Content/site/core/site.min.css")
-		@Styles.Render("~/Content/theme.min.css")
+		@Styles.Render("~/Content/themes/default/theme.css") @*jch* - waiting on theme story*@
 		@RenderSection("head", required: false)
 	</head>
 	<body>
@@ -60,8 +60,7 @@
 		@Html.InstallJavaScriptPackage(PageModelsPkg.PackageName)
 		
 
-		@Html.Jst("Pages/PageAdderTemplates")
-		@Scripts.Render("~/Scripts/Apps/PageAdder.js")
+		@Html.InstallJavaScriptPackage(PageAdderAppPkg.PackageName)
 
 		@RenderSection("scripts", required: false)
 

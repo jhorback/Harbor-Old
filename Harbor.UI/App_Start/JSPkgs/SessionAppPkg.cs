@@ -2,15 +2,16 @@
 
 namespace Harbor.UI.JSPkgs
 {
-	public class SessionPkg : JavaScriptPackage
+	public class SessionAppPkg : JavaScriptPackage
 	{
 		public const string PackageName = "Session";
 
-		public SessionPkg()
+		public SessionAppPkg()
 		{
 			Name = PackageName;
 			ScriptBundle = new AppScriptBundle(PackageName);
-			Templates = new[] { "User/SessionTemplates" };
+			Templates = new JstTemplateAction("User/SessionTemplates");
+			RequiresRegistration = false;
 		}
 	}
 }

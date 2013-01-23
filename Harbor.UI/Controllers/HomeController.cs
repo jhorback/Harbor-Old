@@ -96,7 +96,10 @@ namespace Harbor.UI.Controllers
 		[Permit(UserFunctionalArea.SystemSettings)]
 		public ViewResult JavaScriptPackages()
 		{
-			var packages = PackageTable.Packages.Select(JavaScriptPackageDto.FromIJavaScriptPackage).ToArray();
+			var sPackages = PackageTable.Packages;
+			var packages = sPackages.Select(JavaScriptPackageDto.FromIJavaScriptPackage).ToArray();
+			var nonRequiredPackages = sPackages.Where(p => p.RequiresRegistration == false).Select(p => p.Name).ToArray();
+			ViewBag.NonRequiredPackages = nonRequiredPackages;
 			return View("JavaScriptPackages", packages);
 		}
 	}

@@ -14,6 +14,7 @@ namespace Harbor.UI.JSPkgs
 		{
 			Name = PackageName;
 			ScriptBundle = getAppBundle();
+			RequiresRegistration = false;
 		}
 
 		Bundle getAppBundle()

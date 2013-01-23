@@ -1,7 +1,9 @@
 ﻿using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
+using System.Web.Mvc;
 using System.Web.Optimization;
+using System.Web.Routing;
 
 namespace Harbor.UI.Models.JSPM
 {
@@ -39,13 +41,28 @@ namespace Harbor.UI.Models.JSPM
 		public string[] GetTemplates()
 		{
 			if (package.Templates != null)
-				return package.Templates.Select(t => VirtualPathUtility.ToAbsolute(string.Format("~/JST/{0}", t))).ToArray();
+			{
+				var a = package.Templates;
+				return new string [] { url.Action(a.Action, a.Controller, a.RouteValues) };
+			}
 			return null;
 		}
 
 		public string[] GetDependencies()
 		{
 			return package.Dependencies;
+		}
+
+
+		UrlHelper url
+		{
+			get
+			{
+				var httpContext = new HttpContextWrapper(HttpContext.Current);
+				var currentRoute = RouteTable.Routes.GetRouteData(httpContext);
+				var requestContext = new RequestContext(httpContext, currentRoute);
+				return new UrlHelper(requestContext);
+			}
 		}
 	}
 }

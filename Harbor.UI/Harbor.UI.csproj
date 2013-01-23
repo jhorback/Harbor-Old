@@ -138,21 +138,30 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\Bootstrapper.cs" />
-    <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\DbConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IBootstrapperTask.cs" />
     <Compile Include="App_Start\JSPkgs\ApplicationPkg.cs" />
-    <Compile Include="App_Start\JSPkgs\SessionPkg.cs" />
+    <Compile Include="App_Start\JSPkgs\SiteStylePkg.cs" />
+    <Compile Include="App_Start\JSPkgs\Html5Uploader.cs" />
+    <Compile Include="App_Start\JSPkgs\FileAdminAppPkg.cs" />
+    <Compile Include="App_Start\JSPkgs\FileModelPkg.cs" />
+    <Compile Include="App_Start\JSPkgs\RedactorPkg.cs" />
+    <Compile Include="App_Start\JSPkgs\PageLoaderAppPkg.cs" />
+    <Compile Include="App_Start\JSPkgs\PageEditorAppPkg.cs" />
+    <Compile Include="App_Start\JSPkgs\PageAdderAppPkg.cs" />
+    <Compile Include="App_Start\JSPkgs\PageSelectorAppPkg.cs" />
+    <Compile Include="App_Start\JSPkgs\PagesAppPkg.cs" />
+    <Compile Include="App_Start\JSPkgs\SessionAppPkg.cs" />
     <Compile Include="App_Start\JSPkgs\PageModelsPkg.cs" />
     <Compile Include="App_Start\JSPkgs\jQueryUIInteractions.cs" />
     <Compile Include="App_Start\JSPkgs\JQueryUICorePkg.cs" />
     <Compile Include="App_Start\JSPkgs\jQueryPkg.cs" />
-    <Compile Include="App_Start\JSPkgs\UserAdminPkg.cs" />
-    <Compile Include="App_Start\JSPkgs\UserAccountPkg.cs" />
+    <Compile Include="App_Start\JSPkgs\UserAdminAppPkg.cs" />
+    <Compile Include="App_Start\JSPkgs\UserAccountAppPkg.cs" />
     <Compile Include="App_Start\JSPkgs\UserModelPkg.cs" />
     <Compile Include="App_Start\PackageConfig.cs" />
-    <Compile Include="App_Start\JSPkgs\SettingsPkg.cs" />
+    <Compile Include="App_Start\JSPkgs\SettingsAppPkg.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="App_Start\IoCConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />

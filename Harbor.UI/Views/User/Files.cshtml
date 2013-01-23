@@ -1,12 +1,9 @@
-﻿@using Harbor.UI.Extensions
+﻿@using Harbor.UI.Models.JSPM.Extensions
 @{
 	ViewBag.Title = "Files";
 }
-@section head{
-	@Html.Jst("FileAdmin/FileAdminTemplates")				
-}
 @section scripts {
-	@Scripts.Render("~/scripts/apps/FileAdmin.js")
+	@Html.InstallJavaScriptPackage(Harbor.UI.JSPkgs.FileAdminAppPkg.PackageName)
 	<script>
 		FileAdmin.start({ todaysAlbumName: "@Harbor.Domain.Files.File.TodaysAlbumName()" });
 	</script>

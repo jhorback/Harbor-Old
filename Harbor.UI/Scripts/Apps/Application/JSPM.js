@@ -1,4 +1,5 @@
-﻿/*
+﻿/*global window, jQuery, _ */
+/*
  * Client methods:
  *     JSPM.pkgSrc = "/packagemanager/path";
  *     JSPM.instal("PackageName"); // can be an array
@@ -18,9 +19,10 @@
  *     }
  *
  */
-(function ($, _) {
+(function (root, $, _) {
+	"use strict";
 
-	var root = this, _jspm, JSPM;
+	var _jspm, JSPM;
 	
 	JSPM = {
 		
@@ -50,16 +52,24 @@
 			return $.when.apply($, dfds).then(_.bind(success, proxy));
 		},
 		
-		register: function (pkg) {
-			_jspm.cache[pkg] = _jspm.resoved();
-		}
+		register: function (packageName) {
+			/// <summary>Add the package to the cache and registration table.</summary>
+			_jspm.cache[packageName] = _jspm.resolved();
+			JSPM.registered.unshift(packageName);
+		},
+		
+		registered: []
 	};
 	
 	_jspm = {
+		
 		cache: {},
 		
 		asArray: function (obj) {
-			/// <summary>If not an array, will make the object the only item in a new array.</summary>
+			/// <summary>
+			/// If not an array, will make the object
+			/// the only item in a new array.
+			/// </summary>
 			return _.isArray(obj) ? obj : [obj];
 		},
 		
@@ -78,8 +88,8 @@
 			
 			$.when(getPackageManifest, installDependencies)
 				.then(function (getPackageManifestArgs) {
-					var packageManifest = getPackageManifestArgs[0];
-					var promises = [
+					var promises, packageManifest = getPackageManifestArgs[0];
+					promises = [
 						_jspm.promiseScripts(packageManifest.scripts),
 						_jspm.promiseStyles(packageManifest.styles),
 						_jspm.promiseTemplates(packageManifest.templates)
@@ -139,5 +149,5 @@
 	};
 
 	root.JSPM = JSPM;
-	
-}).call(this, jQuery, _);
+
+}(window, jQuery, _));

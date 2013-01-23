@@ -33,13 +33,11 @@ namespace Harbor.UI.Models.JSPM.Extensions
 				}
 			}
 
-			if (package.templates != null)
+			if (sPackage.Templates != null)
 			{
-				foreach (var t in sPackage.Templates)
-				{
-					var partial = VirtualPathUtility.ToAbsolute(string.Format("~/Views/{0}.cshtml", t));
-					sb.Append(helper.Partial(partial));
-				}
+				var tAction = sPackage.Templates;
+				var templates = helper.Action(tAction.Action, tAction.Controller, tAction.RouteValues);
+				sb.Append(templates);
 			}
 
 
@@ -51,7 +49,10 @@ namespace Harbor.UI.Models.JSPM.Extensions
 				}
 			}
 
-			sb.Append(string.Format("<script>JSPM.register(\"{0}\");</script>\r\n", packageName));
+			if (sPackage.RequiresRegistration)
+			{
+				sb.Append(string.Format("<script>JSPM.register(\"{0}\");</script>\r\n", packageName));
+			}
 
 			return new MvcHtmlString(sb.ToString());
 		}
