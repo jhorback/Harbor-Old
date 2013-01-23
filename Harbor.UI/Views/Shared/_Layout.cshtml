@@ -1,4 +1,6 @@
 ﻿@using Harbor.UI.Extensions
+@using Harbor.UI.JSPkgs
+@using Harbor.UI.Models.JSPM.Extensions
 @{
 	// make this an html helper?
 	if (ViewBag.Title == null) {
@@ -47,24 +49,23 @@
 			if (typeof window.JSON === 'undefined') { document.write('<script src="@Url.Content("~/Scripts/json2.min.js")"><\/script>'); }
 			window.baseUrl = "@Url.Content("~/")";
 		</script>
-		@Scripts.Render("~/Scripts/jquery.js")
+		@Html.InstallJavaScriptPackage(JQueryPkg.PackageName)
 		@if (Request.Browser.Browser == "IE" && Request.Browser.MajorVersion < 9)
 		{
 			@* Add media query support to older versions of IE *@	
 			@Scripts.Render("~/Scripts/respond.js")
 		}
-		@Scripts.Render("~/Scripts/app.js")
+		@Html.InstallJavaScriptPackage(ApplicationPkg.PackageName)
 		@Html.Action("SessionApp", "User")
-		@Scripts.Render("~/Scripts/PageModels.js")
+		@Html.InstallJavaScriptPackage(PageModelsPkg.PackageName)
+		
+
 		@Html.Jst("Pages/PageAdderTemplates")
 		@Scripts.Render("~/Scripts/Apps/PageAdder.js")
 
 		@RenderSection("scripts", required: false)
 
-		@Scripts.Render("~/Scripts/jquery.ui.js")
-		@Scripts.Render("~/Scripts/jquery.ui.draggable.js")
-		@* sortable is for the page editor, droppable for website settings *@
-		@Scripts.Render("~/Scripts/jquery.ui.sortable.js")
-		@Scripts.Render("~/Scripts/jquery.ui.droppable.js")
+		@Html.InstallJavaScriptPackage(JQueryUICorePkg.PackageName)
+		@Html.InstallJavaScriptPackage(JQueryUIInteractionsPkg.PackageName)	
 	</body>
 </html>

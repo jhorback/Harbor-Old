@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
@@ -10,6 +11,9 @@ namespace Harbor.UI.Models.JSPM.Extensions
 		public static MvcHtmlString InstallJavaScriptPackage(this HtmlHelper helper, string packageName)
 		{
 			var sPackage = PackageTable.Packages.GetPackage(packageName);
+			if (sPackage == null) 
+				throw new Exception("The package to install could not be found: " + packageName);
+
 			var package = JavaScriptPackageDto.FromIJavaScriptPackage(sPackage);
 			var sb = new StringBuilder();
 

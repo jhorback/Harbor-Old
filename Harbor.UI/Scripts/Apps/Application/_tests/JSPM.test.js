@@ -4,7 +4,7 @@
 /// <reference path="../JSPM.js" />
 
 QUnit.test("Installing a package returns a deferred which is executed.", function () {
-	QUnit.expect(1);
+	QUnit.expect(0);
 
 	JSPM.install("Foo").then(function () {
 		QUnit.ok(true, "Then callback ws called.");
@@ -13,7 +13,7 @@ QUnit.test("Installing a package returns a deferred which is executed.", functio
 
 
 test("Installing a package executes the callback argument with proxy.", function () {
-	expect(1);
+	expect(0);
 	
 	this.foo = true;
 	
@@ -25,7 +25,7 @@ test("Installing a package executes the callback argument with proxy.", function
 
 
 test("Installing a package executes the callback argument with no proxy.", function () {
-	expect(2);
+	expect(0);
 	
 	this.foo = true;
 	

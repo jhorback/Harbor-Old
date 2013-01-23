@@ -142,6 +142,12 @@
     <Compile Include="App_Start\DbConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IBootstrapperTask.cs" />
+    <Compile Include="App_Start\JSPkgs\ApplicationPkg.cs" />
+    <Compile Include="App_Start\JSPkgs\SessionPkg.cs" />
+    <Compile Include="App_Start\JSPkgs\PageModelsPkg.cs" />
+    <Compile Include="App_Start\JSPkgs\jQueryUIInteractions.cs" />
+    <Compile Include="App_Start\JSPkgs\JQueryUICorePkg.cs" />
+    <Compile Include="App_Start\JSPkgs\jQueryPkg.cs" />
     <Compile Include="App_Start\JSPkgs\UserAdminPkg.cs" />
     <Compile Include="App_Start\JSPkgs\UserAccountPkg.cs" />
     <Compile Include="App_Start\JSPkgs\UserModelPkg.cs" />
