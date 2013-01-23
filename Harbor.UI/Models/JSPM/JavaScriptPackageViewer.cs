@@ -39,7 +39,7 @@ namespace Harbor.UI.Models.JSPM
 		public string[] GetTemplates()
 		{
 			if (package.Templates != null)
-				return package.Templates.Select(t => VirtualPathUtility.ToAbsolute(string.Format("~/Views/{0}.cshtml", t))).ToArray();
+				return package.Templates.Select(t => VirtualPathUtility.ToAbsolute(string.Format("~/JST/{0}", t))).ToArray();
 			return null;
 		}
 

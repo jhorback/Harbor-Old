@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
 
@@ -8,7 +9,8 @@ namespace Harbor.UI.Models.JSPM.Extensions
 	{
 		public static MvcHtmlString InstallJavaScriptPackage(this HtmlHelper helper, string packageName)
 		{
-			var package = JavaScriptPackageDto.FromIJavaScriptPackage(PackageTable.Packages.GetPackage(packageName));
+			var sPackage = PackageTable.Packages.GetPackage(packageName);
+			var package = JavaScriptPackageDto.FromIJavaScriptPackage(sPackage);
 			var sb = new StringBuilder();
 
 			if (package.dependencies != null)
@@ -29,9 +31,10 @@ namespace Harbor.UI.Models.JSPM.Extensions
 
 			if (package.templates != null)
 			{
-				foreach (var t in package.templates)
+				foreach (var t in sPackage.Templates)
 				{
-					sb.Append(helper.Partial(t));
+					var partial = VirtualPathUtility.ToAbsolute(string.Format("~/Views/{0}.cshtml", t));
+					sb.Append(helper.Partial(partial));
 				}
 			}
 

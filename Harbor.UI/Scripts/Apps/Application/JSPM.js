@@ -127,9 +127,11 @@
 			
 			templates = _jspm.asArray(templates);
 			_.each(templates, function (template) {
-				toLoad.push($.get(template).then(function (response) {
-					$(root.document.body).append(response);
-				}));
+				var getTemplate = $.ajax({ url: template, dataType: "html" })
+					.then(function (response) {
+						 $(root.document.body).append(response);
+					});
+				toLoad.push(getTemplate);
 			});
 			$.when.apply($, toLoad).then(dfd.resolve);
 			return dfd.promise();
