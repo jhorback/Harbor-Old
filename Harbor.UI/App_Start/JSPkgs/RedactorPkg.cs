@@ -14,6 +14,7 @@ namespace Harbor.UI.JSPkgs
 				.Include("~/Scripts/redactor/redactor.js");
 			StyleBundle = new StyleBundle("~/Content/redactor.min.css")
 				.Include("~/Content/redactor/redactor.css");
+			Category = Categories.UI;
 		}
 	}
 }

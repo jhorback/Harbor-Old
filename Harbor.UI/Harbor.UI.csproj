@@ -143,6 +143,7 @@
     <Compile Include="App_Start\IBootstrapperTask.cs" />
     <Compile Include="App_Start\JSPkgs\ApplicationPkg.cs" />
     <Compile Include="App_Start\JSPkgs\Categories.cs" />
+    <Compile Include="App_Start\JSPkgs\FileSelectorAppPkg.cs" />
     <Compile Include="App_Start\JSPkgs\ModernizrShivPkg.cs" />
     <Compile Include="App_Start\JSPkgs\SiteStylePkg.cs" />
     <Compile Include="App_Start\JSPkgs\Html5Uploader.cs" />
@@ -361,6 +362,7 @@
     <Content Include="Scripts\Apps\Application\zeta.js" />
     <Content Include="Scripts\Apps\Application\_tests\JSMP.test.html" />
     <Content Include="Scripts\Apps\Application\_tests\JSPM.test.js" />
+    <Content Include="Scripts\Apps\FileSelector\FileSelector.js" />
     <Content Include="Scripts\Apps\FileAdmin\AlbumsView.js" />
     <Content Include="Scripts\Apps\FileAdmin\EditView.js" />
     <Content Include="Scripts\Apps\FileAdmin\FileAdmin.js" />
@@ -465,6 +467,9 @@
     <Content Include="Views\Home\JavaScriptPackages.cshtml" />
     <Content Include="Views\Home\JavaScriptTests.cshtml" />
     <Content Include="Views\Home\_JSPMParser.cshtml" />
+    <Content Include="Views\FileSelector\_Main.cshtml" />
+    <Content Include="Views\FileSelector\_ListItem.cshtml" />
+    <Content Include="Views\FileSelector\FileSelectorTemplates.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\users\" />

@@ -13,6 +13,8 @@ namespace Harbor.UI.JSPkgs
 			ScriptBundle = new AppScriptBundle(PackageName);
 			Templates = new JstTemplateAction("User/SettingsTemplates");
 			Category = Categories.Apps;
+
+			AddDependency(PageSelectorAppPkg.PackageName);
 		}
 	}
 }

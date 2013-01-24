@@ -1,5 +1,4 @@
-﻿using System.Web.Optimization;
-using Harbor.UI.Models.JSPM;
+﻿using Harbor.UI.Models.JSPM;
 
 namespace Harbor.UI.JSPkgs
 {
@@ -13,6 +12,8 @@ namespace Harbor.UI.JSPkgs
 			ScriptBundle = new AppScriptBundle(PackageName);
 			Templates = new JstTemplateAction("PageSelector/PageSelectorTemplates");
 			Category = Categories.Apps;
+
+			AddDependency<PageModelsPkg>();
 		}
 	}
 }

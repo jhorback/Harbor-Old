@@ -39,7 +39,7 @@
 		
 		// assumes PageSelector is already loaded
 		Settings.regions.main.hideEl();	
-		PageSelector.open({
+		PageSelector.start({
 			region: this.regions.modal,
 			close: function () {
 				Settings.regions.main.showEl();

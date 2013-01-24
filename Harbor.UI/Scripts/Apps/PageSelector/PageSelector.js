@@ -1,6 +1,6 @@
 ﻿
 var PageSelector = new Application({
-	open: function (options, callbackContext) {
+	start: function (options, callbackContext) {
 		// options: region, close, select
 		var pages = new PageModels.Pages(),
 			mainViewModel = new PageSelector.MainViewModel(),
