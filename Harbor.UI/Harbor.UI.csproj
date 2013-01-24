@@ -301,11 +301,20 @@
     <Content Include="Content\site\core\menu.css">
       <DependentUpon>menu.scss</DependentUpon>
     </Content>
+    <Content Include="Content\site\core\page-editor.css">
+      <DependentUpon>page-editor.scss</DependentUpon>
+    </Content>
     <Content Include="Content\site\core\page.css">
       <DependentUpon>page.scss</DependentUpon>
     </Content>
     <Content Include="Content\site\core\richtext.css">
       <DependentUpon>richtext.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\site\core\page-editor.scss">
+      <Compile>True</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
     </Content>
     <Content Include="Content\site\core\usermenu.css">
       <DependentUpon>usermenu.scss</DependentUpon>
@@ -609,7 +618,12 @@
     <None Include="Content\site\core\font\fonticons.eot" />
     <None Include="Content\site\core\font\fonticons.ttf" />
     <None Include="Content\site\core\font\fonticons.woff" />
-    <None Include="Content\site\mixins\_col.scss" />
+    <None Include="Content\site\mixins\_col.scss">
+      <Compile>False</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </None>
     <None Include="Content\site\mixins\_user-select.scss">
       <Compile>False</Compile>
       <Minify>False</Minify>
