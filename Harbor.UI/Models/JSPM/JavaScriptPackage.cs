@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Web.Optimization;
 
 namespace Harbor.UI.Models.JSPM
@@ -18,6 +19,13 @@ namespace Harbor.UI.Models.JSPM
 		public bool RequiresRegistration { get; protected set; }
 		public string Category { get; protected set; }
 
+
+		public JavaScriptPackage AddDependency<T>() where T : IJavaScriptPackage
+		{
+			var instance = (IJavaScriptPackage)Activator.CreateInstance(typeof(T));
+			AddDependency(instance.Name);
+			return this;
+		}
 
 		public JavaScriptPackage AddDependency(string packageName)
 		{

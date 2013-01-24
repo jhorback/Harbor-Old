@@ -8,6 +8,12 @@ namespace Harbor.UI.Models.JSPM.Extensions
 {
 	public static partial class HtmlHelperExtensions
 	{
+		public static MvcHtmlString InstallJavaScriptPackage<T>(this HtmlHelper helper) where T : IJavaScriptPackage
+		{
+			var instance = (IJavaScriptPackage)Activator.CreateInstance(typeof(T));
+			return InstallJavaScriptPackage(helper, instance.Name);
+		}
+
 		public static MvcHtmlString InstallJavaScriptPackage(this HtmlHelper helper, string packageName)
 		{
 			var sPackage = PackageTable.Packages.GetPackage(packageName);
