@@ -12,6 +12,7 @@ namespace Harbor.UI.JSPkgs
 			ScriptBundle = new AppScriptBundle(PackageName);
 			Templates = new JstTemplateAction("User/SessionTemplates");
 			RequiresRegistration = false;
+			Category = Categories.Apps;
 		}
 	}
 }

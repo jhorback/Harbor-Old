@@ -13,6 +13,8 @@ namespace Harbor.UI.JSPkgs
 			StyleBundle = new StyleBundle("~/Content/site/core/site.min.css")
 				.Include("~/Content/site/core/foundation.css")
 				.IncludeDirectory("~/Content/site/core", "*.css");
+			RequiresRegistration = false;
+			Category = Categories.UI;
 		}
 	}
 }

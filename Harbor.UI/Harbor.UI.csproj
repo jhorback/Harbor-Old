@@ -142,6 +142,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IBootstrapperTask.cs" />
     <Compile Include="App_Start\JSPkgs\ApplicationPkg.cs" />
+    <Compile Include="App_Start\JSPkgs\Categories.cs" />
+    <Compile Include="App_Start\JSPkgs\ModernizrShivPkg.cs" />
     <Compile Include="App_Start\JSPkgs\SiteStylePkg.cs" />
     <Compile Include="App_Start\JSPkgs\Html5Uploader.cs" />
     <Compile Include="App_Start\JSPkgs\FileAdminAppPkg.cs" />

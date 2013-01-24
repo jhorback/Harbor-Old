@@ -12,6 +12,7 @@ namespace Harbor.UI.JSPkgs
 			Name = PackageName;
 			ScriptBundle = new AppScriptBundle(PackageName);
 			Templates = new JstTemplateAction("FileAdmin/FileAdminTemplates");
+			Category = Categories.Apps;
 
 			AddDependency(FileModelPkg.PackageName);
 			AddDependency(Html5UploaderPkg.PackageName);

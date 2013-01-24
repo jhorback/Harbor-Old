@@ -16,6 +16,8 @@ namespace Harbor.UI.Models.JSPM
 		public Bundle StyleBundle { get; protected set; }
 		public string[] Dependencies { get; protected set; }
 		public bool RequiresRegistration { get; protected set; }
+		public string Category { get; protected set; }
+
 
 		public JavaScriptPackage AddDependency(string packageName)
 		{

@@ -15,6 +15,7 @@ namespace Harbor.UI.JSPkgs
 			Name = PackageName;
 			ScriptBundle = getAppBundle();
 			RequiresRegistration = false;
+			Category = Categories.MVFramework;
 		}
 
 		Bundle getAppBundle()

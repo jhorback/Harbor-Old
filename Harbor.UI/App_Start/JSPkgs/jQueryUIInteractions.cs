@@ -14,6 +14,7 @@ namespace Harbor.UI.JSPkgs
 				.Include("~/Scripts/jquery.ui.draggable.js")
 				.Include("~/Scripts/jquery.ui.sortable.js")
 				.Include("~/Scripts/jquery.ui.droppable.js");
+			Category = Categories.UI;
 		}
 	}
 }

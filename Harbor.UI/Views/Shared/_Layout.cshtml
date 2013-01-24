@@ -15,8 +15,8 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
 		<title>@ViewBag.Title</title>
-		@Scripts.Render("~/Scripts/modernizr-2.6.2-custom.js")
-		@Styles.Render("~/Content/site/core/site.min.css")
+		@Html.InstallJavaScriptPackage(ModernizrShivPkg.PackageName)
+		@Html.InstallJavaScriptPackage(SiteStylePkg.PackageName)
 		@Styles.Render("~/Content/themes/default/theme.css") @*jch* - waiting on theme story*@
 		@RenderSection("head", required: false)
 	</head>
@@ -58,8 +58,6 @@
 		@Html.InstallJavaScriptPackage(ApplicationPkg.PackageName)
 		@Html.Action("SessionApp", "User")
 		@Html.InstallJavaScriptPackage(PageModelsPkg.PackageName)
-		
-
 		@Html.InstallJavaScriptPackage(PageAdderAppPkg.PackageName)
 
 		@RenderSection("scripts", required: false)

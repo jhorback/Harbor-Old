@@ -1,5 +1,5 @@
 ﻿@using Harbor.UI.Models.JSPM
-@model IEnumerable<Harbor.UI.Models.JSPM.JavaScriptPackageDto>
+@model List<IGrouping<string, IJavaScriptPackage>>
 @functions {
 	string getPkgContents(JavaScriptPackageDto pkg)
 	{
@@ -60,22 +60,27 @@
 				<span class="col">Contents</span>
 				<span class="col">Dependencies</span>
 			</li>
-			@foreach (var pkg in Model)
+			@foreach (var group in Model)
 			{
-				<li>
-					<span class="col">@pkg.name</span>
-					<span class="col" title="@getPkgContentsTitle(pkg)">@getPkgContents(pkg)</span>
-					<span class="col">
-						@if (pkg.dependencies != null && pkg.dependencies.Length > 0)
-						{
-							@String.Join(", ", pkg.dependencies)
-						}
-						@*else
-						{
-							<text>None</text>
-						}*@
-					</span>
+				<li class="group">
+					<span class="col"><h3>@group.Key</h3></span>
+					<span class="col"></span>
+					<span class="col"></span>
 				</li>
+				foreach (var item in group)
+				{
+					var pkg = JavaScriptPackageDto.FromIJavaScriptPackage(item);
+					<li>
+						<span class="col">@pkg.name</span>
+						<span class="col" title="@getPkgContentsTitle(pkg)">@getPkgContents(pkg)</span>
+						<span class="col">
+							@if (pkg.dependencies != null && pkg.dependencies.Length > 0)
+							{
+								@String.Join(", ", pkg.dependencies)
+							}
+						</span>
+					</li>
+				}
 			}
 		</ul>
 	</section>

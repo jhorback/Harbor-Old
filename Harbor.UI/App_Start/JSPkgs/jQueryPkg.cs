@@ -13,6 +13,7 @@ namespace Harbor.UI.JSPkgs
 			ScriptBundle = new ScriptBundle("~/Scripts/jquery.min.js")
 				.Include("~/Scripts/jquery-1.*");
 			RequiresRegistration = false;
+			Category = Categories.DomAbstraction;
 		}
 	}
 }

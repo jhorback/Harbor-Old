@@ -12,6 +12,7 @@ namespace Harbor.UI.JSPkgs
 			Name = PackageName;
 			ScriptBundle = new AppScriptBundle(PackageName);
 			Templates = new JstTemplateAction("Pages/PageAdderTemplates");
+			Category = Categories.Apps;
 		}
 	}
 }

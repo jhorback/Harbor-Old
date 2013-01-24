@@ -14,6 +14,7 @@ namespace Harbor.UI.JSPkgs
 			StyleBundle = new StyleBundle("~/Content/site/ext/pageloader.min.css")
 				.Include("~/Content/site/ext/pageloader.css");
 			Templates = new JstTemplateAction("Page/PageLoaderTemplates");
+			Category = Categories.Apps;
 		}
 	}
 }

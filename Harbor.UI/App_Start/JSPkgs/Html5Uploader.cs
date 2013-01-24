@@ -12,6 +12,7 @@ namespace Harbor.UI.JSPkgs
 			Name = PackageName;
 			ScriptBundle = new ScriptBundle("~/Scripts/jquery.html5uploader.min.js")
 				.Include("~/Scripts/jquery.html5uploader.js");
+			Category = Categories.UI;
 		}
 	}
 }

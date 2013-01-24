@@ -8,6 +8,7 @@ namespace Harbor.UI.Models.JSPM
 		Bundle ScriptBundle { get; }
 		Bundle StyleBundle { get; }
 		TemplateAction Templates { get; }
+		string Category { get; }
 
 		/// <summary>
 		/// If true, a JSPM.register("PackageName") script will be added by the InstallJavaScriptPackage Html helper.

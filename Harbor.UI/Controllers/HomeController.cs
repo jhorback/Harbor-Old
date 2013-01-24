@@ -97,9 +97,13 @@ namespace Harbor.UI.Controllers
 		public ViewResult JavaScriptPackages()
 		{
 			var sPackages = PackageTable.Packages;
-			var packages = sPackages.Select(JavaScriptPackageDto.FromIJavaScriptPackage).ToArray();
 			var nonRequiredPackages = sPackages.Where(p => p.RequiresRegistration == false).Select(p => p.Name).ToArray();
 			ViewBag.NonRequiredPackages = nonRequiredPackages;
+
+			var packages = sPackages
+				.GroupBy<IJavaScriptPackage, string>(p => p.Category ?? "General")
+				.ToList();
+
 			return View("JavaScriptPackages", packages);
 		}
 	}

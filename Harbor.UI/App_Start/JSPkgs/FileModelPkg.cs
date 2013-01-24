@@ -12,6 +12,7 @@ namespace Harbor.UI.JSPkgs
 			Name = PackageName;
 			ScriptBundle = new ScriptBundle("~/Scripts/Apps/FileModel.min.js")
 				.Include("~/Scripts/Apps/shared/FileModel.js");
+			Category = Categories.Domain;
 		}
 	}
 }

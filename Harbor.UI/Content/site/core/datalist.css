@@ -5,8 +5,14 @@
   padding: 0;
   border-top: 1px solid #ccc; }
   .datalist > ul > li {
-    display: table-row;
-    border-top: 1px solid #CCC; }
+    display: table-row; }
+    .datalist > ul > li.group h2, .datalist > ul > li.group h3 {
+      font-size: .9em;
+      font-weight: bold;
+      padding: 1.5em .3em .5em 0em;
+      opacity: 0.8; }
+    .datalist > ul > li.group:hover {
+      background-color: transparent; }
     .datalist > ul > li.heading {
       font-weight: bold;
       text-transform: uppercase;

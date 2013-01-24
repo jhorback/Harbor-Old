@@ -1,4 +1,5 @@
-
+@import "../mixins/clearfix";
+@import "../mixins/opacity";
 
 .datalist {
 	
@@ -11,7 +12,20 @@
 
 		& > li {
 			display: table-row;
-			border-top: 1px solid #CCC;
+			/// @include clearfix;
+
+			&.group {				
+				h2, h3 {
+					font-size: .9em;
+					font-weight: bold;
+					padding: 1.5em .3em .5em 0em;
+					@include opacity(.8);
+				}
+
+				&:hover {
+					background-color: transparent;
+				}
+			}
 
 			&.heading {
 				font-weight: bold;
