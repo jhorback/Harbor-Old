@@ -22,7 +22,7 @@
 (function (root, $, _) {
 	"use strict";
 
-	var _jspm, JSPM;
+	var jspm, JSPM;
 	
 	JSPM = {
 		
@@ -36,13 +36,13 @@
 			/// Returns a promise which is resolved when the package has been installed.
 			/// </summary>
 			var dfds = [];
-			
-			pkgs = _jspm.asArray(pkgs);
+
+			pkgs = jspm.asArray(pkgs);
 				
 			_.each(pkgs, function (pkg) {
-				var promise = _jspm.cache[pkg];
+				var promise = jspm.cache[pkg];
 				if (!promise) {
-					dfds.push(_jspm.promisePackage(pkg));
+					dfds.push(jspm.promisePackage(pkg));
 				}
 				dfds.push(promise);
 			});
@@ -54,14 +54,14 @@
 		
 		register: function (packageName) {
 			/// <summary>Add the package to the cache and registration table.</summary>
-			_jspm.cache[packageName] = _jspm.resolved();
+			jspm.cache[packageName] = jspm.resolved();
 			JSPM.registered.unshift(packageName);
 		},
 		
 		registered: []
 	};
 	
-	_jspm = {
+	jspm = {
 		
 		cache: {},
 		
@@ -83,20 +83,23 @@
 		
 		promisePackage: function (pkg) {
 			var promisePackage = $.Deferred(),
-				getPackageManifest = $.get(_jspm.url(pkg)),
-				installDependencies = JSPM.install(pkg.dependencies || []);
-			
-			$.when(getPackageManifest, installDependencies)
-				.then(function (getPackageManifestArgs) {
-					var promises, packageManifest = getPackageManifestArgs[0];
+			    getPackageManifest = $.get(jspm.url(pkg));
+
+			getPackageManifest.then(function (packageManifest) {
+				var installDependencies = packageManifest.dependencies ?
+					JSPM.install(packageManifest.dependencies) :
+					jspm.resolved();
+				
+				installDependencies.then(function() {
+					var promises;
 					promises = [
-						_jspm.promiseScripts(packageManifest.scripts),
-						_jspm.promiseStyles(packageManifest.styles),
-						_jspm.promiseTemplates(packageManifest.templates)
+						jspm.promiseScripts(packageManifest.scripts),
+						jspm.promiseStyles(packageManifest.styles),
+						jspm.promiseTemplates(packageManifest.templates)
 					];
 					$.when.apply($, promises).then(promisePackage.resolve);
 				});
-
+			});
 			return promisePackage.promise();
 		},
 		
@@ -105,10 +108,10 @@
 				toLoad = [];
 			
 			if (!scripts || scripts.length === 0) {
-				return _jspm.resolved();
+				return jspm.resolved();
 			}
 			
-			scripts = _jspm.asArray(scripts);
+			scripts = jspm.asArray(scripts);
 			_.each(scripts, function (script) {
 				toLoad.push($.getScript(script));
 			});
@@ -124,7 +127,7 @@
 					href: style
 				}));
 			});
-			return _jspm.resolved();
+			return jspm.resolved();
 		},
 		
 		promiseTemplates: function (templates) {
@@ -132,10 +135,10 @@
 			    toLoad = [];
 
 			if (!templates || templates.length === 0) {
-				return _jspm.resolved();
+				return jspm.resolved();
 			}
 			
-			templates = _jspm.asArray(templates);
+			templates = jspm.asArray(templates);
 			_.each(templates, function (template) {
 				var getTemplate = $.ajax({ url: template, dataType: "html" })
 					.then(function (response) {

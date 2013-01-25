@@ -14,7 +14,10 @@
 			display: table-row;
 			/// @include clearfix;
 
-			&.group {				
+			&.group {	
+				.col {
+					padding-left: .1em;
+				}				
 				h2, h3 {
 					font-size: .9em;
 					font-weight: bold;

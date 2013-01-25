@@ -479,6 +479,7 @@
     <Content Include="Views\FileSelector\_Main.cshtml" />
     <Content Include="Views\FileSelector\_ListItem.cshtml" />
     <Content Include="Views\FileSelector\FileSelectorTemplates.cshtml" />
+    <Content Include="Views\Components\_Image.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\users\" />

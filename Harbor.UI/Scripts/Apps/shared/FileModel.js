@@ -57,3 +57,21 @@
 		}
 	}
 });
+
+
+FileModel.Files = Backbone.Collection.extend({
+	model: FileModel,
+	url: Session.url("api/files"),
+	search : function (title) {
+		var pattern;
+		
+		if (title === "") {
+			return this;
+		}
+		
+		pattern = new RegExp(title, "gi");
+		return _(this.filter(function (data) {
+		  	return pattern.test(data.get("name"));
+		}));
+	}
+});

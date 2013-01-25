@@ -65,6 +65,7 @@
     <Compile Include="Files\FileFactory.cs" />
     <Compile Include="Files\IFileFactory.cs" />
     <Compile Include="Files\IFileRepository.cs" />
+    <Compile Include="Files\FileQuery.cs" />
     <Compile Include="JSON.cs" />
     <Compile Include="Pages\Components\Image.cs" />
     <Compile Include="Pages\Components\Title.cs" />

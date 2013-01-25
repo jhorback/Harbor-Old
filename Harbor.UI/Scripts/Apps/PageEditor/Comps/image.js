@@ -2,23 +2,21 @@
 // type, $el, uicid, page
 var ImageComponent = ContentComponent.extend({
 	create: function () {
-		console.log("create image");
-		// this will immediately open the FileSelector 
-		
-		// 
+		this.open().openFileSelector();
 	},
 	
 	open: function () {
-		console.log("open image");
-		// create a view - has an change image button
-		// which listens for click to open the FileSelector
 		this.view = new ImageComponent.View({
 			el: this.$el,
-			model: this.page
+			model: this.page,
+			uicid: this.uicid
 		});
-		JSPM.install("FileSelector").then(_.bind(function () {
+		
+		JSPM.install("FileSelector", function () {
 			this.view.render();
-		}, this));
+		}, this);
+		
+		return this.view;
 	},
 	
 	close: function () {
@@ -33,22 +31,41 @@ ImageComponent.View = Application.View.extend({
 	},
 	
 	events: {
-		"click div": function () {
+		"click [data-rel=image]": function () {
 			this.openFileSelector();
 		}
 	},
 	
+	render: function () {
+		
+	},
+	
+	renderImage: function () {
+		// jch! image.js - pull in the FileModel to get the url
+		// think about how to allow the user to change the image size.
+		var prop = this.model.getProperty(this.options.uicid + "-fileID"), // jch! - helper method for this
+		    model;
+		
+		if (!prop) {
+			return;
+		}
+		model = {
+			url: Application.url("file/" + prop.value + ".jpg?max=" + 500),
+			maxClass: "jch!DOTHIS"
+		};
+		this.renderTemplate("Comps-Image")(model);
+	},
+	
 	openFileSelector: function () {
 		PageEditor.regions.page.hideEl();
-		// jch! - here - need to fill out the file selector
 		FileSelector.start({
 			region: PageEditor.regions.modal,
 			close: function () {
 				PageEditor.regions.page.showEl();
 			},
-			select: function (selectedPage) {
-				// change the image - page.setProperty("uicid-fileID", fileID);
-				// AjaxRequest.handle(this.page.save());
+			select: function (selectedFile) {
+				this.model.setProperty(this.options.uicid + "-fileID", selectedFile.get("id")); // jch! - helper method on component for this!
+				AjaxRequest.handle(this.model.save()).then(_.bind(this.renderImage, this));
 			}
 		}, this);
 	}

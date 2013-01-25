@@ -15,7 +15,7 @@ namespace Harbor.UI.Controllers.Api
 {
     public class FilesController : ApiController
     {
-		IFileRepository fileRep;
+    	readonly IFileRepository fileRep;
 
 		public FilesController(IFileRepository fileRep)
 		{
@@ -24,11 +24,10 @@ namespace Harbor.UI.Controllers.Api
 
         // GET api/files
 		[FilePermit(Permissions.Read)]
-        public IEnumerable<FileDto> Get()
+        public IEnumerable<FileDto> Get([FromUri]FileQuery query)
         {
-			return fileRep.FindAll(f => string.Compare(f.UserName, User.Identity.Name, System.StringComparison.OrdinalIgnoreCase) == 0)
-				.OrderByDescending(f => f.Uploaded)
-				.Select(f => (FileDto)f);
+			query.CurrentUserName = User.Identity.Name;
+			return fileRep.FindAll(query).Select(f => (FileDto)f);
         }
 
         // GET api/files/5

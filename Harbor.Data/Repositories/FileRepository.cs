@@ -29,6 +29,11 @@ namespace Harbor.Data.Repositories
 				Query().Where(filter).AsEnumerable();
 		}
 
+		public IEnumerable<File> FindAll(FileQuery fileQuery)
+		{
+			return fileQuery.Query(Query());
+		}
+
 		public IQueryable<File> Query()
 		{
 			return context.Files.AsQueryable();

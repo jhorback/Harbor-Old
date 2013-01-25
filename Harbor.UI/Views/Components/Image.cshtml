@@ -1,8 +1,7 @@
-﻿@using Harbor.Domain.Pages
-@using Harbor.Domain.Security
-@using Harbor.UI.Extensions
+﻿@using Harbor.Domain.Security
 @model Harbor.UI.Models.ComponentViewModel
 @{
+	// jch! image.cshtml --- should think about using an action for this
 	var fileID = Model.Page.GetUICProperty(Model.PageUIC, "fileID");
 	var max = Model.Page.GetUICProperty(Model.PageUIC, "max");
 	
@@ -10,7 +9,7 @@
 	string imageSrc = "";
 	if (fileID != null)
 	{
-		imageSrc = Url.Content("~/file/" + fileID + "?max=" + max);
+		imageSrc = Url.Content("~/file/" + fileID + ".jpg?max=" + max); // jch! - get this from the file
 	}
 
 	if (max != null)
@@ -18,14 +17,16 @@
 		maxStyle = "style=\"max-width:" + max + ";max-height:" + max + ";\"";
 	}
 }
+<span data-rel="image">
 @if (fileID == null)
 {
 	if (Model.Page.HasPermission(User.Identity.Name, Permissions.CreateAndUpdate))
 	{
-		<div>Edit this page to add a new image.</div>
+		<span>Edit this page to add a new image.</span>
 	}
 }
 else
 {
-	<img src="@imageSrc" @maxStyle />
+	<img src="@imageSrc" @maxStyle style="max-width:400;max-height:400px" />
 }
+</span>

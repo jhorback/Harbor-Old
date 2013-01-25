@@ -4,21 +4,20 @@ var FileSelector = new Application({
 	start: function (options, callbackContext) {
 		// options: region, close, select
 		
-		alert("start file selector");
-//		var files = new FileModels.Files(),
-//			mainViewModel = new FileSelector.MainViewModel(),
-//			mainView = new FileSelector.MainView({
-//				model: mainViewModel,
-//				collection: files
-//			});
-//		options.region.render(mainView);
-//		mainView.on("close", options.close, callbackContext);
-//		mainView.on("select", options.select, callbackContext);
-//		files.fetch({
-//			data: {
-//				orderDesc: "modified"
-//			}
-//		});
+		var files = new FileModel.Files(),
+			mainViewModel = new FileSelector.MainViewModel(),
+			mainView = new FileSelector.MainView({
+				model: mainViewModel,
+				collection: files
+			});
+		options.region.render(mainView);
+		mainView.on("close", options.close, callbackContext);
+		mainView.on("select", options.select, callbackContext);
+		files.fetch({
+			data: {
+				orderDesc: "modified"
+			}
+		});
 	},
 	
 	regions: {
@@ -74,7 +73,6 @@ FileSelector.MainView = Application.View.extend({
 	selectAndClose: function (selectedFileID) {
 		var file;
 
-		selectedFileID = parseInt(selectedFileID);
 		file = this.collection.find(function (item) {
 			return item.get("id") === selectedFileID;
 		});

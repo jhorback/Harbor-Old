@@ -6,6 +6,8 @@
   border-top: 1px solid #ccc; }
   .datalist > ul > li {
     display: table-row; }
+    .datalist > ul > li.group .col {
+      padding-left: .1em; }
     .datalist > ul > li.group h2, .datalist > ul > li.group h3 {
       font-size: .9em;
       font-weight: bold;
