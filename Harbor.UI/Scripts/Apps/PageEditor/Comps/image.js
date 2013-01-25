@@ -12,20 +12,36 @@ var ImageComponent = ContentComponent.extend({
 		console.log("open image");
 		// create a view - has an change image button
 		// which listens for click to open the FileSelector
+		this.view = new ImageComponent.View({
+			el: this.$el,
+			model: this.page
+		});
+		JSPM.install("FileSelector").then(_.bind(function () {
+			this.view.render();
+		}, this));
 	},
 	
 	close: function () {
-		console.log("close image");
+		this.view.close();
+	}
+});
+
+
+ImageComponent.View = Application.View.extend({
+	initialize: function () {
+		
 	},
 	
-	destroy: function () {
-		console.log("destroy image");		
+	events: {
+		"click div": function () {
+			this.openFileSelector();
+		}
 	},
 	
 	openFileSelector: function () {
 		PageEditor.regions.page.hideEl();
-		// jch! - create the FileSelector next
-		FileSelector.open({
+		// jch! - here - need to fill out the file selector
+		FileSelector.start({
 			region: PageEditor.regions.modal,
 			close: function () {
 				PageEditor.regions.page.showEl();
@@ -36,8 +52,8 @@ var ImageComponent = ContentComponent.extend({
 			}
 		}, this);
 	}
-
 });
+
 
 
 PageEditor.registerComponent("image", ImageComponent);

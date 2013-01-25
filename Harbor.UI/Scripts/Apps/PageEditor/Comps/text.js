@@ -59,3 +59,69 @@ PageEditor.on("componentDeleted", function (page, uicid) {
 	debugger;
 	page.deleteProperty(uicid + "-text");
 });
+
+/*
+
+
+var TextComponent = ContentComponent.extend({
+	create: function () {
+		this.open();
+	},
+
+	open: function () {
+		this.view = new TextComponent.View({
+			el: this.$el,
+			model: this.page
+		});
+		this.view.render();
+	},
+
+	close: function () {
+		this.view.close();
+	}
+});
+
+
+TextComponent.View = Application.View.extend({
+	render: function () {
+		this.renderTemplate("Comps-Text")();
+		
+		var buttons = [
+			"formatting", "|",
+			"bold", "italic", "deleted", "underline", "|",
+			"unorderedlist", "orderedlist", "outdent", "indent", "|",
+			"horizontalrule", "|",
+			"fontcolor", "backcolor", "|",
+			"alignleft", "aligncenter", "alignright", "justify", "|",
+			"html"
+		];
+
+		this.$el.find(".richtext").redactor({
+			focus: true,
+			// air: true,
+			// airButtons: buttons,
+			buttons: buttons
+		});	
+	},
+	
+	onClose: function () {
+		var ctr = this.$el.find(".richtext");
+		var redactor = ctr.data('redactor');
+		var html;
+		
+		if (redactor) {
+			html = ctr.getCode();
+			this.model.setProperty(this.uicid + "-text", html);
+			AjaxRequest.handle(this.model.save());
+		}
+		
+		ctr.destroyEditor && ctr.destroyEditor();
+	}
+});
+
+
+PageEditor.registerComponent("text", TextComponent);
+PageEditor.on("componentDeleted", function (page, uicid) {
+	debugger;
+	page.deleteProperty(uicid + "-text");
+});*/

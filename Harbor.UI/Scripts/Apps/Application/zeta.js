@@ -4,6 +4,7 @@
 Application.View = Backbone.View.extend({ });
 ModelBinder.extend(Application.View.prototype);
 JstViewExtension.extend(Application.View.prototype);
+CloseViewExtension.extend(Application.View.prototype);
 FormErrorHandler.extend(Application.View.prototype);
 
 // create the application model with all model extensions

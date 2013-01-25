@@ -62,7 +62,7 @@ var PageEditor = {
 	createComponent: function  (uicid) {
 		var comp = PageEditor.getComponent(uicid);
 		comp.create();
-		comp.open();
+		comp.open(); // need create then open? jch!
 		comp.$el.fadeIn();
 		return comp;
 	},
@@ -70,7 +70,6 @@ var PageEditor = {
 	dispose: function () {
 		_.each(PageEditor.components, function (comp) {
 			comp.close();
-			comp.destroy && comp.destroy();
 		});
 	}
 };

@@ -31,11 +31,6 @@ LinksComponent.prototype = {
 
 	close: function () {
 		console.log("links is closed for edit: ", this.uicid);
-	},
-
-	destroy: function () {
-		// this.view.dispose();
-		console.log("destroy links");
 	}
 };
 

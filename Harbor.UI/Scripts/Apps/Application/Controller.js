@@ -61,6 +61,9 @@
  *     var someController = new SomeController();
  *     someController.start();
  *
+ *     The start method can return a promise which will delay the router start until
+ *     it is resolved.
+ *
  * Clicking Links
  *     Controllers have a 'linkClickHandler' method that can be used for links.
  *     events: {
@@ -116,7 +119,7 @@
 			this.start = function () {
 				/// <summary>Starts Backbone.history and calls any custom start method.</summary>
 				var dfd = customStart && customStart.apply(this, arguments);
-				if (controller._started === true) {
+				if (controller.routes && controller._started === true) {
 					throw "Start has already been called.";
 				}
 				dfd = dfd || { then: function (callback) { callback.call(); }};

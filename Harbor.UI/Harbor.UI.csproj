@@ -357,6 +357,7 @@
     <Content Include="Scripts\Apps\Application\model\BackupModelExtension.js" />
     <Content Include="Scripts\Apps\Application\Controller.js" />
     <Content Include="Scripts\Apps\Application\ui\Selectable.js" />
+    <Content Include="Scripts\Apps\Application\view\CloseViewExtension.js" />
     <Content Include="Scripts\Apps\Application\view\DisposeViewExtension.js" />
     <Content Include="Scripts\Apps\Application\ui\Dialog.js" />
     <Content Include="Scripts\Apps\Application\view\FormErrorHandler.js" />

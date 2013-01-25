@@ -1,31 +1,29 @@
 ﻿
-var TitleComponent = function (options) {
-	JstViewExtension.extend(this);
-
-	this.$el = options.$el;
-	this.uicid = options.uicid;
-	this.page = options.page;
-	this.view = null;
-	this.modelbinder = null;
-};
-
-TitleComponent.prototype = {
+var TitleComponent = ContentComponent.extend({
 	create: function () {
-		this.template("Comps-Title", this.$el)();
-		this.modelbinder = new ModelBinder(this.page, this.$el);
+		this.open();
 	},
 
 	open: function () {
-		// no editing
+		this.view = new TitleComponent.View({
+			model: this.page,
+			$el: this.$el
+		});
+		this.view.render();
 	},
 
 	close: function () {
-		// no editing
-	},
-
-	destroy: function () {
-		this.modelbinder && this.modelbinder.unbind();
+		this.view.close();
 	}
-};
+});
+
+
+TitleComponent.View = Application.View.extend({
+	render: function () {
+		this.renderTemplate("Comps-Title")();
+		this.bindModelToView();
+	}
+});
+
 
 PageEditor.registerComponent("title", TitleComponent);

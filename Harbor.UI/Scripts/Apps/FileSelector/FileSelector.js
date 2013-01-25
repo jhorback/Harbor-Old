@@ -1,11 +1,10 @@
 ﻿
 var FileSelector = new Application({
-	dependencies: "FileModel",
 	
-	open: function (options, callbackContext) {
+	start: function (options, callbackContext) {
 		// options: region, close, select
 		
-		alert("open file selector");
+		alert("start file selector");
 //		var files = new FileModels.Files(),
 //			mainViewModel = new FileSelector.MainViewModel(),
 //			mainView = new FileSelector.MainView({
