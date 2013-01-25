@@ -179,7 +179,7 @@ namespace Harbor.Data.Repositories
 			if (user == null)
 				return null;
 
-			user.AllUserRoles = new UserFunctionalRoleRepository().GetUserRoles();
+			user.AllUserRoles = new UserFeatureRoleRepository().GetUserRoles();
 			return user;
 		}
 		#endregion

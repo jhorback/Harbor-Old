@@ -16,7 +16,7 @@ namespace Harbor.Domain.Security
 				};
 			
 			user.SetPassword(password);
-			user.AllUserRoles = new UserFunctionalRoleRepository().GetUserRoles();
+			user.AllUserRoles = new UserFeatureRoleRepository().GetUserRoles();
 			user.SetRoles(roles);
 			return user;
 		}

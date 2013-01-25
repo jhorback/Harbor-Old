@@ -34,7 +34,7 @@ namespace Harbor.Domain.Pages
 			
 			var results = queryable.ToList();
 			return results.Where(p => p.HasPermission(CurrentUserName,
-				PageFunctionalArea.Page, Permissions.Read));
+				PageFeature.Page, Permissions.Read));
 		}
 	}
 }

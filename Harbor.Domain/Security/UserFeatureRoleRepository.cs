@@ -4,11 +4,11 @@ using Harbor.Domain.Security.Roles;
 
 namespace Harbor.Domain.Security
 {
-	public class UserFunctionalRoleRepository : IUserFunctionalRoleRepository
+	public class UserFeatureRoleRepository : IUserFeatureRoleRepository
 	{
-		public IEnumerable<UserFunctionalRole> GetUserRoles()
+		public IEnumerable<UserFeatureRole> GetUserRoles()
         {
-			return new List<UserFunctionalRole>
+			return new List<UserFeatureRole>
             {
                 new SystemAdministrator(),
 				new WebsiteAdministrator(),

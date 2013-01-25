@@ -18,7 +18,7 @@ namespace Harbor.Domain.Security
 			this.UserRoles = new List<UserRole>();
 			this.DeletedUserRoles = new List<UserRole>();
 			this.DeletedUserSettings = new List<UserSetting>();
-			this.AllUserRoles = new List<UserFunctionalRole>();
+			this.AllUserRoles = new List<UserFeatureRole>();
 			this.Created = DateTime.Now;
 			this.Enabled = true;
 		}
@@ -86,7 +86,7 @@ namespace Harbor.Domain.Security
 		/// All roles available to the user authorization scope.
 		/// To be populated by the user factory.
 		/// </summary>
-		internal IEnumerable<UserFunctionalRole> AllUserRoles { get; set; }
+		internal IEnumerable<UserFeatureRole> AllUserRoles { get; set; }
 		#endregion
 
 
@@ -110,12 +110,12 @@ namespace Harbor.Domain.Security
 			Password = createPassword(password);
 		}
 
-		public bool HasPermission(UserFunctionalArea functionalArea, Permissions permission)
+		public bool HasPermission(UserFeature feature, Permissions permission)
 		{
 			if (!Enabled) return false;
 			if (permissionsChecker == null)
-				permissionsChecker = new PermissionsChecker<UserFunctionalArea>(AllUserRoles, UserRoles);
-			return permissionsChecker.HasPermission(functionalArea, permission);
+				permissionsChecker = new PermissionsChecker<UserFeature>(AllUserRoles, UserRoles);
+			return permissionsChecker.HasPermission(feature, permission);
 		}
 
 		public string[] GetRoles()
@@ -203,7 +203,7 @@ namespace Harbor.Domain.Security
 
 
 		#region private
-		PermissionsChecker<UserFunctionalArea> permissionsChecker = null;
+		PermissionsChecker<UserFeature> permissionsChecker = null;
 
 		private bool passwordsMatch(string inputPassword)
 		{

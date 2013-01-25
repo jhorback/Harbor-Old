@@ -10,8 +10,8 @@ namespace Harbor.UI.Models.User
 	{
 		public void Execute()
 		{
-			Mapper.CreateMap<Domain.Security.UserFunctionalRole, UserRoleDto>();
-			Mapper.CreateMap<UserRoleDto, Domain.Security.UserFunctionalRole>();
+			Mapper.CreateMap<Domain.Security.UserFeatureRole, UserRoleDto>();
+			Mapper.CreateMap<UserRoleDto, Domain.Security.UserFeatureRole>();
 		}
 	}
 
@@ -22,15 +22,15 @@ namespace Harbor.UI.Models.User
 		public string name { get; set; }
 		public string description { get; set; }
 
-		public static implicit operator UserRoleDto(Domain.Security.UserFunctionalRole user)
+		public static implicit operator UserRoleDto(Domain.Security.UserFeatureRole user)
 		{
-			var dto = Mapper.Map<Domain.Security.UserFunctionalRole, UserRoleDto>(user);
+			var dto = Mapper.Map<Domain.Security.UserFeatureRole, UserRoleDto>(user);
 			return dto;
 		}
 
-		public static implicit operator Domain.Security.UserFunctionalRole(UserRoleDto user)
+		public static implicit operator Domain.Security.UserFeatureRole(UserRoleDto user)
 		{
-			var DO = Mapper.Map<UserRoleDto, Domain.Security.UserFunctionalRole>(user);
+			var DO = Mapper.Map<UserRoleDto, Domain.Security.UserFeatureRole>(user);
 			return DO;
 		}
 	}

@@ -14,18 +14,18 @@ using System.Linq;
 
 namespace Harbor.UI.Controllers.Api
 {
-	[Http.Permit(UserFunctionalArea.Users, Permissions.Read)]
+	[Http.Permit(UserFeature.Users, Permissions.Read)]
     public class UserRolesController : ApiController
     {
-		IUserFunctionalRoleRepository roleRep;
+		IUserFeatureRoleRepository roleRep;
 
-		public UserRolesController(IUserFunctionalRoleRepository roleRep)
+		public UserRolesController(IUserFeatureRoleRepository roleRep)
 		{
 			this.roleRep = roleRep;
 		}
 
         // GET api/users
-		[Http.Permit(UserFunctionalArea.Users, Permissions.Read)]
+		[Http.Permit(UserFeature.Users, Permissions.Read)]
         public IEnumerable<UserRoleDto> Get()
 		{
 			return roleRep.GetUserRoles().Select(u => (UserRoleDto)u);

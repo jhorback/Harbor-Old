@@ -161,7 +161,7 @@ namespace Harbor.Data.Repositories
 			Page page = FindAll(d => d.PageID == pageID).FirstOrDefault();
 			if (page != null)
 			{
-				page.AllPageRoles = new PageFunctionalRoleRepository().GetRoles();
+				page.AllPageRoles = new PageFeatureRoleRepository().GetRoles();
 			}
 			return page;
 		}

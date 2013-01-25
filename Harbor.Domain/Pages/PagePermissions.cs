@@ -3,17 +3,17 @@ using Harbor.Domain.Security;
 namespace Harbor.Domain.Pages
 {
 	/// <summary>
-	/// A tuple of DocFunctionalArea and Permissions used to define a DocFunctionalRole.
+	/// A tuple of PageFeature and Permissions used to define a DocFunctionalRole.
 	/// </summary>
-	public class PagePermissions : FunctionalPermissions<PageFunctionalArea>
+	public class PagePermissions : FeaturePermissions<PageFeature>
 	{
 		/// <summary>
-		/// Creates an instance of DocPermissions with the Document (default) DocFunctionalArea.
+		/// Creates an instance of PagePermissions with the Document (default) DocFunctionalArea.
 		/// </summary>
-		/// <param name="functionalArea"></param>
+		/// <param name="feature"></param>
 		/// <param name="permissions"></param>
 		public PagePermissions(Permissions permissions)
-			: base(PageFunctionalArea.Page, permissions)
+			: base(PageFeature.Page, permissions)
 		{
 
 		}
@@ -21,10 +21,10 @@ namespace Harbor.Domain.Pages
 		/// <summary>
 		/// Creates an instance of DocPermissions.
 		/// </summary>
-		/// <param name="functionalArea"></param>
+		/// <param name="feature"></param>
 		/// <param name="permissions"></param>
-		public PagePermissions(PageFunctionalArea functionalArea, Permissions permissions)
-			: base(functionalArea, permissions)
+		public PagePermissions(PageFeature feature, Permissions permissions)
+			: base(feature, permissions)
 		{
 			
 		}

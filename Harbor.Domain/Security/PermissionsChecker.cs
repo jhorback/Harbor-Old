@@ -4,14 +4,14 @@ using System.Linq;
 namespace Harbor.Domain.Security
 {
 	/// <summary>
-	/// Given all roles for the functional area and all granted roles on the entity, determines
-	/// if permissions exist for the specified functional area.
+	/// Given all roles for the feature and all granted roles on the entity, determines
+	/// if permissions exist for the specified feature.
 	/// Built to be used by an Entity.HasPermission method.
 	/// </summary>
-	/// <typeparam name="TFunctionalArea"></typeparam>
-	internal class PermissionsChecker<TFunctionalArea> 
+	/// <typeparam name="TFeature"></typeparam>
+	internal class PermissionsChecker<TFeature> 
 	{
-		IEnumerable<FunctionalRoleBase<TFunctionalArea>> allRoles;
+		IEnumerable<FeatureRoleBase<TFeature>> allRoles;
 		IEnumerable<RoleBase> grantedRoles;
 
 		/// <summary>
@@ -19,25 +19,25 @@ namespace Harbor.Domain.Security
 		/// </summary>
 		/// <param name="allRoles"></param>
 		/// <param name="grantedRoles"></param>
-		public PermissionsChecker(IEnumerable<FunctionalRoleBase<TFunctionalArea>> allRoles, IEnumerable<RoleBase> grantedRoles)
+		public PermissionsChecker(IEnumerable<FeatureRoleBase<TFeature>> allRoles, IEnumerable<RoleBase> grantedRoles)
 		{
 			this.allRoles = allRoles;
 			this.grantedRoles = grantedRoles;
 		}
 
 		/// <summary>
-		/// Tests the permissions for the specified functional area.
+		/// Tests the permissions for the specified feature.
 		/// </summary>
-		/// <param name="functionalArea"></param>
+		/// <param name="feature"></param>
 		/// <param name="permission"></param>
 		/// <returns></returns>
-		public bool HasPermission(TFunctionalArea functionalArea, Permissions permission)
+		public bool HasPermission(TFeature feature, Permissions permission)
 		{
 			foreach (var granted in grantedRoles)
 			{
 				var role = allRoles.Where(r => r.Key == granted.Role).FirstOrDefault();
 				if (role == null) continue;
-				if (role.HasPermission(functionalArea, permission))
+				if (role.HasPermission(feature, permission))
 					return true;
 			}
 			return false;

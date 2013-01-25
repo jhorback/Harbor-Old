@@ -7,13 +7,13 @@ namespace Harbor.UI
 {
 	public class PermitAttribute : AuthorizeAttribute
 	{
-		UserFunctionalArea functionalArea;
+		UserFeature feature;
 		Permissions permissions;
 
 
-		public PermitAttribute(UserFunctionalArea functionalArea, Permissions permissions = Permissions.All)
+		public PermitAttribute(UserFeature feature, Permissions permissions = Permissions.All)
 		{
-			this.functionalArea = functionalArea;
+			this.feature = feature;
 			this.permissions = permissions;
 		}
 
@@ -34,7 +34,7 @@ namespace Harbor.UI
 
 			var userName = filterContext.HttpContext.User.Identity.Name;
 			var user = UserRepository.FindUserByName(userName);
-			if (user == null || user.HasPermission(this.functionalArea, this.permissions) == false)
+			if (user == null || user.HasPermission(this.feature, this.permissions) == false)
 			{
 				filterContext.Result = new HttpUnauthorizedResult();
 			}

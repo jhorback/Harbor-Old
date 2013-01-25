@@ -13,11 +13,11 @@ namespace Harbor.UI.Models.User
 		{
 			Mapper.CreateMap<Domain.Security.User, CurrentUserDto>()
 				.ForMember(dest => dest.usersDisplayName, opt => opt.MapFrom(src => src.DisplayName))
-				.ForMember(dest => dest.isSysAdmin, opt => opt.MapFrom(src => src.HasPermission(UserFunctionalArea.SystemSettings, Permissions.All)))
-				.ForMember(dest => dest.hasDocPermissions, opt => opt.MapFrom(src => src.HasPermission(UserFunctionalArea.Pages, Permissions.Create)))
-				.ForMember(dest => dest.hasFilePermissions, opt => opt.MapFrom(src => src.HasPermission(UserFunctionalArea.Files, Permissions.Create)))
-				.ForMember(dest => dest.hasSettingsPermissions, opt => opt.MapFrom(src => src.HasPermission(UserFunctionalArea.SiteSettings, Permissions.Create) ||
-					src.HasPermission(UserFunctionalArea.SystemSettings, Permissions.Read)));
+				.ForMember(dest => dest.isSysAdmin, opt => opt.MapFrom(src => src.HasPermission(UserFeature.SystemSettings, Permissions.All)))
+				.ForMember(dest => dest.hasDocPermissions, opt => opt.MapFrom(src => src.HasPermission(UserFeature.Pages, Permissions.Create)))
+				.ForMember(dest => dest.hasFilePermissions, opt => opt.MapFrom(src => src.HasPermission(UserFeature.Files, Permissions.Create)))
+				.ForMember(dest => dest.hasSettingsPermissions, opt => opt.MapFrom(src => src.HasPermission(UserFeature.SiteSettings, Permissions.Create) ||
+					src.HasPermission(UserFeature.SystemSettings, Permissions.Read)));
 		}
 	}
 

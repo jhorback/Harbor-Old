@@ -5,8 +5,8 @@
 @{
 	ViewBag.Title = "Account";
 
-	var canViewPages = Html.UserHasPermit(UserFunctionalArea.Pages, Permissions.Read);
-	var canViewFiles = Html.UserHasPermit(UserFunctionalArea.Files, Permissions.Read);
+	var canViewPages = Html.UserHasPermit(UserFeature.Pages, Permissions.Read);
+	var canViewFiles = Html.UserHasPermit(UserFeature.Files, Permissions.Read);
 	
 }
 @section scripts {

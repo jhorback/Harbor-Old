@@ -2,23 +2,23 @@
 namespace Harbor.Domain.Security
 {
 	/// <summary>
-    /// A tuple for indicating permissions for a functional area.
+    /// A tuple for indicating permissions for a feature.
     /// </summary>
-    public abstract class FunctionalPermissions<TFunctionalArea>
+    public abstract class FeaturePermissions<TFeature>
     {
         #region ctor
-        public FunctionalPermissions(TFunctionalArea functionalArea, Permissions permissions)
+        public FeaturePermissions(TFeature feature, Permissions permissions)
         {
-            this.FunctionalArea = functionalArea;
+            this.Feature = feature;
             this.Permissions = permissions;
         }
         #endregion
 
         #region Properties
         /// <summary>
-        /// Gets the functional area.
+        /// Gets the feature.
         /// </summary>
-        public TFunctionalArea FunctionalArea { get; private set; }
+        public TFeature Feature { get; private set; }
 
         /// <summary>
         /// Gets the permissions.

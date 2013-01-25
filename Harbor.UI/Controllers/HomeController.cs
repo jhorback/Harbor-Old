@@ -87,13 +87,13 @@ namespace Harbor.UI.Controllers
 			return Json(JavaScriptPackageDto.FromIJavaScriptPackage(package), JsonRequestBehavior.AllowGet);
 		}
 
-		[Permit(UserFunctionalArea.SystemSettings)]
+		[Permit(UserFeature.SystemSettings)]
 		public ViewResult JavaScriptTests()
 		{
 			return View("JavaScriptTests");
 		}
 
-		[Permit(UserFunctionalArea.SystemSettings)]
+		[Permit(UserFeature.SystemSettings)]
 		public ViewResult JavaScriptPackages()
 		{
 			var sPackages = PackageTable.Packages;

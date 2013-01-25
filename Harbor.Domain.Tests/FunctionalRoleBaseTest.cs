@@ -64,7 +64,7 @@ namespace Harbor.Domain.Tests
 			var role = new PageAuthor();
 			var expected = true;
 
-			var actual = role.HasPermission(UserFunctionalArea.Pages, Permissions.Create);
+			var actual = role.HasPermission(UserFeature.Pages, Permissions.Create);
 
 			Assert.AreEqual(expected, actual);
 		}
@@ -75,7 +75,7 @@ namespace Harbor.Domain.Tests
 			var role = new PageAuthor();
 			var expected = false;
 
-			var actual = role.HasPermission(UserFunctionalArea.Users, Permissions.Update);
+			var actual = role.HasPermission(UserFeature.Users, Permissions.Update);
 
 			Assert.AreEqual(expected, actual);
 		}
@@ -86,7 +86,7 @@ namespace Harbor.Domain.Tests
 			var role = new PageAuthor();
 			var expected = true;
 
-			var actual = role.HasPermission(UserFunctionalArea.Pages, Permissions.CreateAndUpdate);
+			var actual = role.HasPermission(UserFeature.Pages, Permissions.CreateAndUpdate);
 
 			Assert.AreEqual(expected, actual);
 		}

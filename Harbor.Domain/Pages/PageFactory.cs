@@ -26,7 +26,7 @@ namespace Harbor.Domain.Pages
 			        Public = publish,
 			        Created = DateTime.Now,
 			        Modified = DateTime.Now,
-			        AllPageRoles = new PageFunctionalRoleRepository().GetRoles(),
+			        AllPageRoles = new PageFeatureRoleRepository().GetRoles(),
 					Enabled = true,
 					Template = pageType.Template
 			    };

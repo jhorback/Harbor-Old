@@ -76,19 +76,19 @@ namespace Harbor.UI.Controllers
 			return View("Account");
 		}
 
-		[Permit(UserFunctionalArea.Pages, Permissions.Read)]
+		[Permit(UserFeature.Pages, Permissions.Read)]
 		public ViewResult Pages()
 		{
 			return View("Pages");
 		}
 
-		[Permit(UserFunctionalArea.Files, Permissions.Read)]
+		[Permit(UserFeature.Files, Permissions.Read)]
 		public ViewResult Files()
 		{
 			return View("Files");
 		}
 
-		[Permit(UserFunctionalArea.Users, Permissions.Read)]
+		[Permit(UserFeature.Users, Permissions.Read)]
 		public ViewResult Admin()
 		{
 			return View("Admin");
@@ -113,7 +113,7 @@ namespace Harbor.UI.Controllers
 			return View("Page", page);
 		}
 
-		[Permit(UserFunctionalArea.Files, Permissions.Create)]
+		[Permit(UserFeature.Files, Permissions.Create)]
 		public ActionResult Upload()
 		{
 			foreach (string file in Request.Files)

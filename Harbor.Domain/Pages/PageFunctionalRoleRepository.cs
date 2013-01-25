@@ -3,11 +3,11 @@ using Harbor.Domain.Pages.Roles;
 
 namespace Harbor.Domain.Pages
 {
-	public class PageFunctionalRoleRepository
+	public class PageFeatureRoleRepository
 	{
-		public IEnumerable<PageFunctionalRole> GetRoles()
+		public IEnumerable<PageFeatureRole> GetRoles()
         {
-			return new List<PageFunctionalRole>
+			return new List<PageFeatureRole>
             {
                new Author()
 			};

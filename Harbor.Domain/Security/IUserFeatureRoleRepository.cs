@@ -5,8 +5,8 @@ using System.Text;
 
 namespace Harbor.Domain.Security
 {
-	public interface IUserFunctionalRoleRepository
+	public interface IUserFeatureRoleRepository
 	{
-		IEnumerable<UserFunctionalRole> GetUserRoles();
+		IEnumerable<UserFeatureRole> GetUserRoles();
 	}
 }

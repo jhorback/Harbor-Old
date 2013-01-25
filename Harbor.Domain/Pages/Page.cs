@@ -15,7 +15,7 @@ namespace Harbor.Domain.Pages
 			DeletedProperties = new List<PageProperty>();
 			PageRoles = new List<PageRole>();
 			DeletedPageRoles = new List<PageRole>();
-			AllPageRoles = new List<PageFunctionalRole>();
+			AllPageRoles = new List<PageFeatureRole>();
 			Created = DateTime.Now;
 			Modified = DateTime.Now;
 			Public = true;
@@ -76,7 +76,7 @@ namespace Harbor.Domain.Pages
 		internal List<PageProperty> DeletedProperties { get; set; } 
 		internal ICollection<PageRole> PageRoles { get; set; }
 		internal List<PageRole> DeletedPageRoles { get; set; }
-		internal IEnumerable<PageFunctionalRole> AllPageRoles { get; set; } 
+		internal IEnumerable<PageFeatureRole> AllPageRoles { get; set; } 
 
 		internal User Author { get; set; }
 		internal Page Parent { get; set; }
@@ -130,16 +130,16 @@ namespace Harbor.Domain.Pages
 		}
 		#endregion
 
-		PermissionsChecker<PageFunctionalArea> permissionsChecker = null;
+		PermissionsChecker<PageFeature> permissionsChecker = null;
 		public bool HasPermission(string SID, Permissions permissions)
 		{
-			return HasPermission(SID, PageFunctionalArea.Page, permissions);
+			return HasPermission(SID, PageFeature.Page, permissions);
 		}
 
 		// jch* could in repository assign correct roles here -> author and public readers
-		public bool HasPermission(string SID, PageFunctionalArea pageFunctionalArea, Permissions permissions)
+		public bool HasPermission(string SID, PageFeature pageFeature, Permissions permissions)
 		{
-			if (pageFunctionalArea == PageFunctionalArea.Page)
+			if (pageFeature == PageFeature.Page)
 			{
 				// authorize authors on page CRUD
 				if (AuthorsUserName == SID)
@@ -152,8 +152,8 @@ namespace Harbor.Domain.Pages
 			
 			var sidRoles = PageRoles.Where(r => r.SID == SID).ToList();
 			if (permissionsChecker == null)
-				permissionsChecker = new PermissionsChecker<PageFunctionalArea>(AllPageRoles, sidRoles);
-			return permissionsChecker.HasPermission(pageFunctionalArea, permissions);
+				permissionsChecker = new PermissionsChecker<PageFeature>(AllPageRoles, sidRoles);
+			return permissionsChecker.HasPermission(pageFeature, permissions);
 		}
 	}
 }

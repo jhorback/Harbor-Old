@@ -25,7 +25,7 @@ namespace Harbor.UI.Controllers.Api
 		}
 
         // GET api/users
-		[Http.Permit(UserFunctionalArea.Users, Permissions.Read)]
+		[Http.Permit(UserFeature.Users, Permissions.Read)]
         public IEnumerable<UserDto> Get()
 		{
 			return userRep.FindAll().Select(u => (UserDto)u);
@@ -33,7 +33,7 @@ namespace Harbor.UI.Controllers.Api
 
 
         // GET api/users/5
-		// [Http.Permit(UserFunctionalArea.Users, Permissions.Read)]
+		// [Http.Permit(UserFeature.Users, Permissions.Read)]
 		[Authorize]
         public HttpResponseMessage Get(string userName)
         {
@@ -46,7 +46,7 @@ namespace Harbor.UI.Controllers.Api
         }
 
         // POST api/users
-		[Http.Permit(UserFunctionalArea.Users, Permissions.Create)]
+		[Http.Permit(UserFeature.Users, Permissions.Create)]
 		public HttpResponseMessage Post(UserDto user)
         {
 			var userDo = (Domain.Security.User)user;
@@ -67,7 +67,7 @@ namespace Harbor.UI.Controllers.Api
         }
 
         // PUT api/users/5
-		[Http.Permit(UserFunctionalArea.Users, Permissions.Update)]
+		[Http.Permit(UserFeature.Users, Permissions.Update)]
 		public HttpResponseMessage Put(UserDto user)
         {
 			var userDo = userRep.FindUserByName(user.userName, readOnly: false);
@@ -94,7 +94,7 @@ namespace Harbor.UI.Controllers.Api
         }
 
         // DELETE api/users/5
-		[Http.Permit(UserFunctionalArea.Users, Permissions.Delete)]
+		[Http.Permit(UserFeature.Users, Permissions.Delete)]
 		public HttpResponseMessage Delete(string userName)
         {
 			var userDo = userRep.FindUserByName(userName);

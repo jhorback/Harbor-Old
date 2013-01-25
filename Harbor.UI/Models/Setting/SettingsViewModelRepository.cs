@@ -26,9 +26,9 @@ namespace Harbor.UI.Models.Setting
 			var user = userRepository.FindUserByName(currentUserName);
 			var model = new SettingsViewModel
 			    {
-					CanViewUsers = user.HasPermission(UserFunctionalArea.Users, Permissions.Read),
-					CanUpdateSystemSettings = user.HasPermission(UserFunctionalArea.SystemSettings, Permissions.Read),
-					CanUpdateSiteSettings = user.HasPermission(UserFunctionalArea.SiteSettings, Permissions.Read)
+					CanViewUsers = user.HasPermission(UserFeature.Users, Permissions.Read),
+					CanUpdateSystemSettings = user.HasPermission(UserFeature.SystemSettings, Permissions.Read),
+					CanUpdateSiteSettings = user.HasPermission(UserFeature.SiteSettings, Permissions.Read)
 			    };
 
 			var homePageID = harborAppRepository.GetApp().HomePageID;

@@ -8,17 +8,17 @@ namespace Harbor.UI
 {
 	public class PagePermitAttribute : ActionFilterAttribute
 	{
-		PageFunctionalArea functionalArea;
+		PageFeature feature;
 		Permissions permissions;
 
 		public PagePermitAttribute(Permissions permissions)
-			: this(PageFunctionalArea.Page, permissions)
+			: this(PageFeature.Page, permissions)
 		{
 		}
 
-		public PagePermitAttribute(PageFunctionalArea functionalArea, Permissions permissions)
+		public PagePermitAttribute(PageFeature feature, Permissions permissions)
 		{
-			this.functionalArea = functionalArea;
+			this.feature = feature;
 			this.permissions = permissions;
 		}
 
@@ -35,7 +35,7 @@ namespace Harbor.UI
 			var userName = filterContext.HttpContext.User.Identity.Name;
 			var pageID = Convert.ToInt32(filterContext.RouteData.Values["id"]);
 			var page = PageRepository.FindById(pageID);
-			if (page != null && page.HasPermission(userName, this.functionalArea, this.permissions) == false)
+			if (page != null && page.HasPermission(userName, this.feature, this.permissions) == false)
 				filterContext.Result = new HttpUnauthorizedResult();
 		}
 	}

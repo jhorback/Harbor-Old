@@ -39,7 +39,7 @@ namespace Harbor.UI.Controllers.Api
 			return Request.CreateOKResponse((PageDto)page);
         }
 
-		[Http.Permit(UserFunctionalArea.Pages, Permissions.Create)]
+		[Http.Permit(UserFeature.Pages, Permissions.Create)]
 		public HttpResponseMessage Post(PageDto page)
         {
 			var pageDO = (Page)page;

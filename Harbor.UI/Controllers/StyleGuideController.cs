@@ -8,7 +8,7 @@ using Harbor.UI.Models.StyleGuide;
 
 namespace Harbor.UI.Controllers
 {
-	[Permit(UserFunctionalArea.SystemSettings, Permissions.Read)]
+	[Permit(UserFeature.SystemSettings, Permissions.Read)]
 	public class StyleGuideController : Controller
 	{
 		StyleGuidePageRepository repository;
