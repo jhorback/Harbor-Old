@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Web.Http;
-using AutoMapper;
-using Harbor.Domain.Pages;
 using System.Linq;
+using AutoMapper;
 
 namespace Harbor.UI.Models
 {
@@ -10,7 +8,7 @@ namespace Harbor.UI.Models
 	{
 		public void Execute()
 		{
-			Mapper.CreateMap<Page, PageDto>()
+			Mapper.CreateMap<Domain.Pages.Page, PageDto>()
 				.ForMember(dest => dest.id, opt => opt.MapFrom(src => src.PageID))
 				.ForMember(dest => dest.author, opt => opt.MapFrom(src => src.AuthorsUserName))
 				.ForMember(dest => dest.published, opt => opt.MapFrom(src => src.Public))
@@ -19,7 +17,7 @@ namespace Harbor.UI.Models
 				.ForMember(dest => dest.modified, opt => opt.MapFrom(src => src.Modified.ToShortDateString()))
 				;
 
-			Mapper.CreateMap<PageDto, Page>()
+			Mapper.CreateMap<PageDto, Domain.Pages.Page>()
 				.ForMember(dest => dest.AuthorsUserName, opt => opt.MapFrom(src => src.author))
 				.ForMember(dest => dest.Public, opt => opt.MapFrom(src => src.published))
 				.ForMember(dest => dest.Properties, opt => opt.MapFrom(src => src.properties))
@@ -66,14 +64,14 @@ namespace Harbor.UI.Models
 		public TemplateDto template { get; set; }
 		public List<PagePropertyDto> properties { get; set; }
 
-		public static implicit operator PageDto(Page page)
+		public static implicit operator PageDto(Domain.Pages.Page page)
 		{
-			return Mapper.Map<Page, PageDto>(page);
+			return Mapper.Map<Domain.Pages.Page, PageDto>(page);
 		}
 
-		public static implicit operator Page(PageDto page)
+		public static implicit operator Domain.Pages.Page(PageDto page)
 		{
-			return Mapper.Map<PageDto, Page>(page);
+			return Mapper.Map<PageDto, Domain.Pages.Page>(page);
 		}
 	}
 }

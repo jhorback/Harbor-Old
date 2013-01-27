@@ -33,8 +33,9 @@
 	<header class="page-header @layoutClassNames">
 		@if (Model.Template.Header != null)
 		{
+			var header = Model.Template.Header;
 			<div class="uic" id="@Model.Template.Header.uicid" data-type="@Model.Template.Header.key">
-				@Html.ComponentPartial(Model.Template.Header, Model)
+				@Html.PageComponent(Model.PageID, header.key, header.uicid)
 			</div>
 		}
 	</header>
@@ -44,7 +45,7 @@
 			@foreach (var item in Model.Template.Aside)
 			{
 				<div class="uic" id="@item.uicid" data-type="@item.key">
-					@Html.ComponentPartial(item, Model)
+					@Html.PageComponent(Model.PageID, item.key, item.uicid)
 				</div>	
 			}
 		</aside>	 
@@ -53,7 +54,7 @@
 			@foreach (var item in Model.Template.Content)
 			{
 				<div class="uic @String.Join(" ", item.classNames)" id="@item.uicid" data-type="@item.key">
-					@Html.ComponentPartial(item, Model)
+					@Html.PageComponent(Model.PageID, item.key, item.uicid)
 				</div>
 			}
 		</div>

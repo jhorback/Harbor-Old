@@ -32,7 +32,7 @@ var PageEditor = {
 			$el;
 		if (!comp) {
 			$el = $("#" + uicid);
-			compType = PageEditor.componentTypes[$el.data("type")] || ContentComponent;
+			compType = PageEditor.componentTypes[$el.data("type")] || PageComponent;
 			
 			comp = new compType({
 				type: compType,
@@ -62,7 +62,6 @@ var PageEditor = {
 	createComponent: function  (uicid) {
 		var comp = PageEditor.getComponent(uicid);
 		comp.create();
-		comp.open(); // need create then open? jch!
 		comp.$el.fadeIn();
 		return comp;
 	},

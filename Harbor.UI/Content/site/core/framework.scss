@@ -10,7 +10,7 @@
 @mixin framework-formatting {
 	.clear			{ clear: both }
 	.stretch		{ width: 100% !important; }
-	.fit			{ max-width:100%; display:block; border:0; }
+	.fit			{ max-width:100%; border:0; } // display:block; 
 	.centered		{ margin: auto; }
 	.display-none	{ display: none; }
 	.display-block	{ display: block; }

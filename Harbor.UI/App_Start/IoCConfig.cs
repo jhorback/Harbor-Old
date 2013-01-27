@@ -32,7 +32,7 @@ namespace Harbor.UI
 
 				// add the bootstrapper tasks to the container
 				scan.AddAllTypesOf<IBootstrapperTask>();
-				scan.AddAllTypesOf<PageComponent>();
+				scan.AddAllTypesOf<PageComponentType>();
 			}));
 
 			return ObjectFactory.Container;

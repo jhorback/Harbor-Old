@@ -1,14 +1,34 @@
-﻿
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
 namespace Harbor.Domain.Pages
 {
-	/// <summary>
-	/// Defines a component that can be added to a document.
-	/// </summary>
-	public abstract class PageComponent
+	public class PageComponent
 	{
-		public abstract string Key { get; }
-		public abstract string Type { get; }
-		public abstract string Name { get; }
-		public abstract string Description { get; }
+		public PageComponent(Page page, string uicid)
+		{
+			Page = page;
+			UicID = uicid;
+		}
+
+		public Page Page { get; set; }
+		public string UicID { get; set; }
+
+		public bool HasProperty(string name)
+		{
+			return GetProperty(name) != null;
+		}
+
+		public string GetProperty(string name)
+		{
+			return Page.GetUICProperty(UicID, name);
+		}
+
+		public void SetProperty(string name, string value)
+		{
+			Page.SetUICProperty(UicID, name, value);
+		}
 	}
 }

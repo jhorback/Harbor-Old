@@ -63,7 +63,7 @@ PageEditor.on("componentDeleted", function (page, uicid) {
 /*
 
 
-var TextComponent = ContentComponent.extend({
+var TextComponent = PageComponent.extend({
 	create: function () {
 		this.open();
 	},

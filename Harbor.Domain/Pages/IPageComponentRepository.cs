@@ -10,7 +10,7 @@ namespace Harbor.Domain.Pages
 		/// Returns all components.
 		/// </summary>
 		/// <returns></returns>
-		List<PageComponent> GetAllComponents();
+		List<PageComponentType> GetAllComponents();
 
 		/// <summary>
 		/// Returns all header components.
@@ -35,7 +35,7 @@ namespace Harbor.Domain.Pages
 		/// </summary>
 		/// <param name="key"></param>
 		/// <returns></returns>
-		PageComponent GetComponent(string key);
+		PageComponentType GetComponent(string key);
 
 
 	}

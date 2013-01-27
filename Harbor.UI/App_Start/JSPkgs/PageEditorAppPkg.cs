@@ -11,7 +11,7 @@ namespace Harbor.UI.JSPkgs
 		{
 			Name = PackageName;
 			ScriptBundle = new AppScriptBundle(PackageName);
-			Templates = new JstTemplateAction("Page/PageEditorTemplates");
+			Templates = new JstTemplateAction("PageEditor/PageEditorTemplates");
 			Category = Categories.Apps;
 
 			AddDependency(RedactorPkg.PackageName);

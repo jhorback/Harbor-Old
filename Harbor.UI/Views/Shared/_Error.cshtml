@@ -3,10 +3,10 @@
 <div class="errorpage">
 	<h1>Server Error</h1>
 	<div class="errorpage-content">
-		<h2>@Html.JstPropFor(m => m.exception)</h2>
+		<h2>@Html.JstPropFor(m => m.exception, clientBinding: true)</h2>
 		<p class="errorpage-details">
-			@Html.JstPropFor(m => m.exceptionType)
-			@Html.JstPropFor(m => m.stackTrace)
+			@Html.JstPropFor(m => m.exceptionType, clientBinding: true)
+			@Html.JstPropFor(m => m.stackTrace, clientBinding: true)
 		</p>
 	</div>
 </div>

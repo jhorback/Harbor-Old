@@ -5,14 +5,14 @@ namespace Harbor.Domain.Pages
 {
 	public class PageComponentRepository : IPageComponentRepository
 	{
-		List<PageComponent> components;
+		List<PageComponentType> components;
 
-		public List<PageComponent> GetAllComponents()
+		public List<PageComponentType> GetAllComponents()
 		{
 			return components;
 		}
 
-		public PageComponentRepository(List<PageComponent> components)
+		public PageComponentRepository(List<PageComponentType> components)
 		{
 			this.components = components;
 		}
@@ -32,7 +32,7 @@ namespace Harbor.Domain.Pages
 			throw new NotImplementedException();
 		}
 
-		public PageComponent GetComponent(string key)
+		public PageComponentType GetComponent(string key)
 		{
 			throw new NotImplementedException();
 		}

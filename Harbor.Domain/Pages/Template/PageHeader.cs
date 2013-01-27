@@ -7,5 +7,11 @@ namespace Harbor.Domain.Pages
 {
 	public class PageHeader : PageUIC
 	{
+		public PageHeader() {}
+
+		public PageHeader(string type)
+		{
+			this.key = type;
+		}
 	}
 }

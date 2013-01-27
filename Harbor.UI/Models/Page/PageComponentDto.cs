@@ -7,8 +7,8 @@ namespace Harbor.UI.Models
 	{
 		public void Execute()
 		{
-			Mapper.CreateMap<PageComponent, PageComponentDto>();
-			Mapper.CreateMap<PageComponentDto, PageComponent>();
+			Mapper.CreateMap<PageComponentType, PageComponentDto>();
+			Mapper.CreateMap<PageComponentDto, PageComponentType>();
 		}
 	}
 
@@ -19,14 +19,14 @@ namespace Harbor.UI.Models
 		public string name { get; set; }
 		public string description { get; set; }
 
-		public static implicit operator PageComponentDto(PageComponent component)
+		public static implicit operator PageComponentDto(PageComponentType componentType)
 		{
-			return Mapper.Map<PageComponent, PageComponentDto>(component);
+			return Mapper.Map<PageComponentType, PageComponentDto>(componentType);
 		}
 
-		public static implicit operator PageComponent(PageComponentDto component)
+		public static implicit operator PageComponentType(PageComponentDto component)
 		{
-			return Mapper.Map<PageComponentDto, PageComponent>(component);
+			return Mapper.Map<PageComponentDto, PageComponentType>(component);
 		}
 	}
 }

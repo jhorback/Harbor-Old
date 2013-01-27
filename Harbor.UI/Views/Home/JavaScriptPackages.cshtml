@@ -53,13 +53,13 @@
 	<section>
 		Packages not requiring registration are: <strong>@string.Join(", ", (string[])ViewBag.NonRequiredPackages)</strong>.
 	</section>
-	<section class="datalist">
+	<sectio class="datalist">
 		<ul class="stretch">
-			<li class="heading">
+			@*<li class="heading">
 				<span class="col">Package Name</span>
 				<span class="col">Contents</span>
 				<span class="col">Dependencies</span>
-			</li>
+			</li>*@
 			@foreach (var group in Model)
 			{
 				<li class="group">
@@ -71,19 +71,22 @@
 				{
 					var pkg = JavaScriptPackageDto.FromIJavaScriptPackage(item);
 					<li>
-						<span class="col">@pkg.name</span>
+						<span class="col loud">@pkg.name</span>
 						<span class="col" title="@getPkgContentsTitle(pkg)">@getPkgContents(pkg)</span>
 						<span class="col">
 							@if (pkg.dependencies != null && pkg.dependencies.Length > 0)
 							{
-								@String.Join(", ", pkg.dependencies)
+								@Html.Raw("Dependent on ")
+								<span class="loud">
+									@String.Join(", ", pkg.dependencies)
+								</span>
 							}
 						</span>
 					</li>
 				}
 			}
 		</ul>
-	</section>
+	</sectio>
 </div>
 @section scripts {
 	<script>

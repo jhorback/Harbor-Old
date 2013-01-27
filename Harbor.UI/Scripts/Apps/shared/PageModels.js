@@ -109,9 +109,10 @@ PageModels.Page = Application.Model.extend({
 	
 	getProperty: function (name) {
 		var props = this.get("properties");
-		return _.find(props, function (item) {
+		var prop = _.find(props, function (item) {
 			return item.name === name;
 		});
+		return prop ? prop.value : null;
 	},
 	
 	setProperty: function (name, value) {

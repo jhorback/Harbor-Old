@@ -15,13 +15,14 @@ namespace Harbor.UI.Extensions
 		/// <typeparam name="TProperty"></typeparam>
 		/// <param name="helper"></param>
 		/// <param name="expression"></param>
-		/// <param name="defaultValue"></param>
+		/// <param name="clientBinding"> </param>
 		/// <returns></returns>
-		public static MvcHtmlString JstPropFor<TModel, TProperty>(this HtmlHelper<TModel> helper, Expression<Func<TModel, TProperty>> expression, object defaultValue = null)
+		public static MvcHtmlString JstPropFor<TModel, TProperty>(this HtmlHelper<TModel> helper,
+			Expression<Func<TModel, TProperty>> expression, bool clientBinding = false)
 		{
 			string html = "";
 			string propName = "";
-			object propValue = defaultValue;
+			object propValue = "";
 
 			
 			// get the property name
@@ -36,12 +37,24 @@ namespace Harbor.UI.Extensions
 			var metaData = helper.ViewContext.ViewData.ModelMetadata;
 			if (metaData != null)
 				propValue = expression.Compile().Invoke((TModel)metaData.Model);
-				
-			if (propValue == null)
-				propValue = "";
 
+			if (clientBinding == true)
+			{
+				html = string.Format(@"<span data-bind=""{0}"">{1}</span>", propName, propValue ?? "");			
+			}
+			else
+			{
+				// jch! how to tell if from server or client? - testing this now
+				if (metaData != null)
+				{
+					html = propValue as string;
+				}
+				else
+				{
+					html = "{{" + propName + "}}";					
+				}
+			}
 
-			html = string.Format(@"<span data-bind=""{0}"">{1}</span>", propName, propValue);
 			return new MvcHtmlString(html);
 		}
 	}

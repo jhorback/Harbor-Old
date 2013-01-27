@@ -1,6 +1,7 @@
 ﻿
 // type, $el, uicid, page
-var ImageComponent = ContentComponent.extend({
+var ImageComponent = PageComponent.extend({
+	
 	create: function () {
 		this.open().openFileSelector();
 	},
@@ -8,8 +9,7 @@ var ImageComponent = ContentComponent.extend({
 	open: function () {
 		this.view = new ImageComponent.View({
 			el: this.$el,
-			model: this.page,
-			uicid: this.uicid
+			model: this.constructModel(ImageComponent.ImageModel)
 		});
 		
 		JSPM.install("FileSelector", function () {
@@ -25,9 +25,32 @@ var ImageComponent = ContentComponent.extend({
 });
 
 
+
+ImageComponent.ImageModel = Application.Model.extend({
+	pageProperties: {
+		fileID: null,
+		max: null
+	},
+	defaults: {
+		fileID: null,
+		imgSrc: null,
+		max: null,
+		maxClass: null
+	},
+	imgSrc: {
+		get: function () {
+			var fileID = this.get("fileID");
+			return Application.url("file/" + fileID + ".jpg?max=" + 500);
+		}
+	},
+	hasImage: function () {
+		return this.get("fileID") ? true : false;
+	}
+});
+
+
 ImageComponent.View = Application.View.extend({
 	initialize: function () {
-		
 	},
 	
 	events: {
@@ -41,19 +64,10 @@ ImageComponent.View = Application.View.extend({
 	},
 	
 	renderImage: function () {
-		// jch! image.js - pull in the FileModel to get the url
-		// think about how to allow the user to change the image size.
-		var prop = this.model.getProperty(this.options.uicid + "-fileID"), // jch! - helper method for this
-		    model;
-		
-		if (!prop) {
+		if (this.model.hasImage() === false) {
 			return;
 		}
-		model = {
-			url: Application.url("file/" + prop.value + ".jpg?max=" + 500),
-			maxClass: "jch!DOTHIS"
-		};
-		this.renderTemplate("Comps-Image")(model);
+		this.renderTemplate("Comps-Image")(this.model.toJSON());
 	},
 	
 	openFileSelector: function () {
@@ -64,7 +78,7 @@ ImageComponent.View = Application.View.extend({
 				PageEditor.regions.page.showEl();
 			},
 			select: function (selectedFile) {
-				this.model.setProperty(this.options.uicid + "-fileID", selectedFile.get("id")); // jch! - helper method on component for this!
+				this.model.set("fileID", selectedFile.get("id"));
 				AjaxRequest.handle(this.model.save()).then(_.bind(this.renderImage, this));
 			}
 		}, this);

@@ -33,6 +33,7 @@ namespace Harbor.UI
 			WebApiConfig.Register(GlobalConfiguration.Configuration);
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
 			PackageConfig.RegisterPackages(PackageTable.Packages, BundleTable.Bundles);
+			ModelBinderConfig.RegisterModelBinders(ModelBinders.Binders);
 			DbConfig.SetupDatabase();
 			Bootstrapper.ExecuteTasks();
 		}

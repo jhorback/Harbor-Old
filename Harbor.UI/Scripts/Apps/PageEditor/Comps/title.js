@@ -1,5 +1,5 @@
 ﻿
-var TitleComponent = ContentComponent.extend({
+var TitleComponent = PageComponent.extend({
 	create: function () {
 		this.open();
 	},

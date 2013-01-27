@@ -2,20 +2,20 @@
 
 namespace Harbor.Domain.Pages.Components
 {
-	public class Text : ContentComponent
+	public class Image : ContentComponent
 	{
-		public const string KEY = "text";
+		public const string KEY = "image";
 
 		public override string Key
 		{
-			get { return Text.KEY; }
+			get { return Image.KEY; }
 		}
 
 		public override string Name
 		{
 			get
 			{
-				return "Text";
+				return "Image";
 			}
 		}
 
@@ -23,7 +23,7 @@ namespace Harbor.Domain.Pages.Components
 		{
 			get
 			{
-				return "A rich text editor.";
+				return "A .jpg, .png, .gif, .bmp, or .tiff file.";
 			}
 		}
 	}

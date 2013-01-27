@@ -29,38 +29,32 @@ namespace Harbor.Domain.Pages
 			return this;
 		}
 
-		public PageTypeContext SetHeader(string key)
+		public PageTypeContext SetHeader(string type)
 		{
-			var header = new PageHeader
-			{
-				key = key
-			};
+			var header = new PageHeader(type);
 
 			template.Header = header;
 			return this;
 		}
 
-		public PageTypeContext AddAside(string key)
+		public PageTypeContext AddAside(string type)
 		{
-			var item = new PageAside 
-			{
-				key = key
-			};
+			var item = new PageAside(type);
 
 			template.Aside.Add(item);
 			return this;
 		}
 
-		public PageTypeContext AddContent(string key)
+		public PageTypeContext AddContent(string type)
 		{
-			return AddContent(key, new[] { ContentClassNames.Col1 });
+			return AddContent(type, new[] { ContentClassNames.Col1 });
 		}
 
-		public PageTypeContext AddContent(string key, string[] classNames)
+		public PageTypeContext AddContent(string type, string[] classNames)
 		{
 			var item = new PageContent
 			{
-				key = key,
+				key = type,
 				classNames = classNames
 			};
 

@@ -7,5 +7,11 @@ namespace Harbor.Domain.Pages
 {
 	public class PageAside : PageUIC
 	{
+		public PageAside() { }
+
+		public PageAside(string type)
+		{
+			key = type;
+		}
 	}
 }
