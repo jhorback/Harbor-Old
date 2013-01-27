@@ -391,7 +391,7 @@
     <Content Include="Scripts\Apps\PageEditor\Comps\image.js" />
     <Content Include="Scripts\Apps\PageEditor\Comps\title.js" />
     <Content Include="Scripts\Apps\PageEditor\Comps\links.js" />
-    <Content Include="Scripts\Apps\PageEditor\Comps\ContentComponent.js" />
+    <Content Include="Scripts\Apps\PageEditor\PageComponent.js" />
     <Content Include="Scripts\Apps\PageEditor\Comps\text.js" />
     <Content Include="Scripts\Apps\PageEditor\ChangeLayoutView.js" />
     <Content Include="Scripts\Apps\PageEditor\EditView.js" />

@@ -2,10 +2,12 @@
 var FileSelector = new Application({
 	
 	start: function (options, callbackContext) {
-		// options: region, close, select
+		// options: region, close, select, filter: none, images
 		
 		var files = new FileModel.Files(),
-			mainViewModel = new FileSelector.MainViewModel(),
+			mainViewModel = new FileSelector.MainViewModel({
+				title: options.filter === "images" ? "Images" : "Files"
+			}),
 			mainView = new FileSelector.MainView({
 				model: mainViewModel,
 				collection: files
@@ -15,7 +17,8 @@ var FileSelector = new Application({
 		mainView.on("select", options.select, callbackContext);
 		files.fetch({
 			data: {
-				orderDesc: "modified"
+				orderDesc: "modified",
+				filter: options.filter
 			}
 		});
 	},
@@ -90,6 +93,7 @@ FileSelector.MainView = Application.View.extend({
 
 FileSelector.MainViewModel = Application.Model.extend({
 	defaults: {
+		title: "Files",
 		search: null
 	}		
 });

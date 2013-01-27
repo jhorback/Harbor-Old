@@ -24,32 +24,32 @@
 		editLink: null
 	},
 	
-	href: {
-		get: function (value) {
-			return value && Application.url(value);
-		},
-		set: function (value) {
-			return value;
-		}
-	},
-	
-	lowResUrl: {
-		get: function (value) {
-			return value && Application.url(value);
-		}
-	},
-	
-	highResUrl: {
-		get: function (value) {
-			return value && Application.url(value);
-		}
-	},
-	
-	thumbUrl: {
-		get: function (value) {
-			return value && Application.url(value);
-		}
-	},
+//	href: {
+//		get: function (value) {
+//			return value && Application.url(value);
+//		},
+//		set: function (value) {
+//			return value;
+//		}
+//	},
+//	
+//	lowResUrl: {
+//		get: function (value) {
+//			return value && Application.url(value);
+//		}
+//	},
+//	
+//	highResUrl: {
+//		get: function (value) {
+//			return value && Application.url(value);
+//		}
+//	},
+//	
+//	thumbUrl: {
+//		get: function (value) {
+//			return value && Application.url(value);
+//		}
+//	},
 	
 	editLink: {
 		get: function () {

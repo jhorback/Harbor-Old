@@ -58,6 +58,11 @@
 	
 	.height-5em		{ @include height(5em); }
 	.height-10em	{ @include height(10em); }
+	.max-100 { max-width: 100px; max-height: 100px }
+	.max-250 { max-width: 250px; max-height: 250px }
+	.max-500 { max-width: 500px; max-height: 500px }
+	.max-750 { max-width: 750px; max-height: 750px }
+	.max-1000 { max-width: 1000px; max-height: 1000px }
 }
 
 

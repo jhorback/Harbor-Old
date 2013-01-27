@@ -7,16 +7,18 @@ namespace Harbor.Domain.Files
 {
 	public class FileQuery : RepositoryQuery<File>
 	{
-		public FileQuery()
+		public FileQuery() : this(null)
 		{
 		}
 
 		public FileQuery(QueryAdjustment<File> startingQuery)
 			: base(startingQuery)
 		{
+			Filter = FileTypeFilter.None;
 		}
 
 		public string Name { get; set; }
+		public FileTypeFilter Filter { get; set; }
 		public string CurrentUserName { get; set; }
 
 		public new IEnumerable<File> Query(IQueryable<File> queryable)
@@ -30,9 +32,20 @@ namespace Harbor.Domain.Files
 
 			if (string.IsNullOrEmpty(CurrentUserName) == false)
 				queryable = queryable.Where((p => p.UserName == CurrentUserName));
-			
+
+			if (Filter == FileTypeFilter.Images)
+			{
+				queryable = queryable.Where(f => File.BitmapExtensions.Any(e => e == f.Ext));
+			}
+
 			var results = queryable.ToList();
 			return results;
 		}
+	}
+
+	public enum FileTypeFilter
+	{
+		None,
+		Images
 	}
 }

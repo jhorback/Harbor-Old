@@ -19,8 +19,9 @@ _.extend(PageComponent.prototype, {
 
 		var model = new modelType({ uicid: this.uicid });
 		model.save = _.bind(this.save, this);
-		_.each(model.pageProperties, function (value, attrName) {
-			model.set(attrName, this.getProperty(attrName));
+		_.each(model.pageProperties, function (defaultValue, attrName) {
+			var attrValue = this.getProperty(attrName);
+			model.set(attrName, attrValue === null ? defaultValue : attrValue );
 			model.on("change:" + attrName, function (model, value) {
 				this.setProperty(attrName, value);
 			}, this);

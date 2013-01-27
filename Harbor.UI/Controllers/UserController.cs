@@ -125,19 +125,20 @@ namespace Harbor.UI.Controllers
 
 		// will have ext and perhaps name as well
 		[FilePermit(Permissions.Read)]
-		public ActionResult Download(string id, FileResolution res = FileResolution.Original, string name = null)
+		public ActionResult Download(string id, FileResolution res = FileResolution.Original, int? max = null, string name = null)
 		{
 			var file = fileRep.FindById(id);
 			if (file == null)
 				return new HttpStatusCodeResult(HttpStatusCode.NotFound);
-			var path = file.GetPhysicalPath(res);
+			var path = file.GetPhysicalPath(res, max);
 			return File(path, file.ContentType);
 
 		}
 
 		public ActionResult Thumbnail(string name)
 		{
-			var path = "../" + FileUrls.GetThumbUrl(name);
+			// jch! test Thumbnail("doc");
+			var path = FileUrls.GetThumbUrl(name);
 			return File(path, "image/png");
 		}
     }

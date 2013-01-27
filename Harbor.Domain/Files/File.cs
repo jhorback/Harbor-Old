@@ -127,18 +127,29 @@ namespace Harbor.Domain.Files
 		#endregion
 
 		#region methods
+
 		/// <summary>
 		/// Returns the path to the specified resolution of the file in the form of:
 		/// c:/.../App_Data/users/[username]/[id]-[res].ext
 		/// Only returns the -low and -high res paths if ResolutionsCreated indicates the file exists.
 		/// </summary>
 		/// <param name="resolution"> </param>
+		/// <param name="max">Uses the number to determine the best resolution (takes precidence over resolution).</param>
 		/// <returns></returns>
 		/// <exception cref="InvalidOperationException">If no UserName or Name.</exception>
-		public string GetPhysicalPath(FileResolution resolution = FileResolution.Original)
+		public string GetPhysicalPath(FileResolution resolution = FileResolution.Original, int? max = null)
 		{
 			if (string.IsNullOrEmpty(UserName) || string.IsNullOrEmpty(Name))
 				throw new InvalidOperationException("A File needs an owner and name to determine it's path.");
+
+			if (max <= HIGHRES && max > LOWRES)
+			{
+				resolution = FileResolution.High;
+			}
+			else if (max <= LOWRES)
+			{
+				resolution = FileResolution.Low;
+			}
 
 			var usersFolder = UsersFolderPhysicalPath() + UserName + "/";
 			var res = "";
@@ -177,9 +188,10 @@ namespace Harbor.Domain.Files
 
 		public bool IsBitmap()
 		{
-			var bitmapExtensions = new string[] { ".bmp", ".gif", ".exif", ".jpg", ".png", ".tiff" };
-			return bitmapExtensions.Contains( Ext.ToLower());
+			return BitmapExtensions.Contains( Ext.ToLower());
 		}
+
+		public static string[] BitmapExtensions = new string[] { ".bmp", ".gif", ".exif", ".jpg", ".png", ".tiff" };
 		#endregion
 	}
 }
