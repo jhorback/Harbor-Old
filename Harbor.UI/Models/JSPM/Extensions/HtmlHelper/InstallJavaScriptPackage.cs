@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Text;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
+using System.Web.Optimization;
 
 namespace Harbor.UI.Models.JSPM.Extensions
 {
@@ -17,26 +17,22 @@ namespace Harbor.UI.Models.JSPM.Extensions
 		public static MvcHtmlString InstallJavaScriptPackage(this HtmlHelper helper, string packageName)
 		{
 			var sPackage = PackageTable.Packages.GetPackage(packageName);
-			if (sPackage == null) 
+			if (sPackage == null)
 				throw new Exception("The package to install could not be found: " + packageName);
 
-			var package = JavaScriptPackageDto.FromIJavaScriptPackage(sPackage);
 			var sb = new StringBuilder();
 
-			if (package.dependencies != null)
+			if (sPackage.Dependencies != null)
 			{
-				foreach (var d in package.dependencies)
+				foreach (var d in sPackage.Dependencies)
 				{
 					sb.Append(InstallJavaScriptPackage(helper, d));
 				}
 			}
 
-			if (package.styles != null)
+			if (sPackage.StyleBundle != null)
 			{
-				foreach (var s in package.styles)
-				{
-					sb.Append(string.Format("<link href=\"{0}\" rel=\"stylesheet\"/>\r\n", s));
-				}
+				sb.Append(Styles.Render(sPackage.StyleBundle.Path));
 			}
 
 			if (sPackage.Templates != null)
@@ -46,13 +42,9 @@ namespace Harbor.UI.Models.JSPM.Extensions
 				sb.Append(templates);
 			}
 
-
-			if (package.scripts != null)
+			if (sPackage.ScriptBundle != null)
 			{
-				foreach (var s in package.scripts)
-				{
-					sb.Append(string.Format("<script src=\"{0}\"></script>\r\n", s));
-				}
+				sb.Append(Scripts.Render(sPackage.ScriptBundle.Path));
 			}
 
 			if (sPackage.RequiresRegistration)
