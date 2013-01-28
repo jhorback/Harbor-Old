@@ -22,7 +22,7 @@ namespace Harbor.UI.Controllers
 		{
 			if (image.HasProperty("fileID") == false)
 			{
-				return PartialView("ImageNone");
+				return PartialView("Image-None");
 			}
 
 			var fileID = image.GetProperty("fileID");

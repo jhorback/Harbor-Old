@@ -116,19 +116,16 @@ PageModels.Page = Application.Model.extend({
 	},
 	
 	setProperty: function (name, value) {
-		var props = this.get("properties"),
-			prop = _.find(props, function (item) {
-				return item.name === name;
-			});
+		var props;
 		
-		if (prop) {
-			prop.value = value;
-		} else {
-			props.push({
-				name: name,
-				value: value
-			});
-		}
+		this.deleteProperty(name);
+		props = this.get("properties");
+
+		props.push({
+			name: name,
+			value: value
+		});
+		
 		this.set("properties", props);
 	},
 	
@@ -139,7 +136,6 @@ PageModels.Page = Application.Model.extend({
 		while (len--) {
 			if (props[len].name === name) {
 				props.splice(len, 1);
-				break;
 			}
 		}
 		this.set("properties", props);

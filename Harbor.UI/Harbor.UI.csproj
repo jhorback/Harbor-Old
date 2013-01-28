@@ -484,7 +484,8 @@
     <Content Include="Views\FileSelector\_Main.cshtml" />
     <Content Include="Views\FileSelector\_ListItem.cshtml" />
     <Content Include="Views\FileSelector\FileSelectorTemplates.cshtml" />
-    <Content Include="Views\Page\ImageNone.cshtml" />
+    <Content Include="Views\Page\Image-None.cshtml" />
+    <Content Include="Views\Page\Image-Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\users\" />

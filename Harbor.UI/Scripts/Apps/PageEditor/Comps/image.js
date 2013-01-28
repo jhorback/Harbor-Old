@@ -65,25 +65,34 @@ ImageComponent.ImageModel = Application.Model.extend({
 
 ImageComponent.View = Application.View.extend({
 	initialize: function () {
+		this.listenTo(this.model, "change:max", this.save);
 	},
 	
 	events: {
-		"click [data-rel=image]": function () {
+		"click [data-rel=select]": function () {
 			this.openFileSelector();
 		}
 	},
 	
 	render: function () {
-		
+		var editDiv =  this.template("Image-Edit")();
+		var imgCtr = this.$("[data-rel=image]");
+		imgCtr.after(editDiv);
+		this.bindModelToView();
 	},
 	
 	renderImage: function () {
 		if (this.model.hasImage() === false) {
 			return;
 		}
-		this.renderTemplate("Comps-Image")(this.model.toJSON());
+		this.renderTemplate("Image")(this.model.toJSON());
+		this.render();
 	},
 	
+	save: function () {
+		AjaxRequest.handle(this.model.save()).then(_.bind(this.renderImage, this));
+	},
+
 	openFileSelector: function () {
 		PageEditor.regions.page.hideEl();
 		FileSelector.start({
@@ -99,9 +108,13 @@ ImageComponent.View = Application.View.extend({
 					name: selectedFile.get("name"),
 					max: 500
 				});
-				AjaxRequest.handle(this.model.save()).then(_.bind(this.renderImage, this));
+				this.save();
 			}
 		}, this);
+	},
+	
+	onClose: function () {
+		this.$("[data-rel=edit]").remove();
 	}
 });
 

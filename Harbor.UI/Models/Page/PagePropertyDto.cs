@@ -21,6 +21,12 @@ namespace Harbor.UI.Models
 		public string name { get; set; }
 		public string value { get; set; }
 
+		
+		public new string ToString()
+		{
+			return name + ": " + value;
+		}
+
 		public static implicit operator PagePropertyDto(PageProperty property)
 		{
 			return Mapper.Map<PageProperty, PagePropertyDto>(property);
