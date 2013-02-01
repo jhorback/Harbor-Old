@@ -87,6 +87,10 @@
     <Compile Include="Migrations\201212181425366_FileResolutionsEnum.Designer.cs">
       <DependentUpon>201212181425366_FileResolutionsEnum.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201302012101334_PagePreview.cs" />
+    <Compile Include="Migrations\201302012101334_PagePreview.Designer.cs">
+      <DependentUpon>201302012101334_PagePreview.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AppSettingRepository.cs" />
@@ -128,6 +132,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201212181425366_FileResolutionsEnum.resx">
       <DependentUpon>201212181425366_FileResolutionsEnum.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201302012101334_PagePreview.resx">
+      <DependentUpon>201302012101334_PagePreview.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

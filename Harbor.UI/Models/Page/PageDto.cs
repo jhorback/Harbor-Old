@@ -63,7 +63,12 @@ namespace Harbor.UI.Models
 		public bool published { get; set; }
 		public TemplateDto template { get; set; }
 		public List<PagePropertyDto> properties { get; set; }
-
+		
+		public FileDto previewImage { get; set; }
+		public string previewImageID { get; set; }
+		public string previewText { get; set; }
+		public bool autoPreview { get; set; }
+		
 		public static implicit operator PageDto(Domain.Pages.Page page)
 		{
 			return Mapper.Map<Domain.Pages.Page, PageDto>(page);

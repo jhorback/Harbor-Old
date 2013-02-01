@@ -19,7 +19,7 @@
 			});
 			
 			Session.AjaxRequest.handle(fetchPages).then(function () {
-
+				
 				var mainView = new Pages.MainView({
 					el: $("#frame-body")
 				});

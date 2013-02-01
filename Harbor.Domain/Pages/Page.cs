@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using Harbor.Domain.Files;
 using Harbor.Domain.Security;
 
 namespace Harbor.Domain.Pages
@@ -21,7 +22,7 @@ namespace Harbor.Domain.Pages
 			Public = true;
 			Enabled = true;
 			TemplateStr = "";
-			// Children = new List<Doc>();
+			AutoPreview = true;
 		}
 
 		#region properties
@@ -48,11 +49,18 @@ namespace Harbor.Domain.Pages
 
 		public bool Public { get; set; }
 
+		public Guid? PreviewImageID { get; set; }
+
+		public string PreviewText { get; set; }
+
+		[DefaultValue(true)]
+		public bool AutoPreview { get; set; }
+
 		/// <summary>
 		/// Setting this sets the Template property.
 		/// Get returns Template.ToString().
 		/// </summary>
-		// jch* should make this required during next db migration [Required]
+		[Required]
 		public string TemplateStr
 		{ 
 			get
@@ -80,10 +88,7 @@ namespace Harbor.Domain.Pages
 
 		internal User Author { get; set; }
 		internal Page Parent { get; set; }
-		// public virtual ICollection<Doc> Children { get; set; }
-		// jch - add PreviewImageID -> FileID when files are added
-		// jch - PreviewText -> updated anytime the page is updated.
-		// review naming of PreviewImageID and PreviewText
+		internal File PreviewImage { get; set; }
 		#endregion
 
 		#region methods

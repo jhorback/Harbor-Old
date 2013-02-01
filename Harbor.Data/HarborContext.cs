@@ -58,6 +58,7 @@ namespace Harbor.Data
 					.WithRequired()
 					.HasForeignKey(dp => dp.PageID)
 					.WillCascadeOnDelete();
+				HasOptional(m => m.PreviewImage).WithMany().HasForeignKey(m => m.PreviewImageID);
 				Ignore(m => m.Template);
 			}
 		}

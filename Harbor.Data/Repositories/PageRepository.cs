@@ -45,6 +45,7 @@ namespace Harbor.Data.Repositories
 			var pages =  context.Pages
 				.Include("Properties")
 				.Include("PageRoles")
+				.Include("PreviewImage")
 				.AsQueryable();
 			return pages;
 		}

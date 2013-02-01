@@ -30,6 +30,10 @@ PageModels.Page = Application.Model.extend({
 		published: true,
 		template: null,
 		properties: [],
+		autoPreview: true,
+		previewImageID: null,
+		previewImage: null, // FileDto
+		previewText: "",
 		//
 		link: null,
 		pageTypeDescription: null,
@@ -38,13 +42,19 @@ PageModels.Page = Application.Model.extend({
 	},
 	
 	initialize: function () {
-		var page = this;
+		var page = this, previewImage;
 		
 		this.set("link", this.getUrl());
+		
 		this.template = new PageModels.Template(this.get("template"));
 		this.listenTo(this.template, "change", function () {
 			page.set("template", page.template.toJSON());
 		});
+
+		previewImage = this.get("previewImage");
+		if (previewImage) {
+			this.PreviewImage = new FileModel(previewImage);
+		}
 	},
 	
 	title: {

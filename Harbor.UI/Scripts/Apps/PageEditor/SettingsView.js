@@ -77,8 +77,7 @@ PageEditor.SettingsView = Application.View.extend({
 				PageLoader.regions.main.showEl();
 			},
 			select: function (selectedFile) {
-				var src = selectedFile.get("thumbUrl");
-				this.model.setProperty("thumbSrc", src);
+				this.model.set("previewImageID", selectedFile.get("id"));
 				AjaxRequest.handle(this.model.save());
 			}
 		}, this);
@@ -109,7 +108,11 @@ PageEditor.SettingsModel = Application.Model.extend({
 	},
 	thumbSrc: {
 		get: function (value) {
-			return this.get("page").getProperty("thumbSrc");
+			var previewImage = this.get("page").previewImage;
+			if (!previewImage) {
+				return null;
+			}
+			return previewImage.get("thumbUrl");
 		}
 	},
 	changeThumbButtonText: {
