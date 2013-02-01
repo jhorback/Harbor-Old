@@ -7,6 +7,10 @@
 
 	extension = {
 		close: function () {
+			/// <summary>An option other than remove that does not
+			/// remove the view el and calls an optional 'onClose'
+			/// method when called.
+			/// </summary>
 			this.onClose && this.onClose();
 			this.undelegateEvents();
 			this.off();

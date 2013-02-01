@@ -1,12 +1,19 @@
 ﻿<div class="page-header readable centered">
 	<h1 class="float-left">
-		Settings for
 		<span data-bind="title" data-type="contenteditable" id="page-title" contenteditable></span>
 	</h1>
 	<div class="float-left quiet pad-left pad-top">(click title to rename)</div>
 </div>
 <div class="page-body readable centered">
 	<div class="page-content">
+		<fieldset id="settings-thumb">
+			<div class="float-left" data-bind-class="thumbClass">
+				<img class="max-100" data-bind-src="thumbSrc" />
+			</div>
+			<div class="float-left pad-left">
+				<input type="button" id="settings-changethumb" name="changeThumbButtonText" value="Change image" />
+			</div>
+		</fieldset>
 		<fieldset id="settings-visibility">
 			<legend>Visibility</legend>
 			<div class="pad">

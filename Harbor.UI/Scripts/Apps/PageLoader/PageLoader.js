@@ -27,8 +27,14 @@
 		
 		getPageEl: function () {
 			return pageEl;
+		},
+		
+		regions: {
+			"main": "#pageloader"
 		}
 	};
+	
+	Region.createRegions(PageLoader);
 
 	_.extend(PageLoader, Backbone.Events);
 

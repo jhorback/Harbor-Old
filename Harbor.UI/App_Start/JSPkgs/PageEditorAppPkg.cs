@@ -15,6 +15,7 @@ namespace Harbor.UI.JSPkgs
 			Category = Categories.Apps;
 
 			AddDependency(RedactorPkg.PackageName);
+			AddDependency(FileSelectorAppPkg.PackageName);
 		}
 	}
 }

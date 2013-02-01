@@ -90,16 +90,20 @@ ImageComponent.View = Application.View.extend({
 	},
 	
 	save: function () {
-		AjaxRequest.handle(this.model.save()).then(_.bind(this.renderImage, this));
+		AjaxRequest.handle(this.model.save(), {
+			success: this.renderImage
+		}, this);
 	},
 
 	openFileSelector: function () {
 		PageEditor.regions.page.hideEl();
+		PageLoader.regions.main.hideEl();
 		FileSelector.start({
 			filter: "images",
 			region: PageEditor.regions.modal,
 			close: function () {
 				PageEditor.regions.page.showEl();
+				PageLoader.regions.main.showEl();
 			},
 			select: function (selectedFile) {
 				this.model.set({

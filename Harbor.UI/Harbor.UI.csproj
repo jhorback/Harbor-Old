@@ -216,8 +216,10 @@
     <Compile Include="Models\JSPM\JavaScriptPackageDto.cs" />
     <Compile Include="Models\JSPM\IJavaScriptPackage.cs" />
     <Compile Include="Models\JSPM\JavaScriptPackageViewer.cs" />
+    <Compile Include="Models\JSPM\JstTemplateAction.cs" />
     <Compile Include="Models\JSPM\PackageCollection.cs" />
     <Compile Include="Models\JSPM\PackageTable.cs" />
+    <Compile Include="Models\JSPM\TemplateAction.cs" />
     <Compile Include="Models\Page\Components\ImageDto.cs" />
     <Compile Include="Models\Page\Components\TextDto.cs" />
     <Compile Include="Models\Page\PageComponentModelBinder.cs" />

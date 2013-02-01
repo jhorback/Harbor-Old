@@ -111,7 +111,8 @@
 			"checked": "boolean",
 			"class": "string",
 			"href": "string",
-			"text": "text"
+			"text": "text",
+			"src": "string"
 		},
 		attributeTypes: {
 			"string": function (el, attr, value) {
