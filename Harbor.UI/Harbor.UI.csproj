@@ -252,7 +252,6 @@
     <Content Include="Content\images\layoutcols\onefourth.png" />
     <Content Include="Content\images\layoutcols\third.png" />
     <Content Include="Content\images\layoutcols\twothirds.png" />
-    <None Include="ClassDiagram1.cd" />
     <None Include="Content\redactor\redactor.scss">
       <Compile>True</Compile>
       <Minify>False</Minify>

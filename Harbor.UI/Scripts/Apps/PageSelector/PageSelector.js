@@ -59,7 +59,11 @@ PageSelector.MainView = Application.View.extend({
 		var resultsList = this.$(".pageselector-results ul");
 		resultsList.empty();
 		collection.each(function (page) {
-			resultsList.append(this.template("PageSelector-PageListItem")(page.toJSON()));
+			var model = _.pick(page.toJSON(), "id", "title", "previewText");
+			var previewImage = page.previewImage;
+			model.thumbUrl = previewImage ? previewImage.get("thumbUrl") : null;
+			model.previewText = "Here is a short sentence on what preview text may look like. I'm not sure if this is over 150 characters or not ...";
+			resultsList.append(this.template("PageSelector-PageListItem")(model));
 		}, this);
 	},
 	

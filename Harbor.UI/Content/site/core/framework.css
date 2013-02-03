@@ -11,8 +11,11 @@
 .centered {
   margin: auto; }
 
-.display-none {
+.hide {
   display: none !important; }
+
+.display-none {
+  display: none; }
 
 .display-block {
   display: block; }
@@ -135,20 +138,29 @@
   height: 10em;
   overflow-y: auto; }
 
+.max-50 {
+  max-height: 50px;
+  max-width: 50px; }
+
 .max-100 {
-  max-height: 100px; }
+  max-height: 100px;
+  max-width: 100px; }
 
 .max-250 {
-  max-height: 250px; }
+  max-height: 250px;
+  max-width: 250px; }
 
 .max-500 {
-  max-height: 500px; }
+  max-height: 500px;
+  max-width: 500px; }
 
 .max-750 {
-  max-height: 750px; }
+  max-height: 750px;
+  max-width: 750px; }
 
 .max-1000 {
-  max-height: 1000px; }
+  max-height: 1000px;
+  max-width: 1000px; }
 
 .disabled,
 [disabled] {

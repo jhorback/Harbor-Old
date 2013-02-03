@@ -74,7 +74,7 @@ PageEditor.PagePreviewModel = Application.Model.extend({
 	
 	changeThumbButtonClass: {
 		get: function () {
-			var className = this.get("autoPreview") ? "display-none" : "";
+			var className = this.get("autoPreview") ? "hide" : "";
 			console.log("class", className);
 			return className;
 		}
