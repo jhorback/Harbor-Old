@@ -3,6 +3,8 @@
  * 
  * Description:
  *     Adds getters and setters to models.
+ *     Also adjusts the toJSON method to return calculated values.
+ *     and provides a refresh method to force a change on the calculated values.
  *
  * Usage:
  *    var SomeModel = Backbone.Model.extend({
@@ -23,13 +25,19 @@
 (function () {
 	var extension = {
 		get: function (name) {
-			var getFn = this[name] && this[name].get;
-			var currentValue = Backbone.Model.prototype.get.apply(this, arguments);
-			return _.isFunction(getFn) ? getFn.call(this, currentValue) : currentValue;
-		},
-		
-		foobar: function () {
-			var jch = "testing jch!";
+			var val,
+				getFn = this[name] && this[name].get,
+				currentValue = Backbone.Model.prototype.get.apply(this, arguments);
+			
+			if (_.isFunction(getFn) && getFn !== extension.get) {
+				val = getFn.call(this, currentValue);
+				if (val !== undefined) {
+					this.attributes[name] = val; // keep the attrs in sync - may not need?
+				}
+			} else {
+				val = currentValue;
+			}
+			return val;
 		},
 
 		set: function (name, value, options) {
@@ -60,6 +68,10 @@
 				json[name] = val;
 			});
 			return json;
+		},
+		
+		refresh: function () {
+			this.set(this.toJSON());
 		}
 	};
 

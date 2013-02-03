@@ -12,7 +12,7 @@
   margin: auto; }
 
 .display-none {
-  display: none; }
+  display: none !important; }
 
 .display-block {
   display: block; }

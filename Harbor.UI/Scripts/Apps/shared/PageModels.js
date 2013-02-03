@@ -19,6 +19,11 @@ var PageModels = {
 
 PageModels.Page = Application.Model.extend({
 	urlRoot: Application.url("api/pages"),
+	
+	template: null, // PageModels.Template
+	
+	previewImage: null, // FileModel
+	
 	defaults: {
 		id: null,
 		title: null,
@@ -42,7 +47,13 @@ PageModels.Page = Application.Model.extend({
 	},
 	
 	initialize: function () {
-		var page = this, previewImage;
+		var page = this, setPreviewFn;
+		
+		setPreviewFn = _.bind(function () {
+			if (this.attributes.previewImage) {
+				this.previewImage = new FileModel(this.attributes.previewImage);
+			}
+		}, this);
 		
 		this.set("link", this.getUrl());
 		
@@ -51,10 +62,8 @@ PageModels.Page = Application.Model.extend({
 			page.set("template", page.template.toJSON());
 		});
 
-		previewImage = this.get("previewImage");
-		if (previewImage) {
-			this.PreviewImage = new FileModel(previewImage);
-		}
+		setPreviewFn();
+		this.on("change:previewImage", setPreviewFn);
 	},
 	
 	title: {

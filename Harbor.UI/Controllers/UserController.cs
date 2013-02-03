@@ -137,7 +137,6 @@ namespace Harbor.UI.Controllers
 
 		public ActionResult Thumbnail(string name)
 		{
-			// jch! test Thumbnail("doc");
 			var path = FileUrls.GetThumbUrl(name);
 			return File(path, "image/png");
 		}

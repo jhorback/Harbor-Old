@@ -15,6 +15,9 @@ Region.prototype = {
 		}
 
 		this.$el = $(this.el);
+		if (this.$el.length === 0) {
+			console.warn("Region not found: " + this.el);
+		}
 		return this.$el;
 	},
 

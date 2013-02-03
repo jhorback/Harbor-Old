@@ -102,7 +102,7 @@ namespace Harbor.Data.Repositories
 
 			context.SaveChanges();
 			clearCachedPageByID(entity.PageID);
-			return entity;
+			return FindById(entity.PageID);
 		}
 
 		public void Delete(Page entity)

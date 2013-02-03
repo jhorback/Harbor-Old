@@ -1,4 +1,4 @@
-﻿// jch!! - rename to PageComponent
+﻿
 var PageComponent = function (options) {
 	this.type= options.type;
 	this.$el = options.$el;

@@ -25,6 +25,7 @@ namespace Harbor.UI.Models
 				.ForMember(dest => dest.Modified, opt => opt.Ignore())
 				.ForMember(dest => dest.PageID, opt => opt.Ignore())
 				.ForMember(dest => dest.Properties, opt => opt.Ignore())
+				.ForMember(dest => dest.PreviewImage, opt => opt.Ignore())
 				.AfterMap((dto, DO) =>
 				    {
 						// add / update

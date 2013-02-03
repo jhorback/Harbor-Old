@@ -18,7 +18,7 @@
 			collection: Pages.pages,
 			el: $(".pages-list")
 		}));
-
+		
 		this.views("pages").render();
 		return this;
 	}

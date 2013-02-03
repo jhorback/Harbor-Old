@@ -1,0 +1,23 @@
+﻿
+<div class="float-left">
+	<div>
+		<img data-bind-class="thumbClass" data-bind-src="thumbSrc" />
+	</div>
+	<div>
+		<input type="button"
+			data-bind-class="changeThumbButtonClass"
+			id="settings-changethumb" name="changeThumbButtonText" value="Change image" />
+	</div>
+</div>
+
+<div class="float-left pad-left">
+	<div>
+		<div id="settings-previewtext" data-bind="previewText"></div>
+	</div>
+	<div>
+		<div title="Automatically update the image and preview text.">
+			<input id="settings-autopreview" type="checkbox" name="autoPreview">
+			<label for="settings-autopreview">Auto preview</label>
+		</div>
+	</div>
+</div>

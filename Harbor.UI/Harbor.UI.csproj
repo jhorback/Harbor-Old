@@ -252,6 +252,7 @@
     <Content Include="Content\images\layoutcols\onefourth.png" />
     <Content Include="Content\images\layoutcols\third.png" />
     <Content Include="Content\images\layoutcols\twothirds.png" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="Content\redactor\redactor.scss">
       <Compile>True</Compile>
       <Minify>False</Minify>
@@ -398,6 +399,7 @@
     <Content Include="Scripts\Apps\PageEditor\ChangeLayoutView.js" />
     <Content Include="Scripts\Apps\PageEditor\EditView.js" />
     <Content Include="Scripts\Apps\PageEditor\PageEditor.js" />
+    <Content Include="Scripts\Apps\PageEditor\PagePreviewView.js" />
     <Content Include="Scripts\Apps\PageEditor\SettingsView.js" />
     <Content Include="Scripts\Apps\PageEditor\UICMenu.js" />
     <Content Include="Scripts\Apps\PageLoader\PageNav.js" />
@@ -488,6 +490,7 @@
     <Content Include="Views\FileSelector\FileSelectorTemplates.cshtml" />
     <Content Include="Views\Page\Image-None.cshtml" />
     <Content Include="Views\Page\Image-Edit.cshtml" />
+    <Content Include="Views\PageEditor\_PagePreview.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\users\" />

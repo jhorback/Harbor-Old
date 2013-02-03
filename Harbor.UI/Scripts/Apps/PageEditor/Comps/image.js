@@ -97,13 +97,13 @@ ImageComponent.View = Application.View.extend({
 
 	openFileSelector: function () {
 		PageEditor.regions.page.hideEl();
-		PageLoader.regions.main.hideEl();
+		PageLoader.regions.loader.hideEl();
 		FileSelector.start({
 			filter: "images",
 			region: PageEditor.regions.modal,
 			close: function () {
 				PageEditor.regions.page.showEl();
-				PageLoader.regions.main.showEl();
+				PageLoader.regions.loader.showEl();
 			},
 			select: function (selectedFile) {
 				this.model.set({

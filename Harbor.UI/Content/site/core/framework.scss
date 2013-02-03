@@ -12,7 +12,7 @@
 	.stretch		{ width: 100% !important; }
 	.fit			{ max-width:100%; border:0; } // display:block; 
 	.centered		{ margin: auto; }
-	.display-none	{ display: none; }
+	.display-none	{ display: none !important; }
 	.display-block	{ display: block; }
 	.display-inline { display: inline; }
 	.display-inline-block

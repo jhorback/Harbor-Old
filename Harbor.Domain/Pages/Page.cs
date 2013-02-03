@@ -88,7 +88,7 @@ namespace Harbor.Domain.Pages
 
 		internal User Author { get; set; }
 		internal Page Parent { get; set; }
-		internal File PreviewImage { get; set; }
+		public File PreviewImage { get; set; }
 		#endregion
 
 		#region methods

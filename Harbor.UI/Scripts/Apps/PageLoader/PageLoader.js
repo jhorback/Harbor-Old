@@ -5,32 +5,29 @@
 		loadPageEditor,	// deferred for loading the page editor script
 		currentPage,	// the Page model of the current page
 		changeMode,		// object containing methods for handling the changing of the page mode
-		pageEl,
 		editView,
-		settingsView,
-		frameBody;
+		settingsView;
 
 	PageLoader = {		
 		start: function (pageDto) {
-			var nav;
+			var nav, frameBody;
 
-			currentPage = new PageModels.Page(pageDto),
+			frameBody = $("#frame-body");
+			frameBody.append('<div id="pageloader"/>');
+			frameBody.append('<div id="page-settings"/>');			
+
+			currentPage = new PageModels.Page(pageDto);
 			nav = new PageLoader.PageNav({
 				model: pageState
 			});
-
-			nav.render();
-			pageEl = $("#page"); 
-			frameBody = $("#frame-body");
-			frameBody.append(nav.el);
-		},
-		
-		getPageEl: function () {
-			return pageEl;
+			PageLoader.regions.loader.render(nav);
 		},
 		
 		regions: {
-			"main": "#pageloader"
+			"loader": "#pageloader",
+			"page": "#page",
+			"frameBody": "#frame-body",
+			"settings": "#page-settings"
 		}
 	};
 	
@@ -68,7 +65,7 @@
 			PageEditor.dispose();
 			settingsView && settingsView.remove();
 			settingsView = null;
-			pageEl.show();
+			PageLoader.regions.page.showEl();
 		},
 		
 		/* jch* - potential for future refactor - can make the entry point PageEditor.init, destroy
@@ -77,26 +74,28 @@
 			would also defer template loading for: AllComponentTemplates.cshtml
 		*/
 		edit: function () {
-			pageEl.show();
+			PageLoader.regions.page.showEl();
 			if (!editView) {
 				PageEditor.currentPage = currentPage;
-				editView = new PageEditor.EditView({ el: pageEl, model: currentPage });
+				editView = new PageEditor.EditView({
+					el: PageLoader.regions.page.getEl(),
+					model: currentPage
+				});
 				editView.render();
 			}
 			if (settingsView) {
-				settingsView.$el.hide();
+				PageLoader.regions.settings.hideEl();
 			}
 		},
 
 		settings: function () {
-			pageEl.hide();
+			PageLoader.regions.page.hideEl();
 			if (settingsView) {
-				settingsView.$el.show();
+				PageLoader.regions.settings.showEl();
 			} else {
 				PageEditor.currentPage = currentPage;
 				settingsView = new PageEditor.SettingsView({ model: currentPage });
-				settingsView.render();
-				frameBody.append(settingsView.el);
+				PageLoader.regions.settings.render(settingsView);
 			}
 		}
 	};

@@ -80,12 +80,14 @@ Region.createRegions(PageEditor);
 // update the class names if the layout is updated
 PageEditor.on("updateLayout", function () {
 	var classNames = PageEditor.currentPage.getLayoutClassNames();
-	PageLoader.getPageEl().find(".page-header")	.removeClass().addClass("page-header").addClass(classNames);
-	PageLoader.getPageEl().find(".page-body").removeClass().addClass("page-body").addClass(classNames);
+	var el = PageLoader.regions.page.getEl();
+	el.find(".page-header")	.removeClass().addClass("page-header").addClass(classNames);
+	el.find(".page-body").removeClass().addClass("page-body").addClass(classNames);
 });
 
 PageEditor.on("updatePage", function () {
-	PageLoader.getPageEl().find("[data-bind=title]").html(PageEditor.currentPage.get("title"));
+	var el = PageLoader.regions.page.getEl();
+	el.find("[data-bind=title]").html(PageEditor.currentPage.get("title"));
 });
 
 
