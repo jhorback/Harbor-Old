@@ -1,23 +1,22 @@
 ﻿
-<div class="float-left">
+<div>
 	<div>
 		<img data-bind-class="thumbClass" data-bind-src="thumbSrc" />
+		<span id="settings-previewtext" data-bind="previewText"></span>
 	</div>
-	<div>
+	<div class="clear">
 		<input type="button"
-			data-bind-class="changeThumbButtonClass"
-			id="settings-changethumb" name="changeThumbButtonText" value="Change image" />
+			   data-bind-class="changeThumbButtonClass"
+			   id="settings-changethumb" name="changeThumbButtonText" value="Change image" />
+		<input type="button"
+			data-bind-class="removeThumbButtonClass"
+			id="settings-removethumb" value="Remove image" />
 	</div>
 </div>
 
-<div class="float-left pad-left">
-	<div>
-		<div id="settings-previewtext" data-bind="previewText"></div>
+@*<div>
+	<div title="Automatically update the image and preview text.">
+		<input id="settings-autopreview" type="checkbox" name="autoPreview">
+		<label for="settings-autopreview">Auto preview</label>
 	</div>
-	<div>
-		<div title="Automatically update the image and preview text.">
-			<input id="settings-autopreview" type="checkbox" name="autoPreview">
-			<label for="settings-autopreview">Auto preview</label>
-		</div>
-	</div>
-</div>
+</div>*@

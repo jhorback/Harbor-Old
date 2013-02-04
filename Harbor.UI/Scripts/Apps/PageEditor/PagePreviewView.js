@@ -1,9 +1,9 @@
 ﻿
 PageEditor.PagePreviewView = Application.View.extend({
 	events: {
-		"click #settings-changethumb": function () {
-				this.changeThumb();
-		}
+		"click #settings-changethumb": "changeThumb",
+		"click img": "changeThumb",
+		"click #settings-removethumb": "removeThumb"
 	},
 	
 	render: function () {
@@ -26,6 +26,11 @@ PageEditor.PagePreviewView = Application.View.extend({
 				AjaxRequest.handle(this.model.save());
 			}
 		}, this);
+	},
+	
+	removeThumb: function () {
+		this.model.setPreviewImageID(null);
+		AjaxRequest.handle(this.model.save());
 	}
 });
 
@@ -39,19 +44,22 @@ PageEditor.PagePreviewModel = Application.Model.extend({
 		autoPreview: null,
 		changeThumbButtonText: null,
 		changeThumbButtonDisabled: null,
-		changeThumbButtonClass: null
+		changeThumbButtonClass: null,
+		removeThumbButtonClass: null
 	},
 	
 	initialize: function () {
 		this.page = this.get("page");
+		
 		this.page.on("sync", this.refresh, this);
+
 		this.on("change:previewText", this.save, this);
 		this.on("change:autoPreview", this.save, this);		
 	},
 	
 	thumbClass: {
 		get: function (value) {
-			return this.hasThumb() ? "max-100" : "display-none";
+			return this.hasThumb() ? "max-100 float-left pad-right pad-bottom" : "display-none";
 		}
 	},
 	
@@ -74,9 +82,15 @@ PageEditor.PagePreviewModel = Application.Model.extend({
 	
 	changeThumbButtonClass: {
 		get: function () {
-			var className = this.get("autoPreview") ? "hide" : "";
-			console.log("class", className);
-			return className;
+			return ""; // always leave this visible for now
+//			var className = this.get("autoPreview") ? "hide" : "";
+//			return className;
+		}
+	},
+	
+	removeThumbButtonClass: {
+		get: function () {
+			return this.hasThumb() ? "" : "hide";
 		}
 	},
 	

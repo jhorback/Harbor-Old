@@ -9,7 +9,8 @@ var ImageComponent = PageComponent.extend({
 	open: function () {
 		this.view = new ImageComponent.View({
 			el: this.$el,
-			model: this.constructModel(ImageComponent.ImageModel)
+			model: this.constructModel(ImageComponent.ImageModel),
+			uicid: this.uicid
 		});
 		
 		JSPM.install("FileSelector", function () {
@@ -106,12 +107,14 @@ ImageComponent.View = Application.View.extend({
 				PageLoader.regions.loader.showEl();
 			},
 			select: function (selectedFile) {
+				var fileID = selectedFile.get("id");
 				this.model.set({
-					fileID: selectedFile.get("id"),
+					fileID: fileID,
 					ext: selectedFile.get("ext"),
-					name: selectedFile.get("name"),
-					max: 500
+					name: selectedFile.get("name")
+					// dont include max since we are saving on max change too
 				});
+				this.model.page.updatePagePreviewImage(this.options.uicid, fileID);
 				this.save();
 			}
 		}, this);

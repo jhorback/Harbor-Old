@@ -36,12 +36,15 @@ TextComponent.prototype = {
 	close: function () {
 		var ctr = this.$el.find(".richtext");
 		var redactor = ctr.data('redactor');
-		var html;
+		var html, save;
 		
 		if (redactor) {
 			html = ctr.getCode();
 			this.page.setProperty(this.uicid + "-text", html);
-			AjaxRequest.handle(this.page.save());
+			this.page.updatePagePreviewText(this.uicid, html);
+			save = this.page.save();
+			AjaxRequest.handle(save);
+			
 		}
 		
 		ctr.destroyEditor && ctr.destroyEditor();

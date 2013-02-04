@@ -39,6 +39,7 @@ PageModels.Page = Application.Model.extend({
 		previewImageID: null,
 		previewImage: null, // FileDto
 		previewText: "",
+		thumbUrl: "",
 		//
 		link: null,
 		pageTypeDescription: null,
@@ -52,6 +53,8 @@ PageModels.Page = Application.Model.extend({
 		setPreviewFn = _.bind(function () {
 			if (this.attributes.previewImage) {
 				this.previewImage = new FileModel(this.attributes.previewImage);
+			} else {
+				this.previewImage = null;
 			}
 		}, this);
 		
@@ -112,6 +115,18 @@ PageModels.Page = Application.Model.extend({
 		bind: "published"
 	},
 	
+	thumbUrl: {
+		get: function () {
+			return this.previewImage && this.previewImage.get("thumbUrl");
+		}
+	},
+	
+	autoPreview: {
+		get: function () {
+			return true; // for now, always automate the preview
+		}
+	},
+	
 	getLayoutClassNames: function () {
 		var classNames = [];
 		if (this.template.get("layoutIsCentered")) {
@@ -158,6 +173,48 @@ PageModels.Page = Application.Model.extend({
 			}
 		}
 		this.set("properties", props);
+	},
+	
+	updatePagePreviewImage: function (uicid, fileID) {
+		var firstImage;
+		
+		if (this.get("autoPreview") === false) {
+			return;
+		}
+		
+		firstImage = this.findFirstContentOfType("image");
+		if (firstImage && firstImage.uicid === uicid) {
+			this.set("previewImageID", fileID);
+		}
+	},
+	
+	updatePagePreviewText: function (uicid, html) {
+		var prevText,
+			firstText;
+		
+		if (this.get("autoPreview") === false) {
+			return;
+		}
+		
+		firstText = this.findFirstContentOfType("text");
+		if (firstText && firstText.uicid === uicid) {
+			prevText = $('<div/>').html(html).text().substring(0, 200);
+			prevText = prevText.substring(0, prevText.lastIndexOf(" ")) + " ...";
+			this.set("previewText", prevText);
+		}
+	},
+	
+	findFirstContentOfType: function (type) {
+		/// <summary>type - component type/key.</summary>
+		var retItem = null;
+		_.every(this.template.get("content"), function (item) {
+			if (item.key === type) {
+				retItem = item;
+				return false;
+			}
+			return true;
+		}, this);
+		return retItem;
 	}
 });
 

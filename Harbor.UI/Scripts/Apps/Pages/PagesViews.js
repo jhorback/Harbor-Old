@@ -40,9 +40,12 @@ Pages.PagesView = Backbone.View.extend({
 	},
 	
 	renderPage: function (page) {
-		this.JST("Pages-PageItem", page.toJSON()).then(_.bind(function (result) {
-			this.$el.append(result);
-		}, this));
+		
+
+		var el = this.template("Pages-PageItem")(page.toJSON());
+		this.$el.append(el);
+		
+
 		return this;
 	}
 });

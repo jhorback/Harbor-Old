@@ -27,6 +27,7 @@ _.extend(PageComponent.prototype, {
 			}, this);
 		
 		}, this);
+		model.page = this.page;
 		return model;
 	},
 	
