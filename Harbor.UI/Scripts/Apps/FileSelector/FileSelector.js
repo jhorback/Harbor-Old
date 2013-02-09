@@ -56,8 +56,7 @@ FileSelector.MainView = Application.View.extend({
 
 	render: function () {
 		//this.template("Settings-ChangeHomeFile", this.$el)();
-		this.renderTemplate("FileSelector-Main")();
-		this.bindModelToView();
+		this.bindTemplate("FileSelector-Main");
 	},
 	
 	renderResults: function (collection) {

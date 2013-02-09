@@ -1,7 +1,11 @@
 ﻿// Create the Application View and Model in zeta for bundling
 
 // create the application view with all view extensions
-Application.View = Backbone.View.extend({ });
+Application.View = Backbone.View.extend({
+	initialize: function () {
+		Region.createRegions(this); //jch! - needs review / testing
+	}
+});
 ModelBinder.extend(Application.View.prototype);
 JstViewExtension.extend(Application.View.prototype);
 CloseViewExtension.extend(Application.View.prototype);

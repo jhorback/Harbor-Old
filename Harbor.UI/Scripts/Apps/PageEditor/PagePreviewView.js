@@ -7,8 +7,7 @@ PageEditor.PagePreviewView = Application.View.extend({
 	},
 	
 	render: function () {
-		this.renderTemplate("PageEditor-PagePreview")(); // jch! - create a bindTemplate method?
-		this.bindModelToView();
+		this.bindTemplate("PageEditor-PagePreview");
 	},
 	
 	changeThumb: function () {

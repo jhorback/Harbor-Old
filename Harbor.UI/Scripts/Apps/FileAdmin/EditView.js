@@ -34,8 +34,7 @@
 	},
 	
 	render: function () {
-		this.template("FileAdmin-Edit", this.$el)(this.model.toJSON());
-		this.bindModelToView();
+		this.bindTemplate("FileAdmin-Edit");
 		return this;
 	}
 });

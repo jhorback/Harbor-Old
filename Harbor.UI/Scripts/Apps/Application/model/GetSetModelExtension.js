@@ -15,9 +15,10 @@
  *            get: function (currentValue) {
  *                return currentValue; // default behavior
  *            },
- *            set: function (name, value) {
+ *            set: function (value) {
  *                return value; // default behavior
  *            },
+ *            // triggers a change on the property if any of the 'bind' properties change
  *            bind: "someProperty" // can be an array for multiple properties
  *        }  
  *    });

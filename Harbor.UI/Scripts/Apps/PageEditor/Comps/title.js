@@ -20,8 +20,7 @@ var TitleComponent = PageComponent.extend({
 
 TitleComponent.View = Application.View.extend({
 	render: function () {
-		this.renderTemplate("Comps-Title")();
-		this.bindModelToView();
+		this.bindTemplate("Comps-Title");
 	}
 });
 

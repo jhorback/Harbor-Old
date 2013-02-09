@@ -368,7 +368,14 @@
 				model = model || this.model || this.collection;
 				binder = new ModelBinder(model, el);
 				listeners[_.uniqueId("ModelBinder")] = binder;
-			}		
+			},
+			
+			bindTemplate: function (template, el, model) {
+				el = el || this.$el;
+				model = model || this.model;
+				this.template(template, el)(model.toJSON());
+				this.bindModelToView(model, el);
+			}
 		});
 	};
 
