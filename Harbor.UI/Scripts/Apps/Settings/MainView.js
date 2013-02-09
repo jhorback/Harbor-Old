@@ -19,17 +19,10 @@ Settings.MainView = Application.View.extend({
 			}
 		},
 		
-		"click #settings-changehome": function () {
-			Settings.changeHomePage();
-		},
-		
-		"click #settings-resethome": function () {
-			Settings.resetHomePage();
-		},
-		
-		"click #settings-updatenav": function () {
-			Settings.updateNav();
-		}
+		"click #settings-changehome": Settings.changeHomePage,
+		"click #settings-resethome": Settings.resetHomePage,
+		"click #settings-updatenav": Settings.updateNav,
+		"change #settings-theme": Settings.changeTheme
 	},
 
 	render: function () {

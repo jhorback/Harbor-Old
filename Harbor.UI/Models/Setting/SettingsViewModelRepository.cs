@@ -5,6 +5,7 @@ using System.Web;
 using Harbor.Domain.App;
 using Harbor.Domain.Pages;
 using Harbor.Domain.Security;
+using Harbor.UI.Models.Theming;
 
 namespace Harbor.UI.Models.Setting
 {
@@ -31,11 +32,16 @@ namespace Harbor.UI.Models.Setting
 					CanUpdateSiteSettings = user.HasPermission(UserFeature.SiteSettings, Permissions.Read)
 			    };
 
-			var homePageID = harborAppRepository.GetApp().HomePageID;
+			var harborApp = harborAppRepository.GetApp();
+			var homePageID = harborApp.HomePageID;
 			if (homePageID != null)
 			{
 				model.HomePage = pageRepository.FindById(homePageID);
 			}
+
+			model.Theme = harborApp.Theme;
+			model.Themes = ThemeTable.Themes.Select(t => t.Name).ToArray();
+
 			return model;
 		}
 	}

@@ -9,6 +9,7 @@ namespace Harbor.UI.Models.Setting
 		public int? homePageID { get; set; }
 		public PageDto homePage { get; set; }
 		public NavigationLinkDto[] navigationLinks { get; set; }
+		public string theme { get; set; }
 
 		public static implicit operator HarborAppDto(Domain.App.HarborApp app)
 		{

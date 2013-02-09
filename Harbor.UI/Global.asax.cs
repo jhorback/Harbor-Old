@@ -9,6 +9,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using Harbor.Domain.App;
 using Harbor.UI.Models.JSPM;
+using Harbor.UI.Models.Theming;
 
 namespace Harbor.UI
 {
@@ -34,6 +35,7 @@ namespace Harbor.UI
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
 			PackageConfig.RegisterPackages(PackageTable.Packages, BundleTable.Bundles);
 			ModelBinderConfig.RegisterModelBinders(ModelBinders.Binders);
+			ThemeConfig.RegisterThemes(ThemeTable.Themes, BundleTable.Bundles);
 			DbConfig.SetupDatabase();
 			Bootstrapper.ExecuteTasks();
 		}

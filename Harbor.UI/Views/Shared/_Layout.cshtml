@@ -17,7 +17,7 @@
 		<title>@ViewBag.Title</title>
 		@Html.InstallJavaScriptPackage(ModernizrShivPkg.PackageName)
 		@Html.InstallJavaScriptPackage(SiteStylePkg.PackageName)
-		@Styles.Render("~/Content/themes/default/theme.css") @*jch* - waiting on theme story*@
+		@Html.CurrentTheme()
 		@RenderSection("head", required: false)
 	</head>
 	<body>

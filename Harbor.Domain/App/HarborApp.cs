@@ -4,7 +4,7 @@ using Harbor.Domain.Pages;
 
 namespace Harbor.Domain.App
 {
-	public class HarborApp
+	public class HarborApp : IAggregateRoot
 	{
 		public HarborApp()
 		{
@@ -23,6 +23,8 @@ namespace Harbor.Domain.App
 		public int? HomePageID { get; set; }
 
 		public Page HomePage { get; set; }
+
+		public string Theme { get; set; }
 
 		public IEnumerable<NavigationLink> NavigationLinks { get; set; }
 	}

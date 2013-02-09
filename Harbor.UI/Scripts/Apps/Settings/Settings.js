@@ -1,11 +1,14 @@
 ﻿var Settings = new Application({
 	
 	settingsModel: null,
-
-	start: function () {
 	
+	themes: [],
+
+	start: function (themes) {
+	
+		this.themes = themes;
 		this.settingsModel = new Settings.AppSettings();
-		
+
 		return this.settingsModel.fetch().then(_.bind(function () {
 			this.main();
 		}, this));
@@ -59,9 +62,15 @@
 	updateNav: function () {
 		var view = new Settings.EditNavView({
 			el: $(document.body),
-			model: this.settingsModel
+			model: Settings.settingsModel
 		});
 		
 		view.render();
+	},
+	
+	changeTheme: function () {
+		AjaxRequest.handle(Settings.settingsModel.save()).then(function () {
+			location = location;
+		});
 	}
 });

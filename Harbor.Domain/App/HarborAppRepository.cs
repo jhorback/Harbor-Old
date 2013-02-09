@@ -36,6 +36,10 @@ namespace Harbor.Domain.App
 			
 			app.NavigationLinks = GetNavigationLinks();
 
+			app.Theme = appSettings.GetSetting("Theme").AsString();
+			if (string.IsNullOrEmpty(app.Theme))
+				app.Theme = "default";
+
 			return app;
 		}
 
@@ -45,6 +49,7 @@ namespace Harbor.Domain.App
 			setSetting("ApplicationName", app.ApplicationName);
 			setSetting("HomePageID", app.HomePageID);
 			setSetting("NavigationLinks", JSON.Stringify(app.NavigationLinks));
+			setSetting("Theme", app.Theme);
 		}
 
 		private AppSetting setSetting(string name, object value)

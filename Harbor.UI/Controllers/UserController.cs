@@ -83,10 +83,6 @@ namespace Harbor.UI.Controllers
 		}
 
 		[Permit(UserFeature.Files, Permissions.Read)]
-		public ViewResult Files()
-		{
-			return View("Files");
-		}
 
 		[Permit(UserFeature.Users, Permissions.Read)]
 		public ViewResult Admin()

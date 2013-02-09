@@ -138,6 +138,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\Bootstrapper.cs" />
+    <Compile Include="App_Start\ThemeConfig.cs" />
     <Compile Include="App_Start\ModelBinderConfig.cs" />
     <Compile Include="App_Start\DbConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -194,6 +195,7 @@
     <Compile Include="Controllers\StyleGuideController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\Api\UsersController.cs" />
+    <Compile Include="Extensions\HtmlHelper\CurrentTheme.cs" />
     <Compile Include="Extensions\HtmlHelper\PageComponent.cs" />
     <Compile Include="Extensions\HtmlHelper\JstPartial.cs" />
     <Compile Include="Extensions\HtmlHelper\Jst.cs" />
@@ -239,6 +241,10 @@
     <Compile Include="Models\Shared\NotFoundDto.cs" />
     <Compile Include="Models\StyleGuide\StyleGuidePage.cs" />
     <Compile Include="Models\StyleGuide\StyleGuidePageRepository.cs" />
+    <Compile Include="Models\Theming\ITheme.cs" />
+    <Compile Include="Models\Theming\Theme.cs" />
+    <Compile Include="Models\Theming\ThemeCollection.cs" />
+    <Compile Include="Models\Theming\ThemeTable.cs" />
     <Compile Include="Models\User\UserRoleDto.cs" />
     <Compile Include="Models\User\CurrentUserDto.cs" />
     <Compile Include="Models\User\CurrentUserRepository.cs" />
@@ -353,6 +359,12 @@
       <Minify>False</Minify>
       <CompileStyle>Nested</CompileStyle>
       <DebugInfo>False</DebugInfo>
+    </Content>
+    <Content Include="Content\themes\bjroyster\theme.css">
+      <DependentUpon>theme.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\themes\bjroyster\theme.min.css">
+      <DependentUpon>theme.scss</DependentUpon>
     </Content>
     <Content Include="Content\themes\default\theme.css">
       <DependentUpon>theme.scss</DependentUpon>
@@ -696,6 +708,7 @@
       <CompileStyle>Nested</CompileStyle>
       <DebugInfo>False</DebugInfo>
     </None>
+    <None Include="Content\themes\bjroyster\theme.scss" />
     <None Include="Content\themes\default\theme.scss">
       <Compile>True</Compile>
       <Minify>False</Minify>

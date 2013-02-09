@@ -14,7 +14,8 @@
 		showSignInLink: true,
 		homePageID: null,
 		homePage: null,
-		navigationLinks: []
+		navigationLinks: [],
+		theme: "default"
 	},
 
 	initialize: function () {

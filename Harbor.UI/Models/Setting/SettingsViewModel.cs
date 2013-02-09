@@ -12,5 +12,7 @@ namespace Harbor.UI.Models.Setting
 		public bool CanUpdateSiteSettings { get; set; }
 
 		public PageDto HomePage { get; set; }
+		public string Theme { get; set; }
+		public IEnumerable<string> Themes { get; set; } 
 	}
 }

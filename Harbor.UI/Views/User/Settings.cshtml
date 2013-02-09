@@ -8,7 +8,7 @@
 @section scripts {
 	@Html.InstallJavaScriptPackage(SettingsAppPkg.PackageName)
 	<script>
-		Settings.start();
+		Settings.start({ themes: @Html.Raw(Json.Encode(Model.Themes)) });
 	</script>
 }
 <div id="settings-main">
@@ -67,7 +67,20 @@
 				</fieldset>
 							
 			}
-			
+			@if (Model.CanUpdateSystemSettings)
+			{
+				<fieldset>
+					<legend>Theme</legend>
+					<div class="form-field">
+						<select name="theme" id="settings-theme" style="min-width:auto;">
+							@foreach (var theme in Model.Themes)
+							{
+								<option @(theme == Model.Theme ? "selected" : "")>@theme</option>
+							}
+						</select>
+					</div>
+				</fieldset>
+			}
 			@if (Model.CanUpdateSiteSettings)
 			{
 				<fieldset class="col2"> @*jch* make col1 stacked by default and add a inline scope for fieldsets?*@
