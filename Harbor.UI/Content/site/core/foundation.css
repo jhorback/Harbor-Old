@@ -56,12 +56,6 @@ body {
   margin: 0;
   height: 100%; }
 
-* {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  box-sizing: border-box; }
-
 h1, h2, h3, h4, h5, h6, hgroup {
   font-weight: normal;
   margin: 0;
@@ -71,23 +65,19 @@ h1, h2, h3, h4, h5, h6, hgroup {
 
 h1 {
   font-size: 2em;
-  line-height: 1;
   padding-top: 0; }
 
 h2 {
   font-size: 1.5em; }
 
 h3 {
-  font-size: 1.3em;
-  line-height: 1; }
+  font-size: 1.3em; }
 
 h4 {
-  font-size: 1.2em;
-  line-height: 1.25; }
+  font-size: 1.2em; }
 
 h5 {
-  font-size: 1.1em;
-  line-height: 1.25; }
+  font-size: 1.1em; }
 
 h6 {
   font-size: 1em;

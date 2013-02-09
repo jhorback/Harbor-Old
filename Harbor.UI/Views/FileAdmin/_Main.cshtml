@@ -1,10 +1,14 @@
-﻿<div class="page-header">
-	<h1 class="float-left">Files</h1>
-	<button type="button" name="uploadFiles" class="float-right attn"
-			data-bind-text="uploadButtonText"
-			data-bind-disabled="uploadButtonDisabled"></button>
-</div>
-<div class="page-content">
-	@*<div id="fileadmin-uploadtarget" class="clear-fix pad"></div>*@
-	<div id="fileadmin-filelist"></div>
-</div>
+﻿<section class="page">
+	<div class="page-header">
+		<h1 class="float-left">Files</h1>
+		<button type="button" name="uploadFiles" class="float-right attn"
+				data-bind-text="uploadButtonText"
+				data-bind-disabled="uploadButtonDisabled"></button>
+	</div>
+	<div class="page-body">
+		<div class="page-content">
+			@*<div id="fileadmin-uploadtarget" class="clear-fix pad"></div>*@
+			<div id="fileadmin-filelist" class="col"></div>
+		</div>
+	</div>
+</section>

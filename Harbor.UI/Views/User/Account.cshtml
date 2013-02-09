@@ -15,47 +15,49 @@
 		UserAccount.start();
 	</script>
 }
-<div class="page-header readable centered">
-	<h1>Account</h1>
-</div>
-<div class="page-body readable centered">
-	<div class="page-content display-none">
-		<form>
-			<fieldset class="display-inline-block">
-				<legend>Details for <span data-bind="userName"></span></legend>
-				<div class="form-field editable" tabindex="0" id="ua-name">
-					<label>Name</label>
-					<span data-bind="displayName"></span>
-				</div>
-				<div class="form-field editable" tabindex="0" id="ua-email">
-					<label>Email</label>
-					<span data-bind="displayEmail"></span>
-				</div>
-			</fieldset>
-			@if (canViewPages || canViewFiles)
-			{
-				<fieldset id="ua-administrative">
-					<legend>Administrative</legend>
-					<ul class="nobullets text-large">
-						@if (canViewPages)
-						{ 
-							<li>
-								<a href="~/User/Pages">Pages</a>
-							</li>
-						}
-						@if (canViewFiles)
-						{
-							<li>
-								<a href="~/User/Files">Uploaded Files</a>
-							</li>
-						}
-					</ul>			
-				</fieldset>
-			}
-			<fieldset>
-				<legend>Password</legend>
-				<input type="button" name="changePassword" value="Change your password"/>
-			</fieldset>
-		</form>
+<section class="page centered">
+	<div class="page-header">
+		<h1>Account</h1>
 	</div>
-</div>
+	<div class="page-body">
+		<div class="page-content display-none">
+			<form>
+				<fieldset class="display-inline-block">
+					<legend>Details for <span data-bind="userName"></span></legend>
+					<div class="form-field editable" tabindex="0" id="ua-name">
+						<label>Name</label>
+						<span data-bind="displayName"></span>
+					</div>
+					<div class="form-field editable" tabindex="0" id="ua-email">
+						<label>Email</label>
+						<span data-bind="displayEmail"></span>
+					</div>
+				</fieldset>
+				@if (canViewPages || canViewFiles)
+				{
+					<fieldset id="ua-administrative">
+						<legend>Administrative</legend>
+						<ul class="nobullets text-large">
+							@if (canViewPages)
+							{ 
+								<li>
+									<a href="~/User/Pages">Pages</a>
+								</li>
+							}
+							@if (canViewFiles)
+							{
+								<li>
+									<a href="~/User/Files">Uploaded Files</a>
+								</li>
+							}
+						</ul>			
+					</fieldset>
+				}
+				<fieldset>
+					<legend>Password</legend>
+					<input type="button" name="changePassword" value="Change your password"/>
+				</fieldset>
+			</form>
+		</div>
+	</div>
+</section>

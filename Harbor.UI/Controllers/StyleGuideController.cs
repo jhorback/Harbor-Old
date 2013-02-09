@@ -34,5 +34,10 @@ namespace Harbor.UI.Controllers
 			return View(pageKey, pages);
 		}
 
+		public PartialViewResult PageNav()
+		{
+			var pages = repository.GetPages();
+			return PartialView("_PageNav", pages);
+		}
 	}
 }

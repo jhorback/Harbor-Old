@@ -1,44 +1,46 @@
-﻿<div class="page-header readable centered">
-	<h1 class="float-left"><span  data-bind="name" contenteditable data-type="contenteditable"></span></h1>
-	<div class="float-left quiet pad-left pad-top">(click title to rename)</div>
-	<div class="float-right">
-		<button type="button" class="loud" data-rel="cancel">Done</button>
+﻿<div class="page centered">
+	<div class="page-header">
+		<h1 class="float-left"><span  data-bind="name" contenteditable data-type="contenteditable"></span></h1>
+		<div class="float-left quiet pad-left pad-top">(click title to rename)</div>
+		<div class="float-right">
+			<button type="button" class="loud" data-rel="cancel">Done</button>
+		</div>
 	</div>
-</div>
-<div class="page-body readable centered"> 
-	<div class="page-content">
-		<form class="display-inline-block">
-			<span class="validation-summary"></span>
-			<fieldset class="col1">
-				<a href="{{href}}" target="_blank">	
-					<img src="{{lowResUrl}}"/>
-				</a>
-				<br/>
-				This file was uploaded on {{uploaded}}.
-			</fieldset>
-			<fieldset class="col2">
-				<legend>Visibility</legend>
-				<div class="form-field">
-					<label for="editFilePublicity">Make this file visible to the public.</label>
-					<div class="switch">
-						<input type="checkbox" name="public" id="editFilePublicity">
-						<label for="editFilePublicity">
-							<span class="on">Visible to everyone</span>
-							<span class="off">Hidden</span>            
-						</label>
+	<div class="page-body"> 
+		<div class="page-content">
+			<form class="display-inline-block">
+				<span class="validation-summary"></span>
+				<fieldset class="col1">
+					<a href="{{href}}" target="_blank">	
+						<img src="{{lowResUrl}}"/>
+					</a>
+					<br/>
+					This file was uploaded on {{uploaded}}.
+				</fieldset>
+				<fieldset class="col2">
+					<legend>Visibility</legend>
+					<div class="form-field">
+						<label for="editFilePublicity">Make this file visible to the public.</label>
+						<div class="switch">
+							<input type="checkbox" name="public" id="editFilePublicity">
+							<label for="editFilePublicity">
+								<span class="on">Visible to everyone</span>
+								<span class="off">Hidden</span>            
+							</label>
+						</div>
 					</div>
-				</div>
-			</fieldset>
-			<fieldset class="clear">
-				<legend>Delete file</legend>
-				<p>
-					Permenantly delete this file.
-					<button type="button" id="fileadmin-delete" class="margin-left">Delete</button>
-				</p>
-			</fieldset>
-			<div class="controls">
+				</fieldset>
+				<fieldset class="clear">
+					<legend>Delete file</legend>
+					<p>
+						Permenantly delete this file.
+						<button type="button" id="fileadmin-delete" class="margin-left">Delete</button>
+					</p>
+				</fieldset>
+				<div class="controls">
 					<button type="button" class="loud" data-rel="cancel">Done</button>
-			</div>
-		</form>
+				</div>
+			</form>
+		</div>
 	</div>
 </div>

@@ -25,11 +25,6 @@ $link-color-hover:			#09f;
 	background: url(images/bj-dive-fade.png) no-repeat;
 }
 
-#theme1 {
-	position: fixed;
-	bottom: 0;
-	right: 0;
-	width: 320px;
-	height: 240px;
-	background: url(images/bj-painting-fade.png) no-repeat;
+.page {
+	background: url(images/bj-painting-fade.png) no-repeat bottom right;
 }

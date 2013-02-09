@@ -11,11 +11,11 @@
 		Settings.start({ themes: @Html.Raw(Json.Encode(Model.Themes)) });
 	</script>
 }
-<div id="settings-main">
-	<div class="page-header readable centered">
+<section id="settings-main" class="page centered">
+	<div class="page-header">
 		<h1>Website Settings</h1>
 	</div>
-	<div class="page-body readable centered">
+	<div class="page-body">
 		<div class="page-content display-none">
 			@if (Model.CanUpdateSiteSettings)
 			{
@@ -128,5 +128,5 @@
 			}
 		</div>
 	</div>
-</div>
+</section>
 <div id="settings-modal"></div>

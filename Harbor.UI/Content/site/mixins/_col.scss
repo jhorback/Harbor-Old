@@ -1,6 +1,7 @@
+@import "support";
 
 @mixin col ($numberOfColumns: 1, $percentPadding: 0%, $percentBorder: 0%,  $percentMargin: 0%) {
-	@include col-span($numberOfColumns, 1, $percentPadding, $percentBorder,  $percentMargin);
+	@include col-span-old($numberOfColumns, 1, $percentPadding, $percentBorder,  $percentMargin);
 }
 
 // for use with box-sizing-border-box
@@ -18,9 +19,14 @@
 	}
 }
 
-@mixin col-span ($numberOfColumns: 1, $colspan: 1, $percentPadding: 0%, $percentBorder: 0%,  $percentMargin: 0%) {
-	width: (100% / $numberOfColumns) * $colspan;
-	float: left;
+@mixin col-span-old ($numberOfColumns: 1, $colspan: 1, $percentPadding: 0%, $percentBorder: 0%,  $percentMargin: 0%) {
+	
+	$colwidth: (100% / $numberOfColumns);
+	$spancolwidth: $colwidth * $colspan;
+	width: $spancolwidth - ($percentPadding * 2) - ($percentMargin * 2) - ($percentBorder * 2);
+	// width: (100% / $numberOfColumns) * $colspan;
+	float: left;	
+	
 	@if $percentPadding > 0 {
 		padding: $percentPadding;
 	}
@@ -29,5 +35,21 @@
 	}
 	@if $percentMargin > 0 {
 		margin: $percentMargin;
+	}
+}
+
+
+@mixin col-span ($cols: 1, $span: 1) {
+	$colwidth: 100% / $cols;
+	$spancolwidth: $colwidth * $span;
+	$margin: 1%;
+
+	float: left;
+	width: $spancolwidth - $margin;
+	@if $legacy-support-for-ie7 {
+		*width: $spancolwidth - $margin - (5 / 100 * ($colwidth * $span));
+	}
+	@if $margin > 0 {
+		margin-left: $margin;
 	}
 }

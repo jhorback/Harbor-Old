@@ -1,57 +1,59 @@
-﻿<div class="page-header readable centered">
-	<h1 class="float-left">Add User <span  data-bind="displayName"></span></h1>
-	<div class="float-right">
-		<button type="button" data-rel="cancel">Cancel</button>		
-		<button class="loud">Add</button>
+﻿<section class="page centered">
+	<div class="page-header">
+		<h1 class="float-left">Add User <span  data-bind="displayName"></span></h1>
+		<div class="float-right">
+			<button type="button" data-rel="cancel">Cancel</button>		
+			<button class="loud">Add</button>
+		</div>
 	</div>
-</div>
-<div class="page-body readable centered"> 
-	<div class="page-content">
-		<form class="display-inline-block">
-			<span class="validation-summary"></span>
-			<fieldset class="col1">
-				<legend></legend>
-				<div class="form-field">
-					<label for="userAdmin-userName">Username</label>
-					<input type="text" name="userName" id="useradmin-userName" autofocus/>
-					<span class="validation" data-validation-for="userName"></span>
+	<div class="page-body"> 
+		<div class="page-content">
+			<form class="display-inline-block">
+				<span class="validation-summary"></span>
+				<fieldset class="col1">
+					<legend></legend>
+					<div class="form-field">
+						<label for="userAdmin-userName">Username</label>
+						<input type="text" name="userName" id="useradmin-userName" autofocus/>
+						<span class="validation" data-validation-for="userName"></span>
+					</div>
+					<div class="form-field">
+						<label for="userAdmin-password">Password</label>
+						<input type="password" name="password" id="useradmin-password"/>
+						<span class="validation" data-validation-for="password"></span>
+					</div>
+					<div class="form-field">
+						<label for="userAdmin-confirmPassword">Confrim password</label>
+						<input type="password" name="confirmPassword" id="useradmin-confirmPassword"/>
+						<span class="validation" data-validation-for="confirmPassword"></span>
+					</div>
+				</fieldset>
+				<fieldset>
+					<legend></legend>
+					<div class="form-field">
+						<label for="useradmin-name">Name</label>
+						<input type="text" name="displayName" id="useradmin-name"/>
+						<span class="validation" data-validation-for="displayName"></span>
+					</div>
+					<div class="form-field">
+						<label for="useradmin-email">Email</label>
+						<input type="text" name="email" id="useradmin-email"/>
+						<span class="validation" data-validation-for="email"></span>
+					</div>
+					<div class="form-field">
+						<input type="checkbox" name="enabled" id="useradmin-enabled"/>
+						<label for="useradmin-enabled">Enabled</label>
+					</div>
+				</fieldset>
+				<fieldset>
+					<legend>Authorization</legend>
+					<div data-templ="useradmin-roles"></div>
+				</fieldset>
+				<div class="controls">
+					<button type="button" data-rel="cancel">Cancel</button>	
+					<button class="loud">Add</button>
 				</div>
-				<div class="form-field">
-					<label for="userAdmin-password">Password</label>
-					<input type="password" name="password" id="useradmin-password"/>
-					<span class="validation" data-validation-for="password"></span>
-				</div>
-				<div class="form-field">
-					<label for="userAdmin-confirmPassword">Confrim password</label>
-					<input type="password" name="confirmPassword" id="useradmin-confirmPassword"/>
-					<span class="validation" data-validation-for="confirmPassword"></span>
-				</div>
-			</fieldset>
-			<fieldset>
-				<legend></legend>
-				<div class="form-field">
-					<label for="useradmin-name">Name</label>
-					<input type="text" name="displayName" id="useradmin-name"/>
-					<span class="validation" data-validation-for="displayName"></span>
-				</div>
-				<div class="form-field">
-					<label for="useradmin-email">Email</label>
-					<input type="text" name="email" id="useradmin-email"/>
-					<span class="validation" data-validation-for="email"></span>
-				</div>
-				<div class="form-field">
-					<input type="checkbox" name="enabled" id="useradmin-enabled"/>
-					<label for="useradmin-enabled">Enabled</label>
-				</div>
-			</fieldset>
-			<fieldset>
-				<legend>Authorization</legend>
-				<div data-templ="useradmin-roles"></div>
-			</fieldset>
-			<div class="controls">
-				<button type="button" data-rel="cancel">Cancel</button>	
-				<button class="loud">Add</button>
-			</div>
-		</form>
+			</form>
+		</div>
 	</div>
-</div>
+</section>

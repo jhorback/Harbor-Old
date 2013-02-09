@@ -2,7 +2,19 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@RenderBody()
+@section head {
+	@RenderSection("head", required: false)
+}
+<section class="page centered">
+	 <header class="page-header">
+	 	<h1>@Html.ActionLink("Style Guide", "Index", new { pageKey = "Home" })</h1>
+	 	@Html.Action("PageNav")
+		@RenderSection("pageheader", required: false)
+	 </header>
+	<div class="page-body">
+		@RenderBody()
+	</div>
+ </section>
 @section scripts {
 	@RenderSection("scripts", required: false)
 }

@@ -5,20 +5,17 @@
 		columns = "col2";
 	}
 }
-<div class="page-header">
-<h1 class="float-left">Forms</h1>
-<form class="float-right">
-	
-	<fieldset>
-		<select id="columns" name="columns">
-			<option value="col1">One Column</option>
-			<option value="col2" selected>Two Columns</option>
-			<option value="col3">Three Columns</option>
-		</select>
-	</fieldset>
-
-</form>
-</div>
+@section pageheader {
+	<form class="float-right">
+		<fieldset>
+			<select id="columns" name="columns">
+				<option value="col1">One Column</option>
+				<option value="col2" selected>Two Columns</option>
+				<option value="col3">Three Columns</option>
+			</select>
+		</fieldset>
+	</form>
+}
 
 <div class="page-content">
 

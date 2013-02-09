@@ -1,41 +1,71 @@
 @import "../mixins/text-shadow";
 @import "../mixins/inline-block-list";
 @import "../mixins/opacity";
+@import "shared";
 
- $overlay-background-color: #000;
+
+$frame-logo-width:		150px;
+$frame-logo-height:		50px;
+
+$overlay-background-color: #000;
+
 
 @mixin frame {
+	#frame {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 1;
+	}	
+	@include frame-header;
+	@include frame-body;
+	@include frame-footer;	
 	@include overlay;
+}
 
+
+@mixin frame-header {
 	#frame-header {
 		overflow: hidden;
+		position: fixed;
+		height: $frame-header-height;
+		line-height: $frame-header-height;
+		top:0;
+		left:0;
+		right:0;
+		z-index: 1;		
+		
+
 		a, a:visited {
 			text-decoration: none;
-		}
+		}		
 	}	
 
 	#frame-logo {
 		font-size: 2.3em;
 		float:left;
-		padding: 2px 20px 2px 15px;
-		height: 1.6em;
+		margin: 0 1em 0 .5em;
+		//height: 1.6em;
 		@include single-text-shadow(rgba(#000, 0.6), 1px, 1px, 2px);
 	}
 
 	#frame-nav {
 		float: left;
-		font-size: 1.2em;
+		font-size: 1.1em;
+		//padding-top: 1em;
 		ul {
 			@include inline-block-list;
 			li {
 				cursor: pointer;	
 				float:left;
-				// jch* add mixin for transitions?
+				// jch! add mixin for transitions - and add to launch
 				-webkit-transition-property: background;
-				-webkit-transition-duration: 0.3s;
+				-webkit-transition-duration: 0.3s;				
 				a {
 					display: inline-block;
-					padding: 1em;
+					padding: 0 1em;
 				}
 				&.selected {
 					a {
@@ -50,17 +80,6 @@
 		}
 	}
 
-
-	#frame-body {
-		clear: both;
-		position: relative;
-		min-height: 30em;
-		::-webkit-scrollbar {
-			width: .9em;
-			height: .9em;
-		}
-	}
-	
 	#frame-session {
 		float: right;
 		padding: .4em 1em;
@@ -70,8 +89,31 @@
 			text-align: center;
 		}
 	}
+}
 
-	footer#frame-info {
+
+@mixin frame-body {
+	#frame-body {
+		clear: both;
+		min-height: 5em;
+		position: fixed;
+		top: $frame-header-height;
+		left: 0;
+		right: 0;
+		margin: 0;
+		bottom: $frame-footer-height;
+		overflow: auto;
+		::-webkit-scrollbar {
+			width: .9em;
+			height: .9em;
+		}
+	}
+}
+
+
+@mixin frame-footer {
+	#frame-info {
+		display: none;
 		clear:both;
 		min-height: 5em;
 		text-align: center;

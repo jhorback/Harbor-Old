@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Harbor.UI.Models.StyleGuide.StyleGuidePage>
+@functions {
+
+	string selected(string pageKey)
+	{
+		if (Request.Url.AbsolutePath.ToLower().IndexOf(pageKey.ToLower()) > -1)
+		{
+			return "selected";
+		}
+		return null;
+	}
+
+}
+<nav class="page-nav">
+	<ul>
+		@foreach (var page in Model)
+		{
+			<li class="@selected(page.Key)">@Html.ActionLink(page.Name, page.Key)</li>
+		}
+	</ul>
+</nav>

@@ -1,40 +1,42 @@
-﻿<div class="page-header readable centered">
-	<h1 class="float-left">
-		<span data-bind="title" data-type="contenteditable" id="page-title" contenteditable></span>
-	</h1>
-	<div class="float-left quiet pad-left pad-top">(click title to rename)</div>
-</div>
-<div class="page-body readable centered">
-	<div class="page-content">
-		<div id="settings-page-preview" class="pad-bottom clear-fix"></div>
-		<fieldset id="settings-visibility" class="clear-left">
-			<legend>Visibility</legend>
-			<div class="pad">
-				<div class="form-field editable display-inline-block" tabindex="0" id="page-visibility">
-					<span data-bind="publishedDisplay"></span>
-				</div>
-				<div data-bind="publishedMessage"></div>
-			</div>
-		</fieldset>
-		<fieldset class="nocol" id="settings-layout">
-			<legend>Layout</legend>
-			<div class="form-field">
-				<input type="checkbox" id="page-hidesidebar" name="layoutHasNoSidebar"/>
-				<label for="page-hidesidebar">Hide the sidebar</label>
-			</div>
-			<div class="form-field">
-				<input type="checkbox" id="page-constrainwidth" name="layoutIsReadable"/>
-				<label for="page-constrainwidth">Constrain width</label>
-			</div>
-			<div class="form-field pad-left" data-bind-disabled="layoutIsCenteredDisabled">
-				<input type="checkbox" id="page-centercontent" name="layoutIsCentered" data-bind-disabled="layoutIsCenteredDisabled"/>
-				<label for="page-centercontent">Center content</label>
-			</div>
-		</fieldset>
-		<fieldset>
-			<legend>Delete</legend>
-			<button id="page-delete">Delete this page</button>
-			<div class="quiet">Deleting this page will not remove any uploaded content associated with this page.</div>
-		</fieldset>
+﻿<section class="page centered">
+	<div class="page-header">
+		<h1 class="float-left">
+			<span data-bind="title" data-type="contenteditable" id="page-title" contenteditable></span>
+		</h1>
+		<div class="float-left quiet pad-left pad-top">(click title to rename)</div>
 	</div>
-</div>
+	<div class="page-body">
+		<div class="page-content">
+			<div id="settings-page-preview" class="pad-bottom clear-fix"></div>
+			<fieldset id="settings-visibility" class="clear-left">
+				<legend>Visibility</legend>
+				<div class="pad">
+					<div class="form-field editable display-inline-block" tabindex="0" id="page-visibility">
+						<span data-bind="publishedDisplay"></span>
+					</div>
+					<div data-bind="publishedMessage"></div>
+				</div>
+			</fieldset>
+			<fieldset class="nocol" id="settings-layout">
+				<legend>Layout</legend>
+				<div class="form-field">
+					<input type="checkbox" id="page-hidesidebar" name="layoutHasNoSidebar"/>
+					<label for="page-hidesidebar">Hide the sidebar</label>
+				</div>
+				<div class="form-field">
+					<input type="checkbox" id="page-constrainwidth" name="layoutIsReadable"/>
+					<label for="page-constrainwidth">Constrain width</label>
+				</div>
+				<div class="form-field pad-left" data-bind-disabled="layoutIsCenteredDisabled">
+					<input type="checkbox" id="page-centercontent" name="layoutIsCentered" data-bind-disabled="layoutIsCenteredDisabled"/>
+					<label for="page-centercontent">Center content</label>
+				</div>
+			</fieldset>
+			<fieldset>
+				<legend>Delete</legend>
+				<button id="page-delete">Delete this page</button>
+				<div class="quiet">Deleting this page will not remove any uploaded content associated with this page.</div>
+			</fieldset>
+		</div>
+	</div>
+</section>

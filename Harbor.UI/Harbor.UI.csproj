@@ -505,6 +505,7 @@
     <Content Include="Views\Page\Image-None.cshtml" />
     <Content Include="Views\Page\Image-Edit.cshtml" />
     <Content Include="Views\PageEditor\_PagePreview.cshtml" />
+    <Content Include="Views\StyleGuide\_PageNav.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\users\" />
@@ -582,6 +583,7 @@
       <CompileStyle>Nested</CompileStyle>
       <DebugInfo>False</DebugInfo>
     </None>
+    <None Include="Content\site\core\_shared.scss" />
     <None Include="Content\site\core\theme\_form-theme.scss" />
     <None Include="Content\site\core\usermenu.scss">
       <Compile>True</Compile>

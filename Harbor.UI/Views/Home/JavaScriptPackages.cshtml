@@ -46,48 +46,50 @@
 		return string.Join("\n\n", contents);
 	}
 }
-<div class="page-header">
-	<h1>JavaScript Packages</h1>
-</div>
-<div class="page-content">
-	<section>
-		Packages not requiring registration are: <strong>@string.Join(", ", (string[])ViewBag.NonRequiredPackages)</strong>.
-	</section>
-	<sectio class="datalist">
-		<ul class="stretch">
-			@*<li class="heading">
+<section class="page">
+	<div class="page-header">
+		<h1>JavaScript Packages</h1>
+	</div>
+	<div class="page-content">
+		<section>
+			Packages not requiring registration are: <strong>@string.Join(", ", (string[])ViewBag.NonRequiredPackages)</strong>.
+		</section>
+		<section class="datalist">
+			<ul class="stretch">
+				@*<li class="heading">
 				<span class="col">Package Name</span>
 				<span class="col">Contents</span>
 				<span class="col">Dependencies</span>
 			</li>*@
-			@foreach (var group in Model)
-			{
-				<li class="group">
-					<span class="col"><h3>@group.Key</h3></span>
-					<span class="col"></span>
-					<span class="col"></span>
-				</li>
-				foreach (var item in group)
+				@foreach (var group in Model)
 				{
-					var pkg = JavaScriptPackageDto.FromIJavaScriptPackage(item);
-					<li>
-						<span class="col loud">@pkg.name</span>
-						<span class="col" title="@getPkgContentsTitle(pkg)">@getPkgContents(pkg)</span>
-						<span class="col">
-							@if (pkg.dependencies != null && pkg.dependencies.Length > 0)
-							{
-								@Html.Raw("Dependent on ")
-								<span class="loud">
-									@String.Join(", ", pkg.dependencies)
-								</span>
-							}
-						</span>
+					<li class="group">
+						<span class="col"><h3>@group.Key</h3></span>
+						<span class="col"></span>
+						<span class="col"></span>
 					</li>
+					foreach (var item in group)
+					{
+						var pkg = JavaScriptPackageDto.FromIJavaScriptPackage(item);
+						<li>
+							<span class="col loud">@pkg.name</span>
+							<span class="col" title="@getPkgContentsTitle(pkg)">@getPkgContents(pkg)</span>
+							<span class="col">
+								@if (pkg.dependencies != null && pkg.dependencies.Length > 0)
+								{
+									@Html.Raw("Dependent on ")
+									<span class="loud">
+										@String.Join(", ", pkg.dependencies)
+									</span>
+								}
+							</span>
+						</li>
+					}
 				}
-			}
-		</ul>
-	</sectio>
-</div>
+			</ul>
+		</section>
+	</div>
+</section>
 @section scripts {
 	<script>
 		

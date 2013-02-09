@@ -1,68 +1,126 @@
-﻿@model List<Harbor.UI.Models.StyleGuide.StyleGuidePage>
-@{
-	string columns = ViewBag.Columns as string;
-	if (columns == null) { 
-		columns = "col2";
-	}
+﻿@{
+	Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<style>
-	.page-header,
-	.page-aside,
-	.page-content {
-		border: 1px solid #AAA;	
-	}
-	.page-aside, .page-content {
-		border-top-width: 0;
-	}
-	.page-aside {
-		border-right-width: 0;	
-	}
-	
-</style>
- <div class="page">
+@section head {
+	<style>
+		.showpage .page-header {
+			background: #EFEFEF;	
+		}
+		.showpage .page-aside {
+			background: #CCC;
+		}
+		.showpage .page-content {
+			background: #DDD;
+		}
+		.showpage .page-body {
+			background: #999;
+		}
+		.showbox {
+			border: 1px solid #999;
+			line-height: 3em;
+			background: #efefef;
+			text-align: center;
+		}
+	</style>
+}
+<section class="page">
 	 <header class="page-header">
-		 <h1 class="float-left">Page</h1>
-		 <form class="float-right">
-			 <fieldset>
-				 <select id="page-options" name="options">
-					 <option value="aside">Default</option>
-					 <option value="aside readable">Constrain Width</option>
-					 <option value="aside readable centered">Centered</option>
-					 <option value="">No Sidebar</option>
-					 <option value="readable">No Sidebar, constrain width</option>
-					 <option value="readable centered">No Sidebar, centered</option>
-				 </select>
-			 </fieldset>
+		<h1>Page Title</h1>
+		<nav class="page-nav">
+			<ul>
+				<li>@Html.ActionLink("Scaffolding", "Index", new { pageKey = "Scaffolding" })</li>
+				<li>@Html.ActionLink("Style Guide Home", "Index", new { pageKey = "Home" })</li>
+				<li class="selected"><a href="#">Another Sub Page - Selected</a></li>
+			</ul>
+		</nav>
+		<form class="float-right pad">
+			<fieldset>
+				<select id="page-options" name="options">
+					<option value="aside">Default</option>
+					<option value="aside readable">Constrain Width</option>
+					<option value="aside centered">Centered</option>
+					<option value="">No Sidebar</option>
+					<option value="readable">No Sidebar, constrain width</option>
+					<option value="centered">No Sidebar, centered</option>
+				</select>
+			</fieldset>
 		</form>
 	 </header>
-	<div class="page-body aside"> <!-- can have .aside, .readable, and .centered  -->
+	<div class="page-body">
 		<aside class="page-aside">
+			<div class="pad">
 			This is the page aside.
-		</aside>
+			<br />
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</div>
+		</aside> 
 		<div class="page-content">
-			This is the page content.
+			<div class="col">
+			<p>This is the page content.
+				<br />
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</p>
+			</div>	
+			
+				<div class="col1"><div class="showbox">Column 1</div></div>
+				<div class="col2"><div class="showbox">Column 2</div></div>
+				<div class="col2"><div class="showbox">Column 2</div></div>
+				<div class="col3"><div class="showbox">Column 3</div></div>
+				<div class="col3"><div class="showbox">Column 3</div></div>
+				<div class="col3"><div class="showbox">Column 3</div></div>
+				<div class="col3"><div class="showbox">Column 3</div></div>
+				<div class="col3-2"><div class="showbox">Column 3-2</div></div>
+				<div class="col3-2"><div class="showbox">Column 3-2</div></div>
+				<div class="col3"><div class="showbox">Column 3</div></div>
+				<div class="col4"><div class="showbox">Column 4</div></div>
+				<div class="col4"><div class="showbox">Column 4</div></div>
+				<div class="col4"><div class="showbox">Column 4</div></div>
+				<div class="col4"><div class="showbox">Column 4</div></div>
+				<div class="col5"><div class="showbox">Column 5</div></div>
+				<div class="col5"><div class="showbox">Column 5</div></div>
+				<div class="col5"><div class="showbox">Column 5</div></div>
+				<div class="col5"><div class="showbox">Column 5</div></div>
+				<div class="col5"><div class="showbox">Column 5</div></div>
+			
+			<div class="col">
+				<input type="checkbox" id="showpage" />
+				<label for="showpage">Show page outline</label>
+			</div>
 		</div>
 	</div>
- </div>
-
-
+ </section>
 @section scripts {
 	<script>
 		$(document).ready(function (event) {
 
 			var opts = $("#page-options");
+			var page = $(".page");
 			var pageBody = $(".page-body");
 			var pageHeader = $(".page-header");
+			var pageAside = $(".page-aisde");
 
 			var udpateOptions = function () {
 				var val = opts.val();
-				pageBody.attr("class", val);
-				pageHeader.attr("class", val + " page-header");
+				if (val.indexOf("aside") === -1) {
+					$(".page-aside").remove();
+				} else if ($(".page-aside").length === 0) {
+					pageBody.prepend('<aside class="page-aside">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</aside>');
+				}
+				page.attr("class", val + " page");
 			};
 
-			udpateOptions();
+			//udpateOptions();
 			opts.change(udpateOptions);
 
+			$("#showpage").change(function() {
+
+				var checked = $(this).is(":checked");
+				if (checked) {
+					page.addClass("showpage");
+				} else {
+					page.removeClass("showpage");
+				}
+			});
 		});
 	</script>
 }
