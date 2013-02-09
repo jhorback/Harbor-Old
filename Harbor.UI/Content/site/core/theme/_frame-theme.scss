@@ -7,7 +7,7 @@ $framenav-background-color-hover:		$body-background-color				!default;
 $framenav-color-selected:				$framenav-color-hover				!default;
 $framenav-background-color-selected:	$framenav-background-color-hover	!default;
 $scrollbar-color:						#CCC								!default;
-
+$frame-logo-use-image: true !default;
 
 
 
@@ -23,6 +23,16 @@ $scrollbar-color:						#CCC								!default;
 		background: $framenav-background-color;
 		a, a:visited {
 			color: $framenav-color;
+		}
+	}
+
+	@if $frame-logo-use-image {
+		#frame-logo a {
+			text-indent: -99999px;
+			display: block;
+			width: 200px;
+			height: 50px;
+			background: url(images/logo.png) no-repeat;
 		}
 	}
 

@@ -1,8 +1,8 @@
 #frame-header {
-  color: #336699;
-  background: white; }
+  color: #eeeeee;
+  background: transparent; }
   #frame-header a, #frame-header a:visited {
-    color: #336699; }
+    color: #eeeeee; }
 
 #frame-logo a {
   text-indent: -99999px;
@@ -12,9 +12,9 @@
   background: url(images/logo.png) no-repeat; }
 
 #frame-nav ul li:hover {
-  background-color: #0f7c91; }
+  background-color: white; }
   #frame-nav ul li:hover a {
-    color: white; }
+    color: #333333; }
 #frame-nav ul li.selected {
   background-color: white; }
   #frame-nav ul li.selected a {
@@ -26,24 +26,24 @@
     background: #b3b3b3; }
 
 legend {
-  color: #db7100; }
+  color: #eda456; }
 
 html, body {
-  background-color: white;
-  color: #336699;
+  background-color: #0f7c91;
+  color: white;
   font-size: 14px;
   font-family: "Segoe UI", "Helvetica Neue", Arial, Helvetica, sans-serif; }
 
 h2 {
-  color: #db7100;
-  text-shadow: rgba(51, 102, 153, 0.2) 1px 1px 1px; }
+  color: #eda456;
+  text-shadow: rgba(255, 255, 255, 0.2) 1px 1px 1px; }
 
 a, .link {
   text-decoration: underline;
-  color: #0066cc;
+  color: white;
   cursor: pointer; }
   a:visited, a:focus, .link:visited, .link:focus {
-    color: #0066cc; }
+    color: white; }
   a:hover, .link:hover {
     color: #0099ff; }
   a:active, .link:active {
@@ -57,10 +57,10 @@ hr {
   background-color: #cccccc; }
 
 #frame-header {
-  color: #336699;
-  background: white; }
+  color: #eeeeee;
+  background: transparent; }
   #frame-header a, #frame-header a:visited {
-    color: #336699; }
+    color: #eeeeee; }
 
 #frame-logo a {
   text-indent: -99999px;
@@ -70,9 +70,9 @@ hr {
   background: url(images/logo.png) no-repeat; }
 
 #frame-nav ul li:hover {
-  background-color: #0f7c91; }
+  background-color: white; }
   #frame-nav ul li:hover a {
-    color: white; }
+    color: #333333; }
 #frame-nav ul li.selected {
   background-color: white; }
   #frame-nav ul li.selected a {
@@ -91,4 +91,20 @@ hr {
 
 .attn {
   color: #d14836; }
+
+.menu {
+  background-color: transparent;
+  color: white; }
+
+#frame {
+  z-index: 1;
+  background: url(images/bj-dive-fade.png) no-repeat; }
+
+#theme1 {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 320px;
+  height: 240px;
+  background: url(images/bj-painting-fade.png) no-repeat; }
 

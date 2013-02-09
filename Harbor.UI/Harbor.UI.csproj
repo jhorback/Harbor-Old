@@ -360,12 +360,15 @@
       <CompileStyle>Nested</CompileStyle>
       <DebugInfo>False</DebugInfo>
     </Content>
+    <Content Include="Content\themes\bjrblue\images\logo.png" />
+    <Content Include="Content\themes\bjroyster\images\logo.png" />
     <Content Include="Content\themes\bjroyster\theme.css">
       <DependentUpon>theme.scss</DependentUpon>
     </Content>
-    <Content Include="Content\themes\bjroyster\theme.min.css">
+    <Content Include="Content\themes\bjrblue\theme.css">
       <DependentUpon>theme.scss</DependentUpon>
     </Content>
+    <Content Include="Content\themes\default\images\logo.png" />
     <Content Include="Content\themes\default\theme.css">
       <DependentUpon>theme.scss</DependentUpon>
     </Content>
@@ -579,6 +582,7 @@
       <CompileStyle>Nested</CompileStyle>
       <DebugInfo>False</DebugInfo>
     </None>
+    <None Include="Content\site\core\theme\_form-theme.scss" />
     <None Include="Content\site\core\usermenu.scss">
       <Compile>True</Compile>
       <Minify>False</Minify>
@@ -708,7 +712,18 @@
       <CompileStyle>Nested</CompileStyle>
       <DebugInfo>False</DebugInfo>
     </None>
-    <None Include="Content\themes\bjroyster\theme.scss" />
+    <None Include="Content\themes\bjroyster\theme.scss">
+      <Compile>True</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </None>
+    <None Include="Content\themes\bjrblue\theme.scss">
+      <Compile>True</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </None>
     <None Include="Content\themes\default\theme.scss">
       <Compile>True</Compile>
       <Minify>False</Minify>

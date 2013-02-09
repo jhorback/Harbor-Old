@@ -1,3 +1,26 @@
+#frame-header {
+  color: #eeeeee;
+  background: #345276; }
+  #frame-header a, #frame-header a:visited {
+    color: #eeeeee; }
+
+#frame-nav ul li:hover {
+  background-color: white; }
+  #frame-nav ul li:hover a {
+    color: #333333; }
+#frame-nav ul li.selected {
+  background-color: white; }
+  #frame-nav ul li.selected a {
+    color: #333333; }
+
+#frame-body ::-webkit-scrollbar-thumb {
+  background: #cccccc; }
+  #frame-body ::-webkit-scrollbar-thumb:hover {
+    background: #b3b3b3; }
+
+legend {
+  color: #db7100; }
+
 html, body {
   background-color: white;
   color: #333333;
@@ -28,7 +51,7 @@ hr {
 
 #frame-header {
   color: #eeeeee;
-  background: red; }
+  background: #345276; }
   #frame-header a, #frame-header a:visited {
     color: #eeeeee; }
 

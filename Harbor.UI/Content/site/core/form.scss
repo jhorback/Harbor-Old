@@ -9,7 +9,6 @@ $form-input-background-color:			#FFFFFF						!default;
 $form-border-color:						#bbbbbb						!default;
 $form-border-color-focused:				#92cae4						!default;
 $form-input-focused-shadow-color:		#d5edf8						!default;
-$form-legend-color:                     #DB7100						!default;
 $form-input-font-color:					#000						!default;
 $form-input-background-color-focused:	#FFF						!default;
 $form-label-font-size:					1.3em						!default;
@@ -30,7 +29,7 @@ $_label-width: 150px;
 		}
 	}
 
-	legend { font-size: 1.5em; color: $form-legend-color;
+	legend { font-size: 1.5em; 
 		@include single-text-shadow(rgba(#000, 0.2), 1px, 1px, 1px);						
 	}
 	input {

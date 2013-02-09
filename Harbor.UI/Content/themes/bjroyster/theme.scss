@@ -1,3 +1,13 @@
 @import "../../site/core/theme/all-theme";
 
+
+$body-color: #369;
+$body-background-color: #FFF;
+
+$framenav-background-color: #FFF;
+$framenav-color: $body-color;
+$framenav-background-color-hover: #0f7c91;
+$framenav-color-hover: #FFF;
+
+
 @include all-theme;

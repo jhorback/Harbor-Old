@@ -1,0 +1,35 @@
+@import "../../site/core/theme/all-theme";
+
+
+$c2: #eda456;
+
+$body-color: #FFF;
+$body-background-color: #0f7c91;
+$framenav-background-color: transparent;
+
+$h2-font-color:		$c2;
+$form-legend-color:	$c2;
+
+$link-color:				#FFF;
+$link-color-hover:			#09f;
+
+@include all-theme;
+
+
+.menu {
+	background-color: transparent;
+	color: white;
+}
+#frame {
+	z-index: 1;
+	background: url(images/bj-dive-fade.png) no-repeat;
+}
+
+#theme1 {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	width: 320px;
+	height: 240px;
+	background: url(images/bj-painting-fade.png) no-repeat;
+}
