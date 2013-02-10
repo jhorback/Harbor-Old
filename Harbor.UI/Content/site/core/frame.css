@@ -1,19 +1,12 @@
-#frame {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1; }
+#frame:after {
+  content: "";
+  display: table;
+  clear: both; }
 
 #frame-header {
   overflow: hidden;
-  position: fixed;
   height: 4.286em;
   line-height: 4.286em;
-  top: 0;
-  left: 0;
-  right: 0;
   z-index: 1; }
   #frame-header a, #frame-header a:visited {
     text-decoration: none; }
@@ -64,24 +57,9 @@
     display: inline-block;
     text-align: center; }
 
-#frame-body {
-  clear: both;
-  min-height: 5em;
-  position: fixed;
-  top: 4.286em;
-  left: 0;
-  right: 0;
-  margin: 0;
-  bottom: 0;
-  overflow: auto; }
-  #frame-body ::-webkit-scrollbar {
-    width: .9em;
-    height: .9em; }
-
 #frame-info {
-  display: none;
-  clear: both;
-  min-height: 5em;
+  clear: left;
+  height: 3.3em;
   text-align: center; }
 
 #overlay, .overlay {

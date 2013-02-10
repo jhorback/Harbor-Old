@@ -4,10 +4,6 @@
   clear: both; }
 
 .page-header {
-  position: fixed;
-  top: 4.286em;
-  left: 0;
-  right: 0;
   height: 5em;
   line-height: 4.999em; }
   .page-header h1 {
@@ -43,53 +39,36 @@
     .page-nav li.selected a {
       font-weight: bold; }
 
+.page-body:after {
+  content: "";
+  display: table;
+  clear: both; }
+
 .page-aside {
-  position: fixed;
-  top: 9.286em;
-  bottom: 0;
-  left: 0;
-  width: 20em; }
+  position: relative;
+  width: 30%;
+  float: left; }
 
 .page-content {
-  position: fixed;
-  top: 9.286em;
-  bottom: 0;
-  left: 20em;
-  right: 0;
-  padding-right: 1em;
-  overflow: auto; }
-  .page-content:first-child {
-    left: 0; }
-
-.readable .page-content {
-  max-width: 68em; }
-
-.centered .page-header {
   position: relative;
-  top: 0;
-  margin: auto;
-  max-width: 88em; }
-.centered .page-body {
-  position: relative;
-  margin: auto;
-  max-width: 88em; }
-  .centered .page-body:after {
-    content: "";
-    display: table;
-    clear: both; }
-.centered .page-aside {
-  position: relative;
-  top: 0;
-  left: 0;
   float: left;
+  width: 69%;
+  padding-right: 1%; }
+  .page-content:first-child {
+    width: 99%; }
+
+.readable .page-body, .readable .page-header {
+  max-width: 88em; }
+
+.centered .page-header, .centered .page-body {
+  max-width: 88em;
+  margin: auto; }
+.centered .page-aside {
   width: 30%; }
 .centered .page-content {
-  position: relative;
-  top: 0;
-  left: auto;
   float: left;
-  width: 68%;
-  *width: 67.5%;
+  width: 69%;
+  *width: 68.5%;
   padding-right: 1%; }
 .centered .page-content:first-child {
   width: 99%; }

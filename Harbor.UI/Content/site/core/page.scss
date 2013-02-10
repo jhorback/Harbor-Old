@@ -14,14 +14,15 @@
 // </div>
 
 $page-header-height: 5em;
-$page-aside-width: 20em;
-$page-content-gutter-width: 1em;
+$page-aside-width: 30%;
+$page-content-width: 69%;
+$page-content-gutter-width: 1%;
 $page-readable-width: 88em;
 $page-header-bottom: $frame-header-height + $page-header-height;
 
 
 @mixin page {
-	.page { 
+	.page {
 		@include clearfix;
 	}
 	@include page-header;
@@ -32,10 +33,6 @@ $page-header-bottom: $frame-header-height + $page-header-height;
 
 @mixin page-header {
 	.page-header {
-		position: fixed;
-		top: $frame-header-height;
-		left: 0;
-		right: 0;
 		height: $page-header-height;		
 		line-height: $page-header-height - (.1 / 100);
 
@@ -78,63 +75,45 @@ $page-header-bottom: $frame-header-height + $page-header-height;
 }
 
 
-@mixin page-body {	
+@mixin page-body {
+	.page-body {
+		@include clearfix;
+	}
 	.page-aside {
-		position: fixed;
-		top: $page-header-bottom;
-		bottom: $frame-footer-height;
-		left: 0;
+		position: relative;
 		width: $page-aside-width;
+		float: left;
 	}
 	.page-content {
-		position: fixed;
-		top: $page-header-bottom;
-		bottom: $frame-footer-height;
-		left: $page-aside-width;
-		right: 0;
+		// jch! is it possible to stretch this?
+		position: relative;
+		float: left;
+		width: $page-content-width;
 		padding-right: $page-content-gutter-width;
-		overflow: auto;
-		
 		&:first-child { // if there is no aside
-			left: 0;
+			width: 100% - $page-content-gutter-width;
 		}
 	}
 
 	.readable {
-		.page-content {
-			max-width: $page-readable-width - $page-aside-width;
+		.page-body, .page-header {
+			max-width: $page-readable-width;
 		}
 	}
 
 	.centered {
-		.page-header {
-			position: relative;
-			top: 0;
-			margin: auto;
+		.page-header, .page-body {
 			max-width: $page-readable-width;
-		}
-		.page-body {
-			position: relative;
-			@include clearfix;
 			margin: auto;
-			max-width: $page-readable-width;
 		}
 		.page-aside {
-			position: relative;
-			top: 0;
-			left: 0;
-			float: left;
-			width: 30%;
-		}
-		
+			width: $page-aside-width;
+		}		
 		.page-content {
-			position: relative;
-			top: 0;
-			left: auto;			
 			float: left;
-			width: 68%;
-			*width: 68% - (.5 / 100 * 100 * 1%);
-			padding-right: 1%;
+			width: $page-content-width;
+			*width: $page-content-width - (.5 / 100 * 100 * 1%);
+			padding-right: $page-content-gutter-width;
 		}
 		.page-content:first-child { // if there is no aside
 			width: 99%;

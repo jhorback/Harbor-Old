@@ -12,12 +12,7 @@ $overlay-background-color: #000;
 
 @mixin frame {
 	#frame {
-		position: fixed;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		z-index: 1;
+		@include clearfix;
 	}	
 	@include frame-header;
 	@include frame-body;
@@ -29,14 +24,9 @@ $overlay-background-color: #000;
 @mixin frame-header {
 	#frame-header {
 		overflow: hidden;
-		position: fixed;
 		height: $frame-header-height;
 		line-height: $frame-header-height;
-		top:0;
-		left:0;
-		right:0;
 		z-index: 1;		
-		
 
 		a, a:visited {
 			text-decoration: none;
@@ -94,28 +84,15 @@ $overlay-background-color: #000;
 
 @mixin frame-body {
 	#frame-body {
-		clear: both;
-		min-height: 5em;
-		position: fixed;
-		top: $frame-header-height;
-		left: 0;
-		right: 0;
-		margin: 0;
-		bottom: $frame-footer-height;
-		overflow: auto;
-		::-webkit-scrollbar {
-			width: .9em;
-			height: .9em;
-		}
+			
 	}
 }
 
 
 @mixin frame-footer {
 	#frame-info {
-		display: none;
-		clear:both;
-		min-height: 5em;
+		clear: left;
+		height: $frame-footer-height;
 		text-align: center;
 	}
 }
