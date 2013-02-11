@@ -6,6 +6,25 @@
 		margin-left: 1%;
 	}
 
+	// jch! make sure location is appropriate // remove the height classes
+	.row {
+		padding-left: 0 !important;
+		padding-right: 1% !important;
+		margin: 0;
+	}
+	.row-small {
+		max-height: 5em;
+		overflow: auto;
+	}
+	.row-medium {
+		max-height: 10em;
+		overflow: auto;
+	}
+	.row-large {
+		max-height: 15em;
+		overflow:auto;
+	}
+
 	@media screen and (max-width: 480px) {
 		.col,
 		.col1,

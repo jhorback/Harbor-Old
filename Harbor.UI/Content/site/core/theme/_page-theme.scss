@@ -1,0 +1,12 @@
+@import "foundation-theme";
+
+$page-title-color: $body-color;
+
+@mixin page-theme {
+	.page-header {		
+		h1 a {			
+			color: $page-title-color;
+		}
+	}
+}
+

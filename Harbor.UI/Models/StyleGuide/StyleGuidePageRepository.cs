@@ -11,11 +11,13 @@ namespace Harbor.UI.Models.StyleGuide
 
 		public StyleGuidePageRepository()
 		{
-			//registerPage("Home", "The style guide home page.");
-			registerPage("Framework", "A set of supported class names.");
-			registerPage("Forms", "The standard HTML form.");
-			registerPage("Page", "The page layout.");
-			registerPage("Collections", "The varous collection types: .colgrid, .menulist, .datalist, .datatable.");
+			registerPage("Scaffolding", "Page layout and building blocks for page structure.");
+			registerPage("Typography", "Content support for font, headings, lists, etc.");
+			registerPage("Forms", "Form markup and styles including alternative form layouts and buttons.");
+			registerPage("Collections", "Options for displaying collections in tables, lists, and as tiles.");
+			
+			// registerPage("Framework", "A set of supported class names.");
+			// registerPage("Page", "The page layout.");
 		}
 
 		public List<StyleGuidePage> GetPages()

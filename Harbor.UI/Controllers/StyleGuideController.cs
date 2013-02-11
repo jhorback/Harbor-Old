@@ -23,8 +23,12 @@ namespace Harbor.UI.Controllers
 			var page = repository.GetPage(pageKey);
 			if (page == null || page.Key == "Home")
 			{
-				pageKey = "Home";
-				ViewBag.Title = "Style Guide";
+				if (pageKey == null)
+				{
+					pageKey = "Home";
+					ViewBag.Title = "Style Guide";
+				}
+				else ViewBag.Title = pageKey;
 			}
 			else
 			{

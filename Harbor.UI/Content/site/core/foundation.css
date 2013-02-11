@@ -124,6 +124,9 @@ pre, code, tt {
   font-size: 1em;
   line-height: 1.5; }
 
+abbr {
+  border-bottom: 1px dotted; }
+
 section {
   padding-bottom: 1em; }
 

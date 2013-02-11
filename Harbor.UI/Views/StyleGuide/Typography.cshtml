@@ -1,0 +1,226 @@
+﻿@{
+	string columns = ViewBag.Columns as string;
+	if (columns == null) { 
+		columns = "col2";
+	}
+}
+<div class="page-content">
+	<div class="col">
+		<h2>Headings</h2>
+		<div class="outline">
+			<h1>h1. Heading 1</h1>
+			<h2>h2. Heading 2</h2>
+			<h3>h3. Heading 3</h3>
+			<h4>h4. Heading 4</h4>
+			<h5>h5. Heading 5</h5>
+		</div>
+		
+		<h2>Body Copy</h2>
+		<div class="outline">
+			<p>
+				Here is a simple paragraph <a href="#">with a standard link</a>.
+			</p>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.			
+			</p>
+		</div>
+		<div class="outline">
+			<p>
+				Here is a paragraph which is the only one within it's parent.
+			</p>
+		</div>
+		
+		<h2>Priority</h2>
+		<div class="outline">
+			<ul class="nobullets">
+				<li>
+					<span class="quiet">.quiet - dampen or detract from the text.</span>
+					Similar to <small>the 'small' tag</small>. 					
+				</li>
+				<li>
+					<span class="loud">.loud - make the text stand out.</span>
+					Similar to <strong>the 'strong' tag</strong> or <b>the 'b' tag</b>.		
+				</li>
+				<li>
+					<span class="attn">.attn - draw attention to the text.</span>
+					Similar to <em>&lt;em&gt;the 'em' emphasis tag&lt;/em&gt;</em> or <i>the 'i' tag</i>.
+				</li>				
+			</ul>
+		</div>
+		
+		<h2>Abbreviations</h2>
+		<div class="outline">
+			The abbreviation <abbr title="Asynchronous JavaScript and XML">AJAX</abbr> may mean more tnan one thing.
+		</div>
+		
+		
+		<h2>Addresses</h2>
+		<div class="outline">
+			<address>
+			  <strong>Zeit Palace</strong><br>
+			  1234 Geist Place<br>
+			  Jose Falace, DE 98765<br>
+			  <abbr title="Phone">P:</abbr> (123) 456-7890
+			</address>
+		</div>
+		
+		
+		<h2>Blockquotes</h2>
+		<div class="outline">
+			<blockquote>
+			  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+			  <small>Someone famous <cite title="Source Title">Source Title</cite></small>
+			</blockquote>
+		</div>
+
+	
+	
+		<h2>Lists</h2>
+		<h3>Unordered</h3>
+		<div class="outline">
+			<ul>
+				<li>Lorem ipsum dolor sit amet</li>
+				<li>Consectetur adipiscing elit</li>
+				<li>Integer molestie lorem at massa</li>
+				<li>Facilisis in pretium nisl aliquet</li>
+				<li>Nulla volutpat aliquam velit
+					<ul>
+						<li>Phasellus iaculis neque</li>
+						<li>Purus sodales ultricies</li>
+						<li>Vestibulum laoreet porttitor sem</li>
+						<li>Ac tristique libero volutpat at</li>
+					</ul>
+				</li>
+				<li>Faucibus porta lacus fringilla vel</li>
+				<li>Aenean sit amet erat nunc</li>
+				<li>Eget porttitor lorem</li>
+			</ul>
+		</div>
+
+		<h3>Ordered</h3>
+		<div class="outline">
+			<ol>
+              <li>Lorem ipsum dolor sit amet</li>
+              <li>Consectetur adipiscing elit</li>
+              <li>Integer molestie lorem at massa</li>
+              <li>Facilisis in pretium nisl aliquet</li>
+				<li>Nulla volutpat aliquam velit
+					<ol>
+						<li>Phasellus iaculis neque</li>
+						<li>Purus sodales ultricies</li>
+						<li>Vestibulum laoreet porttitor sem</li>
+						<li>Ac tristique libero volutpat at</li>
+					</ol>
+				</li>
+              <li>Faucibus porta lacus fringilla vel</li>
+              <li>Aenean sit amet erat nunc</li>
+              <li>Eget porttitor lorem</li>
+            </ol>
+		</div>
+		
+		<h3>No bullets</h3>
+		<div class="outline">
+			<ul class="nobullets">
+				<li>Lorem ipsum dolor sit amet</li>
+				<li>Consectetur adipiscing elit</li>
+				<li>Integer molestie lorem at massa</li>
+				<li>Facilisis in pretium nisl aliquet</li>
+				<li>Nulla volutpat aliquam velit
+					<ul>
+						<li>Phasellus iaculis neque</li>
+						<li>Purus sodales ultricies</li>
+						<li>Vestibulum laoreet porttitor sem</li>
+						<li>Ac tristique libero volutpat at</li>
+					</ul>
+				</li>
+				<li>Faucibus porta lacus fringilla vel</li>
+				<li>Aenean sit amet erat nunc</li>
+				<li>Eget porttitor lorem</li>
+			</ul>
+		</div>
+		
+		
+		<h3>Inline List</h3>
+		<div class="outline">
+			<ul class="inlinelist">
+				<li>Lorem ipsum</li>
+				<li>Phasellus iaculis</li>
+				<li>Nulla volutpat</li>
+			</ul>
+		</div>
+		
+		<h3>Definition Lists</h3>
+		<div class="outline">
+			<dl>
+				<dt>Description lists</dt>
+				<dd>A description list is perfect for defining terms.</dd>
+				<dt>Euismod</dt>
+				<dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+				<dd>Donec id elit non mi porta gravida at eget metus.</dd>
+				<dt>Malesuada porta</dt>
+				<dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+			</dl>
+		</div>
+		
+		<h4>Inline Definition List</h4>
+		<div class="outline">
+			<dl class="inlinelist">
+				<dt>Description lists</dt>
+				<dd>A description list is perfect for defining terms.</dd>
+				<dt>Euismod</dt>
+				<dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+				<dd>Donec id elit non mi porta gravida at eget metus.</dd>
+				<dt>Malesuada porta</dt>
+				<dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+			</dl>
+		</div>
+		
+		<h2>Code</h2>
+		<h3>Inline</h3>
+		<div class="outline">
+			Here is <code>code in a code block</code> and now back outside.
+		</div>
+		<h3>Pre</h3>
+		<div class="outline">
+			<pre>
+&lt;p&gt;Sample text here...&lt;/p&gt;
+</pre>
+		</div>
+
+		<h2>Utility Classes</h2>
+		<h3>Link impersonator</h3>
+		<div class="outline">
+			Attempt to make any element look like a <span class="link">standard link</span>.	
+		</div>
+		<pre class="prettyprint">
+Attempt to make any element look like a &lt;span class="link">standard link&lt;/span>.
+</pre>
+
+		<h3>Nowrap </h3>
+		<p>Add a <code>.nowrap</code> class to apply white-space:nowrap to the element.</p>
+		<div class="outline">
+			<span class="nowrap">
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.			
+			</span>
+		</div>
+		<pre class="prettyprint">
+&lt;span class="nowrap">...&lt;/span>
+</pre>
+		<h3>Text Formating</h3>
+		<p>
+			Alignment and non-semantic size helpers.
+		</p>
+		<div class="outline">
+			<div class="text-left">.text-left</div>
+			<div class="text-center">.text-center</div>
+			<div class="text-right">.text-right</div>
+			<div class="text-justify">.text-justify</div>
+			<div class="text-small">.text-small</div>
+			<div class="text-large">.text-large</div>
+		</div>
+	</div>
+</div>
+@section scripts {
+	<script>
+	</script>
+}

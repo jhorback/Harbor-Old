@@ -49,12 +49,39 @@ a, .link {
   a:active, .link:active {
     color: red; }
 
-pre, code, tt {
-  font-family: "andale mono", Consolas, "lucida console", monospace; }
+pre, code {
+  font-family: "andale mono", Consolas, "lucida console", monospace;
+  background: #F5F5F5;
+  border: 1px solid #DDD;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px; }
 
 hr {
   color: #cccccc;
   background-color: #cccccc; }
+
+.outline {
+  position: relative;
+  border: 1px solid #DDD;
+  background: #FFF;
+  padding: 1em;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px; }
+  .outline:after {
+    content: "";
+    display: table;
+    clear: both; }
+
+.outline + .prettyprint {
+  margin-top: -0.5em;
+  padding-top: 1em !important; }
+
+.outline + .outline {
+  margin-top: .5em; }
 
 #frame-header {
   color: #eeeeee;
@@ -91,6 +118,9 @@ hr {
 
 .attn {
   color: #d14836; }
+
+.page-header h1 a {
+  color: #333333; }
 
 .menu {
   background-color: transparent;

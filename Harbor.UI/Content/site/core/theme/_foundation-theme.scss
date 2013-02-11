@@ -1,4 +1,6 @@
 @import "../../mixins/text-shadow";
+@import "../../mixins/border-radius";
+@import "../../mixins/clearfix";
 
 
 $body-font-family:			"Segoe UI", "Helvetica Neue", Arial, Helvetica, sans-serif	!default;
@@ -49,9 +51,25 @@ $hr-color:					#CCC		!default;
 			color: $link-color-active
 		}
 	}
-	pre, code, tt   { font-family: $pre-font-family; }
+	pre, code   { font-family: $pre-font-family; background: #F5F5F5; border: 1px solid #DDD; @include border-radius; }
 	hr {
 		color: $hr-color;
 		background-color: $hr-color;
+	}
+	.outline {
+		position: relative;
+		border: 1px solid #DDD;
+		background: #FFF;
+		padding: 1em;
+		@include border-radius;
+		@include clearfix;
+	}
+
+	.outline + .prettyprint {
+		margin-top: -.5em;
+		padding-top: 1em !important;
+	}
+	.outline + .outline {
+		margin-top: .5em;
 	}
 }

@@ -21,7 +21,20 @@
 	.relative		{ position : relative; }
 	.nowrap			{ white-space: nowrap;}
 	.nobullets		{ @include no-bullets; }
-	
+
+	.inlinelist {
+	  margin-left: 0;
+	  list-style: none;
+	  & > li {
+		display: inline-block;
+	  *display: inline;
+	  padding-right: 1em;
+	  padding-left: 1em;
+	  *zoom: 1;
+	  }
+	}
+
+
 	.float-left		{ float: left; }
 	.float-right	{ float: right; }
 	
