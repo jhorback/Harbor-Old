@@ -35,7 +35,7 @@
 		</nav>
 		<form class="float-right pad">
 			<fieldset>
-				<select id="page-options" name="options">
+				<select id="page-options" name="layoutOptions">
 					<option value="aside">Default</option>
 					<option value="aside readable">Constrain Width</option>
 					<option value="aside centered">Centered</option>
@@ -111,44 +111,72 @@
 				</div>
 			</div>
 			<div class="col">
-				<input type="checkbox" id="showpage" />
-				<label for="showpage">Show page outline</label>
+				<input type="checkbox" id="showPage" />
+				<label for="showPage">Show page outline</label>
 			</div>
 		</div>
 	</div>
  </section>
 @section scripts {
 	<script>
-		$(document).ready(function (event) {
+		(function() {
+			var PageView = Backbone.View.extend({
+				pageAsideEl: null, // cached el
 
-			var opts = $("#page-options");
-			var page = $(".page");
-			var pageBody = $(".page-body");
-			var pageHeader = $(".page-header");
-			var pageAside = $(".page-aisde");
+				initialize: function() {
+					this.pageAsideEl = $(".page-aside");
+					this.model.on("change:layoutOptions", this.updateLayout, this);
+					this.model.on("change:showPage", this.showPage, this);
+				},
 
-			var udpateOptions = function () {
-				var val = opts.val();
-				if (val.indexOf("aside") === -1) {
-					$(".page-aside").remove();
-				} else if ($(".page-aside").length === 0) {
-					pageBody.prepend('<aside class="page-aside">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</aside>');
-				}
-				page.attr("class", val + " page");
-			};
+				events: {
+					"change #page-options": function () {
+						var val = $(event.target).val();
+						this.model.set("layoutOptions", val);
+					},
+					"change #showPage": function() {
+						var showPage = $(event.target).is(":checked");
+						this.model.set("showPage", showPage);
+					}
+				},
 
-			//udpateOptions();
-			opts.change(udpateOptions);
+				updateLayout: function () {
+					if (this.model.hasAside() === false) {
+						this.pageAsideEl = this.pageAsideEl.detach();
+					} else if (this.$el.has(this.pageAsideEl).length === 0) {
+						this.$(".page-body").prepend(this.pageAsideEl);
+					}
+					this.$el.attr("class", this.model.getPageClassNames());
+					this.showPage();
+				},
 
-			$("#showpage").change(function() {
-
-				var checked = $(this).is(":checked");
-				if (checked) {
-					page.addClass("showpage");
-				} else {
-					page.removeClass("showpage");
+				showPage: function () {
+					if (this.model.get("showPage") === true) {
+						this.$el.addClass("showpage");
+					} else {
+						this.$el.removeClass("showpage");
+					}
 				}
 			});
-		});
+
+
+			var PageModel = Backbone.Model.extend({
+				defaults: {
+					showPage: false,
+					layoutOptions: "aside"
+				},
+				hasAside: function() {
+					return this.get("layoutOptions").indexOf("aside") > -1;
+				},
+				getPageClassNames: function() {
+					return this.get("layoutOptions") + " page";
+				}
+			});
+
+			var view = new PageView({
+				el: $(".page"),
+				model: new PageModel()
+			});
+		}());
 	</script>
 }
