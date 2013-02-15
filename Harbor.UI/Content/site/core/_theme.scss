@@ -1,0 +1,11 @@
+@import "src/foundation";
+@import "src/frame";
+@import "src/page";
+@import "src/usermenu";
+
+@mixin theme {
+	@include foundation-theme;
+	@include frame-theme;
+	@include page-theme;
+	@include usermenu-theme;
+}

@@ -1,190 +1,194 @@
-@import "../mixins/text-shadow";
-@import "../mixins/clearfix";
-@import "../mixins/no-bullets";
-@import "shared";
+@import "src/page";
+@include page;
 
 
-// Markup
-// <section class="page"> <!-- can have .readable or .centered -->
-//	<header class="page-header"><!-- page header content --></header>
-//	<div class="page-body">
-//		<aside class="page-aside"><!-- page aside content --></aside>
-//		<div class="page-content"><!-- page content --></div>
-//	</div>
-// </div>
-
-$page-header-height: 5em;
-$page-aside-width: 30%;
-$page-content-width: 69%;
-$page-content-gutter-width: 1%;
-$page-readable-width: 88em;
-$page-header-bottom: $frame-header-height + $page-header-height;
-
-
-@mixin page {
-	.page {
-		@include clearfix;
-	}
-	@include page-header;
-	@include page-body;
-	//@include page-debug;
-}
-
-
-@mixin page-header {
-	.page-header {
-		height: $page-header-height;		
-		line-height: $page-header-height - (.1 / 100);
-
-		h1 {
-			float: left;
-			padding: 0 .3em;
-			
-			@include single-text-shadow(rgba(#000, 0.4), 1px, 1px, 2px);
-			a {
-				text-decoration: none;
-			}
-		}
-		button {
-			margin: 1em; // 1em;
-		}
-	}
-
-	.page-nav {
-		display: block;
-		float: left;
-		margin-left: 1em;
-		.ul {			
-			@include no-bullets;			
-			@include clearfix;
-		}
-		li {
-			display: block;
-			float: left;
-			a {
-				font-size: 1.2em;
-				padding: .5em;
-				text-decoration: none;				
-			}
-			&.selected a {
-				font-weight: bold;
-			}
-		}
-	}
-
-}
-
-
-@mixin page-body {
-	.page-body {
-		@include clearfix;
-	}
-	.page-aside {
-		position: relative;
-		width: $page-aside-width;
-		float: left;
-	}
-	.page-content {
-		// jch! is it possible to stretch this?
-		position: relative;
-		float: left;
-		width: $page-content-width;
-		padding-right: $page-content-gutter-width;
-		&:first-child { // if there is no aside
-			width: 100% - $page-content-gutter-width;
-		}
-	}
-
-	.readable {
-		.page-body, .page-header {
-			max-width: $page-readable-width;
-		}
-	}
-
-	.centered {
-		.page-header, .page-body {
-			max-width: $page-readable-width;
-			margin: auto;
-		}
-		.page-aside {
-			width: $page-aside-width;
-		}		
-		.page-content {
-			float: left;
-			width: $page-content-width;
-			*width: $page-content-width - (.5 / 100 * 100 * 1%);
-			padding-right: $page-content-gutter-width;
-		}
-		.page-content:first-child { // if there is no aside
-			width: 99%;
-		}
-	}
-}
-
-
-
-@mixin page-debug {
-	.page-header {
-		background: #EFEFEF;	
-	}
-	.page-aside {
-		background: #CCC;
-	}
-	.page-content {
-		background: #DDD;
-	}
-	.page-body {
-		background: #999;
-	}
-}
-
-
-//	@media screen and (min-width: 1024px) { // large + wide
-//		@include page-layout($aside-width: 20%, $content-width: 80%, $readable-aside-width: 25%,  $readable-content-width: 75%);
+//@import "../mixins/text-shadow";
+//@import "../mixins/clearfix";
+//@import "../mixins/no-bullets";
+//@import "shared";
+//
+//
+//// Markup
+//// <section class="page"> <!-- can have .readable or .centered -->
+////	<header class="page-header"><!-- page header content --></header>
+////	<div class="page-body">
+////		<aside class="page-aside"><!-- page aside content --></aside>
+////		<div class="page-content"><!-- page content --></div>
+////	</div>
+//// </div>
+//
+//$page-header-height: 5em;
+//$page-aside-width: 30%;
+//$page-content-width: 69%;
+//$page-content-gutter-width: 1%;
+//$page-readable-width: 88em;
+//$page-header-bottom: $frame-header-height + $page-header-height;
+//
+//
+//@mixin page {
+//	.page {
+//		@include clearfix;
+//	}
+//	@include page-header;
+//	@include page-body;
+//	//@include page-debug;
+//}
+//
+//
+//@mixin page-header {
+//	.page-header {
+//		height: $page-header-height;		
+//		line-height: $page-header-height - (.1 / 100);
+//
+//		h1 {
+//			float: left;
+//			padding: 0 .3em;
+//			
+//			@include single-text-shadow(rgba(#000, 0.4), 1px, 1px, 2px);
+//			a {
+//				text-decoration: none;
+//			}
+//		}
+//		button {
+//			margin: 1em; // 1em;
+//		}
 //	}
 //
-//	@media screen and (min-width: 600px) and (max-width: 1024px) { // medium
-//		@include page-layout($aside-width: 25%, $content-width: 75%, $readable-aside-width: 30%, $readable-content-width: 70%);
+//	.page-nav {
+//		display: block;
+//		float: left;
+//		margin-left: 1em;
+//		.ul {			
+//			@include no-bullets;			
+//			@include clearfix;
+//		}
+//		li {
+//			display: block;
+//			float: left;
+//			a {
+//				font-size: 1.2em;
+//				padding: .5em;
+//				text-decoration: none;				
+//			}
+//			&.selected a {
+//				font-weight: bold;
+//			}
+//		}
 //	}
-
 //
-//@mixin page-layout ($aside-width,
-//		$content-width,
-//		$readable-aside-width,
-//		$readable-content-width) {
+//}
 //
-//	.aside {
-//		.page-aside,
+//
+//@mixin page-body {
+//	.page-body {
+//		@include clearfix;
+//	}
+//	.page-aside {
+//		position: relative;
+//		width: $page-aside-width;
+//		float: left;
+//	}
+//	.page-content {
+//		// jch! is it possible to stretch this?
+//		position: relative;
+//		float: left;
+//		width: $page-content-width;
+//		padding-right: $page-content-gutter-width;
+//		&:first-child { // if there is no aside
+//			width: 100% - $page-content-gutter-width;
+//		}
+//	}
+//
+//	.readable {
+//		.page-body, .page-header {
+//			max-width: $page-readable-width;
+//		}
+//	}
+//
+//	.centered {
+//		.page-header, .page-body {
+//			max-width: $page-readable-width;
+//			margin: auto;
+//		}
+//		.page-aside {
+//			width: $page-aside-width;
+//		}		
 //		.page-content {
 //			float: left;
-//			min-height: 23em;
+//			width: $page-content-width;
+//			*width: $page-content-width - (.5 / 100 * 100 * 1%);
+//			padding-right: $page-content-gutter-width;
 //		}
-//	}
-//
-//	.page-content {
-//		width: 100%;
-//	}
-//	.readable, .centered {
-//		max-width: 1500px;
-//	}
-//
-//	.aside {
-//		.page-aside {
-//			width: $aside-width;
+//		.page-content:first-child { // if there is no aside
+//			width: 99%;
 //		}
-//		.page-content {
-//			width: $content-width;
-//		}
-//
-//		&.readable {					
-//			.page-aside {
-//				width: $readable-aside-width;
-//			}
-//			.page-content {												
-//				width: $readable-content-width;
-//			}
-//		}			
 //	}
 //}
-
-@include page;
+//
+//
+//
+//@mixin page-debug {
+//	.page-header {
+//		background: #EFEFEF;	
+//	}
+//	.page-aside {
+//		background: #CCC;
+//	}
+//	.page-content {
+//		background: #DDD;
+//	}
+//	.page-body {
+//		background: #999;
+//	}
+//}
+//
+//
+////	@media screen and (min-width: 1024px) { // large + wide
+////		@include page-layout($aside-width: 20%, $content-width: 80%, $readable-aside-width: 25%,  $readable-content-width: 75%);
+////	}
+////
+////	@media screen and (min-width: 600px) and (max-width: 1024px) { // medium
+////		@include page-layout($aside-width: 25%, $content-width: 75%, $readable-aside-width: 30%, $readable-content-width: 70%);
+////	}
+//
+////
+////@mixin page-layout ($aside-width,
+////		$content-width,
+////		$readable-aside-width,
+////		$readable-content-width) {
+////
+////	.aside {
+////		.page-aside,
+////		.page-content {
+////			float: left;
+////			min-height: 23em;
+////		}
+////	}
+////
+////	.page-content {
+////		width: 100%;
+////	}
+////	.readable, .centered {
+////		max-width: 1500px;
+////	}
+////
+////	.aside {
+////		.page-aside {
+////			width: $aside-width;
+////		}
+////		.page-content {
+////			width: $content-width;
+////		}
+////
+////		&.readable {					
+////			.page-aside {
+////				width: $readable-aside-width;
+////			}
+////			.page-content {												
+////				width: $readable-content-width;
+////			}
+////		}			
+////	}
+////}
+//
+//@include page;

@@ -1,0 +1,36 @@
+
+// media queries are based on a 16px default, not on the body font size
+// Note: When using more than one media mixin in the same scope, go from large to
+//     small so the specificity cascades.
+
+$mq-mobile-portrait		: 20em; // 320px 
+$mq-mobile-landscape	: 30em; // 480px
+$mq-tablet-portrait		: 48em; // 768px
+$mq-tablet-landscape	: 64em; // 1024px
+$mq-desktop             : 80em; // 1280px
+$mq-widescreen			: 100em; // 1600px
+
+
+@mixin onphone {
+	@media (max-width : $mq-mobile-landscape) {
+		@content;
+	}
+}
+
+@mixin ontablet {
+	@media (max-width : $mq-tablet-portrait) {
+		@content;
+	}
+}
+
+@mixin ondesktop {
+	@media (max-width : $mq-widescreen) {
+		@content;
+	}
+}
+
+@mixin onwidescreen {
+	@media (min-width : $mq-widescreen) {
+		@content;
+	}
+}

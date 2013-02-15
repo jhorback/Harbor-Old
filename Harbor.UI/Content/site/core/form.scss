@@ -1,224 +1,229 @@
-@import "../mixins/border-radius";
-@import "../mixins/box-shadow";
-@import "../mixins/text-shadow";
-@import "../mixins/clearfix";
-
-
-$form-line-height:						1.4em						!default;
-$form-input-background-color:			#FFFFFF						!default;
-$form-border-color:						#bbbbbb						!default;
-$form-border-color-focused:				#92cae4						!default;
-$form-input-focused-shadow-color:		#d5edf8						!default;
-$form-input-font-color:					#000						!default;
-$form-input-background-color-focused:	#FFF						!default;
-$form-label-font-size:					1.3em						!default;
-$form-editable-color:					#0066cc						!default; // use link color as default
-$_label-width: 150px;
-
-@mixin form {
-	form {
-		line-height: 2.5em;
-		@include clearfix;
-	}
-	label { font-size: $form-label-font-size; }
-	
-	fieldset { border: 0; position: relative;
-		padding: 0em .5em 2em 0 !important; // override for col2 adding 1% padding
-		&:last-of-type {
-			padding-bottom: 0 !important;
-		}
-	}
-
-	legend { font-size: 1.5em; 
-		@include single-text-shadow(rgba(#000, 0.2), 1px, 1px, 1px);						
-	}
-	input {
-		&[type=email],
-		&[type=text],
-		&[type=number],
-		&[type=password] { @include input; }
-	}
-	textarea           { @include input; height: 4.5em; }
-	select             { @include input; }
-	@include form-validation;
-	@include framework-form;
-}
-
-@mixin input {
-	background: $form-input-background-color;
-	color: $form-input-font-color;
-	border: 1px solid $form-border-color;
-	text-decoration: none;
-	margin: 0;
-	font-size: 1.2em;
-	padding: 5px;
-	line-height: $form-line-height;
-	max-width: 100%;
-	@include border-radius(3px);
-
-	&:focus {
-		border: 1px solid $form-border-color-focused !important;
-		background-color: $form-input-background-color-focused;
-		@include box-shadow(0, 0, 8px, 4px, $form-input-focused-shadow-color);
-		outline: none;
-	}
-
-	&:hover {
-		color: $form-input-font-color;
-		border: 1px solid $form-border-color-focused;
-		background-color: $form-input-background-color-focused;
-	}
-}
-
-
-@mixin framework-form {
-
-	.nocol, .col2, .col3 {
-		@include formlabel-ontop;
-	}
-
-	.nowrap {
-		.form-field {
-			white-space: nowrap;
-		}
-	}
-	
-	.label-margin {
-		margin-left: $_label-width;
-	}
-
-	.form-field, .col2.nowrap {
-		position: relative;
-		padding: .4em .4em .1em 0;
-		label {			
-			width: $_label-width;
-			display: inline-block;
-			white-space: nowrap; }		
-		select {
-			min-width: 50%;
-			max-width: 70%;
-			margin-left: 0;
-		}
-		input {
-			&[type=checkbox], &[type=radio] {
-				width: auto;
-				margin-left: $_label-width;
-				padding-right: 2%; 
-				&.margin-none {
-					margin: 0;
-				}
-			}
-		}
-	}
-
-	.controls {
-		padding-top: 1em;
-//		.input, input, a, button, .link {
-//			float: right;
-//		}
-	}
-
-	.form-field.nowrap {
-		white-space:nowrap;
-	}
-	
-	@media screen and (max-width: 480px) {
-		
-		@include formlabel-ontop;
-		
-		.form-field {
-			white-space: normal !important;
-		}
-
-		.col1, .col2, .col3 {
-			width: 100% !important;
-			clear:left;
-		}
-	}
-	
-	.input {
-		@include input;
-	}
-
-	.editable {
-		cursor: pointer;
-		padding: .2em .4em;
-		margin-left: -0.4em;
-		margin-top: -0.2em;
-		&:hover {
-			background-color: #eee;
-		}
-		span {
-			font-size: $form-label-font-size;
-			text-decoration: none;
-			color: $form-editable-color;
-		}		
-	}
-}
-
-@mixin form-validation {
-	.validation-summary {
-		display: none;
-		font-weight: bold;
-		font-size: 1.5em;
-		color: red;
-		//background: red;
-		//padding: .5em;
-		//@include border-radius;
-		//border:1px solid white;
-		//@include box-shadow(1px, 1px, 1px, 0px, black);
-
-	}
-	.error {
-		.validation-summary {
-			display: block;
-		}
-	}
-	.form-field {
-		.validation {
-			display: none;
-			margin-left: $_label-width;
-			color: red;
-			font-size:1.3em;
-		}
-		&.nolabel {
-			.validation {
-				margin-left: 0;
-			}
-		}
-		&.error {
-			input {
-				border: 1px solid red;
-			}
-			.validation {
-				display: block;
-			}
-		}
-	}
-}
-
-@mixin formlabel-ontop {
-	.label-margin {
-		margin-left: auto;
-	}
-	.form-field {
-		label {
-			width: 95%; }
-		input {
-			//width: 95%;
-			&[type=checkbox], &[type=radio] {
-				//width: auto;
-				margin-left: 1em; } }
-		select {
-			min-width: 5em;
-			//max-width: 97%;
-			margin-left: auto;
-		}
-
-		.validation {
-			margin-left: inherit;
-		}
-	}
-}
-
+c@import "src/form";
 @include form;
+
+
+
+//@import "../mixins/border-radius";
+//@import "../mixins/box-shadow";
+//@import "../mixins/text-shadow";
+//@import "../mixins/clearfix";
+//
+//
+//$form-line-height:						1.4em						!default;
+//$form-input-background-color:			#FFFFFF						!default;
+//$form-border-color:						#bbbbbb						!default;
+//$form-border-color-focused:				#92cae4						!default;
+//$form-input-focused-shadow-color:		#d5edf8						!default;
+//$form-input-font-color:					#000						!default;
+//$form-input-background-color-focused:	#FFF						!default;
+//$form-label-font-size:					1.3em						!default;
+//$form-editable-color:					#0066cc						!default; // use link color as default
+//$_label-width: 150px;
+//
+//@mixin form {
+//	form {
+//		line-height: 2.5em;
+//		@include clearfix;
+//	}
+//	label { font-size: $form-label-font-size; }
+//	
+//	fieldset { border: 0; position: relative;
+//		padding: 0em .5em 2em 0 !important; // override for col2 adding 1% padding
+//		&:last-of-type {
+//			padding-bottom: 0 !important;
+//		}
+//	}
+//
+//	legend { font-size: 1.5em; 
+//		@include single-text-shadow(rgba(#000, 0.2), 1px, 1px, 1px);						
+//	}
+//	input {
+//		&[type=email],
+//		&[type=text],
+//		&[type=number],
+//		&[type=password] { @include input; }
+//	}
+//	textarea           { @include input; height: 4.5em; }
+//	select             { @include input; }
+//	@include form-validation;
+//	@include framework-form;
+//}
+//
+//@mixin input {
+//	background: $form-input-background-color;
+//	color: $form-input-font-color;
+//	border: 1px solid $form-border-color;
+//	text-decoration: none;
+//	margin: 0;
+//	font-size: 1.2em;
+//	padding: 5px;
+//	line-height: $form-line-height;
+//	max-width: 100%;
+//	@include border-radius(3px);
+//
+//	&:focus {
+//		border: 1px solid $form-border-color-focused !important;
+//		background-color: $form-input-background-color-focused;
+//		@include box-shadow(0, 0, 8px, 4px, $form-input-focused-shadow-color);
+//		outline: none;
+//	}
+//
+//	&:hover {
+//		color: $form-input-font-color;
+//		border: 1px solid $form-border-color-focused;
+//		background-color: $form-input-background-color-focused;
+//	}
+//}
+//
+//
+//@mixin framework-form {
+//
+//	.nocol, .col2, .col3 {
+//		@include formlabel-ontop;
+//	}
+//
+//	.nowrap {
+//		.form-field {
+//			white-space: nowrap;
+//		}
+//	}
+//	
+//	.label-margin {
+//		margin-left: $_label-width;
+//	}
+//
+//	.form-field, .col2.nowrap {
+//		position: relative;
+//		padding: .4em .4em .1em 0;
+//		label {			
+//			width: $_label-width;
+//			display: inline-block;
+//			white-space: nowrap; }		
+//		select {
+//			min-width: 50%;
+//			max-width: 70%;
+//			margin-left: 0;
+//		}
+//		input {
+//			&[type=checkbox], &[type=radio] {
+//				width: auto;
+//				margin-left: $_label-width;
+//				padding-right: 2%; 
+//				&.margin-none {
+//					margin: 0;
+//				}
+//			}
+//		}
+//	}
+//
+//	.controls {
+//		padding-top: 1em;
+////		.input, input, a, button, .link {
+////			float: right;
+////		}
+//	}
+//
+//	.form-field.nowrap {
+//		white-space:nowrap;
+//	}
+//	
+//	@media screen and (max-width: 480px) {
+//		
+//		@include formlabel-ontop;
+//		
+//		.form-field {
+//			white-space: normal !important;
+//		}
+//
+//		.col1, .col2, .col3 {
+//			width: 100% !important;
+//			clear:left;
+//		}
+//	}
+//	
+//	.input {
+//		@include input;
+//	}
+//
+//	.editable {
+//		cursor: pointer;
+//		padding: .2em .4em;
+//		margin-left: -0.4em;
+//		margin-top: -0.2em;
+//		&:hover {
+//			background-color: #eee;
+//		}
+//		span {
+//			font-size: $form-label-font-size;
+//			text-decoration: none;
+//			color: $form-editable-color;
+//		}		
+//	}
+//}
+//
+//@mixin form-validation {
+//	.validation-summary {
+//		display: none;
+//		font-weight: bold;
+//		font-size: 1.5em;
+//		color: red;
+//		//background: red;
+//		//padding: .5em;
+//		//@include border-radius;
+//		//border:1px solid white;
+//		//@include box-shadow(1px, 1px, 1px, 0px, black);
+//
+//	}
+//	.error {
+//		.validation-summary {
+//			display: block;
+//		}
+//	}
+//	.form-field {
+//		.validation {
+//			display: none;
+//			margin-left: $_label-width;
+//			color: red;
+//			font-size:1.3em;
+//		}
+//		&.nolabel {
+//			.validation {
+//				margin-left: 0;
+//			}
+//		}
+//		&.error {
+//			input {
+//				border: 1px solid red;
+//			}
+//			.validation {
+//				display: block;
+//			}
+//		}
+//	}
+//}
+//
+//@mixin formlabel-ontop {
+//	.label-margin {
+//		margin-left: auto;
+//	}
+//	.form-field {
+//		label {
+//			width: 95%; }
+//		input {
+//			//width: 95%;
+//			&[type=checkbox], &[type=radio] {
+//				//width: auto;
+//				margin-left: 1em; } }
+//		select {
+//			min-width: 5em;
+//			//max-width: 97%;
+//			margin-left: auto;
+//		}
+//
+//		.validation {
+//			margin-left: inherit;
+//		}
+//	}
+//}
+//
+//@include form;

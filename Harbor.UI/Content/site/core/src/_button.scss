@@ -1,0 +1,79 @@
+@import "../../mixins/border-radius";
+@import "../../mixins/user-select";
+@import "foundation";
+
+$button-color:					#000;
+$button-background-color:		#CCC;
+$button-color-loud:				#FFF;
+$button-background-color-loud:	#2F5BB7;
+$button-color-attn:				#FFF;
+$button-background-color-attn:	#D14836;
+$button-color-active:			#FFF;
+$button-backgrond-color-active: #000;
+$button-border-radius:			3px;
+$button-font-family:			'Segoe UI Web Semibold', 'Segoe UI Web Regular', 'Segoe UI', 'Segoe UI Symbol', 'Helvetica Neue', Arial !default;
+
+
+@mixin button {
+	.button,
+	button,
+	input.button,
+	input[type=button],
+	input[type=submit] {
+		@include _button($button-background-color, $button-color);
+		
+		&.selected { }
+		&.loud {
+			@include _button-color($button-background-color-loud, $button-color-loud);			
+		}
+		&.attn {
+			@include _button-color($button-background-color-attn, $button-color-attn);			
+		}
+	}
+	a.button {
+		margin-bottom: 0;
+		*padding-top: 10px;
+		*padding-bottom: 10px;
+	}
+}
+
+
+@mixin _button($background-color, $color) {
+	@include _button-base();
+	@include _button-color($background-color, $color);
+}
+
+@mixin _button-base() {
+	border: 0;
+	display: inline-block;
+	box-sizing: content-box;
+	text-align: center;	
+	font-weight: 500; // should download the Segoe UI Web Semibold font
+	font-family: $button-font-family;
+	font-size: $body-font-size;
+	cursor: default;
+	text-decoration: none;
+	line-height: $body-line-height;
+	margin: 0 0.2em 4px 0;
+	padding: .35em 1.4em;
+	@include border-radius($button-border-radius);
+	@include user-select("none");
+}
+
+@mixin _button-color($background-color, $color) {
+	color: $color;
+	background-color: $background-color;
+	&:hover { 
+		background-color: lighten($background-color, 10%);
+	}
+	&[disabled]:hover {
+		background-color: $background-color;
+	}
+	&:active {
+		color: $button-color-active !important; // for links
+		background-color: $button-backgrond-color-active;
+	}
+	&:visited { color: $color; }
+}
+
+@include button;

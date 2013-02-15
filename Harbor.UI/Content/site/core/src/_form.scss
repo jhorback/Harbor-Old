@@ -1,0 +1,288 @@
+@import "../../mixins/border-radius";
+@import "../../mixins/box-shadow";
+@import "../../mixins/text-shadow";
+@import "../../mixins/clearfix";
+@import "../../mixins/transition";
+@import "../../mixins/opacity";
+@import "foundation";
+@import "media";
+
+
+$form-input-color:						#555						!default;
+$form-input-background-color:			#FFFFFF						!default;
+$form-input-color-focused:				#333						!default;
+$form-input-background-color-focused:	#FFF						!default;
+
+$form-input-border-color:				#bbbbbb						!default;
+$form-input-border-color-focused:		rgba(82,168,236,.8)			!default;
+$form-input-focused-shadow-color:		#d5edf8						!default;
+$form-legend-color:                     $form-input-color			!default;
+
+$label-width:							11.42em; // ~160px
+$input-height:							$body-line-height-px + 10px; // base line-height + 8px vertical padding + 2px top/bottom border
+$form-error-color: #b94a48;
+
+
+@mixin form {
+	@include form-base;
+	@include form-default;
+	@include form-stacked;	
+	@include form-inline;
+	@include form-errors;
+}
+
+
+@mixin form-theme {
+
+}
+
+
+@mixin form-base {
+	form {
+	  margin: 0 0 $body-line-height-px;
+	  @include clearfix;
+	}
+
+	fieldset {
+	  padding: 0;
+	  margin: 0;
+	  border: 0;
+	}
+
+	legend {
+	  display: block;
+	  width: 100%;
+	  padding: 0;
+	  margin-bottom: $body-line-height-px;
+	  font-size: 1.5em;
+	  line-height: 2;
+	  color: $form-legend-color;
+	  border: 0;
+	  border-bottom: 1px solid #e5e5e5;
+	}
+
+	select,
+	textarea,
+	input[type="text"],
+	input[type="password"],
+	input[type="datetime"],
+	input[type="datetime-local"],
+	input[type="date"],
+	input[type="month"],
+	input[type="time"],
+	input[type="week"],
+	input[type="number"],
+	input[type="email"],
+	input[type="url"],
+	input[type="search"],
+	input[type="tel"],
+	input[type="color"], 
+	.input {
+		display: inline-block;
+		height: $body-line-height-px;
+		padding: 4px 6px;		
+		font-size: $body-font-size;
+		line-height: $body-line-height;
+		color: $form-input-color;	
+		vertical-align: middle;
+		border: 1px solid $form-input-border-color;
+		background: $form-input-background-color;
+		@include border-radius(3px);
+		@include box-shadow-value(inset 0 1px 1px rgba(0,0,0,.075));
+		@include transition(border linear .2s);
+		@include transition(box-shadow linear .2s);
+
+		&:focus {
+			border-color: $form-input-border-color-focused;
+			outline: 0;
+		    outline: thin dotted \9; /* IE6-9 */
+			color: $form-input-color-focused;
+			background-color: $form-input-background-color-focused;
+			@include box-shadow-value(unquote("inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6)"));
+		}
+		
+	}
+
+	.input {
+		text-decoration: none;
+		color: $form-input-color !important;
+		&:hover { // in case styling an anchor like an .input
+			color: $form-input-color;
+			//border: 1px solid $form-input-border-color-focused;
+		}
+	}
+
+	// reset width and height as needed
+	textarea {  height: auto; }
+
+
+	// Set the height of select and file controls to match text inputs
+	select,
+	input[type="file"] {
+	  height: $input-height; /* In IE7, the height of the select element cannot be changed by height, only font-size */
+	  *margin-top: 4px; /* For IE7, add top margin to align select with labels */
+	  line-height: $input-height;
+	}
+
+	// Make select elements obey height by applying a border
+	select {
+	  width: 220px; // default input width + 10px of padding that doesn't get applied
+	  border: 1px solid $form-input-border-color;
+	  background-color: $form-input-background-color; // Chrome on Linux and Mobile Safari need background-color
+	}
+
+	// Make multiple select elements height not fixed
+	select[multiple],
+	select[size] {
+	  height: auto;
+	}
+
+	// style input impersonators
+	.input {
+		overflow: hidden;
+		white-space: nowrap;
+	}
+
+	// DISABLED STATE
+	// --------------
+
+	// Disabled and read-only inputs
+	.disabled,
+	a[disabled],
+	button[disabled],
+	input[disabled],
+	select[disabled],
+	textarea[disabled],
+	input[readonly],
+	select[readonly],
+	textarea[readonly] {
+	  @include opacity(.45);
+	}
+	// Explicitly reset the colors here
+	input[type="radio"][disabled],
+	input[type="checkbox"][disabled],
+	input[type="radio"][readonly],
+	input[type="checkbox"][readonly] {
+	  background-color: transparent;
+	}
+}
+
+@mixin form-default {
+	.form-field {
+		margin-bottom: $body-line-height-px / 2;
+
+		label {
+			display: block;
+			margin-bottom: 4px;
+		}
+		input + span { 	// inline help	
+			display: inline-block;
+			margin-left: .5em;	
+			@include onphone { display: block; margin-left: 0; }		
+		}
+		div { // block help
+			margin-bottom: $body-line-height-px / 2;		
+		}
+		input + label { // checkbox / radio
+			display: inline-block;
+			vertical-align: middle;
+			margin-bottom: 0;		
+		}
+	}
+
+}
+
+
+@mixin form-stacked {
+	.form-stacked {
+		// Increase spacing between groups
+		.form-field {
+			// margin-bottom: $body-line-height-px;
+			clear: left;
+			@include clearfix;
+			
+			label {
+				float: left;
+				width: $label-width;
+				padding-top: 5px;
+				text-align: right;
+				@include onphone { display: block; text-align: left; }
+			}
+
+			input, select, textarea {
+				display: block;
+				float: left;
+				margin-left: 1.42em;
+				@include onphone { float: none; margin-left: 0; }
+			}
+
+			span, div {
+				line-height: $input-height; 
+				vertical-align: middle;
+				display: inline;
+				@include ontablet { display: block; }
+			}
+
+			input[type=checkbox], 
+			input[type=radio] {
+				margin: 3px 4px 0 $label-width + 1.42em;
+				*margin-top: 0;
+				 margin-top: 1px \9; /* IE8-9 */
+				 @include onphone { margin-left: 0; display: inline-block; }
+			}
+			input + label { // checkbox / radio
+				width: auto;
+				padding-top: 0;
+				@include onphone { display: inline-block; float: none; }
+			}
+		}
+
+		.form-controls {
+			padding-left: $label-width + 1.42em;
+			@include ontablet { padding-left: 0; }
+		}
+	}
+}
+
+
+
+@mixin form-inline {
+	.form-inline {
+	  input,
+	  textarea,
+	  select,
+	  span,
+	  div,
+	  .input {
+		display: inline-block;
+		// .ie7-inline-block();
+		margin-bottom: 3px;
+		vertical-align: middle;
+	  }
+	}
+	
+	.form-inline input[type="radio"],
+	.form-inline input[type="checkbox"] {
+	  margin-right: 3px;
+	  margin-left: 0;
+	}
+}
+
+
+@mixin form-errors {
+	.error {
+		color: $form-error-color;
+
+		input,
+		select,
+		textarea {
+			border-color: $form-error-color;
+			@include box-shadow-value(inset 0 1px 1px rgba(0,0,0,.075)); // Redeclare so transitions work
+			&:focus {
+			  border-color: darken($form-error-color, 10%);
+			  $shadow: "inset 0 1px 1px rgba(0,0,0,.075), 0 0 6px" + $form-error-color;
+			  @include box-shadow-value(unquote($shadow));
+			}
+		}
+	}
+}

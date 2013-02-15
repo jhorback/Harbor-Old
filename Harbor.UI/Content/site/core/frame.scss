@@ -1,118 +1,122 @@
-@import "../mixins/text-shadow";
-@import "../mixins/inline-block-list";
-@import "../mixins/opacity";
-@import "shared";
-
-
-$frame-logo-width:		150px;
-$frame-logo-height:		50px;
-
-$overlay-background-color: #000;
-
-
-@mixin frame {
-	#frame {
-		@include clearfix;
-	}	
-	@include frame-header;
-	@include frame-body;
-	@include frame-footer;	
-	@include overlay;
-}
-
-
-@mixin frame-header {
-	#frame-header {
-		overflow: hidden;
-		height: $frame-header-height;
-		line-height: $frame-header-height;
-		z-index: 1;		
-
-		a, a:visited {
-			text-decoration: none;
-		}		
-	}	
-
-	#frame-logo {
-		font-size: 2.3em;
-		float:left;
-		margin: 0 1em 0 .5em;
-		//height: 1.6em;
-		@include single-text-shadow(rgba(#000, 0.6), 1px, 1px, 2px);
-	}
-
-	#frame-nav {
-		float: left;
-		font-size: 1.1em;
-		//padding-top: 1em;
-		ul {
-			@include inline-block-list;
-			li {
-				cursor: pointer;	
-				float:left;
-				// jch! add mixin for transitions - and add to launch
-				-webkit-transition-property: background;
-				-webkit-transition-duration: 0.3s;				
-				a {
-					display: inline-block;
-					padding: 0 1em;
-				}
-				&.selected {
-					a {
-						@include single-text-shadow(rgba(#444, 0.4) 1px 1px 1px);
-					}		
-				}
-				&.attn {					
-					background: #FF0000 !important;
-					a { color: white !important; }
-				}
-			}
-		}
-	}
-
-	#frame-session {
-		float: right;
-		padding: .4em 1em;
-		font-size: 1.2em;
-		a {
-			display: inline-block;
-			text-align: center;
-		}
-	}
-}
-
-
-@mixin frame-body {
-	#frame-body {
-			
-	}
-}
-
-
-@mixin frame-footer {
-	#frame-info {
-		clear: left;
-		height: $frame-footer-height;
-		text-align: center;
-	}
-}
-
-
-@mixin overlay {
-	#overlay, .overlay {
-		background-color: $overlay-background-color;
-		z-index: 10;
-		display: none;
-		@include opacity(.5);
-		position: fixed;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		width: 100%;
-		height: 100%;
-	}
-}
-
-
+@import "src/frame";
 @include frame;
+
+
+//@import "../mixins/text-shadow";
+//@import "../mixins/inline-block-list";
+//@import "../mixins/opacity";
+//@import "shared";
+//
+//
+//$frame-logo-width:		150px;
+//$frame-logo-height:		50px;
+//
+//$overlay-background-color: #000;
+//
+//
+//@mixin frame {
+//	#frame {
+//		@include clearfix;
+//	}	
+//	@include frame-header;
+//	@include frame-body;
+//	@include frame-footer;	
+//	@include overlay;
+//}
+//
+//
+//@mixin frame-header {
+//	#frame-header {
+//		overflow: hidden;
+//		height: $frame-header-height;
+//		line-height: $frame-header-height;
+//		z-index: 1;		
+//
+//		a, a:visited {
+//			text-decoration: none;
+//		}		
+//	}	
+//
+//	#frame-logo {
+//		font-size: 2.3em;
+//		float:left;
+//		margin: 0 1em 0 .5em;
+//		//height: 1.6em;
+//		@include single-text-shadow(rgba(#000, 0.6), 1px, 1px, 2px);
+//	}
+//
+//	#frame-nav {
+//		float: left;
+//		font-size: 1.1em;
+//		//padding-top: 1em;
+//		ul {
+//			@include inline-block-list;
+//			li {
+//				cursor: pointer;	
+//				float:left;
+//				// jch! add mixin for transitions - and add to launch
+//				-webkit-transition-property: background;
+//				-webkit-transition-duration: 0.3s;				
+//				a {
+//					display: inline-block;
+//					padding: 0 1em;
+//				}
+//				&.selected {
+//					a {
+//						@include single-text-shadow(rgba(#444, 0.4) 1px 1px 1px);
+//					}		
+//				}
+//				&.attn {					
+//					background: #FF0000 !important;
+//					a { color: white !important; }
+//				}
+//			}
+//		}
+//	}
+//
+//	#frame-session {
+//		float: right;
+//		padding: .4em 1em;
+//		font-size: 1.2em;
+//		a {
+//			display: inline-block;
+//			text-align: center;
+//		}
+//	}
+//}
+//
+//
+//@mixin frame-body {
+//	#frame-body {
+//			
+//	}
+//}
+//
+//
+//@mixin frame-footer {
+//	#frame-info {
+//		clear: left;
+//		height: $frame-footer-height;
+//		text-align: center;
+//	}
+//}
+//
+//
+//@mixin overlay {
+//	#overlay, .overlay {
+//		background-color: $overlay-background-color;
+//		z-index: 10;
+//		display: none;
+//		@include opacity(.5);
+//		position: fixed;
+//		top: 0;
+//		left: 0;
+//		right: 0;
+//		bottom: 0;
+//		width: 100%;
+//		height: 100%;
+//	}
+//}
+//
+//
+//@include frame;

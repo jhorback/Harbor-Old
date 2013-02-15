@@ -1,0 +1,237 @@
+
+@import "../../mixins/text-shadow";
+@import "../../mixins/clearfix";
+@import "../../mixins/no-bullets";
+@import "foundation";
+@import "frame";
+
+
+// Markup
+// <div class="page"> <!-- can have .readable or .centered -->
+//	<header class="page-header"><!-- page header content --></header>
+//	<div class="page-body">
+//		<aside class="page-aside"><!-- page aside content --></aside>
+//		<div class="page-content"><!-- page content --></div>
+//	</div>
+// </div>
+
+$page-title-color: $body-color !default;
+
+
+$page-header-height: 5em;
+$page-aside-width: 20em;
+$page-content-gutter-width: 1em;
+$page-readable-width: 105em;
+$page-header-bottom: $frame-header-height + $page-header-height;
+
+
+@mixin page {
+	@include page-header;
+	@include page-body;
+	//@include page-debug;
+}
+
+@mixin page-theme {
+	@include page-header-theme;
+}
+
+
+@mixin page-header {
+	.page-header {
+		position: fixed;
+		top: $frame-header-height;
+		left: 0;
+		right: 0;
+		height: $page-header-height;		
+		line-height: $page-header-height - (.1 / 100);
+
+		h1 {
+			float: left;
+			padding: 0 .3em;
+			margin: 0;
+			font-weight: normal;
+			font-size: 2.25em;
+			
+			//@include single-text-shadow(rgba(#333, 0.3), 1px, 1px, 4px);
+			a {
+				text-decoration: none;
+			}
+		}
+
+		.form-inline { margin-right: 1em; }
+	}
+
+	.page-nav {
+		display: block;
+		float: left;
+		margin-left: 1em;
+		.ul {			
+			@include no-bullets;			
+			@include clearfix;
+		}
+		li {
+			display: block;
+			float: left;
+			a {
+				font-size: 1.2em;
+				padding: .5em;
+				text-decoration: none;				
+			}
+			&.selected a {
+				font-weight: bold;
+			}
+		}
+	}
+
+}
+
+@mixin page-header-theme {
+	.page-header {		
+		h1 a {			
+			color: $page-title-color;
+			&:hover {
+				color: $page-title-color;				
+			}
+		}
+	}
+}
+
+@mixin page-body {	
+	.page-aside {
+		position: fixed;
+		top: $page-header-bottom;
+		bottom: $frame-footer-height;
+		left: 0;
+		width: $page-aside-width;
+	}
+
+	.page-content {
+		position: fixed;
+		top: $page-header-bottom;
+		bottom: $frame-footer-height;
+		left: $page-aside-width;
+		right: 0;
+		padding: $page-content-gutter-width;
+		padding-top: 0;
+		overflow: auto;
+		
+		&:first-child { // if there is no aside
+			left: 0;
+		}
+
+		> .row {
+			margin-left: -1%;
+		}
+	}
+
+	.readable {
+		.page-content {
+			max-width: $page-readable-width - $page-aside-width;
+		}
+	}
+
+	.centered {
+		.page-header {
+			position: relative;
+			top: 0;
+			margin: auto;
+			max-width: $page-readable-width;
+			h1 {
+				padding-left: 1%;
+			}
+		}
+		.page-body {
+			position: relative;
+			@include clearfix;
+			margin: auto;
+			max-width: $page-readable-width;
+		}
+		.page-aside {
+			position: relative;
+			top: 0;
+			left: 0;
+			float: left;
+			width: 30%;
+		}
+		
+		.page-content {
+			position: relative;
+			top: 0;
+			left: auto;			
+			float: left;
+			width: 68%;
+			*width: 68% - (.5 / 100 * 100 * 1%);
+			padding-right: 1%;
+			padding-left: 1%;
+		}
+		.page-content:first-child { // if there is no aside
+			width: 98%;
+		}
+	}
+}
+
+
+
+@mixin page-debug {
+	.page-header {
+		background: #EFEFEF;	
+	}
+	.page-aside {
+		background: #CCC;
+	}
+	.page-content {
+		background: #DDD;
+	}
+	.page-body {
+		background: #999;
+	}
+}
+
+
+//	@media screen and (min-width: 1024px) { // large + wide
+//		@include page-layout($aside-width: 20%, $content-width: 80%, $readable-aside-width: 25%,  $readable-content-width: 75%);
+//	}
+//
+//	@media screen and (min-width: 600px) and (max-width: 1024px) { // medium
+//		@include page-layout($aside-width: 25%, $content-width: 75%, $readable-aside-width: 30%, $readable-content-width: 70%);
+//	}
+
+//
+//@mixin page-layout ($aside-width,
+//		$content-width,
+//		$readable-aside-width,
+//		$readable-content-width) {
+//
+//	.aside {
+//		.page-aside,
+//		.page-content {
+//			float: left;
+//			min-height: 23em;
+//		}
+//	}
+//
+//	.page-content {
+//		width: 100%;
+//	}
+//	.readable, .centered {
+//		max-width: 1500px;
+//	}
+//
+//	.aside {
+//		.page-aside {
+//			width: $aside-width;
+//		}
+//		.page-content {
+//			width: $content-width;
+//		}
+//
+//		&.readable {					
+//			.page-aside {
+//				width: $readable-aside-width;
+//			}
+//			.page-content {												
+//				width: $readable-content-width;
+//			}
+//		}			
+//	}
+//}

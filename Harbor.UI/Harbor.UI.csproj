@@ -519,6 +519,8 @@
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Content\site\core\alert.scss" />
+    <None Include="Content\site\core\datatable.scss" />
     <None Include="Content\site\core\menu.scss">
       <Compile>True</Compile>
       <Minify>False</Minify>
@@ -585,8 +587,16 @@
       <CompileStyle>Nested</CompileStyle>
       <DebugInfo>False</DebugInfo>
     </None>
+    <None Include="Content\site\core\src\_alert.scss" />
+    <None Include="Content\site\core\src\_button.scss" />
+    <None Include="Content\site\core\src\_datatable.scss" />
+    <None Include="Content\site\core\src\_form.scss" />
+    <None Include="Content\site\core\src\_foundation.scss" />
+    <None Include="Content\site\core\src\_frame.scss" />
+    <None Include="Content\site\core\src\_media.scss" />
+    <None Include="Content\site\core\src\_page.scss" />
+    <None Include="Content\site\core\src\_usermenu.scss" />
     <None Include="Content\site\core\theme\_page-theme.scss" />
-    <None Include="Content\site\core\_shared.scss" />
     <None Include="Content\site\core\theme\_form-theme.scss" />
     <None Include="Content\site\core\usermenu.scss">
       <Compile>True</Compile>
@@ -624,6 +634,7 @@
       <CompileStyle>Nested</CompileStyle>
       <DebugInfo>False</DebugInfo>
     </None>
+    <None Include="Content\site\core\_theme.scss" />
     <None Include="Content\site\ext\pageloader.scss">
       <Compile>True</Compile>
       <Minify>False</Minify>

@@ -1,18 +1,4 @@
-.usermenu h1 {
-  font-size: 1.8em;
-  text-shadow: rgba(85, 85, 85, 0.4) 2px 2px 2px; }
-.usermenu ul {
-  padding: 0;
-  padding-right: 2em;
-  margin: 0;
-  list-style: none;
-  font-size: 1.6em;
-  white-space: nowrap; }
-  .usermenu ul li {
-    list-style-image: none;
-    list-style-type: none;
-    margin-left: 0px; }
-.usermenu button, .usermenu .button {
-  width: 100%;
-  white-space: nowrap; }
-
+/* Error launching Sass compiler: System.ComponentModel.Win32Exception (0x80004005): The system cannot find the file specified
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start()
+   at Mindscape.VisualSass.Integration.Compilation.ScssCompiler.CompileCore(String scss, String sourceFilePath, String rootPath, IEnumerable`1 additionalPaths, ICompilationSettings settings, ICompilerContext context, CompilationResult result) */

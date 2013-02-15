@@ -1,0 +1,104 @@
+@import "foundation";
+@import "media";
+
+$table-background-color: transparent;
+$table-border-color: #DDD;
+$table-row-backgrond-color-accent: #F9F9F9;
+$table-row-backgrond-color-hover: #F5F5F5;
+
+
+@mixin datatable {
+
+	// BASE TABLES
+	// -----------------
+
+	table {
+	  max-width: 100%;
+	  background-color: $table-background-color;
+	  border-collapse: collapse;
+	  border-spacing: 0;
+	}
+
+
+	// BASELINE STYLES
+	// ---------------
+
+	.datatable {
+	  width: 100%;
+	  margin-bottom: $body-line-height-px;
+	  // Cells
+	  th,
+	  td {
+		padding: .6em;
+		line-height: $body-line-height;
+		text-align: left;
+		vertical-align: top;
+		border-top: 1px solid $table-border-color;
+	  }
+	  th {
+		font-weight: bold;
+	  }
+	  // Bottom align for column headings
+	  thead th {
+		vertical-align: bottom;
+	  }
+	  // Remove top border from thead by default
+	  colgroup + thead tr:first-child th,
+	  colgroup + thead tr:first-child td,
+	  thead:first-child tr:first-child th,
+	  thead:first-child tr:first-child td {
+		border-top: 0;
+	  }
+	  // Account for multiple tbody instances
+	  tbody + tbody {
+		border-top: 2px solid $table-border-color;
+	  }
+
+	  // Nesting
+	  .datatable {
+		background-color: $body-background-color;
+	  }
+
+	  // stripes
+	  tbody {
+		
+		// groups
+		th {
+			padding-top: 2em; 
+		}		
+	  }
+
+	  @include onwidescreen { th, td { padding: .8em } }
+	  @include ontablet { th, td { padding: .3em } }
+	  @include onphone { th, td { padding: .1em } }
+
+	}
+
+
+	// hover
+	.hover {
+		// tr:hover th,
+		tr:hover td {
+		  background-color: $table-row-backgrond-color-hover;
+		}
+	}
+
+
+	// stripes
+	.striped {
+		//> tr:nth-child(odd) > th,
+		.striped > td,
+		> tr:nth-child(odd) > td {
+		  background-color: $table-row-backgrond-color-accent;
+		}
+	}
+
+
+	// CONDENSED TABLE W/ HALF PADDING
+	// -------------------------------
+	.condensed {
+	  th, td {
+		padding: .3em;
+	  }
+	}
+}

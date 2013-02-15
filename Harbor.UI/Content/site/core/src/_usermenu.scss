@@ -1,0 +1,55 @@
+@import "../../mixins/border-radius";
+@import "../../mixins/clearfix";
+@import "foundation";
+@import "frame";
+
+$usermenu-background-color: $frame-border-color;
+$usermenu-content-background-color: $body-background-color;
+
+@mixin usermenu {
+	.usermenu {
+		padding: 1em;
+		padding-bottom: 0;	
+		@include border-radius;
+	}
+
+	.usermenu-content {
+		padding: 1em;
+
+		@include border-radius;
+		@include clearfix;
+		background: #FFF url(../../images/lauch-logo-symbol.png) top right no-repeat !important;
+
+		fieldset {
+			font-size: .9em;
+		}
+	}
+
+	.usermenu-link {
+		font-size: 1.2em;
+	}
+
+	.usermenu-footer {
+		padding: .5em 0;
+		//border: 1px solid green;
+
+	}
+
+	.usermenu-nametab {
+		font-size: 1.1em;
+		color: #FFF;
+		position: absolute;
+		bottom: 1em;
+		right: 1em;
+	}
+}
+
+@mixin usermenu-theme {
+	.usermenu {
+		background: $usermenu-background-color;
+	}
+
+	.usermenu-content {
+		background: $usermenu-content-background-color;
+	}
+}

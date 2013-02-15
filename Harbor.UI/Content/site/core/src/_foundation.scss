@@ -1,0 +1,334 @@
+@import "../../mixins/normalize";
+@import "../../mixins/box-sizing";
+@import "../../mixins/no-bullets";
+@import "../../mixins/clearfix";
+@import "../../mixins/border-radius";
+
+
+$body-font-family:			"Segoe UI", "Helvetica Neue", Arial, Helvetica, sans-serif	!default;
+$pre-font-family:			Monaco, Menlo, Consolas, 'Courier New', monospace		!default;
+$body-font-size:			14px					!default;
+$body-line-height:			1.4286					!default; // @14px font = 20px line-height
+$body-line-height-px:		$body-line-height * $body-font-size;
+
+$body-background-color:		#FFF					!default;
+$body-color:				#333					!default;
+$link-color:				#369					!default;
+$link-color-hover:			#09f					!default;
+$link-color-active:			red						!default;
+$body-heading-color:		$body-color				!default;
+$hr-color:					#DDD					!default;
+$dl-inline-dt-width:	11.42em !default; // ~160px
+
+$body-color-quiet:					lighten($body-color, 40%)	!default;
+$body-color-loud:					#2F5BB7						!default;
+$body-color-attn:					#D14836						!default;
+
+
+@mixin foundation {
+	@include normalize;	
+	@include body;
+	@include headings;
+	@include emphasis;
+	@include semantic;
+	@include lists;
+	@include code;
+}
+
+
+@mixin foundation-theme {
+	@include body-theme;
+	@include headings-theme;
+	@include emphasis-theme;
+	@include semantic-theme;
+	@include lists-theme;
+	@include code-theme;
+}
+
+
+
+@mixin body {
+	html, body {
+		height: 100%;
+		min-height: 100%;
+		*overflow: hidden; // prevent scrollbar in ie7
+	}
+
+	body {		
+		margin: 0;
+	}
+
+	p { margin: 0; }
+
+	// helper classes
+	.text-left		{ text-align: left; }
+	.text-center	{ text-align:center; }
+	.text-right		{ text-align: right; }
+	.text-justify	{ text-align: justify; }
+
+	.hide			{ display: none !important; }
+	.stretch		{ width: 100% !important; }
+	.nowrap			{ white-space: nowrap;}
+
+	.float-left		{ float: left; }
+	.float-right	{ float: right; }
+	.clear			{ clear: both }
+	.clearfix		{ @include clearfix; } 
+
+	.pad			{ padding: 1em; }
+	.pad-left		{ padding-left: 1em; }
+	.pad-right		{ padding-right: 1em; }
+	.pad-top		{ padding-top: 1em; }
+	.pad-bottom		{ padding-bottom: 1em; }
+	.margin			 { margin: 1em; }
+	.margin-left	{ margin-left: 1em; }
+	.margin-top		{ margin-top: 1em; }
+	.margin-right	{ margin-right: 1em; }
+	.margin-bottom	{ margin-bottom: 1em; }
+}
+
+@mixin body-theme {
+	html, body {
+		background-color: $body-background-color;
+		color: $body-color;
+		font-size: $body-font-size;
+		font-family: $body-font-family;
+		line-height: $body-line-height;
+	}
+
+	a, .link {
+		text-decoration: underline;
+		color: $link-color;
+		cursor: pointer;
+		&:visited, &:focus {
+			color: $link-color;
+		}
+		&:hover {
+			color: $link-color-hover;
+		}
+		&:active {
+			color: $link-color-active
+		}
+	}
+
+	p {
+		margin-bottom: $body-line-height-px / 2;
+//		&:last-of-type {
+//			margin-bottom: 0;
+//		}
+	}
+}
+
+
+@mixin headings {
+	h1, h2, h3, h4, h5, h6 {
+		margin: 0; // margin is handled by the line-height
+		clear: left;
+		text-rendering: optimizelegibility; // Fix the character spacing for headings	
+	}
+	h1 { font-size: 2.1em;  } // ~30px / 42px
+	h2 { font-size: 1.75em; } // ~25px / 35px // creates a visual distinction between h2 and h3
+	h3 { font-size: 1.35em;  } // ~19px / 27px
+	h4 { font-size: 1.20em; } // ~17px / 24px
+	h5 { font-size: 1em;    } // ~14px / 20px
+	h6 { font-size: .85em;  } // ~12px / 17px
+	hgroup {
+		h1, h2, h3, h4, h5, h6 { display: inline-block; margin-right: 1em; }		
+		h1 + h2 { font-size: 1.35em; font-weight: normal; }
+		h2 + h3 { font-size: 1.20em; font-weight: normal; }
+	}	  
+}
+
+@mixin headings-theme {
+	h1, h2, h3, h4, h5, h6 {
+		margin: ($body-line-height-px / 2) 0;
+	}
+
+	h2  { color: $body-heading-color;  }
+
+	hgroup h1 + h2 { color: $body-color; }
+}
+
+
+@mixin emphasis {
+	// Ex: 14px base font * 85% = about 12px
+	small   { font-size: 85%; }
+
+	strong  { font-weight: bold; }
+	em      { font-style: italic; }
+	cite    { font-style: italic;
+		&:before { content: " -"; }
+	}
+}
+
+@mixin emphasis-theme {
+	.quiet          { color: $body-color-quiet; }
+	.loud           { color: $body-color-loud; }
+	.attn           { color: $body-color-attn; }
+}
+
+
+@mixin semantic {
+
+	blockquote {
+	  padding: 0 0 0 1.1em; // ~15px
+	  margin: 0 0 1.42em; // base line height
+	  border-left: 5px solid #DDD;
+	  &:before, &:after {
+		 content: "";
+	  }
+	}
+
+	// Addresses
+	address {
+	  display: block;
+	  margin-bottom: 1.42em;
+	  font-style: normal;
+	}	
+}
+
+@mixin semantic-theme {
+	hr {
+	  margin: $body-line-height-px 0;
+	  border: 0;
+	  border-top: 1px solid $hr-color;
+	  border-bottom: 1px solid lighten($hr-color, 20%);
+	  clear:both;
+	}
+
+	abbr[title] {
+	  cursor: help;
+	  border-bottom: 1px dotted $body-color;
+	}
+}
+
+
+@mixin lists {
+	ul, ol {
+	  padding: 0;
+	  margin: 0 0 1em 25px;  // 25px = bullet size
+	}
+	ul ul,
+	ul ol,
+	ol ol,
+	ol ul {
+	  margin-bottom: 0;
+	}
+//	li {
+//	  line-height: @baseLineHeight;
+//	}
+
+	// Remove default list styles
+	ul.list-style-none,
+	ol.list-style-none {
+	  @include no-bullets;
+	}
+
+	// Single-line list items
+	ul.inline,
+	ol.inline {
+	  margin-left: 0;
+	  list-style: none;
+	  & > li {
+		display: inline-block;
+		padding-left: .5em;
+		padding-right: .5em;
+	  }
+	}
+
+	
+	// Definition Lists
+	dt {
+		font-weight: bold;
+	}
+	
+	// Horizontal layout (like forms)
+	dl.inline {
+		@include clearfix;
+		dt {
+			float: left;		
+			clear: left;
+			text-align: right;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+	}
+}
+
+@mixin lists-theme {
+	ul, ol { 
+		margin-bottom: ($body-line-height-px / 2);
+	}
+	dl {
+		margin-bottom: $body-line-height-px;
+		&.inline {
+			dt {
+				width: $dl-inline-dt-width;
+			}
+			dd {
+				margin-left: $dl-inline-dt-width + 1.4em;
+			}
+		}
+	}
+	dt, dd {
+	  line-height: $body-line-height;
+	}
+	dd {
+	  margin-left: ($body-line-height-px / 2);
+	}
+}
+
+
+@mixin code {
+	pre, code   { font-family: $pre-font-family; background: #F5F5F5; border: 1px solid #DDD; @include border-radius; }
+	pre { padding: .8em; overflow: auto; }
+	code {
+		padding: 2px 4px;
+		color: #d14;
+		background-color: #f7f7f9;
+		border: 1px solid #e1e1e8;
+		white-space: nowrap;
+	}
+
+	.outline {
+		position: relative;
+		border: 1px solid #DDD;
+		background: #FFF;
+		padding: 1em;
+		overflow: auto; // not sure why this is needed in addition to the clearfix
+		@include border-radius;
+		@include clearfix;
+	}
+
+	.outline + .prettyprint {
+		margin-top: -.5em;
+		padding-top: 1em !important;
+		margin-bottom: 2em;
+	}
+	.outline + .outline {
+		margin-top: .5em;
+	}
+	.example {
+		padding-top: 1.8em;
+		&:after {
+		  content: "Example";
+		  position: absolute;
+		  top: -1px;
+		  left: -1px;
+		  padding: 3px 7px;
+		  font-size: 12px;
+		  font-weight: bold;
+		  background-color: #f5f5f5;
+		  border: 1px solid #ddd;
+		  color: #9da0a4;
+		  -webkit-border-radius: 4px 0 4px 0;
+			 -moz-border-radius: 4px 0 4px 0;
+				  border-radius: 4px 0 4px 0;
+		}	
+	}
+}
+
+@mixin code-theme {
+	
+}
