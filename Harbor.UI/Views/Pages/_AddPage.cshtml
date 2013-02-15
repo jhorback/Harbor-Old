@@ -1,17 +1,17 @@
 ﻿<form>
-	<span class="validation-summary"></span>
+	<span class="alert-error"></span>
 	<div class="form-field">
 		<label for="pageadder-title">Title</label>
 		<input id="pageadder-title" type="text" name="title" autofocus />
-		<span class="validation" data-validation-for="title"></span>
+		<span data-validation-for="title"></span>
 	</div>
 	<div class="form-field">
 		<label for="pageadder-pagetypekey">Page type</label>
 		<select id="pageadder-pagetypekey" name="pageTypeKey">
 		</select>
+		<div data-bind="pageTypeDescription" class="label-margin"></div>
 	</div>
-	<div data-bind="pageTypeDescription" class="label-margin"></div><!--jch! - instead of label-margin - what does val do here?//-->
-	<div class="controls">
+	<div class="form-controls">
 		<input type="submit" value="Save" class="loud">
 		<input type="button" value="Cancel" data-rel="back">		
 	</div>

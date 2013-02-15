@@ -21,19 +21,26 @@
 			background: #efefef;
 			text-align: center;
 		}
+
+		.row .outline {
+			background:#EFEFEF;
+			text-align:center;
+			line-height: 2em;
+			padding: 0;
+		}
+
 	</style>
 }
 <section class="page">
 	 <header class="page-header">
-		<h1>Page Example</h1>
+		<h1>Tiltle of the Page</h1>
 		<nav class="page-nav">
 			<ul>
 				<li>@Html.ActionLink("Scaffolding", "Index", new { pageKey = "Scaffolding" })</li>
-				<li>@Html.ActionLink("Style Guide Home", "Index", new { pageKey = "Home" })</li>
-				<li class="selected"><a href="#">Another Sub Page - Selected</a></li>
+				<li class="selected"><a href="#">Page Example</a></li>		
 			</ul>
 		</nav>
-		<form class="float-right pad">
+		<form class="float-right form-inline">
 			<fieldset>
 				<select id="page-options" name="layoutOptions">
 					<option value="aside">Default</option>
@@ -48,69 +55,99 @@
 	 </header>
 	<div class="page-body">
 		<aside class="page-aside">
-			<div class="pad">
-				<p>This is the page aside.</p>
+			<div class="col text-justify">
 				<p>
 					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 				</p>
 			</div>
 		</aside> 
 		<div class="page-content">
-			<div class="col">
-				<p>This is the page content.</p>
-				<p>	
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-				</p>
+			<p>	
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</p>
+
+			<h2>Columns</h2>
+			<p>Columns are indented by a left margin and manage the width of content.</p>
+
+			<div class="row">
+				<div class="col1"><div class="outline"><code>.col1</code></div></div>
 			</div>
-			<h2>Columns (width constraints)</h2>
-			<div class="col1"><div class="outline">.col1</div></div>
-			<div class="col2"><div class="outline">.col2</div></div>
-			<div class="col2"><div class="outline">.col2</div></div>
-			<div class="col3"><div class="outline">.col3</div></div>
-			<div class="col3-2"><div class="outline">.col3-2</div></div>
-			<div class="col4"><div class="outline">.col4</div></div>
-			<div class="col4"><div class="outline">.col4</div></div>
-			<div class="col4"><div class="outline">.col4</div></div>
-			<div class="col4"><div class="outline">.col4</div></div>
-			<div class="col5"><div class="outline">.col5</div></div>
-			<div class="col5"><div class="outline">.col5</div></div>
-			<div class="col5"><div class="outline">.col5</div></div>
-			<div class="col5"><div class="outline">.col5</div></div>
-			<div class="col5"><div class="outline">.col5</div></div>
-			<h2>Rows (height constraints)</h2>
-			<div class="outline">
-				<h3>.row-small</h3>
-				<div class="row-small">
-					<p>This is <code>.row-small</code></p>
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.					
-					</p>
+			<div class="row">
+				<div class="col2"><div class="outline"><code>.col2</code></div></div>
+				<div class="col2"><div class="outline"><code>.col2</code></div></div>
+			</div>
+			<div class="row">
+				<div class="col3"><div class="outline"><code>.col3</code></div></div>
+				<div class="col3-2"><div class="outline"><code>.col3-2</code></div></div>
+			</div>
+			<div class="row">
+				<div class="col4"><div class="outline"><code>.col4</code></div></div>
+				<div class="col4"><div class="outline"><code>.col4</code></div></div>
+				<div class="col4"><div class="outline"><code>.col4</code></div></div>
+				<div class="col4"><div class="outline"><code>.col4</code></div></div>
+			</div>
+			<div class="row">
+				<div class="col5"><div class="outline"><code>.col5</code></div></div>
+				<div class="col5"><div class="outline"><code>.col5</code></div></div>
+				<div class="col5"><div class="outline"><code>.col5</code></div></div>
+				<div class="col5"><div class="outline"><code>.col5</code></div></div>
+				<div class="col5"><div class="outline"><code>.col5</code></div></div>
+			</div>	
+
+			<hr />
+			
+			<h2>Rows</h2>
+			<p>Rows divide the page vertically, provide float clearing and a grouping clearfix, and help manage the height of content.</p>
+			<div class="outline example padding-none">
+				<div class="row">
+					<div class="col2">
+						@*<h3>.row-small</h3>*@
+						<div class="row-small">
+							<p>This is <code>.row-small</code></p>
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.					
+							</p>
+						</div>
+						@*<h3>.row-medium</h3>*@
+						<div class="row-medium">
+							<p>This is <code>.row-medium</code></p>
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.					
+							</p>
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.					
+							</p>
+						</div>
+					</div>
+					<div class="col2">
+						@*<h3>.row-large</h3>*@
+						<div class="row-large">
+							<p>This is <code>.row-large</code></p>
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.					
+							</p>
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.					
+							</p>
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.					
+							</p>
+						</div>
+					</div>
 				</div>
-				<h3>.row-medium</h3>
-				<div class="row-medium">
-					<p>This is <code>.row-medium</code></p>
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.					
-					</p>
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.					
-					</p>
-				</div>
-				<h3>.row-large</h3>
-				<div class="row-large">
-					<p>This is <code>.row-large</code></p>
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.					
-					</p>
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.					
-					</p>
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.					
-					</p>
+				<hr />
+				<div class="col">
+					<div class="row">
+						<p>This is <code>.row</code></p>
+						<p>Meant to be used to group any number of <code>.col</code> classes. Provides a -1% left margin to offset the 1% left margin of the columns.</p>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.					
+						</p>
+					</div>
 				</div>
 			</div>
-			<div class="col">
+
+			<div>
 				<input type="checkbox" id="showPage" />
 				<label for="showPage">Show page outline</label>
 			</div>
@@ -130,11 +167,11 @@
 				},
 
 				events: {
-					"change #page-options": function () {
+					"change #page-options": function (event) {
 						var val = $(event.target).val();
 						this.model.set("layoutOptions", val);
 					},
-					"change #showPage": function() {
+					"change #showPage": function (event) {
 						var showPage = $(event.target).is(":checked");
 						this.model.set("showPage", showPage);
 					}
@@ -166,12 +203,14 @@
 					layoutOptions: "aside"
 				},
 				hasAside: function() {
-					return this.get("layoutOptions").indexOf("aside") > -1;
+					var lo = this.get("layoutOptions");
+					return lo && lo.indexOf("aside") > -1;
 				},
 				getPageClassNames: function() {
 					return this.get("layoutOptions") + " page";
 				}
 			});
+
 
 			var view = new PageView({
 				el: $(".page"),

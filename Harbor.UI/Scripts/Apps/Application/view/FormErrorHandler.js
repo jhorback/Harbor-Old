@@ -102,7 +102,7 @@
 		
 		displayGeneralError = function (view, errorStr) {
 			var form = view.$("form"),
-				summarySpan = form.find(".validation-summary");
+				summarySpan = form.find(".alert");
 
 			if (errorStr) {
 				form.addClass("error");

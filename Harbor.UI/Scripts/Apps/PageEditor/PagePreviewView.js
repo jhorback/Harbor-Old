@@ -58,7 +58,7 @@ PageEditor.PagePreviewModel = Application.Model.extend({
 	
 	thumbClass: {
 		get: function (value) {
-			return this.hasThumb() ? "max-100 float-left pad-right pad-bottom" : "display-none";
+			return this.hasThumb() ? "max-100 float-left pad-right pad-bottom" : "hide";
 		}
 	},
 	

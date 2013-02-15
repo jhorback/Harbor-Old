@@ -268,9 +268,13 @@
     <Content Include="Content\images\thumbs\doc.png" />
     <Content Include="Content\images\thumbs\file.png" />
     <Content Include="Content\images\thumbs\video.png" />
+    <Content Include="Content\Prettify\prettify.css" />
     <Content Include="Content\qunit.css" />
     <Content Include="Content\redactor\redactor.css">
       <DependentUpon>redactor.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\site\core\alert.css">
+      <DependentUpon>alert.scss</DependentUpon>
     </Content>
     <Content Include="Content\site\core\button.css">
       <DependentUpon>button.scss</DependentUpon>
@@ -283,6 +287,9 @@
     </Content>
     <Content Include="Content\site\core\datalist.css">
       <DependentUpon>datalist.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\site\core\datatable.css">
+      <DependentUpon>datatable.scss</DependentUpon>
     </Content>
     <Content Include="Content\site\core\dialog.css">
       <DependentUpon>dialog.scss</DependentUpon>
@@ -301,9 +308,6 @@
     </Content>
     <Content Include="Content\site\core\frame.css">
       <DependentUpon>frame.scss</DependentUpon>
-    </Content>
-    <Content Include="Content\site\core\framework.css">
-      <DependentUpon>framework.scss</DependentUpon>
     </Content>
     <Content Include="Content\site\core\cols.scss">
       <Compile>True</Compile>
@@ -342,6 +346,12 @@
       <DependentUpon>signinpage.scss</DependentUpon>
     </Content>
     <Content Include="Content\site\core\font\fonticons.svg" />
+    <Content Include="Content\site\mixins\_normalize.scss">
+      <Compile>False</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </Content>
     <Content Include="Content\site\mixins\_opacity.scss">
       <Compile>False</Compile>
       <Minify>False</Minify>
@@ -360,6 +370,7 @@
       <CompileStyle>Nested</CompileStyle>
       <DebugInfo>False</DebugInfo>
     </Content>
+    <Content Include="Content\site\mixins\_transition.scss" />
     <Content Include="Content\themes\bjrblue\images\logo.png" />
     <Content Include="Content\themes\bjroyster\images\logo.png" />
     <Content Include="Content\themes\bjroyster\theme.css">
@@ -462,6 +473,7 @@
     <Content Include="Scripts\json2.js" />
     <Content Include="Scripts\json2.min.js" />
     <Content Include="Scripts\modernizr-2.6.2-custom.js" />
+    <Content Include="Scripts\Prettify\prettify.js" />
     <Content Include="Scripts\qunit.js" />
     <Content Include="Scripts\redactor\redactor.js" />
     <Content Include="Scripts\redactor\redactor.min.js" />
@@ -519,8 +531,18 @@
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Content\site\core\alert.scss" />
-    <None Include="Content\site\core\datatable.scss" />
+    <None Include="Content\site\core\alert.scss">
+      <Compile>True</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </None>
+    <None Include="Content\site\core\datatable.scss">
+      <Compile>True</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </None>
     <None Include="Content\site\core\menu.scss">
       <Compile>True</Compile>
       <Minify>False</Minify>
@@ -528,12 +550,6 @@
       <DebugInfo>False</DebugInfo>
     </None>
     <None Include="Content\site\core\frame.scss">
-      <Compile>True</Compile>
-      <Minify>False</Minify>
-      <CompileStyle>Nested</CompileStyle>
-      <DebugInfo>False</DebugInfo>
-    </None>
-    <None Include="Content\site\core\framework.scss">
       <Compile>True</Compile>
       <Minify>False</Minify>
       <CompileStyle>Nested</CompileStyle>
@@ -587,43 +603,62 @@
       <CompileStyle>Nested</CompileStyle>
       <DebugInfo>False</DebugInfo>
     </None>
-    <None Include="Content\site\core\src\_alert.scss" />
-    <None Include="Content\site\core\src\_button.scss" />
-    <None Include="Content\site\core\src\_datatable.scss" />
-    <None Include="Content\site\core\src\_form.scss" />
-    <None Include="Content\site\core\src\_foundation.scss" />
-    <None Include="Content\site\core\src\_frame.scss" />
-    <None Include="Content\site\core\src\_media.scss" />
-    <None Include="Content\site\core\src\_page.scss" />
-    <None Include="Content\site\core\src\_usermenu.scss" />
-    <None Include="Content\site\core\theme\_page-theme.scss" />
-    <None Include="Content\site\core\theme\_form-theme.scss" />
+    <None Include="Content\site\core\src\_alert.scss">
+      <Compile>False</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </None>
+    <None Include="Content\site\core\src\_button.scss">
+      <Compile>False</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </None>
+    <None Include="Content\site\core\src\_datatable.scss">
+      <Compile>False</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </None>
+    <None Include="Content\site\core\src\_form.scss">
+      <Compile>False</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </None>
+    <None Include="Content\site\core\src\_foundation.scss">
+      <Compile>False</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </None>
+    <None Include="Content\site\core\src\_frame.scss">
+      <Compile>False</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </None>
+    <None Include="Content\site\core\src\_media.scss">
+      <Compile>False</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </None>
+    <None Include="Content\site\core\src\_page.scss">
+      <Compile>False</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </None>
+    <None Include="Content\site\core\src\_usermenu.scss">
+      <Compile>False</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </None>
     <None Include="Content\site\core\usermenu.scss">
       <Compile>True</Compile>
-      <Minify>False</Minify>
-      <CompileStyle>Nested</CompileStyle>
-      <DebugInfo>False</DebugInfo>
-    </None>
-    <None Include="Content\site\core\theme\_framework-theme.scss">
-      <Compile>False</Compile>
-      <Minify>False</Minify>
-      <CompileStyle>Nested</CompileStyle>
-      <DebugInfo>False</DebugInfo>
-    </None>
-    <None Include="Content\site\core\theme\_frame-theme.scss">
-      <Compile>False</Compile>
-      <Minify>False</Minify>
-      <CompileStyle>Nested</CompileStyle>
-      <DebugInfo>False</DebugInfo>
-    </None>
-    <None Include="Content\site\core\theme\_all-theme.scss">
-      <Compile>False</Compile>
-      <Minify>False</Minify>
-      <CompileStyle>Nested</CompileStyle>
-      <DebugInfo>False</DebugInfo>
-    </None>
-    <None Include="Content\site\core\theme\_foundation-theme.scss">
-      <Compile>False</Compile>
       <Minify>False</Minify>
       <CompileStyle>Nested</CompileStyle>
       <DebugInfo>False</DebugInfo>
@@ -634,7 +669,12 @@
       <CompileStyle>Nested</CompileStyle>
       <DebugInfo>False</DebugInfo>
     </None>
-    <None Include="Content\site\core\_theme.scss" />
+    <None Include="Content\site\core\_theme.scss">
+      <Compile>False</Compile>
+      <Minify>False</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </None>
     <None Include="Content\site\ext\pageloader.scss">
       <Compile>True</Compile>
       <Minify>False</Minify>

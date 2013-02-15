@@ -1,5 +1,5 @@
 ﻿
-<aside class="page-aside">
+@*<aside class="page-aside">
 	<section class="menulist">
 		<h2>.menulist</h2>
 		<ul>
@@ -10,9 +10,108 @@
 			<li>Menu Item 5</li>					
 		</ul>
 	</section>
-</aside>
+</aside>*@
 <div class="page-content">
-	<section class="colgrid selectable">
+	<h2>Data Tables</h2>
+	<div class="outline example">
+		
+		<table class="datatable striped hover">
+			<thead>
+				<tr>
+					<th></th>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th class="attn">Username</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>Mark</td>
+					<td>Otto</td>
+					<td>motto</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>Jacob</td>
+					<td>Thornton</td>
+					<td>jthornton</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>Larry</td>
+					<td>the Bird</td>
+					<td>lbird</td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+	<pre class="prettyprint">
+&lt;table class="datatable striped hover">...&lt;/table>
+</pre>
+
+	<h3>Striped </h3>
+	<p>To get alternate row colors set a <code>.striped</code> class on the data table.
+		IE7 and IE8 do not support the :nth-child selector, so a .striped class will need to be aded
+		to alternate rows for those browsers.
+	</p>
+	<pre class="prettyprint">
+&lt;table class="datatable striped">...&lt;/table>
+</pre>
+
+	<h3>Hover</h3>
+	<p>Adding a <code>.hover</code> class will enable a hover state on rows within the tbody.</p>
+	<pre class="prettyprint">
+&lt;table class="datatable hover">...&lt;/table>
+</pre>
+
+	<h3>Condensed</h3>
+	<p>The default responsive behavior of the data table is to decrease padding as the screen size decreases.
+		To condense the table manually, add a <code>.condensed</code> class to the table.
+	</p>
+	<div class="outline example">
+		
+		<table class="datatable condensed">
+			<thead>
+				<tr>
+					<th></th>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th class="loud">Username</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>Mark</td>
+					<td>Otto</td>
+					<td>motto</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>Jacob</td>
+					<td>Thornton</td>
+					<td>jthornton</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>Larry</td>
+					<td>the Bird</td>
+					<td>lbird</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+		<pre class="prettyprint">
+&lt;table class="datatable condensed">...&lt;/table>
+</pre>
+
+	<h3>Grouping</h3>
+	<p>To add a grouping effect to the table add a <code>&lt;th></code> in the tbody.</p>
+
+
+	@*<section class="tiles selectable">
 		<h2>.colgrid</h2>
 		<ul>
 			<li class="col">
@@ -44,8 +143,8 @@
 				Description
 			</li>
 		</ul>
-	</section>
-	<section class="datalist">
+	</section>*@
+	@*<section class="datalist">
 		<h2>.datalist</h2>
 		<ul class="stretch">
 			<li class="heading">
@@ -64,11 +163,8 @@
 				<span class="col text-right">5</span>
 			</li>
 		</ul>
-	</section>	
+	</section>	*@
 </div>
-
-
-
 @section scripts {
 <script>
 </script>

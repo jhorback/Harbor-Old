@@ -1,114 +1,32 @@
-#frame-header {
-  color: #336699;
-  background: white; }
-  #frame-header a, #frame-header a:visited {
-    color: #336699; }
-
-#frame-logo a {
-  text-indent: -99999px;
-  display: block;
-  width: 200px;
-  height: 50px;
-  background: url(images/logo.png) no-repeat; }
-
-#frame-nav ul li:hover {
-  background-color: #0f7c91; }
-  #frame-nav ul li:hover a {
-    color: white; }
-#frame-nav ul li.selected {
-  background-color: white; }
-  #frame-nav ul li.selected a {
-    color: #333333; }
-
-#frame-body ::-webkit-scrollbar-thumb {
-  background: #cccccc; }
-  #frame-body ::-webkit-scrollbar-thumb:hover {
-    background: #b3b3b3; }
-
-legend {
-  color: #db7100; }
-
 html, body {
   background-color: white;
   color: #336699;
   font-size: 14px;
-  font-family: "Segoe UI", "Helvetica Neue", Arial, Helvetica, sans-serif; }
-
-h2 {
-  color: #db7100;
-  text-shadow: rgba(51, 102, 153, 0.2) 1px 1px 1px; }
+  font-family: "Segoe UI", "Helvetica Neue", Arial, Helvetica, sans-serif;
+  line-height: 1.4286; }
 
 a, .link {
   text-decoration: underline;
-  color: #0066cc;
+  color: #336699;
   cursor: pointer; }
   a:visited, a:focus, .link:visited, .link:focus {
-    color: #0066cc; }
+    color: #336699; }
   a:hover, .link:hover {
     color: #0099ff; }
   a:active, .link:active {
     color: red; }
 
-pre, code {
-  font-family: "andale mono", Consolas, "lucida console", monospace;
-  background: #F5F5F5;
-  border: 1px solid #DDD;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -ms-border-radius: 5px;
-  border-radius: 5px; }
+p {
+  margin-bottom: 10.0002px; }
 
-hr {
-  color: #cccccc;
-  background-color: #cccccc; }
+h1, h2, h3, h4, h5, h6 {
+  margin: 10.0002px 0; }
 
-.outline {
-  position: relative;
-  border: 1px solid #DDD;
-  background: #FFF;
-  padding: 1em;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -ms-border-radius: 5px;
-  border-radius: 5px; }
-  .outline:after {
-    content: "";
-    display: table;
-    clear: both; }
+h2 {
+  color: #333333; }
 
-.outline + .prettyprint {
-  margin-top: -0.5em;
-  padding-top: 1em !important; }
-
-.outline + .outline {
-  margin-top: .5em; }
-
-#frame-header {
-  color: #336699;
-  background: white; }
-  #frame-header a, #frame-header a:visited {
-    color: #336699; }
-
-#frame-logo a {
-  text-indent: -99999px;
-  display: block;
-  width: 200px;
-  height: 50px;
-  background: url(images/logo.png) no-repeat; }
-
-#frame-nav ul li:hover {
-  background-color: #0f7c91; }
-  #frame-nav ul li:hover a {
-    color: white; }
-#frame-nav ul li.selected {
-  background-color: white; }
-  #frame-nav ul li.selected a {
-    color: #333333; }
-
-#frame-body ::-webkit-scrollbar-thumb {
-  background: #cccccc; }
-  #frame-body ::-webkit-scrollbar-thumb:hover {
-    background: #b3b3b3; }
+hgroup h1 + h2 {
+  color: #336699; }
 
 .quiet {
   color: #999999; }
@@ -119,6 +37,62 @@ hr {
 .attn {
   color: #d14836; }
 
+hr {
+  margin: 20.0004px 0;
+  border: 0;
+  border-top: 1px solid #dddddd;
+  border-bottom: 1px solid white;
+  clear: both; }
+
+abbr[title] {
+  cursor: help;
+  border-bottom: 1px dotted #336699; }
+
+ul, ol {
+  margin-bottom: 10.0002px; }
+
+dl {
+  margin-bottom: 20.0004px; }
+  dl.inline dt {
+    width: 11.42em; }
+  dl.inline dd {
+    margin-left: 12.82em; }
+
+dt, dd {
+  line-height: 1.4286; }
+
+dd {
+  margin-left: 10.0002px; }
+
+#frame-header {
+  color: #336699;
+  background: white; }
+  #frame-header a, #frame-header a:visited {
+    color: #336699; }
+
+#frame-logo a {
+  text-indent: -99999px;
+  display: block;
+  width: 200px;
+  height: 50px;
+  background: url(images/logo.png) no-repeat; }
+
+#frame-nav ul li:hover {
+  background-color: #0f7c91; }
+  #frame-nav ul li:hover a {
+    color: white; }
+#frame-nav ul li.selected {
+  background-color: white; }
+  #frame-nav ul li.selected a {
+    color: #333333; }
+
+#frame-body ::-webkit-scrollbar-thumb {
+  background: #cccccc; }
+  #frame-body ::-webkit-scrollbar-thumb:hover {
+    background: #b3b3b3; }
+
 .page-header h1 a {
   color: #333333; }
+  .page-header h1 a:hover {
+    color: #333333; }
 

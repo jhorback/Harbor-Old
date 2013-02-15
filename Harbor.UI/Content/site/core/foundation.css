@@ -1,4 +1,378 @@
-/* Error launching Sass compiler: System.ComponentModel.Win32Exception (0x80004005): The system cannot find the file specified
-   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
-   at System.Diagnostics.Process.Start()
-   at Mindscape.VisualSass.Integration.Compilation.ScssCompiler.CompileCore(String scss, String sourceFilePath, String rootPath, IEnumerable`1 additionalPaths, ICompilationSettings settings, ICompilerContext context, CompilationResult result) */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section {
+  display: block; }
+
+audio,
+canvas,
+video {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1; }
+
+audio:not([controls]) {
+  display: none;
+  height: 0; }
+
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%; }
+
+a:focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px; }
+
+a:active,
+a:hover {
+  outline: 0; }
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline; }
+
+sup {
+  top: -0.5em; }
+
+sub {
+  bottom: -0.25em; }
+
+img {
+  max-width: 100%;
+  width: auto\9;
+  height: auto;
+  vertical-align: middle;
+  border: 0;
+  -ms-interpolation-mode: bicubic; }
+
+button,
+input,
+select,
+textarea {
+  font-size: 100%;
+  margin: 0;
+  vertical-align: middle; }
+
+button,
+input {
+  *overflow: visible;
+  line-height: normal; }
+
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: default;
+  *overflow: visible; }
+
+input[type="search"] {
+  -webkit-appearance: textfield;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box; }
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none; }
+
+textarea {
+  overflow: auto;
+  vertical-align: top; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+@media print {
+  * {
+    text-shadow: none !important;
+    box-shadow: none !important; }
+
+  a[href]:after {
+    content: " (" attr(href) ")"; }
+
+  abbr[title]:after {
+    content: " (" attr(title) ")"; }
+
+  a[href^="javascript:"]:after,
+  a[href^="#"]:after {
+    content: ""; }
+
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid; }
+
+  thead {
+    display: table-header-group; }
+
+  tr,
+  img {
+    page-break-inside: avoid; }
+
+  img {
+    max-width: 100% !important; }
+
+  @page {
+    margin: 0.5cm; }
+
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3; }
+
+  h2,
+  h3 {
+    page-break-after: avoid; } }
+html, body {
+  height: 100%;
+  min-height: 100%;
+  *overflow: hidden; }
+
+body {
+  margin: 0; }
+
+p {
+  margin: 0; }
+
+.text-left {
+  text-align: left; }
+
+.text-center {
+  text-align: center; }
+
+.text-right {
+  text-align: right; }
+
+.text-justify {
+  text-align: justify; }
+
+.hide {
+  display: none; }
+
+.stretch {
+  width: 100% !important; }
+
+.nowrap {
+  white-space: nowrap; }
+
+.float-left {
+  float: left; }
+
+.float-right {
+  float: right; }
+
+.clear {
+  clear: both; }
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both; }
+
+.pad {
+  padding: 1em; }
+
+.pad-left {
+  padding-left: 1em; }
+
+.pad-right {
+  padding-right: 1em; }
+
+.pad-top {
+  padding-top: 1em; }
+
+.pad-bottom {
+  padding-bottom: 1em; }
+
+.margin {
+  margin: 1em; }
+
+.margin-left {
+  margin-left: 1em; }
+
+.margin-top {
+  margin-top: 1em; }
+
+.margin-right {
+  margin-right: 1em; }
+
+.margin-bottom {
+  margin-bottom: 1em; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  clear: left;
+  text-rendering: optimizelegibility; }
+
+h1 {
+  font-size: 2.1em; }
+
+h2 {
+  font-size: 1.75em; }
+
+h3 {
+  font-size: 1.35em; }
+
+h4 {
+  font-size: 1.20em; }
+
+h5 {
+  font-size: 1em; }
+
+h6 {
+  font-size: .85em; }
+
+hgroup h1, hgroup h2, hgroup h3, hgroup h4, hgroup h5, hgroup h6 {
+  display: inline-block;
+  margin-right: 1em; }
+hgroup h1 + h2 {
+  font-size: 1.35em;
+  font-weight: normal; }
+hgroup h2 + h3 {
+  font-size: 1.20em;
+  font-weight: normal; }
+
+small {
+  font-size: 85%; }
+
+strong {
+  font-weight: bold; }
+
+em {
+  font-style: italic; }
+
+cite {
+  font-style: italic; }
+  cite:before {
+    content: " -"; }
+
+blockquote {
+  padding: 0 0 0 1.1em;
+  margin: 0 0 1.42em;
+  border-left: 5px solid #DDD; }
+  blockquote:before, blockquote:after {
+    content: ""; }
+
+address {
+  display: block;
+  margin-bottom: 1.42em;
+  font-style: normal; }
+
+ul, ol {
+  padding: 0;
+  margin: 0 0 1em 25px; }
+
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+  margin-bottom: 0; }
+
+ul.list-style-none,
+ol.list-style-none {
+  list-style: none; }
+  ul.list-style-none li,
+  ol.list-style-none li {
+    list-style-image: none;
+    list-style-type: none;
+    margin-left: 0px; }
+
+ul.inline,
+ol.inline {
+  margin-left: 0;
+  list-style: none; }
+  ul.inline > li,
+  ol.inline > li {
+    display: inline-block;
+    padding-left: .5em;
+    padding-right: .5em; }
+
+dt {
+  font-weight: bold; }
+
+dl.inline:after {
+  content: "";
+  display: table;
+  clear: both; }
+dl.inline dt {
+  float: left;
+  clear: left;
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; }
+
+pre, code {
+  font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
+  background: #F5F5F5;
+  border: 1px solid #DDD;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px; }
+
+pre {
+  padding: .8em;
+  overflow: auto; }
+
+code {
+  padding: 2px 4px;
+  color: #d14;
+  background-color: #f7f7f9;
+  border: 1px solid #e1e1e8;
+  white-space: nowrap; }
+
+.outline {
+  position: relative;
+  border: 1px solid #DDD;
+  background: #FFF;
+  padding: 1em;
+  overflow: auto;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px; }
+  .outline:after {
+    content: "";
+    display: table;
+    clear: both; }
+
+.outline + .prettyprint {
+  margin-top: -0.5em;
+  padding-top: 1em !important;
+  margin-bottom: 2em; }
+
+.outline + .outline {
+  margin-top: .5em; }
+
+.example {
+  padding-top: 1.8em; }
+  .example:after {
+    content: "Example";
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: bold;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    color: #9da0a4;
+    -webkit-border-radius: 4px 0 4px 0;
+    -moz-border-radius: 4px 0 4px 0;
+    border-radius: 4px 0 4px 0; }
+

@@ -20,9 +20,9 @@
 		<h1>Account</h1>
 	</div>
 	<div class="page-body">
-		<div class="page-content display-none">
+		<div class="page-content hide">
 			<form>
-				<fieldset class="display-inline-block">
+				<fieldset>
 					<legend>Details for <span data-bind="userName"></span></legend>
 					<div class="form-field editable" tabindex="0" id="ua-name">
 						<label>Name</label>
@@ -37,7 +37,7 @@
 				{
 					<fieldset id="ua-administrative">
 						<legend>Administrative</legend>
-						<ul class="nobullets text-large">
+						<ul class="list-style-none">
 							@if (canViewPages)
 							{ 
 								<li>

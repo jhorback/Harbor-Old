@@ -1,12 +1,11 @@
-﻿@model List<Harbor.UI.Models.StyleGuide.StyleGuidePage>
-@{
+﻿@{
 	string columns = ViewBag.Columns as string;
 	if (columns == null) { 
 		columns = "col2";
 	}
 }
 @section pageheader {
-	<form class="float-right">
+	<form class="float-right form-inline">
 		<fieldset>
 			<select id="columns" name="columns">
 				<option value="col1">One Column</option>
@@ -16,163 +15,272 @@
 		</fieldset>
 	</form>
 }
-
 <div class="page-content">
 
-	<form class="clear error">
-		<span class="validation-summary">This is a general form error.</span>
-		<fieldset data-role="column" class="@columns">
-			<legend>Form fieldset legend</legend>
-			<div class="form-field">
-				<label for="text">Text</label>
-				<input id="text" type="text" placeholder="Enter text..." size="30" />
-			</div>
-
-			<div class="form-field error">
-				<label for="text2">Text 2</label>
-				<input id="text2" type="text" size="5"/>
-				<span class="validation" data-validation-for="text2">The Text 2 field is required.</span>
-			</div>
-
-
-			<div class="form-field">
-				<label for="select">Select</label>
-				<select id="select">
-					<option>Option 1</option>
-					<option>Option 2</option>
-				</select>
-			</div>
-
-			<div class="form-field">
-				<input id="checkbox" type="checkbox" />
-				<label for="checkbox">Checkbox label</label>
-			</div>
-
-			<div class="form-field">
-				<label for="textarea">Text2</label>
-				<textarea id="textarea" class="stretch"></textarea>
-			</div>
-		</fieldset>
-
-		<fieldset  data-role="column" class="@columns">
-			<legend>Another fieldset</legend>
-			<div class="form-field">
-				<label for="password">Password</label>
-				<input id="password" type="password" placeholder="Enter a password..." />
-			</div>
-			<div class="form-field">
-				<input type="radio" id="rad_1" name="rad"  value="1" checked />
-				<label for="rad_1">Option 1</label>
-			</div>
-			<div class="form-field">
-				<input type="radio" id="rad_2" name="rad" value="2" />
-				<label for="rad_2">Option 2</label>
-			</div>
-		</fieldset>
-
-		<fieldset  data-role="column" class="@columns">
-			<legend>Radio and checkbox buttons</legend>
-			<div class="form-field">
-				<label>Test radioset</label>
-				<div class="radioset">
-					<label>
-						<input type="radio" name="toggle" value="blue" checked/>
-						<span>Blue</span>
-					</label>
-					<label>
-						<input type="radio" name="toggle" value="red" />
-						<span>Red</span>
-					</label>
-					<label>
-						<input type="radio" name="toggle" value="orage" />
-						<span>Orange</span>
-					</label>
-					<label>
-						<input type="radio" name="toggle" value="green" />
-						<span>Green</span>
-					</label>
-					<label>
-						<input type="radio" name="toggle" value="purple" />
-						<span>Purple</span>
-					</label>
+	<h2>Default Form</h2>
+	<p>
+		The default form uses labels placed on the same row as the input.
+	</p>
+	<div class="outline example">
+		<form>
+			<fieldset>
+				<legend>Legend</legend>
+				<div class="form-field">
+					<label>Label name</label>
+					<input type="text" placeholder="Type something…">
+					<span>Example extra text in a span.</span>
 				</div>
-			</div>
-			<div class="form-field">
-				<label for="testcheckbox">Test switch</label>
-				<div class="switch">
-					<input type="checkbox" id="testcheckbox">
-					<label for="testcheckbox">
-						<span class="on">On</span>
-						<span class="off">Off</span>            
-					</label>
+				<div class="form-field">
+					<label for="password">Password</label>
+					<input id="password" type="password" placeholder="Enter a password..." />
+					<div>Example extra text in a div.</div>
 				</div>
-			</div>
-		</fieldset>
-
-		<fieldset data-role="column" class="@columns">
-			<hr />
-			<div class="controls">
-				<a class="button loud" href="#">Loud link</a>
-				<a class="button attn" href="#">Attn link</a>
-				<button type="submit" value="Submit">Submit</button>
-			</div>
-		</fieldset>
-	</form>
+				<div class="form-field">
+					<label for="select">Select</label>
+					<select id="select">
+						<option>Option 1</option>
+						<option>Option 2</option>
+					</select>
+				</div>
+				<div class="form-field">
+					<input id="checkbox" type="checkbox" />
+					<label for="checkbox">Checkbox label</label>
+				</div>
+				<div class="form-field">
+					<input type="radio" id="rad_1" name="rad"  value="1" checked />
+					<label for="rad_1">Option 1</label>
+				</div>
+				<div class="form-field">
+					<input type="radio" id="rad_2" name="rad" value="2" />
+					<label for="rad_2">Option 2</label>
+				</div>
+				<div class="form-field">
+					<label for="textarea">Text2</label>
+					<textarea id="textarea" rows="3" cols="30"></textarea>
+				</div>
+				
+				<div class="form-controls">
+					<button type="submit">Submit</button>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+	<pre class="prettyprint linenums">
+&lt;form>
+	&lt;fieldset>
+		&lt;legend>Legend&lt;/legend>
+		&lt;div class="form-field">
+			&lt;label>Label name&lt;/label>
+			&lt;input type="text" placeholder="Type something…">
+			&lt;span>Example extra text in a span.&lt;/span>
+		&lt;/div>
+		&lt;div class="form-field">
+			&lt;label for="password">Password&lt;/label>
+			&lt;input id="password" type="password" placeholder="Enter a password..." />
+			&lt;div>Example extra text in a div.&lt;/div>
+		&lt;/div>
+		&lt;div class="form-field">
+			&lt;label for="select">Select&lt;/label>
+			&lt;select id="select">
+				&lt;option>Option 1&lt;/option>
+				&lt;option>Option 2&lt;/option>
+			&lt;/select>
+		&lt;/div>
+		&lt;div class="form-field">
+			&lt;input id="checkbox" type="checkbox" />
+			&lt;label for="checkbox">Checkbox label&lt;/label>
+		&lt;/div>
+		&lt;div class="form-field">
+			&lt;input type="radio" id="rad_1" name="rad"  value="1" checked />
+			&lt;label for="rad_1">Option 1&lt;/label>
+		&lt;/div>
+		&lt;div class="form-field">
+			&lt;input type="radio" id="rad_2" name="rad" value="2" />
+			&lt;label for="rad_2">Option 2&lt;/label>
+		&lt;/div>
+		&lt;div class="form-field">
+			&lt;label for="textarea">Text2&lt;/label>
+			&lt;textarea id="textarea" rows="3" cols="30">&lt;/textarea>
+		&lt;/div>
+		&lt;div class="form-controls">
+			&lt;button type="submit">Submit&lt;/button>
+		&lt;/div>
+	&lt;/fieldset>
+&lt;/form>
+</pre>
 	
-	<section class="clear">
-		<header>
-			<h2>Class names</h2>
-		</header>
-		<p>This is a list of class names that work with forms. Check the markup for semantic structure.</p>
-		<ul>
-			<li>
-				<strong>.form-field</strong> - used to wrap label/input tags.
-			</li>
-			<li>
-				<strong>.nocol, .col2, .col3</strong> - keep the label on inner form-fields on top.
-			</li>
-			<li>
-				<strong>.error</strong> - Use on the form tag and on any .form-field that is in an error state.
-			</li>
-			<li>
-				<strong>.controls</strong> - used to identify the main form controls (e.g. OK/Cancel buttons).
-			</li>
-			<li>
-				<strong>.button</strong> - use to style non buttons as buttons.
-			</li>
-			<li>
-				<strong>.input</strong> - use to style non input types as an input type.
-			</li>
-			<li>
-				<strong>.editable</strong> - use on spans to mark a text field as editable (i.e. clicking it will make it editable).
-			</li>
-			<li>
-				<strong>.loud, .attn</strong> - use on buttons to change their visible priority
-			</li>
-			<li>
-				<strong>.disabled</strong> - use on any field to make it look disabled.
-			</li>
-			<li>
-				<strong>.validation-summary</strong> - add at the top of the form to display general form errors.
-			</li>
-			<li>
-				<strong>.validation</strong> - use in a .form-field (with a data-validation-for attribute) to contain error
-				messages specific to a single form field.
-			</li>
-			<li>
-				<strong>.nolabel</strong> - add to a .form-field when there is no label.
-			</li>
-			<li>
-				<strong>.radioset</strong> - Add to a div surrounding radio buttons for a grouped buttonset look (see markup).
-			</li>
-			<li>
-				<strong>.switch</strong> - Add to a div surrounding a checkbox for an on/off switch (see markup).
-			</li>
-			<li>
-				<strong>.label-margin</strong> - Adds a margin-left of the same width as a label.
-			</li>
-		</ul>
-	</section>
+	
+	<h2>Stacked Form</h2>
+	<p>
+		A stacked form places most labels to the left of their inputs taking up more horizontal space.
+		This form will collapse to a default form on smaller screens.
+	</p>
+	<div class="outline example">
+		<form class="form-stacked">
+			<fieldset>
+				<legend>Legend</legend>
+				<div class="form-field">
+					<label>Label name</label>
+					<input type="text" placeholder="Type something…">
+					<span>Example extra text in a span.</span>
+					<div>Example extra text in a div.</div>
+				</div>
+				<div class="form-field">
+					<label for="select2">Select</label>
+					<select id="select2">
+						<option>Option 1</option>
+						<option>Option 2</option>
+					</select>
+				</div>
+				<div class="form-field">
+					<input id="checkbox2" type="checkbox" />
+					<label for="checkbox2">Checkbox label</label>
+				</div>
+				<div class="form-field">
+					<input type="radio" id="rad_3" name="rad"  value="1" checked />
+					<label for="rad_3">Option 1</label>
+				</div>
+				<div class="form-field">
+					<input type="radio" id="rad_4" name="rad" value="2" />
+					<label for="rad_4">Option 2</label>
+				</div>
+				<div class="form-field">
+					<label for="textarea">Text2</label>
+					<textarea id="textarea" rows="3" cols="30"></textarea>
+				</div>
+				<div class="form-controls">
+					<button type="submit">Submit</button>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+	<pre class="prettyprint linenums">
+&lt;form class="form-stacked">
+...
+&lt;/form>
+</pre>
+	
+	<h2>Inline Form</h2>
+	<div class="outline example">
+		<form class="form-inline">
+			<input type="text" placeholder="Email">
+			<input type="password" placeholder="Password">
+			<button type="submit">Sign in</button>
+			<span class="nowrap">
+				<input id="checkbox3" type="checkbox" />
+				<label for="checkbox3">Remember me?</label>
+			</span>
+		</form>
+	</div>
+	<pre class="prettyprint linenums">
+&lt;form class="form-inline">
+	&lt;input type="text" placeholder="Email">
+	&lt;input type="password" placeholder="Password">
+	&lt;button type="submit">Sign in&lt;/button>
+	&lt;span class="nowrap">
+		&lt;input id="checkbox3" type="checkbox" />
+		&lt;label for="checkbox3">Remember me?&lt;/label>
+	&lt;/span>
+&lt;/form>
+</pre>
+	
+	<hr />
+
+	<h2>Buttons</h2>
+	<p>
+		Native button elements will be styled automatically.
+		If wanting to make a link or span look like a button use the <code>.button</code> class.
+	</p>
+	<p>
+		There is also the <code>.loud</code> class to indicate importance, and the <code>.attn</code>
+		class to grab the users attention. (The attn class should be limited to one per visual screen.)
+	</p>
+	<div class="outline example">
+		<input type="button" value="Standard button" />
+		<button class="loud">Loud button</button>
+		<a href="#" class="button attn">Attn button</a>
+	</div>
+	<pre class="prettyprint linenums">
+&lt;input type="button" value="Standard button" />
+&lt;button class="loud">Loud button&lt;/button>
+&lt;a href="#" class="button attn">Attn button&lt;/a>	
+</pre>
+	<h3>Disabled Buttons</h3>
+	<p>
+		All buttons will style accordingly when adding the <code>[disabled]</code> attribute.
+	</p>
+	<div class="outline example">
+		<input type="button" value="Standard button" disabled />
+		<button class="loud" disabled>Loud button</button>
+		<a href="#" class="button attn" disabled>Attn button</a>
+	</div>
+	<pre class="prettyprint linenums">
+&lt;input type="button" value="Standard button" disabled />
+&lt;button class="loud" disabled>Loud button&lt;/button>
+&lt;a href="#" class="button attn" disabled>Attn button&lt;/a>	
+</pre>
+	
+	<hr />
+
+	<h2>Additional Form Styling</h2>
+
+	<h3>Errors</h3>
+	<p>To draw attention to a field add a <code>.error</code> class name on the <code>.form-field</code> div.</p>
+	<p>An <code>.alert</code> div can be used for general form errors. h1 - h4 headings can be used (and all style the same way).</p>
+	<div class="outline example">
+		<form class="error">
+			<div class="alert-error"><h1>There was an error.</h1>This is a general form alert.</div>
+			<fieldset>
+				<legend>Legend</legend>
+				<div class="form-field error">
+					<label for="text1">Label name</label>
+					<input type="text" id="text1" placeholder="Type something…">
+					<span data-validation-for="text1">Example block-level help in a span.</span>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+	<pre class="prettyprint linenums">
+&lt;form class="error">
+	&lt;div class="alert-error">&lt;h1>There was an error.&lt;/h1>This is a general form alert.&lt;/div>
+	&lt;fieldset>
+		&lt;legend>Legend&lt;/legend>
+		&lt;div class="form-field error">
+			&lt;label for="text1">Label name&lt;/label>
+			&lt;input type="text" id="text1" placeholder="Type something…">
+			&lt;span data-validation-for="text1">Example block-level help in a span.&lt;/span>
+		&lt;/div>
+	&lt;/fieldset>
+&lt;/form>
+</pre>
+	
+
+	<h3>Disabled Fields</h3>
+	<p>Simple use the <code>[disabled]</code> attribute on any item to disable it.</p>
+	<div class="outline example">
+		<label disabled>Disabled label</label>
+		<input type="text" disabled value="This is a disabled field" />
+		<input type="button" disabled valuie="Disabled button" value="Go" />	
+	</div>
+	<pre class="prettyprint linenums">
+&lt;label disabled>Disabled label&lt;/label>
+&lt;input type="text" disabled value="This is a disabled field" />
+&lt;input type="button" disabled valuie="Disabled button" />	
+</pre>
+
+
+	<h3>Input Impersonator</h3>
+	<p>The <code>.input</code> class will attempt to make any element look like an input field.</p>
+	<div class="outline example">
+		<input type="text" value="This is a normal text input" />
+		<a href="#" class="input">This is a link that looks like an input</a>
+	</div>
+	<pre class="prettyprint linenums">
+&lt;a href="#" class="input">This is a link that looks like an input&lt;/a>
+</pre>
+
+	
+
 </div>
 
 @section scripts {

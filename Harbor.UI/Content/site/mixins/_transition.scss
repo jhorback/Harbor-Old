@@ -1,0 +1,5 @@
+@import "shared";
+
+@mixin transition($value) {
+	@include experimental(transition, $value);	
+}

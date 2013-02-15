@@ -1,40 +1,43 @@
 ﻿@section head {
 	<style>
-		.row .outline {
+		.outline .outline {
 			background:#EFEFEF;
 			text-align:center;
 			line-height: 2em;
 			padding: 0;
 		}
 	</style>
+	<link rel="Stylesheet" href="~/content/site/ext/mediatest.css" type="text/css" />
 }
 <div class="page-content">
 	<div class="col text-justify">
 		<section>
 			<h1>Structure</h1>
-			<p>An sample of page structure and layout can be viewed on the  @Html.ActionLink("Page Example", "Index", new { pageKey = "Page" }).</p>
+			<p>A sample of page structure and layout can be viewed on the  @Html.ActionLink("Page Example", "Index", new { pageKey = "Page" }).</p>
 			<h2>Columns (width constraints)</h2>
 			<p>Fluid layouts are provided with a <code>.col[#]</code> class.</p>
-			<div class="outline row">
-				<div class="col1"><div class="outline">.col1</div></div>
-				<div class="col2"><div class="outline">.col2</div></div>
-				<div class="col2"><div class="outline">.col2</div></div>
-				<div class="col3"><div class="outline">.col3</div></div>
-				<div class="col3-2"><div class="outline">.col3-2</div></div>
-				<div class="col4"><div class="outline">.col4</div></div>
-				<div class="col4"><div class="outline">.col4</div></div>
-				<div class="col4"><div class="outline">.col4</div></div>
-				<div class="col4"><div class="outline">.col4</div></div>
-				<div class="col5"><div class="outline">.col5</div></div>
-				<div class="col5"><div class="outline">.col5</div></div>
-				<div class="col5"><div class="outline">.col5</div></div>
-				<div class="col5"><div class="outline">.col5</div></div>
-				<div class="col5"><div class="outline">.col5</div></div>
+			<div class="outline example">
+				<div class="row">
+					<div class="col1"><div class="outline">.col1</div></div>
+					<div class="col2"><div class="outline">.col2</div></div>
+					<div class="col2"><div class="outline">.col2</div></div>
+					<div class="col3"><div class="outline">.col3</div></div>
+					<div class="col3-2"><div class="outline">.col3-2</div></div>
+					<div class="col4"><div class="outline">.col4</div></div>
+					<div class="col4"><div class="outline">.col4</div></div>
+					<div class="col4"><div class="outline">.col4</div></div>
+					<div class="col4"><div class="outline">.col4</div></div>
+					<div class="col5"><div class="outline">.col5</div></div>
+					<div class="col5"><div class="outline">.col5</div></div>
+					<div class="col5"><div class="outline">.col5</div></div>
+					<div class="col5"><div class="outline">.col5</div></div>
+					<div class="col5"><div class="outline">.col5</div></div>
+				</div>
 			</div>
 
 			<h2>Rows (height constraints)</h2>
 			<p>An important note is that columns do not require wrapping them in a 'row' even though rows are made to work with columns.</p>
-			<ul class="nobullets">
+			<ul class="list-style-none">
 				<li>
 					<code>.row</code> - wraps content without any height constraint.
 				</li>
@@ -48,13 +51,79 @@
 					<code>.row-large</code> - wraps content with a large height constraint.
 				</li>
 			</ul>
+			
+			<h2>Helper Classes</h2>
+			<div class="col2">
+				<h3>Display</h3>
+				<ul class="list-style-none">
+					<li>
+						<code>.hide</code> - sets the display property to none.
+					</li>
+					<li>
+						<code>.stretch</code> - sets a 100% width.
+					</li>
+					<li>
+						<code>.nowrap</code> - set the white-space to nowrap.
+					</li>
+				</ul>
+				<h3>Floats</h3>
+				<ul class="list-style-none">
+					<li>
+						<code>.float-left</code> - sets float to left.
+					</li>
+					<li>
+						<code>.float-right</code> - sets float to right.
+					</li>
+					<li>
+						<code>.clear</code> - clears both left and right floats.
+					</li>
+					<li>
+						<code>.clearfix</code> - addes a clearfix.
+					</li>
+				</ul>
+			</div>
+			<div class="col2">
+				<h3>Padding and Margin</h3>
+				<ul class="list-style-none">
+					<li>
+						<code>.pad</code> - adds padding to all sides.
+					</li>
+					<li>
+						<code>.pad-left</code> - adds left padding.
+					</li>
+					<li>
+						<code>.pad-right</code> - adds right padding.
+					</li>
+					<li>
+						<code>.pad-top</code> - adds top padding.
+					</li>
+					<li>
+						<code>.pad-bottom</code> - adds bottom padding.
+					</li>
+					<li>
+						<code>.margin</code> - adds a margin to all sides.
+					</li>
+					<li>
+						<code>.margin-left</code> - adds a left margin.
+					</li>
+					<li>
+						<code>.margin-right</code> - adds a right margin.
+					</li>
+					<li>
+						<code>.margin-top</code> - adds a top margin.
+					</li>
+					<li>
+						<code>.margin-bottom</code> - adds a bottom margin.
+					</li>
+				</ul>
+			</div>
 		</section>
 
 		<section>
 			<h1>Layout</h1>
 			<h2>Page Layout</h2>
 			<p>The page has six layout options: default, constrained, or centered - with or without a sidebar. </p>
-			<pre class="prettyprint">
+			<pre class="prettyprint linenums">
 &lt;section class="page">
 	&lt;header class="page-header">&lt;h1>Page Title&lt;/h1>&lt;/header>
 	&lt;div class="page-body">
@@ -73,7 +142,7 @@
 
 			<h3>Page Navigation</h3>
 			<p>After the <code>&lt;h1></code> title, a page level navigation element is supported.</p>
-			<pre class="prettyprint">
+			<pre class="prettyprint linenums">
 &lt;nav class="page-nav">
 	&lt;ul>
 		&lt;li>&lt;a href="#">Navigation Item&lt;/a>&lt;/li>
@@ -83,121 +152,43 @@
 </pre>
 			<h2>Frame</h2>
 			<p>The page is surrounded by a frame and should be placed within the <code>#frame-body</code> element.</p>
-			<pre class="prettyprint">
+			<pre class="prettyprint linenums">
 &lt;div id="frame">
 	&lt;header id="frame-header>...&lt;/header>
 	&lt;div id="frame-body>...&lt;/div>
 &lt;/div>
 </pre>
 		</section>
+		
 		<section>
-			<h1>Utility Classes</h1>
-			<div class="col2">
-				<h2>Display</h2>
-				<ul class="nobullets">
-					<li>
-						<code>.display-none</code> - sets the display property to none.
-					</li>
-					<li>
-						<code>.hide</code> - same as above but with a <code>!important</code> added to overcome elements needing to be hidden but already have a display property set. 
-					</li>
-					<li>
-						<code>.stretch</code> - sets a 100% width.
-					</li>
-					<li>
-						<code>.fit</code> - sets a max width to 100% (useful for responsive images). 
-					</li>
-				</ul>
-				<h2>Floats</h2>
-				<ul class="nobullets">
-					<li>
-						<code>.float-left</code> - sets float to left.
-					</li>
-					<li>
-						<code>.float-right</code> - sets float to right.
-					</li>
-					<li>
-						<code>.clear</code> - clears both left and right floats.
-					</li>
-					<li>
-						<code>.clearfix</code> - addes a clearfix.
-					</li>
-				</ul>
+			<h1>Responsive Support</h1>
+			<h2>Media Queries</h2>
+			<p>Resize the screen to see the base targeted resolutions.</p>
+			<div class="outline example">
+				<div class="mediatest">Media</div>
 			</div>
-			<div class="col2">
-				<h2>Padding and Margin</h2>
-				<ul class="nobullets">
-					<li>
-						<code>.pad</code> - adds padding to all sides.
-					</li>
-					<li>
-						<code>.pad-left</code> - adds left padding.
-					</li>
-					<li>
-						<code>.pad-right</code> - adds right padding.
-					</li>
-					<li>
-						<code>.pad-top</code> - adds top padding.
-					</li>
-					<li>
-						<code>.pad-bottom</code> - adds bottom padding.
-					</li>
-					<li>
-						<code>.push</code> - adds a margin to all sides.
-					</li>
-					<li>
-						<code>.push-left</code> - adds a left margin.
-					</li>
-					<li>
-						<code>.push-right</code> - adds a right margin.
-					</li>
-					<li>
-						<code>.push-top</code> - adds a top margin.
-					</li>
-					<li>
-						<code>.push-bottom</code> - adds a bottom margin.
-					</li>
-				</ul>
-			</div>
-			
-			@*• .display-none - sets the display property to none.
-			---make sure .hide is here
-			// • .display-block - sets the display property to block.
-			//• .display-inline - sets the display property to inline.
-			//• .display-inline-block - sets the display property to inline-block. -> need to find and remove these
-			//• .relative - sets the position to relative;
-			 
-			• .stretch - sets a 100% width.
-			• .fit - sets a max width to 100% (useful for responsive images).
-			// • .centered - sets the margin to auto
-
-
-			Floats and Clears
-			• .float-left - adds float:left
-			• .float-right -adds float: right
-			• .clear - clears both left and right floats.
-			// • .clear-left - clears left floats. -> remove
-			// • .clear-right - clears both right floats. -> remove
-			• .clear-fix - applies a clearfix to the element. -> rename to .clearfix
-
-			Padding
-			• .pad - .pad3 - various levels of padding. - only pad - pull? - remove pad123 and margin123
-			• .pad-left - adds left padding. - pull-left
-			• .pad-right - adds right padding. - pull-right
-			• .pad-top - adds top padding. - pull-top
-			• .pad-bottom - adds bottom padding. - pull-bottom
-
-			Margin
-			• .margin - .margin3 - various levels of margin. - .push -
-			• .margin-left - adds left margin. - .push-left
-			• .margin-right - adds right margin. - .push-right
-			• .margin-top - adds top margin. - push-top
-			• .margin-bottom - adds bottom margin. -push-bottom*@
-
+			<p>These are the base targeted breakpoints.</p>
+			<p>Internet Explorer 7 does not support the content property so follow the colors for media query application.</p>
+			<ul>
+				<li>
+					<strong>Black</strong> - No media queries applied
+				</li>
+				<li>
+					<strong>Yellow</strong> - Phone
+				</li>
+				<li>
+					<strong>Blue</strong> - Tablet
+				</li>
+				<li>
+					<strong>Green</strong> - Desktop
+				</li>
+				<li>
+					<strong>Red</strong> - Widescreen
+				</li>
+			</ul>
 		</section>
 	</div>
 </div>
-
 @section scripts {
 	<script>
 	</script>

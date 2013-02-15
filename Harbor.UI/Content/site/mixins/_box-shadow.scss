@@ -1,5 +1,17 @@
 @import "shared";
 
-@mixin box-shadow ($top, $left, $blur, $spread, $color) {
-	@include experimental(box-shadow, $top $left $blur $spread $color);
+@mixin box-shadow-value($value) {
+	@include experimental(box-shadow, $value);	
+}
+
+
+@mixin box-shadow ($top, $left: null, $blur: null, $spread: null, $color: null) {
+	// $top is either the full shadow or the top value if passing in multiple args
+
+	@if $left == null {
+		@include experimental(box-shadow, $top);
+		
+	} else {
+		@include experimental(box-shadow, $top $left $blur $spread $color);
+	}
 }

@@ -1,7 +1,7 @@
-@import "../../site/core/theme/all-theme";
+@import "../../site/core/theme";
 
 
 // $framenav-background-color: red;
 $frame-logo-use-image: false;
 
-@include all-theme;
+@include theme;

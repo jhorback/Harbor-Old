@@ -16,7 +16,7 @@
 		<h1>Website Settings</h1>
 	</div>
 	<div class="page-body">
-		<div class="page-content display-none">
+		<div class="page-content hide">
 			@if (Model.CanUpdateSiteSettings)
 			{
 				<fieldset>
@@ -62,7 +62,7 @@
 					</div>
 					<div>
 						<button id="settings-changehome">Change the home page</button>
-						<button id="settings-resethome" class="@(Model.HomePage == null ? "display-none" : "")">Reset</button>
+						<button id="settings-resethome" class="@(Model.HomePage == null ? "hide" : "")">Reset</button>
 					</div>
 				</fieldset>
 							
@@ -108,7 +108,7 @@
 				<fieldset class="clear">
 					<legend>Application name</legend>
 					<div class="pad">
-						<div class="form-field editable display-inline-block" tabindex="0" id="settings-applicationName">
+						<div class="form-field editable" tabindex="0" id="settings-applicationName">
 							<span data-bind="applicationName"></span>
 						</div>
 					</div>

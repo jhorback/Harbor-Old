@@ -46,52 +46,67 @@
 		return string.Join("\n\n", contents);
 	}
 }
-<section class="page">
-	<div class="page-header">
-		<h1>JavaScript Packages</h1>
-	</div>
+<div class="page-header">
+	<h1>JavaScript Packages</h1>
+</div>
+<div class="page-body">
 	<div class="page-content">
-		<section>
+		<div class="float-left">
 			Packages not requiring registration are: <strong>@string.Join(", ", (string[])ViewBag.NonRequiredPackages)</strong>.
-		</section>
-		<section class="datalist">
-			<ul class="stretch">
-				@*<li class="heading">
-				<span class="col">Package Name</span>
-				<span class="col">Contents</span>
-				<span class="col">Dependencies</span>
-			</li>*@
-				@foreach (var group in Model)
-				{
-					<li class="group">
-						<span class="col"><h3>@group.Key</h3></span>
-						<span class="col"></span>
-						<span class="col"></span>
-					</li>
-					foreach (var item in group)
+		</div>
+		<div class="float-right">
+			<label for="packages-showgroups">Show groups</label>
+			<input id="packages-showgroups" type="checkbox" />
+		</div>
+		<div class="clear">
+			<table class="datatable hover">
+				<thead>
+					<tr>
+						<th>Package Name</th>
+						<th>Contents</th>
+						<th>Dependencies</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var group in Model)
 					{
-						var pkg = JavaScriptPackageDto.FromIJavaScriptPackage(item);
-						<li>
-							<span class="col loud">@pkg.name</span>
-							<span class="col" title="@getPkgContentsTitle(pkg)">@getPkgContents(pkg)</span>
-							<span class="col">
-								@if (pkg.dependencies != null && pkg.dependencies.Length > 0)
-								{
-									@Html.Raw("Dependent on ")
-									<span class="loud">
+						<tr class="group" style="display: none;">
+							<th colspan="3">@group.Key</th>
+						</tr>
+						foreach (var item in group)
+						{
+							var pkg = JavaScriptPackageDto.FromIJavaScriptPackage(item);
+							<tr>
+								<td>@pkg.name</td>
+								<td title="@getPkgContentsTitle(pkg)">@getPkgContents(pkg)</td>
+								<td>
+									@if (pkg.dependencies != null && pkg.dependencies.Length > 0)
+									{
 										@String.Join(", ", pkg.dependencies)
-									</span>
-								}
-							</span>
-						</li>
+									}
+								</td>
+							</tr>
+						}
 					}
-				}
-			</ul>
-		</section>
+				</tbody>
+			</table>
+		</div>
 	</div>
-</section>
+</div>
+
 @section scripts {
 	<script>
+		$("#packages-showgroups").change(function () {
+			toggle();
+		});
 		
+		var toggle = function() {
+			if ($("#packages-showgroups").is(":checked")) {
+				$(".datatable .group").show();
+			} else {
+				$(".datatable .group").hide();
+			}
+		};
+		toggle();
 	</script>
 }

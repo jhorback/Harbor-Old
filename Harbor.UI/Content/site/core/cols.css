@@ -1,4 +1,0 @@
-/* Error launching Sass compiler: System.ComponentModel.Win32Exception (0x80004005): The system cannot find the file specified
-   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
-   at System.Diagnostics.Process.Start()
-   at Mindscape.VisualSass.Integration.Compilation.ScssCompiler.CompileCore(String scss, String sourceFilePath, String rootPath, IEnumerable`1 additionalPaths, ICompilationSettings settings, ICompilerContext context, CompilationResult result) */

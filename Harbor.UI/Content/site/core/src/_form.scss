@@ -270,7 +270,7 @@ $form-error-color: #b94a48;
 
 
 @mixin form-errors {
-	.error {
+	.form-field.error {
 		color: $form-error-color;
 
 		input,

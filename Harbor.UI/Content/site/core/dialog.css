@@ -6,10 +6,6 @@
   color: black;
   background-color: white;
   max-width: 600px;
-  -moz-box-shadow: 0 0 2em 0.5em #555555;
-  -webkit-box-shadow: 0 0 2em 0.5em #555555;
-  -ms-box-shadow: 0 0 2em 0.5em #555555;
-  box-shadow: 0 0 2em 0.5em #555555;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   -ms-border-radius: 3px;
@@ -18,6 +14,11 @@
     content: "";
     display: table;
     clear: both; }
+  .dialog else {
+    -moz-box-shadow: 0 0 2em 0.5em #555555;
+    -webkit-box-shadow: 0 0 2em 0.5em #555555;
+    -ms-box-shadow: 0 0 2em 0.5em #555555;
+    box-shadow: 0 0 2em 0.5em #555555; }
   .dialog .dialog-header {
     overflow: hidden;
     padding: .5em 1em; }
@@ -33,10 +34,10 @@
   .dialog .dialog-content {
     position: relative;
     padding: 1em; }
-  .dialog .controls {
+  .dialog .form-controls {
     clear: both;
     padding-top: 1em; }
-    .dialog .controls .input, .dialog .controls input, .dialog .controls a, .dialog .controls button, .dialog .controls .link {
+    .dialog .form-controls .input, .dialog .form-controls input, .dialog .form-controls a, .dialog .form-controls button, .dialog .form-controls .link {
       float: right; }
 
 @media screen and (max-width: 600px) {

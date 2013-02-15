@@ -1,4 +1,4 @@
-@import "../../site/core/theme/all-theme";
+@import "../../site/core/theme";
 
 
 $c2: #eda456;
@@ -13,7 +13,7 @@ $form-legend-color:	$c2;
 $link-color:				#FFF;
 $link-color-hover:			#09f;
 
-@include all-theme;
+@include theme;
 
 
 .menu {

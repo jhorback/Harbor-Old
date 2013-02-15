@@ -2,31 +2,33 @@
 @import "../../mixins/box-shadow";
 @import "../../mixins/inline-block-list";
 @import "../../mixins/opacity";
+@import "foundation";
 
-
-$frame-header-height:	4.286em; // 60px (logo image) / 14px base font size
-$frame-footer-height:	3.3em;
 $frame-logo-width:		150px;
 $frame-logo-height:		50px;
+$frame-header-height:	4.286em; // 60px (logo image) / 14px base font size
+$frame-footer-height:	3.3em; // footer is not currently fixed - 3.3em;
 
 $overlay-background-color: #000;
-$frame-include-border-dropshadow: true;
 
-$framenav-color:						#333								!default;
-$framenav-background-color:				#FFF								!default;
-$framenav-color-hover:					$framenav-color						!default;
-$framenav-background-color-hover:		darken($framenav-background-color, 10%) !default;
+
+
+$framenav-color:						#EEE								!default;
+$framenav-background-color:				#345276								!default;
+$framenav-color-hover:					$body-color							!default;
+$framenav-background-color-hover:		$body-background-color				!default;
 $framenav-color-selected:				$framenav-color-hover				!default;
 $framenav-background-color-selected:	$framenav-background-color-hover	!default;
 $scrollbar-color:						#CCC								!default;
+$frame-logo-use-image: true !default;
 
-$frame-border-color:  #777 !default;
-$frame-border-width: 3px	!default;
 
-$frame-logo-url:		unquote('images/logo.png') !default;
 
 
 @mixin frame {
+	#frame {
+		@include clearfix;
+	}	
 	@include frame-header;
 	@include frame-body;
 	@include frame-footer;	
@@ -34,130 +36,22 @@ $frame-logo-url:		unquote('images/logo.png') !default;
 }
 
 @mixin frame-theme {
-	@include frame-header-theme;
-	@include frame-body-theme;
-	@include frame-footer-theme;	
-}
-
-
-@mixin frame-header {
-	#frame-header {
-		overflow: hidden;
-		position: fixed;
-		height: $frame-header-height;
-		top:0;
-		left:0;
-		right:0;
-		z-index: 1;		
-		@if ($frame-include-border-dropshadow) {
-			@include box-shadow(0em, 1px, 2px, 0, #AAA);
-		}
-
-		a, a:visited {
-			text-decoration: none;
-		}		
-	}	
-
-	#frame-logo {
-		display: block;
-		float: left;
-		margin:.2em 1em .2em .5em;
-		width: $frame-logo-width;
-		height: $frame-logo-height;
-	}
-
-	#frame-nav {
-		float: left;
-		font-size: 1.1em;
-		padding-top: 1em;
-		ul {
-			@include inline-block-list;
-			li {
-				float:left;				
-				a {
-					display: inline-block;
-					padding: .4em 1em;
-				}
-				&.selected {
-					a {
-						@include single-text-shadow(rgba(#444, 0.4) 1px 1px 1px);
-					}		
-				}
-			}
-		}
-	}
-
-	#frame-session {
-		float: right;
-		padding: .2em .8em;
-		line-height: 1.4em;
-		font-size: 1.2em;
-//		@include opacity(.7);
-//		&:hover {
-//			@include opacity(1);			
-//		}
-
-		#account-link {
-			display: inline-block;
-			text-align: center;
-			margin-right: .5em;
-			padding: .2em .1em;			
-		}
-		#appmenu-icon {
-			display:inline-block;
-			padding: .2em .1em;
-		}
-		.icon-cog {
-			position: relative;
-			top: .1em;
-			font-size: 1.4em;
-		}
-		.current-sector {
-			font-size: .9em;
-			text-align: right;			
-		}
-
-	}
-
-	#frame-session-mobile {
-		display: none;
-	}
-
-	@media all and (max-width: 800px) {
-		#frame-session-mobile { 
-			display: block;
-			float: right;
-			padding: .2em .8em;
-			line-height: 1.4em;
-			font-size: 1.2em;
-			#mobile-menu-icon {
-				display:inline-block;
-				padding: .3em;
-			}
-			.icon-menu {
-				position: relative;
-				top: .4em;
-				font-size: 1.4em;
-			}
-		}
-		#frame-nav, #frame-session {
-			display: none;
-		}
-	}
-}
-
-@mixin frame-header-theme {
 	#frame-header {
 		color: $framenav-color;
 		background: $framenav-background-color;
-		border-bottom: $frame-border-width solid $frame-border-color;
 		a, a:visited {
 			color: $framenav-color;
 		}
 	}
-	
-	#frame-logo {
-		background: url($frame-logo-url) no-repeat;
+
+	@if $frame-logo-use-image {
+		#frame-logo a {
+			text-indent: -99999px;
+			display: block;
+			width: 200px;
+			height: 50px;
+			background: url(images/logo.png) no-repeat;
+		}
 	}
 
 	#frame-nav {
@@ -179,12 +73,82 @@ $frame-logo-url:		unquote('images/logo.png') !default;
 		}
 	}
 
-	#account-link, #appmenu-icon {
-		&:hover {
-			background-color: $framenav-background-color-hover;
-			a {
-				color: $framenav-color-hover;
+	#frame-body {
+		::-webkit-scrollbar-thumb {
+			background: $scrollbar-color;
+			&:hover{
+				background: darken($scrollbar-color, 10%);				
 			}
+		}
+		
+//		scrollbar-face-color: $button-bg-color;
+//		scrollbar-arrow-color: $button-bg-color;
+//		scrollbar-track-color: $body-bg-color;
+//		scrollbar-shadow-color: $button-bg-color;
+//		scrollbar-highlight-color: $button-bg-color;
+//		scrollbar-3dlight-color: $button-bg-color;
+//		scrollbar-darkshadow-color: $button-bg-color;
+		
+	}
+}
+
+
+@mixin frame-header {
+	#frame-header {
+		overflow: hidden;
+		height: $frame-header-height;
+		line-height: $frame-header-height;
+		z-index: 1;		
+
+		a, a:visited {
+			text-decoration: none;
+		}		
+	}	
+
+	#frame-logo {
+		font-size: 2.3em;
+		float:left;
+		margin: 0 1em 0 .5em;
+		//height: 1.6em;
+		@include single-text-shadow(rgba(#000, 0.6), 1px, 1px, 2px);
+	}
+
+	#frame-nav {
+		float: left;
+		font-size: 1.1em;
+		//padding-top: 1em;
+		ul {
+			@include inline-block-list;
+			li {
+				cursor: pointer;	
+				float:left;
+				// jch! add mixin for transitions - and add to launch
+				-webkit-transition-property: background;
+				-webkit-transition-duration: 0.3s;				
+				a {
+					display: inline-block;
+					padding: 0 1em;
+				}
+				&.selected {
+					a {
+						@include single-text-shadow(rgba(#444, 0.4) 1px 1px 1px);
+					}		
+				}
+				&.attn {					
+					background: #FF0000 !important;
+					a { color: white !important; }
+				}
+			}
+		}
+	}
+
+	#frame-session {
+		float: right;
+		padding: .4em 1em;
+		font-size: 1.2em;
+		a {
+			display: inline-block;
+			text-align: center;
 		}
 	}
 }
@@ -192,79 +156,16 @@ $frame-logo-url:		unquote('images/logo.png') !default;
 
 @mixin frame-body {
 	#frame-body {
-		clear: both;
-		min-height: 5em;
-		position: fixed;
-		top: $frame-header-height;
-		left: 0;
-		right: 0;
-		margin: 0;
-		bottom: $frame-footer-height;
-		overflow: auto;
-		::-webkit-scrollbar {
-			width: .9em;
-			height: .9em;
-		}
-	}
-}
-
-@mixin frame-body-theme {
-	#frame-body {
-		::-webkit-scrollbar-thumb {
-			background: $scrollbar-color;
-			&:hover{
-				background: darken($scrollbar-color, 10%);				
-			}
-		}			
+			
 	}
 }
 
 
 @mixin frame-footer {
 	#frame-info {
-		clear: left;		
-		position: fixed;
-		bottom: 0;
-		left: 0;
-		right: 0;
+		clear: left;
 		height: $frame-footer-height;
-		z-index: 1;
-		@if ($frame-include-border-dropshadow) {
-			@include box-shadow(0em, 1px, .5em, 0, #333);
-		}				
-	}
-
-	#frame-info-text {
-		padding: .2em .5em;
 		text-align: center;
-	}
-
-	#frame-info-sector {
-		position: absolute;
-		font-size: 2.1em;
-		margin-left: .4em;
-		//font-weight: bold;
-		@include opacity(.3);
-	}
-
-	#frame-info-copy {
-		font-size: .8em;
-		font-weight: bold;
-		@include opacity(.4);
-		text-transform: uppercase;
-		position: fixed;
-		bottom: 2px;
-		left: 0;
-		right: 0;
-		margin: auto;
-	}
-}
-
-@mixin frame-footer-theme {
-	#frame-info {
-		border-top: $frame-border-width solid $frame-border-color;
-		color: $framenav-color;
-		background: $framenav-background-color url(images/launch-logo-40.png) bottom right no-repeat;
 	}
 }
 
