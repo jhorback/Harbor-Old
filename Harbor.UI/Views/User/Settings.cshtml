@@ -37,7 +37,7 @@
 				<fieldset>
 					<legend>Website users</legend>
 					<div>
-						<a class="text-large" href="~/User/Admin">User Administration</a>
+						<a href="~/User/Admin">User Administration</a>
 					</div>
 					<div>
 						<p>
@@ -83,17 +83,11 @@
 			}
 			@if (Model.CanUpdateSiteSettings)
 			{
-				<fieldset class="col2"> @*jch* make col1 stacked by default and add a inline scope for fieldsets?*@
+				<fieldset class="col2">
 					<legend>Sign in link</legend>
 					<div class="form-field">
-						<label for="showsigninlink">Show or hide the sign in link</label>
-						<div class="switch">
-							<input type="checkbox" name="showSignInLink" id="showSignInLink">
-							<label for="showSignInLink">
-								<span class="on">Show</span>
-								<span class="off">Hide</span>
-							</label>
-						</div>
+						<label for="showsigninlink">Show the sign in link</label>
+						<input type="checkbox" name="showSignInLink" id="showSignInLink">
 					</div>
 					<div>
 						<p>
@@ -115,13 +109,13 @@
 				</fieldset>
 				<fieldset>
 					<legend>Development</legend>
-					<div class="text-large pad-left">
+					<div class="pad-left">
 						<a href="@Url.Action("Index", "StyleGuide")">Style Guide</a>
 					</div>
-					<div class="text-large pad-left">
+					<div class="pad-left">
 						<a href="@Url.Action("JavaScriptPackages", "Home")">JavaScript Packages</a>
 					</div>
-					<div class="text-large pad-left">
+					<div class="pad-left">
 						<a href="@Url.Action("JavaScriptTests", "Home")">JavaScript Tests</a>
 					</div>
 				</fieldset>

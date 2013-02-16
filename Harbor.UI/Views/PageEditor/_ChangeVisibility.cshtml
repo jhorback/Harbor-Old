@@ -1,14 +1,9 @@
 ﻿<form>
 	<div class="form-field">
-		<div class="switch">
-			<input type="checkbox" name="published" id="visibility-published">
-			<label for="visibility-published">
-				<span class="on">Published</span>
-				<span class="off">Private</span>            
-			</label>
-		</div>
+		<input type="checkbox" name="published" id="visibility-published">
+		<label for="visibility-published">Published</label>
 	</div>
-	<div data-bind="publishedMessage" class="pad text-large attn"></div>
+	<div data-bind="publishedMessage" class="pad attn"></div>
 	<div class="form-controls">
 		<input type="submit" value="Save" class="loud">
 		<input type="button" value="Cancel" data-rel="back">		
