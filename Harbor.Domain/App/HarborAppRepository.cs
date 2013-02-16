@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Harbor.Domain.Extensions;
 using Harbor.Domain.Pages;
+using Harbor.Domain.Security;
 
 namespace Harbor.Domain.App
 {
@@ -43,13 +44,19 @@ namespace Harbor.Domain.App
 			return app;
 		}
 
-		public void SetApp(HarborApp app)
+		public void SetApp(HarborApp app, User user)
 		{
-			setSetting("ShowSignInLink", app.ShowSignInLink);
-			setSetting("ApplicationName", app.ApplicationName);
-			setSetting("HomePageID", app.HomePageID);
-			setSetting("NavigationLinks", JSON.Stringify(app.NavigationLinks));
-			setSetting("Theme", app.Theme);
+			if (user.HasPermission(UserFeature.SystemSettings))
+			{
+				setSetting("Theme", app.Theme);
+				setSetting("ApplicationName", app.ApplicationName);			
+			}
+			if (user.HasPermission(UserFeature.SiteSettings))
+			{
+				setSetting("ShowSignInLink", app.ShowSignInLink);
+				setSetting("HomePageID", app.HomePageID);
+				setSetting("NavigationLinks", JSON.Stringify(app.NavigationLinks));
+			}
 		}
 
 		private AppSetting setSetting(string name, object value)
@@ -62,8 +69,11 @@ namespace Harbor.Domain.App
 			}
 			else
 			{
-				settingDO.Value = strvalue;
-				settingDO = appSettings.Update(settingDO);
+				if (settingDO.Value != strvalue)
+				{
+					settingDO.Value = strvalue;
+					settingDO = appSettings.Update(settingDO);
+				}
 			}
 			return settingDO;
 		}

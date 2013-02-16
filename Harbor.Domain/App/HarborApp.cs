@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Reflection;
 using Harbor.Domain.Pages;
 
@@ -8,8 +9,12 @@ namespace Harbor.Domain.App
 	{
 		public HarborApp()
 		{
-			ApplicationName = "Test App";
-			Version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+			ApplicationName = "Harbor";
+			
+			var harborDomain = Assembly.GetAssembly(typeof(HarborApp));
+			var version = harborDomain.GetName().Version;
+			Version = string.Format("v{0}.{1}-{2}", version.Minor, version.Build, version.Revision);
+			
 			ShowSignInLink = true;
 			HomePageID = null;
 		}

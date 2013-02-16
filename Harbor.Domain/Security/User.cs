@@ -110,7 +110,7 @@ namespace Harbor.Domain.Security
 			Password = createPassword(password);
 		}
 
-		public bool HasPermission(UserFeature feature, Permissions permission)
+		public bool HasPermission(UserFeature feature, Permissions permission = Permissions.All)
 		{
 			if (!Enabled) return false;
 			if (permissionsChecker == null)

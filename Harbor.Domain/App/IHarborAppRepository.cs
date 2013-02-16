@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
+using Harbor.Domain.Security;
 
 namespace Harbor.Domain.App
 {
@@ -9,7 +7,7 @@ namespace Harbor.Domain.App
 	{
 		HarborApp GetApp();
 
-		void SetApp(HarborApp app);
+		void SetApp(HarborApp app, User user);
 
 		IEnumerable<NavigationLink> GetNavigationLinks();
 	}
