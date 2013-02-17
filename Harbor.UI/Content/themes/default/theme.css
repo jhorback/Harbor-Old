@@ -14,7 +14,15 @@ a, .link {
   a:hover, .link:hover {
     color: #0099ff; }
   a:active, .link:active {
-    color: red; }
+    color: red !important; }
+
+.link {
+  background-color: transparent;
+  padding: 0; }
+  .link:hover {
+    background-color: transparent; }
+  .link:active {
+    background-color: transparent; }
 
 p {
   margin-bottom: 10.0002px; }
@@ -22,8 +30,12 @@ p {
 h1, h2, h3, h4, h5, h6 {
   margin: 10.0002px 0; }
 
+h1 {
+  color: #666666; }
+
 h2 {
-  color: #333333; }
+  color: #336699;
+  font-weight: 200; }
 
 hgroup h1 + h2 {
   color: #333333; }
@@ -84,8 +96,9 @@ dd {
   #frame-body ::-webkit-scrollbar-thumb:hover {
     background: #b3b3b3; }
 
-.page-header h1 a {
-  color: #333333; }
-  .page-header h1 a:hover {
-    color: #333333; }
+.page-header h1 {
+  color: #666666;
+  font-weight: normal; }
+  .page-header h1 a {
+    color: #666666; }
 

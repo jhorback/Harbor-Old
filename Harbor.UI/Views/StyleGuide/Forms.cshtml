@@ -5,15 +5,7 @@
 	}
 }
 @section pageheader {
-	<form class="float-right form-inline">
-		<fieldset>
-			<select id="columns" name="columns">
-				<option value="col1">One Column</option>
-				<option value="col2" selected>Two Columns</option>
-				<option value="col3">Three Columns</option>
-			</select>
-		</fieldset>
-	</form>
+	
 }
 <div class="page-content">
 
@@ -284,21 +276,5 @@
 </div>
 
 @section scripts {
-	<script>
-		$(document).ready(function (event) {
 
-			var colfield = $("#columns");
-			var cols = $("[data-role=column]");
-
-			var changeColumns = function () {
-				var val = colfield.val();
-				cols.attr("class", "");
-				cols.addClass(val);
-			};
-
-			changeColumns();
-			colfield.change(changeColumns);
-
-		});
-	</script>
 }

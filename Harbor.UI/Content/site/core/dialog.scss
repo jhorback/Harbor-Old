@@ -21,6 +21,7 @@ $dialog-box-shadow-color: #555;
 		color: $dialog-color;
 		background-color: $dialog-background-color;
 		max-width: 600px;
+		min-width: 400px;
 
 		@include clearfix;
 		@include box-shadow(0, 0, 2em, .5em, $dialog-box-shadow-color);

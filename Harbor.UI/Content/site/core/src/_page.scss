@@ -14,12 +14,12 @@
 //	</div>
 // </div>
 
-$page-title-color: $body-color !default;
+$page-title-color: lighten($body-color, 20%) !default;
 
 
 $page-header-height: 5em;
-$page-aside-width: 30%;
-$page-content-width: 69%;
+$page-aside-width: 25%;
+$page-content-width: 73%;
 $page-content-gutter-width: 1%;
 $page-readable-width: 88em;
 $page-header-bottom: $frame-header-height + $page-header-height;
@@ -47,15 +47,15 @@ $page-header-bottom: $frame-header-height + $page-header-height;
 
 		h1 {
 			float: left;
-			padding: 0 .3em;
+			margin: 0 .5em;
 			
-			@include single-text-shadow(rgba(#000, 0.4), 1px, 1px, 2px);
+			//@include single-text-shadow(rgba(#000, 0.4), 1px, 1px, 2px);
 			a {
 				text-decoration: none;
 			}
 		}
-		button {
-			margin: 1em; // 1em;
+		fieldset {
+			margin: 0 1em;
 		}
 	}
 
@@ -72,7 +72,7 @@ $page-header-bottom: $frame-header-height + $page-header-height;
 			float: left;
 			a {
 				font-size: 1.2em;
-				padding: .5em;
+				margin: 0 .5em;
 				text-decoration: none;				
 			}
 			&.selected a {
@@ -84,10 +84,15 @@ $page-header-bottom: $frame-header-height + $page-header-height;
 
 @mixin page-header-theme {
 	.page-header {		
-		h1 a {			
+		h1 {
 			color: $page-title-color;
-			&:hover {
-				color: $page-title-color;				
+			font-weight: normal;
+			 a {			
+				color: $page-title-color;
+			
+				&:hover {
+					// color: $page-title-color;				
+				}
 			}
 		}
 	}
@@ -97,6 +102,7 @@ $page-header-bottom: $frame-header-height + $page-header-height;
 @mixin page-body {
 	.page-body {
 		@include clearfix;
+		clear: left;
 	}
 	.page-aside {
 		position: relative;
@@ -104,13 +110,13 @@ $page-header-bottom: $frame-header-height + $page-header-height;
 		float: left;
 	}
 	.page-content {
-		// jch! is it possible to stretch this?
 		position: relative;
 		float: left;
 		width: $page-content-width;
 		padding-right: $page-content-gutter-width;
+		padding-left: $page-content-gutter-width;
 		&:first-child { // if there is no aside
-			width: 100% - $page-content-gutter-width;
+			width: 98%;
 		}
 	}
 
@@ -133,9 +139,10 @@ $page-header-bottom: $frame-header-height + $page-header-height;
 			width: $page-content-width;
 			*width: $page-content-width - (.5 / 100 * 100 * 1%);
 			padding-right: $page-content-gutter-width;
+			padding-left: $page-content-gutter-width;
 		}
 		.page-content:first-child { // if there is no aside
-			width: 99%;
+			width: 98%;
 		}
 	}
 }

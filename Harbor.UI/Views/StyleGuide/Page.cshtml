@@ -204,7 +204,7 @@
 				},
 				hasAside: function() {
 					var lo = this.get("layoutOptions");
-					return lo && lo.indexOf("aside") > -1;
+					return (lo && lo.indexOf("aside") > -1) ? true: false;
 				},
 				getPageClassNames: function() {
 					return this.get("layoutOptions") + " page";

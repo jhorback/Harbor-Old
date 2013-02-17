@@ -19,7 +19,7 @@
 		.col4 { @include col-span(4); }
 		.col5 { @include col-span(5); }	
 	}
-
+	
 	@media screen and (min-width: 48em) and (max-width: 64em) {
 //		.col,
 //		.col1 { @include col-span(1); }
@@ -72,3 +72,5 @@
 		overflow:auto;
 	}
 }
+
+@include cols;
