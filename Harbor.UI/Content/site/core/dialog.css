@@ -1,37 +1,30 @@
 .dialog-wrapper {
   position: absolute;
-  z-index: 100; }
+  z-index: 100;
+  left: 0;
+  right: 0;
+  background: #FFF; }
 
 .dialog {
   color: black;
   background-color: white;
   max-width: 600px;
   min-width: 400px;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  -ms-border-radius: 3px;
-  border-radius: 3px; }
+  margin: auto; }
   .dialog:after {
     content: "";
     display: table;
     clear: both; }
-  .dialog else {
-    -moz-box-shadow: 0 0 2em 0.5em #555555;
-    -webkit-box-shadow: 0 0 2em 0.5em #555555;
-    -ms-box-shadow: 0 0 2em 0.5em #555555;
-    box-shadow: 0 0 2em 0.5em #555555; }
   .dialog .dialog-header {
     overflow: hidden;
     padding: .5em 1em; }
     .dialog .dialog-header h1 {
-      font-family: "Segoe UI";
       display: inline;
       float: left;
-      font-size: 2.3em;
+      font-size: 1.8em;
       cursor: default;
-      color: #0099cc;
-      margin: 0;
-      text-shadow: rgba(17, 17, 17, 0.2) 2px 2px 2px; }
+      font-weight: normal;
+      margin: 0; }
   .dialog .dialog-content {
     position: relative;
     padding: 1em; }
@@ -60,9 +53,9 @@
   text-decoration: none;
   display: block;
   cursor: default;
-  margin: -0.7em -0.55em 0 0;
+  margin: -0.2em -0.2em 0 0;
   float: right;
-  font-size: 3.5em;
+  font-size: 2em;
   font-weight: bold;
   opacity: 0.1; }
   .dialog-close:hover {

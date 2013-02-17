@@ -166,9 +166,6 @@
     <Content Include="Scripts\Feedback\Feedback.html" />
     <Content Include="Scripts\Feedback\Feedback.js" />
     <Content Include="Scripts\Feedback\Feedback.test.js" />
-    <Content Include="Scripts\jquery-1.8.0-vsdoc.js" />
-    <Content Include="Scripts\jquery-1.8.0.js" />
-    <Content Include="Scripts\jquery-1.8.0.min.js" />
     <Content Include="Scripts\jquery.ui.widget.js" />
     <Content Include="Scripts\jquery.ui.widget.min.js" />
     <Content Include="Scripts\json2.js" />

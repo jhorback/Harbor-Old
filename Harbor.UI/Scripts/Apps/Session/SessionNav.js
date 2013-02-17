@@ -26,7 +26,7 @@
 	},
 
 	renderSignInLink: function () {
-		var link = $('<a id="signin-link" href="' + Session.url("User/SignIn") + '">Sign In</a>');
+		var link = $('<a id="signin-link" href="' + Session.url("User/SignIn") + '">Sign in</a>');
 		link.hide();
 		this.$el.html("").append(link);
 		link.fadeIn("slow");
@@ -44,7 +44,7 @@
 	showSignInDialog: function () {
 		var signInView = new Session.SignInView();
 		var dialog = new Session.Dialog(signInView.$el, {
-			title: "Sign In",
+			title: "Sign in",
 			modal: true,
 			transition: "fade"
 		});

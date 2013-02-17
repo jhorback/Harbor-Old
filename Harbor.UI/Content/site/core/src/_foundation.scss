@@ -107,7 +107,7 @@ $body-color-attn:					#D14836						!default;
 			color: $link-color-hover;
 		}
 		&:active {
-			color: $link-color-active !important;
+			color: $link-color-active;
 		}
 	}
 	.link {
@@ -118,6 +118,7 @@ $body-color-attn:					#D14836						!default;
 		}
 		&:active {
 			background-color: transparent;
+			color: $link-color-active !important;
 		}
 	}
 

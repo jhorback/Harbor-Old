@@ -41,7 +41,7 @@
 		if (this.options.editorFor) {
 			$.extend(this.options, {
 				modal: true,
-				draggable: false, 
+				// draggable: false, 
 				position: {
 					my: "center",
 					at: "center",
@@ -86,7 +86,8 @@
 			this.position();
 			if (this.options.draggable && $.fn.draggable) {
 				this.dialogEl.draggable({
-					handle: ".dialog-header"
+					handle: ".dialog-header",
+					axis: "y"
 				}); //.find("h1").css("cursor", "move");
 			}
 
@@ -213,7 +214,7 @@
 		'	<div class="dialog">' +
 		'		<div class="dialog-header">' +
 		'			<h1></h1>' +
-		'			<span data-rel="back" title="close" class="dialog-close">&#9447;</a>' +
+		'			<span data-rel="back" title="close" class="dialog-close">&times;</a>' +
 		'		</div>' +
 		'		<div class="dialog-content"><!--dialog element is placed here--></div>' +
 		'	</div>' +

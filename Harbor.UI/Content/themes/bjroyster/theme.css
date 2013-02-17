@@ -14,7 +14,7 @@ a, .link {
   a:hover, .link:hover {
     color: #0099ff; }
   a:active, .link:active {
-    color: red !important; }
+    color: red; }
 
 .link {
   background-color: transparent;
@@ -22,7 +22,8 @@ a, .link {
   .link:hover {
     background-color: transparent; }
   .link:active {
-    background-color: transparent; }
+    background-color: transparent;
+    color: red !important; }
 
 p {
   margin-bottom: 10.0002px; }
