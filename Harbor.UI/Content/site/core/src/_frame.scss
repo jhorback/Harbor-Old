@@ -144,7 +144,7 @@ $frame-logo-use-image: true !default;
 
 	#frame-session {
 		float: right;
-		padding: .4em 1em;
+		padding: 0 1em;
 		font-size: 1.2em;
 		a {
 			display: inline-block;
@@ -156,7 +156,7 @@ $frame-logo-use-image: true !default;
 
 @mixin frame-body {
 	#frame-body {
-			
+		position: relative;
 	}
 }
 

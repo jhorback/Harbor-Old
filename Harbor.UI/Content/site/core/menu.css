@@ -1,18 +1,17 @@
 .menu {
-  position: absolute;
+  position: fixed;
   z-index: 100;
   color: black;
   background-color: white;
   max-width: 600px;
-  padding: 1em;
-  -moz-box-shadow: 0px 0 4px 2px rgba(0, 0, 0, 0.4);
-  -webkit-box-shadow: 0px 0 4px 2px rgba(0, 0, 0, 0.4);
-  -ms-box-shadow: 0px 0 4px 2px rgba(0, 0, 0, 0.4);
-  box-shadow: 0px 0 4px 2px rgba(0, 0, 0, 0.4);
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  -ms-border-radius: 3px;
-  border-radius: 3px; }
+  padding: .2em 1em 1em 1.42em;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  -moz-box-shadow: -2px 0 2px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: -2px 0 2px rgba(0, 0, 0, 0.3);
+  -ms-box-shadow: -2px 0 2px rgba(0, 0, 0, 0.3);
+  box-shadow: -2px 0 2px rgba(0, 0, 0, 0.3); }
   .menu:after {
     content: "";
     display: table;
@@ -26,9 +25,5 @@
     top: 0 !important;
     left: 0 !important;
     right: 0 !important;
-    bottom: 0 !important;
-    -moz-border-radius: 0;
-    -webkit-border-radius: 0;
-    -ms-border-radius: 0;
-    border-radius: 0; } }
+    bottom: 0 !important; } }
 

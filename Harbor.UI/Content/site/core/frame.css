@@ -51,11 +51,14 @@
 
 #frame-session {
   float: right;
-  padding: .4em 1em;
+  padding: 0 1em;
   font-size: 1.2em; }
   #frame-session a {
     display: inline-block;
     text-align: center; }
+
+#frame-body {
+  position: relative; }
 
 #frame-info {
   clear: left;

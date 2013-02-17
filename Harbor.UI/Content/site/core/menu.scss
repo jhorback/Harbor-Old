@@ -11,16 +11,20 @@ $menu-box-shadow-color: #555;
 @mixin menu {
 	
 	.menu {
-		position: absolute;
+		position: fixed;
 		z-index:100;
 		color: $menu-color;
 		background-color: $menu-background-color;
 		max-width: 600px;
-		padding: 1em;
+		padding: .2em 1em 1em 1.42em;
+		top: 0;
+		right: 0;
+		bottom: 0;
 
 		@include clearfix;
-		@include box-shadow($top: 0px, $left: 0, $blur: 4px, $spread: 2px, $color:  rgba(#000, 0.4));
-		@include border-radius(3px);
+		//@include box-shadow($top: 0px, $left: -4px, $blur: 4px, $spread: 4px, $color:  rgba(#000, 0.4));
+		@include box-shadow-value(-2px 0 2px rgba(#000, 0.3));
+		// @include border-radius(3px);
 	}
 	
 	@media screen and (max-width: 600px) {
@@ -32,7 +36,7 @@ $menu-box-shadow-color: #555;
 			left: 0 !important;
 			right: 0 !important;
 			bottom: 0 !important;
-			@include border-radius(0);
+			// @include border-radius(0);
 		}
 	}
 }

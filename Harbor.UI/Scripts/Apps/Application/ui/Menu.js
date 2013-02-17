@@ -62,9 +62,10 @@
 		},
 
 		render: function () {
-			var self = this;
+			var self = this, frag;
 
-			this.menuEl = $(Menu.template);
+			frag = $.parseHTML(Menu.template);
+			this.menuEl = $(frag);
 			this.menuEl.find(".menu-content").append(this.element.show());
 			doc.find("body").append(this.menuEl.hide());
 			this.position();
@@ -84,7 +85,7 @@
 					offset: "0"
 				};
 			}
-			menu.position(p);
+			// jch! - menu.position(p);
 
 			// make sure the top and left positions are within the viewport
 			// tried to use collision for this but could not get it to work
@@ -164,9 +165,9 @@
 	};
 
 	Menu.template = '' +
-		'	<div class="menu">' +
-		'		<div class="menu-content"><!--menu element is placed here--></div>' +
-		'	</div>';
+		'<div class="menu">' +
+		'	<div class="menu-content"><!--menu element is placed here--></div>' +
+		'</div>';
 
 	window.Menu = Menu;
 

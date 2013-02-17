@@ -79,7 +79,7 @@
 		render: function () {
 			var self = this;
 
-			this.dialogEl = $(Dialog.template);
+			this.dialogEl = $($.parseHTML(Dialog.template));
 			this.dialogEl.find("h1").html(this.options.title);
 			this.dialogEl.find(".dialog-content").append(this.element.show());
 			doc.find("body").append(this.dialogEl.hide());
@@ -119,9 +119,11 @@
 
 				if (dcPos.top < 0) {
 					dcCss["top"] = 0;
-				} if (dcPos.left < 0) {
-					dcCss["left"] = 0;
 				}
+//				if (dcPos.left < 0) {
+//					dcCss["left"] = 0;
+//				}
+				dcCss["left"] = 0;
 
 				// only reset the position if necessary to reduce a reflow
 				if (dcCss.top !== undefined || dcCss.left !== undefined) {
@@ -201,10 +203,10 @@
 		modal: false,
 		draggable: true,
 		position: {
-			my: "center",
-			at: "center",
+			my: "left center",
+			at: "left center",
 			of: win,
-			offset: "0 -50"
+			offset: "0 0"
 		},
 		editorFor: null
 	};

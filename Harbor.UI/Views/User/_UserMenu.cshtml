@@ -1,21 +1,20 @@
 ﻿<div class="usermenu">
 	<h1></h1>
-	
+	<hr />
 	<ul>
 		<li><a href="~/User/Account">Account</a></li>
 		<li id="usermenu-docslink"><a href="~/User/Pages">Pages</a></li>
 		<li id="usermenu-fileslink"><a href="~/User/Files">Files</a></li>
 		<li id="usermenu-settingslink"><a href="~/User/Settings">Website Settings</a></li>
 	</ul>	
-	<hr class="margin-top margin-bottom"/>
-	<div>
+	<hr />
+	<div class="form-field">
 		<button id="usermenu-addpage">Add a page</button>
 	</div>
-	<div>
+		@*<div>
 		<button id="usermenu-uploadfile">Upload a file</button>
+	</div>*@
+	<div class="form-field">	
+		<a href="~/User/SignOut" id="usermenu-signout" class="button attn ">Sign Out</a>
 	</div>
-	<div>
-		<a href="~/User/SignOut" id="usermenu-signout" class="button attn">Sign Out</a>
-	</div>
-
 </div>

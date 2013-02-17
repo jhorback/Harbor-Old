@@ -1,18 +1,20 @@
-.usermenu h1 {
-  font-size: 1.8em;
-  text-shadow: rgba(85, 85, 85, 0.4) 2px 2px 2px; }
-.usermenu ul {
-  padding: 0;
-  padding-right: 2em;
-  margin: 0;
-  list-style: none;
-  font-size: 1.6em;
-  white-space: nowrap; }
-  .usermenu ul li {
-    list-style-image: none;
-    list-style-type: none;
-    margin-left: 0px; }
-.usermenu button, .usermenu .button {
-  width: 100%;
-  white-space: nowrap; }
+.usermenu {
+  width: 20em; }
+  .usermenu h1 {
+    font-size: 1.8em;
+    font-weight: normal; }
+  .usermenu ul {
+    padding: 0;
+    padding-right: 2em;
+    margin: 0;
+    list-style: none;
+    font-size: 1.6em;
+    white-space: nowrap; }
+    .usermenu ul li {
+      list-style-image: none;
+      list-style-type: none;
+      margin-left: 0px; }
+  .usermenu button, .usermenu .button {
+    width: 80%;
+    margin: auto; }
 
