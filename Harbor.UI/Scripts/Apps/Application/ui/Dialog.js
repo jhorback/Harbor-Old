@@ -216,7 +216,7 @@
 		'	<div class="dialog">' +
 		'		<div class="dialog-header">' +
 		'			<h1></h1>' +
-		'			<span data-rel="back" title="close" class="dialog-close">&times;</a>' +
+		'			<span data-rel="back" title="close" class="dialog-close">&times;</span>' +
 		'		</div>' +
 		'		<div class="dialog-content"><!--dialog element is placed here--></div>' +
 		'	</div>' +

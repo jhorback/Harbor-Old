@@ -6,7 +6,11 @@
   #pageloader span {
     font-size: 1.8em;
     margin-left: .6em;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=20);
     opacity: 0.2; }
     #pageloader span:hover, #pageloader span.selected {
+      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+      filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
       opacity: 1; }
 

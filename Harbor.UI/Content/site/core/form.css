@@ -137,6 +137,8 @@ textarea[disabled],
 input[readonly],
 select[readonly],
 textarea[readonly] {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=45)";
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=45);
   opacity: 0.45; }
 
 input[type="radio"][disabled],

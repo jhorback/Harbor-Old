@@ -5,7 +5,7 @@
 $menu-color: #000;
 $menu-title-color: #09c;
 $menu-background-color: #FFF;
-$menu-box-shadow-color: #555;
+$menu-border-color: rgba(#000, 0.3);
 
 
 @mixin menu {
@@ -21,10 +21,9 @@ $menu-box-shadow-color: #555;
 		right: 0;
 		bottom: 0;
 
+		border-left: 1px solid $menu-border-color;
+		@include box-shadow-value(-1px 0 1px $menu-border-color);
 		@include clearfix;
-		//@include box-shadow($top: 0px, $left: -4px, $blur: 4px, $spread: 4px, $color:  rgba(#000, 0.4));
-		@include box-shadow-value(-2px 0 2px rgba(#000, 0.3));
-		// @include border-radius(3px);
 	}
 	
 	@media screen and (max-width: 600px) {

@@ -12,6 +12,8 @@
       font-size: .9em;
       font-weight: bold;
       padding: 1.5em .3em .5em 0em;
+      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+      filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
       opacity: 0.8; }
     .datalist > ul > li.group:hover {
       background-color: transparent; }

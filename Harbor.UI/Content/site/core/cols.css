@@ -29,36 +29,43 @@
   .col1 {
     float: left;
     width: 99%;
+    *width: 94%;
     margin-left: 1%; }
 
   .col2 {
     float: left;
     width: 49%;
+    *width: 46.5%;
     margin-left: 1%; }
 
   .col3 {
     float: left;
     width: 32.33333%;
+    *width: 30.66667%;
     margin-left: 1%; }
 
   .col3-2 {
     float: left;
     width: 65.66667%;
+    *width: 62.33333%;
     margin-left: 1%; }
 
   .col4 {
     float: left;
     width: 24%;
+    *width: 22.75%;
     margin-left: 1%; }
 
   .col5 {
     float: left;
     width: 19%;
+    *width: 18%;
     margin-left: 1%; } }
 @media screen and (min-width: 48em) and (max-width: 64em) {
   .col2 {
     float: left;
     width: 49%;
+    *width: 46.5%;
     margin-left: 1%; }
 
   .col3,
@@ -67,6 +74,7 @@
   .col5 {
     float: left;
     width: 32.33333%;
+    *width: 30.66667%;
     margin-left: 1%; } }
 @media screen and (min-width: 30em) and (max-width: 48em) {
   .col2,
@@ -76,6 +84,7 @@
   .col5 {
     float: left;
     width: 49%;
+    *width: 46.5%;
     margin-left: 1%; } }
 @media (max-width: 30em) {
   .col,
@@ -87,5 +96,6 @@
   .col5 {
     float: left;
     width: 99%;
+    *width: 94%;
     margin-left: 1%; } }
 

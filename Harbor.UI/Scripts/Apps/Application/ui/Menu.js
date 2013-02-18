@@ -10,9 +10,6 @@
  *
  * Options:
  *     transition - "none", "fade", "slide"
- *     anchor - an element to position against, if not set,
- *         the menu will open in the window center.
- *     position - if not defining an anchor, can set the position manually.
  *
  */
 (function ($) {
@@ -74,18 +71,7 @@
 
 		position: function () {
 			var menu = this.menuEl,
-				o = this.options,
-				p = o.position;
-
-			if (o.anchor) {
-				p = {
-					my: "left top",
-					at: "left bottom",
-					of: o.anchor,
-					offset: "0"
-				};
-			}
-			// jch! - menu.position(p);
+				o = this.options;
 
 			// make sure the top and left positions are within the viewport
 			// tried to use collision for this but could not get it to work
@@ -154,14 +140,7 @@
 	};
 
 	Menu.defaultOptions = {
-		transition: "none",
-		anchor: null,
-		position: {
-			my: "center",
-			at: "center",
-			of: win,
-			offset: "0 -50"
-		}
+		transition: "none"
 	};
 
 	Menu.template = '' +
