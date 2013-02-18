@@ -249,7 +249,7 @@ $form-error-color: #b94a48;
 		}
 
 		.form-controls {
-			padding-left: $label-width + 1.42em;
+			padding-left: $label-width + 1.42em + 1.42em;
 			@include ontablet { padding-left: 0; }
 		}
 	}

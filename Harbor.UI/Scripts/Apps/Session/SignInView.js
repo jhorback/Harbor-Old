@@ -11,13 +11,17 @@
 
 	events: {
 		"submit form": function (event) {
-			var displayError = this.displayError;
+			var displayErrors = _.bind(this.displayErrors, this),
+				displayError = this.displayError;
 
 			event.preventDefault();
 
 			Session.signIn(this.model.toJSON(), {
 				clientError: function (error) {
-					displayError("", {"": [error] });
+					debugger;
+					var errors = new ModelErrors();
+					errors.add("<h1>Sign in failed</h1>" + error);
+					displayErrors(errors.toJSON());
 				},
 				success: function () {
 					displayError("");

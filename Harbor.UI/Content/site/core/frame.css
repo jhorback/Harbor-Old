@@ -50,10 +50,10 @@
           color: white !important; }
 
 #frame-session {
-  float: right;
-  padding: 0 1em;
-  font-size: 1.2em; }
+  float: right; }
   #frame-session a {
+    padding: 0 1em;
+    font-size: 1.2em;
     display: inline-block;
     text-align: center; }
 

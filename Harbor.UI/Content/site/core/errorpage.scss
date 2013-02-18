@@ -1,24 +1,24 @@
 @import "../mixins/box-shadow";
 @import "../mixins/text-shadow";
 
+$errorpage-background-color: #F7F7F7;
 
-.errorpage {
-	margin: 4em 0;
-	padding: 1em 15%;
-	background-color: #F7F7F7;
-	@include box-shadow($top: 2px, $left: 0, $blur: 4px, $spread: 0px, $color:  rgba(#000, 0.8));
-
-	h1 {
-		color:#000;
-		font-size: 3em;
-		padding-bottom: 0;
-		@include single-text-shadow($color: rgba(#000, 0.8), $hoff: 2px, $voff: 2px, $blur: 4px);
-
-	}
-	h2 {
-		font-size: 2em;
-	}
-	.errorpage-details {
-		display: block;
+@mixin errorpage {
+	.errorpage {
+		margin: 4em 0;
+		padding: 1em 15%;
+		.errorpage-details {
+			display: block;
+		}
 	}
 }
+
+@mixin errorpage-theme {
+	.errorpage {
+		background-color: $errorpage-background-color;
+	}
+}
+
+
+@include errorpage;
+@include errorpage-theme;

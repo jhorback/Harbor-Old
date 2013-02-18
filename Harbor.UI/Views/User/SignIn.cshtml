@@ -2,19 +2,20 @@
 	ViewBag.Title = "Sign in";
 }
 @section head{
-	@Styles.Render("~/Content/site/ext/signinpage.css")
 }
 @section scripts {
 	<script>
 		Session.startSignIn();
 	</script>
 }
-<section class="page">
+<section class="page centered">
 	<div class="page-header">
 		<h1>Sign in</h1>
 	</div>
-	<div class="page-content">
-		<div id="signinpage">
+	<div class="page-body">
+		<div class="page-content">
+			<div id="signinpage">
+			</div>
 		</div>
 	</div>
 </section>

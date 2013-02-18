@@ -342,9 +342,6 @@
     <Content Include="Content\site\ext\pageloader.css">
       <DependentUpon>pageloader.scss</DependentUpon>
     </Content>
-    <Content Include="Content\site\ext\signinpage.css">
-      <DependentUpon>signinpage.scss</DependentUpon>
-    </Content>
     <Content Include="Content\site\core\font\fonticons.svg" />
     <Content Include="Content\site\mixins\_normalize.scss">
       <Compile>False</Compile>
@@ -683,12 +680,6 @@
       <DebugInfo>False</DebugInfo>
     </None>
     <None Include="Content\site\ext\pageeditor.scss">
-      <Compile>True</Compile>
-      <Minify>False</Minify>
-      <CompileStyle>Nested</CompileStyle>
-      <DebugInfo>False</DebugInfo>
-    </None>
-    <None Include="Content\site\ext\signinpage.scss">
       <Compile>True</Compile>
       <Minify>False</Minify>
       <CompileStyle>Nested</CompileStyle>

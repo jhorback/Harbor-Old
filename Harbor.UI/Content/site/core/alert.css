@@ -9,6 +9,8 @@
   -webkit-border-radius: 5px;
   -ms-border-radius: 5px;
   border-radius: 5px; }
+  .alert h1, .alert-error h1 {
+    color: #b94a48; }
   .alert h1, .alert h2, .alert h3, .alert h4, .alert-error h1, .alert-error h2, .alert-error h3, .alert-error h4 {
     margin: 0;
     font-size: 1.2em; }
