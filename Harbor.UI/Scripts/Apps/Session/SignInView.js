@@ -18,7 +18,6 @@
 
 			Session.signIn(this.model.toJSON(), {
 				clientError: function (error) {
-					debugger;
 					var errors = new ModelErrors();
 					errors.add("<h1>Sign in failed</h1>" + error);
 					displayErrors(errors.toJSON());

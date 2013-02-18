@@ -3,6 +3,7 @@
 @import "../../mixins/no-bullets";
 @import "../../mixins/clearfix";
 @import "../../mixins/border-radius";
+@import "media";
 
 
 $body-font-family:			"Segoe UI", "Helvetica Neue", Arial, Helvetica, sans-serif	!default;
@@ -254,9 +255,10 @@ $body-color-attn:					#D14836						!default;
 		font-weight: bold;
 	}
 	
-	// Horizontal layout (like forms)
+	// Horizontal layout (like forms
 	dl.inline {
 		@include clearfix;
+		
 		dt {
 			float: left;		
 			clear: left;
@@ -281,10 +283,22 @@ $body-color-attn:					#D14836						!default;
 			dd {
 				margin-left: $dl-inline-dt-width + 1.4em;
 			}
+			@include onphone {
+				dt {
+					float: none;
+					display: block;
+					text-align: left;
+					width: auto;
+				}
+				dd {
+					margin-left: auto;
+				}
+			}
 		}
 	}
 	dt, dd {
 	  line-height: $body-line-height;
+	  margin-bottom: $body-line-height-px / 2;
 	}
 	dd {
 	  margin-left: ($body-line-height-px / 2);

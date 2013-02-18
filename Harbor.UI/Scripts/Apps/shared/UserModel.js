@@ -72,14 +72,13 @@
 			return $.trim($.trim(fn + " " + mn) + " " + ln);
 		}, 
 		set:  function (value) {
-			var parts = (value || "").split(" ");
-			this.set({
-				firstName: parts.shift(),
-				lastName: parts.pop(),
-				middleName: parts.join(" ")
-			}, {
-				silent: true
-			});
+			var parts = (value || "").split(" "),
+				toSet = {
+					firstName: parts.shift(),
+					lastName: parts.pop(),
+					middleName: parts.join(" ")
+				};
+			this.set(toSet);
 			return value;
 		},
 		validate: {

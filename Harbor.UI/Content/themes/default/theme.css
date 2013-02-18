@@ -70,9 +70,18 @@ dl {
     width: 11.42em; }
   dl.inline dd {
     margin-left: 12.82em; }
+  @media (max-width: 30em) {
+    dl.inline dt {
+      float: none;
+      display: block;
+      text-align: left;
+      width: auto; }
+    dl.inline dd {
+      margin-left: auto; } }
 
 dt, dd {
-  line-height: 1.4286; }
+  line-height: 1.4286;
+  margin-bottom: 10.0002px; }
 
 dd {
   margin-left: 10.0002px; }

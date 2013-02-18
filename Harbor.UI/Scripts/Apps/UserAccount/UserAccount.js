@@ -4,7 +4,7 @@
 		var user = new UserModel({ userName: username });
 		user.fetch().then(function () {
 			var mainView = new UserAccount.MainView({
-				el: $(".page-content"),
+				el: $(".page"),
 				model: user
 			});
 		});
@@ -13,15 +13,15 @@
 	dialogRegion: new Region()
 };
 
-UserAccount.MainView = Backbone.View.extend({
+UserAccount.MainView = Application.View.extend({
 	initialize: function () {
-		DisposeViewExtension.extend(this);
 		_.bindAll(this, "editName", "editEmail", "changePassword");
 		this.render();
 	},
 
 	render: function () {
-		this.track(new ModelBinder(this.model, this.$el.show()));
+		this.$(".page-content").show();
+		this.bindModelToView();
 	},
 
 	editName: function (editable) {
@@ -41,8 +41,8 @@ UserAccount.MainView = Backbone.View.extend({
 			this.changePassword();
 		},
 
-		"click .editable": function (event) {
-			var editable = $(event.target).closest(".editable");
+		"click .link": function (event) {
+			var editable = $(event.target).closest("dd");
 			var id = editable.attr("id");
 			var methods = {
 				"ua-name": this.editName,

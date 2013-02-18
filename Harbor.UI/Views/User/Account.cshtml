@@ -17,27 +17,31 @@
 }
 <section class="page centered">
 	<div class="page-header">
-		<h1>Account</h1>
+		<h1 data-bind="displayName"></h1>
 	</div>
 	<div class="page-body">
 		<div class="page-content hide">
 			<form class="form-stacked">
 				<fieldset>
-					<legend>Details for <span data-bind="userName"></span></legend>
-					<div class="form-field editable" tabindex="0" id="ua-name">
-						<label>Name</label>
-						<span data-bind="displayName"></span>
-					</div>
-					<div class="form-field editable" tabindex="0" id="ua-email">
-						<label>Email</label>
-						<span data-bind="displayEmail"></span>
-					</div>
-					<div>jch! - Dev note - make this into a definition list</div>
+					<dl class="inline">
+						<dt>Username</dt>
+						<dd data-bind="userName"></dd>
+						<dt>Name</dt>
+						<dd id="ua-name">
+							<span data-bind="displayName"></span>
+							<button type="button" class="margin-left link">change</button>
+						</dd>
+						<dt>Email</dt>
+						<dd id="ua-email">
+							<span data-bind="displayEmail"></span>
+							<button type="button" class="margin-left link">change</button>
+						</dd>
+					</dl>
 				</fieldset>
 				@if (canViewPages || canViewFiles)
 				{
 					<fieldset id="ua-administrative">
-						<legend>Administrative</legend>
+						<legend>View your...</legend>
 						<ul class="list-style-none">
 							@if (canViewPages)
 							{ 
@@ -56,7 +60,9 @@
 				}
 				<fieldset>
 					<legend>Password</legend>
-					<input type="button" name="changePassword" value="Change your password"/>
+					<div class="form-field">
+						<input type="button" name="changePassword" value="Change your password"/>
+					</div>
 				</fieldset>
 			</form>
 		</div>
