@@ -12,6 +12,10 @@ namespace Harbor.UI.Extensions
 			var userName = helper.ViewContext.RequestContext.HttpContext.User.Identity.Name;
 			var userRepository = DependencyResolver.Current.GetService<IUserRepository>();
 			var user = userRepository.FindUserByName(userName);
+			if (user == null)
+			{
+				return false;
+			}
 			return user.HasPermission(feature, permission);
 		}
 	}
