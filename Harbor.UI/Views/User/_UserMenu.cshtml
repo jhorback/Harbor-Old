@@ -1,4 +1,6 @@
-﻿<div class="usermenu">
+﻿@using Harbor.Domain.Security
+@using Harbor.UI.Extensions
+<div class="usermenu">
 	<h1></h1>
 	<hr />
 	<ul>
@@ -17,4 +19,9 @@
 	<div class="form-field">	
 		<a href="~/User/SignOut" id="usermenu-signout" class="button attn ">Sign Out</a>
 	</div>
+	@if (Html.UserHasPermit(UserFeature.SystemSettings))
+	{
+		<hr />
+		@Html.Partial("_DevLinks")
+	}
 </div>

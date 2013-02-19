@@ -86,7 +86,7 @@ Settings.EditNavView = Application.View.extend({
 		this.$("#settings-updatenav").after('<button id="settings-updatenav-done" class="margin-left attn">Done</button>');
 		
 		// add helper text
-		this.$("#settings-updatemsg").html("Drag the navigation to re-arrange and drag down to delete.");
+		this.$("#settings-updatemsg").html("Drag a navigation link to re-arrange and drag down to delete.");
 		
 		// disable the update button
 		this.$("#settings-updatenav").attr("disabled", true);

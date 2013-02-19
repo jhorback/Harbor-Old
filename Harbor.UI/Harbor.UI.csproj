@@ -518,6 +518,7 @@
     <Content Include="Views\StyleGuide\_PageNav.cshtml" />
     <Content Include="Views\StyleGuide\Scaffolding.cshtml" />
     <Content Include="Views\StyleGuide\Typography.cshtml" />
+    <Content Include="Views\Shared\_DevLinks.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\users\" />

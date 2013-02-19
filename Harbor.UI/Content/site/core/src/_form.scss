@@ -99,7 +99,7 @@ $form-error-color: #b94a48;
 		border: 1px solid $form-input-border-color;
 		background: $form-input-background-color;
 		@include border-radius(3px);
-		@include box-shadow-value(inset 0 1px 1px rgba(0,0,0,.075));
+		@include box-shadow-value(inset 1px 1px 1px rgba(0,0,0,.1));
 		@include transition(border linear .2s);
 		@include transition(box-shadow linear .2s);
 
@@ -109,7 +109,7 @@ $form-error-color: #b94a48;
 		    outline: thin dotted \9; /* IE6-9 */
 			color: $form-input-color-focused;
 			background-color: $form-input-background-color-focused;
-			@include box-shadow-value(unquote("inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6)"));
+			@include box-shadow-value(unquote("inset 1px 1px 1px rgba(0,0,0,.1), 0 0 8px rgba(82,168,236,.6)"));
 		}
 		
 	}
@@ -117,9 +117,12 @@ $form-error-color: #b94a48;
 	.input {
 		text-decoration: none;
 		color: $form-input-color !important;
-		&:hover { // in case styling an anchor like an .input
-			color: $form-input-color;
-			//border: 1px solid $form-input-border-color-focused;
+		min-width: 14em;
+		text-align: left;
+		&:hover, &:active { // in case styling an anchor like an .input
+			color: $form-input-color !important;
+			background-color: $form-input-background-color;
+			border: 1px solid $form-input-border-color-focused;
 		}
 	}
 
@@ -217,14 +220,14 @@ $form-error-color: #b94a48;
 				width: $label-width;
 				padding-top: 5px;
 				text-align: right;
-				@include onphone { display: block; text-align: left; }
+				@include ontablet { float: none; display: block; text-align: left; }
 			}
 
 			input, select, textarea {
 				display: block;
 				float: left;
 				margin-left: 1.42em;
-				@include onphone { float: none; margin-left: 0; }
+				@include ontablet { float: none; margin-left: 0; }
 			}
 
 			span, div {
@@ -239,12 +242,12 @@ $form-error-color: #b94a48;
 				margin: 3px 4px 0 $label-width + 1.42em;
 				*margin-top: 0;
 				 margin-top: 1px \9; /* IE8-9 */
-				 @include onphone { margin-left: 0; display: inline-block; }
+				 @include ontablet { margin-left: 0; display: inline-block; }
 			}
 			input + label { // checkbox / radio
 				width: auto;
 				padding-top: 0;
-				@include onphone { display: inline-block; float: none; }
+				@include ontablet { display: inline-block; float: none; }
 			}
 		}
 

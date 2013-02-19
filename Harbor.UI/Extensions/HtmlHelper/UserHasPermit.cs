@@ -7,7 +7,7 @@ namespace Harbor.UI.Extensions
 {
 	public static partial class HtmlHelperExtensions
 	{
-		public static bool UserHasPermit(this HtmlHelper helper, UserFeature feature, Permissions permission)
+		public static bool UserHasPermit(this HtmlHelper helper, UserFeature feature, Permissions permission = Permissions.All)
 		{
 			var userName = helper.ViewContext.RequestContext.HttpContext.User.Identity.Name;
 			var userRepository = DependencyResolver.Current.GetService<IUserRepository>();

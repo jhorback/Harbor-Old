@@ -84,6 +84,11 @@ namespace Harbor.UI
 				defaults: new { controller = "Home", action = "JST", jst = true }
 			);
 
+			routes.MapRoute(
+				name: "SignIn",
+				url: "signin/{*pathInfo}",
+				defaults: new {  controller = "User", action = "SignIn" }
+			);
 
 			routes.MapRoute(
 				name: "Default",

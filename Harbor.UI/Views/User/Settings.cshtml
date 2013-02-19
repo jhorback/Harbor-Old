@@ -92,7 +92,7 @@
 					<div>
 						<p>
 							If it is hidden, you can go to
-							<a href="~/user/signin">@Url.Content("~/user/signin")</a> to sign in.
+							<a href="~/signin">@Url.Content("~/signin")</a> to sign in.
 						</p>
 					</div>
 				</fieldset>
@@ -101,24 +101,11 @@
 			{ 
 				<fieldset class="clear">
 					<legend>Application name</legend>
-					<div class="pad">
-						<div class="form-field editable" tabindex="0" id="settings-applicationName">
-							<span data-bind="applicationName"></span>
-						</div>
+					<div class="form-field editable" id="settings-applicationName">
+						<button type="button" class="input"><span data-bind="applicationName"></span></button>
 					</div>
 				</fieldset>
-				<fieldset>
-					<legend>Development</legend>
-					<div class="pad-left">
-						<a href="@Url.Action("Index", "StyleGuide")">Style Guide</a>
-					</div>
-					<div class="pad-left">
-						<a href="@Url.Action("JavaScriptPackages", "Home")">JavaScript Packages</a>
-					</div>
-					<div class="pad-left">
-						<a href="@Url.Action("JavaScriptTests", "Home")">JavaScript Tests</a>
-					</div>
-				</fieldset>
+				@Html.Partial("_DevLinks")
 			}
 		</div>
 	</div>

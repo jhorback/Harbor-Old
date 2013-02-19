@@ -58,10 +58,10 @@ input[type="color"],
   -webkit-border-radius: 3px;
   -ms-border-radius: 3px;
   border-radius: 3px;
-  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  -ms-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -moz-box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.1);
+  -ms-box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.1);
   -moz-transition: border linear 0.2s;
   -webkit-transition: border linear 0.2s;
   -ms-transition: border linear 0.2s;
@@ -93,16 +93,20 @@ input[type="color"],
     /* IE6-9 */
     color: #333333;
     background-color: white;
-    -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
-    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
-    -ms-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6); }
+    -moz-box-shadow: inset 1px 1px 1px rgba(0,0,0,.1), 0 0 8px rgba(82,168,236,.6);
+    -webkit-box-shadow: inset 1px 1px 1px rgba(0,0,0,.1), 0 0 8px rgba(82,168,236,.6);
+    -ms-box-shadow: inset 1px 1px 1px rgba(0,0,0,.1), 0 0 8px rgba(82,168,236,.6);
+    box-shadow: inset 1px 1px 1px rgba(0,0,0,.1), 0 0 8px rgba(82,168,236,.6); }
 
 .input {
   text-decoration: none;
-  color: #555555 !important; }
-  .input:hover {
-    color: #555555; }
+  color: #555555 !important;
+  min-width: 14em;
+  text-align: left; }
+  .input:hover, .input:active {
+    color: #555555 !important;
+    background-color: white;
+    border: 1px solid rgba(82, 168, 236, 0.8); }
 
 textarea {
   height: auto; }
@@ -177,15 +181,16 @@ input[type="checkbox"][readonly] {
     width: 11.42em;
     padding-top: 5px;
     text-align: right; }
-    @media (max-width: 30em) {
+    @media (max-width: 48em) {
       .form-stacked .form-field label {
+        float: none;
         display: block;
         text-align: left; } }
   .form-stacked .form-field input, .form-stacked .form-field select, .form-stacked .form-field textarea {
     display: block;
     float: left;
     margin-left: 1.42em; }
-    @media (max-width: 30em) {
+    @media (max-width: 48em) {
       .form-stacked .form-field input, .form-stacked .form-field select, .form-stacked .form-field textarea {
         float: none;
         margin-left: 0; } }
@@ -202,7 +207,7 @@ input[type="checkbox"][readonly] {
     *margin-top: 0;
     margin-top: 1px \9;
     /* IE8-9 */ }
-    @media (max-width: 30em) {
+    @media (max-width: 48em) {
       .form-stacked .form-field input[type=checkbox],
       .form-stacked .form-field input[type=radio] {
         margin-left: 0;
@@ -210,7 +215,7 @@ input[type="checkbox"][readonly] {
   .form-stacked .form-field input + label {
     width: auto;
     padding-top: 0; }
-    @media (max-width: 30em) {
+    @media (max-width: 48em) {
       .form-stacked .form-field input + label {
         display: inline-block;
         float: none; } }
