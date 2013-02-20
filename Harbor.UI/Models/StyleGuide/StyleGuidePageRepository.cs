@@ -15,7 +15,7 @@ namespace Harbor.UI.Models.StyleGuide
 			registerPage("Typography", "Content support for font, headings, lists, etc.");
 			registerPage("Forms", "Form markup and styles including alternative form layouts and buttons.");
 			registerPage("Collections", "Options for displaying collections in tables, lists, and as tiles.");
-			
+			registerPage("Components", "Various visual components and controls.");
 			// registerPage("Framework", "A set of supported class names.");
 			// registerPage("Page", "The page layout.");
 		}

@@ -333,6 +333,12 @@
       <CompileStyle>Nested</CompileStyle>
       <DebugInfo>False</DebugInfo>
     </Content>
+    <Content Include="Content\site\core\tiles.css">
+      <DependentUpon>tiles.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\site\core\tiles.min.css">
+      <DependentUpon>tiles.scss</DependentUpon>
+    </Content>
     <Content Include="Content\site\core\usermenu.css">
       <DependentUpon>usermenu.scss</DependentUpon>
     </Content>
@@ -343,6 +349,12 @@
       <DependentUpon>pageloader.scss</DependentUpon>
     </Content>
     <Content Include="Content\site\core\font\fonticons.svg" />
+    <Content Include="Content\site\ext\pager.css">
+      <DependentUpon>pager.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\site\ext\pager.min.css">
+      <DependentUpon>pager.scss</DependentUpon>
+    </Content>
     <Content Include="Content\site\mixins\_normalize.scss">
       <Compile>False</Compile>
       <Minify>False</Minify>
@@ -456,6 +468,8 @@
     <Content Include="Scripts\Apps\UserAdmin\UserListItemView.js" />
     <Content Include="Scripts\backbone.js" />
     <Content Include="Scripts\backbone.min.js" />
+    <Content Include="Scripts\holder.js" />
+    <Content Include="Scripts\holder.min.js" />
     <Content Include="Scripts\jquery-1.9.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
@@ -519,6 +533,7 @@
     <Content Include="Views\StyleGuide\Scaffolding.cshtml" />
     <Content Include="Views\StyleGuide\Typography.cshtml" />
     <Content Include="Views\Shared\_DevLinks.cshtml" />
+    <Content Include="Views\StyleGuide\Components.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\users\" />
@@ -602,6 +617,9 @@
       <CompileStyle>Nested</CompileStyle>
       <DebugInfo>False</DebugInfo>
     </None>
+    <None Include="Content\site\core\src\_tiles.scss" />
+    <None Include="Content\site\core\tiles.scss" />
+    <None Include="Content\site\ext\pager.scss" />
     <None Include="Content\site\core\src\_alert.scss">
       <Compile>False</Compile>
       <Minify>False</Minify>

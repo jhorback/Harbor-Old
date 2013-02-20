@@ -1,0 +1,75 @@
+@import "../../mixins/border-radius";
+@import "../../mixins/clearfix";
+@import "../../mixins/box-shadow";
+@import "../../mixins/transition";
+@import "../../core/src/foundation";
+@import "../../core/cols";
+
+
+$tile-caption-color: #555;
+
+
+@mixin tiles {
+	.tiles {
+		margin-left: $col-gutter-width * -1;
+		list-style: none;
+		@include clearfix;
+
+		& > li {
+			//		float: left;
+			//		margin-bottom: $baseLineHeight;
+			//		margin-left: $gridGutterWidth;
+		}
+	}
+
+	.tile {
+
+		display: block;
+		padding: .3em;
+		// line-height: $baseLineHeight;
+		border: 1px solid #ddd;
+		@include border-radius;
+		@include box-shadow(0 1px 3px rgba(0,0,0,.055));
+		@include transition(all .2s ease-in-out);
+	
+		& > img,
+		& > a > img {
+			display: block;
+			max-width: 100%;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		.caption {
+			padding: .6em;
+			color: $tile-caption-color;
+		}
+
+		&.hover {
+			&:hover,
+			&:focus {
+				border-color: $link-color;
+				@include box-shadow(0 1px 4px rgba(0,105,214,.25));
+			}
+		}
+
+		&.tile-inline {
+			padding: 0;
+			@include clearfix;
+			& > img,
+			& > a,
+			.caption {
+				float:left;
+			}
+			.caption {
+			}
+		}
+	}
+
+//	.max-50 { max-height: 50px; max-width: 50px; }
+//	.max-100 { max-height: 100px; max-width: 100px; }
+//	.max-250 { max-height: 250px; max-width: 250px; }
+//	.max-500 { max-height: 500px; max-width: 500px; }
+//	.max-750 { max-height: 750px; max-width: 750px; }
+//	.max-1000 { max-height: 1000px; max-width: 1000px; }
+}

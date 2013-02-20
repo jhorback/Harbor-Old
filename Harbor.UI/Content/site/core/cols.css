@@ -56,6 +56,12 @@
     *width: 22.75%;
     margin-left: 1%; }
 
+  .col5-4 {
+    float: left;
+    width: 79%;
+    *width: 75%;
+    margin-left: 1%; }
+
   .col5 {
     float: left;
     width: 19%;
@@ -71,6 +77,12 @@
   .col3,
   .col3-2,
   .col4,
+  .col5-4 {
+    float: left;
+    width: 65.66667%;
+    *width: 62.33333%;
+    margin-left: 1%; }
+
   .col5 {
     float: left;
     width: 32.33333%;
@@ -81,6 +93,7 @@
   .col3,
   .col3-2,
   .col4,
+  .col5-4,
   .col5 {
     float: left;
     width: 49%;
@@ -93,6 +106,7 @@
   .col3,
   .col3-2,
   .col4,
+  .col5-4,
   .col5 {
     float: left;
     width: 99%;
