@@ -137,6 +137,7 @@
 			if (this.options.modal && !this.overlay) {
 				this.overlay = $(Dialog.overlayTemplate);
 				doc.find("body").append(this.overlay);
+				this.overlay.css("opacity", .5); // for ie7-8
 				this._transition(this.overlay, true);
 			}
 		},
