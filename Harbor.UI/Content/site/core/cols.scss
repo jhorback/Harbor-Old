@@ -19,7 +19,7 @@ $col-gutter-width: 1%;
 		.col3 { @include col-span(3); }
 		.col3-2 { @include col-span(3, 2); }
 		.col4 { @include col-span(4); }
-		.col5-4 { @include col-span(5, 4); }
+		//.col5-4 { @include col-span(5, 4); }
 		.col5 { @include col-span(5); }	
 	}
 	
@@ -30,7 +30,7 @@ $col-gutter-width: 1%;
 		.col3,
 		.col3-2,
 		.col4,
-		.col5-4 { @include col-span(3, 2); }
+		//.col5-4 { @include col-span(3, 2); }
 		.col5 { @include col-span(3); }
 	}
 
@@ -41,7 +41,7 @@ $col-gutter-width: 1%;
 		.col3,
 		.col3-2,
 		.col4,
-		.col5-4,
+		//.col5-4,
 		.col5 { @include col-span(2); }
 	}
 
@@ -52,7 +52,7 @@ $col-gutter-width: 1%;
 		.col3,
 		.col3-2,
 		.col4,
-		.col5-4,
+		//.col5-4,
 		.col5 { @include col-span(1); }
 	}
 }

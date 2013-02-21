@@ -216,7 +216,8 @@ p {
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
   clear: left;
-  text-rendering: optimizelegibility; }
+  text-rendering: optimizelegibility;
+  font-family: "Segoe UI Light", "Segoe UI", "Helvetica Neue", Arial; }
 
 h1 {
   font-size: 2.1em; }

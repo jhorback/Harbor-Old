@@ -2,7 +2,7 @@ html, body {
   background-color: white;
   color: #336699;
   font-size: 14px;
-  font-family: "Segoe UI", "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-family: "Segoe UI", "Helvetica Neue", Arial;
   line-height: 1.4286; }
 
 a, .link {
@@ -35,8 +35,7 @@ h1 {
   color: #6699cc; }
 
 h2 {
-  color: #336699;
-  font-weight: 200; }
+  color: #336699; }
 
 hgroup h1 + h2 {
   color: #336699; }

@@ -6,7 +6,8 @@
 @import "media";
 
 
-$body-font-family:			"Segoe UI", "Helvetica Neue", Arial, Helvetica, sans-serif	!default;
+$body-font-family:			"Segoe UI", "Helvetica Neue", Arial	!default;
+$headings-font-family:		"Segoe UI Light", "Segoe UI", "Helvetica Neue", Arial	!default;
 $pre-font-family:			Monaco, Menlo, Consolas, 'Courier New', monospace		!default;
 $body-font-size:			14px					!default;
 $body-line-height:			1.4286					!default; // @14px font = 20px line-height
@@ -137,6 +138,7 @@ $body-color-attn:					#D14836						!default;
 		margin: 0; // margin is handled by the line-height
 		clear: left;
 		text-rendering: optimizelegibility; // Fix the character spacing for headings	
+		font-family: $headings-font-family;
 	}
 	h1 { font-size: 2.1em;  } // ~30px / 42px
 	h2 { font-size: 1.75em; } // ~25px / 35px // creates a visual distinction between h2 and h3
@@ -157,7 +159,7 @@ $body-color-attn:					#D14836						!default;
 	}
 
 	h1 { color: lighten($body-color, 20%); }
-	h2  { color: $body-heading-color; font-weight: 200; }
+	h2  { color: $body-heading-color;  }
 
 	hgroup h1 + h2 { color: $body-color; }
 }

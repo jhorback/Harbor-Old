@@ -56,12 +56,6 @@
     *width: 22.75%;
     margin-left: 1%; }
 
-  .col5-4 {
-    float: left;
-    width: 79%;
-    *width: 75%;
-    margin-left: 1%; }
-
   .col5 {
     float: left;
     width: 19%;
@@ -77,12 +71,6 @@
   .col3,
   .col3-2,
   .col4,
-  .col5-4 {
-    float: left;
-    width: 65.66667%;
-    *width: 62.33333%;
-    margin-left: 1%; }
-
   .col5 {
     float: left;
     width: 32.33333%;
@@ -93,7 +81,6 @@
   .col3,
   .col3-2,
   .col4,
-  .col5-4,
   .col5 {
     float: left;
     width: 49%;
@@ -106,7 +93,6 @@
   .col3,
   .col3-2,
   .col4,
-  .col5-4,
   .col5 {
     float: left;
     width: 99%;
@@ -122,7 +108,6 @@
 
 .tile {
   display: block;
-  padding: .3em;
   border: 1px solid #ddd;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -141,14 +126,16 @@
     -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
     -ms-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055); }
-  .tile > img, .tile > a > img {
+  .tile .media {
     display: block;
     max-width: 100%;
     margin-left: auto;
     margin-right: auto; }
   .tile .caption {
-    padding: .6em;
     color: #555555; }
+  .tile h2, .tile h3 {
+    font-size: 1.6em;
+    margin: .1em 0; }
   .tile.hover:hover, .tile.hover:focus {
     border-color: #336699;
     -moz-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
@@ -160,13 +147,33 @@
       -webkit-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
       -ms-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
       box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25); }
-  .tile.tile-inline {
-    padding: 0; }
-    .tile.tile-inline:after {
-      content: "";
-      display: table;
-      clear: both; }
-    .tile.tile-inline > img, .tile.tile-inline > a,
-    .tile.tile-inline .caption {
-      float: left; }
+
+.tile-inline {
+  padding: 0; }
+  .tile-inline:after {
+    content: "";
+    display: table;
+    clear: both; }
+  .tile-inline .media,
+  .tile-inline .caption {
+    float: left; }
+  .tile-inline .media {
+    width: 20%;
+    vertical-align: middle; }
+  .tile-inline .caption {
+    padding: 0;
+    padding: 0 1.0%%;
+    width: 78%; }
+  @media (max-width: 48em) {
+    .tile-inline .media {
+      width: 40%; }
+    .tile-inline .caption {
+      width: 58%; } }
+  @media (max-width: 30em) {
+    .tile-inline {
+      padding: .3em; }
+      .tile-inline .media {
+        width: 100%; }
+      .tile-inline .caption {
+        width: 100%; } }
 

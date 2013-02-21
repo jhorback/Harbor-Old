@@ -4,7 +4,7 @@
 @import "../../mixins/transition";
 @import "../../core/src/foundation";
 @import "../../core/cols";
-
+@import "../../core/src/media";
 
 $tile-caption-color: #555;
 
@@ -25,24 +25,27 @@ $tile-caption-color: #555;
 	.tile {
 
 		display: block;
-		padding: .3em;
+		//padding: .3em;
 		// line-height: $baseLineHeight;
 		border: 1px solid #ddd;
 		@include border-radius;
 		@include box-shadow(0 1px 3px rgba(0,0,0,.055));
 		@include transition(all .2s ease-in-out);
-	
-		& > img,
-		& > a > img {
+
+		.media {
 			display: block;
 			max-width: 100%;
 			margin-left: auto;
 			margin-right: auto;
 		}
-
 		.caption {
-			padding: .6em;
+			//padding: .6em;
 			color: $tile-caption-color;
+		}
+
+		h2, h3 {
+			font-size: 1.6em;
+			margin: .1em 0;
 		}
 
 		&.hover {
@@ -52,17 +55,37 @@ $tile-caption-color: #555;
 				@include box-shadow(0 1px 4px rgba(0,105,214,.25));
 			}
 		}
+	}
+	.tile-inline {
+		padding: 0;
+		@include clearfix;
+		
+		
 
-		&.tile-inline {
+		.media,
+		.caption {
+			float:left;
+		}
+		
+		.media {
+			width: 20%;
+			vertical-align: middle;
+		}
+		
+		.caption {
 			padding: 0;
-			@include clearfix;
-			& > img,
-			& > a,
-			.caption {
-				float:left;
-			}
-			.caption {
-			}
+			padding: 0 1.0%%;
+			width: 78%;
+		}
+		
+		@include ontablet {
+			.media { width: 40%; }
+			.caption { width: 58%; }
+		}
+		@include onphone {
+			padding: .3em;
+			.media { width: 100%; }
+			.caption { width: 100%; }
 		}
 	}
 
