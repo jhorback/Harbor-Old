@@ -18,7 +18,7 @@ namespace Harbor.UI.Extensions
 		/// <param name="clientBinding"> </param>
 		/// <returns></returns>
 		public static MvcHtmlString JstPropFor<TModel, TProperty>(this HtmlHelper<TModel> helper,
-			Expression<Func<TModel, TProperty>> expression, bool clientBinding = false)
+			Expression<Func<TModel, TProperty>> expression, bool clientBinding = false, string clientAttr = null)
 		{
 			string html = "";
 			string propName = "";
@@ -40,7 +40,14 @@ namespace Harbor.UI.Extensions
 
 			if (clientBinding == true)
 			{
-				html = string.Format(@"<span data-bind=""{0}"">{1}</span>", propName, propValue ?? "");			
+				if (clientAttr != null)
+				{
+					html = string.Format(@" {0}=""{1}"" data-bind-{0}=""{2}"" ", clientAttr, propValue, propName);
+				}
+				else
+				{
+					html = string.Format(@"<span data-bind=""{0}"">{1}</span>", propName, propValue ?? "");							
+				}
 			}
 			else
 			{

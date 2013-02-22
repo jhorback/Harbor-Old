@@ -50,7 +50,7 @@
 			{
 				<fieldset>
 					<legend>Home page</legend>
-					<div class="pad settings-homepage">
+					<div class="pad settings-homepage" id="settings-changehome">
 						@if (Model.HomePage != null)
 						{
 							@Html.Partial("~/Views/User/_HomePageSetting.cshtml", Model.HomePage)
@@ -60,8 +60,8 @@
 							@Html.Partial("~/Views/User/_DefaultHomePage.cshtml")
 						}
 					</div>
-					<div>
-						<button id="settings-changehome">Change the home page</button>
+					<div class="clear">
+						@*<button id="settings-changehome">Change the home page</button>*@
 						<button id="settings-resethome" class="@(Model.HomePage == null ? "hide" : "")">Reset</button>
 					</div>
 				</fieldset>
