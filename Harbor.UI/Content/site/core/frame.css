@@ -58,12 +58,16 @@
     text-align: center; }
 
 #frame-body {
-  position: relative; }
+  position: relative;
+  min-height: 23em;
+  background-color: white; }
 
 #frame-info {
+  margin-top: 2em;
   clear: left;
   height: 3.3em;
-  text-align: center; }
+  text-align: center;
+  min-height: 5em; }
 
 #overlay, .overlay {
   background-color: black;

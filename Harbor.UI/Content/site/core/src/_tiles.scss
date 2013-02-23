@@ -20,26 +20,31 @@ $tile-caption-color: #555;
 			//		margin-bottom: $baseLineHeight;
 			//		margin-left: $gridGutterWidth;
 		}
+
+		.tile {
+			box-sizing: border-box;
+		}
 	}
 
 	.tile {
 
 		display: block;
-		//padding: .3em;
-		// line-height: $baseLineHeight;
-		border: 1px solid #ddd;
-		@include border-radius;
-		@include box-shadow(0 1px 3px rgba(0,0,0,.055));
+		overflow: hidden;
+		border: 1px solid transparent; //#ddd;
+		// @include box-shadow(0 1px 3px rgba(0,0,0,.055));
+		
 		@include transition(all .2s ease-in-out);
 
 		.media {
 			display: block;
+			padding: 3px;
 			max-width: 100%;
 			margin-left: auto;
 			margin-right: auto;
 		}
+
 		.caption {
-			//padding: .6em;
+			padding: .6em;
 			color: $tile-caption-color;
 		}
 
@@ -51,7 +56,9 @@ $tile-caption-color: #555;
 		&.hover {
 			&:hover,
 			&:focus {
-				border-color: $link-color;
+				//border-color: $link-color;
+				border: 1px solid $link-color;
+				@include border-radius;
 				@include box-shadow(0 1px 4px rgba(0,105,214,.25));
 			}
 		}
@@ -60,8 +67,6 @@ $tile-caption-color: #555;
 		padding: 0;
 		@include clearfix;
 		
-		
-
 		.media,
 		.caption {
 			float:left;
@@ -70,11 +75,12 @@ $tile-caption-color: #555;
 		.media {
 			width: 20%;
 			vertical-align: middle;
+			padding: 0;
 		}
 		
 		.caption {
 			padding: 0;
-			padding: 0 1.0%%;
+			padding: 0 1.0%;
 			width: 78%;
 		}
 		

@@ -9,7 +9,7 @@
 		
 		if (this.options.events) {
 			_.extend(this.events, this.options.events);
-		}
+		}		
 	},
 	
 	events: {

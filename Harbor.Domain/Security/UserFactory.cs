@@ -20,5 +20,11 @@ namespace Harbor.Domain.Security
 			user.SetRoles(roles);
 			return user;
 		}
+
+		public static User CreateUser()
+		{
+			var user = new User { AllUserRoles = new UserFeatureRoleRepository().GetUserRoles() };
+			return user;
+		}
 	}
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using AutoMapper;
+using Harbor.Domain.Security;
 
 namespace Harbor.UI.Models.User
 {
@@ -64,7 +65,7 @@ namespace Harbor.UI.Models.User
 
 		public static implicit operator Domain.Security.User(UserDto user)
 		{
-			var DO = Mapper.Map<UserDto, Domain.Security.User>(user);
+			var DO = Mapper.Map<UserDto, Domain.Security.User>(user, UserFactory.CreateUser());
 			return DO;
 		}
 	}

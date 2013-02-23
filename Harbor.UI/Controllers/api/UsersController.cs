@@ -50,6 +50,7 @@ namespace Harbor.UI.Controllers.Api
 		public HttpResponseMessage Post(UserDto user)
         {
 			var userDo = (Domain.Security.User)user;
+
 			var errors = DomainObjectValidator.Validate(userDo);
 			if (errors.Count != 0)
 				return Request.CreateBadRequestResponse(errors);

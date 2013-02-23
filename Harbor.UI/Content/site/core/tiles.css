@@ -105,39 +105,35 @@
     content: "";
     display: table;
     clear: both; }
+  .tiles .tile {
+    box-sizing: border-box; }
 
 .tile {
   display: block;
-  border: 1px solid #ddd;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -ms-border-radius: 5px;
-  border-radius: 5px;
-  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
-  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
-  -ms-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+  overflow: hidden;
+  border: 1px solid transparent;
   -moz-transition: all 0.2s ease-in-out;
   -webkit-transition: all 0.2s ease-in-out;
   -ms-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out; }
-  .tile else {
-    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
-    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
-    -ms-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055); }
   .tile .media {
     display: block;
+    padding: 3px;
     max-width: 100%;
     margin-left: auto;
     margin-right: auto; }
   .tile .caption {
+    padding: .6em;
     color: #555555; }
   .tile h2, .tile h3 {
     font-size: 1.6em;
     margin: .1em 0; }
   .tile.hover:hover, .tile.hover:focus {
-    border-color: #336699;
+    border: 1px solid #336699;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -ms-border-radius: 5px;
+    border-radius: 5px;
     -moz-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
     -webkit-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
     -ms-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
@@ -159,10 +155,11 @@
     float: left; }
   .tile-inline .media {
     width: 20%;
-    vertical-align: middle; }
+    vertical-align: middle;
+    padding: 0; }
   .tile-inline .caption {
     padding: 0;
-    padding: 0 1.0%%;
+    padding: 0 1.0%;
     width: 78%; }
   @media (max-width: 48em) {
     .tile-inline .media {

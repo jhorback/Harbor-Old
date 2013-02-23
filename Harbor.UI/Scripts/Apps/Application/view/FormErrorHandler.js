@@ -102,8 +102,12 @@
 		
 		displayGeneralError = function (view, errorStr) {
 			var form = view.$("form"),
-				summarySpan = form.find(".alert");
+				summarySpan = form.find(".alert-error");
 
+			if (form.length === 0 || summarySpan.length === 0) {
+				console.warn("A form or .alert-error element could not be found to display the error.");
+			}
+			
 			if (errorStr) {
 				form.addClass("error");
 				addErrorHtml(summarySpan, errorStr);

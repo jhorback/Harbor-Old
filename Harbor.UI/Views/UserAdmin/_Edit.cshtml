@@ -1,20 +1,20 @@
-﻿<section class="page">
+﻿<section class="page centered">
 	<div class="page-header">
-		<h1 class="float-left"><span  data-bind="displayName"></span></h1>
-		<div class="float-right">
+		<h1 data-bind="displayName"></h1>
+		<fieldset class="float-right">
 			<button type="button" data-rel="cancel">Cancel</button>		
 			<button class="loud">Save</button>
-		</div>
+		</fieldset>
 	</div>
 	<div class="page-body"> 
 		<div class="page-content">
 			<form>
 				<span class="alert-error"></span>
-				<fieldset class="col1">
+				<fieldset class="form-stacked">
 					<legend></legend>
 					<div class="form-field">
 						<label>Username</label>
-						<strong data-bind="userName"></strong>
+						<div data-bind="userName"></div>
 					</div>
 					<div class="form-field">
 						<label for="useradmin-name">Name</label>

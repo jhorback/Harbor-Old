@@ -8,6 +8,9 @@
 	events: {
 		"click a": function (event) {
 			UserAdmin.handleLinkClick(event);
+		},
+		"click .tile": function (event) {
+			$(event.target).closest(".tile").find("a").trigger("click");
 		}
 	},
 

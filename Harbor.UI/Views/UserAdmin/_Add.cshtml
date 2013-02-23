@@ -1,16 +1,16 @@
 ﻿<section class="page centered">
 	<div class="page-header">
-		<h1 class="float-left">Add User <span  data-bind="displayName"></span></h1>
-		<div class="float-right">
+		<h1>Add User <span  data-bind="displayName"></span></h1>
+		<fieldset class="float-right">
 			<button type="button" data-rel="cancel">Cancel</button>		
 			<button class="loud">Add</button>
-		</div>
+		</fieldset>
 	</div>
 	<div class="page-body"> 
 		<div class="page-content">
 			<form>
 				<span class="alert-error"></span>
-				<fieldset class="col1">
+				<fieldset class="form-stacked">
 					<legend></legend>
 					<div class="form-field">
 						<label for="userAdmin-userName">Username</label>
@@ -28,7 +28,7 @@
 						<span data-validation-for="confirmPassword"></span>
 					</div>
 				</fieldset>
-				<fieldset>
+				<fieldset class="form-stacked">
 					<legend></legend>
 					<div class="form-field">
 						<label for="useradmin-name">Name</label>
