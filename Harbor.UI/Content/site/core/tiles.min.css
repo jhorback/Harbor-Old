@@ -1,9 +1,12 @@
 .row,.row-small,.row-medium,.row-large{clear:both}
 .row:after,.row-small:after,.row-medium:after,.row-large:after{content:"";display:table;clear:both}
 .row{margin-left:-1%}
-.row-small{max-height:5em;overflow:auto}
-.row-medium{max-height:10em;overflow:auto}
-.row-large{max-height:15em;overflow:auto}
+.row-small{height:5em;height:5em;overflow:auto}
+.row-small img{max-height:5em}
+.row-medium{height:10em;overflow:auto}
+.row-medium img{max-height:10em}
+.row-large{height:15em;overflow:auto}
+.row-large img{max-height:15em}
 .col,.col1,.col2,.col3,.col4,.col5{width:99%;margin-left:1%}
 @media(min-width:64em){.col,.col1{float:left;width:99%;*width:94%;margin-left:1%}
 .col2{float:left;width:49%;*width:46.5%;margin-left:1%}
@@ -23,7 +26,7 @@
 .tiles:after{content:"";display:table;clear:both}
 .tiles .tile{box-sizing:border-box}
 .tile{display:block;overflow:hidden;border:1px solid transparent;-moz-transition:all .2s ease-in-out;-webkit-transition:all .2s ease-in-out;-ms-transition:all .2s ease-in-out;transition:all .2s ease-in-out}
-.tile .media{display:block;padding:3px;max-width:100%;margin-left:auto;margin-right:auto}
+.tile .media{text-align:right;display:block;padding:3px;max-width:100%;margin-left:auto;margin-right:auto}
 .tile .caption{padding:.6em;color:#555}
 .tile h2,.tile h3{font-size:1.6em;margin:.1em 0}
 .tile.hover:hover,.tile.hover:focus{border:1px solid #369;-moz-border-radius:5px;-webkit-border-radius:5px;-ms-border-radius:5px;border-radius:5px;-moz-box-shadow:0 1px 4px rgba(0,105,214,0.25);-webkit-box-shadow:0 1px 4px rgba(0,105,214,0.25);-ms-box-shadow:0 1px 4px rgba(0,105,214,0.25);box-shadow:0 1px 4px rgba(0,105,214,0.25)}

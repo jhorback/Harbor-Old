@@ -36,6 +36,7 @@ $tile-caption-color: #555;
 		@include transition(all .2s ease-in-out);
 
 		.media {
+			text-align: right;
 			display: block;
 			padding: 3px;
 			max-width: 100%;

@@ -9,16 +9,23 @@
   margin-left: -1%; }
 
 .row-small {
-  max-height: 5em;
+  height: 5em;
+  height: 5em;
   overflow: auto; }
+  .row-small img {
+    max-height: 5em; }
 
 .row-medium {
-  max-height: 10em;
+  height: 10em;
   overflow: auto; }
+  .row-medium img {
+    max-height: 10em; }
 
 .row-large {
-  max-height: 15em;
+  height: 15em;
   overflow: auto; }
+  .row-large img {
+    max-height: 15em; }
 
 .col, .col1, .col2, .col3, .col4, .col5 {
   width: 99%;
@@ -117,6 +124,7 @@
   -ms-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out; }
   .tile .media {
+    text-align: right;
     display: block;
     padding: 3px;
     max-width: 100%;

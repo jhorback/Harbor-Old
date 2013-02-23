@@ -8,16 +8,29 @@
 	</div>
 	<div class="page-body">
 		<div class="page-content">
-			<h2>Recently Updated</h2>
-			<ul>
-				@foreach (var page in Model)
-				{
-					<li>
-						<h3><a href="~/id/@page.id/@page.title">@page.title</a></h3>
-						<span>Created: @page.created</span>
-					</li>
-				}
-			</ul>
+			<div>
+				<ul class="tiles">
+					@foreach (var page in Model)
+					{
+						<li class="tile tile-inline row-medium">
+							<div class="media">
+								@if (page.previewImage != null)
+								{
+									<img src="@page.previewImage.thumbUrl" />
+								}
+								else
+								{
+									<text>&nbsp;</text>
+								}
+							</div>
+							<div class="caption">
+								<h3><a href="~/id/@page.id/@page.title">@page.title</a></h3>
+								<span>@page.previewText</span>
+							</div>
+						</li>
+					}
+				</ul>
+			</div>
 		</div>
 	</div>
 </div>
