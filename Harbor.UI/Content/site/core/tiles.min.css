@@ -1,7 +1,7 @@
 .row,.row-small,.row-medium,.row-large{clear:both}
 .row:after,.row-small:after,.row-medium:after,.row-large:after{content:"";display:table;clear:both}
 .row{margin-left:-1%}
-.row-small{height:5em;height:5em;overflow:auto}
+.row-small{height:5em;overflow:auto}
 .row-small img{max-height:5em}
 .row-medium{height:10em;overflow:auto}
 .row-medium img{max-height:10em}
@@ -26,20 +26,20 @@
 .tiles:after{content:"";display:table;clear:both}
 .tiles .tile{box-sizing:border-box}
 .tile{display:block;overflow:hidden;border:1px solid transparent;-moz-transition:all .2s ease-in-out;-webkit-transition:all .2s ease-in-out;-ms-transition:all .2s ease-in-out;transition:all .2s ease-in-out}
-.tile .media{text-align:right;display:block;padding:3px;max-width:100%;margin-left:auto;margin-right:auto}
+.tile .media{text-align:center;display:block;padding:3px;max-width:100%;margin-left:auto;margin-right:auto}
 .tile .caption{padding:.6em;color:#555}
 .tile h2,.tile h3{font-size:1.6em;margin:.1em 0}
 .tile.hover:hover,.tile.hover:focus{border:1px solid #369;-moz-border-radius:5px;-webkit-border-radius:5px;-ms-border-radius:5px;border-radius:5px;-moz-box-shadow:0 1px 4px rgba(0,105,214,0.25);-webkit-box-shadow:0 1px 4px rgba(0,105,214,0.25);-ms-box-shadow:0 1px 4px rgba(0,105,214,0.25);box-shadow:0 1px 4px rgba(0,105,214,0.25)}
 .tile.hover:hover else,.tile.hover:focus else{-moz-box-shadow:0 1px 4px rgba(0,105,214,0.25);-webkit-box-shadow:0 1px 4px rgba(0,105,214,0.25);-ms-box-shadow:0 1px 4px rgba(0,105,214,0.25);box-shadow:0 1px 4px rgba(0,105,214,0.25)}
-.tile-inline{padding:0}
-.tile-inline:after{content:"";display:table;clear:both}
-.tile-inline .media,.tile-inline .caption{float:left}
-.tile-inline .media{width:20%;vertical-align:middle;padding:0}
-.tile-inline .caption{padding:0;padding:0 1.0%;width:78%}
-@media(max-width:48em){.tile-inline .media{width:40%}
-.tile-inline .caption{width:58%}
+.tile-wide{padding:0}
+.tile-wide:after{content:"";display:table;clear:both}
+.tile-wide .media,.tile-wide .caption{float:left}
+.tile-wide .media{text-align:right;width:20%;vertical-align:middle;padding:0}
+.tile-wide .caption{padding:0;padding:0 1.0%;width:78%}
+@media(max-width:48em){.tile-wide .media{width:40%}
+.tile-wide .caption{width:58%}
 }
-@media(max-width:30em){.tile-inline{padding:.3em}
-.tile-inline .media{width:100%}
-.tile-inline .caption{width:100%}
+@media(max-width:30em){.tile-wide{padding:.3em}
+.tile-wide .media{width:100%}
+.tile-wide .caption{width:100%}
 }

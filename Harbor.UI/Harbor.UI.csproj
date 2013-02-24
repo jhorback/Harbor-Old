@@ -279,14 +279,8 @@
     <Content Include="Content\site\core\button.css">
       <DependentUpon>button.scss</DependentUpon>
     </Content>
-    <Content Include="Content\site\core\colgrid.css">
-      <DependentUpon>colgrid.scss</DependentUpon>
-    </Content>
     <Content Include="Content\site\core\cols.css">
       <DependentUpon>cols.scss</DependentUpon>
-    </Content>
-    <Content Include="Content\site\core\datalist.css">
-      <DependentUpon>datalist.scss</DependentUpon>
     </Content>
     <Content Include="Content\site\core\datatable.css">
       <DependentUpon>datatable.scss</DependentUpon>
@@ -600,18 +594,6 @@
       <DebugInfo>False</DebugInfo>
     </None>
     <None Include="Content\site\core\richtext.scss">
-      <Compile>True</Compile>
-      <Minify>False</Minify>
-      <CompileStyle>Nested</CompileStyle>
-      <DebugInfo>False</DebugInfo>
-    </None>
-    <None Include="Content\site\core\colgrid.scss">
-      <Compile>True</Compile>
-      <Minify>False</Minify>
-      <CompileStyle>Nested</CompileStyle>
-      <DebugInfo>False</DebugInfo>
-    </None>
-    <None Include="Content\site\core\datalist.scss">
       <Compile>True</Compile>
       <Minify>False</Minify>
       <CompileStyle>Nested</CompileStyle>

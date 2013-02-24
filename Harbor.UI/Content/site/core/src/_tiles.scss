@@ -36,7 +36,7 @@ $tile-caption-color: #555;
 		@include transition(all .2s ease-in-out);
 
 		.media {
-			text-align: right;
+			text-align: center;
 			display: block;
 			padding: 3px;
 			max-width: 100%;
@@ -64,7 +64,7 @@ $tile-caption-color: #555;
 			}
 		}
 	}
-	.tile-inline {
+	.tile-wide {
 		padding: 0;
 		@include clearfix;
 		
@@ -74,6 +74,7 @@ $tile-caption-color: #555;
 		}
 		
 		.media {
+			text-align: right;			
 			width: 20%;
 			vertical-align: middle;
 			padding: 0;

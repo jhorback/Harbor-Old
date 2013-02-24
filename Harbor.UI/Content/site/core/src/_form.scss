@@ -27,7 +27,7 @@ $form-error-color: #b94a48;
 @mixin form {
 	@include form-base;
 	@include form-default;
-	@include form-stacked;	
+	@include form-wide;	
 	@include form-inline;
 	@include form-errors;
 }
@@ -210,8 +210,8 @@ $form-error-color: #b94a48;
 }
 
 
-@mixin form-stacked {
-	.form-stacked {
+@mixin form-wide {
+	.form-wide {
 		// Increase spacing between groups
 		.form-field {
 			// margin-bottom: $body-line-height-px;

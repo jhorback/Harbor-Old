@@ -110,7 +110,7 @@
 			
 			if (errorStr) {
 				form.addClass("error");
-				addErrorHtml(summarySpan, errorStr);
+				addErrorHtml(summarySpan, '<h1>' + errorStr + '</h1>');
 			} else {
 				form.removeClass("error");
 				summarySpan.html("");

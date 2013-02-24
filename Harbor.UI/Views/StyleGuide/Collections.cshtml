@@ -1,16 +1,6 @@
-﻿
-@*<aside class="page-aside">
-	<section class="menulist">
-		<h2>.menulist</h2>
-		<ul>
-			<li>Menu Item 1</li>
-			<li>Menu Item 2</li>
-			<li>Menu Item 3</li>
-			<li>Menu Item 4</li>					
-			<li>Menu Item 5</li>					
-		</ul>
-	</section>
-</aside>*@
+﻿@section head {
+	@Scripts.Render("~/scripts/holder.js")	
+}
 <div class="page-content">
 	<h2>Data Tables</h2>
 	<div class="outline example">
@@ -111,59 +101,115 @@
 	<p>To add a grouping effect to the table add a <code>&lt;th></code> in the tbody.</p>
 
 
-	@*<section class="tiles selectable">
-		<h2>.colgrid</h2>
-		<ul>
-			<li class="col">
-				<h3>Item 1</h3>
-				Description
-			</li>
-			<li class="col">
-				<h3>Item 2</h3>
-				Description
-			</li>
-			<li class="col">
-				<h3>Item 3</h3>
-				Description
-			</li>
-			<li class="col">
-				<h3>Item 4</h3>
-				Description
-			</li>
-			<li class="col">
-				<h3>Item 5</h3>
-				Description
-			</li>
-			<li class="col">
-				<h3>Item 6</h3>
-				Description
-			</li>
-			<li class="col">
-				<h3>Item 7</h3>
-				Description
-			</li>
-		</ul>
-	</section>*@
-	@*<section class="datalist">
-		<h2>.datalist</h2>
-		<ul class="stretch">
-			<li class="heading">
-				<span class="col">Name</span>
-				<span class="col">Some detail</span>
-				<span class="col text-right attn">Important</span>
-			</li>
-			<li>
-				<span class="col">Column this is a longer one</span>
-				<span class="col">Column</span>
-				<span class="col text-right">Short</span>
-			</li>
-			<li>
-				<span class="col">Column</span>
-				<span class="col">Column</span>
-				<span class="col text-right">5</span>
-			</li>
-		</ul>
-	</section>	*@
+
+
+	<h2>Tiles</h2>
+	
+	<h3>Vertical Tile</h3>
+	<p>Use the <code>.col</code> to constrain the vertical tiles.</p>
+	<div class="outline example">
+		<div class="tiles">
+			<div class="tile col5 hover">
+				<a href="#" class="media">
+					<img src="~/scripts/holder.js?400x200/auto">
+				</a>
+				<div class="caption text-justify">
+					<a href="#"><h2>Name of Tile</h2></a>
+					<p>
+						Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+					</p>
+				</div>
+			</div>
+			<div class="tile col5 hover">
+				<a href="#" class="media">
+					<img src="~/scripts/holder.js?400x200/auto">
+				</a>
+				<div class="caption">
+					<a href="#"><h2>Name of Tile</h2></a>
+					<p>
+						Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+					</p>
+				</div>
+			</div>
+			<div class="tile col5 hover">
+				<a href="#" class="media">
+					<img src="~/scripts/holder.js?400x200/auto">
+				</a>
+				<div class="caption">
+					<a href="#"><h2>Name of Tile</h2></a>
+					<p>
+						Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+					</p>
+				</div>
+			</div>
+			<div class="tile col5 hover">
+				<a href="#" class="media">
+					<img src="~/scripts/holder.js?400x200/auto">
+				</a>
+				<div class="caption">
+					<a href="#"><h2>Name of Tile</h2></a>
+					<p>
+						Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+					</p>
+				</div>
+			</div>
+			<div class="tile col5 hover">
+				<a href="#" class="media">
+					<img src="~/scripts/holder.js?400x200/auto">
+				</a>
+				<div class="caption">
+					<a href="#"><h2>Name of Tile</h2></a>
+					<p>
+						Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col5"><div class="outline">.col5</div></div>
+			<div class="col5"><div class="outline">.col5</div></div>
+			<div class="col5"><div class="outline">.col5</div></div>
+			<div class="col5"><div class="outline">.col5</div></div>
+			<div class="col5"><div class="outline">.col5</div></div>
+		</div>
+	</div>
+	<h3>Horizontal Tile</h3>
+	<p>Add the <code>.tile-wide</code> class to create a horizontal tile.</p>
+	<div class="outline example">
+		<div class="tile tile-wide hover row-small">
+			<a href="#" class="media">
+				<img src="~/scripts/holder.js?400x200/auto">
+			</a>
+			<div class="caption">
+				<a href="#"><h2>Name of Tile</h2></a>
+				<p>
+					Cras justo odio, dapibus ac facilisis in, egestas eget quam
+				</p>
+			</div>
+		</div>
+		<div class="tile tile-wide hover row-small">
+			<a href="#" class="media">
+				<img src="~/scripts/holder.js?200x400/auto">
+			</a>
+			<div class="caption">
+				<a href="#"><h2>Name of Tile</h2></a>
+				<p>
+					Cras justo odio, dapibus ac facilisis in, egestas eget quam
+				</p>
+			</div>
+		</div>
+		<div class="tile tile-wide hover row-small">
+			<a href="#" class="media">
+				<img src="~/scripts/holder.js?100x50/auto">
+			</a>
+			<div class="caption">
+				<a href="#"><h2>Name of Tile</h2></a>
+				<p>
+					Cras justo odio, dapibus ac facilisis in, egestas eget quam
+				</p>
+			</div>
+		</div>
+	</div>
 </div>
 @section scripts {
 <script>

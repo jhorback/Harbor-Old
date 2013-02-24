@@ -18,13 +18,13 @@ $body-color:				#333					!default;
 $link-color:				#369					!default;
 $link-color-hover:			#09f					!default;
 $link-color-active:			red						!default;
-$body-heading-color:		#369				!default;
+$body-heading-color:		#369					!default;
 $hr-color:					#DDD					!default;
-$dl-inline-dt-width:	11.42em !default; // ~160px
+$dl-inline-dt-width:		11.42em					!default; // ~160px
 
-$body-color-quiet:					lighten($body-color, 40%)	!default;
-$body-color-loud:					#2F5BB7						!default;
-$body-color-attn:					#D14836						!default;
+$body-color-quiet:			lighten($body-color, 40%)	!default;
+$body-color-loud:			#2F5BB7						!default;
+$body-color-attn:			#D14836						!default;
 
 
 @mixin foundation {
@@ -257,7 +257,7 @@ $body-color-attn:					#D14836						!default;
 		font-weight: bold;
 	}
 	
-	// Horizontal layout (like forms
+	// Horizontal layout (like forms)
 	dl.inline {
 		@include clearfix;
 		
