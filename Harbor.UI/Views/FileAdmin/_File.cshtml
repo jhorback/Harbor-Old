@@ -1,12 +1,11 @@
-﻿<li class="col text-center" title="Visible? {{public}}">
-	<a href="{{editLink}}">
-		<span style="width:100px;height:100px;">
-		
-			<img src="{{thumbUrl}}" class="max-100" alt="{{name}}"/>
-		</span>
+﻿<li class="tile col5 hover text-center">
+	<a href="{{editLink}}" class="media">
+		<img src="{{thumbUrl}}" alt="{{name}}"/>
 	</a>
-	<br>
-	<span>{{name}}</span>
-	<br>
-	<span>Visible? {{public}}</span>
+	<div class="caption">
+		<h2 class="nowrap" title="{{name}}">{{name}}</h2>
+		<p>
+			<span>Visible? {{public}}</span>
+		</p>
+	</div>
 </li>

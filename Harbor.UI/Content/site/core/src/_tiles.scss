@@ -23,23 +23,16 @@ $tile-caption-color: #777;
 
 	@include tile;
 	@include tile-wide;
-	
-// jch! -  review where these styles are in use - probably just image component
-//	.max-50 { max-height: 50px; max-width: 50px; }
-//	.max-100 { max-height: 100px; max-width: 100px; }
-//	.max-250 { max-height: 250px; max-width: 250px; }
-//	.max-500 { max-height: 500px; max-width: 500px; }
-//	.max-750 { max-height: 750px; max-width: 750px; }
-//	.max-1000 { max-height: 1000px; max-width: 1000px; }
 }
 
 @mixin tile {
 	.tile {
 		display: block;
 		overflow: hidden;
-		border: 1px solid transparent; //#ddd;
+		border: 1px solid transparent;
 		margin-bottom: 1em;
-		// @include box-shadow(0 1px 3px rgba(0,0,0,.055));
+		border-color: #DDD;
+		@include box-shadow(0 1px 3px rgba(0,0,0,.055));
 		
 		@include transition(all .2s ease-in-out);
 

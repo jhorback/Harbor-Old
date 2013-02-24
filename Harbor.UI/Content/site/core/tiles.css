@@ -13,10 +13,20 @@
   overflow: hidden;
   border: 1px solid transparent;
   margin-bottom: 1em;
+  border-color: #DDD;
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+  -ms-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
   -moz-transition: all 0.2s ease-in-out;
   -webkit-transition: all 0.2s ease-in-out;
   -ms-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out; }
+  .tile else {
+    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+    -ms-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055); }
   .tile .media {
     text-align: center;
     display: block;
