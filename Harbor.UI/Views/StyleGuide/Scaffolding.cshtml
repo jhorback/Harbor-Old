@@ -36,19 +36,29 @@
 			</div>
 
 			<h2>Rows (height constraints)</h2>
-			<p>An important note is that columns do not require wrapping them in a 'row' even though rows are made to work with columns.</p>
+			<p>
+				Columns <code>.col[#]</code> and rows are independent of each other. A <code>.row</code> (without
+				height constraint applies the negative left margin for cols to align nicely in the <code>.page-content</code>.
+			</p>
+			<p>All height constraints will be removed on small resolutions.</p>
 			<ul class="list-style-none">
 				<li>
 					<code>.row</code> - wraps content without any height constraint.
 				</li>
 				<li>
-					<code>.row-small</code> - wraps content with a small height constraint.
+					<code>.row5</code> - 1/5<sup>th</sup> height constraint on the row (small, 5em).
 				</li>
 				<li>
-					<code>.row-medium</code> - wraps content with a medium height constraint.
+					<code>.row4</code> - 1/4<sup>th</sup> height constraint on the row (medium, 10em).
 				</li>
 				<li>
-					<code>.row-large</code> - wraps content with a large height constraint.
+					<code>.row3</code> - 1/3<sup>rd</sup> height constraint on the row (large, 15em).
+				</li>
+				<li>
+					<code>.row2</code> - 1/2 height constraint on the row (larger, 20em).
+				</li>
+				<li>
+					<code>.row1</code> - Maximum height constraint on the row (25em).
 				</li>
 			</ul>
 			

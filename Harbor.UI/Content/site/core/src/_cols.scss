@@ -1,0 +1,90 @@
+@import "../../mixins/col";
+@import "../../mixins/clearfix";
+@import "media";
+
+
+$col-gutter-width: 1%;
+
+
+@mixin cols {
+	@include rows;
+
+	.col, .col1, .col2, .col3, .col4, .col5 {
+		width: 99%;
+		margin-left: $col-gutter-width;
+	}
+
+	@media (min-width: 64em) {
+		.col,
+		.col1 { @include col-span(1); }
+		.col2 { @include col-span(2); }
+		.col3 { @include col-span(3); }
+		.col3-2 { @include col-span(3, 2); }
+		.col4 { @include col-span(4); }
+		//.col5-4 { @include col-span(5, 4); }
+		.col5 { @include col-span(5); }	
+	}
+	
+	@media screen and (min-width: 48em) and (max-width: 64em) {
+//		.col,
+//		.col1 { @include col-span(1); }
+		.col2 { @include col-span(2); }
+		.col3,
+		.col3-2,
+		.col4,
+		//.col5-4 { @include col-span(3, 2); }
+		.col5 { @include col-span(3); }
+	}
+
+	@media screen and (min-width: 30em) and (max-width: 48em) {
+		//		.col,
+		//		.col1 { @include col-span(1); }
+		.col2,
+		.col3,
+		.col3-2,
+		.col4,
+		//.col5-4,
+		.col5 { @include col-span(2); }
+	}
+
+	@include onphone { // 30em 
+		.col,
+		.col1,
+		.col2,
+		.col3,
+		.col3-2,
+		.col4,
+		//.col5-4,
+		.col5 { @include col-span(1); }
+	}
+}
+
+@mixin rows {
+	.row, .row-small, .row-medium, .row-large {
+		@include clearfix;
+		clear: both;		
+	}	
+	.row {
+		margin-left: $col-gutter-width * -1;
+	}
+	.row5 {
+		height: 5em;
+		overflow: auto;
+	}
+	.row4 {
+		height: 10em;
+		overflow: auto;
+	}
+	.row3 {
+		height: 15em;
+		overflow:auto;
+	}
+	.row2 {
+		height: 20em;
+		overflow:auto;
+	}
+	.row1 {
+		height: 25em;
+		overflow:auto;
+	}
+}

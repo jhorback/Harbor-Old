@@ -240,8 +240,8 @@ $body-color-attn:			#D14836						!default;
 	}
 
 	// Single-line list items
-	ul.inline,
-	ol.inline {
+	ul.list-inline,
+	ol.list-inline {
 	  margin-left: 0;
 	  list-style: none;
 	  & > li {
@@ -258,7 +258,7 @@ $body-color-attn:			#D14836						!default;
 	}
 	
 	// Horizontal layout (like forms)
-	dl.inline {
+	dl.list-wide {
 		@include clearfix;
 		
 		dt {
@@ -278,7 +278,7 @@ $body-color-attn:			#D14836						!default;
 	}
 	dl {
 		margin-bottom: $body-line-height-px;
-		&.inline {
+		&.list-wide {
 			dt {
 				width: $dl-inline-dt-width;
 			}

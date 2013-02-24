@@ -107,11 +107,15 @@
 	
 	<h3>Vertical Tile</h3>
 	<p>Use the <code>.col</code> to constrain the vertical tiles.</p>
+	<p>Add a <code>.hover</code> class on the tile (or tiles) to enable the hover state.</p>
+	<p>
+		While in a <code>.tiles</code> container, the tile will take on the box-sizing model and apply height and width constraints as neccessary.
+	</p>
 	<div class="outline example">
-		<div class="tiles">
-			<div class="tile col5 hover">
+		<div class="tiles hover">
+			<div class="tile col5">
 				<a href="#" class="media">
-					<img src="~/scripts/holder.js?400x200/auto">
+					<img src="~/scripts/holder.js?50x150/auto">
 				</a>
 				<div class="caption text-justify">
 					<a href="#"><h2>Name of Tile</h2></a>
@@ -133,29 +137,29 @@
 			</div>
 			<div class="tile col5 hover">
 				<a href="#" class="media">
-					<img src="~/scripts/holder.js?400x200/auto">
+					<img src="~/scripts/holder.js?250x200/auto">
 				</a>
 				<div class="caption">
 					<a href="#"><h2>Name of Tile</h2></a>
 					<p>
-						Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+						Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.
 					</p>
 				</div>
 			</div>
 			<div class="tile col5 hover">
 				<a href="#" class="media">
-					<img src="~/scripts/holder.js?400x200/auto">
+					<img src="~/scripts/holder.js?70x50/auto">
 				</a>
 				<div class="caption">
-					<a href="#"><h2>Name of Tile</h2></a>
+					<a href="#"><h2 class="nowrap">A Very Long Name of Tile</h2></a>
 					<p>
-						Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+						Cras justo odio, dapibus ac facilisis in, egestas eget quam.
 					</p>
 				</div>
 			</div>
 			<div class="tile col5 hover">
 				<a href="#" class="media">
-					<img src="~/scripts/holder.js?400x200/auto">
+					<img src="~/scripts/holder.js?250x200/auto">
 				</a>
 				<div class="caption">
 					<a href="#"><h2>Name of Tile</h2></a>
@@ -175,8 +179,9 @@
 	</div>
 	<h3>Horizontal Tile</h3>
 	<p>Add the <code>.tile-wide</code> class to create a horizontal tile.</p>
+	<p>Add a <code>.row5</code>, <code>.row4</code>, or <code>.row3</code> class to the tile to constrain the height.</p>
 	<div class="outline example">
-		<div class="tile tile-wide hover row-small">
+		<div class="tile tile-wide hover row5">
 			<a href="#" class="media">
 				<img src="~/scripts/holder.js?400x200/auto">
 			</a>
@@ -187,7 +192,7 @@
 				</p>
 			</div>
 		</div>
-		<div class="tile tile-wide hover row-small">
+		<div class="tile tile-wide hover row5">
 			<a href="#" class="media">
 				<img src="~/scripts/holder.js?200x400/auto">
 			</a>
@@ -198,7 +203,7 @@
 				</p>
 			</div>
 		</div>
-		<div class="tile tile-wide hover row-small">
+		<div class="tile tile-wide hover row5">
 			<a href="#" class="media">
 				<img src="~/scripts/holder.js?100x50/auto">
 			</a>

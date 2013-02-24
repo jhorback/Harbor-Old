@@ -65,17 +65,17 @@ ul, ol {
 
 dl {
   margin-bottom: 20.0004px; }
-  dl.inline dt {
+  dl.list-wide dt {
     width: 11.42em; }
-  dl.inline dd {
+  dl.list-wide dd {
     margin-left: 12.82em; }
   @media (max-width: 30em) {
-    dl.inline dt {
+    dl.list-wide dt {
       float: none;
       display: block;
       text-align: left;
       width: auto; }
-    dl.inline dd {
+    dl.list-wide dd {
       margin-left: auto; } }
 
 dt, dd {

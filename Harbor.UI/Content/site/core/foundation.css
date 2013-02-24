@@ -292,12 +292,12 @@ ol.list-style-none {
     list-style-type: none;
     margin-left: 0px; }
 
-ul.inline,
-ol.inline {
+ul.list-inline,
+ol.list-inline {
   margin-left: 0;
   list-style: none; }
-  ul.inline > li,
-  ol.inline > li {
+  ul.list-inline > li,
+  ol.list-inline > li {
     display: inline-block;
     padding-left: .5em;
     padding-right: .5em; }
@@ -305,11 +305,11 @@ ol.inline {
 dt {
   font-weight: bold; }
 
-dl.inline:after {
+dl.list-wide:after {
   content: "";
   display: table;
   clear: both; }
-dl.inline dt {
+dl.list-wide dt {
   float: left;
   clear: left;
   text-align: right;

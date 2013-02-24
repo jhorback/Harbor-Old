@@ -2,11 +2,12 @@
 @import "../../mixins/clearfix";
 @import "../../mixins/box-shadow";
 @import "../../mixins/transition";
+@import "../../mixins/opacity";
 @import "../../core/src/foundation";
-@import "../../core/cols";
+@import "../../core/src/cols";
 @import "../../core/src/media";
 
-$tile-caption-color: #555;
+$tile-caption-color: #777;
 
 
 @mixin tiles {
@@ -15,22 +16,29 @@ $tile-caption-color: #555;
 		list-style: none;
 		@include clearfix;
 
-		& > li {
-			//		float: left;
-			//		margin-bottom: $baseLineHeight;
-			//		margin-left: $gridGutterWidth;
-		}
-
 		.tile {
 			box-sizing: border-box;
 		}
 	}
 
-	.tile {
+	@include tile;
+	@include tile-wide;
+	
+// jch! -  review where these styles are in use - probably just image component
+//	.max-50 { max-height: 50px; max-width: 50px; }
+//	.max-100 { max-height: 100px; max-width: 100px; }
+//	.max-250 { max-height: 250px; max-width: 250px; }
+//	.max-500 { max-height: 500px; max-width: 500px; }
+//	.max-750 { max-height: 750px; max-width: 750px; }
+//	.max-1000 { max-height: 1000px; max-width: 1000px; }
+}
 
+@mixin tile {
+	.tile {
 		display: block;
 		overflow: hidden;
 		border: 1px solid transparent; //#ddd;
+		margin-bottom: 1em;
 		// @include box-shadow(0 1px 3px rgba(0,0,0,.055));
 		
 		@include transition(all .2s ease-in-out);
@@ -42,11 +50,16 @@ $tile-caption-color: #555;
 			max-width: 100%;
 			margin-left: auto;
 			margin-right: auto;
+
+			height: 10em;
+			img { max-height: 10em;	}
 		}
 
 		.caption {
 			padding: .6em;
 			color: $tile-caption-color;
+			
+			height: 5em;
 		}
 
 		h2, h3 {
@@ -54,16 +67,22 @@ $tile-caption-color: #555;
 			margin: .1em 0;
 		}
 
-		&.hover {
+		
+	}
+
+	.hover {
+		.tile, &.tile {
 			&:hover,
 			&:focus {
-				//border-color: $link-color;
-				border: 1px solid $link-color;
+				border-color: $link-color;
 				@include border-radius;
 				@include box-shadow(0 1px 4px rgba(0,105,214,.25));
 			}
 		}
 	}
+}
+
+@mixin tile-wide {
 	.tile-wide {
 		padding: 0;
 		@include clearfix;
@@ -74,18 +93,23 @@ $tile-caption-color: #555;
 		}
 		
 		.media {
-			text-align: right;			
+			text-align: right;
 			width: 20%;
-			vertical-align: middle;
 			padding: 0;
 		}
 		
 		.caption {
-			padding: 0;
-			padding: 0 1.0%;
+			padding: 0 1%;
 			width: 78%;
 		}
-		
+
+
+		&.row5 { img { max-height: 5em; } .media { line-height: 5em; } }
+		&.row4 { img { max-height: 10em; } .media { line-height: 10em; } }
+		&.row3 { img { max-height: 15em; } .media { line-height: 15em; } }
+
+
+
 		@include ontablet {
 			.media { width: 40%; }
 			.caption { width: 58%; }
@@ -96,11 +120,4 @@ $tile-caption-color: #555;
 			.caption { width: 100%; }
 		}
 	}
-
-//	.max-50 { max-height: 50px; max-width: 50px; }
-//	.max-100 { max-height: 100px; max-width: 100px; }
-//	.max-250 { max-height: 250px; max-width: 250px; }
-//	.max-500 { max-height: 500px; max-width: 500px; }
-//	.max-750 { max-height: 750px; max-width: 750px; }
-//	.max-1000 { max-height: 1000px; max-width: 1000px; }
 }

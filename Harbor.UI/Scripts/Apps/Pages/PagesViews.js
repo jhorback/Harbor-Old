@@ -6,6 +6,11 @@
 	events: {
 		"click .page-header button": function () {
 			Session.trigger("addPage");
+		},
+		"click .tile": function (event) {
+			var target = $(event.target);
+			var tile = target.closest(".tile");
+			document.location = tile.find("a").attr("href");
 		}
 	},
 	
