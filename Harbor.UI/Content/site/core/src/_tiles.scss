@@ -31,8 +31,8 @@ $tile-caption-color: #777;
 		overflow: hidden;
 		border: 1px solid transparent;
 		margin-bottom: 1em;
-		border-color: #DDD;
-		@include box-shadow(0 1px 3px rgba(0,0,0,.055));
+		//border-color: #DDD;
+		//@include box-shadow(0 1px 3px rgba(0,0,0,.055));
 		
 		@include transition(all .2s ease-in-out);
 

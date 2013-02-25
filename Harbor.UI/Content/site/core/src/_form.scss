@@ -17,7 +17,7 @@ $form-input-background-color-focused:	#FFF						!default;
 $form-input-border-color:				#bbbbbb						!default;
 $form-input-border-color-focused:		rgba(82,168,236,.8)			!default;
 $form-input-focused-shadow-color:		#d5edf8						!default;
-$form-legend-color:                     $form-input-color			!default;
+$form-legend-color:                     $body-heading-color			!default;
 
 $label-width:							11.42em; // ~160px
 $input-height:							$body-line-height-px + 10px; // base line-height + 8px vertical padding + 2px top/bottom border
@@ -34,7 +34,7 @@ $form-error-color: #b94a48;
 
 
 @mixin form-theme {
-
+	legend { color: $form-legend-color; }
 }
 
 
@@ -68,7 +68,6 @@ $form-error-color: #b94a48;
 	  // margin-bottom: $body-line-height-px;
 	  font-size: 1.5em;
 	  line-height: 2;
-	  color: $form-legend-color;
 	  border: 0;
 	  // border-top: 1px solid #e5e5e5;
 	}

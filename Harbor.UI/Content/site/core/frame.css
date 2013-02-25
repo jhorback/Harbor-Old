@@ -59,8 +59,7 @@
 
 #frame-body {
   position: relative;
-  min-height: 23em;
-  background-color: white; }
+  min-height: 23em; }
 
 #frame-info {
   margin-top: 2em;

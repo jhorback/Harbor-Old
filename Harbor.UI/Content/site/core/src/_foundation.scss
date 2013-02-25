@@ -90,7 +90,8 @@ $body-color-attn:			#D14836						!default;
 }
 
 @mixin body-theme {
-	html, body {
+	html,
+	body {
 		background-color: $body-background-color;
 		color: $body-color;
 		font-size: $body-font-size;

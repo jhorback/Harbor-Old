@@ -39,10 +39,12 @@
 			@RenderBody()
 			</div>
 			<footer id="frame-info">
-				<span title="@Harbor.UI.HarborApplication.Version - @DateTime.Now">
-					@Request.ServerVariables["SERVER_NAME"] &copy; @DateTime.Now.Year
-				</span>
-				<div class="quiet"><small>@Harbor.UI.HarborApplication.Version - @DateTime.Now</small></div>
+				<div>
+					<span title="@Harbor.UI.HarborApplication.Version - @DateTime.Now">
+						@Request.ServerVariables["SERVER_NAME"] &copy; @DateTime.Now.Year
+					</span>
+					<div class="quiet"><small>@Harbor.UI.HarborApplication.Version - @DateTime.Now</small></div>
+				</div>
 			</footer>
 		</div>
 		<script>

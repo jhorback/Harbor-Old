@@ -4,6 +4,9 @@
 $c2: #eda456;
 
 $body-color: #FFF;
+$body-heading-color: #FFF;
+//$form-legend-color: #FFF;
+$page-title-color: #FFF;
 $body-background-color: #0f7c91;
 $framenav-background-color: transparent;
 
@@ -13,18 +16,29 @@ $form-legend-color:	$c2;
 $link-color:				#FFF;
 $link-color-hover:			#09f;
 
+$body-color-loud: #f5f0c5;
+
+
+
 @include theme;
 
 
 .menu {
-	background-color: transparent;
+	background-color: $body-background-color;
 	color: white;
 }
+
 #frame {
 	z-index: 1;
 	background: url(images/bj-dive-fade.png) no-repeat;
 }
 
-.page {
+
+#frame-info {
+	overflow: hidden;
+	& > div {
+		padding-top: 170px;
+	}
 	background: url(images/bj-painting-fade.png) no-repeat bottom right;
+	height: 240px;
 }

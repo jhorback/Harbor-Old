@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
   background-color: #0f7c91;
   color: white;
   font-size: 14px;
@@ -35,7 +36,7 @@ h1 {
   color: white; }
 
 h2 {
-  color: #336699; }
+  color: white; }
 
 hgroup h1 + h2 {
   color: white; }
@@ -44,7 +45,7 @@ hgroup h1 + h2 {
   color: #999999; }
 
 .loud {
-  color: #2f5bb7; }
+  color: #f5f0c5; }
 
 .attn {
   color: #d14836; }
@@ -113,18 +114,22 @@ dd {
     background: #b3b3b3; }
 
 .page-header h1 {
-  color: #666666; }
+  color: white; }
   .page-header h1 a {
-    color: #666666; }
+    color: white; }
 
 .menu {
-  background-color: transparent;
+  background-color: #0f7c91;
   color: white; }
 
 #frame {
   z-index: 1;
   background: url(images/bj-dive-fade.png) no-repeat; }
 
-.page {
-  background: url(images/bj-painting-fade.png) no-repeat bottom right; }
+#frame-info {
+  overflow: hidden;
+  background: url(images/bj-painting-fade.png) no-repeat bottom right;
+  height: 240px; }
+  #frame-info > div {
+    padding-top: 170px; }
 

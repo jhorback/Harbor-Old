@@ -158,13 +158,13 @@ $frame-logo-use-image: true !default;
 	#frame-body {
 		position: relative;
 		min-height: 23em;
-		background-color: $body-background-color;
+		// background-color: $body-background-color;
 	}
 }
 
 
 @mixin frame-footer {
-	#frame-info {
+	#frame-info  {
 		margin-top: 2em;
 		clear: left;
 		height: $frame-footer-height;
