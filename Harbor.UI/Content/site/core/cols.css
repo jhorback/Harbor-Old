@@ -36,54 +36,54 @@
   .col,
   .col1 {
     float: left;
-    width: 99%;
-    *width: 94%;
-    margin-left: 1%; }
+    width: 98%;
+    *width: 93%;
+    margin-left: 2%; }
 
   .col2 {
     float: left;
-    width: 49%;
-    *width: 46.5%;
-    margin-left: 1%; }
+    width: 48%;
+    *width: 45.5%;
+    margin-left: 2%; }
 
   .col3 {
     float: left;
-    width: 32.33333%;
-    *width: 30.66667%;
-    margin-left: 1%; }
+    width: 31.33333%;
+    *width: 29.66667%;
+    margin-left: 2%; }
 
   .col3-2 {
     float: left;
-    width: 65.66667%;
-    *width: 62.33333%;
-    margin-left: 1%; }
+    width: 64.66667%;
+    *width: 61.33333%;
+    margin-left: 2%; }
 
   .col4 {
     float: left;
-    width: 24%;
-    *width: 22.75%;
-    margin-left: 1%; }
+    width: 23%;
+    *width: 21.75%;
+    margin-left: 2%; }
 
   .col5 {
     float: left;
-    width: 19%;
-    *width: 18%;
-    margin-left: 1%; } }
+    width: 18%;
+    *width: 17%;
+    margin-left: 2%; } }
 @media screen and (min-width: 48em) and (max-width: 64em) {
   .col2 {
     float: left;
-    width: 49%;
-    *width: 46.5%;
-    margin-left: 1%; }
+    width: 48%;
+    *width: 45.5%;
+    margin-left: 2%; }
 
   .col3,
   .col3-2,
   .col4,
   .col5 {
     float: left;
-    width: 32.33333%;
-    *width: 30.66667%;
-    margin-left: 1%; } }
+    width: 31.33333%;
+    *width: 29.66667%;
+    margin-left: 2%; } }
 @media screen and (min-width: 30em) and (max-width: 48em) {
   .col2,
   .col3,
@@ -91,9 +91,9 @@
   .col4,
   .col5 {
     float: left;
-    width: 49%;
-    *width: 46.5%;
-    margin-left: 1%; } }
+    width: 48%;
+    *width: 45.5%;
+    margin-left: 2%; } }
 @media (max-width: 30em) {
   .col,
   .col1,
@@ -103,7 +103,7 @@
   .col4,
   .col5 {
     float: left;
-    width: 99%;
-    *width: 94%;
-    margin-left: 1%; } }
+    width: 98%;
+    *width: 93%;
+    margin-left: 2%; } }
 

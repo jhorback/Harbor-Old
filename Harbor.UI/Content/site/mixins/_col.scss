@@ -42,7 +42,7 @@
 @mixin col-span ($cols: 1, $span: 1) {
 	$colwidth: 100% / $cols;
 	$spancolwidth: $colwidth * $span;
-	$margin: 1%;
+	$margin: 2%;
 
 	float: left;
 	width: $spancolwidth - $margin;

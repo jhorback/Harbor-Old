@@ -11,8 +11,12 @@
 	},
 	
 	render: function () {
+		var albums,
+			sortedFiles = this.collection.sortBy(function (file) {
+				return new Date(file.get("album")).getTime() * -1;
+			});
 
-		var albums = this.collection.groupBy(function (file) {
+		albums = _(sortedFiles).groupBy(function (file) {
 			return file.get("album");
 		});
 
