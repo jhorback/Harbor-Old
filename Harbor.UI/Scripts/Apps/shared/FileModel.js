@@ -51,6 +51,12 @@
 //		}
 //	},
 	
+	name: {
+		validate: {
+			required: { message: "The file name is required." }
+		}
+	},
+	
 	editLink: {
 		get: function () {
 			return Application.url("user/files/edit/") + this.get("id");

@@ -1,8 +1,7 @@
 ﻿FileAdmin.EditView = Application.View.extend({
 	initialize: function () {
-		FormErrorHandler.extend(this);
-		
 		this.listenTo(this.model, "change", this.saveModel);
+		this.model.store();
 		_.bindAll(this, "saveModel");
 	},
 	
@@ -15,15 +14,19 @@
 			FileAdmin.main();
 			this.model.destroy();
 		},
+		
 		"click [data-rel=cancel]": function () {
 			FileAdmin.main();			
 		}
 	},
 	
 	saveModel: function (event) {
-
 		if (!this.isModelValid()) {
+			this.$("form").addClass("error");
+			this.$("[data-type=contenteditable]").html(this.model.memento["name"]).focus();
 			return;
+		} else {
+			this.$("form").removeClass("error");			
 		}
 
 		AjaxRequest.handle(this.model.save(), {

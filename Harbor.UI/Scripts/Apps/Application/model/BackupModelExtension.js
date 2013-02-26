@@ -16,7 +16,7 @@
 				this.memento = _.extend({}, this.attributes);
 				return this.memento;
 			},
-			restore: function () {
+			restore: function (name) {
 				if (this.memento) {
 					this.set(this.memento);
 				}

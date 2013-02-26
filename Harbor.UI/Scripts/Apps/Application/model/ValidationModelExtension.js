@@ -142,8 +142,9 @@
 		},
 		
 		validators: {
-			required: function (value) {
-				return ValidationModelExtension.isNullOrEmpty(value) ? "Required." : undefined;
+			required: function (value, args) {
+				var msg = (args && args.message) || "Required.";
+				return ValidationModelExtension.isNullOrEmpty(value) ? msg : undefined;
 			},
 			email: function (value) {
 				var emailRegex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA;-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
