@@ -252,6 +252,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\dropzone.css" />
     <Content Include="Content\images\layoutcols\full.png" />
     <Content Include="Content\images\layoutcols\half.png" />
     <Content Include="Content\images\layoutcols\layoutcols.png" />
@@ -264,6 +265,8 @@
       <CompileStyle>Nested</CompileStyle>
       <DebugInfo>False</DebugInfo>
     </None>
+    <Content Include="Content\images\spritemap%402x.png" />
+    <Content Include="Content\images\spritemap.png" />
     <Content Include="Content\images\thumbs\audio.png" />
     <Content Include="Content\images\thumbs\doc.png" />
     <Content Include="Content\images\thumbs\file.png" />
@@ -464,6 +467,7 @@
     <Content Include="Scripts\Apps\UserAdmin\UserListItemView.js" />
     <Content Include="Scripts\backbone.js" />
     <Content Include="Scripts\backbone.min.js" />
+    <Content Include="Scripts\dropzone.js" />
     <Content Include="Scripts\holder.js" />
     <Content Include="Scripts\holder.min.js" />
     <Content Include="Scripts\jquery-1.9.1-vsdoc.js" />

@@ -13,8 +13,12 @@
 				"<div class=\"preview\"></div>" +
 				"<div class=\"filename\">{{filename}}</div>" +
 				"</div>";
+
+		el.addClass("dropzone");
+		el.dropzone({ url: Application.url("user/upload") });
+		el.css({ height: "180px" }); // 13em
 		
-		el.css({ minHeight: 100, background: "#ccc" });
+		return;
 		el.html5Uploader({
 			name: "uploadedFile",
 			postUrl: "../upload",

@@ -120,7 +120,7 @@ namespace Harbor.UI.Controllers
 			{
 				fileRep.Create(User.Identity.Name, Request.Files[file]);
 			}
-			return new HttpStatusCodeResult(HttpStatusCode.NoContent);
+			return new HttpStatusCodeResult(HttpStatusCode.OK);
 		}
 
 		// will have ext and perhaps name as well

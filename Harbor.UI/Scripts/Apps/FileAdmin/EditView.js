@@ -23,6 +23,7 @@
 	saveModel: function (event) {
 		if (!this.isModelValid()) {
 			this.$("form").addClass("error");
+			// jch* may need to update the model binding for contenteditable?
 			this.$("[data-type=contenteditable]").html(this.model.memento["name"]).focus();
 			return;
 		} else {
