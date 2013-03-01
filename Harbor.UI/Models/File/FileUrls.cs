@@ -68,12 +68,20 @@ namespace Harbor.UI.Models
 			// got icons from: http://www.iconfinder.com/search/?q=iconset%3Ametro-ui-dock-icon-set--icons-by-dakirby
 			ext = ext.ToLower();
 			var thumb = "file";
-			if (new string[] { ".doc", ".docx", ".html" }.Contains(ext))
+			if (new string[] { ".doc", ".docx" }.Contains(ext))
 				thumb = "doc";
+			if (new string[] { ".xls", ".xlsx" }.Contains(ext))
+				thumb = "xls";
 			if (new string[] { ".mpeg", ".mpg" }.Contains(ext))
 				thumb = "video";
 			if (new string[] { ".mp3" }.Contains(ext))
 				thumb = "audio";
+			if (new string[] { ".js" }.Contains(ext))
+				thumb = "js";
+			if (new string[] { ".txt" }.Contains(ext))
+				thumb = "txt";
+			if (new string[] { ".zip" }.Contains(ext))
+				thumb = "zip";
 			return url.Content(string.Format("~/content/images/thumbs/{0}.png", thumb));
 		}
 

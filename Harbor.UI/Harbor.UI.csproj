@@ -270,7 +270,11 @@
     <Content Include="Content\images\thumbs\audio.png" />
     <Content Include="Content\images\thumbs\doc.png" />
     <Content Include="Content\images\thumbs\file.png" />
+    <Content Include="Content\images\thumbs\js.png" />
+    <Content Include="Content\images\thumbs\txt.png" />
     <Content Include="Content\images\thumbs\video.png" />
+    <Content Include="Content\images\thumbs\xls.png" />
+    <Content Include="Content\images\thumbs\zip.png" />
     <Content Include="Content\Prettify\prettify.css" />
     <Content Include="Content\qunit.css" />
     <Content Include="Content\redactor\redactor.css">
@@ -474,7 +478,6 @@
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\jquery-migrate-1.1.1.js" />
-    <Content Include="Scripts\jquery.html5uploader.js" />
     <Content Include="Scripts\jquery.ui.core.js" />
     <Content Include="Scripts\jquery.ui.draggable.js" />
     <Content Include="Scripts\jquery.ui.droppable.js" />

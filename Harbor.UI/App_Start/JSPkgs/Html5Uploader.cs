@@ -11,7 +11,6 @@ namespace Harbor.UI.JSPkgs
 		{
 			Name = PackageName;
 			ScriptBundle = new ScriptBundle("~/Scripts/jquery.html5uploader.min.js")
-				.Include("~/scripts/jquery.html5uploader.js")
 				.Include("~/scripts/dropzone.js");
 			StyleBundle = new StyleBundle("~/content/dropzone.min.css")
 				.Include("~/content/dropzone.css");

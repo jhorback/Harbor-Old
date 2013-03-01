@@ -18,7 +18,11 @@
 			},
 			restore: function (name) {
 				if (this.memento) {
-					this.set(this.memento);
+					if (name) {
+						this.set(name, this.memento[name]);
+					} else {
+						this.set(this.memento);
+					}
 				}
 				return this.memento;
 			}

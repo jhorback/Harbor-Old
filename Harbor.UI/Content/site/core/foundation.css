@@ -56,6 +56,9 @@ img {
   border: 0;
   -ms-interpolation-mode: bicubic; }
 
+a:active img {
+  zoom: .90; }
+
 button,
 input,
 select,

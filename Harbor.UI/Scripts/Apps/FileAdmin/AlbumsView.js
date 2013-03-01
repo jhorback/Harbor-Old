@@ -7,6 +7,9 @@
 	events: {
 		"click a": function (event) {
 			FileAdmin.handleLinkClick(event);
+		},
+		"click .tile": function (event) {
+			FileAdmin.handleLinkClick(event, ".tile");
 		}
 	},
 	

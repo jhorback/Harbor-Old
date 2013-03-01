@@ -142,8 +142,18 @@
 			_.chain(this.regions).values().invoke("destroy");			
 		},
 		
-		handleLinkClick: function (event) {
-			var href = $(event.target).closest("a").attr("href");
+		handleLinkClick: function (event, parent) {
+			// parent - a selector of an item to look inside for the link.
+			var href, 
+				parent = $(event.target).closest(parent),
+				target = parent.length > 0 ? parent : $(event.target),
+				link = target.closest("a");
+			
+			if (link.length === 0) {
+				link = target.find("a");
+			}
+			
+			href = link.attr("href");
 			event.preventDefault();
 			this.navigate(href.toLowerCase().replace(this.root.toLowerCase(), ""), true);
 		}

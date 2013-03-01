@@ -3,7 +3,7 @@
 	uploadTargetView: null,
 
 	initialize: function () {
-
+		console.log("INITIALIXING MAIN VIEW");
 		this.uploadingCount = 0;
 		this.model = new FileAdmin.MainViewModel();
 		this.listenTo(this.model, "change:state", this.stateChange);
@@ -49,6 +49,7 @@
 	},
 
 	render: function () {
+		console.log("RENDERING MAIN VIEW");
 		this.template("FileAdmin-Main", this.$el)();
 		
 		var albumsView =  new FileAdmin.AlbumsView({
@@ -79,7 +80,14 @@
 	},
 	
 	removeFile: function (file, collection, info) {
-		var el = this.$el.find("li").eq(info.index);
+		if (file.removed === true) {
+			console.warn("FILE REMOVED ALREADY - RETURNING");
+			return;
+		}
+		file.removed = true;
+		
+		console.log("QUEUED FOR REMOVE");
+		var el = this.$el.find("#" + file.get("id"));
 		setTimeout(function () {
 			el.fadeOut("slow", function () {
 				el.remove();

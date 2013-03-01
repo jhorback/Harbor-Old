@@ -339,6 +339,11 @@
 	  -ms-interpolation-mode: bicubic;
 	}
 
+	a:active {
+		img {
+			zoom: .90; // give the image the feel of being pressed
+		}
+	}
 	
 ////	 * Correct overflow displayed oddly in IE 9.
 //	 

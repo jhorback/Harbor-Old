@@ -10,14 +10,13 @@
 		<div class="page-content">
 			<form>
 				<div class="alert-error"  data-validation-for="name"></div>
-				<fieldset class="col1">
-					<a href="{{href}}" target="_blank">	
-						<img src="{{lowResUrl}}"/>
-					</a>
-					<br/>
-					<span  data-bind="name"></span> was uploaded on {{uploaded}}.
+				<fieldset>
+					<a href="{{href}}" target="_blank"><img src="{{thumbUrl}}"/></a>
 				</fieldset>
-				<fieldset class="col2">
+				<p>
+					<small><span  data-bind="name"></span> was uploaded on <strong>{{uploaded}}</strong></small>.
+				</p>
+				<fieldset>
 					<legend>Visibility</legend>
 					<div class="form-field">
 						<input type="checkbox" name="public" id="editFilePublicity">
