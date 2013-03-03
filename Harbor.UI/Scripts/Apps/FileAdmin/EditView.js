@@ -12,7 +12,7 @@
 				return;
 			}
 			FileAdmin.main();
-			console.log("DESTROYING MODEL IN EDIT VIEW");
+			FileAdmin.events.trigger("file:removed", this.model);
 			this.model.destroy();
 		},
 		
