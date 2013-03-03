@@ -66,7 +66,7 @@ namespace Harbor.Data.Repositories
 		{
 			var page = pageFactory.Create(entity.ParentPageID, entity.AuthorsUserName, entity.PageTypeKey, entity.Title, entity.Public);
 			if (Exists(page.AuthorsUserName, page.Title))
-				throw new InvalidOperationException("The page already exists.");
+				throw new DomainValidationException("The page already exists.");
 			page.Created = DateTime.Now;
 			page.Modified = DateTime.Now;
 			page.Enabled = true;

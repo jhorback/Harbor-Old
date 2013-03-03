@@ -33,8 +33,6 @@
 			/// <summary>Executes the template and returns the result.</summary>
 			var templateHtml,
 				templateFn = JstViewExtension.templates[template];
-			
-			// jch* - el = el || this.$el;
 
 			if (!templateFn) {
 				templateHtml = $("#" + template).html();

@@ -22,11 +22,8 @@
 })();
 
 
-PageAdder.AddPageView = Backbone.View.extend({
+PageAdder.AddPageView = Application.View.extend({
 	initialize: function () {
-		Session.ViewExtension.extend(this);
-		Session.FormErrorHandler.extend(this);
-
 		this.model = new PageModels.Page();
 		this.model.set("author", Session.currentUser.get("username"));
 	},
@@ -39,23 +36,22 @@ PageAdder.AddPageView = Backbone.View.extend({
 	},
 
 	render: function () {
-		var $el = this.$el,
-			self = this;
+	    var view, model;
+	    
+	    model = {
+	        page: this.model,
+	        pageTypes: PageModels.pageTypes
+	    };
+		this.template("PageAdder-AddPage", this.$el)(model);
 
-		this.JST("PageAdder-AddPage", {
-			page: this.model,
-			pageTypes: PageModels.pageTypes
-		}).then(function (result, model) {
-			$el.html(result);
-			self.views("dialog", new Session.Dialog($el, {
-				title: "Add a page",
-				modal: true,
-				transition: "fade"
-			}));
-
-			self.renderPageTypes($el.find("#pageadder-pagetypekey"), model.pageTypes);
-			Session.ModelBinder(model.page, $el);
+		view = new Session.Dialog(this.$el, {
+		    title: "Add a page",
+		    modal: true,
+		    transition: "fade"
 		});
+	    
+		this.renderPageTypes(this.$el.find("#pageadder-pagetypekey"), model.pageTypes);
+		this.bindModelToView(model.page, this.$el);
 	},
 
 	renderPageTypes: function (el, collection) {
@@ -72,7 +68,7 @@ PageAdder.AddPageView = Backbone.View.extend({
 		}
 
 		Session.AjaxRequest.handle(this.model.save(), {
-			clientError: function (response) {
+		    clientError: function (response) {
 				self.displayErrors(response.errors);
 			},
 			success: function (page) {

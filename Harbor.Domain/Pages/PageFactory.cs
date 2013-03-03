@@ -11,15 +11,15 @@ namespace Harbor.Domain.Pages
 			this.pageTypeRep = pageTypeRep;
 		}
 
-		public Page Create(int? parentDocID, string userName, string pageTypeKey, string title, bool publish)
+		public Page Create(int? parentPageID, string userName, string pageTypeKey, string title, bool publish)
 		{
 			var pageType = pageTypeRep.GetPageType(pageTypeKey);
 			if (pageType == null)
 				throw new DomainValidationException("Pages cannot be created without a template.");
 
-			var doc = new Page
+			var page = new Page
 			    {
-			        ParentPageID = parentDocID,
+			        ParentPageID = parentPageID,
 			        AuthorsUserName = userName,
 					PageTypeKey = pageTypeKey,
 			        Title = title,
@@ -31,7 +31,7 @@ namespace Harbor.Domain.Pages
 					Template = pageType.Template
 			    };
 
-			return doc;
+			return page;
 		}
 	}
 }

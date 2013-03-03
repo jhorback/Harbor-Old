@@ -30,29 +30,20 @@
 });
 
 
-Pages.PagesView = Backbone.View.extend({
+Pages.PagesView = Application.View.extend({
 	initialize: function () {
-		Session.ViewExtension.extend(this);
 		this.collection.sortBy(function (item) {
 			return new Date(item.get("modified"));
 		});
 	},
 	
 	render: function () {
-		var el = this.$el;
 		this.collection.each(this.renderPage, this);
 		return this;
 	},
 	
 	renderPage: function (page) {
-		
-
 		var el = this.template("Pages-PageItem")(page.toJSON());
 		this.$el.append(el);
-		
-
-		return this;
 	}
 });
-
-

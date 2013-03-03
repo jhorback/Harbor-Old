@@ -25,10 +25,11 @@ PageModels.Page = Application.Model.extend({
 	previewImage: null, // FileModel
 	
 	defaults: {
-		id: null,
+	    id: null,
+	    parentPageID: null,
 		title: null,
 		author: null,
-		pageTypeKey: null,
+		pageTypeKey: "document",
 		created: null,
 		modified: null,
 		enabled: true,
