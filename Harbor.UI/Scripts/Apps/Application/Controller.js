@@ -64,6 +64,9 @@
  *     The start method can return a promise which will delay the router start until
  *     it is resolved.
  *
+ *     Any options passed into the start method are made available to the Controller/Application
+ *     as an 'options' property.
+ *
  * Clicking Links
  *     Controllers have a 'linkClickHandler' method that can be used for links.
  *     events: {
@@ -72,92 +75,94 @@
  */
 (function () {
 
-	var Controller = Backbone.Router.extend({
-		constructor: function (options) {
-			var customStart = this.start,
+    var Controller = Backbone.Router.extend({
+        constructor: function (options) {
+            var customStart = this.start,
 				controller = this,
-				curriedMethods = { },
+				curriedMethods = {},
 				actionMethods = _.union(this.actions, _.values(this.routes));
 
-			Region.createRegions(this);
+            Region.createRegions(this);
 
-			// curry the actions
-			_.each(actionMethods, function (methodName) {
-				var method = controller[methodName];
-				
-				// ensure the method is only curried once
-				if (curriedMethods[methodName]) {
-					return;
-				}
+            // curry the actions
+            _.each(actionMethods, function (methodName) {
+                var method = controller[methodName];
 
-				curriedMethods[methodName] = controller[methodName] = function () {
-					var result, view, region, navigate;
+                // ensure the method is only curried once
+                if (curriedMethods[methodName]) {
+                    return;
+                }
 
-					result = method.apply(controller, arguments);
+                curriedMethods[methodName] = controller[methodName] = function () {
+                    var result, view, region, navigate;
 
-					if (!result) {
-						return;
-					}
+                    result = method.apply(controller, arguments);
 
-					if (result.view) {
-						view = result.view;
-						region =  result.region ? controller.regions[result.region] : controller.regions["default"];
-						navigate = result.navigate;
-					} else {
-						view = result;
-						region = controller.regions["default"];
-					}
+                    if (!result) {
+                        return;
+                    }
 
-					region.render(view);
-					navigate && controller.navigate(navigate);
-					result.afterRender && result.afterRender.apply(controller); 
-				};
-			});
+                    if (result.view) {
+                        view = result.view;
+                        region = result.region ? controller.regions[result.region] : controller.regions["default"];
+                        navigate = result.navigate;
+                    } else {
+                        view = result;
+                        region = controller.regions["default"];
+                    }
 
-			Backbone.Router.prototype.constructor.apply(this, arguments);
-			this.root = this.root || "";
-			this.start = function () {
-				/// <summary>Starts Backbone.history and calls any custom start method.</summary>
-				var dfd = customStart && customStart.apply(this, arguments);
-				if (controller.routes && controller._started === true) {
-					throw "Start has already been called.";
-				}
-				dfd = dfd || { then: function (callback) { callback.call(); }};
-				
-				controller._started = true;
-				dfd.then(function () {
-					controller.routes && Backbone.history.start({
-						pushState: true,
-						root: controller.root
-						//, silent: true
-					});
-				});
-			};
+                    region.render(view);
+                    navigate && controller.navigate(navigate);
+                    result.afterRender && result.afterRender.apply(controller);
+                };
+            });
 
-			_.bindAll(this, "handleLinkClick");
-		},
-		
-		destroy: function () {
-			delete this._started;
-			_.chain(this.regions).values().invoke("destroy");			
-		},
-		
-		handleLinkClick: function (event, parent) {
-			// parent - a selector of an item to look inside for the link.
-			var href, 
+            Backbone.Router.prototype.constructor.apply(this, arguments);
+            this.start = function () {
+                /// <summary>Starts Backbone.history and calls any custom start method.</summary>
+                var dfd;
+                this.options = arguments && arguments[0];
+                this.root = _.isFunction(this.root) ? this.root.call(this) : (this.root || "");
+                dfd = customStart && customStart.apply(this, arguments);
+                if (controller.routes && controller._started === true) {
+                    throw "Start has already been called.";
+                }
+                dfd = dfd || { then: function (callback) { callback.call(); } };
+
+                controller._started = true;
+                dfd.then(function () {
+                    controller.routes && Backbone.history.start({
+                        pushState: true,
+                        root: controller.root
+                        //, silent: true
+                    });
+                });
+            };
+
+            _.bindAll(this, "handleLinkClick");
+        },
+
+        destroy: function () {
+            delete this._started;
+            _.chain(this.regions).values().invoke("destroy");
+        },
+
+        handleLinkClick: function (event, parent) {
+            // parent - a selector of an item to look inside for the link.
+            var href,
 				parent = $(event.target).closest(parent),
 				target = parent.length > 0 ? parent : $(event.target),
 				link = target.closest("a");
-			
-			if (link.length === 0) {
-				link = target.find("a");
-			}
-			
-			href = link.attr("href");
-			event.preventDefault();
-			this.navigate(href.toLowerCase().replace(this.root.toLowerCase(), ""), true);
-		}
-	});
 
-	window.Controller = Controller;
+            if (link.length === 0) {
+                link = target.find("a");
+            }
+
+            href = link.attr("href");
+            event.preventDefault();
+            this.navigate(href.toLowerCase().replace(this.root.toLowerCase(), ""), true);
+        }
+    });
+
+    window.Controller = Controller;
 })();
