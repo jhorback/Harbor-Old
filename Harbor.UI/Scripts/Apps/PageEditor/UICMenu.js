@@ -59,7 +59,6 @@ PageEditor.UICMenu = Backbone.View.extend({
 			type: "header"
 		});
 		view.render();
-		PageEditor.dialogRegion.show(view);
 	},
 	
 	changeLayout: function (uicid) {
@@ -68,7 +67,6 @@ PageEditor.UICMenu = Backbone.View.extend({
 			uicid: uicid
 		});
 		view.render();
-		PageEditor.dialogRegion.show(view);
 	},
 	
 	dispose: function () {

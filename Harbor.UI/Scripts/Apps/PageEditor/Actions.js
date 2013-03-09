@@ -58,7 +58,7 @@ PageEditor.deleteComponent = function (page, uicid) {
 		page.template.set(compArrayType, compArray);
 
 		// allow decoupled cleanup of page properties
-		PageEditor.trigger("componentDeleted", page, uicid);		
+		PageEditor.events.trigger("component:deleted", page, uicid);		
 
 		uicel.fadeOut(function () {
 			uicel.remove();

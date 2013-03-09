@@ -19,7 +19,6 @@
 @section scripts {
 	@if (ViewBag.HasWritePermissions)
 	{ 
-		@Html.InstallJavaScriptPackage(PageEditorAppPkg.PackageName)
 		@Html.InstallJavaScriptPackage(PageLoaderAppPkg.PackageName)
 		<script>
 			PageLoader.start(@Html.Raw(Json.Encode(ViewBag.PageDto)));

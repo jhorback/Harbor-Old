@@ -1,5 +1,5 @@
 ﻿
-PageEditor.PagePreviewView = Application.View.extend({
+PageSettings.PagePreviewView = Application.View.extend({
 	events: {
 		"click #settings-changethumb": "changeThumb",
 		"click img": "changeThumb",
@@ -7,18 +7,16 @@ PageEditor.PagePreviewView = Application.View.extend({
 	},
 	
 	render: function () {
-		this.bindTemplate("PageEditor-PagePreview");
+		this.bindTemplate("PageSettings-PagePreview");
 	},
 	
 	changeThumb: function () {
-		PageLoader.regions.settings.hideEl();
-		PageLoader.regions.loader.hideEl();
+		PageSettings.events.trigger("modal:opened");
 		FileSelector.start({
 			filter: "images",
-			region: PageEditor.regions.modal,
+			region: PageSettings.regions.modal,
 			close: function () {
-				PageLoader.regions.settings.showEl();
-				PageLoader.regions.loader.showEl();
+			    PageSettings.events.trigger("modal:closed");
 			},
 			select: function (selectedFile) {
 				this.model.setPreviewImageID(selectedFile.get("id"));
@@ -34,7 +32,7 @@ PageEditor.PagePreviewView = Application.View.extend({
 });
 
 
-PageEditor.PagePreviewModel = Application.Model.extend({
+PageSettings.PagePreviewModel = Application.Model.extend({
 	defaults: {
 		page: null,
 		thumbSrc: null,

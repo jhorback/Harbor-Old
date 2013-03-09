@@ -1,28 +1,32 @@
 ﻿
-/*
-Options:
-	model - Page
-*/
-PageEditor.SettingsView = Application.View.extend({
+PageSettings.SettingsView = Application.View.extend({
 	
-	pagePreviewView: null,
+    pagePreviewView: null,
+    
+    menu: null,
 
-	initialize: function () {
+    initialize: function () {
 		this.listenTo(this.model.template, "change", this.templateChange);
 		this.listenTo(this.model, "change", this.pageChange);
 
 		// save events
 		this.listenTo(this.model, "change:published", this.saveModel);
 		this.listenTo(this.model, "change:title", this.saveModel);
-		this.listenTo(this.model.template, "change", this.saveModel);		
+		this.listenTo(this.model.template, "change", this.saveModel);
+		this.listenTo(PageSettings.events, "modal:opened", function () {
+		    this.menu && this.menu.close();
+		});
+		this.listenTo(PageSettings.events, "modal:closed", function () {
+		    this.render();
+		});
 	},
 	
 	events: {
 		"click #page-visibility": function () {
-			var view = new PageEditor.ChangeVisibilityView({
+			var view = new PageSettings.ChangeVisibilityView({
 				model: this.model
 			});
-			PageEditor.dialogRegion.show(view.render()); 
+			view.render(); 
 		},
 
 		"click #page-delete": function () {
@@ -31,26 +35,32 @@ PageEditor.SettingsView = Application.View.extend({
 	},
 
 	render: function () {
-		this.template("PageEditor-Settings", this.$el)();
+	    var menu;
+	    
+	    this.template("PageSettings-Settings", this.$el)();
+	    
+        this.menu = new Menu(this.$el, {
+	        transition: "none"
+	    });
 
 		this.bindModelToView(this.model, this.$(".page-header"));
 		this.bindModelToView(this.model, this.$("#settings-visibility"));
 		this.bindModelToView(this.model.template, this.$("#settings-layout"));
 
-		this.pagePreviewView = new PageEditor.PagePreviewView({
+		this.pagePreviewView = new PageSettings.PagePreviewView({
 			el: this.$("#settings-page-preview"),
-			model: new PageEditor.PagePreviewModel({ page: this.model })
+			model: new PageSettings.PagePreviewModel({ page: this.model })
 		});
-		this.pagePreviewView.render(); // jch! extend Application.view with Region ? then can do this.regions.pagePreview.render(view);
+		this.pagePreviewView.render();
 		return this;
 	},
 	
 	templateChange: function () {
-		PageEditor.trigger("updateLayout");
+		PageSettings.events.trigger("layout:updated");
 	},
 	
 	pageChange: function () {
-		PageEditor.trigger("updatePage");
+		PageSettings.events.trigger("page:updated");
 	},
 	
 	saveModel: function () {
@@ -72,7 +82,7 @@ PageEditor.SettingsView = Application.View.extend({
 
 
 
-PageEditor.ChangeVisibilityView = Backbone.View.extend({
+PageSettings.ChangeVisibilityView = Backbone.View.extend({
 	initialize: function () {
 		JstViewExtension.extend(this);
 		DisposeViewExtension.extend(this);
@@ -96,7 +106,7 @@ PageEditor.ChangeVisibilityView = Backbone.View.extend({
 			model = this.model,
 			self = this;
 
-		this.template("PageEditor-ChangeVisibility", this.$el)(model);
+		this.template("PageSettings-ChangeVisibility", this.$el)(model);
 		this.track(new Dialog($el, {
 			title: "Visibility",
 			modal: true,

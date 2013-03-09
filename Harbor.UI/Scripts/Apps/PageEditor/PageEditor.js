@@ -1,9 +1,17 @@
 ﻿
-// The EdtitView and SettingsView are the primary views
-// which are toggled by the PageLaoder 
-var PageEditor = {
-	
-	currentPage: null, // set by the page loader - could use init and destroy methods instead.
+var PageEditor = new Application({
+    
+    editView: null,
+    currentPage: null,
+
+    start: function (options) {
+        this.currentPage = options.page;
+        this.editView = new PageEditor.EditView({
+            el: options.el,
+            model: options.page
+        });
+        this.editView.render();
+    },
 
 	currentComponent: null, // holds the currently edited component
 
@@ -38,7 +46,7 @@ var PageEditor = {
 				type: compType,
 				uicid: uicid,
 				$el: $el,
-				page: PageEditor.currentPage
+				page: this.currentPage
 			});
 			PageEditor.components[uicid] = comp;
 		}
@@ -70,22 +78,20 @@ var PageEditor = {
 		_.each(PageEditor.components, function (comp) {
 			comp.close();
 		});
+		this.editView.dispose();
 	}
-};
-
-_.extend(PageEditor, Backbone.Events);
-Region.createRegions(PageEditor);
+});
 
 
 // update the class names if the layout is updated
-PageEditor.on("updateLayout", function () {
+PageEditor.events.on("layout:updated", function () {
 	var classNames = PageEditor.currentPage.getLayoutClassNames();
 	var el = PageLoader.regions.page.getEl();
 	el.find(".page-header")	.removeClass().addClass("page-header").addClass(classNames);
 	el.find(".page-body").removeClass().addClass("page-body").addClass(classNames);
 });
 
-PageEditor.on("updatePage", function () {
+PageEditor.events.on("page:updated", function () {
 	var el = PageLoader.regions.page.getEl();
 	el.find("[data-bind=title]").html(PageEditor.currentPage.get("title"));
 });

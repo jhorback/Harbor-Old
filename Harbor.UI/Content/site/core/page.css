@@ -39,6 +39,7 @@
       font-weight: bold; }
 
 .page-body {
+  position: relative;
   clear: left; }
   .page-body:after {
     content: "";

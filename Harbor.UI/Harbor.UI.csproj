@@ -138,6 +138,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\Bootstrapper.cs" />
+    <Compile Include="App_Start\JSPkgs\PageSettingsAppPkg.cs" />
     <Compile Include="App_Start\ThemeConfig.cs" />
     <Compile Include="App_Start\ModelBinderConfig.cs" />
     <Compile Include="App_Start\DbConfig.cs" />
@@ -436,8 +437,9 @@
     <Content Include="Scripts\Apps\PageEditor\ChangeLayoutView.js" />
     <Content Include="Scripts\Apps\PageEditor\EditView.js" />
     <Content Include="Scripts\Apps\PageEditor\PageEditor.js" />
-    <Content Include="Scripts\Apps\PageEditor\PagePreviewView.js" />
-    <Content Include="Scripts\Apps\PageEditor\SettingsView.js" />
+    <Content Include="Scripts\Apps\PageSettings\PagePreviewView.js" />
+    <Content Include="Scripts\Apps\PageSettings\PageSettings.js" />
+    <Content Include="Scripts\Apps\PageSettings\SettingsView.js" />
     <Content Include="Scripts\Apps\PageEditor\UICMenu.js" />
     <Content Include="Scripts\Apps\PageLoader\PageNav.js" />
     <Content Include="Scripts\Apps\PageLoader\PageLoader.js" />
@@ -531,7 +533,7 @@
     <Content Include="Views\FileSelector\FileSelectorTemplates.cshtml" />
     <Content Include="Views\Page\Image-None.cshtml" />
     <Content Include="Views\Page\Image-Edit.cshtml" />
-    <Content Include="Views\PageEditor\_PagePreview.cshtml" />
+    <Content Include="Views\PageSettings\_PagePreview.cshtml" />
     <Content Include="Views\StyleGuide\_PageNav.cshtml" />
     <Content Include="Views\StyleGuide\Scaffolding.cshtml" />
     <Content Include="Views\StyleGuide\Typography.cshtml" />
@@ -539,6 +541,7 @@
     <Content Include="Views\StyleGuide\Components.cshtml" />
     <None Include="Properties\PublishProfiles\harbor - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\harbor - Web Deploy.pubxml" />
+    <Content Include="Views\PageSettings\PageSettingsTemplates.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\users\" />
@@ -850,12 +853,12 @@
     <Content Include="Scripts\Apps\Application\AjaxRequestDefaultHandler.js" />
     <Content Include="Views\Page\Text.cshtml" />
     <Content Include="Views\Page\Links.cshtml" />
-    <Content Include="Views\PageEditor\_Settings.cshtml" />
+    <Content Include="Views\PageSettings\_Settings.cshtml" />
     <Content Include="Views\PageEditor\_UICMenu.cshtml" />
     <Content Include="Views\PageEditor\_AddComponent.cshtml" />
     <Content Include="Views\Page\PageEditorTemplates.cshtml" />
     <Content Include="Views\PageEditor\_ChangeLayout.cshtml" />
-    <Content Include="Views\PageEditor\_ChangeVisibility.cshtml" />
+    <Content Include="Views\PageSettings\_ChangeVisibility.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Harbor.Data\Harbor.Data.csproj">

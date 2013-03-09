@@ -28,6 +28,7 @@ namespace Harbor.UI
 			packages.Add(new PageModelsPkg());
 			packages.Add(new PagesAppPkg());
 			packages.Add(new PageSelectorAppPkg());
+			packages.Add(new PageSettingsAppPkg());
 			packages.Add(new RedactorPkg());
 			packages.Add(new SessionAppPkg());
 			packages.Add(new SettingsAppPkg());

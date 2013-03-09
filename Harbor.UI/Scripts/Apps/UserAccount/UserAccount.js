@@ -8,9 +8,7 @@
 				model: user
 			});
 		});
-	},
-	
-	dialogRegion: new Region()
+	}
 };
 
 UserAccount.MainView = Application.View.extend({
@@ -25,15 +23,18 @@ UserAccount.MainView = Application.View.extend({
 	},
 
 	editName: function (editable) {
-		UserAccount.dialogRegion.show(new UserAccount.EditNameView({model: this.model, editable: editable}));
+	    var view = new UserAccount.EditNameView({ model: this.model, editable: editable });
+	    view.render();
 	},
 
 	editEmail: function (editable) {
-		UserAccount.dialogRegion.show(new UserAccount.EditEmailView({ model: this.model, editable: editable }));
+		var view = new UserAccount.EditEmailView({ model: this.model, editable: editable });
+		view.render();
 	},
 
 	changePassword: function () {
-		UserAccount.dialogRegion.show(new UserAccount.ChangePasswordView({ model: this.model }));
+		var view = new UserAccount.ChangePasswordView({ model: this.model });
+		view.render();
 	},
 	
 	events: {

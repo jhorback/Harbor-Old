@@ -20,6 +20,7 @@ $menu-border-color: rgba(#000, 0.3);
 		top: 0;
 		right: 0;
 		bottom: 0;
+		overflow: auto;
 
 		border-left: 1px solid $menu-border-color;
 		@include box-shadow-value(-1px 0 1px $menu-border-color);

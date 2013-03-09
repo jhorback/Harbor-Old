@@ -3,11 +3,9 @@
 options:
 	model - Page
 */
-PageEditor.EditView = Backbone.View.extend({
+PageEditor.EditView = Application.View.extend({
 	initialize: function () {
 		var view = this;
-		JstViewExtension.extend(this);
-		DisposeViewExtension.extend(this);
 
 		this.$el.delegate(".uic", "click", function () {
 			view.toggleCtrl($(this));
@@ -40,7 +38,7 @@ PageEditor.EditView = Backbone.View.extend({
 			self.addComponent(type);
 		});
 
-		this.track(new ModelBinder(this.model, this.$(".page-header")));
+		this.bindModelToView(this.model, this.$(".page-header"));
 		return this;
 	},
 
@@ -74,7 +72,6 @@ PageEditor.EditView = Backbone.View.extend({
 			type: type
 		});
 		view.render();
-		this.track(view);
 	},
 	
 	toggleCtrl: function (uic) {
@@ -118,6 +115,6 @@ PageEditor.EditView = Backbone.View.extend({
 		this.$(".page-aside").add(this.$(".page-content")).sortable("destroy");
 		this.selectedUICEl && this.hideCtrl(this.selectedUICEl);
 		this.currentUICMenu && this.currentUICMenu.dispose();
-		Session.ViewExtension.dispose.apply(this, arguments);
+		this.stopListening();
 	}
 });

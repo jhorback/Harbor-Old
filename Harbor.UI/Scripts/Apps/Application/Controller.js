@@ -39,7 +39,7 @@
  *     });
  *
  * View managmenet:
- *     Returning a view will allow the controller to manage the view lifetime.
+ *     If using routing, returning a view will allow the controller to manage the view lifetime.
  *     You can also return an object containing the view and additional instructions
  *     on how to handle the view lifetime:
  *         return {
@@ -62,15 +62,15 @@
  *     someController.start();
  *
  *     The start method can return a promise which will delay the router start until
- *     it is resolved.
+ *     it is resolved. Helpful in the case a wait is needed for an async action.
  *
  *     Any options passed into the start method are made available to the Controller/Application
  *     as an 'options' property.
  *
  * Clicking Links
- *     Controllers have a 'linkClickHandler' method that can be used for links.
+ *     Controllers have a 'handleLinkClick' method that can be used for links.
  *     events: {
- *         "click a": someController.linkClickHandler
+ *         "click a": someController.handleLinkClick
  *     }
  */
 (function () {

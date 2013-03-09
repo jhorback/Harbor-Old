@@ -27,9 +27,9 @@
  *		});
  *
  *	Shared event aggregation (all new Application objects will share the same 'events' channel):
- *	MyApp.events.on("event", fn);
- *	MyApp.events.trigger("event", arg1, arg2);
- *	MyApp.events.off("event", fn);
+ *	MyApp.events.on("object:event", fn);
+ *	MyApp.events.trigger("object:event", arg1, arg2);
+ *	MyApp.events.off("object:event", fn);
  *
  *	Application views and models that use all view and model extensions:
  * 	    var MyView = Application.View.extend({ ... });

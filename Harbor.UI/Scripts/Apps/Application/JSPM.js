@@ -40,9 +40,11 @@
 			pkgs = jspm.asArray(pkgs);
 				
 			_.each(pkgs, function (pkg) {
-				var promise = jspm.cache[pkg];
+				var dfd, promise = jspm.cache[pkg];
 				if (!promise) {
-					dfds.push(jspm.promisePackage(pkg));
+				    dfd = jspm.promisePackage(pkg);
+				    dfds.push(dfd);
+				    jspm.cache[pkg] = dfd;
 				}
 				dfds.push(promise);
 			});

@@ -101,8 +101,9 @@ $page-header-bottom: $frame-header-height + $page-header-height;
 
 @mixin page-body {
 	.page-body {
-		@include clearfix;
+		position: relative;
 		clear: left;
+		@include clearfix;
 	}
 	.page-aside {
 		position: relative;
