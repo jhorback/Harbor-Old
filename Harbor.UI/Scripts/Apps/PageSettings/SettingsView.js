@@ -37,9 +37,9 @@ PageSettings.SettingsView = Application.View.extend({
 	        transition: "none"
 	    });
 
-		//this.bindModelToView(this.model, this.$(".page-header"));
+		this.bindModelToView(this.model, this.$(".page-header"));
 		this.bindModelToView(this.model, this.$("#settings-visibility"));
-		//this.bindModelToView(this.model.template, this.$("#settings-layout"));
+		this.bindModelToView(this.model.template, this.$("#settings-layout"));
 
 		this.pagePreviewView = new PageSettings.PagePreviewView({
 			el: this.$("#settings-page-preview"),

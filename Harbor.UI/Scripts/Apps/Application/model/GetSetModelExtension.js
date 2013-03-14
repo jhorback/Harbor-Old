@@ -24,13 +24,14 @@
  *    });
  */
 (function () {
-	var extension = {
+    var GetSetModelExtension,
+        gsAppExt = {
 		get: function (name) {
 			var val,
 				getFn = this[name] && this[name].get,
 				currentValue = Backbone.Model.prototype.get.apply(this, arguments);
 			
-			if (_.isFunction(getFn) && getFn !== extension.get) {
+			if (_.isFunction(getFn) && getFn !== gsAppExt.get) {
 				val = getFn.call(this, currentValue);
 				if (val !== undefined) {
 					this.attributes[name] = val; // keep the attrs in sync - may not need?
@@ -43,6 +44,10 @@
 
 		set: function (name, value, options) {
 			var setFn, model = this;
+
+		    // set is called in model construction
+			// use this as a trigger to parse and handle bindings
+			GetSetModelExtension.setupBindings(this);
 
 			if (_.isObject(name)) {
 				options = arguments[1];
@@ -77,12 +82,22 @@
 	};
 
 
-	window.GetSetModelExtension = {
+	GetSetModelExtension = {
+
+	    setupBindings: function (instance) {
+	        if (instance._gsinit === true) {
+	            return;
+	        }
+	        GetSetModelExtension.parseBindings(instance);
+	        GetSetModelExtension.handleBindings(instance);
+	        instance._gsinit = true;
+	    },
 		
 		parseBindings: function (instance) {
 		    $.each(instance, function (name, value) {
-		        var toBind = _.isArray(value.bind) ? value.bind : [value.bind];
-				if (value && value.bind && _.isFunction(value.bind) === false) {
+		        var toBind;
+		        if (value && value.bind && _.isFunction(value.bind) === false) {
+                    toBind = _.isArray(value.bind) ? value.bind : [value.bind];
 					_.each(toBind, function (propName) {
 						instance._bindings[propName] = instance._bindings[propName] || [];
 						instance._bindings[propName].push(name);
@@ -97,7 +112,6 @@
 				if (prop) {
 					_.each(instance._bindings[prop], function (depPropName) {
 					    setTimeout(function () {
-					        debugger;
 							instance.set(depPropName, instance.get(depPropName));
 						}, 0); // yield - allow backbones this._changing flag to be reset.
 					});
@@ -105,22 +119,10 @@
 			});
 		},
 
-		extend: function (protoOrInstance) {
-			var extend = function (instance) {
-					GetSetModelExtension.parseBindings(instance);
-					GetSetModelExtension.handleBindings(instance);
-				};
-			
-			_.extend(protoOrInstance, { _bindings: {} }, extension);
-			if (protoOrInstance.attributes) { // this is an instance
-				extend(protoOrInstance);
-			} else {
-			    protoOrInstance._init = protoOrInstance.initialize;
-				protoOrInstance.initialize = function () {
-				    extend(this);
-				    this._init.apply(this, arguments);
-				};
-			}
+		extend: function (protoOrInstance) {			
+		    _.extend(protoOrInstance, { _bindings: {} }, gsAppExt);
 		}
 	};
+
+	window.GetSetModelExtension = GetSetModelExtension;
 } ());
