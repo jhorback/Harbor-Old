@@ -1,13 +1,20 @@
 ﻿
 PageSettings.PagePreviewView = Application.View.extend({
-	events: {
-		"click #settings-changethumb": "changeThumb",
-		"click img": "changeThumb",
-		"click #settings-removethumb": "removeThumb"
-	},
+    events: {
+        "click #settings-changethumb": "changeThumb",
+        "click img": "changeThumb",
+        "click #settings-removethumb": "removeThumb"
+    },
+
+    initialize: function () {
+        var page = this.model.get("page");
+        this.listenTo(page, "change:previewImage", function (change) {
+            this.render();            
+        });
+    },
 	
-	render: function () {
-		this.bindTemplate("PageSettings-PagePreview");
+    render: function () {
+		this.renderTemplate("PageSettings-PagePreview")(this.model.toJSON());
 	},
 	
 	changeThumb: function () {
@@ -19,15 +26,15 @@ PageSettings.PagePreviewView = Application.View.extend({
 			    PageSettings.events.trigger("modal:closed");
 			},
 			select: function (selectedFile) {
-				this.model.setPreviewImageID(selectedFile.get("id"));
-				AjaxRequest.handle(this.model.save());
+			    this.model.setPreviewImageID(selectedFile.get("id"));
+			    AjaxRequest.handle(this.model.save());
 			}
 		}, this);
 	},
 	
 	removeThumb: function () {
-		this.model.setPreviewImageID(null);
-		AjaxRequest.handle(this.model.save());
+	    this.model.setPreviewImageID(null);
+	    AjaxRequest.handle(this.model.save());
 	}
 });
 
@@ -48,8 +55,6 @@ PageSettings.PagePreviewModel = Application.Model.extend({
 	initialize: function () {
 		this.page = this.get("page");
 		
-		this.page.on("sync", this.refresh, this);
-
 		this.on("change:previewText", this.save, this);
 		this.on("change:autoPreview", this.save, this);		
 	},
@@ -67,7 +72,7 @@ PageSettings.PagePreviewModel = Application.Model.extend({
 				return null;
 			}
 			return previewImage.get("thumbUrl");
-		}		
+		}
 	},
 	
 	changeThumbButtonText: {

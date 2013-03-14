@@ -59,3 +59,18 @@ PageLoader.events.on("modal:closed", function () {
     PageLoader.regions.loader.showEl();
     PageLoader.regions.page.showEl();
 })
+
+
+// update the class names if the layout is updated
+PageLoader.events.on("layout:updated", function () {
+    var classNames = PageLoader.currentPage.getLayoutClassNames();
+    var el = PageLoader.regions.page.getEl();
+    el.find(".page-header").removeClass().addClass("page-header").addClass(classNames);
+    el.find(".page-body").removeClass().addClass("page-body").addClass(classNames);
+});
+
+
+PageLoader.events.on("page:updated", function () {
+    var el = PageLoader.regions.page.getEl();
+    el.find("[data-bind=title]").html(PageLoader.currentPage.get("title"));
+});

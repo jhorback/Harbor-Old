@@ -83,24 +83,6 @@ var PageEditor = new Application({
 });
 
 
-// update the class names if the layout is updated
-PageEditor.events.on("layout:updated", function () {
-	var classNames = PageEditor.currentPage.getLayoutClassNames();
-	var el = PageLoader.regions.page.getEl();
-	el.find(".page-header")	.removeClass().addClass("page-header").addClass(classNames);
-	el.find(".page-body").removeClass().addClass("page-body").addClass(classNames);
-});
-
-PageEditor.events.on("page:updated", function () {
-    var el = PageLoader.regions.page.getEl();
-    if (PageEditor.currentPage) {
-        el.find("[data-bind=title]").html(PageEditor.currentPage.get("title"));
-    } else {
-        console.warn("page:updated without a currentPage being set");
-    }
-});
-
-
 PageEditor.PageComponent = Backbone.Model.extend({
 	urlRoot: Session.url("api/pagecomponents"),
 	idAttribute: "key",

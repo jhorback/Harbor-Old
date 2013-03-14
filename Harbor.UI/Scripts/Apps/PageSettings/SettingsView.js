@@ -2,6 +2,7 @@
 PageSettings.SettingsView = Application.View.extend({
 	
     pagePreviewView: null,
+    pagePreviewModel: null,
     
     menu: null,
 
@@ -20,6 +21,8 @@ PageSettings.SettingsView = Application.View.extend({
 		this.listenTo(PageSettings.events, "modal:closed", function () {
 		    this.render();
 		});
+
+		this.pagePreviewModel = new PageSettings.PagePreviewModel({ page: this.model });
 	},
 	
 	events: {
@@ -40,10 +43,13 @@ PageSettings.SettingsView = Application.View.extend({
 		this.bindModelToView(this.model, this.$(".page-header"));
 		this.bindModelToView(this.model, this.$("#settings-visibility"));
 		this.bindModelToView(this.model.template, this.$("#settings-layout"));
-
+		
+		if (this.pagePreviewView) {
+		    this.pagePreviewView.close();
+		}
 		this.pagePreviewView = new PageSettings.PagePreviewView({
-			el: this.$("#settings-page-preview"),
-			model: new PageSettings.PagePreviewModel({ page: this.model })
+		    el: this.$("#settings-page-preview"),
+		    model: this.pagePreviewModel
 		});
 		this.pagePreviewView.render();
 		return this;

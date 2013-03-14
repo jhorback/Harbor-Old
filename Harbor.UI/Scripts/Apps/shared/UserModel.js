@@ -28,10 +28,7 @@
 		return Backbone.sync(method, model, options);
     },
 	
-	initialize: function () {
-		//GetSetModelExtension.extend(this);
-		//ValidationModelExtension.extend(this);
-	},
+	initialize: function () { },
 
 	validate: function (onSave) {
 		var pw, cpw, errors;
