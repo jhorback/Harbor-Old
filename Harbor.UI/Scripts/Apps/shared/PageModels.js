@@ -16,7 +16,7 @@ var PageModels = {
 	}
 };
 
-
+debugger;
 PageModels.Page = Application.Model.extend({
 	urlRoot: Application.url("api/pages"),
 	
@@ -113,7 +113,7 @@ PageModels.Page = Application.Model.extend({
 				"Only you can see this page.";
 		},
 		
-		bind: "published"
+		bind: ["published"]
 	},
 	
 	thumbUrl: {
@@ -219,7 +219,7 @@ PageModels.Page = Application.Model.extend({
 	}
 });
 
-
+debugger;
 PageModels.Pages = Backbone.Collection.extend({
 	model: PageModels.Page,
 	url: Session.url("api/pages"),

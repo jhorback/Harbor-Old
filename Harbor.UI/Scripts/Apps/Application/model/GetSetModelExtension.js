@@ -80,10 +80,10 @@
 	window.GetSetModelExtension = {
 		
 		parseBindings: function (instance) {
-			
-			$.each(instance, function (name, value) {
+		    $.each(instance, function (name, value) {
+		        var toBind = _.isArray(value.bind) ? value.bind : [value.bind];
 				if (value && value.bind && _.isFunction(value.bind) === false) {
-					_.each(_.toArray(value.bind), function (propName) {
+					_.each(toBind, function (propName) {
 						instance._bindings[propName] = instance._bindings[propName] || [];
 						instance._bindings[propName].push(name);
 					});
@@ -96,7 +96,8 @@
 				var prop = change && change.split(":")[1];
 				if (prop) {
 					_.each(instance._bindings[prop], function (depPropName) {
-						setTimeout(function () {
+					    setTimeout(function () {
+					        debugger;
 							instance.set(depPropName, instance.get(depPropName));
 						}, 0); // yield - allow backbones this._changing flag to be reset.
 					});
@@ -105,8 +106,7 @@
 		},
 
 		extend: function (protoOrInstance) {
-			var initProto,
-			    extend = function (instance) {
+			var extend = function (instance) {
 					GetSetModelExtension.parseBindings(instance);
 					GetSetModelExtension.handleBindings(instance);
 				};
@@ -115,10 +115,10 @@
 			if (protoOrInstance.attributes) { // this is an instance
 				extend(protoOrInstance);
 			} else {
-				initProto = protoOrInstance.initialize;
+			    protoOrInstance._init = protoOrInstance.initialize;
 				protoOrInstance.initialize = function () {
-					extend(this);
-					initProto.apply(this, arguments);
+				    extend(this);
+				    this._init.apply(this, arguments);
 				};
 			}
 		}

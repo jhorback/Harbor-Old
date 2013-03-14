@@ -39,16 +39,22 @@ namespace Harbor.Data.Repositories
 		}
 
 		//return context.Pages.Where(d => d.Enabled == true).AsQueryable();
-		public IQueryable<Page> Query()
+		public IQueryable<Page> Query(IncludePageData include)
 		{
 			context.Configuration.ProxyCreationEnabled = false;
-			var pages =  context.Pages
-				.Include("Properties")
-				.Include("PageRoles")
-				.Include("PreviewImage")
-				.AsQueryable();
-			return pages;
+			var pages =  context.Pages.Include("Properties");
+			if (include.HasFlag(IncludePageData.Roles))
+				pages = pages.Include("PageRoles");
+			if (include.HasFlag(IncludePageData.PreviewImage))
+				pages = pages.Include("PreviewImage");
+			return pages.AsQueryable();
 		}
+
+		public IQueryable<Page> Query()
+		{
+			return Query(IncludePageData.All);
+		}
+
 
 		public Page FindById(int id, bool readOnly)
 		{

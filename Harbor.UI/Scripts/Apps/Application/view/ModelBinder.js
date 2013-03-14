@@ -191,10 +191,6 @@
 					});
 				}
 
-				if (el.is(":input") && changeEvent !== "change") {
-					el.bind("change.modelbinder", viewToModelProxy);
-				}
-
 				// set the initial value
 				this.updateEl(el, name, this.model[config.modelGet](name));
 
@@ -205,14 +201,11 @@
 		},
 
 		_getChangeEvent: function (el, type) {
-			var event = config.types[type] && config.types[type].event && config.types[type].event,
+		    var configEv = config.types[type],
+		        event = (configEv && configEv.event) || "change",
 				attrEv = el.attr("data-bind-event"); // event override in markup
-			
-			if (attrEv === "change") {
-				return null;
-			}
-			
-			return _.toArray(attrEv || event);
+		    event = attrEv || event;
+		    return _.isArray(event) ? event : [event];
 		},
 
 		_initAttrBindings: function () {

@@ -858,7 +858,6 @@
     <Content Include="Views\PageEditor\_AddComponent.cshtml" />
     <Content Include="Views\Page\PageEditorTemplates.cshtml" />
     <Content Include="Views\PageEditor\_ChangeLayout.cshtml" />
-    <Content Include="Views\PageSettings\_ChangeVisibility.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Harbor.Data\Harbor.Data.csproj">

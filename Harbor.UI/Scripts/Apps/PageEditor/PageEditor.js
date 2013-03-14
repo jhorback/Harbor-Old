@@ -92,8 +92,12 @@ PageEditor.events.on("layout:updated", function () {
 });
 
 PageEditor.events.on("page:updated", function () {
-	var el = PageLoader.regions.page.getEl();
-	el.find("[data-bind=title]").html(PageEditor.currentPage.get("title"));
+    var el = PageLoader.regions.page.getEl();
+    if (PageEditor.currentPage) {
+        el.find("[data-bind=title]").html(PageEditor.currentPage.get("title"));
+    } else {
+        console.warn("page:updated without a currentPage being set");
+    }
 });
 
 
