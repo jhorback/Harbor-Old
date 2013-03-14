@@ -15,6 +15,9 @@
 	{
 		layoutClassNames = "page readable";
 	}
+    if (noAside) {
+        layoutClassNames += " noaside";
+    }
 }
 @section scripts {
 	@if (ViewBag.HasWritePermissions)
@@ -38,18 +41,15 @@
 			</div>
 		}
 	</header>
-	<div class="page-body">
-		@if (noAside == false)
-		{
-			<aside class="page-aside">
-				@foreach (var item in Model.Template.Aside)
-				{
-					<div class="uic" id="@item.uicid" data-type="@item.key">
-						@Html.PageComponent(Model.PageID, item.key, item.uicid)
-					</div>	
-				}
-			</aside>
-		}
+	<div class="page-body">		
+		<aside class="page-aside">
+			@foreach (var item in Model.Template.Aside)
+			{
+				<div class="uic" id="@item.uicid" data-type="@item.key">
+					@Html.PageComponent(Model.PageID, item.key, item.uicid)
+				</div>	
+			}
+		</aside>
 		<div class="page-content">
 			@foreach (var item in Model.Template.Content)
 			{

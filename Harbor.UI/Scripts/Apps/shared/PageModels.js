@@ -137,7 +137,9 @@ PageModels.Page = Application.Model.extend({
 			classNames.push("readable");
 		}
 		if (!this.template.get("layoutHasNoSidebar")) {
-			classNames.push("aside");
+		    classNames.push("aside");
+		} else {
+		    classNames.push("noaside");
 		}
 		return classNames.join(" ");
 	},
@@ -282,6 +284,16 @@ PageModels.Template = Backbone.Model.extend({
 		},
 		
 		bind: "layoutIsReadable"
+	},
+
+	layoutIsCentered: {
+	    get: function (value) {
+	        if (this.get("layoutIsReadable") === false) {
+	            return false;
+	        }
+	        return value;
+	    },
+        bind: "layoutIsReadable"
 	},
 
 	getNextUICID: function () {

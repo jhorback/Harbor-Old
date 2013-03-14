@@ -77,3 +77,8 @@
 .centered .page-content:first-child {
   width: 98%; }
 
+.noaside .page-aside {
+  display: none; }
+.noaside .page-content {
+  width: 98%; }
+

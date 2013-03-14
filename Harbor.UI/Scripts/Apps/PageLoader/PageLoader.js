@@ -63,10 +63,10 @@ PageLoader.events.on("modal:closed", function () {
 
 // update the class names if the layout is updated
 PageLoader.events.on("layout:updated", function () {
-    var classNames = PageLoader.currentPage.getLayoutClassNames();
-    var el = PageLoader.regions.page.getEl();
-    el.find(".page-header").removeClass().addClass("page-header").addClass(classNames);
-    el.find(".page-body").removeClass().addClass("page-body").addClass(classNames);
+    var classNames = PageLoader.currentPage.getLayoutClassNames(),
+        el = PageLoader.regions.page.getEl(),
+        aside =  el.find(".page-aside");
+    el.removeClass().addClass("page").addClass(classNames);
 });
 
 

@@ -146,6 +146,11 @@ $page-header-bottom: $frame-header-height + $page-header-height;
 			width: 98%;
 		}
 	}
+
+	.noaside {
+		.page-aside { display: none; }
+		.page-content { width: 98% }
+	}
 }
 
 
