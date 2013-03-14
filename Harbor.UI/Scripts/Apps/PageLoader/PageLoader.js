@@ -58,7 +58,7 @@ PageLoader.events.on("modal:opened", function () {
 PageLoader.events.on("modal:closed", function () {
     PageLoader.regions.loader.showEl();
     PageLoader.regions.page.showEl();
-})
+});
 
 
 // update the class names if the layout is updated
@@ -72,5 +72,5 @@ PageLoader.events.on("layout:updated", function () {
 
 PageLoader.events.on("page:updated", function () {
     var el = PageLoader.regions.page.getEl();
-    el.find("[data-bind=title]").html(PageLoader.currentPage.get("title"));
+    el.find(".page-header h1").html(PageLoader.currentPage.get("title"));
 });

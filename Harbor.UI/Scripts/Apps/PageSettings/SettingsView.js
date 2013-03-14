@@ -18,9 +18,7 @@ PageSettings.SettingsView = Application.View.extend({
 		this.listenTo(PageSettings.events, "modal:opened", function () {
 		    this.menu && this.menu.close();
 		});
-		this.listenTo(PageSettings.events, "modal:closed", function () {
-		    this.render();
-		});
+		this.listenTo(PageSettings.events, "modal:closed", this.render);
 
 		this.pagePreviewModel = new PageSettings.PagePreviewModel({ page: this.model });
 	},
