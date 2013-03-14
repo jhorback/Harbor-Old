@@ -108,19 +108,19 @@
 		
 		handleBindings: function (instance) {
 			instance.on("all", function (change) {
-				var prop = change && change.split(":")[1];
-				if (prop) {
-					_.each(instance._bindings[prop], function (depPropName) {
-					    setTimeout(function () {
-							instance.set(depPropName, instance.get(depPropName));
-						}, 0); // yield - allow backbones this._changing flag to be reset.
-					});
+			    var prop = change && change.split(":")[1];
+			    if (prop && this.attributes[prop] !== undefined) {
+					_.each(this._bindings[prop], function (depPropName) {
+					    this.set(depPropName, this.get(depPropName));
+					}, this);
 				}
 			});
 		},
 
-		extend: function (protoOrInstance) {			
-		    _.extend(protoOrInstance, { _bindings: {} }, gsAppExt);
+		extend: function (protoOrInstance) {
+		    if (protoOrInstance._gsinit !== true) {
+		        _.extend(protoOrInstance, { _bindings: {} }, gsAppExt);
+		    }
 		}
 	};
 

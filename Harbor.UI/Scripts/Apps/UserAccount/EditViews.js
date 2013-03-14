@@ -1,15 +1,13 @@
 ﻿
-UserAccount.BaseEditView = Backbone.View.extend({
-	initialize: function () {
-		DisposeViewExtension.extend(this);
-		JstViewExtension.extend(this);
-		BackupModelExtension.extend(this.model);
-		FormErrorHandler.extend(this, this.model);
+UserAccount.BaseEditView = Application.View.extend({
 
-		_.bindAll(this, "saveModel", "dispose");
-		this.$el.bind("close", this.dispose);
+    dialog: null,
+
+    initialize: function () {
+        BackupModelExtension.extend(this.model); // jch! - remove when UserModel is converted
+		_.bindAll(this, "saveModel", "close");
+		this.$el.bind("close", this.close);
 		this.model.store();
-		this.render();
 	},
 	
 	events: {
@@ -20,20 +18,16 @@ UserAccount.BaseEditView = Backbone.View.extend({
 	},
 	
 	render: function () {
-		var $el = this.$el,
-			model = this.model,
-			editable = this.options.editable;
-
-		this.template(this.options.templateName, this.$el)(model);
+		this.template(this.options.templateName, this.$el)(this.model);
 		
-		this.track(new Dialog($el, {
+		this.dialog = new Dialog(this.$el, {
 			title: this.options.dialogTitle,
 			modal: true,
-			editorFor: editable,
+			editorFor: this.options.editable,
 			transition: "fade"
-		}));
+		});
 		
-		this.track(new ModelBinder(model, $el));
+		this.bindModelToView();
 	},
 	
 	saveModel: function () {
@@ -45,8 +39,8 @@ UserAccount.BaseEditView = Backbone.View.extend({
 			success: function () {
 				this.options.onSuccess && this.options.onSuccess.apply(this, arguments);
 				this.model.store();
-				// this.views("dialog").close(_.bind(this.dispose, this));
-				this.dispose();
+				this.dialog && this.dialog.close();
+				this.close();
 			},
 			clientError: function (error) {
 				this.displayErrors(error.errors);
@@ -54,9 +48,8 @@ UserAccount.BaseEditView = Backbone.View.extend({
 		}, this);
 	},
 
-	dispose: function () {
+	onClose: function () {
 		this.model.restore();
-		DisposeViewExtension.dispose.apply(this);
 	}
 });
 

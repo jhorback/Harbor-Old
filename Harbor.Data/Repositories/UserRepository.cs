@@ -96,6 +96,7 @@ namespace Harbor.Data.Repositories
 			entity.DeletedUserSettings = new List<UserSetting>();
 
 			context.SaveChanges();
+			clearCachedUser(entity.UserName);
 			return entity;
 		}
 
@@ -125,6 +126,7 @@ namespace Harbor.Data.Repositories
 			}
 			context.Users.Remove(entity);
 			context.SaveChanges();
+			clearCachedUser(entity.UserName);
 		}
 		#endregion
 

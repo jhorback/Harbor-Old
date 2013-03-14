@@ -1,4 +1,4 @@
-﻿var UserModel = Backbone.Model.extend({
+﻿var UserModel = Application.Model.extend({
 	urlRoot: Session.url("api/users"),
 	idAttribute: "userName",
 	defaults: {
@@ -29,8 +29,8 @@
     },
 	
 	initialize: function () {
-		GetSetModelExtension.extend(this);
-		ValidationModelExtension.extend(this);
+		//GetSetModelExtension.extend(this);
+		//ValidationModelExtension.extend(this);
 	},
 
 	validate: function (onSave) {

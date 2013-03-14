@@ -283,16 +283,14 @@
 
 			_.each(model.changed, function (value, key) {
 				name = key;
-				return false;	
-			});
-
-			els = this.bindings[name];
-			if (els) {
-				newVal = model.get(name);
-				$.each(els, $.proxy(function (index, el) {
-					this.updateEl(el, name, newVal);
-				}, this));
-			}
+			    els = this.bindings[name];
+			    if (els) {
+				    newVal = model.get(name);
+				    $.each(els, $.proxy(function (index, el) {
+					    this.updateEl(el, name, newVal);
+				    }, this));
+			    }
+			}, this);
 		},
 
 		updateEl: function (el, name, value) {

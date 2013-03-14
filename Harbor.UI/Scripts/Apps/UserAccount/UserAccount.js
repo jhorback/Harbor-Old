@@ -2,19 +2,20 @@
 	start: function () {
 		var username = Session.currentUser.get("username");
 		var user = new UserModel({ userName: username });
+		
 		user.fetch().then(function () {
 			var mainView = new UserAccount.MainView({
 				el: $(".page"),
 				model: user
 			});
+			mainView.render();
 		});
 	}
 };
 
 UserAccount.MainView = Application.View.extend({
 	initialize: function () {
-		_.bindAll(this, "editName", "editEmail", "changePassword");
-		this.render();
+		_.bindAll(this, "editName", "editEmail", "changePassword");		
 	},
 
 	render: function () {
