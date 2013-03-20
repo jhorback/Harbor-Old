@@ -1,24 +1,31 @@
 ﻿var TextComponent = PageComponent.extend({
 
+    modelType: function () {
+        return TextComponent.TextModel;
+    },
+
+    initialize: function () {
+        this.view = new TextComponent.View({
+            el: this.$el,
+            model: this.model
+        });
+    },
+
     create: function () {
         this.open();
     },
 
     open: function () {
-        this.view = new TextComponent.View({
-            el: this.$el,
-            model: this.constructModel(TextComponent.TextModel)
-        });
-
         this.view.render();
     },
 
     close: function () {
-        this.view && this.view.close();
+        this.view.close();
     }
 });
 
 TextComponent.View = Application.View.extend({
+   
     render: function () {
         var buttons = [
                "formatting", "|",
@@ -30,7 +37,6 @@ TextComponent.View = Application.View.extend({
                "html"
             ],
             richTextEl;
-
 
         this.renderTemplate("Comps-Text")(this.model.toJSON());
 
@@ -51,8 +57,11 @@ TextComponent.View = Application.View.extend({
 
         if (redactor) {
             html = ctr.getCode();
+            if ($.trim($(html).text()) === "") {
+                html = "";
+            }
             this.model.set("text", html);
-            this.model.page.updatePagePreviewText(this.uicid, html);
+            this.model.page.updatePagePreviewText(this.model.get("uicid"), html);
             save = this.model.save();
             AjaxRequest.handle(save);
         }
@@ -68,15 +77,6 @@ TextComponent.TextModel = Application.Model.extend({
     },
     defaults: {
         text: null
-    },
-    text: {
-        set: function (value) {
-            // jch! - here - and also trying to get the preview to work again.
-            if ($.trim(value) === "") {
-                this.set("text", "[Add Text]");
-            }
-            return value;
-        }
     }
 });
 

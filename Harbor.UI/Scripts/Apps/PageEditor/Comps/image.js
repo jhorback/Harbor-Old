@@ -2,22 +2,27 @@
 // type, $el, uicid, page
 var ImageComponent = PageComponent.extend({
 	
+    modelType: function () {
+        return ImageComponent.ImageModel;
+    },
+
+    initialize: function () {
+        this.view = new ImageComponent.View({
+            el: this.$el,
+            model: this.model,
+            uicid: this.uicid
+        });
+    },
+
 	create: function () {
-		this.open().openFileSelector();
+	    this.open();
+	    this.view.openFileSelector();
 	},
 	
 	open: function () {
-		this.view = new ImageComponent.View({
-			el: this.$el,
-			model: this.constructModel(ImageComponent.ImageModel),
-			uicid: this.uicid
-		});
-		
 		JSPM.install("FileSelector", function () {
 			this.view.render();
 		}, this);
-		
-		return this.view;
 	},
 	
 	close: function () {
@@ -25,15 +30,6 @@ var ImageComponent = PageComponent.extend({
 	}
 });
 
-
-/*
-stor imgSrc as field? 
-file/id.ext?res=high max=100
-
-// so want to store: fileID, fileExt, max, name - all to build the url
-
- // want live binding for imgSrc and maxClass
-*/
 
 ImageComponent.ImageModel = Application.Model.extend({
 	pageProperties: {

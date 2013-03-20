@@ -4,34 +4,36 @@ var PageComponent = function (options) {
 	this.$el = options.$el;
 	this.uicid = options.uicid;
 	this.page = options.page;
-	
+    
+	if (this.modelType) {
+	    if (_.isFunction(this.modelType)) {
+	        this.modelType = this.modelType();
+	    }
+	    // Construct the model using the 'defaults' and add the uicid as properties.
+	    // Sets up change events that propagate back to the page.
+        this.model = new this.modelType({ uicid: this.uicid });
+        this.model.save = _.bind(this.save, this);
+        _.each(this.model.pageProperties, function (defaultValue, attrName) {
+            var attrValue = this.getProperty(attrName);
+            this.model.set(attrName, attrValue === null ? defaultValue : attrValue);
+            console.warn("SETUP:", this.model.cid, this.uicid);
+            this.model.on("change:" + attrName, function (model, value) {
+                console.warn("CHANGE:", model.cid);
+                console.log(model.toJSON(), this.uicid, this.model.toJSON());
+                this.setProperty(attrName, value);
+            }, this);
+        }, this);
+        this.model.page = this.page;
+    }
 	this.initialize();
 };
 
 PageComponent.extend = Backbone.Model.extend;
 
 _.extend(PageComponent.prototype, {
-	constructModel: function (modelType) {
-		/// <summary>
-		/// Construct the model using the 'defaults' and add the uicid as properties.
-		/// Sets up change events that propagate back to the page.
-		/// </summary>
-
-		var model = new modelType({ uicid: this.uicid });
-		model.save = _.bind(this.save, this);
-		_.each(model.pageProperties, function (defaultValue, attrName) {
-			var attrValue = this.getProperty(attrName);
-			model.set(attrName, attrValue === null ? defaultValue : attrValue );
-			model.on("change:" + attrName, function (model, value) {
-				this.setProperty(attrName, value);
-			}, this);
-		
-		}, this);
-		model.page = this.page;
-		return model;
-	},
-	
+    
 	setProperty: function (name, value) {
+	    console.log(this.uicid + "-" + name, value, this.pcid); //jch! - testing - remove
 		this.page.setProperty(this.uicid + "-" + name, value);
 	},
 	
