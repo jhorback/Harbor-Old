@@ -43,24 +43,29 @@
 		},
 
 		set: function (name, value, options) {
-			var setFn, model = this;
+		    var model = this,
+                multiProps,
+                getValueToSet = _.bind(function (name, value) {
+                    var  setFn = $.isPlainObject(this[name]) && this[name].set;
+                    value = _.isFunction(setFn) ? setFn.call(this, value, options) : value;
+                    return value;
+                }, this);
 
 		    // set is called in model construction
 			// use this as a trigger to parse and handle bindings
-			GetSetModelExtension.setupBindings(this);
+			GetSetModelExtension.setupInstance(this);
 
 			if (_.isObject(name)) {
-				options = arguments[1];
-				_.each(arguments[0], function (value, name) {
-					model.set(name, value, options);
-				});
+			    multiProps = {};
+			    options = arguments[1];
+			    _.each(arguments[0], function (value, name) {
+			        multiProps[name] = getValueToSet(name, value);
+			    }, this);
+			    Backbone.Model.prototype.set.call(this, multiProps, options);
 				return this;
 			}
-
-
-			setFn = $.isPlainObject(this[name]) && this[name].set;
-			value = _.isFunction(setFn) ? setFn.call(this, value, options) : value;
-			Backbone.Model.prototype.set.apply(this, arguments);
+			
+			Backbone.Model.prototype.set.call(this, name, getValueToSet(name, value), options);
 			return this;
 		},
 		
@@ -84,10 +89,11 @@
 
 	GetSetModelExtension = {
 
-	    setupBindings: function (instance) {
+	    setupInstance: function (instance) {
 	        if (instance._gsinit === true) {
 	            return;
 	        }
+	        instance._bindings = {};
 	        GetSetModelExtension.parseBindings(instance);
 	        GetSetModelExtension.handleBindings(instance);
 	        instance._gsinit = true;
@@ -119,7 +125,7 @@
 
 		extend: function (protoOrInstance) {
 		    if (protoOrInstance._gsinit !== true) {
-		        _.extend(protoOrInstance, { _bindings: {} }, gsAppExt);
+		        _.extend(protoOrInstance, gsAppExt);
 		    }
 		}
 	};

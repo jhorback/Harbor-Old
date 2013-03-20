@@ -25,7 +25,7 @@
 });
 
 TextComponent.View = Application.View.extend({
-   
+
     render: function () {
         var buttons = [
                "formatting", "|",

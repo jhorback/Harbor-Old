@@ -107,8 +107,10 @@
 			return errors;
 		},
 
-		extension = {
-			getErrors: function () {
+		valAppExt = {
+		    getErrors: function () {
+		        ValidationModelExtension.setupInstance(this);
+
 				var model = this,
 					errors = null,
 					jsonObj = model.toJSON(),
@@ -129,31 +131,44 @@
 				}
 				return errors;
 			}
-		};
+		},
 
-	window.ValidationModelExtension = {
-		extend: function (instance) {
-			instance = _.extend(instance, { _fieldErrors: {} }, extension);
-			instance.on("change", _.bind(onModelChange, instance));
-		},
+        ValidationModelExtension = {
+	        setupInstance: function (instance) {
+	            if (instance._valinit === true) {
+	                return;
+	            }
+	            instance._fieldErrors = {};
+	            instance.on("change", _.bind(onModelChange, instance));
+	            instance._valinit = true;
+	        },
+
+	        extend: function (protoOrInstance) {
+	            if (protoOrInstance._valinit !== true) {
+	                _.extend(protoOrInstance, valAppExt);
+	            }
+		    },
 		
-		isNullOrEmpty: function (value) {
-			return !value || !$.trim(value);
-		},
+		    isNullOrEmpty: function (value) {
+			    return !value || !$.trim(value);
+		    },
 		
-		validators: {
-			required: function (value, args) {
-				var msg = (args && args.message) || "Required.";
-				return ValidationModelExtension.isNullOrEmpty(value) ? msg : undefined;
-			},
-			email: function (value) {
-				var emailRegex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA;-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-				return (!ValidationModelExtension.isNullOrEmpty(value) && _.isString(value) && !value.match(emailRegex)) ?
-					"Invalid email." : undefined;
-			},
-			custom: function (value, validator) {
-				return validator(value);
-			}
-		}
-	};
+		    validators: {
+			    required: function (value, args) {
+				    var msg = (args && args.message) || "Required.";
+				    return ValidationModelExtension.isNullOrEmpty(value) ? msg : undefined;
+			    },
+			    email: function (value) {
+				    var emailRegex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA;-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+				    return (!ValidationModelExtension.isNullOrEmpty(value) && _.isString(value) && !value.match(emailRegex)) ?
+					    "Invalid email." : undefined;
+			    },
+			    custom: function (value, validator) {
+				    return validator(value);
+			    }
+		    }
+        };
+	
+	window.ValidationModelExtension = ValidationModelExtension;
+           
 })();

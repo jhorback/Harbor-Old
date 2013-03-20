@@ -16,6 +16,7 @@
 				this.memento = _.extend({}, this.attributes);
 				return this.memento;
 			},
+
 			restore: function (name) {
 				if (this.memento) {
 					if (name) {
@@ -30,7 +31,7 @@
 
 	window.BackupModelExtension = {
 		extend: function (instance) {
-			_.extend(instance, { }, extension);
+			_.extend(instance, extension);
 		}
 	};
 })();

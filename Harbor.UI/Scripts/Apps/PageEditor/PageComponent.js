@@ -1,44 +1,57 @@
-﻿
+﻿/*
+ * modelType - function that returns a component model
+ *     which will be converted into a proxy to the page model.
+ *     this.model will have:
+ *         a page property
+ *         a save method which calls save method on the page
+ *         and changes will be bound to update page properties according to the uicid. 
+ */
 var PageComponent = function (options) {
+	var pageProps, modelProps;
+
 	this.type= options.type;
 	this.$el = options.$el;
 	this.uicid = options.uicid;
 	this.page = options.page;
-    
-	if (this.modelType) {
-	    if (_.isFunction(this.modelType)) {
-	        this.modelType = this.modelType();
-	    }
-	    // Construct the model using the 'defaults' and add the uicid as properties.
-	    // Sets up change events that propagate back to the page.
-        this.model = new this.modelType({ uicid: this.uicid });
-        this.model.save = _.bind(this.save, this);
-        _.each(this.model.pageProperties, function (defaultValue, attrName) {
-            var attrValue = this.getProperty(attrName);
-            this.model.set(attrName, attrValue === null ? defaultValue : attrValue);
-            console.warn("SETUP:", this.model.cid, this.uicid);
-            this.model.on("change:" + attrName, function (model, value) {
-                console.warn("CHANGE:", model.cid);
-                console.log(model.toJSON(), this.uicid, this.model.toJSON());
-                this.setProperty(attrName, value);
-            }, this);
-        }, this);
-        this.model.page = this.page;
-    }
+	
+	this.initModel();
 	this.initialize();
 };
 
 PageComponent.extend = Backbone.Model.extend;
 
+
 _.extend(PageComponent.prototype, {
+
+	initModel: function () {
+		if (this.modelType) {
+			this.modelType = this.modelType();
+
+			pageProps = this.modelType.prototype.pageProperties
+			modelProps = { id: this.uicid };
+			_.each(pageProps, function (defaultValue, attrName) {
+				var attrValue = this.getProperty(attrName);
+				modelProps[attrName] = attrValue === null ? defaultValue : attrValue;
+			}, this);
+
+			this.model = new this.modelType(modelProps);
+			this.model.page = this.page;
+			this.model.save = _.bind(this.save, this);
+			this.model.on("change", function (model) {
+				_.each(model.changed, function (value, name) {
+					this.setProperty(name, value);
+				}, this);
+			}, this);
+		}
+	},
     
-	setProperty: function (name, value) {
-	    console.log(this.uicid + "-" + name, value, this.pcid); //jch! - testing - remove
+	setProperty: function (name, value) {	    
 		this.page.setProperty(this.uicid + "-" + name, value);
 	},
 	
 	getProperty: function (name) {
-		return this.page.getProperty(this.uicid + "-" + name);
+	    var value = this.page.getProperty(this.uicid + "-" + name);
+	    return value;
 	},
 	
 	save: function () {

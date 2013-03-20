@@ -26,11 +26,11 @@ LinksComponent.prototype = {
 	},
 
 	open: function () {
-		console.log("links is open for edit: ", this.uicid);
+		//console.log("links is open for edit: ", this.uicid);
 	},
 
 	close: function () {
-		console.log("links is closed for edit: ", this.uicid);
+		//console.log("links is closed for edit: ", this.uicid);
 	}
 };
 
