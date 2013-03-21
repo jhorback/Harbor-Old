@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 using Harbor.Domain.Pages;
+using Harbor.Domain.Pages.PageComponents;
 using Harbor.UI.Models;
 using Harbor.UI.Models.Components;
 
@@ -18,21 +19,15 @@ namespace Harbor.UI.Controllers
 			return PartialView("Text", new TextDto { text = text.GetProperty("text") });
 		}
 
-		public PartialViewResult Image(PageComponent image)
+		public PartialViewResult Image(Page page, string uicid)
 		{
-			if (image.HasProperty("fileID") == false)
+			var image = page.GetComponent<Image>(uicid);
+			if (image.IsNew())
 			{
 				return PartialView("Image-None");
 			}
 
-			var fileID = image.GetProperty("fileID");
-			var max = Convert.ToInt32(image.GetProperty("max"));
-			if (max < 50) max = 500;
-			var name = image.GetProperty("name");
-			var ext = image.GetProperty("ext");
-			var imageSrc = FileUrls.GetUrl(fileID, name, ext, max: max);
-			var model = new ImageDto { imgSrc = imageSrc, maxClass = "max-" + max };
-			
+			var model = (ImageDto)image;			
 			return PartialView("Image", model);      	
 		}
 

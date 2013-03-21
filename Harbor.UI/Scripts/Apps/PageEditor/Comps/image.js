@@ -34,13 +34,12 @@ var ImageComponent = PageComponent.extend({
 ImageComponent.ImageModel = Application.Model.extend({
 	pageProperties: {
 		fileID: null,
-		ext: null,
+		ext: null, // jch! can remove ext and name after Page/File Relation is worked out
 		name: null,
-		max: 500
+		res: "low" // can be low or high
 	},
 	defaults: {
-		imgSrc: null,
-		maxClass: null
+		imgSrc: null
 	},
 	hasImage: function () {
 		return this.get("fileID") ? true : false;
@@ -49,12 +48,7 @@ ImageComponent.ImageModel = Application.Model.extend({
 		get: function (value) {
 			return Application.url("file/" +
 				this.get("fileID") + "/" + this.get("name") + "." +
-				this.get("ext") + "?max=" + this.get("max"));
-		}
-	},
-	maxClass: {
-		get: function (value) {
-			return "max-" + (this.get("max") || 500);
+				this.get("ext") + "?res=" + this.get("res"));
 		}
 	}
 });

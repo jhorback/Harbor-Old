@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Caching;
 using Harbor.Domain;
 using Harbor.Domain.App;
 
@@ -33,9 +34,10 @@ namespace Harbor.Data.Repositories
 		#region IRepository
 		public IEnumerable<AppSetting> FindAll(Func<AppSetting, bool> filter = null)
 		{
+			var settings = getCachedSettings();
 			return filter == null ?
-				context.AppSettings.ToList() :
-				context.AppSettings.Where(filter).ToList();
+				settings.ToList() :
+				settings.Where(filter).ToList();
 		}
 
 		public IQueryable<AppSetting> Query()
@@ -62,6 +64,7 @@ namespace Harbor.Data.Repositories
 
 			entity = context.AppSettings.Add(entity);
 			context.SaveChanges();
+			clearCache();
 			return entity;
 		}
 
@@ -76,6 +79,7 @@ namespace Harbor.Data.Repositories
 			}
 
 			context.SaveChanges();
+			clearCache();
 			return entity;
 		}
 
@@ -87,6 +91,35 @@ namespace Harbor.Data.Repositories
 			}
 			context.AppSettings.Remove(entity);
 			context.SaveChanges();
+			clearCache();
+		}
+		#endregion
+
+		#region private
+		string cacheKey = "Harbor.Data.Repositories.AppSettingRepository.";
+
+		void clearCache()
+		{
+			MemoryCache.Default.Remove(cacheKey);
+		}
+
+		IEnumerable<AppSetting> getCachedSettings()
+		{
+			var settings = MemoryCache.Default.Get(cacheKey) as IEnumerable<AppSetting>;
+			if (settings == null)
+			{
+				settings = findAllSettings();
+				if (settings != null)
+				{
+					MemoryCache.Default.Set(cacheKey, settings, DateTime.Now.AddSeconds(10));
+				}
+			}
+			return settings;
+		}
+
+		IEnumerable<AppSetting> findAllSettings()
+		{
+			return context.AppSettings.ToList();
 		}
 		#endregion
 	}

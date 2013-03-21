@@ -17,6 +17,7 @@ namespace Harbor.Domain.Pages
 			PageRoles = new List<PageRole>();
 			DeletedPageRoles = new List<PageRole>();
 			AllPageRoles = new List<PageFeatureRole>();
+			// Files = new List<File>();
 			Created = DateTime.Now;
 			Modified = DateTime.Now;
 			Public = true;
@@ -81,6 +82,7 @@ namespace Harbor.Domain.Pages
 		public Template Template { get; set; }
 
 		public ICollection<PageProperty> Properties { get; set; }
+		// public ICollection<File> Files { get; set; } 
 		internal List<PageProperty> DeletedProperties { get; set; } 
 		internal ICollection<PageRole> PageRoles { get; set; }
 		internal List<PageRole> DeletedPageRoles { get; set; }
@@ -166,6 +168,18 @@ namespace Harbor.Domain.Pages
 			if (permissionsChecker == null)
 				permissionsChecker = new PermissionsChecker<PageFeature>(AllPageRoles, sidRoles);
 			return permissionsChecker.HasPermission(pageFeature, permissions);
+		}
+
+		public T GetComponent<T>(string uicid) where T : PageComponent
+		{
+			var comp = (T)Activator.CreateInstance(typeof(T), this, uicid);
+			return comp;
+		}
+
+		public File GetFile(Guid? fileID)
+		{
+			return null;
+			// return Files.FirstOrDefault(f => f.FileID == fileID);
 		}
 	}
 }

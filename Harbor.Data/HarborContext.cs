@@ -60,6 +60,10 @@ namespace Harbor.Data
 					.WillCascadeOnDelete();
 				HasOptional(m => m.PreviewImage).WithMany().HasForeignKey(m => m.PreviewImageID);
 				Ignore(m => m.Template);
+				
+				// jch! PageFileRelation
+				// HasMany(m => m.Files).WithMany();					
+
 			}
 		}
 
