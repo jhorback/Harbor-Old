@@ -39,7 +39,7 @@ ImageComponent.ImageModel = Application.Model.extend({
 		res: "low" // can be low or high
 	},
 	defaults: {
-		imgSrc: null
+	    imgSrc: null
 	},
 	hasImage: function () {
 		return this.get("fileID") ? true : false;
@@ -56,7 +56,7 @@ ImageComponent.ImageModel = Application.Model.extend({
 
 ImageComponent.View = Application.View.extend({
 	initialize: function () {
-		this.listenTo(this.model, "change:max", this.save);
+		this.listenTo(this.model, "change:res", this.save);
 	},
 	
 	events: {

@@ -37,9 +37,10 @@ _.extend(PageComponent.prototype, {
 			this.model = new this.modelType(modelProps);
 			this.model.page = this.page;
 			this.model.save = _.bind(this.save, this);
-			this.model.on("change", function (model) {
-				_.each(model.changed, function (value, name) {
-					this.setProperty(name, value);
+			
+			_.each(pageProps, function (defaultValue, attrName) {
+				this.model.on("change:" + attrName, function (model, value) {
+					this.setProperty(attrName, value);
 				}, this);
 			}, this);
 		}
