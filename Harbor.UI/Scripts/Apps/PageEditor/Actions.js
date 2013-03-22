@@ -45,7 +45,8 @@ PageEditor.deleteComponent = function (page, uicid) {
 	/// </summary>
 	var uicel = $("#" + uicid),
 		compArray,
-		compArrayType;
+		compArrayType,
+		pageProps;
 
 	if (confirm("Are you sure you want to delete this content?")) {
 		compArrayType = uicel.closest(".page-content").length > 0 ? "content" : "aside";
@@ -55,10 +56,17 @@ PageEditor.deleteComponent = function (page, uicid) {
 		});
 	
 		// loop through and delete anything that begins with uicid-
+		pageProps = page.get("properties");
+		_.each(pageProps, function (prop) {
+			if (prop.name.indexOf(uicid + "-") === 0) {
+				page.deleteProperty(prop.name);
+			}
+		});
+
 		page.template.set(compArrayType, compArray);
 
 		// allow decoupled cleanup of page properties
-		PageEditor.events.trigger("component:deleted", page, uicid);		
+		PageEditor.events.trigger("component:deleted", page, uicid);
 
 		uicel.fadeOut(function () {
 			uicel.remove();

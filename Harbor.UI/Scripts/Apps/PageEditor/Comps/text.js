@@ -82,7 +82,3 @@ TextComponent.TextModel = Application.Model.extend({
 
 
 PageEditor.registerComponent("text", TextComponent);
-PageEditor.events.on("component:deleted", function (page, uicid) {
-	debugger;
-	page.deleteProperty(uicid + "-text");
-});
