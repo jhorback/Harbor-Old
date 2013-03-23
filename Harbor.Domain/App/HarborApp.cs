@@ -13,8 +13,9 @@ namespace Harbor.Domain.App
 			
 			var harborDomain = Assembly.GetAssembly(typeof(HarborApp));
 			var version = harborDomain.GetName().Version;
-			Version = string.Format("v{0}.{1}-{2}", version.Minor, version.Build, version.Revision);
-			
+			Version = string.Format("v{0}.{1}", version.Major, version.Minor);
+			FullVersion = version.ToString();
+
 			ShowSignInLink = true;
 			HomePageID = null;
 		}
@@ -22,6 +23,8 @@ namespace Harbor.Domain.App
 		public string ApplicationName { get; set; }
 
 		public string Version { get; set; }
+
+		public string FullVersion { get; set; }
 
 		public bool ShowSignInLink { get; set; }
 

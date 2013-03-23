@@ -542,6 +542,9 @@
     <None Include="Properties\PublishProfiles\harbor - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\harbor - Web Deploy.pubxml" />
     <Content Include="Views\PageSettings\PageSettingsTemplates.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <None Include="Properties\PublishProfiles\orbharbor - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\orbharbor - Web Deploy.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\users\" />

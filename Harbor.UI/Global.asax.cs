@@ -20,6 +20,11 @@ namespace Harbor.UI
 			get { return getApp().Version; }
 		}
 
+		public static  string FullVersion
+		{
+			get { return getApp().FullVersion; }
+		}
+
 		public static string AppName
 		{
 			get { return getApp().ApplicationName; }

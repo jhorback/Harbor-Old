@@ -1,4 +1,5 @@
-﻿@using Harbor.UI.Extensions
+﻿@using Harbor.Domain.Security
+@using Harbor.UI.Extensions
 @using Harbor.UI.JSPkgs
 @using Harbor.UI.Models.JSPM.Extensions
 @{
@@ -8,6 +9,12 @@
 	} else {
 		ViewBag.Title += " - " + Harbor.UI.HarborApplication.AppName;	
 	}
+	
+	var footerText = new HtmlString(
+		string.Format("{0} {1} &copy; {2}",
+			Request.ServerVariables["SERVER_NAME"],
+			Harbor.UI.HarborApplication.Version,
+			DateTime.Now.Year));
 }
 <!DOCTYPE html>
 <html>
@@ -40,10 +47,16 @@
 			</div>
 			<footer id="frame-info">
 				<div>
-					<span title="@Harbor.UI.HarborApplication.Version - @DateTime.Now">
-						@Request.ServerVariables["SERVER_NAME"] &copy; @DateTime.Now.Year
-					</span>
-					<div class="quiet"><small>@Harbor.UI.HarborApplication.Version - @DateTime.Now</small></div>
+					<div>
+					@if (Html.UserHasPermit(UserFeature.SiteSettings) || Html.UserHasPermit(UserFeature.SystemSettings))
+					{
+						<a href="~/Home/About">@footerText</a>
+					} else
+					{
+						@footerText
+					}
+					</div>
+					<div class="quiet"><small>@DateTime.Now</small></div>
 				</div>
 			</footer>
 		</div>
