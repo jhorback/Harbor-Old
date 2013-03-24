@@ -61,7 +61,7 @@ namespace Harbor.Domain.App
 
 		private AppSetting setSetting(string name, object value)
 		{
-			var settingDO = appSettings.FindByName(name);
+			var settingDO = appSettings.FindByName(name, readOnly: false);
 			var strvalue = value == null ? null : value.ToString();
 			if (settingDO == null)
 			{

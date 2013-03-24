@@ -18,7 +18,8 @@ namespace Harbor.Domain.App
 		/// Returns the setting by name, or null.
 		/// </summary>
 		/// <param name="name"></param>
+		/// <param name="readOnly"></param>
 		/// <returns></returns>
-		AppSetting FindByName(string name);
+		AppSetting FindByName(string name, bool readOnly = true);
 	}
 }

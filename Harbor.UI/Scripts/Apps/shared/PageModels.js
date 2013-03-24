@@ -201,7 +201,8 @@ PageModels.Page = Application.Model.extend({
 		
 		firstText = this.findFirstContentOfType("text");
 		if (firstText && firstText.uicid === uicid) {
-			prevText = $('<div/>').html(html).text().substring(0, 200);
+			html = html.replace(/></g, "> <");
+			prevText = $('<div/>').html(html).text().substring(0, 223);
 			prevText = prevText.substring(0, prevText.lastIndexOf(" ")) + " ...";
 			this.set("previewText", prevText);
 		}

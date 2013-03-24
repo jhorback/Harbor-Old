@@ -105,6 +105,8 @@ namespace Harbor.Data.Repositories
 			}
 			entity.DeletedPageRoles = new List<PageRole>();
 
+			// update the modified date
+			entity.Modified = DateTime.Now;
 
 			context.SaveChanges();
 			clearCachedPageByID(entity.PageID);

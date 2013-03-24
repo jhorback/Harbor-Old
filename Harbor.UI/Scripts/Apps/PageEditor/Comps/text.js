@@ -60,8 +60,9 @@ TextComponent.View = Application.View.extend({
             if ($.trim($(html).text()) === "") {
                 html = "";
             }
+
             this.model.set("text", html);
-            this.model.page.updatePagePreviewText(this.model.get("uicid"), html);
+            this.model.page.updatePagePreviewText(this.model.get("id"), html);
             save = this.model.save();
             AjaxRequest.handle(save);
         }

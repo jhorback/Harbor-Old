@@ -11,9 +11,8 @@
 	}
 	
 	var footerText = new HtmlString(
-		string.Format("{0} {1} &copy; {2}",
+		string.Format("{0} &copy; {1}",
 			Request.ServerVariables["SERVER_NAME"],
-			Harbor.UI.HarborApplication.Version,
 			DateTime.Now.Year));
 }
 <!DOCTYPE html>
@@ -56,7 +55,7 @@
 						@footerText
 					}
 					</div>
-					<div class="quiet"><small>@DateTime.Now</small></div>
+					<div class="quiet media-print"><small>@Harbor.UI.HarborApplication.FullVersion - @DateTime.Now</small></div>
 				</div>
 			</footer>
 		</div>

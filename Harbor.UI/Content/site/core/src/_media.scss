@@ -10,6 +10,22 @@ $mq-tablet-landscape	: 64em; // 1024px
 $mq-desktop             : 80em; // 1280px
 $mq-widescreen			: 100em; // 1600px
 
+@mixin media {
+	@media (print) {
+		.media-print {
+			// just thinking here
+			// could implement a series of media classes as building blocks to aid in media display
+			/*
+				.media-print
+				.media-screen
+				.media-phone
+				.media-tablet
+				.media-desktop
+				.media-widescreen
+			*/
+		}
+	}
+}
 
 @mixin onphone {
 	@media (max-width : $mq-mobile-landscape) {

@@ -17,8 +17,11 @@ namespace Harbor.Data.Repositories
 		}
 
 		#region IAppSettingRepository
-		public AppSetting FindByName(string name)
+		public AppSetting FindByName(string name, bool readOnly = true)
 		{
+			if (!readOnly) {
+				clearCache();
+			}
 			var entity = FindAll(e => System.String.Compare(e.Name, name, System.StringComparison.OrdinalIgnoreCase) == 0).FirstOrDefault();
 			return entity;
 		}
