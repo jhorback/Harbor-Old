@@ -23,5 +23,8 @@
 	{
 		<hr />
 		@Html.Partial("_DevLinks")
+		<hr />
+		<strong>Connection string:</strong>
+		@System.Configuration.ConfigurationManager.ConnectionStrings["HarborContext"].ConnectionString;
 	}
 </div>
