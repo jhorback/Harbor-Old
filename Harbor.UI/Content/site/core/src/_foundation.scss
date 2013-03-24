@@ -126,7 +126,7 @@ $body-color-attn:			#D14836						!default;
 	}
 
 	p {
-		margin-bottom: $body-line-height-px / 2;
+		margin-bottom: 1.42em;
 //		&:last-of-type {
 //			margin-bottom: 0;
 //		}
@@ -142,7 +142,7 @@ $body-color-attn:			#D14836						!default;
 		font-family: $headings-font-family;
 	}
 	h1 { font-size: 2.1em;  } // ~30px / 42px
-	h2 { font-size: 1.75em; } // ~25px / 35px // creates a visual distinction between h2 and h3
+	h2 { font-size: 1.6em; } // ~25px / 35px // creates a visual distinction between h2 and h3
 	h3 { font-size: 1.35em;  } // ~19px / 27px
 	h4 { font-size: 1.20em; } // ~17px / 24px
 	h5 { font-size: 1em;    } // ~14px / 20px
@@ -160,7 +160,7 @@ $body-color-attn:			#D14836						!default;
 	}
 
 	h1 { color: lighten($body-color, 20%); }
-	h2  { color: $body-heading-color;  }
+	h2  { color: $body-heading-color;  font-weight: bold; }
 
 	hgroup h1 + h2 { color: $body-color; }
 }

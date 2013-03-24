@@ -27,7 +27,7 @@ a, .link {
     color: red !important; }
 
 p {
-  margin-bottom: 10.0002px; }
+  margin-bottom: 1.42em; }
 
 h1, h2, h3, h4, h5, h6 {
   margin: 10.0002px 0; }
@@ -36,7 +36,8 @@ h1 {
   color: #666666; }
 
 h2 {
-  color: #336699; }
+  color: #336699;
+  font-weight: bold; }
 
 hgroup h1 + h2 {
   color: #333333; }
@@ -49,6 +50,9 @@ hgroup h1 + h2 {
 
 .attn {
   color: #d14836; }
+
+small {
+  color: #999999; }
 
 hr {
   margin: 20.0004px 0;
