@@ -168,7 +168,7 @@ $body-color-attn:			#D14836						!default;
 
 @mixin emphasis {
 	// Ex: 14px base font * 85% = about 12px
-	small   { font-size: 85%; }
+	small   { font-size: 80%; }
 
 	strong  { font-weight: bold; }
 	em      { font-style: italic; }
@@ -181,6 +181,7 @@ $body-color-attn:			#D14836						!default;
 	.quiet          { color: $body-color-quiet; }
 	.loud           { color: $body-color-loud; }
 	.attn           { color: $body-color-attn; }
+	small			{ color: $body-color-quiet; }
 }
 
 
