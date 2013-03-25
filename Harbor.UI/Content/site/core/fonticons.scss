@@ -8,7 +8,8 @@ $fonticons-path: "font/fonticons" !default;
 	@font-face {
 	  font-family: 'FontIcons';
 	  src: url($fonticons-path + '.eot');
-	  src: url($fonticons-path + '.eot?#iefix') format('embedded-opentype'),
+	  src: local('O'), 
+		 url($fonticons-path + '.eot?#iefix') format('embedded-opentype'),
 		 url($fonticons-path + '.woff') format('woff'),
 		 url($fonticons-path + '.ttf') format('truetype'),
 		 url($fonticons-path + '.svg#FontIcons') format('svg');

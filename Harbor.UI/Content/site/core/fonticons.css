@@ -2,7 +2,7 @@
 @font-face {
   font-family: 'FontIcons';
   src: url("font/fonticons.eot");
-  src: url("font/fonticons.eot?#iefix") format("embedded-opentype"), url("font/fonticons.woff") format("woff"), url("font/fonticons.ttf") format("truetype"), url("font/fonticons.svg#FontIcons") format("svg");
+  src: local("O"), url("font/fonticons.eot?#iefix") format("embedded-opentype"), url("font/fonticons.woff") format("woff"), url("font/fonticons.ttf") format("truetype"), url("font/fonticons.svg#FontIcons") format("svg");
   font-weight: normal;
   font-style: normal; }
 
