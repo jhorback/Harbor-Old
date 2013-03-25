@@ -720,9 +720,9 @@
       <CompileStyle>Nested</CompileStyle>
       <DebugInfo>False</DebugInfo>
     </None>
-    <None Include="Content\site\core\font\fonticons.eot" />
-    <None Include="Content\site\core\font\fonticons.ttf" />
-    <None Include="Content\site\core\font\fonticons.woff" />
+    <Content Include="Content\site\core\font\fonticons.eot" />
+    <Content Include="Content\site\core\font\fonticons.ttf" />
+    <Content Include="Content\site\core\font\fonticons.woff" />
     <None Include="Content\site\mixins\_col.scss">
       <Compile>False</Compile>
       <Minify>False</Minify>
