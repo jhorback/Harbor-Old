@@ -35,5 +35,7 @@ namespace Harbor.Domain.App
 		public string Theme { get; set; }
 
 		public IEnumerable<NavigationLink> NavigationLinks { get; set; }
+
+		public string GoogleAnalyticsAccount { get; set; }
 	}
 }

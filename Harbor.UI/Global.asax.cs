@@ -20,7 +20,7 @@ namespace Harbor.UI
 			get { return getApp().Version; }
 		}
 
-		public static  string FullVersion
+		public static string FullVersion
 		{
 			get { return getApp().FullVersion; }
 		}
@@ -28,6 +28,13 @@ namespace Harbor.UI
 		public static string AppName
 		{
 			get { return getApp().ApplicationName; }
+		}
+
+		public static string GoogleAnalyticsAccount
+		{
+			get {
+				return getApp().GoogleAnalyticsAccount;
+			}
 		}
 
 		protected void Application_Start()

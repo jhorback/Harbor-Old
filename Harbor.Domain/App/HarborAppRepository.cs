@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Web.Configuration;
 using Harbor.Domain.Extensions;
 using Harbor.Domain.Pages;
 using Harbor.Domain.Security;
@@ -41,6 +42,7 @@ namespace Harbor.Domain.App
 			if (string.IsNullOrEmpty(app.Theme))
 				app.Theme = "default";
 
+			app.GoogleAnalyticsAccount = WebConfigurationManager.AppSettings["googleAnalyticsAccount"];
 			return app;
 		}
 

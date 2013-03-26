@@ -1,5 +1,6 @@
 ﻿@using Harbor.Domain.Security
 @using Harbor.UI.Extensions
+@using Harbor.UI
 <div class="usermenu">
 	<h1></h1>
 	<hr />
@@ -27,5 +28,9 @@
 		<strong>Connection string:</strong>
 		@System.Configuration.ConfigurationManager.ConnectionStrings["HarborContext"].ConnectionString;
 		*@
+		<hr />
+		<span>
+			Google Analytics: @HarborApplication.GoogleAnalyticsAccount
+		</span>
 	}
 </div>
