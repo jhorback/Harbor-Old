@@ -1,4 +1,5 @@
-﻿<fieldset>
+﻿@using Harbor.UI
+<fieldset>
 	<legend>Development</legend>
 	<div class="pad-left">
 		<a href="@Url.Action("Index", "StyleGuide")">Style Guide</a>
@@ -8,6 +9,16 @@
 	</div>
 	<div class="pad-left">
 		<a href="@Url.Action("JavaScriptTests", "Home")">JavaScript Tests</a>
+	</div>
+	<div class="pad-left">
+		<a href="~/elmah.axd">Http Errors</a>
+	</div>
+	<div class="pad-left">
+		@if (string.IsNullOrEmpty(HarborApplication.GoogleAnalyticsAccount)) {
+			<span>There is no google analytics account.</span>
+		} else {
+			<a href="https://www.google.com/analytics">Google Analytics (@HarborApplication.GoogleAnalyticsAccount)</a>		
+		}
 	</div>
 </fieldset>
 @*
