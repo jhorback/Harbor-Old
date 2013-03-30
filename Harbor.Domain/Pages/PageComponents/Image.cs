@@ -59,5 +59,12 @@ namespace Harbor.Domain.Pages.PageComponents
 				else return GetProperty("ext");
 			}
 		}
+
+
+		public override bool RequiresResource(object resource)
+		{
+			var file = resource as File;
+			return (file != null && file.FileID == FileID);
+		}
 	}
 }

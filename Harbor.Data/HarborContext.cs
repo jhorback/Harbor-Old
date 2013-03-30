@@ -38,7 +38,7 @@ namespace Harbor.Data
 
 			modelBuilder.Configurations.Add<Page>(new DbSetConfiguration.PageConfiguration());
 			modelBuilder.Configurations.Add<User>(new DbSetConfiguration.UserConfiguration());
-			// modelBuilder.Configurations.Add<File>(new DbSetConfiguration.FileConfiguration());
+			modelBuilder.Configurations.Add<File>(new DbSetConfiguration.FileConfiguration());
 		}
 	}
 
@@ -59,11 +59,10 @@ namespace Harbor.Data
 					.HasForeignKey(dp => dp.PageID)
 					.WillCascadeOnDelete();
 				HasOptional(m => m.PreviewImage).WithMany().HasForeignKey(m => m.PreviewImageID);
+
 				Ignore(m => m.Template);
 				
-				// jch! PageFileRelation
-				// HasMany(m => m.Files).WithMany();					
-
+				HasMany(m => m.Files).WithMany();
 			}
 		}
 
@@ -77,7 +76,6 @@ namespace Harbor.Data
 					.WillCascadeOnDelete();
 
 				Ignore(m => m.DisplayName);
-
 			}
 		}
 
@@ -85,8 +83,14 @@ namespace Harbor.Data
 		{
 			public FileConfiguration()
 			{
-				HasRequired(m => m.Owner).WithMany().HasForeignKey(m => m.UserName).WillCascadeOnDelete();
-				// Property(p => p.ResolutionsCreated).HasColumnName("ResolutionsCreated");
+				// when deleting a user, will need to delete the files manually first
+				// this is to avoid the cyclical reference
+				// Users x-> Page x-> PageFiles
+				// Users x-> Files x-> PageFiles
+				HasRequired(m => m.Owner)
+					.WithMany()
+					.HasForeignKey(m => m.UserName)
+					.WillCascadeOnDelete(false);
 			}
 		}
 	}

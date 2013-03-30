@@ -82,7 +82,7 @@ namespace Harbor.Domain.Pages
 		public Template Template { get; set; }
 
 		public ICollection<PageProperty> Properties { get; set; }
-		// public ICollection<File> Files { get; set; } 
+		public ICollection<File> Files { get; set; } 
 		internal List<PageProperty> DeletedProperties { get; set; } 
 		internal ICollection<PageRole> PageRoles { get; set; }
 		internal List<PageRole> DeletedPageRoles { get; set; }

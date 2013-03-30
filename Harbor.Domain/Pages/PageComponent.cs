@@ -30,5 +30,10 @@ namespace Harbor.Domain.Pages
 		{
 			Page.SetUICProperty(UicID, name, value);
 		}
+
+		public virtual bool RequiresResource(object resource)
+		{
+			return false;
+		}
 	}
 }
