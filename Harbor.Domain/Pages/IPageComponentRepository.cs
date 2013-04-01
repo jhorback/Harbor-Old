@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 namespace Harbor.Domain.Pages
 {
@@ -10,7 +11,14 @@ namespace Harbor.Domain.Pages
 		/// Returns all components.
 		/// </summary>
 		/// <returns></returns>
-		List<PageComponentType> GetAllComponents();
+		List<ComponentType> GetAllComponents();
+
+		/// <summary>
+		/// The the type of the page component instance.
+		/// </summary>
+		/// <param name="key"></param>
+		/// <returns></returns>
+		Type GetPageComponentType(string key);
 
 		/// <summary>
 		/// Returns all header components.
@@ -35,7 +43,7 @@ namespace Harbor.Domain.Pages
 		/// </summary>
 		/// <param name="key"></param>
 		/// <returns></returns>
-		PageComponentType GetComponent(string key);
+		ComponentType GetComponent(string key);
 
 
 	}

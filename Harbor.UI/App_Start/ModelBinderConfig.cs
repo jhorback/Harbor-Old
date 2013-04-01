@@ -9,7 +9,6 @@ namespace Harbor.UI
 		public static void RegisterModelBinders(ModelBinderDictionary binders)
 		{
 			binders.Add(typeof(Page), new PageModelBinder());
-			binders.Add(typeof(PageComponent), new PageComponentModelBinder());
 		}
 	}
 }

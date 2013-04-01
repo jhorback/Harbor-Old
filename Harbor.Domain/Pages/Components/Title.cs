@@ -26,5 +26,10 @@ namespace Harbor.Domain.Pages.Components
 				return "The standard document title.";
 			}
 		}
+
+		public override Type PageComponent
+		{
+			get { return null; }
+		}
 	}
 }

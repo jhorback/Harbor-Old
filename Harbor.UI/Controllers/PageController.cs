@@ -14,8 +14,9 @@ namespace Harbor.UI.Controllers
 			return PartialView("Title", (PageDto)page);
 		}
 
-		public PartialViewResult Text(PageComponent text)
+		public PartialViewResult Text(Page page, string uicid)
 		{
+			var text = page.GetComponent<Text>(uicid);
 			return PartialView("Text", new TextDto { text = text.GetProperty("text") });
 		}
 

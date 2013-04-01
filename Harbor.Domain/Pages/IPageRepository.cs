@@ -5,7 +5,7 @@ namespace Harbor.Domain.Pages
 {
 	public interface IPageRepository : IRepository<Page>
 	{
-		IQueryable<Page> Query(IncludePageData include);
+		IQueryable<Page> Query(IncludePageResources include);
 
 		IEnumerable<Page> FindAll(PageQuery pageQuery);
 
@@ -14,17 +14,5 @@ namespace Harbor.Domain.Pages
 		Page FindById(int id, bool readOnly);
 
 		bool Exists(string author, string name);
-	}
-
-	// jch! move this
-	public enum IncludePageData
-	{
-		Properties = 1,
-		Roles = 2,
-		PreviewImage = 4,
-		Files = 8,
-		Products = 16,
-		Basic = (Properties | Roles | PreviewImage),
-		All = (Properties | Roles | PreviewImage | Files | Products)
 	}
 }

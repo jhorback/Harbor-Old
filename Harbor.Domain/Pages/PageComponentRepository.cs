@@ -1,20 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Harbor.Domain.Pages
 {
 	public class PageComponentRepository : IPageComponentRepository
 	{
-		List<PageComponentType> components;
+		List<ComponentType> components;
 
-		public List<PageComponentType> GetAllComponents()
+		public List<ComponentType> GetAllComponents()
 		{
 			return components;
 		}
 
-		public PageComponentRepository(List<PageComponentType> components)
+		public PageComponentRepository(List<ComponentType> components)
 		{
 			this.components = components;
+		}
+
+		public Type GetPageComponentType(string key)
+		{
+			var componentType = this.components.FirstOrDefault(c => c.Key == key);
+			if (componentType == null)
+			{
+				return null;
+			}
+
+			var type = componentType.PageComponent;
+			return type;
 		}
 
 		public List<HeaderComponent> GetHeaderComponents()
@@ -32,7 +45,7 @@ namespace Harbor.Domain.Pages
 			throw new NotImplementedException();
 		}
 
-		public PageComponentType GetComponent(string key)
+		public ComponentType GetComponent(string key)
 		{
 			throw new NotImplementedException();
 		}

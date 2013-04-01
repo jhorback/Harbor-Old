@@ -228,7 +228,6 @@
     <Compile Include="Models\JSPM\TemplateAction.cs" />
     <Compile Include="Models\Page\Components\ImageDto.cs" />
     <Compile Include="Models\Page\Components\TextDto.cs" />
-    <Compile Include="Models\Page\PageComponentModelBinder.cs" />
     <Compile Include="Models\Page\PageModelBinder.cs" />
     <Compile Include="Models\Page\TemplateDto.cs" />
     <Compile Include="Models\Page\PageComponentDto.cs" />

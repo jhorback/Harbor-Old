@@ -5,9 +5,11 @@ using System.Text;
 
 namespace Harbor.Domain.Pages
 {
-	public class PageComponent
+	public abstract class PageComponent
 	{
-		public PageComponent(Page page, string uicid)
+		public abstract string Key { get; }
+
+		protected PageComponent(Page page, string uicid)
 		{
 			Page = page;
 			UicID = uicid;
@@ -31,9 +33,9 @@ namespace Harbor.Domain.Pages
 			Page.SetUICProperty(UicID, name, value);
 		}
 
-		public virtual bool RequiresResource(object resource)
+		public virtual IEnumerable<PageResource> DeclareResources()
 		{
-			return false;
+			yield break;
 		}
 	}
 }

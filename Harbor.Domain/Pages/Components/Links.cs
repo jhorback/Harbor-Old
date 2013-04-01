@@ -26,5 +26,10 @@ namespace Harbor.Domain.Pages.Components
 				return "Provides links to related documents.";
 			}
 		}
+
+		public override Type PageComponent
+		{
+			get { return null; }
+		}
 	}
 }

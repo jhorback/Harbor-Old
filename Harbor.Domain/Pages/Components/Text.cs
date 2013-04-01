@@ -26,5 +26,13 @@ namespace Harbor.Domain.Pages.Components
 				return "A rich text editor.";
 			}
 		}
+
+		public override Type PageComponent
+		{
+			get
+			{
+				return typeof(PageComponents.Text);
+			}
+		}
 	}
 }

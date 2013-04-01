@@ -26,5 +26,10 @@ namespace Harbor.Domain.Pages.Components
 				return "A .jpg, .png, .gif, .bmp, or .tiff file.";
 			}
 		}
+
+		public override Type PageComponent
+		{
+			get { return typeof(PageComponents.Image); }
+		}
 	}
 }

@@ -51,7 +51,6 @@ namespace Harbor.Domain.Pages
 		public List<PageContent> Content { get; set; }
 		#endregion
 
-
 		#region base implementation
 
 		/// <summary>

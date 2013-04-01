@@ -1,10 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
 using Harbor.Domain.Files;
+using Harbor.Domain.Pages.PageResources;
 
 namespace Harbor.Domain.Pages.PageComponents
 {
 	public class Image : PageComponent
 	{
+		public override string Key 
+		{
+			get { return "image"; }
+		}
+
 		public Image(Page page, string uicid) : base(page, uicid)
 		{
 			if (IsNew() == false)
@@ -60,11 +67,14 @@ namespace Harbor.Domain.Pages.PageComponents
 			}
 		}
 
-
-		public override bool RequiresResource(object resource)
+		public override IEnumerable<PageResource> DeclareResources()
 		{
-			var file = resource as File;
-			return (file != null && file.FileID == FileID);
+			if (FileID == null)
+			{
+				yield break;
+			}
+
+			yield return new FileResource(Page, FileID ?? new Guid());
 		}
 	}
 }

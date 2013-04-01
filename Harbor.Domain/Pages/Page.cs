@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using Harbor.Domain.Files;
+using Harbor.Domain.Pages.PageResources;
 using Harbor.Domain.Security;
 
 namespace Harbor.Domain.Pages
@@ -94,11 +95,6 @@ namespace Harbor.Domain.Pages
 		#endregion
 
 		#region methods
-		public PageComponent GetComponent(string uicid)
-		{
-			return new PageComponent(this, uicid);
-		}
-
 		public string GetProperty(string name)
 		{
 			var prop = Properties.FirstOrDefault(p => string.Compare(name, p.Name, true) == 0);
@@ -174,6 +170,12 @@ namespace Harbor.Domain.Pages
 		{
 			var comp = (T)Activator.CreateInstance(typeof(T), this, uicid);
 			return comp;
+		}
+
+		public object GetComponent(Type componentType, string uicid)
+		{
+			var obj = Activator.CreateInstance(componentType, this, uicid);
+			return obj;
 		}
 
 		public File GetFile(Guid? fileID)
