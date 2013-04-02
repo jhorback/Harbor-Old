@@ -91,6 +91,7 @@
     <Compile Include="Pages\PageResource.cs" />
     <Compile Include="Pages\IncludePageResources.cs" />
     <Compile Include="Pages\PageResources\FileResource.cs" />
+    <Compile Include="Pages\PageResourceUpdater.cs" />
     <Compile Include="Pages\PageRole.cs" />
     <Compile Include="Pages\PageType.cs" />
     <Compile Include="Pages\PageTypeContext.cs" />

@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using Harbor.Domain.Files;
 
 namespace Harbor.Domain.Pages.PageResources
 {
@@ -13,5 +12,16 @@ namespace Harbor.Domain.Pages.PageResources
 		}
 
 		public Guid FileID { get; set; }
+
+		public override void Add()
+		{
+			Page.Files.Add(new File { FileID = FileID });
+		}
+
+		public override void Remove()
+		{
+			var file = Page.Files.FirstOrDefault(p => p.FileID == FileID);
+			Page.DeletedFiles.Add(file);
+		}
 	}
 }

@@ -84,10 +84,14 @@ namespace Harbor.Domain.Pages
 
 		public ICollection<PageProperty> Properties { get; set; }
 		public ICollection<File> Files { get; set; } 
-		internal List<PageProperty> DeletedProperties { get; set; } 
 		internal ICollection<PageRole> PageRoles { get; set; }
-		internal List<PageRole> DeletedPageRoles { get; set; }
 		internal IEnumerable<PageFeatureRole> AllPageRoles { get; set; } 
+
+		// resources queued for deletion
+		internal List<PageProperty> DeletedProperties { get; set; } 
+		internal List<PageRole> DeletedPageRoles { get; set; }
+		internal List<File> DeletedFiles { get; set; } 
+
 
 		internal User Author { get; set; }
 		internal Page Parent { get; set; }
@@ -172,10 +176,10 @@ namespace Harbor.Domain.Pages
 			return comp;
 		}
 
-		public object GetComponent(Type componentType, string uicid)
+		public PageComponent GetComponent(Type componentType, string uicid)
 		{
 			var obj = Activator.CreateInstance(componentType, this, uicid);
-			return obj;
+			return obj as PageComponent;
 		}
 
 		public File GetFile(Guid? fileID)

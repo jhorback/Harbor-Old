@@ -4,21 +4,26 @@ using System.Linq;
 using System.Runtime.Caching;
 using System.Text;
 using Harbor.Domain;
+using Harbor.Domain.Files;
 using Harbor.Domain.Pages;
 using Harbor.Data.Extensions;
+using Harbor.Domain.Pages.PageResources;
 
 namespace Harbor.Data.Repositories
 {
 	public class PageRepository : IPageRepository
 	{
-		HarborContext context;
-		IPageFactory pageFactory;
+		readonly HarborContext context;
+		readonly IPageFactory pageFactory;
+		readonly IPageComponentRepository componentRepository;
+
 		string pageCacheKey = "Harbor.Data.Repositories.PageRepository.";
 
-		public PageRepository(HarborContext context, IPageFactory pageFactory)
+		public PageRepository(HarborContext context, IPageFactory pageFactory, IPageComponentRepository componentRepository)
 		{
 			this.context = context;
 			this.pageFactory = pageFactory;
+			this.componentRepository = componentRepository;
 		}
 
 		#region IRepository
@@ -105,8 +110,20 @@ namespace Harbor.Data.Repositories
 			}
 			entity.DeletedPageRoles = new List<PageRole>();
 
+
+			// remove files
+			foreach (var file in entity.DeletedFiles)
+			{
+				context.Files.Remove(file);
+			}
+			entity.DeletedFiles = new List<File>();
+
+
 			// update the modified date
 			entity.Modified = DateTime.Now;
+
+			var pageResourceUpdater = new PageResourceUpdater(entity, componentRepository);
+			pageResourceUpdater.UpdateResources();
 
 			context.SaveChanges();
 			clearCachedPageByID(entity.PageID);

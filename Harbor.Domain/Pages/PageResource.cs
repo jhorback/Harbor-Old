@@ -10,8 +10,8 @@ namespace Harbor.Domain.Pages
 
 		public Page Page { get; set; }
 
-		public virtual void Add() {}
+		public abstract void Add();
 
-		public virtual void Remove() {}
+		public abstract void Remove();
 	}
 }
