@@ -15,10 +15,14 @@ namespace Harbor.Domain.Pages
 		{
 			Properties = new List<PageProperty>();
 			DeletedProperties = new List<PageProperty>();
+			
 			PageRoles = new List<PageRole>();
 			DeletedPageRoles = new List<PageRole>();
 			AllPageRoles = new List<PageFeatureRole>();
-			// Files = new List<File>();
+			
+			Files = new List<File>();
+			DeletedFiles = new List<File>();
+
 			Created = DateTime.Now;
 			Modified = DateTime.Now;
 			Public = true;

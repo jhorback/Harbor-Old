@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.Caching;
 using System.Text;
@@ -125,7 +127,25 @@ namespace Harbor.Data.Repositories
 			var pageResourceUpdater = new PageResourceUpdater(entity, componentRepository);
 			pageResourceUpdater.UpdateResources();
 
-			context.SaveChanges();
+			try
+			{
+				context.SaveChanges();
+			}
+			catch (DbEntityValidationException dbEx)
+			{
+				foreach (var validationErrors in dbEx.EntityValidationErrors)
+				{
+					foreach (var validationError in validationErrors.ValidationErrors)
+					{
+						// jch! - need to implement a log - research tracing over/or/including logging
+						// got trace turned on in the web.config - but do not see this message here.
+						var message = string.Format("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+						Trace.TraceInformation(message);
+						Debug.Write(message);
+					}
+				}
+			}
+
 			clearCachedPageByID(entity.PageID);
 			return FindById(entity.PageID);
 		}

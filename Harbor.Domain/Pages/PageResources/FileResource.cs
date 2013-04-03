@@ -15,7 +15,9 @@ namespace Harbor.Domain.Pages.PageResources
 
 		public override void Add()
 		{
-			Page.Files.Add(new File { FileID = FileID });
+			var file = new File { FileID = FileID };
+			// context.Files.Attach(file)
+			Page.Files.Add(file);
 		}
 
 		public override void Remove()
