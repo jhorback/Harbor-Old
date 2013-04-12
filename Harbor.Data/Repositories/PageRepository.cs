@@ -4,12 +4,8 @@ using System.Data.Entity.Validation;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.Caching;
-using System.Text;
 using Harbor.Domain;
-using Harbor.Domain.Files;
 using Harbor.Domain.Pages;
-using Harbor.Data.Extensions;
-using Harbor.Domain.Pages.PageResources;
 
 namespace Harbor.Data.Repositories
 {
@@ -54,6 +50,8 @@ namespace Harbor.Data.Repositories
 				pages = pages.Include("PageRoles");
 			if (include.HasFlag(IncludePageResources.PreviewImage))
 				pages = pages.Include("PreviewImage");
+			if (include.HasFlag(IncludePageResources.Files))
+				pages = pages.Include("Files");
 			return pages.AsQueryable();
 		}
 
@@ -113,18 +111,11 @@ namespace Harbor.Data.Repositories
 			entity.DeletedPageRoles = new List<PageRole>();
 
 
-			// remove files
-			foreach (var file in entity.DeletedFiles)
-			{
-				context.Files.Remove(file);
-			}
-			entity.DeletedFiles = new List<File>();
-
-
 			// update the modified date
 			entity.Modified = DateTime.Now;
 
-			var pageResourceUpdater = new PageResourceUpdater(entity, componentRepository);
+			var resourceManager = new PageRepositoryResourceManager(context);
+			var pageResourceUpdater = new PageResourceUpdater(entity, componentRepository, resourceManager);
 			pageResourceUpdater.UpdateResources();
 
 			try

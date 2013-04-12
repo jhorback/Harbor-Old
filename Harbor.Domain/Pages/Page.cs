@@ -21,7 +21,6 @@ namespace Harbor.Domain.Pages
 			AllPageRoles = new List<PageFeatureRole>();
 			
 			Files = new List<File>();
-			DeletedFiles = new List<File>();
 
 			Created = DateTime.Now;
 			Modified = DateTime.Now;
@@ -94,8 +93,6 @@ namespace Harbor.Domain.Pages
 		// resources queued for deletion
 		internal List<PageProperty> DeletedProperties { get; set; } 
 		internal List<PageRole> DeletedPageRoles { get; set; }
-		internal List<File> DeletedFiles { get; set; } 
-
 
 		internal User Author { get; set; }
 		internal Page Parent { get; set; }
@@ -188,8 +185,7 @@ namespace Harbor.Domain.Pages
 
 		public File GetFile(Guid? fileID)
 		{
-			return null;
-			// return Files.FirstOrDefault(f => f.FileID == fileID);
+			return Files.FirstOrDefault(f => f.FileID == fileID);
 		}
 	}
 }

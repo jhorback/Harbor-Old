@@ -10,8 +10,6 @@ namespace Harbor.Domain.Pages
 
 		public Page Page { get; set; }
 
-		public abstract void Add();
-
-		public abstract void Remove();
+		public new abstract bool Equals(object obj);
 	}
 }

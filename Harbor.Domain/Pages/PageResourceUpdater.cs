@@ -7,12 +7,14 @@ namespace Harbor.Domain.Pages
 	public class PageResourceUpdater
 	{
 		readonly IPageComponentRepository componentRepository;
+		private readonly IPageRepositoryResourceManager resourceManager;
 		readonly Page page;
 
-		public PageResourceUpdater(Page page, IPageComponentRepository componentRepository)
+		public PageResourceUpdater(Page page, IPageComponentRepository componentRepository, IPageRepositoryResourceManager resourceManager)
 		{
 			this.page = page;
 			this.componentRepository = componentRepository;
+			this.resourceManager = resourceManager;
 		}
 
 		/// <summary>
@@ -26,18 +28,18 @@ namespace Harbor.Domain.Pages
 			// remove non required resources
 			foreach (var res in pageRes)
 			{
-				if (!compRes.Any(r => res == r))
+				if (!compRes.Any(r => res.Equals(r)))
 				{
-					res.Remove();
+					this.resourceManager.RemoveResource(this.page, res);
 				}
 			}
 
 			// add required resources
 			foreach (var res in compRes)
 			{
-				if (!pageRes.Any(r => res == r))
+				if (!pageRes.Any(r => res.Equals(r)))
 				{
-					res.Add();
+					this.resourceManager.AddResource(this.page, res);
 				}
 			}
 		}

@@ -97,6 +97,7 @@
       <DependentUpon>201304020248157_PageResources.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Repositories\PageRepositoryResourceManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AppSettingRepository.cs" />
     <Compile Include="Repositories\FileRepository.cs" />

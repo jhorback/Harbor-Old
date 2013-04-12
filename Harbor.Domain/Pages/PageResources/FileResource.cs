@@ -11,19 +11,24 @@ namespace Harbor.Domain.Pages.PageResources
 			FileID = fileID;
 		}
 
+
 		public Guid FileID { get; set; }
 
-		public override void Add()
-		{
-			var file = new File { FileID = FileID };
-			// context.Files.Attach(file)
-			Page.Files.Add(file);
-		}
 
-		public override void Remove()
+		public override bool Equals(object obj)
 		{
-			var file = Page.Files.FirstOrDefault(p => p.FileID == FileID);
-			Page.DeletedFiles.Add(file);
+			if (obj == null)
+			{
+				return false;
+			}
+
+			var res = obj as FileResource;
+			if (res == null)
+			{
+				return false;
+			}
+
+			return res.FileID == FileID;
 		}
 	}
 }
