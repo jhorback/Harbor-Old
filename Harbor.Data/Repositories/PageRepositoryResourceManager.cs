@@ -20,15 +20,7 @@ namespace Harbor.Data.Repositories
 			if (resource is FileResource)
 			{
 				var fileResource = resource as FileResource;
-				var file = new File { FileID = fileResource.FileID };
-				try
-				{
-					context.Files.Attach(file);
-				}
-				catch (InvalidOperationException)
-				{
-					// file is already attached
-				}
+				var file = context.Files.Find(fileResource.FileID);
 				page.Files.Add(file);
 			}
 		}
@@ -39,7 +31,7 @@ namespace Harbor.Data.Repositories
 			{
 				var fileResource = resource as FileResource;
 				var file = page.Files.FirstOrDefault(p => p.FileID == fileResource.FileID);
-				context.Files.Remove(file);
+				page.Files.Remove(file);
 			}
 		}
 	}

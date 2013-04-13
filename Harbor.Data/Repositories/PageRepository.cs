@@ -111,12 +111,15 @@ namespace Harbor.Data.Repositories
 			entity.DeletedPageRoles = new List<PageRole>();
 
 
-			// update the modified date
-			entity.Modified = DateTime.Now;
-
+			// add remove page resources
 			var resourceManager = new PageRepositoryResourceManager(context);
 			var pageResourceUpdater = new PageResourceUpdater(entity, componentRepository, resourceManager);
 			pageResourceUpdater.UpdateResources();
+
+
+			// update the modified date
+			entity.Modified = DateTime.Now;
+			
 
 			try
 			{
