@@ -226,6 +226,7 @@
     <Compile Include="Models\JSPM\PackageCollection.cs" />
     <Compile Include="Models\JSPM\PackageTable.cs" />
     <Compile Include="Models\JSPM\TemplateAction.cs" />
+    <Compile Include="Models\Page\Components\PageLinkDto.cs" />
     <Compile Include="Models\Page\Components\ImageDto.cs" />
     <Compile Include="Models\Page\Components\TextDto.cs" />
     <Compile Include="Models\Page\PageModelBinder.cs" />
@@ -432,6 +433,7 @@
     <Content Include="Scripts\Apps\PageAdder\PageAdder.js" />
     <Content Include="Scripts\Apps\PageEditor\Actions.js" />
     <Content Include="Scripts\Apps\PageEditor\AddComponentView.js" />
+    <Content Include="Scripts\Apps\PageEditor\Comps\pageLink.js" />
     <Content Include="Scripts\Apps\PageEditor\Comps\image.js" />
     <Content Include="Scripts\Apps\PageEditor\Comps\title.js" />
     <Content Include="Scripts\Apps\PageEditor\Comps\links.js" />
@@ -542,6 +544,8 @@
     <Content Include="Views\StyleGuide\Components.cshtml" />
     <Content Include="Views\PageSettings\PageSettingsTemplates.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Page\PageLink-None.cshtml" />
+    <Content Include="Views\Page\PageLink.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\users\" />

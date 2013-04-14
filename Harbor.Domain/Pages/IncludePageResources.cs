@@ -8,7 +8,8 @@ namespace Harbor.Domain.Pages
 		PreviewImage = 4,
 		Files = 8,
 		Products = 16,
+		PageLinks = 32,
 		Basic = (Properties | Roles | PreviewImage),
-		All = (Properties | Roles | PreviewImage | Files | Products)
+		All = (Properties | Roles | PreviewImage | Files | Products | PageLinks)
 	}
 }

@@ -63,6 +63,7 @@ namespace Harbor.Data
 				Ignore(m => m.Template);
 				
 				HasMany(m => m.Files).WithMany();
+				HasMany(m => m.PageLinks).WithMany();
 			}
 		}
 

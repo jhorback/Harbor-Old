@@ -7,8 +7,6 @@ namespace Harbor.Domain.Pages
 {
 	public abstract class PageComponent
 	{
-		public abstract string Key { get; }
-
 		protected PageComponent(Page page, string uicid)
 		{
 			Page = page;

@@ -2,9 +2,9 @@
 
 namespace Harbor.Domain.Pages.Components
 {
-	public class Title : HeaderComponent
+	public class PageLink : ContentComponent
 	{
-		public const string KEY = "title";
+		public const string KEY = "pageLink";
 
 		public override string Key
 		{
@@ -15,7 +15,7 @@ namespace Harbor.Domain.Pages.Components
 		{
 			get
 			{
-				return "Title";
+				return "Page Link";
 			}
 		}
 
@@ -23,13 +23,13 @@ namespace Harbor.Domain.Pages.Components
 		{
 			get
 			{
-				return "The standard document title.";
+				return "Add a link to another internal page.";
 			}
 		}
 
 		public override Type PageComponent
 		{
-			get { return null; }
+			get { return typeof(PageComponents.PageLink); }
 		}
 	}
 }

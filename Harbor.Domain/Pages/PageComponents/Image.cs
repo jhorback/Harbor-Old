@@ -7,11 +7,6 @@ namespace Harbor.Domain.Pages.PageComponents
 {
 	public class Image : PageComponent
 	{
-		public override string Key 
-		{
-			get { return "image"; }
-		}
-
 		public Image(Page page, string uicid) : base(page, uicid)
 		{
 			if (IsNew() == false)

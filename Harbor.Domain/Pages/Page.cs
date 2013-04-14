@@ -20,7 +20,10 @@ namespace Harbor.Domain.Pages
 			DeletedPageRoles = new List<PageRole>();
 			AllPageRoles = new List<PageFeatureRole>();
 			
+			// page resources
 			Files = new List<File>();
+			PageLinks = new List<Page>();
+
 
 			Created = DateTime.Now;
 			Modified = DateTime.Now;
@@ -87,6 +90,7 @@ namespace Harbor.Domain.Pages
 
 		public ICollection<PageProperty> Properties { get; set; }
 		public ICollection<File> Files { get; set; } 
+		public ICollection<Page> PageLinks { get; set; } 
 		internal ICollection<PageRole> PageRoles { get; set; }
 		internal IEnumerable<PageFeatureRole> AllPageRoles { get; set; } 
 
@@ -186,6 +190,11 @@ namespace Harbor.Domain.Pages
 		public File GetFile(Guid? fileID)
 		{
 			return Files.FirstOrDefault(f => f.FileID == fileID);
+		}
+
+		public Page GetPageLink(int pageID)
+		{
+			return PageLinks.FirstOrDefault(p => p.PageID == pageID);
 		}
 	}
 }

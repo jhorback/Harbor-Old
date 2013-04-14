@@ -6,11 +6,6 @@ namespace Harbor.Domain.Pages.PageComponents
 {
 	public class Text : PageComponent
 	{
-		public override string Key 
-		{
-			get { return "text"; }
-		}
-
 		public Text(Page page, string uicid) : base(page, uicid)
 		{
 		
