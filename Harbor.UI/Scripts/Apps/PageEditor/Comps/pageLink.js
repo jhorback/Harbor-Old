@@ -1,13 +1,13 @@
 ﻿
 // type, $el, uicid, page
-var ImageComponent = PageComponent.extend({
+var PageLinkComponent = PageComponent.extend({
 	
     modelType: function () {
-        return ImageComponent.ImageModel;
+        return PageLinkComponent.PageLinkModel;
     },
 
     initialize: function () {
-        this.view = new ImageComponent.View({
+        this.view = new PageLinkComponent.View({
             el: this.$el,
             model: this.model,
             uicid: this.uicid
@@ -31,7 +31,7 @@ var ImageComponent = PageComponent.extend({
 });
 
 
-ImageComponent.ImageModel = Application.Model.extend({
+PageLinkComponent.PageLinkModel = Application.Model.extend({
 	pageProperties: {
 		fileID: null,
 		ext: null, // jch! can remove ext and name after Page/File Relation is worked out
@@ -41,7 +41,7 @@ ImageComponent.ImageModel = Application.Model.extend({
 	defaults: {
 	    imgSrc: null
 	},
-	hasImage: function () {
+	hasPageLink: function () {
 		return this.get("fileID") ? true : false;
 	},
 	imgSrc: {
@@ -54,7 +54,7 @@ ImageComponent.ImageModel = Application.Model.extend({
 });
 
 
-ImageComponent.View = Application.View.extend({
+PageLinkComponent.View = Application.View.extend({
 	initialize: function () {
 		this.listenTo(this.model, "change:res", this.save);
 	},
@@ -66,23 +66,23 @@ ImageComponent.View = Application.View.extend({
 	},
 	
 	render: function () {
-		var editDiv =  this.template("Image-Edit")();
+		var editDiv =  this.template("PageLink-Edit")();
 		var imgCtr = this.$("[data-rel=pageLink]");
 		imgCtr.after(editDiv);
 		this.bindModelToView();
 	},
 	
-	renderImage: function () {
-		if (this.model.hasImage() === false) {
+	renderPageLink: function () {
+		if (this.model.hasPageLink() === false) {
 			return;
 		}
-		this.renderTemplate("Image")(this.model.toJSON());
+		this.renderTemplate("PageLink")(this.model.toJSON());
 		this.render();
 	},
 	
 	save: function () {
 		AjaxRequest.handle(this.model.save(), {
-			success: this.renderImage
+			success: this.renderPageLink
 		}, this);
 	},
 
@@ -104,7 +104,7 @@ ImageComponent.View = Application.View.extend({
 					name: selectedFile.get("name")
 					// dont include max since we are saving on max change too
 				});
-				this.model.page.updatePagePreviewImage(this.options.uicid, fileID);
+				this.model.page.updatePagePreviewPageLink(this.options.uicid, fileID);
 				this.save();
 			}
 		}, this);
@@ -117,4 +117,4 @@ ImageComponent.View = Application.View.extend({
 
 
 
-PageEditor.registerComponent("pageLink", ImageComponent);
+PageEditor.registerComponent("pageLink", PageLinkComponent);

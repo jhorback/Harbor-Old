@@ -86,11 +86,16 @@ namespace Harbor.Domain.Pages
 		{
 			var resources = new List<PageResource>();
 
-			// currently, the only resources are Files
 			foreach (var file in page.Files)
 			{
 				resources.Add(new FileResource(page, file.FileID));
 			}
+
+			foreach (var res in page.PageLinks)
+			{
+				resources.Add(new PageLinkResource(page, res.PageID));
+			}
+
 			return resources;
 		}
 		#endregion

@@ -8,7 +8,7 @@ namespace Harbor.Domain.Pages.Components
 
 		public override string Key
 		{
-			get { return Text.KEY; }
+			get { return KEY; }
 		}
 
 		public override string Name

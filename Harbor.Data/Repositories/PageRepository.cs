@@ -52,6 +52,8 @@ namespace Harbor.Data.Repositories
 				pages = pages.Include("PreviewImage");
 			if (include.HasFlag(IncludePageResources.Files))
 				pages = pages.Include("Files");
+			if (include.HasFlag(IncludePageResources.PageLinks))
+				pages = pages.Include("PageLinks");
 			return pages.AsQueryable();
 		}
 
