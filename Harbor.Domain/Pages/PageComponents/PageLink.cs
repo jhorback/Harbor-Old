@@ -10,11 +10,11 @@ namespace Harbor.Domain.Pages.PageComponents
 		{
 			if (IsNew() == false)
 			{
-				page = page.GetPageLink(PageID);
+				_page = page.GetPageLink(PageID);
 			}
 		}
 
-		private Page page;
+		private Page _page;
 
 		public bool IsNew()
 		{
@@ -25,7 +25,7 @@ namespace Harbor.Domain.Pages.PageComponents
 		{
 			get
 			{
-				return page == null ? null : page.Title;
+				return _page == null ? null : _page.Title;
 			}
 		}
 		
@@ -34,7 +34,7 @@ namespace Harbor.Domain.Pages.PageComponents
 			get
 			{
 				var id = GetProperty("pageID");
-				return int.Parse(id);
+				return id == null ? 0 : int.Parse(id);
 			}
 		}
 
@@ -42,7 +42,7 @@ namespace Harbor.Domain.Pages.PageComponents
 		{
 			get
 			{
-				return page == null ? null : page.PreviewText;
+				return _page == null ? null : _page.PreviewText;
 			}
 		}
 
@@ -50,7 +50,16 @@ namespace Harbor.Domain.Pages.PageComponents
 		{
 			get
 			{
-				return page == null ? null : page.PreviewImageID;
+				return _page == null ? null : _page.PreviewImageID;
+			}
+		}
+
+		public string TileDisplay
+		{
+			get 
+			{
+				var display = GetProperty("tileDisplay");
+				return display ?? "normal";
 			}
 		}
 

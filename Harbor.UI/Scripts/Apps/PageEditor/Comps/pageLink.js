@@ -16,11 +16,11 @@ var PageLinkComponent = PageComponent.extend({
 
 	create: function () {
 	    this.open();
-	    this.view.openFileSelector();
+	    this.view.openPageSelector();
 	},
 	
 	open: function () {
-		JSPM.install("FileSelector", function () {
+		JSPM.install("PageSelector", function () {
 			this.view.render();
 		}, this);
 	},
@@ -33,22 +33,31 @@ var PageLinkComponent = PageComponent.extend({
 
 PageLinkComponent.PageLinkModel = Application.Model.extend({
 	pageProperties: {
-		fileID: null,
-		ext: null, // jch! can remove ext and name after Page/File Relation is worked out
-		name: null,
-		res: "low" // can be low or high
+		pageID: 0,
+		tileDisplay: "normal"
 	},
 	defaults: {
-	    imgSrc: null
+		title: null,
+		previewText: null,
+		previewImageID: null,
+		previewImageSrc: null,
+		tileClassName: "tile"
 	},
 	hasPageLink: function () {
-		return this.get("fileID") ? true : false;
+		return this.get("pageID") > 0 ? true : false;
 	},
-	imgSrc: {
+	previewImageSrc: {
 		get: function (value) {
-			return Application.url("file/" +
-				this.get("fileID") + "/" + this.get("name") + "." +
-				this.get("ext") + "?res=" + this.get("res"));
+			debugger;
+			var src = Application.url("file/" +
+				this.get("previewImageID") + "/preview.img?res=low");
+			return src;
+		}
+	},
+	tileClassName: {
+		get: function (value) {
+			var display = this.get("tileDisplay");
+			return display === "wide" ? "tile tile-wide" : "tile";
 		}
 	}
 });
@@ -56,12 +65,12 @@ PageLinkComponent.PageLinkModel = Application.Model.extend({
 
 PageLinkComponent.View = Application.View.extend({
 	initialize: function () {
-		this.listenTo(this.model, "change:res", this.save);
+		this.listenTo(this.model, "change:tileDisplay", this.save);
 	},
 	
 	events: {
 		"click [data-rel=select]": function () {
-			this.openFileSelector();
+			this.openPageSelector();
 		}
 	},
 	
@@ -86,25 +95,21 @@ PageLinkComponent.View = Application.View.extend({
 		}, this);
 	},
 
-	openFileSelector: function () {
-		PageEditor.regions.page.hideEl();
-		PageLoader.regions.loader.hideEl();
-		FileSelector.start({
-			filter: "pageLinks",
+	openPageSelector: function () {
+		PageSettings.events.trigger("modal:opened");
+		PageSelector.start({
 			region: PageEditor.regions.modal,
 			close: function () {
-				PageEditor.regions.page.showEl();
-				PageLoader.regions.loader.showEl();
+				PageSettings.events.trigger("modal:closed");
 			},
-			select: function (selectedFile) {
-				var fileID = selectedFile.get("id");
+			select: function (selectedPage) {
+				var pageID = selectedPage.get("id");
 				this.model.set({
-					fileID: fileID,
-					ext: selectedFile.get("ext"),
-					name: selectedFile.get("name")
-					// dont include max since we are saving on max change too
+					pageID: pageID,
+					title: selectedPage.get("title"),
+					previewText: selectedPage.get("previewText"),
+					previewImageID: selectedPage.get("previewImageID")
 				});
-				this.model.page.updatePagePreviewPageLink(this.options.uicid, fileID);
 				this.save();
 			}
 		}, this);
@@ -114,7 +119,5 @@ PageLinkComponent.View = Application.View.extend({
 		this.$("[data-rel=edit]").remove();
 	}
 });
-
-
 
 PageEditor.registerComponent("pageLink", PageLinkComponent);

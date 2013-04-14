@@ -33,13 +33,13 @@ var ImageComponent = PageComponent.extend({
 
 ImageComponent.ImageModel = Application.Model.extend({
 	pageProperties: {
-		fileID: null,
-		ext: null, // jch! can remove ext and name after Page/File Relation is worked out
-		name: null,
+		fileID: null,	
 		res: "low" // can be low or high
 	},
 	defaults: {
-	    imgSrc: null
+		imgSrc: null,
+		ext: null,
+		name: null
 	},
 	hasImage: function () {
 		return this.get("fileID") ? true : false;
@@ -49,6 +49,12 @@ ImageComponent.ImageModel = Application.Model.extend({
 			return Application.url("file/" +
 				this.get("fileID") + "/" + this.get("name") + "." +
 				this.get("ext") + "?res=" + this.get("res"));
+		}
+	},
+	ext: {
+		get: function (value) {
+			debugger; // jch! - testing
+			return value;
 		}
 	}
 });
@@ -67,7 +73,7 @@ ImageComponent.View = Application.View.extend({
 	
 	render: function () {
 		var editDiv =  this.template("Image-Edit")();
-		var imgCtr = this.$("[data-rel=pageLink]");
+		var imgCtr = this.$("[data-rel=image]");
 		imgCtr.after(editDiv);
 		this.bindModelToView();
 	},
@@ -87,14 +93,12 @@ ImageComponent.View = Application.View.extend({
 	},
 
 	openFileSelector: function () {
-		PageEditor.regions.page.hideEl();
-		PageLoader.regions.loader.hideEl();
+		PageSettings.events.trigger("modal:opened");
 		FileSelector.start({
-			filter: "pageLinks",
+			filter: "images",
 			region: PageEditor.regions.modal,
 			close: function () {
-				PageEditor.regions.page.showEl();
-				PageLoader.regions.loader.showEl();
+				PageSettings.events.trigger("modal:closed");
 			},
 			select: function (selectedFile) {
 				var fileID = selectedFile.get("id");
@@ -117,4 +121,4 @@ ImageComponent.View = Application.View.extend({
 
 
 
-PageEditor.registerComponent("pageLink", ImageComponent);
+PageEditor.registerComponent("image", ImageComponent);

@@ -16,6 +16,7 @@ namespace Harbor.UI.Extensions
 		/// <param name="helper"></param>
 		/// <param name="expression"></param>
 		/// <param name="clientBinding"> </param>
+		/// <param name="clientAttr"></param>
 		/// <returns></returns>
 		public static MvcHtmlString JstPropFor<TModel, TProperty>(this HtmlHelper<TModel> helper,
 			Expression<Func<TModel, TProperty>> expression, bool clientBinding = false, string clientAttr = null)
@@ -52,13 +53,14 @@ namespace Harbor.UI.Extensions
 			else
 			{
 				// jch! how to tell if from server or client? - testing this now
-				if (metaData != null)
+				var val = metaData != null ? propValue as string : "{{" + propName + "}}";					
+				if (clientAttr != null)
 				{
-					html = propValue as string;
+					html = string.Format(@" {0}=""{1}""", clientAttr, val);
 				}
 				else
 				{
-					html = "{{" + propName + "}}";					
+					html = val;
 				}
 			}
 
