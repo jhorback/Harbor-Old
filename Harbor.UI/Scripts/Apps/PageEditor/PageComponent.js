@@ -31,15 +31,14 @@ _.extend(PageComponent.prototype, {
 			// gather the default properties (to initialize the model with)
 			pageProps = this.modelType.pageProperties;
 			modelProps = { id: this.uicid };
-			_.each(pageProps, function (defaultValue, attrName) {
+			_.each(pageProps, function (attrName) {
 				var attrValue = this.getProperty(attrName);
-				modelProps[attrName] = attrValue === null ? defaultValue : attrValue;
+				modelProps[attrName] = attrValue;
 			}, this);
 			
 			if (this.modelType.getDefaults) {
 				defaultProps = this.modelType.getDefaults(this.page, modelProps);
 				if (defaultProps) {
-					// jch! need to test
 					_.extend(modelProps, defaultProps);
 				}
 			}

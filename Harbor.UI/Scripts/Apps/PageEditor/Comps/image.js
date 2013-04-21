@@ -56,10 +56,7 @@ ImageComponent.ImageModel = Application.Model.extend({
 		}
 	}
 }, {
-	pageProperties: {
-		fileID: null,
-		res: "low" // can be low or high
-	},
+	pageProperties: ["fileID", "res"],
 	
 	getDefaults: function () {
 		return {};

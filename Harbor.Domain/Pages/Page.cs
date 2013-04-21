@@ -83,6 +83,15 @@ namespace Harbor.Domain.Pages
 
 		[DefaultValue(true)]
 		public bool Enabled { get; set; }
+
+
+		public string VirtualPath
+		{
+			get
+			{
+				return string.Format("~/id/{0}/{1}", PageID, Title.ToLower().Replace(" ", "-"));
+			}
+		}
 		#endregion
 
 		#region associations

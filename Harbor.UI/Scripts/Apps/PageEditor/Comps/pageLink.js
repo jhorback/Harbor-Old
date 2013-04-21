@@ -39,7 +39,8 @@ PageLinkComponent.PageLinkModel = Application.Model.extend({
 		previewText: null,
 		previewImageID: null,
 		previewImageSrc: null,
-		tileClassName: "tile"
+		tileClassName: "tile",
+		link: null
 	},
 	hasPageLink: function () {
 		return this.get("pageID") > 0 ? true : false;
@@ -60,14 +61,11 @@ PageLinkComponent.PageLinkModel = Application.Model.extend({
 		}
 	}
 }, {
-	pageProperties: {
-		pageID: 0,
-		tileDisplay: "normal"
-	},
+	pageProperties: ["pageID", "tileDisplay"],
 	
 	getDefaults: function (page, pageProperties) {
 		return _.pick(page.getPageLink(pageProperties.pageID),
-			"title", "previewText", "previewImageID");
+			"title", "previewText", "previewImageID", "link");
 	}
 });
 
@@ -80,6 +78,10 @@ PageLinkComponent.View = Application.View.extend({
 	events: {
 		"click [data-rel=select]": function () {
 			this.openPageSelector();
+		},
+		"click a": function (event) {
+			// prevent link navigation while editing
+			event.preventDefault();
 		}
 	},
 	
