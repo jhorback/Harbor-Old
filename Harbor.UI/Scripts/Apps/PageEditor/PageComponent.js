@@ -51,7 +51,7 @@ _.extend(PageComponent.prototype, {
 			
 
 			// set up binding on the page properties
-			_.each(pageProps, function (defaultValue, attrName) {
+			_.each(pageProps, function (attrName) {
 				this.model.on("change:" + attrName, function (model, value) {
 					this.setProperty(attrName, value);
 				}, this);
