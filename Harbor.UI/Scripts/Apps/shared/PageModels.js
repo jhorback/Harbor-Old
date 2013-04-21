@@ -24,6 +24,10 @@ PageModels.Page = Application.Model.extend({
 	
 	previewImage: null, // FileModel
 	
+	files: [], // FileModel
+	
+	pageLinks: [], // Page
+	
 	defaults: {
 	    id: null,
 	    parentPageID: null,
@@ -219,6 +223,11 @@ PageModels.Page = Application.Model.extend({
 			return true;
 		}, this);
 		return retItem;
+	},
+	
+	getPageLink: function (pageID) {
+		var link = _.where(this.get("pageLinks"), { id: parseInt(pageID) });
+		return (link.length === 1) ? link[0] : {};
 	}
 });
 

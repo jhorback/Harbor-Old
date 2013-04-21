@@ -7,8 +7,6 @@
  *         and changes will be bound to update page properties according to the uicid. 
  */
 var PageComponent = function (options) {
-	var pageProps, modelProps;
-
 	this.type= options.type;
 	this.$el = options.$el;
 	this.uicid = options.uicid;
@@ -24,20 +22,36 @@ PageComponent.extend = Backbone.Model.extend;
 _.extend(PageComponent.prototype, {
 
 	initModel: function () {
+		var pageProps, modelProps, defaultProps;
+
 		if (this.modelType) {
 			this.modelType = this.modelType();
 
-			pageProps = this.modelType.prototype.pageProperties
+
+			// gather the default properties (to initialize the model with)
+			pageProps = this.modelType.pageProperties;
 			modelProps = { id: this.uicid };
 			_.each(pageProps, function (defaultValue, attrName) {
 				var attrValue = this.getProperty(attrName);
 				modelProps[attrName] = attrValue === null ? defaultValue : attrValue;
 			}, this);
+			
+			if (this.modelType.getDefaults) {
+				defaultProps = this.modelType.getDefaults(this.page, modelProps);
+				if (defaultProps) {
+					// jch! need to test
+					_.extend(modelProps, defaultProps);
+				}
+			}
 
+
+			// create the model and give the the page model and save method
 			this.model = new this.modelType(modelProps);
 			this.model.page = this.page;
 			this.model.save = _.bind(this.save, this);
 			
+
+			// set up binding on the page properties
 			_.each(pageProps, function (defaultValue, attrName) {
 				this.model.on("change:" + attrName, function (model, value) {
 					this.setProperty(attrName, value);

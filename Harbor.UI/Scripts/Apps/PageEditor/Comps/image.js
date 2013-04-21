@@ -32,11 +32,9 @@ var ImageComponent = PageComponent.extend({
 
 
 ImageComponent.ImageModel = Application.Model.extend({
-	pageProperties: {
-		fileID: null,	
-		res: "low" // can be low or high
-	},
 	defaults: {
+		fileID: null,	
+		res: "low", // can be low or high
 		imgSrc: null,
 		ext: null,
 		name: null
@@ -53,9 +51,18 @@ ImageComponent.ImageModel = Application.Model.extend({
 	},
 	ext: {
 		get: function (value) {
-			debugger; // jch! - testing
+			debugger; // jch! - testing - my guess is that this is undefined
 			return value;
 		}
+	}
+}, {
+	pageProperties: {
+		fileID: null,
+		res: "low" // can be low or high
+	},
+	
+	getDefaults: function () {
+		return {};
 	}
 });
 
