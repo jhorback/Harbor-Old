@@ -23,14 +23,14 @@ namespace Harbor.UI.Models
 			Mapper.CreateMap<PageDto, Domain.Pages.Page>()
 				.ForMember(dest => dest.AuthorsUserName, opt => opt.MapFrom(src => src.author))
 				.ForMember(dest => dest.Public, opt => opt.MapFrom(src => src.published))
-				.ForMember(dest => dest.Properties, opt => opt.MapFrom(src => src.properties))
 				.ForMember(dest => dest.Created, opt => opt.Ignore())
 				.ForMember(dest => dest.Modified, opt => opt.Ignore())
 				.ForMember(dest => dest.PageID, opt => opt.Ignore())
 				.ForMember(dest => dest.Properties, opt => opt.Ignore())
 				.ForMember(dest => dest.PreviewImage, opt => opt.Ignore())
-				// jch! - testing this - had this as AfterMap was it working? 
-				.BeforeMap((dto, DO) =>
+				.ForMember(dest => dest.Files, opt => opt.Ignore())
+				.ForMember(dest => dest.PageLinks, opt => opt.Ignore())
+				.AfterMap((dto, DO) =>
 				    {
 						// add / update
 						foreach (var prop in dto.properties)
