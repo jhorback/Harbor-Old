@@ -1,7 +1,7 @@
 ﻿(function () {
 
 	Session.on("addPage", function () {
-		PageModels.init().then(function () {
+		pageModel.init().then(function () {
 			PageAdder.addPage();
 		});
 	});
@@ -24,7 +24,7 @@
 
 PageAdder.AddPageView = Application.View.extend({
 	initialize: function () {
-		this.model = new PageModels.Page();
+		this.model = new pageModel.Page();
 		this.model.set("author", Session.currentUser.get("username"));
 	},
 	
@@ -40,7 +40,7 @@ PageAdder.AddPageView = Application.View.extend({
 	    
 	    model = {
 	        page: this.model,
-	        pageTypes: PageModels.pageTypes
+	        pageTypes: pageModel.pageTypes
 	    };
 		this.template("PageAdder-AddPage", this.$el)(model);
 
@@ -72,7 +72,7 @@ PageAdder.AddPageView = Application.View.extend({
 				self.displayErrors(response.errors);
 			},
 			success: function (page) {
-				window.location = new PageModels.Page(page).getUrl();
+				window.location = new pageModel.Page(page).getUrl();
 			}
 		});
 	}

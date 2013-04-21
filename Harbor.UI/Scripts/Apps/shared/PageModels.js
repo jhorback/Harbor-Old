@@ -1,5 +1,5 @@
 ﻿
-var PageModels = {
+var pageModel = {
 	pageTypes: null,
 	
 	getPageUrl: function (pageID, title) {
@@ -8,8 +8,8 @@ var PageModels = {
 	
 	init: function () {
 		var dfd = $.Deferred();
-		PageModels.pageTypes = new PageModels.PageTypes();
-		AjaxRequest.handle(PageModels.pageTypes.fetch(), {
+		pageModel.pageTypes = new pageModel.PageTypes();
+		AjaxRequest.handle(pageModel.pageTypes.fetch(), {
 			success: dfd.resolve
 		});
 		return dfd.promise();
@@ -17,10 +17,10 @@ var PageModels = {
 };
 
 
-PageModels.Page = Application.Model.extend({
+pageModel.Page = Application.Model.extend({
 	urlRoot: Application.url("api/pages"),
 	
-	template: null, // PageModels.Template
+	template: null, // pageModel.Template
 	
 	previewImage: null, // FileModel
 	
@@ -65,7 +65,7 @@ PageModels.Page = Application.Model.extend({
 		
 		this.set("link", this.getUrl());
 		
-		this.template = new PageModels.Template(this.get("template"));
+		this.template = new pageModel.Template(this.get("template"));
 		this.listenTo(this.template, "change", function () {
 			page.set("template", page.template.toJSON());
 		});
@@ -81,7 +81,7 @@ PageModels.Page = Application.Model.extend({
 	},
 
 	getUrl: function () {
-		return PageModels.getPageUrl(this.get("id"), this.get("title"));
+		return pageModel.getPageUrl(this.get("id"), this.get("title"));
 	},
 	
 	pageTypeDescription: {
@@ -93,7 +93,7 @@ PageModels.Page = Application.Model.extend({
 				return null;
 			}
 		
-			pageType = PageModels.pageTypes && PageModels.pageTypes.find(function (type) {
+			pageType = pageModel.pageTypes && pageModel.pageTypes.find(function (type) {
 				return type.get("key") === pageTypeKey;
 			});
 			return pageType && pageType.get("description");
@@ -232,8 +232,8 @@ PageModels.Page = Application.Model.extend({
 });
 
 
-PageModels.Pages = Backbone.Collection.extend({
-	model: PageModels.Page,
+pageModel.Pages = Backbone.Collection.extend({
+	model: pageModel.Page,
 	url: Session.url("api/pages"),
 	search : function (title) {
 		var pattern;
@@ -250,7 +250,7 @@ PageModels.Pages = Backbone.Collection.extend({
 });
 
 
-PageModels.PageType = Backbone.Model.extend({
+pageModel.PageType = Backbone.Model.extend({
 	urlRoot: Session.url("api/pagetypes"),
 	defaults: {
 		key: null,
@@ -260,9 +260,9 @@ PageModels.PageType = Backbone.Model.extend({
 });
 
 
-PageModels.PageTypes = Backbone.Collection.extend({
+pageModel.PageTypes = Backbone.Collection.extend({
 	url: Session.url("api/pagetypes"),
-	model: PageModels.PageType
+	model: pageModel.PageType
 });
 
 
@@ -270,7 +270,7 @@ PageModels.PageTypes = Backbone.Collection.extend({
 header, content, and aside components have a uicid, key.
 content has a classNames property.
 */
-PageModels.Template = Backbone.Model.extend({
+pageModel.Template = Backbone.Model.extend({
 	defaults: {
 		pageID: null,
 		pageTypeKey: null,
