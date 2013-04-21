@@ -442,6 +442,9 @@
     <Content Include="Scripts\Apps\PageEditor\ChangeLayoutView.js" />
     <Content Include="Scripts\Apps\PageEditor\EditView.js" />
     <Content Include="Scripts\Apps\PageEditor\PageEditor.js" />
+    <Content Include="Scripts\Apps\pageModel\pageModel.js" />
+    <Content Include="Scripts\Apps\pageModel\PageType.js" />
+    <Content Include="Scripts\Apps\pageModel\Template.js" />
     <Content Include="Scripts\Apps\PageSettings\PagePreviewView.js" />
     <Content Include="Scripts\Apps\PageSettings\PageSettings.js" />
     <Content Include="Scripts\Apps\PageSettings\SettingsView.js" />
@@ -464,7 +467,7 @@
     <Content Include="Scripts\Apps\Settings\MainView.js" />
     <Content Include="Scripts\Apps\Settings\Settings.js" />
     <Content Include="Scripts\Apps\shared\FileModel.js" />
-    <Content Include="Scripts\Apps\shared\PageModels.js" />
+    <Content Include="Scripts\Apps\pageModel\Page.js" />
     <Content Include="Scripts\Apps\shared\UserModel.js" />
     <Content Include="Scripts\Apps\UserAdmin\ListView.js" />
     <Content Include="Scripts\Apps\UserAccount\UserAccount.js" />

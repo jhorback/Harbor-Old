@@ -10,8 +10,7 @@ namespace Harbor.UI.JSPkgs
 		public PageModelPkg()
 		{
 			Name = PackageName;
-			ScriptBundle = new ScriptBundle("~/Scripts/Apps/pageModel.min.js")
-				.Include("~/Scripts/Apps/shared/pageModel.js");
+			ScriptBundle = new AppScriptBundle(PackageName);
 			Category = Categories.Domain;
 			AddDependency(FileModelPkg.PackageName);
 		}
