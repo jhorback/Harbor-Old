@@ -19,7 +19,7 @@
 	},
 
 	initialize: function () {
-		this.homePage = new PageModels.Page(this.get("homePage"));
+		this.homePage = new pageModel.Page(this.get("homePage"));
 	},
 
 	setHomePage: function (page) {

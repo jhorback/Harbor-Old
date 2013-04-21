@@ -6,8 +6,8 @@
 		start: function () {
 			var fetchPages;
 			
-			Pages.pages = new PageModels.Pages();
-			Pages.pageTypes = new PageModels.PageTypes();
+			Pages.pages = new pageModel.Pages();
+			Pages.pageTypes = new pageModel.PageTypes();
 
 			Session.AjaxRequest.handle(Pages.pageTypes.fetch());
 

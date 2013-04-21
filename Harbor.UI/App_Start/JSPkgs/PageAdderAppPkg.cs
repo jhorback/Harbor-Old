@@ -14,7 +14,7 @@ namespace Harbor.UI.JSPkgs
 			Templates = new JstTemplateAction("Pages/PageAdderTemplates");
 			Category = Categories.Apps;
 
-			AddDependency(PageModelsPkg.PackageName);
+			AddDependency(PageModelPkg.PackageName);
 		}
 	}
 }

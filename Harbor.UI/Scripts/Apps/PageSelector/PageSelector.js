@@ -2,7 +2,7 @@
 var PageSelector = new Application({
 	start: function (options, callbackContext) {
 		// options: region, close, select
-		var pages = new PageModels.Pages(),
+		var pages = new pageModel.Pages(),
 			mainViewModel = new PageSelector.MainViewModel(),
 			mainView = new PageSelector.MainView({
 				model: mainViewModel,

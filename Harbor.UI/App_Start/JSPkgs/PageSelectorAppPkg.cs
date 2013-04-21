@@ -13,7 +13,7 @@ namespace Harbor.UI.JSPkgs
 			Templates = new JstTemplateAction("PageSelector/PageSelectorTemplates");
 			Category = Categories.Apps;
 
-			AddDependency<PageModelsPkg>();
+			AddDependency<PageModelPkg>();
 		}
 	}
 }
