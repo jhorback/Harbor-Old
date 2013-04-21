@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
+using Harbor.Domain.Files;
 using Harbor.Domain.Pages;
 
 namespace Harbor.UI.Models
@@ -28,7 +29,8 @@ namespace Harbor.UI.Models
 				.ForMember(dest => dest.PageID, opt => opt.Ignore())
 				.ForMember(dest => dest.Properties, opt => opt.Ignore())
 				.ForMember(dest => dest.PreviewImage, opt => opt.Ignore())
-				.AfterMap((dto, DO) =>
+				// jch! - testing this - had this as AfterMap was it working? 
+				.BeforeMap((dto, DO) =>
 				    {
 						// add / update
 						foreach (var prop in dto.properties)
@@ -72,6 +74,9 @@ namespace Harbor.UI.Models
 		public string previewImageID { get; set; }
 		public string previewText { get; set; }
 		public bool autoPreview { get; set; }
+
+		public List<FileDto> files { get; set; }
+		public List<PageDto> pageLinks { get; set; }
 		
 		public static implicit operator PageDto(Domain.Pages.Page page)
 		{

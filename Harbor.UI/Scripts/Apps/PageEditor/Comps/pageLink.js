@@ -32,11 +32,9 @@ var PageLinkComponent = PageComponent.extend({
 
 
 PageLinkComponent.PageLinkModel = Application.Model.extend({
-	pageProperties: {
-		pageID: 0,
-		tileDisplay: "normal"
-	},
 	defaults: {
+		pageID: 0,
+		tileDisplay: "normal",
 		title: null,
 		previewText: null,
 		previewImageID: null,
@@ -46,19 +44,30 @@ PageLinkComponent.PageLinkModel = Application.Model.extend({
 	hasPageLink: function () {
 		return this.get("pageID") > 0 ? true : false;
 	},
+	
 	previewImageSrc: {
 		get: function (value) {
-			debugger;
 			var src = Application.url("file/" +
 				this.get("previewImageID") + "/preview.img?res=low");
 			return src;
 		}
 	},
+	
 	tileClassName: {
 		get: function (value) {
 			var display = this.get("tileDisplay");
 			return display === "wide" ? "tile tile-wide" : "tile";
 		}
+	}
+}, {
+	pageProperties: {
+		pageID: 0,
+		tileDisplay: "normal"
+	},
+	
+	getDefaults: function (page, pageProperties) {
+		return _.pick(page.getPageLink(pageProperties.pageID),
+			"title", "previewText", "previewImageID");
 	}
 });
 

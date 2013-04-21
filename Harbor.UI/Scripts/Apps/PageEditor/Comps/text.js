@@ -73,12 +73,13 @@ TextComponent.View = Application.View.extend({
 
 
 TextComponent.TextModel = Application.Model.extend({
-    pageProperties: {
-        text: null
-    },
     defaults: {
         text: null
     }
+}, {
+	pageProperties: {
+		text: null
+	}
 });
 
 

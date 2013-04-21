@@ -129,6 +129,7 @@ namespace Harbor.Data.Repositories
 			}
 			catch (DbEntityValidationException dbEx)
 			{
+				var messages = new List<string>();
 				foreach (var validationErrors in dbEx.EntityValidationErrors)
 				{
 					foreach (var validationError in validationErrors.ValidationErrors)
@@ -138,8 +139,10 @@ namespace Harbor.Data.Repositories
 						var message = string.Format("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
 						Trace.TraceInformation(message);
 						Debug.Write(message);
+						messages.Add(message);
 					}
 				}
+				throw new Exception("There was an erroror updating the page: " + string.Join("\n ", messages), dbEx);
 			}
 
 			clearCachedPageByID(entity.PageID);

@@ -125,7 +125,6 @@ namespace Harbor.Domain.Pages
 			prop.Value = property;
 		}
 
-
 		public string GetUICProperty(string uicid, string name)
 		{
 			return GetProperty(uicid + "-" + name);
