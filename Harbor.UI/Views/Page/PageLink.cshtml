@@ -1,11 +1,11 @@
 ﻿@using Harbor.UI.Extensions
 @model Harbor.UI.Models.Components.PageLinkDto
 <span data-rel="pageLink" @Html.JstPropFor(m => m.tileClassName, clientBinding: true, clientAttr: "class")>
-	<a href="" class="media">
+	<a href="@Html.JstPropFor(m => m.link)" class="media">
 		<img @Html.JstPropFor(m => m.previewImageSrc, clientAttr: "src") />
 	</a>
 	<div class="caption">
-		<h2>@Html.JstPropFor(m => m.title)</h2>
+		<h2><a href="@Html.JstPropFor(m => m.link)">@Html.JstPropFor(m => m.title)</a></h2>
 		<p>
 			@Html.JstPropFor(m => m.previewText)
 		</p>

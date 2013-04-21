@@ -1,4 +1,5 @@
-﻿using Harbor.Domain.Files;
+﻿using System.Web;
+using Harbor.Domain.Files;
 using Harbor.Domain.Pages.PageComponents;
 
 namespace Harbor.UI.Models.Components
@@ -12,6 +13,7 @@ namespace Harbor.UI.Models.Components
 		public string previewImageSrc { get; set; }
 		public string tileDisplay { get; set; }
 		public string tileClassName { get; set; }
+		public string link { get; set; }
 
 		public static implicit operator PageLinkDto(PageLink link)
 		{
@@ -25,7 +27,8 @@ namespace Harbor.UI.Models.Components
 				previewImageID = previewImageID,
 				previewImageSrc = FileUrls.GetUrl(previewImageID, null, null, FileResolution.Low),
 				tileDisplay = link.TileDisplay,
-				tileClassName = link.TileDisplay == "wide" ? "tile tile-wide" : "tile"
+				tileClassName = link.TileDisplay == "wide" ? "tile tile-wide" : "tile",
+				link = VirtualPathUtility.ToAbsolute(link.VirtualPath)
 			};
 		}
 	}

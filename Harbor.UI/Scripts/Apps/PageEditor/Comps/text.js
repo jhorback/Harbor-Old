@@ -77,9 +77,7 @@ TextComponent.TextModel = Application.Model.extend({
         text: null
     }
 }, {
-	pageProperties: {
-		text: null
-	}
+	pageProperties: ["text"]
 });
 
 

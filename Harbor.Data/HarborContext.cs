@@ -61,7 +61,8 @@ namespace Harbor.Data
 				HasOptional(m => m.PreviewImage).WithMany().HasForeignKey(m => m.PreviewImageID);
 
 				Ignore(m => m.Template);
-				
+				Ignore(m => m.VirtualPath);
+
 				HasMany(m => m.Files).WithMany();
 				HasMany(m => m.PageLinks).WithMany();
 			}

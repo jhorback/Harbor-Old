@@ -63,6 +63,14 @@ namespace Harbor.Domain.Pages.PageComponents
 			}
 		}
 
+		public string VirtualPath
+		{
+			get
+			{
+				return _page == null ? null : _page.VirtualPath;
+			}
+		}
+
 		public override IEnumerable<PageResource> DeclareResources()
 		{
 			if (PageID == 0)
