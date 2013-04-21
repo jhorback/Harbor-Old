@@ -1,21 +1,4 @@
 ﻿
-var pageModel = {
-	pageTypes: null,
-	
-	getPageUrl: function (pageID, title) {
-		return title ? Application.url("id/" + pageID + "/" + title.toLowerCase().replace(/ /g, "-")) : null;
-	},
-	
-	init: function () {
-		var dfd = $.Deferred();
-		pageModel.pageTypes = new pageModel.PageTypes();
-		AjaxRequest.handle(pageModel.pageTypes.fetch(), {
-			success: dfd.resolve
-		});
-		return dfd.promise();
-	}
-};
-
 
 pageModel.Page = Application.Model.extend({
 	urlRoot: Application.url("api/pages"),
@@ -246,84 +229,5 @@ pageModel.Pages = Backbone.Collection.extend({
 		return _(this.filter(function (data) {
 		  	return pattern.test(data.get("title"));
 		}));
-	}
-});
-
-
-pageModel.PageType = Backbone.Model.extend({
-	urlRoot: Session.url("api/pagetypes"),
-	defaults: {
-		key: null,
-		name: null,
-		description: null
-	}
-});
-
-
-pageModel.PageTypes = Backbone.Collection.extend({
-	url: Session.url("api/pagetypes"),
-	model: pageModel.PageType
-});
-
-
-/*
-header, content, and aside components have a uicid, key.
-content has a classNames property.
-*/
-pageModel.Template = Backbone.Model.extend({
-	defaults: {
-		pageID: null,
-		pageTypeKey: null,
-		layoutIsCentered: false,
-		layoutIsCenteredDisabled: true,
-		layoutIsReadable: false,
-		layoutHasNoSidebar: false,
-		header: null,
-		content: [],
-		aside: [],
-		componentCounter: 0
-	},
-	
-	initialize: function () {
-		GetSetModelExtension.extend(this);
-	},
-	
-	layoutIsCenteredDisabled: {
-		get: function (value) {
-			return !this.get("layoutIsReadable");
-		},
-		
-		bind: "layoutIsReadable"
-	},
-
-	layoutIsCentered: {
-	    get: function (value) {
-	        if (this.get("layoutIsReadable") === false) {
-	            return false;
-	        }
-	        return value;
-	    },
-        bind: "layoutIsReadable"
-	},
-
-	getNextUICID: function () {
-		var cc = this.get("componentCounter");
-		this.set("componentCounter", cc + 1);
-		return "pc-" + this.get("pageID") + "-" + cc;
-	},
-	
-	addContent: function (key) {
-		var content = this.get("content");
-		content.push({
-			key: key,
-			classNames: ["col1"],
-			uicid: this.getNextUICID()
-		});
-	},
-	
-	getNextUICID: function () {
-		var cc = this.get("componentCounter") + 1;
-		this.set("componentCounter", cc);
-		return "pc-" + this.get("pageID") + "-" + cc;
 	}
 });
