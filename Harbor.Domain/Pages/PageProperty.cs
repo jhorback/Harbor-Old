@@ -18,5 +18,10 @@ namespace Harbor.Domain.Pages
 		public string Name { get; set; }
 
 		public string Value { get; set; }
+
+		public override string ToString()
+		{
+			return "PageProperty:" + Name + ":" + Value;
+		}
 	}
 }
