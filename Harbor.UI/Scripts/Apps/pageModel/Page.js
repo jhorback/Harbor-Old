@@ -13,7 +13,6 @@ pageModel.Page = Application.Model.extend({
 	
 	defaults: {
 	    id: null,
-	    parentPageID: null,
 		title: null,
 		author: null,
 		pageTypeKey: "document",

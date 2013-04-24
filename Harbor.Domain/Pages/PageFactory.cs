@@ -11,7 +11,7 @@ namespace Harbor.Domain.Pages
 			this.pageTypeRep = pageTypeRep;
 		}
 
-		public Page Create(int? parentPageID, string userName, string pageTypeKey, string title, bool publish)
+		public Page Create(string userName, string pageTypeKey, string title, bool publish)
 		{
 			var pageType = pageTypeRep.GetPageType(pageTypeKey);
 			if (pageType == null)
@@ -19,7 +19,6 @@ namespace Harbor.Domain.Pages
 
 			var page = new Page
 			    {
-			        ParentPageID = parentPageID,
 			        AuthorsUserName = userName,
 					PageTypeKey = pageTypeKey,
 			        Title = title,

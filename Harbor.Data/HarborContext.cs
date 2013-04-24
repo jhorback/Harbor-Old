@@ -48,7 +48,6 @@ namespace Harbor.Data
 		{
 			public PageConfiguration()
 			{
-				HasOptional(m => m.Parent).WithMany().HasForeignKey(m => m.ParentPageID);
 				HasRequired(m => m.Author).WithMany().HasForeignKey(m => m.AuthorsUserName);
 				HasMany(m => m.PageRoles)
 					.WithRequired()
