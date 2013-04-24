@@ -480,6 +480,7 @@
     <Content Include="Scripts\Apps\UserAdmin\UserAdminModels.js" />
     <Content Include="Scripts\Apps\UserAdmin\UserListItemView.js" />
     <Content Include="Scripts\backbone.js" />
+    <Content Include="Scripts\backbone.min.js" />
     <Content Include="Scripts\dropzone.js" />
     <Content Include="Scripts\holder.js" />
     <Content Include="Scripts\holder.min.js" />

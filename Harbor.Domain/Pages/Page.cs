@@ -48,8 +48,6 @@ namespace Harbor.Domain.Pages
 		[StringLength(50)]
 		public string PageTypeKey { get; set; }
 
-		public int? ParentPageID { get; set; }
-
 		[Required]
 		public System.DateTime Created { get; set; }
 
@@ -108,7 +106,6 @@ namespace Harbor.Domain.Pages
 		internal List<PageRole> DeletedPageRoles { get; set; }
 
 		internal User Author { get; set; }
-		internal Page Parent { get; set; }
 		public File PreviewImage { get; set; }
 		#endregion
 

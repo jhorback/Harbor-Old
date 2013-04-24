@@ -58,7 +58,6 @@ namespace Harbor.UI.Models
 			properties = new List<PagePropertyDto>();
 		}
 
-		public int? parentPageID { get; set; }
 		public int id { get; set; }
 		public string title { get; set; }
 		public string author { get; set; }
@@ -86,7 +85,7 @@ namespace Harbor.UI.Models
 		public static implicit operator Domain.Pages.Page(PageDto page)
 		{
 			var factory = DependencyResolver.Current.GetService<IPageFactory>();
-			var pageDO = factory.Create(page.parentPageID, page.author, page.pageTypeKey, page.title, page.published);
+			var pageDO = factory.Create(page.author, page.pageTypeKey, page.title, page.published);
 			return pageDO;
 		}
 	}
