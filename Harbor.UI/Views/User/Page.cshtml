@@ -23,9 +23,11 @@
 	@if (ViewBag.HasWritePermissions)
 	{ 
 		@Html.InstallJavaScriptPackage(PageLoaderAppPkg.PackageName)
-        //jch! fix bug with jspm javascript loading?!
+		@*
+		// but with jspm javascript loading?
 		@Html.InstallJavaScriptPackage(PageEditorAppPkg.PackageName)
 		@Html.InstallJavaScriptPackage(PageSettingsAppPkg.PackageName)
+		*@
 		<script>
 			PageLoader.start(@Html.Raw(Json.Encode(ViewBag.PageDto)));
 		</script>
