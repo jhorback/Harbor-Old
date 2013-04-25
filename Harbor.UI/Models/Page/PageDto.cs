@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
-using Harbor.Domain.Files;
 using Harbor.Domain.Pages;
 
 namespace Harbor.UI.Models
@@ -18,13 +17,7 @@ namespace Harbor.UI.Models
 				.ForMember(dest => dest.properties, opt => opt.MapFrom(src => src.Properties))
 				.ForMember(dest => dest.created, opt => opt.MapFrom(src => src.Created.ToShortDateString()))
 				.ForMember(dest => dest.modified, opt => opt.MapFrom(src => src.Modified.ToShortDateString()))
-				//.ForMember(dest => dest.pageLinks, opt => opt.MapFrom(src =>
-				//	{
-				//		return src.PageLinks.Select<Domain.Pages.Page, PageDto>(new PageDto
-				//			{
-				//				// id = src.Pag
-				//			});
-				//	}))
+				.ForMember(dest => dest.pageLinks, opt => opt.MapFrom(src => src.PageLinks))
 				;
 
 			Mapper.CreateMap<PageDto, Domain.Pages.Page>()
@@ -63,6 +56,8 @@ namespace Harbor.UI.Models
 		public PageDto()
 		{
 			properties = new List<PagePropertyDto>();
+			files = new List<FileDto>();
+			pageLinks = new List<PageReferenceDto>();
 		}
 
 		public int id { get; set; }
@@ -82,7 +77,7 @@ namespace Harbor.UI.Models
 		public bool autoPreview { get; set; }
 
 		public List<FileDto> files { get; set; }
-		public List<PageDto> pageLinks { get; set; }
+		public List<PageReferenceDto> pageLinks { get; set; }
 		
 		public static implicit operator PageDto(Domain.Pages.Page page)
 		{
