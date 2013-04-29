@@ -552,6 +552,8 @@
     <Content Include="Views\Page\PageLink-None.cshtml" />
     <Content Include="Views\Page\PageLink.cshtml" />
     <Content Include="Views\Page\PageLink-Edit.cshtml" />
+    <Content Include="Scripts\Apps\Application\_api.cshtml" />
+    <Content Include="Views\Home\ApplicationJsApi.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\users\" />
