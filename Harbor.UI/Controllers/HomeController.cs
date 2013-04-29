@@ -107,6 +107,12 @@ namespace Harbor.UI.Controllers
 			return View("JavaScriptPackages", packages);
 		}
 
+
+		public ViewResult ApplicationJsApi()
+		{
+			return View("ApplicationJsApi");
+		}
+
 		public ViewResult About()
 		{
 			return View("About");
