@@ -94,7 +94,7 @@
                 }
 
                 curriedMethods[methodName] = controller[methodName] = function () {
-                    var result, view, region, navigate;
+                	var result, view, region, navigate = null;
 
                     result = method.apply(controller, arguments);
 
@@ -123,7 +123,7 @@
                 var dfd;
                 this.options = arguments && arguments[0];
                 this.root = _.isFunction(this.root) ? this.root.call(this) : (this.root || "");
-                dfd = customStart && customStart.apply(this, arguments);
+                dfd = customStart && customStart.apply(this, r);
                 if (controller.routes && controller._started === true) {
                     throw "Start has already been called.";
                 }
