@@ -1,277 +1,489 @@
 ﻿@inherits System.Web.Mvc.WebViewPage
-<h1>Application.js</h1>
+<div class="page-header">
+	<h1>Application.js</h1>
+</div>
+<div class="page-body">
+	<div class="page-aside">
+		<div class="col">
+			<strong><a href="#application">Application, Controller</a></strong>
+			<ul>
+				<li><a href="#application-start">start</a></li>
+				<li><a href="#application-url">url</a></li>
+				<li><a href="#application-regions">regions</a></li>
+				<li><a href="#application-root">root</a></li>
+				<li><a href="#application-view-management">View Management</a></li>
+				<li><a href="#application-routes">routes</a></li>
+				<li><a href="#application-events">events</a></li>
+				<li><a href="#application-handleLinkClick">handleLinkClick</a></li>
+				<li><a href="#application-model-view">Model / View</a></li>
+			</ul>
+			
+			<strong><a href="#region">Region</a></strong>
+			<ul>
+				<li><a href="#region-getEl">getEl</a></li>
+				<li><a href="#region-render">render</a></li>
+				<li><a href="#region-show">show</a></li>
+				<li><a href="#region-showEl">showEl</a></li>
+				<li><a href="#region-hideEl">hideEl</a></li>
+				<li><a href="#region-open">open</a></li>
+				<li><a href="#region-close">close, destroy</a></li>				
+			</ul>
 
-<p>
-Application.js is a series of JavaScript modules and mixins that can be used to reduce boilerplate code.
-Some of the modules are extensions of Backbone and others may require jQuery, Underscore, or nothing at all.
-</p>
-<p>
-	Below is a list of all modules, however, the rest of the documentation fouces on common usage rather than structure.
-</p>
-<ul>
-	<li>
-		General
+			<strong><a href="#ajaxrequest">AjaxRequest</a></strong>
+			<ul>
+				<li><a href="#ajaxrequest-handle">handle</a></li>	
+				<li><a href="#ajaxrequest-execute">execute</a></li>							
+			</ul>
+			
+			<strong><a href="#jspm">JSPM</a></strong>
+			<ul>
+				<li><a href="#jspm-pkgSrc">pkgSrc</a></li>	
+				<li><a href="#jspm-install">install</a></li>	
+				<li><a href="#jspm-register">register</a></li>	
+			</ul>
+			
+			
+			<strong><a href="#model">Model</a></strong>
+			<ul>
+				<li><a href="#model-property-get">property:get</a></li>	
+				<li><a href="#model-property-set">property:set</a></li>	
+				<li><a href="#model-property-bind">property:bind</a></li>	
+				<li><a href="#model-property-validate">property:validate</a></li>	
+				<li><a href="#model-store">store</a></li>	
+				<li><a href="#model-restore">restore</a></li>	
+
+			</ul>
+			
+			@*add seperate validation extension documentation*@
+
+			<strong><a href="#view">View</a></strong>
+			<ul>
+				<li><a href="#view-handle">handle</a></li>	
+			</ul>
+
+		</div>
+	</div>
+	<div class="page-content">
+		<p>
+		Application.js is a series of JavaScript modules and mixins that can be used to reduce boilerplate code.
+		Some of the modules are extensions of Backbone and others may require jQuery, Underscore, or nothing at all.
+		</p>
+		@*
+		jch! move this to the bottom?
+		<p>
+			Below is a list of all modules, however, the rest of the documentation fouces on common usage rather than structure.
+		</p>
 		<ul>
-			<li>Application - Creates a standard facade for common application components.
-				Basically a Controller with event aggregation.
+			<li>
+				General
+				<ul>
+					<li>Application - Creates a standard facade for common application components.
+						Basically a Controller with event aggregation.
+					</li>
+					<li>
+						Controller - A Backbone router with added lifetime view management using regions.
+					</li>
+					<li>
+						Region - A simple abstraction of a dom node.
+					</li>
+					<li>
+						AjaxRequest - Creates an ajax request with deferred execution and provides a handler for http status codes for web apis.
+					</li>
+					<li>
+						JSPM - The client portion of a JavaScript package manager for loading JavaScript packages containing scripts, css, and/or templates.
+					</li>
+				</ul>
 			</li>
 			<li>
-				Controller - A Backbone router with added lifetime view management using regions.
+				Application.Model - The combination of all Backbone Model mixins.
+				<ul>
+					<li>
+						GetSetModelExtension -
+					</li>
+					<li>
+						ValidationModelExtension and ModelErrors -
+					</li>
+					<li>
+						BackupModelExtension -
+					</li>
+				</ul>
 			</li>
 			<li>
-				Region - A simple abstraction of a dom node.
+				Application.View - The combination of all Backbone View mixins.
+				<ul>
+					<li>
+						JSTViewExtension -
+					</li>
+					<li>
+						ModelBinder -
+					</li>
+					<li>
+						FormErrorHandler -
+					</li>
+					<li>
+						CloseViewExtension - 
+					</li>
+				</ul>
 			</li>
 			<li>
-				AjaxRequest - Creates an ajax request with deferred execution and provides a handler for http status codes for web apis.
+				UI
+				<ul>
+					<li>
+						Menu - 
+					</li>
+					<li>
+						Dialog -
+					</li>
+				</ul>
 			</li>
-			<li>
-				JSPM - The client portion of a JavaScript package manager for loading JavaScript packages containing scripts, css, and/or templates.
-			</li>
-		</ul>
-	</li>
-	<li>
-		Application.Model - The combination of all Backbone Model mixins.
-		<ul>
-			<li>
-				GetSetModelExtension -
-			</li>
-			<li>
-				ValidationModelExtension and ModelErrors -
-			</li>
-			<li>
-				BackupModelExtension -
-			</li>
-		</ul>
-	</li>
-	<li>
-		Application.View - The combination of all Backbone View mixins.
-		<ul>
-			<li>
-				JSTViewExtension -
-			</li>
-			<li>
-				ModelBinder -
-			</li>
-			<li>
-				FormErrorHandler -
-			</li>
-			<li>
-				CloseViewExtension - 
-			</li>
-		</ul>
-	</li>
-	<li>
-		UI
-		<ul>
-			<li>
-				Menu - 
-			</li>
-			<li>
-				Dialog -
-			</li>
-		</ul>
-	</li>
-</ul>
+		</ul>*@
 
-<h2>Application</h2>
-<p>
-	The Application provides an entry point to a JavaScript application.
-	In it's simplest form an application is created (with or without options) and started using the <code>start</code> method.
-</p>
-<p>
-	Other Application features that can be taken advantage of are routing, regions, view management, and event aggregation.
-</p>
-
-<h3>url</h3>
-<code>Application.url(url)</code>
-<p>
-	Used to parse base urls. This method relies upon a global <code>baseUrl</code> property being set, 
-	otherwise, the url passed will be returned unchanged.
-</p>
-<pre class="prettyprint">
-window.baseUrl = "/myapp/";
-var someUrl = Application.url("path/to/file.html");
-=> /myapp/path/to/file.html
-</pre>
-@*
-
-<pre>
-/*
- *	Creates a standard facade for common application components.
- *
- *	Usage:
- *		var MyApp = new Application({
- *			root: "path/to/app",
- *			
- *			routes: {
- *				"": "main",				
- *				"*defaultRoute": "main"
- *			},
- *	
- *			regions: {
- *				"default": "#some-container",				
- *			},
- *	
- *			start: function () {
- *				// fetch data, set up app, etc...
- *			},
- *	
- *			main: function () {						
- *				return {
- *					view: view,
- *					navigate: "/"
- *				};
- *			}
- *		});
- *
- *	Shared event aggregation (all new Application objects will share the same 'events' channel):
- *	MyApp.events.on("object:event", fn);
- *	MyApp.events.trigger("object:event", arg1, arg2);
- *	MyApp.events.off("object:event", fn);
- *
- *	Application views and models that use all view and model extensions:
- * 	    var MyView = Application.View.extend({ ... });
- *	    var MyModel = Application.Model.extend({ ... });
- *
- *	Note:
- *      There is no need of stop method since regions and self management perform cleanup as needed.
- *
- */
-</pre>
+		<h2 id="application">Application</h2>
+		<p>
+			The Application provides an entry point to a JavaScript application.
+			In it's simplest form an application is created (with or without options) and started using the <code>start</code> method.
+		</p>
+		<p>
+			Other Application features that can be taken advantage of are routing, regions, view management, and event aggregation.
+		</p>
 
 
-<h3>Controller</h3>
-<h4>root</h4>
-<h4>routes</h4>
-<h4>regions</h4>
-<h4>start</h4>
-<h4>main</h4>
+		<h3 id="application-start">start</h3>
+		<code>app.start()</code>
+		<p>
+			Overriding the start method allows you to add initialization code to your app. Arguments are optional, however,
+			the first argument passed to the start method will be added to an <code>options</code> property on the application.
+		</p>
+		<pre class="prettyprint linenums">
+		var myApp = new Application({
+			start: function (options, hasSecondArgument) {
+				// hasSecondArgument: true
+			},
+
+			someMethod: function () {
+				var data = this.options.data;
+			}
+		});
+		myApp.start({data:[], true});
+		</pre>
+		<p>
+			If setting up Backbone routes, calling the <code>start</code> method will call start on Backbone.history as well.
+		</p>
 
 
-	<h3>Region</h3>
-	<h3>Ajax Requests (and default handling)</h3>
-	<h3>JSPM</h3>
-
-<h2>Model</h2>
-	<h3>Getters and Setters</h3>
-	<h3>Validation</h3>
-	<h3>ModelErrors</h3>
-	<h3>Backup and Restore</h3>
-
-<h2>View</h2>
-	<h3>Templates</h3>
-	<h3>Model Binding</h3>
-	<h3>Form Error Handling</h3>
-	<h3>View Cleanup (Close)</h3>
-
-<h2>UI</h2>
-	<h3>Menu</h3>
-	<h3>Dialog</h3>*@
+		<h3 id="application-url">url</h3>
+		<code>Application.url(url)</code>
+		<p>
+			Used to parse base urls. This method relies upon a global <code>baseUrl</code> property being set, 
+			otherwise, the url passed will be returned unchanged.
+		</p>
+		<pre class="prettyprint">
+		window.baseUrl = "/myapp/";
+		var someUrl = Application.url("path/to/file.html");
+		=> /myapp/path/to/file.html
+		</pre>
 
 
-<h2>Model</h2>
-/*
- * GetSetModelExtension.js
- * 
+		<h3 id="application-regions">regions</h3>
+		<code>application.regions</code>
+		<p>
+			The regions property is a hash of region name and region (dom) selector.
+			Regions are setup during application creation so they can be referenced easily during the lifetime of the application.
+		</p>
+		<pre class="prettyprint">
+		var MyApp = new Application({
+			regions: {
+				"edit", "#edit-region"
+			}
+		});
+		MyApp.regions.edit.show(new SomeView());
+		</pre>
+
+
+		<h3 id="application-root">root</h3>
+		<code>application.root</code>
+		<p>
+			Defining a root property on an application is passed to Backbone.history for url navigation.
+			The property can also be a function that returns the root.
+			The root will be parsed using the Application.url method.
+		</p>
+		<pre class="prettyprint">
+		window.baseUrl = "/";
+		var MyApp = new Application({
+			root: "user/admin"
+		});
+		//=> The root passed to Backbone.history will be "/user/admin"
+		</pre>
+
+
+		<h3 id="application-routes">routes</h3>
+		<code>application.routes</code>
+		<p>
+			The routes property comes from the Backbone.Router. In addition to the Backbone functionality,
+			a method called by a route can return a 'view' which will be rendered in the default region.
+			The method can also return an object containing the view, region, and navigation instructions for history.
+		</p>
+		<pre class="prettyprint">
+		var MyApp = new Application({			
+			routes: {
+				"": "main",
+				"edit/:id": "editItem",
+				"*defaultRoute": "main"
+			},
+
+			regions: {
+				"default": "#some-container",
+				"edit": "#edit-container"				
+			},
+	
+			main: function () {
+				return new MainView();
+			},
+
+			editItem: function (id) {
+				var view = new SomeEditView();						
+				return {
+					view: view,
+					region: "edit"
+					navigate: "edit/" + id
+				};
+			}
+		});
+		</pre>
+		
+		<h3 id="application-events">events</h3>
+		<code>application.events.on(event, callback, [context])</code>
+		@*
+
+		<pre>
+		/*
+		 *	Creates a standard facade for common application components.
+		 *
+
+		 *
+		 *	Shared event aggregation (all new Application objects will share the same 'events' channel):
+		 *	MyApp.events.on("object:event", fn);
+		 *	MyApp.events.trigger("object:event", arg1, arg2);
+		 *	MyApp.events.off("object:event", fn);
+		 *
+		 *	Application views and models that use all view and model extensions:
+		 * 	    var MyView = Application.View.extend({ ... });
+		 *	    var MyModel = Application.Model.extend({ ... });
+		 *
+		 *	Note:
+		 *      There is no need of stop method since regions and self management perform cleanup as needed.
+		 *
+		 */
+		/*
  * Description:
- *     Adds getters and setters to models.
- *     Also adjusts the toJSON method to return calculated values.
- *     and provides a refresh method to force a change on the calculated values.
+ *     The Controller is a Backbone Router that adds lifetime management to views.
  *
  * Usage:
- *    var SomeModel = Backbone.Model.extend({
- *        initialize: function () {
- *            GetSetModelExtension.extend(this);
- *        },
- *        myProp: {
- *            get: function (currentValue) {
- *                return currentValue; // default behavior
- *            },
- *            set: function (value) {
- *                return value; // default behavior
- *            },
- *            // triggers a change on the property if any of the 'bind' properties change
- *            bind: "someProperty" // can be an array for multiple properties
- *        }  
- *    });
-*/
-/*
- * Usage:
- *     var SomeModel = Backbone.Model.extend({
- *     	  defaults: {
- *     	  	someField: null
- *     	  },
- *     	  someField: {
- *            validate: {
- *     	  	      required: true,
- *     	  	      min: 0,
- *     	  	      max: 10,
- *     	  	      email: true,
- *     	  	      exclude: "foo",
- *     	  	      custom: function (value) {
- *     	  	   	      if (value === 1) {
- *     	  	   		      return "Value cannot be 1.";
- *     	  	   	        }
- *     	  	       }
- *             }
+ *     Create the controller as if you would a Backbone Router.
+ *     Views that are returned by route functions will have a route lifetime,
+ *     meaning they will be 'disposed' when a new view is retuned.
+ *
+ *     SomeController = Controller.extend({
+ *         root: "/Root/Url/",
+ *         start: function () {
+ *             // optional start method - can return a deferred which will delay the router start call
+ *         },
+ *         // actions: ["main"], // use if not needing routes to identify the methods that return views.
+ *         routes: {
+ *             "": "main",
+ *             "item/:id": "item"
+ *         },
+ *         regions: { // the controller uses the RegionManager to turn these into regions.
+ *             "default": "#default-el",
+ *             "mainRegion": "#main-el"
+ *         },
+ *         main: function () {
+ *             var view = new MainView();
+ *             return {
+ *                 view: view,
+ *                 navigate: "/",
+ *                 region: "mainRegion" // or this.regions.mainRegion
+ *             };
+ *         },
+ *         item: function (id) {
+ *             this.navigate("item/" + id); // keep history in sync manually
+ *             return new ItemView(); // will use the default region
  *         }
  *     });
- * 
- * 
- * Error notifications:
- *     Whenever a model property changes, its validation is run.
- *     If there are any errors, an "error" will be triggered on the model.
- * 
- *     var sm = new SomeModel();
- *     sm.on("error", function (model, errors, property) {
- *         // errors - hash of property name : array of error messages. { username: ["Required."] }
- *         //     errors will be null if there was an error but it is now cleared
- *         // property - the name of the property that triggered the error.
- *     });
- * 
  *
- *     Calling getErrors will call the validate method on the model with a boolean passed as the only argument.
- *     var errors = sm.getErrors();
- *     if (errors) {
- *          // handle the errors
+ * View managmenet:
+ *     If using routing, returning a view will allow the controller to manage the view lifetime.
+ *     You can also return an object containing the view and additional instructions
+ *     on how to handle the view lifetime:
+ *         return {
+ *             view: view,
+ *             navigate: "", // set if needing to keep the history in sync
+ *             region: "someKey" // the region name (or region itself) to show the view in.
+ *             afterRender: callbackFn // optional callback to be called after render
+ *         };
+ *
+ * 'root' property:
+ *     An optional 'root' property can be set in the controller extension
+ *     for history and link management.
+ *     
+ * 'start' method:
+ *     An start method can be called to start Backbone.history.
+ *     Calling this method will in turn call any 'start' method defined on
+ *     the controller extension.
+ *     
+ *     var someController = new SomeController();
+ *     someController.start();
+ *
+ *     The start method can return a promise which will delay the router start until
+ *     it is resolved. Helpful in the case a wait is needed for an async action.
+ *
+ *     Any options passed into the start method are made available to the Controller/Application
+ *     as an 'options' property.
+ *
+ * Clicking Links
+ *     Controllers have a 'handleLinkClick' method that can be used for links.
+ *     events: {
+ *         "click a": someController.handleLinkClick
  *     }
- *
- *     This enables composite validation to execute separate from property change events.
- *     validate: function (onSave) {
- *         if (onSave !== true) {
- *             return;
- *         }
- *      }
- *
- *
- * Adding a global validator:
- *     ValidationModelExtension.validators["exclude"] = function (value, args) {
- *         if (value === args) {
- *     	       retun "The value cannot be " + args;
- *         }
- *     };
  */
-/*
- * ModelErrors.js
- * 
- * Description:
- *     Provides a container for model errors, an easy way to add an error and retrieve all errors.
- *
- * Usage:
- *     var errors = new ModelErrors();
- *     if (invalid) {
- *         errors.add("someProperty", "This is an error on the property");
- *     }
- *     return errors.toJSON();
-*/
-/*
- * BackupModelExtension.js
- * 
- * Description:
- *     A simple memento plugin that handles a single level backup of the JSON representation of the model.
- *
- * Usage:
- *     BackbupModelExtension.extend(someModel);
- *     someModel.store();
- *     someModel.restore();
- */
+		</pre>
+
+
+		<h3>Controller</h3>
+		<h4>root</h4>
+		<h4>routes</h4>
+		<h4>regions</h4>
+		<h4>start</h4>
+		<h4>main</h4>
+
+
+			<h3>Region</h3>
+			<h3>Ajax Requests (and default handling)</h3>
+			<h3>JSPM</h3>
+
+		<h2>Model</h2>
+			<h3>Getters and Setters</h3>
+			<h3>Validation</h3>
+			<h3>ModelErrors</h3>
+			<h3>Backup and Restore</h3>
+
+		<h2>View</h2>
+			<h3>Templates</h3>
+			<h3>Model Binding</h3>
+			<h3>Form Error Handling</h3>
+			<h3>View Cleanup (Close)</h3>
+
+		<h2>UI</h2>
+			<h3>Menu</h3>
+			<h3>Dialog</h3>*@
+
+
+		<h2>Model</h2>
+		/*
+		 * GetSetModelExtension.js
+		 * 
+		 * Description:
+		 *     Adds getters and setters to models.
+		 *     Also adjusts the toJSON method to return calculated values.
+		 *     and provides a refresh method to force a change on the calculated values.
+		 *
+		 * Usage:
+		 *    var SomeModel = Backbone.Model.extend({
+		 *        initialize: function () {
+		 *            GetSetModelExtension.extend(this);
+		 *        },
+		 *        myProp: {
+		 *            get: function (currentValue) {
+		 *                return currentValue; // default behavior
+		 *            },
+		 *            set: function (value) {
+		 *                return value; // default behavior
+		 *            },
+		 *            // triggers a change on the property if any of the 'bind' properties change
+		 *            bind: "someProperty" // can be an array for multiple properties
+		 *        }  
+		 *    });
+		*/
+		/*
+		 * Usage:
+		 *     var SomeModel = Backbone.Model.extend({
+		 *     	  defaults: {
+		 *     	  	someField: null
+		 *     	  },
+		 *     	  someField: {
+		 *            validate: {
+		 *     	  	      required: true,
+		 *     	  	      min: 0,
+		 *     	  	      max: 10,
+		 *     	  	      email: true,
+		 *     	  	      exclude: "foo",
+		 *     	  	      custom: function (value) {
+		 *     	  	   	      if (value === 1) {
+		 *     	  	   		      return "Value cannot be 1.";
+		 *     	  	   	        }
+		 *     	  	       }
+		 *             }
+		 *         }
+		 *     });
+		 * 
+		 * 
+		 * Error notifications:
+		 *     Whenever a model property changes, its validation is run.
+		 *     If there are any errors, an "error" will be triggered on the model.
+		 * 
+		 *     var sm = new SomeModel();
+		 *     sm.on("error", function (model, errors, property) {
+		 *         // errors - hash of property name : array of error messages. { username: ["Required."] }
+		 *         //     errors will be null if there was an error but it is now cleared
+		 *         // property - the name of the property that triggered the error.
+		 *     });
+		 * 
+		 *
+		 *     Calling getErrors will call the validate method on the model with a boolean passed as the only argument.
+		 *     var errors = sm.getErrors();
+		 *     if (errors) {
+		 *          // handle the errors
+		 *     }
+		 *
+		 *     This enables composite validation to execute separate from property change events.
+		 *     validate: function (onSave) {
+		 *         if (onSave !== true) {
+		 *             return;
+		 *         }
+		 *      }
+		 *
+		 *
+		 * Adding a global validator:
+		 *     ValidationModelExtension.validators["exclude"] = function (value, args) {
+		 *         if (value === args) {
+		 *     	       retun "The value cannot be " + args;
+		 *         }
+		 *     };
+		 */
+		/*
+		 * ModelErrors.js
+		 * 
+		 * Description:
+		 *     Provides a container for model errors, an easy way to add an error and retrieve all errors.
+		 *
+		 * Usage:
+		 *     var errors = new ModelErrors();
+		 *     if (invalid) {
+		 *         errors.add("someProperty", "This is an error on the property");
+		 *     }
+		 *     return errors.toJSON();
+		*/
+		/*
+		 * BackupModelExtension.js
+		 * 
+		 * Description:
+		 *     A simple memento plugin that handles a single level backup of the JSON representation of the model.
+		 *
+		 * Usage:
+		 *     BackbupModelExtension.extend(someModel);
+		 *     someModel.store();
+		 *     someModel.restore();
+			*/
+		
+	</div>
+</div>
