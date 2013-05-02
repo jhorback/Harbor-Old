@@ -5,20 +5,18 @@
 <div class="page-body">
 	<div class="page-aside">
 		<div class="col">
-			<strong><a href="#application">Application, Controller</a></strong>
+			<h2><a href="#application">Application, Controller</a></h2>
 			<ul>
 				<li><a href="#application-start">start</a></li>
 				<li><a href="#application-url">url</a></li>
 				<li><a href="#application-regions">regions</a></li>
 				<li><a href="#application-root">root</a></li>
-				<li><a href="#application-view-management">View Management</a></li>
 				<li><a href="#application-routes">routes</a></li>
 				<li><a href="#application-events">events</a></li>
 				<li><a href="#application-handleLinkClick">handleLinkClick</a></li>
-				<li><a href="#application-model-view">Model / View</a></li>
 			</ul>
 			
-			<strong><a href="#region">Region</a></strong>
+			<h2><a href="#region">Region</a></h2>
 			<ul>
 				<li><a href="#region-getEl">getEl</a></li>
 				<li><a href="#region-render">render</a></li>
@@ -29,13 +27,13 @@
 				<li><a href="#region-close">close, destroy</a></li>				
 			</ul>
 
-			<strong><a href="#ajaxrequest">AjaxRequest</a></strong>
+			<h2><a href="#ajaxrequest">AjaxRequest</a></h2>
 			<ul>
 				<li><a href="#ajaxrequest-handle">handle</a></li>	
 				<li><a href="#ajaxrequest-execute">execute</a></li>							
 			</ul>
 			
-			<strong><a href="#jspm">JSPM</a></strong>
+			<h2><a href="#jspm">JSPM</a></h2>
 			<ul>
 				<li><a href="#jspm-pkgSrc">pkgSrc</a></li>	
 				<li><a href="#jspm-install">install</a></li>	
@@ -43,24 +41,36 @@
 			</ul>
 			
 			
-			<strong><a href="#model">Model</a></strong>
+			<h2><a href="#model">Model</a></h2>
 			<ul>
 				<li><a href="#model-property-get">property:get</a></li>	
 				<li><a href="#model-property-set">property:set</a></li>	
 				<li><a href="#model-property-bind">property:bind</a></li>	
 				<li><a href="#model-property-validate">property:validate</a></li>	
+				<li><a href="#model-property-geterrors">getErrors</a></li>	
 				<li><a href="#model-store">store</a></li>	
 				<li><a href="#model-restore">restore</a></li>	
 
 			</ul>
 			
-			@*add seperate validation extension documentation*@
+		
 
-			<strong><a href="#view">View</a></strong>
+			<h2><a href="#view">View</a></h2>
 			<ul>
-				<li><a href="#view-handle">handle</a></li>	
+				<li><a href="#view-template">template</a></li>	
+				<li><a href="#view-renderTemplate">renderTemplate</a></li>	
+				<li><a href="#view-bindModelToView">bindModelToView</a></li>	
+				<li><a href="#view-bindTemplate">bindTemplate</a></li>	
+				<li><a href="#view-isModelValid">isModelValid (displayErrors)</a></li>	
+				<li><a href="#view-close">close</a></li>	
+				<li><a href="#view-onClose">onClose</a></li>	
 			</ul>
-
+			
+			<h2>Validation</h2>
+			<h2>ModelErrors</h2>
+			<h2>ModelBinder</h2>
+			<h2>Menu</h2>
+			<h2>Dialog</h2>
 		</div>
 	</div>
 	<div class="page-content">
@@ -68,75 +78,6 @@
 		Application.js is a series of JavaScript modules and mixins that can be used to reduce boilerplate code.
 		Some of the modules are extensions of Backbone and others may require jQuery, Underscore, or nothing at all.
 		</p>
-		@*
-		jch! move this to the bottom?
-		<p>
-			Below is a list of all modules, however, the rest of the documentation fouces on common usage rather than structure.
-		</p>
-		<ul>
-			<li>
-				General
-				<ul>
-					<li>Application - Creates a standard facade for common application components.
-						Basically a Controller with event aggregation.
-					</li>
-					<li>
-						Controller - A Backbone router with added lifetime view management using regions.
-					</li>
-					<li>
-						Region - A simple abstraction of a dom node.
-					</li>
-					<li>
-						AjaxRequest - Creates an ajax request with deferred execution and provides a handler for http status codes for web apis.
-					</li>
-					<li>
-						JSPM - The client portion of a JavaScript package manager for loading JavaScript packages containing scripts, css, and/or templates.
-					</li>
-				</ul>
-			</li>
-			<li>
-				Application.Model - The combination of all Backbone Model mixins.
-				<ul>
-					<li>
-						GetSetModelExtension -
-					</li>
-					<li>
-						ValidationModelExtension and ModelErrors -
-					</li>
-					<li>
-						BackupModelExtension -
-					</li>
-				</ul>
-			</li>
-			<li>
-				Application.View - The combination of all Backbone View mixins.
-				<ul>
-					<li>
-						JSTViewExtension -
-					</li>
-					<li>
-						ModelBinder -
-					</li>
-					<li>
-						FormErrorHandler -
-					</li>
-					<li>
-						CloseViewExtension - 
-					</li>
-				</ul>
-			</li>
-			<li>
-				UI
-				<ul>
-					<li>
-						Menu - 
-					</li>
-					<li>
-						Dialog -
-					</li>
-				</ul>
-			</li>
-		</ul>*@
 
 		<h2 id="application">Application</h2>
 		<p>
@@ -147,7 +88,6 @@
 			Other Application features that can be taken advantage of are routing, regions, view management, and event aggregation.
 		</p>
 
-
 		<h3 id="application-start">start</h3>
 		<code>app.start()</code>
 		<p>
@@ -155,19 +95,20 @@
 			the first argument passed to the start method will be added to an <code>options</code> property on the application.
 		</p>
 		<pre class="prettyprint linenums">
-		var myApp = new Application({
-			start: function (options, hasSecondArgument) {
-				// hasSecondArgument: true
-			},
+var myApp = new Application({
+	start: function (options, hasSecondArgument) {
+		// hasSecondArgument: true
+	},
 
-			someMethod: function () {
-				var data = this.options.data;
-			}
-		});
-		myApp.start({data:[], true});
-		</pre>
+	someMethod: function () {
+		var data = this.options.data;
+	}
+});
+myApp.start({data:[], true});
+</pre>
 		<p>
 			If setting up Backbone routes, calling the <code>start</code> method will call start on Backbone.history as well.
+			If the start method returns a deferred, the call to start will wait until the deferred is resolved.
 		</p>
 
 
@@ -178,10 +119,10 @@
 			otherwise, the url passed will be returned unchanged.
 		</p>
 		<pre class="prettyprint">
-		window.baseUrl = "/myapp/";
-		var someUrl = Application.url("path/to/file.html");
-		=> /myapp/path/to/file.html
-		</pre>
+window.baseUrl = "/myapp/";
+var someUrl = Application.url("path/to/file.html");
+=> /myapp/path/to/file.html
+</pre>
 
 
 		<h3 id="application-regions">regions</h3>
@@ -191,12 +132,12 @@
 			Regions are setup during application creation so they can be referenced easily during the lifetime of the application.
 		</p>
 		<pre class="prettyprint">
-		var MyApp = new Application({
-			regions: {
-				"edit", "#edit-region"
-			}
-		});
-		MyApp.regions.edit.show(new SomeView());
+var MyApp = new Application({
+	regions: {
+		"edit", "#edit-region"
+	}
+});
+MyApp.regions.edit.show(new SomeView());
 		</pre>
 
 
@@ -251,8 +192,15 @@
 		});
 		</pre>
 		
+
 		<h3 id="application-events">events</h3>
 		<code>application.events.on(event, callback, [context])</code>
+		
+
+		<h3 id="application-handleLinkClick">handleLinkClick</h3>
+		
+		
+		
 		@*
 
 		<pre>
@@ -349,33 +297,72 @@
 		</pre>
 
 
-		<h3>Controller</h3>
-		<h4>root</h4>
-		<h4>routes</h4>
-		<h4>regions</h4>
-		<h4>start</h4>
-		<h4>main</h4>
+	*@
+		
+		<h2 id="region">Region</h2>
+		Region - A simple abstraction of a dom node.
 
+		<h3 id="region-getEl">getEl</h3>
+		<h3 id="region-render">render</h3>
+		<h3 id="region-show">show</h3>
+		<h3 id="region-showEl">showEl</h3>
+		<h3 id="region-hideEl">hideEl</h3>
+		<h3 id="region-ope">open</h3>
+		<h3 id="region-close">close, destroy</h3>
+		
+		<h2>AjaxRequest</h2>
+		AjaxRequest - Creates an ajax request with deferred execution and provides a handler for http status codes for web apis.
 
-			<h3>Region</h3>
-			<h3>Ajax Requests (and default handling)</h3>
-			<h3>JSPM</h3>
+		<h3 id="#ajaxrequest-handle">handle</h3>
+		<h3 id="#ajaxrequest-execute">execute</h3>
+		@*
+			
+			<h2><a href="#jspm">JSPM</a></h2>
+			<ul>
+				<li><a href="#jspm-pkgSrc">pkgSrc</a></li>	
+				<li><a href="#jspm-install">install</a></li>	
+				<li><a href="#jspm-register">register</a></li>	
+			</ul>
+			
+			
+			<h2><a href="#model">Model</a></h2>
+			<ul>
+				<li><a href="#model-property-get">property:get</a></li>	
+				<li><a href="#model-property-set">property:set</a></li>	
+				<li><a href="#model-property-bind">property:bind</a></li>	
+				<li><a href="#model-property-validate">property:validate</a></li>	
+				<li><a href="#model-property-geterrors">getErrors</a></li>	
+				<li><a href="#model-store">store</a></li>	
+				<li><a href="#model-restore">restore</a></li>	
 
-		<h2>Model</h2>
-			<h3>Getters and Setters</h3>
-			<h3>Validation</h3>
-			<h3>ModelErrors</h3>
-			<h3>Backup and Restore</h3>
+			</ul>
+			
+		
 
-		<h2>View</h2>
-			<h3>Templates</h3>
-			<h3>Model Binding</h3>
-			<h3>Form Error Handling</h3>
-			<h3>View Cleanup (Close)</h3>
+			<h2><a href="#view">View</a></h2>
+			<ul>
+				<li><a href="#view-template">template</a></li>	
+				<li><a href="#view-renderTemplate">renderTemplate</a></li>	
+				<li><a href="#view-bindModelToView">bindModelToView</a></li>	
+				<li><a href="#view-bindTemplate">bindTemplate</a></li>	
+				<li><a href="#view-isModelValid">isModelValid (displayErrors)</a></li>	
+				<li><a href="#view-close">close</a></li>	
+				<li><a href="#view-onClose">onClose</a></li>	
+			</ul>*@
+		
+		
+		
 
-		<h2>UI</h2>
-			<h3>Menu</h3>
-			<h3>Dialog</h3>*@
+				
+		
+		
+
+					
+		
+		
+
+		JSPM - The client portion of a JavaScript package manager for loading JavaScript packages containing scripts, css, and/or templates.
+		
 
 
 		<h2>Model</h2>
