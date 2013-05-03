@@ -63,7 +63,7 @@
 				<li><a href="#view-bindTemplate">bindTemplate</a></li>	
 				<li><a href="#view-isModelValid">isModelValid (displayErrors)</a></li>	
 				<li><a href="#view-close">close</a></li>	
-				<li><a href="#view-onClose">onClose</a></li>	
+				<li><a href="#view-onClose">onClose, destroy</a></li>	
 			</ul>
 			
 			<h2>Validation</h2>
@@ -300,15 +300,61 @@ MyApp.regions.edit.show(new SomeView());
 	*@
 		
 		<h2 id="region">Region</h2>
-		Region - A simple abstraction of a dom node.
+		<p>
+			A simple abstraction of a dom node.
+			Regions are created on applications using <code>Region.createRegions(application)</code>.
+			They can be used standalone or extend other objects as needed. The view parameters are assumed to be backbone views.
+		</p>
+		<p>
+			Mostly, the <code>render(view)</code> will be called.
+			However, many times other methods such as showEl and hideEl come in handy.
+		</p>
 
 		<h3 id="region-getEl">getEl</h3>
+		<code>
+			var el = appX.regions.regionY.getel();
+		</code>
+		<p>
+			Returns the jQuery wrapped dom node. If 
+		</p>
 		<h3 id="region-render">render</h3>
+		<code>
+			appX.regions.regionY.render(viewZ);
+		</code>
+		<p>
+			Calls render on the view and then calls show.
+		</p>
 		<h3 id="region-show">show</h3>
+		<code>
+			appX.regions.regionY.show(viewZ);
+		</code>
+		<p>
+			Calls open and then sets the html of the region to the view.el.
+		</p>
 		<h3 id="region-showEl">showEl</h3>
+		<p>
+			Calls <code>show()</code> on the el.
+		</p>
 		<h3 id="region-hideEl">hideEl</h3>
+		<p>
+			Calls <code>hide()</code> on the el.
+		</p>
 		<h3 id="region-ope">open</h3>
-		<h3 id="region-close">close, destroy</h3>
+		<p>
+			Calls close first (to close any previously open views or els.
+			Then sets the internal view property (ready to be shown).
+		</p>
+		<h3 id="region-close">close</h3>
+		<p>
+			Attempts to call the following methods in order:
+		</p>
+		<ol>
+			<li>view.trigger("dispose"); - for eventing.</li>
+			<li>view.unbind(); - for Backbone.</li>
+			<li>view.stopListening(); - for Backbone.</li>
+			<li>view.onClose(); - for cleanup of a destroy method is present.</li>
+			<li>view.destroy(); - alias for onClose.</li>
+		</ol>
 		
 		<h2>AjaxRequest</h2>
 		AjaxRequest - Creates an ajax request with deferred execution and provides a handler for http status codes for web apis.
