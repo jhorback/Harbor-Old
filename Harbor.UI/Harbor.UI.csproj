@@ -325,6 +325,12 @@
     <Content Include="Content\site\core\menu.css">
       <DependentUpon>menu.scss</DependentUpon>
     </Content>
+    <Content Include="Content\site\core\menulist.css">
+      <DependentUpon>menulist.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\site\core\menulist.min.css">
+      <DependentUpon>menulist.scss</DependentUpon>
+    </Content>
     <Content Include="Content\site\core\page-editor.css">
       <DependentUpon>page-editor.scss</DependentUpon>
     </Content>
@@ -627,6 +633,8 @@
       <DebugInfo>False</DebugInfo>
     </None>
     <Content Include="Content\site\core\src\_cols.scss" />
+    <Content Include="Content\site\core\src\_menulist.scss" />
+    <Content Include="Content\site\core\menulist.scss" />
     <None Include="Content\site\core\src\_tiles.scss">
       <Compile>False</Compile>
       <Minify>False</Minify>

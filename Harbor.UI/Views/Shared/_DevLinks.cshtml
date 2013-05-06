@@ -5,6 +5,9 @@
 		<a href="@Url.Action("Index", "StyleGuide")">Style Guide</a>
 	</div>
 	<div class="pad-left">
+		<a href="@Url.Action("ApplicationJsApi", "Home")">Application.js</a>		
+	</div>
+	<div class="pad-left">
 		<a href="@Url.Action("JavaScriptPackages", "Home")">JavaScript Packages</a>
 	</div>
 	<div class="pad-left">
@@ -13,6 +16,7 @@
 	<div class="pad-left">
 		<a href="~/elmah.axd">Http Errors</a>
 	</div>
+	<hr />
 	<div class="pad-left">
 		@if (string.IsNullOrEmpty(HarborApplication.GoogleAnalyticsAccount)) {
 			<span>There is no google analytics account.</span>

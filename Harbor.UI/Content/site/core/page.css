@@ -48,13 +48,13 @@
 
 .page-aside {
   position: relative;
-  width: 25%;
+  width: 20%;
   float: left; }
 
 .page-content {
   position: relative;
   float: left;
-  width: 73%;
+  width: 78%;
   padding-right: 1%;
   padding-left: 1%; }
   .page-content:first-child {
@@ -67,11 +67,11 @@
   max-width: 88em;
   margin: auto; }
 .centered .page-aside {
-  width: 25%; }
+  width: 20%; }
 .centered .page-content {
   float: left;
-  width: 73%;
-  *width: 72.5%;
+  width: 78%;
+  *width: 77.5%;
   padding-right: 1%;
   padding-left: 1%; }
 .centered .page-content:first-child {
