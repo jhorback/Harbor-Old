@@ -1,0 +1,113 @@
+@import "../../mixins/no-bullets";
+@import "../../mixins/clearfix";
+@import "../../mixins/border-radius";
+@import "foundation";
+
+
+$menulist-selected-arrow: left !default; // left or right
+$menulist-selected-color: $link-color !default;
+$menulist-selected-background-color: null !default;
+
+
+$menulist-item-height: 2.2em;
+$menulist-arrow-height: 1.4em;
+$menulist-arrow-top: ($menulist-item-height - $menulist-arrow-height) / 2;
+
+
+@mixin menulist {
+
+	.menulist {
+		//border: 1px solid #DDD;
+		//@include border-radius;
+
+		& > ul {
+			@include no-bullets;
+			margin-bottom: 0; //1.42em;			
+			margin-left: 1em;
+
+			& > li {
+				& > span,
+				& > a {
+					display: block;
+					color: $body-color;
+					padding: 0 1em;
+					line-height: $menulist-item-height;
+					text-decoration: none;
+					text-shadow: 0 1px 0 rgba(255,255,255,.5);
+					&:before {
+						content: "-";
+					}
+					&:hover,
+					&:focus {
+						color: $body-color;
+						background-color: #eee;
+					}
+				}
+				& > span {
+					cursor: default;
+				}
+			}
+
+			.selected {
+				position: relative;
+				&:after {
+					position: absolute;						
+					top: $menulist-arrow-top;
+					content: "";
+					width: 0; 
+					height: 0;	
+				}				
+			}
+		}
+
+		h2, h3 {
+			padding: 0 1em;
+			font-family: $body-font-family;
+			display: block;
+			font-size: 1.23em;
+			//font-weight: normal;
+			color: #999;
+			text-shadow: 0 1px 0 rgba(255,255,255,.5);
+			//text-transform: uppercase;
+		}	
+	}
+}
+
+@mixin menulist-theme {
+	@include menulist-arrow($menulist-selected-arrow, $menulist-selected-color, $menulist-selected-background-color);
+}
+
+
+@mixin menulist-arrow($position, $color, $background-color: null) {
+
+	.menulist > ul .selected {
+	
+		&:after {
+			@if ($position == right) {
+				right: -1px;
+				border-top: $menulist-arrow-height/2 solid transparent;
+				border-bottom: $menulist-arrow-height/2 solid transparent;	
+				border-right: $menulist-arrow-height/2 solid $color;
+			} @else {
+				left: 0;
+				border-top: $menulist-arrow-height/2 solid transparent;
+				border-bottom: $menulist-arrow-height/2 solid transparent;	
+				border-left: $menulist-arrow-height/2 solid $color;
+			}	
+		}
+		span, a {
+			color: $color;
+			@if ($background-color != null) {
+				background-color: $background-color;
+			}
+			text-shadow: 0 -1px 0 rgba(0,0,0,.2);
+			&:hover,
+			&:focus {
+				color: $color;
+				@if ($background-color != null) {
+					background-color: $background-color;
+				}
+			}
+		}
+	}
+}

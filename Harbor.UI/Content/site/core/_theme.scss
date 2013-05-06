@@ -1,11 +1,13 @@
 @import "src/foundation";
 @import "src/frame";
+@import "src/menulist";
 @import "src/page";
 @import "src/usermenu";
 
 @mixin theme {
 	@include foundation-theme;
 	@include frame-theme;
+	@include menulis-theme;
 	@include page-theme;
 	@include usermenu-theme;
 }
