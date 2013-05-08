@@ -27,7 +27,7 @@ a, .link {
     color: red !important; }
 
 p {
-  margin-bottom: 10.0002px; }
+  margin-bottom: 1.42em; }
 
 h1, h2, h3, h4, h5, h6 {
   margin: 10.0002px 0; }
@@ -36,7 +36,8 @@ h1 {
   color: #6699cc; }
 
 h2 {
-  color: #336699; }
+  color: #336699;
+  font-weight: bold; }
 
 hgroup h1 + h2 {
   color: #336699; }
@@ -49,6 +50,9 @@ hgroup h1 + h2 {
 
 .attn {
   color: #d14836; }
+
+small {
+  color: #999999; }
 
 hr {
   margin: 20.0004px 0;
@@ -112,6 +116,17 @@ dd {
   background: #cccccc; }
   #frame-body ::-webkit-scrollbar-thumb:hover {
     background: #b3b3b3; }
+
+.menulist > ul .selected:after {
+  left: 0;
+  border-top: 0.7em solid transparent;
+  border-bottom: 0.7em solid transparent;
+  border-left: 0.7em solid #336699; }
+.menulist > ul .selected span, .menulist > ul .selected a {
+  color: #336699;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2); }
+  .menulist > ul .selected span:hover, .menulist > ul .selected span:focus, .menulist > ul .selected a:hover, .menulist > ul .selected a:focus {
+    color: #336699; }
 
 .page-header h1 {
   color: #666666; }

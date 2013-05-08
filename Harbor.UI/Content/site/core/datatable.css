@@ -31,13 +31,13 @@ table {
     padding-top: 2em; }
   @media (min-width: 100em) {
     .datatable th, .datatable td {
-      padding: .8em; } }
+      padding: 0.8em; } }
   @media (max-width: 48em) {
     .datatable th, .datatable td {
-      padding: .3em; } }
+      padding: 0.3em; } }
   @media (max-width: 30em) {
     .datatable th, .datatable td {
-      padding: .1em; } }
+      padding: 0.1em; } }
 
 .hover tr:hover td {
   background-color: whitesmoke; }

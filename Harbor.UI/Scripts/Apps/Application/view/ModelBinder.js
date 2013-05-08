@@ -6,8 +6,7 @@
  *     Binds an element to a model.
  *
  * Dependencies:
- *     jQuery
- *     Assumes 'can' since, by default, it uses ".attr" to get/set attributes on the model.
+ *     jQuery, Backbone
  * 
  * Usage:
  *     var mb = ModelBinder(someModel, someElement);

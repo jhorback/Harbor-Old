@@ -573,27 +573,107 @@ render: function () {
 		
 		
 		<h2 id="modelerrors">ModelErrors</h2>
-		/*
-		* ModelErrors.js
-		* 
-		* Description:
-		*     Provides a container for model errors, an easy way to add an error and retrieve all errors.
-		*
-		* Usage:
-		*     var errors = new ModelErrors();
-		*     if (invalid) {
-		*         errors.add("someProperty", "This is an error on the property");
-		*     }
-		*     return errors.toJSON();
-		*/
+		<p>
+			ModelErrors is a simple JavaScript object that can be used to collect client errors.
+			This can be useful if requiring a more complex or custom validation on the client.
+		</p>
+		<pre class="prettyprint">
+save: function () {
+	var errors = new ModelErrors();
+	if (this.model.get("someProperty") === "badValue") {
+		errors.add("someProperty", "someProperty cannot be badValue");
+	}
+	if (errors.hasErrors) {
+		this.displayErrors(errors.toJSON());
+	}
+}
+</pre>
 		
-
 		<h2 id="modelbinder">ModelBinder</h2>
-		<h2 id="menu">Menu</h2>
-		<h2 id="dialog">Dialog</h2>
-		
+		<p>
+			Binds an element to a model.
+		</p>
+		<pre class="prettyprint">
+&lt;div id="someElement">
+	&lt;span data-bind="someProperty" data-bind-class="somePropertiesClassName">&lt;/span>
+&lt;/div>
+</pre>
+		<pre class="prettyprint">
+var model = new Backbone.Model({
+	someProperty: "someValue",
+	somePropertiesClassName: "disabled"
+});
+
+var mb = new ModelBinder(model, $("#someElement"));
+// when properties on the model change, they will update on the element.
+mb.unbind(); // removes the model binder event bindings.
+</pre>
+		<p>
+			The ModelBinder allows for binding using the data-bind, name, or id attributes as well as certain element attributes such as <code>data-bind-class</code>.
+			The current supported element attributes are: id, disabled, checked, class, href, text, src.
+			This can be extended as needed.
+			Different types of elements can be extended as well for custom binding needs.
+		</p>
+		<p>
+			See the documentation in the JavaScript file for details.
+		</p>
 		
 
+
+		<h2 id="menu">Menu</h2>
+		<p>
+			Wraps an element in a menu with a few options for configuration.
+		</p>
+		<h3>Options</h3>
+		<ul>
+			<li>transition - "none", "fade", "slide"</li>
+		</ul>
+		<p>
+			The markup for the template can be changed if needed. Just override <code>Menu.template</code>.
+			The default template is:
+		</p>
+		<pre class="prettyprint">
+&lt;div class="menu">
+	&lt;div class="menu-content">&lt;!--menu element is placed here-->&lt;/div>
+&lt;/div>
+</pre>
+
 		
+
+
+		<h2 id="dialog">Dialog</h2>
+		<p>
+			Wraps an element in a dialog with a few options for configuration.
+		</p>
+		<h3>Options</h3>
+		<ul>
+			<li>title - the dialog title.</li>
+			<li>transition - "none", "fade", "slide".</li>
+			<li>modal - the default is true.</li>
+			<li>draggable - the default is true (if jquery.ui.draggable exists).</li>
+			<li>position - jquery.ui.position options (the default is above window center).</li>
+			<li>editorFor - An element that is being edited by the dialog (sets modal to true, draggable to false, and handles the positioning).</li>
+			<li>removeEl - removes the element when the dialog is closed. The default is true. If false, the original element will be placed back into it's parent on close.</li>
+			<li>appendTo - An optional element to append to (other than the body).</li>
+		</ul>
+		<h3>Dialog Close Attribute</h3>
+		<p>
+			Any element with a <code>data-rel="back"</code> or <code>data-rel="close"</code> attribute will close the dialog when clicked.
+		</p>
+		<p>
+			The markup for the template can be changed if needed. Just override <code>Dialog.template</code>.
+			The default template is:
+		</p>
+		<pre class="prettyprint">
+&lt;div class="dialog-wrapper">
+	&lt;div class="dialog">
+		&lt;div class="dialog-header">
+			&lt;h1>&lt;/h1>
+			&lt;span data-rel="back" title="close" class="dialog-close">&times;&lt;/span>
+		&lt;/div>
+		&lt;div class="dialog-content">&lt;!--dialog element is placed here-->&lt;/div>
+	&lt;/div>
+&lt;/div>
+</pre>
 	</div>
 </div>

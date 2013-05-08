@@ -356,7 +356,7 @@ code {
     clear: both; }
 
 .outline + .prettyprint {
-  margin-top: -0.5em;
+  margin-top: -.5em;
   padding-top: 1em !important;
   margin-bottom: 2em; }
 

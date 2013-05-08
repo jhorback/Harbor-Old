@@ -12,10 +12,13 @@
 * Options:
 *     title
 *     transition - "none", "fade", "slide", "fadein"
-*     modal - default is false
+*     modal - default is true
 *     draggable - default is true (if jquery.ui.draggable exists)
 *     position - jquery.ui.position options (the default is center of the window).
 *     editorFor - An element that is being edited by the dialog (sets modal to true, draggable to false, and handles the positioning).
+*     removeEl - removes the element when the dialog is closed. The default is true.
+*         If false, the original element will be placed back into it's parent on close.
+*     appendTo - An optional element to append to (other than the body).
 *
 * Dialog close attribute
 *     Any element with a data-rel attribute set to back ([data-rel=back]) will
@@ -46,9 +49,13 @@
 					my: "center",
 					at: "center",
 					of: this.options.editorFor,
-					offset: "0 0"	
+					offset: "0 0"
 				}
 			});
+		}
+
+		if (this.options.removeEl === false) {
+			this.parentEl = this.element.parent();
 		}
 
 		this.init();
@@ -82,12 +89,18 @@
 			this.dialogEl = $($.parseHTML(Dialog.template));
 			this.dialogEl.find("h1").html(this.options.title);
 			this.dialogEl.find(".dialog-content").append(this.element.show());
-			doc.find("body").append(this.dialogEl.hide());
+			doc.find(this.options.appendTo).append(this.dialogEl.hide());
 			this.position();
 			if (this.options.draggable && $.fn.draggable) {
 				this.dialogEl.draggable({
 					handle: ".dialog-header",
 					axis: "y"
+					//					,start: function (event, ui) {
+					//						self.element.find("iframe").hide();
+					//					},
+					//					stop: function () {
+					//						self.element.find("iframe").show();
+					//					}
 				}); //.find("h1").css("cursor", "move");
 			}
 
@@ -120,9 +133,9 @@
 				if (dcPos.top < 0) {
 					dcCss["top"] = 0;
 				}
-//				if (dcPos.left < 0) {
-//					dcCss["left"] = 0;
-//				}
+				//				if (dcPos.left < 0) {
+				//					dcCss["left"] = 0;
+				//				}
 				dcCss["left"] = 0;
 
 				// only reset the position if necessary to reduce a reflow
@@ -136,8 +149,8 @@
 			this._transition(this.dialogEl, true);
 			if (this.options.modal && !this.overlay) {
 				this.overlay = $(Dialog.overlayTemplate);
-				doc.find("body").append(this.overlay);
-				this.overlay.css("opacity", .5); // for ie7-8
+				doc.find(this.options.appendTo).append(this.overlay);
+				this.overlay.css("opacity", .5); // for ie7-8				
 				this._transition(this.overlay, true);
 			}
 		},
@@ -192,7 +205,14 @@
 				boundEvent.el.unbind(boundEvent.event, boundEvent.method);
 			}
 
-			this.element.remove();
+			if (this.options.removeEl) {
+				this.element.remove();
+			} else {
+				//this.element.trigger("detach", [this.element.detach()]);
+				setTimeout(_.bind(function () {
+					this.parentEl.append(this.element.detach().hide());
+				}, this), 0);
+			}
 			this.dialogEl.remove();
 			this.overlay && this.overlay.remove();
 		}
@@ -201,15 +221,17 @@
 	Dialog.defaultOptions = {
 		title: "",
 		transition: "none",
-		modal: false,
+		modal: true,
 		draggable: true,
 		position: {
 			my: "left center",
 			at: "left center",
 			of: win,
-			offset: "0 0"
+			offset: "0 -100"
 		},
-		editorFor: null
+		editorFor: null,
+		removeEl: true,
+		appendTo: "body"
 	};
 
 	Dialog.template = '' +
@@ -228,4 +250,4 @@
 	window.Dialog = Dialog;
 
 
-} (jQuery));
+}(jQuery));
