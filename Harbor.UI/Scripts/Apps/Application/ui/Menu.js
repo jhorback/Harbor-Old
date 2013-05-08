@@ -6,7 +6,7 @@
  *     Wraps an element in a menu with a few options for configuration.
  * 
  * Requires:
- *     jQuery, jquery.ui.position.js
+ *     jQuery
  *
  * Options:
  *     transition - "none", "fade", "slide"
