@@ -1,9 +1,8 @@
-﻿Session.SessionNav = Backbone.View.extend({
+﻿Session.SessionNav = Application.View.extend({
 
 	initialize: function () {
 		var cu = Session.currentUser;
-		Session.ViewExtension.extend(this);
-
+		
 		if (cu.get("isAuthenticated") === true) {
 			this.render();
 
@@ -21,7 +20,7 @@
 
 		"click #profile-link": function (event) {
 			event.preventDefault();
-			this.views("userMenu", new Session.UserMenu());
+			this.showView("userMenu", new Session.UserMenu());
 		}
 	},
 
@@ -43,10 +42,19 @@
 
 	showSignInDialog: function () {
 		var signInView = new Session.SignInView();
-		var dialog = new Session.Dialog(signInView.$el, {
+		var dialog = new Dialog(signInView.$el, {
 			title: "Sign in",
 			modal: true,
 			transition: "fade"
 		});
+	},
+	
+	showView: function (view) {
+		this.view && this.view.close();
+		this.view = view;
+	},
+
+	onClose: function () {
+		this.view && this.view.close();
 	}
 });

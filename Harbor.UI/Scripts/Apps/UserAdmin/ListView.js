@@ -1,4 +1,4 @@
-﻿UserAdmin.ListView = Backbone.View.extend({
+﻿UserAdmin.ListView = Application.View.extend({
 	initialize: function () {
 		_.bindAll(this, "renderUser");
 		

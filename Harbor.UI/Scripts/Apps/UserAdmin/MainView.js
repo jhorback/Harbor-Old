@@ -1,6 +1,5 @@
-﻿UserAdmin.MainView = Backbone.View.extend({
+﻿UserAdmin.MainView = Application.View.extend({
 	initialize: function () {
-		Session.ViewExtension.extend(this);
 		this.collection.on("add", this.addUser, this);
 		this.collection.on("destroy", this.removeUser, this);
 		this.collection.on("reset", this.render, this);
@@ -19,7 +18,7 @@
 
 		this.JST("UserAdmin-Main").then(function (result) {
 			$el.html(result);
-			self.views("listView", new UserAdmin.ListView({
+			self.showView(new UserAdmin.ListView({
 				el: self.$("#useradmin-list"),
 				collection: collection
 			}).render());
@@ -38,5 +37,14 @@
 				el.remove();
 			});
 		}, 500);
+	},
+	
+	showView: function (view) {
+		this.view && this.view.close();
+		this.view = view;
+	},
+	
+	onClose: function () {
+		this.view && this.view.close();
 	}
 });

@@ -1,9 +1,7 @@
-﻿Session.UserMenu = Backbone.View.extend({
+﻿Session.UserMenu = Application.View.extend({
 
 	initialize: function () {
-		Session.ViewExtension.extend(this);
 		this.model = Session.currentUser;
-
 		this.render();
 	},
 
@@ -11,7 +9,7 @@
 		"click #usermenu-addpage": function () {
 			var menu;
 			Session.trigger("addPage");
-			menu = this.views("menu");
+			menu = this.view;
 			menu && menu.close && menu.close();
 		},
 
@@ -45,11 +43,20 @@
 			}
 		});
 
-		this.views("menu", Session.Menu(this.$el, {
+		this.showView(Session.Menu(this.$el, {
 			transition: "fade",
 			anchor: "#profile-link"
 		}));
 
 		return this;
+	},
+	
+	showView: function (view) {
+		this.view && this.view.close();
+		this.view = view;
+	},
+	
+	onClose: function () {
+		this.view && this.view.close();
 	}
 });

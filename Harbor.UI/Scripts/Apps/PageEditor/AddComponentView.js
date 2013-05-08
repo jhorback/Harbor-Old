@@ -1,13 +1,10 @@
 ﻿
 
 
-PageEditor.AddComponentView = Backbone.View.extend({
+PageEditor.AddComponentView = Application.View.extend({
 	
 	initialize: function () {
 		// this.options.type: "header", "content", "aside"
-		JstViewExtension.extend(this);
-		DisposeViewExtension.extend(this);
-		
 		this.model = {
 			page: this.model,
 			viewModel: new PageEditor.AddComponentViewModel({ componentType: this.options.type }),
@@ -36,7 +33,7 @@ PageEditor.AddComponentView = Backbone.View.extend({
 			var components, selectEl;
 			
 			$el.html(result);
-			self.track(new Dialog($el, {
+			this.showDialog(new Dialog($el, {
 				title: title,
 				modal: true
 			}));
@@ -54,7 +51,7 @@ PageEditor.AddComponentView = Backbone.View.extend({
 			model.viewModel.set("pageComponents", components);
 			model.viewModel.set("pageComponentKey", components[0].get("key"));
 			this.model = model;
-			self.track(new ModelBinder(model.viewModel, $el));
+			this.bindModelToView(model.viewModel, $el);
 		});
 	},
 	
@@ -62,7 +59,16 @@ PageEditor.AddComponentView = Backbone.View.extend({
 		PageEditor.addComponent(this.model.page,
 			this.model.viewModel.get("pageComponentKey"),
 			this.model.viewModel.get("componentType"));
-		this.dispose();
+		this.close();
+	},
+	
+	showDialog: function (dialog) {
+		this.dialog && this.dialog.destroy();
+		this.dialog = dialog;
+	},
+	
+	onClose: function () {
+		this.dialog && this.dialog.destroy();
 	}
 });
 

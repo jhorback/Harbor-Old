@@ -1,6 +1,5 @@
-﻿Session.ErrorView = Backbone.View.extend({
+﻿Session.ErrorView = Application.View.extend({
 	initialize: function (options) {
-		Session.ViewExtension.extend(this);
 
 		if (options.errorCode === 404) {
 			this.viewID = "Session-404";
@@ -13,12 +12,6 @@
 	},
 
 	render: function () {
-		var $el = this.$el,
-			model = this.model;
-
-		this.JST(this.viewID).then(function (response) {
-			$el.html(response);
-			Session.ModelBinder(model, $el);
-		});
+		this.bindTemplate(this.viewID);
 	}
 });
