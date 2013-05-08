@@ -1,8 +1,5 @@
-﻿UserAdmin.BaseUserView = Backbone.View.extend({
+﻿UserAdmin.BaseUserView = Application.View.extend({
 	initialize: function () {
-		Session.ViewExtension.extend(this);
-		Session.FormErrorHandler.extend(this);
-		Session.BackupModelExtension.extend(this.model);
 		
 		_.bindAll(this, "saveModel");
 		this.model.store();
@@ -66,7 +63,7 @@
 				});
 			});
 
-			Session.ModelBinder(model, $el);
+			self.bindModelToView(model, $el);
 		});
 		
 		return this;

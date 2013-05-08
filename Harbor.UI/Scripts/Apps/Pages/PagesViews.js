@@ -1,8 +1,4 @@
-﻿Pages.MainView = Backbone.View.extend({
-	initialize: function () {
-		Session.ViewExtension.extend(this);
-	},
-	
+﻿Pages.MainView = Application.View.extend({
 	events: {
 		"click .page-header button": function () {
 			Session.trigger("addPage");
@@ -19,13 +15,22 @@
 			this.$el.html(result);
 		}, this));
 
-		this.views("pages", new Pages.PagesView({
+		this.showView(new Pages.PagesView({
 			collection: Pages.pages,
 			el: $(".pages-list")
 		}));
 		
-		this.views("pages").render();
+		this.view.render();
 		return this;
+	},
+	
+	showView: function (view) {
+		this.view && this.view.close();
+		this.view = view;
+	},
+	
+	onClose: function () {
+		this.view && this.view.close();
 	}
 });
 

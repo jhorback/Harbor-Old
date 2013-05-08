@@ -1,19 +1,8 @@
-﻿UserAdmin.UserListItemView = Backbone.View.extend({
-	initialize: function () {
-		Session.ViewExtension.extend(this);
-		
-	},
-
+﻿UserAdmin.UserListItemView = Application.View.extend({
 	render: function () {
-		var $el = this.$el,
-			model = this.model;
-
-		this.JST("UserAdmin-ListItem", this.model).then(function (result) {
-			$el.html(result);
-			Session.ModelBinder(model, $el);
-			if (!model.get("lastActivity")) {
-				$el.find("#useradmin-lastActivity").hide();
-			}
-		});
+		this.bindTemplate("UserAdmin-ListItem");
+		if (!this.model.get("lastActivity")) {
+			this.$el.find("#useradmin-lastActivity").hide();
+		}
 	}
 });

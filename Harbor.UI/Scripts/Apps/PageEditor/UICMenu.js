@@ -3,7 +3,7 @@
 Options:
 	model - Page
 */
-PageEditor.UICMenu = Backbone.View.extend({
+PageEditor.UICMenu = Application.View.extend({
 	
 	className: "uic-menu",
 	
@@ -13,8 +13,6 @@ PageEditor.UICMenu = Backbone.View.extend({
 		/// uic - the el of the uic
 		/// type - header, aside, or content
 		///</summary>
-		JstViewExtension.extend(this);
-		DisposeViewExtension.extend(this);
 	},
 	
 	events: {
@@ -38,7 +36,7 @@ PageEditor.UICMenu = Backbone.View.extend({
 	render: function () {
 		var type = this.options.type;
 		
-		this.template("PageEditor-UICMenu", this.$el)();
+		this.renderTemplate("PageEditor-UICMenu")();
 		if (type === "header") {
 			this.$el.find(".icon-move").hide();
 			this.$el.find(".icon-columns").hide();
@@ -67,9 +65,5 @@ PageEditor.UICMenu = Backbone.View.extend({
 			uicid: uicid
 		});
 		view.render();
-	},
-	
-	dispose: function () {
-		DisposeViewExtension.dispose.apply(this);
 	}
 });

@@ -415,7 +415,6 @@
     <Content Include="Scripts\Apps\Application\Controller.js" />
     <Content Include="Scripts\Apps\Application\ui\Selectable.js" />
     <Content Include="Scripts\Apps\Application\view\CloseViewExtension.js" />
-    <Content Include="Scripts\Apps\Application\view\DisposeViewExtension.js" />
     <Content Include="Scripts\Apps\Application\ui\Dialog.js" />
     <Content Include="Scripts\Apps\Application\view\FormErrorHandler.js" />
     <Content Include="Scripts\Apps\Application\model\GetSetModelExtension.js" />
@@ -425,7 +424,6 @@
     <Content Include="Scripts\Apps\Application\model\ModelErrors.js" />
     <Content Include="Scripts\Apps\Application\Region.js" />
     <Content Include="Scripts\Apps\Application\model\ValidationModelExtension.js" />
-    <Content Include="Scripts\Apps\Application\view\ViewExtension.js" />
     <Content Include="Scripts\Apps\Application\zeta.js" />
     <Content Include="Scripts\Apps\Application\_tests\JSMP.test.html" />
     <Content Include="Scripts\Apps\Application\_tests\JSPM.test.js" />
@@ -871,7 +869,7 @@
     <Content Include="Views\PageLoader\_PageLoader.cshtml" />
     <Content Include="Views\PageLoader\PageLoaderTemplates.cshtml" />
     <Content Include="Views\Page\Title.cshtml" />
-    <Content Include="Scripts\Apps\Application\AjaxRequestDefaultHandler.js" />
+    <Content Include="Scripts\Apps\AjaxRequestDefaultHandler.js" />
     <Content Include="Views\Page\Text.cshtml" />
     <Content Include="Views\Page\Links.cshtml" />
     <Content Include="Views\PageSettings\_Settings.cshtml" />

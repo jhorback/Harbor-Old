@@ -1,9 +1,6 @@
-﻿Session.SignInView = Backbone.View.extend({
+﻿Session.SignInView = Application.View.extend({
 
 	initialize: function () {
-		Session.ViewExtension.extend(this);
-		Session.FormErrorHandler.extend(this);
-
 		this.model = new Session.SignInModel();
 
 		this.render();
@@ -30,14 +27,7 @@
 	},
 
 	render: function () {
-		var $el = this.$el,
-			model = this.model;
-
-		var html = this.JST("Session-SignIn", this.model).then(function (result) {
-			$el.html(result);
-			Session.ModelBinder(model, $el);
-		});
-
+		this.bindTemplate("Session-SignIn");
 		return this;
 	}
 });

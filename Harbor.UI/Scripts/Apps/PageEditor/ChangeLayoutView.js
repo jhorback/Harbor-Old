@@ -4,12 +4,9 @@ Options:
 	model - Page
 	uicid - the uicid of the content component to update
 */
-PageEditor.ChangeLayoutView = Backbone.View.extend({
+PageEditor.ChangeLayoutView = Application.View.extend({
 	
 	initialize: function () {
-		JstViewExtension.extend(this);
-		DisposeViewExtension.extend(this);
-
 		this.component = this.getPageContentComponent(this.options.uicid);
 		this.viewModel = new PageEditor.ChangeLayoutViewModel();
 		this.viewModel.setClassNames(this.component.classNames);
@@ -24,11 +21,11 @@ PageEditor.ChangeLayoutView = Backbone.View.extend({
 	
 	render: function () {
 		this.template("PageEditor-ChangeLayout", this.$el)();
-		this.track(new Dialog(this.$el, {
+		this.showDialog(new Dialog(this.$el, {
 			title: "Layout content",
 			modal: true
 		}));
-		this.track(new ModelBinder(this.viewModel, this.$el));
+		this.bindModelToView(this.viewModel, this.$el);
 	},
 	
 	getPageContentComponent: function (uicid) {
@@ -43,7 +40,16 @@ PageEditor.ChangeLayoutView = Backbone.View.extend({
 		this.model.template.trigger("change");
 		$("#" + this.component.uicid).removeClass().addClass(this.component.classNames.join(" ") + " uic");
 		AjaxRequest.handle(this.model.save());
-		this.dispose();
+		this.close();
+	},
+	
+	showDialog: function (dialog) {
+		this.dialog && this.dialog.destroy();
+		this.dialog = dialog;
+	},
+
+	onClose: function () {
+		this.dialog && this.dialog.destroy();
 	}
 });
 

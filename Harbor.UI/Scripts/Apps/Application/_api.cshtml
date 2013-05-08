@@ -1,11 +1,15 @@
 ﻿@inherits System.Web.Mvc.WebViewPage
 <div class="page-header">
-	<h1 style="position:relative;"><span class="icon-cogs" style="color:#a7b2bf;font-size:1.5em;position:relative;top:.14em;"></span> Application.js</h1>
+	<h1 style="position:relative;"><span class="icon-cogs" style="font-size:1.5em;position:relative;top:.14em;"></span> Application.js</h1>
 </div>
 <div class="page-body">
 	<div class="page-aside">
 		<div class="col menulist">
-			<h2><a href="#application">Application, Controller</a></h2><ul>
+			
+			<h2><a href="#about">About</a></h2>
+
+			<h2><a href="#application">Application, Controller</a></h2>
+			<ul>
 				<li><a href="#application-start">start</a></li>
 				<li><a href="#application-regions">regions</a></li>
 				<li><a href="#application-root">root</a></li>
@@ -65,7 +69,8 @@
 				<li><a href="#view-bindTemplate">bindTemplate</a></li>	
 				<li><a href="#view-isModelValid">isModelValid (displayErrors)</a></li>	
 				<li><a href="#view-close">close</a></li>	
-				<li><a href="#view-onClose">onClose, destroy</a></li>	
+				<li><a href="#view-onClose">onClose, destroy</a></li>
+				<li><a href="#view-regions">regions</a></li>
 			</ul>
 			
 			<h2><a href="#validation">Validation</a></h2>
@@ -79,7 +84,7 @@
 		
 		
 		
-
+		<h2 id="about">About</h2>
 		<p>
 			Application.js is a series of JavaScript modules and mixins that can be used to reduce boilerplate code.
 			Some of the modules are extensions of Backbone and others may require jQuery, Underscore, or nothing at all.
@@ -488,6 +493,8 @@ if (errors) {
 		
 		
 		
+
+		
 		<h2 id="view">View</h2>
 		<p>
 			Application.js provides a series of Backbone view extensions.
@@ -558,6 +565,23 @@ render: function () {
 		<p>
 			Define this method to perform any neccessary cleanup with the views <code>close</code> method is called.
 		</p>
+		<h3 id="view-regions">regions</h3>
+		<code>view.regions</code>
+		<p>
+			Uses the Regions object the same way an Application does to allow defining of regionso on a view.
+		</p>
+		<pre class="prettyprint">
+var SomeView = Application.View.extend({
+	regions: {
+		"main": "#main"
+	}
+});
+var sv = new SomeView();
+// inside a method on SomeView (such as render):
+this.regions.main.show(someChildView);
+</pre>
+		
+
 		
 		
 
