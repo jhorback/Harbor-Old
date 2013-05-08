@@ -48,6 +48,7 @@
 				<li><a href="#model-property-set">property:set</a></li>	
 				<li><a href="#model-property-bind">property:bind</a></li>	
 				<li><a href="#model-property-validate">property:validate</a></li>	
+				<li><a href="#model-refresh">refresh</a></li>	
 				<li><a href="#model-getErrors">getErrors</a></li>	
 				<li><a href="#model-store">store</a></li>	
 				<li><a href="#model-restore">restore</a></li>	
@@ -67,11 +68,11 @@
 				<li><a href="#view-onClose">onClose, destroy</a></li>	
 			</ul>
 			
-			<h2>Validation</h2>
-			<h2>ModelErrors</h2>
-			<h2>ModelBinder</h2>
-			<h2>Menu</h2>
-			<h2>Dialog</h2>
+			<h2><a href="#validation">Validation</a></h2>
+			<h2><a href="#modelerrors">ModelErrors</a></h2>
+			<h2><a href="#modelbinder">ModelBinder</a></h2>
+			<h2><a href="#menu">Menu</a></h2>
+			<h2><a href="#dialog">Dialog</a></h2>
 		</div>
 	</div>
 	<div class="page-content">
@@ -352,138 +353,226 @@ AjaxHandler.defaultHandler.extend({
 		
 		
 		<h2 id="jspm">JSPM</h2>
-		The client portion of a JavaScript package manager for loading JavaScript packages containing scripts, css, and/or templates.
-		
-		/*
-		 * Client methods:
-		 *     JSPM.pkgSrc = "/packagemanager/path";
-		 *     JSPM.instal("PackageName"); // can be an array
-		 *     JSPM.register("ServerLoadedPackage");
-		 * 
-		 * Server configuration:
-		 *     Need to set JSPM.pkgSrc and have it return the JavaScript package manafest in json.
-		 *
-		 *     Request "~/jspm/PackageName
-		 *     Response // all arrays can also be a string if only one
-		 *     {
-		 *         name: "PackageName",
-		 *         scripts: [],
-		 *         styles: [],
-		 *         templates: [], // the templates are appended to the body
-		 *         dependencies: []
-		 *     }
-		 *
-		 */
+		<p>
+			The client portion of a JavaScript package manager for loading JavaScript packages containing scripts, css, and/or templates.
+		</p>
 
 		<h3 id="jspm-pkgSrc">JSPM.pkgSrc</h3>
+		<code>JSPM.pkgSrc</code>
+		<p>
+			Set this to the root url of the package manager.
+			The server should respond with the package manafest.
+		</p>
+		<pre class="prettyprint">
+JSPM.pkgSrc = "/jspm";
+// elsewhere
+JSPM.install("somePackage");
+// request => "/jspm/somepackage"
+// response =>
+{
+	name: "somePackage",
+	scripts: [],		// script urls to load
+	styles: [],			// style sheet urls to load
+	templates: [],		// html templates to load
+	dependencies: []	// other packages that should be loaded first.
+}
+</pre>
+
 		<h3 id="jspm-install">JSPM.install</h3>
-		install: function (pkgs, success, proxy) {
-			/// <summary>
-			///     pkgs - A package name or array of package names to install.
-			///     success - a callback called when the package has been installed.
-			///     proxy - sets the context ('this') in the success callback.
-			/// Returns a promise which is resolved when the package has been installed.
-			/// </summary>
+		<code>JSPM.install(pkgs, success, proxy)</code>
+		<p>
+			Installs one or more JavaScript packages.
+			<code>pkgs</code> can be a string or an array.
+			Returns a promise.
+		</p>
+		
 		<h3 id="jspm-register">JSPM.register</h3>
-		register: function (packageName) {
-			/// <summary>Add the package to the cache and registration table.</summary>
+		<code>JSPM.register(packageName);</code>
+		<pre>
+Explicitly tells the package manager that the package is loaded. Useful when pre-loading packages.
+</pre>
+
+
+		<h2 id="model">Model</h2>
+		<p>
+			Application.js provides a series of Backbone model extensions.
+			Each can be used individually or all can be used by extending the Application.Model object.
+		</p>
+		<code>Application.Model.extend(properties, classProperties);</code>
+		<p>
+			The get, set, bind, and validate methods can be defined for each model property.
+		</p>
+		<pre class="prettyprint">
+var SomeModel = Application.Model.extend({
+	defaults: {
+		firstName: null,
+		lastName: null,
+		fullName: null
+	},
+	fullName: {
+		get: function (currentValue) {
+			return this.get("firstName") + " " + this.get("lastName");
+		},
+		set: function (value) {
+			var parts = value.split(" ");
+			this.set("firstName", parts[0]);
+			this.set("lastName", parts[1]);
+		},
+		bind: ["firstName", "lastName"],
+		validate: { required: true }
+	}  
+});
+</pre>
+
+		<h3 id="model-property-get">property:get</h3>
+		<p>
+			Define this function to provide a getter for the property. The function is passed the current property value.
+		</p>
+		<h3 id="model-property-set">property:set</h3>
+		<p>
+			Define this function to provide a setter for the property. This function is passed the value to set.
+		</p>
+		<h3 id="model-property-bind">property:bind</h3>
+		<p>
+			Define the bind property as a string (or array) of property names the property is dependent on.
+			This will trigger a change on the property if any of the 'bind' properties change
+		</p>
+		<h3 id="model-property-validate">property:validate</h3>
+		<p>
+			Set the validate property to an object describing any number of validators (from the validation module).
+		</p>
+		<pre>
+someField: {
+	validate: {
+ 	    required: true,
+ 	    min: 0,
+ 	    max: 10,
+ 	    email: true,
+ 	    custom: function (value) {
+ 	   	    if (value === 1) {
+ 	   		    return "Value cannot be 1.";
+ 	   	    }
+ 	    }
+    }
+}
+</pre>
+		<h3 id="model-refresh">refresh</h3>
+		<code>someModel.refresh();</code>
+		<p>
+			Forces a change on the calculated values.		
+		</p>
+		<h3 id="model-getErrors">getErrors</h3>
+		<p>
+			Retuns an object containing errors by property (or null if there are no errors).
+		</p>
+		<pre>
+var errors = sm.getErrors();
+if (errors) {
+     // handle the errors
+}
+// errors =>
+{
+	"propertyName": ["error messages"]
+}
+</pre>
+		<h3 id="model-store">store</h3>
+		<code>sm.store();</code>
+		<p>
+			Saves the current model state which can be restored using the <code>restore</code> method.
+		</p>
+		<h3 id="model-restore">restore</h3>
+		<code>sm.restore();</code>
+		<p>
+			Restores the model property values back to the last time <code>store</code> was called.
+		</p>
 		
 		
+		
+		<h2 id="view">View</h2>
+		<p>
+			Application.js provides a series of Backbone view extensions.
+			Each can be used individually or all can be used by extending the Application.View object.
+		</p>
+		<code>Application.View.extend(properties, classProperties);</code>
+
+		<h3 id="view-template">template</h3>
+		<code>somemodel.template(template, el);</code>
+		<p>
+			Returns the compiled template function and caches it.
+			The <code>template</code> argument is the id of the script block containing the template.
+			The <code>el</code> argument is an optional which will add the result of the template to the dom node
+			when the template function is invoked.
+		</p>
+		<pre class="prettyprint">
+render: function () {
+	this.template("TemplateName", this.el)(this.model);
+	// same as
+	this.el.html(this.template("TemplateName")(this.model));
+}
+</pre>
+		<h3 id="view-renderTemplate">renderTemplate</h3>
+		<code>this.renderTemplate(teplate);</code>
+		<p>
+			Same as the template method but passes <code>this.el</code> to it.
+		</p>
+		<pre class="prettyprint">
+render: function () {
+	this.renderTemplate("TemplateName")(this.model);
+}
+</pre>
+		<h3 id="view-bindModelToView">bindModelToView</h3>
+		<code>bindModelToView(model, view);</code>
+		<p>
+			Creeates a ModelBinder (see the ModelBinder module) using the specified model and view.
+			If the model is not specified, <code>this.model</code> or <code>this.collection</code>
+			will be used.
+			If the view is not specified, <code>this.el</code> will be used.
+		</p>
+		<h3 id="view-bindTemplate">bindTemplate</h3>
+		<code>bindTemplate(template, el, model);</code>
+		<p>
+			Uses the model and view to render the template then creates a ModelBinder using
+			<code>bindModelToView</code>.
+			If the view is not passed <code>this.el</code> will be used.
+			If the model is not passed <code>this.model</code> will be used.
+		</p>
+		<h3 id="view-isModelValid">isModelValid (displayErrors)</h3>
+		<code>isModelValid(model);</code>
+		<p>
+			Returns true if the model is valid, otherwise updates the view with the errors 
+			using the FormErrorHandler module.
+			If the model is not passed <code>this.model</code> will be used.
+		</p>
+		<h3 id="view-close">close</h3>
+		<code>close();</code>
+		<p>
+			Calls the <code>onClose</code> method if exists.
+			Calls <code>undelegateEvents()</code>, <code>off()</code>, and <code>stopListening()</code>.
+		</p>
+		<p>
+			This is an option other than remove that does not
+			remove the view el and calls an optional 'onClose' method when called.
+		</p>
+		<h3 id="view-onClose">onClose</h3>
+		<code>onClose();</code>
+		<p>
+			Define this method to perform any neccessary cleanup with the views <code>close</code> method is called.
+		</p>
 		
 		
 
-		<h2 id="model">Model</h2>
-		Mention that all view extensions are used by Application.View.extend
+		<h2 id="validation">Validation</h2>
+		<p>
+			In addition to the <code>getErrors</code> method that is added to the view,
+			the validation module triggers an "error" event on the model whenever validation fails.
+			It also provides a few basic validators and a way to add custom validations. 
+		</p>
+		<p>
+			See the documentation in the JavaScript file for details.
+		</p>
 		
-		<h3 id="model-property-get">property:get</h3>
-		<h3 id="model-property-set">property:set</h3>
-		<h3 id="model-property-bind">property:bind</h3>
-		<h3 id="model-property-validate">property:validate</h3>
-		<h3 id="model-getErrors">getErrors</h3>
-		<h3 id="model-store">store</h3>
-		<h3 id="model-restore">restore</h3>
 		
-		/*
-		* GetSetModelExtension.js
-		* 
-		* Description:
-		*     Adds getters and setters to models.
-		*     Also adjusts the toJSON method to return calculated values.
-		*     and provides a refresh method to force a change on the calculated values.
-		*
-		* Usage:
-		*    var SomeModel = Backbone.Model.extend({
-		*        initialize: function () {
-		*            GetSetModelExtension.extend(this);
-		*        },
-		*        myProp: {
-		*            get: function (currentValue) {
-		*                return currentValue; // default behavior
-		*            },
-		*            set: function (value) {
-		*                return value; // default behavior
-		*            },
-		*            // triggers a change on the property if any of the 'bind' properties change
-		*            bind: "someProperty" // can be an array for multiple properties
-		*        }  
-		*    });
-		*/
-		/*
-		* Usage:
-		*     var SomeModel = Backbone.Model.extend({
-		*     	  defaults: {
-		*     	  	someField: null
-		*     	  },
-		*     	  someField: {
-		*            validate: {
-		*     	  	      required: true,
-		*     	  	      min: 0,
-		*     	  	      max: 10,
-		*     	  	      email: true,
-		*     	  	      exclude: "foo",
-		*     	  	      custom: function (value) {
-		*     	  	   	      if (value === 1) {
-		*     	  	   		      return "Value cannot be 1.";
-		*     	  	   	        }
-		*     	  	       }
-		*             }
-		*         }
-		*     });
-		* 
-		* 
-		* Error notifications:
-		*     Whenever a model property changes, its validation is run.
-		*     If there are any errors, an "error" will be triggered on the model.
-		* 
-		*     var sm = new SomeModel();
-		*     sm.on("error", function (model, errors, property) {
-		*         // errors - hash of property name : array of error messages. { username: ["Required."] }
-		*         //     errors will be null if there was an error but it is now cleared
-		*         // property - the name of the property that triggered the error.
-		*     });
-		* 
-		*
-		*     Calling getErrors will call the validate method on the model with a boolean passed as the only argument.
-		*     var errors = sm.getErrors();
-		*     if (errors) {
-		*          // handle the errors
-		*     }
-		*
-		*     This enables composite validation to execute separate from property change events.
-		*     validate: function (onSave) {
-		*         if (onSave !== true) {
-		*             return;
-		*         }
-		*      }
-		*
-		*
-		* Adding a global validator:
-		*     ValidationModelExtension.validators["exclude"] = function (value, args) {
-		*         if (value === args) {
-		*     	       retun "The value cannot be " + args;
-		*         }
-		*     };
-		*/
+		<h2 id="modelerrors">ModelErrors</h2>
 		/*
 		* ModelErrors.js
 		* 
@@ -497,34 +586,11 @@ AjaxHandler.defaultHandler.extend({
 		*     }
 		*     return errors.toJSON();
 		*/
-		/*
-		* BackupModelExtension.js
-		* 
-		* Description:
-		*     A simple memento plugin that handles a single level backup of the JSON representation of the model.
-		*
-		* Usage:
-		*     BackbupModelExtension.extend(someModel);
-		*     someModel.store();
-		*     someModel.restore();
-		*/
-		
-		
-		<h2 id="view">View</h2>
-		Mention that all model extensions are used by Application.Model.extend
-		<h3 id="view-template">template</h3>
-		<h3 id="view-renderTemplate">renderTemplate</h3>
-		<h3 id="view-bindModelToView">bindModelToView</h3>
-		<h3 id="view-bindTemplate">bindTemplate</h3>
-		<h3 id="view-isModelValid">isModelValid (displayErrors)</h3>
-		<h3 id="view-close">close</h3>
-		<h3 id="view-onClose">onClose</h3>
-
-
-		
 		
 
-				
+		<h2 id="modelbinder">ModelBinder</h2>
+		<h2 id="menu">Menu</h2>
+		<h2 id="dialog">Dialog</h2>
 		
 		
 
