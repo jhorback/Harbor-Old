@@ -1,14 +1,9 @@
 ﻿(function () {
 
-	Session.on("addPage", function () {
-		pageModel.init().then(function () {
-			PageAdder.addPage();
-		});
-	});
+	
 	
 	var openView,
-		pageTypesDfd,
-		PageAdder = {
+		PageAdder = new Application({
 			addPage: function () {
 				if (openView) {
 					openView.dispose();
@@ -16,7 +11,15 @@
 				openView = new PageAdder.AddPageView();
 				openView.render();
 			}
-		};
+		});
+	
+	Session.on("page:add", function () {
+		pageModel.loadPageTypes().then(function () {
+			PageAdder.addPage();
+		});
+	});
+	
+
 
 	window.PageAdder = PageAdder;
 })();
