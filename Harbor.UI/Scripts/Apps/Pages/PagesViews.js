@@ -1,7 +1,7 @@
 ﻿Pages.MainView = Application.View.extend({
 	events: {
 		"click .page-header button": function () {
-			Session.trigger("addPage");
+			Session.trigger("page:add");
 		},
 		"click .tile": function (event) {
 			var target = $(event.target);

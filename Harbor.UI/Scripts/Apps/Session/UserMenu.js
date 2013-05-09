@@ -8,7 +8,7 @@
 	events: {
 		"click #usermenu-addpage": function () {
 			var menu;
-			Session.trigger("addPage");
+			Session.trigger("page:add");
 			menu = this.view;
 			menu && menu.close && menu.close();
 		},
