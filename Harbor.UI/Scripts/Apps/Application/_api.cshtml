@@ -112,7 +112,8 @@ someapp.start();
 		<code>app.start()</code>
 		<p>
 			Overriding the start method allows you to add initialization code to your app. Arguments are optional, however,
-			the first argument passed to the start method will be added to an <code>options</code> property on the application.
+			the first argument passed to the start method will be added to an <code>options</code> property on the application
+			after being merged into any default options already present on the Application.
 		</p>
 		<pre class="prettyprint linenums">
 var someapp = new Application({
@@ -645,6 +646,7 @@ mb.unbind(); // removes the model binder event bindings.
 
 
 		<h2 id="menu">Menu</h2>
+		<code>Menu(el, options); // => menu</code>
 		<p>
 			Wraps an element in a menu with a few options for configuration.
 		</p>
@@ -666,6 +668,7 @@ mb.unbind(); // removes the model binder event bindings.
 
 
 		<h2 id="dialog">Dialog</h2>
+		<code>Dialog(el, options); // => dialog</code>
 		<p>
 			Wraps an element in a dialog with a few options for configuration.
 		</p>
