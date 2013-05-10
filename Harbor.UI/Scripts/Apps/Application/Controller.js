@@ -75,94 +75,94 @@
  */
 (function () {
 
-    var Controller = Backbone.Router.extend({
-        constructor: function (options) {
-            var customStart = this.start,
+	var Controller = Backbone.Router.extend({
+		constructor: function (options) {
+			var customStart = this.start,
 				controller = this,
 				curriedMethods = {},
 				actionMethods = _.union(this.actions, _.values(this.routes));
 
-            Region.createRegions(this);
+			Region.createRegions(this);
 
-            // curry the actions
-            _.each(actionMethods, function (methodName) {
-                var method = controller[methodName];
+			// curry the actions
+			_.each(actionMethods, function (methodName) {
+				var method = controller[methodName];
 
-                // ensure the method is only curried once
-                if (curriedMethods[methodName]) {
-                    return;
-                }
+				// ensure the method is only curried once
+				if (curriedMethods[methodName]) {
+					return;
+				}
 
-                curriedMethods[methodName] = controller[methodName] = function () {
-                    var result, view, region, navigate;
+				curriedMethods[methodName] = controller[methodName] = function () {
+					var result, view, region, navigate;
 
-                    result = method.apply(controller, arguments);
+					result = method.apply(controller, arguments);
 
-                    if (!result) {
-                        return;
-                    }
+					if (!result) {
+						return;
+					}
 
-                    if (result.view) {
-                        view = result.view;
-                        region = result.region ? controller.regions[result.region] : controller.regions["default"];
-                        navigate = result.navigate;
-                    } else {
-                        view = result;
-                        region = controller.regions["default"];
-                    }
+					if (result.view) {
+						view = result.view;
+						region = result.region ? controller.regions[result.region] : controller.regions["default"];
+						navigate = result.navigate;
+					} else {
+						view = result;
+						region = controller.regions["default"];
+					}
 
-                    region.render(view);
-                    navigate && controller.navigate(navigate);
-                    result.afterRender && result.afterRender.apply(controller);
-                };
-            });
+					region.render(view);
+					navigate && controller.navigate(navigate);
+					result.afterRender && result.afterRender.apply(controller);
+				};
+			});
 
-            Backbone.Router.prototype.constructor.apply(this, arguments);
-            this.start = function () {
-                /// <summary>Starts Backbone.history and calls any custom start method.</summary>
-                var dfd;
-                this.options = arguments && arguments[0];
-                this.root = _.isFunction(this.root) ? this.root.call(this) : (this.root || "");
-                dfd = customStart && customStart.apply(this, arguments);
-                if (controller.routes && controller._started === true) {
-                    throw "Start has already been called.";
-                }
-                dfd = dfd || { then: function (callback) { callback.call(); } };
+			Backbone.Router.prototype.constructor.apply(this, arguments);
+			this.start = function () {
+				/// <summary>Starts Backbone.history and calls any custom start method.</summary>
+				var dfd;
+				this.options = _.extend(this.options || {}, arguments && arguments[0]);
+				this.root = _.isFunction(this.root) ? this.root.call(this) : (this.root || "");
+				dfd = customStart && customStart.apply(this, arguments);
+				if (controller.routes && controller._started === true) {
+					throw "Start has already been called.";
+				}
+				dfd = dfd || { then: function (callback) { callback.call(); } };
 
-                controller._started = true;
-                dfd.then(function () {
-                    controller.routes && Backbone.history.start({
-                        pushState: true,
-                        root: controller.root
-                        //, silent: true
-                    });
-                });
-            };
+				controller._started = true;
+				dfd.then(function () {
+					controller.routes && Backbone.history.start({
+						pushState: true,
+						root: controller.root
+						//, silent: true
+					});
+				});
+			};
 
-            _.bindAll(this, "handleLinkClick");
-        },
+			_.bindAll(this, "handleLinkClick");
+		},
 
-        destroy: function () {
-            delete this._started;
-            _.chain(this.regions).values().invoke("destroy");
-        },
+		destroy: function () {
+			delete this._started;
+			_.chain(this.regions).values().invoke("destroy");
+		},
 
-        handleLinkClick: function (event, parent) {
-            // parent - a selector of an item to look inside for the link.
-            var href,
+		handleLinkClick: function (event, parent) {
+			// parent - a selector of an item to look inside for the link.
+			var href,
 				parent = $(event.target).closest(parent),
 				target = parent.length > 0 ? parent : $(event.target),
 				link = target.closest("a");
 
-            if (link.length === 0) {
-                link = target.find("a");
-            }
+			if (link.length === 0) {
+				link = target.find("a");
+			}
 
-            href = link.attr("href");
-            event.preventDefault();
-            this.navigate(href.toLowerCase().replace(this.root.toLowerCase(), ""), true);
-        }
-    });
+			href = link.attr("href");
+			event.preventDefault();
+			this.navigate(href.toLowerCase().replace(this.root.toLowerCase(), ""), true);
+		}
+	});
 
-    window.Controller = Controller;
+	window.Controller = Controller;
 })();
