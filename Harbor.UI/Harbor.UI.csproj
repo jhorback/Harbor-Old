@@ -226,6 +226,7 @@
     <Compile Include="Models\JSPM\PackageCollection.cs" />
     <Compile Include="Models\JSPM\PackageTable.cs" />
     <Compile Include="Models\JSPM\TemplateAction.cs" />
+    <Compile Include="Models\Page\Components\LinksDto.cs" />
     <Compile Include="Models\Page\Components\PageLinkDto.cs" />
     <Compile Include="Models\Page\Components\ImageDto.cs" />
     <Compile Include="Models\Page\Components\TextDto.cs" />
@@ -558,6 +559,7 @@
     <Content Include="Views\Page\PageLink-Edit.cshtml" />
     <Content Include="Scripts\Apps\Application\_api.cshtml" />
     <Content Include="Views\Home\ApplicationJsApi.cshtml" />
+    <Content Include="Views\Page\Links-None.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\users\" />

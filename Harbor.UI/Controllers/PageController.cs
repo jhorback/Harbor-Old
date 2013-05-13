@@ -32,9 +32,16 @@ namespace Harbor.UI.Controllers
 			return PartialView("Image", model);      	
 		}
 
-		public PartialViewResult Links()
+		public PartialViewResult Links(Page page, string uicid)
 		{
-			return PartialView("Links");
+			var links = page.GetComponent<Links>(uicid);
+			if (links.IsNew())
+			{
+				return PartialView("Links-None");
+			}
+
+			var model = (LinksDto)links;
+			return PartialView("Links", model);
 		}
 
 		public PartialViewResult PageLink(Page page, string uicid)

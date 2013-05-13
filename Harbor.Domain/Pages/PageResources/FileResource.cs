@@ -30,5 +30,10 @@ namespace Harbor.Domain.Pages.PageResources
 
 			return res.FileID == FileID;
 		}
+
+		public override int GetHashCode()
+		{
+			return FileID.GetHashCode();
+		}
 	}
 }

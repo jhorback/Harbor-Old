@@ -30,5 +30,10 @@ namespace Harbor.Domain.Pages.PageResources
 
 			return res.NavLinksID == NavLinksID;
 		}
+
+		public override int GetHashCode()
+		{
+			return NavLinksID;
+		}
 	}
 }

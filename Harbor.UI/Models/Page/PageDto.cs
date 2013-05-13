@@ -30,6 +30,7 @@ namespace Harbor.UI.Models
 				.ForMember(dest => dest.PreviewImage, opt => opt.Ignore())
 				.ForMember(dest => dest.Files, opt => opt.Ignore())
 				.ForMember(dest => dest.PageLinks, opt => opt.Ignore())
+				.ForMember(dest => dest.NavLinks, opt => opt.Ignore())
 				.AfterMap((dto, DO) =>
 				    {
 						// add / update

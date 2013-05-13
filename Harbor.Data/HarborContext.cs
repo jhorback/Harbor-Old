@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using Harbor.Domain.App;
 using Harbor.Domain.Files;
+using Harbor.Domain.PageNav;
 using Harbor.Domain.Pages;
 using Harbor.Domain.Security;
 
@@ -30,6 +31,7 @@ namespace Harbor.Data
 		public DbSet<Page> Pages { get; set; }
 		public DbSet<PageRole> PageRoles { get; set; }
 		public DbSet<File> Files { get; set; }
+		public DbSet<NavLinks> NavLinks { get; set; }
 
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -39,6 +41,7 @@ namespace Harbor.Data
 			modelBuilder.Configurations.Add<Page>(new DbSetConfiguration.PageConfiguration());
 			modelBuilder.Configurations.Add<User>(new DbSetConfiguration.UserConfiguration());
 			modelBuilder.Configurations.Add<File>(new DbSetConfiguration.FileConfiguration());
+			modelBuilder.Configurations.Add<NavLinks>(new DbSetConfiguration.NavLinksConfiguration());
 		}
 	}
 
@@ -92,6 +95,18 @@ namespace Harbor.Data
 					.WithMany()
 					.HasForeignKey(m => m.UserName)
 					.WillCascadeOnDelete(false);
+			}
+		}
+
+		public class NavLinksConfiguration : EntityTypeConfiguration<NavLinks>
+		{
+			public NavLinksConfiguration()
+			{
+				Ignore(m => m.Template);
+				HasRequired(m => m.Owner)
+					.WithMany()
+					.HasForeignKey(m => m.UserName)
+					.WillCascadeOnDelete(true);
 			}
 		}
 	}

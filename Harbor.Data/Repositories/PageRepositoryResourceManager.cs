@@ -29,6 +29,12 @@ namespace Harbor.Data.Repositories
 				var pageLink = context.Pages.Find(res.PageID);
 				page.PageLinks.Add(pageLink);
 			}
+			else if (resource is LinksResource)
+			{
+				var res = resource as LinksResource;
+				var pageRes = context.NavLinks.Find(res.NavLinksID);
+				page.NavLinks.Add(pageRes);
+			}
 		}
 
 		public void RemoveResource(Page page, PageResource resource)
@@ -36,14 +42,20 @@ namespace Harbor.Data.Repositories
 			if (resource is FileResource)
 			{
 				var fileResource = resource as FileResource;
-				var file = page.Files.FirstOrDefault(p => p.FileID == fileResource.FileID);
+				var file = page.GetFile(fileResource.FileID);
 				page.Files.Remove(file);
 			}
 			else if (resource is PageLinkResource)
 			{
 				var res = resource as PageLinkResource;
-				var pageLink = page.PageLinks.FirstOrDefault(p => p.PageID == res.PageID);
+				var pageLink = page.GetPageLink(res.PageID);
 				page.PageLinks.Remove(pageLink);
+			}
+			else if (resource is LinksResource)
+			{
+				var res = resource as LinksResource;
+				var pageRes = page.GetNavLinks(res.NavLinksID);
+				page.NavLinks.Remove(pageRes);
 			}
 		}
 	}
