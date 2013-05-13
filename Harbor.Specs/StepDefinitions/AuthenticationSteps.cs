@@ -28,9 +28,8 @@ namespace Harbor.Specs.StepDefinitions
 		string enteredPassword;
 		string validPassword = "validPassword";
 		string invalidPassword = "invalidPassword";
-		bool userIsEnabled = true;
 
-		public AuthenticationSteps()
+	    public AuthenticationSteps()
 		{
 			userRepository = new Mock<IUserRepository>();
 			currentUserRepository = new Mock<CurrentUserRepository>();
@@ -58,7 +57,6 @@ namespace Harbor.Specs.StepDefinitions
         [Given(@"I am not enabled")]
         public void GivenIAmNotEnabled()
         {
-        	userIsEnabled = false;
         }
         
         [When(@"I sign in")]

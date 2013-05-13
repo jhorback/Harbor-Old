@@ -104,6 +104,10 @@
     <Compile Include="Migrations\201304242146455_RemovePageParent.Designer.cs">
       <DependentUpon>201304242146455_RemovePageParent.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201305131316589_NavLinks.cs" />
+    <Compile Include="Migrations\201305131316589_NavLinks.Designer.cs">
+      <DependentUpon>201305131316589_NavLinks.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositories\PageRepositoryResourceManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -158,6 +162,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201304242146455_RemovePageParent.resx">
       <DependentUpon>201304242146455_RemovePageParent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305131316589_NavLinks.resx">
+      <DependentUpon>201305131316589_NavLinks.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

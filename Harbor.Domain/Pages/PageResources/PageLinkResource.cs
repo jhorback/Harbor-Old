@@ -30,5 +30,10 @@ namespace Harbor.Domain.Pages.PageResources
 
 			return res.PageID == PageID;
 		}
+
+		public override int GetHashCode()
+		{
+			return PageID; 
+		}
 	}
 }

@@ -25,6 +25,7 @@ namespace Harbor.Domain.Pages
 			// page resources
 			Files = new List<File>();
 			PageLinks = new List<Page>();
+			NavLinks = new List<NavLinks>();
 
 
 			Created = DateTime.Now;

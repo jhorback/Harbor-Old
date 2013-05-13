@@ -96,6 +96,10 @@ namespace Harbor.Domain.Pages
 				resources.Add(new PageLinkResource(page, res.PageID));
 			}
 
+			foreach (var res in page.NavLinks)
+			{
+				resources.Add(new LinksResource(page, res.NavLinksID));
+			}
 			return resources;
 		}
 		#endregion

@@ -21,7 +21,8 @@ namespace Harbor.Data.Extensions
 			{
 				object original = null;
 				if (obj.TryGetObjectByKey(objectDetached.EntityKey, out original))
-					obj.ApplyPropertyChanges(objectDetached.EntityKey.EntitySetName, objectDetached);
+					obj.ApplyCurrentValues(objectDetached.EntityKey.EntitySetName, objectDetached);
+					// obj.ApplyPropertyChanges(objectDetached.EntityKey.EntitySetName, objectDetached);
 				else
 					throw new ObjectNotFoundException();
 			}
