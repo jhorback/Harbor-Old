@@ -54,6 +54,8 @@ namespace Harbor.Data.Repositories
 				pages = pages.Include("Files");
 			if (include.HasFlag(IncludePageResources.PageLinks))
 				pages = pages.Include("PageLinks");
+			if (include.HasFlag(IncludePageResources.NavLinks))
+				pages = pages.Include("NavLinks");
 			return pages.AsQueryable();
 		}
 
