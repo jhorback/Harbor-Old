@@ -1,4 +1,5 @@
 ﻿using System;
+using Harbor.Domain.Pages.PageResources;
 
 namespace Harbor.Domain.Pages.Components
 {
@@ -29,7 +30,7 @@ namespace Harbor.Domain.Pages.Components
 
 		public override Type PageComponent
 		{
-			get { return null; }
+			get { return typeof(LinksResource); }
 		}
 	}
 }

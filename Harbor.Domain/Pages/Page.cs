@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web.Script.Serialization;
 using Harbor.Domain.Files;
+using Harbor.Domain.PageNav;
 using Harbor.Domain.Pages.PageResources;
 using Harbor.Domain.Security;
 
@@ -99,6 +100,7 @@ namespace Harbor.Domain.Pages
 		public ICollection<PageProperty> Properties { get; set; }
 		public ICollection<File> Files { get; set; } 
 		public ICollection<Page> PageLinks { get; set; } 
+		public ICollection<NavLinks> NavLinks { get; set; } 
 		internal ICollection<PageRole> PageRoles { get; set; }
 		internal IEnumerable<PageFeatureRole> AllPageRoles { get; set; } 
 
@@ -201,6 +203,11 @@ namespace Harbor.Domain.Pages
 		public Page GetPageLink(int pageID)
 		{
 			return PageLinks.FirstOrDefault(p => p.PageID == pageID);
+		}
+
+		public NavLinks GetNavLinks(int navLinksID)
+		{
+			return NavLinks.FirstOrDefault(l => l.NavLinksID == navLinksID);
 		}
 	}
 }
