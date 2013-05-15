@@ -140,18 +140,14 @@ $body-color-attn:			#D14836						!default;
 		clear: left;
 		text-rendering: optimizelegibility; // Fix the character spacing for headings	
 		font-family: $headings-font-family;
+		span {  margin-left: 1em; font-weight: normal; font-size: .8em; } // sub headings
 	}
 	h1 { font-size: 2.1em;  } // ~30px / 42px
 	h2 { font-size: 1.6em; } // ~25px / 35px // creates a visual distinction between h2 and h3
 	h3 { font-size: 1.35em;  } // ~19px / 27px
 	h4 { font-size: 1.20em; } // ~17px / 24px
 	h5 { font-size: 1em;    } // ~14px / 20px
-	h6 { font-size: .85em;  } // ~12px / 17px
-	hgroup {
-		h1, h2, h3, h4, h5, h6 { display: inline-block; margin-right: 1em; }		
-		h1 + h2 { font-size: 1.35em; font-weight: normal; }
-		h2 + h3 { font-size: 1.20em; font-weight: normal; }
-	}	  
+	h6 { font-size: .85em;  } // ~12px / 17px	
 }
 
 @mixin headings-theme {
@@ -161,8 +157,6 @@ $body-color-attn:			#D14836						!default;
 
 	h1 { color: lighten($body-color, 20%); }
 	h2  { color: $body-heading-color;  font-weight: bold; }
-
-	hgroup h1 + h2 { color: $body-color; }
 }
 
 
