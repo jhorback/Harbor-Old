@@ -308,6 +308,7 @@
     <Content Include="Content\site\core\fonticons.css">
       <DependentUpon>fonticons.scss</DependentUpon>
     </Content>
+    <Content Include="Content\site\core\font\fontawesome-webfont.svg" />
     <Content Include="Content\site\core\form.css">
       <DependentUpon>form.scss</DependentUpon>
     </Content>
@@ -362,7 +363,6 @@
     <Content Include="Content\site\ext\pageloader.css">
       <DependentUpon>pageloader.scss</DependentUpon>
     </Content>
-    <Content Include="Content\site\core\font\fonticons.svg" />
     <Content Include="Content\site\ext\pager.css">
       <DependentUpon>pager.scss</DependentUpon>
     </Content>
@@ -584,6 +584,10 @@
       <CompileStyle>Nested</CompileStyle>
       <DebugInfo>False</DebugInfo>
     </None>
+    <Content Include="Content\site\core\font\fontawesome-webfont.eot" />
+    <Content Include="Content\site\core\font\fontawesome-webfont.ttf" />
+    <Content Include="Content\site\core\font\fontawesome-webfont.woff" />
+    <Content Include="Content\site\core\font\FontAwesome.otf" />
     <None Include="Content\site\core\menu.scss">
       <Compile>True</Compile>
       <Minify>False</Minify>
@@ -743,9 +747,6 @@
       <CompileStyle>Nested</CompileStyle>
       <DebugInfo>False</DebugInfo>
     </None>
-    <Content Include="Content\site\core\font\fonticons.eot" />
-    <Content Include="Content\site\core\font\fonticons.ttf" />
-    <Content Include="Content\site\core\font\fonticons.woff" />
     <None Include="Content\site\mixins\_col.scss">
       <Compile>False</Compile>
       <Minify>False</Minify>
