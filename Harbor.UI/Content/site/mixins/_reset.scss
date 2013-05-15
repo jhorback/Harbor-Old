@@ -12,7 +12,7 @@
   fieldset, form, label, legend,
   table, caption, tbody, tfoot, thead, tr, th, td,
   article, aside, canvas, details, embed, 
-  figure, figcaption, footer, header, hgroup, 
+  figure, figcaption, footer, header, 
   menu, nav, output, ruby, section, summary,
   time, mark, audio, video {
     @include reset-box-model;
@@ -45,7 +45,7 @@
   fieldset, form, label, legend,
   table, caption, tbody, tfoot, thead, tr, th, td,
   article, aside, canvas, details, embed, 
-  figure, figcaption, footer, header, hgroup, 
+  figure, figcaption, footer, header,
   menu, nav, output, ruby, section, summary,
   time, mark, audio, video {
     @include reset-box-model;
@@ -112,7 +112,7 @@
 // and reset in browsers that have default styles for them.
 @mixin reset-html5 {
   article, aside, details, figcaption, figure, 
-  footer, header, hgroup, menu, nav, section {
+  footer, header, menu, nav, section {
     display: block; } }
 
 // Resets the display of inline and block elements to their default display

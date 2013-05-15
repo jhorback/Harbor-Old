@@ -39,9 +39,6 @@ h2 {
   color: #336699;
   font-weight: bold; }
 
-hgroup h1 + h2 {
-  color: #336699; }
-
 .quiet {
   color: #999999; }
 
