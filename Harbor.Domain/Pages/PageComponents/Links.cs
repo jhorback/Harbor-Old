@@ -1,4 +1,5 @@
-﻿using Harbor.Domain.PageNav;
+﻿using System.Collections.Generic;
+using Harbor.Domain.PageNav;
 
 namespace Harbor.Domain.Pages.PageComponents
 {
@@ -29,13 +30,32 @@ namespace Harbor.Domain.Pages.PageComponents
 			}
 		}
 
-		public NavLinksTemplate Template
+		public string UserName
 		{
 			get
 			{
 				if (_links == null) return null;
-				return _links.Template;
+				return _links.UserName;
 			}
 		}
+
+		public string Name
+		{
+			get
+			{
+				if (_links == null) return null;
+				return _links.Name;
+			}
+		}
+
+		public List<NavLinksSection> Sections
+		{
+			get
+			{
+				if (_links == null) return null;
+				return _links.Sections;
+			}
+		}
+
 	}
 }

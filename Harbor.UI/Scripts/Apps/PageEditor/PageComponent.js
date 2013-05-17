@@ -5,6 +5,9 @@
  *         a page property
  *         a save method which calls save method on the page
  *         and changes will be bound to update page properties according to the uicid. 
+ * getDefaults - use to fill the default properties of the model.
+ *     defaults will be populated off of the uic properties
+ *     defining this static method is useful for any live properties (on a page resource).
  */
 var PageComponent = function (options) {
 	this.type= options.type;
