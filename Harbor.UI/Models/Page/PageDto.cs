@@ -3,6 +3,7 @@ using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
 using Harbor.Domain.Pages;
+using Harbor.UI.Models.Components;
 
 namespace Harbor.UI.Models
 {
@@ -18,6 +19,7 @@ namespace Harbor.UI.Models
 				.ForMember(dest => dest.created, opt => opt.MapFrom(src => src.Created.ToShortDateString()))
 				.ForMember(dest => dest.modified, opt => opt.MapFrom(src => src.Modified.ToShortDateString()))
 				.ForMember(dest => dest.pageLinks, opt => opt.MapFrom(src => src.PageLinks))
+				.ForMember(dest => dest.)
 				;
 
 			Mapper.CreateMap<PageDto, Domain.Pages.Page>()
@@ -79,6 +81,7 @@ namespace Harbor.UI.Models
 
 		public List<FileDto> files { get; set; }
 		public List<PageReferenceDto> pageLinks { get; set; }
+		public List<LinksDto> navLinks { get; set; }
 		
 		public static implicit operator PageDto(Domain.Pages.Page page)
 		{

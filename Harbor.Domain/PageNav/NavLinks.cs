@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using Harbor.Domain.Security;
 
 namespace Harbor.Domain.PageNav
@@ -25,6 +26,14 @@ namespace Harbor.Domain.PageNav
 			set
 			{
 				Template = NavLinksTemplate.Parse(value);
+			}
+		}
+
+		public List<NavLinksSection> Sections
+		{
+			get
+			{
+				return Template == null ? null : Template.Sections;
 			}
 		}
 

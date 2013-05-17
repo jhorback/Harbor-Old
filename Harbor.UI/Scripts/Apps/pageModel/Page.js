@@ -7,9 +7,11 @@ pageModel.Page = Application.Model.extend({
 	
 	previewImage: null, // FileModel
 	
-	files: [], // FileModel
+	//files: [], // FileModel
 	
-	pageLinks: [], // Page
+	//pageLinks: [], // Page
+	
+	//navLinks: [], // NavLinks
 	
 	defaults: {
 	    id: null,
@@ -210,6 +212,10 @@ pageModel.Page = Application.Model.extend({
 	getPageLink: function (pageID) {
 		var link = _.where(this.get("pageLinks"), { id: parseInt(pageID) });
 		return (link.length === 1) ? link[0] : {};
+	},
+	
+	getNavLinks: function (navLinksID) {
+		var links = _.where(this.get("navLinks"), { id: parseInt(navLinksID) });
 	}
 });
 

@@ -1,37 +1,59 @@
 ﻿
-// jch* - simple for now - could have a view associated with this if needed later
-var LinksComponent = function (options) {
-	JstViewExtension.extend(this);
+var LinksComponent = PageComponent.extend({
 
-	this.$el = options.$el;
-	this.uicid = options.uicid;
-	this.page = options.page;
-	this.view = null;
-};
-
-LinksComponent.prototype = {
-	create: function () {
-		this.template("Comps-Links", this.$el)();
+	modelType: function () {
+		return LinksComponent.Model;
 	},
 
-	getView: function () {
-//		if (!this.view) {
-//			this.view = new PageEditor.TextView({
-//				uicid: this.uicid,
-//				model: this.page,
-//				$el: this.$el
-//			});
-//		}
-//		return this.view;
+	initialize: function () {
+		this.view = new PageLinkComponent.View({
+			el: this.$el,
+			model: this.model,
+			uicid: this.uicid
+		});
+	},
+
+	create: function () {
+		this.open();
+		this.view.openPageSelector();
 	},
 
 	open: function () {
-		//console.log("links is open for edit: ", this.uicid);
+		JSPM.install("PageSelector", function () {
+			this.view.render();
+		}, this);
 	},
 
 	close: function () {
-		//console.log("links is closed for edit: ", this.uicid);
+		this.view.close();
 	}
-};
+});
+
+//"Comps-Links"
+
+LinksComponent.Model = Application.Model.extend({
+	defaults: {
+		id: null,
+		name: null,
+		sections: []
+	}
+}, {
+	pageProperties: ["id"],
+
+	getDefaults: function (page, pageProperties) {
+		return _.pick(page.getNavLinks(pageProperties.id),
+			"name", "sections");
+	}
+});
+
+// jch! - need url and api controller
+LinksModel = Application.Model.extend({
+	defaults: {
+		id: null,
+		name: null,
+		userName: null,
+		sections: [] // title, links 
+	}
+});
 
 PageEditor.registerComponent("links", LinksComponent);
