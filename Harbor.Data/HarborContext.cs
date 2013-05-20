@@ -103,6 +103,8 @@ namespace Harbor.Data
 			public NavLinksConfiguration()
 			{
 				Ignore(m => m.Template);
+				Ignore(m => m.Sections);
+
 				HasRequired(m => m.Owner)
 					.WithMany()
 					.HasForeignKey(m => m.UserName)
