@@ -26,6 +26,7 @@ test("Register function, function is calld", function () {
 
 });
 
+
 test("Register function with object dependency", function () {
 	var testVal = 0;
 	var ret;
@@ -33,7 +34,7 @@ test("Register function with object dependency", function () {
 	var testFn = function (testObj) {
 		testVal = testObj.test;
 	};
-
+	
 	IOC.register("testObj", testObj);
 	IOC.register("test", testFn);
 	ret = IOC.get("test");
@@ -45,22 +46,108 @@ test("Register function with object dependency", function () {
 test("Register function with function dependency", function () {
 	var testVal = 0;
 	var ret;
-	var testFnDep = function () {
-		return 23;
+	var testDep = function () {
+		this.testFn = function () {
+			return 23;
+		};
 	};
-	var testFn = function (testFnDep) {
-		testVal = testFnDep();
+	var testFn = function (testDep) {
+		testVal = testDep.testFn();
 	};
-	debugger;
-	IOC.register("testFnDep", testFnDep);
+
+	IOC.register("testDep", testDep);
 	IOC.register("test", testFn);
 	ret = IOC.get("test");
 	equal(23, testVal);
 
 });
 
-/*
-next, and things to consider.
-look at circular dependency checking
-creating the call method
-*/
+
+test("Calling get on an un-registered dependency throws an error", function () {
+	expect(1);
+	try {
+		var foo = IOC.get("foo");
+	} catch (e) {
+		equal(e.message, "Unknown dependency: foo", e.message);
+	}
+});
+
+
+test("Circular dependency is caught and error is thrown.", function () {
+	var testVal = 0;
+	var ret;
+	var testDep = function (test) {
+		this.testFn = function () {
+			return 23;
+		};
+	};
+	var testFn = function (testDep) {
+		testVal = testDep.testFn();
+	};
+
+	IOC.register("testDep", testDep);
+	IOC.register("test", testFn);
+	try {
+		ret = IOC.get("test");
+	} catch (e) {
+		equal(e.message, "Circular reference: test -> testDep -> test", e.message);
+	}
+});
+
+
+test("Calling call satisfies the dependencies.", function () {
+	var testVal = 0;
+	var ret;
+	var testDep = function () {
+		this.testFn = function () {
+			return 23;
+		};
+	};
+	var testFn = function (testDep) {
+		testVal = testDep.testFn();
+	};
+
+	IOC.register("testDep", testDep);
+	ret = IOC.call(testFn);
+	equal(23, testVal);
+});
+
+
+test("Calling call satisfies the dependencies and respects passed arguments.", function () {
+	var testVal = 0;
+	var ret;
+	var testDep = function () {
+		this.testFn = function () {
+			return 22;
+		};
+	};
+	var testFn = function (foo, testDep) {
+		testVal = testDep.testFn() + foo;
+	};
+
+	IOC.register("testDep", testDep);
+	ret = IOC.call(testFn, [1]);
+	equal(23, testVal);
+});
+
+
+test("Calling call satisfies the dependencies and respects the context.", function () {
+	var testVal = 0;
+	var ret;
+	var testDep = function () {
+		this.testFn = function () {
+			return 23;
+		};
+	};
+	var testFn = function (testDep) {
+		this.testDep = testDep;
+		this.contextFn();
+	};
+	testFn.contextFn = function () {
+		testVal = this.testDep.testFn();
+	};
+
+	IOC.register("testDep", testDep);
+	ret = IOC.call(testFn, [], testFn);
+	equal(23, testVal);
+});

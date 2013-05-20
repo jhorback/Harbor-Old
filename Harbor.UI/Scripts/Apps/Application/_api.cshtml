@@ -19,6 +19,13 @@
 				<li><a href="#application-url">Application.url</a></li>
 			</ul>
 			
+			<h2><a href="#ioc">IOC</a></h2>
+			<ul>
+				<li><a href="#ioc-register">register</a></li>
+				<li><a href="#ioc-get">get</a></li>
+				<li><a href="#ioc-call">call</a></li>
+			</ul>
+
 			<h2><a href="#region">Region</a></h2>
 			<ul>
 				<li><a href="#region-getEl">getEl</a></li>
@@ -245,9 +252,37 @@ var someUrl = Application.url("path/to/file.html");
 => /myapp/path/to/file.html
 </pre>
 		
-
+		<h2 id="ioc">IOC</h2>
+		<p>
+			IOC is an inversion of control container.
+		</p>
 		
+		<h3 id="ioc-register">register</h3>
+		<code>register(name, value)</code>
+		<p>
+			Registers an object with the container.
+			The value can be any object or a 'newable' prototype.
+			Plain functions cannot be used a dependencies.
+		</p>
 
+		<h3 id="ico-get">get</h3>
+		<code>get(name)</code>
+		<p>
+			Retrieves the dependency.
+			If a prototype, will satisfy all dependencies of the constructor.
+		</p>
+ 
+		<h3 id="ioc-call">call</h3>
+		<code>call(method, args, context)</code>
+		<p>
+			A utility method for satisfying the dependencies of a method directly.
+			The args and context are optional.
+			If args are supplied, they will take place of the dependencies.
+			The context will be applied to the method call <code>method.apply(context, dependencies)</code>.
+		</p>
+		<pre class="prettyprint">
+var myMethod = function (arg1, arg2, arg3) [\
+</pre>
 		
 		<h2 id="region">Region</h2>
 		<p>
