@@ -50,8 +50,10 @@
 			$("#frame-session").hide();
 
 			var signInView = new Session.SignInView({
-				el: $("#signinpage")
+				el: $("#signinpage"),
+				model: new Session.SignInModel()
 			});
+			signInView.render();
 		},
 
 		signIn: function (signInModel, handler, handlerProxy) {

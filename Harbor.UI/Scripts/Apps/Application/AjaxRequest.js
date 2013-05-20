@@ -55,10 +55,7 @@
 				o.data = data;
 			}
 			deferred = $.ajax(o);
-			dfdHandler = getDeferredHandler(handler);
-			deferred.then(dfdHandler.success);
-			deferred.fail(dfdHandler.error);
-			return deferred.promise();
+			return AjaxRequest.handle(deferred, dfdHandler);
 		}
 	};
 	

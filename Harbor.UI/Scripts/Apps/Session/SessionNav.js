@@ -41,7 +41,10 @@
 	},
 
 	showSignInDialog: function () {
-		var signInView = new Session.SignInView();
+		var signInView = new Session.SignInView({
+			model: new Session.SignInModel()
+		});
+		signInView.render();
 		var dialog = new Dialog(signInView.$el, {
 			title: "Sign in",
 			modal: true,
