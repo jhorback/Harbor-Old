@@ -1,6 +1,11 @@
 ﻿/// <reference path="../../../harbor.ui/scripts/qunit.js" />
 /// <reference path="../../../Harbor.UI/Scripts/Apps/Application/IOC.js" />
 
+module("IOC", {
+	teardown: function () {
+		IOC.clear();
+	}
+});
 
 test("Register object, get object back", function () {
 	var returnedObj,
@@ -150,4 +155,26 @@ test("Calling call satisfies the dependencies and respects the context.", functi
 	IOC.register("testDep", testDep);
 	ret = IOC.call(testFn, [], testFn);
 	equal(23, testVal);
+});
+
+
+
+test("Registering multiple dependencies at the same time works.", function () {
+	var testVal = 0;
+	var ret;
+	var testDep = function () {
+		this.testFn = function () {
+			return 25;
+		};
+	};
+	var testFn = function (testDep) {
+		testVal = testDep.testFn();
+	};
+
+	IOC.register({
+		"testDep": testDep,
+		"test": testFn
+	});
+	ret = IOC.get("test");
+	equal(25, testVal);
 });

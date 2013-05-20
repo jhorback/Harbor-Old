@@ -81,9 +81,17 @@ var IOC;
 
 	IOC = {
 		register: function (name, value) {
-			ioc.registry[name] = {
-				value: value
-			};
+			var reg, key;
+			if (arguments.length === 1) {
+				reg = arguments[0];
+				for (key in reg) {
+					IOC.register(key, reg[key]);
+				}
+			} else {
+				ioc.registry[name] = {
+					value: value
+				};
+			}
 		},
 		
 		get: function (name) {
@@ -105,6 +113,11 @@ var IOC;
 			}
 			
 			method.apply(context, resolved);
+		},
+		
+		// for testing
+		clear: function () {
+			ioc.registry = {};
 		}
 	};
 }());

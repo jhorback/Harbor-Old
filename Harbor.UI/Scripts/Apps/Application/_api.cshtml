@@ -252,17 +252,43 @@ var someUrl = Application.url("path/to/file.html");
 => /myapp/path/to/file.html
 </pre>
 		
+		
+		
+
 		<h2 id="ioc">IOC</h2>
 		<p>
 			IOC is an inversion of control container.
 		</p>
+		<pre class="prettyprint">
+SomeUserRepository = function (userData, events) {
+	this.userData = userData;
+	this.events = events;
+};
+SomeUserRepository.prototype = {
+	// ... define methods
+};
+
+IOC.register({
+	"userRepository": SomeUserRepository,
+	"userData": someUserData,
+	"events": someEventBus
+});
+
+var ur = IOC.get("userRepository");
+</pre>
 		
 		<h3 id="ioc-register">register</h3>
 		<code>register(name, value)</code>
+		<code>register(registration)</code>
 		<p>
 			Registers an object with the container.
 			The value can be any object or a 'newable' prototype.
 			Plain functions cannot be used a dependencies.
+		</p>
+		<p>
+			Registering multiple dependencies at the same time is possible
+			by passing a registration object where the keys are the names
+			and the values are the dependencies.
 		</p>
 
 		<h3 id="ico-get">get</h3>
@@ -281,8 +307,16 @@ var someUrl = Application.url("path/to/file.html");
 			The context will be applied to the method call <code>method.apply(context, dependencies)</code>.
 		</p>
 		<pre class="prettyprint">
-var myMethod = function (arg1, arg2, arg3) [\
+IOC.register("arg2", {/*some dependency*/});
+var myMethod = function (arg1, arg2, arg3) {
+	//...
+};
+IOC.call(myMethod, [arg1, , arg3]);
 </pre>
+		<p>
+			In this case, only arg2 will be injected even if arg1 and/or arg3
+			are registered since they are supplied as arguments.
+		</p>
 		
 		<h2 id="region">Region</h2>
 		<p>
