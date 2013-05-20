@@ -19,7 +19,7 @@ namespace Harbor.UI.Models
 				.ForMember(dest => dest.created, opt => opt.MapFrom(src => src.Created.ToShortDateString()))
 				.ForMember(dest => dest.modified, opt => opt.MapFrom(src => src.Modified.ToShortDateString()))
 				.ForMember(dest => dest.pageLinks, opt => opt.MapFrom(src => src.PageLinks))
-				.ForMember(dest => dest.)
+				.ForMember(dest => dest.navLinks, opt => opt.MapFrom(src => src.NavLinks))
 				;
 
 			Mapper.CreateMap<PageDto, Domain.Pages.Page>()
