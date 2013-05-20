@@ -3,7 +3,7 @@
 /// <reference path="../../../jquery-1.8.0.js" />
 /// <reference path="../JSPM.js" />
 
-QUnit.test("Installing a package returns a deferred which is executed.", function () {
+test("Installing a package returns a deferred which is executed.", function () {
 	QUnit.expect(0);
 
 	JSPM.install("Foo").then(function () {

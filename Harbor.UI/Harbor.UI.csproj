@@ -411,6 +411,7 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\Apps\Application\AjaxRequest.js" />
     <Content Include="Scripts\Apps\Application\Application.js" />
+    <Content Include="Scripts\Apps\Application\IOC.js" />
     <Content Include="Scripts\Apps\Application\JSPM.js" />
     <Content Include="Scripts\Apps\Application\model\BackupModelExtension.js" />
     <Content Include="Scripts\Apps\Application\Controller.js" />
@@ -426,8 +427,6 @@
     <Content Include="Scripts\Apps\Application\Region.js" />
     <Content Include="Scripts\Apps\Application\model\ValidationModelExtension.js" />
     <Content Include="Scripts\Apps\Application\zeta.js" />
-    <Content Include="Scripts\Apps\Application\_tests\JSMP.test.html" />
-    <Content Include="Scripts\Apps\Application\_tests\JSPM.test.js" />
     <Content Include="Scripts\Apps\FileSelector\FileSelector.js" />
     <Content Include="Scripts\Apps\FileAdmin\AlbumsView.js" />
     <Content Include="Scripts\Apps\FileAdmin\EditView.js" />
