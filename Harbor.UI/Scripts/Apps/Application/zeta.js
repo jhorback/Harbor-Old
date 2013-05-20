@@ -6,6 +6,8 @@ Application.View = Backbone.View.extend({
 		Region.createRegions(this); //jch! - needs review / testing
 	}
 });
+
+
 ModelBinder.extend(Application.View.prototype);
 JstViewExtension.extend(Application.View.prototype);
 CloseViewExtension.extend(Application.View.prototype);
