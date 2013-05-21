@@ -138,6 +138,18 @@ someapp.start({data:[], true});
 			If setting up Backbone routes, calling the <code>start</code> method will call start on Backbone.history as well.
 			If the start method returns a deferred, the call to start will wait until the deferred is resolved.
 		</p>
+		<p>
+			The start method is also called by <code>IOC</code> so dependencies can be injected for you.
+		</p>
+		<pre class="prettyprint">
+IOC.register("userRepository", SomeUserRepository);
+var someApp = new Application({
+	start: function (options, userRepository) {
+		this.userRepository = userRepository;
+	}
+});
+someApp.start({/*options*/});
+</pre>
 
 
 		<h3 id="application-regions">regions</h3>
@@ -571,6 +583,23 @@ if (errors) {
 			Each can be used individually or all can be used by extending the Application.View object.
 		</p>
 		<code>Application.View.extend(properties, classProperties);</code>
+		
+		<p>
+			Views will use <code>IOC</code> to inject any dependencies.
+		</p>
+		<pre class="prettyprint">
+IOC.register("userRepository", SomeUserRepository);
+
+var SomeView = Application.View.extend({
+	constructor: function (options, userRepository) {
+		this.userRepository = userRepository;
+	}
+});
+
+var sv = new SomeView({ model: someModel });
+// this is the same as
+var sv = new SomeView({ model: someModel }, new SomeUserRepository());
+</pre>
 
 		<h3 id="view-template">template</h3>
 		<code>somemodel.template(template, el);</code>

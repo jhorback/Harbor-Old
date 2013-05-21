@@ -180,3 +180,15 @@ test("Registering multiple dependencies at the same time works.", function () {
 	ret = IOC.get("test");
 	equal(25, testVal);
 });
+
+
+
+test("Passing more arguments than dependencies works on call.", function () {
+	var testVal = 0;
+	var testFn = function (arg1, arg2) {
+		testVal = arg1 + arg2 + arguments[2];
+	};
+
+	IOC.call(testFn, [1, 2, 3]);
+	equal(6, testVal);
+});

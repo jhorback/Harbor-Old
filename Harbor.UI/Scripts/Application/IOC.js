@@ -106,13 +106,13 @@ var IOC;
 			request = new ioc.Request(ioc.registry, ioc.get);
 			resolved = [];
 			deps = ioc.getFnArgs(method);
-			for (t = 0; t < deps.length; t++) {
+			for (t = 0; t < Math.max(deps.length, args.length); t++) {
 				args[t] !== undefined ? 
 					resolved.push(args[t]) :
 					resolved.push(request.get(deps[t], request));
 			}
 			
-			method.apply(context, resolved);
+			return method.apply(context, resolved);
 		},
 		
 		// for testing
