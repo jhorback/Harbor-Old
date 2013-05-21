@@ -1,17 +1,38 @@
 ﻿// Create the Application View and Model in zeta for bundling
 
+
 // create the application view with all view extensions
-Application.View = Backbone.View.extend({
-	initialize: function () {
-		Region.createRegions(this); //jch! - needs review / testing
+Application.View = Backbone.View.extend({ });
+
+Application.View.extend = function (protoProps, staticProps) {
+	var View;
+	
+	if (protoProps.constructor) {
+		protoProps._ctor = protoProps.constructor;
 	}
-});
+	
+	protoProps.constructor = function () {
+		// create the regions
+		Region.createRegions(this);
+		
+		// inject the constructor
+		if (this._ctor) {
+			IOC.call(this._ctor, arguments, this);
+		}
+		
+		Backbone.View.apply(this, arguments);
+		return this;
+	};
+
+	View = Backbone.View.extend(protoProps, staticProps);
+	ModelBinder.extend(View.prototype);
+	JstViewExtension.extend(View.prototype);
+	CloseViewExtension.extend(View.prototype);
+	FormErrorHandler.extend(View.prototype);
+	return View;
+};
 
 
-ModelBinder.extend(Application.View.prototype);
-JstViewExtension.extend(Application.View.prototype);
-CloseViewExtension.extend(Application.View.prototype);
-FormErrorHandler.extend(Application.View.prototype);
 
 // create the application model with all model extensions
 Application.Model = Backbone.Model.extend({ });
