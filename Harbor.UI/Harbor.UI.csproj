@@ -409,24 +409,24 @@
       <DependentUpon>theme.scss</DependentUpon>
     </Content>
     <Content Include="Global.asax" />
-    <Content Include="Scripts\Apps\Application\AjaxRequest.js" />
-    <Content Include="Scripts\Apps\Application\Application.js" />
-    <Content Include="Scripts\Apps\Application\IOC.js" />
-    <Content Include="Scripts\Apps\Application\JSPM.js" />
-    <Content Include="Scripts\Apps\Application\model\BackupModelExtension.js" />
-    <Content Include="Scripts\Apps\Application\Controller.js" />
-    <Content Include="Scripts\Apps\Application\ui\Selectable.js" />
-    <Content Include="Scripts\Apps\Application\view\CloseViewExtension.js" />
-    <Content Include="Scripts\Apps\Application\ui\Dialog.js" />
-    <Content Include="Scripts\Apps\Application\view\FormErrorHandler.js" />
-    <Content Include="Scripts\Apps\Application\model\GetSetModelExtension.js" />
-    <Content Include="Scripts\Apps\Application\view\JstViewExtension.js" />
-    <Content Include="Scripts\Apps\Application\ui\Menu.js" />
-    <Content Include="Scripts\Apps\Application\view\ModelBinder.js" />
-    <Content Include="Scripts\Apps\Application\model\ModelErrors.js" />
-    <Content Include="Scripts\Apps\Application\Region.js" />
-    <Content Include="Scripts\Apps\Application\model\ValidationModelExtension.js" />
-    <Content Include="Scripts\Apps\Application\zeta.js" />
+    <Content Include="Scripts\Application\AjaxRequest.js" />
+    <Content Include="Scripts\Application\Application.js" />
+    <Content Include="Scripts\Application\IOC.js" />
+    <Content Include="Scripts\Application\JSPM.js" />
+    <Content Include="Scripts\Application\model\BackupModelExtension.js" />
+    <Content Include="Scripts\Application\Controller.js" />
+    <Content Include="Scripts\Application\ui\Selectable.js" />
+    <Content Include="Scripts\Application\view\CloseViewExtension.js" />
+    <Content Include="Scripts\Application\ui\Dialog.js" />
+    <Content Include="Scripts\Application\view\FormErrorHandler.js" />
+    <Content Include="Scripts\Application\model\GetSetModelExtension.js" />
+    <Content Include="Scripts\Application\view\JstViewExtension.js" />
+    <Content Include="Scripts\Application\ui\Menu.js" />
+    <Content Include="Scripts\Application\view\ModelBinder.js" />
+    <Content Include="Scripts\Application\model\ModelErrors.js" />
+    <Content Include="Scripts\Application\Region.js" />
+    <Content Include="Scripts\Application\model\ValidationModelExtension.js" />
+    <Content Include="Scripts\Application\zeta.js" />
     <Content Include="Scripts\Apps\FileSelector\FileSelector.js" />
     <Content Include="Scripts\Apps\FileAdmin\AlbumsView.js" />
     <Content Include="Scripts\Apps\FileAdmin\EditView.js" />
@@ -538,7 +538,6 @@
     <Content Include="Views\Home\_FrameNavItem.cshtml" />
     <Content Include="Views\Page\Image.cshtml" />
     <Content Include="Views\Home\JavaScriptPackages.cshtml" />
-    <Content Include="Views\Home\JavaScriptTests.cshtml" />
     <Content Include="Views\Home\_JSPMParser.cshtml" />
     <Content Include="Views\FileSelector\_Main.cshtml" />
     <Content Include="Views\FileSelector\_ListItem.cshtml" />
@@ -556,7 +555,7 @@
     <Content Include="Views\Page\PageLink-None.cshtml" />
     <Content Include="Views\Page\PageLink.cshtml" />
     <Content Include="Views\Page\PageLink-Edit.cshtml" />
-    <Content Include="Scripts\Apps\Application\_api.cshtml" />
+    <Content Include="Scripts\Application\_api.cshtml" />
     <Content Include="Views\Home\ApplicationJsApi.cshtml" />
     <Content Include="Views\Page\Links-None.cshtml" />
   </ItemGroup>
