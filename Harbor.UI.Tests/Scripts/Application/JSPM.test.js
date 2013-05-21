@@ -1,7 +1,11 @@
-﻿/// <reference path="../../../qunit.js" />
-/// <reference path="../../../underscore.min.js" />
-/// <reference path="../../../jquery-1.8.0.js" />
-/// <reference path="../JSPM.js" />
+﻿/// <reference path="../../../harbor.ui/scripts/qunit.js" />
+/// <reference path="../../../harbor.ui/scripts/underscore.js" />
+/// <reference path="../../../harbor.ui/scripts/jquery-1.9.1.min.js" />
+/// <reference path="../../../harbor.ui/scripts/Application/JSPM.js" />
+
+
+module("JSMP.js");
+
 
 test("Installing a package returns a deferred which is executed.", function () {
 	QUnit.expect(0);

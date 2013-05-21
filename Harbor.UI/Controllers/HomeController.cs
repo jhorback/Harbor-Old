@@ -87,11 +87,6 @@ namespace Harbor.UI.Controllers
 			return Json(JavaScriptPackageDto.FromIJavaScriptPackage(package), JsonRequestBehavior.AllowGet);
 		}
 
-		[Permit(UserFeature.SystemSettings)]
-		public ViewResult JavaScriptTests()
-		{
-			return View("JavaScriptTests");
-		}
 
 		[Permit(UserFeature.SystemSettings)]
 		public ViewResult JavaScriptPackages()

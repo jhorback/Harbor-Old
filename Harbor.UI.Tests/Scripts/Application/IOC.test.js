@@ -1,11 +1,13 @@
 ﻿/// <reference path="../../../harbor.ui/scripts/qunit.js" />
-/// <reference path="../../../Harbor.UI/Scripts/Apps/Application/IOC.js" />
+/// <reference path="../../../Harbor.UI/Scripts/Application/IOC.js" />
 
-module("IOC", {
+
+module("IOC.js", {
 	teardown: function () {
 		IOC.clear();
 	}
 });
+
 
 test("Register object, get object back", function () {
 	var returnedObj,
