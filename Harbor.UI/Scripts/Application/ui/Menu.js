@@ -71,6 +71,7 @@
 
 		position: function () {
 			var menu = this.menuEl,
+			    el = this.element,
 				o = this.options;
 
 			// make sure the top and left positions are within the viewport
@@ -89,6 +90,9 @@
 				if (dcCss.top !== undefined || dcCss.left !== undefined) {
 					menu.css(dcCss);
 				}
+
+				// ensure the elements width for ie 9+
+				el.width(el.children().eq(0).width());
 			}, 0);
 		},
 
@@ -151,4 +155,4 @@
 	window.Menu = Menu;
 
 
-} (jQuery));
+}(jQuery));
