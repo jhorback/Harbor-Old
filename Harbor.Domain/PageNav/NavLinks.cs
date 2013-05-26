@@ -4,8 +4,13 @@ using Harbor.Domain.Security;
 
 namespace Harbor.Domain.PageNav
 {
-	public class NavLinks
+	public class NavLinks : IAggregateRoot
 	{
+		public NavLinks()
+		{
+			this.Template = new NavLinksTemplate();	
+		}
+
 		[Key]
 		public int NavLinksID { get; set; }
 
@@ -34,6 +39,10 @@ namespace Harbor.Domain.PageNav
 			get
 			{
 				return Template == null ? null : Template.Sections;
+			}
+			set
+			{
+				Template.Sections = value;
 			}
 		}
 

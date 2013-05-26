@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.Mvc;
+using Harbor.Domain.PageNav;
 using Harbor.Domain.Pages;
 using Harbor.Domain.Pages.PageComponents;
 using Harbor.UI.Models;
@@ -40,7 +41,7 @@ namespace Harbor.UI.Controllers
 				return PartialView("Links-None");
 			}
 
-			var model = (LinksDto)links;
+			var model = (NavLinksDto)links;
 			return PartialView("Links", model);
 		}
 

@@ -46,8 +46,11 @@ LinksComponent.Model = Application.Model.extend({
 	}
 });
 
+
+
 // jch! - need url and api controller
-LinksModel = Application.Model.extend({
+var LinksModel = Application.Model.extend({
+
 	defaults: {
 		id: null,
 		name: null,

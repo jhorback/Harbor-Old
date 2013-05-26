@@ -13,7 +13,7 @@ namespace Harbor.Domain.Pages.PageComponents
 			}
 		}
 
-		private NavLinks _links { get; set; }
+		private Domain.PageNav.NavLinks _links { get; set; }
 
 
 		public bool IsNew()

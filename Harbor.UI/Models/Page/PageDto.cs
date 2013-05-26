@@ -81,7 +81,7 @@ namespace Harbor.UI.Models
 
 		public List<FileDto> files { get; set; }
 		public List<PageReferenceDto> pageLinks { get; set; }
-		public List<LinksDto> navLinks { get; set; }
+		public List<NavLinksDto> navLinks { get; set; }
 		
 		public static implicit operator PageDto(Domain.Pages.Page page)
 		{
