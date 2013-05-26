@@ -1,8 +1,9 @@
 ﻿Session.SignInView = Application.View.extend({
 
 	// jch! really want to be able to inject these views
-	constructor: function (options, authenticationProvider) {
-		this.auth = authenticationProvider;
+	constructor: function (options) {
+		// authenticationProvider
+		// this.auth = authenticationProvider;
 		
 		Backbone.View.apply(this, arguments);
 	},

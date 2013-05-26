@@ -189,6 +189,7 @@
     <Compile Include="Attributes\ServerErrorExceptionFilterAttribute.cs" />
     <Compile Include="Controllers\Api\AppSettingsController.cs" />
     <Compile Include="Controllers\Api\FilesController.cs" />
+    <Compile Include="Controllers\Api\NavLinksController.cs" />
     <Compile Include="Controllers\Api\PageComponentsController.cs" />
     <Compile Include="Controllers\Api\PagesController.cs" />
     <Compile Include="Controllers\Api\PageTypesController.cs" />
@@ -226,7 +227,8 @@
     <Compile Include="Models\JSPM\PackageCollection.cs" />
     <Compile Include="Models\JSPM\PackageTable.cs" />
     <Compile Include="Models\JSPM\TemplateAction.cs" />
-    <Compile Include="Models\Page\Components\LinksDto.cs" />
+    <Compile Include="Models\Page\Components\NavLinksDto.cs" />
+    <Compile Include="Models\Page\Components\NavLinksSectionDto.cs" />
     <Compile Include="Models\Page\Components\PageLinkDto.cs" />
     <Compile Include="Models\Page\Components\ImageDto.cs" />
     <Compile Include="Models\Page\Components\TextDto.cs" />

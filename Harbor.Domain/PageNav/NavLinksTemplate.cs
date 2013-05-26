@@ -5,6 +5,11 @@ namespace Harbor.Domain.PageNav
 {
 	public class NavLinksTemplate
 	{
+		public NavLinksTemplate()
+		{
+			Sections = new List<NavLinksSection>();
+		}
+
 		public List<NavLinksSection> Sections { get; set; }
  
 		/// <summary>
