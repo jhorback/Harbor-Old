@@ -560,6 +560,7 @@
     <Content Include="Scripts\Application\_api.cshtml" />
     <Content Include="Views\Home\ApplicationJsApi.cshtml" />
     <Content Include="Views\Page\Links-None.cshtml" />
+    <Content Include="Views\Page\Links-Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\users\" />
