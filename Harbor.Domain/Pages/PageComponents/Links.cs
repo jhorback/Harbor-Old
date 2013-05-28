@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Harbor.Domain.PageNav;
+using Harbor.Domain.Pages.PageResources;
 
 namespace Harbor.Domain.Pages.PageComponents
 {
@@ -57,5 +58,14 @@ namespace Harbor.Domain.Pages.PageComponents
 			}
 		}
 
+		public override IEnumerable<PageResource> DeclareResources()
+		{
+			if (IsNew())
+			{
+				yield break;
+			}
+
+			yield return new LinksResource(Page, NavLinksID);
+		}
 	}
 }

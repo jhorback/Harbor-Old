@@ -30,7 +30,7 @@ namespace Harbor.Domain.Pages.Components
 
 		public override Type PageComponent
 		{
-			get { return typeof(LinksResource); }
+			get { return typeof(PageComponents.Links); }
 		}
 	}
 }

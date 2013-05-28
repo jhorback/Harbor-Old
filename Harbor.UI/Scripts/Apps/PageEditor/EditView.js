@@ -105,7 +105,7 @@ PageEditor.EditView = Application.View.extend({
 	},
 	
 	hideCtrl: function (uic) {
-		this.currentUICMenu && this.currentUICMenu.dispose();
+		this.currentUICMenu && this.currentUICMenu.close();
 		uic.removeClass("selected");
 	},
 	
@@ -114,7 +114,7 @@ PageEditor.EditView = Application.View.extend({
 		this.$el.undelegate(".uic", "click");
 		this.$(".page-aside").add(this.$(".page-content")).sortable("destroy");
 		this.selectedUICEl && this.hideCtrl(this.selectedUICEl);
-		this.currentUICMenu && this.currentUICMenu.dispose();
+		this.currentUICMenu && this.currentUICMenu.close();
 		this.stopListening();
 	}
 });
