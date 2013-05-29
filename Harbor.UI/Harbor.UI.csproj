@@ -415,6 +415,7 @@
     <Content Include="Scripts\Application\Application.js" />
     <Content Include="Scripts\Application\IOC.js" />
     <Content Include="Scripts\Application\JSPM.js" />
+    <Content Include="Scripts\Application\launch.js" />
     <Content Include="Scripts\Application\model\BackupModelExtension.js" />
     <Content Include="Scripts\Application\Controller.js" />
     <Content Include="Scripts\Application\ui\Selectable.js" />

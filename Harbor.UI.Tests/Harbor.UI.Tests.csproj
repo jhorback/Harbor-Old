@@ -152,6 +152,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Scripts\Application\launch.test.js" />
     <Content Include="Scripts\Application\IOC.test.js" />
     <Content Include="Scripts\Application\JSPM.test.js" />
   </ItemGroup>
