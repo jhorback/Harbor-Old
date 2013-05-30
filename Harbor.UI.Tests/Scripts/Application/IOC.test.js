@@ -192,3 +192,33 @@ test("Passing more arguments than dependencies works on call.", function () {
 	IOC.call(testFn, [1, 2, 3]);
 	equal(6, testVal);
 });
+
+
+
+test("Getting a dependency with arguments works.", function () {
+	var testFn = function (foo) {
+		return {
+			test: function () {
+				return foo.testVal;
+			}
+		};
+	};
+	
+	IOC.register("foo", {
+		testVal: 24
+	});
+
+	IOC.register("test", testFn);
+	IOC.register("test2", testFn);
+
+	var test1 = IOC.get("test");
+	equal(test1.test(), 24);
+
+
+	var test2 = IOC.get("test2", [{
+		testVal: 23
+	}]);
+	
+	equal(test2.test(), 23);
+
+});
