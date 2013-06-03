@@ -155,7 +155,9 @@
     <Content Include="Scripts\Application\launch.test.js" />
     <Content Include="Scripts\Application\IOC.test.js" />
     <Content Include="Scripts\Application\JSPM.test.js" />
+    <Content Include="Scripts\app\context.test.js" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
