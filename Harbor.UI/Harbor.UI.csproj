@@ -505,6 +505,8 @@
     <Content Include="Scripts\jquery.ui.widget.js" />
     <Content Include="Scripts\json2.js" />
     <Content Include="Scripts\json2.min.js" />
+    <Content Include="Scripts\app\context.js" />
+    <Content Include="Scripts\app\app.js" />
     <Content Include="Scripts\modernizr-2.6.2-custom.js" />
     <Content Include="Scripts\Prettify\prettify.js" />
     <Content Include="Scripts\qunit.js" />
