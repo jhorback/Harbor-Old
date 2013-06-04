@@ -8,10 +8,11 @@ module("context.js");
 test("Register object, get object back", function () {
 	var returnedObj,
 		testObj = { test: 1 };
+
 	var ctx = context.create();
 	ctx.register("test", testObj);
 	returnedObj = ctx.get("test");
-	
+
 	equal(testObj, returnedObj);
 });
 
@@ -22,13 +23,11 @@ test("Register function, function is calld", function () {
 	var testFn = function () {
 		testVal++;
 	};
-	
 
 	var ctx = context.create();
 	ctx.register("test", testFn);
 	ret = ctx.get("test");
 	equal(1, testVal);
-
 });
 
 
@@ -39,13 +38,12 @@ test("Register function with object dependency", function () {
 	var testFn = function (testObj) {
 		testVal = testObj.test;
 	};
-	
+
 	var ctx = context.create();
 	ctx.register("testObj", testObj);
 	ctx.register("test", testFn);
 	ret = ctx.get("test");
 	equal(23, testVal);
-
 });
 
 
@@ -66,14 +64,13 @@ test("Register function with function dependency", function () {
 	ctx.register("test", testFn);
 	ret = ctx.get("test");
 	equal(23, testVal);
-
 });
 
 
 test("Calling get on an un-registered dependency throws an error", function () {
 	expect(1);
+	var ctx = context.create();
 	try {
-		var ctx = context.create();
 		var foo = ctx.get("foo");
 	} catch (e) {
 		equal(e.message, "Unknown dependency: foo", e.message);
@@ -188,7 +185,6 @@ test("Registering multiple dependencies at the same time works.", function () {
 });
 
 
-
 test("Passing more arguments than dependencies works on call.", function () {
 	var testVal = 0;
 	var testFn = function (arg1, arg2) {
@@ -201,8 +197,30 @@ test("Passing more arguments than dependencies works on call.", function () {
 });
 
 
+test("Factory pattern is supported.", function () {
 
-test("Getting a dependency with arguments works.", function () {
+	var Foo = function () {
+		return {
+			testMethod: function () {
+				return 23;
+			}
+		};
+	};
+
+	Foo.prototype = {
+		testMethod: function () {
+			return 24;
+		}
+	};
+
+	var ctx = context.create();
+	ctx.register("foo", Foo);
+	var foo = ctx.get("foo");
+	equal(23, foo.testMethod());
+});
+
+
+test("Instantiating a registered object with arguments works.", function () {
 	var testFn = function (foo) {
 		return {
 			test: function () {
@@ -210,31 +228,29 @@ test("Getting a dependency with arguments works.", function () {
 			}
 		};
 	};
-	
+
 	var ctx = context.create();
 	ctx.register("foo", {
 		testVal: 24
 	});
 
 	ctx.register("test", testFn);
-	ctx.register("test2", testFn);
 
 	var test1 = ctx.get("test");
 	equal(test1.test(), 24);
 
 
-	var test2 = ctx.get("test2", [{
+	var test2 = ctx.instantiate("test", [{
 		testVal: 23
 	}]);
-	
-	equal(test2.test(), 23);
 
+	equal(test2.test(), 23);
 });
 
 
 test("Two containers are separated", function () {
 	expect(5);
-	
+
 	var testObj = { test: 23 };
 	var ctx1 = context.create();
 	var ctx2 = context.create();
@@ -255,4 +271,16 @@ test("Two containers are separated", function () {
 	val2 = ctx2.get("foo");
 	equal(val2, testObj);
 	equal(ctx1.get("foo").test, 24);
+});
+
+
+test("Calling instantiate with an unregistered name throws an error.", function () {
+
+	expect(1);
+	var ctx = context.create();
+	try {
+		ctx.instantiate("does not exist");
+	} catch (e) {
+		equal(e.message, "Could not instantiate type not found: does not exist");
+	}
 });
