@@ -1,4 +1,30 @@
-﻿
+﻿/*
+	register(name)
+	
+	
+	
+	-> alias: app.service 
+			§ Just a call to context.register
+	• Constructs
+		○ app.construct(name, creator);
+			§ Warn of collision detection when adding the symbol to the app.
+		○ app[constructName](name, fn)
+			§ Each constructs creation function will be exposed on the app. 
+			§ App.construct("view", fn) -> app.view("viewName", fn);
+	• Stitching
+		○ app.use([]) -> alias: app.requires;
+			§ Dependencies are an array of module names to merge.
+			§ Merges IOC, construct containers
+			§ Warn of collision detection?
+	• Initialization
+		○ app.config(fn)
+			§ Registers a function which is injected with a call to launch("app")
+		○ app.start(fn)
+			§ Registers a function which is injected with a call to launch("app");
+		○ app.start();
+
+A call to app.start without parameters kicks off the bootstrapping process
+*/
 var app = (function (context) {
 
 	var _ = {
@@ -44,17 +70,15 @@ var app = (function (context) {
 
 
 			/*
-			// go through each module to use and call bootstrap
+			go through each module to use and call bootstrap
+		
 			guard against calling bootstrap on a module more than once
+			- don't need to throw error - just skip
 
-			- how to share the context?
-			context is just a container - in ioc.js -> registry
-			basically need to mixin the registries
-
-			make context.registry a public property
-			then can -> 
+			share the context:
 			appvars.context.registry = _.mixin(modvars.context.registry,  appvars.context.registry);
-
+			// ALL .instance props must be deleted so the new app can create them
+			// NO - see if i can guard caching for apps only
 
 			CONFIG
 			foreach fn in appvars.config
@@ -70,6 +94,7 @@ var app = (function (context) {
 		},
 
 		createApp: function (name, isModule) {
+
 			var appvars = {
 				name: name,
 				app: null, 
@@ -93,7 +118,9 @@ var app = (function (context) {
 
 				use: function (modules) {
 					var i, modName, mod;
+
 					modules = _.isArray(modules) ? modules : Array.prototype.slice.call(arguments, 0);
+
 					for (i = 0; i < modules.length; i++) {
 						modName = modules[i];
 						appvars.use.push(modName);
@@ -103,7 +130,7 @@ var app = (function (context) {
 							throw new Error("Cannont find module: " + modName);
 						}
 						
-						// jch! - implement
+						// jch! - implement - add construct to app
 						// feach modvars.constructs
 						// create the app symbol for the construct
 						// appvars.app[constructName] = modvars.constructs[constructName]
@@ -189,3 +216,28 @@ The context is the internal ioc container.
 			§ $inject can also be set as a static on the function object
 */
 
+module("session").config(["userRepo"], function (userRepo) {
+	// by injecting userRepo it will be global when context.registry mixin
+	// unless guarding against this
+	// how to $inject config and start?
+});
+
+module("session").service("userRepo", function () {
+
+
+});
+
+
+var session = module("session");
+session.config(["dep1"], function (dep1) {
+	
+}, {
+	$inject: ["dep1"]
+});
+
+
+session.service("userRepo", ["dep1"], function (dep1) {
+
+}, {
+	$inject: ["dep1"]
+});
