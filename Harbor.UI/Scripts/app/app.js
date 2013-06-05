@@ -133,10 +133,11 @@ var app = (function (context) {
 
 
 	return function (appName) {
-		var isModule = arguments[1] ? true : false,
+		var isModule,
 			appvars = _.appCache[appName];
 
 		if (!appvars) {
+			isModule = arguments[1] ? true : false;
 			appvars = _.createApp(appName, isModule);
 			_.appCache[appName] = appvars;
 		}
