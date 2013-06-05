@@ -156,6 +156,7 @@
     <Content Include="Scripts\Application\IOC.test.js" />
     <Content Include="Scripts\Application\JSPM.test.js" />
     <Content Include="Scripts\app\context.test.js" />
+    <Content Include="Scripts\app\app.test.js" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

@@ -26,6 +26,8 @@
  */
 var context = (function () {
 	var ioc = {
+		INSTANTIATING: {},
+		
 		getFnArgs: function (fn) {
 			var val = fn.$inject || fn.prototype.$inject || fn.toString().match(/^function\s*[^\(]*\(\s*([^\)]*)\)/m)[1].split(',');
 			return val[0] === "" ? [] : val;
@@ -87,12 +89,12 @@ var context = (function () {
 				context: context,
 				get: function (name, args) {
 					this.visitedArray.push(name);
-					if (this.visited[name]) {
+					if (this.visited[name] === ioc.INSTANTIATING) {
 						throw new Error("Circular reference: " + this.visitedArray.join(" -> "));
 					}
 
-					this.visited[name] = true;
-					return ioc.get(this, name, args);
+					this.visited[name] = ioc.INSTANTIATING;
+					return this.visited[name] = ioc.get(this, name, args);
 				}
 			};
 		}

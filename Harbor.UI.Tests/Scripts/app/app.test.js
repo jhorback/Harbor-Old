@@ -1,0 +1,344 @@
+﻿/// <reference path="../../../harbor.ui/scripts/qunit.js" />
+/// <reference path="../../../Harbor.UI/Scripts/app/context.js" />
+/// <reference path="../../../Harbor.UI/Scripts/app/app.js" />
+
+
+module("app.js");
+
+
+var counter = 0,
+    getNextName = function () {
+	    return "test" + counter++;
+    };
+
+
+test("Calling module returns an object with expected methods.", function () {
+
+	var m = module(getNextName());
+	ok(m.register !== undefined, "register is defined");
+	ok(m.construct !== undefined, "construct is defined");
+	ok(m.use !== undefined, "use is defined");
+	ok(m.config !== undefined, "config is defined");
+	ok(m.start === undefined, "start is not defined");
+});
+
+
+test("Calling app returns an object with expected methods.", function () {
+
+	var m = app(getNextName());
+	ok(m.register !== undefined, "register is defined");
+	ok(m.construct !== undefined, "construct is defined");
+	ok(m.use !== undefined, "use is defined");
+	ok(m.config !== undefined, "config is defined");
+	ok(m.start !== undefined, "start is defined");
+});
+
+
+test("Registered start and config method gets injected on app.start.", function () {
+	expect(2);
+
+	var testApp = app(getNextName());
+	testApp.register("foo", { foo: 23 });
+	testApp.config(function (foo) {
+		equal(foo.foo, 23);
+	});
+	testApp.start(function (foo) {
+		equal(foo.foo, 23);
+	});
+	testApp.start();
+});
+
+
+test("Declaring dependencies in start and config methods using an array works", function () {
+	expect(2);
+
+	var testApp = app(getNextName());
+	testApp.register("fooReal", { foo: 23 });
+	testApp.config(["fooReal", function (foo) {
+		equal(foo.foo, 23);
+	}]);
+	testApp.start(["fooReal", function (foo) {
+		equal(foo.foo, 23);
+	}]);
+	testApp.start();
+});
+
+
+test("Registered start and config method can change the state of services.", function () {
+	expect(2);
+
+	var testApp = app(getNextName());
+	testApp.register("foo", function () {
+		var x = 23;
+		return {
+			setX: function (newX) {
+				x = newX;
+			},
+			getX: function () {
+				return x;
+			}
+		};
+	});
+
+	testApp.config(function (foo) {
+		equal(foo.getX(), 23);
+		foo.setX(24);
+	});
+	
+	testApp.start(function (foo) {
+		equal(foo.getX(), 24);
+	});
+	
+	testApp.start();
+});
+
+
+test("Using another modules services works.", function () {
+	expect(2);
+	
+	var modName = getNextName();
+	var testMod = module(modName);
+	var testApp = app(getNextName());
+	testMod.register("foo", { foo: 23 });
+	testApp.use(modName);
+
+	testApp.config(function (foo) {
+		equal(foo.foo, 23);
+	});
+
+	testApp.start(function (foo) {
+		equal(foo.foo, 23);
+	});
+
+	testApp.start();
+});
+
+
+test("A module used more than once only gets bootstrapped once.", function () {
+
+	var counter = 0;
+	var modName = getNextName();
+	var modName2 = getNextName();
+	var testMod = module(modName);
+	var testMod2 = module(modName2);
+	var testApp = app(getNextName());
+	testMod2.config(function () {
+		counter++;
+	});
+
+	testMod.use(modName2);
+	testApp.use(modName, modName2);
+	testApp.use(modName2);
+
+	testApp.start();
+	equal(counter, 1);
+});
+
+
+test("Apps sharing modules get the module in a fresh state.", function () {
+	expect(3);
+
+	var modName = getNextName();
+	var testMod = module(modName);
+	var testApp = app(getNextName());
+	var testApp2 = app(getNextName());
+
+	testMod.register("foo", function () {
+		var x = 23;
+		return {
+			setX: function (newX) {
+				x = newX;
+			},
+			getX: function () {
+				return x;
+			}
+		};
+	});
+
+	testApp.use(modName);
+	testApp2.use(modName);
+	
+	
+	testApp.start(function (foo) {
+		equal(foo.getX(), 23, "testApp has original value.");
+		foo.setX(24);
+		equal(foo.getX(), 24, "testApp has changed value.");
+	});
+
+	testApp2.start(function (foo) {
+		equal(foo.getX(), 23, "testApp2 has original value.");
+	});
+
+	testApp.start();
+	testApp2.start();
+});
+
+
+test("An app cannot be started more than once.", function () {
+
+	var counter = 0;
+	var testApp = app(getNextName());
+
+	testApp.start(function () {
+		counter++;
+	});
+
+	testApp.start();
+	testApp.start();
+	equal(counter, 1);
+});
+
+
+test("The context is available for injection.", function () {
+	expect(1);
+	
+	var testApp = app(getNextName());
+	testApp.config(function (context) {
+
+		context.register("foo", { test: 23 });
+	});
+
+	testApp.start(function (foo) {
+		equal(foo.test, 23);
+	});
+
+	testApp.start();
+});
+
+
+test("The globals var is available for injection and can be used accrossed apps.", function () {
+	expect(1);
+
+	var testApp = app(getNextName());
+	var testApp2 = app(getNextName());
+	
+	testApp.config(function (globals) {
+		globals.rock = 23;
+	});
+
+	testApp2.start(function (globals) {
+		equal(globals.rock, 23);
+	});
+
+	testApp.start();
+	testApp2.start();
+});
+
+
+test("The service construct is available and can be used to create generic services.", function () {
+	expect(2);
+	
+	var testApp = app(getNextName());
+	testApp.service("fooFactory", function () {
+		return {
+			foo: 23
+		};
+	});
+
+	testApp.service("fooService", function (fooFactory) {
+		this.fooFactory = fooFactory;
+	}, {
+		test: function () {
+			return this.fooFactory.foo;
+		}
+	});
+
+	testApp.start(function (fooFactory, fooService) {
+
+		equal(fooFactory.foo, 23);
+		fooFactory.foo = 24;
+		equal(fooService.test(), 24);
+	});
+	
+	testApp.start();
+});
+
+
+test("Dependencies can be injected into a service via an array argument.", function () {
+	expect(1);
+	
+	var testApp = app(getNextName());
+	testApp.register("fooReal", { test: 23 });
+	testApp.service("fooService", ["fooReal", function (foo) {
+
+		this.foo = foo;
+
+	}], {
+		test: function () {
+			return this.foo.test;
+		}
+	});
+
+	testApp.start(function (fooService) {
+
+		equal(fooService.test(), 23);
+
+	});
+	testApp.start();
+});
+
+
+test("Dependencies can be injected into a service via the $inject property.", function () {
+	expect(1);
+
+	var testApp = app(getNextName());
+	testApp.register("fooReal", { test: 23 });
+	testApp.service("fooService", function (foo) {
+
+		this.foo = foo;
+
+	}, {
+		$inject: ["fooReal"],
+		
+		test: function () {
+			return this.foo.test;
+		}
+	});
+
+	testApp.start(function (fooService) {
+
+		equal(fooService.test(), 23);
+
+	});
+	testApp.start();
+});
+
+
+test("Constructs can enhance object creation.", function () {
+	expect(2);
+
+	var testApp = app(getNextName());
+	testApp.register("foo", { bar: "wonderwoman" });
+	testApp.construct("conundrum", function (foo) {
+
+		return function (construct) {
+
+			construct.prototype.likes = function () {
+				return foo.bar;
+			};
+
+			return construct;
+		};
+	});
+
+	testApp.conundrum("superman", function (foo) {
+		this.foo = foo;
+	}, {
+		doesNotLike: function () {
+			return this.foo.bar;
+		}
+	});
+
+	testApp.start(function (superman) {
+
+		equal(superman.likes(), "wonderwoman");
+		equal(superman.doesNotLike(), "wonderwoman");
+
+	});
+
+	testApp.start();
+});
+
+
+
+// test construct sharing via use

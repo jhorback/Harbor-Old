@@ -1,34 +1,45 @@
 ﻿/*
-	register(name)
-	
-	
-	
-	-> alias: app.service 
-			§ Just a call to context.register
-	• Constructs
-		○ app.construct(name, creator);
-			§ Warn of collision detection when adding the symbol to the app.
-		○ app[constructName](name, fn)
-			§ Each constructs creation function will be exposed on the app. 
-			§ App.construct("view", fn) -> app.view("viewName", fn);
-	• Stitching
-		○ app.use([]) -> alias: app.requires;
-			§ Dependencies are an array of module names to merge.
-			§ Merges IOC, construct containers
-			§ Warn of collision detection?
-	• Initialization
-		○ app.config(fn)
-			§ Registers a function which is injected with a call to launch("app")
-		○ app.start(fn)
-			§ Registers a function which is injected with a call to launch("app");
-		○ app.start();
-
-A call to app.start without parameters kicks off the bootstrapping process
-*/
-var app = (function (context) {
+ * app.js
+ *
+ * Description:
+ *     Facilitates the create of modules and apps.
+ * 
+ * Methods:
+ *     module(moduleName)
+ *         - creates/references the module by name.
+ *     app(appName)
+ *         - create/references the app by name.
+ *
+ * App/Module methods:
+ *     module.register(name, value)
+ *         - a call to register on the internal context object.
+ *     module.construct(name, creator)
+ *         - Creates a construct to be used by the module.
+ *     module.use(moduleDependencies)
+ *         - Any number of arguments (or an array) of dependent module names.
+ *     module.config(fn)
+ *          - registers a config method to execute before application start.
+ *          - fn can be injected using the array notation
+ *
+ * App methods:
+ *     app.start(fn)
+ *          - registers a start method to execute after all configuration methods have executed.
+ *          - fn can be injected using the array notation
+ *
+ *     app.start()
+ *          - calling start without arguments 'starts' the app bootstrapping process.
+ *
+ * Available services:
+ *     context - the ioc container for the app
+ *     globals - a global cache shared accross apps.
+ *
+ * Available constructs:
+ *     service - a simple call to register.
+ */
+var module = (function (context) {
 
 	var _ = {
-		appCache: {},
+		modCache: {},
 		
 		// a global variable cache used to share things across applications
 		globals: {},
@@ -37,207 +48,189 @@ var app = (function (context) {
 			return toString.call(obj) == '[object Array]';
 		},
 		
-		mixin: function (destination, source) {
-			for (var k in source) {
+		mixin: function (destination, source, callback) {
+			var k, ok = true;
+			for (k in source) {
 				if (source.hasOwnProperty(k)) {
-					destination[k] = source[k];
+					if (callback) {
+						ok = callback(k, destination[k], source[k]);
+					}
+					if (ok) {
+						// callback && console.log("COPY: ", k, "source", source[k], "destination", destination[k]);
+						destination[k] = source[k];
+					}
 				}
 			}
 			return destination;
 		},
 		
-		construct: function (app, creator) {
-			return function (name, construct, proto, statics) {
-				var retFn, protoObj;
+		handleInject: function (fnOrArray) {
+			var fn;
+			if (_.isArray(fnOrArray)) {
+				fn = fnOrArray.pop();
+				fn.$inject = fnOrArray;
+			} else {
+				fn = fnOrArray;
+			}
+			return fn;
+		},
+		
+		construct: function (modvars, creator) {
+			return function (name, construct, proto) {
+				var retFn, protoObj, module;
+				
+				module = modvars.instance;
+				construct = _.handleInject(construct);
+				_.mixin(construct.prototype, proto);
 
-				ext.mixin(construct.prototype, proto);
-				ext.mixin(construct, statics);
-
-				retFn = launch.call(creator, [], app);
-				protoObj = retFn.apply(app, [construct]);
+				retFn = modvars.context.call(creator, [], module);
+				protoObj = retFn.apply(module, [construct]);
 				if (!protoObj) {
 					throw new Error("The inner construct function did not return anything.");
 				}
-				app.register(name, protoObj);
+				module.register(name, protoObj);
 				return protoObj;
 			};
 		},
 		
-		bootstrap: function (appName) {
-			var appvars = _.appCache(appName),
-				ctx = appvars.context;
-			// jch! - implement
-
-
-			/*
-			go through each module to use and call bootstrap
-		
-			guard against calling bootstrap on a module more than once
-			- don't need to throw error - just skip
-
-			share the context:
-			appvars.context.registry = _.mixin(modvars.context.registry,  appvars.context.registry);
-			// ALL .instance props must be deleted so the new app can create them
-			// NO - see if i can guard caching for apps only
-
-			CONFIG
-			foreach fn in appvars.config
-				context.call(fn, [], appvars.app);
-
-			START
-			if (appvars.app.isModule === false) { // jch! - change variable to isApp and instead of appvars.app use appvars.mod
-				foreach fn in appvars.start
-					context.call(fn, [], appvars.app)
+		bootstrap: function (moduleName, bootstrapped) {
+			var modvars = _.modCache[moduleName],
+			    ctx = modvars.context,
+			    use = modvars.use,
+			    i,
+			    useModName,
+			    useMod;
+			
+			// bootstrap dependent modules first
+			// bootstrapped - guard against calling bootstrap on a module more than once
+			bootstrapped = bootstrapped || {};
+			for (i = 0; i < use.length; i++) {
+				useModName = use[i];
+				if (!bootstrapped[useModName]) {
+					bootstrapped[useModName] = true;
+					_.bootstrap(use[i], bootstrapped);
+					useMod = _.modCache[useModName];
+					_.mixin(ctx.registry, useMod.context.registry, function (name, i1, i2) {
+						// don't copy if it is the context, globals, or already defined
+						if (name === "context" || name === "globals" || i2[name]) {
+							return false;
+						}
+						delete i2.instance; // make sure to not carry over any created instances
+						return true;
+					});
 				}
+			}
+			
+			// inject and execute config methods
+			for (i = 0; i < modvars.config.length; i++) {
+				ctx.call(modvars.config[i], [], modvars.instance);
+			}
 
-			*/
+			// inject and execute start methods if an app
+			if (modvars.isApp) {
+				for (i = 0; i < modvars.start.length; i++) {
+					ctx.call(modvars.start[i], [], modvars.instance);
+				}
+			}
 		},
 
-		createApp: function (name, isModule) {
+		createModule: function (name, isApp) {
 
-			var appvars = {
+			var modvars = {
 				name: name,
-				app: null, 
-				isModule: isModule,
+				instance: null, 
+				isApp: isApp,
 				context: context.create(),
-				constructs: [],
+				constructs: {},
 				use: [],
 				config: [],
 				start: []
 			};
 			
-			appvars.context.register("context", appvars.context);
-			appvars.context.register("globals", _.globals);
+			modvars.context.register("context", modvars.context);
+			modvars.context.register("globals", _.globals);
 
-			appvars.app = {
-				register: appvars.context.register,
+			modvars.instance = {
+				register: function () {
+					return modvars.context.register.apply(modvars.context, arguments);
+				},
 				
 				construct: function (constructName, creator) {
-					appvars.constructs[constructName] = appvars.app[constructName] = _.construct(appvars.app, creator);
+					modvars.constructs[constructName] = modvars.instance[constructName] = _.construct(modvars, creator);
 				},
 
 				use: function (modules) {
-					var i, modName, mod;
+					var i, modName, mod, constructName, construct;
 
 					modules = _.isArray(modules) ? modules : Array.prototype.slice.call(arguments, 0);
 
 					for (i = 0; i < modules.length; i++) {
 						modName = modules[i];
-						appvars.use.push(modName);
+						modvars.use.push(modName);
 
-						mod = _.appCache[modName];
-						if (!mod || mod.isModule === false) {
-							throw new Error("Cannont find module: " + modName);
+						mod = _.modCache[modName];
+						if (!mod || mod.isApp === true) {
+							throw new Error("Cannont find module: " + modName); // jch! - test this too
 						}
-						
-						// jch! - implement - add construct to app
-						// feach modvars.constructs
-						// create the app symbol for the construct
-						// appvars.app[constructName] = modvars.constructs[constructName]
-						// add it to the modules constructs in case it is to be used
-						// appvars.constructs[constructName] = modvars.constructs[constructName]
+
+						_.mixin(modvars.constructs, mod.constructs, function (name, i1, i2) {
+							if (i2[name]) { // jch! is that right? it's the same as above.
+								return false;
+							}
+							modvars.instance[name] = i2; // jch! - finish testing
+							return true;
+						});
 					}
 				},
 
 				config: function (fn) {
-					appvars.config.push(fn);
+					modvars.config.push(_.handleInject(fn));
 				}
 			};
 
-			if (!appvars.isModule) {
-				appvars.app.start = function (fn) {
+			if (modvars.isApp) {
+				modvars.instance.start = function (fn) {
 					if (arguments.length === 0) {
-						_.bootstrap(name);
+						if (!modvars.started) {
+							_.bootstrap(name);
+						}
+						modvars.started = true;
 					} else {
-						appvars.start.push(fn);
+						modvars.start.push(_.handleInject(fn));
 					}
 				};
 			}
+
+			modvars.instance.construct("service", function () {
+				return function (construct) {
+					return construct;
+				};
+			});
 			
-			return appvars;
+			return modvars;
 		}
 	};
 
 
-	return function (appName) {
-		var isModule,
-			appvars = _.appCache[appName];
+	return function (moduleName) {
+		var isApp,
+			modvars = _.modCache[moduleName];
 
-		if (!appvars) {
-			isModule = arguments[1] ? true : false;
-			appvars = _.createApp(appName, isModule);
-			_.appCache[appName] = appvars;
+		if (!modvars) {
+			isApp = arguments[1] ? true : false;
+			modvars = _.createModule(moduleName, isApp);
+			_.modCache[moduleName] = modvars;
 		}
 		
-		return appvars.app;
+		return modvars.instance;
 	};
 }(context));
 
 
-var module = (function () {
+var app = (function () {
 
-	return function (moduleName) {
-		return app(moduleName, true);
+	return function (appName) {
+		return module(appName, true);
 	};
 
 }());
-
-
-/*
-	• IOC methods
-		○ app.register(name) -> alias: app.service 
-			§ Just a call to context.register
-	• Constructs
-		○ app.construct(name, creator);
-			§ Warn of collision detection when adding the symbol to the app.
-		○ app[constructName](name, fn)
-			§ Each constructs creation function will be exposed on the app. 
-			§ App.construct("view", fn) -> app.view("viewName", fn);
-	• Stitching
-		○ app.use([]) -> alias: app.requires;
-			§ Dependencies are an array of module names to merge.
-			§ Merges IOC, construct containers
-			§ Warn of collision detection?
-	• Initialization
-		○ app.config(fn)
-			§ Registers a function which is injected with a call to launch("app")
-		○ app.start(fn)
-			§ Registers a function which is injected with a call to launch("app");
-
-Context
-The context is the internal ioc container.
-		○ context.get(name)
-		○ context.call(function)
-		○ context.instantiate(constructor);
-			§ If passing in the constructor function itself that will be created
-			§ If passing a name, the constructor will be looked up (in the cache then globals)
-		○ $inject and $construct
-			§ Properties on a prototype to instruct dependencies and what construct for globals
-			§ $inject can also be set as a static on the function object
-*/
-
-module("session").config(["userRepo"], function (userRepo) {
-	// by injecting userRepo it will be global when context.registry mixin
-	// unless guarding against this
-	// how to $inject config and start?
-});
-
-module("session").service("userRepo", function () {
-
-
-});
-
-
-var session = module("session");
-session.config(["dep1"], function (dep1) {
-	
-}, {
-	$inject: ["dep1"]
-});
-
-
-session.service("userRepo", ["dep1"], function (dep1) {
-
-}, {
-	$inject: ["dep1"]
-});
