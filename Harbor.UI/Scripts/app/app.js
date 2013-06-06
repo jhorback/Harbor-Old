@@ -160,7 +160,7 @@ var module = (function (context) {
 				},
 
 				use: function (modules) {
-					var i, modName, mod, constructName, construct;
+					var i, modName, usemodvars;
 
 					modules = _.isArray(modules) ? modules : Array.prototype.slice.call(arguments, 0);
 
@@ -168,12 +168,12 @@ var module = (function (context) {
 						modName = modules[i];
 						modvars.use.push(modName);
 
-						mod = _.modCache[modName];
-						if (!mod || mod.isApp === true) {
+						usemodvars = _.modCache[modName];
+						if (!usemodvars || usemodvars.isApp === true) {
 							throw new Error("Cannont find module: " + modName); // jch! - test this too
 						}
 
-						_.mixin(modvars.constructs, mod.constructs, function (name, i1, i2) {
+						_.mixin(modvars.constructs, usemodvars.constructs, function (name, i1, i2) {
 							if (i2[name]) { // jch! is that right? it's the same as above.
 								return false;
 							}

@@ -1,4 +1,5 @@
 ﻿
+
 var LinksComponent = PageComponent.extend({
 
 	modelType: function () {

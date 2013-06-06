@@ -340,5 +340,32 @@ test("Constructs can enhance object creation.", function () {
 });
 
 
+test("Constructs can be used from other modules.", function () {
+	expect(3);
 
-// test construct sharing via use
+	var testModName = getNextName();
+	var testMod = module(testModName);
+	var testApp = app(getNextName());
+	
+	testMod.construct("awesome", function () {
+		return function (construct) {
+			construct.prototype.itis = 23;
+			return construct;
+		};
+	});
+	
+	equal(testApp.awesome, undefined, "Awesome is not defined.");
+	testApp.use(testModName);
+	notEqual(testApp.awesome, undefined, "Awesome is defined.");
+	testApp.awesome("ness", function () {
+		
+	}, {
+		test: function () {
+			return this.itis;
+		}
+	});
+	testApp.start(function (ness) {
+		equal(ness.test(), 23, "ness was modified by awesome");
+	});
+	testApp.start();
+});
