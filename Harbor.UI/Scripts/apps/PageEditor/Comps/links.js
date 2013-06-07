@@ -78,8 +78,8 @@ LinksComponent.NewView = Application.View.extend({
 		"click #navlinks-create": "create"
 	},
 
-	constructor: function (options, navLinksRepo) {
-		this.navLinksRepo = navLinksRepo;
+	constructor: function (options) {
+		this.navLinksRepo = new LinksRepo(); // jch! - have this injected and move pageLinksRepo to the pageModel appjs module
 	},
 	
 	render: function () {
@@ -126,6 +126,7 @@ var LinksModel = Application.Model.extend({
 });
 
 
+
 var LinksCollection = Backbone.Collection.extend({
 	model: LinksModel,
 	url: Application.url("api/navlinks")
@@ -133,7 +134,10 @@ var LinksCollection = Backbone.Collection.extend({
 
 
 
+//var pageModel = module("pageModel");
+//pageModel.service("pageLinksRepo", function () {
 
+//});
 
 var LinksRepo = function () {
 	this.linksDfd = null;
@@ -148,4 +152,3 @@ LinksRepo.prototype = {
 		return this.linksDfd;
 	}
 };
-IOC.register("navLinksRepo", LinksRepo);

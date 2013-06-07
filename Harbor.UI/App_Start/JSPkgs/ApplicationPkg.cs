@@ -23,7 +23,10 @@ namespace Harbor.UI.JSPkgs
 			var appBundle = new ScriptBundle("~/Scripts/app.js")
 				.Include("~/Scripts/underscore.js")
 				.Include("~/Scripts/backbone.js")
-				.IncludeDirectory("~/Scripts/Application", "*.js", searchSubdirectories: true)
+				.Include("~/Scripts/app/context.js")
+				.IncludeDirectory("~/Scripts/app", "*.js", searchSubdirectories: true)
+				.IncludeDirectory("~/Scripts/bbext", "*.js", searchSubdirectories: true)
+				.IncludeDirectory("~/Scripts/appui", "*.js", searchSubdirectories: true)
 				.Include("~/Scripts/Apps/AjaxRequestDefaultHandler.js");
 			appBundle.Orderer = new AppBundleOrderer();
 			return appBundle;
@@ -32,13 +35,12 @@ namespace Harbor.UI.JSPkgs
 
 		class AppBundleOrderer : IBundleOrderer
 		{
-			// moves zeta.js to the end of the bundle
 			public IEnumerable<FileInfo> OrderFiles(BundleContext context, IEnumerable<FileInfo> files)
 			{
 				var fileList = files.ToList();
-				var zetaJs = fileList.SingleOrDefault(f => f.Name == "zeta.js");
-				fileList.Remove(zetaJs);
-				fileList.Add(zetaJs);
+				var lastScript = fileList.SingleOrDefault(f => f.Name == "bbext.js");
+				fileList.Remove(lastScript);
+				fileList.Add(lastScript);
 				return fileList;
 			}
 		}
