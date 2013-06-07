@@ -112,7 +112,7 @@ var module = (function (context) {
 					useMod = _.modCache[useModName];
 					_.mixin(ctx.registry, useMod.context.registry, function (name, i1, i2) {
 						// don't copy if it is the context, globals, or already defined
-						if (name === "context" || name === "globals" || i2[name]) {
+						if (name === "context" || name === "globals" || ctx.registry[name]) {
 							return false;
 						}
 						delete i2.instance; // make sure to not carry over any created instances
@@ -152,11 +152,13 @@ var module = (function (context) {
 
 			modvars.instance = {
 				register: function () {
-					return modvars.context.register.apply(modvars.context, arguments);
+					modvars.context.register.apply(modvars.context, arguments);
+					return this;
 				},
 				
 				construct: function (constructName, creator) {
 					modvars.constructs[constructName] = modvars.instance[constructName] = _.construct(modvars, creator);
+					return this;
 				},
 
 				use: function (modules) {
@@ -174,17 +176,19 @@ var module = (function (context) {
 						}
 
 						_.mixin(modvars.constructs, usemodvars.constructs, function (name, i1, i2) {
-							if (i2[name]) { // jch! is that right? it's the same as above.
+							if (modvars.constructs[name]) {
 								return false;
 							}
-							modvars.instance[name] = i2; // jch! - finish testing
+							modvars.instance[name] = i2;
 							return true;
 						});
 					}
+					return this;
 				},
 
 				config: function (fn) {
 					modvars.config.push(_.handleInject(fn));
+					return this;
 				}
 			};
 

@@ -152,9 +152,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Scripts\Application\launch.test.js" />
-    <Content Include="Scripts\Application\IOC.test.js" />
-    <Content Include="Scripts\Application\JSPM.test.js" />
+    <Content Include="Scripts\app\appjs\JSPM.test.js" />
+    <Content Include="Scripts\app\appjs\browser.test.js" />
     <Content Include="Scripts\app\context.test.js" />
     <Content Include="Scripts\app\app.test.js" />
   </ItemGroup>
