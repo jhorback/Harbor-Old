@@ -1,4 +1,4 @@
-﻿/// <reference path="../../../harbor.ui/scripts/qunit.js" />
+﻿/// <reference path="../qunit.js" />
 /// <reference path="../../../Harbor.UI/Scripts/app/context.js" />
 
 

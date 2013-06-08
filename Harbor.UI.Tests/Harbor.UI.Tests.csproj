@@ -152,10 +152,12 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\qunit.css" />
     <Content Include="Scripts\app\appjs\JSPM.test.js" />
     <Content Include="Scripts\app\appjs\browser.test.js" />
     <Content Include="Scripts\app\context.test.js" />
     <Content Include="Scripts\app\app.test.js" />
+    <Content Include="Scripts\qunit.js" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

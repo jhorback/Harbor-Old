@@ -411,18 +411,21 @@
       <DependentUpon>theme.scss</DependentUpon>
     </Content>
     <Content Include="Global.asax" />
+    <Content Include="Scripts\app\appjs\globalCache.js" />
+    <Content Include="Scripts\app\appui\appui.js" />
     <Content Include="Scripts\bbext\temp\AjaxRequest.js" />
     <Content Include="Scripts\bbext\temp\Application.js" />
     <Content Include="Scripts\app\appjs\JSPM.js" />
     <Content Include="Scripts\bbext\model\BackupModelExtension.js" />
     <Content Include="Scripts\bbext\temp\Controller.js" />
-    <Content Include="Scripts\appui\Selectable.js" />
+    <Content Include="Scripts\app\appui\Selectable.js" />
     <Content Include="Scripts\bbext\view\CloseViewExtension.js" />
-    <Content Include="Scripts\appui\Dialog.js" />
+    <Content Include="Scripts\app\appui\Dialog.js" />
+    <Content Include="Scripts\bbext\view\factories.js" />
     <Content Include="Scripts\bbext\view\FormErrorHandler.js" />
     <Content Include="Scripts\bbext\model\GetSetModelExtension.js" />
     <Content Include="Scripts\bbext\view\JstViewExtension.js" />
-    <Content Include="Scripts\appui\Menu.js" />
+    <Content Include="Scripts\app\appui\Menu.js" />
     <Content Include="Scripts\bbext\view\ModelBinder.js" />
     <Content Include="Scripts\bbext\model\ModelErrors.js" />
     <Content Include="Scripts\bbext\temp\Region.js" />

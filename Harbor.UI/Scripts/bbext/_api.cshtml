@@ -605,22 +605,9 @@ var sv = new SomeView({ model: someModel }, new SomeUserRepository());
 		<code>somemodel.template(template, el);</code>
 		<p>
 			Returns the compiled template function and caches it.
-			The <code>template</code> argument is the id of the script block containing the template
-			or the value of a data-template attribute on an element containing the template. 
-			
-			Templates can live in script tags with type="text/template".
-			*         The id of the script tag is to be used as the template parameter in the JST and template methods.
-			*     Templates can also be found on any element with a data-template attribute set to the template name.
-			*         
-
+			The <code>template</code> argument is the id of the script block containing the template.
 			The <code>el</code> argument is an optional which will add the result of the template to the dom node
 			when the template function is invoked.
-		</p>
-		<p>
-			If using a template in a script tag, the tag should have a <code>type="text/template"</code> attribute applied
-			so it does not get executed.
-			If using a data-template attribute, a css selector should exist to hide these elements.
-			<code>[data-template] { display:none !important; }</code>
 		</p>
 		<pre class="prettyprint">
 render: function () {

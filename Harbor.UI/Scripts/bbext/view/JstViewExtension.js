@@ -2,10 +2,6 @@
 /*
 * Desription:
 *     Adds JST and template methods to any object.
-*     Templates can live in script tags with type="text/template".
-*         The id of the script tag is to be used as the template parameter in the JST and template methods.
-*     Templates can also be found on any element with a data-template attribute set to the template name.
-*         This second way requires a css selector to hide all  
 *
 * Requires:
 *     jQuery, Underscore
@@ -41,10 +37,7 @@
 			if (!templateFn) {
 				templateHtml = $("#" + template).html();
 				if (!templateHtml) {
-					templateHtml = $("[data-template='" + template + "']").html();
-					if (!templateHtml) {
-						throw "Template '" + template + "' not found";
-					}
+					throw "Template '" + template + "' not found";
 				}
 				templateFn = _.template(templateHtml);
 				JstViewExtension.templates[template] = templateFn;

@@ -90,7 +90,7 @@
 				if (dcCss.top !== undefined || dcCss.left !== undefined) {
 					menu.css(dcCss);
 				}
-
+				
 				// ensure the elements width for ie 9+
 				el.width(el.children().eq(0).width());
 			}, 0);
@@ -155,4 +155,4 @@
 	window.Menu = Menu;
 
 
-}(jQuery));
+} (jQuery));
