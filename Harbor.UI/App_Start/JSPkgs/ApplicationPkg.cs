@@ -26,7 +26,7 @@ namespace Harbor.UI.JSPkgs
 				.Include("~/Scripts/app/context.js")
 				.IncludeDirectory("~/Scripts/app", "*.js", searchSubdirectories: true)
 				.IncludeDirectory("~/Scripts/bbext", "*.js", searchSubdirectories: true)
-				.IncludeDirectory("~/Scripts/appui", "*.js", searchSubdirectories: true)
+				.IncludeDirectory("~/Scripts/app/appui", "*.js", searchSubdirectories: true)
 				.Include("~/Scripts/Apps/AjaxRequestDefaultHandler.js");
 			appBundle.Orderer = new AppBundleOrderer();
 			return appBundle;

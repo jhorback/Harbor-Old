@@ -84,7 +84,7 @@ var module = (function (context) {
 				_.mixin(construct.prototype, proto);
 
 				retFn = modvars.context.call(creator, [], module);
-				protoObj = retFn.apply(module, [construct]);
+				protoObj = retFn.apply(module, [construct, name]);
 				if (!protoObj) {
 					throw new Error("The inner construct function did not return anything.");
 				}
@@ -189,6 +189,10 @@ var module = (function (context) {
 				config: function (fn) {
 					modvars.config.push(_.handleInject(fn));
 					return this;
+				},
+				
+				call: function (fn) { // jch! - need to document and test - allows external code to use app dependencies
+					modvars.context.call(_.handleInject(fn));
 				}
 			};
 

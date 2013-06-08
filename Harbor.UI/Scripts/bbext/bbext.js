@@ -42,16 +42,18 @@ JSPM.pkgSrc = Application.url("home/jspm");
 var bbext = module("bbext");
 
 bbext.construct("view", function (context) {
-	return function (construct) {
-		var View, protoProps;
-		protoProps = construct.prototype;
+	return function (construct, name) {
+		var View, protoProps = {};
+		
+		// using the name here to ease debugging (can see the view being created).
+		protoProps[name] = construct.prototype;
 
-		protoProps.constructor = construct;
-		if (protoProps.constructor) {
-			protoProps._ctor = protoProps.constructor;
+		protoProps[name].constructor = construct;
+		if (protoProps[name].constructor) {
+			protoProps[name]._ctor = protoProps[name].constructor;
 		}
 
-		protoProps.constructor = function () {
+		protoProps[name].constructor = function () {
 
 			// inject the constructor
 			if (this._ctor) {
@@ -62,7 +64,7 @@ bbext.construct("view", function (context) {
 			return this;
 		};
 
-		View = Application.View.extend(protoProps, construct);
+		View = Application.View.extend(protoProps[name], construct);
 		return View;
 	};
 });
@@ -89,7 +91,19 @@ bbext.construct("model", function (context) {
 			return this;
 		};
 
-		Model = Application.View.extend(protoProps, construct);
+		Model = Application.Model.extend(protoProps, construct);
 		return Model;
 	};
 });
+
+
+bbext.service("events", ["globalCache", function (globalCache) {
+
+	var events = globalCache.get("bbextEvents");
+	if (!events) {
+		events = _.extend({}, Backbone.Events);
+		globalCache.set("bbextEvents", events);
+	}
+	return events;
+
+}]);

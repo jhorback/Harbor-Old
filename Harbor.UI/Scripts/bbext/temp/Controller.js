@@ -123,7 +123,9 @@
 				var dfd;
 				this.options = _.extend(this.options || {}, arguments && arguments[0]);
 				this.root = _.isFunction(this.root) ? this.root.call(this) : (this.root || "");
-				dfd = customStart && IOC.call(customStart, arguments, this);
+				if (customStart) {
+					dfd = customStart.apply(this, arguments);
+				}
 				if (controller.routes && controller._started === true) {
 					throw "Start has already been called.";
 				}
