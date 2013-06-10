@@ -142,7 +142,7 @@ $body-color-attn:			#D14836						!default;
 		clear: left;
 		text-rendering: optimizelegibility; // Fix the character spacing for headings	
 		font-family: $headings-font-family;
-		span {  margin-left: 1em; font-weight: normal; font-size: .8em; } // sub headings
+		.subheading {  margin-left: 1em; font-weight: normal; font-size: .8em; } // sub headings
 	}
 	h1 { font-size: 2.1em;  } // ~30px / 42px
 	h2 { font-size: 1.6em; } // ~25px / 35px // creates a visual distinction between h2 and h3

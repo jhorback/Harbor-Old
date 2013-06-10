@@ -1,6 +1,63 @@
-﻿@Html.Partial("~/Scripts/bbext/_api.cshtml")
+﻿@Html.Partial("~/Scripts/bbext/_api.cshtml")$
 @section scripts{
 	<link rel="stylesheet" href="~/content/prettify/prettify.css" type="text/css" />	
 	<script src="~/scripts/prettify/prettify.js"></script>
-	<script>$(function() { prettyPrint(); });</script>
+	<script> $(function () { prettyPrint(); }); </script>
+	<script>
+
+		//buildTOC();
+		function buildTOC() {
+			
+			var content = $(".page-content");
+			var headings = content.find("h1,h2,h3,h4");
+			var openList = null;
+			var onH4List = false;
+			var el = $('<div/>');
+
+			headings.each(function (index, heading) {
+
+				var tag = heading.tagName;
+				var $heading = $(heading);
+				var text = $heading.text();
+
+				if (tag === "H1") {
+					if (openList) {
+						// close it
+					}
+					el.append('<h1>' + text + '</h1>');
+				}
+
+				if (tag === "H2") {
+
+				}
+
+				/*
+				if h1 close list and add an h1
+				if h2 look ahead to see if there are h4's
+					if there are h4's - flag this - onH4List
+					if not add the h2 as an h2 heading (close open list)
+				if h3
+					if onH4List (close open list) add as an h2 heading
+					else add UL (if no list start one)
+				if h4
+					add UL (if no list start one)
+	
+	
+				*/
+
+
+			});
+		}
+	/*
+		h1 -> h2.loud
+
+if there are no h4's
+h2 is the category -> h2
+h3 is the list item -> li
+
+if there are h4's
+h3 is the category -> h2
+h4 is the list item -> li
+*/
+	</script>
 }

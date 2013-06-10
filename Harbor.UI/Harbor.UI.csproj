@@ -53,11 +53,20 @@
     <Reference Include="AutoMapper">
       <HintPath>..\packages\AutoMapper.2.1.267\lib\net40\AutoMapper.dll</HintPath>
     </Reference>
+    <Reference Include="ColorCode">
+      <HintPath>..\packages\ColorCode.1.0.1\lib\ColorCode.dll</HintPath>
+    </Reference>
     <Reference Include="Elmah">
       <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Kiwi.Markdown">
+      <HintPath>..\packages\Kiwi.Markdown.0.8.2\lib\net40\Kiwi.Markdown.dll</HintPath>
+    </Reference>
+    <Reference Include="MarkdownSharp">
+      <HintPath>..\packages\MarkdownSharp.1.13.0.0\lib\35\MarkdownSharp.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -200,6 +209,7 @@
     <Compile Include="Controllers\StyleGuideController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\Api\UsersController.cs" />
+    <Compile Include="Extensions\HtmlHelper\RenderMarkdown.cs" />
     <Compile Include="Extensions\HtmlHelper\CurrentTheme.cs" />
     <Compile Include="Extensions\HtmlHelper\PageComponent.cs" />
     <Compile Include="Extensions\HtmlHelper\JstPartial.cs" />
@@ -567,6 +577,8 @@
     <Content Include="Views\Home\ApplicationJsApi.cshtml" />
     <Content Include="Views\Page\Links-None.cshtml" />
     <Content Include="Views\Page\Links-Edit.cshtml" />
+    <Content Include="Scripts\app\Readme.md" />
+    <Content Include="Scripts\bbext\_bbext.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\users\" />
