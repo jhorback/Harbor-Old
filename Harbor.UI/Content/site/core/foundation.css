@@ -223,7 +223,7 @@ h1, h2, h3, h4, h5, h6 {
   clear: left;
   text-rendering: optimizelegibility;
   font-family: "Segoe UI Light", "Segoe UI", "Helvetica Neue", Arial; }
-  h1 span, h2 span, h3 span, h4 span, h5 span, h6 span {
+  h1 .subheading, h2 .subheading, h3 .subheading, h4 .subheading, h5 .subheading, h6 .subheading {
     margin-left: 1em;
     font-weight: normal;
     font-size: .8em; }
