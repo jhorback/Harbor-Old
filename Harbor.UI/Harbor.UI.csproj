@@ -579,6 +579,9 @@
     <Content Include="Views\Page\Links-Edit.cshtml" />
     <Content Include="Scripts\app\Readme.md" />
     <Content Include="Scripts\bbext\_bbext.cshtml" />
+    <Content Include="Scripts\app\appjs\Readme.md" />
+    <Content Include="Scripts\app\appui\Readme.md" />
+    <Content Include="Scripts\bbext\Readme.md" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\users\" />

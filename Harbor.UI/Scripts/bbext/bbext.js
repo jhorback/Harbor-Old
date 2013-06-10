@@ -38,13 +38,12 @@ baseUrl could be a service?
 JSPM.pkgSrc = Application.url("home/jspm");
 
 
-
-var bbext = module("bbext");
+var bbext = module("bbext").register("$", jQuery).register("_", _);
 
 bbext.construct("view", function (context) {
 	return function (construct, name) {
 		var View, protoProps = {};
-		
+
 		// using the name here to ease debugging (can see the view being created).
 		protoProps[name] = construct.prototype;
 

@@ -1,55 +1,129 @@
-﻿@Html.Partial("~/Scripts/bbext/_api.cshtml")$
+﻿@Html.Partial("~/Scripts/bbext/_api.cshtml")
 @section scripts{
-	<link rel="stylesheet" href="~/content/prettify/prettify.css" type="text/css" />	
+	@*<link rel="stylesheet" href="~/content/prettify/prettify.css" type="text/css" />	
 	<script src="~/scripts/prettify/prettify.js"></script>
-	<script> $(function () { prettyPrint(); }); </script>
+	<script> $(function () { prettyPrint(); }); </script>*@
 	<script>
+		buildTOC();
 
-		//buildTOC();
 		function buildTOC() {
-			
+
 			var content = $(".page-content");
 			var headings = content.find("h1,h2,h3,h4");
 			var openList = null;
 			var onH4List = false;
 			var el = $('<div/>');
+			var nextLink = 0;
 
 			headings.each(function (index, heading) {
 
 				var tag = heading.tagName;
 				var $heading = $(heading);
 				var text = $heading.text();
+				if (text.indexOf("(") > -1) {
+					text = text.substring(0, text.indexOf("("));
+				}
 
 				if (tag === "H1") {
-					if (openList) {
-						// close it
-					}
-					el.append('<h1>' + text + '</h1>');
+					closeOpenList();
+					el.append('<hr/>');
+					el.append('<h2><a href="' + getLink() + '"><span class="attn">' + text + '</span></a></h2>');
 				}
 
 				if (tag === "H2") {
-
+					onH4List = hasH4s(headings, $heading);
+					if (!onH4List) {
+						closeOpenList();
+						el.append('<h2><a href="' + getLink() + '">' + text + '</a></h2>');
+					}
 				}
 
-				/*
-				if h1 close list and add an h1
-				if h2 look ahead to see if there are h4's
-					if there are h4's - flag this - onH4List
-					if not add the h2 as an h2 heading (close open list)
-				if h3
-					if onH4List (close open list) add as an h2 heading
-					else add UL (if no list start one)
-				if h4
-					add UL (if no list start one)
-	
-	
-				*/
+				if (tag === "H3") {
+					if (onH4List) {
+						closeOpenList();
+						el.append('<h2><a href="' + getLink() + '">' + text + '</a></h2>');
+					} else {
+						addToList();
+					}
+				}
+
+				if (tag === "H4") {
+					addToList();
+				}
 
 
+
+				function addToList() {
+					if (!openList) {
+						openList = $('<ul/>');
+					}
+					openList.append('<li><a href="' + getLink() + '">' + text + '</a></li>');
+				}
+
+				function getLink() {
+					var link = "link" + (nextLink++);
+					$heading.before('<a id="' + link + '"></a>');
+					return "#" + link;
+				}
 			});
+
+			function closeOpenList() {
+				if (openList) {
+					el.append(openList);
+					openList = null;
+				}
+			}
+
+			function hasH4s(headings, heading) {
+
+				var afterHeading = false;
+				var foundH4 = false;
+
+				$.each(headings, function (index, testHeading) {
+					var tag = testHeading.tagName;
+
+					testHeading = $(testHeading);
+					if (!afterHeading) {
+						if (testHeading[0] === heading[0]) {
+							afterHeading = true;
+						}
+					} else {
+						if (tag === "H1" || tag === "H2") {
+							return false; // break
+						}
+						if (tag === "H4") {
+							foundH4 = true;
+							return false; // break
+						}
+					}
+					return undefined;
+				});
+
+				console.log(foundH4);
+				return foundH4;
+			}
+
+			closeOpenList();
+			el = el.children(0).hide();
+			$(".page-aside .menulist").html(el).append('<hr/>');
+			content.append('<div style="height:1500px;"/>');
+			el.fadeIn();
 		}
-	/*
-		h1 -> h2.loud
+	</script>
+}
+@*/*
+if h1 close list and add an h1
+if h2 look ahead to see if there are h4's
+	if there are h4's - flag this - onH4List
+	if not add the h2 as an h2 heading (close open list)
+if h3
+	if onH4List (close open list) add as an h2 heading
+	else add UL (if no list start one)
+if h4
+	add UL (if no list start one)
+
+	
+h1 -> h2.loud
 
 if there are no h4's
 h2 is the category -> h2
@@ -58,6 +132,4 @@ h3 is the list item -> li
 if there are h4's
 h3 is the category -> h2
 h4 is the list item -> li
-*/
-	</script>
-}
+*/*@

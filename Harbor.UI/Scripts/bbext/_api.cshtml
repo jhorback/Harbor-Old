@@ -1,100 +1,27 @@
 ﻿@inherits System.Web.Mvc.WebViewPage
-@using System.Web.Mvc.Html
 @using Harbor.UI.Extensions
+<style>
+	.menulist.small li a {
+		line-height: 1.4;
+	}
+	.menulist.small li a:hover {
+		background-color: #DDD;
+	}
+</style>
 <div class="page-header">
 	<h1 style="position:relative;"><span class="icon-cogs" style="font-size:1.5em;position:relative;top:.14em;"></span>
 		App<strong class="attn">js</strong> Documentation</h1>
 </div>
 <div class="page-body">
 	<div class="page-aside">
-		<div class="col menulist">
-			Add menu
-			@*<h2><a href="#about">About</a></h2>
-
-			<h2><a href="#application">Application, Controller</a></h2>
-			<ul>
-				<li><a href="#application-start">start</a></li>
-				<li><a href="#application-regions">regions</a></li>
-				<li><a href="#application-root">root</a></li>
-				<li><a href="#application-routes">routes</a></li>
-				<li><a href="#application-events">events</a></li>
-				<li><a href="#application-handleLinkClick">handleLinkClick</a></li>
-				<li><a href="#application-url">Application.url</a></li>
-			</ul>
-			
-			<h2><a href="#ioc">IOC</a></h2>
-			<ul>
-				<li><a href="#ioc-register">register</a></li>
-				<li><a href="#ioc-get">get</a></li>
-				<li><a href="#ioc-call">call</a></li>
-			</ul>
-
-			<h2><a href="#region">Region</a></h2>
-			<ul>
-				<li><a href="#region-getEl">getEl</a></li>
-				<li><a href="#region-render">render</a></li>
-				<li><a href="#region-show">show</a></li>
-				<li><a href="#region-showEl">showEl</a></li>
-				<li><a href="#region-hideEl">hideEl</a></li>
-				<li><a href="#region-open">open</a></li>
-				<li><a href="#region-close">close, destroy</a></li>				
-			</ul>
-
-			<h2><a href="#ajaxrequest">AjaxRequest</a></h2>
-			<ul>
-				<li><a href="#ajaxrequest-handle">handle</a></li>	
-				<li><a href="#ajaxrequest-execute">execute</a></li>				
-				<li><a href="#ajaxrequest-handle-static">AjaxReuqest.handle</a></li>				
-				<li><a href="#ajaxrequest-defaultHandler">AjaxRequest.defaultHandler</a></li>					
-			</ul>
-			
-			<h2><a href="#jspm">JSPM</a></h2>
-			<ul>
-				<li><a href="#jspm-install">JSPM.install</a></li>	
-				<li><a href="#jspm-register">JSPM.register</a></li>	
-				<li><a href="#jspm-pkgSrc">JSPM.pkgSrc</a></li>	
-			</ul>
-			
-			
-			<h2><a href="#model">Model</a></h2>
-			<ul>
-				<li><a href="#model-property-get">property:get</a></li>	
-				<li><a href="#model-property-set">property:set</a></li>	
-				<li><a href="#model-property-bind">property:bind</a></li>	
-				<li><a href="#model-property-validate">property:validate</a></li>	
-				<li><a href="#model-refresh">refresh</a></li>	
-				<li><a href="#model-getErrors">getErrors</a></li>	
-				<li><a href="#model-store">store</a></li>	
-				<li><a href="#model-restore">restore</a></li>	
-
-			</ul>
-			
-		
-
-			<h2><a href="#view">View</a></h2>
-			<ul>
-				<li><a href="#view-template">template</a></li>	
-				<li><a href="#view-renderTemplate">renderTemplate</a></li>	
-				<li><a href="#view-bindModelToView">bindModelToView</a></li>	
-				<li><a href="#view-bindTemplate">bindTemplate</a></li>	
-				<li><a href="#view-isModelValid">isModelValid (displayErrors)</a></li>	
-				<li><a href="#view-close">close</a></li>	
-				<li><a href="#view-onClose">onClose, destroy</a></li>
-				<li><a href="#view-regions">regions</a></li>
-			</ul>
-			
-			<h2><a href="#validation">Validation</a></h2>
-			<h2><a href="#modelerrors">ModelErrors</a></h2>
-			<h2><a href="#modelbinder">ModelBinder</a></h2>
-			<h2><a href="#menu">Menu</a></h2>
-			<h2><a href="#dialog">Dialog</a></h2>*@
+		<div class="col menulist small">
 		</div>
 	</div>
 	<div class="page-content">
-		
 		@Html.RenderMarkdown("~/scripts/app/Readme.md")
-		
-		
+		@Html.RenderMarkdown("~/scripts/app/appjs/Readme.md")
+		@Html.RenderMarkdown("~/scripts/app/appui/Readme.md")
+		@Html.RenderMarkdown("~/scripts/bbext/Readme.md")
 		@*@Html.Partial("~/scripts/bbext/_bbext.cshtml")*@
 	</div>
 </div>
