@@ -40,14 +40,14 @@ var module = (function (context) {
 
 	var _ = {
 		modCache: {},
-		
+
 		// a global variable cache used to share things across applications
 		globals: {},
-		
-		isArray: Array.isArray || function(obj) {
+
+		isArray: Array.isArray || function (obj) {
 			return toString.call(obj) == '[object Array]';
 		},
-		
+
 		mixin: function (destination, source, callback) {
 			var k, ok = true;
 			for (k in source) {
@@ -63,7 +63,7 @@ var module = (function (context) {
 			}
 			return destination;
 		},
-		
+
 		handleInject: function (fnOrArray) {
 			var fn;
 			if (_.isArray(fnOrArray)) {
@@ -74,15 +74,16 @@ var module = (function (context) {
 			}
 			return fn;
 		},
-		
+
 		construct: function (modvars, creator) {
 			return function (name, construct, proto) {
 				var retFn, protoObj, module;
-				
+
 				module = modvars.instance;
 				construct = _.handleInject(construct);
 				_.mixin(construct.prototype, proto);
 
+				creator = _.handleInject(creator);
 				retFn = modvars.context.call(creator, [], module);
 				protoObj = retFn.apply(module, [construct, name]);
 				if (!protoObj) {
@@ -92,15 +93,26 @@ var module = (function (context) {
 				return protoObj;
 			};
 		},
-		
+
+		mixinRegistries: function (dest, src) {
+			_.mixin(dest, src, function (name, i1, i2) {
+				// don't copy if it is the context, globals, or already defined
+				delete i2.instance; // make sure to not carry over any created instances
+				if (name === "context" || name === "globals" || dest[name]) {
+					return false;
+				}
+				return true;
+			});
+		},
+
 		bootstrap: function (moduleName, bootstrapped) {
 			var modvars = _.modCache[moduleName],
 			    ctx = modvars.context,
 			    use = modvars.use,
 			    i,
-			    useModName,
-			    useMod;
-			
+			    useModName;
+
+
 			// bootstrap dependent modules first
 			// bootstrapped - guard against calling bootstrap on a module more than once
 			bootstrapped = bootstrapped || {};
@@ -109,18 +121,10 @@ var module = (function (context) {
 				if (!bootstrapped[useModName]) {
 					bootstrapped[useModName] = true;
 					_.bootstrap(use[i], bootstrapped);
-					useMod = _.modCache[useModName];
-					_.mixin(ctx.registry, useMod.context.registry, function (name, i1, i2) {
-						// don't copy if it is the context, globals, or already defined
-						if (name === "context" || name === "globals" || ctx.registry[name]) {
-							return false;
-						}
-						delete i2.instance; // make sure to not carry over any created instances
-						return true;
-					});
 				}
+				_.mixinRegistries(modvars.context.registry, _.modCache[useModName].context.registry);
 			}
-			
+
 			// inject and execute config methods
 			for (i = 0; i < modvars.config.length; i++) {
 				ctx.call(modvars.config[i], [], modvars.instance);
@@ -138,7 +142,7 @@ var module = (function (context) {
 
 			var modvars = {
 				name: name,
-				instance: null, 
+				instance: null,
 				isApp: isApp,
 				context: context.create(),
 				constructs: {},
@@ -146,7 +150,7 @@ var module = (function (context) {
 				config: [],
 				start: []
 			};
-			
+
 			modvars.context.register("context", modvars.context);
 			modvars.context.register("globals", _.globals);
 
@@ -155,16 +159,17 @@ var module = (function (context) {
 					modvars.context.register.apply(modvars.context, arguments);
 					return this;
 				},
-				
+
 				construct: function (constructName, creator) {
 					modvars.constructs[constructName] = modvars.instance[constructName] = _.construct(modvars, creator);
 					return this;
 				},
 
 				use: function (modules) {
-					var i, modName, usemodvars;
+					var i, modName, usemodvars, ctx;
 
 					modules = _.isArray(modules) ? modules : Array.prototype.slice.call(arguments, 0);
+					ctx = modvars.context;
 
 					for (i = 0; i < modules.length; i++) {
 						modName = modules[i];
@@ -175,6 +180,7 @@ var module = (function (context) {
 							throw new Error("Cannont find module: " + modName); // jch! - test this too
 						}
 
+						// mixin the constructs
 						_.mixin(modvars.constructs, usemodvars.constructs, function (name, i1, i2) {
 							if (modvars.constructs[name]) {
 								return false;
@@ -182,6 +188,8 @@ var module = (function (context) {
 							modvars.instance[name] = i2;
 							return true;
 						});
+
+						_.mixinRegistries(ctx.registry, usemodvars.context.registry);
 					}
 					return this;
 				},
@@ -190,7 +198,7 @@ var module = (function (context) {
 					modvars.config.push(_.handleInject(fn));
 					return this;
 				},
-				
+
 				call: function (fn) { // jch! - need to document and test - allows external code to use app dependencies
 					modvars.context.call(_.handleInject(fn));
 				}
@@ -214,7 +222,7 @@ var module = (function (context) {
 					return construct;
 				};
 			});
-			
+
 			return modvars;
 		}
 	};
@@ -229,7 +237,7 @@ var module = (function (context) {
 			modvars = _.createModule(moduleName, isApp);
 			_.modCache[moduleName] = modvars;
 		}
-		
+
 		return modvars.instance;
 	};
 }(context));

@@ -423,6 +423,7 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\app\appjs\globalCache.js" />
     <Content Include="Scripts\app\appui\appui.js" />
+    <Content Include="Scripts\bbext\app\appEvents.js" />
     <Content Include="Scripts\bbext\temp\AjaxRequest.js" />
     <Content Include="Scripts\bbext\temp\Application.js" />
     <Content Include="Scripts\app\appjs\JSPM.js" />

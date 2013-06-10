@@ -157,6 +157,7 @@
     <Content Include="Scripts\app\appjs\browser.test.js" />
     <Content Include="Scripts\app\context.test.js" />
     <Content Include="Scripts\app\app.test.js" />
+    <Content Include="Scripts\bbext\appEvents.test.js" />
     <Content Include="Scripts\qunit.js" />
   </ItemGroup>
   <ItemGroup />
