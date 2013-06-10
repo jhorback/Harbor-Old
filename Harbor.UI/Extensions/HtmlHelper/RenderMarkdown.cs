@@ -8,11 +8,6 @@ namespace Harbor.UI.Extensions
 {
 	public static partial class HtmlHelperExtensions
 	{
-		/// <summary>
-		/// Gets the current theme from the web config and returns the html based on the resources registered with the <see cref="ThemeTable"/>.
-		/// </summary>
-		/// <param name="helper"></param>
-		/// <returns></returns>
 		public static MvcHtmlString RenderMarkdown(this HtmlHelper helper, string path)
 		{
 			var absPath = VirtualPathUtility.ToAbsolute(path);
