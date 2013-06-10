@@ -13,20 +13,21 @@
  *
  */
 
-// create the application view with all view extensions
-Application.View = Backbone.View.extend({});
-ModelBinder.extend(Application.View.prototype);
-JstViewExtension.extend(Application.View.prototype);
-CloseViewExtension.extend(Application.View.prototype);
-FormErrorHandler.extend(Application.View.prototype);
+if (window.Application) {
+	// create the application view with all view extensions
+	Application.View = Backbone.View.extend({});
+	ModelBinder.extend(Application.View.prototype);
+	JstViewExtension.extend(Application.View.prototype);
+	CloseViewExtension.extend(Application.View.prototype);
+	FormErrorHandler.extend(Application.View.prototype);
 
 
-// create the application model with all model extensions
-Application.Model = Backbone.Model.extend({});
-BackupModelExtension.extend(Application.Model.prototype);
-GetSetModelExtension.extend(Application.Model.prototype);
-ValidationModelExtension.extend(Application.Model.prototype);
-
+	// create the application model with all model extensions
+	Application.Model = Backbone.Model.extend({});
+	BackupModelExtension.extend(Application.Model.prototype);
+	GetSetModelExtension.extend(Application.Model.prototype);
+	ValidationModelExtension.extend(Application.Model.prototype);
+}
 
 
 // jch! - figure the best way to inject this
@@ -35,10 +36,15 @@ Module: harborConfig?
 baseUrl wold be an injected property
 baseUrl could be a service?
 */
-JSPM.pkgSrc = Application.url("home/jspm");
+if (window.JSPM) {
+	JSPM.pkgSrc = Application.url("home/jspm");
+}
 
+var bbext = module("bbext").use("appjs");
 
-var bbext = module("bbext").register("$", jQuery).register("_", _);
+if (window.jQuery) {
+	bbext.register("$", jQuery).register("_", _);
+}
 
 bbext.construct("view", function (context) {
 	return function (construct, name) {
