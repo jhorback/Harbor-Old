@@ -9,7 +9,7 @@ module("bbext").service("keepAlive", ["$", function ($) {
 	return {
 		start: function (url, timeout) {
 			
-			timeout = timeout || (10 * 60 * 60);
+			timeout = timeout || (10 * 60 * 1000);
 			queueRequest();
 			
 			function queueRequest() {
