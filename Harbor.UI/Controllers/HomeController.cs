@@ -115,7 +115,7 @@ namespace Harbor.UI.Controllers
 
 		public string KeepAlive()
 		{
-			return "noop";
+			return DateTime.Now.ToLongTimeString();
 		}
 	}
 }
