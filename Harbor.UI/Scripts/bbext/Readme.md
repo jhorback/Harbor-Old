@@ -38,6 +38,43 @@ function on an interval to keep a web session alive.
 Stops the requests.
 
 
+### modelFactory
+Use to create instances of models.
+
+#### create
+`create(modelName, options);`
+```js
+app.model("someModel", function () {}, { /*...*/ });
+app.view("someView", function () {}, { /*...*/ });
+app.start(function (modelFactory, viewFactory) {
+	var someModel = modelFactory.create("someModel", { /*...*/ });
+	var someView = viewFactory.create("someView", {
+		model: someModel
+	});
+});
+```
+
+### viewFactory
+Use to create instances of views.
+
+#### create
+`create(viewName, options);`
+
+
+### model
+This is an empty Backbone model to facilitate creating simple models.
+```js
+myApp.start(function (modelFactory) {
+	var simpleModel = modelFactory.create("model", {
+		name: "Joe",
+		age: 4,
+		hairColor: "purple"
+	});
+});
+```
+
+
+
 ## Constructs
 
 ### view Construct

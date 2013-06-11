@@ -112,3 +112,7 @@ bbext.service("events", ["globalCache", function (globalCache) {
 	return events;
 
 }]);
+
+
+// for creating simple models
+bbext.model("model", function () { });
