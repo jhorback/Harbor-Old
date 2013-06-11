@@ -23,6 +23,21 @@ myApp.start(function (events) {
 });
 ```
 
+### keepAlive
+The keepAlive can be used to continually request a noop
+function on an interval to keep a web session alive.
+
+#### start
+`start(url, timeout)`
+
+* url - Required url to request.
+* timeout - The interval between requests. The default is 10 minutes.
+
+#### stop
+`stop()`
+Stops the requests.
+
+
 ## Constructs
 
 ### view Construct
@@ -209,3 +224,37 @@ Saves the current model state which can be restored using the <code>restore</cod
 <code>sm.restore();</code>
 
 Restores the model property values back to the last time <code>store</code> was called.
+
+
+### appEvents Construct
+The appEvents construct creates a structure for dealing with global application events.
+
+```js
+myApp.appEvents("myAppEvents", function () {
+	// injected constructor
+}, {
+	events: {
+		"update:user": "updateUser",
+		"delete:user": function () {
+			// delete a user
+		}
+	},
+	updateUser: function () {
+		// handle event.
+	}
+});
+
+myApp.start(function (myAppEvents) {
+	myAppEvents.listen();
+});
+```
+
+#### listen
+`listen()`
+
+Binds the events object on the prototype to their corresponding methods.
+
+#### stopListening
+`stopListening()`
+
+Unbinds the events bound with listen.

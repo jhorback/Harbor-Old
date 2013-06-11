@@ -10,8 +10,10 @@
  *     context.create() - creates a new container.
  *
  * Context methods:
- *     register(name, value) - registers an object with the container.
+ *     register(name, value, type) - registers an object with the container.
  *         - value can be any object or a constructor/factory function.
+ *         - type can be object, function, construtor
+ *         - object and constructor can be determined dynamically, function cannot.
  *
  *     get(name)
  *         - retrieves the dependency.
@@ -44,13 +46,19 @@ var context = (function () {
 			if (reg.instance) {
 				return reg.instance;
 			}
-
+			
+			if (!reg.type && reg.value instanceof Function === false) {
+				reg.type = "object";
+			}
+			
 			// if the value is not a function, use it as the instance
-			if (reg.value instanceof Function === false) {
+			if (reg.type === "object" || reg.type === "function") { // jch! doc and test this
 				reg.instance = reg.value;
+				reg.type = "object";
 				return reg.instance;
 			}
 
+			reg.type = "construtor";
 			reg.instance = ioc.instantiate(request, reg.value, args);
 			return reg.instance;
 		},
@@ -105,7 +113,9 @@ var context = (function () {
 			return {
 				registry: {},
 
-				register: function (name, value) {
+				register: function (name, value, type) {
+					// type can be object, function, construtor
+					// object and constructor can be determined dynamically, function cannot.
 					var reg, key;
 
 					if (arguments.length === 1) {
@@ -115,7 +125,8 @@ var context = (function () {
 						}
 					} else {
 						this.registry[name] = {
-							value: value
+							value: value,
+							type: type
 						};
 					}
 				},

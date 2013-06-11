@@ -92,5 +92,13 @@
 
 
 	window.Session = Session;
+	
+	var session = app("session").
+		register("baseUrl", window.baseUrl).
+		use("appui", "bbext").
+		start(["keepAlive", "appurl", function (keepAlive, appurl) {
+			keepAlive.start(appurl.get("home/keepalive"));
+		}]).
+		start();
 } ());
 

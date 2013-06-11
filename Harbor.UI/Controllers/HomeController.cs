@@ -112,5 +112,10 @@ namespace Harbor.UI.Controllers
 		{
 			return View("About");
 		}
+
+		public string KeepAlive()
+		{
+			return "noop";
+		}
 	}
 }

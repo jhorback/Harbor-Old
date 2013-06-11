@@ -54,9 +54,12 @@ If calling start without arguments 'starts' the app bootstrapping process.
 ### context
 The ioc container for the app
 
-#### register(name, value)
+#### register(name, value, type)
 Registers an object with the container.
-Value can be any object or a constructor/factory function.
+The type is only needed if the value is a plain function not to be used 
+as a constructor function (created with the new keyword).
+Valid types are "object", "constructor", "function".
+
 
 #### get(name)
 Retrieves the dependency.
@@ -78,15 +81,3 @@ A plain old JavaScript object that is shared accross apps.
 
 ### service
 A simple call to register.
-
-
-
-# context.js
-Creates an inversion of control container for JavaScript.
-Function dependencies are determined by their arguments, however, for obfusticated scripts
-an $inject property can be placed on the prototype or function itself.
-
-## Methods
-
-### context.create()
-Creates a new container. See the documentation in the context service.

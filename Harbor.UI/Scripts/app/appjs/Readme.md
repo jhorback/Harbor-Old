@@ -16,31 +16,31 @@ While window is globally available in JavaScript, it causes testability problems
 A reference to a console object that can be used to log to messages to the browser console.
 
 #### log
-<code>console.log(args);</code>
+`console.log(args);`
 
 Logs information to the console.
 
 #### warn
-<code>console.warn(args);</code>
+`console.warn(args);`
 
 Logs a warning to the console.
 
 #### error
-<code>console.error(args);</code>
+`console.error(args);`
 
 Logs an error to the console.
 
 
 ### globalCache
-A nice wrapper to the <code>globals</code> object exposed by app.js.
+A nice wrapper to the `globals` object exposed by app.js.
 All variables are stored in a globalCache variable on globals for added safety.
-<code>globals.globalCache[name]</code>.
+`globals.globalCache[name]`.
 
 #### get
-<code>globalCache.get(name);</code>
+`globalCache.get(name);`
 Gets a global variable from the global cache.
 
 #### set
-<code>globalCache.set(name, value);</code>
+`globalCache.set(name, value);`
 Sets a global variable in the global cache.
 

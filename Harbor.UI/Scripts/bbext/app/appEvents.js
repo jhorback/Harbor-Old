@@ -2,9 +2,8 @@
  * appEvents.js
  *
  * Description:
- *     Creates a nice pattern for dealing with application events.
+ *     Creates a structure for dealing with application events.
  */
-
 module("bbext").construct("appEvents", ["events", function (events) {
 
 	return function (construct) {

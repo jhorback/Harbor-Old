@@ -214,6 +214,7 @@ var module = (function (context) {
 					} else {
 						modvars.start.push(_.handleInject(fn));
 					}
+					return this;
 				};
 			}
 
