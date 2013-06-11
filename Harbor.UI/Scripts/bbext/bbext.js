@@ -43,7 +43,7 @@ if (window.JSPM) {
 var bbext = module("bbext").use("appjs");
 
 if (window.jQuery) {
-	bbext.register("$", jQuery).register("_", _);
+	bbext.register("$", jQuery, "function").register("_", _);
 }
 
 bbext.construct("view", function (context) {

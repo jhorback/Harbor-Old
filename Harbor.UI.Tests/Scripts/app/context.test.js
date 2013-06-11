@@ -284,3 +284,21 @@ test("Calling instantiate with an unregistered name throws an error.", function 
 		equal(e.message, "Could not instantiate type not found: does not exist");
 	}
 });
+
+
+test("Registering a plain function returns the function.", function () {
+	expect(2);
+	
+	var ctx = context.create();
+	ctx.register("testProto", function () {
+		ok(true, "The testProto was created with 'new'.");
+	});
+	
+	ctx.register("testFunction", function () {
+		ok(true, "The testFunction was registered as a plain function.");
+	}, "function");
+
+	var tp = ctx.get("testProto");
+	var tf = ctx.get("testFunction");
+	tf();
+});
