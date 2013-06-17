@@ -6,6 +6,7 @@
 
 module("JSMP.js");
 
+window.debug = true;
 
 test("Installing a package returns a deferred which is executed.", function () {
 	QUnit.expect(0);

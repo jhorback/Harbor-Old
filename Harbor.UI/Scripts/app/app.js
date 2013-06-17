@@ -79,7 +79,8 @@ var module = (function (context) {
 			return function (name, construct, proto) {
 				var retFn, protoObj, module;
 
-				if (typeof construct !== "function" && !_.isArray(construct)) { // jch! - add a test
+				// don't require a constructor (if just an empty function)
+				if (typeof construct !== "function" && !_.isArray(construct)) {
 					proto = arguments[1];
 					construct = function () {};
 				}
@@ -109,49 +110,59 @@ var module = (function (context) {
 				return true;
 			});
 		},
-
-		bootstrap: function (moduleName, bootstrapped) {
+		
+		foreachUse: function (appvars, moduleName, callback, visited) {
 			var modvars = _.modCache[moduleName],
-			    ctx = modvars.context,
 			    use = modvars.use,
 			    i,
 			    useModName,
 				usemodvars,
 				len;
 
-			// bootstrap dependent modules first
-			// bootstrapped - guard against calling bootstrap on a module more than once
-			bootstrapped = bootstrapped || {};
+
+			// mixed - guard against calling on a module more than once
+			visited = visited || {};
 			len = use.length;
 			for (i = 0; i < len; i++) {
 				useModName = use[i],
 				usemodvars = _.modCache[useModName];
-				
-				if (!bootstrapped[useModName]) {
-					bootstrapped[useModName] = true;
-					_.bootstrap(use[i], bootstrapped);
+
+				if (!visited[useModName]) {
+					if (!usemodvars || usemodvars.isApp === true) {
+						throw new Error("Cannont find module: " + useModName);
+					}
+					visited[useModName] = true;
+					_.foreachUse(appvars, use[i], callback, visited);
 				}
-				
-				if (!usemodvars || usemodvars.isApp === true) {
-					throw new Error("Cannont find module: " + useModName); // jch! - test this too
-				}
-				
-				_.mixinRegistries(modvars.context.registry, usemodvars.context.registry);
 			}
 
-			// inject and execute config methods
-			len = modvars.config.length;
-			for (i = 0; i < len; i++) {
-				ctx.call(modvars.config[i], [], modvars.instance);
-			}
+			callback(modvars);
+		},
 
-			// inject and execute start methods if an app
-			if (modvars.isApp) {
-				len = modvars.start.length;
+		mixinAppRegistries: function (appvars, moduleName) {
+			_.foreachUse(appvars, moduleName, function (modvars) {
+				_.mixinRegistries(appvars.context.registry, modvars.context.registry);
+			});
+		},
+
+		bootstrap: function (appvars, moduleName) {
+			var i, len, ctx = appvars.context;
+
+			_.foreachUse(appvars, moduleName, function (modvars) {
+				// inject and execute config methods
+				len = modvars.config.length;
 				for (i = 0; i < len; i++) {
-					ctx.call(modvars.start[i], [], modvars.instance);
+					ctx.call(modvars.config[i], [], modvars.instance);
 				}
-			}
+
+				// inject and execute start methods if an app
+				if (modvars.isApp) {
+					len = modvars.start.length;
+					for (i = 0; i < len; i++) {
+						ctx.call(modvars.start[i], [], modvars.instance);
+					}
+				}
+			});
 		},
 
 		createModule: function (name, isApp) {
@@ -168,7 +179,9 @@ var module = (function (context) {
 			};
 
 			modvars.context.registry._name = name; // testing
-			modvars.context.register("context", modvars.context);
+			if (isApp) {
+				modvars.context.register("context", modvars.context);
+			}
 			modvars.context.register("globals", _.globals);
 
 			modvars.instance = {
@@ -214,10 +227,6 @@ var module = (function (context) {
 				config: function (fn) {
 					modvars.config.push(_.handleInject(fn));
 					return this;
-				},
-
-				call: function (fn) { // jch! - need to document and test - allows external code to use app dependencies
-					modvars.context.call(_.handleInject(fn));
 				}
 			};
 
@@ -225,13 +234,18 @@ var module = (function (context) {
 				modvars.instance.start = function (fn) {
 					if (arguments.length === 0) {
 						if (!modvars.started) {
-							_.bootstrap(name);
+							_.mixinAppRegistries(modvars, name);
+							_.bootstrap(modvars, name);
 						}
 						modvars.started = true;
 					} else {
 						modvars.start.push(_.handleInject(fn));
 					}
 					return this;
+				};
+
+				modvars.instance.call = function (fn) {
+					modvars.context.call(_.handleInject(fn));
 				};
 			}
 

@@ -10,7 +10,7 @@
 
 module("appEvents.js");
 
-
+window.debug = true;
 
 test("Triggering an event calls the callback.", function () {
 

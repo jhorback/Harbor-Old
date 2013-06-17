@@ -4,6 +4,7 @@
 
 module("context.js");
 
+window.debug = true;
 
 test("Register object, get object back", function () {
 	var returnedObj,
@@ -301,4 +302,46 @@ test("Registering a plain function returns the function.", function () {
 	var tp = ctx.get("testProto");
 	var tf = ctx.get("testFunction");
 	tf();
+});
+
+test("Functions can be registered by setting the type", function () {
+	expect(2);
+	
+	var outFn;
+	var ctx = context.create();
+	var fn = function (arg) {
+		equal(arg, 23);
+	};
+
+	ctx.register("fn", fn);
+	try {
+		outFn = ctx.get("fn");
+	} catch (e) {
+		ok(true, "Error thrown");
+	}
+	
+	ctx.register("fn", fn, "function");
+	outFn = ctx.get("fn");
+	outFn(23);
+});
+
+
+test("The call method adds the current context as the last argument", function () {
+	expect(3);
+	
+	var ctx = context.create();
+	ctx.register("foo", function () {
+		var ctx2 = arguments[arguments.length - 1];
+		this.ctx = ctx2;
+		equal(ctx2, ctx);
+	});
+	
+	ctx.register("foo2", function (foo) {
+		var ctx2 = arguments[arguments.length - 1];
+		equal(ctx2, ctx);
+		equal(foo.ctx, ctx);
+	});
+
+	ctx.get("foo");
+	ctx.get("foo2");
 });
