@@ -10,6 +10,7 @@ PageLoader.PageNav = Application.View.extend({
 		},
 		
 		"click #pageloader-settings": function () {
+			debugger;
 		    PageLoader.settings();
 		},
 		

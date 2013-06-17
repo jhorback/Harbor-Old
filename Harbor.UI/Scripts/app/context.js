@@ -87,6 +87,9 @@ var context = (function () {
 					resolved.push(request.get(deps[t]));
 			}
 
+			if (context && !context.context) {
+				context.context = request.context; // jch! - test this - this.context 
+			}
 			return method.apply(context, resolved);
 		},
 

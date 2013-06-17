@@ -31,22 +31,33 @@
 	},
 	    
 	edit: function () {
-		JSPM.install("PageEditor", function () {
-		    this.loadedPageEditor = true;
-		    PageEditor.start({
-		        el: PageLoader.regions.page.getEl(),
-		        page: this.currentPage
-		    });
-		}, this);
+		return this.open();
 	},
 
 	settings: function () {
-	    JSPM.install("PageSettings", function () {
-	        this.loadedPageSettings = true;
-		    PageSettings.start({
-		        page: this.currentPage
-		    });
-		}, this);
+		return this.open().then(_.bind(function () {
+			PageSettings.start({
+				page: this.currentPage
+			});
+		}, this));
+	},
+	
+	// waits for both edit and settings installs
+	open: function () {
+		return $.when(JSPM.install("PageEditor", function () {
+			this.loadedPageEditor = true;
+			PageEditor.start({
+				el: PageLoader.regions.page.getEl(),
+				page: this.currentPage
+			});
+			
+			app("pageEditor").start();
+		}, this),
+
+			JSPM.install("PageSettings", function () {
+				this.loadedPageSettings = true;
+			}, this)
+		);
 	}
 });
 

@@ -14,6 +14,8 @@
     },
     
     dispose: function () {
-        this.settingsView.remove();
+	    if (this.settingsView) {
+		    this.settingsView.remove();
+	    }
     }
 });

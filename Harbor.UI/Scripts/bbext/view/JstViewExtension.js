@@ -2,6 +2,10 @@
 /*
 * Desription:
 *     Adds JST and template methods to any object.
+*     Templates can live in script tags with type="text/template".
+*         The id of the script tag is to be used as the template parameter in the JST and template methods.
+*     Templates can also be found on any element with a data-template attribute set to the template name.
+*         This second way requires a css selector to hide all  
 *
 * Requires:
 *     jQuery, Underscore
@@ -19,16 +23,16 @@
 (function ($, _) {
 
 	var extension;
-	
+
 	// set the template parsing to {{value}} instead of <%= value %>
-	_.templateSettings = { interpolate : /\{\{(.+?)\}\}/g };
+	_.templateSettings = { interpolate: /\{\{(.+?)\}\}/g };
 
 
 	extension = {
 		renderTemplate: function (template) {
-			return this.template(template, this.$el);	
+			return this.template(template, this.$el);
 		},
-		
+
 		template: function (template, el) {
 			/// <summary>Executes the template and returns the result.</summary>
 			var templateHtml,
@@ -37,12 +41,15 @@
 			if (!templateFn) {
 				templateHtml = $("#" + template).html();
 				if (!templateHtml) {
-					throw "Template '" + template + "' not found";
+					templateHtml = $("[data-template='" + template + "']").html();
+					if (!templateHtml) {
+						throw "Template '" + template + "' not found";
+					}
 				}
 				templateFn = _.template(templateHtml);
 				JstViewExtension.templates[template] = templateFn;
 			}
-			
+
 			if (el) {
 				return function (model) {
 					return $(el).html(templateFn(model));
@@ -59,7 +66,7 @@
 				templateFn;
 
 			templateFn = extension.template(template);
-			model = _.clone(model) || { };
+			model = _.clone(model) || {};
 
 			_.each(model, function (dfd, name) {
 				var curryDfd;
@@ -96,4 +103,4 @@
 		}
 	};
 
-} (jQuery, _));
+}(jQuery, _));

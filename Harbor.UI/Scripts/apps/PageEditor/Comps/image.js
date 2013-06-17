@@ -51,7 +51,6 @@ ImageComponent.ImageModel = Application.Model.extend({
 	},
 	ext: {
 		get: function (value) {
-			debugger; // jch! - testing - my guess is that this is undefined
 			return value;
 		}
 	}

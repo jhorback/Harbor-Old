@@ -79,6 +79,11 @@ var module = (function (context) {
 			return function (name, construct, proto) {
 				var retFn, protoObj, module;
 
+				if (typeof construct !== "function" && !_.isArray(construct)) { // jch! - add a test
+					proto = arguments[1];
+					construct = function () {};
+				}
+
 				module = modvars.instance;
 				construct = _.handleInject(construct);
 				_.mixin(construct.prototype, proto);
@@ -110,29 +115,40 @@ var module = (function (context) {
 			    ctx = modvars.context,
 			    use = modvars.use,
 			    i,
-			    useModName;
-
+			    useModName,
+				usemodvars,
+				len;
 
 			// bootstrap dependent modules first
 			// bootstrapped - guard against calling bootstrap on a module more than once
 			bootstrapped = bootstrapped || {};
-			for (i = 0; i < use.length; i++) {
-				useModName = use[i];
+			len = use.length;
+			for (i = 0; i < len; i++) {
+				useModName = use[i],
+				usemodvars = _.modCache[useModName];
+				
 				if (!bootstrapped[useModName]) {
 					bootstrapped[useModName] = true;
 					_.bootstrap(use[i], bootstrapped);
 				}
-				_.mixinRegistries(modvars.context.registry, _.modCache[useModName].context.registry);
+				
+				if (!usemodvars || usemodvars.isApp === true) {
+					throw new Error("Cannont find module: " + useModName); // jch! - test this too
+				}
+				
+				_.mixinRegistries(modvars.context.registry, usemodvars.context.registry);
 			}
 
 			// inject and execute config methods
-			for (i = 0; i < modvars.config.length; i++) {
+			len = modvars.config.length;
+			for (i = 0; i < len; i++) {
 				ctx.call(modvars.config[i], [], modvars.instance);
 			}
 
 			// inject and execute start methods if an app
 			if (modvars.isApp) {
-				for (i = 0; i < modvars.start.length; i++) {
+				len = modvars.start.length;
+				for (i = 0; i < len; i++) {
 					ctx.call(modvars.start[i], [], modvars.instance);
 				}
 			}
@@ -151,6 +167,7 @@ var module = (function (context) {
 				start: []
 			};
 
+			modvars.context.registry._name = name; // testing
 			modvars.context.register("context", modvars.context);
 			modvars.context.register("globals", _.globals);
 
@@ -177,7 +194,7 @@ var module = (function (context) {
 
 						usemodvars = _.modCache[modName];
 						if (!usemodvars || usemodvars.isApp === true) {
-							throw new Error("Cannont find module: " + modName); // jch! - test this too
+							continue;
 						}
 
 						// mixin the constructs
@@ -228,6 +245,9 @@ var module = (function (context) {
 		}
 	};
 
+	window.appDebug = function () {
+		console.log(_.modCache);
+	};
 
 	return function (moduleName) {
 		var isApp,

@@ -105,7 +105,7 @@ PageEditor.EditView = Application.View.extend({
 	},
 	
 	hideCtrl: function (uic) {
-		this.currentUICMenu && this.currentUICMenu.close();
+		this.currentUICMenu && this.currentUICMenu.close().remove();
 		uic.removeClass("selected");
 	},
 	
