@@ -1,35 +1,21 @@
-﻿/*
- *  viewFactory
- *      get(viewName, options)
- *          - creates a new instance of the view.
- *          - options being the Backbone view options.
- *          - all other arguments required by the view will be injected.
- *                            
- */
-module("bbext").service("viewFactory", ["context", function (context) {
-
-	return {
-		create: function (viewName, options) {
-
-			return context.instantiate(viewName, [options]);
-		}	
-	};
-}]);
+﻿var bbext = module("bbext");
 
 /*
- *  modelFactory
- *      get(modelName, options)
- *          - creates a new instance of the model.
- *          - options being the Backbone model options.
- *          - all other arguments required by the model will be injected.
- *                            
+ *  factory for Backbone objects: view, model, collection.
+ *      get(name, options)
+ *          - creates a new instance.
+ *          - options being the Backbone options.
+ *          - all other arguments required by the view will be injected.                       
  */
-module("bbext").service("modelFactory", ["context", function (context) {
-
+var bbFactory = ["context", function (context) {
 	return {
-		create: function (modelName, options) {
+		create: function (name, options) {
 
-			return context.instantiate(modelName, [options]);
-		}	
+			return context.instantiate(name, [options]);
+		}
 	};
-}]);
+}];
+
+bbext.service("viewFactory", Array.prototype.slice.call(bbFactory, 0));
+bbext.service("modelFactory", Array.prototype.slice.call(bbFactory, 0));
+bbext.service("collectionFactory", Array.prototype.slice.call(bbFactory, 0));

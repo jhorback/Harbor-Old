@@ -1,17 +1,22 @@
 ﻿
-// type, $el, uicid, page
-var PageLinkComponent = PageComponent.extend({
+var pageLink = module("pageLink").use("pageComponent", "bbext");
+
+
+pageLink.component("pageLink", function (viewFactory) {
+
+	this.view = viewFactory.create("pageLinkView", {
+		el: this.$el,
+		model: this.model,
+		uicid: this.uicid
+	});
+
+}, {
+	$inject: ["viewFactory"],
 	
-    modelType: function () {
-        return PageLinkComponent.PageLinkModel;
-    },
+    modelType: "pageLinkModel",
 
     initialize: function () {
-        this.view = new PageLinkComponent.View({
-            el: this.$el,
-            model: this.model,
-            uicid: this.uicid
-        });
+        
     },
 
 	create: function () {
@@ -20,9 +25,7 @@ var PageLinkComponent = PageComponent.extend({
 	},
 	
 	open: function () {
-		JSPM.install("PageSelector", function () {
-			this.view.render();
-		}, this);
+		this.view.render();
 	},
 	
 	close: function () {
@@ -30,8 +33,16 @@ var PageLinkComponent = PageComponent.extend({
 	}
 });
 
-
-PageLinkComponent.PageLinkModel = Application.Model.extend({
+pageLink.model("pageLinkModel", {
+	component:  {
+		pageProperties: ["pageID", "tileDisplay"],
+	
+		getDefaults: function (page, pageProperties) {
+			return _.pick(page.getPageLink(pageProperties.pageID),
+				"title", "previewText", "previewImageID", "link");
+		}
+	},
+	
 	defaults: {
 		pageID: 0,
 		tileDisplay: "normal",
@@ -42,6 +53,7 @@ PageLinkComponent.PageLinkModel = Application.Model.extend({
 		tileClassName: "tile",
 		link: null
 	},
+	
 	hasPageLink: function () {
 		return this.get("pageID") > 0 ? true : false;
 	},
@@ -60,17 +72,10 @@ PageLinkComponent.PageLinkModel = Application.Model.extend({
 			return display === "wide" ? "tile tile-wide" : "tile";
 		}
 	}
-}, {
-	pageProperties: ["pageID", "tileDisplay"],
-	
-	getDefaults: function (page, pageProperties) {
-		return _.pick(page.getPageLink(pageProperties.pageID),
-			"title", "previewText", "previewImageID", "link");
-	}
 });
 
 
-PageLinkComponent.View = Application.View.extend({
+pageLink.view("pageLinkView", {
 	initialize: function () {
 		this.listenTo(this.model, "change:tileDisplay", this.save);
 	},
@@ -130,5 +135,3 @@ PageLinkComponent.View = Application.View.extend({
 		this.$("[data-rel=edit]").remove();
 	}
 });
-
-PageEditor.registerComponent("pageLink", PageLinkComponent);

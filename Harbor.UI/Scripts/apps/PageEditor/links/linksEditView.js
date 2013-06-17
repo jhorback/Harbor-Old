@@ -1,5 +1,5 @@
 ﻿
-LinksComponent.EditView = Application.View.extend({
+links.view("linksEditView", {
 	render: function () {
 		this.renderTemplate("Comps-Links-Edit");
 	}

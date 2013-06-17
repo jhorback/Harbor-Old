@@ -1,13 +1,15 @@
 ﻿
-LinksComponent.NewView = Application.View.extend({
+links.view("linksNewView", function (navLinksRepo) {
+	
+	this.navLinksRepo = navLinksRepo;
+	
+}, {
 
+	$inject: ["navLinksRepo"],
+	
 	events: {
 		"click #navlinks-add": "add",
 		"click #navlinks-create": "create"
-	},
-
-	initialize: function (options) {
-		this.navLinksRepo = new LinksRepo(); // jch! - have this injected and move pageLinksRepo to the pageModel appjs module
 	},
 
 	render: function () {

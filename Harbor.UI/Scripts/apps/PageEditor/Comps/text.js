@@ -1,15 +1,18 @@
-﻿var TextComponent = PageComponent.extend({
+﻿
+var text = module("text").use("pageComponent", "bbext");
 
-    modelType: function () {
-        return TextComponent.TextModel;
-    },
-
-    initialize: function () {
-        this.view = new TextComponent.View({
-            el: this.$el,
-            model: this.model
-        });
-    },
+text.component("text", function (viewFactory) {
+	
+	debugger;
+	this.view = viewFactory.create("textView", {
+		el: this.$el,
+		model: this.model
+	});
+	
+}, {
+	$inject: ["viewFactory"],
+	
+    modelType: "textModel",
 
     create: function () {
         this.open();
@@ -24,7 +27,7 @@
     }
 });
 
-TextComponent.View = Application.View.extend({
+text.view("textView", {
 
     render: function () {
         var buttons = [
@@ -71,14 +74,15 @@ TextComponent.View = Application.View.extend({
     }
 });
 
-
-TextComponent.TextModel = Application.Model.extend({
+text.model("textModel", {
+	component: {
+		pageProperties: ["text"],
+		
+		getDefaults: function () {
+			return {};
+		}
+	},
     defaults: {
         text: null
     }
-}, {
-	pageProperties: ["text"]
 });
-
-
-PageEditor.registerComponent("text", TextComponent);

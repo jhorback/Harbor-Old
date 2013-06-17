@@ -1,5 +1,5 @@
 ﻿
-app("pageEditor").use("links", "navLinks");
+app("pageEditor").use("links", "navLinks", "image", "pageLink", "text", "title");
 
 
 var PageEditor = new Application({
@@ -20,21 +20,11 @@ var PageEditor = new Application({
 
 	components: {}, // hash of components by uicid
 	
-	componentTypes: {}, 
-	
 	dialogRegion: new Region(),
 
 	regions: {
 		page: "#page",
 		modal: "#page-modal"
-	},
-
-	registerComponent: function (key, component) {
-		/// <summary>
-		/// component - a prototype containing create, open, close, destroy methods.
-		///             the constructor will be passed an $el, page (model), uicid.
-		/// </summary>
-		PageEditor.componentTypes[key] = component;
 	},
 	
 	getComponent: function (uicid) {
@@ -47,21 +37,17 @@ var PageEditor = new Application({
 		if (!comp) {
 			$el = $("#" + uicid);
 			type = $el.data("type");
-			compType = PageEditor.componentTypes[type];
+			
 			options = {
 				// type: compType, was I using this and why?
 				uicid: uicid,
 				$el: $el,
 				page: this.currentPage
 			};
-
-			if (compType) {
-				comp = new compType(options);
-			} else {
-				app("pageEditor").call(["context", function (context) {
-					comp = context.instantiate(type, [options]);
-				}]);
-			}
+			
+			app("pageEditor").call(["context", function (context) {
+				comp = context.instantiate(type, [options]);
+			}]);
 			
 			PageEditor.components[uicid] = comp;
 		}

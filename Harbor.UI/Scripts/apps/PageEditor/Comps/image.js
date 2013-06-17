@@ -1,18 +1,18 @@
 ﻿
-// type, $el, uicid, page
-var ImageComponent = PageComponent.extend({
-	
-    modelType: function () {
-        return ImageComponent.ImageModel;
-    },
+var image = module("image").use("pageComponent", "bbext");
 
-    initialize: function () {
-        this.view = new ImageComponent.View({
-            el: this.$el,
-            model: this.model,
-            uicid: this.uicid
-        });
-    },
+image.component("image", function (viewFactory) {
+	
+	this.view = viewFactory.create("imageView", {
+		el: this.$el,
+		model: this.model,
+		uicid: this.uicid
+	});
+	
+}, {
+	$inject: ["viewFactory"],
+	
+    modelType: "imageModel",
 
 	create: function () {
 	    this.open();
@@ -31,7 +31,15 @@ var ImageComponent = PageComponent.extend({
 });
 
 
-ImageComponent.ImageModel = Application.Model.extend({
+image.model("imageModel", {
+	component: {
+		pageProperties: ["fileID", "res"],
+	
+		getDefaults: function () {
+			return {};
+		}
+	},
+	
 	defaults: {
 		fileID: null,	
 		res: "low", // can be low or high
@@ -54,16 +62,11 @@ ImageComponent.ImageModel = Application.Model.extend({
 			return value;
 		}
 	}
-}, {
-	pageProperties: ["fileID", "res"],
-	
-	getDefaults: function () {
-		return {};
-	}
 });
 
 
-ImageComponent.View = Application.View.extend({
+image.view("imageView", {
+	
 	initialize: function () {
 		this.listenTo(this.model, "change:res", this.save);
 	},
@@ -121,7 +124,3 @@ ImageComponent.View = Application.View.extend({
 		this.$("[data-rel=edit]").remove();
 	}
 });
-
-
-
-PageEditor.registerComponent("image", ImageComponent);

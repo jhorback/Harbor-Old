@@ -1,8 +1,8 @@
 ﻿
-var navLinks = module("navLinks");
+var navLinks = module("navLinks").use("bbext");
 
 
-var LinksModel = Application.Model.extend({
+navLinks.model("navLinksModel", {
 	defaults: {
 		id: null,
 		name: null,
@@ -12,8 +12,7 @@ var LinksModel = Application.Model.extend({
 });
 
 
-
-var LinksCollection = Backbone.Collection.extend({
-	model: LinksModel,
+navLinks.collection("navLinksCollection", {
+	model: "navLinksModel",
 	url: Application.url("api/navlinks")
 });

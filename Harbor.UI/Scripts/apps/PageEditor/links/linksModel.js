@@ -1,6 +1,7 @@
 ﻿
 
-module("links").model("linksModel", {
+links.model("linksModel", {
+	
 	component: {
 		pageProperties: ["id"],
 
@@ -23,28 +24,3 @@ module("links").model("linksModel", {
 		return this.get("name") ? true : false;
 	}
 });
-
-
-
-//LinksComponent.Model = Application.Model.extend({
-//	defaults: {
-//		id: null,
-//		name: null,
-//		sections: []
-//	},
-
-//	hasName: function () {
-//		return this.get("name") ? true : false;
-//	}
-
-//}, {
-//	pageProperties: ["id"],
-
-//	getDefaults: function (page, pageProperties) {
-//		if (pageProperties.id) {
-//			return _.pick(page.getNavLinks(pageProperties.id),
-//				"name", "sections");
-//		}
-//		return {};
-//	}
-//});
