@@ -31,7 +31,8 @@ var context = (function () {
 		INSTANTIATING: {},
 		
 		getFnArgs: function (fn) {
-			var val = fn.$inject || fn.prototype.$inject || fn.toString().match(/^function\s*[^\(]*\(\s*([^\)]*)\)/m)[1].split(',');
+			var val = fn.$inject || fn.prototype.$inject ||
+				(window.debug && fn.toString().match(/^function\s*[^\(]*\(\s*([^\)]*)\)/m)[1].split(',')) || [];
 			return val[0] === "" ? [] : val;
 		},
 
@@ -52,7 +53,7 @@ var context = (function () {
 			}
 			
 			// if the value is not a function, use it as the instance
-			if (reg.type === "object" || reg.type === "function") { // jch! doc and test this
+			if (reg.type === "object" || reg.type === "function") {
 				reg.instance = reg.value;
 				reg.type = "object";
 				return reg.instance;
@@ -87,9 +88,7 @@ var context = (function () {
 					resolved.push(request.get(deps[t]));
 			}
 
-			if (context && !context.context) {
-				context.context = request.context; // jch! - test this - this.context 
-			}
+			resolved.push(request.context);
 			return method.apply(context, resolved);
 		},
 

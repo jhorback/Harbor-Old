@@ -12,7 +12,6 @@ links.component("links", function () {
 	},
 
 	open: function () {
-		debugger;
 		this.getView().render();
 	},
 

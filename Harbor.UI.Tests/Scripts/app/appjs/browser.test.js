@@ -6,6 +6,8 @@
 
 module("browser.js");
 
+window.debug = true;
+
 var counter = 0,
     unique = function () {
     	return "test" + counter++;

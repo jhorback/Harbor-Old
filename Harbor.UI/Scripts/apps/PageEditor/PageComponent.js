@@ -12,37 +12,34 @@
 
 var pageComponent = module("pageComponent").use("appjs");
 
-pageComponent.construct("component", ["context", "console", function (context, console) {
+pageComponent.construct("component", ["console", function (console) {
 
 	return function (construct) {
 
 		var pageComponentConstructor = function (options) {
+			this.context = arguments[arguments.length - 1]; // the app context is the last arg here
 			this.type = options.type;
 			this.$el = options.$el;
 			this.uicid = options.uicid;
 			this.page = options.page;
 			this.initModel();
-			// debugger;
 			this.context.call(construct, [], this);
 		};
 		
 		pageComponentConstructor.prototype = {
 			initModel: function () {
-				var temp, pageProps, modelProps, defaultProps, getDefaults;
+				var temp, pageProps, modelProps, defaultProps, getDefaults, component;
 
 				if (!this.modelType) {
 					return;
 				}
 
-				debugger;
 				temp = this.context.get(this.modelType);
-				if (!temp.prototype || !temp.prototype.component) {
-					return;
-				}
+				component = temp.constructor.prototype.component;
 				
 				// gather the default properties (to initialize the model with)
-				pageProps = temp.prototype.component.pageProperties;
-				getDefaults = temp.prototype.compoent.getDefaults;
+				pageProps = component.pageProperties;
+				getDefaults = component.getDefaults;
 				modelProps = { id: this.uicid };
 				_.each(pageProps, function (attrName) {
 					var attrValue = this.getProperty(attrName);
@@ -57,7 +54,7 @@ pageComponent.construct("component", ["context", "console", function (context, c
 				}
 
 				// create the model and give the the page model and save method
-				this.model = context.instantiate(this.modelType, modelProps);
+				this.model = this.context.instantiate(this.modelType, modelProps);
 				this.model.page = this.page;
 				this.model.save = _.bind(this.save, this);
 

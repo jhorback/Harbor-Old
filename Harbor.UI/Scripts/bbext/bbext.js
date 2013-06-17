@@ -30,7 +30,7 @@ if (window.Application) {
 }
 
 
-// jch! - figure the best way to inject this
+// jch* - figure the best way to inject this
 /*
 Module: harborConfig?
 baseUrl wold be an injected property
@@ -46,7 +46,7 @@ if (window.jQuery) {
 	bbext.register("$", jQuery, "function").register("_", _);
 }
 
-bbext.construct("view", ["context", function (context) {
+bbext.construct("view", function () {
 	return function (construct, name) {
 		var View, protoProps = {};
 
@@ -59,6 +59,7 @@ bbext.construct("view", ["context", function (context) {
 		}
 
 		protoProps[name].constructor = function () {
+			var context = arguments[arguments.length - 1];
 
 			// inject the constructor
 			if (this._ctor) {
@@ -72,10 +73,10 @@ bbext.construct("view", ["context", function (context) {
 		View = Application.View.extend(protoProps[name], construct);
 		return View;
 	};
-}]);
+});
 
 
-bbext.construct("model", ["context", function (context) {
+bbext.construct("model", function () {
 	return function (construct) {
 		var Model, protoProps;
 		protoProps = construct.prototype;
@@ -86,7 +87,8 @@ bbext.construct("model", ["context", function (context) {
 		}
 
 		protoProps.constructor = function () {
-
+			var context = arguments[arguments.length - 1];
+			
 			// inject the constructor
 			if (this._ctor) {
 				context.call(this._ctor, arguments, this);
@@ -99,7 +101,7 @@ bbext.construct("model", ["context", function (context) {
 		Model = Application.Model.extend(protoProps, construct);
 		return Model;
 	};
-}]);
+});
 
 
 bbext.service("events", ["globalCache", function (globalCache) {
