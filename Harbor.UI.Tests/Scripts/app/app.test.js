@@ -369,3 +369,38 @@ test("Constructs can be used from other modules.", function () {
 	});
 	testApp.start();
 });
+
+/*
+this will be a problem in the bbext model and view too
+if they are part of modules and not part of an app, the context they get is not the apps context
+may fix the test by updating the bootstrap function
+	-could take the app as an arg to use as ctx
+this won't fix the use of the context in constructs
+	-add another test for this case?
+	-could remove the context from the modules - can only use injection
+*/
+test("Using modules indirectly uses the correct app context.", function () {
+	expect(2);
+	
+	var m1Name = getNextName();
+	var m2Name = getNextName();
+	var appName = getNextName();
+	
+	var testApp = app(appName);
+	var m2 = module(m2Name);
+
+	var m1 = module(m1Name).use(m2Name);
+	m1.register("foo", { bar: 23 });
+	
+	testApp.use(m1Name);
+	m2.config(function (context) {
+		debugger;
+		var foo = context.get("foo");
+		equal(foo.bar, 23);
+	});
+	testApp.start(function (foo) {
+		equal(foo.bar, 23);
+	});
+	debugger;
+	testApp.start();
+});

@@ -1,4 +1,7 @@
 ﻿
+app("pageEditor").use("links", "navLinks");
+
+
 var PageEditor = new Application({
     
     editView: null,
@@ -37,17 +40,29 @@ var PageEditor = new Application({
 	getComponent: function (uicid) {
 		var comp = PageEditor.components[uicid],
 			compType,
-			$el;
+			type,
+			$el,
+			options;
+		
 		if (!comp) {
 			$el = $("#" + uicid);
-			compType = PageEditor.componentTypes[$el.data("type")] || PageComponent;
-			
-			comp = new compType({
-				type: compType,
+			type = $el.data("type");
+			compType = PageEditor.componentTypes[type];
+			options = {
+				// type: compType, was I using this and why?
 				uicid: uicid,
 				$el: $el,
 				page: this.currentPage
-			});
+			};
+
+			if (compType) {
+				comp = new compType(options);
+			} else {
+				app("pageEditor").call(["context", function (context) {
+					comp = context.instantiate(type, [options]);
+				}]);
+			}
+			
 			PageEditor.components[uicid] = comp;
 		}
 		return comp;

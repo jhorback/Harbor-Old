@@ -24,10 +24,10 @@
 	{ 
 		@Html.InstallJavaScriptPackage(PageLoaderAppPkg.PackageName)
 		@*
-		// but with jspm javascript loading?
+		// but with jspm javascript loading?*@
 		@Html.InstallJavaScriptPackage(PageEditorAppPkg.PackageName)
 		@Html.InstallJavaScriptPackage(PageSettingsAppPkg.PackageName)
-		*@
+		@Html.InstallJavaScriptPackage(PageSelectorAppPkg.PackageName)
 		<script>
 			PageLoader.start(@Html.Raw(Json.Encode(ViewBag.PageDto)));
 		</script>

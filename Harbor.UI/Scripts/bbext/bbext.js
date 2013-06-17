@@ -46,7 +46,7 @@ if (window.jQuery) {
 	bbext.register("$", jQuery, "function").register("_", _);
 }
 
-bbext.construct("view", function (context) {
+bbext.construct("view", ["context", function (context) {
 	return function (construct, name) {
 		var View, protoProps = {};
 
@@ -72,10 +72,10 @@ bbext.construct("view", function (context) {
 		View = Application.View.extend(protoProps[name], construct);
 		return View;
 	};
-});
+}]);
 
 
-bbext.construct("model", function (context) {
+bbext.construct("model", ["context", function (context) {
 	return function (construct) {
 		var Model, protoProps;
 		protoProps = construct.prototype;
@@ -99,7 +99,7 @@ bbext.construct("model", function (context) {
 		Model = Application.Model.extend(protoProps, construct);
 		return Model;
 	};
-});
+}]);
 
 
 bbext.service("events", ["globalCache", function (globalCache) {

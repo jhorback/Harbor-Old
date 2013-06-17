@@ -15,6 +15,7 @@
 			this.undelegateEvents();
 			this.off();
 			this.stopListening();
+			return this;
 		}
 	};
 
