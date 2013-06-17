@@ -580,7 +580,6 @@
     <Content Include="Views\Page\PageLink-None.cshtml" />
     <Content Include="Views\Page\PageLink.cshtml" />
     <Content Include="Views\Page\PageLink-Edit.cshtml" />
-    <Content Include="Scripts\bbext\_api.cshtml" />
     <Content Include="Views\Home\ApplicationJsApi.cshtml" />
     <Content Include="Views\Page\Links-None.cshtml" />
     <Content Include="Views\Page\Links-Edit.cshtml" />

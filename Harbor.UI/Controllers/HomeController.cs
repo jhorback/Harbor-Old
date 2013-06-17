@@ -103,7 +103,7 @@ namespace Harbor.UI.Controllers
 		}
 
 
-		public ViewResult ApplicationJsApi()
+		public ViewResult AppJsApi()
 		{
 			return View("ApplicationJsApi");
 		}
