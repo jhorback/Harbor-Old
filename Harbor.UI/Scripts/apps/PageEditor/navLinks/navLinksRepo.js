@@ -1,15 +1,17 @@
 ﻿
+module("navLinks").service("navLinksRepo", function (collectionFactory) {
 
-var LinksRepo = function () {
 	this.linksDfd = null;
-	this.collection = new LinksCollection();
-};
-
-LinksRepo.prototype = {
+	this.collection = collectionFactory.create("navLinksCollection");
+	
+}, {
+	$inject: ["collectionFactory"],
+	
 	getLinks: function () {
 		if (this.linksDfd === null) {
 			this.linksDfd = this.collection.fetch();
 		}
+		
 		return this.linksDfd;
 	}
-};
+});

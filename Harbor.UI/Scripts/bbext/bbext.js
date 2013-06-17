@@ -104,6 +104,37 @@ bbext.construct("model", function () {
 });
 
 
+bbext.construct("collection", function () { // jch! document - note that the models here will not be injected
+	return function (construct) {
+		var protoProps;
+		protoProps = construct.prototype;
+
+		protoProps.constructor = construct;
+		if (protoProps.constructor) {
+			protoProps._ctor = protoProps.constructor;
+		}
+
+		protoProps.constructor = function () {
+			var context = arguments[arguments.length - 1];
+
+			// inject the constructor
+			if (this._ctor) {
+				context.call(this._ctor, arguments, this);
+			}
+			
+			debugger;
+			// jch! - test and document
+			this.model = context.get(this.model).constructor;
+
+			Backbone.Collection.apply(this, arguments);
+			return this;
+		};
+
+		return Backbone.Collection.extend(protoProps, construct);
+	};
+});
+
+
 bbext.service("events", ["globalCache", function (globalCache) {
 
 	var events = globalCache.get("bbextEvents");
