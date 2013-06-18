@@ -140,7 +140,7 @@ var context = (function () {
 					}
 				},
 
-				get: function (name, raw) { // jch! test / document raw value returns the .value in the reg
+				get: function (name, raw) {
 					var request;
 					if (raw === true) {
 						return ioc.getRegistryValue(this.registry, name);

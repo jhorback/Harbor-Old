@@ -153,8 +153,14 @@ as a constructor function (created with the new keyword).
 Valid types are "object", "constructor", "function".
 
 
-#### get(name)
+#### get
+`get(name)`
 Retrieves the dependency.
+If the dependency is a constructor it will inject and return then 'newed' object as a singleton.
+
+If a second argument passed is _true_ it will retrieve the _raw_ registry value.
+So in the case of a constructor function it will return the un-'newed' object.
+
 
 #### call(method, args, context)
 A utility method for satisfying the dependencies of a method directly.

@@ -55,10 +55,17 @@ app.start(function (modelFactory, viewFactory) {
 ```
 
 ### viewFactory
-Use to create instances of views.
+Use to create instances of Backbone views.
 
 #### create
 `create(viewName, options);`
+
+
+### collectionFactory
+Use to create instances of Backbone collections.
+
+#### create
+`create(collectionName, options);`
 
 
 ### model
@@ -72,7 +79,6 @@ myApp.start(function (modelFactory) {
 	});
 });
 ```
-
 
 
 ## Constructs
@@ -261,6 +267,22 @@ Saves the current model state which can be restored using the <code>restore</cod
 <code>sm.restore();</code>
 
 Restores the model property values back to the last time <code>store</code> was called.
+
+
+### collection Construct
+The collection construct allows the creation of a Backbone collection.
+The _model_ property of the collection should be the name of the model to retrieve.
+```js
+myApp.collection("someModelCollection", function () {
+	// injected constructor
+}, {
+	model: "someModel",
+	// rest of prototype...
+});
+```
+_Since Backbone will create the model, the model will not be injected._
+If this is ever needed, the *_prepareModel* method can be overridden in this construct.
+
 
 
 ### appEvents Construct

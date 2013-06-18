@@ -116,7 +116,7 @@ bbext.construct("model", function () {
 });
 
 
-bbext.construct("collection", function () { // jch! document - note that the models here will not be injected
+bbext.construct("collection", function () {
 	return function (construct) {
 		var protoProps;
 		protoProps = construct.prototype;
