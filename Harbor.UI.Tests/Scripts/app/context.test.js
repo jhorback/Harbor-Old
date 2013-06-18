@@ -345,3 +345,19 @@ test("The call method adds the current context as the last argument", function (
 	ctx.get("foo");
 	ctx.get("foo2");
 });
+
+
+test("Calling get with true returns the raw registered object", function () {
+	expect(2);
+	
+	var ctx = context.create();
+	var fn = function () { };
+	fn.prototype = { bar: 23 };
+
+	ctx.register("foo", fn);
+
+	var outFn = ctx.get("foo", true);
+	
+	equal(outFn, fn);
+	equal(outFn.prototype, fn.prototype);
+});
