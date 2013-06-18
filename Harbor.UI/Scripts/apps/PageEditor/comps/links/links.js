@@ -22,13 +22,13 @@ links.component("links", function (viewFactory) {
 	getView: function () {
 		this.view && this.view.close();
 		if (this.model.hasName()) {
-			this.view = this.viewFactory.create("linksNewView", {
+			this.view = this.viewFactory.create("linksEditView", {
 				el: this.$el,
 				model: this.model,
 				uicid: this.uicid
 			});
 		} else {
-			this.view = this.viewFactory.create("linksEditView", {
+			this.view = this.viewFactory.create("linksNewView", {
 				el: this.$el,
 				model: this.model,
 				uicid: this.uicid

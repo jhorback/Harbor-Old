@@ -107,6 +107,13 @@ var context = (function () {
 					return this.visited[name] = ioc.get(this, name, args);
 				}
 			};
+		},
+		
+		getRegistryValue: function (registry, name) {
+			if (!registry[name]) {
+				throw new Error("Could not instantiate type not found: " + name);
+			}
+			return registry[name].value;
 		}
 	};
 
@@ -133,8 +140,12 @@ var context = (function () {
 					}
 				},
 
-				get: function (name) {
-					var request = ioc.createRequest(this);
+				get: function (name, raw) { // jch! test / document raw value returns the .value in the reg
+					var request;
+					if (raw === true) {
+						return ioc.getRegistryValue(this.registry, name);
+					}
+					request = ioc.createRequest(this);
 					return request.get(name);
 				},
 
@@ -144,15 +155,11 @@ var context = (function () {
 				},
 
 				instantiate: function (constructor, args) {
-					var name, request, reg;
+					var name, request;
 
 					if (typeof arguments[0] === "string") {
 						name = arguments[0];
-						reg = this.registry[name];
-						if (!reg) {
-							throw new Error("Could not instantiate type not found: " + name);
-						}
-						constructor = reg.value;
+						constructor = ioc.getRegistryValue(this.registry, name);
 					}
 
 					request = ioc.createRequest(this);

@@ -12,36 +12,4 @@
 @Html.JstPartial("Comps-Links", "Page/Links")
 @Html.JstPartial("Comp-Links-None", "Page/Links-None")
 
-@* jch!- why can I not do this? @{ Html.RenderPartial("Links-Edit"); }*@
-
-
-<div data-template="Comps-Links-New">
-	<div class="pad">
-		<fieldset>
-			<legend>Add existing links</legend>
-			<div class="form-field">
-				<select id="navlinks-select">
-					<option></option>
-				</select>
-			</div>
-			<div class="form-controls">
-				<button class="loud" id="navlinks-add">Add</button>
-			</div>
-		</fieldset>
-		<fieldset>
-			<legend>Create new links</legend>
-			<div class="form-field">
-				<label>Name</label>
-				<input type="text" id="navlinks-name" />
-			</div>
-			<div class="form-controls">
-				<button class="loud" id="navlinks-create">Create</button>
-			</div>
-		</fieldset>
-	</div>
-</div>
-
-
-<div data-template="Comps-Links-Edit">
-	Hello - Edit View
-</div>
+@Html.Partial("~/Views/Page/Links-Edit.cshtml")

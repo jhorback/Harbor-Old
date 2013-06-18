@@ -421,9 +421,9 @@
       <DependentUpon>theme.scss</DependentUpon>
     </Content>
     <Content Include="Global.asax" />
-    <Content Include="Scripts\apps\PageEditor\links\linksEditView.js" />
-    <Content Include="Scripts\apps\PageEditor\links\linksModel.js" />
-    <Content Include="Scripts\apps\PageEditor\links\linksNewView.js" />
+    <Content Include="Scripts\apps\PageEditor\comps\links\linksEditView.js" />
+    <Content Include="Scripts\apps\PageEditor\comps\links\linksModel.js" />
+    <Content Include="Scripts\apps\PageEditor\comps\links\linksNewView.js" />
     <Content Include="Scripts\apps\PageEditor\navLinks\navlinksModel.js" />
     <Content Include="Scripts\apps\PageEditor\navLinks\navLinksRepo.js" />
     <Content Include="Scripts\app\appjs\globalCache.js" />
@@ -459,12 +459,12 @@
     <Content Include="Scripts\apps\PageAdder\PageAdder.js" />
     <Content Include="Scripts\apps\PageEditor\Actions.js" />
     <Content Include="Scripts\apps\PageEditor\AddComponentView.js" />
-    <Content Include="Scripts\apps\PageEditor\Comps\pageLink.js" />
-    <Content Include="Scripts\apps\PageEditor\Comps\image.js" />
-    <Content Include="Scripts\apps\PageEditor\Comps\title.js" />
-    <Content Include="Scripts\apps\PageEditor\links\LinksComponent.js" />
+    <Content Include="Scripts\apps\PageEditor\comps\pageLink\pageLink.js" />
+    <Content Include="Scripts\apps\PageEditor\comps\image\image.js" />
+    <Content Include="Scripts\apps\PageEditor\comps\title\title.js" />
+    <Content Include="Scripts\apps\PageEditor\comps\links\links.js" />
     <Content Include="Scripts\apps\PageEditor\PageComponent.js" />
-    <Content Include="Scripts\apps\PageEditor\Comps\text.js" />
+    <Content Include="Scripts\apps\PageEditor\comps\text\text.js" />
     <Content Include="Scripts\apps\PageEditor\ChangeLayoutView.js" />
     <Content Include="Scripts\apps\PageEditor\EditView.js" />
     <Content Include="Scripts\apps\PageEditor\PageEditor.js" />
