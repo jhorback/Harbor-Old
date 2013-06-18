@@ -15,11 +15,11 @@ links.view("linksNewView", function (options, navLinksRepo) {
 	render: function () {
 		var selectEl;
 
-		this.bindTemplate("Comps-Links-New");
+		this.bindTemplate("Links-New");
 		selectEl = this.$("#navlinks-select");
 		this.navLinksRepo.getLinks().then(function (links) {
-			_.each(links, function (link) {
-				selectEl.append('<option value="' + link.id + '">' + link.name + '</option>');
+			links.each(function (link) {
+				selectEl.append('<option value="' + link.get("id") + '">' + link.get("name") + '</option>');
 			});
 		});
 
@@ -27,7 +27,19 @@ links.view("linksNewView", function (options, navLinksRepo) {
 
 	add: function () {
 		// navlinks-name
-		alert("add");
+		var navLinks,
+			id = parseInt(this.model.get("id"));
+
+		if (!id) {
+			return;
+		}
+		
+
+		this.navLinksRepo.getLinks().then(_.bind(function (links) {
+			this.model.set(links.findWhere({ id: id }).attributes);
+			// jch! here - need to save the model
+			// maybe just this.model.save()?
+		}, this));
 	},
 
 	create: function () {

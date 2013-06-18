@@ -1,17 +1,20 @@
 ﻿
-module("navLinks").service("navLinksRepo", function (collectionFactory) {
-
-	this.linksDfd = null;
-	this.collection = collectionFactory.create("navLinksCollection");
-	
-}, {
-	$inject: ["collectionFactory"],
-	
-	getLinks: function () {
-		if (this.linksDfd === null) {
-			this.linksDfd = this.collection.fetch();
-		}
+module("navLinks").service("navLinksRepo", ["collectionFactory", function (collectionFactory) {
+	var linksDfd = null,
 		
-		return this.linksDfd;
-	}
-});
+		collection = collectionFactory.create("navLinksCollection");
+	
+	return {
+		getLinks: function () {
+			if (linksDfd === null) {
+				linksDfd = $.Deferred();
+				collection.fetch().then(function () {
+					linksDfd.resolve(collection);
+				}).fail(linksDfd.fail);
+			}
+
+			return linksDfd;
+		}
+	};
+
+}]);
