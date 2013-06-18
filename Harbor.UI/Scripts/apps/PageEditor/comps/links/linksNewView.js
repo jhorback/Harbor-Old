@@ -1,11 +1,11 @@
 ﻿
-links.view("linksNewView", function (navLinksRepo) {
+links.view("linksNewView", function (options, navLinksRepo) {
 	
 	this.navLinksRepo = navLinksRepo;
 	
 }, {
 
-	$inject: ["navLinksRepo"],
+	$inject: ["options", "navLinksRepo"],
 	
 	events: {
 		"click #navlinks-add": "add",

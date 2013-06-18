@@ -61,6 +61,10 @@ bbext.construct("view", function () {
 		protoProps[name].constructor = function () {
 			var context = arguments[arguments.length - 1];
 
+			if (this.$inject && this.$inject[0] !== "options") {
+				console.warn("First argument is not options of : " + name);
+			}
+
 			// inject the constructor
 			if (this._ctor) {
 				context.call(this._ctor, arguments, this);
@@ -89,9 +93,17 @@ bbext.construct("model", function () {
 		protoProps.constructor = function () {
 			var context = arguments[arguments.length - 1];
 			
+			if (this.$inject && this.$inject[0] !== "options") {
+				console.warn("First argument is not options of : " + name);
+			}
+			
 			// inject the constructor
 			if (this._ctor) {
-				context.call(this._ctor, arguments, this);
+				if (context.call) {
+					context.call(this._ctor, arguments, this);
+				} else {
+					this._ctor.apply(this, arguments);
+				}
 			}
 
 			Backbone.Model.apply(this, arguments);
@@ -117,14 +129,16 @@ bbext.construct("collection", function () { // jch! document - note that the mod
 		protoProps.constructor = function () {
 			var context = arguments[arguments.length - 1];
 
+			if (this.$inject && this.$inject[0] !== "options") {
+				console.warn("First argument is not options of : " + name);
+			}
+			
 			// inject the constructor
 			if (this._ctor) {
 				context.call(this._ctor, arguments, this);
 			}
 			
-			debugger;
-			// jch! - test and document
-			this.model = context.get(this.model).constructor;
+			this.model = context.get(this.model, true); // true gets the raw value
 
 			Backbone.Collection.apply(this, arguments);
 			return this;

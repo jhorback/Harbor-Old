@@ -3,7 +3,6 @@ var text = module("text").use("pageComponent", "bbext");
 
 text.component("text", function (viewFactory) {
 	
-	debugger;
 	this.view = viewFactory.create("textView", {
 		el: this.$el,
 		model: this.model
