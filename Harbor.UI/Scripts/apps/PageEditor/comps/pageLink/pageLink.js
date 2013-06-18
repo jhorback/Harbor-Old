@@ -15,10 +15,6 @@ pageLink.component("pageLink", function (viewFactory) {
 	
     modelType: "pageLinkModel",
 
-    initialize: function () {
-        
-    },
-
 	create: function () {
 	    this.open();
 	    this.view.openPageSelector();
