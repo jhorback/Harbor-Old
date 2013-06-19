@@ -38,6 +38,26 @@ function on an interval to keep a web session alive.
 Stops the requests.
 
 
+### sessionTimeout
+Like keepAlive, sessionTimeout provides a strategy for dealing with a web session.
+This will call logout after a certain amount of user inactivity.
+The logoutUrl is requested via an ajax get and the screen is realoded so the browser can redirect
+to the appropriate screen.
+
+#### start
+`start(logoutUrl, keepAliveUrl, timeout)`
+
+* logoutUrl - The url to request to logout.
+* keepAliveUrl - A url to call to keep the session alive.
+* timeout - The session timeout in milliseconds.
+
+#### stop
+`extend()`
+Extends the session by the timeout value set in the start method.
+
+
+
+
 ### modelFactory
 Use to create instances of models.
 

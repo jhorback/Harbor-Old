@@ -81,7 +81,7 @@ bbext.construct("view", function () {
 
 
 bbext.construct("model", function () {
-	return function (construct) {
+	return function (construct, name) {
 		var Model, protoProps;
 		protoProps = construct.prototype;
 
@@ -117,7 +117,7 @@ bbext.construct("model", function () {
 
 
 bbext.construct("collection", function () {
-	return function (construct) {
+	return function (construct, name) {
 		var protoProps;
 		protoProps = construct.prototype;
 
