@@ -1,6 +1,9 @@
 ﻿/*
  * keepAlive.js
- *
+ * 
+ * keepAlive
+ *     start(url, timeout);
+ *     stop();
  */
 module("bbext").service("keepAlive", ["$", function ($) {
 
@@ -19,6 +22,7 @@ module("bbext").service("keepAlive", ["$", function ($) {
 				}, timeout);
 			}
 		},
+		
 		stop: function () {
 			clearTimeout(timeoutId);
 		}
