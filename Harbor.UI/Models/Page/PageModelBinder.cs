@@ -17,6 +17,10 @@ namespace Harbor.UI.Models.Page
 		public override object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
 		{
 			var pageID = Convert.ToInt32(controllerContext.RouteData.Values["pageID"]);
+			if (pageID == 0)
+			{
+				pageID = Convert.ToInt32(controllerContext.RequestContext.HttpContext.Request["pageID"]);
+			}
 			var page = PageRepository.FindById(pageID);
 			return page;
 		}

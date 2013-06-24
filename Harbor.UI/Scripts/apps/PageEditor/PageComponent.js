@@ -10,9 +10,9 @@
  *     defining this static method is useful for any live properties (on a page resource).
  */
 
-var pageComponent = module("pageComponent").use("appjs");
+var pageComponent = module("pageComponent").use("appjs", "appui");
 
-pageComponent.construct("component", ["console", function (console) {
+pageComponent.construct("component", ["console", "appurl", function (console, appurl) {
 
 	return function (construct) {
 
@@ -64,6 +64,17 @@ pageComponent.construct("component", ["console", function (console) {
 						this.setProperty(attrName, value);
 					}, this);
 				}, this);
+			},
+			
+			getHtml: function () {
+				/// <summary>Returns a deferred from a request of the component HTML from the server.</summary>
+				var url = appurl.get("page/" + this.type +
+					"?pageID=" + this.page.get("id") + "&uicid=" + this.uicid);
+				
+				return $.ajax({
+					url: url,
+					dataType: "html"
+				});
 			},
 
 			setProperty: function (name, value) {

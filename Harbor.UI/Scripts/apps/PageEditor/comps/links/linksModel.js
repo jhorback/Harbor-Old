@@ -3,11 +3,11 @@
 links.model("linksModel", {
 	
 	component: {
-		pageProperties: ["id"],
+		pageProperties: ["pageID"],
 
 		getDefaults: function (page, pageProperties) {
-			if (pageProperties.id) {
-				return _.pick(page.getNavLinks(pageProperties.id),
+			if (pageProperties.pageID) {
+				return _.pick(page.getNavLinks(pageProperties.pageID),
 					"name", "sections");
 			}
 			return {};
@@ -15,7 +15,7 @@ links.model("linksModel", {
 	},
 	
 	defaults: {
-		id: null,
+		pageID: null,
 		name: null,
 		sections: []
 	},

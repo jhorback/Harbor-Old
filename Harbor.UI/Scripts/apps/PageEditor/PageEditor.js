@@ -1,5 +1,5 @@
 ﻿
-app("pageEditor").use("links", "navLinks", "image", "pageLink", "text", "title");
+app("pageEditor").use("links", "navLinks", "image", "pageLink", "text", "title").use("appui");
 
 
 var PageEditor = new Application({
@@ -29,7 +29,6 @@ var PageEditor = new Application({
 	
 	getComponent: function (uicid) {
 		var comp = PageEditor.components[uicid],
-			compType,
 			type,
 			$el,
 			options;
@@ -39,7 +38,7 @@ var PageEditor = new Application({
 			type = $el.data("type");
 			
 			options = {
-				// type: compType, was I using this and why?
+				type: type, // used for the getHtml call
 				uicid: uicid,
 				$el: $el,
 				page: this.currentPage

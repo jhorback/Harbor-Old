@@ -1,6 +1,6 @@
 ﻿
 links.view("linksEditView", {
 	render: function () {
-		this.renderTemplate("Links-Edit");
+		this.renderTemplate("Links-Edit")();
 	}
 });
