@@ -6,7 +6,9 @@ namespace Harbor.UI.Models
 	{
 		public void Execute()
 		{
-			Mapper.CreateMap<Domain.Pages.Page, PageReferenceDto>();
+			Mapper.CreateMap<Domain.Pages.Page, PageReferenceDto>()
+				.ForMember(dest => dest.id, opt => opt.MapFrom(src => src.PageID))
+			;
 		}
 	}
 
@@ -23,5 +25,10 @@ namespace Harbor.UI.Models
 		public string previewImageID { get; set; }
 		public string previewText { get; set; }
 		public bool autoPreview { get; set; }
+
+		public static implicit operator PageReferenceDto(Domain.Pages.Page page)
+		{
+			return Mapper.Map<Domain.Pages.Page, PageReferenceDto>(page);
+		}
 	}
 }

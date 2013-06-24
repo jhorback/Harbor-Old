@@ -18,8 +18,9 @@ appjs.service("console", ["window", function (window) {
 	
 	log = function (type) {
 		return function () {
+			var args = Array.prototype.slice.call(arguments, 0);
 			type = console[type] ? type : "log";
-			console[type].apply(null, arguments);
+			console[type].apply(console, args);
 		};
 	};
 	

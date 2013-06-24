@@ -28,17 +28,17 @@ links.view("linksNewView", function (options, navLinksRepo) {
 	add: function () {
 		// navlinks-name
 		var navLinks,
-			id = parseInt(this.model.get("id"));
+			id = parseInt(this.model.get("pageID"));
 
 		if (!id) {
 			return;
 		}
 		
-
 		this.navLinksRepo.getLinks().then(_.bind(function (links) {
-			this.model.set(links.findWhere({ id: id }).attributes);
-			// jch! here - need to save the model
-			// maybe just this.model.save()?
+			var link = links.findWhere({ id: id });
+			this.model.set(link.attributes);
+			this.model.set("pageID", link.get("id"));
+			this.model.save();
 		}, this));
 	},
 

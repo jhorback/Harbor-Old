@@ -36,6 +36,7 @@ namespace Harbor.UI.Controllers
 		public PartialViewResult Links(Page page, string uicid)
 		{
 			var links = page.GetComponent<Links>(uicid);
+			ViewBag.Page = page;
 			if (links.IsNew())
 			{
 				return PartialView("Links-None");

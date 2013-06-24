@@ -216,6 +216,7 @@ pageModel.Page = Application.Model.extend({
 	
 	getNavLinks: function (navLinksID) {
 		var links = _.where(this.get("navLinks"), { id: parseInt(navLinksID) });
+		return (links.length === 1) ? links[0] : null;
 	}
 });
 

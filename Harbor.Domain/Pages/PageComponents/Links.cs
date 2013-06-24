@@ -64,8 +64,16 @@ namespace Harbor.Domain.Pages.PageComponents
 			{
 				yield break;
 			}
-
+			
 			yield return new LinksResource(Page, NavLinksID);
+
+			foreach (var section in Sections)
+			{
+				foreach (var link in section.Links)
+				{
+					yield return new PageLinkResource(Page, link);
+				}
+			}
 		}
 	}
 }
