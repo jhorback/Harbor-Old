@@ -1,19 +1,19 @@
 ﻿
 var links = module("links").use("pageComponent", "bbext");
+	
 
-
-links.component("links", function (viewFactory, appurl) {
+links.component("links", function (viewFactory) {
 
 	this.viewFactory = viewFactory;
-	this.appurl = appurl;
+	this.model.on("save", this.refresh, this);
 	
 }, {
-	$inject: ["viewFactory", "appurl"],
+	$inject: ["viewFactory"],
 	
 	modelType: "linksModel",
 	
 	create: function () {
-		this.getView().openPageSelector();
+		this.getView().render();
 	},
 
 	open: function () {
@@ -30,6 +30,7 @@ links.component("links", function (viewFactory, appurl) {
 				model: this.model,
 				uicid: this.uicid
 			});
+			
 		} else {
 			this.view = this.viewFactory.create("linksNewView", {
 				el: this.$el,
@@ -37,18 +38,16 @@ links.component("links", function (viewFactory, appurl) {
 				uicid: this.uicid
 			});
 		}
+		
 		return this.view;
 	},
 
 	close: function () {		
 		this.view.close();
-		this.renderViewMode();
 	},
 	
-	renderViewMode: function () {
-		var el = this.$el;
-		this.getHtml().then(function (response) {
-			el.empty().html(response);
-		});
+	refresh: function () {
+		this.replaceHtmlFromServer();
+		this.open();
 	}
 });

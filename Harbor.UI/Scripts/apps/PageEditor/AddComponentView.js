@@ -33,7 +33,7 @@ PageEditor.AddComponentView = Application.View.extend({
 			var components, selectEl;
 			
 			$el.html(result);
-			this.showDialog(new Dialog($el, {
+			self.showDialog(new Dialog($el, {
 				title: title,
 				modal: true
 			}));
@@ -50,8 +50,8 @@ PageEditor.AddComponentView = Application.View.extend({
 
 			model.viewModel.set("pageComponents", components);
 			model.viewModel.set("pageComponentKey", components[0].get("key"));
-			this.model = model;
-			this.bindModelToView(model.viewModel, $el);
+			self.model = model;
+			self.bindModelToView(model.viewModel, $el);
 		});
 	},
 	
