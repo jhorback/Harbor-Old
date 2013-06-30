@@ -66,14 +66,16 @@ pageComponent.construct("component", ["console", "appurl", function (console, ap
 				}, this);
 			},
 			
-			getHtml: function () {
-				/// <summary>Returns a deferred from a request of the component HTML from the server.</summary>
-				var url = appurl.get("page/" + this.type +
-					"?pageID=" + this.page.get("id") + "&uicid=" + this.uicid);
+			replaceHtmlFromServer: function () {
+				var el = this.$el,
+					url = appurl.get("page/" + this.type +
+						"?pageID=" + this.page.get("id") + "&uicid=" + this.uicid);
 				
-				return $.ajax({
+				$.ajax({
 					url: url,
 					dataType: "html"
+				}).then(function (response) {
+					el.empty().html(response);
 				});
 			},
 
