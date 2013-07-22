@@ -113,7 +113,7 @@
 			"text": "text",
 			"src": "string"
 		},
-		attributeTypes: {
+		attributeTypes: { // attributeBinders
 			"string": function (el, attr, value) {
 				el.attr(attr, value);
 			},
