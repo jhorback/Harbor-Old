@@ -44,7 +44,20 @@ links.view("linksNewView", function (options, navLinksRepo) {
 	},
 
 	create: function () {
-		// navlinks-select
-		alert("create");
+		var thisModel = this.model;
+		this.navLinksRepo.getLinks().then(_.bind(function (links) {
+			var name = this.model.get("name");
+			links.create({
+				name: name
+			}, {
+				success: function (model) {
+					thisModel.set("name", name);
+					thisModel.save().then(function () {
+						thisModel.trigger("save");
+					});
+				}
+			});
+		}, this));
+		
 	}
 });
