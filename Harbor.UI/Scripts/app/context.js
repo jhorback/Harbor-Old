@@ -12,7 +12,7 @@
  * Context methods:
  *     register(name, value, type) - registers an object with the container.
  *         - value can be any object or a constructor/factory function.
- *         - type can be object, function, construtor
+ *         - type can be object, function, constructor
  *         - object and constructor can be determined dynamically, function cannot.
  *
  *     get(name)
@@ -59,7 +59,7 @@ var context = (function () {
 				return reg.instance;
 			}
 
-			reg.type = "construtor";
+			reg.type = "constructor";
 			reg.instance = ioc.instantiate(request, reg.value, args);
 			return reg.instance;
 		},
@@ -123,7 +123,7 @@ var context = (function () {
 				registry: {},
 
 				register: function (name, value, type) {
-					// type can be object, function, construtor
+					// type can be object, function, constructor
 					// object and constructor can be determined dynamically, function cannot.
 					var reg, key;
 
