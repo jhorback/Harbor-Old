@@ -40,7 +40,7 @@ if (window.JSPM) {
 	JSPM.pkgSrc = Application.url("home/jspm");
 }
 
-var bbext = module("bbext").use("appjs");
+var bbext = module("bbext").use("appui");
 
 if (window.jQuery) {
 	bbext.register("$", jQuery, "function").register("_", _);

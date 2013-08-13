@@ -181,6 +181,7 @@ var module = (function (context) {
 			modvars.context.registry._name = name; // testing
 			if (isApp) {
 				modvars.context.register("context", modvars.context);
+				modvars.context.register("appName", name);
 			}
 			modvars.context.register("globals", _.globals);
 
@@ -281,7 +282,11 @@ var module = (function (context) {
 var app = (function () {
 
 	return function (appName) {
-		return module(appName, true);
+		return context.module(appName, true);
 	};
 
 }());
+
+
+context.app = app;
+context.module = module;

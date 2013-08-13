@@ -23,11 +23,12 @@ namespace Harbor.UI.JSPkgs
 			var appBundle = new ScriptBundle("~/Scripts/app.js")
 				.Include("~/Scripts/underscore.js")
 				.Include("~/Scripts/backbone.js")
-				.Include("~/Scripts/app/context.js")
-				.IncludeDirectory("~/Scripts/app", "*.js", searchSubdirectories: true)
+				.Include("~/Scripts/contextjs/context.js")
+				.Include("~/Scripts/contextjs/app.js")
+				.Include("~/Scripts/Apps/appShim.js")
+				.IncludeDirectory("~/Scripts/appui", "*.js", searchSubdirectories: true)
 				.IncludeDirectory("~/Scripts/bbext", "*.js", searchSubdirectories: true)
-				.IncludeDirectory("~/Scripts/app/appui", "*.js", searchSubdirectories: true)
-				.Include("~/Scripts/Apps/AjaxRequestDefaultHandler.js");
+				.Include("~/Scripts/apps/AjaxRequestDefaultHandler.js");
 			appBundle.Orderer = new AppBundleOrderer();
 			return appBundle;
 		}

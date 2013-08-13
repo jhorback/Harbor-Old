@@ -17,7 +17,7 @@ var counter = 0,
 test("That console has all expected methods.", function () {
 	expect(3);
 	
-	var testApp = app(unique()).use("appjs");
+	var testApp = app(unique()).use("appui");
 	testApp.start(function (console) {
 		ok(console.log instanceof Function);
 		ok(console.warn instanceof Function);
@@ -31,7 +31,7 @@ test("A call to console.log logs a message.", function () {
 	
 	var expectedMsg = "Testing console.log";
 	var loggedMsg = null;
-	var testApp = app(unique()).use("appjs");
+	var testApp = app(unique()).use("appui");
 	
 	testApp.register("window", function () {
 		return {

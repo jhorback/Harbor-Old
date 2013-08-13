@@ -421,29 +421,31 @@
       <DependentUpon>theme.scss</DependentUpon>
     </Content>
     <Content Include="Global.asax" />
+    <Content Include="Scripts\apps\appShim.js" />
     <Content Include="Scripts\apps\PageEditor\comps\links\linksEditView.js" />
     <Content Include="Scripts\apps\PageEditor\comps\links\linksModel.js" />
     <Content Include="Scripts\apps\PageEditor\comps\links\linksNewView.js" />
     <Content Include="Scripts\apps\PageEditor\navLinks\navlinksModel.js" />
     <Content Include="Scripts\apps\PageEditor\navLinks\navLinksRepo.js" />
-    <Content Include="Scripts\app\appjs\globalCache.js" />
-    <Content Include="Scripts\app\appui\appui.js" />
+    <Content Include="Scripts\appui\globalCache.js" />
+    <Content Include="Scripts\appui\appui.js" />
+    <Content Include="Scripts\appui\shim.js" />
     <Content Include="Scripts\bbext\app\appEvents.js" />
     <Content Include="Scripts\bbext\app\keepAlive.js" />
     <Content Include="Scripts\bbext\model\eventBinder.js" />
     <Content Include="Scripts\bbext\temp\AjaxRequest.js" />
     <Content Include="Scripts\bbext\temp\Application.js" />
-    <Content Include="Scripts\app\appjs\JSPM.js" />
+    <Content Include="Scripts\bbext\temp\JSPM.js" />
     <Content Include="Scripts\bbext\model\BackupModelExtension.js" />
     <Content Include="Scripts\bbext\temp\Controller.js" />
-    <Content Include="Scripts\app\appui\Selectable.js" />
+    <Content Include="Scripts\appui\Selectable.js" />
     <Content Include="Scripts\bbext\view\CloseViewExtension.js" />
-    <Content Include="Scripts\app\appui\Dialog.js" />
+    <Content Include="Scripts\appui\Dialog.js" />
     <Content Include="Scripts\bbext\app\factories.js" />
     <Content Include="Scripts\bbext\view\FormErrorHandler.js" />
     <Content Include="Scripts\bbext\model\GetSetModelExtension.js" />
     <Content Include="Scripts\bbext\view\JstViewExtension.js" />
-    <Content Include="Scripts\app\appui\Menu.js" />
+    <Content Include="Scripts\appui\Menu.js" />
     <Content Include="Scripts\bbext\view\ModelBinder.js" />
     <Content Include="Scripts\bbext\model\ModelErrors.js" />
     <Content Include="Scripts\bbext\temp\Region.js" />
@@ -506,8 +508,7 @@
     <Content Include="Scripts\apps\UserAdmin\UserAdmin.js" />
     <Content Include="Scripts\apps\UserAdmin\UserAdminModels.js" />
     <Content Include="Scripts\apps\UserAdmin\UserListItemView.js" />
-    <Content Include="Scripts\app\appjs\browser.js" />
-    <Content Include="Scripts\app\appjs\http.js" />
+    <Content Include="Scripts\appui\browser.js" />
     <Content Include="Scripts\backbone.js" />
     <Content Include="Scripts\backbone.min.js" />
     <Content Include="Scripts\dropzone.js" />
@@ -526,8 +527,8 @@
     <Content Include="Scripts\jquery.ui.widget.js" />
     <Content Include="Scripts\json2.js" />
     <Content Include="Scripts\json2.min.js" />
-    <Content Include="Scripts\app\context.js" />
-    <Content Include="Scripts\app\app.js" />
+    <Content Include="Scripts\contextjs\context.js" />
+    <Content Include="Scripts\contextjs\app.js" />
     <Content Include="Scripts\modernizr-2.6.2-custom.js" />
     <Content Include="Scripts\Prettify\prettify.js" />
     <Content Include="Scripts\qunit.js" />
@@ -584,10 +585,9 @@
     <Content Include="Views\Home\ApplicationJsApi.cshtml" />
     <Content Include="Views\Page\Links-None.cshtml" />
     <Content Include="Views\Page\Links-Edit.cshtml" />
-    <Content Include="Scripts\app\Readme.md" />
+    <Content Include="Scripts\contextjs\Readme.md" />
     <Content Include="Scripts\bbext\_bbext.cshtml" />
-    <Content Include="Scripts\app\appjs\Readme.md" />
-    <Content Include="Scripts\app\appui\Readme.md" />
+    <Content Include="Scripts\appui\Readme.md" />
     <Content Include="Scripts\bbext\Readme.md" />
   </ItemGroup>
   <ItemGroup>

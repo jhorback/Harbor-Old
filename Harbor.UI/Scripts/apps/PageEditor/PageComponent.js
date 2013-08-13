@@ -10,7 +10,7 @@
  *     defining this static method is useful for any live properties (on a page resource).
  */
 
-var pageComponent = module("pageComponent").use("appjs", "appui");
+var pageComponent = module("pageComponent").use("appui");
 
 pageComponent.construct("component", ["console", "appurl", function (console, appurl) {
 
