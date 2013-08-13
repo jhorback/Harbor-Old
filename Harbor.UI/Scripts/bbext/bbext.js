@@ -50,6 +50,8 @@ bbext.construct("view", function () {
 	return function (construct, name) {
 		var View, protoProps = {};
 
+		protoProps.name = name;
+
 		// using the name here to ease debugging (can see the view being created).
 		protoProps[name] = construct.prototype;
 
