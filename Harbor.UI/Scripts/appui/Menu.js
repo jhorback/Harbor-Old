@@ -56,6 +56,7 @@
 			}, 0);
 
 			this.render().show();
+			this.menuEl.find("[data-rel=back]").click(_.bind(this.close, this));
 		},
 
 		render: function () {
@@ -90,7 +91,7 @@
 				if (dcCss.top !== undefined || dcCss.left !== undefined) {
 					menu.css(dcCss);
 				}
-				
+
 				// ensure the elements width for ie 9+
 				el.width(el.children().eq(0).width());
 			}, 0);
@@ -98,6 +99,7 @@
 
 		show: function () {
 			this._transition(this.menuEl, true);
+			return this;
 		},
 
 		_transition: function (el, show, callback) {
@@ -150,9 +152,10 @@
 	Menu.template = '' +
 		'<div class="menu">' +
 		'	<div class="menu-content"><!--menu element is placed here--></div>' +
+		'	<div data-rel="back" title="close" class="menu-close">&times;</div>' +
 		'</div>';
 
 	window.Menu = Menu;
 
 
-} (jQuery));
+}(jQuery));

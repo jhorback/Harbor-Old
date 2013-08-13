@@ -1,4 +1,6 @@
-﻿var appui = module("appui");
+﻿
+
+var appui = context.module("appui").use("Underscore", "jQuery");
 
 
 appui.service("appurl", ["baseUrl", function (baseUrl) {

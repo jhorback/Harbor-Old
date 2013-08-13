@@ -1,13 +1,13 @@
 ﻿
-var appjs = module("appjs");
+var appui = context.module("appui");
 
 
-appjs.register("window", function () {
+appui.register("window", function () {
 	return window;
 });
 
 
-appjs.service("console", ["window", function (window) {
+appui.service("console", ["window", function (window) {
 	var console, log;
 
 	console = window.console || {
