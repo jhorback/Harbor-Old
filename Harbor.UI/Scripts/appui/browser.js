@@ -8,9 +8,9 @@ appui.register("window", function () {
 
 
 appui.service("console", ["window", function (window) {
-	var console, log;
+	var console, winConsole, log;
 
-	console = window.console || {
+	winConsole = window.console || {
 		log: function () {
 			window.alert(Array.prototype.slice.call(arguments, 0).join("\n"));
 		}
@@ -18,15 +18,25 @@ appui.service("console", ["window", function (window) {
 	
 	log = function (type) {
 		return function () {
-			var args = Array.prototype.slice.call(arguments, 0);
-			type = console[type] ? type : "log";
-			console[type].apply(console, args);
+			var args = Array.prototype.slice.call(arguments, 0),
+			    consoleMethod;
+			
+			type = winConsole[type] ? type : "log";
+			consoleMethod = winConsole[type];
+			consoleMethod.apply ? consoleMethod.apply(winConsole, args) : consoleMethod(args);
 		};
 	};
 	
-	return {
+	console = {
 		log: log("log"),
 		warn: log("warn"),
-		error: log("error")
+		error: log("error"),
+		trace: trace
 	};
+
+	return console;
+	
+	function trace() {
+		winConsole.trace ? winConsole.trace() : console.log("Client has no console.trace");
+	}
 }]);

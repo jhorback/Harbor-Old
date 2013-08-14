@@ -427,6 +427,7 @@
     <Content Include="Scripts\apps\PageEditor\comps\links\linksNewView.js" />
     <Content Include="Scripts\apps\PageEditor\navLinks\navlinksModel.js" />
     <Content Include="Scripts\apps\PageEditor\navLinks\navLinksRepo.js" />
+    <Content Include="Scripts\appui\deprecate.js" />
     <Content Include="Scripts\appui\globalCache.js" />
     <Content Include="Scripts\appui\appui.js" />
     <Content Include="Scripts\appui\shim.js" />
@@ -438,6 +439,7 @@
     <Content Include="Scripts\bbext\binders\eventBinder.js" />
     <Content Include="Scripts\bbext\modelExt\model.js" />
     <Content Include="Scripts\bbext\modelExt\validators.js" />
+    <Content Include="Scripts\bbext\sessionTimeout.js" />
     <Content Include="Scripts\bbext\temp\AjaxRequest.js" />
     <Content Include="Scripts\bbext\temp\Application.js" />
     <Content Include="Scripts\bbext\temp\JSPM.js" />

@@ -20,7 +20,7 @@
 *                              el is an optional argument that will add the result of the template to the dom node. 
 *                              this.$el will be used if exists and el is not passed.
 */
-context.module("bbext").service("jstViewExtension", ["$", "_", function ($, _) {
+context.module("bbext").service("jstViewExtension", ["$", "_", "deprecate", function ($, _, deprecate) {
 
 	var extension, jstViewExtension;
 
@@ -30,11 +30,15 @@ context.module("bbext").service("jstViewExtension", ["$", "_", function ($, _) {
 
 	extension = {
 		renderTemplate: function (template) {
+			deprecate.log("jstViewExtension.extension.renderTemplate");
+
 			return this.template(template, this.$el);
 		},
 
 		template: function (template, el) {
 			/// <summary>Executes the template and returns the result.</summary>
+			deprecate.log("jstViewExtension.extension.template");
+
 			var templateHtml,
 				templateFn = jstViewExtension.templates[template];
 
@@ -60,6 +64,8 @@ context.module("bbext").service("jstViewExtension", ["$", "_", function ($, _) {
 
 		// jch* - remove this when converting the old view extension
 		JST: function (template, model) {
+			deprecate.log("jstViewExtension.extension.JST");
+
 			/// <summary>Returns a promise containing the html fragment result from the template rendering.</summary>
 			var dfd = $.Deferred(),
 				dfds = [],
@@ -99,6 +105,8 @@ context.module("bbext").service("jstViewExtension", ["$", "_", function ($, _) {
 	jstViewExtension = {
 		templates: {},
 		extend: function (instance) {
+			deprecate.log("jstViewExtension.extend");
+
 			_.extend(instance, extension);
 		}
 	};
