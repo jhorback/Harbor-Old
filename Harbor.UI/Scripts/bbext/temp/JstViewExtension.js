@@ -20,9 +20,9 @@
 *                              el is an optional argument that will add the result of the template to the dom node. 
 *                              this.$el will be used if exists and el is not passed.
 */
-(function ($, _) {
+context.module("bbext").service("jstViewExtension", ["$", "_", function ($, _) {
 
-	var extension;
+	var extension, jstViewExtension;
 
 	// set the template parsing to {{value}} instead of <%= value %>
 	_.templateSettings = { interpolate: /\{\{(.+?)\}\}/g };
@@ -36,7 +36,7 @@
 		template: function (template, el) {
 			/// <summary>Executes the template and returns the result.</summary>
 			var templateHtml,
-				templateFn = JstViewExtension.templates[template];
+				templateFn = jstViewExtension.templates[template];
 
 			if (!templateFn) {
 				templateHtml = $("#" + template).html();
@@ -47,7 +47,7 @@
 					}
 				}
 				templateFn = _.template(templateHtml);
-				JstViewExtension.templates[template] = templateFn;
+				jstViewExtension.templates[template] = templateFn;
 			}
 
 			if (el) {
@@ -96,11 +96,12 @@
 		}
 	};
 
-	window.JstViewExtension = {
+	jstViewExtension = {
 		templates: {},
 		extend: function (instance) {
 			_.extend(instance, extension);
 		}
 	};
 
-}(jQuery, _));
+	return jstViewExtension;
+}]);

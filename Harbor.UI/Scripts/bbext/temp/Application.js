@@ -61,13 +61,13 @@ Application.url = function (url) {
 
 if (window.Application) {
 	context.app("Application").use("bbext").start([
-		"bbext.closeViewExt", "bbext.backupModelExt", "bbext.getSetModelExt", "bbext.validationModelExt",
-		function (closeViewExt, backupModelExt, getSetModelExt, validationModelExt) {
+		"jstViewExtension", "bbext.closeViewExt", "bbext.backupModelExt", "bbext.getSetModelExt", "bbext.validationModelExt",
+		function (jstViewExtension, closeViewExt, backupModelExt, getSetModelExt, validationModelExt) {
 		
 		// create the application view with all view extensions
 		Application.View = Backbone.View.extend({});
 		ModelBinder.extend(Application.View.prototype);
-		JstViewExtension.extend(Application.View.prototype);
+		jstViewExtension.extend(Application.View.prototype);
 		closeViewExt.extend(Application.View.prototype);
 		FormErrorHandler.extend(Application.View.prototype);
 

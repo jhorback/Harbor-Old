@@ -53,16 +53,12 @@ PageEditor.ChangeLayoutView = Application.View.extend({
 	}
 });
 
-PageEditor.ChangeLayoutViewModel = Backbone.Model.extend({
+PageEditor.ChangeLayoutViewModel = Application.Model.extend({
 	defaults: {
 		colClassName: "col1",
 		clear: true,
 		clearDisabled: true,
 		contentPositionClassName: "text-left"
-	},
-	
-	initialize: function () {
-		GetSetModelExtension.extend(this);
 	},
 	
 	clearDisabled: {
