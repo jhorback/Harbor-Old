@@ -57,3 +57,37 @@ Application.url = function (url) {
 	/// <summary>Adds the base url to the url (including the '/'). Session.url() will go home.</summary>
 	return (window.baseUrl || "") + (url || "");
 };
+
+
+if (window.Application) {
+	context.app("Application").use("bbext").start([
+		"bbext.closeViewExt", "bbext.backupModelExt", "bbext.getSetModelExt", "bbext.validationModelExt",
+		function (closeViewExt, backupModelExt, getSetModelExt, validationModelExt) {
+		
+		// create the application view with all view extensions
+		Application.View = Backbone.View.extend({});
+		ModelBinder.extend(Application.View.prototype);
+		JstViewExtension.extend(Application.View.prototype);
+		closeViewExt.extend(Application.View.prototype);
+		FormErrorHandler.extend(Application.View.prototype);
+
+		// create the application model with all model extensions
+		Application.Model = Backbone.Model.extend({});
+		backupModelExt.extend(Application.Model.prototype);
+		getSetModelExt.extend(Application.Model.prototype);
+		validationModelExt.extend(Application.Model.prototype);
+			
+	}]).start();
+}
+
+
+
+// jch* - figure the best way to inject this
+/*
+Module: harborConfig?
+baseUrl wold be an injected property
+baseUrl could be a service?
+*/
+if (window.JSPM) {
+	JSPM.pkgSrc = Application.url("home/jspm");
+}

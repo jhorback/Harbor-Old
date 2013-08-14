@@ -43,7 +43,7 @@
 			}
 		});
 
-		this.showView(Session.Menu(this.$el, {
+		this.showView(new Menu(this.$el, {
 			transition: "fade",
 			anchor: "#profile-link"
 		}));

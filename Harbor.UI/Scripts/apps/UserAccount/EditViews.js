@@ -4,7 +4,6 @@ UserAccount.BaseEditView = Application.View.extend({
     dialog: null,
 
     initialize: function () {
-        BackupModelExtension.extend(this.model); // jch! - remove when UserModel is converted
 		_.bindAll(this, "saveModel", "close");
 		this.$el.bind("close", this.close);
 		this.model.store();
@@ -35,7 +34,7 @@ UserAccount.BaseEditView = Application.View.extend({
 			return;
 		}
 
-		Session.AjaxRequest.handle(this.model.save(), {
+		AjaxRequest.handle(this.model.save(), {
 			success: function () {
 				this.options.onSuccess && this.options.onSuccess.apply(this, arguments);
 				this.model.store();

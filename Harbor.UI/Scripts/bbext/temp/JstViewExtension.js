@@ -29,19 +29,6 @@
 
 
 	extension = {
-		render: function () {
-			var templateId = this.name;
-			if (!templateId) {
-				throw new Error("Render was called without a name property on the view.");
-			}
-
-			// jch* until appjs is migrated to, add shim and render functionality here
-			this.$el.data("view", this);
-			this.bindTemplate(templateId, this.$el, this.model);
-			// eventBinder.render(this.$el, this.model);
-			return this;
-		},
-		
 		renderTemplate: function (template) {
 			return this.template(template, this.$el);
 		},

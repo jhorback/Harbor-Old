@@ -1,6 +1,6 @@
 ﻿
 
-module("bbext").register("eventBinder", ["$", function ($) {
+context.module("bbext").register("eventBinder", ["$", function ($) {
 
 
 	return {

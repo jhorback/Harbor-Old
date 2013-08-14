@@ -47,7 +47,7 @@ PageAdder.AddPageView = Application.View.extend({
 	    };
 		this.template("PageAdder-AddPage", this.$el)(model);
 
-		view = new Session.Dialog(this.$el, {
+		view = new Dialog(this.$el, {
 		    title: "Add a page",
 		    modal: true,
 		    transition: "fade"
@@ -70,7 +70,7 @@ PageAdder.AddPageView = Application.View.extend({
 			return;
 		}
 
-		Session.AjaxRequest.handle(this.model.save(), {
+		AjaxRequest.handle(this.model.save(), {
 		    clientError: function (response) {
 				self.displayErrors(response.errors);
 			},
