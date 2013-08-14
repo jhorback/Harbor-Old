@@ -52,8 +52,6 @@ context.module("bbext").service("bbext.validationModelExt", [
 function (_, validators) {
 	var onModelChange, validateProperty, valAppExt, validationModelExt;
 
-	console.log("bbext", this);
-
 	onModelChange = function (model) {
 		_.each(model.changed, function (hasChanged, propertyName) {
 			if (hasChanged) {
