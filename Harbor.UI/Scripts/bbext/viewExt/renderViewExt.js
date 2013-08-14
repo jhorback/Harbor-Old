@@ -16,7 +16,9 @@
 
 
  */
-var renderViewExtension = (function (_, shims, templateCache) {
+context.module("bbext").service("bbext.renderViewExtension", [
+	"_", "$", "shims", "templateCache",
+function (_, $, shims, templateCache) {
 	"use strict";
 	
 	/*
@@ -36,11 +38,17 @@ var renderViewExtension = (function (_, shims, templateCache) {
 
 	var extension = {
 		render: function () {
+			debugger;
+
 			var model = this.model || this.collection,
-				templateFn = templateCache.getTemplateFor(this.name);
+			    templateFn = templateCache.getTemplateFor(this.name),
+			    el = $(templateFn(model.toJSON()));
+			
 
 			// set the element since the template contains the root
-			this.setElement(templateFn(model.toJSON()));
+			this.$el.replaceWith(el);
+			this.setElement(el);
+			
 			
 			// add the view to the $el.data
 			this.$el.data("view", this);
@@ -60,10 +68,4 @@ var renderViewExtension = (function (_, shims, templateCache) {
 		}
 	};
 
-});
-
-
-context && context.module("bbext").service("bbext.renderViewExtension", [
-	"_", "shims", "templateCache",
-	renderViewExtension
-]);
+}]);
