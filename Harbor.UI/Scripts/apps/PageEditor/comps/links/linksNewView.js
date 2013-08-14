@@ -1,5 +1,5 @@
 ﻿
-links.view("linksNewView", function (options, navLinksRepo) {
+links.view("linksNewView", function (options, navLinksRepo) { // jch! - bindTemplate update
 	
 	this.navLinksRepo = navLinksRepo;
 	
@@ -11,12 +11,9 @@ links.view("linksNewView", function (options, navLinksRepo) {
 		"click #navlinks-add": "add",
 		"click #navlinks-create": "create"
 	},
-
-	render: function () {
-		var selectEl;
-
-		this.bindTemplate("Links-New");
-		selectEl = this.$("#navlinks-select");
+	
+	onRender: function () {
+		var selectEl = this.$("#navlinks-select");
 		this.navLinksRepo.getLinks().then(function (links) {
 			links.each(function (link) {
 				selectEl.append('<option value="' + link.get("id") + '">' + link.get("name") + '</option>');
@@ -25,6 +22,8 @@ links.view("linksNewView", function (options, navLinksRepo) {
 	},
 
 	add: function () {
+		alert("add!!!");
+		return;
 		var id = parseInt(this.model.get("pageID")),
 			model = this.model;
 

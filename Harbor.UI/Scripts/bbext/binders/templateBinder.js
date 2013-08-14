@@ -4,7 +4,7 @@
 // allows for the model properties on the view to
 //     be a callback or a promise or a callback that returns a promise
 // waits for the promise then calls render on the view.
-context.module("bbext").register("viewRenderer", 
+context.module("bbext").service("viewRenderer", 
 	["viewFactory", "$",
 function (viewFactory, $) {
 	
@@ -41,7 +41,7 @@ function (viewFactory, $) {
 // templateRenderer
 // caches the template, uses the viewRenderer to create and render the view
 // appends the view el to the templates parent
-context.module("bbext").register("templateRenderer",
+context.module("bbext").service("templateRenderer",
 	["templateCache", "viewFactory",
 function (templateCache, viewRenderer) {
 
@@ -62,7 +62,7 @@ function (templateCache, viewRenderer) {
 
 // templateCache
 // compiles caches and returns templates by view name
-context.module("bbext").register("templateCache",
+context.module("bbext").service("templateCache",
 	["$", "_",
 function ($, _) {
 
@@ -75,7 +75,8 @@ function ($, _) {
 	return {
 		cacheTemplateFor: function (name, templateEl) {
 			var html = $('<script/>').append(templateEl).html(),
-				templateFn = _.template(html);
+			    strHtml = String(html).replace(/data-templatefor/i, "data-templatefrom"),
+				templateFn = _.template(strHtml);
 			
 			templates[name] = templateFn;
 			return templateFn;

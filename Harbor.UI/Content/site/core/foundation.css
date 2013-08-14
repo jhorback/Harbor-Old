@@ -215,7 +215,7 @@ p {
 .margin-bottom {
   margin-bottom: 1em; }
 
-[data-template] {
+[data-template], [data-templatefor] {
   display: none !important; }
 
 h1, h2, h3, h4, h5, h6 {

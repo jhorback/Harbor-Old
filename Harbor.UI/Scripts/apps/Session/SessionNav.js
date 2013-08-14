@@ -20,7 +20,7 @@
 
 		"click #profile-link": function (event) {
 			event.preventDefault();
-			this.showView("userMenu", new Session.UserMenu());
+			this.showView(new Session.UserMenu());
 		}
 	},
 

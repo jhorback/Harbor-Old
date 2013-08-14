@@ -6,7 +6,7 @@ module("appui").service("deprecate", ["console", function (console) {
 			
 		log: function (msg) {
 			if (!this.mute) {
-				//msg = msg ? msg : "";
+				msg = msg ? msg : "";
 				console.warn("Method has been deprecated.", msg);
 				console.trace();
 			}
