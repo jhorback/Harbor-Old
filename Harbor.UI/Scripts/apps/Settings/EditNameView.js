@@ -39,7 +39,7 @@
 			return;
 		}
 
-		Session.AjaxRequest.handle(this.model.save(), {
+		AjaxRequest.handle(this.model.save(), {
 			success: function () {
 				var name = this.model.get("applicationName"),
 					title = document.title;

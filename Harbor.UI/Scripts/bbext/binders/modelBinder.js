@@ -25,6 +25,8 @@
  *     
  * ModelBinder.config:
  *     Type and attribute processing can be configured.
+	
+		// eventFromDom, getFromDom, setToDom
  *     ModelBinder.config.types["foo"] = {
  *         event: "click",               // additional dom event(s) to listen on the element to update the model
  *         get: function (el, event, binding) { },       // a method to get the value out of the dom for the model
@@ -45,8 +47,8 @@
 		modelGet: "get",
 		modelSet: "set",
 		types: {
-//			"text": { event: "keyup" },
-//			"textarea": { event: "keyup" },
+			//			"text": { event: "keyup" },
+			//			"textarea": { event: "keyup" },
 			"checkbox": {
 				get: function (el) {
 					return el.is(":checked");
@@ -200,11 +202,11 @@
 		},
 
 		_getChangeEvent: function (el, type) {
-		    var configEv = config.types[type],
+			var configEv = config.types[type],
 		        event = (configEv && configEv.event) || "change",
 				attrEv = el.attr("data-bind-event"); // event override in markup
-		    event = attrEv || event;
-		    return _.isArray(event) ? event : [event];
+			event = attrEv || event;
+			return _.isArray(event) ? event : [event];
 		},
 
 		_initAttrBindings: function () {
@@ -231,7 +233,7 @@
 
 			}, this));
 		},
-		
+
 		_updateFromView: function () {
 			/// <summary>Used to capture autofill values that do not trigger a change event.</summary>
 			var self = this;
@@ -254,13 +256,13 @@
 		_viewToModelFromEvent: function (event) {
 			this._viewToModel($(event.target), event);
 		},
-		
+
 		_viewToModel: function (el, event) {
 			var binding = el.data("binding"),
 				get,
 				val,
 				opts;
-			
+
 			if (!binding) {
 				return;
 			}
@@ -282,13 +284,13 @@
 
 			_.each(model.changed, function (value, key) {
 				name = key;
-			    els = this.bindings[name];
-			    if (els) {
-				    newVal = model.get(name);
-				    $.each(els, $.proxy(function (index, el) {
-					    this.updateEl(el, name, newVal);
-				    }, this));
-			    }
+				els = this.bindings[name];
+				if (els) {
+					newVal = model.get(name);
+					$.each(els, $.proxy(function (index, el) {
+						this.updateEl(el, name, newVal);
+					}, this));
+				}
 			}, this);
 		},
 
@@ -332,7 +334,7 @@
 			this.model.unbind("change", this._modelToViewProxy);
 			this.$el.data("modelbound", false);
 		},
-		
+
 		off: function () {
 			this.unbind();
 		}
@@ -353,13 +355,13 @@
 			bindModelToView: function (model, el) {
 				var binder,
 					listeners = this._listeners || (this._listeners = {});
-				
+
 				el = el || this.$el;
 				model = model || this.model || this.collection;
 				binder = new ModelBinder(model, el);
 				listeners[_.uniqueId("ModelBinder")] = binder;
 			},
-			
+
 			bindTemplate: function (template, el, model) {
 				el = el || this.$el;
 				model = model || this.model;
@@ -369,4 +371,22 @@
 		});
 	};
 
-} (jQuery));
+
+}(jQuery));
+
+
+
+context.module("bbext").shim("modelBinder", ["_", function (_) {
+
+	this._ = _;
+
+}], {
+	render: function (el, model) {
+		var binder,
+		    view = el.data("view"),
+			listeners = view._listeners || (view._listeners = {}); // Backbone
+
+		binder = new ModelBinder(model, el);
+		listeners[this._.uniqueId("modelBinder")] = binder;
+	}
+});

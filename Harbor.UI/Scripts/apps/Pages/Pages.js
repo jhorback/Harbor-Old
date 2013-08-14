@@ -9,7 +9,7 @@
 			Pages.pages = new pageModel.Pages();
 			Pages.pageTypes = new pageModel.PageTypes();
 
-			Session.AjaxRequest.handle(Pages.pageTypes.fetch());
+			AjaxRequest.handle(Pages.pageTypes.fetch());
 
 			fetchPages = Pages.pages.fetch({
 				data: {
@@ -18,7 +18,7 @@
 				}
 			});
 			
-			Session.AjaxRequest.handle(fetchPages).then(function () {
+			AjaxRequest.handle(fetchPages).then(function () {
 				
 				var mainView = new Pages.MainView({
 					el: $("#frame-body")

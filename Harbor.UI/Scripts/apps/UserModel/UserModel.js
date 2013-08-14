@@ -39,7 +39,7 @@
 
 		pw = this.get("password");
 		cpw = this.get("confirmPassword");
-		errors = new Session.ModelErrors();
+		errors = modelErrors.create();
 		if (pw !== cpw) {
 			errors.add("The passwords do not match.");
 		}
@@ -100,7 +100,7 @@
 	displayEmail: {
 		get: function (currentValue) {
 			var email = this.get("email");
-			return Session.ValidationModelExtension.isNullOrEmpty(email) ? "(not set)" : email;
+			return !email || !$.trim(email) ? "(not set)" : email;
 		},
 //		set: function (value) {
 //			debugger;

@@ -4,7 +4,7 @@
 header, content, and aside components have a uicid, key.
 content has a classNames property.
 */
-pageModel.Template = Backbone.Model.extend({
+pageModel.Template = Application.Model.extend({
 	defaults: {
 		pageID: null,
 		pageTypeKey: null,
@@ -16,10 +16,6 @@ pageModel.Template = Backbone.Model.extend({
 		content: [],
 		aside: [],
 		componentCounter: 0
-	},
-
-	initialize: function () {
-		GetSetModelExtension.extend(this);
 	},
 
 	layoutIsCenteredDisabled: {

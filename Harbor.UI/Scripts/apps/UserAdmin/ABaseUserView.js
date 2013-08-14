@@ -33,7 +33,7 @@
 			return;
 		}
 
-		Session.AjaxRequest.handle(this.model.save(), {
+		AjaxRequest.handle(this.model.save(), {
 			success: function () {
 				this.model.store();
 				this.options.onSuccess && this.options.onSuccess.apply(this, arguments);				

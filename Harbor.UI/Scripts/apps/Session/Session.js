@@ -1,18 +1,5 @@
 ﻿(function () {
 	var Session = {
-		AjaxRequest: window.AjaxRequest,
-		Controller: window.Controller,
-		// for views
-		ViewExtension: window.ViewExtension,
-		ModelBinder: window.ModelBinder,
-		FormErrorHandler: window.FormErrorHandler,
-		Dialog: window.Dialog,
-		Menu: window.Menu,	
-		// for models
-		GetSetModelExtension: window.GetSetModelExtension,
-		BackupModelExtension: window.BackupModelExtension,
-		ValidationModelExtension: window.ValidationModelExtension,
-		ModelErrors: window.ModelErrors,
 		
 		currentUser: null,
 
@@ -58,7 +45,7 @@
 
 		signIn: function (signInModel, handler, handlerProxy) {
 			/// <summary>Executes the sign in ajax request.</summary>
-			var request = Session.AjaxRequest({
+			var request = AjaxRequest({
 				url: Session.url("User/SignIn"),
 				data: signInModel,
 				type: "POST"
@@ -82,7 +69,7 @@
 
 		signOut: function (handler) {
 			/// <summary>Executes the sign out ajax request.</summary>
-			return Session.AjaxRequest({
+			return AjaxRequest({
 				url: Session.url("User/SignOut")
 			}).execute(handler);
 		}

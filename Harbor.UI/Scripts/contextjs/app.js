@@ -29,6 +29,9 @@
  *     app.start()
  *          - calling start without arguments 'starts' the app bootstrapping process.
  *
+ *     app.call(fn)
+ *           - allows any function to be injected with app dependencies
+ *
  * Available services:
  *     context - the ioc container for the app
  *     globals - a global cache shared accross apps.

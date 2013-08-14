@@ -7,7 +7,7 @@ Settings.MainView = Application.View.extend({
 	
 	events: {
 		"change [name=showSignInLink]": function () {
-			Session.AjaxRequest.handle(this.model.save());
+			AjaxRequest.handle(this.model.save());
 		},
 
 		"click .editable": function (event) {

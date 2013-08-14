@@ -1,12 +1,13 @@
 ﻿
 var appui = context.module("appui");
 
+
 appui.construct("shim", ["shims", function (shims) {
 
 	return function (construct, name) {
 
 		shims.register(name, construct);
-		if (!construct.render) {
+		if (!construct.prototype.render) {
 			throw new Error("A shim must implement render");
 		}
 		return construct;

@@ -27,6 +27,7 @@ namespace Harbor.UI.JSPkgs
 				.Include("~/Scripts/contextjs/app.js")
 				.Include("~/Scripts/Apps/appShim.js")
 				.IncludeDirectory("~/Scripts/appui", "*.js", searchSubdirectories: true)
+				.Include("~/Scripts/bbext/bbext.js")
 				.IncludeDirectory("~/Scripts/bbext", "*.js", searchSubdirectories: true)
 				.Include("~/Scripts/apps/AjaxRequestDefaultHandler.js");
 			appBundle.Orderer = new AppBundleOrderer();
@@ -39,10 +40,17 @@ namespace Harbor.UI.JSPkgs
 			public IEnumerable<FileInfo> OrderFiles(BundleContext context, IEnumerable<FileInfo> files)
 			{
 				var fileList = files.ToList();
-				var lastScript = fileList.SingleOrDefault(f => f.Name == "bbext.js");
-				fileList.Remove(lastScript);
-				fileList.Add(lastScript);
+				moveToEnd(fileList, "model.js");
+				moveToEnd(fileList, "view.js");
+				moveToEnd(fileList, "Application.js");
 				return fileList;
+			}
+
+			void moveToEnd(List<FileInfo> fileList, string scriptName)
+			{
+				var script = fileList.SingleOrDefault(f => f.Name == scriptName);
+				fileList.Remove(script);
+				fileList.Add(script);
 			}
 		}
 	}
