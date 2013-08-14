@@ -72,18 +72,13 @@ PageEditor.AddComponentView = Application.View.extend({
 	}
 });
 
-PageEditor.AddComponentViewModel = Backbone.Model.extend({
+PageEditor.AddComponentViewModel = Application.Model.extend({
 	defaults: {
 		componentType: null,
 		pageComponentKey: null,
 		//
 		pageComponents: null, // need this passed in to get the description
 		pageComponentDescription: null
-	},
-	
-	initialize: function () {
-		// this.pageComponents
-		GetSetModelExtension.extend(this);
 	},
 	
 	toJSON: function () {
