@@ -11,29 +11,45 @@ function (viewFactory, $) {
 	return {
 		render: function (name, options) {
 			// create the view
-			var view = viewFactory.create(name, options);
+			var view = viewFactory.create(name, options),
+				render = function () {
+					view.render();
+				};
+
+			debugger;
 
 			// wait for the view to load a model
-			loadModel(view).then(function () {
-				view.render(); // uses the templateFn from the templateCache
-			});
+			load(view).then(render);
+			
+			/*
+			jch! - what to use to filter the ajax request.
+			ajaxRequest.handle(loadModel(view)).then(view.render);
+			*/
+			
+			return view;
 		}
 	};
 	
-	function loadModel(view) {
-		var model = view.model;
+	function load(view) {
+		var dfds = [],
+			model = view.model;
+		
 		if (model) {
 			if (model.then) {
-				return model;
-			}
-			if ($.isFunction(model)) {
-				model = model();
-				if (model.then) {
-					return model;
-				}
+				dfds.push(model);
+			} else {
+				$.each(model, function (name, prop) {
+					if (prop && prop.then) {
+						dfds.push(prop.then(function (val) {
+							model[name] = val;
+						}));
+					}
+				});
 			}
 		}
-		return $.Deferred().resolve(model).promise();
+		
+
+		return $.when.apply($, dfds);
 	}
 }]);
 
