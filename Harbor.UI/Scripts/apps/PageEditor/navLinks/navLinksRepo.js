@@ -6,15 +6,18 @@ module("navLinks").service("navLinksRepo", ["collectionFactory", function (colle
 	
 	return {
 		getLinks: function () {
+			
 			if (linksDfd === null) {
 				linksDfd = $.Deferred();
-				collection.fetch().then(function () {
-					linksDfd.resolve(collection);
-				}).fail(linksDfd.fail);
+				collection.fetch().then(resolve).fail(linksDfd.reject);
 			}
 
 			return linksDfd;
 		}
 	};
+	
+	function resolve() {
+		return linksDfd.resolve(collection);
+	}
 
 }]);

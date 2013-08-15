@@ -9,7 +9,7 @@
 context.module("bbext").service("bbext.mvcorConstruct", function () {
 
 	return {
-		create: function (MVCoR, bbextMVCoR) {
+		create: function (MVCoR, bbextMVCoR, constructorCallback) {
 			return function (construct, name) {
 				var protoProps = construct.prototype;
 
@@ -29,9 +29,13 @@ context.module("bbext").service("bbext.mvcorConstruct", function () {
 					}
 
 					// inject the constructor
-					if (this._ctor) {
-						context.call(this._ctor, arguments, this);
+					if (context.call) {
+							context.call(this._ctor, arguments, this);
+					} else {
+						this._ctor.apply(this, arguments);
 					}
+					
+					constructorCallback && constructorCallback.apply(this, arguments);
 
 					MVCoR.apply(this, arguments);
 					return this;

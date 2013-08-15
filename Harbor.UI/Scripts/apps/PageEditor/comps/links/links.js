@@ -2,44 +2,37 @@
 var links = module("links").use("pageComponent", "bbext");
 	
 
-links.component("links", function (viewFactory) {
+links.component("links", function (viewRenderer) {
 
-	this.viewFactory = viewFactory;
+	this.viewRenderer = viewRenderer;
 	this.model.on("save", this.refresh, this);
 	
 }, {
-	$inject: ["viewFactory"],
+	$inject: ["viewRenderer"],
 	
 	modelType: "linksModel",
 	
 	create: function () {
-		this.getView().render();
+		this.open();
 	},
 
 	open: function () {
-		var view = this.getView();
-		view.render();
-	},
-
-	getView: function () {
 		this.view && this.view.close();
-		
+
 		if (this.model.hasName()) {
-			this.view = this.viewFactory.create("linksEditView", {
+			this.view = this.viewRenderer.render("linksEditView", {
 				el: this.$el,
 				model: this.model,
 				uicid: this.uicid
 			});
-			
+
 		} else {
-			this.view = this.viewFactory.create("linksNewView", {
+			this.view = this.viewRenderer.render("linksNewView", {
 				el: this.$el,
 				model: this.model,
 				uicid: this.uicid
 			});
 		}
-		
-		return this.view;
 	},
 
 	close: function () {		

@@ -3,7 +3,11 @@ links.view("linksNewView", function (options, navLinksRepo) { // jch! - bindTemp
 	
 	this.navLinksRepo = navLinksRepo;
 	
+
 }, {
+	initialize: function () {
+		this.model.links = this.navLinksRepo.getLinks();
+	},
 
 	$inject: ["options", "navLinksRepo"],
 	
@@ -14,10 +18,8 @@ links.view("linksNewView", function (options, navLinksRepo) { // jch! - bindTemp
 	
 	onRender: function () {
 		var selectEl = this.$("#navlinks-select");
-		this.navLinksRepo.getLinks().then(function (links) {
-			links.each(function (link) {
-				selectEl.append('<option value="' + link.get("id") + '">' + link.get("name") + '</option>');
-			});
+		this.model.links.each(function (link) {
+			selectEl.append('<option value="' + link.get("id") + '">' + link.get("name") + '</option>');
 		});
 	},
 
