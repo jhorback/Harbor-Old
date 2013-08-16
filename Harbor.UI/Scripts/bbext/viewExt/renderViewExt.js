@@ -41,8 +41,6 @@ function (_, $, shims, templateCache) {
 			var model = this.model || this.collection,
 			    templateFn = templateCache.getTemplateFor(this.name),
 			    el = $(templateFn(model.toJSON()));
-			
-			debugger;
 
 			// set the element since the template contains the root
 			this.$el.replaceWith(el);

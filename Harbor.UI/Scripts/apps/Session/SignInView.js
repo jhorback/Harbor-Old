@@ -22,9 +22,12 @@
 		// jch! - inject here - this.auth.signIn(
 		Session.signIn(this.model.toJSON(), {
 			clientError: function (error) {
-				var errors = new ModelErrors();
-				errors.add("<h1>Sign in failed</h1>" + error);
-				displayErrors(errors.toJSON());
+				context.app("session").call(["modelErrors", function (modelErrors) {
+					var errors = modelErrors.create();
+					errors.add("<h1>Sign in failed</h1>" + error);
+					displayErrors(errors.toJSON());
+				}]);
+				
 			},
 			success: function () {
 				displayError("");

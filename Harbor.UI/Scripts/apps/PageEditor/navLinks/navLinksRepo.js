@@ -1,5 +1,7 @@
 ﻿
-module("navLinks").service("navLinksRepo", ["collectionFactory", function (collectionFactory) {
+module("navLinks").service("navLinksRepo", [
+	"collectionFactory", "ajaxRequest",
+function (collectionFactory, ajaxRequest) {
 	var linksDfd = null,
 		
 		collection = collectionFactory.create("navLinksCollection");
@@ -9,7 +11,7 @@ module("navLinks").service("navLinksRepo", ["collectionFactory", function (colle
 			
 			if (linksDfd === null) {
 				linksDfd = $.Deferred();
-				collection.fetch().then(resolve).fail(linksDfd.reject);
+				ajaxRequest.handle(collection.fetch()).then(resolve).fail(linksDfd.reject);
 			}
 
 			return linksDfd;

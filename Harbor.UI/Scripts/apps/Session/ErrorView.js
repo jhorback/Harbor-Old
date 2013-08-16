@@ -8,6 +8,7 @@
 		} else {
 			throw "Invalid errorCode for ErrorView";
 		}
+		console.log(this.model.toJSON());
 		this.render();
 	},
 

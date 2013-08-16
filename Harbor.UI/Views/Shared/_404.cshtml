@@ -1,9 +1,14 @@
-﻿<div class="errorpage">
+﻿@model Harbor.UI.Models.NotFoundDto
+@using Harbor.UI.Extensions
+<div class="errorpage">
 	<h1>Page Not Found</h1>
 	<div class="errorpage-content">
 		<h2>The requested url was not found.</h2>
 		@if (Request["aspxerrorpath"] != null) {
 			<p><strong>Requested url: @Request["aspxerrorpath"]</strong></p>
 		}
+		<p class="errorpage-details">
+			@Html.JstPropFor(m => m.message, clientBinding: true)
+		</p>
 	</div>
 </div>

@@ -16,16 +16,9 @@ function (viewFactory, $) {
 					view.render();
 				};
 
-			debugger;
-
 			// wait for the view to load a model
 			load(view).then(render);
-			
-			/*
-			jch! - what to use to filter the ajax request.
-			ajaxRequest.handle(loadModel(view)).then(view.render);
-			*/
-			
+
 			return view;
 		}
 	};
@@ -47,7 +40,6 @@ function (viewFactory, $) {
 				});
 			}
 		}
-		
 
 		return $.when.apply($, dfds);
 	}

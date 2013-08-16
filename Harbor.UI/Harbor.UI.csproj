@@ -431,6 +431,7 @@
     <Content Include="Scripts\appui\globalCache.js" />
     <Content Include="Scripts\appui\appui.js" />
     <Content Include="Scripts\appui\shim.js" />
+    <Content Include="Scripts\bbext\ajaxRequest.js" />
     <Content Include="Scripts\bbext\appEvents.js" />
     <Content Include="Scripts\bbext\binders\templateBinder.js" />
     <Content Include="Scripts\bbext\collectionExt\collection.js" />
@@ -440,7 +441,6 @@
     <Content Include="Scripts\bbext\modelExt\model.js" />
     <Content Include="Scripts\bbext\modelExt\validators.js" />
     <Content Include="Scripts\bbext\sessionTimeout.js" />
-    <Content Include="Scripts\bbext\temp\AjaxRequest.js" />
     <Content Include="Scripts\bbext\temp\Application.js" />
     <Content Include="Scripts\bbext\temp\JSPM.js" />
     <Content Include="Scripts\bbext\modelExt\backupModelExt.js" />
