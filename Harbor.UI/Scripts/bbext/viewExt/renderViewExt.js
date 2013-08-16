@@ -50,6 +50,7 @@ function (_, $, shims, templateCache) {
 			// add the view to the $el.data
 			this.$el.data("view", this);
 
+			debugger;
 			// allow the shims to render
 			shims.render(this.$el, model);
 			

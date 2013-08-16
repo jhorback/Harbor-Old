@@ -409,6 +409,7 @@ context.module("bbext").shim("modelBinder", ["_", function (_) {
 		    view = el.data("view"),
 			listeners = view._listeners || (view._listeners = {}); // Backbone
 
+		debugger;
 		binder = new ModelBinder(model, el);
 		listeners[this._.uniqueId("modelBinder")] = binder;
 	}

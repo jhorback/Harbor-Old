@@ -1,9 +1,8 @@
 ﻿
 // viewRenderer
 // creates a view with the viewFactory
-// allows for the model properties on the view to
-//     be a callback or a promise or a callback that returns a promise
-// waits for the promise then calls render on the view.
+// allows for the model on the view to be a promise or contain promises
+//     as properties that are resolved before rendering.
 context.module("bbext").service("viewRenderer", 
 	["viewFactory", "$",
 function (viewFactory, $) {
@@ -50,7 +49,7 @@ function (viewFactory, $) {
 // caches the template, uses the viewRenderer to create and render the view
 // appends the view el to the templates parent
 context.module("bbext").service("templateRenderer",
-	["templateCache", "viewFactory",
+	["templateCache", "viewRenderer",
 function (templateCache, viewRenderer) {
 
 	return {
@@ -124,6 +123,7 @@ function ($, templateRenderer) {
 			rootModelHasGet = model.get ? true : false,
 			isElATemplate;
 
+		debugger;
 		el = this.$(el);
 		isElATemplate = el.attr("data-templatefor") ? true : false;
 		el.find("[data-templatefor]").each(function (i, templateEl) {
