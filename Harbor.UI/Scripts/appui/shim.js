@@ -2,38 +2,41 @@
 var appui = context.module("appui");
 
 
-appui.construct("shim", ["shims", function (shims) {
+appui.construct("shim", ["globalCache", function (globalCache) {
+
+	var shims = globalCache.get("shims") || [];
 
 	return function (construct, name) {
 
-		shims.register(name, construct);
+		register(name);
 		if (!construct.prototype.render) {
 			throw new Error("A shim must implement render");
 		}
 		return construct;
 	};
 
+	function register(name) {
+		shims.push(name);
+		globalCache.set("shims", shims);
+	}
 }]);
 
 
-appui.service("shims", ["_", function (_) {
+appui.service("shims", ["_", "globalCache", "context", function (_, globalCache, context) {
 
-	var shims = {};
+	debugger;
 
 	return {
-		register: function(name, shim) {
-			shims[name] = shim;
-		},
-		
-		render: function(el, model) {
+		render: function (el, model) {
+			var shims = globalCache.get("shims");
+
 			if (model && !model.toJSON) {
 				throw new Error("The model must implement toJSON.");
 			}
 
-			_(shims).each(function (shim) {
-
+			_(shims).each(function (shimName) {
+				var shim = context.get(shimName);
 				shim.render(el, model);
-
 			});
 		}
 	};
