@@ -24,8 +24,6 @@ appui.construct("shim", ["globalCache", function (globalCache) {
 
 appui.service("shims", ["_", "globalCache", "context", function (_, globalCache, context) {
 
-	debugger;
-
 	return {
 		render: function (el, model) {
 			var shims = globalCache.get("shims");

@@ -17,8 +17,8 @@
 
  */
 context.module("bbext").service("bbext.renderViewExtension", [
-	"_", "$", "shims", "templateCache",
-function (_, $, shims, templateCache) {
+	"_", "$", "templateCache",
+function (_, $, templateCache) {
 	"use strict";
 	
 	/*
@@ -40,7 +40,8 @@ function (_, $, shims, templateCache) {
 		render: function () {
 			var model = this.model || this.collection,
 			    templateFn = templateCache.getTemplateFor(this.name),
-			    el = $(templateFn(model.toJSON()));
+			    el = $(templateFn(model.toJSON())),
+			    shims = this.context.get("shims");
 
 			// set the element since the template contains the root
 			this.$el.replaceWith(el);
@@ -50,7 +51,6 @@ function (_, $, shims, templateCache) {
 			// add the view to the $el.data
 			this.$el.data("view", this);
 
-			debugger;
 			// allow the shims to render
 			shims.render(this.$el, model);
 			

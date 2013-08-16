@@ -1,20 +1,24 @@
 ﻿
 
-context.module("bbext").register("eventBinder", ["$", function ($) {
+(function () {
 
+	context.module("bbext").shim("eventBinder", ["$", function ($) {
 
-	return {
+		this.$ = $;
+
+	}], {
 		render: function (el, model) {
 			var view = el.data("view");
 			var eventEls = el.find("[data-event]");
 			var bbEvents = {};
+			var $ = this.$;
 
 			eventEls.each(function (i, evEl) {
 				var dataEvent, evs, selector;
-				
+
 				evEl = $(evEl);
 				dataEvent = evEl.data("event");
-				evs = parseEvents(dataEvent);
+				evs = parseEvents($, dataEvent);
 				selector = "[data-event='" + dataEvent + "']";
 
 				$.each(evs, function (j, ev) {
@@ -25,11 +29,11 @@ context.module("bbext").register("eventBinder", ["$", function ($) {
 			$.extend(view.events, bbEvents);
 			view.delegateEvents();
 		}
-	};
-	
+	});
+
 	// click: methodName, mouseOver: methodName
 
-	function parseEvents(attr) {
+	function parseEvents($, attr) {
 		var parts = attr.split(","),
 			i, evs = [];
 
@@ -38,10 +42,10 @@ context.module("bbext").register("eventBinder", ["$", function ($) {
 			if (parts2.length === 1) {
 				evs.push({ event: "click", method: $.trim(parts2) });
 			} else {
-				evs.push({ event: $.trim(parts2[0]), method: $.trim(parts2[1])  });
+				evs.push({ event: $.trim(parts2[0]), method: $.trim(parts2[1]) });
 			}
 		}
 		return evs;
 	}
-
-}]);
+	
+}());

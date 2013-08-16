@@ -1,12 +1,4 @@
 ﻿
-links.view("foofoo", {
-
-	initialize: function () {
-		debugger;
-		this.model = new Backbone.Model({ bar: "fuckna " });
-	}
-
-});
 
 links.view("linksNewView", function (options, navLinksRepo) { // jch! - bindTemplate update
 	
