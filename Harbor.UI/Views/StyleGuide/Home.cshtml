@@ -39,3 +39,48 @@
 		</li>
 	</ul>
 </div>
+
+
+
+<div data-templatefor="testApp">
+	<button>Test Button</button>
+	<h1 class="attn">{{bar}}</h1>
+</div>
+
+
+
+@section scripts {
+
+	<script>
+		var ta = app("testApp").use("bbext");
+		ta.start(["app", function (app) {
+
+			debugger;
+			app.render();
+
+		}]);
+
+		
+
+		ta.model("foo", {
+			defaults: {
+				bar: "baz"
+			}
+		});
+
+		ta.view("testApp", ["options", "modelFactory", function (options, modelFactory) { // why wasn't error being thrown when options was not there?
+
+			this.modelFactory = modelFactory;
+
+		}], {	
+			initialize: function () {
+
+				this.model = this.modelFactory.create("foo");
+
+			}
+		});
+
+
+		ta.start();
+	</script>
+}
