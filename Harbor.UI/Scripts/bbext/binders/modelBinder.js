@@ -136,6 +136,10 @@
 		if (this instanceof ModelBinder === false) {
 			return new ModelBinder(model, el);
 		}
+		
+		if (!model) {
+			return;
+		}
 
 		this.model = model;
 		this.$el = $(el);
@@ -370,7 +374,7 @@ context.module("bbext").service("modelBinderExtension", ["deprecate", function (
 
 			el = el || this.$el;
 			model = model || this.model;
-			this.template(template, el)(model.toJSON());
+			this.template(template, el)(model ? model.toJSON() : {});
 			this.bindModelToView(model, el);
 		}
 	};

@@ -45,13 +45,13 @@
 
 		signIn: function (signInModel, handler, handlerProxy) {
 			/// <summary>Executes the sign in ajax request.</summary>
-			var request = AjaxRequest({
+			var request = AjaxRequest.handle($.ajax({
 				url: Session.url("User/SignIn"),
 				data: signInModel,
 				type: "POST"
-			});
+			}), handler);
 			
-			request.execute(signInModel, handler).then(function () {
+			request.then(function () {
 				var returnUrl = Session.getUrlParam("returnUrl");
 				if (returnUrl) {
 					window.location = returnUrl;
@@ -69,9 +69,9 @@
 
 		signOut: function (handler) {
 			/// <summary>Executes the sign out ajax request.</summary>
-			return AjaxRequest({
+			return AjaxRequest.handle($.ajax({
 				url: Session.url("User/SignOut")
-			}).execute(handler);
+			}), handler);
 		}
 	};
 

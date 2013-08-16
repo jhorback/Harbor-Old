@@ -61,8 +61,9 @@ Application.url = function (url) {
 
 if (window.Application) {
 	context.app("Application").use("bbext").start([
-		"jstViewExtension", "modelBinderExtension", "bbext.closeViewExt", "bbext.backupModelExt", "bbext.getSetModelExt", "bbext.validationModelExt",
-		function (jstViewExtension, modelBinderExtension, closeViewExt, backupModelExt, getSetModelExt, validationModelExt) {
+		"jstViewExtension", "modelBinderExtension", "bbext.closeViewExt", "bbext.backupModelExt",
+		"bbext.getSetModelExt", "bbext.validationModelExt", "ajaxRequest",
+		function (jstViewExtension, modelBinderExtension, closeViewExt, backupModelExt, getSetModelExt, validationModelExt, ajaxRequest) {
 		
 		// create the application view with all view extensions
 		Application.View = Backbone.View.extend({});
@@ -76,6 +77,8 @@ if (window.Application) {
 		backupModelExt.extend(Application.Model.prototype);
 		getSetModelExt.extend(Application.Model.prototype);
 		validationModelExt.extend(Application.Model.prototype);
+			
+		window.AjaxRequest = ajaxRequest;
 			
 	}]).start();
 }
