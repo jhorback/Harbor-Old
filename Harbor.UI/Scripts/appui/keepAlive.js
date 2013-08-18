@@ -5,7 +5,7 @@
  *     start(url, timeout);
  *     stop();
  */
-context.module("bbext").service("keepAlive", ["$", function ($) {
+context.module("appui").service("keepAlive", ["$", function ($) {
 
 	var timeoutId = null;
 	

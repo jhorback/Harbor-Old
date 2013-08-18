@@ -1,5 +1,9 @@
 ﻿
-
+/* 
+ * eventBinder - shim [data-event]
+ *     A shim used to add data-event="eventName: methodName, ..." attribute
+ *     to the Backbone events on the view.
+ */
 var eventBinder = (function () {
 
 	function eventBinder ($) {
