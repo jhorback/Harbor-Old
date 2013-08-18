@@ -5,7 +5,7 @@
  *      start(logoutUrl, timeout);
  *      extend();
  */
- module("bbext").service("sessionTimeout", ["keepAlive", function (keepAlive) {
+ context.module("appui").service("sessionTimeout", ["keepAlive", function (keepAlive) {
 
 	var timeoutId = null;
 	

@@ -13,7 +13,7 @@
  *         // any status code...
  *     }
  */
-module("bbext").service("ajaxRequest", [
+context.module("appui").service("ajaxRequest", [
 	"$", "ajaxRequestDefaultHandler",
 function ($, defaultHandler) {
 
