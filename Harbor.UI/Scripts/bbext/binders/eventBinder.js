@@ -1,12 +1,14 @@
 ﻿
 
-(function () {
+var eventBinder = (function () {
 
-	context.module("bbext").shim("eventBinder", ["$", function ($) {
+	function eventBinder ($) {
 
 		this.$ = $;
+	};
+	
 
-	}], {
+	eventBinder.prototype = {
 		render: function (el, model) {
 			var view = el.data("view");
 			var eventEls = el.find("[data-event]");
@@ -26,10 +28,11 @@
 				});
 			});
 
+			view.events = view.events || {}; // make sure there is an events object
 			$.extend(view.events, bbEvents);
 			view.delegateEvents();
 		}
-	});
+	};
 
 	// click: methodName, mouseOver: methodName
 
@@ -48,4 +51,8 @@
 		return evs;
 	}
 	
+	return eventBinder;
 }());
+
+
+context.module("bbext").shim("eventBinder", ["$", eventBinder]);
