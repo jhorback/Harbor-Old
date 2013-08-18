@@ -1,12 +1,13 @@
 ﻿
+
+
+
 // viewRenderer
 // creates a view with the viewFactory
 // allows for the model on the view to be a promise or contain promises
 //     as properties that are resolved before rendering.
-context.module("bbext").service("viewRenderer", 
-	["viewFactory", "$",
-function (viewFactory, $) {
-	
+function viewRenderer (viewFactory, $) {
+
 	return {
 		render: function (name, options) {
 			// create the view
@@ -21,11 +22,11 @@ function (viewFactory, $) {
 			return view;
 		}
 	};
-	
+
 	function load(view) {
 		var dfds = [],
 			model = view.model;
-		
+
 		if (model) {
 			if (model.then) {
 				dfds.push(model);
@@ -42,170 +43,191 @@ function (viewFactory, $) {
 
 		return $.when.apply($, dfds);
 	}
-}]);
+}
+
+context.module("bbext").service("viewRenderer",
+	["viewFactory", "$", viewRenderer]);
 
 
-/*
-
-templateBinder is a shim that looks for data-templatefor
--> view.render();
-
-
-app uses the templateRenderer which uses the viewRenderer which calls view.render()
-[data-templatefor]
-
-
-
-
-
-*/
-
-
-module("bbext").service("app", [
-	"$", "appName", "templateRenderer",
-function ($, appName, templateRenderer) {
-
+// app
+// call app.render() in the app start callback to render the root app view.
+function bbextapp($, appName, templateRenderer) {
+	var appView;
+	
 	return {
 		name: appName,
 		render: function (model) {
-			templateRenderer.render(appName, model);
+			appView = templateRenderer.render(appName, model);
+		},
+		close: function () {
+			appView && appView.close();
 		}
 	};
+}
 
-}]);
+module("bbext").service("app", ["$", "appName", "templateRenderer", bbextapp]);
+
 
 
 
 // templateBinder
-// A shim used to find date-templatefor
-context.module("bbext").shim("templateBinder",
-	["$", "viewRenderer",
-function ($, viewRenderer) {
-
+// A shim used to find date-template
+function templateBinder($, viewRenderer) {
 	this.$ = $;
 	this.viewRenderer = viewRenderer;
-
-}], {
+}
+	
+templateBinder.prototype = {
 	render: function (el, model) {
-		var $ = this.$;
-		
+		var $ = this.$,
+			viewRenderer = this.viewRenderer,
+			children = [],
+			listeners,
+			rootView,
+			childrenListener;
+
 		el = $(el);
+		rootView = el.data("view");
 		
-		el.find("[data-template]").each(function (i, templateEl) {
+		el.find("[data-templatefrom]").each(function (i, templateEl) {
 			var templateFor,
-			    closestTemplate,
-			    view;
+				closestTemplate,
+				view;
 
 			templateEl = $(templateEl);
-
+			
 			// restrict rendering to the first level of templates
-			closestTemplate = templateEl.parent().closest("[data-template]");
+			closestTemplate = templateEl.parent().closest("[data-templatefrom]");
 			if (closestTemplate[0] !== el[0]) {
 				return;
 			}
 
-			templateFor = templateEl.data("template");
-			templateEl.removeAttr("data-template").attr("data-templatefrom", name);
-
-			view = this.viewRenderer.render(templateFor, {
+			templateFor = templateEl.data("templatefrom");
+			view = viewRenderer.render(templateFor, {
 				model: model
 			});
-			
+
 			templateEl.replaceWith(view.$el);
+			children.push[view];
 		});
+		
+		// child view cleanup
+		// could make children first class so any parent can directly refererence this.children["myAppSubView"].
+		// - however - could not reuse views with the same template (not even sure if either of these cases are needed.
+		listeners = rootView._listeners || (rootView._listeners = {}); // Backbone
+		childrenListener = listeners["children"];
+		childrenListener && childrenListener.off();
+		listeners["children"] = {
+			off: function () {
+				$.each(children, function (i, child) {
+					child && child.close && child.close();
+				});
+			}
+		};
 	}
-});
+};
+
+context.module("bbext").shim("templateBinder", ["$", "viewRenderer", templateBinder]);
 
 
 // templateRenderer
 // caches the template, uses the viewRenderer to create and render the view
 // appends the view el to the templates parent
-context.module("bbext").service("templateRenderer",
-	["templateCache", "viewRenderer", "$",
-function (templateCache, viewRenderer, $) {
+function templateRenderer(templateCache, viewRenderer, $) {
 
 	return {
 		render: function (name, model) {
 
 			var templateEl = $("[data-templatefor='" + name + "']"),
-			    childTemplates = $(templateEl.find("[data-templatefor]").get().reverse()),
-			    view;
+				// collapse the matches in reverse
+				childTemplates = $(templateEl.find("[data-templatefor]").get().reverse()),
+				view;
 
 			childTemplates.each(function (i, template) {
 				var viewName;
-				
+
 				template = $(template);
 				viewName = template.data("templatefor");
-
-				template.removeAttr("data-templatefor").attr("data-template", viewName);
-				templateCache.cacheTemplateFor(viewName, template);
 				
+				templateCache.cacheTemplateFor(viewName, template);
+
 				template.empty();
 			});
 
-			templateEl.removeAttr("data-templatefor").attr("data-template", name);
 			templateCache.cacheTemplateFor(name, templateEl);
+			templateEl.removeAttr("data-templatefrom").attr("data-templatefor", name);
+
 			view = viewRenderer.render(name, {
 				model: model
 			});
-			
-			templateEl.parent().append(view.$el);
+
+			templateEl.after(view.$el);
+			return view;
 		}
 	};
 
-}]);
+}
 
+context.module("bbext").service("templateRenderer", ["templateCache", "viewRenderer", "$", templateRenderer]);
 
 
 // templateCache
 // compiles caches and returns templates by view name
-context.module("bbext").service("templateCache",
-	["$", "_", "globalCache",
-function ($, _, globalCache) {
+var templateCache = (function () {
 
-	globalCache.set("templates", {});
+	return function ($, _, globalCache) {
 
-	// set the template parsing to {{value}} instead of <%= value %>
-	_.templateSettings = { interpolate: /\{\{(.+?)\}\}/g };
+		globalCache.set("templates", {});
+
+		// set the template parsing to {{value}} instead of <%= value %>
+		_.templateSettings = { interpolate: /\{\{(.+?)\}\}/g };
 
 
-	return {
-		cacheTemplateFor: function (name, templateEl) {
-			var html = $('<script/>').append(templateEl).html(),
+		return {
+			cacheTemplateFor: function (name, templateEl) {
+				var html, templateFn;
+				
+				templateEl.removeAttr("data-templatefor").attr("data-templatefrom", name);
+				html = $('<script/>').append(templateEl[0].outerHTML).html(),
 				templateFn = _.template(String(html));
 
-			setTemplate(name, templateFn);
-			return templateFn;
-		},
+				setTemplate(name, templateFn);
+				return templateFn;
+			},
 
-		getTemplateFor: function (name) {
-			var templateFn = getTemplate(name),
-				templateEl;
+			getTemplateFor: function (name) {
+				var templateFn = getTemplate(name),
+					templateEl;
 
-			if (!templateFn) {
-				templateEl = $("[data-templatefor='" + name + "']");
-				templateEl.removeAttr("data-templatefor").attr("data-templatefrom", name);
-				if (templateEl.length === 0) {
-					throw "Template for '" + name + "' not found";
+				if (!templateFn) {
+					templateEl = $("[data-templatefor='" + name + "']");
+					templateEl.removeAttr("data-templatefor").attr("data-templatefrom", name);
+					if (templateEl.length === 0) {
+						throw "Template for '" + name + "' not found";
+					}
+					templateFn = this.cacheTemplateFor(name, templateEl);
 				}
-				templateFn = this.cacheTemplateFor(name, templateEl);
-			}
 
-			return templateFn;
+				return templateFn;
+			}
+		};
+
+		function setTemplate(name, template) {
+			var templates = globalCache.get("templates");
+			templates[name] = template;
+			globalCache.set("templates", templates);
+		}
+
+		function getTemplate(name) {
+			var templates = globalCache.get("templates");
+			return templates[name];
 		}
 	};
-	
-	function setTemplate(name, template) {
-		var templates = globalCache.get("templates");
-		templates[name] = template;
-		globalCache.set("templates", templates);
-	}
-	
-	function getTemplate(name) {
-		var templates = globalCache.get("templates");
-		return templates[name];
-	}
-}]);
+
+}());
+
+context.module("bbext").service("templateCache",
+	["$", "_", "globalCache", templateCache]);
 
 
 /*

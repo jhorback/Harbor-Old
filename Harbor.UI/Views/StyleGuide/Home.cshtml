@@ -7,6 +7,21 @@
 		xfont-size: 1.8em;
 	}
 </style>
+
+<div data-templatefor="testApp" class="clear margin-bottom">
+	<button data-event="clickTestButton">Test Button</button>
+	<h1 class="attn" name="bar"></h1>
+	<div data-templatefor="testAppMainView" data-model="subModel">
+		SUB TEMPLATE ! - {{bar}} <span name="bar" data-event="clickTestButton"></span> - that was bar - should be baz
+		<div data-templatefor="testAppMainView2">
+			<span name="bar" data-event="clickTestButton"></span>
+		</div>
+	</div>
+	
+	<button data-event="mousedown: clickTestButton">Test Button 2</button>
+</div>
+
+
 <div class="page-content">
 	<ul>
 		@foreach (var page in Model)
@@ -27,7 +42,7 @@
 	<ul>
 		<li>
 			<a href="~/Home/ThrowError">Server Error</a>
-			<p>
+			<a href="~/Views/Shared/_404.cshtml">~/Views/Shared/_404.cshtml</a>	<p>
 				A static link that will throw an error.
 			</p>
 		</li>
@@ -42,10 +57,7 @@
 
 
 
-<div data-templatefor="testApp">
-	<button>Test Button</button>
-	<h1 class="attn">{{bar}}</h1>
-</div>
+
 
 
 
@@ -55,7 +67,7 @@
 		var ta = app("testApp").use("bbext");
 		ta.start(["app", function (app) {
 
-			debugger;
+			// debugger;
 			app.render();
 
 		}]);
@@ -74,12 +86,39 @@
 
 		}], {	
 			initialize: function () {
+				var model;
+				this.x = 0;
 
 				this.model = this.modelFactory.create("foo");
+				this.model.subModel = this.modelFactory.create("foo");
+				this.model.subModel.set("bar", "high");
+				model = this.model;
 
+				//setInterval(function () {
+				//	model.set("bar", model.get("bar") + ", " + (x++));
+				//}, 1000);
+
+			},
+			
+			clickTestButton: function () {
+				alert("Clicked");
+				this.model.set("bar", this.model.get("bar") + ", " + (this.x++));
+			}
+		});
+		
+		ta.view("testAppMainView2", {
+			initialize: function () {
+				var model = this.model;
+				debugger;
 			}
 		});
 
+
+		ta.view("testAppMainView", {
+			clickTestButton: function () {
+				alert("clicked 2");
+			}
+		});
 
 		ta.start();
 	</script>

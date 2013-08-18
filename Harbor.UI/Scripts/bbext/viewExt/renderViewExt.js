@@ -40,19 +40,19 @@ function (_, $, templateCache) {
 		render: function () {
 			var model = this.model || this.collection,
 			    templateFn = templateCache.getTemplateFor(this.name),
-			    el = $(templateFn(model.toJSON())),
+			    el = $(templateFn(modelJSON(model))),
 			    shims = this.context.get("shims");
 
 			// set the element since the template contains the root
 			this.$el.replaceWith(el);
 			this.setElement(el);
 			
-			
 			// add the view to the $el.data
 			this.$el.data("view", this);
 
+
 			// allow the shims to render
-			shims.render(this.$el, model);
+			shims.render(this.$el, subModel(this.$el, model));
 			
 			this.onRender && this.onRender();
 			
@@ -65,5 +65,32 @@ function (_, $, templateCache) {
 			_.extend(proto, extension);
 		}
 	};
+	
+	function modelJSON(model) {
+		return model ? (model.toJSON ? model.toJSON() : model) : {};
+	}
 
+	// if there is a data-model attribute on the template root
+	// try to get the sub model from the parent model using model.get(name) or model[name]
+	function subModel(el, model) {
+		var retModel,
+			modelAttr = el.data("model");
+
+		if (!modelAttr) {
+			return model;
+		}
+		
+		if (model.get) {
+			var getVal = model.get(modelAttr);
+			if (getVal) {
+				retModel = getVal;
+			}
+		}
+		
+		if (!retModel) {
+			retModel = model[modelAttr];
+		}
+		
+		return retModel;
+	}
 }]);
