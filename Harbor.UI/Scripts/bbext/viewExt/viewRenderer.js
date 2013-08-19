@@ -43,5 +43,4 @@ function viewRenderer(viewFactory, $) {
 	}
 }
 
-context.module("bbext").service("viewRenderer",
-	["viewFactory", "$", viewRenderer]);
+context.module("bbext").service("viewRenderer", ["viewFactory", "$", bbext.viewRenderer = viewRenderer]);

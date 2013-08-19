@@ -1,3 +1,4 @@
 ﻿
+"use strict";
 
-module("bbext").use("Backbone", "appui");
+var bbext = context.module("bbext").use("Backbone", "appui");

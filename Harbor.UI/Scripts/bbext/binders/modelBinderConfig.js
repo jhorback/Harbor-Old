@@ -13,7 +13,7 @@
  *     ModelBinder.config.attributes["foo"] = "string";
  *     ModelBinder.config.attributeTypes["boolean"] = function (el, attr, value) { }; // a setter for the attribute
  */
-var modelBinderConfig = {
+bbext.modelBinderConfig = {
 	types: {
 		"default": {
 			// event: default is change - which triggers a get from dom to update the model
@@ -110,4 +110,4 @@ var modelBinderConfig = {
 	}
 };
 
-context.module("bbext").register("modelBinderConfig", modelBinderConfig);
+context.module("bbext").register("modelBinderConfig", bbext.modelBinderConfig);
