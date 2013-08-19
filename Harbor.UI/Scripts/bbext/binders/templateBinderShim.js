@@ -5,12 +5,12 @@
  *     A shim used to find date-template and put
  *    instances of views in their place
  */
-function templateBinder($, viewRenderer) {
+function templateBinderShim($, viewRenderer) {
 	this.$ = $;
 	this.viewRenderer = viewRenderer;
 }
 	
-templateBinder.prototype = {
+templateBinderShim.prototype = {
 	render: function (el, model) {
 		var $ = this.$,
 			viewRenderer = this.viewRenderer,
@@ -60,6 +60,5 @@ templateBinder.prototype = {
 	}
 };
 
-bbext.templateBinder = templateBinder;
 
-context.module("bbext").shim("templateBinder", ["$", "viewRenderer", bbext.templateBinder]);
+context.module("bbext").shim("templateBinderShim", ["$", "viewRenderer", bbext.templateBinderShim = templateBinderShim]);
