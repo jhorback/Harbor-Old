@@ -1,6 +1,6 @@
 ﻿
 
-context.module("bbext").service("events", ["globalCache", function (globalCache) {
+bbext.events = function (globalCache) {
 
 	var events = globalCache.get("bbextEvents");
 	if (!events) {
@@ -9,4 +9,7 @@ context.module("bbext").service("events", ["globalCache", function (globalCache)
 	}
 	
 	return events;
-}]);
+};
+
+
+context.module("bbext").service("events", ["globalCache", bbext.events]);

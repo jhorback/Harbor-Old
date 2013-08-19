@@ -12,8 +12,9 @@
  *     }
  *     return errors.toJSON();
  */
-var modelErrors = {
+bbext.modelErrors = {
 	create: function () {
+		
 		return {
 			hasErrors: false,
 
@@ -44,8 +45,4 @@ var modelErrors = {
 };
 
 
-context.module("bbext").service("modelErrors", function () {
-
-	return modelErrors;
-	
-});
+context.module("bbext").service("modelErrors", bbext.modelErrors);

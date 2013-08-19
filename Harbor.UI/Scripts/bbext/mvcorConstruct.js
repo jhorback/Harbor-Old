@@ -7,7 +7,7 @@
  *    Similar to the factories, this code has been extracted to keep things dry.
  *    Properties name and context are added to each view instance before the constructor is called.
  */
-context.module("bbext").service("bbext.mvcorConstruct", ["console", function (console) {
+function mvcorConstruct(console) {
 
 	return {
 		create: function (MVCoR, bbextMVCoR, constructorCallback) {
@@ -50,4 +50,7 @@ context.module("bbext").service("bbext.mvcorConstruct", ["console", function (co
 			};
 		}
 	};
-}]);
+};
+
+
+context.module("bbext").service("bbext.mvcorConstruct", ["console", bbext.mvcorConstruct = mvcorConstruct]);

@@ -38,4 +38,4 @@ function templateRenderer(templateCache, viewRenderer, $) {
 
 }
 
-context.module("bbext").service("templateRenderer", ["templateCache", "viewRenderer", "$", templateRenderer]);
+context.module("bbext").service("templateRenderer", ["templateCache", "viewRenderer", "$", bbext.templateRenderer = templateRenderer]);

@@ -26,6 +26,7 @@ namespace Harbor.UI.JSPkgs
 				.Include("~/Scripts/contextjs/context.js")
 				.Include("~/Scripts/contextjs/app.js")
 				.Include("~/Scripts/Apps/appShim.js")
+				.Include("~/Scripts/appui/appui.js")
 				.IncludeDirectory("~/Scripts/appui", "*.js", searchSubdirectories: true)
 				.Include("~/Scripts/bbext/bbext.js")
 				.IncludeDirectory("~/Scripts/bbext", "*.js", searchSubdirectories: true)

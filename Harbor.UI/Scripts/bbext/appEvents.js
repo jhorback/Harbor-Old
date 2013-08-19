@@ -4,7 +4,7 @@
  * Description:
  *     Creates a structure for dealing with application events.
  */
-context.module("bbext").construct("appEvents", ["events", function (events) {
+bbext.appEvents = function (events) {
 
 	return function (construct) {
 
@@ -36,4 +36,6 @@ context.module("bbext").construct("appEvents", ["events", function (events) {
 
 		return construct;
 	};
-}]);
+ };
+
+context.module("bbext").construct("appEvents", ["events", bbext.appEvents]);

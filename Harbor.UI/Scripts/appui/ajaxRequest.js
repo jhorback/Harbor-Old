@@ -13,9 +13,7 @@
  *         // any status code...
  *     }
  */
-context.module("appui").service("ajaxRequest", [
-	"$", "ajaxRequestDefaultHandler",
-function ($, defaultHandler) {
+appui.ajaxRequest = function ($, defaultHandler) {
 
 	/* Default ajax handling */
 	$.ajaxSetup({ dataType: "json" });
@@ -62,10 +60,15 @@ function ($, defaultHandler) {
 			callback.call(this, response, xhr);
 		};
 	}
-}]);
+};
 
 
-module("bbext").register("ajaxRequestDefaultHandler", {
+appui.service("ajaxRequest", ["$", "ajaxRequestDefaultHandler", appui.ajaxRequest]);
+
+
+
+
+appui.ajaxRequestDefaultHandler = {
 	401: function (response) {
 		alert("Unauthorized. " + response);
 	},
@@ -85,4 +88,6 @@ module("bbext").register("ajaxRequestDefaultHandler", {
 	extend: function (handler) {
 		$.extend(this, handler);
 	}
-});
+};
+
+module("appui").register("ajaxRequestDefaultHandler", appui.ajaxRequestDefaultHandler);

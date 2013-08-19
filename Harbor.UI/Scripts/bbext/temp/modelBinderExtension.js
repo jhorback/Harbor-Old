@@ -1,13 +1,12 @@
 ﻿
 
-context.module("bbext").service("modelBinderExtension", [
-	"deprecate", "modelBinderFactory",
-function (deprecate, modelBinderFactory) {
+
+function modelBinderExtension(deprecate, modelBinder) {
 
 	var modelBinderExtension, extension;
 
 	extension = {
-		bindModelToView: function (model, el) {modelBinderFactory
+		bindModelToView: function (model, el) {
 			deprecate.log("modelBinderExtension.extension.bindModelToView");
 
 			var binder,
@@ -15,7 +14,7 @@ function (deprecate, modelBinderFactory) {
 
 			el = el || this.$el;
 			model = model || this.model || this.collection;
-			binder = modelBinderFactory.create(model, el);
+			binder = modelBinder.create(model, el);
 			listeners[_.uniqueId("ModelBinder")] = binder;
 		},
 
@@ -44,4 +43,7 @@ function (deprecate, modelBinderFactory) {
 	};
 
 	return modelBinderExtension;
-}]);
+}
+
+
+context.module("bbext").service("modelBinderExtension", ["deprecate", "modelBinder", bbext.modelBinderExtension = modelBinderExtension]);

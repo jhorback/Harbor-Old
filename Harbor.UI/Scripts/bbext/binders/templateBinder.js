@@ -60,4 +60,6 @@ templateBinder.prototype = {
 	}
 };
 
-context.module("bbext").shim("templateBinder", ["$", "viewRenderer", templateBinder]);
+bbext.templateBinder = templateBinder;
+
+context.module("bbext").shim("templateBinder", ["$", "viewRenderer", bbext.templateBinder]);

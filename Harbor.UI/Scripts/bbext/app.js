@@ -2,7 +2,7 @@
 
 // app
 // call app.render() in the app start callback to render the root app view.
-function bbextapp($, appName, templateRenderer) {
+bbext.app = function bbextapp($, appName, templateRenderer) {
 	var appView;
 
 	return {
@@ -14,6 +14,6 @@ function bbextapp($, appName, templateRenderer) {
 			appView && appView.close();
 		}
 	};
-}
+};
 
-module("bbext").service("app", ["$", "appName", "templateRenderer", bbextapp]);
+context.module("bbext").service("app", ["$", "appName", "templateRenderer", bbext.app]);

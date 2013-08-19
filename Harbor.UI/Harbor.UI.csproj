@@ -435,7 +435,7 @@
     <Content Include="Scripts\bbext\app.js" />
     <Content Include="Scripts\bbext\appEvents.js" />
     <Content Include="Scripts\bbext\binders\modelBinderConfig.js" />
-    <Content Include="Scripts\bbext\binders\modelBinderFactory.js" />
+    <Content Include="Scripts\bbext\binders\modelBinder.js" />
     <Content Include="Scripts\bbext\binders\templateBinder.js" />
     <Content Include="Scripts\bbext\collectionExt\collection.js" />
     <Content Include="Scripts\bbext\events.js" />
@@ -458,7 +458,7 @@
     <Content Include="Scripts\bbext\modelExt\getSetModelExt.js" />
     <Content Include="Scripts\bbext\temp\JstViewExtension.js" />
     <Content Include="Scripts\appui\Menu.js" />
-    <Content Include="Scripts\bbext\binders\modelBinder.js" />
+    <Content Include="Scripts\bbext\binders\modelBinderShim.js" />
     <Content Include="Scripts\bbext\modelErrors.js" />
     <Content Include="Scripts\bbext\temp\Region.js" />
     <Content Include="Scripts\bbext\modelExt\validationModelExt.js" />
