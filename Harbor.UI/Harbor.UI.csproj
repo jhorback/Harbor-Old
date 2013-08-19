@@ -436,11 +436,12 @@
     <Content Include="Scripts\bbext\appEvents.js" />
     <Content Include="Scripts\bbext\binders\modelBinderConfig.js" />
     <Content Include="Scripts\bbext\binders\modelBinder.js" />
-    <Content Include="Scripts\bbext\binders\templateBinder.js" />
+    <Content Include="Scripts\bbext\binders\nameValueParser.js" />
+    <Content Include="Scripts\bbext\binders\templateBinderShim.js" />
     <Content Include="Scripts\bbext\collectionExt\collection.js" />
     <Content Include="Scripts\bbext\events.js" />
     <Content Include="Scripts\appui\keepAlive.js" />
-    <Content Include="Scripts\bbext\binders\eventBinder.js" />
+    <Content Include="Scripts\bbext\binders\eventBinderShim.js" />
     <Content Include="Scripts\bbext\modelExt\model.js" />
     <Content Include="Scripts\bbext\modelExt\validators.js" />
     <Content Include="Scripts\appui\sessionTimeout.js" />

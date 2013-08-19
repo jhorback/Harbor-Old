@@ -14,11 +14,14 @@
  *     1) data-type="someType"
  *     2) type="someType"
  *     3) tag name
+ *
+ *     Event overriding:
+ *     1) data-bind-event="eventName"
  *     
  */
-var modelBinder = function ($, _, config) {
+var modelBinder = function ($, _, config, nameValueParser) {
 
-	var modelBinder, _private, $, _, config;
+	var modelBinder, _private;
 
 	modelBinder = {
 		create: function (model, el) {
@@ -110,6 +113,9 @@ var modelBinder = function ($, _, config) {
 
 				el = $(el);
 				name = el.attr("data-bind") || el.attr("name") || el.attr("id");
+				
+				// bindto = nameValueParser.parse(name, "value");  // jch! - here
+
 				if (!name) {
 					return; // continue;
 				}
@@ -184,7 +190,7 @@ var modelBinder = function ($, _, config) {
 				_.each(self.bindings, function (binding, propName) {
 					_.each(binding, function (el) {
 						if (el.is(":text,:password,select")) {
-							_.private.viewToModel.call(self, el);
+							_private.viewToModel.call(self, el);
 						}
 					});
 				});
@@ -241,4 +247,4 @@ var modelBinder = function ($, _, config) {
 };
 
 
-context.module("bbext").service("modelBinder", ["$", "_", "modelBinderConfig", bbext.modelBinder = modelBinder]);
+context.module("bbext").service("modelBinder", ["$", "_", "modelBinderConfig", "nameValueParser", bbext.modelBinder = modelBinder]);

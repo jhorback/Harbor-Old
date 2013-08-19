@@ -4,59 +4,37 @@
  *     A shim used to add data-event="eventName: methodName, ..." attribute
  *     to the Backbone events on the view.
  */
-bbext.eventBinderShim = (function () {
-
-	function eventBinder ($) {
-
-		this.$ = $;
-	};
+function eventBinderShim($, nameValueParser) {
+	this.$ = $;
+	this.nameValueParser = nameValueParser;
+};
 	
 
-	eventBinder.prototype = {
-		render: function (el, model) {
-			var view = el.data("view");
-			var eventEls = el.find("[data-event]");
-			var bbEvents = {};
-			var $ = this.$;
+eventBinderShim.prototype = {
+	render: function (el, model) {
+		var view = el.data("view"),
+		    eventEls = el.find("[data-event]"),
+		    bbEvents = {},
+			$ = this.$,
+		    nameValueParser = this.nameValueParser;
 
-			eventEls.each(function (i, evEl) {
-				var dataEvent, evs, selector;
+		eventEls.each(function (i, evEl) {
+			var dataEvent, evs, selector;
 
-				evEl = $(evEl);
-				dataEvent = evEl.data("event");
-				evs = parseEvents($, dataEvent);
-				selector = "[data-event='" + dataEvent + "']";
+			evEl = $(evEl);
+			dataEvent = evEl.data("event");
+			evs = nameValueParser.parse(dataEvent, "click");
+			selector = "[data-event='" + dataEvent + "']";
 
-				$.each(evs, function (j, ev) {
-					bbEvents[ev.event + " " + selector] = ev.method;
-				});
+			$.each(evs, function (j, ev) {
+				bbEvents[ev.name + " " + selector] = ev.value;
 			});
+		});
 
-			view.events = view.events || {}; // make sure there is an events object
-			$.extend(view.events, bbEvents);
-			view.delegateEvents();
-		}
-	};
-
-	// click: methodName, mouseOver: methodName
-
-	function parseEvents($, attr) {
-		var parts = attr.split(","),
-			i, evs = [];
-
-		for (i = 0; i < parts.length; i++) {
-			var parts2 = parts[i].split(":");
-			if (parts2.length === 1) {
-				evs.push({ event: "click", method: $.trim(parts2) });
-			} else {
-				evs.push({ event: $.trim(parts2[0]), method: $.trim(parts2[1]) });
-			}
-		}
-		return evs;
+		view.events = view.events || {}; // make sure there is an events object
+		$.extend(view.events, bbEvents);
+		view.delegateEvents();
 	}
-	
-	return eventBinder;
-}());
+};
 
-
-context.module("bbext").shim("eventBinder", ["$", bbext.eventBinderShim]);
+context.module("bbext").shim("eventBinderShim", ["$", "nameValueParser", bbext.eventBinderShim = eventBinderShim]);
