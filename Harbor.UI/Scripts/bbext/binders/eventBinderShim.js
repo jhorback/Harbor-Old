@@ -4,7 +4,7 @@
  *     A shim used to add data-event="eventName: methodName, ..." attribute
  *     to the Backbone events on the view.
  */
-bbext.eventBinder = (function () {
+bbext.eventBinderShim = (function () {
 
 	function eventBinder ($) {
 
@@ -59,4 +59,4 @@ bbext.eventBinder = (function () {
 }());
 
 
-context.module("bbext").shim("eventBinder", ["$", bbext.eventBinder]);
+context.module("bbext").shim("eventBinder", ["$", bbext.eventBinderShim]);
