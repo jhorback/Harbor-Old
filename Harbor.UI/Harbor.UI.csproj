@@ -434,6 +434,8 @@
     <Content Include="Scripts\appui\ajaxRequest.js" />
     <Content Include="Scripts\bbext\app.js" />
     <Content Include="Scripts\bbext\appEvents.js" />
+    <Content Include="Scripts\bbext\binders\modelBinderConfig.js" />
+    <Content Include="Scripts\bbext\binders\modelBinderFactory.js" />
     <Content Include="Scripts\bbext\binders\templateBinder.js" />
     <Content Include="Scripts\bbext\collectionExt\collection.js" />
     <Content Include="Scripts\bbext\events.js" />
@@ -448,6 +450,7 @@
     <Content Include="Scripts\bbext\temp\Controller.js" />
     <Content Include="Scripts\appui\Selectable.js" />
     <Content Include="Scripts\bbext\mvcorConstruct.js" />
+    <Content Include="Scripts\bbext\temp\modelBinderExtension.js" />
     <Content Include="Scripts\bbext\viewExt\closeViewExt.js" />
     <Content Include="Scripts\appui\Dialog.js" />
     <Content Include="Scripts\bbext\factories.js" />
