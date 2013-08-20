@@ -8,19 +8,6 @@
 	}
 </style>
 
-<div data-templatefor="testApp" class="clear margin-bottom">
-	<button data-event="clickTestButton">Test Button</button>
-	<h1 name="bar" data-bind="class: h1Class"></h1>
-	<div data-templatefor="testAppMainView" data-model="subModel">
-		SUB TEMPLATE ! - {{bar}} <span name="bar" data-event="clickTestButton"></span> - that was bar - should be baz
-		<div data-templatefor="testAppMainView2">
-			<span name="bar" data-event="clickTestButton"></span>
-		</div>
-	</div>
-	
-	<button data-event="mousedown: clickTestButton">Test Button 2</button>
-</div>
-
 
 <div class="page-content">
 	<ul>
@@ -35,10 +22,7 @@
 			</li>	
 		}
 	</ul>
-	<h2>System</h2>
-	<p>
-		Create a system page which describes the frame and the extraneous pages such as:
-	</p>
+	<h2>Other Resources</h2>
 	<ul>
 		<li>
 			<a href="~/Home/ThrowError">Server Error</a>
@@ -52,87 +36,15 @@
 				This links requests a page that does not exist.
 			</p>
 		</li>
+		<li>
+			<a href="~/StyleGuide/TestApp">Test App</a>
+			<p>
+				A JavaScript application testing various aspects of the Backbone extensions.
+			</p>
+		</li>
 	</ul>
 </div>
-
-
-
-
-
-
-
 @section scripts {
 
-	<script>
-		var ta = app("testApp").use("bbext");
-		ta.start(["app", function (app) {
-
-			// debugger;
-			app.render();
-
-		}]);
-
-		
-
-		ta.model("foo", {
-			defaults: {
-				bar: "baz"
-			},
-			h1Class: {
-				get: function () {
-					var x = parseInt(this.get("bar"));
-					if (x > 10) {
-						return "disabled";
-					}
-					if (x % 2 === 0) {
-						return "attn";
-					}
-					return "";
-				},
-				bind: ["bar"]
-			}
-		});
-
-		ta.view("testApp", ["options", "modelFactory", function (options, modelFactory) { // why wasn't error being thrown when options was not there?
-
-			this.modelFactory = modelFactory;
-
-		}], {	
-			initialize: function () {
-				var model;
-				this.x = 0;
-
-				this.model = this.modelFactory.create("foo");
-				this.model.subModel = this.modelFactory.create("foo");
-				this.model.subModel.set("bar", "high");
-				model = this.model;
-
-				//setInterval(function () {
-				//	model.set("bar", model.get("bar") + ", " + (x++));
-				//}, 1000);
-
-			},
-			
-			clickTestButton: function () {
-				console.log("Clicked");
-				this.model.set("bar", (this.x++));
-				// this.model.set("bar", this.model.get("bar") + ", " + (this.x++));
-			}
-		});
-		
-		ta.view("testAppMainView2", {
-			initialize: function () {
-				var model = this.model;
-			}
-		});
-
-
-		ta.view("testAppMainView", {
-			clickTestButton: function () {
-				console.log("clicked 2");
-			}
-		});
-
-		ta.start();
-	</script>
+	
 }

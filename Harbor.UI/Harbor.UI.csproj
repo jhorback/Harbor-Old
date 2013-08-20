@@ -607,6 +607,7 @@
     <Content Include="Scripts\bbext\_bbext.cshtml" />
     <Content Include="Scripts\appui\Readme.md" />
     <Content Include="Scripts\bbext\Readme.md" />
+    <Content Include="Views\StyleGuide\TestApp.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\users\" />

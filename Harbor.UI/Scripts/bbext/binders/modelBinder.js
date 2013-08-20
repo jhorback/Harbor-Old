@@ -2,15 +2,22 @@
  * modelBinder
  *     modelBinder.create(model, el);
  *
- *     Binds an element to a model.
+ *     Binds an elements "value" to a model.
  *
  *     Binds to the model property using:
  *     1) data-bind="attributeName"
  *     2) name="attributeName"
  *     3) id="attributeName"
  *
+ *     Attribute binding syntax: data-bind="attributeName: modelPropertyName"
+ *     When binding values and attributes use name or id for the value:
+ *        <input type="text" name="userName" data-bind="disabled: userNameDisabled" />
+ *     Or you can do it inline:
+ *        <input type="text" data-bind="value: userName, disabled: userNameDisabled" />
+ *
  *     Type processing:
  *     Processing data from the view to model or model to view is done by a binding type.
+ *     The type handlers are in the modelBinderConfig.
  *     1) data-type="someType"
  *     2) type="someType"
  *     3) tag name
@@ -18,6 +25,7 @@
  *     Event overriding:
  *     1) data-bind-event="eventName"
  *     
+ *     The modelBinderConfig can be configured to enable additional value and attribute types.
  */
 var modelBinder = function ($, _, config, nameValueParser) {
 
@@ -80,7 +88,7 @@ var modelBinder = function ($, _, config, nameValueParser) {
 					var attrType, setter;
 
 					if (modelPropertyName === name) {
-						attrType = config.attributes[attr];
+						attrType = config.attributes[attr] || config.attributes["default"];
 						setter = config.attributeTypes[attrType];
 						setter(el, attr, value);
 					}
@@ -98,7 +106,7 @@ var modelBinder = function ($, _, config, nameValueParser) {
 			this.unbind();
 		}
 	};
-	
+
 	_private = {
 		init: function () {
 			var $els = this.$el.find("[data-bind],[name],[id]"),
@@ -114,7 +122,7 @@ var modelBinder = function ($, _, config, nameValueParser) {
 			// jch replacing this = _private.initAttrBindings.apply(this);
 			_private.updateFromView.apply(this);
 		},
-		
+
 		parseBindEl: function (el, viewToModelProxy) {
 			var instance = this,
 			    attr,
@@ -134,18 +142,18 @@ var modelBinder = function ($, _, config, nameValueParser) {
 				if (val === undefined) {
 					return; // continue - do not add binding for an undefined attr
 				}
-				
+
 				if (what.toLowerCase() === "value") { // value/type binding
 
 					binding.name = modelProperty;
 					binding.type = el.attr("data-type") || el.attr("type") || el[0].tagName.toLowerCase();
 
 				} else { // attribute binding
-					
+
 					binding.attrs[what] = modelProperty;
-					
+
 				}
-				
+
 				// could batch these two lines and put it outside the loop: this.updateEl(el)
 				el.data("binding", binding);
 				this.updateEl(el, modelProperty, val);
@@ -172,7 +180,7 @@ var modelBinder = function ($, _, config, nameValueParser) {
 			event = attrEv || event;
 			return _.isArray(event) ? event : [event];
 		},
-		
+
 		updateFromView: function () {
 			/// <summary>Used to capture autofill values that do not trigger a change event.</summary>
 			var self = this;
@@ -229,7 +237,7 @@ var modelBinder = function ($, _, config, nameValueParser) {
 					}, this));
 				}
 			}, this);
-		},
+		}
 	};
 
 	return modelBinder;

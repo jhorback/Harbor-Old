@@ -91,10 +91,7 @@ var modelBinderConfig = {
 		"id": "string",
 		"disabled": "boolean",
 		"checked": "boolean",
-		"class": "string", // can remove
-		"href": "string", // can remove
-		"text": "text",
-		"src": "string" // can remove
+		"text": "text"
 	},
 	
 	attributeTypes: { // attributeBinders
