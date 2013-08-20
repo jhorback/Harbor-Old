@@ -101,52 +101,68 @@ var modelBinder = function ($, _, config, nameValueParser) {
 	
 	_private = {
 		init: function () {
-			var $els, viewToModelProxy,
-				instance = this;
-
-			viewToModelProxy = $.proxy(_private.viewToModelFromEvent, this);
-			$els = this.$el.find("[data-bind],[name],[id]");
+			var $els = this.$el.find("[data-bind],[name],[id]"),
+				viewToModelProxy = $.proxy(_private.viewToModelFromEvent, this);
 
 			// build the bindings 
-			$.each($els, $.proxy(function (index, el) {
-				var name, type, changeEvent, val;
+			$els.each($.proxy(function (index, el) {
 
-				el = $(el);
-				name = el.attr("data-bind") || el.attr("name") || el.attr("id");
-				
-				// bindto = nameValueParser.parse(name, "value");  // jch! - here
-
-				if (!name) {
-					return; // continue;
-				}
-
-				val = this.model.get(name);
-				if (val === undefined) {
-					return; // continue - do not add binding for an undefined attr
-				}
-
-				type = el.attr("data-type") || el.attr("type") || el[0].tagName.toLowerCase();
-				el.data("binding", {
-					name: name,
-					type: type
-				});
-
-				_private.addBinding.call(instance, name, el);
-
-				changeEvent = _private.getChangeEvent.call(instance, el, type);
-				if (changeEvent) {
-					_.each(changeEvent, function (event) {
-						el.bind(event + ".modelbinder", viewToModelProxy);
-					});
-				}
-
-				// set the initial value
-				this.updateEl(el, name, this.model.get(name));
+				_private.parseBindEl.call(this, el, viewToModelProxy);
 
 			}, this));
 
-			_private.initAttrBindings.apply(this);
+			// jch replacing this = _private.initAttrBindings.apply(this);
 			_private.updateFromView.apply(this);
+		},
+		
+		parseBindEl: function (el, viewToModelProxy) {
+			var instance = this,
+			    attr,
+			    bindTo,
+			    binding = { attrs: {} },
+			    changeEvent;
+
+			el = $(el);
+			attr = el.attr("data-bind");
+			bindTo = nameValueParser.parse(attr, "value");
+			if (("value" in bindTo) === false) {
+				bindTo.value = el.attr("name") || el.attr("id");
+			}
+			$.each(bindTo, $.proxy(function (what, modelProperty) {
+				var val = this.model.get(modelProperty);
+
+				if (val === undefined) {
+					return; // continue - do not add binding for an undefined attr
+				}
+				
+				if (what.toLowerCase() === "value") { // value/type binding
+
+					binding.name = modelProperty;
+					binding.type = el.attr("data-type") || el.attr("type") || el[0].tagName.toLowerCase();
+
+				} else { // attribute binding
+					
+					binding.attrs[what] = modelProperty;
+					
+				}
+				
+				// could batch these two lines and put it outside the loop: this.updateEl(el)
+				el.data("binding", binding);
+				this.updateEl(el, modelProperty, val);
+
+				_private.addBinding.call(instance, modelProperty, el); // add binding ref to model property
+
+
+			}, this));
+
+
+			// hook up the change event(s)
+			changeEvent = binding.type && _private.getChangeEvent(el, binding.type);
+			if (changeEvent) {
+				_.each(changeEvent, function (event) {
+					el.bind(event + ".modelbinder", viewToModelProxy);
+				});
+			}
 		},
 
 		getChangeEvent: function (el, type) {
@@ -156,33 +172,7 @@ var modelBinder = function ($, _, config, nameValueParser) {
 			event = attrEv || event;
 			return _.isArray(event) ? event : [event];
 		},
-
-		initAttrBindings: function () {
-			var instance = this;
-			
-			$.each(config.attributes, $.proxy(function (attr, type) {
-
-				var els = this.$el.find("[data-bind-" + attr + "]");
-				$.each(els, $.proxy(function (i, el) {
-					var name, binding;
-
-					el = $(el);
-					name = el.attr("data-bind-" + attr);
-					binding = el.data("binding") || {};
-					if (!binding.attrs) {
-						binding.attrs = {};
-					}
-					binding.attrs[attr] = name;
-					el.data("binding", binding);
-
-					_private.addBinding.call(instance, name, el);
-
-					this.updateEl(el, name, this.model.get(name));
-				}, this));
-
-			}, this));
-		},
-
+		
 		updateFromView: function () {
 			/// <summary>Used to capture autofill values that do not trigger a change event.</summary>
 			var self = this;
