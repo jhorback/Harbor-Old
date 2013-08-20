@@ -1,5 +1,5 @@
 ﻿/*
- * renderViewExtension
+ * renderViewExt
  * 
  * Description
  *     Implements the render method for Backbone views.     
@@ -16,7 +16,7 @@
 
 
  */
-context.module("bbext").service("bbext.renderViewExtension", [
+context.module("bbext").service("bbext.renderViewExt", [
 	"_", "$", "templateCache",
 function (_, $, templateCache) {
 	"use strict";

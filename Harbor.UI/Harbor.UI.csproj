@@ -455,7 +455,7 @@
     <Content Include="Scripts\bbext\viewExt\closeViewExt.js" />
     <Content Include="Scripts\appui\Dialog.js" />
     <Content Include="Scripts\bbext\factories.js" />
-    <Content Include="Scripts\bbext\binders\errorBinder.js" />
+    <Content Include="Scripts\bbext\binders\errorBinderShim.js" />
     <Content Include="Scripts\bbext\modelExt\getSetModelExt.js" />
     <Content Include="Scripts\bbext\temp\JstViewExtension.js" />
     <Content Include="Scripts\appui\Menu.js" />
@@ -524,6 +524,7 @@
     <Content Include="Scripts\appui\browser.js" />
     <Content Include="Scripts\backbone.js" />
     <Content Include="Scripts\backbone.min.js" />
+    <Content Include="Scripts\bbext\viewExt\errorDisplayViewExt.js" />
     <Content Include="Scripts\bbext\viewExt\renderViewExt.js" />
     <Content Include="Scripts\bbext\viewExt\templateCache.js" />
     <Content Include="Scripts\bbext\viewExt\templateRenderer.js" />

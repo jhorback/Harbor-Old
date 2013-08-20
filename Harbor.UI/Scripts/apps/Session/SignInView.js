@@ -17,7 +17,7 @@
 	
 	signIn: function () {
 		var displayErrors = _.bind(this.displayErrors, this),
-				displayError = this.displayError;
+				clearErrors = this.clearErrors;
 
 		// jch! - inject here - this.auth.signIn(
 		Session.signIn(this.model.toJSON(), {
@@ -30,7 +30,7 @@
 				
 			},
 			success: function () {
-				displayError("");
+				clearErrors();
 			}
 		});
 	},
