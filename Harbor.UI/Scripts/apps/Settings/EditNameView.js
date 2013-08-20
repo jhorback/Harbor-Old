@@ -1,6 +1,5 @@
 ﻿Settings.EditNameView = Application.View.extend({
 	initialize: function () {
-		this.listenForErrors();
 		this.model.store();
 	},
 	

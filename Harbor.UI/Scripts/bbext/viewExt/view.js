@@ -7,16 +7,17 @@
  */
 (function () {
 
-	bbext.View = function (Backbone, closeViewExt, renderViewExt) {
+	bbext.View = function (Backbone, closeViewExt, renderViewExt, errorDisplayViewExt) {
 
 		var View = Backbone.View.extend({});
 		closeViewExt.extend(View.prototype);
 		renderViewExt.extend(View.prototype);
+		errorDisplayViewExt.extend(View.prototype);
 
 		return View;
 	};
 
-	bbext.service("bbext.View", ["Backbone", "bbext.closeViewExt", "bbext.renderViewExtension", bbext.View]);
+	bbext.service("bbext.View", ["Backbone", "bbext.closeViewExt", "bbext.renderViewExt", "bbext.errorDisplayViewExt", bbext.View]);
 
 
 	bbext.viewConstruct = function (Backbone, View, mvcorConstruct) {
