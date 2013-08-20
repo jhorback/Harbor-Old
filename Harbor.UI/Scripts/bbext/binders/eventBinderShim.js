@@ -26,8 +26,8 @@ eventBinderShim.prototype = {
 			evs = nameValueParser.parse(dataEvent, "click");
 			selector = "[data-event='" + dataEvent + "']";
 
-			$.each(evs, function (j, ev) {
-				bbEvents[ev.name + " " + selector] = ev.value;
+			$.each(evs, function (name, value) {
+				bbEvents[name + " " + selector] = value;
 			});
 		});
 
