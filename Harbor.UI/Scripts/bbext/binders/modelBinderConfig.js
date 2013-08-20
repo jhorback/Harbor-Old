@@ -1,19 +1,22 @@
-﻿
-/*
- * ModelBinder.config:
+﻿/*
+ * modelBinderConfig
  *     Type and attribute processing can be configured.
-	
-		// eventFromDom, getFromDom, setToDom
- *     ModelBinder.config.types["foo"] = {
+ *	
+ *	   // eventFromDom, getFromDom, setToDom
+ *     modelBinderConfig.types["foo"] = {
  *         event: "click",               // additional dom event(s) to listen on the element to update the model
  *         get: function (el, event, binding) { },       // a method to get the value out of the dom for the model
  *         set: function (el, value) { } // a method to set the value in the dom
  *     }
- *     ModelBinder.config.attributes["disabled"] = "boolean";
- *     ModelBinder.config.attributes["foo"] = "string";
- *     ModelBinder.config.attributeTypes["boolean"] = function (el, attr, value) { }; // a setter for the attribute
+ *
+ *     The type is determined from either data-type="...", type="...", <tagName/>
+ *
+ *
+ *     modelBinderConfig.attributes["disabled"] = "boolean";
+ *     modelBinderConfig.attributes["foo"] = "string";
+ *     modelBinderConfig.attributeTypes["boolean"] = function (el, attr, value) { }; // a setter for the attribute
  */
-bbext.modelBinderConfig = {
+var modelBinderConfig = {
 	types: {
 		"default": {
 			// event: default is change - which triggers a get from dom to update the model
@@ -84,13 +87,14 @@ bbext.modelBinderConfig = {
 	},
 
 	attributes: {
+		"default": "string",
 		"id": "string",
 		"disabled": "boolean",
 		"checked": "boolean",
-		"class": "string",
-		"href": "string",
+		"class": "string", // can remove
+		"href": "string", // can remove
 		"text": "text",
-		"src": "string"
+		"src": "string" // can remove
 	},
 	
 	attributeTypes: { // attributeBinders
@@ -110,4 +114,4 @@ bbext.modelBinderConfig = {
 	}
 };
 
-context.module("bbext").register("modelBinderConfig", bbext.modelBinderConfig);
+context.module("bbext").register("modelBinderConfig", bbext.modelBinderConfig = modelBinderConfig);
