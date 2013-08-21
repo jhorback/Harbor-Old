@@ -23,9 +23,27 @@
 			<button data-event="decreaseAge">Decrease Age</button>
 		</div>
 		
-		<ul class="test">
-			<li data-templatefor="allUsersView" data-collection="allUsers">
+		<fieldset class="form-inline">
+			<legend>Add a user</legend>
+			<label>First</label>
+			<input type="text" name="firstName" />
+			<label>Last</label>
+			<input type="text" name="lastName" />
+			<label>Age</label>
+			<input type="text" name="age" />
+			<button data-event="clickAddUser" class="loud">Add</button>
+		</fieldset>
+		
+		<div class="pad">
+			<button data-event="removeUser">Remove last user</button>
+			<button data-event="sortUsers">Sort Users</button>
+		</div>
+		
+
+		<ul>
+			<li data-templatefor="allUsersView" data-collection="allUsers" style="{{hairColorStyle}}">
 				<span name="firstName">{{firstName}}</span> <span name="lastName">{{lastName}}</span> Age: <span name="age">{{age}}</span>
+				<span>{{hairColor}}</span>
 			</li>
 		</ul>
 	</div>
@@ -65,7 +83,7 @@
 				lastName: null,
 				age: 0,
 				hairColor: "Unknown",
-				hairColorStsyle: ""
+				hairColorStyle: ""
 			},
 			age: {
 				get: function (value) {
@@ -94,7 +112,10 @@
 		});
 
 		ta.collection("users", {			
-			model: "user"
+			model: "user",
+			comparator: function (user) {
+				return user.get("age");
+			}
 		});
 		
 
@@ -109,15 +130,34 @@
 					initialize: function () {
 						this.model = this.modelFactory.create("user", data[0]);
 						this.model.child = this.modelFactory.create("user", data[1]);
-
 						this.model.allUsers = this.collectionFactory.create("users", data);
+
+						setTimeout(_.bind(function () {
+							this.addUser({								
+								firstName: "wow",
+								lastName: "zers"
+							});
+						}, this), 2000);
+					},
+					
+					clickAddUser: function () {
+						this.addUser(this.model.toJSON());
 					},
 
+					addUser: function (model) {
+						this.model.allUsers.add(model);
+					},
+
+					removeUser: function () {
+						var index = this.model.allUsers.length - 1;
+						var model = this.model.allUsers.at(index);
+						this.model.allUsers.remove(model);
+					},
+					
 					increaseAge: function () {
 						
 						this.model.set("age", this.model.get("age") + 1);
 						this.model.child.set("age", this.model.child.get("age") + 1);
-						
 					},
 					
 					decreaseAge: function () {
