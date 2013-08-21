@@ -104,8 +104,8 @@ bbext.service("bbext.renderViewExt", ["_", "$", "templateCache", "bbext.collecti
 
 
 
-var collectionRenderer = function (templateCache) {
-
+var collectionRenderer = function (_, templateCache) {
+	"use strict";
 
 	function renderer(view) {
 		var templateEl;
@@ -113,27 +113,64 @@ var collectionRenderer = function (templateCache) {
 		this.view = view;
 		this.collection = view.collection;
 		this.templateFn = templateCache.getTemplateFor(view.name);
+		this.nextId = 0;
 
 		templateEl = this.templateFn.data.templateEl;
 		view.setElement(templateEl.parent());
-		view.$el.empty();
+
+		_.bindAll(this, "addItem", "removeItem", "render");
+		view.listenTo(view.collection, "add", this.addItem);
+		view.listenTo(view.collection, "remove", this.removeItem);
+		view.listenTo(view.collection, "reset", this.render);
 	}
 
 	renderer.prototype = {
 		render: function () {
+			this.view.$el.empty();
+
+			this.rendering = true;
 			this.collection.each(function (model, index) {
 				// ItemView = this.getItemView(item);
 				this.addItem(model);
 			}, this);
+			this.rendering = false;
 		},
 		
 		addItem: function (model) {
-			var el = $(this.templateFn(model.toJSON()));
+			var index = 0, //this.collection.indexOf(model),
+			    el,
+			    id;
+
+			id = model.get("id");
+			if (!id) {
+				id = this.getNextId();
+				model.set("id", id);
+			}
+			
+			model = model.toJSON();
+			//model.index = index;
+
+			el = $(this.templateFn(model));
+			el.attr("data-vid", id);
 			this.view.$el.append(el);
+
+			// just hacking right now - this is for the comparator sort
+			if (!this.rendering) {
+				this.render();
+			}
+		},
+		
+		removeItem: function (model) {
+			var el = this.view.$("[data-vid='" + model.get("id")  + "']");
+			el.remove();
 		},
 	
 		close: function () {
 			
+		},
+		
+		getNextId: function () {
+			return "vid-" + this.nextId++;
 		}
 	};
 	
@@ -141,7 +178,6 @@ var collectionRenderer = function (templateCache) {
 	
 	return {
 		render: function (view) {
-			debugger;
 			var viewRenderer = new renderer(view);
 			viewRenderer.render();
 			view.on("close", viewRenderer.close);
@@ -152,4 +188,4 @@ var collectionRenderer = function (templateCache) {
 };
 
 
-bbext.service("bbext.collectionRenderer", ["templateCache", bbext.collectionRenderer = collectionRenderer]);
+bbext.service("bbext.collectionRenderer", ["_", "templateCache", bbext.collectionRenderer = collectionRenderer]);
