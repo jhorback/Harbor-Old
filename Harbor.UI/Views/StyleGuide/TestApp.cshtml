@@ -8,16 +8,26 @@
 
 	
 	<div data-templatefor="testApp" class="clear margin-bottom">
-		<button data-event="clickTestButton">Test Button</button>
-		<h1 name="bar" data-bind="class: h1Class"></h1>
-		<div data-templatefor="testAppMainView" data-model="subModel">
-			SUB TEMPLATE ! - {{bar}} <span name="bar" data-event="clickTestButton"></span> - that was bar - should be baz
-			<div data-templatefor="testAppMainView2">
-				<span name="bar" data-event="clickTestButton"></span>
-			</div>
+		<h1><span name="firstName"></span> <span name="lastName"></span></h1>
+		<h2 name="hairColor" data-bind="style: hairColorStyle"></h2>
+		<label>Age</label>
+		<span name="age"></span>
+
+		<div data-templatefor="testAppChildView" data-model="child">
+			Child is: <span name="firstName"></span> <span name="lastName"></span> Age: <span name="age"></span>
+			<span name="hairColor" data-bind="style: hairColorStyle"></span>
 		</div>
 	
-		<button data-event="mousedown: clickTestButton" data-bind="title: bar, class: h1Class">Test Button 2</button>
+		<div class="margin-top margin-bottom">
+			<button data-event="increaseAge">Increase Age</button>
+			<button data-event="decreaseAge">Decrease Age</button>
+		</div>
+		
+		<ul class="test">
+			<li data-templatefor="allUsersView" data-collection="allUsers">
+				<span name="firstName">{{firstName}}</span> <span name="lastName">{{lastName}}</span> Age: <span name="age">{{age}}</span>
+			</li>
+		</ul>
 	</div>
 
 	
@@ -26,6 +36,20 @@
 
 @section scripts {
 	<script>
+
+		/*
+		Things to consider:
+		Above there is duplication on the display of the user - is this fabricated because of the example 
+		or what is a way to DRY this up (i.e. use reusable templates)?
+		*/
+
+		var data = [
+			{ firstName: "John", lastName: "Horback", age: "39" },
+			{ firstName: "Johnny", lastName: "Horback", age: "1" },
+			{ firstName: "Sophia", lastName: "Horback", age: "6" },
+			{ firstName: "Larisa", lastName: "Horback", age: "32" }
+		];
+
 		var ta = app("testApp").use("bbext");
 		ta.start(["app", function (app) {
 
@@ -35,65 +59,84 @@
 		}]);
 
 
-
-		ta.model("foo", {
+		ta.model("user", {
 			defaults: {
-				bar: "baz"
+				firstName: null,
+				lastName: null,
+				age: 0,
+				hairColor: "Unknown",
+				hairColorStsyle: ""
 			},
-			h1Class: {
+			age: {
+				get: function (value) {
+					return parseInt(value);
+				}
+			},
+			hairColor: {
 				get: function () {
-					var x = parseInt(this.get("bar"));
-					if (x > 10) {
-						return "disabled";
-					}
-					if (x % 2 === 0) {
-						return "attn";
-					}
-					return "";
+					var age = this.get("age");
+					if (age < 1) { return "Bald"; }
+					if (age < 10) { return "Tan"; }
+					if (age < 20) { return "Red"; }
+					if (age < 30) { return "Purple"; }
+					if (age < 40) { return "Brown"; }
+					if (age < 50) { return "Gray"; }
+					return "Bald";
 				},
-				bind: ["bar"]
-			}
-		});
-
-		ta.view("testApp", ["options", "modelFactory", function (options, modelFactory) { // why wasn't error being thrown when options was not there?
-
-			this.modelFactory = modelFactory;
-
-		}], {
-			initialize: function () {
-				var model;
-				this.x = 0;
-
-				this.model = this.modelFactory.create("foo");
-				this.model.subModel = this.modelFactory.create("foo");
-				this.model.subModel.set("bar", "high");
-				model = this.model;
-
-				//setInterval(function () {
-				//	model.set("bar", model.get("bar") + ", " + (x++));
-				//}, 1000);
-
+				bind: ["age"]
 			},
-
-			clickTestButton: function () {
-				console.log("Clicked");
-				this.model.set("bar", (this.x++));
-				// this.model.set("bar", this.model.get("bar") + ", " + (this.x++));
+			hairColorStyle: {
+				get: function () {
+					return "color: " + this.get("hairColor");
+				},
+				bind: ["age"]
 			}
 		});
 
-		ta.view("testAppMainView2", {
+		ta.collection("users", {			
+			model: "user"
+		});
+		
+
+
+		ta.view("testApp", ["options", "modelFactory", "collectionFactory",
+				function (options, modelFactory, collectionFactory) { // why wasn't error being thrown when options was not there?
+
+					this.modelFactory = modelFactory;
+					this.collectionFactory = collectionFactory;
+
+				}], {
+					initialize: function () {
+						this.model = this.modelFactory.create("user", data[0]);
+						this.model.child = this.modelFactory.create("user", data[1]);
+
+						this.model.allUsers = this.collectionFactory.create("users", data);
+					},
+
+					increaseAge: function () {
+						
+						this.model.set("age", this.model.get("age") + 1);
+						this.model.child.set("age", this.model.child.get("age") + 1);
+						
+					},
+					
+					decreaseAge: function () {
+						this.model.set("age", this.model.get("age") - 1);
+						this.model.child.set("age", this.model.child.get("age") - 1);
+					}
+				});
+
+		ta.view("testAppChildView", {
 			initialize: function () {
 				var model = this.model;
 			}
 		});
 
-
-		ta.view("testAppMainView", {
-			clickTestButton: function () {
-				console.log("clicked 2");
-			}
+		ta.view("allUsersView", {			
+			
 		});
+
+		
 
 		ta.start();
 	</script>

@@ -10,8 +10,10 @@
 	bbext.genericFactory = function (context) {
 		return {
 			create: function (name, options) {
+				var args = Array.prototype.slice.call(arguments, 0),
+				    viewName = args.shift();
 
-				return context.instantiate(name, [options]);
+				return context.instantiate(viewName, args);
 			}
 		};
 	};

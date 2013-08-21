@@ -11,6 +11,7 @@ var closeViewExt = (function () {
 			/// remove the view el and calls an optional 'onClose'
 			/// method when called.
 			/// </summary>
+			this.trigger("close");
 			this.onClose && this.onClose();
 			this.undelegateEvents();
 			this.off();

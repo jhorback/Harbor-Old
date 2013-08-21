@@ -1,6 +1,4 @@
-﻿
-
-/*
+﻿/*
  * templateBinder - shim [data-templatefor]
  *     A shim used to find date-template and put
  *    instances of views in their place
@@ -40,8 +38,16 @@ templateBinderShim.prototype = {
 				model: model
 			});
 
-			templateEl.replaceWith(view.$el);
-			children.push[view];
+			// el will have a parent if other code has moved it
+			// e.g. collectionRenderer
+			if (view.$el.parent().length === 0) {
+				templateEl.replaceWith(view.$el);
+			} else {
+				templateEl.parent().replaceWith(view.$el);
+			}
+			templateEl.remove();
+			
+			children.push(view);
 		});
 		
 		// child view cleanup

@@ -1,7 +1,15 @@
 ﻿
 
 // templateCache
-// compiles caches and returns templates by view name
+// Compiles caches and returns templates by view name
+//
+// Adds any data attributes as meta data on the templateFn
+// including the original template element.
+//
+// Example:
+// <div data-templatefor="someView" data-foo="bar">...</div>
+// var templateFn = templateCache.getTemplateFor("someView");
+// var metaData = templateFn.data; // { templatefor: "someView", foo: "bar", templateEl: $el }
 var templateCache = (function () {
 
 	return function ($, _, globalCache) {
@@ -14,11 +22,14 @@ var templateCache = (function () {
 
 		return {
 			cacheTemplateFor: function (name, templateEl) {
-				var html, templateFn;
+				var html, templateFn, metaData;
 
+				metaData = templateEl.data();
+				metaData.templateEl = templateEl;
 				templateEl.removeAttr("data-templatefor").attr("data-templatefrom", name);
 				html = $('<script/>').append(templateEl[0].outerHTML).html(),
 				templateFn = _.template(String(html));
+				templateFn.data = metaData;
 
 				setTemplate(name, templateFn);
 				return templateFn;
@@ -30,7 +41,7 @@ var templateCache = (function () {
 
 				if (!templateFn) {
 					templateEl = $("[data-templatefor='" + name + "']");
-					templateEl.removeAttr("data-templatefor").attr("data-templatefrom", name);
+					// templateEl.removeAttr("data-templatefor").attr("data-templatefrom", name);
 					if (templateEl.length === 0) {
 						throw "Template for '" + name + "' not found";
 					}
