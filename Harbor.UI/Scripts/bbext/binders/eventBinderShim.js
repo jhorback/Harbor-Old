@@ -11,14 +11,14 @@ function eventBinderShim($, nameValueParser) {
 	
 
 eventBinderShim.prototype = {
-	render: function (el, model) {
+	selector: "[data-event]",
+	render: function (el, model, matches) {
 		var view = el.data("view"),
-		    eventEls = el.find("[data-event]"),
 		    bbEvents = {},
 			$ = this.$,
 		    nameValueParser = this.nameValueParser;
 
-		eventEls.each(function (i, evEl) {
+		matches.each(function (i, evEl) {
 			var dataEvent, evs, selector;
 
 			evEl = $(evEl);

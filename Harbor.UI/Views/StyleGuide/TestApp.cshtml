@@ -37,17 +37,20 @@
 		<div class="pad">
 			<button data-event="removeUser">Remove last user</button>
 			<button data-event="sortUsers">Sort Users</button>
+			<button data-event="fetch">Reset</button>
 		</div>
-		
 
 		<ul>
-			<li data-templatefor="allUsersView" data-collection="allUsers" style="{{hairColorStyle}}">
-				<span name="firstName">{{firstName}}</span> <span name="lastName">{{lastName}}</span> Age: <span name="age">{{age}}</span>
-				<span>{{hairColor}}</span>
+			<li data-templatefor="allUsersView"
+			    data-collection="allUsers">
+				<span data-bind="style: hairColorStyle">
+					<span name="firstName"></span> <span name="lastName"></span> Age: <span name="age"></span>
+					<span name="hairColor"></span>
+					<button data-event="alert">Remove</button>
+				</span>
 			</li>
 		</ul>
 	</div>
-
 	
 
 </div>
@@ -69,6 +72,7 @@
 		];
 
 		var ta = app("testApp").use("bbext");
+
 		ta.start(["app", function (app) {
 
 			// debugger;
@@ -115,22 +119,45 @@
 			model: "user",
 			comparator: function (user) {
 				return user.get("age");
+			},
+			updateSort: function (fn) {
+				this.comparator = fn;
+				this.sort();
+				this.trigger("reset");
 			}
 		});
 		
+		ta.service("userRepo", ["collectionFactory", function (collectionFactory) {
+			
+			var usersCollection;
+
+			return {
+				getUsers: function () {
+					if (!usersCollection) {
+						usersCollection = collectionFactory.create("users", data);
+					}
+					return usersCollection;
+				}
+			};
+
+		}]);
+		
 
 
-		ta.view("testApp", ["options", "modelFactory", "collectionFactory",
-				function (options, modelFactory, collectionFactory) { // why wasn't error being thrown when options was not there?
+		ta.view("testApp", ["options", "modelFactory", "userRepo",
+				function (options, modelFactory, userRepo) { // why wasn't error being thrown when options was not there?
 
 					this.modelFactory = modelFactory;
-					this.collectionFactory = collectionFactory;
+					this.userRepo = userRepo;
 
 				}], {
 					initialize: function () {
-						this.model = this.modelFactory.create("user", data[0]);
-						this.model.child = this.modelFactory.create("user", data[1]);
-						this.model.allUsers = this.collectionFactory.create("users", data);
+						var users = this.userRepo.getUsers();
+						this.model = this.modelFactory.create("user", users.at(0).toJSON());
+						this.model.child = users.find(function (user) {
+							return user.get("firstName").toLowerCase() === "johnny";
+						});
+						this.model.allUsers = users;
 
 						setTimeout(_.bind(function () {
 							this.addUser({								
@@ -163,6 +190,16 @@
 					decreaseAge: function () {
 						this.model.set("age", this.model.get("age") - 1);
 						this.model.child.set("age", this.model.child.get("age") - 1);
+					},
+					
+					sortUsers: function () {
+						this.model.allUsers.updateSort(function (user) {
+							return user.get("firstName").toLowerCase();
+						});
+					},
+					
+					fetch: function () {
+						this.model.allUsers.reset(data);
 					}
 				});
 
@@ -172,11 +209,25 @@
 			}
 		});
 
+
 		ta.view("allUsersView", {			
-			
+			itemView: "allUsersItemView"
 		});
 
-		
+		ta.view("allUsersItemView", function (options, userRepo) {
+			this.userRepo = userRepo;
+		}, {
+			$inject: ["options", "userRepo"],
+			alert: function () {
+				var cid = this.model.cid;
+				var users = this.userRepo.getUsers();
+				var model = users.find(function (user) {
+					return user.cid === cid;
+				});
+				users.remove(model);
+			}
+		});
+
 
 		ta.start();
 	</script>

@@ -1,6 +1,9 @@
 ﻿
-var appui = context.module("appui");
-
+/*
+A shim must have a render method.
+A shim can have a selector property. If defined, the render method will only be called
+if the selector matches any elements.
+*/
 
 appui.construct("shim", ["globalCache", function (globalCache) {
 
@@ -33,8 +36,15 @@ appui.service("shims", ["_", "globalCache", "context", function (_, globalCache,
 			}
 
 			_(shims).each(function (shimName) {
-				var shim = context.get(shimName);
-				shim.render(el, model);
+				var shim = context.get(shimName),
+					matches = [];
+				if (shim.selector) {
+					matches = el.find(shim.selector);
+					if (matches.length === 0) {
+						return;
+					}
+				}
+				shim.render(el, model, matches);
 			});
 		}
 	};
