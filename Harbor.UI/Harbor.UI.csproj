@@ -524,6 +524,7 @@
     <Content Include="Scripts\appui\browser.js" />
     <Content Include="Scripts\backbone.js" />
     <Content Include="Scripts\backbone.min.js" />
+    <Content Include="Scripts\bbext\viewExt\collectionRenderer.js" />
     <Content Include="Scripts\bbext\viewExt\errorDisplayViewExt.js" />
     <Content Include="Scripts\bbext\viewExt\renderViewExt.js" />
     <Content Include="Scripts\bbext\viewExt\templateCache.js" />

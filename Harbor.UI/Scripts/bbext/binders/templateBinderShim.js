@@ -9,7 +9,8 @@ function templateBinderShim($, viewRenderer) {
 }
 	
 templateBinderShim.prototype = {
-	render: function (el, model) {
+	selector: "[data-templatefrom]",
+	render: function (el, model, matches) {
 		var $ = this.$,
 			viewRenderer = this.viewRenderer,
 			children = [],
@@ -20,7 +21,7 @@ templateBinderShim.prototype = {
 		el = $(el);
 		rootView = el.data("view");
 		
-		el.find("[data-templatefrom]").each(function (i, templateEl) {
+		matches.each(function (i, templateEl) {
 			var templateFor,
 				closestTemplate,
 				view;

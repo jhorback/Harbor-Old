@@ -32,20 +32,28 @@ var modelBinder = function ($, _, config, nameValueParser) {
 	var modelBinder, _private;
 
 	modelBinder = {
-		create: function (model, el) {
-			return new ModelBinder(model, el);
+		create: function (model, el, matches) {
+			return new ModelBinder(model, el, matches);
 		}
 	};
 
+	// matches come from the modelBinderShim
+	// 
 
-	function ModelBinder(model, el) {
+	function ModelBinder(model, el, matches) {
 
 		if (!model) {
-			return;
+			return this;
+		}
+
+		this.$el = $(el);
+		matches = matches || this.$el.find("[data-bind],[name],[id]");
+		if (matches.length === 0) {
+			return this;
 		}
 
 		this.model = model;
-		this.$el = $(el);
+		
 		if (this.$el.data("modelbound") === true) {
 			this.unbind();
 		}
@@ -54,7 +62,7 @@ var modelBinder = function ($, _, config, nameValueParser) {
 		this.bindings = {};
 		this._modelToViewProxy = $.proxy(_private.modelToView, this);
 		this.model.bind("change", this._modelToViewProxy);
-		_private.init.apply(this);
+		_private.init.call(this, matches);
 		return this;
 	};
 
@@ -108,8 +116,8 @@ var modelBinder = function ($, _, config, nameValueParser) {
 	};
 
 	_private = {
-		init: function () {
-			var $els = this.$el.find("[data-bind],[name],[id]"),
+		init: function (matches) {
+			var $els = matches,
 				viewToModelProxy = $.proxy(_private.viewToModelFromEvent, this);
 
 			// build the bindings 

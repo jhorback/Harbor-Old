@@ -27,4 +27,6 @@
 	};
 
 	bbext.construct("view", ["Backbone", "bbext.View", "bbext.mvcorConstruct", bbext.viewConstruct]);
+	
+	bbext.view("bbext.genericView", {});
 }());
