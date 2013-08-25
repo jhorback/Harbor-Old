@@ -452,6 +452,7 @@
     <Content Include="Scripts\appui\Selectable.js" />
     <Content Include="Scripts\bbext\mvcorConstruct.js" />
     <Content Include="Scripts\bbext\temp\modelBinderExtension.js" />
+    <Content Include="Scripts\bbext\viewExt\childViewExt.js" />
     <Content Include="Scripts\bbext\viewExt\closeViewExt.js" />
     <Content Include="Scripts\appui\Dialog.js" />
     <Content Include="Scripts\bbext\factories.js" />
@@ -530,6 +531,7 @@
     <Content Include="Scripts\bbext\viewExt\templateCache.js" />
     <Content Include="Scripts\bbext\viewExt\templateRenderer.js" />
     <Content Include="Scripts\bbext\viewExt\view.js" />
+    <Content Include="Scripts\bbext\viewExt\viewMixins.js" />
     <Content Include="Scripts\bbext\viewExt\viewRenderer.js" />
     <Content Include="Scripts\dropzone.js" />
     <Content Include="Scripts\holder.js" />

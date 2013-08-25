@@ -13,7 +13,6 @@ templateBinderShim.prototype = {
 	render: function (el, model, matches) {
 		var $ = this.$,
 			viewRenderer = this.viewRenderer,
-			children = [],
 			listeners,
 			rootView,
 			childrenListener;
@@ -48,22 +47,8 @@ templateBinderShim.prototype = {
 			}
 			templateEl.remove();
 			
-			children.push(view);
+			rootView.views.add(view);
 		});
-		
-		// child view cleanup
-		// could make children first class so any parent can directly refererence this.children["myAppSubView"].
-		// - however - could not reuse views with the same template (not even sure if either of these cases are needed.
-		listeners = rootView._listeners || (rootView._listeners = {}); // Backbone
-		childrenListener = listeners["children"];
-		childrenListener && childrenListener.off();
-		listeners["children"] = {
-			off: function () {
-				$.each(children, function (i, child) {
-					child && child.close && child.close();
-				});
-			}
-		};
 	}
 };
 

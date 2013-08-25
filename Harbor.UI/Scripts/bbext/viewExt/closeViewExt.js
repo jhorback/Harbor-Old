@@ -1,7 +1,7 @@
 ﻿/*globals */
 /*
 */
-var closeViewExt = (function () {
+var closeViewExt = function (_, Backbone) {
 	"use strict";
 
 	var extension = {
@@ -11,6 +11,11 @@ var closeViewExt = (function () {
 			/// remove the view el and calls an optional 'onClose'
 			/// method when called.
 			/// </summary>
+			if (this.isClosed) {
+				return this;
+			}
+			
+			this.isClosed = true;
 			this.trigger("close");
 			this.onClose && this.onClose();
 			this.undelegateEvents();
@@ -21,6 +26,11 @@ var closeViewExt = (function () {
 				this.remove();
 			}
 			return this;
+		},
+		
+		remove: function () {
+			this.close();
+			Backbone.View.prototype.remove.apply(this);
 		}
 	};
 
@@ -30,6 +40,6 @@ var closeViewExt = (function () {
 		}
 	};
 
-});
+};
 
-context && context.module("bbext").service("bbext.closeViewExt", closeViewExt);
+bbext.service("bbext.closeViewExt", ["_", "Backbone", closeViewExt]);

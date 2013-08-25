@@ -28,8 +28,7 @@ var collectionRenderer = function (_, templateCache) {
 	renderer.prototype = {
 		render: function () {
 			
-			// jch! clean up children
-			this.view.$el.empty();
+			this.empty();
 
 			this.collection.each(function (model) {
 				this.addItem(model);
@@ -44,10 +43,11 @@ var collectionRenderer = function (_, templateCache) {
 
 			itemAtIndex = this.view.$el.children().eq(index);
 
-			// jch! would add the child - this.views.add(
 			itemView = this.viewRenderer.render(this.itemViewName, { model: model });
 			itemView.$el.attr("data-cid", model.cid);
-
+			this.view.views.add(itemView);
+			
+			itemView.$el.data("view", itemView);
 			if (itemAtIndex.length === 0) {
 				this.view.$el.append(itemView.$el);
 			} else {
@@ -56,21 +56,28 @@ var collectionRenderer = function (_, templateCache) {
 		},
 
 		removeItem: function (model) {
-			var el = this.view.$("[data-cid='" + model.cid + "']");
+			var el = this.view.$("[data-cid='" + model.cid + "']"),
+				itemView = el.data("view");
+			
 			el.remove();
-			// jch! will want to find the view and remove/close that too
+			this.view.views.remove(itemView);
+		},
+
+		empty: function () {
+			this.view.views.remove();
+			this.view.$el.empty();
 		},
 
 		close: function () {
-
+			this.empty();
 		}
 	};
 
 	return {
 		render: function (view) {
-			var viewRenderer = new renderer(view);
-			viewRenderer.render();
-			view.on("close", viewRenderer.close);
+			var thisRenderer = new renderer(view);
+			thisRenderer.render();
+			view.on("close", thisRenderer.close);
 		}
 	};
 };

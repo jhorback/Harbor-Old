@@ -8,6 +8,11 @@ if the selector matches any elements.
 appui.construct("shim", ["globalCache", function (globalCache) {
 
 	var shims = globalCache.get("shims") || [];
+	
+	function register(name) {
+		shims.push(name);
+		globalCache.set("shims", shims);
+	}
 
 	return function (construct, name) {
 
@@ -17,11 +22,6 @@ appui.construct("shim", ["globalCache", function (globalCache) {
 		}
 		return construct;
 	};
-
-	function register(name) {
-		shims.push(name);
-		globalCache.set("shims", shims);
-	}
 }]);
 
 
@@ -30,7 +30,6 @@ appui.service("shims", ["_", "globalCache", "context", function (_, globalCache,
 	return {
 		render: function (el, model) {
 			var shims = globalCache.get("shims");
-
 			if (model && !model.toJSON) {
 				throw new Error("The model must implement toJSON.");
 			}

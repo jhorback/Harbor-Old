@@ -14,16 +14,15 @@
 		["Backbone", "bbext.mvcorConstruct",
 	function (Backbone, mvcorConstruct) {
 
-		return mvcorConstruct.create(Backbone.Collection, Backbone.Collection, constructorCallback);
+		return mvcorConstruct.create(Backbone.Collection, Backbone.Collection, {
+			beforeInit: function () {
+				var context = arguments[arguments.length - 1];
+
+				// set the model using the string name
+				this.model = context.get(this.model, true); // true gets the raw value
+			}
+		});
 
 	}]);
-	
-
-	function constructorCallback() {
-		var context = arguments[arguments.length - 1];
-		
-		// set the model using the string name
-		this.model = context.get(this.model, true); // true gets the raw value
-	}
 	
 }());
