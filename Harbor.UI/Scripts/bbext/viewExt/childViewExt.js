@@ -16,7 +16,6 @@ function childViewExt(_, viewMixins) {
 	
 	ChildViewContainer.prototype = {
 		add: function (view) {
-			console.log("Adding child", view.cid, "to parent", this.view.cid);
 			this.children[view.cid] = view;
 			view.on("close", _.bind(function () {
 				this.remove(view);
