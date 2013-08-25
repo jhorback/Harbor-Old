@@ -10,9 +10,11 @@
 function mvcorConstruct(console) {
 
 	return {
-		create: function (MVCoR, bbextMVCoR, constructorCallback) {
+		create: function (MVCoR, bbextMVCoR, options) {
 			return function (construct, name) {
 				var protoProps = construct.prototype;
+				
+				options = options || {};
 				
 				protoProps.constructor = construct;
 				if (protoProps.constructor) {
@@ -33,15 +35,14 @@ function mvcorConstruct(console) {
 
 					// inject the constructor
 					if (context.call) {
-							context.call(this._ctor, arguments, this);
+						context.call(this._ctor, arguments, this);
 					} else {
 						this._ctor.apply(this, arguments);
 					}
 					
-					constructorCallback && constructorCallback.apply(this, arguments);
-
+					options.beforeInit && options.beforeInit.apply(this, arguments);
 					MVCoR.apply(this, arguments);
-					
+					options.afterInit && options.afterInit.apply(this, arguments);
 
 					return this;
 				};

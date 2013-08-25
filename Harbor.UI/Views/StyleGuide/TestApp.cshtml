@@ -193,6 +193,8 @@
 					},
 					
 					sortUsers: function () {
+						var views = this.views;
+						debugger;
 						this.model.allUsers.updateSort(function (user) {
 							return user.get("firstName").toLowerCase();
 						});
@@ -212,6 +214,13 @@
 
 		ta.view("allUsersView", {			
 			itemView: "allUsersItemView"
+			//,onRender: function () {
+			//	var thisView = this;
+			//	this.listenTo(this.collection, "add", function () {
+			//		var views = thisView.views;
+			//		debugger;
+			//	});
+			//}
 		});
 
 		ta.view("allUsersItemView", function (options, userRepo) {
