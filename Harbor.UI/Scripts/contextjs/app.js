@@ -1,4 +1,5 @@
-﻿/*
+﻿/// <reference path="context.js" />
+/*
  * app.js
  *
  * Description:
