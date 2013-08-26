@@ -23,8 +23,11 @@ function templateCache($, _, globalCache) {
 			var html, templateFn, metaData;
 
 			if (_.isFunction(templateEl)) {
+				// for caching an already parsed template under
+				// a different name
 				templateFn = templateEl;
 			} else {
+				// shims.parse(templateEl); jch! - here shims.parse
 				metaData = templateEl.data();
 				metaData.templateEl = templateEl;
 				templateEl.removeAttr("data-templatefor").attr("data-templatefrom", name);
