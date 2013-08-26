@@ -91,7 +91,8 @@ var modelBinderConfig = {
 		"id": "string",
 		"disabled": "boolean",
 		"checked": "boolean",
-		"text": "text"
+		"text": "text",
+		"showif": "visibility"
 	},
 	
 	attributeTypes: { // attributeBinders
@@ -107,6 +108,19 @@ var modelBinderConfig = {
 		},
 		"text": function (el, attr, value) {
 			el.html(value);
+		},
+		"visibility": function (el, attr, value) {
+			var initialDisplay = el.data("initialDisplay");
+			if (!initialDisplay) { 
+				initialDisplay = el.css("display");
+				if (initialDisplay === "none") { // respect non block display
+					el.show();
+					initialDisplay = el.css("display");
+					el.hide();
+				}
+				el.data("initialDisplay", initialDisplay);
+			}
+			el.css("display", value ? initialDisplay : "none");
 		}
 	}
 };
