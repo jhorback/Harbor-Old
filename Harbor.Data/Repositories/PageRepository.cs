@@ -136,7 +136,7 @@ namespace Harbor.Data.Repositories
 				{
 					foreach (var validationError in validationErrors.ValidationErrors)
 					{
-						// jch! - need to implement a log - research tracing over/or/including logging
+						// jch* - need to implement a log - research tracing over/or/including logging
 						// got trace turned on in the web.config - but do not see this message here.
 						var message = string.Format("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
 						Trace.TraceInformation(message);

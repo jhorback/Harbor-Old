@@ -26,7 +26,7 @@ text.component("text", function (viewFactory) {
     }
 });
 
-text.view("textView", {  // jch! - renderTemplate update
+text.view("textView", { 
 
     render: function () {
         var buttons = [
