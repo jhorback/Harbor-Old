@@ -62,7 +62,7 @@
 		
 		
 		<div data-templatefor="showIfTestView">
-			<label for="showIt">Show It</label>
+			<label for="showIt" data-event="mouseenter: showIt, mouseleave: hideIt">Show It</label>
 			<input type="checkbox" id="showIt"/>
 			<button class="attn" data-bind="showif:showIt">
 				It Is Visible
@@ -109,6 +109,12 @@
 				this.model = this.modelFactory.create("model", {
 					showIt: false
 				});
+			},
+			showIt: function () {
+				this.model.set("showIt", true);
+			},
+			hideIt: function () {
+				this.model.set("showIt", false);
 			}
 		});
 

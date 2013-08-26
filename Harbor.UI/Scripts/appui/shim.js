@@ -28,15 +28,19 @@ appui.construct("shim", ["globalCache", function (globalCache) {
 appui.service("shims", ["_", "globalCache", "context", function (_, globalCache, context) {
 
 	return {
+		parse: function (el) {
+			foreachShim(function (shim) {
+				shim.parse && shim.parse(el);
+			});
+		},
+		
 		render: function (el, model) {
-			var shims = globalCache.get("shims");
 			if (model && !model.toJSON) {
 				throw new Error("The model must implement toJSON.");
 			}
 
-			_(shims).each(function (shimName) {
-				var shim = context.get(shimName),
-					matches = [];
+			foreachShim(function (shim) {
+				var matches = [];
 				if (shim.selector) {
 					matches = el.find(shim.selector);
 					if (matches.length === 0) {
@@ -47,5 +51,13 @@ appui.service("shims", ["_", "globalCache", "context", function (_, globalCache,
 			});
 		}
 	};
+	
+	function foreachShim(callback) {
+		var shims = globalCache.get("shims");
+		_(shims).each(function (shimName) {
+			var shim = context.get(shimName);
+			callback(shim);
+		});
+	}
 
 }]);
