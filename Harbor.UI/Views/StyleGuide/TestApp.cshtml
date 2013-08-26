@@ -34,7 +34,7 @@
 			<button data-event="clickAddUser" class="loud">Add</button>
 		</fieldset>
 		
-		<div class="pad">
+		<div class="pad" data-bind="showif: firstName">
 			<button data-event="removeUser">Remove last user</button>
 			<button data-event="sortUsers">Sort Users</button>
 			<button data-event="fetch">Reset</button>
@@ -49,15 +49,35 @@
 					<button data-event="alert">Remove</button>
 				</span>
 			</li>
+			
+			@*<li data-itemview="allUsersItemView"
+			    data-collection="allUsers">
+				<span data-bind="style: hairColorStyle">
+					<span name="firstName"></span> <span name="lastName"></span> Age: <span name="age"></span>
+					<span name="hairColor"></span>
+					<button data-event="alert">Remove</button>
+				</span>
+			</li>*@
 		</ul>
+		
+		
+		<div data-templatefor="showIfTestView">
+			<label for="showIt">Show It</label>
+			<input type="checkbox" id="showIt"/>
+			<button class="attn" data-bind="showif:showIt">
+				It Is Visible
+			</button>
+		</div>
+
 	</div>
 	
-
+	
 </div>
 
 @section scripts {
 	<script>
 
+		
 		/*
 		Things to consider:
 		Above there is duplication on the display of the user - is this fabricated because of the example 
@@ -79,6 +99,18 @@
 			app.render();
 
 		}]);
+
+
+		ta.view("showIfTestView", function (options, modelFactory) {
+			this.modelFactory = modelFactory;
+		}, {
+			$inject: ["options", "modelFactory"],
+			initialize: function () {
+				this.model = this.modelFactory.create("model", {
+					showIt: false
+				});
+			}
+		});
 
 
 		ta.model("user", {
@@ -194,7 +226,7 @@
 					
 					sortUsers: function () {
 						var views = this.views;
-						debugger;
+						// debugger;
 						this.model.allUsers.updateSort(function (user) {
 							return user.get("firstName").toLowerCase();
 						});

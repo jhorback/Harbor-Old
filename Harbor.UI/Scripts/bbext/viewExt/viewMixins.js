@@ -5,7 +5,7 @@ These mixins can also define a beforeInit and afterInit methods
 to be called exactly like the views initialize method is called.
 
 Usage:
-myAppOrModule.configure(["viewMixins", function (viewMixins) {
+myAppOrModule.config(["viewMixins", function (viewMixins) {
 	
 	viewMixins.register({
 		beforeInit: function () {

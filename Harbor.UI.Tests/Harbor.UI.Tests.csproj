@@ -150,6 +150,7 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="Scripts\chutzpah.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\qunit.css" />
@@ -157,6 +158,7 @@
     <Content Include="Scripts\app\appjs\browser.test.js" />
     <Content Include="Scripts\app\context.test.js" />
     <Content Include="Scripts\app\app.test.js" />
+    <Content Include="Scripts\app\jasmine.test.js" />
     <Content Include="Scripts\bbext\appEvents.test.js" />
     <Content Include="Scripts\qunit.js" />
   </ItemGroup>
