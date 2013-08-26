@@ -1,7 +1,4 @@
-﻿/// <reference path="../../qunit.js" />
-/// <reference path="../../../../harbor.ui/scripts/underscore.js" />
-/// <reference path="../../../../harbor.ui/scripts/jquery-1.9.1.min.js" />
-/// <reference path="../../../../harbor.ui/scripts/app/appjs/JSPM.js" />
+﻿/// <reference path="../_ref/bbext.js" />
 
 
 module("JSMP.js");

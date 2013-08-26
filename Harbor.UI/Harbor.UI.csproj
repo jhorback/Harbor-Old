@@ -429,7 +429,7 @@
     <Content Include="Scripts\apps\PageEditor\navLinks\navLinksRepo.js" />
     <Content Include="Scripts\appui\deprecate.js" />
     <Content Include="Scripts\appui\globalCache.js" />
-    <Content Include="Scripts\appui\appui.js" />
+    <Content Include="Scripts\appui\%24appui.js" />
     <Content Include="Scripts\appui\shim.js" />
     <Content Include="Scripts\appui\ajaxRequest.js" />
     <Content Include="Scripts\bbext\app.js" />
@@ -442,10 +442,10 @@
     <Content Include="Scripts\bbext\events.js" />
     <Content Include="Scripts\appui\keepAlive.js" />
     <Content Include="Scripts\bbext\binders\eventBinderShim.js" />
-    <Content Include="Scripts\bbext\modelExt\model.js" />
+    <Content Include="Scripts\bbext\_dependent\model.js" />
     <Content Include="Scripts\bbext\modelExt\validators.js" />
     <Content Include="Scripts\appui\sessionTimeout.js" />
-    <Content Include="Scripts\bbext\temp\Application.js" />
+    <Content Include="Scripts\bbext\_dependent\Application.js" />
     <Content Include="Scripts\bbext\temp\JSPM.js" />
     <Content Include="Scripts\bbext\modelExt\backupModelExt.js" />
     <Content Include="Scripts\bbext\temp\Controller.js" />
@@ -464,7 +464,7 @@
     <Content Include="Scripts\bbext\modelErrors.js" />
     <Content Include="Scripts\bbext\temp\Region.js" />
     <Content Include="Scripts\bbext\modelExt\validationModelExt.js" />
-    <Content Include="Scripts\bbext\bbext.js" />
+    <Content Include="Scripts\bbext\%24bbext.js" />
     <Content Include="Scripts\apps\FileSelector\FileSelector.js" />
     <Content Include="Scripts\apps\FileAdmin\AlbumsView.js" />
     <Content Include="Scripts\apps\FileAdmin\EditView.js" />
@@ -530,7 +530,7 @@
     <Content Include="Scripts\bbext\viewExt\renderViewExt.js" />
     <Content Include="Scripts\bbext\viewExt\templateCache.js" />
     <Content Include="Scripts\bbext\viewExt\templateRenderer.js" />
-    <Content Include="Scripts\bbext\viewExt\view.js" />
+    <Content Include="Scripts\bbext\_dependent\view.js" />
     <Content Include="Scripts\bbext\viewExt\viewMixins.js" />
     <Content Include="Scripts\bbext\viewExt\viewRenderer.js" />
     <Content Include="Scripts\dropzone.js" />
