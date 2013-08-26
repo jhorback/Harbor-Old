@@ -26,7 +26,7 @@ title.component("title", function (viewFactory) {
 });
 
 
-title.view("titleView", {  // jch! - bindTemplate update
+title.view("titleView", { 
 	render: function () {
 		this.bindTemplate("Comps-Title");
 	}

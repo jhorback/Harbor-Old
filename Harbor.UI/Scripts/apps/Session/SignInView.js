@@ -1,6 +1,5 @@
 ﻿Session.SignInView = Application.View.extend({
 
-	// jch! really want to be able to inject these views
 	constructor: function (options) {
 		// authenticationProvider
 		// this.auth = authenticationProvider;
@@ -19,7 +18,6 @@
 		var displayErrors = _.bind(this.displayErrors, this),
 				clearErrors = this.clearErrors;
 
-		// jch! - inject here - this.auth.signIn(
 		Session.signIn(this.model.toJSON(), {
 			clientError: function (error) {
 				context.app("session").call(["modelErrors", function (modelErrors) {

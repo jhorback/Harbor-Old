@@ -1,6 +1,6 @@
 ﻿
 
-links.view("linksNewView", function (options, navLinksRepo) { // jch! - bindTemplate update
+links.view("linksNewView", function (options, navLinksRepo) {
 	
 	this.navLinksRepo = navLinksRepo;
 	

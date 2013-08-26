@@ -65,7 +65,7 @@ image.model("imageModel", {
 });
 
 
-image.view("imageView", {  // jch! - bindTemplate update
+image.view("imageView", {
 	
 	initialize: function () {
 		this.listenTo(this.model, "change:res", this.save);
