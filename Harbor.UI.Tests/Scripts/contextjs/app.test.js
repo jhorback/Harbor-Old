@@ -1,5 +1,4 @@
-﻿/// <reference path="../qunit.js" />
-/// <reference path="../../../Harbor.UI/Scripts/contextjs" />
+﻿/// <reference path="../_ref/contextjs.js" />
 
 
 module("app.js");

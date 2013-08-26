@@ -92,8 +92,9 @@ var context = (function () {
 			return method.apply(context, resolved);
 		},
 
-		createRequest: function (context) {
+		createRequest: function (context, description) {
 			return {
+				description: description,
 				visited: {},
 				visitedArray: [],
 				context: context,
@@ -145,12 +146,12 @@ var context = (function () {
 					if (raw === true) {
 						return ioc.getRegistryValue(this.registry, name);
 					}
-					request = ioc.createRequest(this);
+					request = ioc.createRequest(this, "get: " + name);
 					return request.get(name);
 				},
 
 				call: function (method, args, context) {
-					var request = ioc.createRequest(this);
+					var request = ioc.createRequest(this, "call: " + method);
 					return ioc.call(request, method, args, context);
 				},
 
@@ -162,7 +163,7 @@ var context = (function () {
 						constructor = ioc.getRegistryValue(this.registry, name);
 					}
 
-					request = ioc.createRequest(this);
+					request = ioc.createRequest(this, "instantiante: ", constructor);
 					return ioc.instantiate(request, constructor, args);
 				}
 			};

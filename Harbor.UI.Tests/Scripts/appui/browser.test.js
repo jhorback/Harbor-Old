@@ -1,7 +1,4 @@
-﻿/// <reference path="../../qunit.js" />
-/// <reference path="../../../../Harbor.UI/Scripts/app/context.js" />
-/// <reference path="../../../../Harbor.UI/Scripts/app/app.js" />
-/// <reference path="../../../../Harbor.UI/Scripts/app/appjs/browser.js" />
+﻿/// <reference path="../_ref/appui.js" />
 
 
 module("browser.js");

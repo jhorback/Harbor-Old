@@ -1,11 +1,4 @@
-﻿/// <reference path="../qunit.js" />
-/// <reference path="../../../Harbor.UI/Scripts/underscore.js" />
-/// <reference path="../../../Harbor.UI/Scripts/backbone.js" />
-/// <reference path="../../../Harbor.UI/Scripts/app/context.js" />
-/// <reference path="../../../Harbor.UI/Scripts/app/app.js" />
-/// <reference path="../../../Harbor.UI/Scripts/app/appjs/globalCache.js" />
-/// <reference path="../../../Harbor.UI/Scripts/bbext/bbext.js" />
-/// <reference path="../../../Harbor.UI/Scripts/bbext/app/appEvents.js" />
+﻿/// <reference path="../_ref/bbext.js" />
 
 
 module("appEvents.js");

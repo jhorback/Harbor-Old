@@ -129,6 +129,7 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\JasmineController.cs" />
     <Compile Include="JavaScriptPackageViewerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RouteConfigTest.cs" />
@@ -151,16 +152,33 @@
     <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Scripts\chutzpah.json" />
+    <None Include="Scripts\jasmine\MIT.LICENSE" />
+    <None Include="Scripts\jquery-1.9.1.min.map" />
+    <None Include="Views\Jasmine\SpecRunner.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\jasmine\jasmine.css" />
+    <Content Include="Content\jasmine\jasmine_favicon.png" />
     <Content Include="Content\qunit.css" />
-    <Content Include="Scripts\app\appjs\JSPM.test.js" />
-    <Content Include="Scripts\app\appjs\browser.test.js" />
-    <Content Include="Scripts\app\context.test.js" />
-    <Content Include="Scripts\app\app.test.js" />
-    <Content Include="Scripts\app\jasmine.test.js" />
+    <Content Include="Scripts\bbext\JSPM.test.js" />
+    <Content Include="Scripts\appui\browser.test.js" />
+    <Content Include="Scripts\backbone.js" />
+    <Content Include="Scripts\backbone.min.js" />
+    <Content Include="Scripts\contextjs\context.test.js" />
+    <Content Include="Scripts\contextjs\app.test.js" />
+    <Content Include="Scripts\contextjs\jasmine.test.js" />
     <Content Include="Scripts\bbext\appEvents.test.js" />
+    <Content Include="Scripts\jasmine\jasmine.js" />
+    <Content Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Scripts\jquery-1.9.1.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\qunit.js" />
+    <Content Include="Scripts\_ref\contextjs.js" />
+    <Content Include="Scripts\_ref\appui.js" />
+    <Content Include="Scripts\underscore.js" />
+    <Content Include="Scripts\underscore.min.js" />
+    <Content Include="Scripts\_ref\Backbone.js" />
+    <Content Include="Scripts\_ref\bbext.js" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
