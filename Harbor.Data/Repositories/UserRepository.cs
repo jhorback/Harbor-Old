@@ -125,7 +125,7 @@ namespace Harbor.Data.Repositories
 				throw new Exception("The entity was in a detached state.");
 			}
 
-			// jch! - without deleting files, should have an error if one has been added.
+			// jch* - without deleting files, should have an error if one has been added.
 
 			context.Users.Remove(entity);
 			context.SaveChanges();

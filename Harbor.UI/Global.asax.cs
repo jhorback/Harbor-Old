@@ -51,11 +51,6 @@ namespace Harbor.UI
 			ThemeConfig.RegisterThemes(ThemeTable.Themes, BundleTable.Bundles);
 			DbConfig.SetupDatabase();
 			Bootstrapper.ExecuteTasks();
-
-			// set up serialization so it will avoid circular references jch! not working
-			//var jsonSettings = GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings;
-			//jsonSettings.ReferenceLoopHandling = ReferenceLoopHandling.Serialize;
-			//jsonSettings.PreserveReferencesHandling = PreserveReferencesHandling.None;
 		}
 
 		private static HarborApp getApp()

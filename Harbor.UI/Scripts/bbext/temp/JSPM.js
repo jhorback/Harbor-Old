@@ -52,7 +52,7 @@
 			success = success || function () { };
 			proxy = proxy || this;
 			return $.when.apply($, dfds).then(function () {
-				setTimeout(_.bind(success, proxy), 100); // jch! hack but test for now
+				setTimeout(_.bind(success, proxy), 100); // jch* hack remove / test
 			});
 		},
 		
