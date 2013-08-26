@@ -52,7 +52,7 @@ namespace Harbor.UI.Extensions
 			}
 			else
 			{
-				// jch! how to tell if from server or client? - testing this now
+				// jch* how to tell if from server or client? - testing this now
 				var val = metaData != null ? propValue as string : "{{" + propName + "}}";					
 				if (clientAttr != null)
 				{
