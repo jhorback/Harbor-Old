@@ -9,7 +9,9 @@ function templateBinderShim($, viewRenderer) {
 }
 	
 templateBinderShim.prototype = {
+
 	selector: "[data-templatefrom]",
+
 	render: function (el, model, matches) {
 		var $ = this.$,
 			viewRenderer = this.viewRenderer,

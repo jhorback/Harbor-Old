@@ -42,6 +42,9 @@ var context = (function () {
 			name = name.replace(/^\s+|\s+$/g, ''); // trim
 			reg = request.context.registry[name];
 			if (!reg) {
+				if (name === "context") {
+					return ioc.outOfScopeContext;
+				}
 				throw new Error("Unknown dependency: " + name);
 			}
 			if (reg.instance) {
@@ -115,6 +118,14 @@ var context = (function () {
 				throw new Error("Could not instantiate type not found: " + name);
 			}
 			return registry[name].value;
+		},
+	
+		outOfScopeContext: {
+			
+			register: outOfScopeFn,
+			get: outOfScopeFn,
+			call: outOfScopeFn,
+			instantiate: outOfScopeFn
 		}
 	};
 
@@ -169,4 +180,8 @@ var context = (function () {
 			};
 		}
 	};
+
+	function outOfScopeFn() {
+		throw new Error("Out of scope.");
+	}
 }());
