@@ -6,7 +6,9 @@ function modelBinderShim(_, modelBinder) {
 }
 
 modelBinderShim.prototype = {
-	selector: "[data-bind],[name],[id]",
+	matches: function (el) {
+		return el.find("[data-bind]:not([data-templatefrom]),[name],[id]").addBack("[data-bind]");
+	},
 	render: function (el, model, matches) {
 		var binder,
 		    view = el.data("view"),

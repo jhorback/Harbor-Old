@@ -41,14 +41,13 @@ var modelBinder = function ($, _, config, nameValueParser) {
 	// 
 
 	function ModelBinder(model, el, matches) {
-		var selector = "[data-bind],[name],[id]";
 
 		if (!model) {
 			return this;
 		}
 
 		this.$el = $(el);
-		matches = matches || this.$el.find(selector).addBack(selector);
+		matches = matches || el.find("[data-bind]:not([data-templatefrom]),[name],[id]").addBack("[data-bind]");
 		if (matches.length === 0) {
 			return this;
 		}
