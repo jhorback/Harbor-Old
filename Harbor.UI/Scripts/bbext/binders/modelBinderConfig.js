@@ -22,9 +22,11 @@ var modelBinderConfig = {
 			// event: default is change - which triggers a get from dom to update the model
 			// set is listening to model changes
 			get: function (el) { // get from dom
+				//if (el.is("select,:input[name=age]")) debugger; jch! cleanup
 				return el.val();
 			},
 			set: function (el, value) { // set to dom
+				//if (el.is("select,:input[name=age]")) debugger;
 				el.is(":input") ? el.val(value) : el.html(String(value));
 			}
 		},
@@ -82,6 +84,14 @@ var modelBinderConfig = {
 		"radio": {
 			set: function (el, value) {
 				el.attr("checked", el.val() === value);
+			}
+		},
+		"option": {
+			get: function (el) {
+				return el.attr("value");
+			},
+			set: function (el, value) {
+				el.attr("value", value);
 			}
 		}
 	},
