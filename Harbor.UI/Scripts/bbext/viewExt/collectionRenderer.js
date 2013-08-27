@@ -16,8 +16,6 @@ var collectionRenderer = function (_, templateCache, viewFactory, context) {
 
 		this.itemViewName = view.itemView || templateEl.data("itemview") || viewFactory.nextGenericName();
 		templateCache.cacheTemplateFor(this.itemViewName, templateFn);
-		view.setElement(templateEl.parent());
-
 
 		// bind to the collection events
 		_.bindAll(this, "addItem", "removeItem", "render");
