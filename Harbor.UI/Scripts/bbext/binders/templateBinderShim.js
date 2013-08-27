@@ -43,7 +43,9 @@ templateBinderShim.prototype = {
 			if (view.$el.parent().length === 0) {
 				templateEl.replaceWith(view.$el);
 			} else {
-				templateEl.parent().replaceWith(view.$el);
+				// jch! here - need to think about this some
+				templateEl.parent().empty().append(view.$el.children());
+				// templateEl.parent().replaceWith(view.$el);
 			}
 			templateEl.remove();
 			
