@@ -19,10 +19,13 @@
 				var context = arguments[arguments.length - 1];
 
 				// set the model using the string name
-				this.model = context.get(this.model, true); // true gets the raw value
+				if (typeof this.model === "string") {
+					this.model = context.get(this.model, true); // true gets the raw value
+				}
 			}
 		});
 
 	}]);
-	
+
+	bbext.collection("collection", {});
 }());

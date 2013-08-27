@@ -48,7 +48,7 @@
 
 	bbext.construct("view", ["Backbone", "bbext.View", "bbext.mvcorConstruct", "viewMixins", bbext.viewConstruct]);
 	
-	bbext.view("bbext.genericView", {});
+	bbext.view("view", {});
 }());
 
 

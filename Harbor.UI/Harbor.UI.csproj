@@ -434,6 +434,7 @@
     <Content Include="Scripts\appui\ajaxRequest.js" />
     <Content Include="Scripts\bbext\app.js" />
     <Content Include="Scripts\bbext\appEvents.js" />
+    <Content Include="Scripts\bbext\binders\collectionRendererShim.js" />
     <Content Include="Scripts\bbext\binders\modelBinderConfig.js" />
     <Content Include="Scripts\bbext\binders\modelBinder.js" />
     <Content Include="Scripts\bbext\binders\nameValueParser.js" />
