@@ -1,5 +1,5 @@
 ﻿
-var collectionRenderer = function (_, templateCache) {
+var collectionRenderer = function (_, templateCache, viewFactory, context) {
 	"use strict";
 
 	function renderer(view) {
@@ -14,7 +14,7 @@ var collectionRenderer = function (_, templateCache) {
 		templateFn = templateCache.getTemplateFor(view.name);
 		templateEl = templateFn.data.templateEl;
 
-		this.itemViewName = view.itemView || templateEl.data("itemview") || "view";
+		this.itemViewName = view.itemView || templateEl.data("itemview") || viewFactory.nextGenericName();
 		templateCache.cacheTemplateFor(this.itemViewName, templateFn);
 		view.setElement(templateEl.parent());
 
@@ -85,5 +85,5 @@ var collectionRenderer = function (_, templateCache) {
 
 
 bbext.service("bbext.collectionRenderer", [
-	"_", "templateCache",
+	"_", "templateCache", "viewFactory", "context",
 	bbext.collectionRenderer = collectionRenderer]);

@@ -14,10 +14,8 @@ templateBinderShim.prototype = {
 
 	render: function (el, model, matches) {
 		var $ = this.$,
-			viewRenderer = this.viewRenderer,
-			listeners,
-			rootView,
-			childrenListener;
+		    viewRenderer = this.viewRenderer,
+		    rootView;
 
 		el = $(el);
 		rootView = el.data("view");

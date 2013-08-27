@@ -27,5 +27,6 @@
 
 	}]);
 
+	// for generic collections, see factories.js
 	bbext.collection("collection", {});
 }());

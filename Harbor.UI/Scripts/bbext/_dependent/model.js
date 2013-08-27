@@ -35,7 +35,7 @@
 	}]);
 
 
-	
+	// for generic models, see factories.js
 	bbext.model("model", { });
 }());
 

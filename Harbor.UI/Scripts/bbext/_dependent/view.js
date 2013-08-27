@@ -48,6 +48,8 @@
 
 	bbext.construct("view", ["Backbone", "bbext.View", "bbext.mvcorConstruct", "viewMixins", bbext.viewConstruct]);
 	
+
+	// for generic views, see factories.js
 	bbext.view("view", {});
 }());
 
