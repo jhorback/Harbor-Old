@@ -7,13 +7,14 @@ var collectionRenderer = function (_, templateCache) {
 
 		this.view = view;
 		this.viewRenderer = view.context.get("viewRenderer");
-		this.itemViewName = view.itemView || "bbext.genericView";
 		this.collection = view.collection;
 		
 
 		// cache the template for the itemView and set the view el to the parent
 		templateFn = templateCache.getTemplateFor(view.name);
 		templateEl = templateFn.data.templateEl;
+
+		this.itemViewName = view.itemView || templateEl.data("itemview") || "view";
 		templateCache.cacheTemplateFor(this.itemViewName, templateFn);
 		view.setElement(templateEl.parent());
 

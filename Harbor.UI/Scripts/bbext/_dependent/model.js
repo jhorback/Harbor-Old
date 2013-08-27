@@ -36,6 +36,6 @@
 
 
 	
-	bbext.model("model", function () { });
+	bbext.model("model", { });
 }());
 
