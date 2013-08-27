@@ -40,7 +40,7 @@ appui.service("shims", ["_", "globalCache", "context", function (_, globalCache,
 			foreachShim(function (shim) {
 				var matches = [];
 				if (shim.selector) {
-					matches = el.find(shim.selector);
+					matches = el.find(shim.selector).addBack(shim.selector);
 					if (matches.length === 0) {
 						return;
 					}
