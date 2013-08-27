@@ -35,18 +35,10 @@ templateBinderShim.prototype = {
 
 			templateFor = templateEl.data("templatefrom");
 			view = viewRenderer.render(templateFor, {
-				model: model
+				model: model,
+				el: templateEl.data("collection") ? templateEl.parent() : templateEl
 			});
-
-			// el will have a parent if other code has moved it
-			// e.g. collectionRenderer
-			if (view.$el.parent().length === 0) {
-				templateEl.replaceWith(view.$el);
-			} else {
-				// jch! here - need to think about this some
-				templateEl.parent().empty().append(view.$el.children());
-				// templateEl.parent().replaceWith(view.$el);
-			}
+			
 			templateEl.remove();
 			
 			rootView.views.add(view);
