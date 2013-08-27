@@ -360,3 +360,16 @@ test("Calling get with true returns the raw registered object", function () {
 	equal(outFn, fn);
 	equal(outFn.prototype, fn.prototype);
 });
+
+
+test("Context throws an out of scope error if using the context before an app start call", function () {
+
+	var ctx = context.create();
+	var depContext = ctx.get("context");
+	try {
+		depContext.get();
+	} catch (e) {
+		equal(e.message, "Out of scope.");
+	}
+	
+});

@@ -27,6 +27,7 @@ appui.construct("shim", ["globalCache", function (globalCache) {
 
 appui.service("shims", ["_", "globalCache", "context", function (_, globalCache, context) {
 
+
 	return {
 		parse: function (el) {
 			foreachShim(function (shim) {
@@ -51,7 +52,8 @@ appui.service("shims", ["_", "globalCache", "context", function (_, globalCache,
 			});
 		}
 	};
-	
+
+
 	function foreachShim(callback) {
 		var shims = globalCache.get("shims");
 		_(shims).each(function (shimName) {
@@ -61,3 +63,64 @@ appui.service("shims", ["_", "globalCache", "context", function (_, globalCache,
 	}
 
 }]);
+
+
+/*
+
+/*
+A shim must have a render method.
+A shim can have a selector property. If defined, the render method will only be called
+if the selector matches any elements.
+* /
+
+appui.construct("shim", ["globalCache", function (globalCache) {
+
+	var shimContext = globalCache.get("shims") ||
+		context.create(); // using the global context symbol here
+
+	return function (construct, name) {
+
+		shimContext.register(name, construct);
+		globalCache.set("shims", shimContext);
+		return construct;
+	};
+}]);
+
+
+appui.service("shims", ["_", "globalCache", function (_, globalCache) {
+
+	return {
+		parse: function (el) {
+			foreachShim(function (shim) {
+				shim.parse && shim.parse(el);
+			});
+		},
+
+		render: function (el, model) {
+			if (model && !model.toJSON) {
+				throw new Error("The model must implement toJSON.");
+			}
+
+			foreachShim(function (shim) {
+				var matches = [];
+				if (shim.selector) {
+					matches = el.find(shim.selector);
+					if (matches.length === 0) {
+						return;
+					}
+				}
+				shim.render(el, model, matches);
+			});
+		}
+	};
+
+	function foreachShim(callback) {
+		var shimContext = globalCache.get("shims");
+		debugger;
+		_.each(shimContext.registry, function (shim, shimName) {
+			var shim = shimContext.get(shimName);
+			callback(shim);
+		});
+	}
+
+}]);*/

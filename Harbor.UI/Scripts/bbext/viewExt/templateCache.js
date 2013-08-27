@@ -10,7 +10,7 @@
 // <div data-templatefor="someView" data-foo="bar">...</div>
 // var templateFn = templateCache.getTemplateFor("someView");
 // var metaData = templateFn.data; // { templatefor: "someView", foo: "bar", templateEl: $el }
-function templateCache($, _, globalCache) {
+function templateCache($, _, globalCache, shims) {
 
 	globalCache.set("templates", {});
 
@@ -27,7 +27,7 @@ function templateCache($, _, globalCache) {
 				// a different name
 				templateFn = templateEl;
 			} else {
-				// shims.parse(templateEl); jch! - here shims.parse
+				shims.parse(templateEl);
 				metaData = templateEl.data();
 				metaData.templateEl = templateEl;
 				templateEl.removeAttr("data-templatefor").attr("data-templatefrom", name);
@@ -71,4 +71,4 @@ function templateCache($, _, globalCache) {
 
 
 context.module("bbext").service("templateCache",
-	["$", "_", "globalCache", templateCache]);
+	["$", "_", "globalCache", "shims", templateCache]);
