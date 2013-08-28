@@ -42,11 +42,11 @@ function childViewExt(_, viewMixins) {
 		afterInit: function () {
 			this.views = new ChildViewContainer(this);
 			this.on("close", _.bind(this.views.remove, this.views));
-		},	
+		},
 		
-		renderView: function (name, options) {
-			var viewRenderer = this.context.get("viewRenderer"),
-				view = viewRenderer.render(name, options);
+		renderView: function (name, model) {
+			var templateRenderer = this.context.get("templateRenderer"),
+				view = templateRenderer.render(name, model);
 			this.views.add(view);
 			return view;
 		}

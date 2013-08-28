@@ -13,16 +13,21 @@
 	
 	var bbext = context.module("bbext");
 
-	bbext.service("bbext.Model", [
-		"Backbone", "bbext.backupModelExt", "bbext.getSetModelExt", "bbext.validationModelExt",
-	function (Backbone, backupModelExt, getSetModelExt, validationModelExt) {
-
+	function bbextModel(Backbone, backupModelExt, getSetModelExt, validationModelExt) {
 		var Model = Backbone.Model.extend({});
+		
 		backupModelExt.extend(Model.prototype);
 		getSetModelExt.extend(Model.prototype);
 		validationModelExt.extend(Model.prototype);
+
 		return Model;
-	}]);
+	}
+
+	bbext.service("bbext.Model", [
+		"Backbone", "bbext.backupModelExt", "bbext.getSetModelExt", "bbext.validationModelExt",
+		bbextModel
+	]);
+
 
 
 
