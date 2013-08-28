@@ -3,6 +3,7 @@
 // templateRenderer
 // caches the template, uses the viewRenderer to create and render the view
 // appends the view el to the templates parent
+// The root render method - called on by app.render();
 function templateRenderer(templateCache, viewRenderer, $, shims) {
 
 	return {
@@ -44,4 +45,6 @@ function templateRenderer(templateCache, viewRenderer, $, shims) {
 
 }
 
-context.module("bbext").service("templateRenderer", ["templateCache", "viewRenderer", "$", "shims", bbext.templateRenderer = templateRenderer]);
+context.module("bbext").service("templateRenderer", [
+	"templateCache", "viewRenderer", "$", "shims",
+	bbext.templateRenderer = templateRenderer]);
