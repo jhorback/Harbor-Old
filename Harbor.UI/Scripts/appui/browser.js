@@ -31,6 +31,9 @@ appui.service("console", ["window", function (window) {
 		log: log("log"),
 		warn: log("warn"),
 		error: log("error"),
+		debug: log("debug"),
+		group: log("group"),
+		groupEnd: log("groupEnd"),
 		trace: trace
 	};
 

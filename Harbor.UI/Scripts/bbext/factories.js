@@ -33,7 +33,9 @@
 					if (objName.indexOf("g-" + type) === 0) {
 						objType = type;
 					}
-					
+
+					raw = context.get(objType, true);
+					// console.log(objType, objName, raw.$inject); // jch! - attempting to get $inject to see if I can massage the model/collection dependencies since their arguments are variant.
 					obj = context.instantiate(objType, args);
 					obj.name = objName;
 					return obj;

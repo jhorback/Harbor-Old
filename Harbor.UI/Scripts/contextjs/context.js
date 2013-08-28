@@ -43,7 +43,7 @@ var context = (function () {
 			reg = request.context.registry[name];
 			if (!reg) {
 				if (name === "context") {
-					return ioc.outOfScopeContext;
+					return ioc.outOfScopeContext(request);
 				}
 				throw new Error("Unknown dependency: " + name);
 			}
@@ -120,12 +120,14 @@ var context = (function () {
 			return registry[name].value;
 		},
 	
-		outOfScopeContext: {
-			
-			register: outOfScopeFn,
-			get: outOfScopeFn,
-			call: outOfScopeFn,
-			instantiate: outOfScopeFn
+		outOfScopeContext: function (request) {
+			var oosf = outOfScopeFn(request);
+			return {
+				register: oosf,
+				get: oosf,
+				call: oosf,
+				instantiate: oosf
+			};
 		}
 	};
 
@@ -174,14 +176,17 @@ var context = (function () {
 						constructor = ioc.getRegistryValue(this.registry, name);
 					}
 
-					request = ioc.createRequest(this, "instantiante: ", constructor);
+					request = ioc.createRequest(this, "instantiante: " + constructor, constructor);
 					return ioc.instantiate(request, constructor, args);
 				}
 			};
 		}
 	};
 
-	function outOfScopeFn() {
-		throw new Error("Out of scope.");
+	function outOfScopeFn(request) {
+		return function () {
+			this.request = request;
+			throw new Error("Out of scope.");
+		};
 	}
 }());
