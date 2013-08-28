@@ -4,7 +4,8 @@ Shim:
 selector - If defined, the render method will only be called if the selector matches any elements.
 matches: fn(el) - If defined, the result of the function (passed an element) will be the matches passed to render if any.
 parse: fn(el) - The raw template root before caching.
-render: fn(el, model) - Given the final element and model to perform the shim
+render: fn(el, model, matches) - Given the final element and model to perform the shim
+resolve: fn(el, model, matches) - Same as render, however, executes after render.
 */
 
 appui.construct("shim", ["globalCache", function (globalCache) {
@@ -50,7 +51,11 @@ appui.service("shims", ["_", "globalCache", "context", function (_, globalCache,
 				if (shim.matches) {
 					matches = shim.matches(el);
 				}
+				
 				shim.render && shim.render(el, model, matches);
+				shim.resolve && setTimeout(function () {
+					shim.resolve(el, model, matches);
+				}, 0);
 			});
 		}
 	};
