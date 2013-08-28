@@ -68,7 +68,7 @@
 				<span name="firstName"></span> <span name="lastName"></span> Age: <span name="age"></span>
 				<span name="hairColor"></span>
 				<span name="favoriteIceCreamDisplay"></span>
-				<button data-event="alert">Remove</button>
+				<button data-event="removeUser">Remove</button>
 			</li>
 			
 			@*<li data-itemview="allUsersItemView"
@@ -76,7 +76,7 @@
 				<span data-bind="style: hairColorStyle">
 					<span name="firstName"></span> <span name="lastName"></span> Age: <span name="age"></span>
 					<span name="hairColor"></span>
-					<button data-event="alert">Remove</button>
+					<button data-event="removeUser">Remove</button>
 				</span>
 			</li>*@
 		</ul>
@@ -323,7 +323,7 @@
 				//this.model.iceCream = iceCream;
 			},
 
-			alert: function () {
+			removeUser: function () {
 				var cid = this.model.cid;
 				var users = this.userRepo.getUsers();
 				var model = users.find(function (user) {
