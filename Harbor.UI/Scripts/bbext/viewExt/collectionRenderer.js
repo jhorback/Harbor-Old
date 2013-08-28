@@ -1,5 +1,5 @@
 ﻿
-var collectionRenderer = function (_, templateCache, viewFactory, context) {
+var collectionRenderer = function (_, templateCache, viewFactory, modelBinder) {
 	"use strict";
 
 	function renderer(view) {
@@ -32,6 +32,8 @@ var collectionRenderer = function (_, templateCache, viewFactory, context) {
 			this.collection.each(function (model) {
 				this.addItem(model);
 			}, this);
+
+			modelBinder.updateEl(this.view.$el);
 		},
 
 		addItem: function (model) {
@@ -83,5 +85,5 @@ var collectionRenderer = function (_, templateCache, viewFactory, context) {
 
 
 bbext.service("bbext.collectionRenderer", [
-	"_", "templateCache", "viewFactory", "context",
+	"_", "templateCache", "viewFactory", "modelBinder",
 	bbext.collectionRenderer = collectionRenderer]);
