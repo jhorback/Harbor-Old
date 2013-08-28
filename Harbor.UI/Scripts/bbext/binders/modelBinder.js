@@ -34,6 +34,13 @@ var modelBinder = function ($, _, config, nameValueParser) {
 	modelBinder = {
 		create: function (model, el, matches) {
 			return new ModelBinder(model, el, matches);
+		},
+		
+		updateEl: function (el) {
+			var binding = $(el).data("binding");
+			if (binding) {
+				binding.binder.updateEl(el);
+			}
 		}
 	};
 
@@ -52,6 +59,7 @@ var modelBinder = function ($, _, config, nameValueParser) {
 			return this;
 		}
 
+		this.matches = matches;
 		this.model = model;
 		
 		if (this.$el.data("modelbound") === true) {
@@ -62,7 +70,7 @@ var modelBinder = function ($, _, config, nameValueParser) {
 		this.bindings = {};
 		this._modelToViewProxy = $.proxy(_private.modelToView, this);
 		this.model.bind("change", this._modelToViewProxy);
-		_private.init.call(this, matches);
+		_private.init.call(this);
 		return this;
 	};
 
@@ -71,23 +79,26 @@ var modelBinder = function ($, _, config, nameValueParser) {
 		$el: null, 	// stores the container that is being bound
 		bindings: {}, // stores binding elements by name (each value is an array of elements).
 
-		updateEl: function (el, name, value) {
-			var binding, set;
+		updateEl: function (el, name, value) { // name and value are optional
+			var binding, set, haveValue = value !== undefined;
 
 			el = $(el);
 			if (el.is(":focus")) {
 				return;
 			}
+			
 			binding = el.data("binding");
 			if (!binding) {
 				this.unbind();
 				return;
 			}
+			
 			value = value === null ? "" : value;
 
-			if (binding.name === name) {
+			// if we have a binding name and the name attribute is not passed or is the same a s the binding name then update
+			if (binding.name && (!name || binding.name === name)) {
 				set = (config.types[binding.type] && config.types[binding.type].set) || config.types["default"].set;
-				set.call(this, el, value);
+				set.call(this, el, haveValue ? value : this.model.get(binding.name));
 			}
 
 			// set the attributes
@@ -95,17 +106,17 @@ var modelBinder = function ($, _, config, nameValueParser) {
 				$.each(binding.attrs, $.proxy(function (attr, modelPropertyName) {
 					var attrType, setter;
 
-					if (modelPropertyName === name) {
+					if (!name || modelPropertyName === name) {
 						attrType = config.attributes[attr] || config.attributes["default"];
 						setter = config.attributeTypes[attrType];
-						setter(el, attr, value);
+						setter(el, attr, haveValue ? value : this.model.get(modelPropertyName));
 					}
 				}, this));
 			}
 		},
 
 		unbind: function () {
-			this.$el.find("[data-bind],[name],[id]").unbind(".modelbinder");
+			this.matches.unbind(".modelbinder");
 			this.model.unbind("change", this._modelToViewProxy);
 			this.$el.data("modelbound", false);
 		},
@@ -116,8 +127,8 @@ var modelBinder = function ($, _, config, nameValueParser) {
 	};
 
 	_private = {
-		init: function (matches) {
-			var $els = matches,
+		init: function () {
+			var $els = this.matches,
 				viewToModelProxy = $.proxy(_private.viewToModelFromEvent, this);
 
 			// build the bindings 
@@ -127,7 +138,6 @@ var modelBinder = function ($, _, config, nameValueParser) {
 
 			}, this));
 
-			// jch replacing this = _private.initAttrBindings.apply(this);
 			_private.updateFromView.apply(this);
 		},
 
@@ -135,7 +145,7 @@ var modelBinder = function ($, _, config, nameValueParser) {
 			var instance = this,
 			    attr,
 			    bindTo,
-			    binding = { attrs: {} },
+			    binding = { attrs: {}, binder: this },
 			    changeEvent;
 
 			el = $(el);
@@ -162,15 +172,11 @@ var modelBinder = function ($, _, config, nameValueParser) {
 
 				}
 
-				// could batch these two lines and put it outside the loop: this.updateEl(el)
-				el.data("binding", binding);
-				this.updateEl(el, modelProperty, val);
-
 				_private.addBinding.call(instance, modelProperty, el); // add binding ref to model property
-
-
 			}, this));
 
+			el.data("binding", binding);
+			this.updateEl(el);
 
 			// hook up the change event(s)
 			changeEvent = binding.type && _private.getChangeEvent(el, binding.type);
