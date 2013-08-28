@@ -62,13 +62,13 @@
 		</div>
 
 		<ul>
-			<li data-templatefor="allUsersView"
+			<li xdata-templatefor="allUsersView"
 			    data-collection="allUsers"
 				data-itemview="allUsersItemView" data-bind="style: hairColorStyle">
 				<span name="firstName"></span> <span name="lastName"></span> Age: <span name="age"></span>
 				<span name="hairColor"></span>
 				<span name="favoriteIceCreamDisplay"></span>
-				<button data-event="removeUser">Remove</button>
+				<button data-event="removeThisUser">Remove</button>
 			</li>
 			
 			@*<li data-itemview="allUsersItemView"
@@ -76,7 +76,7 @@
 				<span data-bind="style: hairColorStyle">
 					<span name="firstName"></span> <span name="lastName"></span> Age: <span name="age"></span>
 					<span name="hairColor"></span>
-					<button data-event="removeUser">Remove</button>
+					<button data-event="removeThisUser">Remove</button>
 				</span>
 			</li>*@
 		</ul>
@@ -123,7 +123,7 @@
 
 		ta.start(["app", function (app) {
 
-			// debugger;
+			//debugger;
 			app.render();
 
 		}]);
@@ -147,12 +147,13 @@
 		});
 
 
-		ta.model("user", function (options) {
-			
-			// jch! - models that are created by collections will have a problem
-			// need to look into this.
-			// this.userRepo = this.context.get("userRepo");
+		ta.model("user", function (attrs, options, userRepo) {
+
+			this.userRepo = this.context.get("userRepo");
+			// debugger;
+
 		}, {
+			$inject: ["attrs", "userRepo"],
 			defaults: {
 				firstName: null,
 				lastName: null,
@@ -239,8 +240,11 @@
 
 				}], {
 					initialize: function () {
-						var users = this.userRepo.getUsers();
-						this.model = this.modelFactory.create("user", users.at(0).toJSON());
+						var users;
+						
+						this.model = this.modelFactory.create("user", data.users[0]);
+
+						users = this.userRepo.getUsers();
 						this.model.child = users.find(function (user) {
 							return user.get("firstName").toLowerCase() === "johnny";
 						});
@@ -323,7 +327,7 @@
 				//this.model.iceCream = iceCream;
 			},
 
-			removeUser: function () {
+			removeThisUser: function () {
 				var cid = this.model.cid;
 				var users = this.userRepo.getUsers();
 				var model = users.find(function (user) {

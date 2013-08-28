@@ -439,7 +439,8 @@
     <Content Include="Scripts\bbext\binders\modelBinder.js" />
     <Content Include="Scripts\bbext\binders\nameValueParser.js" />
     <Content Include="Scripts\bbext\binders\templateBinderShim.js" />
-    <Content Include="Scripts\bbext\collectionExt\collection.js" />
+    <Content Include="Scripts\bbext\_dependent\collection.js" />
+    <Content Include="Scripts\bbext\collectionExt\prepareModelColExt.js" />
     <Content Include="Scripts\bbext\events.js" />
     <Content Include="Scripts\appui\keepAlive.js" />
     <Content Include="Scripts\bbext\binders\eventBinderShim.js" />
