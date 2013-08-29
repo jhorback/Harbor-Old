@@ -74,11 +74,7 @@ var module = (function (context) {
 				fn = fnOrArray.pop();
 				fn.$inject = fnOrArray;
 			} else {
-				fn = fnOrArray; // jch! - add test to ensure the $inject is there
-				if (!fn.$inject) { //} && fn.prototype) {
-					// fn.$inject = fn.prototype.$inject;
-					// console.log("proto$", fn.constructor.prototype);
-				}
+				fn = fnOrArray;
 			}
 			return fn;
 		},

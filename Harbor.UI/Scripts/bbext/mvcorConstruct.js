@@ -24,14 +24,9 @@ function mvcorConstruct(console) {
 				protoProps.constructor = function () {
 					var context = arguments[arguments.length - 1];
 
-					if (this.$inject && this.$inject[0] !== "options") {
-						console.warn("First argument is not options of : " + name);
-					}
-
 					// add name and context meta properties for future reference
 					this.name = name;
 					this.context = context;
-					
 
 					// inject the constructor
 					if (context.call) {

@@ -22,7 +22,7 @@
 	function createFactory(type) {
 		var genericCount = 0;
 		
-		return function (context) {
+		return function (context, console) {
 			return {
 				create: function (name, options) {
 					var args = Array.prototype.slice.call(arguments, 0),
@@ -34,8 +34,9 @@
 						objType = type;
 					}
 
-					raw = context.get(objType, true);
-					// console.log(objType, objName, raw.$inject); // jch! - attempting to get $inject to see if I can massage the model/collection dependencies since their arguments are variant.
+					args = guardArgs(objType, args);
+					
+					console.log("MVCoR Factory", type, "creating", objType, ":", objName);
 					obj = context.instantiate(objType, args);
 					obj.name = objName;
 					return obj;
@@ -49,15 +50,48 @@
 					return this.create(this.nextGenericName(), options);
 				}
 			};
+			
+			function guardArgs(objType, args) {
+				var raw, inject,
+					i = 0,
+					expected = [];
+
+				raw = context.get(objType, true);
+				inject = raw.$inject || raw.prototype.$inject;
+				if (!inject) {
+					return args;
+				}
+				
+				if (type === "view") {
+					expected = ["options"];
+				} else if (type === "model") {
+					expected = ["attrs", "options"];
+				} else if (type === "collection") {
+					expected = ["models", "options"];
+				}
+
+				for (; i < expected.length; i++) {
+					if (args[i] === undefined) {
+						args[i] = null;
+					}
+					if (expected[i] !== inject[i]) {
+						console.warn("Argument warning for " + type + " " + objType +
+							". Injected arguments should start with: [" + expected +
+							"]. Actual inject is: [" + inject + "]");
+					}
+				}
+				return args;
+			}
 		};
 	}
 
+	
 
 	bbext.viewFactory = createFactory("view");
 	bbext.modelFactory = createFactory("model");
 	bbext.collectionFactory = createFactory("collection");
 
-	bbext.service("viewFactory", ["context", bbext.viewFactory]);
-	bbext.service("modelFactory", ["context", bbext.modelFactory]);
-	bbext.service("collectionFactory", ["context", bbext.collectionFactory]);
+	bbext.service("viewFactory", ["context", "console", bbext.viewFactory]);
+	bbext.service("modelFactory", ["context", "console", bbext.modelFactory]);
+	bbext.service("collectionFactory", ["context", "console", bbext.collectionFactory]);
 }());
