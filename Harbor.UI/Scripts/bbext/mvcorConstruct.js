@@ -11,17 +11,12 @@ function mvcorConstruct(console) {
 
 	return {
 		create: function (MVCoR, bbextMVCoR, options) {
-			return function (construct, name) {
-				var protoProps = construct.prototype;
+			return function (name, construct) {
+				var proto = construct.prototype;
 				
 				options = options || {};
-				
-				protoProps.constructor = construct;
-				if (protoProps.constructor) {
-					protoProps._ctor = protoProps.constructor;
-				}
 
-				protoProps.constructor = function () {
+				proto.constructor = function () {
 					var context = arguments[arguments.length - 1];
 
 					// add name and context meta properties for future reference
@@ -30,9 +25,9 @@ function mvcorConstruct(console) {
 
 					// inject the constructor
 					if (context.call) {
-						context.call(this._ctor, arguments, this);
+						context.call(construct, arguments, this);
 					} else {
-						this._ctor.apply(this, arguments);
+						construct.apply(this, arguments);
 					}
 					
 					options.beforeInit && options.beforeInit.apply(this, arguments);
@@ -42,7 +37,7 @@ function mvcorConstruct(console) {
 					return this;
 				};
 
-				return bbextMVCoR.extend(protoProps, construct);
+				return bbextMVCoR.extend(proto, construct);
 			};
 		}
 	};

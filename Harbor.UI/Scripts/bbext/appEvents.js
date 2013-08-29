@@ -6,7 +6,7 @@
  */
 bbext.appEvents = function (events) {
 
-	return function (construct) {
+	return function (name, construct) {
 
 		_.extend(construct.prototype, {
 
