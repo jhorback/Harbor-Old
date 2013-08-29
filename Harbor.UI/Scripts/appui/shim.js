@@ -17,7 +17,7 @@ appui.construct("shim", ["globalCache", function (globalCache) {
 		globalCache.set("shims", shims);
 	}
 
-	return function (construct, name) {
+	return function (name, construct) {
 
 		register(name);
 		return construct;

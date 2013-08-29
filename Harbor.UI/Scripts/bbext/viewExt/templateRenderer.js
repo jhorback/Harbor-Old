@@ -4,10 +4,13 @@
 // caches the template, uses the viewRenderer to create and render the view
 // appends the view el to the templates parent
 // The root render method - called on by app.render();
+// The el argument can be a selector/node where the template should be rendered.
+//     If it is ommited, the root element will be rendered after the
+//     template element in the DOM.
 function templateRenderer(templateCache, viewRenderer, $, shims) {
 
 	return {
-		render: function (name, model) {
+		render: function (name, model, el) {
 
 			var templateEl = $("[data-templatefor='" + name + "']"),
 				childTemplates,
@@ -38,7 +41,7 @@ function templateRenderer(templateCache, viewRenderer, $, shims) {
 				model: model
 			});
 
-			templateEl.after(view.$el);
+			el ? $(el).empty().append(view.$el) : templateEl.after(view.$el);
 			return view;
 		}
 	};

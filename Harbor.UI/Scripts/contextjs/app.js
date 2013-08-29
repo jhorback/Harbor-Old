@@ -95,11 +95,12 @@ var module = (function (context) {
 
 				creator = _.handleInject(creator);
 				retFn = modvars.context.call(creator, [], module);
-				protoObj = retFn.apply(module, [construct, name]);
+				protoObj = retFn.apply(module, [name, construct]);
 				if (!protoObj) {
 					throw new Error("The inner construct function did not return anything.");
 				}
 				module.register(name, protoObj);
+				module.register(name + ".construct", protoObj, "object"); // jch! add test - making available the raw construct through injection and document
 				return protoObj;
 			};
 		},
@@ -255,7 +256,7 @@ var module = (function (context) {
 			}
 
 			modvars.instance.construct("service", function () {
-				return function (construct) {
+				return function (name, construct) {
 					return construct;
 				};
 			});

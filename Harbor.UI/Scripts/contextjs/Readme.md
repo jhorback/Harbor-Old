@@ -48,7 +48,7 @@ For instance, a construct can be created to provide Backbone views.
 
 ```js
 module("BackboneExtensions").construct("view", function () {
-	return function (construct, name) {
+	return function (name, construct) {
 		var protoProps = construct.prototype;
 
 		protoProps.constructor = construct;
