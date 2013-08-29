@@ -149,11 +149,10 @@
 
 		ta.model("user", function (attrs, options, userRepo) {
 
-			this.userRepo = this.context.get("userRepo");
-			// debugger;
+			this.userRepo = userRepo;
 
 		}, {
-			$inject: ["attrs", "userRepo"],
+			$inject: ["attrs", "options", "userRepo"],
 			defaults: {
 				firstName: null,
 				lastName: null,
@@ -187,11 +186,17 @@
 				},
 				bind: ["age"]
 			},
+			favoriteIceCream: {
+				get: function (value) { 
+					return parseInt(value);
+				}
+			},
 			favoriteIceCreamDisplay: {
 				get: function (value) {
-					//var iceCream = this.userRepo.getIceCream().findWhere({ id: this.get("favoriteIceCream") });
-					//return iceCream.get("flavor");
-					return this.get("favoriteIceCream");
+					var favId =  this.get("favoriteIceCream"),
+						iceCream = this.userRepo.getIceCream().findWhere({ id: favId });
+					var ret = iceCream ? iceCream.get("flavor") : "Unknown";
+					return ret + ":" + favId;
 				},
 				bind: ["favoriteIceCream"]
 			}
@@ -233,7 +238,7 @@
 
 
 		ta.view("testApp", ["options", "modelFactory", "userRepo",
-				function (options, modelFactory, userRepo) { // why wasn't error being thrown when options was not there?
+				function (options, modelFactory, userRepo) {
 
 					this.modelFactory = modelFactory;
 					this.userRepo = userRepo;
@@ -242,7 +247,7 @@
 					initialize: function () {
 						var users;
 						
-						this.model = this.modelFactory.create("user", data.users[0]);
+						this.model = this.modelFactory.create("user", data.users[1]);
 
 						users = this.userRepo.getUsers();
 						this.model.child = users.find(function (user) {

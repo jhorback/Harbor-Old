@@ -8,7 +8,17 @@ appui.register("window", function () {
 
 
 appui.service("console", ["window", function (window) {
-	var console, winConsole, log;
+	var console, winConsole, log, okToLog = true;
+	
+	// jch* testing various ways of turing the log on
+	window.log = function () {
+		okToLog = true;
+		return "logging is on";
+	};
+	
+	if (!okToLog) {
+		okToLog = window.location.search.indexOf("log=") > -1;
+	}
 
 	winConsole = window.console || {
 		log: function () {
@@ -18,9 +28,13 @@ appui.service("console", ["window", function (window) {
 	
 	log = function (type) {
 		return function () {
-			var args = Array.prototype.slice.call(arguments, 0),
-			    consoleMethod;
+			var args, consoleMethod;
 			
+			if (!okToLog) {
+				return;
+			}
+			
+			args = Array.prototype.slice.call(arguments, 0);
 			type = winConsole[type] ? type : "log";
 			consoleMethod = winConsole[type];
 			consoleMethod.apply ? consoleMethod.apply(winConsole, args) : consoleMethod(args);
