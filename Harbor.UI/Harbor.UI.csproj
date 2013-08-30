@@ -431,6 +431,7 @@
     <Content Include="Scripts\appui\deprecate.js" />
     <Content Include="Scripts\appui\globalCache.js" />
     <Content Include="Scripts\appui\%24appui.js" />
+    <Content Include="Scripts\appui\region.js" />
     <Content Include="Scripts\appui\shim.js" />
     <Content Include="Scripts\appui\ajaxRequest.js" />
     <Content Include="Scripts\bbext\appEvents.js" />

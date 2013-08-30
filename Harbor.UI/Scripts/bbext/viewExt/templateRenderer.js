@@ -10,7 +10,7 @@
 function templateRenderer(templateCache, viewRenderer, $, shims) {
 
 	return {
-		render: function (name, model, el) {
+		render: function (name, model, region) {
 
 			var templateEl = $("[data-templatefor='" + name + "']"),
 				childTemplates,
@@ -41,7 +41,7 @@ function templateRenderer(templateCache, viewRenderer, $, shims) {
 				model: model
 			});
 
-			el ? $(el).empty().append(view.$el) : templateEl.after(view.$el);
+			region ? region.push(view.$el) : templateEl.after(view.$el);
 			return view;
 		}
 	};

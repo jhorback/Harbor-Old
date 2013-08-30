@@ -18,7 +18,7 @@ var collectionRenderer = function (_, templateCache, viewFactory, modelBinder) {
 		templateCache.cacheTemplateFor(this.itemViewName, templateFn);
 
 		// bind to the collection events
-		_.bindAll(this, "addItem", "removeItem", "render");
+		_.bindAll(this, "addItem", "removeItem", "render", "close");
 		view.listenTo(view.collection, "add", this.addItem);
 		view.listenTo(view.collection, "remove", this.removeItem);
 		view.listenTo(view.collection, "reset", this.render);

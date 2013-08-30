@@ -122,9 +122,15 @@
 		var ta = app("testApp").use("bbext");
 
 		ta.start(["app", function (app) {
+			// app.el = '.page';
 
 			//debugger;
 			app.render();
+			return;
+			setTimeout(function () {
+				console.log(app);
+				app.view.close();
+			}, 3000);
 
 		}]);
 
