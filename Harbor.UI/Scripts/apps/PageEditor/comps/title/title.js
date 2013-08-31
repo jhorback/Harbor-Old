@@ -1,7 +1,7 @@
 ﻿
 var title = module("title").use("pageComponent", "bbext");
 
-title.component("title", function (viewFactory) {
+title.pageComponent("title", function (viewFactory) {
 
 	this.viewFactory = viewFactory;
 	
@@ -26,7 +26,10 @@ title.component("title", function (viewFactory) {
 });
 
 
-title.view("titleView", { 
+title.view("titleView", function (options, jstViewExtension) {
+	jstViewExtension.extend(this);
+}, {
+	$inject: ["options", "jstViewExtension"],
 	render: function () {
 		this.bindTemplate("Comps-Title");
 	}

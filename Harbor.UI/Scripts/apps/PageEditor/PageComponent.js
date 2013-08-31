@@ -12,9 +12,9 @@
 
 var pageComponent = module("pageComponent").use("appui");
 
-pageComponent.construct("component", ["console", "appurl", function (console, appurl) {
+pageComponent.construct("pageComponent", ["console", "appurl", function (console, appurl) {
 
-	return function (construct) {
+	return function (name, construct) {
 
 		var pageComponentConstructor = function (options) {
 			this.context = arguments[arguments.length - 1]; // the app context is the last arg here

@@ -2,7 +2,7 @@
 var pageLink = module("pageLink").use("pageComponent", "bbext");
 
 
-pageLink.component("pageLink", function (viewFactory) {
+pageLink.pageComponent("pageLink", function (viewFactory) {
 
 	this.view = viewFactory.create("pageLinkView", {
 		el: this.$el,
@@ -71,7 +71,10 @@ pageLink.model("pageLinkModel", {
 });
 
 
-pageLink.view("pageLinkView", {
+pageLink.view("pageLinkView", function (options, jstViewExtension) {
+	jstViewExtension.extend(this);
+}, {
+	$inject: ["options", "jstViewExtension"],
 	initialize: function () {
 		this.listenTo(this.model, "change:tileDisplay", this.save);
 	},
