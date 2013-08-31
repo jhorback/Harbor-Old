@@ -2,7 +2,7 @@
 var links = module("links").use("pageComponent", "bbext");
 	
 
-links.component("links", function (viewRenderer) {
+links.pageComponent("links", function (viewRenderer) {
 
 	this.viewRenderer = viewRenderer;
 	this.model.on("save", this.refresh, this);

@@ -1,7 +1,7 @@
 ﻿
 var image = module("image").use("pageComponent", "bbext");
 
-image.component("image", function (viewFactory) {
+image.pageComponent("image", function (viewFactory) {
 	
 	this.view = viewFactory.create("imageView", {
 		el: this.$el,
@@ -65,8 +65,13 @@ image.model("imageModel", {
 });
 
 
-image.view("imageView", {
+image.view("imageView", function (options, jstViewExtension, modelBinderExtension) {
 	
+	jstViewExtension.extend(this);
+	modelBinderExtension.extend(this);
+	
+}, {
+	$inject:["options", "jstViewExtension", "modelBinderExtension"],
 	initialize: function () {
 		this.listenTo(this.model, "change:res", this.save);
 	},

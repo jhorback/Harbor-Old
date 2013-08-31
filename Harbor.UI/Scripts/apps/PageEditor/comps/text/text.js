@@ -1,8 +1,8 @@
 ﻿
 var text = module("text").use("pageComponent", "bbext");
 
-text.component("text", function (viewFactory) {
-	
+text.pageComponent("text", function (viewFactory) {
+
 	this.view = viewFactory.create("textView", {
 		el: this.$el,
 		model: this.model
@@ -26,8 +26,10 @@ text.component("text", function (viewFactory) {
     }
 });
 
-text.view("textView", { 
-
+text.view("textView", function (options, jstViewExtension) {
+	jstViewExtension.extend(this);
+},{ 
+	$inject: ["options", "jstViewExtension"],
     render: function () {
         var buttons = [
                "formatting", "|",
