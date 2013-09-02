@@ -9,6 +9,10 @@ function pageRepo(collectionFactory, ajaxRequest) {
 			var pages = collectionFactory.create("pages");
 			ajaxRequest.handle(pages.fetch({ data: data }));
 			return pages;
+		},
+		
+		savePage: function (page, handler, proxy) {
+			return ajaxRequest.handle(page.save(), handler, proxy);
 		}
 	};
 }

@@ -1,6 +1,6 @@
 ﻿
 
-function pageType(appurl) {
+function pageType(attrs, options, appurl) {
 	this.urlRoot = appurl.get("api/pagetypes");
 };
 
@@ -14,8 +14,8 @@ pageType.prototype = {
 
 
 
-function pageTypes(appurl) {
-	this.urlRoot = appurl.get("api/pagetypes");
+function pageTypes(models, options, appurl) {
+	this.url = appurl.get("api/pagetypes");
 }
 
 pageTypes.prototype = {
@@ -24,5 +24,5 @@ pageTypes.prototype = {
 
 
 
-pageModel.model("pageType", ["appurl", pageType]);
-pageModel.collection("pageTypes", ["appurl", pageTypes]);
+pageModel.model("pageType", ["attrs", "options", "appurl", pageType]);
+pageModel.collection("pageTypes", ["models", "options", "appurl", pageTypes]);

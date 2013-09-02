@@ -37,39 +37,29 @@ var Component = (function () {
 	}
 
 	Component.prototype = {
-		render: function (model) {
+		render: function (el) {
 			var comp = this,
 				_ = privates[this];
 		
-			_.rendering = true;
 			_.console.group("component.render:", this.name);
-			
-			if (!_.hasInitialized) {
-				_.hasInitialized = true;
-				if (this.el) {
-					this.region = _.region(this.el);
-				}
-			} else {
-				this.region && this.region.pop();
-				this.view && this.view.remove();
+			this.close();
+			if (el || this.el) {
+				this.region = _.region(el || this.el);
 			}
 
-			this.view = _.templateRenderer.render(this.name, model, this.region);
+			this.view = _.templateRenderer.render(this.name + "View", this.region);
 			this.view.on("close", function () {
 				comp.close();
 			});
 
 			_.console.groupEnd();
-			_.rendering = false;
 		},
 	
 		close: function () {
-			var _ = privates[this];
 			this.region && this.region.pop();
 			this.view && this.view.remove();
-			if (!_.rendering) {
-				delete privates[this];
-			}
+			this.region = null;
+			this.view = null;
 		}
 	};
 

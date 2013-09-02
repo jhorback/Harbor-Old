@@ -1,21 +1,15 @@
 ﻿
-function pageAdminView(options, pageRepo, currentUserRepo) {
+function pageAdminView(options, pageRepo, currentUserRepo, pageAdder) {
 	
 	this.pageRepo = pageRepo;
 	this.currentUser = currentUserRepo.getCurrentUser();
-	
+	this.pageAdder = pageAdder;
 }
 
 
 pageAdminView.prototype = {
 	
 	initialize: function () {
-		/* jch! - how to sort here?? whats the best way?
-			this.collection.sortBy(function (item) {
-			return new Date(item.get("modified"));
-		});*/
-		
-
 		this.model = {
 			pages: this.pageRepo.getPages({
 				data: {
@@ -24,10 +18,18 @@ pageAdminView.prototype = {
 				}
 			})
 		};
+		
+		// jch* - this wont work - update after the collection extensions are implemented
+		var mod = this.model;
+		setTimeout(function () {
+			mod.pages.sortBy(function (item) {
+				return new Date(item.get("modified"));
+			});
+		}, 1000);
 	},
 
 	addPage: function () {
-		Session.trigger("page:add"); // jch* pageAdder.render();
+		this.pageAdder.render();
 	},
 	
 	clickTile: function (event) {
@@ -38,4 +40,6 @@ pageAdminView.prototype = {
 };
 
 
-pageAdmin.view("pageAdmin", ["options", "pageRepo", "currentUserRepo", pageAdminView]);
+pageAdmin.view("pageAdminView", [
+	"options", "pageRepo", "currentUserRepo", "pageAdder",
+	pageAdminView]);
