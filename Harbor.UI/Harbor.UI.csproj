@@ -150,6 +150,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\Bootstrapper.cs" />
+    <Compile Include="App_Start\JSPkgs\CurrentUserModelPkg.cs" />
     <Compile Include="App_Start\JSPkgs\PageSettingsAppPkg.cs" />
     <Compile Include="App_Start\ThemeConfig.cs" />
     <Compile Include="App_Start\ModelBinderConfig.cs" />
@@ -492,6 +493,8 @@
     <Content Include="Scripts\apps\PageEditor\ChangeLayoutView.js" />
     <Content Include="Scripts\apps\PageEditor\EditView.js" />
     <Content Include="Scripts\apps\PageEditor\PageEditor.js" />
+    <Content Include="Scripts\modules\currentUserModel\%24currentUserModel.js" />
+    <Content Include="Scripts\modules\currentUserModel\currentUserRepo.js" />
     <Content Include="Scripts\modules\pageModel\%24pageModel.js" />
     <Content Include="Scripts\modules\pageModel\pageRepo.js" />
     <Content Include="Scripts\modules\pageModel\pages.js" />
@@ -562,6 +565,7 @@
     <Content Include="Scripts\contextjs\context.js" />
     <Content Include="Scripts\contextjs\app.js" />
     <Content Include="Scripts\modernizr-2.6.2-custom.js" />
+    <Content Include="Scripts\modules\currentUserModel\currentUser.js" />
     <Content Include="Scripts\Prettify\prettify.js" />
     <Content Include="Scripts\qunit.js" />
     <Content Include="Scripts\redactor\redactor.js" />

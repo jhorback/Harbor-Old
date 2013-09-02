@@ -1,8 +1,9 @@
 ﻿
-function pageAdminView(options, pageRepo) {
+function pageAdminView(options, pageRepo, currentUserRepo) {
 	
 	this.pageRepo = pageRepo;
-
+	this.currentUser = currentUserRepo.getCurrentUser();
+	
 }
 
 
@@ -14,10 +15,11 @@ pageAdminView.prototype = {
 			return new Date(item.get("modified"));
 		});*/
 		
+
 		this.model = {
 			pages: this.pageRepo.getPages({
 				data: {
-					author: Session.currentUser.get("username"), // jch* - [sessionModel]/this.currentUser.get("username");
+					author: this.currentUser.get("username"),
 					orderDesc: "modified"
 				}
 			})
@@ -36,4 +38,4 @@ pageAdminView.prototype = {
 };
 
 
-pageAdmin.view("pageAdmin", ["options", "pageRepo", pageAdminView]);
+pageAdmin.view("pageAdmin", ["options", "pageRepo", "currentUserRepo", pageAdminView]);

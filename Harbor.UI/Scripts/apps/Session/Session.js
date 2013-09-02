@@ -1,4 +1,8 @@
 ﻿(function () {
+	
+	
+	
+
 	var Session = {
 		
 		currentUser: null,
@@ -20,9 +24,8 @@
 			return decodeURIComponent(results[1].replace(/\+/g, " "));
 		},
 
-		start: function (currentUser) {
-			Session.currentUser = new Session.CurrentUser(currentUser);
-
+		start: function () {
+			session.start();
 			var nav = new Session.SessionNav({
 				el: $("#frame-session")
 			});
@@ -80,13 +83,14 @@
 
 	window.Session = Session;
 
+
 	var session = context.app("session").
 		register("baseUrl", window.baseUrl);
 
-	session.use("appui", "bbext");
-	session.start(["keepAlive", "appurl", function (keepAlive, appurl) {
+	session.use("appui", "bbext", "currentUserModel");
+	session.start(["keepAlive", "appurl", "currentUserRepo", function (keepAlive, appurl, currentUserRepo) {
 		keepAlive.start(appurl.get("home/keepalive"));
+		Session.currentUser = currentUserRepo.getCurrentUser();
 	}]);
-	session.start();
 } ());
 

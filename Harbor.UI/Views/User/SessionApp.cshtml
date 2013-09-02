@@ -3,5 +3,6 @@
 @Html.InstallJavaScriptPackage(Harbor.UI.JSPkgs.SessionAppPkg.PackageName)
 <script>
 	module("appui").register("baseUrl", window.baseUrl);
-	Session.start(@Html.Raw(Json.Encode(Model)));
+	context.module("currentUserModel").register("currentUserDto", @Html.Raw(Json.Encode(Model)));
+	Session.start();
 </script>

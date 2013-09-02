@@ -13,6 +13,7 @@ namespace Harbor.UI.JSPkgs
 			Templates = new JstTemplateAction("User/SessionTemplates");
 			RequiresRegistration = false;
 			Category = Categories.Apps;
+			AddDependency(CurrentUserModelPkg.PackageName);
 		}
 	}
 }
