@@ -23,7 +23,7 @@ namespace Harbor.UI
 			packages.Add(new JQueryUICorePkg());
 			packages.Add(new JQueryUIInteractionsPkg());
 			packages.Add(new ModernizrShivPkg());
-			packages.Add(new PageAdderAppPkg());
+			packages.Add(new PageAdderPkg());
 			packages.Add(new PageEditorAppPkg());
 			packages.Add(new PageLoaderAppPkg());
 			packages.Add(new PageModelPkg());
