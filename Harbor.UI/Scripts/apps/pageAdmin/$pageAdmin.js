@@ -1,4 +1,4 @@
-﻿var pageAdmin = context.app("pageAdmin").use("pageModel", "bbext");
+﻿var pageAdmin = context.app("pageAdmin").use("pageModel", "bbext", "currentUserModel");
 
 
 pageAdmin.start(["app", function (app) {
