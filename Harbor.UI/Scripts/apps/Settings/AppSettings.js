@@ -19,7 +19,8 @@
 	},
 
 	initialize: function () {
-		this.homePage = new pageModel.Page(this.get("homePage"));
+		// ref: modelFactory.create("page", this.get("homePage")); // value object, review
+		// this.homePage = new pageModel.Page(this.get("homePage"));
 	},
 
 	setHomePage: function (page) {

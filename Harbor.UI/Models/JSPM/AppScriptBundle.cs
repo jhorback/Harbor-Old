@@ -5,10 +5,10 @@ namespace Harbor.UI.Models.JSPM
 	public class AppScriptBundle : ScriptBundle
 	{
 		public AppScriptBundle(string appName)
-			: base("~/Scripts/Apps/" + appName + ".min.js")
+			: base("~/Scripts/apps/" + appName + ".min.js")
 		{
-			Include("~/Scripts/Apps/" + appName + "/" + appName + ".js");
-			IncludeDirectory("~/Scripts/Apps/" + appName, "*.js", searchSubdirectories: true);
+			Include("~/Scripts/apps/" + appName + "/" + appName + ".js");
+			IncludeDirectory("~/Scripts/apps/" + appName, "*.js", searchSubdirectories: true);
 		}
 	}
 }

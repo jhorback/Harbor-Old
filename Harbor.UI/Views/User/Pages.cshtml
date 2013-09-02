@@ -4,8 +4,8 @@
 	ViewBag.Title = "Pages";
 }
 @section scripts {
-	@Html.InstallJavaScriptPackage(PagesAppPkg.PackageName);
+	@Html.InstallJavaScriptPackage(PageAdminAppPkg.PackageName);
 	<script>
-		Pages.start();
+		context.app("pageAdmin").start();
 	</script>
 }

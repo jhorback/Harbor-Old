@@ -36,9 +36,9 @@ appui.service("shims", ["_", "globalCache", "context", function (_, globalCache,
 		},
 		
 		render: function (el, model) {
-			if (model && !model.toJSON) {
-				throw new Error("The model must implement toJSON.");
-			}
+			//if (model && !model.toJSON) {
+			//	throw new Error("The model must implement toJSON.");
+			//}
 
 			foreachShim(function (shim) {
 				var matches = [];
