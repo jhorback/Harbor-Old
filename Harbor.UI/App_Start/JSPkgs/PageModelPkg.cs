@@ -10,9 +10,9 @@ namespace Harbor.UI.JSPkgs
 		public PageModelPkg()
 		{
 			Name = PackageName;
-			ScriptBundle = new AppScriptBundle(PackageName);
+			ScriptBundle = new ModuleScriptBundle(PackageName);
 			Category = Categories.Domain;
-			AddDependency(FileModelPkg.PackageName);
+			// AddDependency(FileModelPkg.PackageName);
 		}
 	}
 }

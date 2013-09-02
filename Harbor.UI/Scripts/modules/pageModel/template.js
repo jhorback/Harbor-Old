@@ -4,7 +4,11 @@
 header, content, and aside components have a uicid, key.
 content has a classNames property.
 */
-pageModel.Template = Application.Model.extend({
+function template() {
+	
+}
+
+template.prototype = {
 	defaults: {
 		pageID: null,
 		pageTypeKey: null,
@@ -36,12 +40,6 @@ pageModel.Template = Application.Model.extend({
 		bind: "layoutIsReadable"
 	},
 
-	getNextUICID: function () {
-		var cc = this.get("componentCounter");
-		this.set("componentCounter", cc + 1);
-		return "pc-" + this.get("pageID") + "-" + cc;
-	},
-
 	addContent: function (key) {
 		var content = this.get("content");
 		content.push({
@@ -56,4 +54,7 @@ pageModel.Template = Application.Model.extend({
 		this.set("componentCounter", cc);
 		return "pc-" + this.get("pageID") + "-" + cc;
 	}
-});
+};
+
+
+pageModel.model("template", [pageModel.template = template]);

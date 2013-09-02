@@ -41,18 +41,20 @@ function renderViewExt(_, $, templateCache, collectionRenderer) {
 			    el,
 			    shims;
 			
+			if (this.fromServer !== true) {
+				templateFn = templateCache.getTemplateFor(this.name);
+				setModel(this, templateFn.data);
+			}
+
 			if (this.collection) {
 				
 				collectionRenderer.render(this);
 
 			} else {
 
-				if (this.fromServer !== true)
-				{
-					templateFn = templateCache.getTemplateFor(this.name);
-					setModel(this, templateFn.data);
-					el = $(templateFn(modelJSON(this.model)));
+				if (this.fromServer !== true) {
 					
+					el = $(templateFn(modelJSON(this.model)));
 
 					// set the element since the template contains the root
 					this.$el.replaceWith(el);

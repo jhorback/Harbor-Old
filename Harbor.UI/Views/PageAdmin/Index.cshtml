@@ -1,0 +1,28 @@
+﻿<section class="page" data-templatefor="pageAdmin">
+	<div class="page-header">
+		<h1>Pages</h1>
+		<fieldset class="float-right">
+			<button class="attn" data-event="addPage">Add a page</button>
+		</fieldset>
+	</div>
+	<div class="page-body">
+		<div class="page-content">
+			<div class="tiles">
+				<ul class="pages-list">
+					<li class="tile col5 hover" data-event="clickTile" data-collection="pages">
+						<div class="media">
+							<img src="{{thumbUrl}}" />
+						</div>
+						<div class="caption">
+							<h3 class="nowrap" title="{{title}}"><a href="{{link}}">{{title}}</a></h3>
+							<p>
+								Modified: {{modified}}<br/>
+								Published: {{published}}
+							</p>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>

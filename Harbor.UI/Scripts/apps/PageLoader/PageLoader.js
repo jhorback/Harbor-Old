@@ -5,9 +5,11 @@
 	start: function (pageDto) {
 		var frameBody;
 
+		return;
 		frameBody = $("#frame-body");
 		frameBody.append('<div id="pageloader"/>');
 
+		// ref: use modelFactory.get("page", pageDto);
 		this.currentPage = new pageModel.Page(pageDto);
 		this.pageState = new Backbone.Model({ mode: "view" });
 		this.pageState.on("change:mode", function (model, mode) {

@@ -2,6 +2,7 @@
 var PageSelector = new Application({
 	start: function (options, callbackContext) {
 		// options: region, close, select
+		//ref: use pageRepo.getPages();
 		var pages = new pageModel.Pages(),
 			mainViewModel = new PageSelector.MainViewModel(),
 			mainView = new PageSelector.MainView({

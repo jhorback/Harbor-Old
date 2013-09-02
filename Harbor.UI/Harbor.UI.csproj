@@ -169,9 +169,9 @@
     <Compile Include="App_Start\JSPkgs\PageEditorAppPkg.cs" />
     <Compile Include="App_Start\JSPkgs\PageAdderAppPkg.cs" />
     <Compile Include="App_Start\JSPkgs\PageSelectorAppPkg.cs" />
-    <Compile Include="App_Start\JSPkgs\PagesAppPkg.cs" />
+    <Compile Include="App_Start\JSPkgs\PageAdminAppPkg.cs" />
     <Compile Include="App_Start\JSPkgs\SessionAppPkg.cs" />
-    <Compile Include="App_Start\JSPkgs\PageModelsPkg.cs" />
+    <Compile Include="App_Start\JSPkgs\PageModelPkg.cs" />
     <Compile Include="App_Start\JSPkgs\jQueryUIInteractions.cs" />
     <Compile Include="App_Start\JSPkgs\JQueryUICorePkg.cs" />
     <Compile Include="App_Start\JSPkgs\jQueryPkg.cs" />
@@ -228,6 +228,7 @@
     <Compile Include="Models\File\FileDto.cs" />
     <Compile Include="Models\File\FileUrls.cs" />
     <Compile Include="Models\JSPM\AppScriptBundle.cs" />
+    <Compile Include="Models\JSPM\ModuleScriptBundle.cs" />
     <Compile Include="Models\JSPM\Extensions\HtmlHelper\InstallJavaScriptPackage.cs" />
     <Compile Include="Models\JSPM\JavaScriptPackage.cs" />
     <Compile Include="Models\JSPM\JavaScriptPackageDto.cs" />
@@ -422,6 +423,7 @@
     </Content>
     <Content Include="Global.asax" />
     <Content Include="Scripts\apps\appShim.js" />
+    <Content Include="Scripts\apps\pageAdmin\pageAdminView.js" />
     <Content Include="Scripts\apps\PageEditor\comps\links\linksEditView.js" />
     <Content Include="Scripts\apps\PageEditor\comps\links\linksModel.js" />
     <Content Include="Scripts\apps\PageEditor\comps\links\linksNewView.js" />
@@ -490,9 +492,13 @@
     <Content Include="Scripts\apps\PageEditor\ChangeLayoutView.js" />
     <Content Include="Scripts\apps\PageEditor\EditView.js" />
     <Content Include="Scripts\apps\PageEditor\PageEditor.js" />
-    <Content Include="Scripts\apps\pageModel\pageModel.js" />
-    <Content Include="Scripts\apps\pageModel\PageType.js" />
-    <Content Include="Scripts\apps\pageModel\Template.js" />
+    <Content Include="Scripts\modules\pageModel\%24pageModel.js" />
+    <Content Include="Scripts\modules\pageModel\pageRepo.js" />
+    <Content Include="Scripts\modules\pageModel\pages.js" />
+    <Content Include="Scripts\modules\pageModel\pageType.js" />
+    <Content Include="Scripts\modules\pageModel\pageTypeRepo.js" />
+    <Content Include="Scripts\modules\pageModel\pageurl.js" />
+    <Content Include="Scripts\modules\pageModel\template.js" />
     <Content Include="Scripts\apps\PageSettings\PagePreviewView.js" />
     <Content Include="Scripts\apps\PageSettings\PageSettings.js" />
     <Content Include="Scripts\apps\PageSettings\SettingsView.js" />
@@ -500,8 +506,7 @@
     <Content Include="Scripts\apps\PageLoader\PageNav.js" />
     <Content Include="Scripts\apps\PageLoader\PageLoader.js" />
     <Content Include="Scripts\apps\PageSelector\PageSelector.js" />
-    <Content Include="Scripts\apps\Pages\PagesViews.js" />
-    <Content Include="Scripts\apps\Pages\Pages.js" />
+    <Content Include="Scripts\apps\pageAdmin\%24pageAdmin.js" />
     <Content Include="Scripts\apps\Session\UserMenu.js" />
     <Content Include="Scripts\apps\Session\CurrentUser.js" />
     <Content Include="Scripts\apps\Session\ErrorView.js" />
@@ -515,7 +520,7 @@
     <Content Include="Scripts\apps\Settings\MainView.js" />
     <Content Include="Scripts\apps\Settings\Settings.js" />
     <Content Include="Scripts\apps\FileModel\FileModel.js" />
-    <Content Include="Scripts\apps\pageModel\Page.js" />
+    <Content Include="Scripts\modules\pageModel\page.js" />
     <Content Include="Scripts\apps\UserModel\UserModel.js" />
     <Content Include="Scripts\apps\UserAdmin\ListView.js" />
     <Content Include="Scripts\apps\UserAccount\UserAccount.js" />
@@ -621,7 +626,8 @@
   <ItemGroup>
     <Folder Include="App_Data\users\" />
     <Folder Include="Properties\PublishProfiles\" />
-    <Folder Include="Scripts\modules\" />
+    <Folder Include="Scripts\modules\currentPageModel\" />
+    <Folder Include="Scripts\modules\navLinksModel\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -920,12 +926,10 @@
     <Content Include="Views\UserAdmin\_Edit.cshtml" />
     <Content Include="Views\UserAdmin\_Role.cshtml" />
     <Content Include="Views\UserAdmin\_Add.cshtml" />
-    <Content Include="Views\Pages\PagesTemplates.cshtml" />
-    <Content Include="Views\Pages\_PageItem.cshtml" />
+    <Content Include="Views\PageAdmin\Index.cshtml" />
     <Content Include="Views\User\Page.cshtml" />
-    <Content Include="Views\Pages\_Main.cshtml" />
-    <Content Include="Views\Pages\_AddPage.cshtml" />
-    <Content Include="Views\Pages\PageAdderTemplates.cshtml" />
+    <Content Include="Views\PageAdder\_AddPage.cshtml" />
+    <Content Include="Views\PageAdder\PageAdderTemplates.cshtml" />
     <Content Include="Views\PageEditor\PageEditorTemplates.cshtml" />
     <Content Include="Views\PageLoader\_PageLoader.cshtml" />
     <Content Include="Views\PageLoader\PageLoaderTemplates.cshtml" />

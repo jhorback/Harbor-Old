@@ -117,7 +117,8 @@ Settings.EditNavView = Application.View.extend({
 					pageID = selectedPage.get("id"),
 					text = selectedPage.get("title"),
 					newLi = _.template(template)({
-						link: pageModel.getPageUrl(pageID, text),
+						// ref: pageurl.get(pageID, text);
+						link: pageModel.getPageUrl(pageID, text), // ref: pageurl.get();
 						title: text
 					}),
 					link = {

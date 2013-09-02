@@ -12,7 +12,8 @@ errorBinderShim.prototype = {
 		var view = el.data("view"),
 		    $ = this.$;
 		
-		if (!view) {
+		// need a view and a backbone model to continue
+		if (!view || !model || !model.on) {
 			return;
 		}
 

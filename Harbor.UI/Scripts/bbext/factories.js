@@ -58,7 +58,7 @@
 
 				raw = context.get(objType, true);
 				inject = raw.$inject || raw.prototype.$inject;
-				if (!inject) {
+				if (!inject || inject.length === 0) {
 					return args;
 				}
 				

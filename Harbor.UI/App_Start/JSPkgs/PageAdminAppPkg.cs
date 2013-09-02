@@ -3,15 +3,15 @@ using Harbor.UI.Models.JSPM;
 
 namespace Harbor.UI.JSPkgs
 {
-	public class PagesAppPkg : JavaScriptPackage
+	public class PageAdminAppPkg : JavaScriptPackage
 	{
-		public const string PackageName = "Pages";
+		public const string PackageName = "pageAdmin";
 
-		public PagesAppPkg()
+		public PageAdminAppPkg()
 		{
 			Name = PackageName;
 			ScriptBundle = new AppScriptBundle(PackageName);
-			Templates = new JstTemplateAction("Pages/PagesTemplates");
+			Templates = new JstTemplateAction("PageAdmin/Index");
 			Category = Categories.Apps;
 		}
 	}

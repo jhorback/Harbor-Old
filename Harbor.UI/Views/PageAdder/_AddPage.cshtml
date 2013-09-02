@@ -1,4 +1,4 @@
-﻿<form class="">
+﻿<form class="" data-templatefor="">
 	<span class="alert-error"></span>
 	<div class="form-field">
 		<label for="pageadder-title">Title</label>
@@ -9,7 +9,7 @@
 		<label for="pageadder-pagetypekey">Page type</label>
 		<select id="pageadder-pagetypekey" name="pageTypeKey">
 		</select>
-		<div data-bind="pageTypeDescription"></div>
+		<div xdata-bind="text: pageTypeDescription">Removed This During Refactor</div>
 	</div>
 	<div class="form-controls">
 		<input type="submit" value="Add" class="loud">

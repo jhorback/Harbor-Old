@@ -14,6 +14,7 @@
 		});
 	
 	Session.on("page:add", function () {
+		// ref: pageTypeRepo.getPageTypes();
 		pageModel.loadPageTypes().then(function () {
 			PageAdder.addPage();
 		});
@@ -27,6 +28,7 @@
 
 PageAdder.AddPageView = Application.View.extend({
 	initialize: function () {
+		// ref: modelFactory.create("page", { author: currentUser.get("username" });
 		this.model = new pageModel.Page();
 		this.model.set("author", Session.currentUser.get("username"));
 	},
@@ -43,7 +45,7 @@ PageAdder.AddPageView = Application.View.extend({
 	    
 	    model = {
 	        page: this.model,
-	        pageTypes: pageModel.pageTypes
+	        pageTypes: pageModel.pageTypes // ref: pageTypeRepo.getPageTypes()
 	    };
 		this.template("PageAdder-AddPage", this.$el)(model);
 
@@ -74,7 +76,8 @@ PageAdder.AddPageView = Application.View.extend({
 		    clientError: function (response) {
 				self.displayErrors(response.errors);
 			},
-			success: function (page) {
+		    success: function (page) {
+			    // ref: use pageurl.get() if possible
 				window.location = new pageModel.Page(page).getUrl();
 			}
 		});
