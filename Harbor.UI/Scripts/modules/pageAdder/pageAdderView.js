@@ -1,11 +1,12 @@
 ﻿
 
-function pageAdderView(options, modelFactory, currentUserRepo, pageTypeRepo, pageRepo) {
+function pageAdderView(options, modelFactory, currentUserRepo, pageTypeRepo, pageRepo, dialogFactory) {
 
 	this.modelFactory = modelFactory;
 	this.currentUser = currentUserRepo.getCurrentUser();
 	this.pageTypeRepo = pageTypeRepo;
 	this.pageRepo = pageRepo;
+	this.dialogFactory = dialogFactory;
 }
 
 
@@ -17,6 +18,21 @@ pageAdderView.prototype = {
 		});
 		
 		this.model.pageTypes = this.pageTypeRepo.getPageTypes();
+		this.listenTo(this.model, "change:pageTypeKey", this.setPageTypeDescription);
+		this.listenTo(this.model.pageTypes, "sync", this.setPageTypeDescription);
+		this.setPageTypeDescription();
+	},
+	
+	setPageTypeDescription: function () {
+		var pageTypeKey = this.model.get("pageTypeKey"),
+			pageType = this.model.pageTypes.find(function (type) {
+				return type.get("key") === pageTypeKey;
+			});
+		
+		// jch! - cannot dynamically add model properties - see how to add it to the modelbinder
+		if (pageType) {
+			this.model.set("pageTypeDescription", pageType.get("description"));
+		}
 	},
 
 	submitForm: function (event) {
@@ -29,9 +45,7 @@ pageAdderView.prototype = {
 	},
 
 	onRender: function () {
-		var view, model;
-		return;
-		view = new Dialog(this.$el, {
+		this.dialogFactory.create(this.$el, {
 			title: "Add a page",
 			modal: true,
 			transition: "fade"
@@ -59,5 +73,5 @@ pageAdderView.prototype = {
 
 
 pageAdder.view("pageAdderView", [
-	"options", "modelFactory", "currentUserRepo", "pageTypeRepo", "pageRepo",
+	"options", "modelFactory", "currentUserRepo", "pageTypeRepo", "pageRepo", "dialogFactory",
 	pageAdderView]);

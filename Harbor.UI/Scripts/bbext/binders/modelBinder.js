@@ -157,9 +157,11 @@ var modelBinder = function ($, _, config, nameValueParser) {
 			$.each(bindTo, $.proxy(function (what, modelProperty) {
 				var val = this.model.get(modelProperty);
 
-				if (val === undefined) {
-					return; // continue - do not add binding for an undefined attr
-				}
+				//if (val === undefined) {
+				//	return; // continue - do not add binding for an undefined attr
+				//  doesn't seem like there is any need to do this now that binding has been
+				//  optimized.
+				//}
 
 				if (what.toLowerCase() === "value") { // value/type binding
 
