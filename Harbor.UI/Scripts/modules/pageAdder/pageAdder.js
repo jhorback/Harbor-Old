@@ -1,4 +1,4 @@
 ﻿
 pageAdder.component("pageAdder", {
-	el: "#frame-body"
+	el: "#dialog"
 });
