@@ -150,6 +150,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\Bootstrapper.cs" />
+    <Compile Include="App_Start\JSPkgs\CurrentPageModelPkg.cs" />
     <Compile Include="App_Start\JSPkgs\CurrentUserModelPkg.cs" />
     <Compile Include="App_Start\JSPkgs\PageSettingsAppPkg.cs" />
     <Compile Include="App_Start\ThemeConfig.cs" />
@@ -481,6 +482,8 @@
     <Content Include="Scripts\apps\FileAdmin\MainViewModel.js" />
     <Content Include="Scripts\apps\FileAdmin\UploadTargetView.js" />
     <Content Include="Scripts\apps\FileUploader\FileUploader.js" />
+    <Content Include="Scripts\modules\currentPageModel\%24currentPageModel.js" />
+    <Content Include="Scripts\modules\currentPageModel\currentPageRepo.js" />
     <Content Include="Scripts\modules\pageAdder\%24pageAdder.js" />
     <Content Include="Scripts\apps\PageEditor\Actions.js" />
     <Content Include="Scripts\apps\PageEditor\AddComponentView.js" />
@@ -632,7 +635,6 @@
   <ItemGroup>
     <Folder Include="App_Data\users\" />
     <Folder Include="Properties\PublishProfiles\" />
-    <Folder Include="Scripts\modules\currentPageModel\" />
     <Folder Include="Scripts\modules\navLinksModel\" />
   </ItemGroup>
   <ItemGroup>
