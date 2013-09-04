@@ -29,7 +29,7 @@
 		@Html.InstallJavaScriptPackage(PageSettingsAppPkg.PackageName)
 		@Html.InstallJavaScriptPackage(PageSelectorAppPkg.PackageName)
 		<script>
-			PageLoader.start(@Html.Raw(Json.Encode(ViewBag.PageDto)));
+			context.module("currentPageModel").register("currentPageDto", @Html.Raw(Json.Encode(ViewBag.PageDto)));
 		</script>
 	}
 }
