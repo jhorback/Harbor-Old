@@ -14,7 +14,8 @@ pageAdderView.prototype = {
 	initialize: function () {
 		
 		this.model = this.modelFactory.create("page", {
-			 author: this.currentUser.get("username")
+			author: this.currentUser.get("username"),
+			pageTypeDescription: null
 		});
 		
 		this.model.pageTypes = this.pageTypeRepo.getPageTypes();
