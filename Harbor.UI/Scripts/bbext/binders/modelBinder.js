@@ -116,8 +116,8 @@ var modelBinder = function ($, _, config, nameValueParser) {
 		},
 
 		unbind: function () {
-			this.matches.unbind(".modelbinder");
-			this.model.unbind("change", this._modelToViewProxy);
+			this.matches && this.matches.unbind(".modelbinder");
+			this.model && this.model.unbind("change", this._modelToViewProxy);
 			this.$el.data("modelbound", false);
 		},
 
