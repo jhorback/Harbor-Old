@@ -21,6 +21,11 @@ function templateCache($, _, globalCache) {
 	return {
 		cacheTemplateFor: function (name, templateEl) {
 			var html, templateFn, metaData;
+			
+			templateFn = getTemplate(name);
+			if (templateFn) {
+				return templateFn;
+			}
 
 			if (_.isFunction(templateEl)) {
 				// for caching an already parsed template under
@@ -30,7 +35,7 @@ function templateCache($, _, globalCache) {
 				metaData = templateEl.data();
 				metaData.templateEl = templateEl;
 				templateEl.removeAttr("data-templatefor").attr("data-templatefrom", name);
-				html = $('<script/>').append(templateEl[0].outerHTML).html(),
+				html = $('<div/>').append(templateEl[0].outerHTML).html(),
 				templateFn = _.template(String(html));
 				templateFn.data = metaData;
 			}

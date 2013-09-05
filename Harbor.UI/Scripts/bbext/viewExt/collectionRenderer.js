@@ -1,5 +1,18 @@
-﻿
-var collectionRenderer = function (_, templateCache, viewFactory, modelBinder) {
+﻿/*
+Note: If the value set as the collection is not a Backbone collection then
+it will be turned into one. If it is a simple array, the model used will have
+the value of the array as a 'this' and 'value' property.
+
+this.collection = ["foo", "bar"];
+
+<span data-bind="text: this"></span>
+<span data-bind="text: value"></span>
+<span>{{value}}</span>
+
+In static binding 'this' points to the window object so only {{value}}
+is supported for simple arrays.
+*/
+var collectionRenderer = function (_, templateCache, viewFactory, modelBinder, Backbone) {
 	"use strict";
 
 	function renderer(view) {
@@ -7,8 +20,7 @@ var collectionRenderer = function (_, templateCache, viewFactory, modelBinder) {
 
 		this.view = view;
 		this.viewRenderer = view.context.get("viewRenderer");
-		this.collection = view.collection;
-		
+		this.collection = view.collection = ensureBBCollection(view.collection);
 
 		// cache the template for the itemView and set the view el to the parent
 		templateFn = templateCache.getTemplateFor(view.name);
@@ -81,9 +93,21 @@ var collectionRenderer = function (_, templateCache, viewFactory, modelBinder) {
 			view.on("close", thisRenderer.close);
 		}
 	};
+	
+	function ensureBBCollection(col) {
+		if (col instanceof Backbone.Collection === false) {
+			if (col.length > 0 && typeof col[0] === "string") {
+				col = _(col).map(function (value) {
+					return { "this": value, value: value };
+				});
+			}
+			col = new Backbone.Collection(col);						
+		}
+		return col;
+	}
 };
 
 
 bbext.service("bbext.collectionRenderer", [
-	"_", "templateCache", "viewFactory", "modelBinder",
+	"_", "templateCache", "viewFactory", "modelBinder", "Backbone",
 	bbext.collectionRenderer = collectionRenderer]);
