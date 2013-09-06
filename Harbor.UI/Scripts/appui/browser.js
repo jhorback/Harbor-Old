@@ -8,39 +8,37 @@ appui.register("window", function () {
 
 
 appui.service("console", ["window", function (window) {
-	var console, winConsole, log, okToLog = true;
-	
-	// jch* testing various ways of turing the log on
-	window.log = function () {
-		okToLog = true;
-		return "logging is on";
-	};
-	
-	if (!okToLog) {
-		okToLog = window.location.search.indexOf("log=") > -1;
-	}
+	var console, winConsole, log,
+	    okToLog = localStorage && localStorage.getItem("okToLog");
 
 	winConsole = window.console || {
 		log: function () {
 			window.alert(Array.prototype.slice.call(arguments, 0).join("\n"));
 		}
 	};
-	
+
+	// jch* update this after researching a bit
+	window.enableLog = function (enable) {
+		okToLog = enable ? "yes" : "no";
+		localStorage && localStorage.setItem("okToLog", okToLog);
+		return "okToLog: " + okToLog;
+	};
+
 	log = function (type) {
 		return function () {
 			var args, consoleMethod;
-			
-			if (!okToLog) {
+
+			if (okToLog !== "yes") {
 				return;
 			}
-			
+
 			args = Array.prototype.slice.call(arguments, 0);
 			type = winConsole[type] ? type : "log";
 			consoleMethod = winConsole[type];
 			consoleMethod.apply ? consoleMethod.apply(winConsole, args) : consoleMethod(args);
 		};
 	};
-	
+
 	console = {
 		log: log("log"),
 		warn: log("warn"),
@@ -52,7 +50,7 @@ appui.service("console", ["window", function (window) {
 	};
 
 	return console;
-	
+
 	function trace() {
 		winConsole.trace ? winConsole.trace() : console.log("Client has no console.trace");
 	}
