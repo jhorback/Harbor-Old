@@ -94,6 +94,7 @@ pageComponent.construct("pageComponent", ["console", "appurl", function (console
 
 			initialize: function () {
 				// called when the componenet is created (right before create or open).
+				// could remove this since the constructor will be injected?
 			},
 
 			create: function () {
