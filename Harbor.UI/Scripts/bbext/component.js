@@ -59,6 +59,9 @@ Dialogs can also be though of as overlays.
 						   // aColorPicker.setOptions("sadf");
 						   // aColorPicker.render();
 						   // this feels disconnected - wait until the use case.
+						          el can be a string, jQuery el, or node
+								  model can be a plain object or a backbone model
+
 
 2. Inline
 	Inline components are components that are rendered after their root template in the DOM.
