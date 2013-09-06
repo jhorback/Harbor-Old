@@ -1,25 +1,78 @@
 ﻿/*
 component Construct
 
-Provides a render and close method for UI components.
-A UI component is anything with a root template.
+A UI component is associated with a view that is a root template.
+
+If the component name is userAdmin, the view and root template that will be
+looked for is userAdminView.
+
+There are two types of managed and unmageaged components. Managed components 
+keep track of the views they create and contain logic around rendering
+and closing them.
+
+The two types of managed components are: Region and element.
+These can also be thought of as a page and partial.
+1. Region / Page
+	Regions are portions of a page (or the entire page) that are, for the 
+	most part, always present. 
+
+	They are singletons and work off of a push/pop pattern. As a new component
+	is added to the region, the existing component is detached. When the new 
+	component is closed the previous component is re-attached.
+
+	Region components can be defined by defining the regionEl property when defining the component.
+
+	myApp.component("someRegionComponent", {
+		regionEl: "#frame-header" // any selector or dom node.
+	});
+	// when injected...
+	someRegionComponent.render();
+	someRegionComponent.close();
 
 
-Singleton components via regions:
-For singleton components, a regionEl property can be defined as
-	a selector/node to render the template in a region. 
+2. Element / Partial
+	Element components can be thought of as partials. The code
+	responsible for rendering the component can also close the component through
+	the element it is associated with.
 
-The render method:
-	If not a singleton component, the render method can take an el and an optional model
-	to render the component.
+	Element components are instances and work off of a replace pattern. If a new component
+	is created in an element with an existing comonent, the existing component is closed
+	then the new component is created in its place.
+	
+	myApp.component("someElementComponent")
+	// when injected...
+	someElementComponent.render(".some-element"); // can also pass in a model
+	someElementComponent.close(".some-element");
+	
 
-Insert After Template:
-A property on the component: 'insertAfterTemplate' can be set to true to render the component
-view after the location of the template in the DOM (see the templateRenderer).
-If a regionEl is defined, or an el is passed to the render method, insertAfterTemplate is ignored.
+
+The two types of unmanged components are dialog and inline.
+Dialogs can also be though of as overlays.
+1. Dialog / Overlay
+	Dialog components are autonomous components in that they manage their own location
+	and closing. They can be used for any kind of dialog or overlay such as a menu.
+
+	myApp.component("aColorPicker");
+	// when injected...
+	aColorPicker.render(); // jch* may need to pass a model here .render(null, model) is inelegant 
+	                       // jch* but since this would be unmanaged could set the model on the component in another way
+						   // aColorPicker.setOptions("sadf");
+						   // aColorPicker.render();
+						   // this feels disconnected - wait until the use case.
+
+2. Inline
+	Inline components are components that are rendered after their root template in the DOM.
+	Application components are inline by default.
+
+	myApp.component("someInlineComponent", {
+		insertAfterTemplate: true
+	});
+	// when injected...
+	someInlineComponent.render();
+
 */
 var Component = (function () {
-
+	
 	var privates = {};
 
 	function Component(templateRenderer, console, region) {
@@ -38,7 +91,8 @@ var Component = (function () {
 			    _ = privates[this],
 			    options = {
 				    el: el,
-				    model: model
+				    model: model,
+				    insertAfterTemplate: this.insertAfterTemplate
 			    },
 			    view;
 		
