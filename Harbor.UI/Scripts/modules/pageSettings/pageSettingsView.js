@@ -1,88 +1,45 @@
 ﻿
 
-function pageSettingsView(options, currentPageRepo) {
+function pageSettingsView(options, currentPageRepo, modelFactory, menuFactory) {
 
-	this.model = currentPageRepo.getCurrentPage();
+	this.currentPageRepo = currentPageRepo;
+	this.menuFactory = menuFactory;
 	
+	this.model = this.currentPageRepo.getCurrentPage();
+	this.model.pagePreviewModel = modelFactory.create("pagePreviewModel", { page: this.model });
 }
 
 pageSettingsView.prototype = {
-	render: function () {
-		alert("RENDERED");
-	}
-};
-
-pageSettings.view("pageSettingsView", [
-	"options", "currentPageRepo",
-	pageSettingsView]);
-
-
-/*
-
-PageSettings.SettingsView = Application.View.extend({
-	
-    pagePreviewView: null,
-    pagePreviewModel: null,
-    
-    menu: null,
-
-    initialize: function () {
+	initialize: function () {
 		this.listenTo(this.model.template, "change", this.templateChange);
-		this.listenTo(this.model, "change", this.pageChange);
 
 		// save events
+		this.listenTo(this.model, "change:title", this.changeTitle);
 		this.listenTo(this.model, "change:published", this.saveModel);
-		this.listenTo(this.model, "change:title", this.saveModel);
 		this.listenTo(this.model.template, "change", this.saveModel);
-		this.listenTo(this.model.template, "change:published", this.saveModel);
-		this.listenTo(PageSettings.events, "modal:opened", function () {
-		    this.menu && this.menu.close();
-		});
-		this.listenTo(PageSettings.events, "modal:closed", this.render);
-
-		this.pagePreviewModel = new PageSettings.PagePreviewModel({ page: this.model });
 	},
 	
-	events: {
-		"click #page-delete": function () {
-			this.deletePage();
-		}
-	},
-
-	render: function () {
-	    var menu;
-	    
-	    this.template("PageSettings-Settings", this.$el)();
-	    
-        this.menu = new Menu(this.$el, {
-	        transition: "none"
-	    });
-
-		this.bindModelToView(this.model, this.$(".page-header"));
-		this.bindModelToView(this.model, this.$("#settings-visibility"));
-		this.bindModelToView(this.model.template, this.$("#settings-layout"));
-		
-		if (this.pagePreviewView) {
-		    this.pagePreviewView.close();
-		}
-		this.pagePreviewView = new PageSettings.PagePreviewView({
-		    el: this.$("#settings-page-preview"),
-		    model: this.pagePreviewModel
+	onRender: function () {
+		this.menu = this.menuFactory.create(this.$el, {
+			transition: "none"
 		});
-		this.pagePreviewView.render();
-		return this;
+		this.$el.on("close", _.bind(this.close, this)); // jch* better way?
 	},
 	
 	templateChange: function () {
-		PageSettings.events.trigger("layout:updated");
+		alert("template change");
+		// PageSettings.events.trigger("layout:updated");
 	},
 	
-	pageChange: function () {
-		PageSettings.events.trigger("page:updated");
+	changeTitle: function () {
+		// jch* really want the current title component to be listening at this point
+		// for now this hack is ok
+		this.saveModel();
+		$("[data-type=title] h1").html(this.model.get("title"));
 	},
 	
 	saveModel: function () {
-		AjaxRequest.handle(this.model.save());
+		this.currentPageRepo.saveCurrentPage();
 	},
 	
 	deletePage: function () {
@@ -90,9 +47,17 @@ PageSettings.SettingsView = Application.View.extend({
 		if (!answer) {
 			return;
 		}
-		this.model.destroy().then(function () {
+		
+		this.currentPageRepo.deleteCurrentPage().then(function () {
 			history.back();
 		});
+	},
+	
+	onClose: function () {
+		this.menu && this.menu.close();
 	}
-});
-*/
+};
+
+pageSettings.view("pageSettingsView", [
+	"options", "currentPageRepo", "modelFactory", "menuFactory",
+	pageSettingsView]);

@@ -16,6 +16,10 @@ function pageEditorService () {
 	};
 }
 
+/*
+jch* todo
+on pageEditorView bind title to currentPage title.
+*/
 
 
 pageEditor.service("pageEditor", [pageEditorService]);
