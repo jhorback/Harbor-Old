@@ -191,6 +191,8 @@ var module = (function (context) {
 			modvars.context.register("globals", _.globals);
 
 			modvars.instance = {
+				modvars: modvars, // testing
+				
 				register: function () {
 					modvars.context.register.apply(modvars.context, arguments);
 					return this;
@@ -213,7 +215,7 @@ var module = (function (context) {
 
 						usemodvars = _.modCache[modName];
 						if (!usemodvars || usemodvars.isApp === true) {
-							continue;
+							throw new Error("Module to use cannot be found:", modName);
 						}
 
 						// mixin the constructs

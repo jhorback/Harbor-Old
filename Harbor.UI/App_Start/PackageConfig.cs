@@ -15,6 +15,7 @@ namespace Harbor.UI
 
 			packages.Add(new ApplicationPkg());
 			packages.Add(new CurrentUserModelPkg());
+			packages.Add(new CurrentPageModelPkg());
 			packages.Add(new JQueryPkg());
 			packages.Add(new FileAdminAppPkg());
 			packages.Add(new FileModelPkg());
@@ -24,7 +25,7 @@ namespace Harbor.UI
 			packages.Add(new JQueryUIInteractionsPkg());
 			packages.Add(new ModernizrShivPkg());
 			packages.Add(new PageAdderPkg());
-			packages.Add(new PageEditorAppPkg());
+			packages.Add(new PageEditorPkg());
 			packages.Add(new PageLoaderAppPkg());
 			packages.Add(new PageModelPkg());
 			packages.Add(new PageAdminAppPkg());

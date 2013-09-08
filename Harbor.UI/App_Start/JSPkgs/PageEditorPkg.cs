@@ -3,17 +3,18 @@ using Harbor.UI.Models.JSPM;
 
 namespace Harbor.UI.JSPkgs
 {
-	public class PageEditorAppPkg : JavaScriptPackage
+	public class PageEditorPkg : JavaScriptPackage
 	{
-		public const string PackageName = "PageEditor";
+		public const string PackageName = "pageEditor";
 
-		public PageEditorAppPkg()
+		public PageEditorPkg()
 		{
 			Name = PackageName;
-			ScriptBundle = new AppScriptBundle(PackageName);
+			ScriptBundle = new ModuleScriptBundle(PackageName);
 			Templates = new JstTemplateAction("PageEditor/PageEditorTemplates");
 			Category = Categories.Apps;
 
+			AddDependency(CurrentPageModelPkg.PackageName);
 			AddDependency(RedactorPkg.PackageName);
 			AddDependency(FileSelectorAppPkg.PackageName);
 		}

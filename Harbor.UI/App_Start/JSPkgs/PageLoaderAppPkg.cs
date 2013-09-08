@@ -15,6 +15,9 @@ namespace Harbor.UI.JSPkgs
 				.Include("~/Content/site/ext/pageloader.css");
 			Templates = new JstTemplateAction("PageLoader/Index");
 			Category = Categories.Apps;
+
+			AddDependency(PageEditorPkg.PackageName);
+			AddDependency(PageSettingsPkg.PackageName);
 		}
 	}
 }
