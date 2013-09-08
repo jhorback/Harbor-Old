@@ -1,18 +1,6 @@
 ﻿
 
-function pagePreviewModel() {
-	
-}
-
-pagePreviewModel.prototype = {
-
-};
-
-pageSettings.model("pagePreviewModel", [pagePreviewModel]);
-
-
-/*
-PageSettings.PagePreviewModel = Application.Model.extend({
+var pagePreviewModel = {
 	defaults: {
 		page: null,
 		thumbSrc: null,
@@ -100,5 +88,6 @@ PageSettings.PagePreviewModel = Application.Model.extend({
 	save: function () {
 		return this.page.save();
 	}
-});
-*/
+};
+
+pageSettings.model("pagePreviewModel", pagePreviewModel);

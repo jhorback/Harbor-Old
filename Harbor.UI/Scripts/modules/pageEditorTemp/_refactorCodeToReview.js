@@ -31,9 +31,4 @@ PageLoader.events.on("layout:updated", function () {
         aside =  el.find(".page-aside");
     el.removeClass().addClass("page").addClass(classNames);
 });
-
-PageLoader.events.on("page:updated", function () {
-    var el = PageLoader.regions.page.getEl();
-    el.find(".page-header h1").html(PageLoader.currentPage.get("title"));
-});
 */

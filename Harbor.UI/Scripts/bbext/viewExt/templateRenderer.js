@@ -49,8 +49,8 @@ function templateRenderer(templateCache, viewRenderer, $, shims) {
 
 			templateCache.cacheTemplateFor(name, templateEl);
 			templateEl.removeAttr("data-templatefrom").attr("data-templatefor", name);
-
-			view = viewRenderer.render(name, { model: options.model });
+			
+			view = viewRenderer.render(name, options.model ? { model: options.model } : {});
 			if (options.region) {
 				options.region.push(view.$el);
 			} else if (options.el) {

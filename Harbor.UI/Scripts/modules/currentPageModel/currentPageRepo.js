@@ -15,6 +15,10 @@ return {
 		saveCurrentPage: function (handler, proxy) {
 			pageRepo.savePage(currentPage, handler, proxy);
 			globalCache.set("currentPage", currentPage);
+		},
+		
+		deleteCurrentPage: function () {
+			return currentPage.destroy();
 		}
 	};
 }

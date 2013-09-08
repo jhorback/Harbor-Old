@@ -956,7 +956,6 @@
     <Content Include="Scripts\apps\AjaxRequestDefaultHandler.js" />
     <Content Include="Views\Page\Text.cshtml" />
     <Content Include="Views\Page\Links.cshtml" />
-    <Content Include="Views\PageSettings\_Settings.cshtml" />
     <Content Include="Views\PageEditor\_UICMenu.cshtml" />
     <Content Include="Views\PageEditor\_AddComponent.cshtml" />
     <Content Include="Views\Page\PageEditorTemplates.cshtml" />

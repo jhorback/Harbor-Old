@@ -1,16 +1,15 @@
-﻿
-<div>
+﻿<div class="pad-bottom clearfix" data-model="pagePreviewModel" data-templatefor="pagePreviewView">
 	<div>
-		<img class="{{thumbClass}}" src="{{thumbSrc}}" />
+		<img class="{{thumbClass}}" src="{{thumbSrc}}" data-event="changeThumb"/>
 		<span id="settings-previewtext">{{previewText}}</span>
 	</div>
 	<div class="clear">
 		<input type="button"
 			   class="{{changeThumbButtonClass}}"
-			   id="settings-changethumb" name="changeThumbButtonText" value="Change image" />
+			   id="settings-changethumb" name="changeThumbButtonText" value="Change image" data-event="changeThumb" />
 		<input type="button"
 			class="{{removeThumbButtonClass}}"
-			id="settings-removethumb" value="Remove image" />
+			id="settings-removethumb" value="Remove image" data-event="removeThumb" />
 	</div>
 </div>
 
