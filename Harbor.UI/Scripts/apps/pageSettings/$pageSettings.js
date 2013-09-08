@@ -1,4 +1,15 @@
-﻿var PageSettings = new Application({
+﻿
+var pageSettings = context.module("pageSettings").use("bbext");
+
+pageSettings.component("pageSettings");
+
+
+
+
+
+
+
+var PageSettings = new Application({
 
     settingsView: null,
 

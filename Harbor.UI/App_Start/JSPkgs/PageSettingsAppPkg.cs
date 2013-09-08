@@ -11,7 +11,7 @@ namespace Harbor.UI.JSPkgs
 		{
 			Name = PackageName;
 			ScriptBundle = new AppScriptBundle(PackageName);
-			Templates = new JstTemplateAction("PageSettings/PageSettingsTemplates");
+			Templates = new JstTemplateAction("PageSettings/Index");
 			Category = Categories.Apps;
 
 			AddDependency(FileSelectorAppPkg.PackageName);

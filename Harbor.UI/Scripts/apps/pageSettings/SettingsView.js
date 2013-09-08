@@ -1,4 +1,20 @@
 ﻿
+
+function pageSettingsView() {
+
+}
+
+pageSettingsView.prototype = {
+	render: function () {
+		alert("RENDERED");
+	}
+};
+
+pageSettings.view("pageSettingsView", [pageSettingsView]);
+
+
+
+
 PageSettings.SettingsView = Application.View.extend({
 	
     pagePreviewView: null,
