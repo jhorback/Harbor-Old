@@ -161,7 +161,7 @@
     <Compile Include="App_Start\Bootstrapper.cs" />
     <Compile Include="App_Start\JSPkgs\CurrentPageModelPkg.cs" />
     <Compile Include="App_Start\JSPkgs\CurrentUserModelPkg.cs" />
-    <Compile Include="App_Start\JSPkgs\PageSettingsAppPkg.cs" />
+    <Compile Include="App_Start\JSPkgs\PageSettingsPkg.cs" />
     <Compile Include="App_Start\ThemeConfig.cs" />
     <Compile Include="App_Start\ModelBinderConfig.cs" />
     <Compile Include="App_Start\DbConfig.cs" />
@@ -520,9 +520,9 @@
     <Content Include="Scripts\modules\pageModel\pageTypeRepo.js" />
     <Content Include="Scripts\modules\pageModel\pageurl.js" />
     <Content Include="Scripts\modules\pageModel\template.js" />
-    <Content Include="Scripts\apps\pageSettings\PagePreviewView.js" />
-    <Content Include="Scripts\apps\pageSettings\%24pageSettings.js" />
-    <Content Include="Scripts\apps\pageSettings\SettingsView.js" />
+    <Content Include="Scripts\modules\pageSettings\PagePreviewView.js" />
+    <Content Include="Scripts\modules\pageSettings\%24pageSettings.js" />
+    <Content Include="Scripts\modules\pageSettings\SettingsView.js" />
     <Content Include="Scripts\apps\pageEditorTemp\UICMenu.js" />
     <Content Include="Scripts\apps\pageLoader\%24pageLoader.js" />
     <Content Include="Scripts\apps\PageSelector\PageSelector.js" />
