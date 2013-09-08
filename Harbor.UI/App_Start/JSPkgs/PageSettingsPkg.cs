@@ -15,6 +15,7 @@ namespace Harbor.UI.JSPkgs
 			Templates = new JstTemplateAction("PageSettings/Index");
 			Category = Categories.Apps;
 
+			AddDependency(CurrentPageModelPkg.PackageName);
 			AddDependency(FileSelectorAppPkg.PackageName);
 		}
 	}

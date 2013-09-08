@@ -1,7 +1,9 @@
 ﻿
 
-function pageSettingsView() {
+function pageSettingsView(options, currentPageRepo) {
 
+	this.model = currentPageRepo.getCurrentPage();
+	
 }
 
 pageSettingsView.prototype = {
@@ -10,10 +12,12 @@ pageSettingsView.prototype = {
 	}
 };
 
-pageSettings.view("pageSettingsView", [pageSettingsView]);
+pageSettings.view("pageSettingsView", [
+	"options", "currentPageRepo",
+	pageSettingsView]);
 
 
-
+/*
 
 PageSettings.SettingsView = Application.View.extend({
 	
@@ -91,3 +95,4 @@ PageSettings.SettingsView = Application.View.extend({
 		});
 	}
 });
+*/
