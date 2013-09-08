@@ -7,7 +7,7 @@
 //
 // options
 //     - region: A region to render the templateRoot.
-//     - el: A dom node to render the view
+//     - el: A dom node to append the view el
 //     - insertAfterTemplate: If true, the view will be inserted
 //           into the DOM after the template element.
 //     - model: A model to pass to the view when rendering.
@@ -54,7 +54,7 @@ function templateRenderer(templateCache, viewRenderer, $, shims) {
 			if (options.region) {
 				options.region.push(view.$el);
 			} else if (options.el) {
-				options.el.empty().append(view.$el);
+				$(options.el).append(view.$el);
 			} else if (options.insertAfterTemplate === true) {
 				templateEl.after(view.$el);
 			}
