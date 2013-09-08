@@ -1,16 +1,17 @@
-﻿using System.Web.Optimization;
+﻿
+using System.Web.Optimization;
 using Harbor.UI.Models.JSPM;
 
 namespace Harbor.UI.JSPkgs
 {
-	public class PageSettingsAppPkg : JavaScriptPackage
+	public class PageSettingsPkg : JavaScriptPackage
 	{
-		public const string PackageName = "PageSettings";
+		public const string PackageName = "pageSettings";
 
-		public PageSettingsAppPkg()
+		public PageSettingsPkg()
 		{
 			Name = PackageName;
-			ScriptBundle = new AppScriptBundle(PackageName);
+			ScriptBundle = new ModuleScriptBundle(PackageName);
 			Templates = new JstTemplateAction("PageSettings/Index");
 			Category = Categories.Apps;
 
