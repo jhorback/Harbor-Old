@@ -13,7 +13,7 @@ modelBinderShim.prototype = {
 		var binder,
 		    view = el.data("view"),
 			listeners = view._listeners || (view._listeners = {}); // Backbone
-
+		
 		binder = this.modelBinder.create(model, el, matches);
 		listeners[this._.uniqueId("modelBinder")] = binder;
 	}

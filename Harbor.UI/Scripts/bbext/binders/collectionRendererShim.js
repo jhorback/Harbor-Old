@@ -10,8 +10,10 @@ function collectionRendererShim(viewFactory) {
 collectionRendererShim.prototype = {
 	parse: function (el) {
 		var collections = el.find("[data-collection]:not([data-templatefor])"),
+			models = el.find("[data-model]:not([data-templatefor])"),
 		    viewFactory = this.viewFactory;
-		collections.each(function (i, templateEl) {
+		
+		collections.add(models).each(function (i, templateEl) {
 			var genericViewName = viewFactory.nextGenericName();
 			$(templateEl).attr("data-templatefor", genericViewName);
 		});

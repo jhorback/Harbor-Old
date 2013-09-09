@@ -101,23 +101,24 @@ function renderViewExt(_, $, templateCache, collectionRenderer) {
 	}
 
 	// if there is a data-model attribute on the template root
-	// try to get the sub model from the parent model using model.get(name) or model[name]
+	// try to get the sub model from the parent model using model[name] or model.get(name)
 	function setModel(view, data) {
 		var model = view.model,
 		    modelAttr = data.model || data.collection,
-			retModel;
+			retModel,
+			getVal;
 
 		if (!model || !modelAttr) {
 			return;
 		}
 		
-		if (model.get) {
-			var getVal = model.get(modelAttr);
+		retModel = model[modelAttr];
+		if (!retModel && model.get) {
+			getVal = model.get(modelAttr);
 			if (getVal) {
 				retModel = getVal;
 			}
 		}
-		retModel = retModel ? retModel : model[modelAttr];
 		
 		if (data.model) {
 			view.model = retModel;
