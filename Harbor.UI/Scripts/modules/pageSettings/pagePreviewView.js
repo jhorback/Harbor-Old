@@ -1,7 +1,7 @@
 ﻿
 
-function pagePreviewView() {
-
+function pagePreviewView(currentPageRepo) {
+	this.currentPageRepo = currentPageRepo;
 }
 
 pagePreviewView.prototype = {
@@ -31,9 +31,11 @@ pagePreviewView.prototype = {
 	},
 
 	removeThumb: function () {
-		this.model.setPreviewImageID(null);
-		AjaxRequest.handle(this.model.save());
+		if (confirm("Are you sure you want to remove this preview image?")) {
+			this.model.setPreviewImageID(null);
+			this.currentPageRepo.saveCurrentPage();
+		}
 	}
 };
 
-pageSettings.view("pagePreviewView", [pagePreviewView]);
+pageSettings.view("pagePreviewView", ["currentPageRepo", pagePreviewView]);

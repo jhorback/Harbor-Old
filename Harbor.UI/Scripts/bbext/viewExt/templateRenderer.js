@@ -34,7 +34,6 @@ function templateRenderer(templateCache, viewRenderer, $, shims) {
 
 			// collapse the matches in reverse
 			childTemplates = $(templateEl.find("[data-templatefor]").get().reverse());
-			
 
 			childTemplates.each(function (i, template) {
 				var viewName;
@@ -58,6 +57,8 @@ function templateRenderer(templateCache, viewRenderer, $, shims) {
 			} else if (options.insertAfterTemplate === true) {
 				templateEl.after(view.$el);
 			}
+			
+			templateEl.remove();
 			return view;
 		}
 	};

@@ -12,7 +12,7 @@ function pageSettingsView(options, currentPageRepo, modelFactory, menuFactory) {
 pageSettingsView.prototype = {
 	initialize: function () {
 		this.listenTo(this.model.template, "change", this.templateChange);
-
+		
 		// save events
 		this.listenTo(this.model, "change:title", this.changeTitle);
 		this.listenTo(this.model, "change:published", this.saveModel);
@@ -20,15 +20,18 @@ pageSettingsView.prototype = {
 	},
 	
 	onRender: function () {
+		//return;
 		this.menu = this.menuFactory.create(this.$el, {
 			transition: "none"
 		});
-		this.$el.on("close", _.bind(this.close, this)); // jch* better way?
+		// this.$el.on("close", _.bind(this.close, this)); // jch* better way?
 	},
 	
 	templateChange: function () {
-		alert("template change");
-		// PageSettings.events.trigger("layout:updated");
+		var classNames = this.model.getLayoutClassNames(),
+			el = $("#page");
+		
+		el.removeClass().addClass("page").addClass(classNames);
 	},
 	
 	changeTitle: function () {
