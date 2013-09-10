@@ -169,7 +169,7 @@
     <Compile Include="App_Start\IBootstrapperTask.cs" />
     <Compile Include="App_Start\JSPkgs\ApplicationPkg.cs" />
     <Compile Include="App_Start\JSPkgs\Categories.cs" />
-    <Compile Include="App_Start\JSPkgs\FileSelectorAppPkg.cs" />
+    <Compile Include="App_Start\JSPkgs\FileSelectorPkg.cs" />
     <Compile Include="App_Start\JSPkgs\ModernizrShivPkg.cs" />
     <Compile Include="App_Start\JSPkgs\SiteStylePkg.cs" />
     <Compile Include="App_Start\JSPkgs\Html5Uploader.cs" />
@@ -435,6 +435,9 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\apps\appShim.js" />
     <Content Include="Scripts\apps\pageAdmin\pageAdminView.js" />
+    <Content Include="Scripts\modules\fileModel\file.js" />
+    <Content Include="Scripts\modules\fileModel\fileRepo.js" />
+    <Content Include="Scripts\modules\fileModel\files.js" />
     <Content Include="Scripts\modules\pageEditorTemp\comps\links\linksEditView.js" />
     <Content Include="Scripts\modules\pageEditorTemp\comps\links\linksModel.js" />
     <Content Include="Scripts\modules\pageEditorTemp\comps\links\linksNewView.js" />
@@ -487,7 +490,7 @@
     <Content Include="Scripts\bbext\temp\Region.js" />
     <Content Include="Scripts\bbext\modelExt\validationModelExt.js" />
     <Content Include="Scripts\bbext\%24bbext.js" />
-    <Content Include="Scripts\apps\FileSelector\FileSelector.js" />
+    <Content Include="Scripts\modules\fileSelector\%24fileSelector.js" />
     <Content Include="Scripts\apps\FileAdmin\AlbumsView.js" />
     <Content Include="Scripts\apps\FileAdmin\EditView.js" />
     <Content Include="Scripts\apps\FileAdmin\FileAdmin.js" />
@@ -540,7 +543,7 @@
     <Content Include="Scripts\apps\Settings\EditNavView.js" />
     <Content Include="Scripts\apps\Settings\MainView.js" />
     <Content Include="Scripts\apps\Settings\Settings.js" />
-    <Content Include="Scripts\apps\FileModel\FileModel.js" />
+    <Content Include="Scripts\modules\fileModel\%24fileModel.js" />
     <Content Include="Scripts\modules\pageModel\page.js" />
     <Content Include="Scripts\apps\UserModel\UserModel.js" />
     <Content Include="Scripts\apps\UserAdmin\ListView.js" />
@@ -622,7 +625,7 @@
     <Content Include="Views\Home\_JSPMParser.cshtml" />
     <Content Include="Views\FileSelector\_Main.cshtml" />
     <Content Include="Views\FileSelector\_ListItem.cshtml" />
-    <Content Include="Views\FileSelector\FileSelectorTemplates.cshtml" />
+    <Content Include="Views\FileSelector\Index.cshtml" />
     <Content Include="Views\Page\Image-None.cshtml" />
     <Content Include="Views\Page\Image-Edit.cshtml" />
     <Content Include="Views\PageSettings\_PagePreview.cshtml" />

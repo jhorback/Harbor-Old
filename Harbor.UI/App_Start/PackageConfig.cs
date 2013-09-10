@@ -19,7 +19,7 @@ namespace Harbor.UI
 			packages.Add(new JQueryPkg());
 			packages.Add(new FileAdminAppPkg());
 			packages.Add(new FileModelPkg());
-			packages.Add(new FileSelectorAppPkg());
+			packages.Add(new FileSelectorPkg());
 			packages.Add(new Html5UploaderPkg());
 			packages.Add(new JQueryUICorePkg());
 			packages.Add(new JQueryUIInteractionsPkg());

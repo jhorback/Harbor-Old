@@ -16,7 +16,7 @@ namespace Harbor.UI.JSPkgs
 			Category = Categories.Apps;
 
 			AddDependency(CurrentPageModelPkg.PackageName);
-			AddDependency(FileSelectorAppPkg.PackageName);
+			AddDependency(FileSelectorPkg.PackageName);
 		}
 	}
 }
