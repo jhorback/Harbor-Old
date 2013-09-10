@@ -5,13 +5,12 @@ namespace Harbor.UI.JSPkgs
 {
 	public class FileModelPkg : JavaScriptPackage
 	{
-		public const string PackageName = "FileModel";
+		public const string PackageName = "fileModel";
 
 		public FileModelPkg()
 		{
 			Name = PackageName;
-			ScriptBundle = new ScriptBundle("~/Scripts/Apps/FileModel.min.js")
-				.Include("~/Scripts/Apps/FileModel/FileModel.js");
+			ScriptBundle = new ModuleScriptBundle(PackageName);
 			Category = Categories.Domain;
 		}
 	}

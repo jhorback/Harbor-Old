@@ -16,7 +16,7 @@ namespace Harbor.UI.JSPkgs
 
 			AddDependency(CurrentPageModelPkg.PackageName);
 			AddDependency(RedactorPkg.PackageName);
-			AddDependency(FileSelectorAppPkg.PackageName);
+			AddDependency(FileSelectorPkg.PackageName);
 		}
 	}
 }

@@ -1,4 +1,9 @@
 ﻿
+var fileSelector = context.module("fileSelector").use("bbext", "fileModel");
+
+
+
+
 var FileSelector = new Application({
 	
 	start: function (options, callbackContext) {

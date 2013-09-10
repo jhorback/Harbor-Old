@@ -22,13 +22,4 @@ PageLoader.events.on("modal:closed", function () {
     PageLoader.regions.loader.showEl();
     PageLoader.regions.page.showEl();
 });
-
-
-// update the class names if the layout is updated
-PageLoader.events.on("layout:updated", function () {
-    var classNames = PageLoader.currentPage.getLayoutClassNames(),
-        el = PageLoader.regions.page.getEl(),
-        aside =  el.find(".page-aside");
-    el.removeClass().addClass("page").addClass(classNames);
-});
 */
