@@ -88,7 +88,7 @@
 
 			this.dialogEl = $($.parseHTML(Dialog.template));
 			this.dialogEl.find("h1").html(this.options.title);
-			this.dialogEl.find(".dialog-content").append(this.element.detach());
+			this.dialogEl.find(".dialog-content").append(this.element.detach().show());
 			doc.find(this.options.appendTo).append(this.dialogEl.hide());
 			this.position();
 			if (this.options.draggable && $.fn.draggable) {
