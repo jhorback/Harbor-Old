@@ -8,10 +8,11 @@ looked for is userAdminView.
 
 There are two types of managed and unmageaged components. Managed components 
 keep track of the views they create and contain logic around rendering
-and closing them.
+and closing them. Unmanaged components rely on the components to close themselves
+or for the code calling render to track and close them as needed.
 
-The two types of managed components are: Region and element.
-These can also be thought of as a page and partial.
+The two types of managed components are: Region and element components
+These can also be thought of as a page and partial components.
 1. Region / Page
 	Regions are portions of a page (or the entire page) that are, for the 
 	most part, always present. 
@@ -26,7 +27,7 @@ These can also be thought of as a page and partial.
 		regionEl: "#frame-header" // any selector or dom node.
 	});
 	// when injected...
-	someRegionComponent.render();
+	someRegionComponent.render(); // regionEl can also be defined in the options passed to render.
 	someRegionComponent.close();
 
 
@@ -41,12 +42,12 @@ These can also be thought of as a page and partial.
 	
 	myApp.component("someElementComponent")
 	// when injected...
-	someElementComponent.render(".some-element"); // can also pass in a model
+	someElementComponent.render({ parentEl: ".some-element"}); // can also pass in a model
 	someElementComponent.close(".some-element");
 	
 
 
-The two types of unmanged components are dialog and inline.
+The two types of unmanged components are dialog and inline components.
 Dialogs can also be though of as overlays.
 1. Dialog / Overlay
 	Dialog components are autonomous components in that they manage their own location
@@ -54,7 +55,7 @@ Dialogs can also be though of as overlays.
 
 	myApp.component("aColorPicker");
 	// when injected...
-	aColorPicker.render(); // jch* may need to pass a model here .render(null, model) is inelegant 
+	aColorPicker.render(options); // jch* may need to pass a model here .render(null, model) is inelegant 
 	                       // jch* but since this would be unmanaged could set the model on the component in another way
 						   // aColorPicker.setOptions("sadf");
 						   // aColorPicker.render();
@@ -89,23 +90,24 @@ var Component = (function () {
 	}
 
 	Component.prototype = {
-		render: function (el, model) {
+		render: function (options) {
 			var comp = this,
 			    _ = privates[this],
-			    options = {
-				    el: el,
-				    model: model,
-				    insertAfterTemplate: this.insertAfterTemplate
-			    },
 			    view;
-		
+			
 			_.console.group("component.render:", this.name);
-
-			this.close();
-			if (this.regionEl) {
+			
+			options = options || {};
+			options.insertAfterTemplate = this.insertAfterTemplate;
+			if (options.regionEl) {
+				this.regionEl = options.regionEl;
+			}
+			
+			if (options.regionEl) {
 				this.region = options.region = _.region(this.regionEl);
 			}
 
+			this.close();
 			view = _.templateRenderer.render(this.name + "View", options);
 			if (this.region) {
 				this.region.view = view;

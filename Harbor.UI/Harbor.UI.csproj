@@ -438,6 +438,8 @@
     <Content Include="Scripts\modules\fileModel\file.js" />
     <Content Include="Scripts\modules\fileModel\fileRepo.js" />
     <Content Include="Scripts\modules\fileModel\files.js" />
+    <Content Include="Scripts\modules\fileSelector\fileSelectorView.js" />
+    <Content Include="Scripts\modules\fileSelector\fileSelectorViewModel.js" />
     <Content Include="Scripts\modules\pageEditorTemp\comps\links\linksEditView.js" />
     <Content Include="Scripts\modules\pageEditorTemp\comps\links\linksModel.js" />
     <Content Include="Scripts\modules\pageEditorTemp\comps\links\linksNewView.js" />
