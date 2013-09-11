@@ -60,7 +60,6 @@ var module = (function (context) {
 						ok = callback(k, destination[k], source[k]);
 					}
 					if (ok) {
-						// callback && console.log("COPY: ", k, "source", source[k], "destination", destination[k]);
 						destination[k] = source[k];
 					}
 				}
@@ -71,6 +70,7 @@ var module = (function (context) {
 		handleInject: function (fnOrArray) {
 			var fn;
 			if (_.isArray(fnOrArray)) {
+				fnOrArray = Array.prototype.slice.call(fnOrArray);
 				fn = fnOrArray.pop();
 				fn.$inject = fnOrArray;
 			} else {
@@ -79,30 +79,46 @@ var module = (function (context) {
 			return fn;
 		},
 
-		construct: function (modvars, creator) {
+		construct: function (modvars, constructName, creator) {
+
 			return function (name, construct, proto) {
-				var retFn, protoObj, module;
 
 				// don't require a constructor (if just an empty function)
 				if (typeof construct !== "function" && !_.isArray(construct)) {
 					proto = arguments[1];
-					construct = function () {};
+					construct = function () { };
 				}
 
-				module = modvars.instance;
-				construct = _.handleInject(construct);
-				_.mixin(construct.prototype, proto);
-
-				creator = _.handleInject(creator);
-				retFn = modvars.context.call(creator, [], module);
-				protoObj = retFn.apply(module, [name, construct]);
-				if (!protoObj) {
-					throw new Error("The inner construct function did not return anything.");
-				}
-				module.register(name, protoObj);
-				module.register(name + ".construct", protoObj, "object"); // jch! add test - making available the raw construct through injection and document
-				return protoObj;
+				modvars.constructInstances.push({
+					_: constructName + ":" + name,
+					constructName: constructName,
+					name: name,
+					construct: construct,
+					proto: proto,
+					creator: creator
+				});
 			};
+		},
+
+		registerConstruct: function (appvars, constructInstance) {
+			var retFn, protoObj, app,
+			    name = constructInstance.name,
+			    construct = constructInstance.construct,
+			    proto = constructInstance.proto,
+			    creator = constructInstance.creator;
+
+			app = appvars.instance;
+			construct = _.handleInject(construct);
+			_.mixin(construct.prototype, proto);
+
+			creator = _.handleInject(creator);
+			retFn = appvars.context.call(creator, [], app);
+			protoObj = retFn.apply(app, [name, construct]);
+			if (!protoObj) {
+				throw new Error("The inner construct function did not return anything.");
+			}
+			app.register(name, protoObj);
+			app.register(name + ".construct", protoObj, "object"); // jch! add test - making available the raw construct through injection and document
 		},
 
 		mixinRegistries: function (dest, src) {
@@ -115,15 +131,11 @@ var module = (function (context) {
 				return true;
 			});
 		},
-		
-		foreachUse: function (appvars, moduleName, callback, visited) {
-			var modvars = _.modCache[moduleName],
-			    use = modvars.use,
-			    i,
-			    useModName,
-				usemodvars,
-				len;
 
+		foreachUse: function (appvars, moduleName, callback, visited) {
+			var i, useModName, usemodvars, len,
+			    modvars = _.modCache[moduleName],
+			    use = modvars.use;
 
 			// mixed - guard against calling on a module more than once
 			visited = visited || {};
@@ -144,8 +156,16 @@ var module = (function (context) {
 			callback(modvars);
 		},
 
-		mixinAppRegistries: function (appvars, moduleName) {
+		registerAppConstructs: function (appvars, moduleName) {
 			_.foreachUse(appvars, moduleName, function (modvars) {
+				for (var i = 0; i < modvars.constructInstances.length; i++) {
+					_.registerConstruct(appvars, modvars.constructInstances[i]);
+				}
+			});
+		},
+
+		mixinAppRegistries: function (appvars) {
+			_.foreachUse(appvars, appvars.name, function (modvars) {
 				_.mixinRegistries(appvars.context.registry, modvars.context.registry);
 			});
 		},
@@ -178,11 +198,13 @@ var module = (function (context) {
 				isApp: isApp,
 				context: context.create(),
 				constructs: {},
+				constructInstances: [],
 				use: [],
 				config: [],
 				start: []
 			};
 
+			modvars.context.name = name;
 			modvars.context.registry._name = name; // testing
 			if (isApp) {
 				modvars.context.register("context", modvars.context);
@@ -191,15 +213,14 @@ var module = (function (context) {
 			modvars.context.register("globals", _.globals);
 
 			modvars.instance = {
-				modvars: modvars, // testing
-				
 				register: function () {
 					modvars.context.register.apply(modvars.context, arguments);
 					return this;
 				},
 
 				construct: function (constructName, creator) {
-					modvars.constructs[constructName] = modvars.instance[constructName] = _.construct(modvars, creator);
+					modvars.constructs[constructName] = creator;
+					modvars.instance[constructName] = _.construct(modvars, constructName, creator);
 					return this;
 				},
 
@@ -220,14 +241,19 @@ var module = (function (context) {
 
 						// mixin the constructs
 						_.mixin(modvars.constructs, usemodvars.constructs, function (name, i1, i2) {
-							if (modvars.constructs[name]) {
-								return false;
+							if (!modvars.constructs[name]) {
+								// expose the construct on the instance
+								// e.g. app.view: instance[name] where name is view
+								modvars.instance[name] = _.construct(modvars, name, i2);
 							}
-							modvars.instance[name] = i2;
-							return true;
+
+							// using the mixin method as an object iterator
+							// return false so it does nothing more
+							return false;
 						});
 
 						_.mixinRegistries(ctx.registry, usemodvars.context.registry);
+						this.use(usemodvars.use);
 					}
 					return this;
 				},
@@ -242,7 +268,8 @@ var module = (function (context) {
 				modvars.instance.start = function (fn) {
 					if (arguments.length === 0) {
 						if (!modvars.started) {
-							_.mixinAppRegistries(modvars, name);
+							_.registerAppConstructs(modvars, name);
+							_.mixinAppRegistries(modvars);
 							_.bootstrap(modvars, name);
 						}
 						modvars.started = true;
@@ -268,7 +295,7 @@ var module = (function (context) {
 	};
 
 	window.appDebug = function () {
-		console.log(_.modCache);
+		return _.modCache;
 	};
 
 	return function (moduleName) {
@@ -287,11 +314,9 @@ var module = (function (context) {
 
 
 var app = (function () {
-
 	return function (appName) {
 		return context.module(appName, true);
 	};
-
 }());
 
 

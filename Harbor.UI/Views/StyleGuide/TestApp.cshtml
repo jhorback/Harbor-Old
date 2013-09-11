@@ -85,7 +85,7 @@
 		<div data-templatefor="showIfTestView">
 			<label for="showIt" data-event="mouseenter: showIt, mouseleave: hideIt">Show It</label>
 			<input type="checkbox" id="showIt"/>
-			<button class="attn" data-bind="showif:showIt">
+			<button class="attn" data-bind="showif: showIt">
 				It Is Visible
 			</button>
 		</div>
@@ -98,7 +98,7 @@
 @section scripts {
 	<script>
 
-		
+
 		/*
 		Things to consider:
 		Above there is duplication on the display of the user - is this fabricated because of the example 
@@ -119,17 +119,25 @@
 			]
 		};
 
-		var ta = app("testApp").use("bbext");
+
+		var ta = context.app("testApp");
+		//session.start();
+
+		ta.use("bbext");
+		// ta.shim("foo");
 
 		ta.start(["app", function (app) {
 			// app.el = '.page';
+			"use strict";
 
+			// debugger;
+			app.regionEl = ".page-content";
 			app.render();
-			return;
-			setTimeout(function () {
-				console.log(app);
-				app.view.close();
-			}, 3000);
+
+			//			setTimeout(function () {
+			//				console.log(app);
+			//				app.close();
+			//			}, 3000);
 
 		}]);
 
@@ -192,13 +200,13 @@
 				bind: ["age"]
 			},
 			favoriteIceCream: {
-				get: function (value) { 
+				get: function (value) {
 					return parseInt(value);
 				}
 			},
 			favoriteIceCreamDisplay: {
 				get: function (value) {
-					var favId =  this.get("favoriteIceCream"),
+					var favId = this.get("favoriteIceCream"),
 						iceCream = this.userRepo.getIceCream().findWhere({ id: favId });
 					var ret = iceCream ? iceCream.get("flavor") : "Unknown";
 					return ret + ":" + favId;
@@ -251,7 +259,7 @@
 				}], {
 					initialize: function () {
 						var users;
-						
+
 						this.model = this.modelFactory.create("user", data.users[1]);
 
 						users = this.userRepo.getUsers();
@@ -259,10 +267,10 @@
 							return user.get("firstName").toLowerCase() === "johnny";
 						});
 						this.model.allUsers = users;
-						
+
 						var iceCream = this.userRepo.getIceCream();
 						this.model.iceCream = iceCream;
-						
+
 						setTimeout(_.bind(function () {
 							this.addUser({
 								firstName: "wow",
@@ -314,6 +322,8 @@
 				var model = this.model;
 			}
 		});
+
+
 
 
 		ta.view("allUsersView", {

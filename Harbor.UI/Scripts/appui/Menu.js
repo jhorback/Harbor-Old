@@ -64,8 +64,9 @@
 
 			frag = $.parseHTML(Menu.template);
 			this.menuEl = $(frag);
-			this.menuEl.find(".menu-content").append(this.element.detach());
+			this.menuEl.find(".menu-content").append(this.element.detach().show());
 			doc.find("body").append(this.menuEl);
+			this.position();
 			return this;
 		},
 
