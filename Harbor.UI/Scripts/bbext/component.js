@@ -55,13 +55,7 @@ Dialogs can also be though of as overlays.
 
 	myApp.component("aColorPicker");
 	// when injected...
-	aColorPicker.render(options); // jch* may need to pass a model here .render(null, model) is inelegant 
-	                       // jch* but since this would be unmanaged could set the model on the component in another way
-						   // aColorPicker.setOptions("sadf");
-						   // aColorPicker.render();
-						   // this feels disconnected - wait until the use case.
-						          el can be a string, jQuery el, or node
-								  model can be a plain object or a backbone model
+	aColorPicker.render(options); 
 
 
 2. Inline
@@ -77,22 +71,25 @@ Dialogs can also be though of as overlays.
 */
 var Component = (function () {
 	
-	var privates = {};
+	var nextCid = 0,
+	    privates = {};
 
 	function Component(templateRenderer, console, region) {
-		privates[this] = {
+		this.cid = nextCid++;
+
+		privates[this.cid] = {
 			templateRenderer: templateRenderer,
 			console: console,
 			region: region
 		};
-		
+
 		this.region = null;
 	}
 
 	Component.prototype = {
 		render: function (options) {
 			var comp = this,
-			    _ = privates[this],
+			    _ = privates[this.cid],
 			    view;
 			
 			_.console.group("component.render:", this.name);
@@ -140,12 +137,9 @@ var Component = (function () {
 
 
 
-
-
 function componentConstruct(constructCreator, Component) {
 	return constructCreator.createFrom(Component);
 }
-
 
 
 // register the component as an object also so DI does not instantiate it
@@ -158,5 +152,3 @@ bbext.register("bbext.Component.construct", bbext.Component, "object");
 bbext.construct("component", [
 	"appui.constructCreator", "bbext.Component.construct",
 	bbext.componentConstruct = componentConstruct]);
-
-

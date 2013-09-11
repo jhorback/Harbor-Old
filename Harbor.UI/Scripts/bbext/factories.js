@@ -21,7 +21,7 @@
 
 	function createFactory(type) {
 		var genericCount = 0;
-		
+
 		return function (context, console) {
 			return {
 				create: function (name, options) {
@@ -35,22 +35,22 @@
 					}
 
 					args = guardArgs(objType, args);
-					
-					console.log("MVCoR Factory", type, "creating", objType, ":", objName);
+
+					console.log("MVCoR Factory", type, "creating", objType, ":", objName, "for app:", context.name);
 					obj = context.instantiate(objType, args);
 					obj.name = objName;
 					return obj;
 				},
-				
+
 				nextGenericName: function () {
 					return "g-" + type + "-" + genericCount++;
 				},
-				
+
 				createGeneric: function (options) {
 					return this.create(this.nextGenericName(), options);
 				}
 			};
-			
+
 			function guardArgs(objType, args) {
 				var raw, inject,
 					i = 0,
@@ -61,7 +61,7 @@
 				if (!inject || inject.length === 0) {
 					return args;
 				}
-				
+
 				if (type === "view") {
 					expected = ["options"];
 				} else if (type === "model") {
@@ -85,7 +85,7 @@
 		};
 	}
 
-	
+
 
 	bbext.viewFactory = createFactory("view");
 	bbext.modelFactory = createFactory("model");
