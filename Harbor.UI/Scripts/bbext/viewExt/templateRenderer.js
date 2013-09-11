@@ -7,15 +7,15 @@
 //
 // options
 //     - region: A region to render the templateRoot.
-//     - el: A dom node to append the view el
+//     - parentEl: A dom node to append the view el
 //     - insertAfterTemplate: If true, the view will be inserted
 //           into the DOM after the template element.
 //     - model: A model to pass to the view when rendering.
 // NOTE:
-//     If a region or el is not defined, and insertAfterTemplate is not
-//     true, the view will not be inserted into the dom.
+//     If a region or parentEl is not defined, and insertAfterTemplate is not
+//     true, the view will not be inserted into the dom (it will need to be done manually).
 //
-// The el argument can be a selector/node where the template should be rendered.
+// The parentEl argument can be a selector/node where the template should be rendered.
 //     If it is ommited, the root element will be rendered after the
 //     template element in the DOM.
 function templateRenderer(templateCache, viewRenderer, $, shims) {
@@ -49,11 +49,11 @@ function templateRenderer(templateCache, viewRenderer, $, shims) {
 			templateCache.cacheTemplateFor(name, templateEl);
 			templateEl.removeAttr("data-templatefrom").attr("data-templatefor", name);
 			
-			view = viewRenderer.render(name, options.model ? { model: options.model } : {});
+			view = viewRenderer.render(name, options);
 			if (options.region) {
 				options.region.push(view.$el);
-			} else if (options.el) {
-				$(options.el).append(view.$el);
+			} else if (options.parentEl) {
+				$(options.parentEl).append(view.$el);
 			} else if (options.insertAfterTemplate === true) {
 				templateEl.after(view.$el);
 			}
