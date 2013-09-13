@@ -63,29 +63,35 @@ if (window.Application) {
 	context.app("Application").use("bbext").start([
 		"jstViewExtension",
 		"modelBinderExtension",
-		"bbext.closeViewExt",
 		"bbext.backupModelExt",
 		"bbext.getSetModelExt",
 		"bbext.validationModelExt",
+		"viewMixins",
 		"ajaxRequest",
 		"bbext.errorDisplayViewExt",
 		
 	function (
 		jstViewExtension,
 		modelBinderExtension,
-		closeViewExt,
 		backupModelExt,
 		getSetModelExt,
 		validationModelExt,
+		viewMixins,
 		ajaxRequest,
 		errorDisplayViewExt) {
-		
+
 		// create the application view with all view extensions
 		Application.View = Backbone.View.extend({});
 		modelBinderExtension.extend(Application.View.prototype);
 		jstViewExtension.extend(Application.View.prototype);
-		closeViewExt.extend(Application.View.prototype);
 		errorDisplayViewExt.extend(Application.View.prototype);
+		viewMixins.mixin(Application.View.prototype);
+		Application.View.prototype.constructor = function () {
+			viewMixins.beforeInit(this, arguments);
+			Backbone.View.apply(this, arguments);
+			viewMixins.afterInit(this, arguments);
+		};
+
 
 		// create the application model with all model extensions
 		Application.Model = Backbone.Model.extend({});

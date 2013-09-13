@@ -1,10 +1,10 @@
 ﻿
 var fileSelector = context.module("fileSelector").use("bbext", "fileModel");
 
-fileSelector.start(["app", function (app) {
+//fileSelector.config(["app", function (app) {
 
-	app.render({
-		regionEl: "#frame-body"
-	});
+//	app.render({
+//		regionEl: "#frame-body"
+//	});
 
-}]);
+//}]);

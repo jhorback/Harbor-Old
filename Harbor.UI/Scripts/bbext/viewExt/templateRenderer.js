@@ -46,7 +46,8 @@ function templateRenderer(templateCache, viewRenderer, $, shims) {
 				template.empty();
 			});
 
-			templateCache.cacheTemplateFor(name, templateEl);
+			// templateCache.cacheTemplateFor(name, templateEl, true);
+			templateCache.cacheTemplateFor(name, templateEl, { isRoot: true });
 			templateEl.removeAttr("data-templatefrom").attr("data-templatefor", name);
 			
 			view = viewRenderer.render(name, options);

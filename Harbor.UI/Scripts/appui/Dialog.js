@@ -31,6 +31,8 @@
 	doc = $(document);
 
 	Dialog = function (el, options) {
+		var titleEl;
+		
 		if (this instanceof Dialog === false) {
 			return new Dialog(el, options);
 		}
@@ -38,7 +40,12 @@
 		this.element = $(el);
 		this.dialogEl = null;
 		this.overlay = null;
-		this.options = $.extend({}, Dialog.defaultOptions, options);
+		this.options = $.extend({}, Dialog.defaultOptions, el.data(), options);
+		if (!this.options.title) {
+			titleEl = el.find("h1");
+			this.options.title = titleEl.html();
+			titleEl.remove();
+		}
 		this.events = [];
 
 		if (this.options.editorFor) {
@@ -79,7 +86,8 @@
 
 			this.render()
 				.bind(".dialog-close", "click", "close")
-				.bind("[data-rel=back]", "click", "close");
+				.bind("[data-rel=back]", "click", "close")
+				.bind("[data-rel=close]", "click", "close");
 			this.show();
 		},
 
@@ -180,9 +188,9 @@
 			var self = this,
 				destroyProxy = function () {
 					_.isFunction(callback) && callback();
+					self.element.trigger("close");
 					$.proxy(self.destroy, self)();
 				};
-			this.element.trigger("close");
 			this._transition(this.dialogEl, false, destroyProxy);
 			this._transition(this.overlay, false);
 		},
@@ -208,7 +216,6 @@
 			if (this.options.removeEl) {
 				this.element.remove();
 			} else {
-				//this.element.trigger("detach", [this.element.detach()]);
 				setTimeout(_.bind(function () {
 					this.parentEl.append(this.element.detach().hide());
 				}, this), 0);

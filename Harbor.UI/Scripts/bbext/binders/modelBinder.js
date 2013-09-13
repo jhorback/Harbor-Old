@@ -52,7 +52,7 @@ var modelBinder = function ($, _, config, nameValueParser) {
 		if (!model) {
 			return this;
 		}
-
+		
 		this.$el = $(el);
 		matches = matches || el.find("[data-bind]:not([data-templatefrom]),[name],[id]").addBack("[data-bind]");
 		if (matches.length === 0) {
@@ -116,6 +116,9 @@ var modelBinder = function ($, _, config, nameValueParser) {
 		},
 
 		unbind: function () {
+			if (!this.$el) {
+				return;
+			}
 			this.matches && this.matches.unbind(".modelbinder");
 			this.model && this.model.unbind("change", this._modelToViewProxy);
 			this.$el.data("modelbound", false);
