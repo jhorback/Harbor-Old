@@ -9,7 +9,6 @@
 
 	bbext.View = function (
 		Backbone,
-		closeViewExt,
 		renderViewExt,
 		errorDisplayViewExt,
 		viewMixins) {
@@ -17,7 +16,6 @@
 		var View = Backbone.View.extend({});
 		viewMixins.mixin(View.prototype);
 		
-		closeViewExt.extend(View.prototype);
 		renderViewExt.extend(View.prototype);
 		errorDisplayViewExt.extend(View.prototype);
 
@@ -26,7 +24,6 @@
 
 	bbext.service("bbext.View", [
 		"Backbone",
-		"bbext.closeViewExt",
 		"bbext.renderViewExt",
 		"bbext.errorDisplayViewExt",
 		"viewMixins",

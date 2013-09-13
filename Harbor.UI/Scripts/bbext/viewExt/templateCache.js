@@ -10,6 +10,13 @@
 // <div data-templatefor="someView" data-foo="bar">...</div>
 // var templateFn = templateCache.getTemplateFor("someView");
 // var metaData = templateFn.data; // { templatefor: "someView", foo: "bar", templateEl: $el }
+//
+// Root Templates
+// When caching root templates set the isRoot option to true:
+// templateCache.cachTemplateFor(name, el, { isRoot: true });
+// This is done by the templateRenderer for the root template.
+// If a standalone view attempts to get it's template and it has not been pre-cached
+// it will be considered a root template.
 function templateCache($, _, globalCache) {
 
 	globalCache.set("templates", {});
@@ -19,7 +26,7 @@ function templateCache($, _, globalCache) {
 
 
 	return {
-		cacheTemplateFor: function (name, templateEl) {
+		cacheTemplateFor: function (name, templateEl, options) {
 			var html, templateFn, metaData;
 			
 			templateFn = getTemplate(name);
@@ -38,6 +45,9 @@ function templateCache($, _, globalCache) {
 				html = $('<div/>').append(templateEl[0].outerHTML).html(),
 				templateFn = _.template(String(html));
 				templateFn.data = metaData;
+				if (options && options.isRoot === true) {
+					templateEl.removeAttr("data-templatefrom").attr("data-templatefor", name);
+				}
 			}
 			
 			setTemplate(name, templateFn);
@@ -54,7 +64,7 @@ function templateCache($, _, globalCache) {
 				if (templateEl.length === 0) {
 					throw "Template for '" + name + "' not found";
 				}
-				templateFn = this.cacheTemplateFor(name, templateEl);
+				templateFn = this.cacheTemplateFor(name, templateEl, { isRoot: true });
 			}
 
 			return templateFn;

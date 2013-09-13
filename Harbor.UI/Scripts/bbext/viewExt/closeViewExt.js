@@ -1,20 +1,36 @@
 ﻿/*globals */
 /*
 */
-var closeViewExt = function (_, Backbone) {
+var closeViewExt = function (_, Backbone, viewMixins) {
 	"use strict";
+	
 
-	var extension = {
+	var closeViewExt = {
+		afterInit: function () {
+			var close = _.bind(this.close, this);
+			this.events = this.events || {};
+			this.events.close = close;
+			this.on("close", close);
+		},
+
 		close: function (options) {
 			/// <summary>
-			/// An option other than remove that does not
-			/// remove the view el and calls an optional 'onClose'
-			/// method when called.
+			/// Triggers a close event. Calls an optional onClose method on the view.
+			/// Removes the element unless the markup came from the server.
+			/// if options.remove is true it will remove it even if from the server.
 			/// </summary>
+			var remove;
+			
 			if (this.isClosed) {
 				return this;
 			}
-			
+
+			remove = _.bind(function () {
+				if (!options || options.remove !== false) {
+					this.remove();
+				}
+			}, this);
+
 			this.isClosed = true;
 			this.trigger("close");
 			this.onClose && this.onClose();
@@ -22,24 +38,24 @@ var closeViewExt = function (_, Backbone) {
 			this.off();
 			this.stopListening();
 
-			if (options && options.remove === true) {
-				this.remove();
+			if (this.fromServer && options && options.remove === true) {
+				remove();
+			} else {
+				remove();
 			}
+
 			return this;
 		},
-		
+
 		remove: function () {
 			this.close();
 			Backbone.View.prototype.remove.apply(this);
 		}
 	};
+	
 
-	return {
-		extend: function (proto) {
-			_.extend(proto, extension);
-		}
-	};
+	viewMixins.register("bbext.closeViewExt", closeViewExt);
 
 };
 
-bbext.service("bbext.closeViewExt", ["_", "Backbone", closeViewExt]);
+bbext.config(["_", "Backbone", "viewMixins", closeViewExt]);
