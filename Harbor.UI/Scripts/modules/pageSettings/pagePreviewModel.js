@@ -84,6 +84,10 @@ var pagePreviewModel = {
 	setPreviewImageID: function (id) {
 		this.page.set("previewImageID", id);
 	},
+	
+	removePreviewImage: function () {
+		this.setPreviewImageID(null);
+	},
 
 	save: function () {
 		return this.page.save();

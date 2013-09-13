@@ -1,7 +1,8 @@
 ﻿
 
-function pagePreviewView(currentPageRepo) {
+function pagePreviewView(currentPageRepo, fileSelector) {
 	this.currentPageRepo = currentPageRepo;
+	this.fileSelector = fileSelector;
 }
 
 pagePreviewView.prototype = {
@@ -13,29 +14,32 @@ pagePreviewView.prototype = {
 	},
 	
 	changeThumb: function () {
+		
 		alert("change thumb");
-		/*
-		PageSettings.events.trigger("modal:opened");
-		FileSelector.start({
+		
+		this.fileSelector.render({
 			filter: "images",
-			region: PageSettings.regions.modal,
+
+			// region: PageSettings.regions.modal,
+
 			close: function () {
-				PageSettings.events.trigger("modal:closed");
+				// PageSettings.events.trigger("modal:closed");
 			},
-			select: function (selectedFile) {
+			
+			select: _.bind(function (selectedFile) {
+
 				this.model.setPreviewImageID(selectedFile.get("id"));
-				AjaxRequest.handle(this.model.save());
-			}
-		}, this);
-		*/
+				this.currentPageRepo.saveCurrentPage();
+			}, this)
+		});
 	},
 
 	removeThumb: function () {
 		if (confirm("Are you sure you want to remove this preview image?")) {
-			this.model.setPreviewImageID(null);
+			this.model.removePreviewImage();
 			this.currentPageRepo.saveCurrentPage();
 		}
 	}
 };
 
-pageSettings.view("pagePreviewView", ["currentPageRepo", pagePreviewView]);
+pageSettings.view("pagePreviewView", ["currentPageRepo", "fileSelector", pagePreviewView]);

@@ -1,3 +1,39 @@
-﻿@using Harbor.UI.Extensions
-@Html.JstPartial("FileSelector-Main", "FileSelector/_Main")
-@Html.JstPartial("FileSelector-FileListItem", "FileSelector/_ListItem")
+﻿<div class="page centered">
+	<div class="page-header">
+		<h1 class="float-left" data-bind="text: title">Files</h1>
+		<div class="float-right">
+			<button type="button" data-event="cancel">Cancel</button>
+		</div>
+	</div>
+	<div class="page-body"> 
+		<div class="page-content">
+			<form data-event="submit: formSubmit">
+				<fieldset>
+					<div class="form-field">
+						<input name="search" type="text" placeholder="search" size="50" autofocus />
+						<input type="submit" value="Search" />
+					</div>
+				</fieldset>
+                <div class="tiles">
+	                <ul>
+		               
+						 <!-- model.files -->
+		                <li data-id="{{id}}" 
+		                    class="tile col5 hover" tabindex="0"
+		                    data-collection="files"
+							data-event="click: selectThisAndClose, keypress: selectThisAndCloseOnEnter">
+							<div class="media">
+								<img src="{{thumbUrl}}" />
+							</div>
+							<div class="caption">
+								<h3>{{name}}</h3>		
+							</div>
+						</li>
+		                <!-- -->
+
+	                </ul>
+			    </div>				
+			</form>
+		</div>
+	</div>
+</div>
