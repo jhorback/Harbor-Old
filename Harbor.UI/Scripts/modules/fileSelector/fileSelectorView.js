@@ -23,44 +23,31 @@ fileSelectorView.prototype = {
 		this.on("close", this.options.close);
 		this.on("select", this.options.select);
 	},
-	
-	events: {
-		"click [data-rel=cancel]": "close",
-
-		"click [data-rel=save]": function (event) {
-			event.preventDefault();
-			this.selectAndClose();
-		},
-
-		"submit form": function (event) {
-			event.preventDefault();
-			this.search();
-		},
-
-		"click .fileselector-results li": function (event) {
-			this.selectAndClose($(event.target).closest("[data-id]").data("id"));
-		},
-
-		"keypress li": function (event) {
-			if (event.keyCode == 13) {
-				this.selectAndClose($(event.target).data("id"));
-			}
-		}
-	},
-
-	renderResults: function (collection) {
-		var resultsList = this.$(".fileselector-results ul");
-		resultsList.empty();
-		collection.each(function (file) {
-			resultsList.append(this.template("FileSelector-FileListItem")(file.toJSON()));
-		}, this);
-	},
 
 	search: function () {
-		var results = this.model.files.search(this.model.get("search"));
-		this.renderResults(results);
+		var searchTerm = this.model.get("search"),
+			filtered = this.model.files.search(searchTerm);
+
+		this.model.files.reset(filtered);
 	},
 
+	formSubmit: function (event) {
+		event.preventDefault();
+		this.search();
+	},
+	
+	selectThisAndClose: function (event) {
+		// gets the closest data-id attribute value to select
+		var selectedFileID = $(event.target).closest("[data-id]").data("id");
+		this.selectAndClose(selectedFileID);
+	},
+	
+	selectThisAndCloseOnEnter: function (event) {
+		if (event.keyCode == 13) {
+			this.selectAndClose($(event.target).data("id"));
+		}
+	},
+	
 	selectAndClose: function (selectedFileID) {
 		var file;
 
@@ -70,11 +57,6 @@ fileSelectorView.prototype = {
 
 		this.trigger("select", file);
 		this.close();
-	},
-
-	close: function () {
-		this.trigger("close");
-		this.remove();
 	}
 };
 

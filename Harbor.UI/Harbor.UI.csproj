@@ -625,8 +625,6 @@
     <Content Include="Views\Page\Image.cshtml" />
     <Content Include="Views\Home\JavaScriptPackages.cshtml" />
     <Content Include="Views\Home\_JSPMParser.cshtml" />
-    <Content Include="Views\FileSelector\_Main.cshtml" />
-    <Content Include="Views\FileSelector\_ListItem.cshtml" />
     <Content Include="Views\FileSelector\Index.cshtml" />
     <Content Include="Views\Page\Image-None.cshtml" />
     <Content Include="Views\Page\Image-Edit.cshtml" />
