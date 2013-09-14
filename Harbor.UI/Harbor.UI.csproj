@@ -569,7 +569,7 @@
     <Content Include="Scripts\bbext\viewExt\templateCache.js" />
     <Content Include="Scripts\bbext\viewExt\templateRenderer.js" />
     <Content Include="Scripts\bbext\_dependent\view.js" />
-    <Content Include="Scripts\bbext\viewExt\viewMixins.js" />
+    <Content Include="Scripts\bbext\mixin.js" />
     <Content Include="Scripts\bbext\viewExt\viewRenderer.js" />
     <Content Include="Scripts\dropzone.js" />
     <Content Include="Scripts\holder.js" />
