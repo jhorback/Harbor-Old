@@ -32,10 +32,10 @@
 
 
 	bbext.construct("model",
-		["Backbone", "bbext.Model", "bbext.mvcorConstruct",
-	function (Backbone, Model, mvcorConstruct) {
+		["bbext.Model", "bbext.mvcorConstruct",
+	function (Model, mvcorConstruct) {
 
-		return mvcorConstruct.create(Backbone.Model, Model);
+		return mvcorConstruct.create(Model);
 		
 	}]);
 

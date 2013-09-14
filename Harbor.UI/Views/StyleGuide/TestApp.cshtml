@@ -220,6 +220,7 @@
 			comparator: function (user) {
 				return user.get("age");
 			},
+			
 			updateSort: function (fn) {
 				this.comparator = fn;
 				this.sort();

@@ -81,16 +81,10 @@ if (window.Application) {
 		errorDisplayViewExt) {
 
 		// create the application view with all view extensions
-		Application.View = Backbone.View.extend({});
+		Application.View = viewMixins.mixin(Backbone.View.extend({}));
 		modelBinderExtension.extend(Application.View.prototype);
 		jstViewExtension.extend(Application.View.prototype);
 		errorDisplayViewExt.extend(Application.View.prototype);
-		viewMixins.mixin(Application.View.prototype);
-		Application.View.prototype.constructor = function () {
-			viewMixins.beforeInit(this, arguments);
-			Backbone.View.apply(this, arguments);
-			viewMixins.afterInit(this, arguments);
-		};
 
 
 		// create the application model with all model extensions
