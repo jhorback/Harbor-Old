@@ -7,7 +7,7 @@ need a way for the collection renderer to know how to find it's view
 
 testing
 */
-function childViewExt(_, viewMixins) {
+function childViewExt(_, mixin) {
 	
 	function ChildViewContainer(view) {
 		this.view = view;
@@ -37,7 +37,7 @@ function childViewExt(_, viewMixins) {
 	};
 
 
-	viewMixins.register("childViewExt", {
+	mixin("view").register("childViewExt", {
 		
 		beforeInit: function () {
 			this.views = new ChildViewContainer(this);
@@ -47,4 +47,4 @@ function childViewExt(_, viewMixins) {
 }
 
 
-bbext.config(["_", "viewMixins", childViewExt]);
+bbext.config(["_", "mixin", childViewExt]);
