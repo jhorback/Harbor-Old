@@ -88,7 +88,7 @@ if (window.Application) {
 
 
 		// create the application model with all model extensions
-		Application.Model = Backbone.Model.extend({});
+		Application.Model = mixin("model").mixin(Backbone.Model.extend({}));
 		backupModelExt.extend(Application.Model.prototype);
 		getSetModelExt.extend(Application.Model.prototype);
 		validationModelExt.extend(Application.Model.prototype);

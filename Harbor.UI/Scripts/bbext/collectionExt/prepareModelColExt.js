@@ -1,10 +1,9 @@
 ﻿
 
 
-function prepareModelColExt(Backbone) {
-	var extension;
+function prepareModelColExt(Backbone, mixin) {
 
-	extension = {
+	var prepareModelColExt = {
 		// replaceing _prepareModel so I can use the modelFactory to create the model.
 		_prepareModel: function (attrs, options) {
 			if (attrs instanceof Backbone.Model) {
@@ -14,6 +13,7 @@ function prepareModelColExt(Backbone) {
 			options || (options = {});
 			options.collection = this;
 
+			// this is the only change from Backbone.Collection._prepareModel
 			// var model = new this.model(attrs, options);
 			var model = createModel(this, attrs, options);
 
@@ -36,11 +36,8 @@ function prepareModelColExt(Backbone) {
 		return modelFactory.create(collection.model, attrs, options);
 	};
 	
-	return {
-		extend: function (proto) {
-			_.extend(proto, extension);
-		}
-	};
+	mixin("collection").register("bbext.prepareModelColExt", prepareModelColExt);
 }
 
-bbext.service("bbext.prepareModelColExt", ["Backbone", bbext.prepareModelColExt = prepareModelColExt]);
+
+bbext.config(["Backbone", "mixin", prepareModelColExt]);

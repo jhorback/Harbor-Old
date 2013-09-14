@@ -9,11 +9,9 @@
 	"use strict";
 
 
-	function Collection(Backbone, prepareModelColExt, mixin) {
-		var Collection = mixin("collection").mixin(Backbone.Collection.extend({}));
-
-		prepareModelColExt.extend(Collection.prototype);
-		return Collection;
+	function Collection(Backbone, mixin) {
+		
+		return mixin("collection").mixin(Backbone.Collection.extend({}));
 	};
 
 
@@ -27,7 +25,7 @@
 	// register
 
 	bbext.service("bbext.Collection", [
-		"Backbone", "bbext.prepareModelColExt", "mixin",
+		"Backbone", "mixin",
 		bbext.Collection = Collection]);
 
 	bbext.construct("collection",
