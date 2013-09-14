@@ -11,9 +11,9 @@
 		Backbone,
 		renderViewExt,
 		errorDisplayViewExt,
-		viewMixins) {
+		mixin) {
 
-		var View = viewMixins.mixin(Backbone.View.extend({}));
+		var View = mixin("view").mixin(Backbone.View.extend({}));
 		
 		renderViewExt.extend(View.prototype);
 		errorDisplayViewExt.extend(View.prototype);
@@ -25,7 +25,7 @@
 		"Backbone",
 		"bbext.renderViewExt",
 		"bbext.errorDisplayViewExt",
-		"viewMixins",
+		"mixin",
 		bbext.View]);
 
 

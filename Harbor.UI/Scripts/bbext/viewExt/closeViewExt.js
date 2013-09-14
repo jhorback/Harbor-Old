@@ -1,7 +1,7 @@
 ﻿/*globals */
 /*
 */
-var closeViewExt = function (_, Backbone, viewMixins) {
+var closeViewExt = function (_, Backbone, mixin) {
 	"use strict";
 	
 
@@ -54,8 +54,8 @@ var closeViewExt = function (_, Backbone, viewMixins) {
 	};
 	
 
-	viewMixins.register("bbext.closeViewExt", closeViewExt);
+	mixin("view").register("bbext.closeViewExt", closeViewExt);
 
 };
 
-bbext.config(["_", "Backbone", "viewMixins", closeViewExt]);
+bbext.config(["_", "Backbone", "mixin", closeViewExt]);

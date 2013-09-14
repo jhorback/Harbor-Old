@@ -126,11 +126,13 @@
 		ta.use("bbext");
 		// ta.shim("foo");
 
-		ta.start(["app", function (app) {
+		ta.start(["app", "mixin", function (app, mixin) {
 			// app.el = '.page';
 			"use strict";
 
-			// debugger;
+			debugger;
+			var x = mixin("view");
+
 			app.regionEl = ".page-content";
 			app.render();
 
