@@ -435,6 +435,8 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\apps\appShim.js" />
     <Content Include="Scripts\apps\pageAdmin\pageAdminView.js" />
+    <Content Include="Scripts\bbext\collectionExt\filterColExt.js" />
+    <Content Include="Scripts\bbext\collectionExt\sortColExt.js" />
     <Content Include="Scripts\modules\fileModel\file.js" />
     <Content Include="Scripts\modules\fileModel\fileRepo.js" />
     <Content Include="Scripts\modules\fileModel\files.js" />
