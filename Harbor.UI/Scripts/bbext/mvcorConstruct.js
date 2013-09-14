@@ -10,11 +10,9 @@
 function mvcorConstruct(console) {
 
 	return {
-		create: function (MVCoR, bbextMVCoR, options) {
+		create: function (bbextMVCoR) {
 			return function (name, construct) {
 				var proto = construct.prototype;
-				
-				options = options || {};
 
 				proto.constructor = function () {
 					var context = arguments[arguments.length - 1];
@@ -30,10 +28,7 @@ function mvcorConstruct(console) {
 						construct.apply(this, arguments);
 					}
 					
-					options.beforeInit && options.beforeInit.apply(this, arguments);
-					MVCoR.apply(this, arguments);
-					options.afterInit && options.afterInit.apply(this, arguments);
-
+					bbextMVCoR.prototype.constructor.apply(this, arguments);
 					return this;
 				};
 

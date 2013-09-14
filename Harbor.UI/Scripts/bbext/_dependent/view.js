@@ -13,8 +13,7 @@
 		errorDisplayViewExt,
 		viewMixins) {
 
-		var View = Backbone.View.extend({});
-		viewMixins.mixin(View.prototype);
+		var View = viewMixins.mixin(Backbone.View.extend({}));
 		
 		renderViewExt.extend(View.prototype);
 		errorDisplayViewExt.extend(View.prototype);
@@ -30,20 +29,13 @@
 		bbext.View]);
 
 
-	bbext.viewConstruct = function (Backbone, View, mvcorConstruct, viewMixins) {
+	bbext.viewConstruct = function (View, mvcorConstruct) {
 		
-		return mvcorConstruct.create(Backbone.View, View, {
-			beforeInit: function () {
-				viewMixins.beforeInit(this, arguments);
-			},
-			afterInit: function () {
-				viewMixins.afterInit(this, arguments);
-			}
-		});
+		return mvcorConstruct.create(View);
 
 	};
 
-	bbext.construct("view", ["Backbone", "bbext.View", "bbext.mvcorConstruct", "viewMixins", bbext.viewConstruct]);
+	bbext.construct("view", ["bbext.View", "bbext.mvcorConstruct", bbext.viewConstruct]);
 	
 
 	// for generic views, see factories.js

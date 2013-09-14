@@ -16,9 +16,9 @@
 	};
 
 
-	function collectionConstruct(Backbone, Collection, mvcorConstruct) {
+	function collectionConstruct(Collection, mvcorConstruct) {
 
-		return mvcorConstruct.create(Backbone.Collection, Collection);
+		return mvcorConstruct.create(Collection);
 
 	};
 
@@ -30,7 +30,7 @@
 		bbext.Collection = Collection]);
 
 	bbext.construct("collection",
-		["Backbone", "bbext.Collection", "bbext.mvcorConstruct",
+		["bbext.Collection", "bbext.mvcorConstruct",
 		collectionConstruct]);
 
 	// for generic collections, see factories.js

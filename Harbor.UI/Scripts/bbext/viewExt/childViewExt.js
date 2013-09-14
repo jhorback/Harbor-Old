@@ -39,7 +39,7 @@ function childViewExt(_, viewMixins) {
 
 	viewMixins.register("childViewExt", {
 		
-		afterInit: function () {
+		beforeInit: function () {
 			this.views = new ChildViewContainer(this);
 			this.on("close", _.bind(this.views.remove, this.views));
 		}

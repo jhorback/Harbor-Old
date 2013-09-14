@@ -39,26 +39,34 @@ var viewMixins = function (globalCache, _) {
 
 			// mixin any View objects that have already been mixed in 
 			_(storage.sources).each(function (source) {
-				_.extend(source, mixin);
+				_.extend(source.prototype, mixin);
 			});
 		},
 
+		// Call to mix all mixins with a single source
 		mixin: function (source) {
 			_(storage.mixins).each(function (mixin) {
-				_.extend(source, mixin);
+				_.extend(source.prototype, mixin);
 			});
 
-			storage.sources.push(source);
-		},
-
-		beforeInit: function (instance, args) {
-			initialize(storage.beforeInits, instance, args);
-		},
-
-		afterInit: function (instance, args) {
-			initialize(storage.afterInits, instance, args);
+			addSource(source);
+			return source;
 		}
 	};
+	
+	function addSource(source) {
+		var ctor = source;
+		
+		
+		source.prototype.constructor = function () {
+			initialize(storage.beforeInits, this, arguments);
+			ctor.apply(this, arguments);
+			initialize(storage.afterInits, this, arguments);
+		};
+		
+		storage.sources.push(source);
+	}
+	
 
 	function initialize(callbacks, instance, args) {
 		var context = instance.context;
