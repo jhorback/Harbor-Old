@@ -59,6 +59,8 @@
 			<button data-event="removeUser">Remove last user</button>
 			<button data-event="sortUsers">Sort Users</button>
 			<button data-event="fetch">Reset</button>
+			<button data-event="filter">Filter on Strawberry</button>
+			<button data-event="clearFilter">Clear Filter</button>
 		</div>
 
 		<ul>
@@ -311,6 +313,18 @@
 						});
 					},
 
+					filter: function () {
+						debugger;
+						this.model.allUsers.setFilter(function (user) {
+							return user.get("favoriteIceCream") === 2; // strawberry
+						});
+					},
+					
+					clearFilter: function () {
+						debugger;
+						this.model.allUsers.clearFilter();
+					},
+					
 					fetch: function () {
 						this.model.allUsers.reset(data.users);
 					}
