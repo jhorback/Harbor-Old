@@ -7,7 +7,20 @@ fileModel.files = function (models, options, appurl) {
 
 
 fileModel.files.prototype = {
-	model: "file"
+	model: "file",
+	
+	search: function (name) {
+		var pattern;
+
+		if (name === "") {
+			this.clearFilter();
+		}
+
+		pattern = new RegExp(name, "gi");
+		this.setFilter(function (model) {
+			return pattern.test(model.get("name"));
+		});
+	}
 };
 
 

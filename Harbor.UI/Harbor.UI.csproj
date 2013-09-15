@@ -474,7 +474,7 @@
     <Content Include="Scripts\bbext\_dependent\model.js" />
     <Content Include="Scripts\bbext\modelExt\validators.js" />
     <Content Include="Scripts\appui\sessionTimeout.js" />
-    <Content Include="Scripts\bbext\_dependent\Application.js" />
+    <Content Include="Scripts\bbext\_dependent\_Application.js" />
     <Content Include="Scripts\bbext\temp\JSPM.js" />
     <Content Include="Scripts\bbext\modelExt\backupModelExt.js" />
     <Content Include="Scripts\bbext\temp\Controller.js" />
