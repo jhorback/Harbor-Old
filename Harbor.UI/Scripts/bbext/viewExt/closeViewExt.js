@@ -1,7 +1,7 @@
 ﻿/*globals */
 /*
 */
-var closeViewExt = function (_, Backbone, mixin) {
+function closeViewExt(_, Backbone, mixin) {
 	"use strict";
 	
 

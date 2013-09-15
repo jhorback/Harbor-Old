@@ -16,23 +16,29 @@ mixin("view").register({
 
 The mixins can be registered before and after the call to mixin.
 */
-function mixin (globalCache, _) {
+function mixin (globalCache, _, context) {
 
 	var mixins = globalCache.get("mixins") || {};
 	globalCache.set("mixins", mixins);
 
 	return function (type) {
-		var mixin = mixins[type];
+		var mixin;
+		
+		type = context.name + "-" + type;
+		mixin = mixins[type];
 		if (!mixin) {
-			mixin = createMixin();
+			mixin = createMixin(type);
 			mixins[type] = mixin;
 		}
 		return mixin;
 	};
 	
-
-	function createMixin() {
+	// jch* make this a prototype
+	// since there are instances for each mixin/each app context
+	// would benifit some with memory if this was a prototype
+	function createMixin(type) {
 		var storage = {
+			type: type,
 			mixins: {},
 			beforeInits: [],
 			afterInits: [],
@@ -75,6 +81,7 @@ function mixin (globalCache, _) {
 			ctor.apply(this, arguments);
 			initialize(storage.afterInits, this, arguments);
 		};
+		
 		storage.sources.push(source);
 	}
 
@@ -94,4 +101,4 @@ function mixin (globalCache, _) {
 };
 
 
-bbext.service("mixin", ["globalCache", "_", mixin]);
+bbext.service("mixin", ["globalCache", "_", "context", mixin]);

@@ -2,7 +2,7 @@
 	
 	context.app("session").config([
 		"ajaxRequestDefaultHandler",
-	function (ajaxRequestDefaultHandler) {
+	function extendAjaxRequestDefaultHandler(ajaxRequestDefaultHandler) {
 
 		ajaxRequestDefaultHandler.extend({
 			401: function (response) {
