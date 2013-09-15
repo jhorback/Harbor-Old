@@ -220,12 +220,6 @@
 			model: "user",
 			comparator: function (user) {
 				return user.get("age");
-			},
-			
-			updateSort: function (fn) {
-				this.comparator = fn;
-				this.sort();
-				this.trigger("reset");
 			}
 		});
 
@@ -308,7 +302,7 @@
 
 					sortUsers: function () {
 						var views = this.views;
-						this.model.allUsers.updateSort(function (user) {
+						this.model.allUsers.setSort(function (user) {
 							return user.get("firstName").toLowerCase();
 						});
 					},
