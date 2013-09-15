@@ -1,26 +1,48 @@
 ﻿
 
 
-function filterColExt(mixin) {
-
+function filterColExt(mixin, collectionFactory) {
+	
 	var filterColExt = {
-		afterInit: function () {
-			
-			// this.source = new collection(this.models);
-			// add reverse linking to the source - add/remove - 
+		afterInit: function (models, options) {
 
-			// this.source = this.collectionFactory.create(this.name, this.models);
+			if (options.isSource) {
+				return;
+			}
+			
+			this.source = collectionFactory.create(this.name, this.models, {
+				isSource: true
+			});
+			
+			
+			// keep the source models in sync
+			this.on("all", function (event, model) {
+				if (event === "add" || event === "remove") {
+					this.source[event](model);
+				}
+			}, this);
 		},
 		
-		setFilter: function () {
-			//this.currentFilter = filter;
-			//filtered = this.source.filter(filter);
-			//this.set(filtered); // will fire events
-
+		setFilter: function (filter) {
+			var filtered;
+			
+			// don't allow attempts at filtering source collections
+			if (!this.source) {
+				return;
+			}
+			
+			this.currentFilter = filter;
+			if (!filter) {
+				filtered = source;
+			} else {
+				filtered = this.source.filter(filter);
+			}
+			
+			this.set(filtered); // will fire add, remove, merge, events
 		},
 		
 		clearFilter: function () {
-			// this.setFilter(null);
+			this.setFilter(null);
 		}
 	};
 
@@ -29,4 +51,4 @@ function filterColExt(mixin) {
 };
 
 
-bbext.config(["mixin", filterColExt]);
+bbext.config(["mixin", "collectionFactory", "context", filterColExt]);

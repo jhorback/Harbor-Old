@@ -306,7 +306,6 @@
 
 					sortUsers: function () {
 						var views = this.views;
-						// debugger;
 						this.model.allUsers.updateSort(function (user) {
 							return user.get("firstName").toLowerCase();
 						});
@@ -356,6 +355,7 @@
 				users.remove(model);
 			}
 		});
+
 
 
 		ta.start();

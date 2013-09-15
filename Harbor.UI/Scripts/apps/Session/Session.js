@@ -87,7 +87,7 @@
 	var session = context.app("session");
 	session.use("appui", "bbext", "currentUserModel");
 
-	session.config(["appurl", function (appurl) {
+	session.config(["appurl", function setBaseUrl(appurl) {
 		appurl.setBaseUrl(window.baseUrl);
 	}]);
 	session.start(["keepAlive", "appurl", "currentUserRepo", function (keepAlive, appurl, currentUserRepo) {
