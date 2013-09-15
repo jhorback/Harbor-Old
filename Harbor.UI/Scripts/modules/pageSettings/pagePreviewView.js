@@ -6,25 +6,12 @@ function pagePreviewView(currentPageRepo, fileSelector) {
 }
 
 pagePreviewView.prototype = {
-	initialize: function () {
-		//var page = this.model.get("page");
-		//this.listenTo(page, "change:previewImage", function (change) {
-		//	this.render();
-		//});
-	},
-	
 	changeThumb: function () {
 		
 		alert("change thumb");
 		
 		this.fileSelector.render({
 			filter: "images",
-
-			// region: PageSettings.regions.modal,
-
-			close: function () {
-				// PageSettings.events.trigger("modal:closed");
-			},
 			
 			select: _.bind(function (selectedFile) {
 
