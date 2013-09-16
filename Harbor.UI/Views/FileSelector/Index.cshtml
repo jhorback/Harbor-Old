@@ -1,4 +1,4 @@
-﻿<div class="page centered">
+﻿<div class="page centered" data-templatefor="fileSelectorView">
 	<div class="page-header">
 		<h1 class="float-left" data-bind="text: title">Files</h1>
 		<div class="float-right">
@@ -17,8 +17,11 @@
                 <div class="tiles">
 	                <ul>
 		               
-						 <!-- model.files -->
-		                <li data-id="{{id}}" 
+		                <!-- model.files -->
+		                <li data-collection="files">
+			                {{this}}
+		                </li>
+		                @*<li data-id="{{id}}" 
 		                    class="tile col5 hover" tabindex="0"
 		                    data-collection="files"
 							data-event="click: selectThisAndClose, keypress: selectThisAndCloseOnEnter">
@@ -28,7 +31,7 @@
 							<div class="caption">
 								<h3>{{name}}</h3>		
 							</div>
-						</li>
+						</li>*@
 		                <!-- -->
 
 	                </ul>

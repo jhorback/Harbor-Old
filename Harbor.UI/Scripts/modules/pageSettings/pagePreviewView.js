@@ -8,8 +8,6 @@ function pagePreviewView(currentPageRepo, fileSelector) {
 pagePreviewView.prototype = {
 	changeThumb: function () {
 		
-		alert("change thumb");
-		
 		this.fileSelector.render({
 			filter: "images",
 			
