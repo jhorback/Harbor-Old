@@ -41,7 +41,12 @@ templateBinderShim.prototype = {
 			
 			templateEl.remove();
 			
-			rootView.views.add(view);
+			if (rootView) {
+				rootView.views.add(view);
+			} else {
+				debugger;
+				// jch! - why was rootView null? is that ok?
+			}
 		});
 	}
 };

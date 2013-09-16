@@ -24,7 +24,7 @@ fileSelectorView.prototype = {
 		this.on("close", this.options.close);
 		this.on("select", this.options.select);
 	},
-
+	
 	search: function () {
 		var searchTerm = this.model.get("search");
 		
@@ -64,4 +64,4 @@ fileSelectorView.prototype = {
 };
 
 
-fileSelector.view("fileSelectorView", [fileSelectorView]);
+fileSelector.view("fileSelectorView", ["options", "modelFactory", "fileRepo", fileSelectorView]);

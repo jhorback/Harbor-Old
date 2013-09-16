@@ -1,7 +1,7 @@
 ﻿
 
 var pageSettings = context.module("pageSettings").use(
-	"bbext", "currentPageModel", "fileModel"
+	"bbext", "currentPageModel", "fileModel", "fileSelector"
 );
 
 

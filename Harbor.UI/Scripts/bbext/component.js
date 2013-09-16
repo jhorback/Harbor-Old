@@ -100,7 +100,7 @@ var Component = (function () {
 				this.regionEl = options.regionEl;
 			}
 			
-			if (options.regionEl) {
+			if (this.regionEl) {
 				this.region = options.region = _.region(this.regionEl);
 			}
 

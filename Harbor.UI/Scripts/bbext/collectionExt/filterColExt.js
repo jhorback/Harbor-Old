@@ -6,7 +6,7 @@ function filterColExt(mixin, collectionFactory) {
 	var filterColExt = {
 		afterInit: function (models, options) {
 
-			if (options.isSource) {
+			if (options && options.isSource) {
 				return;
 			}
 			
