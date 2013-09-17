@@ -729,6 +729,7 @@
     <Content Include="Content\site\core\src\_cols.scss" />
     <Content Include="Content\site\core\src\_menulist.scss" />
     <Content Include="Content\site\core\menulist.scss" />
+    <Content Include="Content\site\core\webhelpers.scss" />
     <None Include="Content\site\core\src\_tiles.scss">
       <Compile>False</Compile>
       <Minify>False</Minify>

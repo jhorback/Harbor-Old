@@ -22,13 +22,15 @@ var pagePreviewModel = {
 
 	thumbClass: {
 		get: function (value) {
-			return this.hasThumb() ? "float-left pad-right pad-bottom" : "hide";
-		}
+			var ret = this.hasThumb() ? "float-left pad-right pad-bottom" : "hide";
+			return ret;
+		},
+		bind: ["thumbSrc"]
 	},
 
 	thumbSrc: {
 		get: function (value) {
-			var previewImage = this.page.previewImage;
+			var previewImage = this.page && this.page.previewImage;
 			if (!previewImage) {
 				return null;
 			}
@@ -40,7 +42,8 @@ var pagePreviewModel = {
 		get: function (value) {
 			return this.hasThumb() ?
 				"Change image" : "Select a thumbnail image";
-		}
+		},
+		bind: ["thumbSrc"]
 	},
 
 	changeThumbButtonClass: {
@@ -54,7 +57,8 @@ var pagePreviewModel = {
 	removeThumbButtonClass: {
 		get: function () {
 			return this.hasThumb() ? "" : "hide";
-		}
+		},
+		bind: ["thumbSrc"]
 	},
 
 	previewText: {
@@ -86,7 +90,16 @@ var pagePreviewModel = {
 	},
 	
 	removePreviewImage: function () {
-		this.setPreviewImageID(null);
+		this.page.previewImage = null;
+
+		this.page.set({
+			previewImageID: null
+		});
+
+		this.set({
+			thumbSrc: null,
+			thumbClass: "hide"
+		});
 	},
 
 	save: function () {
