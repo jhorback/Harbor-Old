@@ -4,7 +4,7 @@ function pageSettingsView(options, currentPageRepo, modelFactory, menuFactory) {
 
 	this.currentPageRepo = currentPageRepo;
 	this.menuFactory = menuFactory;
-	
+
 	this.model = this.currentPageRepo.getCurrentPage();
 	this.model.pagePreviewModel = modelFactory.create("pagePreviewModel", { page: this.model });
 }
@@ -20,14 +20,17 @@ pageSettingsView.prototype = {
 	},
 	
 	onRender: function () {
-		//return;
+
 		this.menu = this.menuFactory.create(this.$el, {
-			transition: "none"
+			transition: "none",
+			container: this.options.container
 		});
+
 		// this.$el.on("close", _.bind(this.close, this)); // jch* better way?
 	},
 	
 	templateChange: function () {
+		debugger;
 		var classNames = this.model.getLayoutClassNames(),
 			el = $("#page");
 		

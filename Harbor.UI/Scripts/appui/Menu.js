@@ -10,6 +10,7 @@
  *
  * Options:
  *     transition - "none", "fade", "slide"
+ *     container - A selector or node to place the menu. If null, it will be placed in the body.
  *
  */
 (function ($) {
@@ -49,7 +50,7 @@
 			setTimeout(function () {
 				doc.bind("click.menu", function (event) {
 					var target = $(event.target);
-					if (target.closest(".menu").length === 0) {
+					if (target.is(":visible") && target.closest(".menu").length === 0) {
 						self.close();
 					}
 				});
@@ -60,12 +61,13 @@
 		},
 
 		render: function () {
-			var self = this, frag;
-
+			var self = this, frag, container;
+			
 			frag = $.parseHTML(Menu.template);
+			container = this.options.container ? $(this.options.container) : doc.find("body");
 			this.menuEl = $(frag);
 			this.menuEl.find(".menu-content").append(this.element.detach().show());
-			doc.find("body").append(this.menuEl);
+			container.append(this.menuEl);
 			this.position();
 			return this;
 		},
