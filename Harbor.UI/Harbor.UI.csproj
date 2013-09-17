@@ -381,6 +381,12 @@
     <Content Include="Content\site\core\usermenu.css">
       <DependentUpon>usermenu.scss</DependentUpon>
     </Content>
+    <Content Include="Content\site\core\webhelpers.css">
+      <DependentUpon>webhelpers.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\site\core\webhelpers.min.css">
+      <DependentUpon>webhelpers.scss</DependentUpon>
+    </Content>
     <Content Include="Content\site\ext\pageeditor.css">
       <DependentUpon>pageeditor.scss</DependentUpon>
     </Content>
