@@ -1,6 +1,6 @@
 ﻿
 
-function pagePreviewView(currentPageRepo, fileSelector) {
+function pagePreviewView(options, currentPageRepo, fileSelector) {
 	this.currentPageRepo = currentPageRepo;
 	this.fileSelector = fileSelector;
 }
@@ -27,4 +27,4 @@ pagePreviewView.prototype = {
 	}
 };
 
-pageSettings.view("pagePreviewView", ["currentPageRepo", "fileSelector", pagePreviewView]);
+pageSettings.view("pagePreviewView", ["options", "currentPageRepo", "fileSelector", pagePreviewView]);

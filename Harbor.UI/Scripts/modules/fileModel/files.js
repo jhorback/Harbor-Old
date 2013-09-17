@@ -8,6 +8,10 @@ fileModel.files = function (models, options, appurl) {
 
 fileModel.files.prototype = {
 	model: "file",
+
+	comparator: function (model) {
+		return model.get("uploaded");
+	},
 	
 	search: function (name) {
 		var pattern;
@@ -16,9 +20,9 @@ fileModel.files.prototype = {
 			this.clearFilter();
 		}
 
-		pattern = new RegExp(name, "gi");
 		this.setFilter(function (model) {
-			return pattern.test(model.get("name"));
+			var matches = new RegExp(name, "gi").test(model.get("name"));
+			return matches;
 		});
 	}
 };

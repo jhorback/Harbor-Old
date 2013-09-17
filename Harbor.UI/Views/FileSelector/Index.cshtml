@@ -18,10 +18,7 @@
 	                <ul>
 		               
 		                <!-- model.files -->
-		                <li data-collection="files">
-			                {{this}}
-		                </li>
-		                @*<li data-id="{{id}}" 
+		                <li data-bind="fileId: id" 
 		                    class="tile col5 hover" tabindex="0"
 		                    data-collection="files"
 							data-event="click: selectThisAndClose, keypress: selectThisAndCloseOnEnter">
@@ -31,7 +28,7 @@
 							<div class="caption">
 								<h3>{{name}}</h3>		
 							</div>
-						</li>*@
+						</li>
 		                <!-- -->
 
 	                </ul>
