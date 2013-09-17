@@ -6,5 +6,8 @@ var pageSettings = context.module("pageSettings").use(
 
 
 pageSettings.component("pageSettings", {
-	// regionEl: "#frame-body"
+	// regionEl: "#frame-body",
+	defaultOptions: {
+		container: "#frame-body"
+	}
 });

@@ -42,7 +42,7 @@ These can also be thought of as a page and partial components.
 	
 	myApp.component("someElementComponent")
 	// when injected...
-	someElementComponent.render({ parentEl: ".some-element"}); // can also pass in a model
+	someElementComponent.render({ parentEl: ".some-element"});
 	someElementComponent.close(".some-element");
 	
 
@@ -94,7 +94,7 @@ var Component = (function () {
 			
 			_.console.group("component.render:", this.name);
 			
-			options = options || {};
+			options = options || this.defaultOptions || {};
 			options.insertAfterTemplate = this.insertAfterTemplate;
 			if (options.regionEl) {
 				this.regionEl = options.regionEl;

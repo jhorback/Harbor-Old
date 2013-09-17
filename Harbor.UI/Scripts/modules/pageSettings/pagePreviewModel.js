@@ -85,8 +85,10 @@ var pagePreviewModel = {
 		return this.get("thumbSrc") ? true : false;
 	},
 
-	setPreviewImageID: function (id) {
-		this.page.set("previewImageID", id);
+	setPreviewImage: function (selectedFile) {
+		this.page.previewImage = selectedFile;
+		this.page.set("previewImageID", selectedFile.get("id"));
+		this.set("thumbSrc", selectedFile.get("thumbUrl"));
 	},
 	
 	removePreviewImage: function () {
@@ -97,8 +99,8 @@ var pagePreviewModel = {
 		});
 
 		this.set({
-			thumbSrc: null,
-			thumbClass: "hide"
+			thumbSrc: null // ,
+			// thumbClass: "hide"
 		});
 	},
 

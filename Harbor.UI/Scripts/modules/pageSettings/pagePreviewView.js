@@ -13,7 +13,7 @@ pagePreviewView.prototype = {
 			
 			select: _.bind(function (selectedFile) {
 
-				this.model.setPreviewImageID(selectedFile.get("id"));
+				this.model.setPreviewImage(selectedFile);
 				this.currentPageRepo.saveCurrentPage();
 			}, this)
 		});
