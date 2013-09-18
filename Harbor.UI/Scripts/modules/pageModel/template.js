@@ -23,7 +23,6 @@ template.prototype = {
 	},
 
 	initialize: function () {
-		debugger;
 		this.on("change", function () {
 			console.log("changed", arguments);
 		});

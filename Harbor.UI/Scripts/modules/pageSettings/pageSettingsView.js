@@ -30,7 +30,6 @@ pageSettingsView.prototype = {
 	},
 	
 	templateChange: function () {
-		debugger;
 		var classNames = this.model.getLayoutClassNames(),
 			el = $("#page");
 		

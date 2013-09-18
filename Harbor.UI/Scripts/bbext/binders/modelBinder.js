@@ -63,9 +63,9 @@ var modelBinder = function ($, _, config, nameValueParser) {
 		this.model = model;
 		
 		if (this.$el.data("modelbound") === true) {
-			debugger;
-			// this.unbind();
+			this.unbind();
 		}
+
 		this.$el.data("modelbound", true);
 		// this.attrs = attrs || ModelBinder.config.attributes;
 		this.bindings = {};

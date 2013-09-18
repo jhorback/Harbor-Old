@@ -10,16 +10,16 @@ resolve: fn(el, model, matches) - Same as render, however, executes after render
 
 appui.construct("shim", ["globalCache", function (globalCache) {
 
-	var shims = globalCache.get("shims") || [];
+	var shims = globalCache.get("shims") || {};
 	
-	function register(name) {
-		shims.push(name);
+	function register(name, construct) {
+		shims[name] = construct;
 		globalCache.set("shims", shims);
 	}
 
 	return function (name, construct) {
 
-		register(name);
+		register(name, construct);
 		return construct;
 	};
 }]);
@@ -63,7 +63,7 @@ appui.service("shims", ["_", "globalCache", "context", function (_, globalCache,
 
 	function foreachShim(callback) {
 		var shims = globalCache.get("shims");
-		_(shims).each(function (shimName) {
+		_(shims).each(function (construct, shimName) {
 			var shim = context.get(shimName);
 			callback(shim);
 		});

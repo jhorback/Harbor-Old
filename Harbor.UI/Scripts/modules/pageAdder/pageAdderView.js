@@ -30,7 +30,6 @@ pageAdderView.prototype = {
 				return type.get("key") === pageTypeKey;
 			});
 		
-		// jch! - cannot dynamically add model properties - see how to add it to the modelbinder
 		if (pageType) {
 			this.model.set("pageTypeDescription", pageType.get("description"));
 		}
