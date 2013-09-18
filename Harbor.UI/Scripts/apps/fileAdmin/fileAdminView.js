@@ -1,10 +1,17 @@
-﻿FileAdmin.MainView = Application.View.extend({
+﻿
+fileAdmin.fileAdminView = function (options, viewFactory) {
+
+	this.model = viewFactory.create("fileAdminViewModel");
+
+};
+
+fileAdmin.fileAdminView.prototype = {
 	
 	uploadTargetView: null,
 
 	initialize: function () {
 		this.uploadingCount = 0;
-		this.model = new FileAdmin.MainViewModel();
+		
 		this.listenTo(this.model, "change:state", this.stateChange);
 		
 		this.listenTo(this.collection, "add", this.addFile);
@@ -85,4 +92,7 @@
 			});
 		}, 0);
 	}
-});
+};
+
+
+fileAdmin.view("fileAdminView", [fileAdmin.fileAdminView]);

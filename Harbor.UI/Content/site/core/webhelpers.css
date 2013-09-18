@@ -11,7 +11,7 @@
   text-align: justify; }
 
 .hide {
-  display: none !important; }
+  display: none; }
 
 .stretch {
   width: 100% !important; }

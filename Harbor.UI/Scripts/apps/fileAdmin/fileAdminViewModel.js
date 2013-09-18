@@ -1,4 +1,5 @@
-﻿FileAdmin.MainViewModel = Application.Model.extend({
+﻿
+fileAdmin.fileAdminViewModel = {
 	defaults: {
 		state: "default", // can be default, uploading, ready
 		uploadButtonText: "Upload files",
@@ -31,4 +32,4 @@
 			this.set("state", "default");
 		}
 	}
-});
+};
