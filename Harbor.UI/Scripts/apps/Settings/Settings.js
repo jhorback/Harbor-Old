@@ -5,7 +5,8 @@
 	themes: [],
 
 	start: function (themes) {
-	
+
+		debugger;
 		this.themes = themes;
 		this.settingsModel = new Settings.AppSettings();
 
