@@ -22,6 +22,14 @@ template.prototype = {
 		componentCounter: 0
 	},
 
+	initialize: function () {
+		debugger;
+		this.on("change", function () {
+			console.log("changed", arguments);
+		});
+		this.set("pageID", "foo");
+	},
+
 	layoutIsCenteredDisabled: {
 		get: function (value) {
 			return !this.get("layoutIsReadable");
