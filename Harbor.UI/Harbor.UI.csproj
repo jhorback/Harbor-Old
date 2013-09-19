@@ -619,11 +619,8 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\FileAdmin\FileAdminTemplates.cshtml" />
-    <Content Include="Views\FileAdmin\_Main.cshtml" />
-    <Content Include="Views\FileAdmin\_Album.cshtml" />
-    <Content Include="Views\FileAdmin\_File.cshtml" />
-    <Content Include="Views\FileAdmin\_Edit.cshtml" />
+    <Content Include="Views\FileAdmin\Index.cshtml" />
+    <Content Include="Views\FileAdmin\_editFileView.cshtml" />
     <Content Include="Views\PageSelector\_Main.cshtml" />
     <Content Include="Views\PageSelector\PageSelectorTemplates.cshtml" />
     <Content Include="Views\PageSelector\_PageListItem.cshtml" />

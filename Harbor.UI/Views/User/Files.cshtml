@@ -5,6 +5,7 @@
 @section scripts {
 	@Html.InstallJavaScriptPackage(Harbor.UI.JSPkgs.FileAdminAppPkg.PackageName)
 	<script>
-		FileAdmin.start({ todaysAlbumName: "@Harbor.Domain.Files.File.TodaysAlbumName()" });
+        fileAdmin.register("todaysAlbumName", "@Harbor.Domain.Files.File.TodaysAlbumName()");
+        fileAdmin.start();
 	</script>
 }
