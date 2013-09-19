@@ -443,6 +443,7 @@
     <Content Include="Scripts\apps\fileAdmin\%24fileAdmin.js" />
     <Content Include="Scripts\apps\pageAdmin\pageAdminView.js" />
     <Content Include="Scripts\appui\popup.js" />
+    <Content Include="Scripts\bbext\collectionExt\groupColExt.js" />
     <Content Include="Scripts\bbext\collectionExt\filterColExt.js" />
     <Content Include="Scripts\bbext\collectionExt\sortColExt.js" />
     <Content Include="Scripts\modules\fileModel\file.js" />
