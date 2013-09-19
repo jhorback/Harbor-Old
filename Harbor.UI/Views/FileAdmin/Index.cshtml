@@ -5,21 +5,27 @@
         <h1>Files</h1>
         <fieldset class="float-right">
             <button type="button" name="uploadFiles" class="attn"
+                    data-event="clickUpload"
                     data-bind="text: uploadButtonText, disabled: uploadButtonDisabled"></button>
         </fieldset>
     </div>
     <div class="page-body">
         <div class="page-content">
+            
+            <div data-bind="id: uploadTargetId, showIf: uploadTargetViewVisible">
+                Upload target view.
+            </div>
+
             <div id="fileadmin-filelist">
 
                 <!-- -->
                 <div class="tiles selectable" data-collection="albums">
-                    <h2 class="pad-left">{{album}}</h2>
+                   <h2 class="pad-left">{{name}}</h2>
                     <div id="{{uploadId}}"></div>
                     <ul data-rel="files">
 
                         <!-- files -->
-                        <li class="tile col5 hover text-center" data-bind="id: id" data-collection="files">
+                        <li class="tile col5 hover text-center" data-bind="id: id" data-collection="models">
                             <a href="{{editLink}}" class="media">
                                 <img src="{{thumbUrl}}" alt="{{name}}" />
                             </a>
