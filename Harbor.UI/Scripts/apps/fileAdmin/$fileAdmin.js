@@ -1,5 +1,5 @@
 ﻿
-
+// todaysAlbumName
 var fileAdmin = context.app("fileAdmin").use(
 	"fileModel", "bbext"
 );

@@ -1,7 +1,8 @@
 ﻿
-fileAdmin.fileAdminView = function (options, viewFactory) {
+fileAdmin.fileAdminView = function (options, viewFactory, fileRepo) {
 
 	this.model = viewFactory.create("fileAdminViewModel");
+	this.model.albums = fileRepo.getAlbums();
 
 };
 

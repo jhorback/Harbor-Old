@@ -12,6 +12,12 @@ fileModel.files.prototype = {
 	comparator: function (model) {
 		return model.get("uploaded");
 	},
+
+	sortByAlbum: function () {
+		this.setSort(function (file) {
+			return new Date(file.get("album")).getTime() * -1;
+		});
+	},
 	
 	search: function (name) {
 		var pattern;

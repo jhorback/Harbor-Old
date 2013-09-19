@@ -33,3 +33,5 @@ fileAdmin.fileAdminViewModel = {
 		}
 	}
 };
+
+fileAdmin.model("fileAdminViewModel", fileAdmin.fileAdminViewModel);

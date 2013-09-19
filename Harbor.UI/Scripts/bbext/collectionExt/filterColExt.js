@@ -1,35 +1,14 @@
-﻿
-
-
+﻿/*
+Calling setFilter will create a source collection from the current models
+then filter the collection.
+*/
 function filterColExt(mixin, collectionFactory) {
 	
 	var filterColExt = {
-		afterInit: function (models, options) {
-
-			if (options && options.isSource) {
-				return;
-			}
-			
-			this.source = collectionFactory.create(this.name, this.models, {
-				isSource: true
-			});
-			
-			
-			// keep the source models in sync
-			this.on("all", function (event, model) {
-				if (!this._sync && (event === "add" || event === "remove")) {
-					this.source[event](model);
-				}
-			}, this);
-		},
-		
 		setFilter: function (filter) {
 			var filtered;
-			
-			// don't allow attempts at filtering source collections
-			if (!this.source) {
-				return;
-			}
+
+			setupSource.apply(this);
 			
 			this.currentFilter = filter;
 			if (!filter) {
@@ -47,6 +26,21 @@ function filterColExt(mixin, collectionFactory) {
 			this.setFilter(null);
 		}
 	};
+
+	function setupSource() {
+		if (this.source) {
+			return;
+		}
+
+		this.source = collectionFactory.create(this.name, this.models);
+
+		// keep the source models in sync
+		this.on("all", function (event, model) {
+			if (!this._sync && (event === "add" || event === "remove")) {
+				this.source[event](model);
+			}
+		}, this);
+	}
 
 	mixin("collection").register("bbext.filterColExt", filterColExt);
 
