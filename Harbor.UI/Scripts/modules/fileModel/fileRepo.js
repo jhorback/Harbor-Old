@@ -10,30 +10,14 @@ fileModel.fileRepo = function (collectionFactory, ajaxRequest) {
 		},
 
 		getAlbums: function (data) {
-			//sortByAlbum
-			this.getFiles(data).then(function (files) {
-				// keep the source models in sync
-			this.on("all", function (event, model) {
-				if (!this._sync && (event === "add" || event === "remove")) {
-					this.source[event](model);
-				}
-			}, this);
+			var albums = collectionFactory.create("albums", null, {				
+				groupSource: this.getFiles(data),
 			});
+
+			return albums;
 		}
 	};
 };
-
-
-
-fileModel.albums = function () {
-
-};
-
-fileModel.albums.prototype = {
-
-};
-
-
 
 
 fileModel.service("fileRepo", ["collectionFactory", "ajaxRequest", fileModel.fileRepo]);

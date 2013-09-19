@@ -1,371 +1,409 @@
 ﻿@{
-	ViewBag.Title = "Test App";
+    ViewBag.Title = "Test App";
 }
 @section pageheader {
-	
+
 }
 <div class="page-content">
 
-	
-	<div data-templatefor="testAppView" class="clear margin-bottom">
-		<h1><span name="firstName"></span> <span name="lastName"></span></h1>
-		<h2 data-bind="style: hairColorStyle">Hair color: <span name="hairColor"></span></h2>
-		<label>Age</label>
-		<span name="age"></span>
-		<label>Ice cream</label>
-		<span name="favoriteIceCreamDisplay"></span>
-		
-		<hr />
-		<div data-templatefor="testAppChildView" data-model="child">
-			Child is: <span name="firstName"></span> <span name="lastName"></span> Age: <span name="age"></span>
-			<span name="hairColor" data-bind="style: hairColorStyle"></span>
-			Favorite icecream: <span name="favoriteIceCreamDisplay"></span>
-		</div>
-		<div class="margin-top margin-bottom">
-			<button data-event="increaseAge">Increase Age</button>
-			<button data-event="decreaseAge">Decrease Age</button>
-		</div>
-		<hr />
 
-		
-		<fieldset class="form-inline">
-			<legend>Add a user</legend>
-			<label>First</label>
-			<input type="text" name="firstName" />
-			<label>Last</label>
-			<input type="text" name="lastName" />
-			<label>Age</label>
-			<input type="text" name="age" />
-			<div>
-				<span>Favorite icecream:</span>
-				
-				<select name="favoriteIceCream" data-bind="style: hairColorStyle">					
-					<option data-collection="iceCream" data-bind="value: id, text: flavor"></option>
-				</select>
-				
-				
-				
-				@*<select name="favoriteIceCream">
-					<option value="1">HC Chocolate</option>
-					<option value="2">HC STraw</option>
-					<option value="3">HC VAn</option>
-				</select>*@
-				
-			</div>
-			<button data-event="clickAddUser" class="loud">Add</button>
-		</fieldset>
-		
-		<div class="pad" data-bind="showif: firstName">
-			<button data-event="removeUser">Remove last user</button>
-			<button data-event="sortUsers">Sort Users</button>
-			<button data-event="fetch">Reset</button>
-			<button data-event="filter">Filter on Strawberry</button>
-			<button data-event="clearFilter">Clear Filter</button>
-		</div>
+    <div data-templatefor="testAppView" class="clear margin-bottom">
+        <h1><span name="firstName"></span> <span name="lastName"></span></h1>
+        <h2 data-bind="style: hairColorStyle">Hair color: <span name="hairColor"></span></h2>
+        <label>Age</label>
+        <span name="age"></span>
+        <label>Ice cream</label>
+        <span name="favoriteIceCreamDisplay"></span>
 
-		<ul>
-			<li xdata-templatefor="allUsersView"
-			    data-collection="allUsers"
-				data-itemview="allUsersItemView" data-bind="style: hairColorStyle">
-				<span name="firstName"></span> <span name="lastName"></span> Age: <span name="age"></span>
-				<span name="hairColor"></span>
-				<span name="favoriteIceCreamDisplay"></span>
-				<button data-event="removeThisUser">Remove</button>
-			</li>
-			
-			@*<li data-itemview="allUsersItemView"
-			    data-collection="allUsers">
-				<span data-bind="style: hairColorStyle">
-					<span name="firstName"></span> <span name="lastName"></span> Age: <span name="age"></span>
-					<span name="hairColor"></span>
-					<button data-event="removeThisUser">Remove</button>
-				</span>
-			</li>*@
-		</ul>
-		
-		
-		<div data-templatefor="showIfTestView">
-			<label for="showIt" data-event="mouseenter: showIt, mouseleave: hideIt">Show It</label>
-			<input type="checkbox" id="showIt"/>
-			<button class="attn" data-bind="showif: showIt">
-				It Is Visible
-			</button>
-		</div>
+        <hr />
+        <div data-templatefor="testAppChildView" data-model="child">
+            Child is: <span name="firstName"></span> <span name="lastName"></span> Age: <span name="age"></span>
+            <span name="hairColor" data-bind="style: hairColorStyle"></span>
+            Favorite icecream: <span name="favoriteIceCreamDisplay"></span>
+        </div>
+        <div class="margin-top margin-bottom">
+            <button data-event="increaseAge">Increase Age</button>
+            <button data-event="decreaseAge">Decrease Age</button>
+        </div>
+        <hr />
 
-	</div>
-	
-	
+
+        <fieldset class="form-inline">
+            <legend>Add a user</legend>
+            <label>First</label>
+            <input type="text" name="firstName" />
+            <label>Last</label>
+            <input type="text" name="lastName" />
+            <label>Age</label>
+            <input type="text" name="age" />
+            <div>
+                <span>Favorite icecream:</span>
+
+                <select name="favoriteIceCream" data-bind="style: hairColorStyle">
+                    <option data-collection="iceCream" data-bind="value: id, text: flavor"></option>
+                </select>
+
+
+            </div>
+            <button data-event="clickAddUser" class="loud">Add</button>
+        </fieldset>
+
+        <div class="pad" data-bind="showif: firstName">
+            <button data-event="removeUser">Remove last user</button>
+            <button data-event="sortUsers">Sort Users</button>
+            <button data-event="fetch">Reset</button>
+            <button data-event="filter">Filter on Strawberry</button>
+            <button data-event="clearFilter">Clear Filter</button>
+        </div>
+
+        <ul>
+            <li xdata-templatefor="allUsersView"
+                data-collection="allUsers"
+                data-itemview="allUsersItemView" data-bind="style: hairColorStyle">
+                <span name="firstName"></span> <span name="lastName"></span> Age: <span name="age"></span>
+                <span name="hairColor"></span>
+                <span name="favoriteIceCreamDisplay"></span>
+                <button data-event="removeThisUser">Remove</button>
+            </li>
+
+
+        </ul>
+
+
+        <div data-templatefor="showIfTestView">
+            <label for="showIt" data-event="mouseenter: showIt, mouseleave: hideIt">Show It</label>
+            <input type="checkbox" id="showIt" />
+            <button class="attn" data-bind="showif: showIt">
+                It Is Visible
+            </button>
+        </div>
+
+        <h2>Group By Favorite</h2>
+        <div data-templatefor="groupedUsersView">
+            <ul>
+                <li data-collection="groupedUsers">
+                    Name: <strong data-bind="text: name"></strong>
+                    <ul>
+                        <li data-collection="models">
+                            firstName: <span data-bind="text: firstName"></span>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+
+    </div>
+
+
 </div>
 
 @section scripts {
-	<script>
+    <script>
 
 
-		/*
+        /*
 		Things to consider:
-		Above there is duplication on the display of the user - is this fabricated because of the example 
+		Above there is duplication on the display of the user - is this fabricated because of the example
 		or what is a way to DRY this up (i.e. use reusable templates)?
 		*/
 
-		var data = {
-			users: [
-				{ firstName: "John", lastName: "Horback", age: "39", favoriteIceCream: 1 },
-				{ firstName: "Johnny", lastName: "Horback", age: "1", favoriteIceCream: 2 },
-				{ firstName: "Sophia", lastName: "Horback", age: "6", favoriteIceCream: 2 },
-				{ firstName: "Larisa", lastName: "Horback", age: "32", favoriteIceCream: 3 }
-			],
-			iceCream: [
-				{ id: 1, flavor: "Chocolate", price: "1.25" },
-				{ id: 2, flavor: "Strawberry", price: "1.10" },
-				{ id: 3, flavor: "Vanilla", price: "1.00" }
-			]
-		};
+        var data = {
+            users: [
+                { firstName: "John", lastName: "Horback", age: "39", favoriteIceCream: 1 },
+                { firstName: "Johnny", lastName: "Horback", age: "1", favoriteIceCream: 2 },
+                { firstName: "Sophia", lastName: "Horback", age: "6", favoriteIceCream: 2 },
+                { firstName: "Larisa", lastName: "Horback", age: "32", favoriteIceCream: 3 }
+            ],
+            iceCream: [
+                { id: 1, flavor: "Chocolate", price: "1.25" },
+                { id: 2, flavor: "Strawberry", price: "1.10" },
+                { id: 3, flavor: "Vanilla", price: "1.00" }
+            ]
+        };
 
 
-		var ta = context.app("testApp");
-		//session.start();
+        var ta = context.app("testApp");
+        //session.start();
 
-		ta.use("bbext");
-		// ta.shim("foo");
+        ta.use("bbext");
+        // ta.shim("foo");
 
-		ta.start(["app", "mixin", function (app, mixin) {
-			// app.el = '.page';
-			"use strict";
+        ta.start(["app", "mixin", function (app, mixin) {
+            // app.el = '.page';
+            "use strict";
 
-			app.regionEl = ".page-content";
-			app.render();
+            app.regionEl = ".page-content";
+            app.render();
 
-			//			setTimeout(function () {
-			//				console.log(app);
-			//				app.close();
-			//			}, 3000);
+            //			setTimeout(function () {
+            //				console.log(app);
+            //				app.close();
+            //			}, 3000);
 
-		}]);
-
-
-		ta.view("showIfTestView", function (options, modelFactory) {
-			this.modelFactory = modelFactory;
-		}, {
-			$inject: ["options", "modelFactory"],
-			initialize: function () {
-				this.model = this.modelFactory.create("model", {
-					showIt: false
-				});
-			},
-			showIt: function () {
-				this.model.set("showIt", true);
-			},
-			hideIt: function () {
-				this.model.set("showIt", false);
-			}
-		});
+        }]);
 
 
-		ta.model("user", function (attrs, options, userRepo) {
-
-			this.userRepo = userRepo;
-
-		}, {
-			$inject: ["attrs", "options", "userRepo"],
-			defaults: {
-				firstName: null,
-				lastName: null,
-				age: 0,
-				hairColor: "Unknown",
-				hairColorStyle: "",
-				favoriteIceCream: null,
-				favoriteIceCreamDisplay: null
-			},
-			age: {
-				get: function (value) {
-					return parseInt(value);
-				}
-			},
-			hairColor: {
-				get: function () {
-					var age = this.get("age");
-					if (age < 1) { return "Bald"; }
-					if (age < 10) { return "Tan"; }
-					if (age < 20) { return "Red"; }
-					if (age < 30) { return "Purple"; }
-					if (age < 40) { return "Brown"; }
-					if (age < 50) { return "Gray"; }
-					return "Bald";
-				},
-				bind: ["age"]
-			},
-			hairColorStyle: {
-				get: function () {
-					return "color: " + this.get("hairColor");
-				},
-				bind: ["age"]
-			},
-			favoriteIceCream: {
-				get: function (value) {
-					return parseInt(value);
-				}
-			},
-			favoriteIceCreamDisplay: {
-				get: function (value) {
-					var favId = this.get("favoriteIceCream"),
-						iceCream = this.userRepo.getIceCream().findWhere({ id: favId });
-					var ret = iceCream ? iceCream.get("flavor") : "Unknown";
-					return ret + ":" + favId;
-				},
-				bind: ["favoriteIceCream"]
-			}
-		});
-
-		ta.collection("users", {
-			model: "user",
-			comparator: function (user) {
-				return user.get("age");
-			}
-		});
-
-		ta.service("userRepo", ["collectionFactory", function (collectionFactory) {
-
-			var usersCollection, iceCreamCollection;
-
-			return {
-				getUsers: function () {
-					if (!usersCollection) {
-						usersCollection = collectionFactory.create("users", data.users);
-					}
-					return usersCollection;
-				},
-
-				getIceCream: function () {
-					if (!iceCreamCollection) {
-						iceCreamCollection = collectionFactory.create("collection", data.iceCream);
-					}
-					return iceCreamCollection;
-				}
-			};
-
-		}]);
+        ta.view("showIfTestView", function (options, modelFactory) {
+            this.modelFactory = modelFactory;
+        }, {
+            $inject: ["options", "modelFactory"],
+            initialize: function () {
+                this.model = this.modelFactory.create("model", {
+                    showIt: false
+                });
+            },
+            showIt: function () {
+                this.model.set("showIt", true);
+            },
+            hideIt: function () {
+                this.model.set("showIt", false);
+            }
+        });
 
 
-		ta.view("testAppView", ["options", "modelFactory", "userRepo",
-				function (options, modelFactory, userRepo) {
+        ta.model("user", function (attrs, options, userRepo) {
 
-					this.modelFactory = modelFactory;
-					this.userRepo = userRepo;
+            this.userRepo = userRepo;
 
-				}], {
-					initialize: function () {
-						var users;
+        }, {
+            $inject: ["attrs", "options", "userRepo"],
+            defaults: {
+                firstName: null,
+                lastName: null,
+                age: 0,
+                hairColor: "Unknown",
+                hairColorStyle: "",
+                favoriteIceCream: null,
+                favoriteIceCreamDisplay: null
+            },
+            age: {
+                get: function (value) {
+                    return parseInt(value);
+                }
+            },
+            hairColor: {
+                get: function () {
+                    var age = this.get("age");
+                    if (age < 1) {
+                        return "Bald";
+                    }
+                    if (age < 10) {
+                        return "Tan";
+                    }
+                    if (age < 20) {
+                        return "Red";
+                    }
+                    if (age < 30) {
+                        return "Purple";
+                    }
+                    if (age < 40) {
+                        return "Brown";
+                    }
+                    if (age < 50) {
+                        return "Gray";
+                    }
+                    return "Bald";
+                },
+                bind: ["age"]
+            },
+            hairColorStyle: {
+                get: function () {
+                    return "color: " + this.get("hairColor");
+                },
+                bind: ["age"]
+            },
+            favoriteIceCream: {
+                get: function (value) {
+                    return parseInt(value);
+                }
+            },
+            favoriteIceCreamDisplay: {
+                get: function (value) {
+                    var favId = this.get("favoriteIceCream"),
+                        iceCream = this.userRepo.getIceCream().findWhere({ id: favId });
+                    var ret = iceCream ? iceCream.get("flavor") : "Unknown";
+                    return ret + ":" + favId;
+                },
+                bind: ["favoriteIceCream"]
+            }
+        });
 
-						this.model = this.modelFactory.create("user", data.users[1]);
+        ta.collection("users", {
+            model: "user",
+            comparator: function (user) {
+                return user.get("age");
+            }
+        });
 
-						users = this.userRepo.getUsers();
-						this.model.child = users.find(function (user) {
-							return user.get("firstName").toLowerCase() === "johnny";
-						});
-						this.model.allUsers = users;
+        ta.view("groupedUsersView", function (options, collectionFactory, userRepo) {
 
-						var iceCream = this.userRepo.getIceCream();
-						this.model.iceCream = iceCream;
+            options.model = {
+                groupedUsers: userRepo.getGroupedUsers()
+            };
 
-						setTimeout(_.bind(function () {
-							this.addUser({
-								firstName: "wow",
-								lastName: "zers"
-							});
-						}, this), 2000);
-					},
-
-					clickAddUser: function () {
-						this.addUser(this.model.toJSON());
-					},
-
-					addUser: function (model) {
-						this.model.allUsers.add(model);
-					},
-
-					removeUser: function () {
-						var index = this.model.allUsers.length - 1;
-						var model = this.model.allUsers.at(index);
-						this.model.allUsers.remove(model);
-					},
-
-					increaseAge: function () {
-
-						this.model.set("age", this.model.get("age") + 1);
-						this.model.child.set("age", this.model.child.get("age") + 1);
-					},
-
-					decreaseAge: function () {
-						this.model.set("age", this.model.get("age") - 1);
-						this.model.child.set("age", this.model.child.get("age") - 1);
-					},
-
-					sortUsers: function () {
-						var views = this.views;
-						this.model.allUsers.setSort(function (user) {
-							return user.get("firstName").toLowerCase();
-						});
-					},
-
-					filter: function () {
-						debugger;
-						this.model.allUsers.setFilter(function (user) {
-							return user.get("favoriteIceCream") === 2; // strawberry
-						});
-					},
-					
-					clearFilter: function () {
-						debugger;
-						this.model.allUsers.clearFilter();
-					},
-					
-					fetch: function () {
-						this.model.allUsers.reset(data.users);
-					}
-				});
-
-		ta.view("testAppChildView", {
-			initialize: function () {
-				var model = this.model;
-			}
-		});
-
-
+        }, {
+            $inject: ["options", "collectionFactory", "userRepo"]
+        });
 
 
-		ta.view("allUsersView", {
-			// itemView: "allUsersItemView"
-			//,onRender: function () {
-			//	var thisView = this;
-			//	this.listenTo(this.collection, "add", function () {
-			//		var views = thisView.views;
-			//		debugger;
-			//	});
-			//}
-		});
+        ta.service("userRepo", ["collectionFactory", function (collectionFactory) {
 
-		ta.view("allUsersItemView", function (options, userRepo) {
-			this.userRepo = userRepo;
-		}, {
-			$inject: ["options", "userRepo"],
+            var usersCollection, iceCreamCollection, groupedUsers;
 
-			initialize: function () {
-				//var iceCream = this.userRepo.getIceCream();
-				//this.model.iceCream = iceCream;
-			},
+            return {
+                getUsers: function () {
+                    if (!usersCollection) {
+                        usersCollection = collectionFactory.create("users", data.users);
+                    }
+                    return usersCollection;
+                },
 
-			removeThisUser: function () {
-				var cid = this.model.cid;
-				var users = this.userRepo.getUsers();
-				var model = users.find(function (user) {
-					return user.cid === cid;
-				});
-				users.remove(model);
-			}
-		});
+                getIceCream: function () {
+                    if (!iceCreamCollection) {
+                        iceCreamCollection = collectionFactory.create("collection", data.iceCream);
+                    }
+                    return iceCreamCollection;
+                },
+
+                getGroupedUsers: function () {
+                    if (!groupedUsers) {
+                        groupedUsers = collectionFactory.createGeneric(null, {
+                            groupSource: this.getUsers(),
+                            groupBy: function (model) {
+                                return model.get("favoriteIceCreamDisplay");
+                            }
+                        });
+                    }
+                    return groupedUsers;
+                }
+            };
+
+        }]);
 
 
+        ta.view("testAppView", ["options", "modelFactory", "userRepo",
+                function (options, modelFactory, userRepo) {
 
-		ta.start();
-	</script>
+                    this.modelFactory = modelFactory;
+                    this.userRepo = userRepo;
+
+                }], {
+                    initialize: function () {
+                        var users;
+
+                        this.model = this.modelFactory.create("user", data.users[1]);
+
+                        users = this.userRepo.getUsers();
+                        this.model.child = users.find(function (user) {
+                            return user.get("firstName").toLowerCase() === "johnny";
+                        });
+                        this.model.allUsers = users;
+
+                        var iceCream = this.userRepo.getIceCream();
+                        this.model.iceCream = iceCream;
+
+                        setTimeout(_.bind(function () {
+                            this.addUser({
+                                firstName: "wow",
+                                lastName: "zers"
+                            });
+                        }, this), 2000);
+                    },
+
+                    clickAddUser: function () {
+                        this.addUser(this.model.toJSON());
+                    },
+
+                    addUser: function (model) {
+                        this.model.allUsers.add(model);
+                    },
+
+                    removeUser: function () {
+                        var index = this.model.allUsers.length - 1;
+                        var model = this.model.allUsers.at(index);
+                        this.model.allUsers.remove(model);
+                    },
+
+                    increaseAge: function () {
+
+                        this.model.set("age", this.model.get("age") + 1);
+                        this.model.child.set("age", this.model.child.get("age") + 1);
+                    },
+
+                    decreaseAge: function () {
+                        this.model.set("age", this.model.get("age") - 1);
+                        this.model.child.set("age", this.model.child.get("age") - 1);
+                    },
+
+                    sortUsers: function () {
+                        var groupedUsers = this.userRepo.getGroupedUsers(),
+                            sort = function (user) {
+                                return user.get("firstName").toLowerCase();
+                            };
+
+                        this.model.allUsers.setSort(sort);
+                        groupedUsers.setGroupSort(sort);
+                        groupedUsers.setSort(function (group) {
+                            return group.get("name").toLowerCase();
+                        });
+                    },
+
+                    filter: function () {
+                        this.model.allUsers.setFilter(function (user) {
+                            return user.get("favoriteIceCream") === 2; // strawberry
+                        });
+                    },
+
+                    clearFilter: function () {
+                        this.model.allUsers.clearFilter();
+                    },
+
+                    fetch: function () {
+                        this.model.allUsers.reset(data.users);
+                    }
+                });
+
+        ta.view("testAppChildView", {
+            initialize: function () {
+                var model = this.model;
+            }
+        });
+
+
+        ta.view("allUsersView", {
+            // itemView: "allUsersItemView"
+            //,onRender: function () {
+            //	var thisView = this;
+            //	this.listenTo(this.collection, "add", function () {
+            //		var views = thisView.views;
+            //		debugger;
+            //	});
+            //}
+
+        });
+
+        ta.view("allUsersItemView", function (options, userRepo) {
+            this.userRepo = userRepo;
+        }, {
+            $inject: ["options", "userRepo"],
+
+            initialize: function () {
+                //var iceCream = this.userRepo.getIceCream();
+                //this.model.iceCream = iceCream;
+            },
+
+            removeThisUser: function () {
+                var cid = this.model.cid;
+                var users = this.userRepo.getUsers();
+                var model = users.find(function (user) {
+                    return user.cid === cid;
+                });
+                users.remove(model);
+            }
+        });
+
+
+        ta.start();
+    </script>
 }

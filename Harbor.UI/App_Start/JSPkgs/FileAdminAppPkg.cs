@@ -11,7 +11,7 @@ namespace Harbor.UI.JSPkgs
 		{
 			Name = PackageName;
 			ScriptBundle = new AppScriptBundle(PackageName);
-			Templates = new JstTemplateAction("FileAdmin/FileAdminTemplates");
+			Templates = new JstTemplateAction("FileAdmin/Index");
 			Category = Categories.Apps;
 
 			AddDependency(FileModelPkg.PackageName);

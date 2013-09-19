@@ -11,6 +11,7 @@ A grouped collection is a standard collection and can even have defined model ty
 setGroupBy
 	To use the setGroupBy() method, the collection needs to be created with a 'groupSource' option.
 	The 'groupSource' is the ungrouped collection.
+	groupBy can also be passed in on the options during creation or on the prototype of the collection itself.
 
 
 groupSource
@@ -57,6 +58,8 @@ function groupColExt(mixin, _, collectionFactory) {
 	
 
 	function setGroupSource(options) {
+		var groupBy;
+		
 		this.groupSource = options.groupSource;
 		
 		this.listenTo(this.groupSource, "all", function (event, model) {
@@ -80,7 +83,8 @@ function groupColExt(mixin, _, collectionFactory) {
 			
 		}, this);
 
-		options.groupBy && this.setGroupBy(options.groupBy);
+		groupBy = options.groupBy || this.groupBy;
+		groupBy && this.setGroupBy(groupBy);
 	}
 
 	function add(name, models) {

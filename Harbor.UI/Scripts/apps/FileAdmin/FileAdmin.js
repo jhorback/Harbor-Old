@@ -63,7 +63,7 @@
 	}
 });
 
-FileAdmin.Files = Backbone.Collection.extend({
-	url: Application.url("api/files"),
-	model: FileModel
-});
+//FileAdmin.Files = Backbone.Collection.extend({
+//	url: Application.url("api/files"),
+//	model: FileModel
+//});

@@ -1,9 +1,29 @@
 ﻿
-fileAdmin.fileAdminViewModel = {
+fileAdmin.fileAdminViewModel = function (attrs, options, slugify, todaysAlbumName) {
+
+	this.uploadTargetId = slugify(todaysAlbumName);
+
+};
+
+
+fileAdmin.fileAdminViewModel.prototype = {
 	defaults: {
 		state: "default", // can be default, uploading, ready
 		uploadButtonText: "Upload files",
-		uploadButtonDisabled: false
+		uploadButtonDisabled: false,
+		uploadTargetId: null,
+		uploadTargetViewVisible: false
+	},
+	
+	initialize: function () {
+		this.set("uploadTargetId", this.uploadTargetId);
+	},
+	
+	uploadTargetViewVisible: {
+		get: function () {
+			return this.get("state") !== "default";
+		},
+		bind: ["state"]
 	},
 	
 	uploadButtonText: {
@@ -34,4 +54,6 @@ fileAdmin.fileAdminViewModel = {
 	}
 };
 
-fileAdmin.model("fileAdminViewModel", fileAdmin.fileAdminViewModel);
+fileAdmin.model("fileAdminViewModel", [
+	"attrs", "options", "slugify", "todaysAlbumName",
+	fileAdmin.fileAdminViewModel]);
