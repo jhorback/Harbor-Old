@@ -26,9 +26,9 @@ Sorting the grouped collections
 function groupColExt(mixin, _, collectionFactory) {
 	
 	var groupColExt = {
-		afterInit: function () {
-			if (this.options.groupSource) {
-				setGroupSource.call(this, this.options.groupSource);
+		afterInit: function (models, options) {
+			if (options && options.groupSource) {
+				setGroupSource.call(this, options);
 			}
 		},
 
@@ -37,32 +37,59 @@ function groupColExt(mixin, _, collectionFactory) {
 			
 			if (!this.groupSource) {
 				throw new Error("Cannot group a collection without a groupSource.");
-			}
-			
+			}			
 
 			this.reset();
 			this.groupBy = groupBy;
-			group = _(this.groupSource).groupBy(groupBy);
+			group = this.groupSource.groupBy(groupBy);
 			_.each(group, function (models, name) {
-				this.add({
-					name: name,
-					models: collectionFactory.create(this.groupSource.name, models)
-				});
+				add.call(this, name, models);
+			}, this);
+		},
+		
+		setGroupSort: function (sort) {
+			this.groupSource.setSort(sort);
+			this.each(function (model) {
+				model.get("models").setSort(sort);
 			}, this);
 		}
 	};
 	
 
-	function setGroupSource(groupSource) {
-		this.groupSource = groupSource;
+	function setGroupSource(options) {
+		this.groupSource = options.groupSource;
 		
 		this.listenTo(this.groupSource, "all", function (event, model) {
-			if (!this._sync && (event === "add" || event === "remove")) {
-				this.setGroupBy(this.groupBy); // could optimize this
+			var groupName, group, models;
+			
+			if (event === "add" || event === "remove") {
+				groupName = this.groupBy(model);
+				group = this.get(groupName);
+				if (group) {
+					models = group.get("models");
+					models[event](model);
+					if (models.length === 0) {
+						this.remove(group);
+					}
+				} else {
+					add.call(this, groupName, model);
+				}
+			} else if (event === "reset") {
+				this.setGroupBy(this.groupBy);
 			}
+			
 		}, this);
+
+		options.groupBy && this.setGroupBy(options.groupBy);
 	}
 
+	function add(name, models) {
+		this.add({
+			id: name,
+			name: name,
+			models: collectionFactory.create(this.groupSource.name, models)
+		});
+	}
 
 	mixin("collection").register("bbext.groupColExt", groupColExt);
 

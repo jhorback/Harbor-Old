@@ -47,7 +47,9 @@
 				},
 
 				createGeneric: function (options) {
-					return this.create(this.nextGenericName(), options);
+					var args = Array.prototype.slice.call(arguments, 0);
+					args.unshift(this.nextGenericName());
+					return this.create.apply(this, args);
 				}
 			};
 
