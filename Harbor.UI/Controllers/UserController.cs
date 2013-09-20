@@ -114,13 +114,20 @@ namespace Harbor.UI.Controllers
 		}
 
 		[Permit(UserFeature.Files, Permissions.Create)]
-		public ActionResult Upload()
+		public JsonResult Upload()
 		{
+			// to truly handle multiple files need to return an array
+			// if  more than one file
+			Harbor.Domain.Files.File returnFile = null;
 			foreach (string file in Request.Files)
 			{
-				fileRep.Create(User.Identity.Name, Request.Files[file]);
+				returnFile = fileRep.Create(User.Identity.Name, Request.Files[file]);
 			}
-			return new HttpStatusCodeResult(HttpStatusCode.OK);
+
+			var fileDto = (FileDto)returnFile;
+			return new JsonResult { Data = fileDto };
+			//return Request.CreateOKResponse(fileDto);
+			//return new HttpStatusCodeResult(HttpStatusCode.OK);
 		}
 
 		// will have ext and perhaps name as well
