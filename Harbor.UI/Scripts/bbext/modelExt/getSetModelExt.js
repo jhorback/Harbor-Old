@@ -1,14 +1,15 @@
 ﻿
+
 function getSetModelExt(mixin, modelPropertyDescriptor) {
 
 	var getSetModelExt = {
-		
+
 		afterInit: function () {
 			this._bindings = {};
 			parseBindings.call(this);
 			handleBindings.call(this);
 		},
-		
+
 		get: function (name) {
 			var val,
 				getFn = modelPropertyDescriptor(this).get(name),
@@ -64,13 +65,13 @@ function getSetModelExt(mixin, modelPropertyDescriptor) {
 			this.set(this.toJSON());
 		}
 	};
-	
+
 
 	function parseBindings() {
 		var model = this;
-		
+
 		$.each(this, function (name, value) {
-			var toBind = modelPropertyDescriptor(model).bind(value);
+			var toBind = modelPropertyDescriptor(model).bind(name);
 			if (toBind && _.isFunction(toBind) === false) {
 				toBind = _.isArray(toBind) ? toBind : [toBind];
 				_.each(toBind, function (propName) {
@@ -91,7 +92,7 @@ function getSetModelExt(mixin, modelPropertyDescriptor) {
 			}
 		});
 	}
-	
+
 	mixin("model").register("bbext.getSetModelExt", getSetModelExt);
 
 }
