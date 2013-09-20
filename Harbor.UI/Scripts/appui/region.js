@@ -22,6 +22,8 @@ function region($, console) {
 		region = {
 			push: function (el) {
 				var currentChildren = regionEl.children().detach();
+				
+				debugger;
 				if (currentChildren.length === 1 && currentChildren[0] === el) {
 					// el is already open (its the current child)
 					return;
@@ -32,6 +34,8 @@ function region($, console) {
 
 			pop: function () {
 				var lastEl, removed;
+				
+				debugger;
 				if (children.length === 0) {
 					return;
 				}

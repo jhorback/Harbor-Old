@@ -104,7 +104,7 @@ var Component = (function () {
 				this.region = options.region = _.region(this.regionEl);
 			}
 
-			this.close();
+			// this.close(); why was this here - it messed up regions
 			view = _.templateRenderer.render(this.name + "View", options);
 			if (this.region) {
 				this.region.view = view;
