@@ -64,7 +64,6 @@ if (window.Application) {
 		"jstViewExtension",
 		"modelBinderExtension",
 		"bbext.backupModelExt",
-		"bbext.getSetModelExt",
 		"bbext.validationModelExt",
 		"mixin",
 		"ajaxRequest",
@@ -74,25 +73,23 @@ if (window.Application) {
 		jstViewExtension,
 		modelBinderExtension,
 		backupModelExt,
-		getSetModelExt,
 		validationModelExt,
 		mixin,
 		ajaxRequest,
 		errorDisplayViewExt) {
 
 		// create the application view with all view extensions
-		Application.View = Backbone.View.extend({});
-		// Application.View = mixin("view").mixin(Backbone.View.extend({}));
+		//Application.View = Backbone.View.extend({});
+		Application.View = mixin("view").mixin(Backbone.View.extend({}));
 		modelBinderExtension.extend(Application.View.prototype);
 		jstViewExtension.extend(Application.View.prototype);
 		errorDisplayViewExt.extend(Application.View.prototype);
 
 
 		// create the application model with all model extensions
-		//Application.Model = mixin("model").mixin(Backbone.Model.extend({}));
-		Application.Model = Backbone.Model.extend({});
+		Application.Model = mixin("model").mixin(Backbone.Model.extend({}));
+		//Application.Model = Backbone.Model.extend({});
 		backupModelExt.extend(Application.Model.prototype);
-		getSetModelExt.extend(Application.Model.prototype);
 		validationModelExt.extend(Application.Model.prototype);
 			
 		window.AjaxRequest = ajaxRequest;

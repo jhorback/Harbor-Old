@@ -48,7 +48,7 @@ function filterColExt(mixin, collectionFactory) {
 
 	mixin("collection").register("bbext.filterColExt", filterColExt);
 
-};
+}
 
 
 bbext.config(["mixin", "collectionFactory", "context", filterColExt]);

@@ -18,7 +18,7 @@ function mvcorConstruct(console) {
 					var context = arguments[arguments.length - 1];
 
 					// add name and context meta properties for future reference
-					this.name = name;
+					this.name = this.name ? this.name : name;
 					this.context = context;
 
 					// inject the constructor
