@@ -27,14 +27,12 @@
                         <!-- files -->
                         <li class="tile col5 hover text-center" data-bind="id: id"
                             data-collection="models">
-                            <a href="{{editLink}}" class="media">
-                                <img src="{{thumbUrl}}" alt="{{name}}" />
+                            <a data-bind="href: editLink" class="media">
+                                <img data-bind="src: thumbUrl, alt: name" />
                             </a>
                             <div class="caption">
-                                <h2 class="nowrap" title="{{name}}">{{name}}</h2>
-                                <p>
-                                    <span>Visible? {{public}}</span>
-                                </p>
+                                <h2 class="nowrap" data-bind="title: name, text: name"></h2>
+                                <p data-bind="text: publicDisplay"></p>
                             </div>
                         </li>
                         <!-- -->

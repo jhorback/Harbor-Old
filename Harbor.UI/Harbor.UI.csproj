@@ -448,6 +448,7 @@
     <Content Include="Scripts\bbext\collectionExt\groupColExt.js" />
     <Content Include="Scripts\bbext\collectionExt\filterColExt.js" />
     <Content Include="Scripts\bbext\collectionExt\sortColExt.js" />
+    <Content Include="Scripts\bbext\modelExt\modelPropertyDescriptor.js" />
     <Content Include="Scripts\modules\fileModel\album.js" />
     <Content Include="Scripts\modules\fileModel\albums.js" />
     <Content Include="Scripts\modules\fileModel\file.js" />

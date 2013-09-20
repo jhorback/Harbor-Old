@@ -26,7 +26,8 @@ fileModel.file.prototype = {
 		lowResUrl: null,
 		highResUrl: null,
 		//
-		editLink: null
+		editLink: null,
+		publicDisplay: null
 	},
 	
 	//	href: {
@@ -56,7 +57,7 @@ fileModel.file.prototype = {
 	//		}
 	//	},
 	
-	name: {
+	"[name]": {
 		validate: {
 			required: { message: "The file name is required." }
 		}
@@ -66,6 +67,13 @@ fileModel.file.prototype = {
 		get: function () {
 			return Application.url("user/files/edit/") + this.get("id");
 		}
+	},
+	
+	publicDisplay: {
+		get: function () {
+			return this.get("public") ? "This file is public" : "This file is private";
+		},
+		bind: ["public"]
 	}
 };
 
