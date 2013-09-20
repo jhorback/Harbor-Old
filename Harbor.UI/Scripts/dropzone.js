@@ -515,7 +515,8 @@ require.register("dropzone/lib/dropzone.js", function(exports, require, module){
         throw new Error("You can only instantiate dropzone on a single element.");
       }
       if (this.element.data("dropzone")) {
-        throw new Error("Dropzone already attached.");
+      	// throw new Error("Dropzone already attached.");
+      	return;
       }
       this.element.data("dropzone", this);
       elementId = this.element.attr("id");

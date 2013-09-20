@@ -15,9 +15,15 @@ fileModel.fileRepo = function (collectionFactory, ajaxRequest) {
 			});
 
 			return albums;
+		},
+
+		saveFile: function (file, handler, proxy) {
+			return ajaxRequest.handle(file.save(), handler, proxy);
 		}
 	};
 };
 
 
-fileModel.service("fileRepo", ["collectionFactory", "ajaxRequest", fileModel.fileRepo]);
+fileModel.service("fileRepo", [
+	"collectionFactory", "ajaxRequest", "ajaxRequest",
+	fileModel.fileRepo]);

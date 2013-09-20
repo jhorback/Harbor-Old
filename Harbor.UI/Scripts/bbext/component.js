@@ -109,6 +109,7 @@ var Component = (function () {
 			if (this.region) {
 				this.region.view = view;
 				view.on("close", function () {
+					debugger;
 					comp.close();
 				});
 			}

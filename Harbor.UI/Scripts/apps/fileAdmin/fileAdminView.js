@@ -1,54 +1,40 @@
 ﻿
-fileAdmin.fileAdminView = function (options, modelFactory, fileRepo) {
+fileAdmin.fileAdminView = function (options, modelFactory, fileAdminRepo, editFileComponent) {
 
 	this.model = modelFactory.create("fileAdminViewModel");
-	this.model.albums = fileRepo.getAlbums();
+	this.model.albums = fileAdminRepo.getAlbums();
+	this.fileAdminRepo = fileAdminRepo;
+	this.editFileComponent = editFileComponent;
 };
 
-fileAdmin.fileAdminView.prototype = {
-	
-	uploadTargetView: null,
 
-	initialize: function () {
-		this.uploadingCount = 0;
-		
-		this.listenTo(this.model, "change:state", this.stateChange);
-		
-		// this.listenTo(FileAdmin.events, "file:removed", this.removeFile);
-		// this.listenTo(FileAdmin.events, "uploadStarted", this.uploadStarted);
-		// this.listenTo(FileAdmin.events, "uploadFinished", this.uploadFinished);
+fileAdmin.fileAdminView.prototype = {
+
+	events: {
+		"click .tile": function (event) {
+			var fileId = $(event.target).closest(".tile").attr("id");
+
+			event.preventDefault();
+			this.editFile(fileId);
+		}
+	},
+	
+	editFile: function (fileId) {
+		var file;
+
+		file = this.fileAdminRepo.getFile(fileId);
+		this.editFileComponent.render({
+			model: file
+		});
 	},
 	
 	clickUpload: function (event) {
 		event.preventDefault();
 		this.model.toggleUploadState();
-	},
-	
-	uploadStarted: function () {
-		this.uploadingCount++;
-		this.model.set("state", "uploading");
-	},
-	
-	uploadFinished: function () {
-		this.uploadingCount--;
-		this.model.set("state", "ready");		
-	},
-	
-	addFile: function (file) {
-		FileAdmin.trigger("fileAdded", file);
-	},
-	
-	removeFile: function (file) {
-	    var el = this.$el.find("#" + file.get("id")).addClass("attn");
-		setTimeout(function () {
-			el.fadeOut("slow", function () {
-				el.remove();
-			});
-		}, 0);
 	}
 };
 
 
 fileAdmin.view("fileAdminView", [
-	"options", "modelFactory", "fileRepo",
+	"options", "modelFactory", "fileAdminRepo", "editFile",
 	fileAdmin.fileAdminView]);

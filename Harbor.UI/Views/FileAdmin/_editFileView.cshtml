@@ -1,9 +1,9 @@
 ﻿<div class="page centered" data-templatefor="editFileView">
 	<div class="page-header">
-		<h1><span data-bind="name" contenteditable data-type="contenteditable"></span></h1>
+		<h1><span data-bind="text: name" contenteditable data-type="contenteditable"></span></h1>
 		<div class="float-left quiet pad-left pad-top">(click title to rename)</div>
 		<fieldset class="float-right">
-			<button type="button" class="loud" data-rel="cancel">Done</button>
+			<button type="button" class="loud" data-event="done">Done</button>
 		</fieldset>
 	</div>
 	<div class="page-body"> 
@@ -14,7 +14,7 @@
 					<a href="{{href}}" target="_blank"><img src="{{thumbUrl}}"/></a>
 				</fieldset>
 				<p>
-					<small><span  data-bind="name"></span> was uploaded on <strong>{{uploaded}}</strong></small>.
+					<small><span  data-bind="text: name"></span> was uploaded on <strong>{{uploaded}}</strong></small>.
 				</p>
 				<fieldset>
 					<legend>Visibility</legend>
@@ -27,11 +27,11 @@
 					<legend>Delete file</legend>
 					<p>
 						Permenantly delete this file.
-						<button type="button" id="fileadmin-delete" class="margin-left">Delete</button>
+                        <button type="button" data-event="clickDelete" class="margin-left">Delete</button>
 					</p>
 				</fieldset>
 				<div class="form-controls">
-					<button type="button" class="loud" data-rel="cancel">Done</button>
+					<button type="button" class="loud" data-event="done">Done</button>
 				</div>
 			</form>
 		</div>
