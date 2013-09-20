@@ -24,16 +24,6 @@ fileAdmin.fileAdminView.prototype = {
 		this.model.toggleUploadState();
 	},
 	
-	stateChange: function () {
-		//var state = this.model.get("state");
-		//if (state === "ready") {
-		//	this.uploadTargetView.$el.fadeIn();
-		//} else if (state === "default") {
-		//	this.uploadTargetView.$el.fadeOut();
-		//	FileAdmin.files.fetch();
-		//}
-	},
-	
 	uploadStarted: function () {
 		this.uploadingCount++;
 		this.model.set("state", "uploading");
@@ -43,20 +33,6 @@ fileAdmin.fileAdminView.prototype = {
 		this.uploadingCount--;
 		this.model.set("state", "ready");		
 	},
-
-	//render: function () {
-	//	this.template("FileAdmin-Main", this.$el)();
-		
-	//	var albumsView =  new FileAdmin.AlbumsView({
-	//		collection: this.collection
-	//	});
-	//	this.$("#fileadmin-filelist").html(albumsView.render().el);
-		
-	//	this.bindModelToView(this.model, this.$(".page-header"));
-
-	//	this.renderUploadTarget();
-	//	return this;
-	//},
 	
 	addFile: function (file) {
 		FileAdmin.trigger("fileAdded", file);
