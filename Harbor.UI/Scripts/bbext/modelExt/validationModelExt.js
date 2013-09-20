@@ -48,8 +48,8 @@
  *      }
  */
 context.module("bbext").service("bbext.validationModelExt", [
-	"_", "validators",
-function (_, validators) {
+	"_", "validators", "modelPropertyDescriptor",
+function (_, validators, modelPropertyDescriptor) {
 	var onModelChange, validateProperty, valAppExt, validationModelExt;
 
 	onModelChange = function (model) {
@@ -65,8 +65,8 @@ function (_, validators) {
 		    errorMsgs = [],
 		    errors = null;
 
-		validatorsToUse = model[propertyName] && model[propertyName].validate;
-		if (model[propertyName] && !validatorsToUse) {
+		validatorsToUse = modelPropertyDescriptor(model).validate(propertyName);
+		if (!validatorsToUse) {
 			return null;
 		}
 
