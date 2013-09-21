@@ -7,15 +7,18 @@
 	}
 */
 function fileSelectorView(options, modelFactory, fileRepo) {
-	
+
+	this.fileRepo = fileRepo;
+
 	this.model = modelFactory.create("fileSelectorViewModel", {
 		title: options.filter === "images" ? "Images" : "Files"
 	});
 
-	this.model.files = fileRepo.getFiles({
-		orderDesc: "modified",
-		filter: options.filter
-	});
+	this.model.files = fileRepo.createFiles();
+	
+	this.listenTo(this.model.files, "all", function () {
+		this.model.set("resultsCount", this.model.files.length);
+	}, this);
 }
 
 fileSelectorView.prototype = {
@@ -27,7 +30,13 @@ fileSelectorView.prototype = {
 	
 	search: function () {
 		var searchTerm = this.model.get("search");
-		this.model.files.search(searchTerm);
+		
+		this.fileRepo.fetchFiles(this.model.files, {
+			orderDesc: "modified",
+			filter: this.options.filter,
+			name: searchTerm
+		});
+
 	},
 
 	formSubmit: function (event) {

@@ -3,9 +3,17 @@
 fileModel.fileRepo = function (collectionFactory, ajaxRequest) {
 
 	return {
+		createFiles: function () {
+			return collectionFactory.create("files");
+		},
+		
+		fetchFiles: function (files, data) {
+			return ajaxRequest.handle(files.fetch({ data: data }));
+		},
+		
 		getFiles: function (data) {
-			var files = collectionFactory.create("files");
-			files.load = ajaxRequest.handle(files.fetch({ data: data }));
+			var files = this.createFiles();
+			files.load = this.fetchFiles(files, data);
 			return files;
 		},
 
