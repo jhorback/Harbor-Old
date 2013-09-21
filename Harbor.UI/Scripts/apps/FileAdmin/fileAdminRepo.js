@@ -1,5 +1,5 @@
 ﻿
-fileAdmin.fileAdminRepo = function (fileRepo) {
+fileAdmin.fileAdminRepo = function (fileRepo, modelFactory) {
 
 	var albums;
 
@@ -12,18 +12,25 @@ fileAdmin.fileAdminRepo = function (fileRepo) {
 		},
 
 		getFile: function (id) {
-			var file;
+			var dfd = $.Deferred();
+			
 			if (!albums) {
-				return;
+				albums = this.getAlbums();
 			}
+			
+			albums.groupSource.load.then(function () {
 
-			file = albums.groupSource.find(function (f) {
-				return f.get("id") === id;
+				var file = albums.groupSource.find(function (f) {
+					return f.get("id") === id;
+				});
+
+				dfd.resolve(file);
 			});
 
-			return file;
+			return dfd;
 		},
 	};
 };
 
-fileAdmin.service("fileAdminRepo", ["fileRepo", fileAdmin.fileAdminRepo]);
+
+fileAdmin.service("fileAdminRepo", ["fileRepo", "modelFactory", fileAdmin.fileAdminRepo]);

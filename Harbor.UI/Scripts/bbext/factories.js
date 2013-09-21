@@ -70,6 +70,8 @@
 					expected = ["attrs", "options"];
 				} else if (type === "collection") {
 					expected = ["models", "options"];
+				} else if (type === "router") {
+					expected = ["options"];
 				}
 
 				for (; i < expected.length; i++) {

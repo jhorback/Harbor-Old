@@ -1,10 +1,9 @@
 ﻿
-fileAdmin.fileAdminView = function (options, modelFactory, fileAdminRepo, editFileComponent) {
+fileAdmin.fileAdminView = function (options, modelFactory, fileAdminRepo, fileAdminRouter) {
 
 	this.model = modelFactory.create("fileAdminViewModel");
 	this.model.albums = fileAdminRepo.getAlbums();
-	this.fileAdminRepo = fileAdminRepo;
-	this.editFileComponent = editFileComponent;
+	this.fileAdminRouter = fileAdminRouter;
 };
 
 
@@ -13,19 +12,14 @@ fileAdmin.fileAdminView.prototype = {
 	events: {
 		"click .tile": function (event) {
 			var fileId = $(event.target).closest(".tile").attr("id");
-
+			
 			event.preventDefault();
 			this.editFile(fileId);
 		}
 	},
 	
 	editFile: function (fileId) {
-		var file;
-
-		file = this.fileAdminRepo.getFile(fileId);
-		this.editFileComponent.render({
-			model: file
-		});
+		this.fileAdminRouter.editFile(fileId);
 	},
 	
 	clickUpload: function (event) {
@@ -36,5 +30,5 @@ fileAdmin.fileAdminView.prototype = {
 
 
 fileAdmin.view("fileAdminView", [
-	"options", "modelFactory", "fileAdminRepo", "editFile",
+	"options", "modelFactory", "fileAdminRepo", "fileAdminRouter",
 	fileAdmin.fileAdminView]);
