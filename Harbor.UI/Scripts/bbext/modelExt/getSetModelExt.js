@@ -6,16 +6,16 @@ function getSetModelExt(mixin, modelPropertyDescriptor) {
 
 		afterInit: function () {
 			this._bindings = {};
+			
 			parseBindings.call(this);
-			handleBindings.call(this);
 		},
 
 		get: function (name) {
 			var val,
-				getFn = modelPropertyDescriptor(this).get(name),
+				getFn = modelPropertyDescriptor(this).get[name],
 				currentValue = Backbone.Model.prototype.get.apply(this, arguments);
 
-			if (_.isFunction(getFn) && getFn !== getSetModelExt.get) {
+			if (getFn) {
 				val = getFn.call(this, currentValue);
 				if (val !== undefined) {
 					this.attributes[name] = val; // keep the attrs in sync - may not need?
@@ -30,8 +30,8 @@ function getSetModelExt(mixin, modelPropertyDescriptor) {
 			var model = this,
                 multiProps,
                 getValueToSet = _.bind(function (name, value) {
-                	var setFn = modelPropertyDescriptor(this).set(name);
-                	value = _.isFunction(setFn) ? setFn.call(this, value, options) : value;
+                	var setFn = modelPropertyDescriptor(this).set[name];
+                	value = setFn ? setFn.call(this, value, options) : value;
                 	return value;
                 }, this);
 
@@ -70,23 +70,12 @@ function getSetModelExt(mixin, modelPropertyDescriptor) {
 	function parseBindings() {
 		var model = this;
 
-		$.each(this, function (name, value) {
-			var toBind = modelPropertyDescriptor(model).bind(name);
-			if (toBind && _.isFunction(toBind) === false) {
-				toBind = _.isArray(toBind) ? toBind : [toBind];
-				_.each(toBind, function (propName) {
-					model._bindings[propName] = model._bindings[propName] || [];
-					model._bindings[propName].push(name);
-				});
-			}
-		});
-	}
-
-	function handleBindings() {
 		this.on("all", function (change) {
-			var prop = change && change.split(":")[1];
-			if (prop && this.attributes[prop] !== undefined) {
-				_.each(this._bindings[prop], function (depPropName) {
+			var prop = change && change.split(":")[1],
+				bindings = modelPropertyDescriptor(model).bound[prop];
+
+			if (prop && this.attributes[prop] !== undefined && bindings) {
+				_.each(bindings, function (depPropName) {
 					this.set(depPropName, this.get(depPropName));
 				}, this);
 			}

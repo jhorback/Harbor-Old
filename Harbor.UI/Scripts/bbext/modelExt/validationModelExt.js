@@ -65,7 +65,7 @@ function (_, validators, modelPropertyDescriptor) {
 		    errorMsgs = [],
 		    errors = null;
 
-		validatorsToUse = modelPropertyDescriptor(model).validate(propertyName);
+		validatorsToUse = modelPropertyDescriptor(model).validate[propertyName];
 		if (!validatorsToUse) {
 			return null;
 		}
