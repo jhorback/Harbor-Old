@@ -13,6 +13,13 @@ currentUser.prototype = {
 		hasFilePermissions: false,
 		hasSettingsPermissions: false,
 		isSysAdmin: false
+	},
+	
+	isSysAdmin: {
+		get: function (value) {
+			return value;
+		},
+		bind:["isAuthenticated"]
 	}
 };
 
