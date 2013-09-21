@@ -10,7 +10,7 @@ fileModel.files.prototype = {
 	model: "file",
 
 	comparator: function (model) {
-		return model.get("uploaded");
+		return new Date(model.get("uploaded")).getTime() * -1;
 	},
 
 	sortByAlbum: function () {

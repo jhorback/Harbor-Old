@@ -2,7 +2,7 @@
 	<div class="page-header">
 		<h1 class="float-left" data-bind="text: title">Files</h1>
 		<div class="float-right">
-			<button type="button" data-event="cancel">Cancel</button>
+			<button type="button" data-event="close">Cancel</button>
 		</div>
 	</div>
 	<div class="page-body"> 
@@ -14,25 +14,28 @@
 						<input type="submit" value="Search" />
 					</div>
 				</fieldset>
-                <div class="tiles">
-	                <ul>
+			    <div class="tiles">
+			        <ul>
 		               
-		                <!-- model.files -->
-		                <li data-bind="fileId: id" 
-		                    class="tile col5 hover" tabindex="0"
-		                    data-collection="files"
-							data-event="click: selectThisAndClose, keypress: selectThisAndCloseOnEnter">
-							<div class="media">
-								<img src="{{thumbUrl}}" />
-							</div>
-							<div class="caption">
-								<h3>{{name}}</h3>		
-							</div>
-						</li>
-		                <!-- -->
+			            <!-- model.files -->
+			            <li data-bind="fileId: id" 
+			                class="tile col5 hover" tabindex="0"
+			                data-collection="files"
+			                data-event="click: selectThisAndClose, keypress: selectThisAndCloseOnEnter">
+			                <div class="media">
+			                    <img src="{{thumbUrl}}" />
+			                </div>
+			                <div class="caption">
+			                    <h3>{{name}}</h3>
+			                    <small>{{uploaded}}</small>
+			                </div>
+			            </li>
+			            <!-- -->
 
-	                </ul>
-			    </div>				
+			        </ul>
+			    </div>
+                
+			    <div data-bind="text: resultsMessage" class="margin"></div>			
 			</form>
 		</div>
 	</div>
