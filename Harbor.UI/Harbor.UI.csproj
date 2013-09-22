@@ -451,6 +451,8 @@
     <Content Include="Scripts\bbext\collectionExt\sortColExt.js" />
     <Content Include="Scripts\bbext\modelExt\modelPropertyDescriptor.js" />
     <Content Include="Scripts\bbext\_dependent\router.js" />
+    <Content Include="Scripts\modules\currentPageModel\pageComponent.js" />
+    <Content Include="Scripts\modules\currentPageModel\pageComponents.js" />
     <Content Include="Scripts\modules\fileModel\album.js" />
     <Content Include="Scripts\modules\fileModel\albums.js" />
     <Content Include="Scripts\modules\fileModel\file.js" />
@@ -523,9 +525,9 @@
     <Content Include="Scripts\modules\pageEditorTemp\AddComponentView.js" />
     <Content Include="Scripts\modules\pageEditorTemp\comps\pageLink\pageLink.js" />
     <Content Include="Scripts\modules\pageEditorTemp\comps\image\image.js" />
-    <Content Include="Scripts\modules\pageEditorTemp\comps\title\title.js" />
+    <Content Include="Scripts\modules\pageEditor\title\title.js" />
     <Content Include="Scripts\modules\pageEditorTemp\comps\links\links.js" />
-    <Content Include="Scripts\modules\pageEditorTemp\PageComponent.js" />
+    <Content Include="Scripts\modules\pageEditor\pageComponent.js" />
     <Content Include="Scripts\modules\pageEditorTemp\comps\text\text.js" />
     <Content Include="Scripts\modules\pageEditorTemp\ChangeLayoutView.js" />
     <Content Include="Scripts\modules\pageEditorTemp\EditView.js" />
@@ -534,6 +536,8 @@
     <Content Include="Scripts\modules\currentUserModel\currentUserRepo.js" />
     <Content Include="Scripts\modules\pageAdder\pageAdder.js" />
     <Content Include="Scripts\modules\pageAdder\pageAdderView.js" />
+    <Content Include="Scripts\modules\pageEditor\pageEditorView.js" />
+    <Content Include="Scripts\modules\pageEditor\title\titleView.js" />
     <Content Include="Scripts\modules\pageModel\%24pageModel.js" />
     <Content Include="Scripts\modules\pageModel\pageRepo.js" />
     <Content Include="Scripts\modules\pageModel\pages.js" />

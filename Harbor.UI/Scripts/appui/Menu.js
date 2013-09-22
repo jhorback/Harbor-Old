@@ -50,7 +50,9 @@
 			setTimeout(function () {
 				doc.bind("click.menu", function (event) {
 					var target = $(event.target);
-					if (target.is(":visible") && target.closest(".menu").length === 0) {
+					if (target.is(":visible") &&
+						target.closest(".menu").length === 0 &&
+						self.menuEl.is(":visible")) {
 						self.close();
 					}
 				});
