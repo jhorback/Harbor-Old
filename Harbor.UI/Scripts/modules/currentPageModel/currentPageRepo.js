@@ -4,9 +4,7 @@ function currentPageRepo(
 	currentPageDto,
 	globalCache,
 	modelFactory,
-	pageRepo,
-	ajaxRequest,
-	collectionFactory
+	pageRepo
 	) {
 
 	var currentPage = globalCache.get("currentPage") ||
@@ -26,12 +24,6 @@ function currentPageRepo(
 		
 		deleteCurrentPage: function () {
 			return currentPage.destroy();
-		},
-		
-		getPageComponents: function () {
-			var components = collectionFactory.create("pageComponents");
-			ajaxRequest.handle(components.fetch());
-			return components;
 		}
 	};
 }
@@ -42,6 +34,4 @@ currentPageModel.service("currentPageRepo", [
 	"globalCache",
 	"modelFactory",
 	"pageRepo",
-	"ajaxRequest",
-	"collectionFactory",
 	currentPageRepo]);
