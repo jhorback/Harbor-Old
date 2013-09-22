@@ -49,28 +49,25 @@ page.prototype = {
 		}, this);
 
 		this.set("link", this.getUrl());
-
-		this.template = this.modelFactory.create("template", this.get("template"));
-		// this.template = new pageModel.Template(this.get("template"));
-		this.listenTo(this.template, "change", function () {
-			page.set("template", page.template.toJSON());
-		});
-
+		this.template = this.modelFactory.create("template", this.attributes.template);
+		
 		setPreviewFn();
 		this.on("change:previewImage", setPreviewFn);
 	},
 
-	title: {
+	"[title]": {
 		validate: {
 			required: true
 		}
 	},
-
-	getUrl: function () {
-		return this.pageurl.get(this.get("id"), this.get("title"));
+	
+	"[template]": {
+		get: function () {
+			return this.template.toJSON();
+		}	
 	},
 
-	publishedDisplay: {
+	"[publishedDisplay]": {
 		get: function () {
 			return this.get("published") ? "Published" : "Private";
 		},
@@ -78,7 +75,7 @@ page.prototype = {
 		bind: "published"
 	},
 
-	publishedMessage: {
+	"[publishedMessage]": {
 		get: function () {
 			return this.get("published") ?
 				"Everyone can see this page." :
@@ -88,16 +85,20 @@ page.prototype = {
 		bind: ["published"]
 	},
 
-	thumbUrl: {
+	"[thumbUrl]": {
 		get: function () {
 			return this.previewImage && this.previewImage.get("thumbUrl");
 		}
 	},
 
-	autoPreview: {
+	"[autoPreview]": {
 		get: function () {
 			return true; // for now, always automate the preview
 		}
+	},
+
+	getUrl: function () {
+		return this.pageurl.get(this.get("id"), this.get("title"));
 	},
 
 	getLayoutClassNames: function () {

@@ -83,38 +83,3 @@ var PageEditor = new Application({
 });
 
 
-PageEditor.PageComponent = Backbone.Model.extend({
-	urlRoot: Session.url("api/pagecomponents"),
-	idAttribute: "key",
-	defaults: {
-		key: null,
-		type: null,
-		name: null,
-		description: null
-	}
-});
-
-
-PageEditor.PageComponents = Backbone.Collection.extend({
-	model: PageEditor.PageComponent,
-	url: Session.url("api/pagecomponents")	
-}, {
-	loadDfd: null,
-
-	getComponents: function () {
-		var loadDfd = PageEditor.PageComponents.loadDfd;
-
-		if (loadDfd !== null) {
-			return loadDfd;
-		}
-
-		loadDfd = $.Deferred();
-		var components = new PageEditor.PageComponents();
-		AjaxRequest.handle(components.fetch()).then(function () {
-			loadDfd.resolve(components);
-		});
-		
-		PageEditor.PageComponents.loadDfd = loadDfd;
-		return loadDfd;
-	}
-});

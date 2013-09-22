@@ -3,6 +3,17 @@ component Construct
 
 A UI component is associated with a view that is a root template.
 
+
+//jch* re-thinking this a bit here
+Options: 
+    * regionEl
+	* parentEl
+	* insertAfterTemplate
+	* type: 
+	    - "instance": Every call to component render creates a new instance (default).
+	    - "singleton": Every call to component render returns the same instance.
+
+
 If the component name is userAdmin, the view and root template that will be
 looked for is userAdminView.
 

@@ -9,32 +9,29 @@
  *     defaults will be populated off of the uic properties
  *     defining this static method is useful for any live properties (on a page resource).
  */
-
-var pageComponent = module("pageComponent").use("appui");
-
-pageComponent.construct("pageComponent", ["console", "appurl", function (console, appurl) {
+pageEditor.pageComponent = function (console, appurl, context, _, $) {
 
 	return function (name, construct) {
 
 		var pageComponentConstructor = function (options) {
-			this.context = arguments[arguments.length - 1]; // the app context is the last arg here
 			this.type = options.type;
 			this.$el = options.$el;
 			this.uicid = options.uicid;
 			this.page = options.page;
+			this.component = options.component;
 			this.initModel();
-			this.context.call(construct, [], this);
+			context.call(construct, [], this);
 		};
 		
 		pageComponentConstructor.prototype = {
 			initModel: function () {
 				var temp, pageProps, modelProps, defaultProps, getDefaults, component;
 
-				if (!this.modelType) {
+				if (!this.model) {
 					return;
 				}
 
-				temp = this.context.get(this.modelType);
+				temp = context.get(this.model);
 				component = temp.constructor.prototype.component;
 				
 				// gather the default properties (to initialize the model with)
@@ -54,7 +51,7 @@ pageComponent.construct("pageComponent", ["console", "appurl", function (console
 				}
 
 				// create the model and give the the page model and save method
-				this.model = this.context.instantiate(this.modelType, [modelProps]);
+				this.model = context.instantiate(this.model, [modelProps]);
 				this.model.page = this.page;
 				this.model.save = _.bind(this.save, this);
 
@@ -92,13 +89,8 @@ pageComponent.construct("pageComponent", ["console", "appurl", function (console
 				return this.page.save();
 			},
 
-			initialize: function () {
-				// called when the componenet is created (right before create or open).
-				// could remove this since the constructor will be injected?
-			},
-
 			create: function () {
-				// called when a new instance is added from the client
+				// called when a new instance is added to the page
 				console.warn("Component type not implemented.");
 			},
 
@@ -107,7 +99,13 @@ pageComponent.construct("pageComponent", ["console", "appurl", function (console
 			},
 
 			close: function () {
-				// called when this instance or the page has been closed for edit
+				// called when done editing this component
+				// clean up from create or close
+			},
+			
+			remove: function () {
+				// called when the user is done editing the page
+				// clean up from constructor
 			}
 		};
 		
@@ -115,4 +113,9 @@ pageComponent.construct("pageComponent", ["console", "appurl", function (console
 
 		return pageComponentConstructor;
 	};
-}]);
+};
+
+
+pageEditor.construct("pageComponent", [
+	"console", "appurl", "context", "_", "$",
+	pageEditor.pageComponent]);
