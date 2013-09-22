@@ -1,13 +1,20 @@
 ﻿
 
-function currentPageRepo(currentPageDto, globalCache, modelFactory, pageRepo) {
+function currentPageRepo(
+	currentPageDto,
+	globalCache,
+	modelFactory,
+	pageRepo,
+	ajaxRequest,
+	collectionFactory
+	) {
 
 	var currentPage = globalCache.get("currentPage") ||
 		modelFactory.create("page", currentPageDto);
 
 	globalCache.set("currentPage", currentPage);
 	
-return {
+	return {
 		getCurrentPage: function () {
 			return currentPage;
 		},
@@ -19,11 +26,22 @@ return {
 		
 		deleteCurrentPage: function () {
 			return currentPage.destroy();
+		},
+		
+		getPageComponents: function () {
+			var components = collectionFactory.create("pageComponents");
+			ajaxRequest.handle(components.fetch());
+			return components;
 		}
 	};
 }
 
 
 currentPageModel.service("currentPageRepo", [
-	"currentPageDto", "globalCache", "modelFactory", "pageRepo",
+	"currentPageDto",
+	"globalCache",
+	"modelFactory",
+	"pageRepo",
+	"ajaxRequest",
+	"collectionFactory",
 	currentPageRepo]);
