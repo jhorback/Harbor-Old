@@ -9,8 +9,9 @@
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
     filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=20);
     opacity: 0.2; }
-    #pageloader span:hover, #pageloader span.selected {
+    #pageloader span:hover, #pageloader span.selected, #pageloader span:focus {
       -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
       filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
-      opacity: 1; }
+      opacity: 1;
+      outline: none; }
 
