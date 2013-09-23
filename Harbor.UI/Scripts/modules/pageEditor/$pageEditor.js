@@ -6,10 +6,11 @@ var pageEditor = context.module("pageEditor").use("bbext");
 
 
 function pageEditorService($, context, console, currentPageRepo) {
-	
+
 	var page = currentPageRepo.getCurrentPage(),
-		template = page.template,
-		components = {};
+	    template = page.template,
+	    components = {},
+	    currentComponent = null;
 
 
 	return {
@@ -20,6 +21,35 @@ function pageEditorService($, context, console, currentPageRepo) {
 			template.content.each(addComponentView);
 
 			console.log("pageEditor: opened");
+		},
+		
+		openComponent: function (ucid) {
+			currentComponent && currentComponent.close();
+
+			currentComponent = components[uicid];
+			if (currentComponent) {
+				currentComponent.open();
+			}
+		},
+		
+		createComponent: function (component) {
+			var view = addComponentView(component);
+
+			currentComponent && currentComponent.close();
+			currentComponent = components[view.uicid];
+			view.create();
+		},
+		
+		removeComponent: function (uicid) {
+			var comp = components[uicid];
+
+			if (comp) {
+				if (currentComponent && currentComponent.uicid === comp.uicid) {
+					comp.close();
+				}
+				comp.remove();
+				delete components[uicid];
+			}
 		},
 		
 		close: function () {
@@ -33,13 +63,13 @@ function pageEditorService($, context, console, currentPageRepo) {
 	
 
 	function addComponentView(component) {
-		var type, uicid;
+		var type, uicid, view;
 		
 		uicid = component.get("uicid");
 		type = component.get("key");
 
 		try {
-			components[uicid] = context.instantiate(type, [{
+			view = components[uicid] = context.instantiate(type, [{
 				type: type,
 				uicid: uicid,
 				component: component,
@@ -50,6 +80,8 @@ function pageEditorService($, context, console, currentPageRepo) {
 		} catch (e) {
 			console.error("Could not create page component of type", type, "Error:", e.message);
 		}
+
+		return view;
 	}
 }
 
