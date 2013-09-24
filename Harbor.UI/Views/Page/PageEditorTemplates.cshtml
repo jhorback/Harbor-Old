@@ -1,12 +1,6 @@
-﻿@using Harbor.UI.Extensions
+﻿@* Shared server/client templates for components *@
 @Html.Partial("~/Views/Page/Text.cshtml")
 @Html.Partial("~/Views/Page/Title.cshtml")
 @Html.Partial("~/Views/Page/Image.cshtml")
-@Html.Partial("~/Views/Page/Links.cshtml")
-
-
-@Html.JstPartial("PageLink", "Page/PageLink")
-@Html.JstPartial("PageLink-Edit", "Page/PageLink-Edit")
-
-@*@Html.JstPartial("Comps-Links", "Page/Links")*@
-@Html.JstPartial("Comp-Links-None", "Page/Links-None")
+@*@Html.Partial("~/Views/Page/Links.cshtml")*@
+@Html.Partial("~/Views/Page/PageLink.cshtml")
