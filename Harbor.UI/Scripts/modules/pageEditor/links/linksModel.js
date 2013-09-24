@@ -1,6 +1,6 @@
 ﻿
 
-links.model("linksModel", {
+pageEditor.linksModel = {
 	
 	component: {
 		pageProperties: ["pageID"],
@@ -23,4 +23,8 @@ links.model("linksModel", {
 	hasName: function () {
 		return this.get("name") ? true : false;
 	}
-});
+};
+
+
+
+pageEditor.model("linksModel", pageEditor.linksModel);

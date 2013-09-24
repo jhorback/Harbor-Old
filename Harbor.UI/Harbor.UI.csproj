@@ -462,9 +462,9 @@
     <Content Include="Scripts\modules\fileModel\files.js" />
     <Content Include="Scripts\modules\fileSelector\fileSelectorView.js" />
     <Content Include="Scripts\modules\fileSelector\fileSelectorViewModel.js" />
-    <Content Include="Scripts\modules\pageEditorTemp\comps\links\linksEditView.js" />
-    <Content Include="Scripts\modules\pageEditorTemp\comps\links\linksModel.js" />
-    <Content Include="Scripts\modules\pageEditorTemp\comps\links\linksNewView.js" />
+    <Content Include="Scripts\modules\pageEditor\links\linksEditView.js" />
+    <Content Include="Scripts\modules\pageEditor\links\linksModel.js" />
+    <Content Include="Scripts\modules\pageEditor\links\linksNewView.js" />
     <Content Include="Scripts\modules\currentPageModel\navLinks\navlinksModel.js" />
     <Content Include="Scripts\modules\currentPageModel\navLinks\navLinksRepo.js" />
     <Content Include="Scripts\modules\pageEditorTemp\_refactorCodeToReview.js" />
@@ -525,13 +525,17 @@
     <Content Include="Scripts\modules\pageAdder\%24pageAdder.js" />
     <Content Include="Scripts\modules\pageEditorTemp\Actions.js" />
     <Content Include="Scripts\modules\pageEditorTemp\AddComponentView.js" />
-    <Content Include="Scripts\modules\pageEditorTemp\comps\pageLink\pageLink.js" />
-    <Content Include="Scripts\modules\pageEditorTemp\comps\image\image.js" />
+    <Content Include="Scripts\modules\pageEditor\pageLink\pageLinkView.js" />
+    <Content Include="Scripts\modules\pageEditor\pageLink\pageLinkModel.js" />
+    <Content Include="Scripts\modules\pageEditor\pageLink\pageLink.js" />
+    <Content Include="Scripts\modules\pageEditor\image\imageModel.js" />
+    <Content Include="Scripts\modules\pageEditor\image\imageEditView.js" />
+    <Content Include="Scripts\modules\pageEditor\image\image.js" />
     <Content Include="Scripts\modules\pageEditor\componentManager.js" />
     <Content Include="Scripts\modules\pageEditor\text\textModel.js" />
     <Content Include="Scripts\modules\pageEditor\text\textView.js" />
     <Content Include="Scripts\modules\pageEditor\title\title.js" />
-    <Content Include="Scripts\modules\pageEditorTemp\comps\links\links.js" />
+    <Content Include="Scripts\modules\pageEditor\links\links.js" />
     <Content Include="Scripts\modules\pageEditor\pageComponent.js" />
     <Content Include="Scripts\modules\pageEditor\text\text.js" />
     <Content Include="Scripts\modules\pageEditorTemp\ChangeLayoutView.js" />
@@ -648,7 +652,6 @@
     <Content Include="Views\Home\_JSPMParser.cshtml" />
     <Content Include="Views\FileSelector\Index.cshtml" />
     <Content Include="Views\Page\Image-None.cshtml" />
-    <Content Include="Views\Page\Image-Edit.cshtml" />
     <Content Include="Views\PageSettings\_PagePreview.cshtml" />
     <Content Include="Views\StyleGuide\_PageNav.cshtml" />
     <Content Include="Views\StyleGuide\Scaffolding.cshtml" />
@@ -659,15 +662,16 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Page\PageLink-None.cshtml" />
     <Content Include="Views\Page\PageLink.cshtml" />
-    <Content Include="Views\Page\PageLink-Edit.cshtml" />
     <Content Include="Views\Home\ApplicationJsApi.cshtml" />
     <Content Include="Views\Page\Links-None.cshtml" />
-    <Content Include="Views\Page\Links-Edit.cshtml" />
     <Content Include="Scripts\contextjs\Readme.md" />
     <Content Include="Scripts\bbext\_bbext.cshtml" />
     <Content Include="Scripts\appui\Readme.md" />
     <Content Include="Scripts\bbext\Readme.md" />
     <Content Include="Views\StyleGuide\TestApp.cshtml" />
+    <Content Include="Views\PageEditor\_image.cshtml" />
+    <Content Include="Views\PageEditor\_links.cshtml" />
+    <Content Include="Views\PageEditor\_pageLinks.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\users\" />
@@ -981,10 +985,8 @@
     <Content Include="Scripts\apps\AjaxRequestDefaultHandler.js" />
     <Content Include="Views\Page\Text.cshtml" />
     <Content Include="Views\Page\Links.cshtml" />
-    <Content Include="Views\PageEditor\_pageUICMenuView.cshtml" />
-    <Content Include="Views\PageEditor\_AddComponent.cshtml" />
+    <Content Include="Views\PageEditor\_templateEditor.cshtml" />
     <Content Include="Views\Page\PageEditorTemplates.cshtml" />
-    <Content Include="Views\PageEditor\_ChangeLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Harbor.Data\Harbor.Data.csproj">
