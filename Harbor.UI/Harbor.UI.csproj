@@ -528,10 +528,12 @@
     <Content Include="Scripts\modules\pageEditorTemp\comps\pageLink\pageLink.js" />
     <Content Include="Scripts\modules\pageEditorTemp\comps\image\image.js" />
     <Content Include="Scripts\modules\pageEditor\componentManager.js" />
+    <Content Include="Scripts\modules\pageEditor\text\textModel.js" />
+    <Content Include="Scripts\modules\pageEditor\text\textView.js" />
     <Content Include="Scripts\modules\pageEditor\title\title.js" />
     <Content Include="Scripts\modules\pageEditorTemp\comps\links\links.js" />
     <Content Include="Scripts\modules\pageEditor\pageComponent.js" />
-    <Content Include="Scripts\modules\pageEditorTemp\comps\text\text.js" />
+    <Content Include="Scripts\modules\pageEditor\text\text.js" />
     <Content Include="Scripts\modules\pageEditorTemp\ChangeLayoutView.js" />
     <Content Include="Scripts\modules\pageEditorTemp\PageEditor.js" />
     <Content Include="Scripts\modules\currentUserModel\%24currentUserModel.js" />
