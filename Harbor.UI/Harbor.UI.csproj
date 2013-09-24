@@ -527,6 +527,7 @@
     <Content Include="Scripts\modules\pageEditorTemp\AddComponentView.js" />
     <Content Include="Scripts\modules\pageEditorTemp\comps\pageLink\pageLink.js" />
     <Content Include="Scripts\modules\pageEditorTemp\comps\image\image.js" />
+    <Content Include="Scripts\modules\pageEditor\componentManager.js" />
     <Content Include="Scripts\modules\pageEditor\title\title.js" />
     <Content Include="Scripts\modules\pageEditorTemp\comps\links\links.js" />
     <Content Include="Scripts\modules\pageEditor\pageComponent.js" />
@@ -538,7 +539,7 @@
     <Content Include="Scripts\modules\currentUserModel\currentUserRepo.js" />
     <Content Include="Scripts\modules\pageAdder\pageAdder.js" />
     <Content Include="Scripts\modules\pageAdder\pageAdderView.js" />
-    <Content Include="Scripts\modules\pageEditor\pageEditorView.js" />
+    <Content Include="Scripts\modules\pageEditor\templateEditorView.js" />
     <Content Include="Scripts\modules\pageEditor\title\titleView.js" />
     <Content Include="Scripts\modules\pageModel\%24pageModel.js" />
     <Content Include="Scripts\modules\pageModel\pageRepo.js" />
