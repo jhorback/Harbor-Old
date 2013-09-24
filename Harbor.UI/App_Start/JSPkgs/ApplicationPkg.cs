@@ -28,6 +28,7 @@ namespace Harbor.UI.JSPkgs
 				.Include("~/Scripts/Apps/appShim.js")
 				.IncludeDirectory("~/Scripts/appui", "*.js", searchSubdirectories: true)
 				.IncludeDirectory("~/Scripts/bbext", "*.js", searchSubdirectories: true)
+				.IncludeDirectory("~/Scripts/bbextv1", "*.js", searchSubdirectories: true)
 				.Include("~/Scripts/apps/AjaxRequestDefaultHandler.js");
 			return appBundle;
 		}
