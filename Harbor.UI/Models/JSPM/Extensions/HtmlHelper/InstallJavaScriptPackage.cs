@@ -38,8 +38,15 @@ namespace Harbor.UI.Models.JSPM.Extensions
 			if (sPackage.Templates != null)
 			{
 				var tAction = sPackage.Templates;
-				var templates = helper.Action(tAction.Action, tAction.Controller, tAction.RouteValues);
-				sb.Append(templates);
+				try
+				{
+					var templates = helper.Action(tAction.Action, tAction.Controller, tAction.RouteValues);
+					sb.Append(templates);
+				}
+				catch (Exception e)
+				{
+					throw new Exception("Request for JavaScriptPackage templates failed. Action: " + tAction);
+				}
 			}
 
 			if (sPackage.ScriptBundle != null)

@@ -9,7 +9,7 @@
  *     defaults will be populated off of the uic properties
  *     defining this static method is useful for any live properties (on a page resource).
  */
-pageEditor.pageComponent = function (console, appurl, context, _, $, Backbone) {
+pageEditor.pageComponent = function (console, appurl, context, _, $) {
 	
 	var pageComponentPrototype = {
 		initModel: function () {
@@ -96,8 +96,6 @@ pageEditor.pageComponent = function (console, appurl, context, _, $, Backbone) {
 			// clean up from constructor
 		}
 	};
-	
-	_.extend(pageComponentPrototype, Backbone.Events);
 
 	return function (name, construct) {
 
@@ -120,5 +118,5 @@ pageEditor.pageComponent = function (console, appurl, context, _, $, Backbone) {
 
 
 pageEditor.construct("pageComponent", [
-	"console", "appurl", "context", "_", "$", "Backbone",
+	"console", "appurl", "context", "_", "$",
 	pageEditor.pageComponent]);
