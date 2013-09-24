@@ -1,17 +1,18 @@
 ﻿
 
-links.view("linksNewView", function (options, navLinksRepo) {
-	
-	this.navLinksRepo = navLinksRepo;
-	
 
-}, {
+pageEditor.linksNewView = function (options, navLinksRepo) {
+
+	this.navLinksRepo = navLinksRepo;
+
+};
+
+pageEditor.linksNewView.prototype = {
+	
 	initialize: function () {
 		this.model.links = this.navLinksRepo.getLinks();
 	},
 
-	$inject: ["options", "navLinksRepo"],
-	
 	events: {
 		"click #navlinks-add": "add",
 		"click #navlinks-create": "create"
@@ -62,4 +63,11 @@ links.view("linksNewView", function (options, navLinksRepo) {
 		}, this));
 		
 	}
-});
+};
+
+
+pageEditor.view("linksNewView", [
+	"options",
+	"navLinksRepo",
+	pageEditor.linksNewView
+]);

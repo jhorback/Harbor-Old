@@ -1,22 +1,21 @@
 ﻿
-var links = module("links").use("pageComponent", "bbext");
+pageEditor.links = function (viewRenderer) {
 	
-
-links.pageComponent("links", function (viewRenderer) {
-
 	this.viewRenderer = viewRenderer;
-	this.model.on("save", this.refresh, this);
+	//this.model.on("save", this.refresh, this);
 	
-}, {
-	$inject: ["viewRenderer"],
-	
-	modelType: "linksModel",
-	
+};
+
+pageEditor.links.prototype = {
+	model: "linksModel",
+
 	create: function () {
 		this.open();
 	},
 
 	open: function () {
+		alert("open links - needs work");
+		return;
 		this.view && this.view.close();
 
 		if (this.model.hasName()) {
@@ -35,12 +34,12 @@ links.pageComponent("links", function (viewRenderer) {
 		}
 	},
 
-	close: function () {		
+	close: function () {
+		alert("close links");
+		return;
 		this.view.close();
-	},
-	
-	refresh: function () {
-		this.replaceHtmlFromServer();
-		this.open();
 	}
-});
+};
+
+
+pageEditor.pageComponent("links", ["viewRenderer", pageEditor.links]);

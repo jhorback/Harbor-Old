@@ -1,5 +1,10 @@
 ﻿
-links.view("linksEditView", {
+pageEditor.linksEditView = function (options) {
+
+
+};
+
+pageEditor.linksEditView.prototype = {
 	render: function () {
 		this.$el.css("font-weight", "bold");
 		/*
@@ -18,8 +23,14 @@ links.view("linksEditView", {
 			<button class="lound">Save</button>
 		*/
 	},
-	
+
 	onClose: function () {
 		this.$el.css("font-weight", "normal");
 	}
-});
+};
+
+
+pageEditor.view("linksEditView", [
+	"options",
+	pageEditor.linksEditView
+]);

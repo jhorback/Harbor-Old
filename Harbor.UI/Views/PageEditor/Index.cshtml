@@ -1,6 +1,10 @@
 ﻿@using Harbor.UI.Extensions
-@Html.Partial("~/Views/PageEditor/_pageUICMenuView.cshtml")
-@Html.JstPartial("PageEditor-AddComponent", "PageEditor/_AddComponent")
-@Html.JstPartial("PageEditor-ChangeLayout", "PageEditor/_ChangeLayout")
-@* this was done to seperate the component views *@
-@Html.Jst("Page/PageEditorTemplates")
+@Html.Partial("~/Views/PageEditor/_templateEditor.cshtml")
+
+
+
+@* PageEditorTemplates contains the shared server/client templates *@
+@Html.Partial("~/Views/Page/PageEditorTemplates.cshtml")
+@Html.Partial("~/Views/PageEditor/_image.cshtml")
+@Html.Partial("~/Views/PageEditor/_links.cshtml")
+@Html.Partial("~/Views/PageEditor/_pageLinks.cshtml")
