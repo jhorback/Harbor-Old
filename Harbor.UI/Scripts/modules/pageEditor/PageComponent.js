@@ -9,7 +9,95 @@
  *     defaults will be populated off of the uic properties
  *     defining this static method is useful for any live properties (on a page resource).
  */
-pageEditor.pageComponent = function (console, appurl, context, _, $) {
+pageEditor.pageComponent = function (console, appurl, context, _, $, Backbone) {
+	
+	var pageComponentPrototype = {
+		initModel: function () {
+			var temp, pageProps, modelProps, defaultProps, getDefaults, component;
+
+			if (!this.model) {
+				return;
+			}
+
+			temp = context.get(this.model);
+			component = temp.constructor.prototype.component;
+				
+			// gather the default properties (to initialize the model with)
+			pageProps = component.pageProperties;
+			getDefaults = component.getDefaults;
+			modelProps = { id: this.uicid };
+			_.each(pageProps, function (attrName) {
+				var attrValue = this.getProperty(attrName);
+				modelProps[attrName] = attrValue;
+			}, this);
+
+			if (getDefaults) {
+				defaultProps = getDefaults(this.page, modelProps);
+				if (defaultProps) {
+					_.extend(modelProps, defaultProps);
+				}
+			}
+
+			// create the model and give the the page model and save method
+			this.model = context.instantiate(this.model, [modelProps]);
+			this.model.page = this.page;
+			this.model.save = _.bind(this.save, this);
+
+			// set up binding on the page properties
+			_.each(pageProps, function (attrName) {
+				this.model.on("change:" + attrName, function (model, value) {
+					this.setProperty(attrName, value);
+				}, this);
+			}, this);
+		},
+			
+		replaceHtmlFromServer: function () {
+			var el = this.$el,
+				url = appurl.get("page/" + this.type +
+					"?pageID=" + this.page.get("id") + "&uicid=" + this.uicid);
+				
+			$.ajax({
+				url: url,
+				dataType: "html"
+			}).then(function (response) {
+				el.empty().html(response);
+			});
+		},
+
+		setProperty: function (name, value) {
+			this.page.setProperty(this.uicid + "-" + name, value);
+		},
+
+		getProperty: function (name) {
+			var value = this.page.getProperty(this.uicid + "-" + name);
+			return value;
+		},
+
+		save: function () {
+			return this.page.save();
+		},
+
+		create: function () {
+			// called when a new instance is added to the page
+			console.warn("Component type not implemented.");
+		},
+
+		open: function () {
+			// called when this instance has been opened for edit
+		},
+
+		close: function () {
+			// called when done editing this component
+			// clean up from create or close
+		},
+			
+		remove: function () {
+			// called when the user is done editing the page
+			// clean up from constructor
+		}
+	};
+	
+	_.extend(pageComponentPrototype, Backbone.Events);
 
 	return function (name, construct) {
 
@@ -23,92 +111,7 @@ pageEditor.pageComponent = function (console, appurl, context, _, $) {
 			context.call(construct, [], this);
 		};
 		
-		pageComponentConstructor.prototype = {
-			initModel: function () {
-				var temp, pageProps, modelProps, defaultProps, getDefaults, component;
-
-				if (!this.model) {
-					return;
-				}
-
-				temp = context.get(this.model);
-				component = temp.constructor.prototype.component;
-				
-				// gather the default properties (to initialize the model with)
-				pageProps = component.pageProperties;
-				getDefaults = component.getDefaults;
-				modelProps = { id: this.uicid };
-				_.each(pageProps, function (attrName) {
-					var attrValue = this.getProperty(attrName);
-					modelProps[attrName] = attrValue;
-				}, this);
-
-				if (getDefaults) {
-					defaultProps = getDefaults(this.page, modelProps);
-					if (defaultProps) {
-						_.extend(modelProps, defaultProps);
-					}
-				}
-
-				// create the model and give the the page model and save method
-				this.model = context.instantiate(this.model, [modelProps]);
-				this.model.page = this.page;
-				this.model.save = _.bind(this.save, this);
-
-				// set up binding on the page properties
-				_.each(pageProps, function (attrName) {
-					this.model.on("change:" + attrName, function (model, value) {
-						this.setProperty(attrName, value);
-					}, this);
-				}, this);
-			},
-			
-			replaceHtmlFromServer: function () {
-				var el = this.$el,
-					url = appurl.get("page/" + this.type +
-						"?pageID=" + this.page.get("id") + "&uicid=" + this.uicid);
-				
-				$.ajax({
-					url: url,
-					dataType: "html"
-				}).then(function (response) {
-					el.empty().html(response);
-				});
-			},
-
-			setProperty: function (name, value) {
-				this.page.setProperty(this.uicid + "-" + name, value);
-			},
-
-			getProperty: function (name) {
-				var value = this.page.getProperty(this.uicid + "-" + name);
-				return value;
-			},
-
-			save: function () {
-				return this.page.save();
-			},
-
-			create: function () {
-				// called when a new instance is added to the page
-				console.warn("Component type not implemented.");
-			},
-
-			open: function () {
-				// called when this instance has been opened for edit
-			},
-
-			close: function () {
-				// called when done editing this component
-				// clean up from create or close
-			},
-			
-			remove: function () {
-				// called when the user is done editing the page
-				// clean up from constructor
-			}
-		};
-		
+		pageComponentConstructor.prototype = pageComponentPrototype;
 		_.extend(pageComponentConstructor.prototype, construct.prototype);
 
 		return pageComponentConstructor;
@@ -117,5 +120,5 @@ pageEditor.pageComponent = function (console, appurl, context, _, $) {
 
 
 pageEditor.construct("pageComponent", [
-	"console", "appurl", "context", "_", "$",
+	"console", "appurl", "context", "_", "$", "Backbone",
 	pageEditor.pageComponent]);

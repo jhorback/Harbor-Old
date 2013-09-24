@@ -21,4 +21,4 @@ pageEditor.title.prototype = {
 };
 
 
-pageEditor.pageComponent("title", ["viewFactory", pageEditor.title]);
+pageEditor.pageComponent("title", ["viewRenderer", pageEditor.title]);
