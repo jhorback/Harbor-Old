@@ -1,36 +1,30 @@
 ﻿
 pageEditor.component("addPageComponent");
 
-pageEditor.addPageComponentView = function () {
+// jch! - here
+pageEditor.addPageComponentView = function (
+	options,
+	modelFactory,
+	currentPageRepo,
+	pageComponentRepo,
+	dialogFactory
+) {
 
+	this.model = modelFactory.create("addPageComponentViewModel", {		
+		componentType: this.options.type // "header", "content", "aside"
+	});
+
+	this.model.page = currentPageRepo.getCurrentPage();
+	this.model.pageComponents = pageComponentRepo.getPageComponents();
+	this.dialogFactory = dialogFactory;
 };
 
 pageEditor.addPageComponentView.prototype = {
-	initialize: function () {
-		// this.options.type: "header", "content", "aside"
-		this.model = {
-			page: this.model,
-			viewModel: new PageEditor.AddComponentViewModel({ componentType: this.options.type }),
-			components: PageEditor.PageComponents.getComponents()
-		};
-	},
-
-	events: {
-		"submit form": function (event) {
-			event.preventDefault();
-			this.save();
-		}
-	},
-
 	render: function () {
 		var $el = this.$el,
-			type = this.options.type,
-			self = this,
-			title = {
-				header: "Change the header",
-				aside: "Add content",
-				content: "Add content"
-			}[type];
+		    type = this.options.type,
+		    self = this;
+		
 
 		this.JST("PageEditor-AddComponent", this.model).then(function (result, model) {
 			var components, selectEl;
@@ -57,21 +51,17 @@ pageEditor.addPageComponentView.prototype = {
 			self.bindModelToView(model.viewModel, $el);
 		});
 	},
+	
+	formSubmit: function (event) {
+		event.preventDefault();
+		this.save();
+	},
 
 	save: function () {
 		PageEditor.addComponent(this.model.page,
 			this.model.viewModel.get("pageComponentKey"),
 			this.model.viewModel.get("componentType"));
 		this.close();
-	},
-
-	showDialog: function (dialog) {
-		this.dialog && this.dialog.destroy();
-		this.dialog = dialog;
-	},
-
-	onClose: function () {
-		this.dialog && this.dialog.destroy();
 	}
 };
 

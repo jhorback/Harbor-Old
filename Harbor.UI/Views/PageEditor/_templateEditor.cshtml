@@ -7,113 +7,117 @@
 
 
 
-<form data-templatefor="addComponentView">
-    <div class="form-field">
-        <label for="pageeditor-component">What do you want to add?</label>
-        <select id="pageeditor-component" name="pageComponentKey" class="stretch"></select>
-        <div data-bind="pageComponentDescription"></div>
-    </div>
-    <div class="form-controls">
-        <input type="submit" value="Save" class="loud">
-        <input type="button" value="Cancel" data-rel="back">
-    </div>
-</form>
+<div data-templatefor="addPageComponentView">
+    <h1 data-bind="text: title"></h1>
+    <form data-event="submit: formSubmit">
+        <div class="form-field">
+            <label for="pageeditor-component" data-bind="text: userHint"></label>
+            <select id="pageeditor-component" name="pageComponentKey" class="stretch">
+                <option data-colleciton="pageComponents"></option>
+            </select>
+            <div data-bind="text: pageComponentDescription"></div>
+        </div>
+        <div class="form-controls">
+            <input type="submit" value="Save" class="loud">
+            <input type="button" value="Cancel" data-rel="back">
+        </div>
+    </form>
+</div>
 
 
 
-
-<form data-templatefor="changeLayoutView">
-    <fieldset>
-        @*<legend>Size</legend>*@
-        <div>
-            <div class="float-left pad">
-                <div class="pad-right">
-                    <label for="colClassName-col1">
-                        <image src="~/content/images/layoutcols/full.png" /><br />
-                        <input type="radio" id="colClassName-col1" name="colClassName" value="col1" />
-                        Full row
+    <form data-templatefor="changeLayoutView">
+        <fieldset>
+            @*<legend>Size</legend>*@
+            <div>
+                <div class="float-left pad">
+                    <div class="pad-right">
+                        <label for="colClassName-col1">
+                            <image src="~/content/images/layoutcols/full.png" /><br />
+                            <input type="radio" id="colClassName-col1" name="colClassName" value="col1" />
+                            Full row
+                        </label>
+                    </div>
+                </div>
+                <div class="float-left pad">
+                    <div class="pad-right">
+                        <label for="colClassName-col2">
+                            <image src="~/content/images/layoutcols/half.png" /><br />
+                            <input type="radio" id="colClassName-col2" name="colClassName" value="col2" />
+                            Half row
+                        </label>
+                    </div>
+                </div>
+                <div class="float-left pad">
+                    <label for="colClassName-col4">
+                        <image src="~/content/images/layoutcols/onefourth.png" /><br />
+                        <input type="radio" id="colClassName-col4" name="colClassName" value="col4" />
+                        Quarter row
+                    </label>
+                </div>
+                @*
+                    </div>
+                    <div class="clear">
+                *@
+                <div class="float-left pad">
+                    <div class="pad-right">
+                        <label for="colClassName-col3">
+                            <image src="~/content/images/layoutcols/third.png" /><br />
+                            <input type="radio" id="colClassName-col3" name="colClassName" value="col3" />
+                            Thrid row
+                        </label>
+                    </div>
+                </div>
+                <div class="float-left pad">
+                    <label for="colClassName-col3-2">
+                        <image src="~/content/images/layoutcols/twothirds.png" /><br />
+                        <input type="radio" id="colClassName-col3-2" name="colClassName" value="col3-2" />
+                        Two thirds row
                     </label>
                 </div>
             </div>
-            <div class="float-left pad">
-                <div class="pad-right">
-                    <label for="colClassName-col2">
-                        <image src="~/content/images/layoutcols/half.png" /><br />
-                        <input type="radio" id="colClassName-col2" name="colClassName" value="col2" />
-                        Half row
-                    </label>
-                </div>
-            </div>
-            <div class="float-left pad">
-                <label for="colClassName-col4">
-                    <image src="~/content/images/layoutcols/onefourth.png" /><br />
-                    <input type="radio" id="colClassName-col4" name="colClassName" value="col4" />
-                    Quarter row
+            <hr class="clear" />
+            <div class="pad" data-bind="disabled: clearDisabled">
+                <label for="clear">
+                    <image src="~/content/images/layoutcols/full.png" /><br />
+                    <input type="checkbox" id="clear" name="clear" data-bind="disabled: clearDisabled" />
+                    Start a new row
                 </label>
             </div>
-            @*
-        </div>
-        <div class="clear">
-            *@
+        </fieldset>
+        <fieldset>
+            <legend>Content positioning</legend>
             <div class="float-left pad">
-                <div class="pad-right">
-                    <label for="colClassName-col3">
-                        <image src="~/content/images/layoutcols/third.png" /><br />
-                        <input type="radio" id="colClassName-col3" name="colClassName" value="col3" />
-                        Thrid row
-                    </label>
-                </div>
-            </div>
-            <div class="float-left pad">
-                <label for="colClassName-col3-2">
-                    <image src="~/content/images/layoutcols/twothirds.png" /><br />
-                    <input type="radio" id="colClassName-col3-2" name="colClassName" value="col3-2" />
-                    Two thirds row
+                <input type="radio" id="ContentPositionClassName-text-left" name="contentPositionClassName" value="text-left" />
+                <label for="ContentPositionClassName-text-left">
+                    <span class="icon-align-left"></span><br />
+                    Left
                 </label>
             </div>
+            <div class="float-left pad">
+                <input type="radio" id="ContentPositionClassName-text-center" name="contentPositionClassName" value="text-center" />
+                <label for="ContentPositionClassName-text-center">
+                    <span class="icon-align-center"></span><br />
+                    Center
+                </label>
+            </div>
+            <div class="float-left pad">
+                <input type="radio" id="ContentPositionClassName-text-right" name="contentPositionClassName" value="text-right" />
+                <label for="ContentPositionClassName-text-right">
+                    <span class="icon-align-right"></span><br />
+                    Right
+                </label>
+            </div>
+            <div class="float-left pad">
+                <input type="radio" id="ContentPositionClassName-text-justify" name="contentPositionClassName" value="text-justify" />
+                <label for="ContentPositionClassName-text-justify">
+                    <span class="icon-align-justify"></span><br />
+                    Justify
+                </label>
+            </div>
+        </fieldset>
+        <div class="form-controls">
+            <input type="submit" value="Save" class="loud">
+            <input type="button" value="Cancel" data-rel="back">
         </div>
-        <hr class="clear" />
-        <div class="pad" data-bind="disabled: clearDisabled">
-            <label for="clear">
-                <image src="~/content/images/layoutcols/full.png" /><br />
-                <input type="checkbox" id="clear" name="clear" data-bind="disabled: clearDisabled" />
-                Start a new row
-            </label>
-        </div>
-    </fieldset>
-    <fieldset>
-        <legend>Content positioning</legend>
-        <div class="float-left pad">
-            <input type="radio" id="ContentPositionClassName-text-left" name="contentPositionClassName" value="text-left" />
-            <label for="ContentPositionClassName-text-left">
-                <span class="icon-align-left"></span><br />
-                Left
-            </label>
-        </div>
-        <div class="float-left pad">
-            <input type="radio" id="ContentPositionClassName-text-center" name="contentPositionClassName" value="text-center" />
-            <label for="ContentPositionClassName-text-center">
-                <span class="icon-align-center"></span><br />
-                Center
-            </label>
-        </div>
-        <div class="float-left pad">
-            <input type="radio" id="ContentPositionClassName-text-right" name="contentPositionClassName" value="text-right" />
-            <label for="ContentPositionClassName-text-right">
-                <span class="icon-align-right"></span><br />
-                Right
-            </label>
-        </div>
-        <div class="float-left pad">
-            <input type="radio" id="ContentPositionClassName-text-justify" name="contentPositionClassName" value="text-justify" />
-            <label for="ContentPositionClassName-text-justify">
-                <span class="icon-align-justify"></span><br />
-                Justify
-            </label>
-        </div>
-    </fieldset>
-    <div class="form-controls">
-        <input type="submit" value="Save" class="loud">
-        <input type="button" value="Cancel" data-rel="back">
-    </div>
-</form>
+    </form>
