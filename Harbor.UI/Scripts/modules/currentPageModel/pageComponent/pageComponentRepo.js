@@ -5,10 +5,14 @@ function currentPageRepo(
 	collectionFactory
 	) {
 
+	var components;
+
 	return {
 		getPageComponents: function () {
-			var components = collectionFactory.create("pageComponents");
-			ajaxRequest.handle(components.fetch());
+			if (!components) {
+				components = collectionFactory.create("pageComponents");
+				ajaxRequest.handle(components.fetch());
+			}
 			return components;
 		}
 	};

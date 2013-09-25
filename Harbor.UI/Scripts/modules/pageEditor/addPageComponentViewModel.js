@@ -6,6 +6,8 @@ pageEditor.addPageComponentViewModel = function () {
 
 pageEditor.addPageComponentViewModel.prototype = {
 	defaults: {
+		title: null,
+		userHint: null,
 		componentType: null,
 		pageComponentKey: null,
 		//
@@ -15,6 +17,25 @@ pageEditor.addPageComponentViewModel.prototype = {
 
 	toJSON: function () {
 		return _.pick(this.attributes, "pageComponentKey", "componentType");
+	},
+	
+	title: {
+		get: function () {
+			return {
+				header: "Change the header",
+				aside: "Add content",
+				content: "Add content"
+			}[this.get("componentType")];
+		}
+	},
+	
+	userHint: {
+		get: function () {
+			if (this.get("componentType") === "header") {
+				return "What kind of header do you want?";
+			}
+			return "What do you want to add?";
+		}
 	},
 
 	pageComponentDescription: {
