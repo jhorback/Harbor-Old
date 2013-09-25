@@ -9,6 +9,7 @@ pageEditor.title.prototype = {
 	},
 
 	open: function () {
+		return; // jch* don't need anything here?
 		this.view = this.viewRenderer.render("titleView", {
 			model: this.page,
 			$el: this.$el
@@ -16,6 +17,7 @@ pageEditor.title.prototype = {
 	},
 
 	close: function () {
+		return;
 		this.view.close();
 	}
 };

@@ -72,23 +72,24 @@ pageEditor.componentManager = function ($, _, Backbone, context, console, curren
 	}
 
 	function registerComponent(componentModel) {
-		var type, uicid, view, component;
+		var type, key, uicid, component;
 
 		uicid = componentModel.get("uicid");
-		type = componentModel.get("key");
-		console.log("Registering component", uicid); // jch! testing
-
+		type = componentModel.get("type");
+		key = componentModel.get("key");
+		
 		try {
-			component = components[uicid] = context.instantiate(type, [{
+			component = components[uicid] = context.instantiate(key, [{
 				type: type,
+				key: key,
 				uicid: uicid,
 				component: componentModel,
 				page: page,
 				$el: $("#" + uicid)
 			}]);
-			console.log("Created page component", type, uicid);
+			console.log("Created page component", type, key, uicid);
 		} catch (e) {
-			console.error("Could not create page component of type", type, "Error:", e.message);
+			console.error("Could not create page component:", key, "Error:", e.message);
 		}
 
 		return component;

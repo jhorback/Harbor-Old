@@ -9,9 +9,17 @@ namespace Harbor.Domain.Pages
 	{
 		public PageHeader() {}
 
-		public PageHeader(string type)
+		public override string type
 		{
-			this.key = type;
+			get
+			{
+				return "header";
+			}
+		}
+
+		public PageHeader(string key)
+		{
+			this.key = key;
 		}
 	}
 }

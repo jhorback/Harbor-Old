@@ -20,7 +20,6 @@ pageEditor.pageUICMenuView = function (options, modelFactory, componentManager) 
 
 pageEditor.pageUICMenuView.prototype = {
 	changeHeader: function (event) {
-		alert("change header");
 		//var view = new PageEditor.AddComponentView({
 		//	model: this.model,
 		//	type: "header"

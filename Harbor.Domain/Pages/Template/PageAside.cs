@@ -13,5 +13,10 @@ namespace Harbor.Domain.Pages
 		{
 			key = type;
 		}
+
+		public override string type
+		{
+			get { return "aside"; }
+		}
 	}
 }
