@@ -3,13 +3,17 @@
 */
 pageEditor.templateEditorView = (function () {
 
+	var $, _;
 
-	function templateEditorView(options, _, $, currentPageRepo, componentManager, pageUICMenu) {
-
+	function templateEditorView(options, __, $$, currentPageRepo, componentManager, pageUICMenu) {
+		$ = $$;
+		_ = __;
+		
 		this.page = currentPageRepo.getCurrentPage();
 		this.template = this.page.template;
 		this.componentManager = componentManager;
 		this.pageUICMenu = pageUICMenu;
+		this.currentPageRepo = currentPageRepo;
 
 		this.pageUICMenuView = null;
 	}
@@ -45,7 +49,7 @@ pageEditor.templateEditorView = (function () {
 				revert: false,
 				containment: "document",
 				tolerance: "pointer",
-				update: this.updateOrder
+				update: _.bind(this.updateOrder, this)
 			});
 		},
 		
@@ -68,7 +72,7 @@ pageEditor.templateEditorView = (function () {
 		},
 		
 		addComponent: function (type) {
-			alert("add component");
+			alert("add component " + type);
 			//var view = new PageEditor.AddComponentView({
 			//	model: this.model,
 			//	type: type
@@ -76,28 +80,29 @@ pageEditor.templateEditorView = (function () {
 			//view.render();
 		},
 		
-		updateOrder: function () {
-			//var isContent, container, typeArray, newTypeArray;
+		updateOrder: function (event, ui) {
+			var isContent, container, typeArray, newTypeArray;
 
-			//isContent = true;
-			//container = ui.item.closest(".page-content");
-			//if (container.length === 0) {
-			//	isContent = false;
-			//	container = ui.item.closest(".page-aside");
-			//}
-			//typeArray = this.model.template.get(isContent ? "content" : "aside");
-			//newTypeArray = [];
-			//container.find(".uic").each(function (index, uicEl) {
-			//	var uic;
-			//	uicEl = $(uicEl);
-			//	uic = _.find(typeArray, function (item) {
-			//		return item.uicid === uicEl.attr("id");
-			//	});
-			//	newTypeArray.push(uic);
-			//});
+			isContent = true;
+			container = ui.item.closest(".page-content");
+			if (container.length === 0) {
+				isContent = false;
+				container = ui.item.closest(".page-aside");
+			}
+			
+			typeArray = this.template.get(isContent ? "content" : "aside");
+			newTypeArray = [];
+			container.find(".uic").each(function (index, uicEl) {
+				var uic;
+				uicEl = $(uicEl);
+				uic = _.find(typeArray, function (item) {
+					return item.uicid === uicEl.attr("id");
+				});
+				newTypeArray.push(uic);
+			});
 
-			//this.model.template.set(isContent ? "content" : "aside", newTypeArray);
-			//AjaxRequest.handle(this.model.save());
+			this.template.set(isContent ? "content" : "aside", newTypeArray);
+			this.currentPageRepo.saveCurrentPage();
 		},
 		
 		close: function () {

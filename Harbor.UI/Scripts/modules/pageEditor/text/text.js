@@ -12,13 +12,17 @@ pageEditor.text.prototype = {
 	},
 
 	open: function () {
-		this.view = viewRenderer.create("textView", {
+		console.log("open text");
+		return;
+		this.view = this.viewRenderer.render("textView", {
 			el: this.$el,
 			model: this.model
 		});
 	},
 
 	close: function () {
+		console.log("close text");
+		return;
 		this.view.close();
 	}
 };

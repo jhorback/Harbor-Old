@@ -13,7 +13,7 @@ pageEditor.pageLink.prototype = {
 	},
 
 	open: function () {
-		alert("open pageLink - needs work");
+		console.log("open pageLink");
 		return;
 		this.view = this.viewRenderer.render("imageEditView", {
 			el: this.$el,
@@ -23,7 +23,7 @@ pageEditor.pageLink.prototype = {
 	},
 
 	close: function () {
-		alert("close pageLink");
+		console.log("close pageLink");
 		return;
 		this.view.close();
 	}

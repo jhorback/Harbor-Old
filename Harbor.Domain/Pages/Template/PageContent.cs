@@ -19,5 +19,10 @@ namespace Harbor.Domain.Pages
 			}
 			set { _classNames = value; }
 		}
+
+		public override string type
+		{
+			get { return "content"; }
+		}
 	}
 }

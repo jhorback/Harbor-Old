@@ -14,7 +14,7 @@ pageEditor.links.prototype = {
 	},
 
 	open: function () {
-		alert("open links - needs work");
+		console.log("open links - needs work");
 		return;
 		this.view && this.view.close();
 
@@ -35,7 +35,7 @@ pageEditor.links.prototype = {
 	},
 
 	close: function () {
-		alert("close links");
+		console.log("close links");
 		return;
 		this.view.close();
 	}

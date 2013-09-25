@@ -13,7 +13,7 @@ pageEditor.image.prototype = {
 	},
 
 	open: function () {
-		alert("open image - needs work");
+		console.log("open image - needs work");
 		return;
 		this.view = this.viewRenderer.render("imageEditView", {
 			el: this.$el,
@@ -23,7 +23,7 @@ pageEditor.image.prototype = {
 	},
 
 	close: function () {
-		alert("close image");
+		console.log("close image");
 		return;
 		this.view.close();
 	}
