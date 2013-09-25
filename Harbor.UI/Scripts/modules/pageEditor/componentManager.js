@@ -34,7 +34,7 @@ pageEditor.componentManager = function ($, _, Backbone, context, console, curren
 			componentManager.trigger("create", component);
 		},
 
-		remove: function (uicid) {
+		delete: function (uicid) {
 			var comp = components[uicid];
 
 			if (comp) {
@@ -42,6 +42,7 @@ pageEditor.componentManager = function ($, _, Backbone, context, console, curren
 					closeCurrentComponent();
 				}
 				comp.remove();
+				componentManager.trigger("delete", comp);
 				componentManager.trigger("remove", comp);
 				delete components[uicid];
 			}
