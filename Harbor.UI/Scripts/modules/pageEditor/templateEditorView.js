@@ -5,7 +5,14 @@ pageEditor.templateEditorView = (function () {
 
 	var $, _;
 
-	function templateEditorView(options, __, $$, currentPageRepo, componentManager, pageUICMenu) {
+	function templateEditorView(
+		options,
+		__,
+		$$,
+		currentPageRepo,
+		componentManager,
+		pageUICMenu,
+		addPageComponent) {
 		$ = $$;
 		_ = __;
 		
@@ -14,6 +21,7 @@ pageEditor.templateEditorView = (function () {
 		this.componentManager = componentManager;
 		this.pageUICMenu = pageUICMenu;
 		this.currentPageRepo = currentPageRepo;
+		this.addPageComponent = addPageComponent;
 
 		this.pageUICMenuView = null;
 	}
@@ -37,8 +45,7 @@ pageEditor.templateEditorView = (function () {
 		},
 
 		render: function () {
-			var self = this,
-				asideEl = this.$(".page-aside"),
+			var asideEl = this.$(".page-aside"),
 				contentEl = this.$(".page-content");
 
 			asideEl.append('<div class="uic-add"><span class="icon-plus"/></div>');
@@ -72,12 +79,9 @@ pageEditor.templateEditorView = (function () {
 		},
 		
 		addComponent: function (type) {
-			alert("add component " + type);
-			//var view = new PageEditor.AddComponentView({
-			//	model: this.model,
-			//	type: type
-			//});
-			//view.render();
+			this.addPageComponent.render({
+				type: type
+			});
 		},
 		
 		updateOrder: function (event, ui) {
@@ -117,5 +121,11 @@ pageEditor.templateEditorView = (function () {
 
 
 pageEditor.view("templateEditorView", [
-	"options", "_", "$", "currentPageRepo", "componentManager", "pageUICMenu",
+	"options",
+	"_",
+	"$",
+	"currentPageRepo",
+	"componentManager",
+	"pageUICMenu",
+	"addPageComponent",
 	pageEditor.templateEditorView]);

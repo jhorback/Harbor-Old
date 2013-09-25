@@ -462,6 +462,7 @@
     <Content Include="Scripts\modules\fileModel\files.js" />
     <Content Include="Scripts\modules\fileSelector\fileSelectorView.js" />
     <Content Include="Scripts\modules\fileSelector\fileSelectorViewModel.js" />
+    <Content Include="Scripts\modules\pageEditor\addPageComponentViewModel.js" />
     <Content Include="Scripts\modules\pageEditor\links\linksEditView.js" />
     <Content Include="Scripts\modules\pageEditor\links\linksModel.js" />
     <Content Include="Scripts\modules\pageEditor\links\linksNewView.js" />
@@ -524,7 +525,7 @@
     <Content Include="Scripts\modules\currentPageModel\currentPageRepo.js" />
     <Content Include="Scripts\modules\pageAdder\%24pageAdder.js" />
     <Content Include="Scripts\modules\pageEditorTemp\Actions.js" />
-    <Content Include="Scripts\modules\pageEditorTemp\AddComponentView.js" />
+    <Content Include="Scripts\modules\pageEditor\addPageComponentView.js" />
     <Content Include="Scripts\modules\pageEditor\pageLink\pageLinkView.js" />
     <Content Include="Scripts\modules\pageEditor\pageLink\pageLinkModel.js" />
     <Content Include="Scripts\modules\pageEditor\pageLink\pageLink.js" />

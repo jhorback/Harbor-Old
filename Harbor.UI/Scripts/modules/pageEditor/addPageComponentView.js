@@ -1,8 +1,11 @@
 ﻿
+pageEditor.component("addPageComponent");
 
+pageEditor.addPageComponentView = function () {
 
-PageEditor.AddComponentView = Application.View.extend({
-	
+};
+
+pageEditor.addPageComponentView.prototype = {
 	initialize: function () {
 		// this.options.type: "header", "content", "aside"
 		this.model = {
@@ -11,14 +14,14 @@ PageEditor.AddComponentView = Application.View.extend({
 			components: PageEditor.PageComponents.getComponents()
 		};
 	},
-	
+
 	events: {
 		"submit form": function (event) {
 			event.preventDefault();
 			this.save();
 		}
 	},
-	
+
 	render: function () {
 		var $el = this.$el,
 			type = this.options.type,
@@ -28,10 +31,10 @@ PageEditor.AddComponentView = Application.View.extend({
 				aside: "Add content",
 				content: "Add content"
 			}[type];
-		
+
 		this.JST("PageEditor-AddComponent", this.model).then(function (result, model) {
 			var components, selectEl;
-			
+
 			$el.html(result);
 			self.showDialog(new Dialog($el, {
 				title: title,
@@ -39,7 +42,7 @@ PageEditor.AddComponentView = Application.View.extend({
 			}));
 
 			if (type === "header") {
-				$el.find("[for=pageeditor-component]").text("What kind of header do you want?");	
+				$el.find("[for=pageeditor-component]").text("What kind of header do you want?");
 			}
 
 			selectEl = $el.find("#pageeditor-component");
@@ -54,57 +57,28 @@ PageEditor.AddComponentView = Application.View.extend({
 			self.bindModelToView(model.viewModel, $el);
 		});
 	},
-	
+
 	save: function () {
 		PageEditor.addComponent(this.model.page,
 			this.model.viewModel.get("pageComponentKey"),
 			this.model.viewModel.get("componentType"));
 		this.close();
 	},
-	
+
 	showDialog: function (dialog) {
 		this.dialog && this.dialog.destroy();
 		this.dialog = dialog;
 	},
-	
+
 	onClose: function () {
 		this.dialog && this.dialog.destroy();
 	}
-});
+};
 
-PageEditor.AddComponentViewModel = Application.Model.extend({
-	defaults: {
-		componentType: null,
-		pageComponentKey: null,
-		//
-		pageComponents: null, // need this passed in to get the description
-		pageComponentDescription: null
-	},
-	
-	toJSON: function () {
-		return _.pick(this.attributes, "pageComponentKey", "componentType");
-	},
-	
-	pageComponentDescription: {
-		get: function (value) {
-			var pageComponentKey = this.get("pageComponentKey"),
-				component,
-				comps = this.get("pageComponents");
+pageEditor.view("pageEditor.addPageComponentView", [
+	"options",
+	pageEditor.addPageComponentView
+]);
 
-			if (!pageComponentKey) {
-				return null;
-			}
 
-			if (!comps) {
-				return value; // not loaded yet
-			}
-				
-			component = new Backbone.Collection(comps).find(function (comp) {
-				return comp.get("key") === pageComponentKey;
-			});
-			return component && component.get("description");
-		}, 
-		
-		bind:  ["pageComponentKey"]
-	}	
-});
+
