@@ -7,6 +7,14 @@ namespace Harbor.Domain.Pages
 {
 	public abstract class PageUIC
 	{
+		public string id
+		{
+			get
+			{
+				return uicid;
+			}
+		}
+
 		/// <summary>
 		/// The key/type of the Document Component.
 		/// </summary>

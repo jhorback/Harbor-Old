@@ -25,10 +25,10 @@ template.prototype = {
 	},
 	
 	initialize: function () {
-		this.header = this.modelFactory.createGeneric(this.get("header"));
-		this.aside = this.collectionFactory.createGeneric(this.get("aside"));
-		this.content = this.collectionFactory.createGeneric(this.get("content"));
-		// console.info("---------------------", this);
+		
+		this.header = this.modelFactory.createGeneric(this.attributes.header);
+		this.aside = this.collectionFactory.createGeneric(this.attributes.aside);
+		this.content = this.collectionFactory.createGeneric(this.attributes.content);
 	},
 
 	"[layoutIsCenteredDisabled]": {
@@ -46,6 +46,24 @@ template.prototype = {
 			return value;
 		},
 		bind: "layoutIsReadable"
+	},
+
+	"[header]": {
+		get: function () {
+			return this.header.toJSON();
+		}
+	},
+	
+	"[aside]": {
+		get: function () {
+			return this.aside.toJSON();
+		}
+	},
+	
+	"[content]": {
+		get: function () {
+			return this.content.toJSON();
+		}
 	},
 
 	//addContent: function (key) {

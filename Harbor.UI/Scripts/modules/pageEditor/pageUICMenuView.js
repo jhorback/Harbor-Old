@@ -3,12 +3,14 @@
 pageEditor.component("pageUICMenu");
 
 
-pageEditor.pageUICMenuView = function (options, modelFactory, componentManager) {
+pageEditor.pageUICMenuView = function (options, modelFactory, componentManager, currentPageRepo) {
 
 	var type = options.component.type;
 
 	this.component = options.component;
 	this.componentManager = componentManager;
+	this.currentPageRepo = currentPageRepo;
+	this.currentPage = currentPageRepo.getCurrentPage();
 	
 	this.model = modelFactory.createGeneric({		
 		showChangeHeader: type === "header",
@@ -28,8 +30,19 @@ pageEditor.pageUICMenuView.prototype = {
 	},
 
 	removeComponent: function (event) {
-		this.componentManager.remove(this.component.uicid);
-		// PageEditor.deleteComponent(this.model, uicid);
+		var type, pageComponent, collection;
+		
+		if (confirm("Are you sure you want to delete this content?")) {
+			type = this.component.type;
+
+			collection = type === "aside" ? this.currentPage.template.aside :
+				this.currentPage.template.content;
+
+			this.componentManager.delete(this.component.uicid);
+			pageComponent = collection.get(this.component.uicid);
+			collection.remove(pageComponent);
+			this.currentPageRepo.saveCurrentPage();
+		}
 	},
 	
 	changeLayout: function (uicid) {
@@ -44,5 +57,5 @@ pageEditor.pageUICMenuView.prototype = {
 
 
 pageEditor.view("pageUICMenuView", [
-	"options", "modelFactory", "componentManager", 
-	pageEditor.pageUICMenuView])
+	"options", "modelFactory", "componentManager", "currentPageRepo",
+	pageEditor.pageUICMenuView]);

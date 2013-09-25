@@ -30,6 +30,10 @@ pageEditor.templateEditorView = (function () {
 		initialize: function () {
 			this.listenTo(this.componentManager, "open", this.showUICMenu, this);
 			this.listenTo(this.componentManager, "close", this.hideUICMenu, this);
+			this.listenTo(this.componentManager, "delete", this.deleteUIC, this);
+
+			this.template.content.comparator = templateContentSort;
+			this.template.aside.comparator = templateContentSort;
 		},
 		
 		events: {
@@ -78,6 +82,11 @@ pageEditor.templateEditorView = (function () {
 			component.$el.removeClass("selected");
 		},
 		
+		deleteUIC: function (component) {
+			// jch* test
+			component.$el.fadeOut();
+		},
+		
 		addComponent: function (type) {
 			this.addPageComponent.render({
 				type: type
@@ -85,27 +94,8 @@ pageEditor.templateEditorView = (function () {
 		},
 		
 		updateOrder: function (event, ui) {
-			var isContent, container, typeArray, newTypeArray;
-
-			isContent = true;
-			container = ui.item.closest(".page-content");
-			if (container.length === 0) {
-				isContent = false;
-				container = ui.item.closest(".page-aside");
-			}
-			
-			typeArray = this.template.get(isContent ? "content" : "aside");
-			newTypeArray = [];
-			container.find(".uic").each(function (index, uicEl) {
-				var uic;
-				uicEl = $(uicEl);
-				uic = _.find(typeArray, function (item) {
-					return item.uicid === uicEl.attr("id");
-				});
-				newTypeArray.push(uic);
-			});
-
-			this.template.set(isContent ? "content" : "aside", newTypeArray);
+			this.template.aside.sort();
+			this.template.content.sort();
 			this.currentPageRepo.saveCurrentPage();
 		},
 		
@@ -113,6 +103,13 @@ pageEditor.templateEditorView = (function () {
 			this.$(".uic-add").remove();
 		}
 	};
+
+
+	function templateContentSort(model) {
+		var index = $("#" + model.attributes.uicid).index();
+		console.debug("model index", index);
+		return index;
+	}
 
 
 	return templateEditorView;
