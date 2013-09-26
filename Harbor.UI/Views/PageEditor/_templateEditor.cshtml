@@ -1,4 +1,6 @@
-﻿<div data-templatefor="pageUICMenuView" class="uic-menu">
+﻿
+
+<div data-templatefor="pageUICMenuView" class="uic-menu">
     <span class="icon-move" data-bind="showif: showMove"></span>
     <span class="icon-columns" data-event="changeLayout" data-bind="showif: showChangeLayout"></span>
     <span class="icon-remove" data-event="removeComponent" data-bind="showif: showRemove"></span>
@@ -13,7 +15,7 @@
         <div class="form-field">
             <label for="pageeditor-component" data-bind="text: userHint"></label>
             <select id="pageeditor-component" name="pageComponentKey" class="stretch">
-                <option data-colleciton="pageComponents"></option>
+                <option data-colleciton="pageComponents" data-bind="text: name, value: key"></option>
             </select>
             <div data-bind="text: pageComponentDescription"></div>
         </div>
@@ -25,8 +27,8 @@
 </div>
 
 
-
-    <form data-templatefor="changeLayoutView">
+<div data-templatefor="changeLayoutView">
+    <form>
         <fieldset>
             @*<legend>Size</legend>*@
             <div>
@@ -121,3 +123,4 @@
             <input type="button" value="Cancel" data-rel="back">
         </div>
     </form>
+</div>

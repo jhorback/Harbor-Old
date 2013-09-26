@@ -24,10 +24,12 @@ function filterColExt(mixin, collectionFactory) {
 			this._sync = true;
 			this.set(filtered); // will fire add, remove, merge, events
 			this._sync = false;
+			return this;
 		},
 		
 		clearFilter: function () {
 			this.setFilter(null);
+			return this;
 		}
 	};
 
