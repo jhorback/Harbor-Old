@@ -11,45 +11,23 @@ pageEditor.addPageComponentView = function (
 ) {
 
 	this.model = modelFactory.create("addPageComponentViewModel", {		
-		componentType: this.options.type // "header", "content", "aside"
+		componentType: options.type // "header", "content", "aside"
 	});
 
 	this.model.page = currentPageRepo.getCurrentPage();
 	this.model.pageComponents = pageComponentRepo.getPageComponents();
+	this.model.pageComponents.setFilter(function (model) {
+		return model.get("type") === options.type;
+	});
 	this.dialogFactory = dialogFactory;
 };
 
+
 pageEditor.addPageComponentView.prototype = {
-	render: function () {
-		var $el = this.$el,
-		    type = this.options.type,
-		    self = this;
+	
+	onRender: function () {
 		
-
-		this.JST("PageEditor-AddComponent", this.model).then(function (result, model) {
-			var components, selectEl;
-
-			$el.html(result);
-			self.showDialog(new Dialog($el, {
-				title: title,
-				modal: true
-			}));
-
-			if (type === "header") {
-				$el.find("[for=pageeditor-component]").text("What kind of header do you want?");
-			}
-
-			selectEl = $el.find("#pageeditor-component");
-			components = model.components.where({ type: type });
-			_.each(components, function (item) {
-				selectEl.append('<option value="' + item.get("key") + '">' + item.get("name") + '</option>');
-			});
-
-			model.viewModel.set("pageComponents", components);
-			model.viewModel.set("pageComponentKey", components[0].get("key"));
-			self.model = model;
-			self.bindModelToView(model.viewModel, $el);
-		});
+		this.dialogFactory.create(this.$el);
 	},
 	
 	formSubmit: function (event) {
@@ -65,10 +43,11 @@ pageEditor.addPageComponentView.prototype = {
 	}
 };
 
-pageEditor.view("pageEditor.addPageComponentView", [
+pageEditor.view("addPageComponentView", [
 	"options",
+	"modelFactory",
+	"currentPageRepo",
+	"pageComponentRepo",
+	"dialogFactory",
 	pageEditor.addPageComponentView
 ]);
-
-
-
