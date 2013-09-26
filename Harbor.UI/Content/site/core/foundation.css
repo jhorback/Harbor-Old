@@ -218,9 +218,6 @@ p {
 [data-templatefor] {
   display: none !important; }
 
-[data-templatefor].show {
-  display: block !important; }
-
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
   clear: left;
