@@ -89,7 +89,6 @@ $body-color-attn:			#D14836						!default;
 	.margin-bottom	{ margin-bottom: 1em; }
 
 	[data-templatefor] { display: none !important; }
-	[data-templatefor].show { display: block !important; }
 }
 
 @mixin body-theme {

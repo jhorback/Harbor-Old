@@ -1,5 +1,4 @@
-﻿@using Harbor.UI.Extensions
-@model Harbor.UI.Models.Components.TextDto
-<div class="richtext show" data-templatefor="textView">
-	@Html.JstPropFor(m => m.text)
+﻿@model Harbor.UI.Models.Components.TextDto
+<div class="richtext">
+	@Html.Raw(Model.text)
 </div>
