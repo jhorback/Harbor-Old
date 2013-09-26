@@ -66,14 +66,29 @@ template.prototype = {
 		}
 	},
 
-	//addContent: function (key) {
-	//	var content = this.get("content");
-	//	content.push({
-	//		key: key,
-	//		classNames: ["col1"],
-	//		uicid: this.getNextUICID()
-	//	});
-	//},
+	addContent: function (type, key) {
+		var ret,
+			uicid = this.getNextUICID(),
+			content = {
+				type: type,
+				key: key,
+				uicid: uicid,
+				id: uicid
+			};
+		
+		if (type === "header") {
+			this.header.set("key", key);
+			ret = this.header;
+		} else if (type === "aside") {
+			this.aside.push(content);
+			ret = this.aside.get(uicid);
+		} else {
+			content.classNames = ["col1"];
+			this.content.push(content);
+			ret = this.content.get(uicid);
+		}
+		return ret;
+	},
 
 	getNextUICID: function () {
 		var cc = this.get("componentCounter") + 1;

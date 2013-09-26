@@ -104,7 +104,7 @@ pageEditor.pageComponent = function (console, appurl, context, _, $) {
 			this.$el = options.$el;
 			this.uicid = options.uicid;
 			this.page = options.page;
-			this.component = options.component;
+			this.componentModel = options.componentModel;
 			this.initModel();
 			context.call(construct, [], this);
 		};

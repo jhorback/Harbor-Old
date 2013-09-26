@@ -21,6 +21,7 @@ function filterColExt(mixin, collectionFactory) {
 				filtered = this.source.filter(filter);
 			}
 			
+			this.filter = filter;
 			this._sync = true;
 			this.set(filtered); // will fire add, remove, merge, events
 			this._sync = false;
@@ -40,10 +41,19 @@ function filterColExt(mixin, collectionFactory) {
 
 		this.source = collectionFactory.create(this.name, this.models);
 
-		// keep the source models in sync
+		
 		this.on("all", function (event, model) {
 			if (!this._sync && (event === "add" || event === "remove")) {
+
+				// keep the source models in sync
 				this.source[event](model);
+				
+				// apply the filter to new models
+				if (event === "add" && this.filter) {
+					if (!this.filter(model)) {
+						this.remove(model);
+					}
+				}
 			}
 		}, this);
 	}

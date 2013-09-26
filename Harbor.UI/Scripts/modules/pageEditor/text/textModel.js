@@ -6,13 +6,24 @@ pageEditor.textModel = {
 		pageProperties: ["text"],
 
 		getDefaults: function () {
-			return {};
+			return {
+				text: "NADA TEXT"
+			};
 		}
 	},
 	
 	defaults: {
-		text: null
+		text: "[NO TEXT DEFULT]"
 	}
+	//,
+	//"[text]": {
+	//	get: function (value) {
+	//		if (!value) {
+	//			return "[NO TEXT]";
+	//		}
+	//		return value;
+	//	}
+	//}
 };
 
 

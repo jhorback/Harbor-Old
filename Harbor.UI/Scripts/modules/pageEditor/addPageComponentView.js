@@ -7,7 +7,8 @@ pageEditor.addPageComponentView = function (
 	modelFactory,
 	currentPageRepo,
 	pageComponentRepo,
-	dialogFactory
+	dialogFactory,
+	componentManager
 ) {
 
 	this.model = modelFactory.create("addPageComponentViewModel", {		
@@ -17,9 +18,13 @@ pageEditor.addPageComponentView = function (
 	this.model.page = currentPageRepo.getCurrentPage();
 	this.model.pageComponents = pageComponentRepo.getPageComponents();
 	this.model.pageComponents.setFilter(function (model) {
+		console.log(model.get("type"), options.type, model.get("type") === options.type);
 		return model.get("type") === options.type;
 	});
+
+	this.currentPageRepo = currentPageRepo;
 	this.dialogFactory = dialogFactory;
+	this.componentManager = componentManager;
 };
 
 
@@ -27,7 +32,7 @@ pageEditor.addPageComponentView.prototype = {
 	
 	onRender: function () {
 		
-		this.dialogFactory.create(this.$el);
+		this.dialog = this.dialogFactory.create(this.$el);
 	},
 	
 	formSubmit: function (event) {
@@ -36,10 +41,14 @@ pageEditor.addPageComponentView.prototype = {
 	},
 
 	save: function () {
-		PageEditor.addComponent(this.model.page,
-			this.model.viewModel.get("pageComponentKey"),
-			this.model.viewModel.get("componentType"));
-		this.close();
+		var template = this.model.page.template,
+			component = template.addContent(this.options.type, this.model.get("pageComponentKey"));
+		
+		this.currentPageRepo.saveCurrentPage().then(_.bind(function () {
+			this.componentManager.create(component);
+			this.dialog.close();
+		}, this));
+		
 	}
 };
 
@@ -49,5 +58,6 @@ pageEditor.view("addPageComponentView", [
 	"currentPageRepo",
 	"pageComponentRepo",
 	"dialogFactory",
+	"componentManager",
 	pageEditor.addPageComponentView
 ]);

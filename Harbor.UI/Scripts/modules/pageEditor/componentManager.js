@@ -26,12 +26,14 @@ pageEditor.componentManager = function ($, _, Backbone, context, console, curren
 		},
 
 		create: function (componentModel) {
-			var component = registerComponent(componentModel);
-
+			var component;
+		
 			closeCurrentComponent();
+			component = registerComponent(componentModel);
 			currentComponent = component;
 			component.create();
 			componentManager.trigger("create", component);
+			componentManager.trigger("open", component);
 		},
 
 		"delete": function (uicid) {
@@ -73,20 +75,25 @@ pageEditor.componentManager = function ($, _, Backbone, context, console, curren
 	}
 
 	function registerComponent(componentModel) {
-		var type, key, uicid, component;
+		var type, key, uicid, component, el;
 
 		uicid = componentModel.get("uicid");
 		type = componentModel.get("type");
 		key = componentModel.get("key");
 		
+		el = $("#" + uicid);
+		if (el.length === 0) {
+			el = $('<div id="' + uicid + '"/>');
+		}
+
 		try {
 			component = components[uicid] = context.instantiate(key, [{
 				type: type,
 				key: key,
 				uicid: uicid,
-				component: componentModel,
+				componentModel: componentModel,
 				page: page,
-				$el: $("#" + uicid)
+				$el: el
 			}]);
 			console.log("Created page component", type, key, uicid);
 		} catch (e) {
