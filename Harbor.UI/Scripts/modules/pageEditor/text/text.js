@@ -12,18 +12,16 @@ pageEditor.text.prototype = {
 	},
 
 	open: function () {
-		console.log("open text");
-		return;
-		this.view = this.viewRenderer.render("textView", {
-			el: this.$el,
-			model: this.model
-		});
+		var text = this.model.get("text") || "some text here";
+		this.$el.html(text);
+		//this.view = this.viewRenderer.render("textView", {
+		//	el: this.$el,
+		//	model: this.model
+		//});
 	},
 
 	close: function () {
-		console.log("close text");
-		return;
-		this.view.close();
+		// this.view.close();
 	}
 };
 

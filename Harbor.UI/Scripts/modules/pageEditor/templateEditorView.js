@@ -31,6 +31,7 @@ pageEditor.templateEditorView = (function () {
 			this.listenTo(this.componentManager, "open", this.showUICMenu, this);
 			this.listenTo(this.componentManager, "close", this.hideUICMenu, this);
 			this.listenTo(this.componentManager, "delete", this.deleteUIC, this);
+			this.listenTo(this.componentManager, "create", this.createUIC, this);
 
 			this.template.content.comparator = templateContentSort;
 			this.template.aside.comparator = templateContentSort;
@@ -91,6 +92,24 @@ pageEditor.templateEditorView = (function () {
 			this.addPageComponent.render({
 				type: type
 			});
+		},
+		
+		createUIC: function (component) {
+			var type, model = component.componentModel;
+
+			component.$el.addClass("uic").hide();
+			
+			type = model.get("type");
+			if (type === "content") {
+				component.$el.addClass(model.get("classNames").join(" "));
+				$(".page-content").find(".uic-add").before(component.$el);
+			} else if (type === "aside") {
+				$(".page-aside").find(".uic-add").before(component.$el);
+			} else {
+				$(".page-header").html(component.$el);
+			}
+			
+			component.$el.fadeIn();
 		},
 		
 		updateOrder: function (event, ui) {
