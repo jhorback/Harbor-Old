@@ -3,7 +3,7 @@
 pageEditor.component("pageUICMenu");
 
 
-pageEditor.pageUICMenuView = function (options, modelFactory, componentManager, currentPageRepo) {
+pageEditor.pageUICMenuView = function (options, modelFactory, componentManager, currentPageRepo, changeLayout) {
 
 	var type = options.component.type;
 
@@ -11,6 +11,7 @@ pageEditor.pageUICMenuView = function (options, modelFactory, componentManager, 
 	this.componentManager = componentManager;
 	this.currentPageRepo = currentPageRepo;
 	this.currentPage = currentPageRepo.getCurrentPage();
+	this.changeLayoutComponent = changeLayout;
 	
 	this.model = modelFactory.createGeneric({		
 		showChangeHeader: type === "header",
@@ -22,6 +23,7 @@ pageEditor.pageUICMenuView = function (options, modelFactory, componentManager, 
 
 pageEditor.pageUICMenuView.prototype = {
 	changeHeader: function (event) {
+		alert("The title component cannot currently be changed.");
 		//var view = new PageEditor.AddComponentView({
 		//	model: this.model,
 		//	type: "header"
@@ -45,17 +47,14 @@ pageEditor.pageUICMenuView.prototype = {
 		}
 	},
 	
-	changeLayout: function (uicid) {
-		alert("change layout");
-		//var view = new PageEditor.ChangeLayoutView({
-		//	model: this.model,
-		//	uicid: uicid
-		//});
-		//view.render();
+	changeLayout: function (event) {
+		this.changeLayoutComponent.render({
+			uicid: this.component.uicid
+		});
 	}
 };
 
 
 pageEditor.view("pageUICMenuView", [
-	"options", "modelFactory", "componentManager", "currentPageRepo",
+	"options", "modelFactory", "componentManager", "currentPageRepo", "changeLayout",
 	pageEditor.pageUICMenuView]);
