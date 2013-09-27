@@ -463,12 +463,12 @@
     <Content Include="Scripts\modules\fileSelector\fileSelectorView.js" />
     <Content Include="Scripts\modules\fileSelector\fileSelectorViewModel.js" />
     <Content Include="Scripts\modules\pageEditor\addPageComponentViewModel.js" />
+    <Content Include="Scripts\modules\pageEditor\changeLayoutViewModel.js" />
     <Content Include="Scripts\modules\pageEditor\links\linksEditView.js" />
     <Content Include="Scripts\modules\pageEditor\links\linksModel.js" />
     <Content Include="Scripts\modules\pageEditor\links\linksNewView.js" />
     <Content Include="Scripts\modules\currentPageModel\navLinks\navlinksModel.js" />
     <Content Include="Scripts\modules\currentPageModel\navLinks\navLinksRepo.js" />
-    <Content Include="Scripts\modules\pageEditorTemp\_refactorCodeToReview.js" />
     <Content Include="Scripts\modules\pageEditor\%24pageEditor.js" />
     <Content Include="Scripts\apps\pageLoader\pageLoaderModel.js" />
     <Content Include="Scripts\apps\pageLoader\pageLoaderView.js" />
@@ -524,7 +524,6 @@
     <Content Include="Scripts\modules\currentPageModel\%24currentPageModel.js" />
     <Content Include="Scripts\modules\currentPageModel\currentPageRepo.js" />
     <Content Include="Scripts\modules\pageAdder\%24pageAdder.js" />
-    <Content Include="Scripts\modules\pageEditorTemp\Actions.js" />
     <Content Include="Scripts\modules\pageEditor\addPageComponentView.js" />
     <Content Include="Scripts\modules\pageEditor\pageLink\pageLinkView.js" />
     <Content Include="Scripts\modules\pageEditor\pageLink\pageLinkModel.js" />
@@ -539,8 +538,7 @@
     <Content Include="Scripts\modules\pageEditor\links\links.js" />
     <Content Include="Scripts\modules\pageEditor\pageComponent.js" />
     <Content Include="Scripts\modules\pageEditor\text\text.js" />
-    <Content Include="Scripts\modules\pageEditorTemp\ChangeLayoutView.js" />
-    <Content Include="Scripts\modules\pageEditorTemp\PageEditor.js" />
+    <Content Include="Scripts\modules\pageEditor\changeLayoutView.js" />
     <Content Include="Scripts\modules\currentUserModel\%24currentUserModel.js" />
     <Content Include="Scripts\modules\currentUserModel\currentUserRepo.js" />
     <Content Include="Scripts\modules\pageAdder\pageAdder.js" />
