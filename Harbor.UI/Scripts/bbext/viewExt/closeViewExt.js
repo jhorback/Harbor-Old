@@ -40,7 +40,7 @@ function closeViewExt(_, Backbone, mixin, console) {
 
 			if (this.fromServer && options && options.remove === true) {
 				remove();
-			} else {
+			} else if (!this.fromServer) {
 				remove();
 			}
 

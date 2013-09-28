@@ -2,6 +2,10 @@
 
 pageEditor.text = function (viewRenderer) {
 	this.viewRenderer = viewRenderer;
+	
+	//this.$el.on("click.text", function (event) {
+	//	event.preventDefault();
+	//});
 };
 
 pageEditor.text.prototype = {
@@ -12,16 +16,18 @@ pageEditor.text.prototype = {
 	},
 
 	open: function () {
-		var text = this.model.get("text") || "some text here";
-		this.$el.html(text);
-		//this.view = this.viewRenderer.render("textView", {
-		//	el: this.$el,
-		//	model: this.model
-		//});
+		this.view = this.viewRenderer.render("textView", {
+			model: this.model
+		});
+		this.$el.empty().html(this.view.$el);
 	},
 
 	close: function () {
-		// this.view.close();
+		 this.view.close({ remove: false });
+	},
+	
+	remove: function () {
+		//this.$el.unbind(".text");
 	}
 };
 

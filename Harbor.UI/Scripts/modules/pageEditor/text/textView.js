@@ -5,7 +5,7 @@ pageEditor.textView = function (options, currentPageRepo) {
 	this.currentPageRepo = currentPageRepo;
 };
 
-pageEditor.textView.prototype = {	
+pageEditor.textView.prototype = {
 	onRender: function () {
 		var buttons, richTextEl;
 
@@ -20,6 +20,7 @@ pageEditor.textView.prototype = {
 		];
        
 		richTextEl = this.$el.find(".richtext");
+		richTextEl.css("position", "initial"); // gets rid of a wierd square box
 		richTextEl.redactor({
 			focus: true,
 			// air: true,
@@ -31,13 +32,18 @@ pageEditor.textView.prototype = {
 	onClose: function () {
 		var ctr = this.$el.find(".richtext"),
 		    redactor = ctr.data('redactor'),
-		    html;
+		    html,
+			trimmedHtml;
 
 		if (redactor) {
 			html = ctr.getCode();
-			if ($.trim($(html).text()) === "") {
-				html = "";
-			}
+			
+			try {
+				trimmedHtml = $.trim($(html).text());
+				if (trimmedHtml === "") {
+					html = "";
+				}
+			} catch (e) {}
 
 			this.model.set("text", html);
 			this.model.page.updatePagePreviewText(this.model.get("id"), html);
@@ -52,5 +58,6 @@ pageEditor.textView.prototype = {
 
 pageEditor.view("textView", [
 	"options",
+	"currentPageRepo",
 	pageEditor.textView
 ]);

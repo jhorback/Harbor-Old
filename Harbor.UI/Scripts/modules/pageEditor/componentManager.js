@@ -16,6 +16,10 @@ pageEditor.componentManager = function ($, _, Backbone, context, console, curren
 		},
 
 		open: function (uicid) {
+			if (currentComponent && currentComponent.uicid === uicid) {
+				return;
+			}
+			
 			closeCurrentComponent();
 
 			currentComponent = components[uicid];
