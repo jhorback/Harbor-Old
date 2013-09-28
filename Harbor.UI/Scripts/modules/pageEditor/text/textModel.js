@@ -3,27 +3,12 @@
 pageEditor.textModel = {
 	
 	component: {
-		pageProperties: ["text"],
-
-		getDefaults: function () {
-			return {
-				text: "NADA TEXT"
-			};
-		}
+		pageProperties: ["text"]
 	},
 	
 	defaults: {
-		text: "[NO TEXT DEFULT]"
+		text: "[ADD TEXT]"
 	}
-	//,
-	//"[text]": {
-	//	get: function (value) {
-	//		if (!value) {
-	//			return "[NO TEXT]";
-	//		}
-	//		return value;
-	//	}
-	//}
 };
 
 

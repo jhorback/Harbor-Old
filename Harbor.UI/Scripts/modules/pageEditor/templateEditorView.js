@@ -40,7 +40,7 @@ pageEditor.templateEditorView = (function () {
 		events: {
 			"click .uic": function () {
 				var uicid = $(event.target).closest(".uic").attr("id");
-				this.selectUIC(uicid);
+				uicid && this.selectUIC(uicid);
 			},
 			
 			"click .uic-add": function (event) {
