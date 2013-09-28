@@ -20,7 +20,7 @@ pageEditor.textView.prototype = {
 		];
        
 		richTextEl = this.$el.find(".richtext");
-		richTextEl.css("position", "initial"); // gets rid of a wierd square box
+		//richTextEl.css("position", "initial"); // gets rid of a wierd square box
 		richTextEl.redactor({
 			focus: true,
 			// air: true,
