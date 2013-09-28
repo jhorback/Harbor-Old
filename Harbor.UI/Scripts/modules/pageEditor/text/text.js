@@ -3,9 +3,9 @@
 pageEditor.text = function (viewRenderer) {
 	this.viewRenderer = viewRenderer;
 	
-	//this.$el.on("click.text", function (event) {
-	//	event.preventDefault();
-	//});
+	this.$el.on("click.text", function (event) {
+		event.preventDefault();
+	});
 };
 
 pageEditor.text.prototype = {
@@ -27,7 +27,7 @@ pageEditor.text.prototype = {
 	},
 	
 	remove: function () {
-		//this.$el.unbind(".text");
+		this.$el.unbind(".text");
 	}
 };
 

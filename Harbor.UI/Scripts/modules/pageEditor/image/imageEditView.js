@@ -1,66 +1,45 @@
 ﻿
 
-pageEditor.imageEditView = function (options, jstViewExtension, modelBinderExtension) {
+pageEditor.imageEditView = function (options, currentPageRepo, fileSelector) {
 
-	jstViewExtension.extend(this);
-	modelBinderExtension.extend(this);
-
+	this.currentPageRepo = currentPageRepo;
+	this.fileSelector = fileSelector;
+	
 };
 
 
 pageEditor.imageEditView.prototype = {
 	
 	initialize: function () {
-		this.listenTo(this.model, "change:res", this.save);
-	},
 
-	events: {
-		"click [data-rel=select]": function () {
-			this.openFileSelector();
-		}
-	},
+		_.bindAll(this, "close", "save", "selectFile");
 
-	render: function () {
-		var editDiv = this.template("Image-Edit")();
-		var imgCtr = this.$("[data-rel=image]");
-		imgCtr.after(editDiv);
-		this.bindModelToView();
-	},
-
-	renderImage: function () {
-		if (this.model.hasImage() === false) {
-			return;
-		}
-		this.renderTemplate("Image")(this.model.toJSON());
-		this.render();
+		this.listenTo(this.model, "change:res", this.save);		
 	},
 
 	save: function () {
-		AjaxRequest.handle(this.model.save(), {
-			success: this.renderImage
-		}, this);
+		this.currentPageRepo.saveCurrentPage();
 	},
 
 	openFileSelector: function () {
-		PageSettings.events.trigger("modal:opened");
-		FileSelector.start({
+		
+		this.fileSelector.render({
 			filter: "images",
-			region: PageEditor.regions.modal,
-			close: function () {
-				PageSettings.events.trigger("modal:closed");
-			},
-			select: function (selectedFile) {
-				var fileID = selectedFile.get("id");
-				this.model.set({
-					fileID: fileID,
-					ext: selectedFile.get("ext"),
-					name: selectedFile.get("name")
-					// dont include max since we are saving on max change too
-				});
-				this.model.page.updatePagePreviewImage(this.options.uicid, fileID);
-				this.save();
-			}
-		}, this);
+			xclose: this.close,
+			select: this.selectFile
+		});
+	},
+	
+	selectFile: function (file) {
+		var fileID = file.get("id");
+		this.model.set({
+			fileID: fileID,
+			ext: file.get("ext"),
+			name: file.get("name")
+			// dont include max since we are saving on max change too
+		});
+		this.model.page.updatePagePreviewImage(this.options.uicid, fileID);
+		this.save();
 	},
 
 	onClose: function () {
@@ -71,6 +50,6 @@ pageEditor.imageEditView.prototype = {
 
 
 pageEditor.view("imageEditView", [
-	"options", "jstViewExtension", "modelBinderExtension",
+	"options", "currentPageRepo", "fileSelector",
 	pageEditor.imageEditView
 ]);

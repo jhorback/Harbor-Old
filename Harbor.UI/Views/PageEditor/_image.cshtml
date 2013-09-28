@@ -1,23 +1,22 @@
 ﻿
 
-<div data-rel="image" data-templatefor="imageView">
+<div data-rel="image" data-templatefor="imageEditView">
+    
     <img data-bind="src: imgSrc" />
-</div>
-
-
-
-<div data-rel="edit" data-templatefor="imageEditView">
-    <div>
-        <label>
-            <input type="radio" name="res" value="low">
-            <span>Low Resolution</span>
-        </label>
-        <label>
-            <input type="radio" name="res" value="high">
-            <span>High Resolution</span>
-        </label>
-    </div>
-    <div>
-        <button data-rel="select" class="button">Select an image</button>
+    
+    <div data-rel="edit">
+        <div>
+            <label>
+                <input type="radio" name="res" value="low">
+                <span>Low Resolution</span>
+            </label>
+            <label>
+                <input type="radio" name="res" value="high">
+                <span>High Resolution</span>
+            </label>
+        </div>
+        <div>
+            <button data-event="openFileSelector" class="button">Select an image</button>
+        </div>
     </div>
 </div>
