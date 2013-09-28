@@ -26,7 +26,9 @@ pageEditor.imageModel = {
 			return Application.url("file/" +
 				this.get("fileID") + "/" + this.get("name") + "." +
 				this.get("ext") + "?res=" + this.get("res"));
-		}
+		},
+		
+		bind: ["res", "fileID"]
 	},
 	
 	ext: {

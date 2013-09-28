@@ -13,19 +13,16 @@ pageEditor.image.prototype = {
 	},
 
 	open: function () {
-		console.log("open image - needs work");
-		return;
 		this.view = this.viewRenderer.render("imageEditView", {
-			el: this.$el,
 			model: this.model,
 			uicid: this.uicid
 		});
+		
+		this.$el.empty().append(this.view.$el);
 	},
 
 	close: function () {
-		console.log("close image");
-		return;
-		this.view.close();
+		this.view.close({ remove: false });
 	}
 };
 
