@@ -12,11 +12,14 @@ pageEditor.pageLink.prototype = {
 	model: "imageModel",
 
 	create: function () {
+		debugger;
 		this.open();
 		this.view.openPageSelector();
 	},
 
 	open: function () {
+		debugger;
+		
 		this.view = this.viewRenderer.render("pageLinkView", {
 			model: this.model,
 			uicid: this.uicid
