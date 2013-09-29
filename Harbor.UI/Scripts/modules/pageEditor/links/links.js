@@ -4,6 +4,9 @@ pageEditor.links = function (viewRenderer) {
 	this.viewRenderer = viewRenderer;
 	//this.model.on("save", this.refresh, this);
 	
+	this.$el.on("click.links", function (event) {
+		event.preventDefault();
+	});
 };
 
 pageEditor.links.prototype = {
@@ -38,6 +41,10 @@ pageEditor.links.prototype = {
 		console.log("close links");
 		return;
 		this.view.close();
+	},
+	
+	remove: function () {
+		this.$el.unbind(".links");
 	}
 };
 
