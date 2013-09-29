@@ -3,23 +3,20 @@
 pageEditor.pageLink = function (viewRenderer) {
 	this.viewRenderer = viewRenderer;
 	
-	this.$el.on("click.link", function (event) {
+	this.$el.find("a").on("click.link", function (event) {
 		event.preventDefault();
 	});
 };
 
 pageEditor.pageLink.prototype = {
-	model: "imageModel",
+	model: "pageLinkModel",
 
 	create: function () {
-		debugger;
 		this.open();
 		this.view.openPageSelector();
 	},
 
 	open: function () {
-		debugger;
-		
 		this.view = this.viewRenderer.render("pageLinkView", {
 			model: this.model,
 			uicid: this.uicid
@@ -33,7 +30,7 @@ pageEditor.pageLink.prototype = {
 	},
 	
 	remove: function () {
-		this.$el.unbind(".link");
+		this.$el.find("a").unbind(".link");
 	}
 };
 

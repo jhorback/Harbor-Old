@@ -56,13 +56,14 @@ pageSelector.pageSelectorView.prototype = {
 	},
 	
 	clickItem: function (event) {
-		this.selectAndClose($(event.target).closest("[data-id]").data("id"));
+		var id = $(event.target).closest("[id]").attr("id");
+		this.selectAndClose(id);
 	},
 	
 	selectItemOnEnter: function (event) {
-		
+		var id = $(event.target).attr("id");		
 		if (event.keyCode == 13) {
-			this.selectAndClose($(event.target).data("id"));
+			this.selectAndClose(id);
 		}
 	},
 
@@ -79,7 +80,7 @@ pageSelector.pageSelectorView.prototype = {
 		var page;
 
 		selectedPageID = parseInt(selectedPageID);
-		page = this.collection.find(function (item) {
+		page = this.model.pages.find(function (item) {
 			return item.get("id") === selectedPageID;
 		});
 		
