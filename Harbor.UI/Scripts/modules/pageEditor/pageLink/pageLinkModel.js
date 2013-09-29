@@ -30,14 +30,17 @@ pageEditor.pageLinkModel = {
 			var src = Application.url("file/" +
 				this.get("previewImageID") + "/preview.img?res=low");
 			return src;
-		}
+		},
+		bind: ["pageID"]
 	},
 	
 	tileClassName: {
 		get: function (value) {
 			var display = this.get("tileDisplay");
-			return display === "wide" ? "tile tile-wide" : "tile";
-		}
+			var val = display === "wide" ? "tile tile-wide" : "tile";
+			return val;
+		},
+		bind: ["tileDisplay"]
 	}
 };
 
