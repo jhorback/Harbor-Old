@@ -35,8 +35,8 @@ pageEditor.componentManager = function ($, _, Backbone, context, console, curren
 			closeCurrentComponent();
 			component = registerComponent(componentModel);
 			currentComponent = component;
-			component.create();
 			componentManager.trigger("create", component);
+			component.create();
 			componentManager.trigger("open", component);
 		},
 
