@@ -17,21 +17,16 @@ pageEditor.pageLink.prototype = {
 	},
 
 	open: function () {
-		
-		console.log("open pageLink");
-		return;
-		this.view = this.viewRenderer.render("imageEditView", {
-			el: this.$el,
+		this.view = this.viewRenderer.render("pageLinkView", {
 			model: this.model,
 			uicid: this.uicid
 		});
+		
+		this.$el.empty().append(this.view.$el);
 	},
 
 	close: function () {
-		
-		console.log("close pageLink");
-		return;
-		this.view.close();
+		this.view.close({ remove: false });
 	},
 	
 	remove: function () {

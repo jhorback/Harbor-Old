@@ -179,7 +179,7 @@
     <Compile Include="App_Start\JSPkgs\PageLoaderAppPkg.cs" />
     <Compile Include="App_Start\JSPkgs\PageEditorPkg.cs" />
     <Compile Include="App_Start\JSPkgs\PageAdderPkg.cs" />
-    <Compile Include="App_Start\JSPkgs\PageSelectorAppPkg.cs" />
+    <Compile Include="App_Start\JSPkgs\PageSelectorPkg.cs" />
     <Compile Include="App_Start\JSPkgs\PageAdminAppPkg.cs" />
     <Compile Include="App_Start\JSPkgs\SessionAppPkg.cs" />
     <Compile Include="App_Start\JSPkgs\PageModelPkg.cs" />
@@ -552,13 +552,15 @@
     <Content Include="Scripts\modules\pageModel\pageTypeRepo.js" />
     <Content Include="Scripts\modules\pageModel\pageurl.js" />
     <Content Include="Scripts\modules\pageModel\template.js" />
+    <Content Include="Scripts\modules\pageSelector\pageSelectorViewModel.js" />
+    <Content Include="Scripts\modules\pageSelector\pageSelectorView.js" />
     <Content Include="Scripts\modules\pageSettings\pagePreviewModel.js" />
     <Content Include="Scripts\modules\pageSettings\pagePreviewView.js" />
     <Content Include="Scripts\modules\pageSettings\%24pageSettings.js" />
     <Content Include="Scripts\modules\pageSettings\pageSettingsView.js" />
     <Content Include="Scripts\modules\pageEditor\pageUICMenuView.js" />
     <Content Include="Scripts\apps\pageLoader\%24pageLoader.js" />
-    <Content Include="Scripts\apps\PageSelector\PageSelector.js" />
+    <Content Include="Scripts\modules\pageSelector\pageSelector.js" />
     <Content Include="Scripts\apps\pageAdmin\%24pageAdmin.js" />
     <Content Include="Scripts\apps\Session\UserMenu.js" />
     <Content Include="Scripts\apps\Session\CurrentUser.js" />
@@ -638,9 +640,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\FileAdmin\Index.cshtml" />
     <Content Include="Views\FileAdmin\_editFileView.cshtml" />
-    <Content Include="Views\PageSelector\_Main.cshtml" />
-    <Content Include="Views\PageSelector\PageSelectorTemplates.cshtml" />
-    <Content Include="Views\PageSelector\_PageListItem.cshtml" />
+    <Content Include="Views\PageSelector\Index.cshtml" />
     <Content Include="Views\User\_DefaultHomePage.cshtml" />
     <Content Include="Views\User\_HomePageSetting.cshtml" />
     <Content Include="Views\StyleGuide\Collections.cshtml" />
@@ -670,7 +670,7 @@
     <Content Include="Views\StyleGuide\TestApp.cshtml" />
     <Content Include="Views\PageEditor\_image.cshtml" />
     <Content Include="Views\PageEditor\_links.cshtml" />
-    <Content Include="Views\PageEditor\_pageLinks.cshtml" />
+    <Content Include="Views\PageEditor\_pageLink.cshtml" />
     <Content Include="Views\PageEditor\_text.cshtml" />
     <Content Include="Views\PageEditor\_title.cshtml" />
   </ItemGroup>

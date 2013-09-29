@@ -1,65 +1,38 @@
 ﻿
 
-pageEditor.pageLinkView = function (options) {
+pageEditor.pageLinkView = function (options, currentPageRepo, pageSelector) {
 
-	
+	this.currentPageRepo = currentPageRepo;
+	this.pageSelector = pageSelector;
 };
 
 
 pageEditor.pageLinkView.prototype = {
 	initialize: function () {
+		_.bindAll(this, "save", "selectPage");
+		
 		this.listenTo(this.model, "change:tileDisplay", this.save);
 	},
 	
-	events: {
-		"click [data-rel=select]": function () {
-			this.openPageSelector();
-		},
-		"click a": function (event) {
-			// prevent link navigation while editing
-			event.preventDefault();
-		}
-	},
-	
-	render: function () {
-		var editDiv =  this.template("PageLink-Edit")();
-		var imgCtr = this.$("[data-rel=pageLink]");
-		imgCtr.after(editDiv);
-		this.bindModelToView();
-	},
-	
-	renderPageLink: function () {
-		if (this.model.hasPageLink() === false) {
-			return;
-		}
-		this.renderTemplate("PageLink")(this.model.toJSON());
-		this.render();
-	},
-	
 	save: function () {
-		AjaxRequest.handle(this.model.save(), {
-			success: this.renderPageLink
-		}, this);
+		this.currentPageRepo.saveCurrentPage();
 	},
 
 	openPageSelector: function () {
-		PageSettings.events.trigger("modal:opened");
-		PageSelector.start({
-			region: PageEditor.regions.modal,
-			close: function () {
-				PageSettings.events.trigger("modal:closed");
-			},
-			select: function (selectedPage) {
-				var pageID = selectedPage.get("id");
-				this.model.set({
-					pageID: pageID,
-					title: selectedPage.get("title"),
-					previewText: selectedPage.get("previewText"),
-					previewImageID: selectedPage.get("previewImageID")
-				});
-				this.save();
-			}
+		this.pageSelector.render({
+			select: this.selectPage
 		}, this);
+	},
+	
+	selectPage: function (page) {
+		var pageID = page.get("id");
+		this.model.set({
+			pageID: pageID,
+			title: page.get("title"),
+			previewText: page.get("previewText"),
+			previewImageID: page.get("previewImageID")
+		});
+		this.save();
 	},
 	
 	onClose: function () {
@@ -71,5 +44,7 @@ pageEditor.pageLinkView.prototype = {
 
 pageEditor.view("pageLinkView", [
 	"options",
+	"currentPageRepo",
+	"pageSelector",
 	pageEditor.pageLinkView
 ]);

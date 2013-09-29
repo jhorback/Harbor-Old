@@ -1,30 +1,10 @@
 ﻿
-var PageSelector = new Application({
-	start: function (options, callbackContext) {
-		// options: region, close, select
-		//ref: use pageRepo.getPages();
-		var pages = new pageModel.Pages(),
-			mainViewModel = new PageSelector.MainViewModel(),
-			mainView = new PageSelector.MainView({
-				model: mainViewModel,
-				collection: pages
-			});
-		options.region.render(mainView);
-		mainView.on("close", options.close, callbackContext);
-		mainView.on("select", options.select, callbackContext);
-		pages.fetch({
-			data: {
-				orderDesc: "modified"
-			}
-		});
-	},
+pageSelector.pageSelectorView = function (options, currentPageRepo) {
 	
-	regions: {
-		results: ".pageselector-results"
-	}
-});
+	this.currentPageRepo = currentPageRepo;
+};
 
-PageSelector.MainView = Application.View.extend({
+pageSelector.pageSelectorView.prototype = {
 	
 	events: {
 		"click [data-rel=cancel]": "close",
@@ -85,11 +65,11 @@ PageSelector.MainView = Application.View.extend({
 		this.trigger("close");
 		this.remove();
 	}
-});
+};
 
 
-PageSelector.MainViewModel = Application.Model.extend({
-	defaults: {
-		search: null
-	}		
-});
+pageSelector.view("pageSelectorView", [
+	"options",
+	"currentPageRepo",
+	pageSelector.pageSelectorView
+]);
