@@ -1,52 +1,78 @@
 ﻿
-pageSelector.pageSelectorView = function (options, currentPageRepo) {
+
+/*
+var PageSelector = new Application({
+	start: function (options, callbackContext) {
+		// options: region, close, select
+		//ref: use pageRepo.getPages();
+		var pages = new pageModel.Pages(),
+			mainViewModel = new PageSelector.MainViewModel(),
+			mainView = new PageSelector.MainView({
+				model: mainViewModel,
+				collection: pages
+			});
+		options.region.render(mainView);
+		
+		pages.fetch({
+			data: {
+				orderDesc: "modified"
+			}
+		});
+	},
 	
-	this.currentPageRepo = currentPageRepo;
+	regions: {
+		results: ".pageselector-results"
+	}
+});
+*/
+
+pageSelector.pageSelectorView = function (options, pageRepo, modelFactory) {
+	
+	this.pageRepo = pageRepo;
+
+	this.model = modelFactory.create("pageSelectorViewModel", {
+		search: ""
+	});
+
+	this.model.pages = pageRepo.createPages();
+	
+	this.listenTo(this.model.pages, "all", function () {
+		this.model.set("resultsCount", this.model.pages.length);
+	}, this);
 };
 
 pageSelector.pageSelectorView.prototype = {
-	
-	events: {
-		"click [data-rel=cancel]": "close",
 
-		"click [data-rel=save]": function (event) {
-			event.preventDefault();
-			this.selectAndClose();
-		},
+	initialize: function () {
 		
-		"submit form": function (event) {
-			event.preventDefault();
-			this.search();
-		},
+		this.on("close", this.options.close);
+		this.on("select", this.options.select);
+	},
+	
+	formSubmit: function (event) {
 		
-		"click .pageselector-results li": function (event) {
-			this.selectAndClose($(event.target).closest("[data-id]").data("id"));
-		},
+		event.preventDefault();
+		this.search();
+	},
+	
+	clickItem: function (event) {
+		this.selectAndClose($(event.target).closest("[data-id]").data("id"));
+	},
+	
+	selectItemOnEnter: function (event) {
 		
-		"keypress li": function (event) {
-			if (event.keyCode == 13) {
-				this.selectAndClose($(event.target).data("id"));
-			}
+		if (event.keyCode == 13) {
+			this.selectAndClose($(event.target).data("id"));
 		}
 	},
 
-	render: function () {
-		//this.template("Settings-ChangeHomePage", this.$el)();
-		this.bindTemplate("PageSelector-Main");
-	},
-	
-	renderResults: function (collection) {
-		var resultsList = this.$(".pageselector-results ul");
-		resultsList.empty();
-		collection.each(function (page) {
-			var model = _.pick(page.toJSON(), "id", "title", "previewText", "thumbUrl");
-			resultsList.append(this.template("PageSelector-PageListItem")(model));
-		}, this);
-	},
-	
 	search: function () {
-		var results = this.collection.search(this.model.get("search"));
-		this.renderResults(results);
+		var searchTerm = this.model.get("search");
+		
+		this.pageRepo.fetchPages(this.model.pages, {
+			orderDesc: "modified",
+			name: searchTerm
+		});
 	},
 	
 	selectAndClose: function (selectedPageID) {
@@ -59,17 +85,13 @@ pageSelector.pageSelectorView.prototype = {
 		
 		this.trigger("select", page);
 		this.close();
-	},
-
-	close: function () {
-		this.trigger("close");
-		this.remove();
 	}
 };
 
 
 pageSelector.view("pageSelectorView", [
 	"options",
-	"currentPageRepo",
+	"pageRepo",
+	"modelFactory",
 	pageSelector.pageSelectorView
 ]);

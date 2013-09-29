@@ -6,11 +6,19 @@ function pageRepo(collectionFactory, ajaxRequest) {
 		// returns a new pages collection and calls
 		// fetch with the specified data
 		getPages: function (data) {
-			var pages = collectionFactory.create("pages");
-			ajaxRequest.handle(pages.fetch({ data: data }));
+			var pages = this.createPages();
+			this.fetchPages(pages, data);
 			return pages;
 		},
 		
+		createPages: function () {
+			return collectionFactory.create("pages");
+		},
+		
+		fetchPages: function (pages, data) {
+			return ajaxRequest.handle(pages.fetch({ data: data }));
+		},
+
 		savePage: function (page, handler, proxy) {
 			return ajaxRequest.handle(page.save(), handler, proxy);
 		}

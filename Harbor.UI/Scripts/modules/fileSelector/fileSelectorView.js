@@ -36,7 +36,6 @@ fileSelectorView.prototype = {
 			filter: this.options.filter,
 			name: searchTerm
 		});
-
 	},
 
 	formSubmit: function (event) {

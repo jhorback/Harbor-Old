@@ -1,7 +1,8 @@
 ﻿
 pageSelector.pageSelectorViewModel = {
 	defaults: {
-		search: null
+		search: null,
+		resultsCount: 0
 	}		
 };
 

@@ -23,9 +23,6 @@
 	@if (ViewBag.HasWritePermissions)
 	{ 
 		@Html.InstallJavaScriptPackage(PageLoaderAppPkg.PackageName)
-		@*
-		// but with jspm javascript loading?*@
-		@Html.InstallJavaScriptPackage(PageSelectorAppPkg.PackageName)
 		<script>
 			context.module("currentPageModel").register("currentPageDto", @Html.Raw(Json.Encode(ViewBag.PageDto)));
 			pageLoader.start();
