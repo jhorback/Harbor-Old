@@ -4,7 +4,7 @@ pageEditor.links = function (viewRenderer) {
 	this.viewRenderer = viewRenderer;
 	//this.model.on("save", this.refresh, this);
 	
-	this.$el.on("click.links", function (event) {
+	this.$el.find("a").on("click.links", function (event) {
 		event.preventDefault();
 	});
 };
@@ -17,34 +17,32 @@ pageEditor.links.prototype = {
 	},
 
 	open: function () {
-		console.log("open links - needs work");
-		return;
 		this.view && this.view.close();
-
-		if (this.model.hasName()) {
-			this.view = this.viewRenderer.render("linksEditView", {
-				el: this.$el,
+		
+		if (this.model.isNew()) {
+			
+			this.view = this.viewRenderer.render("linksNewView", {
 				model: this.model,
 				uicid: this.uicid
 			});
-
 		} else {
-			this.view = this.viewRenderer.render("linksNewView", {
-				el: this.$el,
+			
+			this.view = this.viewRenderer.render("linksEditView", {
 				model: this.model,
 				uicid: this.uicid
 			});
 		}
+
+		this.$el.empty().append(this.view.$el);
 	},
 
 	close: function () {
-		console.log("close links");
-		return;
+
 		this.view.close();
 	},
 	
 	remove: function () {
-		this.$el.unbind(".links");
+		this.$el.find("a").unbind(".links");
 	}
 };
 
