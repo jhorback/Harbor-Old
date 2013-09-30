@@ -4,37 +4,17 @@
 pageEditor.linksNewView = function (options, navLinksRepo) {
 
 	this.navLinksRepo = navLinksRepo;
-
+	this.model.navLinks = this.navLinksRepo.getLinks();
 };
 
 pageEditor.linksNewView.prototype = {
-	
-	initialize: function () {
-		this.model.links = this.navLinksRepo.getLinks();
-	},
 
-	events: {
-		"click #navlinks-add": "add",
-		"click #navlinks-create": "create"
-	},
-	
-	onRender: function () {
-		var selectEl = this.$("#navlinks-select");
-		this.model.links.each(function (link) {
-			selectEl.append('<option value="' + link.get("id") + '">' + link.get("name") + '</option>');
-		});
-	},
-
-	add: function () {
-		alert("add!!!");
-		return;
+	add: function (event) {
+		
 		var id = parseInt(this.model.get("pageID")),
 			model = this.model;
-
-		if (!id) {
-			return;
-		}
 		
+		// jch! - here on linksNewView
 		this.navLinksRepo.getLinks().then(_.bind(function (links) {
 			var link = links.findWhere({ id: id });
 			model.set(link.attributes);
@@ -46,7 +26,7 @@ pageEditor.linksNewView.prototype = {
 		}, this));
 	},
 
-	create: function () {
+	create: function (event) {
 		var thisModel = this.model;
 		this.navLinksRepo.getLinks().then(_.bind(function (links) {
 			var name = this.model.get("name");

@@ -1,24 +1,48 @@
 ﻿
+<div class="pad" data-templatefor="linksView">
+   
+    <!-- collection: sections -->
+    <div class="menulist" data-collection="sections">
+       <h2 data-bind="showif: hasTitle">@sect.title</h2>
+        <ul>
+          
+            <!-- collection: links -->
+            <li data-collection="links">
+                <a data-bind="href: link, text: title"></a>
+            </li>
+            <!-- -->
+
+        </ul>
+    </div>
+    <!-- -->
+
+</div>
+
+
 <div class="pad" data-templatefor="linksNewView">
     <fieldset>
         <legend>Add existing links</legend>
         <div class="form-field">
-            <select id="navlinks-select" data-bind="pageID" style="width:auto;">
-                <option></option>
+            <select id="navlinks-select" data-bind="value: pageID" style="width:auto;">
+               
+                <!-- collection: navLinks -->
+                <option data-collection="navLinks" data-bind="value: id, text: name"></option>
+                <!-- -->
+            
             </select>
         </div>
         <div class="form-controls">
-            <button class="loud" id="navlinks-add">Add</button>
+            <button class="loud" data-event="add">Add</button>
         </div>
     </fieldset>
     <fieldset>
         <legend>Create new links</legend>
         <div class="form-field">
             <label>Name</label>
-            <input type="text" id="navlinks-name" data-bind="name" />
+            <input type="text" id="navlinks-name" data-bind="text: name" />
         </div>
         <div class="form-controls">
-            <button class="loud" id="navlinks-create">Create</button>
+            <button class="loud" data-event="create">Create</button>
         </div>
     </fieldset>
 </div>
