@@ -105,38 +105,35 @@ Settings.EditNavView = Application.View.extend({
 	
 	selectPageToAdd: function () {
 		// assumes PageSelector is already loaded
-		Settings.regions.main.hideEl();	
-		PageSelector.start({
-			region: new Region("#settings-modal"),
-			close: function () {
-				Settings.regions.main.showEl();
-			},
-			select: function (selectedPage) {
-				var links = this.model.get("navigationLinks"),
-					template = '<li class="frame-navitem"><a href="{{link}}">{{title}}</a></li>',
-					pageID = selectedPage.get("id"),
-					text = selectedPage.get("title"),
-					newLi = _.template(template)({
-						// ref: pageurl.get(pageID, text);
-						link: pageModel.getPageUrl(pageID, text), // ref: pageurl.get();
-						title: text
-					}),
-					link = {
-						pageID: pageID,
-						text: text
-					};
+		settings.pageSelector.render({
+			select: _.bind(this.selectPage, this)
+		});
+	},
+	
+	selectPage: function (selectedPage) {
+		var links = this.model.get("navigationLinks"),
+			template = '<li class="frame-navitem"><a href="{{link}}">{{title}}</a></li>',
+			pageID = selectedPage.get("id"),
+			text = selectedPage.get("title"),
+			newLi = _.template(template)({
+				// ref: pageurl.get(pageID, text);
+				link: selectedPage.getUrl(pageID, text), // ref: pageurl.get();
+				title: text
+			}),
+			link = {
+				pageID: pageID,
+				text: text
+			};
 
-				newLi = $(newLi);
-				this.addDataAttrsToNavItem(newLi, link);
-				newLi.hide();
-				this.$("#frame-nav li.frame-staticnavitem:eq(0)").before(newLi);
-				newLi.fadeIn();
+		newLi = $(newLi);
+		this.addDataAttrsToNavItem(newLi, link);
+		newLi.hide();
+		this.$("#frame-nav li.frame-staticnavitem:eq(0)").before(newLi);
+		newLi.fadeIn();
 				
-				links.push(link);
-				this.model.set("navigationLinks", links);
-				this.saveModel();
-			}
-		}, this);
+		links.push(link);
+		this.model.set("navigationLinks", links);
+		this.saveModel();
 	},
 	
 	saveModel: function () {

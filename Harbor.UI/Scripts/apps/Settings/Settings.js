@@ -1,12 +1,17 @@
-﻿var Settings = new Application({
+﻿
+var settings = context.app("settings").use("pageSelector");
+settings.start(["pageSelector", function (pageSelector) {
+	settings.pageSelector = pageSelector;
+}]).start();
+
+
+var Settings = new Application({
 	
 	settingsModel: null,
 	
 	themes: [],
 
 	start: function (themes) {
-
-		debugger;
 		this.themes = themes;
 		this.settingsModel = new Settings.AppSettings();
 
@@ -42,17 +47,18 @@
 	changeHomePage: function () {
 		
 		// assumes PageSelector is already loaded
-		Settings.regions.main.hideEl();	
-		PageSelector.start({
-			region: this.regions.modal,
+		// Settings.regions.main.hideEl();	
+		settings.pageSelector.render({
 			close: function () {
-				Settings.regions.main.showEl();
+				// Settings.regions.main.showEl();
 			},
-			select: function (selectedPage) {
-				this.settingsModel.setHomePage(selectedPage);
-				AjaxRequest.handle(this.settingsModel.save());
-			}
-		}, this);
+			select: _.bind(this.setHomePage, this)
+		});
+	},
+	
+	setHomePage: function (page) {
+		this.settingsModel.setHomePage(page);
+		AjaxRequest.handle(this.settingsModel.save());
 	},
 	
 	resetHomePage: function () {
