@@ -15,7 +15,8 @@
 		homePageID: null,
 		homePage: null,
 		navigationLinks: [],
-		theme: "default"
+		theme: "default",
+		thumbUrl: null
 	},
 
 	initialize: function () {
@@ -29,7 +30,10 @@
 			this.set("homePageID", null);
 		} else {		
 			this.homePage = page;
-			this.set("homePageID", page.get("id"));
+			this.set({
+				"homePageID": page.get("id"),
+				"thumbUrl": page.get("thumbUrl")
+			});
 		}
 	},
 	

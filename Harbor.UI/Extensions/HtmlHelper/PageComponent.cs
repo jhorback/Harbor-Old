@@ -18,6 +18,10 @@ namespace Harbor.UI.Extensions
 		/// <returns></returns>
 		public static HtmlString PageComponent(this HtmlHelper helper, int pageID, string componentTypeKey, string uicid)
 		{
+			if (string.IsNullOrEmpty(componentTypeKey)) // jch! testing
+			{
+				return new MvcHtmlString("NO COMPONENT TYPE");
+			}
 			return helper.Action(componentTypeKey, "Page", new { pageID = pageID, uicid = uicid });
 		}
 	}

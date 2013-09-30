@@ -43,7 +43,7 @@ namespace Harbor.UI.Extensions
 			{
 				if (clientAttr != null)
 				{
-					html = string.Format(@" {0}=""{1}"" data-bind-{0}=""{2}"" ", clientAttr, propValue, propName);
+					html = string.Format(@" {0}=""{1}"" data-bind=""{0}:{2}"" ", clientAttr, propValue, propName);
 				}
 				else
 				{
