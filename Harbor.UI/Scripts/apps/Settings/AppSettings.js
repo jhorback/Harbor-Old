@@ -20,8 +20,14 @@
 	},
 
 	initialize: function () {
-		// ref: modelFactory.create("page", this.get("homePage")); // value object, review
-		// this.homePage = new pageModel.Page(this.get("homePage"));
+		var self = this;
+		
+		this.on("sync", function () {
+			settings.call(["modelFactory", function (modelFactory) {
+				var homePage = modelFactory.create("page", self.get("homePage"));
+				self.set("thumbUrl", homePage.get("thumbUrl"));
+			}]);
+		});
 	},
 
 	setHomePage: function (page) {
