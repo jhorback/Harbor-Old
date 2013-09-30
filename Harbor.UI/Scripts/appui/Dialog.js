@@ -40,7 +40,7 @@
 		this.element = $(el);
 		this.dialogEl = null;
 		this.overlay = null;
-		this.options = $.extend({}, Dialog.defaultOptions, el.data(), options);
+		this.options = $.extend({}, Dialog.defaultOptions, this.element.data(), options);
 		if (!this.options.title) {
 			titleEl = el.find("h1");
 			this.options.title = titleEl.html();
