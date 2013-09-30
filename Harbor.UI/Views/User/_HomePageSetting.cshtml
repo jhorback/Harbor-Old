@@ -3,7 +3,7 @@
 <div class="tile tile-wide hover">
 	@if (Model != null && Model.previewImage != null)
 	{		
-		<img class="media" @Html.JstPropFor(m => m.previewImage.thumbUrl, clientBinding: true, clientAttr: "src")>
+		<img class="media" src="@Model.previewImage.thumbUrl" @Html.JstPropFor(m => m.previewImage.thumbUrl, clientBinding: true, clientAttr: "src")>
 	}
 	<div class="caption">
 		<h2>@Html.JstPropFor(m => m.title, clientBinding: true)</h2>
