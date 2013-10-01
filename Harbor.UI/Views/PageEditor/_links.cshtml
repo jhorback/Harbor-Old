@@ -3,7 +3,7 @@
    
     <!-- collection: sections -->
     <div class="menulist" data-collection="sections">
-       <h2 data-bind="showif: hasTitle">@sect.title</h2>
+       <h2 data-bind="showif: hasTitle, text: title"></h2>
         <ul>
           
             <!-- collection: links -->
@@ -48,6 +48,22 @@
 </div>
 
 
-<div data-templatefor="linksEditView">
-    Hello - Edit View
+<div class="pad" data-templatefor="linksEditView">
+
+    <!-- collection: sections -->
+    <div class="menulist" data-collection="sections">
+        <input type="text" data-bind="text: title">
+        <ul>
+
+            <!-- collection: links -->
+            <li data-collection="links">
+                <a data-bind="href: link, text: title"></a>
+            </li>
+            <!-- -->
+
+        </ul>
+        <button data-event="addLink">Add Link</button>
+    </div>
+    <!-- -->
+    <button data-event="addSection">Add Section</button>
 </div>

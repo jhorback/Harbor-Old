@@ -2,7 +2,7 @@
 pageEditor.links = function (viewRenderer) {
 	
 	this.viewRenderer = viewRenderer;
-	//this.model.on("save", this.refresh, this);
+	this.model.on("save", this.open, this);
 	
 	this.$el.find("a").on("click.links", function (event) {
 		event.preventDefault();

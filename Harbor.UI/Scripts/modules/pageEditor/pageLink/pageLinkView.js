@@ -10,7 +10,7 @@ pageEditor.pageLinkView = function (options, currentPageRepo, pageSelector) {
 pageEditor.pageLinkView.prototype = {
 	initialize: function () {
 		_.bindAll(this, "save", "selectPage");
-		
+
 		this.listenTo(this.model, "change:tileDisplay", this.save);
 	},
 	
@@ -48,3 +48,6 @@ pageEditor.view("pageLinkView", [
 	"pageSelector",
 	pageEditor.pageLinkView
 ]);
+
+
+

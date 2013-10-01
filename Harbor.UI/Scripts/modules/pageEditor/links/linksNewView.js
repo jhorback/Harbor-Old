@@ -5,43 +5,42 @@ pageEditor.linksNewView = function (options, navLinksRepo) {
 
 	this.navLinksRepo = navLinksRepo;
 	this.model.navLinks = this.navLinksRepo.getLinks();
+	
+
 };
 
 pageEditor.linksNewView.prototype = {
 
 	add: function (event) {
+		var pageID = parseInt(this.model.get("pageID")),
+		    link = this.model.navLinks.findWhere({ id: pageID });
 		
-		var id = parseInt(this.model.get("pageID")),
-			model = this.model;
-		
-		// jch! - here on linksNewView
-		this.navLinksRepo.getLinks().then(_.bind(function (links) {
-			var link = links.findWhere({ id: id });
-			model.set(link.attributes);
-			model.set("pageID", link.get("id"));
-			model.save().then(function () {
-				model.trigger("save");
-			});
-			
-		}, this));
+		this.model.set(link.attributes);
+		this.model.set("pageID", pageID);
+		this.saveAndTriggerSave();
 	},
 
 	create: function (event) {
-		var thisModel = this.model;
-		this.navLinksRepo.getLinks().then(_.bind(function (links) {
-			var name = this.model.get("name");
-			links.create({
-				name: name
-			}, {
-				success: function (model) {
-					thisModel.set("name", name);
-					thisModel.save().then(function () {
-						thisModel.trigger("save");
-					});
-				}
-			});
-		}, this));
+		var name = this.model.get("name"),
+		    navLinks;
+
+		navLinks = this.model.navLinks.create({
+			name: name
+		}, {
+			success: this.saveAndTriggerSave
+		});
+
+		this.model.set("name", name);
+		this.saveAndTriggerSave();
 		
+	},
+	
+	saveAndTriggerSave: function () {
+		var model = this.model;
+		
+		model.save().then(function () {
+			model.trigger("save");
+		});
 	}
 };
 
