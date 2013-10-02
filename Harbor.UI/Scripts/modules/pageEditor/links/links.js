@@ -1,7 +1,9 @@
 ﻿
-pageEditor.links = function (viewRenderer) {
+pageEditor.links = function (viewRenderer, linksDefault) {
 	
 	this.viewRenderer = viewRenderer;
+	this.linksDefault = linksDefault;
+	
 	this.model.on("save", this.open, this);
 	
 	this.$el.find("a").on("click.links", function (event) {
@@ -37,8 +39,19 @@ pageEditor.links.prototype = {
 	},
 
 	close: function () {
-
+		var linksView;
+		
 		this.view.close();
+		this.linksDefault.render({
+			parentEl: this.$el
+		});
+		
+		//linksView = this.viewRenderer.render("linksView", {
+		//	model: this.model,
+		//	uicid: this.uicid
+		//});
+		
+		//this.$el.empty().append(linksView.$el);
 	},
 	
 	remove: function () {
@@ -47,4 +60,4 @@ pageEditor.links.prototype = {
 };
 
 
-pageEditor.pageComponent("links", ["viewRenderer", pageEditor.links]);
+pageEditor.pageComponent("links", ["viewRenderer", "linksDefault", pageEditor.links]);

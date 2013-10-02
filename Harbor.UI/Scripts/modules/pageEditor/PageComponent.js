@@ -9,7 +9,7 @@
  *     defaults will be populated off of the uic properties
  *     defining this static method is useful for any live properties (on a page resource).
  */
-pageEditor.pageComponent = function (console, appurl, context, _, $) {
+pageEditor.pageComponent = function (console, appurl, context, _, $, modelFactory) {
 	
 	var pageComponentPrototype = {
 		initModel: function () {
@@ -19,8 +19,8 @@ pageEditor.pageComponent = function (console, appurl, context, _, $) {
 				return;
 			}
 
-			temp = context.get(this.model);
-			component = temp.constructor.prototype.component;
+			temp = context.get(this.model, true);
+			component = temp.prototype.component;
 				
 			// gather the default properties (to initialize the model with)
 			pageProps = component.pageProperties;
@@ -39,7 +39,7 @@ pageEditor.pageComponent = function (console, appurl, context, _, $) {
 			}
 
 			// create the model and give the the page model and save method
-			this.model = context.instantiate(this.model, [modelProps]);
+			this.model = modelFactory.create(this.model, modelProps);
 			this.model.page = this.page;
 			this.model.save = _.bind(this.save, this);
 
@@ -118,5 +118,5 @@ pageEditor.pageComponent = function (console, appurl, context, _, $) {
 
 
 pageEditor.construct("pageComponent", [
-	"console", "appurl", "context", "_", "$",
+	"console", "appurl", "context", "_", "$", "modelFactory",
 	pageEditor.pageComponent]);
