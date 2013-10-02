@@ -7,8 +7,9 @@ pageEditor.linksModel = function (attrs, options, collectionFactory) {
 
 pageEditor.linksModel.prototype = {
 	initialize: function () {
-		this.sections = this.collectionFactory.createGeneric(this.get("sections"), {
-			model: "linksSectionModel" // jch* not sure if this will work or if I need a bonified collection
+		
+		this.sections = this.collectionFactory.createGeneric(this.attributes.sections, {
+			model: "linksSectionModel" 
 		});
 	},
 	
@@ -32,7 +33,7 @@ pageEditor.linksModel.prototype = {
 
 	"[sections]": {
 		get: function (value) {
-			return this.sections.toJSON();
+			return this.sections && this.sections.toJSON();
 		}
 	},
 	

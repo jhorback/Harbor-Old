@@ -1,11 +1,11 @@
 ﻿
-<div class="pad" data-templatefor="linksView">
+<div class="pad" data-templatefor="linksDefaultView">
    
     <!-- collection: sections -->
     <div class="menulist" data-collection="sections">
-       <h2 data-bind="showif: hasTitle, text: title"></h2>
+        <h2 data-bind="showif: hasTitle, text: title"></h2>
         <ul>
-          
+
             <!-- collection: links -->
             <li data-collection="links">
                 <a data-bind="href: link, text: title"></a>
@@ -15,7 +15,8 @@
         </ul>
     </div>
     <!-- -->
-
+    
+    <div data-bind="text: sectionsCount"></div>
 </div>
 
 

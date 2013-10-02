@@ -1,5 +1,9 @@
 ﻿
-pageEditor.imageModel = {
+pageEditor.imageModel = function (attrs, options) {
+
+};
+
+pageEditor.imageModel.prototype = {
 	
 	component: {
 		pageProperties: ["fileID", "res"],
@@ -38,4 +42,4 @@ pageEditor.imageModel = {
 	}
 };
 
-pageEditor.model("imageModel", pageEditor.imageModel);
+pageEditor.model("imageModel", ["attrs", "options", pageEditor.imageModel]);
