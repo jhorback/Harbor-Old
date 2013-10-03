@@ -4,12 +4,12 @@
 pageEditor.linksNewView = function (options, navLinksRepo) {
 
 	this.navLinksRepo = navLinksRepo;
-	this.model.navLinks = this.navLinksRepo.getLinks();
-	
-
 };
 
 pageEditor.linksNewView.prototype = {
+	initialize: function () {
+		this.model.navLinks = this.navLinksRepo.getLinks();
+	},
 
 	add: function (event) {
 		var pageID = parseInt(this.model.get("pageID")),

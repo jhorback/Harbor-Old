@@ -1,8 +1,7 @@
 ﻿
-pageEditor.links = function (viewRenderer, linksDefault) {
+pageEditor.links = function (templateRenderer) {
 	
-	this.viewRenderer = viewRenderer;
-	this.linksDefault = linksDefault;
+	this.templateRenderer = templateRenderer;
 	
 	this.model.on("save", this.open, this);
 	
@@ -23,13 +22,13 @@ pageEditor.links.prototype = {
 		
 		if (this.model.isNew()) {
 			
-			this.view = this.viewRenderer.render("linksNewView", {
+			this.view = this.templateRenderer.render("linksNewView", {
 				model: this.model,
 				uicid: this.uicid
 			});
 		} else {
 			
-			this.view = this.viewRenderer.render("linksEditView", {
+			this.view = this.templateRenderer.render("linksEditView", {
 				model: this.model,
 				uicid: this.uicid
 			});
@@ -42,16 +41,13 @@ pageEditor.links.prototype = {
 		var linksView;
 		
 		this.view.close();
-		this.linksDefault.render({
-			parentEl: this.$el
+		
+		linksView = this.templateRenderer.render("linksView", {
+			model: this.model,
+			uicid: this.uicid
 		});
 		
-		//linksView = this.viewRenderer.render("linksView", {
-		//	model: this.model,
-		//	uicid: this.uicid
-		//});
-		
-		//this.$el.empty().append(linksView.$el);
+		this.$el.empty().append(linksView.$el);
 	},
 	
 	remove: function () {
@@ -60,4 +56,4 @@ pageEditor.links.prototype = {
 };
 
 
-pageEditor.pageComponent("links", ["viewRenderer", "linksDefault", pageEditor.links]);
+pageEditor.pageComponent("links", ["templateRenderer", pageEditor.links]);
