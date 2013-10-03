@@ -31,8 +31,9 @@
 	doc = $(document);
 
 	Dialog = function (el, options) {
-		var titleEl;
-		
+		var titleEl,
+		    el = $(el);
+
 		if (this instanceof Dialog === false) {
 			return new Dialog(el, options);
 		}
