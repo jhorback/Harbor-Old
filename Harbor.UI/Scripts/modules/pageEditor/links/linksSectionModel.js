@@ -1,8 +1,16 @@
 ﻿
-pageEditor.linksSectionModel = function (attrs, options) {
-
-	// jch! this.links need to be an array of page model
-	// should be albe to query this from the current page.
+pageEditor.linksSectionModel = function (attrs, options, currentPageRepo, collectionFactory) {
+	var i = 0,
+		page = currentPageRepo.getCurrentPage(),
+		links = attrs.links;
+	
+	this.links = collectionFactory.createGeneric([], {
+		model: "page"
+	});
+	
+	for (i = 0; i < links.length; i++) {
+		this.links.add(page.getPageLink(links[i]));
+	}
 };
 
 pageEditor.linksSectionModel.prototype = {
@@ -10,6 +18,14 @@ pageEditor.linksSectionModel.prototype = {
 		title: null,
 		hasTitle: false,
 		links: []
+	},
+	
+	"[links]": {
+		get: function () {
+			return this.links.map(function (link) {
+				return link.get("id");
+			});
+		}
 	},
 
 	"[hasTitle]": {
@@ -23,5 +39,7 @@ pageEditor.linksSectionModel.prototype = {
 pageEditor.model("linksSectionModel", [
 	"attrs",
 	"options",
+	"currentPageRepo",
+	"collectionFactory",
 	pageEditor.linksSectionModel
 ]);

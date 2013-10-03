@@ -5,12 +5,21 @@ pageEditor.linksEditView = function (options) {
 };
 
 pageEditor.linksEditView.prototype = {
+	initialize: function () {
+	},
+	
+	events: {
+		"click a": function (event) {
+			event.preventDefault();
+		}
+	},
+	
 	onRender: function () {
-		
+
 	},
 
 	onClose: function () {
-		this.$el.css("font-weight", "normal");
+
 	}
 };
 

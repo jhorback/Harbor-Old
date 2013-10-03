@@ -2,17 +2,12 @@
 
 pageEditor.linksModel = function (attrs, options, collectionFactory) {
 
-	this.collectionFactory = collectionFactory;
+	this.sections = collectionFactory.createGeneric(attrs.sections, {
+		model: "linksSectionModel"
+	});
 };
 
 pageEditor.linksModel.prototype = {
-	initialize: function () {
-		
-		this.sections = this.collectionFactory.createGeneric(this.attributes.sections, {
-			model: "linksSectionModel" 
-		});
-	},
-	
 	component: {
 		pageProperties: ["pageID"],
 

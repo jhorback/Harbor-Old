@@ -1,12 +1,10 @@
 ﻿
-pageEditor.component("linksDefault");
 
-
-pageEditor.linksDefaultView = function () {
+pageEditor.linksView = function () {
 
 };
 
-pageEditor.view("linksDefaultView", [
+pageEditor.view("linksView", [
 	"options",
-	pageEditor.linksDefaultView
+	pageEditor.linksView
 ]);
