@@ -4,7 +4,7 @@ pageEditor.links = function (templateRenderer) {
 	this.templateRenderer = templateRenderer;
 	
 	this.model.on("save", this.open, this);
-	
+
 	this.$el.find("a").on("click.links", function (event) {
 		event.preventDefault();
 	});
@@ -18,7 +18,6 @@ pageEditor.links.prototype = {
 	},
 
 	open: function () {
-		debugger;
 		this.view && this.view.close();
 		
 		if (this.model.isNew()) {

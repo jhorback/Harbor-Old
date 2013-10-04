@@ -24,12 +24,15 @@ page.prototype = {
 		published: true,
 		template: null,
 		properties: [],
-		autoPreview: true,
 		previewImageID: null,
 		previewImage: null, // FileDto
 		previewText: "",
-		thumbUrl: "",
+		autoPreview: true,
+		files: [],
+		pageLinks: [],
+		navLinks: [],
 		//
+		thumbUrl: "",
 		link: null,
 		publishedDisplay: null,
 		publishedMessage: null
@@ -202,6 +205,10 @@ page.prototype = {
 	getNavLinks: function (navLinksID) {
 		var links = _.where(this.get("navLinks"), { id: parseInt(navLinksID) });
 		return (links.length === 1) ? links[0] : null;
+	},
+	
+	addNavLinks: function (navLink) {
+		this.get("navLinks").push(navLink.toJSON ? navLink.toJSON() : navLink);
 	}
 };
 
