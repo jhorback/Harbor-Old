@@ -15,8 +15,7 @@
         </ul>
     </div>
     <!-- -->
-    
-    <div data-bind="text: sectionsCount"></div>
+
 </div>
 
 
@@ -50,21 +49,35 @@
 
 
 <div class="pad" data-templatefor="linksEditView">
-
+    
+    <h2 class="quiet" data-bind="text: name"></h2>
+    <hr />
+    
     <!-- collection: sections -->
-    <div class="menulist" data-collection="sections">
-        <input type="text" name="title">
-        <ul>
+    <div>
+        <div class="menulist" data-collection="sections">
+            <input type="text" name="title">
+            <ul>
 
-            <!-- collection: links -->
-            <li data-collection="links">
-                <a data-bind="href: link, text: title"></a>
-            </li>
-            <!-- -->
+                <!-- collection: links -->
+                <li data-collection="links">
+                    <div class="clearfix clear pad">
+                        <span class="icon-reorder float-left margin-right" title="Re-order this link"></span>
+                        <span data-bind="text: title" class="float-left"></span>
+                        <a class="icon-remove float-right" title="Remove this link"></a>
+                    </div>
+                </li>
+                <!-- -->
 
-        </ul>
-        <button data-event="addLink">Add Link</button>
+            </ul>
+            <button data-event="addLink" class="icon-plus" title="Add a link"></button>
+            <button data-event="removeSection" class="icon-remove" title="Remove this section of links"></button>
+            <hr />
+        </div>
     </div>
     <!-- -->
+    
+    
     <button data-event="addSection">Add Section</button>
+   
 </div>

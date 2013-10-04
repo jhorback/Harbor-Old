@@ -11,7 +11,17 @@ pageEditor.linksEditView.prototype = {
 	events: {
 		"click a": function (event) {
 			event.preventDefault();
-		}
+		},
+		
+		"click [data-event=addLink]": "addLink"
+	},
+	
+	addSection: function () {
+		this.model.sections.add({});
+	},
+	
+	addLink: function () {
+		alert("add link");
 	},
 	
 	onRender: function () {

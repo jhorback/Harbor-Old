@@ -18,6 +18,7 @@ pageEditor.links.prototype = {
 	},
 
 	open: function () {
+		debugger;
 		this.view && this.view.close();
 		
 		if (this.model.isNew()) {

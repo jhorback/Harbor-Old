@@ -2,7 +2,7 @@
 pageEditor.linksSectionModel = function (attrs, options, currentPageRepo, collectionFactory) {
 	var i = 0,
 		page = currentPageRepo.getCurrentPage(),
-		links = attrs.links;
+		links = attrs.links || [];
 	
 	this.links = collectionFactory.createGeneric([], {
 		model: "page"
