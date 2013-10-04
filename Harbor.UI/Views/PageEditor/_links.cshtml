@@ -1,18 +1,24 @@
 ﻿
 <div class="pad" data-templatefor="linksView">
    
+    <div data-bind="showif: isEmpty">
+        There are no links to display.    
+    </div>
+    
     <!-- collection: sections -->
-    <div class="menulist" data-collection="sections">
-        <h2 data-bind="showif: hasTitle, text: title"></h2>
-        <ul>
+    <div>
+        <div class="menulist" data-collection="sections">
+            <h2 data-bind="showif: hasTitle, text: title"></h2>
+            <ul>
 
-            <!-- collection: links -->
-            <li data-collection="links">
-                <a data-bind="href: link, text: title"></a>
-            </li>
-            <!-- -->
+                <!-- collection: links -->
+                <li data-collection="links">
+                    <a data-bind="href: link, text: title"></a>
+                </li>
+                <!-- -->
 
-        </ul>
+            </ul>
+        </div>
     </div>
     <!-- -->
 

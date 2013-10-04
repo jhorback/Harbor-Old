@@ -1,23 +1,31 @@
 ﻿@using Harbor.UI.Extensions
 @model Harbor.UI.Models.Components.NavLinksDto
 <div class="pad">
-	@foreach (var sect in Model.sections)
-	{
-		<div class="menulist">
-			@if (string.IsNullOrEmpty(sect.title) == false)
-			{
-				<h2>@sect.title</h2>
-			}
-			<ul>
-				@foreach (var link in sect.links)
-				{
-					var page = ((Harbor.Domain.Pages.Page)ViewBag.Page).GetPageLink(link);
-					if (page != null)
-					{
-						<li><a href="~/id/@page.PageID/@page.Title">@page.Title</a></li>							 
-					}
-				}
-			</ul>
-		</div>
-	}
+    
+    @if (Model.sections.Count == 0)
+    {
+        <div>
+            There are no links to display. 
+        </div>
+    }
+
+    @foreach (var sect in Model.sections)
+    {
+        <div class="menulist">
+            @if (string.IsNullOrEmpty(sect.title) == false)
+            {
+                <h2>@sect.title</h2>
+            }
+            <ul>
+                @foreach (var link in sect.links)
+                {
+                    var page = ((Harbor.Domain.Pages.Page)ViewBag.Page).GetPageLink(link);
+                    if (page != null)
+                    {
+                        <li><a href="~/id/@page.PageID/@page.Title">@page.Title</a></li>							 
+                    }
+                }
+            </ul>
+        </div>
+    }
 </div>
