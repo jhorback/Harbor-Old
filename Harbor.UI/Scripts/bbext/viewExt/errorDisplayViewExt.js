@@ -1,4 +1,10 @@
 ﻿/*
+ * Markup:
+ *     [data-validation-for] - attribute can be set to the name of a model property that is
+ *                             validated and placed where error text should be displayed.
+ *     .form-field - if a 'data-validation-for' element is inside a .form-field an error class will be applied
+ *     .alert-error - for general form errors (should be an element inside a form)
+ *   
  * Usage:
  *     if (someView.isModelValid()) { // this will update the view if there are errors
  *         someModel.save();
@@ -84,7 +90,7 @@ function errorDisplayViewExt(_, console) {
 		displayGeneralError: function (errorStr) {
 			var view = this,
 			    form = view.$("form"),
-			    summarySpan = form.find(".alert-error");
+			    summarySpan = view.$(".alert-error");
 
 
 			if (form.length === 0 || summarySpan.length === 0) {

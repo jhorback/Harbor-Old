@@ -26,9 +26,19 @@ pageEditor.linksModel.prototype = {
 		sections: []
 	},
 
+	"[name]": {
+		validate: {
+			required: true
+		}
+	},
+
 	"[sections]": {
 		get: function (value) {
 			return this.sections && this.sections.toJSON();
+		},
+		
+		set: function (value) {
+			this.sections.set(value);
 		}
 	},
 	
