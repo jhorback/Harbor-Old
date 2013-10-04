@@ -1,12 +1,13 @@
 ﻿
 
-pageEditor.linksModel = function (attrs, options, collectionFactory) {
+pageEditor.linksModel = function (attrs, options, collectionFactory, currentPageRepo, navLinksRepo) {
 
 	this.sections = collectionFactory.createGeneric(attrs.sections, {
 		model: "linksSectionModel"
 	});
 	
 	this.sections.on("all", this.updateIsEmpty, this);
+	this.navLinksRepo = navLinksRepo;
 };
 
 pageEditor.linksModel.prototype = {
@@ -16,16 +17,17 @@ pageEditor.linksModel.prototype = {
 		getDefaults: function (page, pageProperties) {
 			if (pageProperties.pageID) {
 				return _.pick(page.getNavLinks(pageProperties.pageID),
-					"name", "sections");
+					"id", "name", "sections");
 			}
 			return {};
 		}
 	},
 	
 	defaults: {
-		pageID: null,
+		id: null,
 		name: null,
 		sections: [],
+		pageID: null,
 		//
 		isEmpty: true
 	},
@@ -56,6 +58,19 @@ pageEditor.linksModel.prototype = {
 	
 	updateIsEmpty: function () {
 		this.set("isEmpty", this.sections.length === 0);
+	},
+	
+	addSection: function () {
+		this.sections.add({});
+		this.save();
+	},
+	
+	save: function () {
+		if (this.isNew()) {
+			return currentPageRepo.saveCurrentPage();
+		}
+		
+		return this.navLinksRepo.updateLink(this);
 	}
 };
 
@@ -64,5 +79,7 @@ pageEditor.model("linksModel", [
 	"attrs",
 	"options",
 	"collectionFactory",
+	"currentPageRepo",
+	"navLinksRepo",
 	pageEditor.linksModel
 ]);

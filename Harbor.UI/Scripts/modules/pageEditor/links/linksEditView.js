@@ -17,7 +17,7 @@ pageEditor.linksEditView.prototype = {
 	},
 	
 	addSection: function () {
-		this.model.sections.add({});
+		this.model.addSection();
 	},
 	
 	addLink: function () {
