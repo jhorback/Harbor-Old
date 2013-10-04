@@ -120,3 +120,6 @@ pageEditor.pageComponent = function (console, appurl, context, _, $, modelFactor
 pageEditor.construct("pageComponent", [
 	"console", "appurl", "context", "_", "$", "modelFactory", "ajaxRequest",
 	pageEditor.pageComponent]);
+
+
+pageEditor.pageComponent("defaultPageComponent", {});

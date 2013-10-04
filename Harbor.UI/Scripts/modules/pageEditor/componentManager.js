@@ -79,7 +79,7 @@ pageEditor.componentManager = function ($, _, Backbone, context, console, curren
 	}
 
 	function registerComponent(componentModel) {
-		var type, key, uicid, component, el;
+		var type, key, uicid, component, el, instantiateArgs;
 
 		uicid = componentModel.get("uicid");
 		type = componentModel.get("type");
@@ -90,18 +90,21 @@ pageEditor.componentManager = function ($, _, Backbone, context, console, curren
 			el = $('<div id="' + uicid + '"/>');
 		}
 
+		instantiateArgs = [{
+			type: type,
+			key: key,
+			uicid: uicid,
+			componentModel: componentModel,
+			page: page,
+			$el: el
+		}];
+
 		try {
-			component = components[uicid] = context.instantiate(key, [{
-				type: type,
-				key: key,
-				uicid: uicid,
-				componentModel: componentModel,
-				page: page,
-				$el: el
-			}]);
+			component = components[uicid] = context.instantiate(key, instantiateArgs);
 			console.log("Created page component", type, key, uicid);
 		} catch (e) {
 			console.error("Could not create page component:", key, "Error:", e.message);
+			component = components[uicid] = context.instantiate("defaultPageComponent", instantiateArgs);
 		}
 
 		return component;
