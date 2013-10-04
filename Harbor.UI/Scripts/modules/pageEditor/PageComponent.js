@@ -9,7 +9,7 @@
  *     defaults will be populated off of the uic properties
  *     defining this static method is useful for any live properties (on a page resource).
  */
-pageEditor.pageComponent = function (console, appurl, context, _, $, modelFactory, ajaxRequest) {
+pageEditor.pageComponent = function (console, appurl, context, _, $, modelFactory, currentPageRepo) {
 	
 	var pageComponentPrototype = {
 		initModel: function () {
@@ -74,7 +74,7 @@ pageEditor.pageComponent = function (console, appurl, context, _, $, modelFactor
 		},
 
 		save: function () {
-			return ajaxRequest.handle(this.page.save());
+			return currentPageRepo.saveCurrentPage();
 		},
 
 		create: function () {
@@ -118,7 +118,7 @@ pageEditor.pageComponent = function (console, appurl, context, _, $, modelFactor
 
 
 pageEditor.construct("pageComponent", [
-	"console", "appurl", "context", "_", "$", "modelFactory", "ajaxRequest",
+	"console", "appurl", "context", "_", "$", "modelFactory", "currentPageRepo",
 	pageEditor.pageComponent]);
 
 

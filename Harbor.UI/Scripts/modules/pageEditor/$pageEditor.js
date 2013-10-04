@@ -1,6 +1,6 @@
 ﻿
 
-var pageEditor = context.module("pageEditor").use("bbext");
+var pageEditor = context.module("pageEditor").use("bbext", "currentPageModel");
 
 
 function pageEditorService($, console, componentManager, viewRenderer) {

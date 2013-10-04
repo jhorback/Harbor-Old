@@ -31,16 +31,13 @@ pageEditor.linksNewView.prototype = {
 			return;
 		}
 		
-		this.model.navLinks.create({
-			name: name
-		}, {
-			success: this.addNavLinksAndSave
-		});
-
 		this.model.set("name", name);
+		this.navLinksRepo.createLink({
+			name: name
+		}).then(this.addNavLinksToPageAndSave);
 	},
 	
-	addNavLinksAndSave: function (navLinks) {
+	addNavLinksToPageAndSave: function (navLinks) {
 		var page = this.currentPageRepo.getCurrentPage();
 		
 		page.addNavLinks(navLinks);

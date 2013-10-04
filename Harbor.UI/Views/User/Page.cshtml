@@ -22,10 +22,12 @@
 @section scripts {
 	@if (ViewBag.HasWritePermissions)
 	{ 
+	    <script>
+    	    context.module("currentPageModel").register("currentPageDto", @Html.Raw(Json.Encode(ViewBag.PageDto)));
+    	</script>
 		@Html.InstallJavaScriptPackage(PageLoaderAppPkg.PackageName)
 		<script>
-			context.module("currentPageModel").register("currentPageDto", @Html.Raw(Json.Encode(ViewBag.PageDto)));
-			pageLoader.start();
+		    pageLoader.start();
 		</script>
 	}
 }
