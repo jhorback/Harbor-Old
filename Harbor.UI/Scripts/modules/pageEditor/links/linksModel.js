@@ -5,6 +5,8 @@ pageEditor.linksModel = function (attrs, options, collectionFactory) {
 	this.sections = collectionFactory.createGeneric(attrs.sections, {
 		model: "linksSectionModel"
 	});
+	
+	this.sections.on("all", this.updateIsEmpty, this);
 };
 
 pageEditor.linksModel.prototype = {
@@ -23,9 +25,15 @@ pageEditor.linksModel.prototype = {
 	defaults: {
 		pageID: null,
 		name: null,
-		sections: []
+		sections: [],
+		//
+		isEmpty: true
 	},
 
+	initialize: function () {
+		this.updateIsEmpty();
+	},
+	
 	"[name]": {
 		validate: {
 			required: true
@@ -44,6 +52,10 @@ pageEditor.linksModel.prototype = {
 	
 	isNew: function () {
 		return this.get("name") ? false : true;
+	},
+	
+	updateIsEmpty: function () {
+		this.set("isEmpty", this.sections.length === 0);
 	}
 };
 

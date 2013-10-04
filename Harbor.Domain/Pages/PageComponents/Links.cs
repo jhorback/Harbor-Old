@@ -53,7 +53,7 @@ namespace Harbor.Domain.Pages.PageComponents
 		{
 			get
 			{
-				if (_links == null) return null;
+				if (_links == null) return new List<NavLinksSection>();
 				return _links.Sections;
 			}
 		}
