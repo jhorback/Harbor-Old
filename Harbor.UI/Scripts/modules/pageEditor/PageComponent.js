@@ -41,7 +41,9 @@ pageEditor.pageComponent = function (console, appurl, context, _, $, modelFactor
 			// create the model and give the the page model and save method
 			this.model = modelFactory.create(this.model, modelProps);
 			this.model.page = this.page;
-			this.model.save = _.bind(this.save, this);
+			if (!this.model.save) {
+				this.model.save = _.bind(this.save, this);
+			}
 
 			// set up binding on the page properties
 			_.each(pageProps, function (attrName) {
