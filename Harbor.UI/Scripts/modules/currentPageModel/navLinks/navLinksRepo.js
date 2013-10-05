@@ -5,13 +5,13 @@ currentPageModel.navLinksRepo = function (
 	collectionFactory,
 	ajaxRequest) {
 
-	var links;
+	var links, linksDfd;
 
 	return {
 		getLinks: function () {
 			if (!links) {
 				links = collectionFactory.create("navLinksCollection");
-				ajaxRequest.handle(links.fetch());
+				linksDfd = ajaxRequest.handle(links.fetch());
 			}
 			return links;
 		},
@@ -31,13 +31,17 @@ currentPageModel.navLinksRepo = function (
 		},
 		
 		updateLink: function (link) {
-			// jch! - here need to get the link upate it and save it!?!
 			var cachedLinks = this.getLinks(),
 				dfd = $.Deferred();
 			
-			var navLink = cachedLinks.get(link.get("id"));
-			return ajaxRequest.handle(navLink.save(link));
-			// return dfd.promise(); jch - do i have to wait for getLinks()?
+			linksDfd.then(function () {
+				var navLink = cachedLinks.get(link.get("id")),
+					attrs = link.toJSON(),
+					saveDfd = navLink.save(attrs);
+				ajaxRequest.handle(saveDfd).then(dfd.resolve);
+			});
+			
+			return dfd.promise();
 		}
 	};
 };

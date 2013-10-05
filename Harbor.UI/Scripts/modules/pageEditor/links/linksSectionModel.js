@@ -11,6 +11,10 @@ pageEditor.linksSectionModel = function (attrs, options, currentPageRepo, collec
 	for (i = 0; i < links.length; i++) {
 		this.links.add(page.getPageLink(links[i]));
 	}
+	
+	this.links.on("all", function (links) {
+		this.trigger.apply("change:links", links);
+	}, this);
 };
 
 pageEditor.linksSectionModel.prototype = {
