@@ -201,13 +201,17 @@ page.prototype = {
 		var link = _.where(this.get("pageLinks"), { id: parseInt(pageID) });
 		return (link.length === 1) ? link[0] : {};
 	},
+	
+	addPageLinkRef: function (page) {
+		this.get("pageLinks").push(page.toJSON ? page.toJSON() : page);
+	},
 
 	getNavLinks: function (navLinksID) {
 		var links = _.where(this.get("navLinks"), { id: parseInt(navLinksID) });
 		return (links.length === 1) ? links[0] : null;
 	},
 	
-	addNavLinks: function (navLink) {
+	addNavLinksRef: function (navLink) {
 		this.get("navLinks").push(navLink.toJSON ? navLink.toJSON() : navLink);
 	}
 };

@@ -40,7 +40,7 @@ pageEditor.linksNewView.prototype = {
 	addNavLinksToPageAndSave: function (navLinks) {
 		var page = this.currentPageRepo.getCurrentPage();
 		
-		page.addNavLinks(navLinks);
+		page.addNavLinksRef(navLinks);
 		this.saveAndTriggerSave();
 	},
 	
