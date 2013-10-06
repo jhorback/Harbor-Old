@@ -13,7 +13,7 @@ pageEditor.linksSectionView.prototype = {
 			select: this.bind(this.selectPage, this)
 		});
 	},
-
+	
 	removeSection: function (event) {
 		this.model.collection.remove(this.model);
 	},
