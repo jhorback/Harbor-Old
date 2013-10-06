@@ -58,7 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Extensions\ObjectContext\ObjectContextExtensions.cs" />
+    <Compile Include="Extensions\ObjectContext\AttachUpdated.cs" />
     <Compile Include="HarborContext.cs" />
     <Compile Include="Migrations\201208230022486_InitialDatabase.cs" />
     <Compile Include="Migrations\201208230022486_InitialDatabase.Designer.cs">
