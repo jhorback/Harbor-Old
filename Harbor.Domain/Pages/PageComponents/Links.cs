@@ -26,7 +26,7 @@ namespace Harbor.Domain.Pages.PageComponents
 		{
 			get
 			{
-				var id = GetProperty("pageID");
+				var id = GetProperty("navLinksID");
 				return id == null ? 0 : int.Parse(id);
 			}
 		}

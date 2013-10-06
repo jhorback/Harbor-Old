@@ -7,17 +7,18 @@ pageEditor.linksModel = function (attrs, options, collectionFactory, currentPage
 	});
 	
 	this.sections.on("all", this.save, this);
+	this.currentPageRepo = currentPageRepo;
 	this.navLinksRepo = navLinksRepo;
 };
 
 pageEditor.linksModel.prototype = {
 	component: {
-		pageProperties: ["pageID"],
+		pageProperties: ["navLinksID"],
 
 		getDefaults: function (page, pageProperties) {
-			if (pageProperties.pageID) {
-				return _.pick(page.getNavLinks(pageProperties.pageID),
-					"id", "name", "sections");
+			if (pageProperties.navLinksID) {
+				var props = page.getNavLinks(pageProperties.navLinksID);
+				return _.pick(props, "id", "name", "sections");
 			}
 			return {};
 		}
@@ -27,7 +28,7 @@ pageEditor.linksModel.prototype = {
 		id: null,
 		name: null,
 		sections: [],
-		pageID: null,
+		navLinksID: null,
 		//
 		isEmpty: true
 	},
@@ -64,11 +65,12 @@ pageEditor.linksModel.prototype = {
 		this.sections.add({});
 	},
 	
-	save: function () {
+	save: function (options) {
 		this.updateIsEmpty();
 		
-		if (this.isNew()) {
-			return currentPageRepo.saveCurrentPage();
+		debugger;
+		if (options && options.savePage) {
+			return this.currentPageRepo.saveCurrentPage();
 		}
 		
 		return this.navLinksRepo.updateLink(this);

@@ -4,13 +4,15 @@ function currentPageRepo(
 	currentPageDto,
 	globalCache,
 	modelFactory,
-	pageRepo
+	pageRepo,
+	console
 	) {
 
 	var currentPage = globalCache.get("currentPage") ||
 		modelFactory.create("page", currentPageDto);
 
 	globalCache.set("currentPage", currentPage);
+	console.debug("currentPage", currentPage);
 	
 	return {
 		getCurrentPage: function () {
@@ -36,4 +38,5 @@ currentPageModel.service("currentPageRepo", [
 	"globalCache",
 	"modelFactory",
 	"pageRepo",
+	"console",
 	currentPageRepo]);

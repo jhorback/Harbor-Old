@@ -29,6 +29,7 @@ pageEditor.linksSectionModel.prototype = {
 			var ids = this.links.map(function (link) {
 				return link.get("id");
 			});
+			debugger;
 			return ids;
 		}
 	},
