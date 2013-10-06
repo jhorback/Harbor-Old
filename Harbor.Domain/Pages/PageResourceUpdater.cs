@@ -20,8 +20,10 @@ namespace Harbor.Domain.Pages
 		/// <summary>
 		/// To be called before updating to add/remove resource relationships according to the components.
 		/// </summary>
-		public void UpdateResources()
+		/// <returns>True if resources were updated.</returns>
+		public bool UpdateResources()
 		{
+			var resourcesUpdated = false;
 			var pageRes = getPageResources();
 			var compRes = getComponentResources();
 			
@@ -30,7 +32,8 @@ namespace Harbor.Domain.Pages
 			{
 				if (!compRes.Any(r => res.Equals(r)))
 				{
-					this.resourceManager.RemoveResource(this.page, res);
+					resourceManager.RemoveResource(this.page, res);
+					resourcesUpdated = true;
 				}
 			}
 
@@ -39,9 +42,12 @@ namespace Harbor.Domain.Pages
 			{
 				if (!pageRes.Any(r => res.Equals(r)))
 				{
-					this.resourceManager.AddResource(this.page, res);
+					resourceManager.AddResource(this.page, res);
+					resourcesUpdated = true;
 				}
 			}
+
+			return resourcesUpdated;
 		}
 
 		#region private

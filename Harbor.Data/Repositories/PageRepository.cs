@@ -115,10 +115,7 @@ namespace Harbor.Data.Repositories
 			entity.DeletedPageRoles = new List<PageRole>();
 
 
-			// add remove page resources
-			var resourceManager = new PageRepositoryResourceManager(context);
-			var pageResourceUpdater = new PageResourceUpdater(entity, componentRepository, resourceManager);
-			pageResourceUpdater.UpdateResources();
+			updatePageResources(entity);
 
 
 			// update the modified date
@@ -211,6 +208,14 @@ namespace Harbor.Data.Repositories
 				page.AllPageRoles = new PageFeatureRoleRepository().GetRoles();
 			}
 			return page;
+		}
+
+		bool updatePageResources(Page page)
+		{
+			// add remove page resources
+			var resourceManager = new PageRepositoryResourceManager(context);
+			var pageResourceUpdater = new PageResourceUpdater(page, componentRepository, resourceManager);
+			return pageResourceUpdater.UpdateResources();
 		}
 		#endregion
 	}
