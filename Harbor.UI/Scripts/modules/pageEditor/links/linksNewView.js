@@ -2,7 +2,7 @@
 
 
 pageEditor.linksNewView = function (options, _, navLinksRepo, currentPageRepo) {
-	_.bindAll(this, "saveAndTriggerSave", "addNavLinksAndSave");
+	_.bindAll(this, "saveAndTriggerSave", "addNavLinksToPageAndSave");
 
 	this.navLinksRepo = navLinksRepo;
 	this.currentPageRepo = currentPageRepo;
@@ -14,13 +14,14 @@ pageEditor.linksNewView.prototype = {
 	},
 
 	add: function (event) {
-		var pageID = parseInt(this.model.get("pageID")),
-		    link = this.model.navLinks.findWhere({ id: pageID });
+		var navLinksID = parseInt(this.model.get("navLinksID")),
+		    link = this.model.navLinks.findWhere({ id: navLinksID });
 		
+		debugger;
 		event.preventDefault();
 		this.model.set(link.attributes);
-		this.model.set("pageID", pageID);
-		this.saveAndTriggerSave();
+		this.model.set("navLinksID", navLinksID);
+		this.saveAndTriggerSave({ savePage: true});
 	},
 
 	create: function (event) {
@@ -44,10 +45,10 @@ pageEditor.linksNewView.prototype = {
 		this.saveAndTriggerSave();
 	},
 	
-	saveAndTriggerSave: function () {
+	saveAndTriggerSave: function (options) {
 		var model = this.model;
 		
-		model.save().then(function () {
+		model.save(options).then(function () {
 			model.trigger("save");
 		});
 	}
