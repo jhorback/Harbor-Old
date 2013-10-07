@@ -67,6 +67,7 @@ namespace Harbor.Data
 
 				HasMany(m => m.Files).WithMany();
 				HasMany(m => m.PageLinks).WithMany();
+				HasMany(m => m.NavLinks).WithMany();
 			}
 		}
 
@@ -108,7 +109,7 @@ namespace Harbor.Data
 				HasRequired(m => m.Owner)
 					.WithMany()
 					.HasForeignKey(m => m.UserName)
-					.WillCascadeOnDelete(true);
+					.WillCascadeOnDelete(false);
 			}
 		}
 	}

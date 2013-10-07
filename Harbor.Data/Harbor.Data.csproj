@@ -108,6 +108,10 @@
     <Compile Include="Migrations\201305131316589_NavLinks.Designer.cs">
       <DependentUpon>201305131316589_NavLinks.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201310062345072_PageNavLinksManyToMany.cs" />
+    <Compile Include="Migrations\201310062345072_PageNavLinksManyToMany.Designer.cs">
+      <DependentUpon>201310062345072_PageNavLinksManyToMany.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositories\NavLinksRepository.cs" />
     <Compile Include="Repositories\PageRepositoryResourceManager.cs" />
@@ -166,6 +170,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201305131316589_NavLinks.resx">
       <DependentUpon>201305131316589_NavLinks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201310062345072_PageNavLinksManyToMany.resx">
+      <DependentUpon>201310062345072_PageNavLinksManyToMany.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
