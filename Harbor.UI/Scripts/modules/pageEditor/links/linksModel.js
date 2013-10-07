@@ -68,7 +68,6 @@ pageEditor.linksModel.prototype = {
 	save: function (options) {
 		this.updateIsEmpty();
 		
-		debugger;
 		if (options && options.savePage) {
 			return this.currentPageRepo.saveCurrentPage();
 		}
