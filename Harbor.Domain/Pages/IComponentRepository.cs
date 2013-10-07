@@ -5,7 +5,7 @@ namespace Harbor.Domain.Pages
 	/// <summary>
 	/// Provides access to the available components.
 	/// </summary>
-	public interface IPageComponentRepository
+	public interface IComponentRepository
 	{
 		/// <summary>
 		/// Returns all components.

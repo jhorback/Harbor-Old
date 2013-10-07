@@ -6,11 +6,11 @@ namespace Harbor.Domain.Pages
 {
 	public class PageResourceUpdater
 	{
-		readonly IPageComponentRepository componentRepository;
+		readonly IComponentRepository componentRepository;
 		private readonly IPageRepositoryResourceManager resourceManager;
 		readonly Page page;
 
-		public PageResourceUpdater(Page page, IPageComponentRepository componentRepository, IPageRepositoryResourceManager resourceManager)
+		public PageResourceUpdater(Page page, IComponentRepository componentRepository, IPageRepositoryResourceManager resourceManager)
 		{
 			this.page = page;
 			this.componentRepository = componentRepository;
