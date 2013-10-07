@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Harbor.Domain.Pages
 {
-	public class PageComponentRepository : IPageComponentRepository
+	public class ComponentRepository : IComponentRepository
 	{
 		List<ComponentType> components;
 
@@ -13,7 +13,7 @@ namespace Harbor.Domain.Pages
 			return components;
 		}
 
-		public PageComponentRepository(List<ComponentType> components)
+		public ComponentRepository(List<ComponentType> components)
 		{
 			this.components = components;
 		}

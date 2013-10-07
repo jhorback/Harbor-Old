@@ -8,9 +8,9 @@ namespace Harbor.UI.Controllers.Api
 {
     public class PageComponentsController : ApiController
     {
-		IPageComponentRepository compRep;
+		IComponentRepository compRep;
 
-		public PageComponentsController(IPageComponentRepository compRep)
+		public PageComponentsController(IComponentRepository compRep)
 		{
 			this.compRep = compRep;
 		}

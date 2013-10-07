@@ -99,7 +99,7 @@
     <Compile Include="Pages\PageComponents\Text.cs" />
     <Compile Include="Pages\PageComponents\Image.cs" />
     <Compile Include="Pages\ComponentType.cs" />
-    <Compile Include="Pages\PageComponentRepository.cs" />
+    <Compile Include="Pages\ComponentRepository.cs" />
     <Compile Include="Pages\PageFactory.cs" />
     <Compile Include="Pages\PageFeature.cs" />
     <Compile Include="Pages\PageFeatureRole.cs" />
@@ -126,7 +126,7 @@
     <Compile Include="Pages\Template\PageContent.cs" />
     <Compile Include="Pages\Template\PageUIC.cs" />
     <Compile Include="Pages\Template\LayoutProperties.cs" />
-    <Compile Include="Pages\IPageComponentRepository.cs" />
+    <Compile Include="Pages\IComponentRepository.cs" />
     <Compile Include="Pages\IPageRepository.cs" />
     <Compile Include="Pages\Roles\Author.cs" />
     <Compile Include="Pages\Template\PageHeader.cs" />

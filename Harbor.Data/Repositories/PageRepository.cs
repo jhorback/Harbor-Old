@@ -13,11 +13,11 @@ namespace Harbor.Data.Repositories
 	{
 		readonly HarborContext context;
 		readonly IPageFactory pageFactory;
-		readonly IPageComponentRepository componentRepository;
+		readonly IComponentRepository componentRepository;
 
 		string pageCacheKey = "Harbor.Data.Repositories.PageRepository.";
 
-		public PageRepository(HarborContext context, IPageFactory pageFactory, IPageComponentRepository componentRepository)
+		public PageRepository(HarborContext context, IPageFactory pageFactory, IComponentRepository componentRepository)
 		{
 			this.context = context;
 			this.pageFactory = pageFactory;
