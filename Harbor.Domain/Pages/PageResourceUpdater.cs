@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Harbor.Domain.Pages.PageResources;
 
 namespace Harbor.Domain.Pages
 {
@@ -8,11 +7,9 @@ namespace Harbor.Domain.Pages
 	{
 		readonly IComponentRepository componentRepository;
 		private readonly IPageRepositoryResourceManager resourceManager;
-		readonly Page page;
 
-		public PageResourceUpdater(Page page, IComponentRepository componentRepository, IPageRepositoryResourceManager resourceManager)
+		public PageResourceUpdater(IComponentRepository componentRepository, IPageRepositoryResourceManager resourceManager)
 		{
-			this.page = page;
 			this.componentRepository = componentRepository;
 			this.resourceManager = resourceManager;
 		}
@@ -21,18 +18,18 @@ namespace Harbor.Domain.Pages
 		/// To be called before updating to add/remove resource relationships according to the components.
 		/// </summary>
 		/// <returns>True if resources were updated.</returns>
-		public bool UpdateResources()
+		public bool UpdateResources(Page page)
 		{
 			var resourcesUpdated = false;
 			var pageRes = resourceManager.GetResourcesFromPage(page);
-			var compRes = getComponentResources();
+			var compRes = getComponentResources(page);
 			
 			// remove non required resources
 			foreach (var res in pageRes)
 			{
 				if (!compRes.Any(r => res.Equals(r)))
 				{
-					resourceManager.RemoveResource(this.page, res);
+					resourceManager.RemoveResource(page, res);
 					resourcesUpdated = true;
 				}
 			}
@@ -42,7 +39,7 @@ namespace Harbor.Domain.Pages
 			{
 				if (!pageRes.Any(r => res.Equals(r)))
 				{
-					resourceManager.AddResource(this.page, res);
+					resourceManager.AddResource(page, res);
 					resourcesUpdated = true;
 				}
 			}
@@ -51,16 +48,16 @@ namespace Harbor.Domain.Pages
 		}
 
 		#region private
-		IEnumerable<PageResource> getComponentResources()
+		IEnumerable<PageResource> getComponentResources(Page page)
 		{
-			foreach (var res in getUICDeclarations(page.Template.Header))
+			foreach (var res in getUICDeclarations(page, page.Template.Header))
 			{
 				yield return res;
 			}
 
 			foreach (var aside in page.Template.Aside)
 			{
-				foreach (var res in getUICDeclarations(aside))
+				foreach (var res in getUICDeclarations(page, aside))
 				{
 					yield return res;
 				}
@@ -68,14 +65,14 @@ namespace Harbor.Domain.Pages
 
 			foreach (var content in page.Template.Content)
 			{
-				foreach (var res in getUICDeclarations(content))
+				foreach (var res in getUICDeclarations(page, content))
 				{
 					yield return res;
 				}
 			}
 		}
 
-		private IEnumerable<PageResource> getUICDeclarations(PageUIC uic)
+		private IEnumerable<PageResource> getUICDeclarations(Page page, PageUIC uic)
 		{
 			var compType = componentRepository.GetPageComponentType(uic.key);
 			if (compType != null)
@@ -86,27 +83,6 @@ namespace Harbor.Domain.Pages
 					yield return res;
 				}
 			}
-		}
-
-		IEnumerable<PageResource> getPageResources()
-		{
-			var resources = new List<PageResource>();
-
-			foreach (var file in page.Files)
-			{
-				resources.Add(new FileResource(page, file.FileID));
-			}
-
-			foreach (var res in page.PageLinks)
-			{
-				resources.Add(new PageLinkResource(page, res.PageID));
-			}
-
-			foreach (var res in page.NavLinks)
-			{
-				resources.Add(new LinksResource(page, res.NavLinksID));
-			}
-			return resources;
 		}
 		#endregion
 	}
