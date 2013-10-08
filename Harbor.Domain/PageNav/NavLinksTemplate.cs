@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Web.Script.Serialization;
 
 namespace Harbor.Domain.PageNav
@@ -19,14 +20,17 @@ namespace Harbor.Domain.PageNav
 		/// <returns></returns>
 		public static NavLinksTemplate Parse(string template)
 		{
-			NavLinksTemplate temp;
-			if (string.IsNullOrEmpty(template))
+			NavLinksTemplate temp = new NavLinksTemplate();
+			if (string.IsNullOrEmpty(template) == false)
 			{
-				temp = new NavLinksTemplate();
-			}
-			else
-			{
-				temp = new JavaScriptSerializer().Deserialize<NavLinksTemplate>(template);
+				try
+				{
+					temp = new JavaScriptSerializer().Deserialize<NavLinksTemplate>(template);
+				}
+				catch (InvalidOperationException e)
+				{
+					// jch* add logging
+				}
 			}
 			return temp;
 		}

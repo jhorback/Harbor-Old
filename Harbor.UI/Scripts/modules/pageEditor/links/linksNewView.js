@@ -17,7 +17,6 @@ pageEditor.linksNewView.prototype = {
 		var navLinksID = parseInt(this.model.get("navLinksID")),
 		    link = this.model.navLinks.findWhere({ id: navLinksID });
 		
-		debugger;
 		event.preventDefault();
 		this.model.set(link.attributes);
 		this.model.set("navLinksID", navLinksID);

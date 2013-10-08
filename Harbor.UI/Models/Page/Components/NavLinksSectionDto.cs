@@ -7,7 +7,7 @@ namespace Harbor.UI.Models.Components
 	public class NavLinksSectionDto
 	{
 		public string title { get; set; }
-		public List<int> links { get; set; }
+		public List<NavLinksSectionLinkDto> links { get; set; }
 
 		public static implicit operator NavLinksSection(NavLinksSectionDto sections)
 		{

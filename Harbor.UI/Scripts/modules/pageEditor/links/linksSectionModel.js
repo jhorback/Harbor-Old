@@ -1,16 +1,8 @@
 ﻿
-pageEditor.linksSectionModel = function (attrs, options, currentPageRepo, collectionFactory) {
-	var i = 0,
-		page = currentPageRepo.getCurrentPage(),
-		links = attrs.links || [];
+pageEditor.linksSectionModel = function (attrs, options, collectionFactory) {
+	var links = attrs.links || [];
 	
-	this.links = collectionFactory.createGeneric([], {
-		model: "page"
-	});
-	
-	for (i = 0; i < links.length; i++) {
-		this.links.add(page.getPageLink(links[i]));
-	}
+	this.links = collectionFactory.createGeneric(links);
 	
 	this.links.on("all", function () {
 		this.trigger("change:links");
@@ -26,10 +18,8 @@ pageEditor.linksSectionModel.prototype = {
 	
 	"[links]": {
 		get: function () {
-			var ids = this.links.map(function (link) {
-				return link.get("id");
-			});
-			return ids;
+			var links = this.links.toJSON();
+			return links;
 		}
 	},
 
@@ -44,7 +34,6 @@ pageEditor.linksSectionModel.prototype = {
 pageEditor.model("linksSectionModel", [
 	"attrs",
 	"options",
-	"currentPageRepo",
 	"collectionFactory",
 	pageEditor.linksSectionModel
 ]);
