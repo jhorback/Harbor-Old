@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Harbor.Domain.Files;
 using Harbor.Domain.Pages;
@@ -57,6 +58,28 @@ namespace Harbor.Data.Repositories
 				var pageRes = page.GetNavLinks(res.NavLinksID);
 				page.NavLinks.Remove(pageRes);
 			}
+		}
+
+		public IEnumerable<PageResource> GetResourcesFromPage(Page page)
+		{
+			var resources = new List<PageResource>();
+
+			foreach (var file in page.Files)
+			{
+				resources.Add(new FileResource(page, file.FileID));
+			}
+
+			foreach (var res in page.PageLinks)
+			{
+				resources.Add(new PageLinkResource(page, res.PageID));
+			}
+
+			foreach (var res in page.NavLinks)
+			{
+				resources.Add(new LinksResource(page, res.NavLinksID));
+			}
+
+			return resources;
 		}
 	}
 }

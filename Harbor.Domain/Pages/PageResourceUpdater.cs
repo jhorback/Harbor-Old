@@ -24,7 +24,7 @@ namespace Harbor.Domain.Pages
 		public bool UpdateResources()
 		{
 			var resourcesUpdated = false;
-			var pageRes = getPageResources();
+			var pageRes = resourceManager.GetResourcesFromPage(page);
 			var compRes = getComponentResources();
 			
 			// remove non required resources
