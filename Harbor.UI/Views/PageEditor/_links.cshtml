@@ -13,13 +13,12 @@
 
                 <!-- collection: links -->
                 <li data-collection="links">
-                    <a data-bind="href: link, text: title"></a>
+                    <a href="~/id/{{pageID}}/{{text}}">{{text}}</a>
                 </li>
                 <!-- -->
 
             </ul>
-        </div>
-    </div>
+        </div></div>
     <!-- -->
 
 </div>
@@ -75,7 +74,7 @@
                 <li data-collection="links" data-itemview="linksSectionLinksView">
                     <div class="clearfix clear pad">
                         <span class="icon-reorder float-left margin-right" title="Re-order this link"></span>
-                        <span data-bind="text: title" class="float-left"></span>
+                        <span data-bind="text: text" class="float-left"></span>
                         <a class="icon-remove float-right" title="Remove this link" data-event="removeLink"></a>
                     </div>
                 </li>

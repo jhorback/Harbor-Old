@@ -25,8 +25,10 @@ namespace Harbor.UI.Models.Components
 				;
 		
 			Mapper.CreateMap<NavLinksSectionDto, NavLinksSection>();
-
 			Mapper.CreateMap<NavLinksSection, NavLinksSectionDto>();
+
+			Mapper.CreateMap<NavLinksSectionLinkDto, NavLinksSectionLink>();
+			Mapper.CreateMap<NavLinksSectionLink, NavLinksSectionLinkDto>();
 		}
 	}
 

@@ -13,7 +13,6 @@ namespace Harbor.Data.Repositories
 	{
 		readonly HarborContext context;
 		readonly IPageFactory pageFactory;
-		readonly IComponentRepository componentRepository;
 		private readonly PageResourceUpdater _pageResourceUpdater;
 
 		string pageCacheKey = "Harbor.Data.Repositories.PageRepository.";
@@ -21,12 +20,10 @@ namespace Harbor.Data.Repositories
 		public PageRepository(
 			HarborContext context,
 			IPageFactory pageFactory,
-			IComponentRepository componentRepository,
 			PageResourceUpdater pageResourceUpdater)
 		{
 			this.context = context;
 			this.pageFactory = pageFactory;
-			this.componentRepository = componentRepository;
 			_pageResourceUpdater = pageResourceUpdater;
 		}
 

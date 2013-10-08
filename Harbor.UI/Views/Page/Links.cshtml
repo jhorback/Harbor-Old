@@ -19,11 +19,7 @@
             <ul>
                 @foreach (var link in sect.links)
                 {
-                    var page = ((Harbor.Domain.Pages.Page)ViewBag.Page).GetPageLink(link);
-                    if (page != null)
-                    {
-                        <li><a href="~/id/@page.PageID/@page.Title">@page.Title</a></li>							 
-                    }
+                   <li><a href="~/id/@link.pageID/@link.text">@link.text</a></li>							 
                 }
             </ul>
         </div>

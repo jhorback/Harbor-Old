@@ -81,6 +81,7 @@
     <Compile Include="PageNav\INavLinksRepository.cs" />
     <Compile Include="PageNav\NavLinks.cs" />
     <Compile Include="PageNav\NavLinksSection.cs" />
+    <Compile Include="PageNav\NavLinksSectionLink.cs" />
     <Compile Include="PageNav\NavLinksTemplate.cs" />
     <Compile Include="Pages\Components\PageLink.cs" />
     <Compile Include="Pages\Components\Image.cs" />

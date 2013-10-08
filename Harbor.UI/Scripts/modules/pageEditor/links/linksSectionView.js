@@ -1,10 +1,9 @@
 ﻿
 
-pageEditor.linksSectionView = function (options, pageSelector, _, currentPageRepo) {
+pageEditor.linksSectionView = function (options, pageSelector, _) {
 
 	this.pageSelector = pageSelector;
 	this.bind = _.bind;
-	this.currentPageRepo = currentPageRepo;
 };
 
 pageEditor.linksSectionView.prototype = {
@@ -19,9 +18,10 @@ pageEditor.linksSectionView.prototype = {
 	},
 	
 	selectPage: function (page) {
-		var currentPage = this.currentPageRepo.getCurrentPage();
-		currentPage.addPageLinkRef(page);
-		this.model.links.add(page);
+		this.model.links.add({
+			pageID: page.get("id"),
+			text: page.get("title")
+		});
 	}
 };
 
