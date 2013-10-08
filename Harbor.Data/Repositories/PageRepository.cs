@@ -14,14 +14,20 @@ namespace Harbor.Data.Repositories
 		readonly HarborContext context;
 		readonly IPageFactory pageFactory;
 		readonly IComponentRepository componentRepository;
+		private readonly PageResourceUpdater _pageResourceUpdater;
 
 		string pageCacheKey = "Harbor.Data.Repositories.PageRepository.";
 
-		public PageRepository(HarborContext context, IPageFactory pageFactory, IComponentRepository componentRepository)
+		public PageRepository(
+			HarborContext context,
+			IPageFactory pageFactory,
+			IComponentRepository componentRepository,
+			PageResourceUpdater pageResourceUpdater)
 		{
 			this.context = context;
 			this.pageFactory = pageFactory;
 			this.componentRepository = componentRepository;
+			_pageResourceUpdater = pageResourceUpdater;
 		}
 
 		#region IRepository
@@ -115,7 +121,7 @@ namespace Harbor.Data.Repositories
 			entity.DeletedPageRoles = new List<PageRole>();
 
 
-			updatePageResources(entity);
+			_pageResourceUpdater.UpdateResources(entity);
 
 
 			// update the modified date
@@ -210,13 +216,14 @@ namespace Harbor.Data.Repositories
 			return page;
 		}
 
-		bool updatePageResources(Page page)
-		{
-			// add remove page resources
-			var resourceManager = new PageRepositoryResourceManager(context);
-			var pageResourceUpdater = new PageResourceUpdater(page, componentRepository, resourceManager);
-			return pageResourceUpdater.UpdateResources();
-		}
+		// jch! remove 
+		//bool updatePageResources(Page page)
+		//{
+		//	// add remove page resources
+		//	var resourceManager = new PageRepositoryResourceManager(context);
+		//	var pageResourceUpdater = new PageResourceUpdater(componentRepository, resourceManager);
+		//	return pageResourceUpdater.UpdateResources(page);
+		//}
 		#endregion
 	}
 }
