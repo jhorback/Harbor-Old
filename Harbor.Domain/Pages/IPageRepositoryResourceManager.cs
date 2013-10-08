@@ -9,5 +9,6 @@ namespace Harbor.Domain.Pages
 	{
 		void AddResource(Page page, PageResource resource);
 		void RemoveResource(Page page, PageResource resource);
+		IEnumerable<PageResource> GetResourcesFromPage(Page page);
 	}
 }
