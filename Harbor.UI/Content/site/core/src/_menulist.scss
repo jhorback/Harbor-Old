@@ -22,26 +22,26 @@ $menulist-arrow-top: ($menulist-item-height - $menulist-arrow-height) / 2;
 
 		& > ul {
 			@include no-bullets;
-			margin-bottom: 0; //1.42em;			
+			margin-bottom: 1.42em;			
 			margin-left: 1em;
 
 			& > li {
 				& > span,
 				& > a {
 					display: block;
-					color: $body-color;
-					padding: 0 1em;
+					// color: $body-color;
+					padding: 0 .5em;
 					line-height: $menulist-item-height;
 					text-decoration: none;
 					text-shadow: 0 1px 0 rgba(255,255,255,.5);
-					&:before {
-						content: "-";
-					}
-					&:hover,
-					&:focus {
-						color: $body-color;
-						background-color: #eee;
-					}
+//					&:before {
+//						content: "-";
+//					}
+//					&:hover,
+//					&:focus {
+//						color: $body-color;
+//						background-color: #eee;
+//					}
 				}
 				& > span {
 					cursor: default;
@@ -49,14 +49,15 @@ $menulist-arrow-top: ($menulist-item-height - $menulist-arrow-height) / 2;
 			}
 
 			.selected {
-				position: relative;
-				&:after {
-					position: absolute;						
-					top: $menulist-arrow-top;
-					content: "";
-					width: 0; 
-					height: 0;	
-				}				
+				font-weight: bold;
+//				position: relative;
+//				&:after {
+//					position: absolute;						
+//					top: $menulist-arrow-top;
+//					content: "";
+//					width: 0; 
+//					height: 0;	
+//				}				
 			}
 		}
 
@@ -64,7 +65,7 @@ $menulist-arrow-top: ($menulist-item-height - $menulist-arrow-height) / 2;
 			padding: 0 1em;
 			font-family: $body-font-family;
 			display: block;
-			font-size: 1.23em;
+			font-size: 1.1em;
 			//font-weight: normal;
 			color: #999;
 			text-shadow: 0 1px 0 rgba(255,255,255,.5);
@@ -74,7 +75,7 @@ $menulist-arrow-top: ($menulist-item-height - $menulist-arrow-height) / 2;
 }
 
 @mixin menulist-theme {
-	@include menulist-arrow($menulist-selected-arrow, $menulist-selected-color, $menulist-selected-background-color);
+	//@include menulist-arrow($menulist-selected-arrow, $menulist-selected-color, $menulist-selected-background-color);
 }
 
 
