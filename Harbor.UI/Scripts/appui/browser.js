@@ -7,6 +7,11 @@ appui.register("window", function () {
 });
 
 
+appui.register("location", function () {
+	return window.location;
+});
+
+
 appui.service("console", ["window", function (window) {
 	var console, winConsole, log,
 	    okToLog = localStorage && localStorage.getItem("okToLog");

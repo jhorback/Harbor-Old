@@ -1,5 +1,14 @@
-﻿@using Harbor.UI.Extensions
-@model Harbor.UI.Models.Components.NavLinksDto
+﻿@model Harbor.UI.Models.Components.NavLinksDto
+@functions
+{
+    string itemClass(string url)
+    {
+        var currentUrl = Request.Url.ToString();
+        var linkUrl = url.Substring(1);
+        return currentUrl.IndexOf(linkUrl, StringComparison.InvariantCultureIgnoreCase) > -1
+            ? "selected" : null;
+    }
+}
 <div class="pad">
     
     @if (Model.sections.Count == 0)
@@ -19,7 +28,8 @@
             <ul>
                 @foreach (var link in sect.links)
                 {
-                   <li><a href="~/id/@link.pageID/@link.text">@link.text</a></li>							 
+                    var url = string.Format("~/id/{0}/{1}", link.pageID, link.text);
+                   <li class="@itemClass(url)"><a href="@Url.Content(url)">@link.text</a></li>							 
                 }
             </ul>
         </div>
