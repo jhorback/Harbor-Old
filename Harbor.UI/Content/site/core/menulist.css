@@ -1,6 +1,6 @@
 .menulist > ul {
   list-style: none;
-  margin-bottom: 0;
+  margin-bottom: 1.42em;
   margin-left: 1em; }
   .menulist > ul li {
     list-style-image: none;
@@ -8,31 +8,19 @@
     margin-left: 0px; }
   .menulist > ul > li > span, .menulist > ul > li > a {
     display: block;
-    color: #333333;
-    padding: 0 1em;
+    padding: 0 .5em;
     line-height: 2.2em;
     text-decoration: none;
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5); }
-    .menulist > ul > li > span:before, .menulist > ul > li > a:before {
-      content: "-"; }
-    .menulist > ul > li > span:hover, .menulist > ul > li > span:focus, .menulist > ul > li > a:hover, .menulist > ul > li > a:focus {
-      color: #333333;
-      background-color: #eee; }
   .menulist > ul > li > span {
     cursor: default; }
   .menulist > ul .selected {
-    position: relative; }
-    .menulist > ul .selected:after {
-      position: absolute;
-      top: 0.4em;
-      content: "";
-      width: 0;
-      height: 0; }
+    font-weight: bold; }
 .menulist h2, .menulist h3 {
   padding: 0 1em;
   font-family: "Segoe UI", "Helvetica Neue", Arial;
   display: block;
-  font-size: 1.23em;
+  font-size: 1.1em;
   color: #999;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5); }
 

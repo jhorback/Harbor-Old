@@ -114,17 +114,6 @@ dd {
   #frame-body ::-webkit-scrollbar-thumb:hover {
     background: #b3b3b3; }
 
-.menulist > ul .selected:after {
-  left: 0;
-  border-top: 0.7em solid transparent;
-  border-bottom: 0.7em solid transparent;
-  border-left: 0.7em solid #336699; }
-.menulist > ul .selected span, .menulist > ul .selected a {
-  color: #336699;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2); }
-  .menulist > ul .selected span:hover, .menulist > ul .selected span:focus, .menulist > ul .selected a:hover, .menulist > ul .selected a:focus {
-    color: #336699; }
-
 .page-header h1 {
   color: #666666; }
   .page-header h1 a {
