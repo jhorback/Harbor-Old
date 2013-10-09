@@ -469,6 +469,7 @@
     <Content Include="Scripts\modules\fileSelector\fileSelectorViewModel.js" />
     <Content Include="Scripts\modules\pageEditor\addPageComponentViewModel.js" />
     <Content Include="Scripts\modules\pageEditor\changeLayoutViewModel.js" />
+    <Content Include="Scripts\modules\pageEditor\links\linksSectionLinkModel.js" />
     <Content Include="Scripts\modules\pageEditor\links\linksSectionLinksView.js" />
     <Content Include="Scripts\modules\pageEditor\links\linksSectionView.js" />
     <Content Include="Scripts\modules\pageEditor\links\linksView.js" />
