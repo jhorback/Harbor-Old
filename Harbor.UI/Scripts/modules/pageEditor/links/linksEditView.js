@@ -1,8 +1,8 @@
 ﻿
-pageEditor.linksEditView = function (options, _) {
+pageEditor.linksEditView = function (options, _, navLinksRepo) {
 
 	this.bind = _.bind;
-
+	this.navLinksRepo = navLinksRepo;
 };
 
 pageEditor.linksEditView.prototype = {
@@ -34,9 +34,16 @@ pageEditor.linksEditView.prototype = {
 	updateOrder: function () {
 		this.model.sections.sort();
 	},
-
-	onClose: function () {
-
+	
+	removeNavLink: function () {
+		var warning = "WARNING\nYou are about to remove shared navigation links. "
+			+ "This may effect other pages.\n\nAre you sure you want to remove these links?";
+		if (confirm(warning)) {
+			// call to navLinksRepo to delete
+			this.navLinksRepo.deleteLink(this.model).then(this.bind(function () {
+				this.model.trigger("save");
+			}, this));
+		}	
 	}
 };
 
@@ -44,5 +51,6 @@ pageEditor.linksEditView.prototype = {
 pageEditor.view("linksEditView", [
 	"options",
 	"_",
+	"navLinksRepo",
 	pageEditor.linksEditView
 ]);
