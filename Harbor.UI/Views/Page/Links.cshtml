@@ -28,8 +28,10 @@
             <ul>
                 @foreach (var link in sect.links)
                 {
-                    var url = string.Format("~/id/{0}/{1}", link.pageID, link.text.ToLower().Replace(" ", "-"));
-                   <li class="@itemClass(url)"><a href="@Url.Content(url)">@link.text</a></li>							 
+					var url = string.Format("~/id/{0}", link.pageID);
+	                <li class="@itemClass(url)">
+		                <a href="@Url.Content(string.Format(url + "/{0}", link.text.ToLower().Replace(" ", "-")))">@link.text</a>
+					</li>							 
                 }
             </ul>
         </div>
