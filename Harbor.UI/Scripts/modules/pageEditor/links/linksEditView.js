@@ -1,6 +1,7 @@
 ﻿
-pageEditor.linksEditView = function (options) {
+pageEditor.linksEditView = function (options, _) {
 
+	this.bind = _.bind;
 
 };
 
@@ -19,7 +20,19 @@ pageEditor.linksEditView.prototype = {
 	},
 	
 	onRender: function () {
+		
+		this.$el.sortable({
+			handle: "[data-rel=sectionSort]",
+			items: ".menulist",
+			revert: false,
+			//containment: this.$el,
+			tolerance: "pointer",
+			update: this.bind(this.updateOrder, this)
+		});
+	},
 
+	updateOrder: function () {
+		this.model.sections.sort();
 	},
 
 	onClose: function () {
@@ -30,5 +43,6 @@ pageEditor.linksEditView.prototype = {
 
 pageEditor.view("linksEditView", [
 	"options",
+	"_",
 	pageEditor.linksEditView
 ]);

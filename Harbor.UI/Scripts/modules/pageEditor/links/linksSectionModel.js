@@ -3,7 +3,12 @@ pageEditor.linksSectionModel = function (attrs, options, collectionFactory) {
 	var links = attrs.links || [];
 	
 	this.links = collectionFactory.createGeneric(links, {
-		model: "linkSectionLinkModel"
+		model: "linkSectionLinkModel",
+		comparator: function (model) {
+			var node = $("#" + model.cid);
+			var index = node.index();
+			return index;
+		}
 	});
 	
 	this.links.on("all", function () {

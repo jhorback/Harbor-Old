@@ -67,7 +67,11 @@
     <!-- collection: sections -->
     <div>
         <div class="menulist" data-collection="sections" data-itemview="linksSectionView">
-            <input type="text" name="title">
+            <div class="clearfix pad">
+				<span class="icon-reorder float-left margin-right" data-rel="sectionSort" title="Re-order this section"></span>
+                <input type="text" class="float-left" name="title">
+				<a class="icon-remove float-right" title="Remove this section of links" data-event="removeSection"></a>
+            </div>
             <ul>
 
                 <!-- collection: links -->
@@ -82,7 +86,6 @@
 
             </ul>
             <button data-event="addLink" class="icon-plus" title="Add a link"></button>
-            <button data-event="removeSection" class="icon-remove" title="Remove this section of links"></button>
             <hr />
         </div>
     </div>
