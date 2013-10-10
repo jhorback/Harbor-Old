@@ -42,6 +42,22 @@ currentPageModel.navLinksRepo = function (
 			});
 			
 			return dfd.promise();
+		},
+		
+		deleteLink: function (link) {
+			
+			var cachedLinks = this.getLinks(),
+				dfd = $.Deferred();
+
+			linksDfd.then(function () {
+				var navLink = cachedLinks.get(link.get("id")),
+					attrs = link.toJSON(),
+					destroyDfd = navLink.destroy();
+				link.clear();
+				ajaxRequest.handle(destroyDfd).then(dfd.resolve);
+			});
+
+			return dfd.promise();
 		}
 	};
 };
