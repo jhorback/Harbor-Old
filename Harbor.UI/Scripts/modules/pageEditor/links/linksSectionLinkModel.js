@@ -1,7 +1,8 @@
 ﻿
 
-pageEditor.linkSectionLinkModel = function (attrs, options, location) {
+pageEditor.linkSectionLinkModel = function (attrs, options, location, pageurl) {
 	this.location = location;
+	this.pageurl = pageurl;
 };
 
 
@@ -10,9 +11,11 @@ pageEditor.linkSectionLinkModel.prototype = {
 		pageID: null,
 		text: null,
 		//
+		url: null,
 		itemClassName: null,
 		cid: null
 	},
+	
 	"[itemClassName]": {
 		get: function (value) {
 			var url = "/" + this.get("pageID") + "/" + this.get("text");
@@ -24,6 +27,12 @@ pageEditor.linkSectionLinkModel.prototype = {
 	"[cid]": {
 		get: function (value) {
 			return this.cid;
+		}
+	},
+	
+	"[url]": {
+		get: function () {
+			return this.pageurl(this.get("pageID"), this.get("text"));
 		}
 	}
 };
