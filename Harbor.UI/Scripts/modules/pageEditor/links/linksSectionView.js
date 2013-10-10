@@ -7,15 +7,14 @@ pageEditor.linksSectionView = function (options, pageSelector, _) {
 };
 
 pageEditor.linksSectionView.prototype = {
-	initialize: function () {
-		//var $ = this.$;
-		this.model.collection.comparator = function (model) {
-			var node = $("#" + model.cid);
-			var index = node.index();
-			console.log(model.cid, index, node.html());
-			return index;
-		};
-	},
+	//initialize: function () {
+	//	//var $ = this.$;
+	//	this.model.collection.comparator = function (model) {
+	//		var node = $("#" + model.cid);
+	//		var index = node.index();
+	//		return index;
+	//	};
+	//},
 	
 	onRender: function () {
 		this.$el.sortable({
@@ -29,7 +28,7 @@ pageEditor.linksSectionView.prototype = {
 	},
 	
 	updateOrder: function () {
-		this.model.collection.sort();
+		this.model.links.sort();
 	},
 	
 	addLink: function (event) {
@@ -39,7 +38,9 @@ pageEditor.linksSectionView.prototype = {
 	},
 	
 	removeSection: function (event) {
-		this.model.collection.remove(this.model);
+		if (confirm("Are you sure you want to remove this section of links?")) {
+			this.model.collection.remove(this.model);
+		}
 	},
 	
 	selectPage: function (page) {
