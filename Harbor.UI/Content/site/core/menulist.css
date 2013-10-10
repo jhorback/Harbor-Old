@@ -8,7 +8,6 @@
     margin-left: 0px; }
   .menulist > ul > li > span, .menulist > ul > li > a {
     display: block;
-    padding: 0 .5em;
     line-height: 2.2em;
     text-decoration: none;
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5); }
@@ -16,11 +15,13 @@
     cursor: default; }
   .menulist > ul .selected {
     font-weight: bold; }
+    .menulist > ul .selected span, .menulist > ul .selected a {
+      color: #2f5bb7; }
 .menulist h2, .menulist h3 {
-  padding: 0 1em;
+  padding: 0 .7em;
   font-family: "Segoe UI", "Helvetica Neue", Arial;
   display: block;
-  font-size: 1.1em;
-  color: #999;
+  font-size: 1.4em;
+  font-weight: normal;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5); }
 
