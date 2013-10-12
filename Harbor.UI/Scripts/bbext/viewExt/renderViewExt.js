@@ -3,6 +3,8 @@
  * 
  * Description
  *     Implements the render method for Backbone views
+ *     Also adds a bindAll method to views which is a util method for _.bindAll
+ *         The 'this' arg will be set to the view so it can be called like: this.bindAll(methodNames*);
  *
  * On Rendering
  *     Uses the name property of the view to find the template
@@ -36,6 +38,12 @@ function renderViewExt(_, $, templateCache, collectionRenderer) {
 	"use strict";
 
 	var extension = {
+		bindAll: function (methodNames) {
+			var args = Array.prototype.slice.apply(arguments);
+			args.unshift(this);
+			_.bindAll.apply(_, args);
+		},
+		
 		render: function () {
 			var templateFn,
 			    el,

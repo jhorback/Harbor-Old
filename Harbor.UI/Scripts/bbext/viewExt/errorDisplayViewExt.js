@@ -29,8 +29,15 @@ function errorDisplayViewExt(_, console) {
 
 		displayError: function (attr, errors, showAll) {
 			/// <summary>Updates or removes the errors from the view.</summary>
-			var errorStr = errors && errors[attr].join(", ");
-
+			var errorAttr = errors && errors[attr],
+			    errorStr;
+			
+			if (!errorAttr.join) {
+				return;
+			}
+			
+			errorStr = errorAttr.join(", ");
+			
 			if (attr) {
 				internal.displayFieldError.call(this, attr, errorStr, showAll);
 			} else {
