@@ -21,16 +21,17 @@
 			<fieldset id="settings-layout" data-model="template">
 				<legend>Layout</legend>
 				<div class="form-field">
-					<input type="checkbox" id="page-hidesidebar" name="layoutHasNoSidebar"/>
-					<label for="page-hidesidebar">Hide the sidebar</label>
-				</div>
-				<div class="form-field">
 					<input type="checkbox" id="page-constrainwidth" name="layoutIsReadable"/>
-					<label for="page-constrainwidth">Constrain width</label>
+					<label for="page-constrainwidth">Left Aligned</label>
 				</div>
 				<div class="form-field margin-left" data-bind="disabled: layoutIsCenteredDisabled">
 					<input type="checkbox" id="page-centercontent" name="layoutIsCentered" data-bind="disabled: layoutIsCenteredDisabled"/>
-					<label for="page-centercontent">Center content</label>
+					<label for="page-centercontent">Centered</label>
+				</div>
+				
+				<div class="form-field">
+					<input type="checkbox" id="page-hidesidebar" name="layoutHasNoSidebar" />
+					<label for="page-hidesidebar">Hide the sidebar</label>
 				</div>
 			</fieldset>
 			<fieldset>
