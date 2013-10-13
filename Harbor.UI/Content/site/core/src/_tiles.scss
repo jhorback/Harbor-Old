@@ -36,6 +36,10 @@ $tile-caption-color: #777;
 		
 		@include transition(all .2s ease-in-out);
 
+		&.selected {
+			overflow: visible;
+		}
+
 		.media {
 			text-align: center;
 			display: block;

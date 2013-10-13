@@ -17,6 +17,8 @@
   -webkit-transition: all 0.2s ease-in-out;
   -ms-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out; }
+  .tile.selected {
+    overflow: visible; }
   .tile .media {
     text-align: center;
     display: block;
