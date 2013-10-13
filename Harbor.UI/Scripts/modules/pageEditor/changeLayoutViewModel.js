@@ -2,26 +2,9 @@
 pageEditor.changeLayoutViewModel = {
 	defaults: {
 		colClassName: "col1",
-		clear: true,
-		clearDisabled: true,
+		clear: false,
+		clearDisabled: false,
 		contentPositionClassName: "text-left"
-	},
-	
-	clearDisabled: {
-		get: function () {
-			return this.get("colClassName") === "col1";
-		},
-		bind: ["colClassName"]
-	},
-
-	clear: {
-		get: function (val) {
-			if (this.get("colClassName") === "col1") {
-				return true;
-			}
-			return val;
-		},
-		clear: ["colClassName"]
 	},
 	
 	getClassNames: function () {
@@ -45,7 +28,7 @@ pageEditor.changeLayoutViewModel = {
 		this.set("clear", false);
 		_.each(classNames, function (className) {
 			if (className === "col1" || className === "col2" ||
-				className === "col4" || className === "col3" || className === "col3-2") {
+				className === "col5" || className === "col3" || className === "col3-2") {
 				self.set("colClassName", className);
 			} else if (className === "clear") {
 				self.set("clear", true);
