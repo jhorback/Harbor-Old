@@ -21,17 +21,18 @@
 			<fieldset id="settings-layout" data-model="template">
 				<legend>Layout</legend>
 				<div class="form-field">
-					<input type="checkbox" id="page-constrainwidth" name="layoutIsReadable"/>
-					<label for="page-constrainwidth">Left Aligned</label>
-				</div>
-				<div class="form-field margin-left" data-bind="disabled: layoutIsCenteredDisabled">
-					<input type="checkbox" id="page-centercontent" name="layoutIsCentered" data-bind="disabled: layoutIsCenteredDisabled"/>
-					<label for="page-centercontent">Centered</label>
-				</div>
+					<input type="radio" id="page-stretch" name="layout" value="stretch" />
+					<label for="page-stretch">Stretch</label>
 				
-				<div class="form-field">
-					<input type="checkbox" id="page-hidesidebar" name="layoutHasNoSidebar" />
-					<label for="page-hidesidebar">Hide the sidebar</label>
+					<input type="radio" id="page-leftaligned" name="layout" value="leftaligned" class="margin-left"/>
+					<label for="page-leftaligned">Left Aligned</label>
+				
+					<input type="radio" id="page-centered" name="layout" value="centered" class="margin-left"/>
+					<label for="page-centered">Centered</label>
+				</div>
+				<div class="form-field margin-top">
+					<input type="checkbox" id="page-showSidebar" name="showSidebar" />
+					<label for="page-showSidebar">Show the sidebar</label>
 				</div>
 			</fieldset>
 			<fieldset>
