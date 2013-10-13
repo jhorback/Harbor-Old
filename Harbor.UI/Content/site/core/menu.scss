@@ -1,6 +1,7 @@
 @import "../mixins/clearfix";
 @import "../mixins/border-radius";
 @import "../mixins/box-shadow";
+@import "../mixins/opacity";
 
 $menu-color: #000;
 $menu-title-color: #09c;
@@ -22,6 +23,19 @@ $menu-border-color: rgba(#000, 0.3);
 		bottom: 0;
 		overflow: auto;
 		border-left: 1px solid $menu-border-color;
+
+		.menu-close {
+			position: absolute;
+			top: 0;
+			right: 0;
+			margin: 0 .23em;
+			font-size: 2.3em;
+			cursor: pointer;
+			@include opacity(.3);
+			&:hover {
+				@include opacity(1);
+			}
+		}
 
 		@include box-shadow-value(-1px 0 1px $menu-border-color);
 		@include clearfix;
