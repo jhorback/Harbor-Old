@@ -15,37 +15,55 @@ template.prototype = {
 		pageID: null,
 		pageTypeKey: null,
 		layoutIsCentered: false,
-		layoutIsCenteredDisabled: true,
 		layoutIsReadable: false,
 		layoutHasNoSidebar: false,
 		header: null,
 		content: [],
 		aside: [],
-		componentCounter: 0
+		componentCounter: 0,
+		//
+		layout: "stretch", // stretch, centered, leftaligned
+		showSidebar: true
 	},
 	
 	initialize: function () {
+		var attrs = this.attributes,
+			layout = "stretch";
 		
-		this.header = this.modelFactory.createGeneric(this.attributes.header);
-		this.aside = this.collectionFactory.createGeneric(this.attributes.aside);
-		this.content = this.collectionFactory.createGeneric(this.attributes.content);
-	},
+		this.set("showSidebar", !attrs.layoutHasNoSidebar);
+		if (attrs.layoutIsCentered) {
+			layout = "centered";
+		} else if (attrs.layoutIsReadable) {
+			layout = "leftaligned";
+		}
+		this.set("layout", layout);
 
-	"[layoutIsCenteredDisabled]": {
-		get: function (value) {
-			return !this.get("layoutIsReadable");
-		},
-		bind: "layoutIsReadable"
+
+		this.header = this.modelFactory.createGeneric(attrs.header);
+		this.aside = this.collectionFactory.createGeneric(attrs.aside);
+		this.content = this.collectionFactory.createGeneric(attrs.content);
 	},
 
 	"[layoutIsCentered]": {
 		get: function (value) {
-			if (this.get("layoutIsReadable") === false) {
-				return false;
-			}
-			return value;
+			return this.get("layout") === "centered";
 		},
-		bind: "layoutIsReadable"
+		bind: ["layout"]
+	},
+	
+	"[layoutIsReadable]": {
+		get: function (value) {
+			var layout = this.get("layout");
+			return layout === "centered" || layout === "leftaligned";
+		},
+		bind: ["layout"]
+	},
+	
+	"[layoutHasNoSidebar]": {
+		get: function () {
+			return !this.get("showSidebar");
+		},
+		bind: ["showSidebar"]
 	},
 
 	"[header]": {
