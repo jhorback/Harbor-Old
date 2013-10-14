@@ -18,7 +18,7 @@ pageEditor.addPageComponentView = function (
 	this.model.page = currentPageRepo.getCurrentPage();
 	this.model.pageComponents = pageComponentRepo.getPageComponents();
 	this.model.pageComponents.setFilter(function (model) {
-		console.log(model.get("type"), options.type, model.get("type") === options.type);
+		// console.log(model.get("type"), options.type, model.get("type") === options.type);
 		return model.get("type") === options.type;
 	});
 
