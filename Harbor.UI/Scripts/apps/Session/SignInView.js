@@ -16,7 +16,7 @@
 	
 	signIn: function () {
 		var displayErrors = _.bind(this.displayErrors, this),
-				clearErrors = this.clearErrors;
+				clearErrors = _.bind(this.clearErrors, this);
 
 		Session.signIn(this.model.toJSON(), {
 			clientError: function (error) {
