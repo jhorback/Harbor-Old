@@ -20,13 +20,10 @@ pageSettingsView.prototype = {
 	},
 	
 	onRender: function () {
-
 		this.menu = this.menuFactory.create(this.$el, {
 			transition: "none",
 			container: this.options.container
 		});
-
-		// this.$el.on("close", _.bind(this.close, this)); // jch* better way?
 	},
 	
 	templateChange: function () {
