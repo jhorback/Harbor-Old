@@ -449,6 +449,7 @@
     <Content Include="Scripts\apps\fileAdmin\fileAdminRepo.js" />
     <Content Include="Scripts\apps\fileAdmin\fileAdminRouter.js" />
     <Content Include="Scripts\apps\pageAdmin\pageAdminView.js" />
+    <Content Include="Scripts\appui\cookie.js" />
     <Content Include="Scripts\appui\popup.js" />
     <Content Include="Scripts\appui\slugify.js" />
     <Content Include="Scripts\bbext\collectionExt\groupColExt.js" />
