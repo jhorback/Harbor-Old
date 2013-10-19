@@ -38,6 +38,7 @@ pageSelector.pageSelectorView = function (options, pageRepo, modelFactory) {
 	
 	this.listenTo(this.model.pages, "all", function () {
 		this.model.set("resultsCount", this.model.pages.length);
+		this.model.refresh("resultsMessage");
 	}, this);
 };
 
@@ -72,7 +73,7 @@ pageSelector.pageSelectorView.prototype = {
 		
 		this.pageRepo.fetchPages(this.model.pages, {
 			orderDesc: "modified",
-			name: searchTerm
+			title: searchTerm
 		});
 	},
 	

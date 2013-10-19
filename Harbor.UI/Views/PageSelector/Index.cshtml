@@ -14,25 +14,27 @@
                         <input type="submit" value="Search" />
                     </div>
                 </fieldset>
-                <div class="pageselector-results tiles">
-                    <ul>
+	            <div class="pageselector-results tiles">
+		            <ul>
                         
-                        <!-- pages collection -->
-                        <li data-bind="id: id" tabindex="0" class="tile col5 hover" data-collection="pages"
-                            data-event="clickItem, keypress: selectItemOnEnter">
-                            <div class="media">
-                                <img src="{{thumbUrl}}" />
-                            </div>
-                            <div class="caption">
-                                <h3>{{title}}</h3>
-                                <span>{{previewText}}</span>
-                            </div>
-                        </li>
-                        <!-- -->
+			            <!-- pages collection -->
+			            <li data-bind="id: id" tabindex="0" class="tile col5 hover" data-collection="pages"
+			                data-event="clickItem, keypress: selectItemOnEnter">
+				            <div class="media">
+					            <img src="{{thumbUrl}}" />
+				            </div>
+				            <div class="caption">
+					            <h3>{{title}}</h3>
+					            <span>{{previewText}}</span>
+				            </div>
+			            </li>
+			            <!-- -->
                         
 
-                    </ul>
-                </div>
+		            </ul>
+	            </div>
+				
+				<div data-bind="text: resultsMessage" class="margin"></div>	
             </form>
         </div>
     </div>
