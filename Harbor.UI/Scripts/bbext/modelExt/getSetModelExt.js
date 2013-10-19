@@ -18,7 +18,8 @@ function getSetModelExt(mixin, modelPropertyDescriptor) {
 			if (getFn) {
 				val = getFn.call(this, currentValue);
 				if (val !== undefined) {
-					this.attributes[name] = val; // keep the attrs in sync - may not need?
+					Backbone.Model.prototype.set.call(this, name, val); // keep the attrs in sync
+					// this.attributes[name] = val; // keep the attrs in sync
 				}
 			} else {
 				val = currentValue;
@@ -61,8 +62,13 @@ function getSetModelExt(mixin, modelPropertyDescriptor) {
 			return json;
 		},
 
-		refresh: function () {
-			this.set(this.toJSON());
+		// name: optional to only refresh a single property
+		refresh: function (name) {
+			if (name) {
+				this.get(name);
+			} else {
+				this.set(this.toJSON());
+			}
 		}
 	};
 
