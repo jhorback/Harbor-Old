@@ -19,13 +19,9 @@ pageAdminView.prototype = {
 			})
 		};
 		
-		// jch* - this wont work - update after the collection extensions are implemented
-		var mod = this.model;
-		setTimeout(function () {
-			mod.pages.sortBy(function (item) {
-				return new Date(item.get("modified"));
-			});
-		}, 1000);
+		this.model.pages.setSort(function (page) {
+			return new Date(item.get("modified"));
+		});
 	},
 
 	addPage: function () {

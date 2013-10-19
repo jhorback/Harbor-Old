@@ -18,6 +18,7 @@ function fileSelectorView(options, modelFactory, fileRepo) {
 	
 	this.listenTo(this.model.files, "all", function () {
 		this.model.set("resultsCount", this.model.files.length);
+		this.model.refresh("resultsMessage");
 	}, this);
 }
 
