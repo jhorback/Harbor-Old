@@ -4,7 +4,6 @@ var fileSelectorViewModel = {
 		title: "Files",
 		search: null,
 		resultsCount: 0,
-		filesAreEmpty: true,
 		resultsMessage: ""
 	},
 	
@@ -24,7 +23,7 @@ var fileSelectorViewModel = {
 			
 			return "";
 		},
-		bind: ["search", "resultsCount"]
+		bind: ["resultsCount"]
 	}
 };
 
