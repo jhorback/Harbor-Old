@@ -12,16 +12,10 @@ pageAdminView.prototype = {
 	initialize: function () {
 		this.model = {
 			pages: this.pageRepo.getPages({
-				data: {
-					author: this.currentUser.get("username"),
-					orderDesc: "modified"
-				}
+				author: this.currentUser.get("username"),
+				orderDesc: "modified"
 			})
 		};
-		
-		this.model.pages.setSort(function (page) {
-			return new Date(item.get("modified"));
-		});
 	},
 
 	addPage: function () {
