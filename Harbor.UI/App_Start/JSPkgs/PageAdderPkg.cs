@@ -5,7 +5,7 @@ namespace Harbor.UI.JSPkgs
 {
 	public class PageAdderPkg : JavaScriptPackage
 	{
-		public const string PackageName = "PageAdder";
+		public const string PackageName = "pageAdder";
 
 		public PageAdderPkg()
 		{

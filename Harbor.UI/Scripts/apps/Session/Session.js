@@ -85,14 +85,26 @@
 
 
 	var session = context.app("session");
-	session.use("appui", "bbext", "currentUserModel");
+	session.use("appui", "bbext", "currentUserModel", "pageAdder");
 
 	session.config(["appurl", function setBaseUrl(appurl) {
 		appurl.setBaseUrl(window.baseUrl);
 	}]);
-	session.start(["keepAlive", "appurl", "currentUserRepo", function (keepAlive, appurl, currentUserRepo) {
+	
+	session.start([
+		"keepAlive",
+		"appurl",
+		"currentUserRepo",
+		"pageAdder",
+		function (
+			keepAlive,
+			appurl,
+			currentUserRepo,
+			pageAdder
+	) {
 		keepAlive.start(appurl.get("home/keepalive"));
 		Session.currentUser = currentUserRepo.getCurrentUser();
+		Session.pageAdder = pageAdder;
 	}]);
 } ());
 

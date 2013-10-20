@@ -14,6 +14,7 @@ namespace Harbor.UI.JSPkgs
 			RequiresRegistration = false;
 			Category = Categories.Apps;
 			AddDependency(CurrentUserModelPkg.PackageName);
+			AddDependency(PageAdderPkg.PackageName);
 		}
 	}
 }
