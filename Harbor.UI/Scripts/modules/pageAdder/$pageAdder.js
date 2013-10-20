@@ -1,3 +1,3 @@
 ﻿
-var pageAdder = context.module("pageAdder").use("bbext", "currentUserModel");
+var pageAdder = context.module("pageAdder").use("bbext", "currentUserModel", "pageModel");
 
