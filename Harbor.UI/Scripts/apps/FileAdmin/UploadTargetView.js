@@ -23,8 +23,9 @@ fileAdmin.uploadTargetView.prototype = {
 				this.element.find(".message").removeClass("default");
 				this.element.find(".message span").html("Your browser does not support drag'n'drop file uploads.");
 			},
-			success: function (file, response) {
+			success: function (uploadedFile, response) {
 				var file = modelFactory.create("file", JSON.parse(response));
+				uploadedFile.previewTemplate.addClass("success");
 				albums.groupSource.add(file);
 			}
 		});
