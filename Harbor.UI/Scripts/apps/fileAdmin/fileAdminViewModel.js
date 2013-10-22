@@ -28,8 +28,10 @@ fileAdmin.fileAdminViewModel.prototype = {
 	
 	uploadButtonText: {
 		get: function () {
-			var state = this.get("state");
-			return state === "default" ? "Upload files" : "Done";
+			var text,
+				state = this.get("state");
+			text = state !== "default" ? "Done" : "Upload files";
+			return text;
 		},
 		
 		bind: ["state"]
