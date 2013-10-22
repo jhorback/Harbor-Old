@@ -28,6 +28,8 @@ a, .link {
 
 p {
   margin-bottom: 1.42em; }
+  p:only-of-type {
+    margin-bottom: 0; }
 
 h1, h2, h3, h4, h5, h6 {
   margin: 10.0002px 0; }
