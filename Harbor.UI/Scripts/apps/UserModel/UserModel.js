@@ -18,7 +18,9 @@
 		enabled: false,
 		editLink: null,
 		roles: [],
-		disabledText: ""
+		disabledText: "",
+		//
+		displayEmail: null
 	},
 	
 	sync: function (method, model, options) {
@@ -106,7 +108,7 @@
 //			debugger;
 //			return value;
 //		},
-		bind: "email"
+		bind: ["email"]
 	},
 	
 	email: {
