@@ -77,6 +77,7 @@
     <Compile Include="Files\IFileFactory.cs" />
     <Compile Include="Files\IFileRepository.cs" />
     <Compile Include="Files\FileQuery.cs" />
+    <Compile Include="ILogger.cs" />
     <Compile Include="JSON.cs" />
     <Compile Include="PageNav\INavLinksRepository.cs" />
     <Compile Include="PageNav\NavLinks.cs" />

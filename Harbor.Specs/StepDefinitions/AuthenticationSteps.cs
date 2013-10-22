@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using Harbor.Domain;
 using Harbor.Domain.Files;
 using Harbor.Domain.Pages;
 using Harbor.Domain.Security;
@@ -22,6 +23,7 @@ namespace Harbor.Specs.StepDefinitions
 		Mock<IPageRepository> pageRep;
 		Mock<IFileRepository> fileRep;
 		Mock<SettingsViewModelRepository> settingsViewModelRep;
+	    Mock<ILogger> logger;
 
 		HttpStatusCodeResult currentResult;
 		string enteredUsername;
@@ -36,8 +38,9 @@ namespace Harbor.Specs.StepDefinitions
 			pageRep = new Mock<IPageRepository>();
 			fileRep = new Mock<IFileRepository>();
 			settingsViewModelRep = new Mock<SettingsViewModelRepository>();
+		    logger = new Mock<ILogger>();
 			userController = new UserController(userRepository.Object, currentUserRepository.Object,
-				pageRep.Object, fileRep.Object, settingsViewModelRep.Object);
+				pageRep.Object, fileRep.Object, settingsViewModelRep.Object, logger.Object);
 		}
 
         [Given(@"I have entered a valid username and password")]
