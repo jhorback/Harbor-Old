@@ -109,9 +109,9 @@
 
 	p {
 		margin-bottom: 1.42em;
-//		&:last-of-type {
-//			margin-bottom: 0;
-//		}
+		&:only-of-type {
+			margin-bottom: 0;
+		}
 	}
 }
 
