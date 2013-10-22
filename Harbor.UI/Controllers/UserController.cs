@@ -2,6 +2,7 @@
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using Harbor.Domain;
 using Harbor.Domain.App;
 using Harbor.Domain.Pages;
 using Harbor.Domain.Security;
@@ -21,15 +22,18 @@ namespace Harbor.UI.Controllers
 		IPageRepository pageRep;
 		IFileRepository fileRep;
 		SettingsViewModelRepository settingsViewModelRepository;
+	    private readonly ILogger _logger;
 
-		public UserController(IUserRepository userRep, CurrentUserRepository currentUserRep,
-			IPageRepository pageRep, IFileRepository fileRep, SettingsViewModelRepository settingsViewModelRepository)
+	    public UserController(IUserRepository userRep, CurrentUserRepository currentUserRep,
+			IPageRepository pageRep, IFileRepository fileRep, SettingsViewModelRepository settingsViewModelRepository,
+			ILogger logger)
 		{
 			this.userRep = userRep;
 			this.currentUserRep = currentUserRep;
 			this.pageRep = pageRep;
 			this.fileRep = fileRep;
 			this.settingsViewModelRepository = settingsViewModelRepository;
+			_logger = logger;
 		}
 
 		public ViewResult SignIn()
@@ -104,6 +108,8 @@ namespace Harbor.UI.Controllers
 		[PagePermit(Permissions.Read)]
 		public ActionResult Page(int? id)
 		{
+			_logger.Info("Requested page {0}", new {id});
+
 			var page = pageRep.FindById(id);
 			if (page == null)
 				return new HttpStatusCodeResult(HttpStatusCode.NotFound);
