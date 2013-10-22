@@ -4,6 +4,7 @@ using Harbor.Data.Repositories;
 using Harbor.Domain.App;
 using Harbor.Domain.Pages;
 using Harbor.Domain.Security;
+using log4net;
 using StructureMap;
 using System.Linq;
 
@@ -33,11 +34,16 @@ namespace Harbor.UI
 				// add the bootstrapper tasks to the container
 				scan.AddAllTypesOf<IBootstrapperTask>();
 				scan.AddAllTypesOf<ComponentType>();
+
+				// jch! - consider moving to autofac since they have much better support for MVC
+				// For<ILog>().Use(s => LogManager.GetLogger(s.Root.ConcreteType));
 			}));
 
 			return ObjectFactory.Container;
 		}
 	}
 
+
+	//For<ILog>().Use(s => LogManager.GetLogger(s.Root.ConcreteType));
 
 }
