@@ -52,6 +52,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -70,6 +71,8 @@
     <Compile Include="App\IHarborAppRepository.cs" />
     <Compile Include="App\NavigationLink.cs" />
     <Compile Include="DataAnnotations\EmailAttribute.cs" />
+    <Compile Include="Diagnostics\HarborTextWriterTraceListener.cs" />
+    <Compile Include="Diagnostics\Logger.cs" />
     <Compile Include="Extensions\AppSetting\AsInt.cs" />
     <Compile Include="Files\File.cs" />
     <Compile Include="Files\FileResolution.cs" />
