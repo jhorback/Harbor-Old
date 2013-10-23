@@ -13,9 +13,9 @@ namespace Harbor.Domain.Pages
 			return components;
 		}
 
-		public ComponentRepository(List<ComponentType> components)
+		public ComponentRepository(IEnumerable<ComponentType> components)
 		{
-			this.components = components;
+			this.components = components.ToList();
 		}
 
 		public Type GetPageComponentType(string key)
