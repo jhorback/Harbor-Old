@@ -40,7 +40,7 @@ pageEditor.componentManager = function ($, _, Backbone, context, console, curren
 			componentManager.trigger("open", component);
 		},
 
-		"delete": function (uicid) {
+		deleteComponent: function (uicid) {
 			var comp = components[uicid];
 
 			if (comp) {
