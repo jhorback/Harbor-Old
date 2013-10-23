@@ -108,20 +108,6 @@ namespace Harbor.UI.Controllers
 		[PagePermit(Permissions.Read)]
 		public ActionResult Page(int? id)
 		{
-			_logger.Info("Requested page - info - {0}", id);
-			_logger.Warn("Requested page - warn - {0}", id);
-			_logger.Error("Requested page - error - {0}", id);
-			_logger.Debug("Requested page - debug - {0}", id);
-			_logger.Fatal("Requested page - fatal - {0}", id);
-			try
-			{
-				throw new Exception("here is an exception message");
-			}
-			catch (Exception e)
-			{
-				_logger.Fatal("Requested page - fatal with exc - {0}", e, id);
-			}
-
 			var page = pageRep.FindById(id);
 			if (page == null)
 				return new HttpStatusCodeResult(HttpStatusCode.NotFound);

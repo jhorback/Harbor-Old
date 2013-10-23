@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using Autofac;
 using Autofac.Core;
 using Harbor.Domain;
+using Harbor.Domain.Diagnostics;
 
 namespace Harbor.UI.AutofacModules
 {
