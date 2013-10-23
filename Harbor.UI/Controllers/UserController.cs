@@ -108,7 +108,11 @@ namespace Harbor.UI.Controllers
 		[PagePermit(Permissions.Read)]
 		public ActionResult Page(int? id)
 		{
-			_logger.Info("Requested page {0}", new {id});
+			_logger.Info("Requested page - info - {0}", id);
+			_logger.Warn("Requested page - warn - {0}", id);
+			_logger.Error("Requested page - error - {0}", id);
+			_logger.Debug("Requested page - debug - {0}", id);
+
 
 			var page = pageRep.FindById(id);
 			if (page == null)
