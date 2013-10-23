@@ -40,7 +40,7 @@ pageEditor.pageUICMenuView.prototype = {
 			collection = type === "aside" ? this.currentPage.template.aside :
 				this.currentPage.template.content;
 
-			this.componentManager.delete(this.component.uicid);
+			this.componentManager.deleteComponent(this.component.uicid);
 			pageComponent = collection.get(this.component.uicid);
 			collection.remove(pageComponent);
 			this.currentPageRepo.saveCurrentPage();

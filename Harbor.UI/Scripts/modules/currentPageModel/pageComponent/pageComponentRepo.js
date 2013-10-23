@@ -1,6 +1,6 @@
 ﻿
 
-function currentPageRepo(
+function pageComponentRepo(
 	ajaxRequest,
 	collectionFactory
 	) {
@@ -22,4 +22,4 @@ function currentPageRepo(
 currentPageModel.service("pageComponentRepo", [
 	"ajaxRequest",
 	"collectionFactory",
-	currentPageRepo]);
+	pageComponentRepo]);
