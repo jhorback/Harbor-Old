@@ -1,12 +1,11 @@
-﻿using System.Web.Http;
+﻿using System.Reflection;
+using System.Web.Http;
 using System.Web.Mvc;
+using Autofac;
+using Autofac.Integration.Mvc;
+using Autofac.Integration.WebApi;
 using Harbor.Data.Repositories;
-using Harbor.Domain.App;
-using Harbor.Domain.Pages;
 using Harbor.Domain.Security;
-using log4net;
-using StructureMap;
-using System.Linq;
 
 namespace Harbor.UI
 {
@@ -14,36 +13,54 @@ namespace Harbor.UI
 	{
 		public static void RegisterDependencies()
 		{
-			var container = IoCConfig.Initialize();
-			DependencyResolver.SetResolver(new StructureMapDependencyResolver(container));
-			GlobalConfiguration.Configuration.DependencyResolver = new StructureMapHttpDependencyResolver(container);
+			// Reference:
+			//    Mvc: http://code.google.com/p/autofac/wiki/MvcIntegration
+			//    WebApi: https://code.google.com/p/autofac/wiki/WebApiIntegration
+
+			var container = getContainer();
+			DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+			GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver(container);
 		}
 
-		public static IContainer Initialize()
+
+
+		private static IContainer getContainer()
 		{
-			ObjectFactory.Initialize(x => x.Scan(scan =>
-			{
-				scan.WithDefaultConventions();
-				scan.TheCallingAssembly();
+			var builder = new ContainerBuilder();
+			var webAssembly = Assembly.GetExecutingAssembly();
+			var domainAssembly = typeof(IUserRepository).Assembly;
+			var dataAssembly = typeof(UserRepository).Assembly;
 
-				// Harbor.Domain
-				scan.AssemblyContainingType(typeof(IUserRepository));
-				// Harbor.Data
-				scan.AssemblyContainingType(typeof(UserRepository));
 
-				// add the bootstrapper tasks to the container
-				scan.AddAllTypesOf<IBootstrapperTask>();
-				scan.AddAllTypesOf<ComponentType>();
+			// Register Mvc and Api controllers
+			builder.RegisterControllers(webAssembly);
+			builder.RegisterApiControllers(webAssembly);
 
-				// jch! - consider moving to autofac since they have much better support for MVC
-				// For<ILog>().Use(s => LogManager.GetLogger(s.Root.ConcreteType));
-			}));
 
-			return ObjectFactory.Container;
+			builder.RegisterModelBinders();
+
+
+			// Register implementing interfaces: IFoo -> Foo
+			builder.RegisterAssemblyTypes(webAssembly)
+				.AsImplementedInterfaces()
+				.AsSelf();
+			builder.RegisterAssemblyTypes(domainAssembly)
+				.AsImplementedInterfaces()
+				.AsSelf();
+			builder.RegisterAssemblyTypes(dataAssembly)
+				.AsImplementedInterfaces()
+				.AsSelf();
+
+
+			// Register modules (located in the  AutofacModules folder)
+			builder.RegisterAssemblyModules(webAssembly);
+
+
+			// Inject HTTP Abstractions
+			builder.RegisterModule(new AutofacWebTypesModule());
+
+
+			return builder.Build();
 		}
 	}
-
-
-	//For<ILog>().Use(s => LogManager.GetLogger(s.Root.ConcreteType));
-
 }
