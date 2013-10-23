@@ -8,14 +8,21 @@ namespace Harbor.Domain.Pages
 	{
 		List<ComponentType> components;
 
+		public ComponentRepository()
+		{
+			components = new List<ComponentType>
+				{
+					new Components.Image(),
+					new Components.Links(),
+					new Components.PageLink(),
+					new Components.Text(),
+					new Components.Title()
+				};
+		}
+
 		public List<ComponentType> GetAllComponents()
 		{
 			return components;
-		}
-
-		public ComponentRepository(IEnumerable<ComponentType> components)
-		{
-			this.components = components.ToList();
 		}
 
 		public Type GetPageComponentType(string key)

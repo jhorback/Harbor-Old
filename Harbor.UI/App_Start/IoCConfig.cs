@@ -5,6 +5,7 @@ using Autofac;
 using Autofac.Integration.Mvc;
 using Autofac.Integration.WebApi;
 using Harbor.Data.Repositories;
+using Harbor.Domain.Pages;
 using Harbor.Domain.Security;
 
 namespace Harbor.UI
@@ -50,6 +51,7 @@ namespace Harbor.UI
 			builder.RegisterAssemblyTypes(dataAssembly)
 				.AsImplementedInterfaces()
 				.AsSelf();
+			
 
 
 			// Register modules (located in the  AutofacModules folder)
