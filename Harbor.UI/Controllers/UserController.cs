@@ -110,7 +110,11 @@ namespace Harbor.UI.Controllers
 		{
 			var page = pageRep.FindById(id);
 			if (page == null)
+			{
+				_logger.Debug("Page Not Found. ID: {0}", id);
 				return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+			}
+				
 
 			ViewBag.HasWritePermissions = page.HasPermission(User.Identity.Name, Permissions.CreateAndUpdate);
 			ViewBag.PageDto = (PageDto)page;
