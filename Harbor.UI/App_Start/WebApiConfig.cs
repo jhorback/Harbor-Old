@@ -1,5 +1,8 @@
-﻿using System.Web.Http;
+﻿using System;
+using System.Web.Http;
 using Harbor.Data.Repositories;
+using Harbor.Domain;
+using Harbor.Domain.Diagnostics;
 using Harbor.Domain.Security;
 using Newtonsoft.Json;
 
@@ -9,7 +12,18 @@ namespace Harbor.UI
 	{
 		public static void Register(HttpConfiguration config)
 		{
-			var userRep = config.DependencyResolver.GetService(typeof(IUserRepository)) as IUserRepository;
+			IUserRepository userRep;
+			ILogger logger = new Logger(typeof(WebApiConfig));
+
+			try
+			{
+				userRep = config.DependencyResolver.GetService(typeof(IUserRepository)) as IUserRepository;
+			}
+			catch (Exception e)
+			{
+				logger.Fatal(e);
+				throw;
+			}
 			
 			config.Filters.Add(new Http.BadRequestFilterAttribute());			
 			config.Filters.Add(new Http.ServerErrorExceptionFilterAttribute());

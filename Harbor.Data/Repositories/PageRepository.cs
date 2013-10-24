@@ -13,18 +13,21 @@ namespace Harbor.Data.Repositories
 	{
 		readonly HarborContext context;
 		readonly IPageFactory pageFactory;
-		private readonly PageResourceUpdater _pageResourceUpdater;
+		private readonly IPageResourceUpdater _pageResourceUpdater;
+		private readonly ILogger _logger;
 
 		string pageCacheKey = "Harbor.Data.Repositories.PageRepository.";
 
 		public PageRepository(
 			HarborContext context,
 			IPageFactory pageFactory,
-			PageResourceUpdater pageResourceUpdater)
-		{
+			IPageResourceUpdater pageResourceUpdater,
+			ILogger logger
+		) {
 			this.context = context;
 			this.pageFactory = pageFactory;
 			_pageResourceUpdater = pageResourceUpdater;
+			_logger = logger;
 		}
 
 		#region IRepository
@@ -123,7 +126,7 @@ namespace Harbor.Data.Repositories
 
 			// update the modified date
 			entity.Modified = DateTime.Now;
-			
+
 
 			try
 			{
@@ -131,20 +134,19 @@ namespace Harbor.Data.Repositories
 			}
 			catch (DbEntityValidationException dbEx)
 			{
-				var messages = new List<string>();
+				_logger.Error(dbEx);
 				foreach (var validationErrors in dbEx.EntityValidationErrors)
 				{
 					foreach (var validationError in validationErrors.ValidationErrors)
 					{
-						// jch* - need to implement a log - research tracing over/or/including logging
-						// got trace turned on in the web.config - but do not see this message here.
-						var message = string.Format("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
-						Trace.TraceInformation(message);
-						Debug.Write(message);
-						messages.Add(message);
+						_logger.Error("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
 					}
 				}
-				throw new Exception("There was an erroror updating the page: " + string.Join("\n ", messages), dbEx);
+				throw new Exception("There was an error updating the page. Check the log for mor details.", dbEx);
+			}
+			catch (Exception e)
+			{
+				_logger.Error("UpdatePage", e);
 			}
 
 			clearCachedPageByID(entity.PageID);

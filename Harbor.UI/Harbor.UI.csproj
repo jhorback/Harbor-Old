@@ -168,6 +168,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\AutofacModules\HarborDataModule.cs" />
     <Compile Include="App_Start\AutofacModules\LogInjectionModule.cs" />
     <Compile Include="App_Start\Bootstrapper.cs" />
     <Compile Include="App_Start\JSPkgs\CurrentPageModelPkg.cs" />
@@ -271,6 +272,7 @@
     <Compile Include="Models\Page\PagePropertyDto.cs" />
     <Compile Include="Models\Page\PageTypeDto.cs" />
     <Compile Include="Models\Setting\AppSettingDto.cs" />
+    <Compile Include="Models\Setting\ISettingsViewModelRepository.cs" />
     <Compile Include="Models\Setting\NavigationLinkDto.cs" />
     <Compile Include="Models\Setting\SettingsViewModelRepository.cs" />
     <Compile Include="Models\Setting\HarborAppDto.cs" />
@@ -284,6 +286,7 @@
     <Compile Include="Models\Theming\Theme.cs" />
     <Compile Include="Models\Theming\ThemeCollection.cs" />
     <Compile Include="Models\Theming\ThemeTable.cs" />
+    <Compile Include="Models\User\ICurrentUserRepository.cs" />
     <Compile Include="Models\User\UserRoleDto.cs" />
     <Compile Include="Models\User\CurrentUserDto.cs" />
     <Compile Include="Models\User\CurrentUserRepository.cs" />

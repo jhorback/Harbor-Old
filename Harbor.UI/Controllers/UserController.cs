@@ -18,14 +18,14 @@ namespace Harbor.UI.Controllers
     public class UserController : Controller
     {
 		IUserRepository userRep;
-		CurrentUserRepository currentUserRep;
+		ICurrentUserRepository currentUserRep;
 		IPageRepository pageRep;
 		IFileRepository fileRep;
-		SettingsViewModelRepository settingsViewModelRepository;
+		ISettingsViewModelRepository settingsViewModelRepository;
 	    private readonly ILogger _logger;
 
-	    public UserController(IUserRepository userRep, CurrentUserRepository currentUserRep,
-			IPageRepository pageRep, IFileRepository fileRep, SettingsViewModelRepository settingsViewModelRepository,
+	    public UserController(IUserRepository userRep, ICurrentUserRepository currentUserRep,
+			IPageRepository pageRep, IFileRepository fileRep, ISettingsViewModelRepository settingsViewModelRepository,
 			ILogger logger)
 		{
 			this.userRep = userRep;
