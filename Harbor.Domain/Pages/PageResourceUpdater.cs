@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Harbor.Domain.Pages
 {
-	public class PageResourceUpdater
+	public class PageResourceUpdater : IPageResourceUpdater
 	{
 		readonly IComponentRepository componentRepository;
 		private readonly IPageRepositoryResourceManager resourceManager;

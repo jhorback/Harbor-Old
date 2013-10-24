@@ -5,7 +5,6 @@ using Autofac;
 using Autofac.Integration.Mvc;
 using Autofac.Integration.WebApi;
 using Harbor.Data.Repositories;
-using Harbor.Domain.Pages;
 using Harbor.Domain.Security;
 
 namespace Harbor.UI
@@ -23,8 +22,6 @@ namespace Harbor.UI
 			GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver(container);
 		}
 
-
-
 		private static IContainer getContainer()
 		{
 			var builder = new ContainerBuilder();
@@ -36,22 +33,12 @@ namespace Harbor.UI
 			// Register Mvc and Api controllers
 			builder.RegisterControllers(webAssembly);
 			builder.RegisterApiControllers(webAssembly);
-
-
-			builder.RegisterModelBinders();
+			builder.RegisterModelBinders(webAssembly);
 
 
 			// Register implementing interfaces: IFoo -> Foo
-			builder.RegisterAssemblyTypes(webAssembly)
-				.AsImplementedInterfaces()
-				.AsSelf();
-			builder.RegisterAssemblyTypes(domainAssembly)
-				.AsImplementedInterfaces()
-				.AsSelf();
-			builder.RegisterAssemblyTypes(dataAssembly)
-				.AsImplementedInterfaces()
-				.AsSelf();
-			
+			builder.RegisterAssemblyTypes(webAssembly, domainAssembly, dataAssembly)
+				.AsImplementedInterfaces();
 
 
 			// Register modules (located in the  AutofacModules folder)

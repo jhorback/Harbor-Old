@@ -19,10 +19,10 @@ namespace Harbor.Specs.StepDefinitions
     {
     	UserController userController;
 		Mock<IUserRepository> userRepository;
-		Mock<CurrentUserRepository> currentUserRepository;
+		Mock<ICurrentUserRepository> currentUserRepository;
 		Mock<IPageRepository> pageRep;
 		Mock<IFileRepository> fileRep;
-		Mock<SettingsViewModelRepository> settingsViewModelRep;
+		Mock<ISettingsViewModelRepository> settingsViewModelRep;
 	    Mock<ILogger> logger;
 
 		HttpStatusCodeResult currentResult;
@@ -34,10 +34,10 @@ namespace Harbor.Specs.StepDefinitions
 	    public AuthenticationSteps()
 		{
 			userRepository = new Mock<IUserRepository>();
-			currentUserRepository = new Mock<CurrentUserRepository>();
+			currentUserRepository = new Mock<ICurrentUserRepository>();
 			pageRep = new Mock<IPageRepository>();
 			fileRep = new Mock<IFileRepository>();
-			settingsViewModelRep = new Mock<SettingsViewModelRepository>();
+			settingsViewModelRep = new Mock<ISettingsViewModelRepository>();
 		    logger = new Mock<ILogger>();
 			userController = new UserController(userRepository.Object, currentUserRepository.Object,
 				pageRep.Object, fileRep.Object, settingsViewModelRep.Object, logger.Object);

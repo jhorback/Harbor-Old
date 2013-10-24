@@ -9,7 +9,7 @@ using Harbor.UI.Models.Theming;
 
 namespace Harbor.UI.Models.Setting
 {
-	public class SettingsViewModelRepository
+	public class SettingsViewModelRepository : ISettingsViewModelRepository
 	{
 		IUserRepository userRepository;
 		IHarborAppRepository harborAppRepository;

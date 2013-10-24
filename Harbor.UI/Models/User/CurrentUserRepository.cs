@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Harbor.Domain.App;
+﻿using Harbor.Domain.App;
 using Harbor.Domain.Security;
 
 namespace Harbor.UI.Models.User
 {
-	public class CurrentUserRepository
+	public class CurrentUserRepository : ICurrentUserRepository
 	{
 		IHarborAppRepository harborApp;
 		IUserRepository userRep;
