@@ -102,8 +102,8 @@
 			this.position();
 			if (this.options.draggable && $.fn.draggable) {
 				this.dialogEl.draggable({
-					handle: ".dialog-header",
-					axis: "y"
+					handle: ".dialog-header"
+					// ,axis: "y"
 					//					,start: function (event, ui) {
 					//						self.element.find("iframe").hide();
 					//					},
@@ -235,7 +235,7 @@
 			my: "left center",
 			at: "left center",
 			of: win,
-			offset: "0 -100"
+			offset: "0 -200"
 		},
 		editorFor: null,
 		removeEl: true,
