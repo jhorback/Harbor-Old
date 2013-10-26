@@ -2,15 +2,23 @@
   position: absolute;
   z-index: 100;
   left: 0;
-  right: 0;
-  background: #FFF; }
+  right: 0; }
 
 .dialog {
   color: black;
   background-color: white;
   max-width: 600px;
   min-width: 400px;
-  margin: auto; }
+  margin: auto;
+  padding: .5em 1em .7em 1em;
+  -moz-box-shadow: 0 0 2em 0.5em #555555;
+  -webkit-box-shadow: 0 0 2em 0.5em #555555;
+  -ms-box-shadow: 0 0 2em 0.5em #555555;
+  box-shadow: 0 0 2em 0.5em #555555;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -ms-border-radius: 3px;
+  border-radius: 3px; }
   .dialog:after {
     content: "";
     display: table;
@@ -32,7 +40,8 @@
     clear: both;
     padding-top: 1em; }
     .dialog .form-controls .input, .dialog .form-controls input, .dialog .form-controls a, .dialog .form-controls button, .dialog .form-controls .link {
-      float: right; }
+      float: right;
+      margin-left: .5em; }
 
 @media screen and (max-width: 600px) {
   .dialog, .dialog-wrapper {
@@ -53,10 +62,9 @@
   text-decoration: none;
   display: block;
   cursor: default;
-  margin: -.2em -.2em 0 0;
+  margin: -.5em -.3em 0 0;
   float: right;
-  font-size: 2em;
-  font-weight: bold;
+  font-size: 3em;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=10)";
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=10);
   opacity: 0.1; }
