@@ -16,6 +16,7 @@ pageEditor.templateEditorView = (function () {
 		$ = $$;
 		_ = __;
 		
+		this.fromServer = true;
 		this.page = currentPageRepo.getCurrentPage();
 		this.template = this.page.template;
 		this.componentManager = componentManager;
@@ -118,7 +119,7 @@ pageEditor.templateEditorView = (function () {
 			this.currentPageRepo.saveCurrentPage();
 		},
 		
-		close: function () {
+		onClose: function () {
 			this.$(".uic-add").remove();
 		}
 	};
