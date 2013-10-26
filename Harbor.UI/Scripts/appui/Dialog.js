@@ -235,7 +235,7 @@
 			my: "left center",
 			at: "left center",
 			of: win,
-			offset: "0 -100"
+			offset: "0 -200"
 		},
 		editorFor: null,
 		removeEl: true,
