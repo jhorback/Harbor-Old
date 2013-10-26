@@ -5,16 +5,23 @@ var pageEditor = context.module("pageEditor").use("bbext", "currentPageModel");
 
 function pageEditorService($, console, componentManager, viewRenderer) {
 
-	var templateEditorView;
+	var templateEditorView,
+		rendered = false;
 
 	return {
 		render: function () {
-			var frameBody = $("#frame-body");
+			var frameBody;
 			
+			if (rendered) {
+				return;
+			}
+
+			frameBody = $("#frame-body");
 			componentManager.init();
 			templateEditorView = viewRenderer.render("templateEditorView", {
 				el: frameBody[0]
 			});
+			rendered = true;
 			console.log("pageEditor: render");
 		},
 		
@@ -22,6 +29,7 @@ function pageEditorService($, console, componentManager, viewRenderer) {
 		close: function () {
 			componentManager.removeAll();
 			templateEditorView && templateEditorView.close();
+			rendered = false;
 			console.log("pageEditor: close");
 		}
 	};

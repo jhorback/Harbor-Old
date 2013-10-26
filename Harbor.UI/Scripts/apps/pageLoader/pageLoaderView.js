@@ -22,8 +22,8 @@ pageLoaderView.prototype = {
 	},
 
 	doneEditing: function (event) {
-		this.model.set("mode", "view");
 		this.pageEditor.close();
+		this.model.set("mode", "view");
 	}
 };
 

@@ -29,6 +29,7 @@ function getSetModelExt(mixin, modelPropertyDescriptor) {
 
 		set: function (name, value, options) {
 			var model = this,
+				valueToSet,
                 multiProps,
                 getValueToSet = _.bind(function (name, value) {
                 	var setFn = modelPropertyDescriptor(this).set[name];
@@ -46,7 +47,8 @@ function getSetModelExt(mixin, modelPropertyDescriptor) {
 				return this;
 			}
 
-			Backbone.Model.prototype.set.call(this, name, getValueToSet(name, value), options);
+			valueToSet = getValueToSet(name, value);
+			Backbone.Model.prototype.set.call(this, name, valueToSet, options);
 			return this;
 		},
 

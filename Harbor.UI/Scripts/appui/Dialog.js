@@ -102,8 +102,8 @@
 			this.position();
 			if (this.options.draggable && $.fn.draggable) {
 				this.dialogEl.draggable({
-					handle: ".dialog-header",
-					axis: "y"
+					handle: ".dialog-header"
+					// ,axis: "y"
 					//					,start: function (event, ui) {
 					//						self.element.find("iframe").hide();
 					//					},

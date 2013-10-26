@@ -7,12 +7,16 @@ var pageLoaderModel = {
 
 	doneButtonVisible: {
 		get: function (value) {
+			var ret;
 			if (this.get("mode") === "view") {
-				return false;
+				ret = false;
+			} else {
+				ret = true;
 			}
-			return true;
+			// console.debug("doneButtonVisible", ret);
+			return ret;
 		},
-		bind: "mode"
+		bind: ["mode"]
 	}
 };
 
