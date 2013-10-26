@@ -11,7 +11,7 @@
 	@if $left == null {
 		@include experimental(box-shadow, $top);
 		
-	} else {
+	} @else {
 		@include experimental(box-shadow, $top $left $blur $spread $color);
 	}
 }
