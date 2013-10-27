@@ -11,7 +11,7 @@ namespace Harbor.UI
 {
 	public class IoCConfig
 	{
-		public static void RegisterDependencies()
+		public static IContainer RegisterDependencies()
 		{
 			// Reference:
 			//    Mvc: http://code.google.com/p/autofac/wiki/MvcIntegration
@@ -20,6 +20,14 @@ namespace Harbor.UI
 			var container = getContainer();
 			DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
 			GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver(container);
+			Container = container;
+			return container;
+		}
+
+		public static IContainer Container
+		{
+			get;
+			private set;
 		}
 
 		private static IContainer getContainer()
@@ -36,9 +44,15 @@ namespace Harbor.UI
 			builder.RegisterModelBinders(webAssembly);
 
 
+			// Allow action filters to have property injection
+			builder.RegisterFilterProvider();
+			//builder.RegisterWebApiFilterProvider(GlobalConfiguration.Configuration);
+
+
 			// Register implementing interfaces: IFoo -> Foo
 			builder.RegisterAssemblyTypes(webAssembly, domainAssembly, dataAssembly)
 				.AsImplementedInterfaces();
+				//.InstancePerHttpRequest();
 
 
 			// Register modules (located in the  AutofacModules folder)

@@ -26,7 +26,7 @@ namespace Harbor.UI.Http
 			this.permissions = permissions;
 		}
 
-		public IPageRepository PageRepository
+		public IPageRepository PageRepository // { get; set; }
 		{
 			get { return GlobalConfiguration.Configuration.DependencyResolver.GetService(typeof(IPageRepository)) as IPageRepository; }
 		}
