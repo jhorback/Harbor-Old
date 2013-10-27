@@ -2027,7 +2027,7 @@ var RLANG = {
 					}
 					else
 					{
-						drop_a = $('<a href="javascript:void(null);" class="' + d.className + '">' + d.title + '</a>');
+						drop_a = $('<a href="javascript:void(null);" class="' + d.className + '"><' + x + '>' + d.title + '</' + x + '></a>');
 	
 						if (typeof(d.callback) === 'function')
 						{

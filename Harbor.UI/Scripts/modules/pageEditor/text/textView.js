@@ -11,7 +11,7 @@ pageEditor.textView.prototype = {
 
 		buttons = [
 			"formatting", "|",
-			"bold", "italic", "deleted", "underline", "|",
+			"bold", "italic", "deleted", "underline", "link", "|",
 			"unorderedlist", "orderedlist", "outdent", "indent", "|",
 			"horizontalrule", "|",
 			"fontcolor", "backcolor", "|",
@@ -19,12 +19,12 @@ pageEditor.textView.prototype = {
 			"html"
 		];
        
-		richTextEl = this.$el.find(".richtext");
-		//richTextEl.css("position", "initial"); // gets rid of a wierd square box
+		richTextEl = this.$el.find(".richtext");	
 		richTextEl.redactor({
 			focus: true,
-			// air: true,
-			// airButtons: buttons,
+			fixed: true,
+			//air: true,
+			//airButtons: buttons,
 			buttons: buttons
 		});
 	},

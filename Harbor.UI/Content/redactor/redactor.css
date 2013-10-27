@@ -377,33 +377,6 @@ body .redactor_toolbar li a.redactor_btn_alignment {
 /*
 	Toolbar classes
 */
-.redactor_format_blockquote {
-  font-style: italic;
-  color: #666 !important;
-  padding-left: 10px; }
-
-.redactor_format_pre {
-  font-family: monospace, sans-serif; }
-
-.redactor_format_h1, .redactor_format_h2, .redactor_format_h3, .redactor_format_h4 {
-  font-weight: bold; }
-
-.redactor_format_h1 {
-  font-size: 30px;
-  line-height: 36px; }
-
-.redactor_format_h2 {
-  font-size: 24px;
-  line-height: 36px; }
-
-.redactor_format_h3 {
-  font-size: 20px;
-  line-height: 30px; }
-
-.redactor_format_h4 {
-  font-size: 16px;
-  line-height: 26px; }
-
 /*
 	DROPDOWN
 */
