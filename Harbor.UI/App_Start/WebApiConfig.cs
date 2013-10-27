@@ -12,22 +12,9 @@ namespace Harbor.UI
 	{
 		public static void Register(HttpConfiguration config)
 		{
-			IUserRepository userRep;
-			ILogger logger = new Logger(typeof(WebApiConfig));
-
-			try
-			{
-				userRep = config.DependencyResolver.GetService(typeof(IUserRepository)) as IUserRepository;
-			}
-			catch (Exception e)
-			{
-				logger.Fatal(e);
-				throw;
-			}
-			
 			config.Filters.Add(new Http.BadRequestFilterAttribute());			
 			config.Filters.Add(new Http.ServerErrorExceptionFilterAttribute());
-			config.Filters.Add(new Http.AuthenticateAttribute(userRep));
+			config.Filters.Add(new Http.AuthenticateAttribute());
 		}
 	}
 }
