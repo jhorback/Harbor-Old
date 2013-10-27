@@ -20,7 +20,9 @@ function pageRepo(collectionFactory, ajaxRequest) {
 		},
 
 		savePage: function (page, handler, proxy) {
-			return ajaxRequest.handle(page.save(), handler, proxy);
+			return page.hasChanged() ?
+				ajaxRequest.handle(page.save(), handler, proxy) :
+				ajaxRequest.resolved();
 		}
 	};
 }

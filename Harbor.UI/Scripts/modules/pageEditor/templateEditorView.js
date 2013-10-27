@@ -39,7 +39,7 @@ pageEditor.templateEditorView = (function () {
 		},
 		
 		events: {
-			"click .uic": function () {
+			"click .uic": function (event) {
 				var uicid = $(event.target).closest(".uic").attr("id");
 				uicid && this.selectUIC(uicid);
 			},

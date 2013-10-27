@@ -27,6 +27,13 @@ appui.ajaxRequest = function ($, defaultHandler) {
 			deferred.then(dfdHandler.success);
 			deferred.fail(dfdHandler.error);
 			return deferred.promise();
+		},
+		
+		// util method to return a resolved promise object
+		resolved: function () {
+			var dfd = $.Deferred();
+			dfd.resolve();
+			return dfd.promise();
 		}
 	};
 	

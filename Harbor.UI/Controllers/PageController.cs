@@ -24,13 +24,13 @@ namespace Harbor.UI.Controllers
 		public PartialViewResult Image(Page page, string uicid)
 		{
 			var image = page.GetComponent<Image>(uicid);
-			if (image.IsNew())
+			if (image.IsNew || !image.FileExists)
 			{
 				return PartialView("Image-None");
 			}
 
-			var model = (ImageDto)image;			
-			return PartialView("Image", model);      	
+			var model = (ImageDto)image;
+			return PartialView("Image", model);
 		}
 
 		public PartialViewResult Links(Page page, string uicid)

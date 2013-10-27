@@ -197,6 +197,11 @@ page.prototype = {
 		return retItem;
 	},
 
+	getFile: function (fileID) {
+		var file = _.where(this.attributes.files, { id: fileID });
+		return (file.length === 1) ? file[0] : null;
+	},
+	
 	getPageLink: function (pageID) {
 		var link = _.where(this.get("pageLinks"), { id: parseInt(pageID) });
 		return (link.length === 1) ? link[0] : {};

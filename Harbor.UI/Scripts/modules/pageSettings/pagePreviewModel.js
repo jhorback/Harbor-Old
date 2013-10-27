@@ -1,6 +1,9 @@
 ﻿
+function pagePreviewModel(attrs, options, currentPageRepo) {
+	this.currentPageRepo = currentPageRepo;
+}
 
-var pagePreviewModel = {
+pagePreviewModel.prototype = {
 	defaults: {
 		page: null,
 		thumbSrc: null,
@@ -105,8 +108,13 @@ var pagePreviewModel = {
 	},
 
 	save: function () {
-		return this.page.save();
+		this.currentPageRepo.saveCurrentPage();
 	}
 };
 
-pageSettings.model("pagePreviewModel", pagePreviewModel);
+pageSettings.model("pagePreviewModel", [
+	"attrs",
+	"options",
+	"currentPageRepo",
+	pagePreviewModel
+]);
