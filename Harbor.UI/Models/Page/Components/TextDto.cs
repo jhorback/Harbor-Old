@@ -10,7 +10,7 @@ namespace Harbor.UI.Models.Components
 			get
 			{
 				if (string.IsNullOrEmpty(_text)) {
-					return "[Add Text]";
+					return "Edit this page to add text.";
 				}
 				return _text;
 			}

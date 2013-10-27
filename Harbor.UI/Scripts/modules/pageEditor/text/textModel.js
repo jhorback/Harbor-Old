@@ -7,7 +7,7 @@ pageEditor.textModel = {
 	},
 	
 	defaults: {
-		text: "[ADD TEXT]"
+		text: null
 	}
 };
 

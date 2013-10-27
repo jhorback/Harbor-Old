@@ -108,7 +108,9 @@ pagePreviewModel.prototype = {
 	},
 
 	save: function () {
-		this.currentPageRepo.saveCurrentPage();
+		if (this.page.hasChanged()) {
+			this.currentPageRepo.saveCurrentPage();
+		}
 	}
 };
 
