@@ -7,9 +7,10 @@ namespace Harbor.Domain.Pages.PageComponents
 {
 	public class Image : PageComponent
 	{
-		public Image(Page page, string uicid) : base(page, uicid)
+		public Image(Page page, string uicid)
+			: base(page, uicid)
 		{
-			if (IsNew() == false)
+			if (IsNew == false)
 			{
 				file = page.GetFile(FileID);
 			}
@@ -17,11 +18,22 @@ namespace Harbor.Domain.Pages.PageComponents
 
 		private File file;
 
-		public bool IsNew()
+		public bool IsNew
 		{
-			return FileID == null ? true : false;
+			get
+			{
+				return FileID == null;
+			}
 		}
-		
+
+		public bool FileExists
+		{
+			get
+			{
+				return file != null;
+			}
+		}
+
 		public Guid? FileID
 		{
 			get
@@ -46,7 +58,7 @@ namespace Harbor.Domain.Pages.PageComponents
 		{
 			get
 			{
-				if (file != null) // may remove after table is created
+				if (FileExists) // may remove after table is created
 					return file.Name;
 				return GetProperty("name");
 			}
@@ -56,9 +68,9 @@ namespace Harbor.Domain.Pages.PageComponents
 		{
 			get
 			{
-				if (file != null) // may remove after table is created
+				if (FileExists) // may remove after table is created
 					return file.Ext;
-				else return GetProperty("ext");
+				return GetProperty("ext");
 			}
 		}
 

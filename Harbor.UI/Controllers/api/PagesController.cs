@@ -84,8 +84,8 @@ namespace Harbor.UI.Controllers.Api
 				return Request.CreateBadRequestResponse(e.Message);
 			}
 			
-			var userDto = (PageDto)pageDO;
-			return Request.CreateOKResponse(userDto);
+			var pageDto = (PageDto)pageDO;
+			return Request.CreateOKResponse(pageDto);
         }
 
 		[Http.PagePermit(Permissions.Delete)]

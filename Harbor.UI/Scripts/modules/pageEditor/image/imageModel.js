@@ -13,18 +13,23 @@ pageEditor.imageModel.prototype = {
 		}
 	},
 	
+	initialize: function (attrs, options) {
+		var fileID = this.get("fileID");
+		var file = options.page.getFile(fileID);
+		this.set("fileExists", file !== null);
+	},
+	
 	defaults: {
 		fileID: null,	
 		res: "low", // can be low or high
 		imgSrc: null,
 		ext: null,
-		name: null
+		name: null,
+		//
+		fileExists: true,
+		fileDoesNotExist: false
 	},
-	
-	hasImage: function () {
-		return this.get("fileID") ? true : false;
-	},
-	
+
 	imgSrc: {
 		get: function (value) {
 			return Application.url("file/" +
@@ -39,6 +44,13 @@ pageEditor.imageModel.prototype = {
 		get: function (value) {
 			return value;
 		}
+	},
+	
+	fileDoesNotExist: {
+		get: function (value) {
+			return !this.get("fileExists");
+		},
+		bind: ["fileExists"]
 	}
 };
 

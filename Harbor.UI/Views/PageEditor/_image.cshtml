@@ -1,11 +1,12 @@
-﻿
+﻿s
 
 <div data-rel="image" data-templatefor="imageEditView">
     
-    <img data-bind="src: imgSrc" />
+	<img data-bind="src: imgSrc,showif:fileExists" />
+	<span data-bind="showif:fileDoesNotExist">Edit this page to add a new image.</span>
     
     <div data-rel="edit">
-        <div>
+        <div data-bind="showif: fileExists">
             <label>
                 <input type="radio" name="res" value="low">
                 <span>Low Resolution</span>

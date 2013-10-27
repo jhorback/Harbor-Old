@@ -11,7 +11,6 @@ pageEditor.imageEditView = function (options, currentPageRepo, fileSelector) {
 pageEditor.imageEditView.prototype = {
 	
 	initialize: function () {
-
 		_.bindAll(this, "close", "save", "selectFile");
 
 		this.listenTo(this.model, "change:res", this.save);		
