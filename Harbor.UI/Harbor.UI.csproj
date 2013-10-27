@@ -639,7 +639,7 @@
     <Content Include="Scripts\Prettify\prettify.js" />
     <Content Include="Scripts\qunit.js" />
     <Content Include="Scripts\redactor\redactor.js" />
-    <Content Include="Scripts\redactor\redactor.min.js" />
+    <Content Include="Scripts\redactor\_redactor.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\underscore.js" />
