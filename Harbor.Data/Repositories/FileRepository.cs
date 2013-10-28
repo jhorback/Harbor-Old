@@ -14,11 +14,13 @@ namespace Harbor.Data.Repositories
 	{
 		HarborContext context;
 		IFileFactory fileFactory;
+		private readonly ILogger _logger;
 
-		public FileRepository(HarborContext context, IFileFactory fileFactory)
+		public FileRepository(HarborContext context, IFileFactory fileFactory, ILogger logger)
 		{
 			this.context = context;
 			this.fileFactory = fileFactory;
+			_logger = logger;
 		}
 
 		public IEnumerable<File> FindAll(Func<File, bool> filter = null)
@@ -41,8 +43,19 @@ namespace Harbor.Data.Repositories
 
 		public File FindById(object id)
 		{
-			var guid = Guid.Parse(id.ToString());
-			return findCachedFileByID(guid);
+			_logger.Info("FindById: {0}", id);
+			Guid guid;
+			Guid.TryParse(id as string, out guid);
+			var file = findCachedFileByID(guid);
+			if (file == null)
+			{
+				_logger.Info("FindById: {0} - File Not Found", id);
+			}
+			else
+			{
+				_logger.Info("FindById: {0} - File Found: {1}", id, file);
+			}
+			return file;
 		}
 
 		public File FindById(object id, bool readOnly)

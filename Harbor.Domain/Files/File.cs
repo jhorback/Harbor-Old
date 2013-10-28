@@ -191,6 +191,10 @@ namespace Harbor.Domain.Files
 			return BitmapExtensions.Contains( Ext.ToLower());
 		}
 
+		public override string ToString()
+		{
+			return string.Format("File - ID: {0}, Name: {1}, Owner: {2}", FileID, Name, UserName);
+		}
 		public static string[] BitmapExtensions = new string[] { ".bmp", ".gif", ".exif", ".jpg", ".png", ".tiff" };
 		#endregion
 	}
