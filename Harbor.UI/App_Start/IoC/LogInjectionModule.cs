@@ -4,8 +4,9 @@ using Autofac.Core;
 using Harbor.Domain;
 using Harbor.Domain.Diagnostics;
 
-namespace Harbor.UI.AutofacModules
+namespace Harbor.UI.IoC
 {
+	// can remove, this was when trying autofac
 	public class LogInjectionModule : Module
 	{
 		protected override void AttachToComponentRegistration(IComponentRegistry registry, IComponentRegistration registration)

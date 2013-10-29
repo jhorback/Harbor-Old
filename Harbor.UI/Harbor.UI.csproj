@@ -85,6 +85,9 @@
       <HintPath>..\packages\MarkdownSharp.1.13.0.0\lib\35\MarkdownSharp.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.4.5.9\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -93,6 +96,9 @@
     </Reference>
     <Reference Include="PayPalCoreSDK">
       <HintPath>..\packages\PayPalCoreSDK.1.3.4\lib\PayPalCoreSDK.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap">
+      <HintPath>..\packages\structuremap.2.6.4.1\lib\net40\StructureMap.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -168,9 +174,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\AutofacModules\HarborDataModule.cs" />
-    <Compile Include="App_Start\AutofacModules\LogInjectionModule.cs" />
+    <Compile Include="App_Start\IoC\HarborDataModule.cs" />
+    <Compile Include="App_Start\IoC\LogInjectionModule.cs" />
     <Compile Include="App_Start\Bootstrapper.cs" />
+    <Compile Include="App_Start\IoC\LoggerRegistry.cs" />
+    <Compile Include="App_Start\IoC\StructureMapDependencyResolver.cs" />
+    <Compile Include="App_Start\IoC\StructureMapDependencyScope.cs" />
     <Compile Include="App_Start\JSPkgs\CurrentPageModelPkg.cs" />
     <Compile Include="App_Start\JSPkgs\CurrentUserModelPkg.cs" />
     <Compile Include="App_Start\JSPkgs\PageSettingsPkg.cs" />
