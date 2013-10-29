@@ -1,7 +1,6 @@
 ﻿using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
-using System.Web.Mvc;
 using System.Web.Security;
 using Harbor.Domain.Security;
 using Harbor.UI.Extensions;
@@ -11,9 +10,12 @@ namespace Harbor.UI.Http
 	public class AuthenticateAttribute : AuthorizationFilterAttribute
 	{
 		
-		public IUserRepository UserRepository
+		public virtual IUserRepository UserRepository
 		{
-			get; set;
+			get
+			{
+				return GlobalConfiguration.Configuration.DependencyResolver.GetService(typeof(IUserRepository)) as IUserRepository; 
+			}
 		}
 
 

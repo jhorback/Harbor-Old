@@ -17,7 +17,7 @@ namespace Harbor.UI
 			this.permissions = permissions;
 		}
 
-		public IUserRepository UserRepository
+		public virtual IUserRepository UserRepository
 		{
 			get
 			{

@@ -22,7 +22,7 @@ namespace Harbor.UI.Http
 			this.permissions = permissions;
 		}
 
-		public IUserRepository UserRepository
+		public virtual IUserRepository UserRepository
 		{
 			get { return GlobalConfiguration.Configuration.DependencyResolver.GetService(typeof (IUserRepository)) as IUserRepository; }
 		}
