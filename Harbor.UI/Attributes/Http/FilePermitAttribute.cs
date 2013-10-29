@@ -21,7 +21,7 @@ namespace Harbor.UI.Http
 			this.permissions = permissions;
 		}
 
-		public IFileRepository FileRepository
+		public virtual IFileRepository FileRepository
 		{
 			get { return GlobalConfiguration.Configuration.DependencyResolver.GetService(typeof(IFileRepository)) as IFileRepository; }
 		}

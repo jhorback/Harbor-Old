@@ -22,7 +22,7 @@ namespace Harbor.UI
 			this.permissions = permissions;
 		}
 
-		public IPageRepository PageRepository
+		public virtual IPageRepository PageRepository
 		{
 			get { return DependencyResolver.Current.GetService(typeof(IPageRepository)) as IPageRepository; }
 		}
