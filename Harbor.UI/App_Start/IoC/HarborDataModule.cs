@@ -1,10 +1,9 @@
 ﻿using Autofac;
-using Autofac.Integration.Mvc;
-using Autofac.Integration.WebApi;
 using Harbor.Data;
 
-namespace Harbor.UI.AutofacModules
+namespace Harbor.UI.IoC
 {
+	// can remove, this was when trying autofac
 	public class HarborDataModule : Module
 	{
 		protected override void Load(ContainerBuilder builder)
