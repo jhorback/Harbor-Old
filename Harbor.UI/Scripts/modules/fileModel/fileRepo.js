@@ -27,6 +27,10 @@ fileModel.fileRepo = function (collectionFactory, ajaxRequest) {
 
 		saveFile: function (file, handler, proxy) {
 			return ajaxRequest.handle(file.save(), handler, proxy);
+		},
+		
+		deleteFile: function (file, handler, proxy) {
+			return ajaxRequest.handle(file.destroy(), handler, proxy);
 		}
 	};
 };

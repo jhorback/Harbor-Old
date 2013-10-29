@@ -45,7 +45,7 @@ namespace Harbor.Data.Repositories
 		{
 			_logger.Info("FindById: {0}", id);
 			Guid guid;
-			Guid.TryParse(id as string, out guid);
+			Guid.TryParse(id.ToString(), out guid);
 			var file = findCachedFileByID(guid);
 			if (file == null)
 			{
@@ -76,7 +76,14 @@ namespace Harbor.Data.Repositories
 		{
 			DomainObjectValidator.ThrowIfInvalid(file);
 			file = context.Files.Add(file);
-			context.SaveChanges();
+			try
+			{
+				context.SaveChanges();
+			}
+			catch (Exception e)
+			{
+				_logger.Fatal("Create file failed.", e);
+			}
 			return file;
 		}
 
@@ -88,7 +95,14 @@ namespace Harbor.Data.Repositories
 
 			DomainObjectValidator.ThrowIfInvalid(entity);
 
-			context.SaveChanges();
+			try
+			{
+				context.SaveChanges();
+			}
+			catch (Exception e)
+			{
+				_logger.Fatal("Update file failed.", e);
+			}
 			clearCachedFileByID(entity.FileID);
 			return entity;
 		}
@@ -106,7 +120,14 @@ namespace Harbor.Data.Repositories
 			
 			clearCachedFileByID(entity.FileID);
 			context.Files.Remove(entity);
-			context.SaveChanges();
+			try
+			{
+				context.SaveChanges();
+			}
+			catch (Exception e)
+			{
+				_logger.Fatal("Delete file failed.", e);
+			}
 		}
 
 		private void deletePhysicalFile(File file, FileResolution res)

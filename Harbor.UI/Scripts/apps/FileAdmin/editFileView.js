@@ -11,7 +11,7 @@ fileAdmin.editFileView.prototype = {
 		this.listenTo(this.model, "change", this.saveModel);
 		this.model.store();
 
-		_.bindAll(this, "saveModel");
+		this.bindAll("saveModel", "close");
 	},
 
 	clickDelete: function () {
@@ -21,8 +21,7 @@ fileAdmin.editFileView.prototype = {
 			return;
 		}
 
-		this.model.destroy();
-		this.close();
+		this.fileRepo.deleteFile(this.model).then(this.close);
 	},
 
 	done: function () {
