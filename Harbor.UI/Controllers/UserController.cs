@@ -144,10 +144,18 @@ namespace Harbor.UI.Controllers
 		{
 			var file = fileRep.FindById(id);
 			if (file == null)
+			{
+				_logger.Info("Download: File does not exist in the database. ID: {0}", id);
 				return new HttpStatusCodeResult(HttpStatusCode.NotFound);
-			var path = file.GetPhysicalPath(res, max);
-			return File(path, file.ContentType);
+			}
 
+			var path = file.GetPhysicalPath(res, max);
+			if (System.IO.File.Exists(path) == false)
+			{
+				_logger.Warn("Download: File exists in database but not on file system. File: {0}", file);
+				return new HttpStatusCodeResult(HttpStatusCode.NotFound);				
+			}
+			return File(path, file.ContentType);
 		}
 
 		public ActionResult Thumbnail(string name)
