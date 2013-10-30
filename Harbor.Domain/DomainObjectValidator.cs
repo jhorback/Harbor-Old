@@ -49,7 +49,7 @@ namespace Harbor.Domain
 			var results = Validate(@object);
 			if (results.Count > 0)
 			{
-				throw new DomainValidationException(getErrorMessage(results));
+				throw new DomainValidationException(getErrorMessage(results)) {Results = results};
 			}
 		}
 

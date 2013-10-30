@@ -51,6 +51,14 @@ namespace Harbor.Data.Repositories
 		public NavLinks Create(NavLinks entity)
 		{
 			DomainObjectValidator.ThrowIfInvalid(entity);
+
+			// make sure the name/username is unique
+			var links = FindAll(l => l.UserName == entity.UserName && l.Name.ToLower() == entity.Name.ToLower()).FirstOrDefault();
+			if (links != null)
+			{
+				throw new DomainValidationException(string.Format("There is already a set of links named {0}.", entity.Name));
+			}
+
 			entity = context.NavLinks.Add(entity);
 			context.SaveChanges();
 			return entity;
@@ -64,6 +72,7 @@ namespace Harbor.Data.Repositories
 
 			DomainObjectValidator.ThrowIfInvalid(entity);
 
+			
 			context.SaveChanges();
 			clearCachedItemByID(entity.NavLinksID);
 			return entity;
