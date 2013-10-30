@@ -22,19 +22,19 @@ namespace Harbor.Data.Repositories
 			{
 				var fileResource = resource as FileResource;
 				var file = context.Files.Find(fileResource.FileID);
-				page.Files.Add(file);
+				if (file != null) page.Files.Add(file);
 			}
 			else if (resource is PageLinkResource)
 			{
 				var res = resource as PageLinkResource;
 				var pageLink = context.Pages.Find(res.PageID);
-				page.PageLinks.Add(pageLink);
+				if (pageLink != null) page.PageLinks.Add(pageLink);
 			}
 			else if (resource is LinksResource)
 			{
 				var res = resource as LinksResource;
 				var pageRes = context.NavLinks.Find(res.NavLinksID);
-				page.NavLinks.Add(pageRes);
+				if (page != null) page.NavLinks.Add(pageRes);
 			}
 		}
 
