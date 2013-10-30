@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Harbor.Domain
 {
@@ -7,8 +10,8 @@ namespace Harbor.Domain
 	/// </summary>
 	public class DomainValidationException : Exception
 	{
-		public DomainValidationException(string message) : base(message)
-		{
-		}
+		public DomainValidationException(string message) : base(message) { }
+
+		public ICollection<ValidationResult> Results { get; set; }
 	}
 }

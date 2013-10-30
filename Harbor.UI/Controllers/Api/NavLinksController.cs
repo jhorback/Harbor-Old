@@ -31,7 +31,7 @@ namespace Harbor.UI.Controllers.Api
         public IEnumerable<NavLinksDto> Get()
         {
             // query.CurrentUserName = User.Identity.Name;
-			return linksRep.FindAll().Select(i => (NavLinksDto)i).Where(i => i.userName == User.Identity.Name);
+			return linksRep.FindAll(i => i.UserName == User.Identity.Name).Select(i => (NavLinksDto)i);
         }
 
         // GET api/navlinks/5
@@ -78,17 +78,13 @@ namespace Harbor.UI.Controllers.Api
 
 			navLinksDO = Mapper.Map(navLinks, navLinksDO);
 
-			var errors = DomainObjectValidator.Validate(navLinksDO);
-			if (errors.Count != 0)
-				return Request.CreateBadRequestResponse(errors);
-
 			try
 			{
 				navLinksDO = linksRep.Update(navLinksDO);
 			}
 			catch (DomainValidationException e)
 			{
-				return Request.CreateBadRequestResponse(e.Message);
+				return Request.CreateBadRequestResponse(e);
 			}
 			
 			var navLinksDto = (NavLinksDto)navLinksDO;

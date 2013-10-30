@@ -2,12 +2,24 @@
 using System.ComponentModel.DataAnnotations;
 using System.Net;
 using System.Net.Http;
+using Harbor.Domain;
 using Harbor.UI.Models;
 
 namespace Harbor.UI.Extensions
 {
 	public static partial class HttpRequestMessageExtensions
 	{
+		/// <summary>
+		/// Returns an HttpResponseMessage as a HttpStatusCode.BadRequest (400) with a standardized response for validation errors.
+		/// </summary>
+		/// <param name="request"></param>
+		/// <param name="domainValidationException"></param>
+		/// <returns></returns>
+		public static HttpResponseMessage CreateBadRequestResponse(this HttpRequestMessage request, DomainValidationException domainValidationException)
+		{
+			return request.CreateBadRequestResponse(domainValidationException.Message, domainValidationException.Results);
+		}
+
 		/// <summary>
 		/// Returns an HttpResponseMessage as a HttpStatusCode.BadRequest (400) with a standardized response for validation errors.
 		/// </summary>
@@ -51,19 +63,21 @@ namespace Harbor.UI.Extensions
 		private static BadRequestDto getBadRequestResponse(IEnumerable<ValidationResult> validationErrors)
 		{
 			var errors = new Dictionary<string, List<string>>();
-			foreach (var result in validationErrors)
+			if (validationErrors != null)
 			{
-				var memeberCount = 0;
-				foreach (var member in result.MemberNames)
+				foreach (var result in validationErrors)
 				{
-					memeberCount++;
-					addError(member, result.ErrorMessage, errors);
+					var memeberCount = 0;
+					foreach (var member in result.MemberNames)
+					{
+						memeberCount++;
+						addError(member, result.ErrorMessage, errors);
+					}
+
+					if (memeberCount == 0)
+						addError("", result.ErrorMessage, errors);
 				}
-
-				if (memeberCount == 0)
-					addError("", result.ErrorMessage, errors);
 			}
-
 			return new BadRequestDto { errors = errors };
 		}
 

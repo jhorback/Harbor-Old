@@ -6,6 +6,9 @@ namespace Harbor.Domain.Pages.PageComponents
 {
 	public class Links : PageComponent
 	{
+		private readonly NavLinks _links;
+
+
 		public Links(Page page, string uicid) : base(page, uicid)
 		{
 			if (IsNew() == false)
@@ -13,8 +16,6 @@ namespace Harbor.Domain.Pages.PageComponents
 				_links = page.GetNavLinks(NavLinksID);
 			}
 		}
-
-		private Domain.PageNav.NavLinks _links { get; set; }
 
 
 		public bool IsNew()
