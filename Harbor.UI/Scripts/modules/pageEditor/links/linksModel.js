@@ -13,8 +13,7 @@ pageEditor.linksModel = function (attrs, options, collectionFactory, currentPage
 			return index;
 		}
 	});
-	
-	this.sections.on("all", this.save, this);
+
 	this.currentPageRepo = currentPageRepo;
 	this.navLinksRepo = navLinksRepo;
 };
@@ -43,6 +42,10 @@ pageEditor.linksModel.prototype = {
 
 	initialize: function () {
 		this.updateIsEmpty();
+		this.sections.on("save", this.save, this);
+		//this.on("change:name", function () {
+		//	this.save();
+		//}, this);
 	},
 	
 	"[name]": {
@@ -75,7 +78,7 @@ pageEditor.linksModel.prototype = {
 	
 	save: function (options) {
 		this.updateIsEmpty();
-		
+
 		if (options && options.savePage) {
 			return this.currentPageRepo.saveCurrentPage();
 		}

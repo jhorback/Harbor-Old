@@ -15,6 +15,12 @@ pageEditor.linkSectionLinkModel.prototype = {
 		cid: null
 	},
 	
+	initialize: function () {
+		this.on("change:pageID change:text", function () {
+			this.trigger("save", "linkSectionLinkModel");
+		}, this);
+	},
+	
 	"[itemClassName]": {
 		get: function (value) {
 			var url = "/" + this.get("pageID");

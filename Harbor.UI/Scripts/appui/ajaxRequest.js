@@ -13,7 +13,7 @@
  *         // any status code...
  *     }
  */
-appui.ajaxRequest = function ($, defaultHandler) {
+appui.ajaxRequest = function ($, defaultHandler, console) {
 
 	/* Default ajax handling */
 	$.ajaxSetup({ dataType: "json" });
@@ -22,6 +22,7 @@ appui.ajaxRequest = function ($, defaultHandler) {
 		handle: function (deferred, handler, proxy) {
 			/// <summary>A static version to handle deferreds.</summary>
 			var dfdHandler;
+			console.trace("ajaxRequest.handle");
 			handler = $.extend({ }, defaultHandler, handler);
 			dfdHandler = getDeferredHandler(handler, proxy);
 			deferred.then(dfdHandler.success);
@@ -70,7 +71,7 @@ appui.ajaxRequest = function ($, defaultHandler) {
 };
 
 
-appui.service("ajaxRequest", ["$", "ajaxRequestDefaultHandler", appui.ajaxRequest]);
+appui.service("ajaxRequest", ["$", "ajaxRequestDefaultHandler", "console", appui.ajaxRequest]);
 
 
 

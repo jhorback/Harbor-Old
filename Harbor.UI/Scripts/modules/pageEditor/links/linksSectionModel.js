@@ -10,9 +10,13 @@ pageEditor.linksSectionModel = function (attrs, options, collectionFactory) {
 			return index;
 		}
 	});
-	
-	this.links.on("all", function () {
-		this.trigger("change:links");
+
+	this.on("change:title", function () {
+		this.trigger("save", "linksSectionModel.title");
+	}, this);
+
+	this.links.on("save add remove", function () {
+		this.trigger("save", "linksSectionModel.links");
 	}, this);
 };
 
