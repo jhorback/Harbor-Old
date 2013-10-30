@@ -1,8 +1,8 @@
 ﻿
 
 
-pageEditor.linksNewView = function (options, _, navLinksRepo, currentPageRepo) {
-	_.bindAll(this, "saveAndTriggerSave", "addNavLinksToPageAndSave");
+pageEditor.linksNewView = function (options, navLinksRepo, currentPageRepo) {
+	this.bindAll("saveAndTriggerSave", "addNavLinksToPageAndSave");
 
 	this.navLinksRepo = navLinksRepo;
 	this.currentPageRepo = currentPageRepo;
@@ -34,7 +34,12 @@ pageEditor.linksNewView.prototype = {
 		this.model.set("name", name);
 		this.navLinksRepo.createLink({
 			name: name
-		}).then(this.addNavLinksToPageAndSave);
+		}, {
+			clientError: function (response) {
+				this.displayErrors(response.errors);
+			},
+			success: this.addNavLinksToPageAndSave
+		}, this);
 	},
 	
 	addNavLinksToPageAndSave: function (navLinks) {
@@ -56,7 +61,6 @@ pageEditor.linksNewView.prototype = {
 
 pageEditor.view("linksNewView", [
 	"options",
-	"_",
 	"navLinksRepo",
 	"currentPageRepo",
 	pageEditor.linksNewView

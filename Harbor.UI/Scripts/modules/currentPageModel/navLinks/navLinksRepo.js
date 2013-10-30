@@ -2,7 +2,9 @@
 
 currentPageModel.navLinksRepo = function (
 	$,
+	_,
 	collectionFactory,
+	modelFactory,
 	ajaxRequest) {
 
 	var links, linksDfd;
@@ -17,15 +19,16 @@ currentPageModel.navLinksRepo = function (
 		},
 		
 		/// link - minimaly, an object with a name property
-		createLink: function (link) {
+		createLink: function (link, handler, proxy) {
 			var cachedLinks = this.getLinks(),
-				dfd = $.Deferred();
-			
-			cachedLinks.create(link, {
-				success: function (model, response, options) {
-					dfd.resolve(model, response, options);
-				}
-			});
+			    dfd = $.Deferred(),
+			    model;
+
+			model = modelFactory.create("navLinks", link);
+			ajaxRequest.handle(model.save(), handler, proxy).then(_.bind(function () {
+				cachedLinks.add(model);
+				dfd.resolve.call(this, arguments);
+			}, this));
 			
 			return dfd.promise();
 		},
@@ -33,12 +36,18 @@ currentPageModel.navLinksRepo = function (
 		updateLink: function (link) {
 			var cachedLinks = this.getLinks(),
 				dfd = $.Deferred();
-			
+
 			linksDfd.then(function () {
 				var navLink = cachedLinks.get(link.get("id")),
+				    attrs, saveDfd;
+					
+				if (!navLink) {
+					dfd.resolve();
+				} else {
 					attrs = link.toJSON(),
 					saveDfd = navLink.save(attrs);
-				ajaxRequest.handle(saveDfd).then(dfd.resolve);
+					ajaxRequest.handle(saveDfd).then(dfd.resolve);
+				}
 			});
 			
 			return dfd.promise();
@@ -66,7 +75,9 @@ currentPageModel.navLinksRepo = function (
 
 currentPageModel.service("navLinksRepo", [
 	"$",
+	"_",
 	"collectionFactory",
+	"modelFactory",
 	"ajaxRequest",
 	currentPageModel.navLinksRepo
 ]);

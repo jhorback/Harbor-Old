@@ -1,5 +1,12 @@
 ﻿
-currentPageModel.navLinks =  {
+
+
+currentPageModel.navLinks = function (attrs, options, appurl) {
+	this.urlRoot = appurl.get("api/navlinks");
+};
+
+
+currentPageModel.navLinks.prototype =  {
 	defaults: {
 		id: null,
 		name: null,
@@ -10,4 +17,4 @@ currentPageModel.navLinks =  {
 
 
 
-currentPageModel.model("navLinks", currentPageModel.navLinks);
+currentPageModel.model("navLinks", ["attrs", "options", "appurl", currentPageModel.navLinks]);
