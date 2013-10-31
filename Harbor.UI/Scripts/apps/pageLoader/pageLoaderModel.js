@@ -10,6 +10,8 @@ var pageLoaderModel = {
 			var ret;
 			if (this.get("mode") === "view") {
 				ret = false;
+				// not sure why I have to do this
+				$("[data-bind='showif: doneButtonVisible']").hide();
 			} else {
 				ret = true;
 			}
