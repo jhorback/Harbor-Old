@@ -1,6 +1,6 @@
 ﻿<div data-templatefor="pageLinkView">
     <span data-rel="pageLink" data-bind="class: tileClassName">
-        <a data-bind="href: link" class="media">
+        <a data-bind="href: link, showif: hasPreviewImage" class="media">
             <img data-bind="src: previewImageSrc" />
         </a>
         <div class="caption">

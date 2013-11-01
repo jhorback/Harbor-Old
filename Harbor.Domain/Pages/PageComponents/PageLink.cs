@@ -54,6 +54,14 @@ namespace Harbor.Domain.Pages.PageComponents
 			}
 		}
 
+		public bool HasPreviewImage
+		{
+			get
+			{
+				return PreviewImageID != null;
+			}
+		}
+
 		public string TileDisplay
 		{
 			get 

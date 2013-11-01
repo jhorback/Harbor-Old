@@ -1,6 +1,10 @@
 ﻿
 
-pageEditor.pageLinkModel = {
+pageEditor.pageLinkModel = function (attrs, options, appurl) {
+	this.appurl = appurl;
+};
+
+pageEditor.pageLinkModel.prototype = {
 	component:  {
 		pageProperties: ["pageID", "tileDisplay"],
 	
@@ -18,7 +22,12 @@ pageEditor.pageLinkModel = {
 		previewImageID: null,
 		previewImageSrc: null,
 		tileClassName: "tile",
-		link: null
+		link: null,
+		hasPreviewImage: false
+	},
+	
+	initialize: function () {
+		debugger;
 	},
 	
 	hasPageLink: function () {
@@ -27,7 +36,7 @@ pageEditor.pageLinkModel = {
 	
 	previewImageSrc: {
 		get: function (value) {
-			var src = Application.url("file/" +
+			var src = this.appurl.get("file/" +
 				this.get("previewImageID") + "/preview.img?res=low");
 			return src;
 		},
@@ -45,4 +54,9 @@ pageEditor.pageLinkModel = {
 };
 
 
-pageEditor.model("pageLinkModel", pageEditor.pageLinkModel);
+pageEditor.model("pageLinkModel", [
+	"attrs",
+	"options",
+	"appurl",
+	pageEditor.pageLinkModel
+]);

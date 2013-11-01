@@ -1,8 +1,11 @@
 ﻿@model Harbor.UI.Models.Components.PageLinkDto
 <span data-rel="pageLink" class="@Model.tileClassName">
-	<a href="@Model.link" class="media">
-		<img src="@Model.previewImageSrc" />
-	</a>
+	@if (Model.hasPreviewImage)
+	{
+		<a href="@Model.link" class="media">
+			<img src="@Model.previewImageSrc" />
+		</a>
+	}
 	<div class="caption">
 		<h2><a href="@Model.link">@Model.title</a></h2>
 		<p>
