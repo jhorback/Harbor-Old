@@ -49,7 +49,7 @@ namespace Harbor.UI.Controllers
 		public PartialViewResult PageLink(Page page, string uicid)
 		{
 			var link = page.GetComponent<PageLink>(uicid);
-			if (link.IsNew())
+			if (link.IsNew() || link.Exists == false)
 			{
 				return PartialView("PageLink-None");
 			}

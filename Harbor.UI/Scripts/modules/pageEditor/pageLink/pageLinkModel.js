@@ -26,9 +26,9 @@ pageEditor.pageLinkModel.prototype = {
 		hasPreviewImage: false
 	},
 	
-	initialize: function () {
-		debugger;
-	},
+	//initialize: function () {
+	//	debugger;
+	//},
 	
 	hasPageLink: function () {
 		return this.get("pageID") > 0 ? true : false;

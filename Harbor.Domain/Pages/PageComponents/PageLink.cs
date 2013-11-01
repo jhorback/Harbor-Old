@@ -21,11 +21,19 @@ namespace Harbor.Domain.Pages.PageComponents
 			return PageID == 0;
 		}
 
+		public bool Exists
+		{
+			get
+			{
+				return _page != null;
+			}
+		}
+
 		public string Title
 		{
 			get
 			{
-				return _page == null ? null : _page.Title;
+				return !Exists ? null : _page.Title;
 			}
 		}
 		
@@ -42,7 +50,7 @@ namespace Harbor.Domain.Pages.PageComponents
 		{
 			get
 			{
-				return _page == null ? null : _page.PreviewText;
+				return !Exists ? null : _page.PreviewText;
 			}
 		}
 
@@ -50,7 +58,7 @@ namespace Harbor.Domain.Pages.PageComponents
 		{
 			get
 			{
-				return _page == null ? null : _page.PreviewImageID;
+				return !Exists ? null : _page.PreviewImageID;
 			}
 		}
 
@@ -75,7 +83,7 @@ namespace Harbor.Domain.Pages.PageComponents
 		{
 			get
 			{
-				return _page == null ? null : _page.VirtualPath;
+				return !Exists ? null : _page.VirtualPath;
 			}
 		}
 
