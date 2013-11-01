@@ -1,10 +1,13 @@
 ﻿
 
-function pageSettingsView(options, currentPageRepo, modelFactory, menuFactory) {
+function pageSettingsView(options, currentPageRepo, modelFactory, menuFactory, location, appurl) {
 
 	this.currentPageRepo = currentPageRepo;
 	this.menuFactory = menuFactory;
+	this.location = location;
+	this.appurl = appurl;
 
+	this.bindAll("goHome");
 	this.model = this.currentPageRepo.getCurrentPage();
 	this.model.pagePreviewModel = modelFactory.create("pagePreviewModel", { page: this.model });
 }
@@ -50,9 +53,11 @@ pageSettingsView.prototype = {
 			return;
 		}
 		
-		this.currentPageRepo.deleteCurrentPage().then(function () {
-			history.back();
-		});
+		this.currentPageRepo.deleteCurrentPage().then(this.goHome);
+	},
+	
+	goHome: function () {
+		this.location = this.appurl.get();
 	},
 	
 	onClose: function () {
@@ -61,5 +66,5 @@ pageSettingsView.prototype = {
 };
 
 pageSettings.view("pageSettingsView", [
-	"options", "currentPageRepo", "modelFactory", "menuFactory",
+	"options", "currentPageRepo", "modelFactory", "menuFactory", "location", "appurl",
 	pageSettingsView]);
