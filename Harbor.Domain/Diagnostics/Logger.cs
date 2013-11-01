@@ -122,7 +122,8 @@ namespace Harbor.Domain.Diagnostics
 #if !DEBUG
 			return;
 #endif
-			var message = string.IsNullOrEmpty(format) ? "" : string.Format(scrub(format), args);
+			format = string.IsNullOrEmpty(format) ? "" : scrub(format);
+			var message = args == null ? "" : string.Format(format, args);
 			message = exception != null ?
 				String.Format("FATAL ERROR - {0} {1} {2}", message, exception.Message, exception.StackTrace) :
 				String.Format("FATAL ERROR - {0}", message);
