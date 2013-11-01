@@ -26,9 +26,9 @@ pageEditor.pageLinkModel.prototype = {
 		hasPreviewImage: false
 	},
 	
-	//initialize: function () {
-	//	debugger;
-	//},
+	initialize: function () {
+		debugger;
+	},
 	
 	hasPageLink: function () {
 		return this.get("pageID") > 0 ? true : false;
@@ -36,9 +36,20 @@ pageEditor.pageLinkModel.prototype = {
 	
 	previewImageSrc: {
 		get: function (value) {
-			var src = this.appurl.get("file/" +
-				this.get("previewImageID") + "/preview.img?res=low");
+			var previewImageID = this.get("previewImageID"),
+				src;
+			src = previewImageID ? this.appurl.get("file/" +
+				this.get("previewImageID") + "/preview.img?res=low") :
+				null;
 			return src;
+		},
+		bind: ["pageID"]
+	},
+	
+	hasPreviewImage: {
+		get: function (value) {
+			var src = this.get("previewImageSrc");
+			return src ? true : false;
 		},
 		bind: ["pageID"]
 	},
