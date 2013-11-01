@@ -15,11 +15,13 @@ namespace Harbor.UI.Models.Components
 		public string tileClassName { get; set; }
 		public string link { get; set; }
 		public bool hasPreviewImage { get; set; }
+		public bool exists { get; set; }
 			
 		public static implicit operator PageLinkDto(PageLink link)
 		{
 			var previewImageID = link.PreviewImageID == null ? null : link.PreviewImageID.ToString();
 			var previewImageSrc = previewImageID == null ? null : FileUrls.GetUrl(previewImageID, null, null, FileResolution.Low);
+			var href = link.Exists ? VirtualPathUtility.ToAbsolute(link.VirtualPath) : null;
 
 			return new PageLinkDto
 			{
@@ -30,7 +32,8 @@ namespace Harbor.UI.Models.Components
 				previewImageSrc = previewImageSrc,
 				tileDisplay = link.TileDisplay,
 				tileClassName = link.TileDisplay == "wide" ? "tile tile-wide" : "tile",
-				link = VirtualPathUtility.ToAbsolute(link.VirtualPath),
+				link = href,
+				exists = link.Exists,
 				hasPreviewImage = link.HasPreviewImage
 			};
 		}
