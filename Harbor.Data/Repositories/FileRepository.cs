@@ -114,28 +114,43 @@ namespace Harbor.Data.Repositories
 				context.Files.Attach(entity);
 			}
 
-			deletePhysicalFile(entity, FileResolution.Original);
-			deletePhysicalFile(entity, FileResolution.Low);
-			deletePhysicalFile(entity, FileResolution.High);
+			var fileID = entity.FileID;
+			var pathsToDelete = new List<string>();
+			pathsToDelete.Add(entity.GetPhysicalPath(FileResolution.Original));
+			pathsToDelete.Add(entity.GetPhysicalPath(FileResolution.Low));
+			pathsToDelete.Add(entity.GetPhysicalPath(FileResolution.High));
 			
-			clearCachedFileByID(entity.FileID);
-			context.Files.Remove(entity);
 			try
 			{
+				var pages = context.Pages.AsQueryable().Where(p => p.PreviewImageID == entity.FileID);
+				foreach (var page in pages)
+				{
+					page.PreviewImageID = null;
+				}
+				context.Files.Remove(entity);
+				
 				context.SaveChanges();
+				clearCachedFileByID(fileID);
+				pathsToDelete.ForEach(deletePhysicalFile);
 			}
 			catch (Exception e)
 			{
 				_logger.Fatal("Delete file failed.", e);
+				throw;
 			}
 		}
 
-		private void deletePhysicalFile(File file, FileResolution res)
+		private void deletePhysicalFile(string path)
 		{
-			var path = file.GetPhysicalPath(res);
-			// jch - could throw an error - let this bubble (at least for now) 
-			if (System.IO.File.Exists(path))
-				System.IO.File.Delete(path);
+			try
+			{
+				if (System.IO.File.Exists(path))
+					System.IO.File.Delete(path);
+			}
+			catch (Exception e)
+			{
+				_logger.Error("Delete file path failed. Path: {0}", e, path);
+			}
 		}
 
 		#region private

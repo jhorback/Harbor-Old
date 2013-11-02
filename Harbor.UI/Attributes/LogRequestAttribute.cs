@@ -1,21 +1,21 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using Harbor.Domain;
+using Harbor.Domain.Diagnostics;
 
 namespace Harbor.UI
 {
 	public class LogRequestAttribute : ActionFilterAttribute, IActionFilter
 	{
-		public ILogger Logger
+		public virtual ILogger GetLogger(Type controllerType)
 		{
-			get
-			{
-				return DependencyResolver.Current.GetService<ILogger>();
-			}
+			return new Logger(controllerType);
 		}
 
 		void IActionFilter.OnActionExecuting(ActionExecutingContext filterContext)
 		{
-			Logger.Debug("OnActionExecuting - Action: {0}, Controller: {1}, IP: {2}, Username: {3}",
+			var logger = GetLogger(filterContext.ActionDescriptor.ControllerDescriptor.ControllerType);
+			logger.Debug("{1}:{0}:Executing IP: {2}, Username: {3}",
 				filterContext.ActionDescriptor.ActionName,
 				filterContext.ActionDescriptor.ControllerDescriptor.ControllerName,
 				filterContext.HttpContext.Request.UserHostAddress,
@@ -24,7 +24,8 @@ namespace Harbor.UI
 
 		void IActionFilter.OnActionExecuted(ActionExecutedContext filterContext)
 		{
-			Logger.Debug("OnActionExecuted - Action: {0}, Controller: {1}, IP: {2}, Username: {3}",
+			var logger = GetLogger(filterContext.ActionDescriptor.ControllerDescriptor.ControllerType);
+			logger.Debug("{1}:{0}:Executed IP: {2}, Username: {3}",
 				filterContext.ActionDescriptor.ActionName,
 				filterContext.ActionDescriptor.ControllerDescriptor.ControllerName,
 				filterContext.HttpContext.Request.UserHostAddress,
