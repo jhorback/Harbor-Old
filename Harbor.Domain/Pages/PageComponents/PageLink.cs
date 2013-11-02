@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Harbor.Domain.Pages.PageResources;
+using Harbor.Domain.Security;
 
 namespace Harbor.Domain.Pages.PageComponents
 {
@@ -85,6 +86,12 @@ namespace Harbor.Domain.Pages.PageComponents
 			{
 				return !Exists ? null : _page.VirtualPath;
 			}
+		}
+
+		public bool CanDisplay(string userName)
+		{
+			var canDisplay = !IsNew() && Exists && _page.HasPermission(userName, Permissions.Read);
+			return canDisplay;
 		}
 
 		public override IEnumerable<PageResource> DeclareResources()
