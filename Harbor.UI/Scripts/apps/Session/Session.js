@@ -62,7 +62,16 @@
 					if (window.location.toString().toLowerCase().indexOf("user/signin") > -1) {
 						window.location = Session.url();
 					} else {
-						window.location.reload();
+						try {
+
+							if (window.location.pathname.toLowerCase().indexOf("/signin") > -1) {
+								window.location = "/";
+							} else {
+								window.location.reload();
+							}
+						} catch (e) {
+							window.location = "/";
+						}
 					}
 				}
 			});
