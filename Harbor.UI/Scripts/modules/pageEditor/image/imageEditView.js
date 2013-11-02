@@ -34,7 +34,8 @@ pageEditor.imageEditView.prototype = {
 		this.model.set({
 			fileID: fileID,
 			ext: file.get("ext"),
-			name: file.get("name")
+			name: file.get("name"),
+			fileExists: true
 			// dont include max since we are saving on max change too
 		});
 		this.model.page.updatePagePreviewImage(this.options.uicid, fileID);
