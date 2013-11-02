@@ -8,7 +8,7 @@
 			   class="{{changeThumbButtonClass}}"
 			   id="settings-changethumb" name="changeThumbButtonText" value="Change image" data-event="changeThumb" />
 		<input type="button"
-            data-bind="class: removeThumbButtonClass"
+            data-bind="showif: hasThumb"
 			id="settings-removethumb" value="Remove image" data-event="removeThumb" />
 	</div>
 </div>

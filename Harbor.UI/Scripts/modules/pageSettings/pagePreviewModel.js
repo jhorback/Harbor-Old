@@ -13,7 +13,7 @@ pagePreviewModel.prototype = {
 		changeThumbButtonText: null,
 		changeThumbButtonDisabled: null,
 		changeThumbButtonClass: null,
-		removeThumbButtonClass: null
+		hasThumb: false
 	},
 
 	initialize: function () {
@@ -25,7 +25,7 @@ pagePreviewModel.prototype = {
 
 	thumbClass: {
 		get: function (value) {
-			var ret = this.hasThumb() ? "float-left pad-right pad-bottom" : "hide";
+			var ret = this.get("hasThumb") ? "float-left pad-right pad-bottom" : "hide";
 			return ret;
 		},
 		bind: ["thumbSrc"]
@@ -43,7 +43,7 @@ pagePreviewModel.prototype = {
 
 	changeThumbButtonText: {
 		get: function (value) {
-			return this.hasThumb() ?
+			return this.get("hasThumb") ?
 				"Change image" : "Select a thumbnail image";
 		},
 		bind: ["thumbSrc"]
@@ -57,9 +57,9 @@ pagePreviewModel.prototype = {
 		}
 	},
 
-	removeThumbButtonClass: {
+	hasThumb: {
 		get: function () {
-			return this.hasThumb() ? "" : "hide";
+			return this.get("thumbSrc") ? true : false;
 		},
 		bind: ["thumbSrc"]
 	},
@@ -82,10 +82,6 @@ pagePreviewModel.prototype = {
 			this.page && this.page.set("autoPreview", value);
 			return value;
 		}
-	},
-
-	hasThumb: function () {
-		return this.get("thumbSrc") ? true : false;
 	},
 
 	setPreviewImage: function (selectedFile) {
