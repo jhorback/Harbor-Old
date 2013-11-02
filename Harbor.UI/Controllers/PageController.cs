@@ -24,7 +24,7 @@ namespace Harbor.UI.Controllers
 		public PartialViewResult Image(Page page, string uicid)
 		{
 			var image = page.GetComponent<Image>(uicid);
-			if (image.IsNew || !image.FileExists)
+			if (image.CanDisplay(User.Identity.Name) == false)
 			{
 				return PartialView("Image-None");
 			}
@@ -49,9 +49,9 @@ namespace Harbor.UI.Controllers
 		public PartialViewResult PageLink(Page page, string uicid)
 		{
 			var link = page.GetComponent<PageLink>(uicid);
-			if (link.IsNew() || link.Exists == false)
+			if (link.CanDisplay(User.Identity.Name) == false)
 			{
-				return PartialView("PageLink-None");
+				return PartialView("PageLink-None", link);
 			}
 
 			var model = (PageLinkDto)link;

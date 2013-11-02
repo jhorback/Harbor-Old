@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Harbor.Domain.Files;
 using Harbor.Domain.Pages.PageResources;
+using Harbor.Domain.Security;
 
 namespace Harbor.Domain.Pages.PageComponents
 {
@@ -72,6 +73,11 @@ namespace Harbor.Domain.Pages.PageComponents
 					return file.Ext;
 				return GetProperty("ext");
 			}
+		}
+
+		public bool CanDisplay(string userName)
+		{
+			return !IsNew && FileExists && file.HasPermission(userName, Permissions.Read);
 		}
 
 		public override IEnumerable<PageResource> DeclareResources()
