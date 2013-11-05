@@ -8,6 +8,7 @@ using Harbor.Domain.App;
 using Harbor.Domain.Files;
 using Harbor.Domain.PageNav;
 using Harbor.Domain.Pages;
+using Harbor.Domain.Products;
 using Harbor.Domain.Security;
 
 namespace Harbor.Data
@@ -41,6 +42,7 @@ namespace Harbor.Data
 		public DbSet<PageRole> PageRoles { get; set; }
 		public DbSet<File> Files { get; set; }
 		public DbSet<NavLinks> NavLinks { get; set; }
+		public DbSet<PayPalButton> PayPalButtons { get; set; }
 
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -51,6 +53,7 @@ namespace Harbor.Data
 			modelBuilder.Configurations.Add<User>(new DbSetConfiguration.UserConfiguration());
 			modelBuilder.Configurations.Add<File>(new DbSetConfiguration.FileConfiguration());
 			modelBuilder.Configurations.Add<NavLinks>(new DbSetConfiguration.NavLinksConfiguration());
+			modelBuilder.Configurations.Add<PayPalButton>(new DbSetConfiguration.PayPalButtonConfiguration());
 		}
 	}
 
@@ -77,6 +80,7 @@ namespace Harbor.Data
 				HasMany(m => m.Files).WithMany();
 				HasMany(m => m.PageLinks).WithMany();
 				HasMany(m => m.NavLinks).WithMany();
+				HasMany(m => m.PayPalButtons).WithMany();
 			}
 		}
 
@@ -115,6 +119,17 @@ namespace Harbor.Data
 				Ignore(m => m.Template);
 				Ignore(m => m.Sections);
 
+				HasRequired(m => m.Owner)
+					.WithMany()
+					.HasForeignKey(m => m.UserName)
+					.WillCascadeOnDelete(false);
+			}
+		}
+
+		public class PayPalButtonConfiguration : EntityTypeConfiguration<PayPalButton>
+		{
+			public PayPalButtonConfiguration()
+			{
 				HasRequired(m => m.Owner)
 					.WithMany()
 					.HasForeignKey(m => m.UserName)

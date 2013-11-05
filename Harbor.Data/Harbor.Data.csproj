@@ -116,6 +116,10 @@
     <Compile Include="Migrations\201311050123330_UserPayPalID.Designer.cs">
       <DependentUpon>201311050123330_UserPayPalID.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201311050312461_PayPalButton.cs" />
+    <Compile Include="Migrations\201311050312461_PayPalButton.Designer.cs">
+      <DependentUpon>201311050312461_PayPalButton.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositories\NavLinksRepository.cs" />
     <Compile Include="Repositories\PageRepositoryResourceManager.cs" />
@@ -180,6 +184,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201311050123330_UserPayPalID.resx">
       <DependentUpon>201311050123330_UserPayPalID.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201311050312461_PayPalButton.resx">
+      <DependentUpon>201311050312461_PayPalButton.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

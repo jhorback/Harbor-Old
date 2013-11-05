@@ -7,6 +7,7 @@ using System.Web.Script.Serialization;
 using Harbor.Domain.Files;
 using Harbor.Domain.PageNav;
 using Harbor.Domain.Pages.PageResources;
+using Harbor.Domain.Products;
 using Harbor.Domain.Security;
 
 namespace Harbor.Domain.Pages
@@ -101,7 +102,9 @@ namespace Harbor.Domain.Pages
 		public ICollection<PageProperty> Properties { get; set; }
 		public ICollection<File> Files { get; set; } 
 		public ICollection<Page> PageLinks { get; set; } 
-		public ICollection<NavLinks> NavLinks { get; set; } 
+		public ICollection<NavLinks> NavLinks { get; set; }
+		public ICollection<PayPalButton> PayPalButtons { get; set; }
+
 		internal ICollection<PageRole> PageRoles { get; set; }
 		internal IEnumerable<PageFeatureRole> AllPageRoles { get; set; } 
 
@@ -111,6 +114,7 @@ namespace Harbor.Domain.Pages
 
 		internal User Author { get; set; }
 		public File PreviewImage { get; set; }
+
 		#endregion
 
 		#region methods
