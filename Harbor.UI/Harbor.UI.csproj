@@ -270,6 +270,7 @@
     <Compile Include="Models\JSPM\TemplateAction.cs" />
     <Compile Include="Models\Page\Components\NavLinksDto.cs" />
     <Compile Include="Models\Page\Components\NavLinksSectionDto.cs" />
+    <Compile Include="Models\Page\Components\PayPalButtonDto.cs" />
     <Compile Include="Models\Page\Components\PageLinkDto.cs" />
     <Compile Include="Models\Page\Components\ImageDto.cs" />
     <Compile Include="Models\Page\Components\TextDto.cs" />
@@ -560,6 +561,9 @@
     <Content Include="Scripts\modules\pageEditor\image\imageEditView.js" />
     <Content Include="Scripts\modules\pageEditor\image\image.js" />
     <Content Include="Scripts\modules\pageEditor\componentManager.js" />
+    <Content Include="Scripts\modules\pageEditor\payPalButton\payPalButtonView.js" />
+    <Content Include="Scripts\modules\pageEditor\payPalButton\payPalButtonModel.js" />
+    <Content Include="Scripts\modules\pageEditor\payPalButton\payPalButton.js" />
     <Content Include="Scripts\modules\pageEditor\text\textModel.js" />
     <Content Include="Scripts\modules\pageEditor\text\textView.js" />
     <Content Include="Scripts\modules\pageEditor\title\title.js" />
@@ -701,6 +705,9 @@
     <Content Include="Views\PageEditor\_pageLink.cshtml" />
     <Content Include="Views\PageEditor\_text.cshtml" />
     <Content Include="Views\PageEditor\_title.cshtml" />
+    <Content Include="Views\Page\PayPalButton-None.cshtml" />
+    <Content Include="Views\Page\PayPalButton.cshtml" />
+    <Content Include="Views\PageEditor\_payPalButton.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\users\" />

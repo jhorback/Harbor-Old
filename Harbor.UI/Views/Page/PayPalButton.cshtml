@@ -1,0 +1,14 @@
+﻿@model Harbor.Domain.Pages.PageComponents.PayPalButton
+<span data-rel="payPalButton">
+	
+	@if (Model.Button.Hosted)
+	{
+		Html.Raw(Model.Button.ButtonCode);
+	}
+	else
+	{
+		<script>
+			// jch! - add paypal button script
+		</script>
+	}
+</span>

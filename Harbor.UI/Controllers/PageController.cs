@@ -57,5 +57,16 @@ namespace Harbor.UI.Controllers
 			var model = (PageLinkDto)link;
 			return PartialView("PageLink", model);
 		}
+
+		public PartialViewResult PayPalButton(Page page, string uicid)
+		{
+			var button = page.GetComponent<PayPalButton>(uicid);
+			if (!button.ButtonExists)
+			{
+				return PartialView("PayPalButton-None");
+			}
+
+			return PartialView("PayPalButton", button);
+		}
 	}
 }

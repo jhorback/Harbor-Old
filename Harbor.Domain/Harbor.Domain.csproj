@@ -87,6 +87,7 @@
     <Compile Include="PageNav\NavLinksSection.cs" />
     <Compile Include="PageNav\NavLinksSectionLink.cs" />
     <Compile Include="PageNav\NavLinksTemplate.cs" />
+    <Compile Include="Pages\Components\PayPalButton.cs" />
     <Compile Include="Pages\Components\PageLink.cs" />
     <Compile Include="Pages\Components\Image.cs" />
     <Compile Include="Pages\Components\Title.cs" />
@@ -100,6 +101,7 @@
     <Compile Include="Pages\IPageResourceUpdater.cs" />
     <Compile Include="Pages\Page.cs" />
     <Compile Include="Pages\PageComponent.cs" />
+    <Compile Include="Pages\PageComponents\PayPalButton.cs" />
     <Compile Include="Pages\PageComponents\Links.cs" />
     <Compile Include="Pages\PageComponents\PageLink.cs" />
     <Compile Include="Pages\PageComponents\Text.cs" />
@@ -115,6 +117,7 @@
     <Compile Include="Pages\PageQuery.cs" />
     <Compile Include="Pages\PageResource.cs" />
     <Compile Include="Pages\IncludePageResources.cs" />
+    <Compile Include="Pages\PageResources\PayPalButtonResource.cs" />
     <Compile Include="Pages\PageResources\LinksResource.cs" />
     <Compile Include="Pages\PageResources\PageLinkResource.cs" />
     <Compile Include="Pages\PageResources\FileResource.cs" />
@@ -143,6 +146,7 @@
     <Compile Include="IFactory.cs" />
     <Compile Include="IRespository.cs" />
     <Compile Include="IValueObject.cs" />
+    <Compile Include="Products\PayPalButton2.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepositoryQuery.cs" />
     <Compile Include="Security\FeaturePermissions.cs" />
