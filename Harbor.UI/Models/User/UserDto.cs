@@ -55,6 +55,7 @@ namespace Harbor.UI.Models.User
 		public string lastLogin { get; set; }
 		public string lastActivity { get; set; }
 		public bool enabled { get; set; }
+		public string payPalMerchantAccountID { get; set; }
 		public string[] roles { get; set; }
 
 		public static implicit operator UserDto(Domain.Security.User user)

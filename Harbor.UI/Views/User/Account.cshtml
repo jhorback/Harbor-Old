@@ -7,7 +7,7 @@
 
 	var canViewPages = Html.UserHasPermit(UserFeature.Pages, Permissions.Read);
 	var canViewFiles = Html.UserHasPermit(UserFeature.Files, Permissions.Read);
-	
+	var canAuthorPages = Html.UserHasPermit(UserFeature.Pages, Permissions.Create);
 }
 @section scripts {
 	@Html.InstallJavaScriptPackage(UserAccountAppPkg.PackageName)
@@ -36,8 +36,33 @@
 							<span data-bind="displayEmail"></span>
 							<button type="button" class="margin-left link">change</button>
 						</dd>
+						<dt></dt>
+						<dd>
+							<input type="button" name="changePassword" value="Change your password" />
+						</dd>
 					</dl>
 				</fieldset>
+				@if (canAuthorPages)
+				{
+					<fieldset>
+						<legend>PayPal Settings</legend>
+						<dl class="list-wide">
+							<dt>Merchant account ID</dt>
+							<dd id="ua-paypal">
+								<span data-bind="displayPayPalMerchantAccountID"></span>
+								<button type="button" class="margin-left link">change</button>
+							</dd>
+						</dl>
+						<div>
+							<small>
+								You can find your PayPal merchant account ID on your PayPal profile page:
+								<a href="https://www.paypal.com/webapps/customerprofile/summary.view">https://www.paypal.com/webapps/customerprofile/summary.view</a>
+								<br />
+								If you don't have a merchant ID you can use the e-mail address associated with PayPal.
+							</small>
+						</div>
+					</fieldset>
+				}
 				@if (canViewPages || canViewFiles)
 				{
 					<fieldset id="ua-administrative">
@@ -58,12 +83,6 @@
 						</ul>			
 					</fieldset>
 				}
-				<fieldset>
-					<legend>Password</legend>
-					<div class="form-field">
-						<input type="button" name="changePassword" value="Change your password"/>
-					</div>
-				</fieldset>
 			</form>
 		</div>
 	</div>

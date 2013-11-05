@@ -15,7 +15,7 @@
 
 UserAccount.MainView = Application.View.extend({
 	initialize: function () {
-		_.bindAll(this, "editName", "editEmail", "changePassword");		
+		_.bindAll(this, "editName", "editEmail", "editPayPalID", "changePassword");		
 	},
 
 	render: function () {
@@ -30,6 +30,11 @@ UserAccount.MainView = Application.View.extend({
 
 	editEmail: function (editable) {
 		var view = new UserAccount.EditEmailView({ model: this.model, editable: editable });
+		view.render();
+	},
+	
+	editPayPalID: function (editable) {
+		var view = new UserAccount.EditPayPalIDView({ model: this.model, editable: editable });
 		view.render();
 	},
 
@@ -48,7 +53,8 @@ UserAccount.MainView = Application.View.extend({
 			var id = editable.attr("id");
 			var methods = {
 				"ua-name": this.editName,
-				"ua-email": this.editEmail
+				"ua-email": this.editEmail,
+				"ua-paypal": this.editPayPalID
 			};
 			methods[id](editable);
 		}

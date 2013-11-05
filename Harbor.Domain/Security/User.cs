@@ -50,6 +50,10 @@ namespace Harbor.Domain.Security
 		[Display(Name = "Last name")]
 		public string LastName { get; set; }
 
+		[StringLength(150)]
+		[Display(Name = "PayPal Merchant account ID")]
+		public string PayPalMerchantAccountID { get; set; }
+
 		public string DisplayName
 		{
 			get

@@ -74,6 +74,15 @@ UserAccount.EditEmailView = UserAccount.BaseEditView.extend({
 	}
 });
 
+UserAccount.EditPayPalIDView = UserAccount.BaseEditView.extend({
+	initialize: function () {
+		_.extend(this.options, {
+			templateName: "UserAccount-EditPayPalID",
+			dialogTitle: "PayPal Merchant Account ID"
+		});
+		UserAccount.BaseEditView.prototype.initialize.apply(this, arguments);
+	}
+});
 
 UserAccount.ChangePasswordView = UserAccount.BaseEditView.extend({
 	initialize: function () {

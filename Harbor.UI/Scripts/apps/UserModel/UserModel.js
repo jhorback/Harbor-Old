@@ -19,8 +19,10 @@
 		editLink: null,
 		roles: [],
 		disabledText: "",
+		payPalMerchantAccountID: "",
 		//
-		displayEmail: null
+		displayEmail: null,
+		displayPayPalMerchantAccountID: ""
 	},
 	
 	sync: function (method, model, options) {
@@ -109,6 +111,14 @@
 //			return value;
 //		},
 		bind: ["email"]
+	},
+	
+	displayPayPalMerchantAccountID: {
+		get: function (value) {
+			var id = this.get("payPalMerchantAccountID");
+			return !id || !$.trim(id) ? "(none)" : id;
+		},
+		bind: ["payPalMerchantAccountID"]
 	},
 	
 	email: {
