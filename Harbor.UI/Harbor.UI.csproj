@@ -219,6 +219,7 @@
     <Compile Include="Attributes\Http\AuthenticateAttribute.cs" />
     <Compile Include="Attributes\Http\BadRequestFilterAttribute.cs" />
     <Compile Include="Attributes\Http\FilePermitAttribute.cs" />
+    <Compile Include="Attributes\Http\LogRequestAttribute.cs" />
     <Compile Include="Attributes\Http\PagePermitAttribute.cs" />
     <Compile Include="Attributes\Http\PermitAttribute.cs" />
     <Compile Include="Attributes\Http\ServerErrorExceptionFilterAttribute.cs" />

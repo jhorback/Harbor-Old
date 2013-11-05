@@ -1,10 +1,4 @@
-﻿using System;
-using System.Web.Http;
-using Harbor.Data.Repositories;
-using Harbor.Domain;
-using Harbor.Domain.Diagnostics;
-using Harbor.Domain.Security;
-using Newtonsoft.Json;
+﻿using System.Web.Http;
 
 namespace Harbor.UI
 {
@@ -15,6 +9,7 @@ namespace Harbor.UI
 			config.Filters.Add(new Http.BadRequestFilterAttribute());			
 			config.Filters.Add(new Http.ServerErrorExceptionFilterAttribute());
 			config.Filters.Add(new Http.AuthenticateAttribute());
+			config.Filters.Add(new Http.LogRequestAttribute());
 		}
 	}
 }
