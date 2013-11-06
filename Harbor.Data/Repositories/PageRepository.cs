@@ -62,6 +62,8 @@ namespace Harbor.Data.Repositories
 				pages = pages.Include("PageLinks");
 			if (include.HasFlag(IncludePageResources.NavLinks))
 				pages = pages.Include("NavLinks");
+			if (include.HasFlag(IncludePageResources.PayPalButtons))
+				pages = pages.Include("PayPalButtons");
 			return pages.AsQueryable();
 		}
 

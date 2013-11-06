@@ -147,7 +147,6 @@
     <Compile Include="IRespository.cs" />
     <Compile Include="IValueObject.cs" />
     <Compile Include="Products\PayPalButton.cs" />
-    <Compile Include="Products\PayPalButton2.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepositoryQuery.cs" />
     <Compile Include="Security\FeaturePermissions.cs" />

@@ -214,5 +214,10 @@ namespace Harbor.Domain.Pages
 		{
 			return NavLinks.FirstOrDefault(l => l.NavLinksID == navLinksID);
 		}
+
+		public PayPalButton GetPayPalButton(int payPalButtonID)
+		{
+			return PayPalButtons.FirstOrDefault(l => l.PayPalButtonID == payPalButtonID);			
+		}
 	}
 }

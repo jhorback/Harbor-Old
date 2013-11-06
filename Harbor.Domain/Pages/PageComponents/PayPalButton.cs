@@ -16,7 +16,7 @@ namespace Harbor.Domain.Pages.PageComponents
 			}
 		}
 
-		private Products.PayPalButton2 button;
+		private Products.PayPalButton button;
 
 		public bool IsNew
 		{
@@ -45,7 +45,7 @@ namespace Harbor.Domain.Pages.PageComponents
 			}
 		}
 
-		public PayPalButton2 Button
+		public Products.PayPalButton Button
 		{
 			get
 			{
