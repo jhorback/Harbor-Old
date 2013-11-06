@@ -38,6 +38,7 @@ namespace Harbor.UI.Models.User
 		public bool hasFilePermissions { get; set; }
 		public bool hasSettingsPermissions { get; set; }
 		public bool isSysAdmin { get; set; }
+		public string payPalMerchantAccountID { get; set; }
 
 		public static implicit operator CurrentUserDto(Domain.Security.User user)
 		{

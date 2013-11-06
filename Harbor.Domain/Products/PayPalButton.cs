@@ -30,6 +30,9 @@ namespace Harbor.Domain.Products
 
 		public string ButtonCode { get; set; }
 
+		/// <summary>
+		/// Can be buynow or cart
+		/// </summary>
 		[StringLength(50)]
 		public string ButtonType { get; set; }
 		

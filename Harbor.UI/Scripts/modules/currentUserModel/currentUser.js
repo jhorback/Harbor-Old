@@ -12,7 +12,8 @@ currentUser.prototype = {
 		hasDocPermissions: false,
 		hasFilePermissions: false,
 		hasSettingsPermissions: false,
-		isSysAdmin: false
+		isSysAdmin: false,
+		payPalMerchantAccountID: null
 	},
 	
 	isSysAdmin: {

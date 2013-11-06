@@ -241,6 +241,7 @@
     <Compile Include="Controllers\StyleGuideController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\Api\UsersController.cs" />
+    <Compile Include="Extensions\HtmlHelper\PayPalButton.cs" />
     <Compile Include="Extensions\HtmlHelper\RenderMarkdown.cs" />
     <Compile Include="Extensions\HtmlHelper\CurrentTheme.cs" />
     <Compile Include="Extensions\HtmlHelper\PageComponent.cs" />

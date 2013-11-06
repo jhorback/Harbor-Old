@@ -1,8 +1,7 @@
-﻿using System;
-using System.Web.Mvc;
-using Harbor.Domain.PageNav;
+﻿using System.Web.Mvc;
 using Harbor.Domain.Pages;
 using Harbor.Domain.Pages.PageComponents;
+using Harbor.Domain.Security;
 using Harbor.UI.Models;
 using Harbor.UI.Models.Components;
 
@@ -10,6 +9,13 @@ namespace Harbor.UI.Controllers
 {
 	public class PageController : Controller
 	{
+		private readonly IUserRepository _userRepo;
+
+		public PageController(IUserRepository userRepo)
+		{
+			_userRepo = userRepo;
+		}
+
 		public PartialViewResult Title(Page page)
 		{
 			return PartialView("Title", (PageDto)page);
@@ -60,12 +66,16 @@ namespace Harbor.UI.Controllers
 
 		public PartialViewResult PayPalButton(Page page, string uicid)
 		{
-			var button = page.GetComponent<PayPalButton>(uicid);
-			if (!button.ButtonExists)
+			var currentUser = _userRepo.FindUserByName(User.Identity.Name);
+			ViewBag.MerchantID = currentUser.PayPalMerchantAccountID;
+
+			var buttonComponent = page.GetComponent<PayPalButton>(uicid);
+			if (!buttonComponent.ButtonExists)
 			{
 				return PartialView("PayPalButton-None");
 			}
 
+			var button = page.GetPayPalButton(buttonComponent.PayPalButtonID ?? 0);
 			return PartialView("PayPalButton", button);
 		}
 	}
