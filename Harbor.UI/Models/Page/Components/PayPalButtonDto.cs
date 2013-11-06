@@ -1,7 +1,5 @@
-﻿using System.Web;
-using Harbor.Domain.Files;
-using Harbor.Domain.Pages.PageComponents;
-using Harbor.Domain.Products;
+﻿using Harbor.Domain.Pages.PageComponents;
+
 
 namespace Harbor.UI.Models.Components
 {
