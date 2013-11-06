@@ -31,6 +31,7 @@ page.prototype = {
 		files: [],
 		pageLinks: [],
 		navLinks: [],
+		payPalButtons: [],
 		//
 		thumbUrl: "",
 		link: null,
@@ -218,6 +219,11 @@ page.prototype = {
 	
 	addNavLinksRef: function (navLink) {
 		this.get("navLinks").push(navLink.toJSON ? navLink.toJSON() : navLink);
+	},
+	
+	getPayPalButton: function (id) {
+		var button = _.where(this.get("payPalButtons"), { id: parseInt(id) });
+		return (button.length === 1) ? button[0] : {};
 	}
 };
 

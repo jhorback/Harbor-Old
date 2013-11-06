@@ -27,6 +27,7 @@ namespace Harbor.Domain.Pages
 			Files = new List<File>();
 			PageLinks = new List<Page>();
 			NavLinks = new List<NavLinks>();
+			PayPalButtons = new List<PayPalButton>();
 
 
 			Created = DateTime.Now;

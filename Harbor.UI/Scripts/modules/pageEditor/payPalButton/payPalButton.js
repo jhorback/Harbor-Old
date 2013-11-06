@@ -34,4 +34,4 @@ pageEditor.payPalButton.prototype = {
 };
 
 
-pageEditor.pageComponent("payPalButton", ["viewRenderer", pageEditor.payPalButton]);
+pageEditor.pageComponent("paypalbutton", ["viewRenderer", pageEditor.payPalButton]);

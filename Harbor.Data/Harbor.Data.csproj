@@ -120,6 +120,10 @@
     <Compile Include="Migrations\201311050312461_PayPalButton.Designer.cs">
       <DependentUpon>201311050312461_PayPalButton.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201311061808318_NullablePayPalTaxAndShipping.cs" />
+    <Compile Include="Migrations\201311061808318_NullablePayPalTaxAndShipping.Designer.cs">
+      <DependentUpon>201311061808318_NullablePayPalTaxAndShipping.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositories\PayPalButtonRepository.cs" />
     <Compile Include="Repositories\NavLinksRepository.cs" />
@@ -188,6 +192,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201311050312461_PayPalButton.resx">
       <DependentUpon>201311050312461_PayPalButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201311061808318_NullablePayPalTaxAndShipping.resx">
+      <DependentUpon>201311061808318_NullablePayPalTaxAndShipping.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
