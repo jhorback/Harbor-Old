@@ -121,6 +121,7 @@
       <DependentUpon>201311050312461_PayPalButton.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Repositories\PayPalButtonRepository.cs" />
     <Compile Include="Repositories\NavLinksRepository.cs" />
     <Compile Include="Repositories\PageRepositoryResourceManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
