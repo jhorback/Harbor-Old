@@ -38,9 +38,9 @@ namespace Harbor.Domain.Products
 	
 		public Decimal Price { get; set; }
 		
-		public Decimal ShippingOverride { get; set; }
+		public Decimal? ShippingOverride { get; set; }
 		
-		public Decimal TaxOverride { get; set; }
+		public Decimal? TaxOverride { get; set; }
 
 
 		#region associations
