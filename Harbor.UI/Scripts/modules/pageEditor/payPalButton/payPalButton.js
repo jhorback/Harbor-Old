@@ -1,7 +1,7 @@
 ﻿
 
-pageEditor.payPalButton = function (viewRenderer) {
-	this.viewRenderer = viewRenderer;
+pageEditor.payPalButton = function (payPalButton) {
+	this.payPalButton = payPalButton;
 	
 	this.$el.find("a").on("click.link", function (event) {
 		event.preventDefault();
@@ -16,16 +16,17 @@ pageEditor.payPalButton.prototype = {
 	},
 
 	open: function () {
-		this.view = this.viewRenderer.render("payPalButtonView", {
+		this.payPalButton.render({
 			model: this.model,
 			uicid: this.uicid
 		});
 		
-		this.$el.empty().append(this.view.$el);
+		// this.$el.empty().append(this.view.$el);
 	},
 
 	close: function () {
-		this.view.close({ remove: false });
+		// this.view.close({ remove: false });
+		this.payPalButton.close();
 	},
 	
 	remove: function () {
@@ -34,4 +35,4 @@ pageEditor.payPalButton.prototype = {
 };
 
 
-pageEditor.pageComponent("paypalbutton", ["viewRenderer", pageEditor.payPalButton]);
+pageEditor.pageComponent("paypalbutton", ["payPalButton", pageEditor.payPalButton]);

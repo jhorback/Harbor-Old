@@ -21,12 +21,19 @@ function region($, console) {
 
 		region = {
 			push: function (el) {
-				var currentChildren = regionEl.children().detach();
+				var currentChildren = regionEl.children();
+				
+				currentChildren.each(function (i, el) {
+					el = $(el);
+					el.data("wasVisible", el.is(":visible"));
+				});
+				currentChildren.detach();
 				
 				if (currentChildren.length === 1 && currentChildren[0] === el) {
 					// el is already open (its the current child)
 					return;
 				}
+				
 				children.push(currentChildren);
 				regionEl.append(el);
 			},
@@ -39,6 +46,13 @@ function region($, console) {
 				}
 				lastEl = children.pop();
 				removed = regionEl.children().remove();
+				lastEl.hide();
+				lastEl.each(function (i, el) {
+					el = $(el);
+					if (el.data("wasVisible") === true) {
+						el.show();
+					}
+				});
 				regionEl.append(lastEl);
 				return removed;
 			}

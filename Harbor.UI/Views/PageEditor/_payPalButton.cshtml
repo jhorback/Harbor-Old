@@ -1,4 +1,4 @@
-﻿<div data-templatefor="payPalButtonView">
+﻿<div data-templatefor="payPalButtonView" class="margin">
 	<script>
 		// jch! - add paypal button template
 		</script>
@@ -23,7 +23,6 @@
 					<option value="cart">Cart</option>
 					<option value="buynow">Buy Now</option>
 				</select>
-				<input type="text" name="description" />
 			</div>
 			<div class="form-field">
 				<label for="itemNumber">Item number</label>
@@ -42,5 +41,9 @@
 				<input type="text" name="taxOverride" />
 			</div>
 		</fieldset>
+		<div class="form-controls">
+			<button data-event="close">Close</button>
+			<button>Apply</button>
+		</div>
 	</div>
 </div>

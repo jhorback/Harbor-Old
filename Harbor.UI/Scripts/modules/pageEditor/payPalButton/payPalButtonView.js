@@ -1,5 +1,11 @@
 ﻿
 
+pageEditor.component("payPalButton", {
+	regionEl: ".page-body"
+});
+
+
+
 pageEditor.payPalButtonView = function (options, currentPageRepo) {
 
 	this.currentPageRepo = currentPageRepo;
@@ -8,9 +14,9 @@ pageEditor.payPalButtonView = function (options, currentPageRepo) {
 
 pageEditor.payPalButtonView.prototype = {
 	initialize: function () {
-		_.bindAll(this, "save", "selectPage");
+		this.bindAll("save");
 
-		this.listenTo(this.model, "change:tileDisplay", this.save);
+		this.listenTo(this.model, "change:payPalButtonID", this.save);
 	},
 	
 	save: function () {
@@ -23,12 +29,8 @@ pageEditor.payPalButtonView.prototype = {
 };
 
 
-
 pageEditor.view("payPalButtonView", [
 	"options",
 	"currentPageRepo",
 	pageEditor.payPalButtonView
 ]);
-
-
-

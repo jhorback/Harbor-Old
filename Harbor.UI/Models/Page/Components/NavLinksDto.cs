@@ -48,7 +48,10 @@ namespace Harbor.UI.Models.Components
 
 		public static implicit operator NavLinksDto(NavLinks links)
 		{
-			if (links == null) return null;
+			if (links == null)
+			{
+				return null;
+			}
 			var dto = Mapper.Map<NavLinks, NavLinksDto>(links);
 			return dto;
 		}
