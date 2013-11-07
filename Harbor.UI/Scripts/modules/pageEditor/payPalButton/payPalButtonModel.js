@@ -6,26 +6,7 @@ pageEditor.payPalButtonModel = function (attrs, options, appurl) {
 
 pageEditor.payPalButtonModel.prototype = {
 	component:  {
-		pageProperties: ["payPalButtonID"],
-	
-		getDefaults: function (page, pageProperties) {
-			return _.pick(page.getPayPalButton(pageProperties.payPalButtonID),
-				"name", "description", "hosted", "buttonCode", "buttonType", "itemNumber",
-				"price", "shippingOverride", "taxOverride");
-		}
-	},
-	
-	defaults: {
-		payPalButtonID: 0,
-		name: "",
-		description: "",
-		hosted: false,
-		buttonCode: null,
-		buttonType: "buynow",
-		itemNumber: "",
-		price: 0,
-		shippingOverride: null,
-		taxOverride: null
+		pageProperties: ["payPalButtonID"]
 	},
 	
 	hasButton: function () {

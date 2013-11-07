@@ -18,6 +18,7 @@ namespace Harbor.UI.JSPkgs
 			AddDependency(RedactorPkg.PackageName);
 			AddDependency(FileSelectorPkg.PackageName);
 			AddDependency(PageSelectorPkg.PackageName);
+			AddDependency(PayPalButtonModelPkg.PackageName);
 		}
 	}
 }

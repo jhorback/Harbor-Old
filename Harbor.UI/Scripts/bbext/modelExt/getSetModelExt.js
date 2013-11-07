@@ -17,7 +17,7 @@ function getSetModelExt(mixin, modelPropertyDescriptor) {
 
 			if (getFn) {
 				val = getFn.call(this, currentValue);
-				if (val !== undefined) {
+				if (val !== undefined && val !== currentValue) {
 					Backbone.Model.prototype.set.call(this, name, val); // keep the attrs in sync
 					// this.attributes[name] = val; // keep the attrs in sync
 				}

@@ -1,7 +1,7 @@
 ﻿
 
-pageEditor.payPalButton = function (payPalButton) {
-	this.payPalButton = payPalButton;
+pageEditor.payPalButton = function (payPalButtonComponent) {
+	this.payPalButtonComponent = payPalButtonComponent;
 	
 	this.$el.find("a").on("click.link", function (event) {
 		event.preventDefault();
@@ -16,16 +16,13 @@ pageEditor.payPalButton.prototype = {
 	},
 
 	open: function () {
-		this.payPalButton.render({
-			model: this.model,
+		this.payPalButtonComponent.render({
+			componentModel: this.model,
 			uicid: this.uicid
 		});
-		
-		// this.$el.empty().append(this.view.$el);
 	},
 
 	close: function () {
-		// this.view.close({ remove: false });
 		this.payPalButton.close();
 	},
 	
@@ -35,4 +32,4 @@ pageEditor.payPalButton.prototype = {
 };
 
 
-pageEditor.pageComponent("paypalbutton", ["payPalButton", pageEditor.payPalButton]);
+pageEditor.pageComponent("paypalbutton", ["payPalButtonComponent", pageEditor.payPalButton]);

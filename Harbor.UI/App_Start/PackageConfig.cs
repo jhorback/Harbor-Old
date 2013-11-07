@@ -31,6 +31,7 @@ namespace Harbor.UI
 			packages.Add(new PageAdminAppPkg());
 			packages.Add(new PageSelectorPkg());
 			packages.Add(new PageSettingsPkg());
+			packages.Add(new PayPalButtonModelPkg());
 			packages.Add(new RedactorPkg());
 			packages.Add(new SessionAppPkg());
 			packages.Add(new SettingsAppPkg());

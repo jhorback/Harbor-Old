@@ -182,6 +182,7 @@
     <Compile Include="App_Start\IoC\StructureMapDependencyScope.cs" />
     <Compile Include="App_Start\JSPkgs\CurrentPageModelPkg.cs" />
     <Compile Include="App_Start\JSPkgs\CurrentUserModelPkg.cs" />
+    <Compile Include="App_Start\JSPkgs\PayPalButtonModelPkg.cs" />
     <Compile Include="App_Start\JSPkgs\PageSettingsPkg.cs" />
     <Compile Include="App_Start\ThemeConfig.cs" />
     <Compile Include="App_Start\ModelBinderConfig.cs" />
@@ -564,7 +565,7 @@
     <Content Include="Scripts\modules\pageEditor\image\imageEditView.js" />
     <Content Include="Scripts\modules\pageEditor\image\image.js" />
     <Content Include="Scripts\modules\pageEditor\componentManager.js" />
-    <Content Include="Scripts\modules\pageEditor\payPalButton\payPalButtonView.js" />
+    <Content Include="Scripts\modules\pageEditor\payPalButton\payPalButtonComponentView.js" />
     <Content Include="Scripts\modules\pageEditor\payPalButton\payPalButtonModel.js" />
     <Content Include="Scripts\modules\pageEditor\payPalButton\payPalButton.js" />
     <Content Include="Scripts\modules\pageEditor\text\textModel.js" />
@@ -653,6 +654,7 @@
     <Content Include="Scripts\contextjs\app.js" />
     <Content Include="Scripts\modernizr-2.6.2-custom.js" />
     <Content Include="Scripts\modules\currentUserModel\currentUser.js" />
+    <Content Include="Scripts\modules\payPalButtonModel\%24payPalButtonModel.js" />
     <Content Include="Scripts\paypal-button-minicart.min.js" />
     <Content Include="Scripts\Prettify\prettify.js" />
     <Content Include="Scripts\qunit.js" />
@@ -717,7 +719,6 @@
   <ItemGroup>
     <Folder Include="App_Data\users\" />
     <Folder Include="Properties\PublishProfiles\" />
-    <Folder Include="Scripts\modules\navLinksModel\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
