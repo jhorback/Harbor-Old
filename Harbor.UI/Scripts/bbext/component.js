@@ -130,6 +130,7 @@ var Component = (function () {
 		},
 	
 		close: function (el) {
+			debugger;
 			var view = null;
 			if (this.region) {
 				view = this.region.view;
