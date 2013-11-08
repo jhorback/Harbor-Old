@@ -1,7 +1,7 @@
 ﻿
 
 pageEditor.component("payPalButtonComponent", {
-	regionEl: ".page-body"
+	regionEl: "#frame-body"
 });
 
 
@@ -16,9 +16,13 @@ pageEditor.payPalButtonComponentView = function (options, currentPageRepo, payPa
 
 pageEditor.payPalButtonComponentView.prototype = {
 	initialize: function () {
+		var id = this.componentModel.get("payPalButtonID");
+		
+		this.model = this.payPalButtonRepo.getButton(id);
+	},
+	
+	onRender: function () {
 		this.bindAll("saveButton", "saveComponentModel");
-
-		this.model = this.payPalButtonRepo.getPayPalButton(this.componentModel.get("payPalButtonID"));
 		this.listenTo(this.model, "change:id", this.saveComponentModel);
 		this.listenTo(this.model, "change", this.saveButton);
 	},
@@ -29,7 +33,9 @@ pageEditor.payPalButtonComponentView.prototype = {
 	},
 	
 	saveButton: function () {
-		this.payPalButtonRepo.savePayPalButton(this.model);
+		if (this.model.synced && this.model.isValid()) {
+			this.payPalButtonRepo.saveButton(this.model);
+		}
 	},
 	
 	onClose: function () {

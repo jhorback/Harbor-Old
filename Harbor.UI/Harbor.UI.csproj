@@ -655,6 +655,8 @@
     <Content Include="Scripts\modernizr-2.6.2-custom.js" />
     <Content Include="Scripts\modules\currentUserModel\currentUser.js" />
     <Content Include="Scripts\modules\payPalButtonModel\%24payPalButtonModel.js" />
+    <Content Include="Scripts\modules\payPalButtonModel\payPalButton.js" />
+    <Content Include="Scripts\modules\payPalButtonModel\payPalButtonRepo.js" />
     <Content Include="Scripts\paypal-button-minicart.min.js" />
     <Content Include="Scripts\Prettify\prettify.js" />
     <Content Include="Scripts\qunit.js" />

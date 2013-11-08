@@ -12,6 +12,6 @@ namespace Harbor.Domain.Pages
 		NavLinks = 64,
 		PayPalButtons = 128,
 		Basic = (Properties | Roles | PreviewImage),
-		All = (Properties | Roles | PreviewImage | Files | Products | PageLinks | NavLinks)
+		All = (Properties | Roles | PreviewImage | Files | Products | PageLinks | NavLinks | PayPalButtons)
 	}
 }

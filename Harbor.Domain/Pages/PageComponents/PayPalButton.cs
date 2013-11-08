@@ -12,7 +12,7 @@ namespace Harbor.Domain.Pages.PageComponents
 		{
 			if (IsNew == false)
 			{
-				// button = page.GetPayPalButton(PayPalButtonID);
+				button = page.GetPayPalButton(PayPalButtonID ?? 0);
 			}
 		}
 

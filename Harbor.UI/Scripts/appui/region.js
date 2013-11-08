@@ -23,9 +23,9 @@ function region($, console) {
 			push: function (el) {
 				var currentChildren = regionEl.children();
 				
-				currentChildren.each(function (i, el) {
-					el = $(el);
-					el.data("wasVisible", el.is(":visible"));
+				currentChildren.each(function (i, child) {
+					child = $(child);
+					child.data("wasVisible", child.is(":visible"));
 				});
 				currentChildren.detach();
 				

@@ -7,6 +7,14 @@ function getSetModelExt(mixin, modelPropertyDescriptor) {
 		afterInit: function () {
 			this._bindings = {};
 			
+			// add a property that let's us know that the model has been synced
+			// useful for lazyloads when saving model on change
+			// (don't want to save on the initial sync)
+			this.synced = false;
+			this.once("sync", function () {
+				this.synced = true;
+			}, this);
+			
 			parseBindings.call(this);
 		},
 

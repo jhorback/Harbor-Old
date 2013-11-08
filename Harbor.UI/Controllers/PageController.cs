@@ -66,7 +66,7 @@ namespace Harbor.UI.Controllers
 
 		public PartialViewResult PayPalButton(Page page, string uicid)
 		{
-			var currentUser = _userRepo.FindUserByName(User.Identity.Name);
+			var currentUser = _userRepo.FindUserByName(page.AuthorsUserName);
 			ViewBag.MerchantID = currentUser.PayPalMerchantAccountID;
 
 			var buttonComponent = page.GetComponent<PayPalButton>(uicid);
