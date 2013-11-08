@@ -3,52 +3,46 @@
 		<h1>Edit PayPal Button <span data-bind="text:name" /></h1>
 	</div>
 	<div class="page-body">
-		<script>
-			// jch! - add paypal button template
-		</script>
-
-		<div data-rel="edit">
-			<fieldset>
-
-				<div class="form-field">
-					<label for="name">Name</label>
-					<input type="text" name="name" />
-				</div>
-				<div class="form-field">
-					<label for="description">Description</label>
-					<input type="text" name="description" />
-				</div>
-				<!-- hosted? and buttonCode?
-					add <span class="icon-help" title="Description of help"/>
-					-->
-				<div class="form-field">
-					<label for="buttonType">Button type</label>
-					<select name="buttonType">
-						<option value="cart">Cart</option>
-						<option value="buynow">Buy Now</option>
-					</select>
-				</div>
-				<div class="form-field">
-					<label for="itemNumber">Item number</label>
-					<input type="text" name="itemNumber" />
-				</div>
-				<div class="form-field">
-					<label for="price">Price</label>
-					<input type="text" name="price" />
-				</div>
-				<div class="form-field">
-					<label for="shippingOverride">Shipping override</label>
-					<input type="text" name="shippingOverride" />
-				</div>
-				<div class="form-field">
-					<label for="taxOverride">Tax override</label>
-					<input type="text" name="taxOverride" />
-				</div>
-			</fieldset>
-			<div class="form-controls">
-				<button data-event="close">Close</button>
-				<button>Apply</button>
+		<div data-rel="buttonPreview"></div>
+		<fieldset>
+			<div class="form-field">
+				<label for="name">Name</label>
+				<input type="text" name="name" />
 			</div>
+			<div class="form-field">
+				<label for="description">Description</label>
+				<input type="text" name="description" />
+			</div>
+			<!-- hosted? and buttonCode?
+				add <span class="icon-help" title="Description of help"/>
+				-->
+			<div class="form-field">
+				<label for="buttonType">Button type</label>
+				<select name="buttonType">
+					<option value="cart">Cart</option>
+					<option value="buynow">Buy Now</option>
+				</select>
+			</div>
+			<div class="form-field">
+				<label for="itemNumber">Item number</label>
+				<input type="text" name="itemNumber" />
+			</div>
+			<div class="form-field">
+				<label for="price">Price</label>
+				<input type="text" name="price" />
+			</div>
+			<div class="form-field">
+				<label for="shippingOverride">Shipping override</label>
+				<input type="text" name="shippingOverride" />
+			</div>
+			<div class="form-field">
+				<label for="taxOverride">Tax override</label>
+				<input type="text" name="taxOverride" />
+			</div>
+		</fieldset>
+		<div class="form-controls">
+			<button data-event="close">Close</button>
+			<button>Apply</button>
 		</div>
 	</div>
 </div>
