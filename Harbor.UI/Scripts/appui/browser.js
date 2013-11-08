@@ -12,6 +12,11 @@ appui.register("location", function () {
 });
 
 
+appui.register("document", function () {
+	return window.document;
+});
+
+
 appui.service("console", ["window", function (window) {
 	var console, winConsole, log,
 	    okToLog = localStorage && localStorage.getItem("okToLog");
@@ -57,6 +62,6 @@ appui.service("console", ["window", function (window) {
 	return console;
 
 	function trace() {
-		winConsole.trace ? winConsole.trace.apply(winConsole, arguments) : console.log("Client has no console.trace");
+		winConsole.trace ? winConsole.trace() : console.log("Client has no console.trace");
 	}
 }]);
