@@ -568,6 +568,7 @@
     <Content Include="Scripts\modules\pageEditor\payPalButton\payPalButtonComponentView.js" />
     <Content Include="Scripts\modules\pageEditor\payPalButton\payPalButtonModel.js" />
     <Content Include="Scripts\modules\pageEditor\payPalButton\payPalButton.js" />
+    <Content Include="Scripts\modules\pageEditor\payPalButton\payPalButtonView.js" />
     <Content Include="Scripts\modules\pageEditor\text\textModel.js" />
     <Content Include="Scripts\modules\pageEditor\text\textView.js" />
     <Content Include="Scripts\modules\pageEditor\title\title.js" />
