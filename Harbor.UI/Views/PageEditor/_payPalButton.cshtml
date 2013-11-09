@@ -3,15 +3,16 @@
 		<h1>Edit PayPal Button <span data-bind="text:name" /></h1>
 	</div>
 	<div class="page-body">
-		<div data-rel="buttonPreview"></div>
-		<fieldset>
+		<fieldset class="col2">
 			<div class="form-field">
 				<label for="name">Name</label>
 				<input type="text" name="name" />
+				<div class="quiet">The name that will appear in the PayPal cart.</div>
 			</div>
 			<div class="form-field">
 				<label for="description">Description</label>
 				<input type="text" name="description" />
+				<div class="quiet">The description that will appear on the website.</div>
 			</div>
 			<!-- hosted? and buttonCode?
 				add <span class="icon-help" title="Description of help"/>
@@ -26,6 +27,7 @@
 			<div class="form-field">
 				<label for="itemNumber">Item number</label>
 				<input type="text" name="itemNumber" />
+				<div class="quiet">An optional reference number.</div>
 			</div>
 			<div class="form-field">
 				<label for="price">Price</label>
@@ -34,14 +36,22 @@
 			<div class="form-field">
 				<label for="shippingOverride">Shipping override</label>
 				<input type="text" name="shippingOverride" />
+				<div class="quiet">Set the shipping costs which will override any shipping settings in PayPal.</div>
 			</div>
 			<div class="form-field">
 				<label for="taxOverride">Tax override</label>
 				<input type="text" name="taxOverride" />
+				<div class="quiet">Set the tax which will override any tax settings in PayPal.</div>
 			</div>
 		</fieldset>
-		<div class="form-controls">
-			<button data-event="close" class="loud">Done</button>
-		</div>
+		<fieldset class="col2">
+			<legend>Preview</legend>
+			<div data-rel="buttonPreview"></div>
+		</fieldset>
+		<fieldset class="clear">
+			<div class="form-controls">
+				<button data-event="close" class="loud">Done</button>
+			</div>
+		</fieldset>
 	</div>
 </div>

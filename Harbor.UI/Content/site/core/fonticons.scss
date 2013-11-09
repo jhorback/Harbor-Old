@@ -25,6 +25,7 @@ $fonticons-path: "font/fontawesome-webfont" !default;
 .icon-cogs:before { content: "\f085"; }
 .icon-reorder:before { content: "\f0c9"; }
 .icon-columns:before { content: "\f0db"; }
+.icon-help:before { content: "\f059"; } // icon-question-sign
 
 
 
@@ -48,7 +49,7 @@ $fonticons-path: "font/fontawesome-webfont" !default;
   font-family: FontAwesome;
   font-weight: normal;
   font-style: normal;
-  text-decoration: inherit;
+  text-decoration: inhearit;
   -webkit-font-smoothing: antialiased;
   *margin-right: .3em;
 }

@@ -15,7 +15,9 @@ payPalButtonModel.payPalButton.prototype = {
 		itemNumber: "",
 		price: 0,
 		shippingOverride: null,
-		taxOverride: null
+		taxOverride: null,
+		//
+		priceUSD: null
 	},
 
 	"[name]": {
@@ -31,6 +33,15 @@ payPalButtonModel.payPalButton.prototype = {
 		set: function (value) {
 			return parseInt(value);
 		}
+	},
+	"[priceUSD]": {
+		get: function () {
+			var n = this.get("price");
+			return "$" + n.toFixed(2).replace(/./g, function(c, i, a) {
+				return i && c !== "." && !((a.length - i) % 3) ? "," + c : c;
+			});
+		},
+		bind: ["price"]
 	}
 };
 

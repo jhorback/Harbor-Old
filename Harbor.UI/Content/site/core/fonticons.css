@@ -32,6 +32,9 @@
 .icon-columns:before {
   content: "\f0db"; }
 
+.icon-help:before {
+  content: "\f059"; }
+
 /* FONT PATH
  * -------------------------- */
 @font-face {
@@ -48,7 +51,7 @@
   font-family: FontAwesome;
   font-weight: normal;
   font-style: normal;
-  text-decoration: inherit;
+  text-decoration: inhearit;
   -webkit-font-smoothing: antialiased;
   *margin-right: .3em; }
 

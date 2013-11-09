@@ -1,6 +1,7 @@
 ﻿
 
-var pageEditor = context.module("pageEditor").use("bbext", "currentPageModel", "payPalButtonModel");
+var pageEditor = context.module("pageEditor").use(
+	"bbext", "currentPageModel", "payPalButtonModel", "currentUserModel");
 
 
 function pageEditorService($, console, componentManager, viewRenderer) {
