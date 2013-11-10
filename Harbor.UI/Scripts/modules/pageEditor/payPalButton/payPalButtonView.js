@@ -8,7 +8,8 @@ pageEditor.payPalButtonView = function (options, appurl, currentUserRepo, payPal
 
 pageEditor.payPalButtonView.prototype = {
 	events: {
-		"click .paypal-button": "clickPayPalButton"
+		"click": "clickPayPalButton"
+		//"click .paypal-button": "clickPayPalButton"
 	},
 	initialize: function () {
 		this.listenTo(this.model, "change", this.render);
@@ -16,9 +17,13 @@ pageEditor.payPalButtonView.prototype = {
 	render: function () {
 		var shipping = this.model.get("shippingOverride"),
 			tax = this.model.get("taxOverride"),
-			str;
+			str = "";
 		
-		str = '<span>' + this.model.get("description") + '</span> ' +
+		if (this.options.allowEdit) {
+			str += '<div><button class="float-right margin">Edit PayPal Button</button></div>';
+		}
+		
+		str += '<span>' + this.model.get("description") + '</span> ' +
 			'<div><span>Price:</span> <strong class="loud">' + this.model.get("priceUSD") + '</strong></div>' +
 			'<script src="' +
 			this.appurl.get("scripts/paypal-button-minicart.min.js?merchant=" + this.merchantID) + '" ' +
@@ -36,6 +41,8 @@ pageEditor.payPalButtonView.prototype = {
 			str += 'data-tax="' + tax + '"';
 		}
 		str += '></script>';
+		
+		
 		
 		if (!this.merchantID) {
 			str += '<div class="alert margin"><h1>No Merchant ID</h1>' +

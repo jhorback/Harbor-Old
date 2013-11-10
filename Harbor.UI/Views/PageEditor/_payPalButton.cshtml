@@ -1,6 +1,9 @@
 ﻿<div data-templatefor="payPalButtonComponentView" class="centered readable">
 	<div class="page-header">
 		<h1>Edit PayPal Button <span data-bind="text:name" /></h1>
+		<fieldset class="float-right">
+			<button data-event="close" class="attn" data-bind="text:doneButtonText">Done</button>
+		</fieldset>
 	</div>
 	<div class="page-body">
 		<div class="alert-error"></div>
@@ -52,7 +55,7 @@
 		</fieldset>
 		<fieldset class="clear">
 			<div class="form-controls">
-				<button data-event="close" class="loud" data-bind="text:doneButtonText">Done</button>
+				<button data-event="close" class="attn" data-bind="text:doneButtonText">Done</button>
 			</div>
 		</fieldset>
 	</div>
