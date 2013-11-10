@@ -1,9 +1,9 @@
 ﻿
 
-pageEditor.payPalButton = function (payPalButtonComponent, viewRenderer, payPalButtonRepo) {
+pageEditor.payPalButton = function (currentPageRepo, viewRenderer, payPalButtonRepo) {
 	var buttonID;
 	
-	this.payPalButtonComponent = payPalButtonComponent;
+	this.currentPageRepo = currentPageRepo;
 	this.viewRenderer = viewRenderer;
 	
 	this.$el.find(".paypal-button").on("click.paypalbutton", function (event) {
@@ -13,7 +13,11 @@ pageEditor.payPalButton = function (payPalButtonComponent, viewRenderer, payPalB
 	buttonID = this.model.get("payPalButtonID");
 	this.model.payPalButton = payPalButtonRepo.getButton(buttonID);
 	this.model.payPalButton.on("change:id", function () {
-		this.model.set("payPalButtonID", this.model.payPalButton.get("id"));
+		var changed = this.model.payPalButton.changedAttributes();
+		if (changed.id) {
+			this.model.set("payPalButtonID", this.model.payPalButton.get("id"));
+			this.currentPageRepo.saveCurrentPage();
+		}
 	}, this);
 };
 
@@ -49,7 +53,8 @@ pageEditor.payPalButton.prototype = {
 
 
 pageEditor.pageComponent("paypalbutton", [
-	"payPalButtonComponent", "viewRenderer", 
+	"currentPageRepo",
+	"viewRenderer", 
 	"payPalButtonRepo",
 	pageEditor.payPalButton
 ]);

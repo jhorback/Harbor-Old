@@ -19,13 +19,18 @@ pageEditor.payPalButtonComponentView = function (
 
 
 pageEditor.payPalButtonComponentView.prototype = {
+	initialize: function () {
+		this.bindAll("saveComponentModel", "saveButton");
+	},
+	
 	onRender: function () {
+		var previewEl;
+		
 		this.bindAll("saveButton", "saveComponentModel");
 		this.listenTo(this.model, "change:id", this.saveComponentModel);
 		this.listenTo(this.model, "change", this.saveButton);
 		
-		// jch! cleanup
-		var previewEl = this.$("[data-rel=buttonPreview]");
+		previewEl = this.$("[data-rel=buttonPreview]");
 		this.viewRenderer.render("payPalButtonView", {
 			el: previewEl,
 			model: this.model
