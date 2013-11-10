@@ -4,16 +4,19 @@ using System.Linq;
 using Harbor.Domain.Files;
 using Harbor.Domain.Pages;
 using Harbor.Domain.Pages.PageResources;
+using Harbor.Domain.Products;
 
 namespace Harbor.Data.Repositories
 {
 	public class PageRepositoryResourceManager : IPageRepositoryResourceManager
 	{
 		private readonly HarborContext context;
+		private readonly IPayPalButtonRepository _payPalRepo;
 
-		public PageRepositoryResourceManager(HarborContext context)
+		public PageRepositoryResourceManager(HarborContext context, IPayPalButtonRepository payPalRepo)
 		{
 			this.context = context;
+			_payPalRepo = payPalRepo;
 		}
 
 		public void AddResource(Page page, PageResource resource)
@@ -69,6 +72,9 @@ namespace Harbor.Data.Repositories
 				var res = resource as PayPalButtonResource;
 				var pageRes = page.GetPayPalButton(res.PayPalButtonID);
 				page.PayPalButtons.Remove(pageRes);
+				// remove the PayPalButton record entirely since
+				// it is not shared at the moment
+				_payPalRepo.Delete(pageRes);
 			}
 		}
 
