@@ -87,7 +87,7 @@ namespace Harbor.Domain.Diagnostics
 #if !DEBUG
 			return;
 #endif
-
+			if (args == null) args = new object[]{};
 			var message = string.IsNullOrEmpty(format) ? "" : string.Format(scrub(format), args);
 			if (exception != null)
 			{

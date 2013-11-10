@@ -38,7 +38,6 @@ pageEditor.payPalButtonComponentView.prototype = {
 	},
 	
 	saveComponentModel: function () {
-		this.componentModel.set("payPalButtonID", this.model.get("id"));
 		this.currentPageRepo.saveCurrentPage();
 	},
 	

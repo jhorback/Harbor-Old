@@ -8,8 +8,7 @@ pageEditor.payPalButtonView = function (options, appurl, currentUserRepo, payPal
 
 pageEditor.payPalButtonView.prototype = {
 	events: {
-		"click": "clickPayPalButton"
-		//"click .paypal-button": "clickPayPalButton"
+		"click button": "clickPayPalButton"
 	},
 	initialize: function () {
 		this.listenTo(this.model, "change", this.render);
