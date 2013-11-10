@@ -80,6 +80,7 @@ function errorDisplayViewExt(_, console) {
 				if (showAll) {
 					internal.displayGeneralError.call(view, "An error occured with: " + attr + " - " + errorStr);
 				} else {
+					alert(attr + ": " + errorStr);
 					console.warn("There was an error on the model that cannot be displayed: " + attr + " - " + errorStr);
 				}
 			}

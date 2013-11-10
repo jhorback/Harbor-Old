@@ -3,10 +3,12 @@
 		<h1>Edit PayPal Button <span data-bind="text:name" /></h1>
 	</div>
 	<div class="page-body">
+		<div class="alert-error"></div>
 		<fieldset class="col2">
 			<div class="form-field">
 				<label for="name">Name</label>
 				<input type="text" name="name" />
+				<span data-validation-for="name"></span>
 				<div class="quiet">The name that will appear in the PayPal cart.</div>
 			</div>
 			<div class="form-field">
@@ -15,8 +17,8 @@
 				<div class="quiet">The description that will appear on the website.</div>
 			</div>
 			<!-- hosted? and buttonCode?
-				add <span class="icon-help" title="Description of help"/>
-				-->
+			add <span class="icon-help" title="Description of help"/>
+			-->
 			<div class="form-field">
 				<label for="buttonType">Button type</label>
 				<select name="buttonType">
@@ -50,7 +52,7 @@
 		</fieldset>
 		<fieldset class="clear">
 			<div class="form-controls">
-				<button data-event="close" class="loud">Done</button>
+				<button data-event="close" class="loud" data-bind="text:doneButtonText">Done</button>
 			</div>
 		</fieldset>
 	</div>

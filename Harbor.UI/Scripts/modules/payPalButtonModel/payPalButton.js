@@ -17,7 +17,8 @@ payPalButtonModel.payPalButton.prototype = {
 		shippingOverride: null,
 		taxOverride: null,
 		//
-		priceUSD: null
+		priceUSD: null,
+		doneButtonText: "Dones"
 	},
 
 	"[name]": {

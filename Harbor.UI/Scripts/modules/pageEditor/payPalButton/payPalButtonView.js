@@ -1,7 +1,8 @@
 ﻿
 
-pageEditor.payPalButtonView = function (options, appurl, currentUserRepo) {
+pageEditor.payPalButtonView = function (options, appurl, currentUserRepo, payPalButtonComponent) {
 	this.appurl = appurl;
+	this.payPalButtonComponent = payPalButtonComponent;
 	this.merchantID = currentUserRepo.getCurrentUser().get("payPalMerchantAccountID");
 };
 
@@ -35,13 +36,28 @@ pageEditor.payPalButtonView.prototype = {
 			str += 'data-tax="' + tax + '"';
 		}
 		str += '></script>';
+		
+		if (!this.merchantID) {
+			str += '<div class="alert margin"><h1>No Merchant ID</h1>' +
+				'<p>You need to set your Merchant ID in your account settings.</p></div>';
+		}
+		
 
 		this.$el.empty();
 		this.$el.append($(str));
 	},
 
 	clickPayPalButton: function (event) {
-		event.preventDefault();
+		if (this.options.allowEdit) {
+			event.preventDefault();
+			this.payPalButtonComponent.render({
+				model: this.model
+			});
+		}
+	},
+	
+	onClose: function () {
+		this.payPalButtonComponent.close();
 	}
 };
 
@@ -50,5 +66,6 @@ pageEditor.view("payPalButtonView", [
 	"options",
 	"appurl",
 	"currentUserRepo",
+	"payPalButtonComponent",
 	pageEditor.payPalButtonView
 ]);
