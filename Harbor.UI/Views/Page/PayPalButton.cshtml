@@ -1,10 +1,5 @@
 ﻿@model Harbor.Domain.Products.PayPalButton
 @using Harbor.UI.Extensions
 <div data-rel="payPalButton">
-	<span>@Model.Description</span>
-	<div>
-		<span>Price:</span>
-		<strong class="loud">@String.Format("{0:C}", Model.Price)</strong>
-	</div>
 	@Html.PayPalButton(ViewBag.MerchantID as String, Model)
 </div>

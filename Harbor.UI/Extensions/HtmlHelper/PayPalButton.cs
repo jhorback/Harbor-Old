@@ -1,4 +1,6 @@
-﻿using System.Web;
+﻿using System;
+using System.Text;
+using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Harbor.Domain.Products;
@@ -13,6 +15,13 @@ namespace Harbor.UI.Extensions
 			{
 				return new MvcHtmlString(button.ButtonCode);
 			}
+
+			var infoStr = string.Format(@"<span>{0}</span>
+				<div>
+					<span>Price:</span>
+					<strong class=""loud"">{1}</strong>
+				</div>", button.Description, string.Format("{0:C}", button.Price));
+
 
 			var script = new TagBuilder("script");
 			var attrs = new RouteValueDictionary();
@@ -32,7 +41,7 @@ namespace Harbor.UI.Extensions
 			}
 
 			script.MergeAttributes(attrs);
-			return new MvcHtmlString(script.ToString());
+			return new MvcHtmlString(infoStr + script);
 		}
 	}
 }

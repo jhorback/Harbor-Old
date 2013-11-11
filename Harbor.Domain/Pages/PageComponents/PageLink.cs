@@ -11,11 +11,11 @@ namespace Harbor.Domain.Pages.PageComponents
 		{
 			if (IsNew() == false)
 			{
-				_page = page.GetPageLink(PageID);
+				LinkedPage = page.GetPageLink(PageID);
 			}
 		}
 
-		private Page _page;
+		protected Page LinkedPage { get; set; }
 
 		public bool IsNew()
 		{
@@ -26,7 +26,7 @@ namespace Harbor.Domain.Pages.PageComponents
 		{
 			get
 			{
-				return _page != null;
+				return LinkedPage != null;
 			}
 		}
 
@@ -34,7 +34,7 @@ namespace Harbor.Domain.Pages.PageComponents
 		{
 			get
 			{
-				return !Exists ? null : _page.Title;
+				return !Exists ? null : LinkedPage.Title;
 			}
 		}
 		
@@ -51,7 +51,7 @@ namespace Harbor.Domain.Pages.PageComponents
 		{
 			get
 			{
-				return !Exists ? null : _page.PreviewText;
+				return !Exists ? null : LinkedPage.PreviewText;
 			}
 		}
 
@@ -59,7 +59,7 @@ namespace Harbor.Domain.Pages.PageComponents
 		{
 			get
 			{
-				return !Exists ? null : _page.PreviewImageID;
+				return !Exists ? null : LinkedPage.PreviewImageID;
 			}
 		}
 
@@ -84,13 +84,13 @@ namespace Harbor.Domain.Pages.PageComponents
 		{
 			get
 			{
-				return !Exists ? null : _page.VirtualPath;
+				return !Exists ? null : LinkedPage.VirtualPath;
 			}
 		}
 
 		public bool CanDisplay(string userName)
 		{
-			var canDisplay = !IsNew() && Exists && _page.HasPermission(userName, Permissions.Read);
+			var canDisplay = !IsNew() && Exists && LinkedPage.HasPermission(userName, Permissions.Read);
 			return canDisplay;
 		}
 

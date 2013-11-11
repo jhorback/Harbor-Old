@@ -78,5 +78,22 @@ namespace Harbor.UI.Controllers
 			var button = page.GetPayPalButton(buttonComponent.PayPalButtonID ?? 0);
 			return PartialView("PayPalButton", button);
 		}
+
+		public PartialViewResult ProductLink(Page page, string uicid)
+		{
+			var link = page.GetComponent<ProductLink>(uicid);
+			if (link.CanDisplay(User.Identity.Name) == false)
+			{
+				return PartialView("PageLink-None", link);
+			}
+
+			var model = (ProductLinkDto)link;
+			if (model.productCount == 1)
+			{
+				var currentUser = _userRepo.FindUserByName(page.AuthorsUserName);
+				ViewBag.MerchantID = currentUser.PayPalMerchantAccountID;
+			}
+			return PartialView("ProductLink", model);
+		}
 	}
 }

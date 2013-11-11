@@ -1,0 +1,29 @@
+﻿@model Harbor.UI.Models.Components.ProductLinkDto
+@using Harbor.UI.Extensions
+<div data-rel="productLink" class="@Model.tileClassName">
+	@if (Model.hasPreviewImage)
+	{
+		<a href="@Model.link" class="media">
+			<img src="@Model.previewImageSrc" />
+		</a>
+	}
+	<div class="caption">
+		<h2><a href="@Model.link">@Model.title</a></h2>
+		<p>
+			@Model.previewText
+		</p>
+	</div>
+	@if (Model.productCount > 0)
+	{
+		if (Model.productCount > 1)
+		{
+			<div>
+				<a href="@Model.link" class="button loud">See Purchase Options</a>
+			</div>
+		}
+		else
+		{
+			@Html.PayPalButton(ViewBag.MerchantID as String, Model.firstButton)
+		}
+	}
+</div>

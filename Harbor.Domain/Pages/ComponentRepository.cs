@@ -16,6 +16,7 @@ namespace Harbor.Domain.Pages
 					new Components.Links(),
 					new Components.PageLink(),
 					new Components.PayPalButton(),
+					new Components.ProductLink(),
 					new Components.Text(),
 					new Components.Title()
 				};

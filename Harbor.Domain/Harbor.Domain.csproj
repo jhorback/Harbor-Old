@@ -87,6 +87,7 @@
     <Compile Include="PageNav\NavLinksSection.cs" />
     <Compile Include="PageNav\NavLinksSectionLink.cs" />
     <Compile Include="PageNav\NavLinksTemplate.cs" />
+    <Compile Include="Pages\Components\ProductLink.cs" />
     <Compile Include="Pages\Components\PayPalButton.cs" />
     <Compile Include="Pages\Components\PageLink.cs" />
     <Compile Include="Pages\Components\Image.cs" />
@@ -101,6 +102,7 @@
     <Compile Include="Pages\IPageResourceUpdater.cs" />
     <Compile Include="Pages\Page.cs" />
     <Compile Include="Pages\PageComponent.cs" />
+    <Compile Include="Pages\PageComponents\ProductLink.cs" />
     <Compile Include="Pages\PageComponents\PayPalButton.cs" />
     <Compile Include="Pages\PageComponents\Links.cs" />
     <Compile Include="Pages\PageComponents\PageLink.cs" />
