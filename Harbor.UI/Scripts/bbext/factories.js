@@ -94,8 +94,10 @@
 	bbext.viewFactory = createFactory("view");
 	bbext.modelFactory = createFactory("model");
 	bbext.collectionFactory = createFactory("collection");
+	bbext.routerFactory = createFactory("router");
 
 	bbext.service("viewFactory", ["context", "console", bbext.viewFactory]);
 	bbext.service("modelFactory", ["context", "console", bbext.modelFactory]);
 	bbext.service("collectionFactory", ["context", "console", bbext.collectionFactory]);
+	bbext.service("routerFactory", ["context", "console", bbext.routerFactory]);
 }());

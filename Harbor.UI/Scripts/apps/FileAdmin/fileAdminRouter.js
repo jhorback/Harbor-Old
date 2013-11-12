@@ -27,13 +27,6 @@ fileAdminRouter.prototype = {
 			}, this);
 			this.navigate("edit/" + fileId);
 		}, this));
-	},
-
-	start: function () {
-		this.history.start({
-			pushState: true,
-			root: this.root
-		});
 	}
 };
 

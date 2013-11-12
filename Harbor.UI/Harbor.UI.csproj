@@ -479,6 +479,7 @@
     <Content Include="Scripts\bbext\collectionExt\filterColExt.js" />
     <Content Include="Scripts\bbext\collectionExt\sortColExt.js" />
     <Content Include="Scripts\bbext\modelExt\modelPropertyDescriptor.js" />
+    <Content Include="Scripts\bbext\routerExt\startRouterExt.js" />
     <Content Include="Scripts\bbext\_dependent\router.js" />
     <Content Include="Scripts\modules\currentPageModel\navLinks\navLinksCollection.js" />
     <Content Include="Scripts\modules\currentPageModel\pageComponent\pageComponent.js" />
