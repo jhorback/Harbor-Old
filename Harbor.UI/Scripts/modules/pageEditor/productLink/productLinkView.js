@@ -1,9 +1,10 @@
 ﻿
 
-pageEditor.productLinkView = function (options, currentPageRepo, pageSelector) {
+pageEditor.productLinkView = function (options, currentPageRepo, pageSelector, viewRenderer) {
 
 	this.currentPageRepo = currentPageRepo;
 	this.pageSelector = pageSelector;
+	this.viewRenderer = viewRenderer;
 };
 
 
@@ -12,6 +13,13 @@ pageEditor.productLinkView.prototype = {
 		_.bindAll(this, "save", "selectPage");
 
 		this.listenTo(this.model, "change:tileDisplay", this.save);
+	},
+	
+	onRender: function () {
+		this.payPalButtonView = this.viewRenderer.render("payPalButtonView", {
+			el: this.$("[data-rel=payPalButton]"),
+			model: this.payPalButton
+		});
 	},
 	
 	save: function () {
@@ -37,6 +45,7 @@ pageEditor.productLinkView.prototype = {
 	
 	onClose: function () {
 		this.$("[data-rel=edit]").remove();
+		this.payPalButtonView && this.payPalButtonView.close();
 	}
 };
 
@@ -46,6 +55,7 @@ pageEditor.view("productLinkView", [
 	"options",
 	"currentPageRepo",
 	"pageSelector",
+	"viewRenderer",
 	pageEditor.productLinkView
 ]);
 

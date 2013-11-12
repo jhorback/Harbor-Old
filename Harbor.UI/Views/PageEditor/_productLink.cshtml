@@ -1,13 +1,13 @@
 ﻿<div data-templatefor="productLinkView">
-    <span data-rel="pageLink" data-bind="class: tileClassName">
+    <div data-rel="pageLink" data-bind="class: tileClassName">
         <a data-bind="href: link, showif: hasPreviewImage" class="media">
             <img data-bind="src: previewImageSrc" />
         </a>
         <div class="caption">
             <h2><a data-bind="text: title, href: link"></a></h2>
-            <div data-rel="payPalButton" />
+	        <div data-rel="payPalButton"></div>
         </div>
-    </span>
+    </div>
     <div data-rel="edit">
         <div>
             <label>
