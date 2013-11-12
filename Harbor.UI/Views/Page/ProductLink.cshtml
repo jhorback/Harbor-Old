@@ -9,21 +9,21 @@
 	}
 	<div class="caption">
 		<h2><a href="@Model.link">@Model.title</a></h2>
-		<p>
+		@*<p>
 			@Model.previewText
-		</p>
+		</p>*@
+		@if (Model.productCount > 0)
+		{
+			if (Model.productCount > 1)
+			{
+				<div>
+					<a href="@Model.link" class="button loud">See Purchase Options</a>
+				</div>
+			}
+			else
+			{
+				@Html.PayPalButton(ViewBag.MerchantID as String, Model.firstButton)
+			}
+		}
 	</div>
-	@if (Model.productCount > 0)
-	{
-		if (Model.productCount > 1)
-		{
-			<div>
-				<a href="@Model.link" class="button loud">See Purchase Options</a>
-			</div>
-		}
-		else
-		{
-			@Html.PayPalButton(ViewBag.MerchantID as String, Model.firstButton)
-		}
-	}
 </div>

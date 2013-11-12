@@ -22,7 +22,7 @@
   .tile .media {
     text-align: center;
     display: block;
-    padding: 3px;
+    padding: 2px;
     max-width: 100%;
     margin-left: auto;
     margin-right: auto;
@@ -30,11 +30,11 @@
     .tile .media img {
       max-height: 10em; }
   .tile .caption {
-    padding: .6em;
+    padding: .3em;
     color: #777777;
-    height: 5em; }
+    height: 7em; }
   .tile h2, .tile h3 {
-    font-size: 1.6em;
+    font-size: 1.4em;
     margin: .1em 0; }
 
 .hover .tile:hover, .hover .tile:focus, .hover.tile:hover, .hover.tile:focus {
