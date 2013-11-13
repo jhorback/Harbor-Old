@@ -17,7 +17,6 @@ pageEditor.productLink.prototype = {
 	},
 
 	open: function () {
-		debugger;
 		this.view = this.viewRenderer.render("productLinkView", {
 			model: this.model,
 			uicid: this.uicid
@@ -28,6 +27,7 @@ pageEditor.productLink.prototype = {
 
 	close: function () {
 		this.view.close({ remove: false });
+		// this.replaceHtmlFromServer();
 	},
 	
 	remove: function () {

@@ -55,9 +55,9 @@ pageEditor.pageComponent = function (console, appurl, context, _, $, modelFactor
 			
 		replaceHtmlFromServer: function () {
 			var el = this.$el,
-				url = appurl.get("page/" + this.type +
+				url = appurl.get("page/" + this.componentType +
 					"?pageID=" + this.page.get("id") + "&uicid=" + this.uicid);
-				
+			
 			$.ajax({
 				url: url,
 				dataType: "html"
@@ -103,6 +103,7 @@ pageEditor.pageComponent = function (console, appurl, context, _, $, modelFactor
 
 		var pageComponentConstructor = function (options) {
 			this.type = options.type;
+			this.componentType = options.key;
 			this.$el = options.$el;
 			this.uicid = options.uicid;
 			this.page = options.page;

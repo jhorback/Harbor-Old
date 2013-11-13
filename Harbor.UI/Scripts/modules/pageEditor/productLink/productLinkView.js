@@ -15,13 +15,6 @@ pageEditor.productLinkView.prototype = {
 		this.listenTo(this.model, "change:tileDisplay", this.save);
 	},
 	
-	onRender: function () {
-		this.payPalButtonView = this.viewRenderer.render("payPalButtonView", {
-			el: this.$("[data-rel=payPalButton]"),
-			model: this.payPalButton
-		});
-	},
-	
 	save: function () {
 		this.currentPageRepo.saveCurrentPage();
 	},
