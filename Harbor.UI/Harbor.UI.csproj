@@ -466,6 +466,7 @@
     <Content Include="Content\themes\default\theme.css">
       <DependentUpon>theme.scss</DependentUpon>
     </Content>
+    <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\apps\appShim.js" />
     <Content Include="Scripts\apps\fileAdmin\%24fileAdmin.js" />
