@@ -5,7 +5,7 @@ using Harbor.Domain.Diagnostics;
 
 namespace Harbor.UI
 {
-	public class LogRequestAttribute : HandleErrorAttribute, IActionFilter
+	public class LogRequestAttribute : FilterAttribute, IActionFilter
 	{
 		public virtual ILogger GetLogger(Type controllerType)
 		{
@@ -39,19 +39,6 @@ namespace Harbor.UI
 					filterContext.HttpContext.Request.UserHostAddress,
 					filterContext.HttpContext.User.Identity.Name);
 			}
-		}
-
-
-		public override void OnException(ExceptionContext exceptionContext)
-		{
-			var logger = GetLogger(exceptionContext.Controller.GetType());
-			logger.Error("{0}:{1}:Exception - {2}, IP: {3}, Username: {4}",
-				exceptionContext.Exception,
-				exceptionContext.RouteData.Values["controller"],
-				exceptionContext.RouteData.Values["action"],
-				exceptionContext.Exception.Message,
-				exceptionContext.HttpContext.Request.UserHostAddress,
-				exceptionContext.HttpContext.User.Identity.Name);
 		}
 	}
 }

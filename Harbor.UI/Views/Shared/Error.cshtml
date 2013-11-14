@@ -8,9 +8,11 @@
 		dto = new InternalServerErrorDto
 			{
 				exception = Model.Exception.Message,
-				exceptionType = Model.Exception.GetType().FullName,
-				stackTrace = Model.Exception.StackTrace
+				exceptionType = Model.Exception.GetType().FullName
 			};
+#if DEBUG
+		dto.stackTrace = Model.Exception.StackTrace;
+#endif
 	}
 }
 @Html.Partial("_Error", dto)

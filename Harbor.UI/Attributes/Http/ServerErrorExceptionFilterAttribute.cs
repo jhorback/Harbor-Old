@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web;
 using System.Web.Http.Filters;
+using Elmah;
 using Harbor.Domain;
 using Harbor.Domain.Diagnostics;
 using Harbor.UI.Extensions;
@@ -24,12 +25,32 @@ namespace Harbor.UI.Http
 			}
 
 			var logger = GetLogger(context.ActionContext.ControllerContext.Controller.GetType());
-			logger.Error("{0}:{1}:Exception - {2}, Username: {4}",
+			string userName = "Unknown";
+
+
+			// try to inform elmah
+			try
+			{
+				var httpContext = HttpContext.Current;
+				userName = httpContext.User.Identity.Name;
+
+				
+				var signal = ErrorSignal.FromContext(httpContext);
+				signal.Raise(context.Exception, HttpContext.Current);
+			}
+			catch (Exception e)
+			{
+				logger.Error(e);
+			}
+
+
+			// log the error
+			logger.Error("{0}:{1}:Exception - {2}, Username: {3}",
 				context.Exception,
 				context.ActionContext.ControllerContext.ControllerDescriptor.ControllerName,
 				context.ActionContext.ActionDescriptor.ActionName,
 				context.Exception == null ? "" : context.Exception.Message,
-				HttpContext.Current.User.Identity.Name);
+				userName);
 		}
 	}
 }

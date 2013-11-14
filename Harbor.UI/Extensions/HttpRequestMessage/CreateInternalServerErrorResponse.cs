@@ -38,9 +38,11 @@ namespace Harbor.UI.Extensions
 			var response = new InternalServerErrorDto
 			{
 				exception = exception.Message,
-				exceptionType = exception.GetType().FullName,
-				stackTrace = exception.StackTrace
+				exceptionType = exception.GetType().FullName
 			};
+#if DEBUG
+			response.stackTrace = exception.StackTrace;
+#endif
 			return response;
 		}
 	}

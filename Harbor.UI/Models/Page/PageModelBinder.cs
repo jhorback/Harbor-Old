@@ -21,7 +21,7 @@ namespace Harbor.UI.Models.Page
 			{
 				pageID = Convert.ToInt32(controllerContext.RequestContext.HttpContext.Request["pageID"]);
 			}
-			var page = PageRepository.FindById(pageIDz);
+			var page = PageRepository.FindById(pageID);
 			return page;
 		}
 	}
