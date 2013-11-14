@@ -10,20 +10,33 @@ namespace Harbor.Data.Repositories
 	public class AppSettingRepository : IAppSettingRepository
 	{
 		readonly HarborContext context;
+		private readonly ILogger _logger;
 
-		public AppSettingRepository(HarborContext context)
+		public AppSettingRepository(HarborContext context, ILogger logger)
 		{
 			this.context = context;
+			_logger = logger;
 		}
 
 		#region IAppSettingRepository
 		public AppSetting FindByName(string name, bool readOnly = true)
 		{
-			if (!readOnly) {
+			if (!readOnly)
+			{
 				clearCache();
 			}
-			var entity = FindAll(e => System.String.Compare(e.Name, name, System.StringComparison.OrdinalIgnoreCase) == 0).FirstOrDefault();
-			return entity;
+
+			try
+			{
+				var entity =
+					FindAll(e => System.String.Compare(e.Name, name, System.StringComparison.OrdinalIgnoreCase) == 0).FirstOrDefault();
+				return entity;
+			}
+			catch (Exception e)
+			{
+				_logger.Error(e);
+				throw;
+			}
 		}
 
 		public AppSetting GetSetting(string name)
