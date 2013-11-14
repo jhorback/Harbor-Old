@@ -7,6 +7,7 @@
 		userName: null,
 		password: null,
 		confirmPassword: null,
+		newPassword: null,
 		firstName: null,
 		middleName: null,
 		lastName: null,
@@ -41,14 +42,14 @@
 			return undefined;
 		}
 
-		pw = this.get("password");
+		pw = this.get("newPassword");
 		cpw = this.get("confirmPassword");
 		errors = modelErrors.create();
 		if (pw !== cpw) {
 			errors.add("The passwords do not match.");
 		}
 		if (this.isNewUser() && pw === null) {
-			errors.add("password", "Required.");
+			errors.add("newPassword", "Required.");
 		}
 		
 		return errors.toJSON();

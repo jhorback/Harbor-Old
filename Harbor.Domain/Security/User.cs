@@ -9,7 +9,7 @@ using Harbor.Domain.DataAnnotations;
 
 namespace Harbor.Domain.Security
 {
-	public class User : IAggregateRoot
+	public class User : IAggregateRoot, IValidatableObject
 	{
 		#region ctor
 		public User()
@@ -36,6 +36,16 @@ namespace Harbor.Domain.Security
 		/// </summary>
 		[StringLength(48, MinimumLength = 48)]
 		public string Password { get; set; }
+
+		/// <summary>
+		/// A transient property used to validate a change of password.
+		/// </summary>
+		public string NewPassword { get; set; }
+
+		/// <summary>
+		/// A transient property used to validate a change of password.
+		/// </summary>
+		public string CurrentPassword { get; set; }
 		
 		[Required]
 		[StringLength(50)]
@@ -149,10 +159,10 @@ namespace Harbor.Domain.Security
 				if (UserRoles.FirstOrDefault(r => r.Role == actualRole.Key) == null)
 				{
 					this.UserRoles.Add(new UserRole
-					                   	{
-					                   		UserName = this.UserName,
-					                   		Role = actualRole.Key
-					                   	});
+					    {
+					        UserName = this.UserName,
+					        Role = actualRole.Key
+					    });
 				}
 			}
 		}
@@ -256,5 +266,22 @@ namespace Harbor.Domain.Security
 			return salt + hashedPwd;
 		}
 		#endregion
+
+		public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+		{
+			if (string.IsNullOrEmpty(CurrentPassword) == false)
+			{
+				if (IsPasswordValid(CurrentPassword) == false)
+				{
+					yield return new ValidationResult("The current password is not valid.", new[] { "password" });
+				}
+				else
+				{
+					SetPassword(NewPassword);
+					// calling save on the context executes this Validate method
+					CurrentPassword = null;
+				}
+			}
+		}
 	}
 }

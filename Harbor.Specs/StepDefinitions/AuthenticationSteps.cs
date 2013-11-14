@@ -14,87 +14,87 @@ using TechTalk.SpecFlow;
 
 namespace Harbor.Specs.StepDefinitions
 {
-    [Binding]
-    public class AuthenticationSteps
-    {
-    	UserController userController;
-		Mock<IUserRepository> userRepository;
-		Mock<ICurrentUserRepository> currentUserRepository;
-		Mock<IPageRepository> pageRep;
-		Mock<IFileRepository> fileRep;
-		Mock<ISettingsViewModelRepository> settingsViewModelRep;
-	    Mock<ILogger> logger;
+	//[Binding]
+	//public class AuthenticationSteps
+	//{
+	//	UserController userController;
+	//	Mock<IUserRepository> userRepository;
+	//	Mock<ICurrentUserRepository> currentUserRepository;
+	//	Mock<IPageRepository> pageRep;
+	//	Mock<IFileRepository> fileRep;
+	//	Mock<ISettingsViewModelRepository> settingsViewModelRep;
+	//	Mock<ILogger> logger;
 
-		HttpStatusCodeResult currentResult;
-		string enteredUsername;
-		string enteredPassword;
-		string validPassword = "validPassword";
-		string invalidPassword = "invalidPassword";
+	//	HttpStatusCodeResult currentResult;
+	//	string enteredUsername;
+	//	string enteredPassword;
+	//	string validPassword = "validPassword";
+	//	string invalidPassword = "invalidPassword";
 
-	    public AuthenticationSteps()
-		{
-			userRepository = new Mock<IUserRepository>();
-			currentUserRepository = new Mock<ICurrentUserRepository>();
-			pageRep = new Mock<IPageRepository>();
-			fileRep = new Mock<IFileRepository>();
-			settingsViewModelRep = new Mock<ISettingsViewModelRepository>();
-		    logger = new Mock<ILogger>();
-			userController = new UserController(userRepository.Object, currentUserRepository.Object,
-				pageRep.Object, fileRep.Object, settingsViewModelRep.Object, logger.Object);
-		}
+	//	public AuthenticationSteps()
+	//	{
+	//		userRepository = new Mock<IUserRepository>();
+	//		currentUserRepository = new Mock<ICurrentUserRepository>();
+	//		pageRep = new Mock<IPageRepository>();
+	//		fileRep = new Mock<IFileRepository>();
+	//		settingsViewModelRep = new Mock<ISettingsViewModelRepository>();
+	//		logger = new Mock<ILogger>();
+	//		userController = new UserController(userRepository.Object, currentUserRepository.Object,
+	//			pageRep.Object, fileRep.Object, settingsViewModelRep.Object, logger.Object);
+	//	}
 
-        [Given(@"I have entered a valid username and password")]
-        public void GivenIHaveEnteredAValidUsernameAndPassword()
-        {
-			enteredUsername = "jhorback";
-			enteredPassword = validPassword;
-        }
+	//	[Given(@"I have entered a valid username and password")]
+	//	public void GivenIHaveEnteredAValidUsernameAndPassword()
+	//	{
+	//		enteredUsername = "jhorback";
+	//		enteredPassword = validPassword;
+	//	}
         
-        [Given(@"I have entered an invalid username or password")]
-        public void GivenIHaveEnteredAnInvalidUsernameOrPassword()
-        {
-			enteredUsername = "jhorback";
-        	enteredPassword = invalidPassword;
-        }
+	//	[Given(@"I have entered an invalid username or password")]
+	//	public void GivenIHaveEnteredAnInvalidUsernameOrPassword()
+	//	{
+	//		enteredUsername = "jhorback";
+	//		enteredPassword = invalidPassword;
+	//	}
         
-        [Given(@"I am not enabled")]
-        public void GivenIAmNotEnabled()
-        {
-        }
+	//	[Given(@"I am not enabled")]
+	//	public void GivenIAmNotEnabled()
+	//	{
+	//	}
         
-        [When(@"I sign in")]
-        public void WhenISignIn()
-        {
-        	var user = new User { UserName = enteredUsername };
-        	user.SetPassword(validPassword);
-			userRepository.Setup(r => r.FindUserByName(It.IsAny<string>())).Returns(user);
-			currentResult = userController.SignIn(enteredUsername, enteredPassword, null);
-        }
+	//	[When(@"I sign in")]
+	//	public void WhenISignIn()
+	//	{
+	//		var user = new User { UserName = enteredUsername };
+	//		user.SetPassword(validPassword);
+	//		userRepository.Setup(r => r.FindUserByName(It.IsAny<string>())).Returns(user);
+	//		currentResult = userController.SignIn(enteredUsername, enteredPassword, null);
+	//	}
         
-        [Then(@"the result is successful")]
-        public void ThenTheResultIsSuccessful()
-        {
-			Assert.Equals(currentResult.StatusCode, 200);
-        }
+	//	[Then(@"the result is successful")]
+	//	public void ThenTheResultIsSuccessful()
+	//	{
+	//		Assert.Equals(currentResult.StatusCode, 200);
+	//	}
         
-        [Then(@"the result is unsuccessful")]
-        public void ThenTheResultIsUnsuccessful()
-        {
-			Assert.Equals(currentResult.StatusCode, 400);
-        }
+	//	[Then(@"the result is unsuccessful")]
+	//	public void ThenTheResultIsUnsuccessful()
+	//	{
+	//		Assert.Equals(currentResult.StatusCode, 400);
+	//	}
         
-        [Then(@"the message is ""(.*)""")]
-        public void ThenTheMessageIs(string p0)
-        {
-			//jch* testing
-           Assert.True(true);
-        }
+	//	[Then(@"the message is ""(.*)""")]
+	//	public void ThenTheMessageIs(string p0)
+	//	{
+	//		//jch* testing
+	//	   Assert.True(true);
+	//	}
         
-        [Then(@"the message contains ""(.*)""")]
-        public void ThenTheMessageContains(string p0)
-        {
-			// jch* testing
-			Assert.True(true);
-        }
-    }
+	//	[Then(@"the message contains ""(.*)""")]
+	//	public void ThenTheMessageContains(string p0)
+	//	{
+	//		// jch* testing
+	//		Assert.True(true);
+	//	}
+	//}
 }

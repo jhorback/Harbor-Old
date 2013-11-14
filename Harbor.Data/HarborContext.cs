@@ -94,6 +94,8 @@ namespace Harbor.Data
 					.WillCascadeOnDelete();
 
 				Ignore(m => m.DisplayName);
+				Ignore(m => m.NewPassword);
+				Ignore(m => m.CurrentPassword);
 			}
 		}
 

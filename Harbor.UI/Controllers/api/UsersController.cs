@@ -51,17 +51,13 @@ namespace Harbor.UI.Controllers.Api
         {
 			var userDo = (Domain.Security.User)user;
 
-			var errors = DomainObjectValidator.Validate(userDo);
-			if (errors.Count != 0)
-				return Request.CreateBadRequestResponse(errors);
-			
 			try
 			{
 				userDo = userRep.Create(userDo);
 			}
 			catch (DomainValidationException exception)
 			{
-				return Request.CreateBadRequestResponse(exception.Message);
+				return Request.CreateBadRequestResponse(exception);
 			}
 
 			return Request.CreateOKResponse((UserDto)userDo);
@@ -75,11 +71,7 @@ namespace Harbor.UI.Controllers.Api
 			if (userDo == null)
 				return Request.CreateNotFoundResponse();
 
-			userDo = Mapper.Map<UserDto, Domain.Security.User>(user, userDo);
-
-			var errors = DomainObjectValidator.Validate(userDo);
-			if (errors.Count != 0)
-				return Request.CreateBadRequestResponse(errors);
+			userDo = Mapper.Map(user, userDo);
 
 			try
 			{
@@ -87,7 +79,7 @@ namespace Harbor.UI.Controllers.Api
 			}
 			catch (DomainValidationException e)
 			{
-				return Request.CreateBadRequestResponse(e.Message);
+				return Request.CreateBadRequestResponse(e);
 			}
 			
 			var userDto = (UserDto)userDo;

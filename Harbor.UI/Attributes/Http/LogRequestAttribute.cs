@@ -32,7 +32,7 @@ namespace Harbor.UI.Http
 			logger.Info("api/{0}:{1}:Executed - Response: {2}, Username: {3}",
 				actionExecutedContext.ActionContext.ControllerContext.ControllerDescriptor.ControllerName,
 				actionExecutedContext.ActionContext.ActionDescriptor.ActionName,
-				actionExecutedContext.Response.StatusCode,
+				actionExecutedContext.Response == null ? 0 : actionExecutedContext.Response.StatusCode,
 				HttpContext.Current.User.Identity.Name);
 		}
 	}
