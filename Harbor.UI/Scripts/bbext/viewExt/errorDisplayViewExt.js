@@ -36,12 +36,10 @@ function errorDisplayViewExt(_, console) {
 				return;
 			}
 			
-			errorStr = errorAttr.join(", ");
-			
 			if (attr) {
-				internal.displayFieldError.call(this, attr, errorStr, showAll);
+				internal.displayFieldError.call(this, attr, errorAttr.join(", "), showAll);
 			} else {
-				internal.displayGeneralError.call(this, errorStr);
+				internal.displayGeneralError.call(this, formatGeneralError(errorAttr));
 			}
 		},
 
@@ -107,7 +105,7 @@ function errorDisplayViewExt(_, console) {
 
 			if (errorStr) {
 				form.addClass("error");
-				internal.addErrorHtml.call(view, summarySpan, '<h1>' + errorStr + '</h1>');
+				internal.addErrorHtml.call(view, summarySpan, errorStr);
 			} else {
 				form.removeClass("error");
 				summarySpan.html("");
@@ -134,6 +132,13 @@ function errorDisplayViewExt(_, console) {
 			_.extend(proto, extension);
 		}
 	};
+	
+	function formatGeneralError(errors) {
+		var formatted = [];
+		formatted.push("<h1>" + errors.shift() + "</h1><p>");
+		formatted.push(errors.join("</p><p>"));
+		return formatted.join("") + "</p>";
+	}
 }
 
 bbext.service("bbext.errorDisplayViewExt", ["_", "console", bbext.errorDisplayViewExt = errorDisplayViewExt]);
