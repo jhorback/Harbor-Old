@@ -1,23 +1,23 @@
-﻿s
+﻿
 
-<div data-rel="image" data-templatefor="imageEditView">
-    
+<div data-rel="image" data-templatefor="imageEditView" class="pad-bottom">
+
 	<img data-bind="src: imgSrc,showif:fileExists" />
 	<span data-bind="showif:fileDoesNotExist">Edit this page to add a new image.</span>
-    
-    <div data-rel="edit">
-        <div data-bind="showif: fileExists">
-            <label>
-                <input type="radio" name="res" value="low">
-                <span>Low Resolution</span>
-            </label>
-            <label>
-                <input type="radio" name="res" value="high">
-                <span>High Resolution</span>
-            </label>
-        </div>
-        <div>
-            <button data-event="openFileSelector" class="button">Select an image</button>
-        </div>
-    </div>
+
+	<div data-rel="edit">
+		<div data-bind="showif: fileExists">
+			<label>
+				<input type="radio" name="res" value="low">
+				<span>Low Resolution</span>
+			</label>
+			<label>
+				<input type="radio" name="res" value="high">
+				<span>High Resolution</span>
+			</label>
+		</div>
+		<div>
+			<button data-event="openFileSelector" class="button">Select an image</button>
+		</div>
+	</div>
 </div>
