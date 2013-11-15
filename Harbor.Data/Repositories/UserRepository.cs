@@ -106,9 +106,10 @@ namespace Harbor.Data.Repositories
 			if (!(user.Enabled == false || user.DeletedUserRoles.Any(r => r.Role == sysAdminKey)))
 				return;
 
-			var enabledSysAdmins = FindAll(u => u.UserRoles.Any(r => r.Role == sysAdminKey));
-			var roles = context.UserRoles.Where(r => r.Role == sysAdminKey);
-			if (roles.Count() <= 1 && roles.Count(r => r.UserName.ToLower() == user.UserName.ToLower()) > 0)
+			var enabledSysAdmins = FindAll(u => u.UserRoles.Any(r => r.Role == sysAdminKey) && u.Enabled);
+			//var roles = context.UserRoles.Where(r => r.Role == sysAdminKey);
+			//if (roles.Count() <= 1 && roles.Count(r => r.UserName.ToLower() == user.UserName.ToLower()) > 0)
+			if (!enabledSysAdmins.Any())
 			{
 				throw new DomainValidationException("There must be at least one enabled system administrator.");
 			}
