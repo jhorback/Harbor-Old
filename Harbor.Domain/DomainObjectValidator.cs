@@ -49,21 +49,8 @@ namespace Harbor.Domain
 			var results = Validate(@object);
 			if (results.Count > 0)
 			{
-				throw new DomainValidationException(getErrorMessage(results)) {Results = results};
+				throw new DomainValidationException(results);
 			}
-		}
-
-		private static string getErrorMessage(ICollection<ValidationResult> results)
-		{
-			var message = new StringBuilder();
-			foreach (var result in results)
-			{
-				message.Append(string.Join(", ", result.MemberNames));
-				message.Append(": \n");
-				message.Append(result.ErrorMessage);
-				message.Append("\n\n");
-			}
-			return message.ToString();
 		}
 	}
 }

@@ -25,6 +25,10 @@
 		var showError = _.bind(this.showError, this),
 			clearErrors = _.bind(this.clearErrors, this);
 		
+		if (!this.isModelValid()) {
+			return;
+		}
+
 		Session.signIn(this.model.toJSON(), {
 			clientError: function (error) {
 				showError("Sign in failed", error);
@@ -41,7 +45,8 @@
 		setTimeout(function () {
 			context.app("session").call(["modelErrors", function (modelErrors) {
 				var errors = modelErrors.create();
-				errors.add("<h1>" + error + "</h1><p>" + message + "</p>");
+				errors.add(error);
+				errors.add(message);
 				displayErrors(errors.toJSON());
 			}]);
 		}, 1);
