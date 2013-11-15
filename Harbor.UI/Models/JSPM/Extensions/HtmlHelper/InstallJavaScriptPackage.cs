@@ -3,6 +3,7 @@ using System.Text;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
 using System.Web.Optimization;
+using Harbor.Domain;
 
 namespace Harbor.UI.Models.JSPM.Extensions
 {
@@ -45,7 +46,7 @@ namespace Harbor.UI.Models.JSPM.Extensions
 				}
 				catch (Exception e)
 				{
-					throw new Exception("Request for JavaScriptPackage templates failed. Action: " + tAction);
+					throw new Exception("Request for JavaScriptPackage templates failed. Action: " + tAction, e);
 				}
 			}
 

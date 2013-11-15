@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web.Script.Serialization;
+using Harbor.Domain.Diagnostics;
 
 namespace Harbor.Domain.PageNav
 {
@@ -29,7 +30,8 @@ namespace Harbor.Domain.PageNav
 				}
 				catch (InvalidOperationException e)
 				{
-					// jch* add logging
+					var logger = new Logger(typeof(NavLinksTemplate));
+					logger.Error(e);
 				}
 			}
 			return temp;
