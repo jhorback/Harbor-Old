@@ -1,8 +1,9 @@
 ﻿
-pageEditor.linksEditView = function (options, _, navLinksRepo) {
+pageEditor.linksEditView = function (options, _, navLinksRepo, componentManager) {
 
 	this.bind = _.bind;
 	this.navLinksRepo = navLinksRepo;
+	this.componentManager = componentManager;
 };
 
 pageEditor.linksEditView.prototype = {
@@ -41,7 +42,7 @@ pageEditor.linksEditView.prototype = {
 		if (confirm(warning)) {
 			// call to navLinksRepo to delete
 			this.navLinksRepo.deleteLink(this.model).then(this.bind(function () {
-				this.model.trigger("save");
+				this.componentManager.deleteComponent(this.options.uicid);
 			}, this));
 		}	
 	}
@@ -52,5 +53,6 @@ pageEditor.view("linksEditView", [
 	"options",
 	"_",
 	"navLinksRepo",
+	"componentManager",
 	pageEditor.linksEditView
 ]);

@@ -46,12 +46,13 @@ namespace Harbor.UI.Models.Components
 			return dto;
 		}
 
-		public static implicit operator NavLinksDto(NavLinks links)
+		public static NavLinksDto FromNavLinks(NavLinks links)
 		{
 			if (links == null)
 			{
 				return null;
 			}
+
 			var dto = Mapper.Map<NavLinks, NavLinksDto>(links);
 			return dto;
 		}

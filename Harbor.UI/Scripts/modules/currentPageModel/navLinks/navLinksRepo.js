@@ -40,7 +40,7 @@ currentPageModel.navLinksRepo = function (
 			linksDfd.then(function () {
 				var navLink = cachedLinks.get(link.get("id")),
 				    attrs, saveDfd;
-					
+				
 				if (!navLink) {
 					dfd.resolve();
 				} else {

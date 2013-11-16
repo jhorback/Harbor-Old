@@ -31,7 +31,7 @@ namespace Harbor.UI.Controllers.Api
         public IEnumerable<NavLinksDto> Get()
         {
             // query.CurrentUserName = User.Identity.Name;
-			return linksRep.FindAll(i => i.UserName == User.Identity.Name).Select(i => (NavLinksDto)i);
+			return linksRep.FindAll(i => i.UserName == User.Identity.Name).Select(NavLinksDto.FromNavLinks);
         }
 
         // GET api/navlinks/5
@@ -41,7 +41,7 @@ namespace Harbor.UI.Controllers.Api
 			if (links == null || links.UserName != User.Identity.Name)
 				return Request.CreateNotFoundResponse();
 
-			var linksDto = (NavLinksDto)links;
+			var linksDto = NavLinksDto.FromNavLinks(links);
 			return Request.CreateOKResponse(linksDto);
         }
 
@@ -65,7 +65,7 @@ namespace Harbor.UI.Controllers.Api
 				return Request.CreateBadRequestResponse(exception.Message);
 			}
 
-			return Request.CreateOKResponse((NavLinksDto)navLinksDO);
+			return Request.CreateOKResponse(NavLinksDto.FromNavLinks(navLinksDO));
         }
 
         // PUT api/navlinks/5
@@ -87,7 +87,7 @@ namespace Harbor.UI.Controllers.Api
 				return Request.CreateBadRequestResponse(e);
 			}
 			
-			var navLinksDto = (NavLinksDto)navLinksDO;
+			var navLinksDto = NavLinksDto.FromNavLinks(navLinksDO);
 			return Request.CreateOKResponse(navLinksDto);
         }
 

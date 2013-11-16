@@ -20,7 +20,7 @@ pageEditor.linksNewView.prototype = {
 		event.preventDefault();
 		this.model.set(link.attributes);
 		this.model.set("navLinksID", navLinksID);
-		this.saveAndTriggerSave({ savePage: true});
+		this.saveAndTriggerSave();
 	},
 
 	create: function (event) {
@@ -46,6 +46,8 @@ pageEditor.linksNewView.prototype = {
 		var page = this.currentPageRepo.getCurrentPage();
 		
 		page.addNavLinksRef(navLinks);
+		this.model.set(navLinks);
+		this.model.set("navLinksID", navLinks.id);
 		this.saveAndTriggerSave();
 	},
 	

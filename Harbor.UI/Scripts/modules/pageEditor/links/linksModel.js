@@ -76,14 +76,10 @@ pageEditor.linksModel.prototype = {
 		this.sections.add({});
 	},
 	
-	save: function (options) {
+	save: function () {
 		this.updateIsEmpty();
-
-		if (options && options.savePage) {
-			return this.currentPageRepo.saveCurrentPage();
-		}
 		
-		return this.navLinksRepo.updateLink(this);
+		return $.when(this.currentPageRepo.saveCurrentPage(), this.navLinksRepo.updateLink(this));
 	}
 };
 
