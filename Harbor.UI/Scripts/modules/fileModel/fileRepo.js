@@ -1,6 +1,6 @@
 ﻿
 
-fileModel.fileRepo = function (collectionFactory, ajaxRequest) {
+fileModel.fileRepo = function (_, collectionFactory, ajaxRequest) {
 
 	return {
 		createFiles: function () {
@@ -11,9 +11,13 @@ fileModel.fileRepo = function (collectionFactory, ajaxRequest) {
 			return ajaxRequest.handle(files.fetch({ data: data }));
 		},
 		
-		getFiles: function (data) {
+		getFiles: function (data, pageData) {
 			var files = this.createFiles();
-			files.load = this.fetchFiles(files, data);
+			
+			data = data || {};
+			pageData = pageData || { take: 20, skip: 0, orderDesc: "modified"};
+			
+			files.load = this.fetchFiles(files, _.extend(data, pageData));
 			return files;
 		},
 
@@ -37,5 +41,9 @@ fileModel.fileRepo = function (collectionFactory, ajaxRequest) {
 
 
 fileModel.service("fileRepo", [
-	"collectionFactory", "ajaxRequest", "ajaxRequest",
-	fileModel.fileRepo]);
+	"_",
+	"collectionFactory",
+	"ajaxRequest",
+	"ajaxRequest",
+	fileModel.fileRepo
+]);
