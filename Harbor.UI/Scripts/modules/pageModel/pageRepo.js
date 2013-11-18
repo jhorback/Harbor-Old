@@ -1,13 +1,17 @@
 ﻿
 
-function pageRepo(collectionFactory, ajaxRequest) {
+function pageRepo(_, collectionFactory, ajaxRequest) {
 
 	return {
 		// returns a new pages collection and calls
 		// fetch with the specified data
-		getPages: function (data) {
+		getPages: function (data, pageData) {
 			var pages = this.createPages();
-			this.fetchPages(pages, data);
+				
+			data = data || {};
+			pageData = pageData || { take: 20, skip: 0, orderDesc: "modified" };
+
+			this.fetchPages(pages, _.extend(data, pageData));
 			return pages;
 		},
 		
@@ -21,8 +25,21 @@ function pageRepo(collectionFactory, ajaxRequest) {
 
 		savePage: function (page, handler, proxy) {
 			return ajaxRequest.handle(page.save(), handler, proxy);
+		},
+		
+		getRecentPages: function () {
+			
+		},
+		
+		getProducts: function () {
+			
 		}
 	};
 }
 
-pageModel.service("pageRepo", ["collectionFactory", "ajaxRequest", pageRepo]);
+pageModel.service("pageRepo", [
+	"_",
+	"collectionFactory",
+	"ajaxRequest",
+	pageRepo
+]);
