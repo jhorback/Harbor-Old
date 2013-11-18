@@ -296,6 +296,7 @@
     <Compile Include="Models\Shared\BadRequestDto.cs" />
     <Compile Include="Models\Shared\InternalServerErrorDto.cs" />
     <Compile Include="Models\Shared\NotFoundDto.cs" />
+    <Compile Include="Models\Shared\PagedResult.cs" />
     <Compile Include="Models\StyleGuide\StyleGuidePage.cs" />
     <Compile Include="Models\StyleGuide\StyleGuidePageRepository.cs" />
     <Compile Include="Models\Theming\ITheme.cs" />
@@ -478,6 +479,7 @@
     <Content Include="Scripts\appui\slugify.js" />
     <Content Include="Scripts\bbext\collectionExt\groupColExt.js" />
     <Content Include="Scripts\bbext\collectionExt\filterColExt.js" />
+    <Content Include="Scripts\bbext\collectionExt\parseColExt.js" />
     <Content Include="Scripts\bbext\collectionExt\sortColExt.js" />
     <Content Include="Scripts\bbext\modelExt\modelPropertyDescriptor.js" />
     <Content Include="Scripts\bbext\routerExt\startRouterExt.js" />
