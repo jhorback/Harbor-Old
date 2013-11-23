@@ -29,7 +29,7 @@
  */
 var modelBinder = function ($, _, config, nameValueParser) {
 
-	var modelBinder, _private;
+	var modelBinder, _private, pageLoaded;
 
 	modelBinder = {
 		create: function (model, el, matches) {
@@ -201,8 +201,11 @@ var modelBinder = function ($, _, config, nameValueParser) {
 
 		updateFromView: function () {
 			/// <summary>Used to capture autofill values that do not trigger a change event.</summary>
-			var self = this;
-			setTimeout(function () {
+			var self = this,
+			    update;
+			
+			update = function () {
+				pageLoaded = true;
 				_.each(self.bindings, function (binding, propName) {
 					_.each(binding, function (el) {
 						if (el.is(":text,:password,select")) {
@@ -210,7 +213,13 @@ var modelBinder = function ($, _, config, nameValueParser) {
 						}
 					});
 				});
-			}, 500);
+			};
+			
+			if (!pageLoaded) {
+				setTimeout(update, 500);
+			} else {
+				update();
+			}
 		},
 
 		addBinding: function (name, el) {
