@@ -61,6 +61,14 @@ var modelBinderConfig = {
 				el.html(value);
 			}
 		},
+		"checklist": {
+			get: function (el) {
+				return el.val();
+			},
+			set: function (el, value) {
+				el.val(value);
+			}
+		},
 		"multicheckbox": {
 			get: function (el) {
 				var name = el.attr("name");
