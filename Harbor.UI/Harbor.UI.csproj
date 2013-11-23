@@ -728,6 +728,8 @@
     <Content Include="Views\PageEditor\_payPalButton.cshtml" />
     <Content Include="Views\Page\ProductLink.cshtml" />
     <Content Include="Views\PageEditor\_productLink.cshtml" />
+    <Content Include="Views\AppUI\Index.cshtml" />
+    <Content Include="Views\AppUI\_pagerView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\users\" />
