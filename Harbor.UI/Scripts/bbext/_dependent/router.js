@@ -6,7 +6,8 @@
 
 	function routerConstruct(Backbone, mvcorConstruct, mixin) {
 
-		var Router = mixin("router").mixin(Backbone.Router.extend({}));
+		var Router = Backbone.Router.extend({});
+		Router = mixin("router").mixin(Router);
 		
 		return mvcorConstruct.create(Router);
 	}
