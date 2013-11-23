@@ -31,6 +31,28 @@ function filterColExt(mixin, collectionFactory) {
 		clearFilter: function () {
 			this.setFilter(null);
 			return this;
+		},
+		
+		// performs a get on all ids and returns
+		// a new collection
+		getNew: function (ids) {
+			var models = [],
+			    model,
+			    i = ids.length - 1;
+			
+			while (i >= 0) {
+				model = this.get(ids[i]);
+				model && models.push(model);
+				i--;
+			}
+
+			return createNew.call(this, models);
+		},
+		
+		// filters and returns a new collection
+		filterNew: function (filter) {
+			var models = this.filter(filter);
+			return createNew.call(this, models);
 		}
 	};
 
@@ -39,7 +61,7 @@ function filterColExt(mixin, collectionFactory) {
 			return;
 		}
 
-		this.source = collectionFactory.create(this.name, this.models);
+		this.source = createNew.call(this, this.models);
 
 		
 		this.on("all", function (event, model) {
@@ -56,6 +78,10 @@ function filterColExt(mixin, collectionFactory) {
 				}
 			}
 		}, this);
+	}
+	
+	function createNew(models) {
+		return collectionFactory.create(this.name, models);
 	}
 
 	mixin("collection").register("bbext.filterColExt", filterColExt);
