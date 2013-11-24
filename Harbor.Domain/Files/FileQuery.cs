@@ -7,34 +7,19 @@ namespace Harbor.Domain.Files
 {
 	public class FileQuery : RepositoryQuery<File>
 	{
-		public FileQuery() : this(null)
-		{
-		}
-
-		public FileQuery(QueryAdjustment<File> startingQuery)
-			: base(startingQuery)
+		public FileQuery()
 		{
 			Filter = FileTypeFilter.None;
+
+			ModifyQuery = modifyQuery;
 		}
+		
 
 		public string Name { get; set; }
 		public FileTypeFilter Filter { get; set; }
 		public string CurrentUserName { get; set; }
 
-		public new IEnumerable<File> Query(IQueryable<File> queryable)
-		{
-			queryable = base.Query(modifyQuery(queryable));
-
-			var results = queryable.AsEnumerable();
-			return results;
-		}
-
-		public int TotalCount(IQueryable<File> queryable)
-		{
-			queryable = modifyQuery(queryable);
-			return queryable.Count();
-		}
-
+		
 		IQueryable<File> modifyQuery(IQueryable<File> queryable)
 		{
 			// queryable = queryable.Where(d => d.Enabled == true);

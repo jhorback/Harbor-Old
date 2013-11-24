@@ -6,41 +6,46 @@ using System.Reflection;
 namespace Harbor.Domain
 {
 	public delegate IQueryable<T> QueryAdjustment<T>(IQueryable<T> queryable);
- 
+
 	public class RepositoryQuery<T>
 	{
 		public RepositoryQuery()
 		{
 		}
 
-		public RepositoryQuery(QueryAdjustment<T> startingQuery = null)
-		{
-			StartingQuery = startingQuery;
-		}
-
 		public int? Take { get; set; }
 		public int? Skip { get; set; }
 		public string Order { get; set; }
 		public string OrderDesc { get; set; }
-		public QueryAdjustment<T> StartingQuery { get; set; }
 
-		/// <summary>
-		/// Sorts and pages
-		/// </summary>
-		/// <param name="queryable"></param>
-		/// <returns></returns>
+		public QueryAdjustment<T> ModifyQuery { get; set; }
+		public QueryAdjustment<T> AfterQuery { get; set; } 
+		
 		public IQueryable<T> Query(IQueryable<T> queryable)
 		{
+			if (ModifyQuery != null)
+				queryable = ModifyQuery(queryable);
+
 			queryable = Sort(queryable);
 			queryable = Page(queryable);
+
+			if (AfterQuery != null)
+				queryable = AfterQuery(queryable);
+
 			return queryable;
 		}
 
+		public int TotalCount(IQueryable<T> queryable)
+		{
+			if (ModifyQuery != null)
+				queryable = ModifyQuery(queryable);
+
+			return queryable.Count();
+		}
+
+
 		public IQueryable<T> Sort(IQueryable<T> queryable)
 		{
-			if (StartingQuery != null)
-				queryable = StartingQuery(queryable);
-
 			if (Order != null)
 				queryable = ApplyOrder(queryable, Order, "OrderBy");
 			if (OrderDesc != null)
