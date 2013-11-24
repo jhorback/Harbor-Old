@@ -15,7 +15,6 @@ bbext.pagerModel.prototype = {
 	defaults: {
 		take: 50,
 		skip: 0,
-		count: null,
 		totalCount: null,
 		description: null,
 		cannotGoPrevious: false,
@@ -66,7 +65,7 @@ bbext.pagerModel.prototype = {
 		var attrs = this.attributes,
 		    take = attrs.take,
 		    skip = attrs.skip,
-		    count = attrs.count;
+		    count = attrs.totalCount;
 		return (count !== 0) && ((skip - take) >= 0);
 	},
 	
@@ -75,9 +74,13 @@ bbext.pagerModel.prototype = {
 				totalCount = attrs.totalCount,
 			    take = attrs.take,
 			    skip = attrs.skip,
-				count = attrs.count;
+				count = attrs.totalCount;
 		totalCount = totalCount || take + skip + 1;
 		return (count !== 0) && ((take + skip) < totalCount);
+	},
+	
+	first: function () {
+		this.set("skip", 0);
 	},
 	
 	previous: function () {
