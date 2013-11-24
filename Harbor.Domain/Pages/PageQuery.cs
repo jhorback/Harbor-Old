@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using Harbor.Domain.Security;
 
 namespace Harbor.Domain.Pages
@@ -16,11 +14,13 @@ namespace Harbor.Domain.Pages
 			StartingQuery = startingQuery;
 			ModifyQuery = modifyQuery;
 			AfterQuery = afterQuery;
+			Filter = PageTypeFilter.None;
 		}
 
 		public string Title { get; set; }
 		public string Author { get; set; }
 		public string CurrentUserName { get; set; }
+		public PageTypeFilter Filter { get; set; }
 		public QueryAdjustment<Page> StartingQuery { get; set; }
 
 
@@ -37,6 +37,9 @@ namespace Harbor.Domain.Pages
 			if (string.IsNullOrEmpty(Author) == false)
 				queryable = queryable.Where((p => p.AuthorsUserName == Author));
 
+			if (Filter == PageTypeFilter.Products)
+				queryable = queryable.Where(p => p.PayPalButtons.Count > 0);
+
 			return queryable;
 		}
 
@@ -47,5 +50,12 @@ namespace Harbor.Domain.Pages
 			return results.Where(p => p.HasPermission(CurrentUserName,
 				PageFeature.Page, Permissions.Read)).AsQueryable();
 		}
+	}
+
+
+	public enum PageTypeFilter
+	{
+		None,
+		Products
 	}
 }

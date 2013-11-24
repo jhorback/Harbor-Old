@@ -11,6 +11,7 @@ pageSelector.pageSelectorView = function (options, pageRepo, modelFactory) {
 	});
 
 	this.model = modelFactory.create("pageSelectorViewModel", {
+		title: options.filter === "products" ? "Products" : "Pages",
 		search: ""
 	}, {
 		pagerModel: pagerModel
@@ -48,7 +49,8 @@ pageSelector.pageSelectorView.prototype = {
 		
 		this.pageRepo.fetchPages(this.model.pages, this.model.pagerModel.extend({
 			orderDesc: "modified",
-			title: searchTerm
+			title: searchTerm,
+			filter: this.options.filter
 		}));
 	},
 	
