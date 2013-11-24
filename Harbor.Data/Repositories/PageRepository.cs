@@ -47,6 +47,11 @@ namespace Harbor.Data.Repositories
 			return pageQuery.Query(Query());
 		}
 
+		public int FindAllCount(PageQuery pageQuery)
+		{
+			return pageQuery.TotalCount(Query());
+		}
+
 		//return context.Pages.Where(d => d.Enabled == true).AsQueryable();
 		public IQueryable<Page> Query(IncludePageResources include)
 		{
