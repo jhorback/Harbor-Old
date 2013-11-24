@@ -14,6 +14,7 @@ namespace Harbor.UI
 			packages.Bundles = bundles;
 
 			packages.Add(new ApplicationPkg());
+			packages.Add(new AppUIPkg());
 			packages.Add(new CurrentUserModelPkg());
 			packages.Add(new CurrentPageModelPkg());
 			packages.Add(new JQueryPkg());
