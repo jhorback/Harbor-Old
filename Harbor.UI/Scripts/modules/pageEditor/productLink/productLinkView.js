@@ -21,6 +21,7 @@ pageEditor.productLinkView.prototype = {
 
 	openPageSelector: function () {
 		this.pageSelector.render({
+			filter: "products",
 			select: this.selectPage
 		}, this);
 	},

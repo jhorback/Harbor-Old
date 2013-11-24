@@ -27,9 +27,5 @@ namespace Harbor.Domain.Pages.PageComponents
 				return LinkedPage.PayPalButtons.FirstOrDefault();
 			}
 		}
-
-		// jch! - product link properties
-		// basically want the entire product link + the merchant ID
-		// create the ProductLinkDTO - can I re-use something on the client like PayPalButton?
 	}
 }
