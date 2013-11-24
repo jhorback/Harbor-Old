@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text;
+using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
 using System.Web.Optimization;
-using Harbor.Domain;
 
 namespace Harbor.UI.Models.JSPM.Extensions
 {
@@ -20,6 +21,11 @@ namespace Harbor.UI.Models.JSPM.Extensions
 			var sPackage = PackageTable.Packages.GetPackage(packageName);
 			if (sPackage == null)
 				throw new Exception("The package to install could not be found: " + packageName);
+
+			if (hasBeenInstalled(helper.ViewContext.RequestContext.HttpContext, packageName))
+			{
+				return new MvcHtmlString("");
+			}
 
 			var sb = new StringBuilder();
 
@@ -61,6 +67,21 @@ namespace Harbor.UI.Models.JSPM.Extensions
 			}
 
 			return new MvcHtmlString(sb.ToString());
+		}
+
+		private static bool hasBeenInstalled(HttpContextBase httpContext, string packageName)
+		{
+			var installedPackages = httpContext.Items["InstalledJavaScriptPackages"] as Dictionary<string, bool> ??
+			                        new Dictionary<string, bool>();
+			
+			if (installedPackages.ContainsKey(packageName))
+			{
+				return true;
+			}
+			
+			installedPackages.Add(packageName, true);
+			httpContext.Items["InstalledJavaScriptPackages"] = installedPackages;
+			return false;
 		}
 	}
 }
