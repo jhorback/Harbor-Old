@@ -7,19 +7,25 @@
 	}
 */
 function fileSelectorView(options, modelFactory, fileRepo) {
+	var pagerModel;
 
 	this.fileRepo = fileRepo;
 
+	pagerModel = modelFactory.create("pagerModel", {
+		take: 20,
+		totalCount: 0
+	});
+	
 	this.model = modelFactory.create("fileSelectorViewModel", {
 		title: options.filter === "images" ? "Images" : "Files"
+	}, {
+		pagerModel: pagerModel
 	});
 
 	this.model.files = fileRepo.createFiles();
 	
-	this.listenTo(this.model.files, "all", function () {
-		this.model.set("resultsCount", this.model.files.length);
-		this.model.refresh("resultsMessage");
-	}, this);
+	this.listenTo(this.model.files, "sync", this.onSync);
+	this.listenTo(pagerModel, "change:skip", this.search);
 }
 
 fileSelectorView.prototype = {
@@ -29,19 +35,27 @@ fileSelectorView.prototype = {
 		this.on("select", this.options.select);
 	},
 	
-	search: function () {
+	onSync: function () {
+		var totalCount = this.model.files.totalCount;
+		this.model.pagerModel.set("totalCount", totalCount);
+		this.model.set("resultsCount", totalCount);
+		this.model.refresh("resultsMessage");
+		this.$el.closest("body").scrollTop(0);
+	},
+	
+	search: function (event) {
 		var searchTerm = this.model.get("search");
 		
-		this.fileRepo.fetchFiles(this.model.files, {
+		this.fileRepo.fetchFiles(this.model.files, this.model.pagerModel.extend({
 			orderDesc: "modified",
 			filter: this.options.filter,
 			name: searchTerm
-		});
+		}));
 	},
 
 	formSubmit: function (event) {
-		
 		event.preventDefault();
+		this.model.pagerModel.first();
 		this.search();
 	},
 	

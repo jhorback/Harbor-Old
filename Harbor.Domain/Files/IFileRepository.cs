@@ -6,6 +6,7 @@ namespace Harbor.Domain.Files
 	public interface IFileRepository : IRepository<File>
 	{
 		IEnumerable<File> FindAll(FileQuery query);
+		int FindAllCount(FileQuery query);
 
 		File Create(string userName, HttpPostedFileBase uploadedFile);
 
