@@ -24,7 +24,19 @@ namespace Harbor.Domain
 		public string OrderDesc { get; set; }
 		public QueryAdjustment<T> StartingQuery { get; set; }
 
+		/// <summary>
+		/// Sorts and pages
+		/// </summary>
+		/// <param name="queryable"></param>
+		/// <returns></returns>
 		public IQueryable<T> Query(IQueryable<T> queryable)
+		{
+			queryable = Sort(queryable);
+			queryable = Page(queryable);
+			return queryable;
+		}
+
+		public IQueryable<T> Sort(IQueryable<T> queryable)
 		{
 			if (StartingQuery != null)
 				queryable = StartingQuery(queryable);
@@ -33,13 +45,16 @@ namespace Harbor.Domain
 				queryable = ApplyOrder(queryable, Order, "OrderBy");
 			if (OrderDesc != null)
 				queryable = ApplyOrder(queryable, OrderDesc, "OrderByDescending");
-			
-			
-			
+
+			return queryable;
+		}
+
+		public IQueryable<T> Page(IQueryable<T> queryable)
+		{
 			if (Skip != null && Skip != 0)
 				queryable = queryable.Skip(Skip ?? 0);
 			if (Take != null)
-				queryable = queryable.Take(Take ?? 100);
+				queryable = queryable.Take(Take ?? 0);
 			return queryable;
 		}
 
