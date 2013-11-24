@@ -15,7 +15,7 @@ fileModel.fileRepo = function (_, collectionFactory, ajaxRequest) {
 			var files = this.createFiles();
 			
 			data = data || {};
-			pageData = pageData || { take: 20, skip: 0, orderDesc: "modified"};
+			pageData = pageData || { orderDesc: "modified"};
 			
 			files.load = this.fetchFiles(files, _.extend(data, pageData));
 			return files;

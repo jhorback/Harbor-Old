@@ -23,11 +23,14 @@ namespace Harbor.UI.Controllers.Api
 		}
 
         // GET api/files
-		[FilePermit(Permissions.Read)]
-        public IEnumerable<FileDto> Get([FromUri]FileQuery query)
+		public PagedResultDto<FileDto> Get([FromUri]FileQuery query)
         {
 			query.CurrentUserName = User.Identity.Name;
-			return fileRep.FindAll(query).Select(f => (FileDto)f);
+			return new PagedResultDto<FileDto>
+			{
+				results = fileRep.FindAll(query).Select(f => (FileDto)f),
+				totalCount = fileRep.FindAllCount(query)
+			};
         }
 
         // GET api/files/5

@@ -36,6 +36,11 @@ namespace Harbor.Data.Repositories
 			return fileQuery.Query(Query());
 		}
 
+		public int FindAllCount(FileQuery fileQuery)
+		{
+			return fileQuery.TotalCount(Query());
+		}
+
 		public IQueryable<File> Query()
 		{
 			return context.Files.AsQueryable();

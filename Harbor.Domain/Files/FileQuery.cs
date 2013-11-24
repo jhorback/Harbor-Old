@@ -23,8 +23,20 @@ namespace Harbor.Domain.Files
 
 		public new IEnumerable<File> Query(IQueryable<File> queryable)
 		{
-			queryable = base.Query(queryable);
+			queryable = base.Query(modifyQuery(queryable));
 
+			var results = queryable.AsEnumerable();
+			return results;
+		}
+
+		public int TotalCount(IQueryable<File> queryable)
+		{
+			queryable = modifyQuery(queryable);
+			return queryable.Count();
+		}
+
+		IQueryable<File> modifyQuery(IQueryable<File> queryable)
+		{
 			// queryable = queryable.Where(d => d.Enabled == true);
 
 			if (string.IsNullOrEmpty(Name) == false)
@@ -38,8 +50,7 @@ namespace Harbor.Domain.Files
 				queryable = queryable.Where(f => File.BitmapExtensions.Any(e => e == f.Ext));
 			}
 
-			var results = queryable.ToList();
-			return results;
+			return queryable;
 		}
 	}
 
