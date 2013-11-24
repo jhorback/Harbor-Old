@@ -22,11 +22,15 @@ namespace Harbor.UI.Controllers.Api
 			this.pageRep = pageRep;
 		}
 
-		// use odata here?
-        public IEnumerable<PageDto> Get([FromUri]PageQuery query)
+
+		public PagedResultDto<PageDto> Get([FromUri]PageQuery query)
 		{
         	query.CurrentUserName = User.Identity.Name;
-			return pageRep.FindAll(query).Select(p => (PageDto)p);
+			return new PagedResultDto<PageDto>
+			{
+				results = pageRep.FindAll(query).Select(p => (PageDto)p),
+				totalCount = pageRep.FindAllCount(query)
+			};
 		}
 
 		[Http.PagePermit(Permissions.Read)]

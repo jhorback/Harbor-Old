@@ -8,13 +8,15 @@
     <div class="page-body">
         <div class="page-content">
             <form data-event="submit: formSubmit">
-                <fieldset>
-                    <div class="form-field">
-                        <input name="search" type="text" placeholder="search" size="50" autofocus />
-                        <input type="submit" value="Search" />
-                    </div>
-                </fieldset>
-	            <div class="pageselector-results tiles">
+                <div class="form-field">
+					<input name="search" type="text" placeholder="search" size="50" autofocus />
+                    <input type="submit" value="Search" />
+                </div>
+	            <div class="float-right" data-model="pagerModel">
+		            <div data-bind="text:description"></div>
+	            </div>
+
+	            <div class="tiles clear">
 		            <ul>
                         
 			            <!-- pages collection -->
@@ -34,7 +36,12 @@
 		            </ul>
 	            </div>
 				
-				<div data-bind="text: resultsMessage" class="margin"></div>	
+	            <div data-bind="text: resultsMessage" class="margin"></div>	
+				
+				
+				<div class="float-right">
+					@Html.Partial("~/Views/AppUI/_pagerView.cshtml")
+				</div>
             </form>
         </div>
     </div>

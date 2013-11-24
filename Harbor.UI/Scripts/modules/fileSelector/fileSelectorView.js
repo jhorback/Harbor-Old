@@ -30,7 +30,6 @@ function fileSelectorView(options, modelFactory, fileRepo) {
 
 fileSelectorView.prototype = {
 	initialize: function () {
-		
 		this.on("close", this.options.close);
 		this.on("select", this.options.select);
 	},
@@ -43,6 +42,12 @@ fileSelectorView.prototype = {
 		this.$el.closest("body").scrollTop(0);
 	},
 	
+	formSubmit: function (event) {
+		event.preventDefault();
+		this.model.pagerModel.first();
+		this.search();
+	},
+	
 	search: function (event) {
 		var searchTerm = this.model.get("search");
 		
@@ -51,12 +56,6 @@ fileSelectorView.prototype = {
 			filter: this.options.filter,
 			name: searchTerm
 		}));
-	},
-
-	formSubmit: function (event) {
-		event.preventDefault();
-		this.model.pagerModel.first();
-		this.search();
 	},
 	
 	selectThisAndClose: function (event) {

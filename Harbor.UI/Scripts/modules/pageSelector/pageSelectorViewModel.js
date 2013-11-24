@@ -1,5 +1,9 @@
 ﻿
 pageSelector.pageSelectorViewModel = {
+	initialize: function (attrs, options) {
+		this.pagerModel = options.pagerModel;
+	},
+	
 	defaults: {
 		search: null,
 		resultsCount: 0,
@@ -8,19 +12,19 @@ pageSelector.pageSelectorViewModel = {
 
 	resultsMessage: {
 		get: function () {
+			var str = "";
+			
 			if (!this.get("search")) {
 				if (this.get("resultsCount") === 0) {
-					return "Enter a search term.";
+					str = "Enter a search term.";
 				} else {
-					return "";
+					str = "";
 				}
+			} else if (this.get("resultsCount") === 0) {
+				str = "There are no pages. Try changing the search term.";
 			}
-
-			if (this.get("resultsCount") === 0) {
-				return "There are no pages. Try changing the search term.";
-			}
-
-			return "";
+			
+			return str ? "<hr><div class='text-center'>" + str + "</div><hr>" : "";
 		},
 		bind: ["resultsCount"]
 	}
