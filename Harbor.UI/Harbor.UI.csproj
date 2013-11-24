@@ -180,6 +180,7 @@
     <Compile Include="App_Start\IoC\LoggerRegistry.cs" />
     <Compile Include="App_Start\IoC\StructureMapDependencyResolver.cs" />
     <Compile Include="App_Start\IoC\StructureMapDependencyScope.cs" />
+    <Compile Include="App_Start\JSPkgs\AppUIPkg.cs" />
     <Compile Include="App_Start\JSPkgs\CurrentPageModelPkg.cs" />
     <Compile Include="App_Start\JSPkgs\CurrentUserModelPkg.cs" />
     <Compile Include="App_Start\JSPkgs\PayPalButtonModelPkg.cs" />
@@ -484,6 +485,9 @@
     <Content Include="Scripts\bbext\modelExt\modelPropertyDescriptor.js" />
     <Content Include="Scripts\bbext\routerExt\startRouterExt.js" />
     <Content Include="Scripts\bbext\_dependent\router.js" />
+    <Content Include="Scripts\modules\bbextui\pagerModel.js" />
+    <Content Include="Scripts\modules\bbextui\pagerView.js" />
+    <Content Include="Scripts\modules\bbextui\selectlist.js" />
     <Content Include="Scripts\modules\currentPageModel\navLinks\navLinksCollection.js" />
     <Content Include="Scripts\modules\currentPageModel\pageComponent\pageComponent.js" />
     <Content Include="Scripts\modules\currentPageModel\pageComponent\pageComponentRepo.js" />
