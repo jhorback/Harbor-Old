@@ -8,6 +8,7 @@ namespace Harbor.Domain.Pages
 		IQueryable<Page> Query(IncludePageResources include);
 
 		IEnumerable<Page> FindAll(PageQuery pageQuery);
+		int FindAllCount(PageQuery pageQuery);
 
 		Page Find(string author, string name);
 
