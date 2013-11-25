@@ -189,18 +189,6 @@ namespace Harbor.Domain.Pages
 			return permissionsChecker.HasPermission(pageFeature, permissions);
 		}
 
-		public T GetComponent<T>(string uicid) where T : PageComponent
-		{
-			var comp = (T)Activator.CreateInstance(typeof(T), this, uicid);
-			return comp;
-		}
-
-		public PageComponent GetComponent(Type componentType, string uicid)
-		{
-			var obj = Activator.CreateInstance(componentType, this, uicid);
-			return obj as PageComponent;
-		}
-
 		public File GetFile(Guid? fileID)
 		{
 			return Files.FirstOrDefault(f => f.FileID == fileID);

@@ -7,11 +7,16 @@ namespace Harbor.Domain.Pages
 	{
 		readonly IComponentRepository componentRepository;
 		private readonly IPageRepositoryResourceManager resourceManager;
+		private readonly IPageComponentRepository _pageComponentRepository;
 
-		public PageResourceUpdater(IComponentRepository componentRepository, IPageRepositoryResourceManager resourceManager)
+		public PageResourceUpdater(
+			IComponentRepository componentRepository,
+			IPageRepositoryResourceManager resourceManager,
+			IPageComponentRepository pageComponentRepository)
 		{
 			this.componentRepository = componentRepository;
 			this.resourceManager = resourceManager;
+			_pageComponentRepository = pageComponentRepository;
 		}
 
 		/// <summary>
@@ -74,10 +79,9 @@ namespace Harbor.Domain.Pages
 
 		private IEnumerable<PageResource> getUICDeclarations(Page page, PageUIC uic)
 		{
-			var compType = componentRepository.GetPageComponentType(uic.key);
-			if (compType != null)
+			var comp = _pageComponentRepository.GetComponent(uic.key, page, uic.uicid);
+			if (comp != null)
 			{
-				var comp = page.GetComponent(compType, uic.uicid);
 				foreach (var res in comp.DeclareResources())
 				{
 					yield return res;
