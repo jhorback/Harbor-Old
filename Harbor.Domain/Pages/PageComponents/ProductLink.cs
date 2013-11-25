@@ -4,11 +4,12 @@ namespace Harbor.Domain.Pages.PageComponents
 {
 	public class ProductLink : PageLink
 	{
-		public ProductLink(Page page, string uicid) : base(page, uicid)
+
+		public ProductLink(IPageRepository pageRepository, Page page, string uicid) : base(page, uicid)
 		{
 			if (IsNew() == false)
 			{
-				LinkedPage = page.GetPageLink(PageID);
+				LinkedPage = pageRepository.FindById(PageID);
 			}
 		}
 
