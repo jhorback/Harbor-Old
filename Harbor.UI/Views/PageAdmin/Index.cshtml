@@ -6,7 +6,29 @@
 		</fieldset>
 	</div>
 	<div class="page-body">
+		<div class="page-aside">
+			<div class="menulist">
+				<ul>
+					<li class="selected"><a href="~/user/pages/recent">Recent</a></li>
+					<li><a href="~/user/pages/products">Products</a></li>
+				</ul>
+			</div>
+		</div>
 		<div class="page-content">
+			
+			<div class="clearfix">
+				<div class="form-inline float-left margin-left">
+					<form action="~/user/pages/search">
+						<input type="search" name="search" placeholder="search" size="30" />
+						<button>Search</button>
+					</form>
+				</div>
+				<div class="float-right" data-model="pagerModel">
+					<div data-bind="text: description"></div>
+				</div>
+			</div>
+			
+
 			<div class="tiles">
 				<ul class="pages-list">
 					<li class="tile col5 hover" data-event="clickTile" data-collection="pages">
@@ -22,6 +44,10 @@
 						</div>
 					</li>
 				</ul>
+			</div>
+			
+			<div class="float-right">
+				@Html.Partial("~/views/appui/_pagerView.cshtml")
 			</div>
 		</div>
 	</div>
