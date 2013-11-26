@@ -13,6 +13,8 @@ namespace Harbor.UI.JSPkgs
 			ScriptBundle = new AppScriptBundle(PackageName);
 			Templates = new JstTemplateAction("PageAdmin/Index");
 			Category = Categories.Apps;
+
+			AddDependency(AppUIPkg.PackageName);
 		}
 	}
 }
