@@ -1,5 +1,5 @@
 ﻿
-pageAdminViewModel = function (attrs, options) {
+var pageAdminViewModel = function (attrs, options) {
 	this.pagerModel = options.pagerModel;	
 };
 

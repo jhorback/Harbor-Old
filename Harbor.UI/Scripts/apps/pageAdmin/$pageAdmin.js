@@ -5,12 +5,14 @@ var pageAdmin = context.app("pageAdmin").use(
 );
 
 
-function pageAdminStart(app) {
+function pageAdminStart(app, pageAdminRouter) {
 
 	app.render({
 		regionEl: "#frame-body"
 	});
+	
+	pageAdminRouter.start();
 }
 
 
-pageAdmin.start(["app", pageAdminStart]);
+pageAdmin.start(["app", "pageAdminRouter", pageAdminStart]);
