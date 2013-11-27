@@ -1,31 +1,21 @@
 ﻿
-function pageAdminView(options, pageRepo, currentUserRepo, pageAdder, modelFactory) {
-	this.pageRepo = pageRepo;
-	this.currentUser = currentUserRepo.getCurrentUser();
+function pageAdminView(options, pageAdder, pageAdminViewModelRepo) {
+	
 	this.pageAdder = pageAdder;
-	this.modelFactory = modelFactory;
+	this.pageAdminViewModelRepo = pageAdminViewModelRepo;
 }
 
 
 pageAdminView.prototype = {
 	
 	initialize: function () {
-		var pagerModel;
 
-		pagerModel = this.modelFactory.create("pagerModel", {
-			take: 5
-		});
-	
-		this.model = this.modelFactory.create("pageAdminViewModel", {}, {
-			pagerModel: pagerModel
-		});
-		
-		this.model.pages = this.pageRepo.createPages();
-		
+		this.model = this.pageAdminViewModelRepo.getViewModel();
+
 		this.listenTo(this.model.pages, "sync", this.pagesSync);
-		this.listenTo(this.model.pagerModel, "change:skip", this.updateList);
+		this.listenTo(this.model.pagerModel, "change:skip", this.pageAdminViewModelRepo.updatePages());
 		
-		this.updateList();
+		this.pageAdminViewModelRepo.updatePages();
 	},
 	
 	pagesSync: function () {
@@ -36,13 +26,6 @@ pageAdminView.prototype = {
 		this.$el.closest("body").scrollTop(0);
 	},
 	
-	updateList: function () {
-		this.pageRepo.fetchPages(this.model.pages, this.model.pagerModel.extend({
-			author: this.currentUser.get("username"),
-			orderDesc: "modified"
-		}));
-	},
-
 	addPage: function () {
 		this.pageAdder.render();
 	},
@@ -57,10 +40,8 @@ pageAdminView.prototype = {
 
 pageAdmin.view("pageAdminView", [
 	"options",
-	"pageRepo",
-	"currentUserRepo",
 	"pageAdder",
-	"modelFactory",
+	"pageAdminViewModelRepo",
 pageAdminView]);
 
 
