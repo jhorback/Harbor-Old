@@ -6,7 +6,7 @@ var pageAdminViewModel = function (attrs, options) {
 
 pageAdminViewModel.prototype = {
 	defaults: {
-		filter: "recent", // recent, products, search
+		filter: "", // recent, products, search
 		search: ""
 	},
 	

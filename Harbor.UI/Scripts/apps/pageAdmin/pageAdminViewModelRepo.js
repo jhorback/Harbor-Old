@@ -3,19 +3,21 @@
  *     .pagerModel
  *     .pages
  */
-function pageAdminViewModelRepo(modelFactory, currentUserRepo, pageRepo) {
+function pageAdminViewModelRepo(_, modelFactory, currentUserRepo, pageRepo) {
 	var currentUser, viewModel;
 
 	currentUser = currentUserRepo.getCurrentUser();
 	
 	viewModel = modelFactory.create("pageAdminViewModel", {}, {
-		pagerModel: modelFactory.create("pagerModel", { take: 5 }),
+		pagerModel: modelFactory.create("pagerModel", { take: 20 }),
 		pages: pageRepo.createPages()
 	});
 		
 	
 	viewModel.on("change:filter", changeFilter);	
 	viewModel.on("change:search", changeSearch);
+	updatePages = _.debounce(updatePages);
+	viewModel.set("filter", "recent");
 
 	return {
 		getViewModel: function () {
@@ -32,6 +34,7 @@ function pageAdminViewModelRepo(modelFactory, currentUserRepo, pageRepo) {
 		if (filter !== "search") {
 			this.set("search", "");
 		}
+		viewModel.pagerModel.first();
 		updatePages();
 	}
 	
@@ -55,6 +58,7 @@ function pageAdminViewModelRepo(modelFactory, currentUserRepo, pageRepo) {
 
 
 pageAdmin.service("pageAdminViewModelRepo", [
+	"_",
 	"modelFactory",
 	"currentUserRepo",
 	"pageRepo",

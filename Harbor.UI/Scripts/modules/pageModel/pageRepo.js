@@ -25,14 +25,6 @@ function pageRepo(_, collectionFactory, ajaxRequest) {
 
 		savePage: function (page, handler, proxy) {
 			return ajaxRequest.handle(page.save(), handler, proxy);
-		},
-		
-		getRecentPages: function () {
-			
-		},
-		
-		getProducts: function () {
-			
 		}
 	};
 }
