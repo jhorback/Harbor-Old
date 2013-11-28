@@ -21,6 +21,8 @@ namespace Harbor.Domain.Pages
 		public string Author { get; set; }
 		public string CurrentUserName { get; set; }
 		public PageTypeFilter Filter { get; set; }
+		public string Search { get; set; }
+
 		public QueryAdjustment<Page> StartingQuery { get; set; }
 
 
@@ -32,13 +34,19 @@ namespace Harbor.Domain.Pages
 			queryable = queryable.Where(d => d.Enabled == true);
 
 			if (string.IsNullOrEmpty(Title) == false)
-				queryable = queryable.Where(p => p.Title.Contains(Title));
+				queryable = queryable.Where(p => p.Title.ToLower().Contains(Title.ToLower()));
 
 			if (string.IsNullOrEmpty(Author) == false)
 				queryable = queryable.Where((p => p.AuthorsUserName == Author));
 
 			if (Filter == PageTypeFilter.Products)
 				queryable = queryable.Where(p => p.PayPalButtons.Count > 0);
+
+			if (string.IsNullOrEmpty(Search) == false)
+			{
+				// jch* could expand this search later if needed
+				queryable = queryable.Where(p => p.Title.ToLower().Contains(Search.ToLower()));
+			}
 
 			return queryable;
 		}
