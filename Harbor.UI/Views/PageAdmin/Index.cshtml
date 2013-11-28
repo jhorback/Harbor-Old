@@ -7,18 +7,13 @@
 	</div>
 	<div class="page-body">
 		<div class="page-aside">
-			<div class="menulist">
-				<ul>
-					<li class="selected"><a href="~/user/pages/recent">Recent</a></li>
-					<li><a href="~/user/pages/products">Products</a></li>
-				</ul>
-			</div>
+			<div id="pageAdminMenuList"></div>
 		</div>
 		<div class="page-content">
 			
 			<div class="clearfix">
 				<div class="form-inline float-left margin-left">
-					<form action="~/user/pages/search">
+					<form action="~/user/pages/search" data-event="submit:submitSearchForm">
 						<input type="search" name="search" placeholder="search" size="30" />
 						<button>Search</button>
 					</form>

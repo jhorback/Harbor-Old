@@ -488,6 +488,7 @@
     <Content Include="Scripts\bbext\modelExt\modelPropertyDescriptor.js" />
     <Content Include="Scripts\bbext\routerExt\startRouterExt.js" />
     <Content Include="Scripts\bbext\_dependent\router.js" />
+    <Content Include="Scripts\modules\bbextui\menuListFactory.js" />
     <Content Include="Scripts\modules\bbextui\pagerModel.js" />
     <Content Include="Scripts\modules\bbextui\pagerView.js" />
     <Content Include="Scripts\modules\bbextui\selectlist.js" />

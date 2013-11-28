@@ -1,7 +1,8 @@
 ﻿
 
-function pageAdminRouter(appurl) {
+function pageAdminRouter(appurl, pageAdminViewModelRepo) {
 	this.root = appurl.get("user/pages/");
+	this.model = pageAdminViewModelRepo.getViewModel();
 }
 
 
@@ -11,26 +12,29 @@ pageAdminRouter.prototype = {
 		"products": "products",
 		"search/:search": "search"
 	},
-	
-	initialize: function () {
-		alert("initialize router");
-	},
-	
+
 	recent: function () {
-		alert("recent");
+		this.model.set("filter", "recent");
+		this.navigate("recent");
 	},
 	
 	products: function () {
-		alert("products");
+		this.model.set("filter", "products");
+		this.navigate("products");
 	},
 	
 	search: function (search) {
-		alert("search " + search);
+		this.model.set({
+			"filter": "search",
+			"search": search
+		});
+		this.navigate("search/" + search);
 	}
 };
 
 
 pageAdmin.router("pageAdminRouter", [
 	"appurl",
+	"pageAdminViewModelRepo",
 	pageAdminRouter
 ]);

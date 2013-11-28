@@ -1,8 +1,10 @@
 ﻿
-function pageAdminView(options, pageAdder, pageAdminViewModelRepo) {
+function pageAdminView(options, pageAdder, pageAdminViewModelRepo, menuListFactory, pageAdminRouter) {
 	
 	this.pageAdder = pageAdder;
 	this.pageAdminViewModelRepo = pageAdminViewModelRepo;
+	this.menuListFactory = menuListFactory;
+	this.pageAdminRouter = pageAdminRouter;
 }
 
 
@@ -13,9 +15,29 @@ pageAdminView.prototype = {
 		this.model = this.pageAdminViewModelRepo.getViewModel();
 
 		this.listenTo(this.model.pages, "sync", this.pagesSync);
-		this.listenTo(this.model.pagerModel, "change:skip", this.pageAdminViewModelRepo.updatePages());
+		this.listenTo(this.model.pagerModel, "change:skip", this.pageAdminViewModelRepo.updatePages);
+		this.listenTo(this.model, "change:filter", this.onChangeFilter);
 		
 		this.pageAdminViewModelRepo.updatePages();
+	},
+	
+	onRender: function () {
+		this.menuListFactory.create(this.$("#pageAdminMenuList"), {
+			items: this.model.filters,
+			model: this.model,
+			attr: "filter"
+		});
+	},
+	
+	onChangeFilter: function () {
+		var filter = this.model.get("filter");
+		if (filter === "search") {
+			this.pageAdminRouter.search(this.model.get("search"));
+		} else if (filter === "recent") {
+			this.pageAdminRouter.recent();
+		} else if (filter === "products") {
+			this.pageAdminRouter.products();
+		}
 	},
 	
 	pagesSync: function () {
@@ -30,6 +52,11 @@ pageAdminView.prototype = {
 		this.pageAdder.render();
 	},
 	
+	submitSearchForm: function (event) {
+		event.preventDefault();
+		this.model.set("filter", "search");
+	},
+	
 	clickTile: function (event) {
 		var target = $(event.target);
 		var tile = target.closest(".tile");
@@ -42,6 +69,9 @@ pageAdmin.view("pageAdminView", [
 	"options",
 	"pageAdder",
 	"pageAdminViewModelRepo",
-pageAdminView]);
+	"menuListFactory",
+	"pageAdminRouter",
+	pageAdminView
+]);
 
 
