@@ -18,7 +18,7 @@ pageAdminView.prototype = {
 		this.listenTo(this.model.pagerModel, "change:skip", this.pageAdminViewModelRepo.updatePages);
 		this.listenTo(this.model, "change:filter", this.onChangeFilter);
 		
-		this.pageAdminViewModelRepo.updatePages();
+		//this.pageAdminViewModelRepo.updatePages();
 	},
 	
 	onRender: function () {
@@ -55,6 +55,7 @@ pageAdminView.prototype = {
 	submitSearchForm: function (event) {
 		event.preventDefault();
 		this.model.set("filter", "search");
+		this.pageAdminRouter.search(this.model.get("search"));
 	},
 	
 	clickTile: function (event) {
