@@ -9,13 +9,47 @@ function fileAdminRouter(fileAdminRepo, editFile, appurl, Backbone) {
 
 fileAdminRouter.prototype = {
 	routes: {
+		"recent": "recent",
+		"images": "images",
+		"audio": "audio",
+		"video": "video",
+		"documents": "documents",
 		"edit/:id": "editFile",
-		"*defaultRoute": "admin"
+		"*defaultRoute": "defaultRoute"
 	},
 
-	admin: function () {
+	defaultRoute: function () {
 		this.editFileView && this.editFileView.close();
+		this.model.set("filter", "recent");
 		this.navigate("/");
+	},
+	
+	recent: function () {
+		this.model.set("filter", "recent");
+		this.navigate("recent");
+	},
+	
+	images: function () {
+		this.model.set("filter", "images");
+		this.navigate("images");
+	},
+	
+	audio: function () {
+		this.model.set("filter", "audio");
+		this.navigate("audio");
+	},
+	
+	video: function () {
+		this.model.set("filter", "video");
+		this.navigate("video");
+	},
+	
+	search: function (search) {
+		this.model.set({
+			"filter": "search",
+			"search": search
+		});
+		this.navigate("search/" + search);
 	},
 
 	editFile: function (fileId) {
@@ -23,7 +57,7 @@ fileAdminRouter.prototype = {
 			this.editFileView = this.editFileComponent.render({
 				model: file
 			}).on("close", function () {
-				this.admin();
+				this.defaultRoute();
 			}, this);
 			this.navigate("edit/" + fileId);
 		}, this));

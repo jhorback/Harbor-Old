@@ -1,24 +1,50 @@
 ﻿
-fileAdmin.fileAdminView = function (options, modelFactory, fileAdminRepo, fileAdminRouter) {
+fileAdmin.fileAdminView = function (options, fileAdminViewModelRepo, menuListFactory, fileAdminRouter) {
 
-	this.model = modelFactory.create("fileAdminViewModel");
-	this.model.albums = fileAdminRepo.getAlbums();
 	this.fileAdminRouter = fileAdminRouter;
+	this.fileAdminViewModelRepo = fileAdminViewModelRepo;
+	this.menuListFactory = menuListFactory;
 };
 
 
-fileAdmin.fileAdminView.prototype = {
-
-	events: {
-		"click .tile": function (event) {
-			var fileId = $(event.target).closest(".tile").attr("id");
-			
-			event.preventDefault();
-			this.editFile(fileId);
+fileAdmin.fileAdminView.prototype = {	
+	initialize: function () {
+		this.model = this.fileAdminViewModelRepo.getViewModel();
+		
+		this.listenTo(this.model.albums, "sync", this.albumsSync);
+		this.listenTo(this.model.pagerModel, "change:skip", this.fileAdminViewModelRepo.updateAlbums);
+		this.listenTo(this.model, "change:filter", this.onChangeFilter);
+	},
+	
+	onRender: function () {
+		this.menuListFactory.create(this.$("#fileAdminMenuList"), {
+			items: this.model.filters,
+			model: this.model,
+			attr: "filter"
+		});
+	},
+	
+	onChangeFilter: function () {
+		var filter = this.model.get("filter");
+		if (filter === "search") {
+			this.pageAdminRouter.search(this.model.get("search"));
+		} else if (this.pageAdminRouter[filter]) {
+			this.pageAdminRouter[filter]();
+		} else {
+			alert("Filter not defined: " + filter);
 		}
 	},
 	
-	editFile: function (fileId) {
+	albumsSync: function () {
+		var totalCount = this.model.albums.totalCount; // jch! need to manage
+		this.model.pagerModel.set("totalCount", totalCount);
+		this.$el.closest("body").scrollTop(0);	
+	},
+	
+	clickTile: function (event) {
+		var fileId = $(event.target).closest(".tile").attr("id");
+			
+		event.preventDefault();
 		this.fileAdminRouter.editFile(fileId);
 	},
 	
@@ -30,5 +56,5 @@ fileAdmin.fileAdminView.prototype = {
 
 
 fileAdmin.view("fileAdminView", [
-	"options", "modelFactory", "fileAdminRepo", "fileAdminRouter",
+	"options", "fileAdminViewModelRepo", "menuListFactory", "fileAdminRouter",
 	fileAdmin.fileAdminView]);

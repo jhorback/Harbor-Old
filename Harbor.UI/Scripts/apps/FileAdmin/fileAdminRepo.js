@@ -11,6 +11,12 @@ fileAdmin.fileAdminRepo = function (fileRepo, modelFactory) {
 			return albums;
 		},
 
+		fetchAlbums: function (data) {
+			var albums = this.getAlbumns();
+			
+			fileRepo.fetchFiles(albums.groupSource, data).then(triggerAlbumSync(albums));
+		},
+
 		getFile: function (id) {
 			var dfd = $.Deferred();
 			
@@ -28,8 +34,16 @@ fileAdmin.fileAdminRepo = function (fileRepo, modelFactory) {
 			});
 
 			return dfd;
-		},
+		}
 	};
+
+	
+	function triggerAlbumSync(albums) {
+		return function () {
+			albums.totalCount = albumns.groupSource.totalCount;
+			albums.trigger("sync");
+		};
+	}
 };
 
 

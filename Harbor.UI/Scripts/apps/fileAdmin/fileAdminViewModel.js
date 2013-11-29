@@ -2,13 +2,16 @@
 fileAdmin.fileAdminViewModel = function (attrs, options, slugify, todaysAlbumName) {
 
 	this.uploadTargetId = slugify(todaysAlbumName);
-
+	this.pagerModel = options.pagerModel;
+	this.albums = options.albums;
 };
 
 
 fileAdmin.fileAdminViewModel.prototype = {
 	defaults: {
 		state: "default", // can be default, uploading, ready
+		filter: "", // recent, images, audio, video, search
+		search: "",
 		uploadButtonText: "Upload files",
 		uploadButtonDisabled: false,
 		uploadTargetId: null,
@@ -19,6 +22,28 @@ fileAdmin.fileAdminViewModel.prototype = {
 		this.set("uploadTargetId", this.uploadTargetId);
 	},
 	
+	filters: [{
+		text: "Recent",
+		value: "recent",
+		href: "user/files/recent"
+	}, {
+		text: "Images",
+		value: "images",
+		href: "user/files/images"
+	}, {
+		text: "Audio",
+		value: "images",
+		href: "user/files/audio"
+	}, {
+		text: "Video",
+		value: "images",
+		href: "user/files/video"
+	}, {
+		text: "Documents",
+		value: "images",
+		href: "user/files/documents"
+	}],
+
 	uploadTargetViewVisible: {
 		get: function () {
 			return this.get("state") !== "default";

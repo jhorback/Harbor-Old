@@ -17,8 +17,6 @@ pageAdminView.prototype = {
 		this.listenTo(this.model.pages, "sync", this.pagesSync);
 		this.listenTo(this.model.pagerModel, "change:skip", this.pageAdminViewModelRepo.updatePages);
 		this.listenTo(this.model, "change:filter", this.onChangeFilter);
-		
-		//this.pageAdminViewModelRepo.updatePages();
 	},
 	
 	onRender: function () {
@@ -43,8 +41,6 @@ pageAdminView.prototype = {
 	pagesSync: function () {
 		var totalCount = this.model.pages.totalCount;
 		this.model.pagerModel.set("totalCount", totalCount);
-		//this.model.set("resultsCount", totalCount);
-		//this.model.refresh("resultsMessage");
 		this.$el.closest("body").scrollTop(0);
 	},
 	
