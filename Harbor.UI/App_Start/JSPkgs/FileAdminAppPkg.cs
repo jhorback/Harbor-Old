@@ -14,6 +14,7 @@ namespace Harbor.UI.JSPkgs
 			Templates = new JstTemplateAction("FileAdmin/Index");
 			Category = Categories.Apps;
 
+			AddDependency(AppUIPkg.PackageName);
 			AddDependency(FileModelPkg.PackageName);
 			AddDependency(Html5UploaderPkg.PackageName);
 		}
