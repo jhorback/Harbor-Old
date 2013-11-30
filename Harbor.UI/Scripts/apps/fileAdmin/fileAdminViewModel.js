@@ -32,15 +32,15 @@ fileAdmin.fileAdminViewModel.prototype = {
 		href: "user/files/images"
 	}, {
 		text: "Audio",
-		value: "images",
+		value: "audio",
 		href: "user/files/audio"
 	}, {
 		text: "Video",
-		value: "images",
+		value: "video",
 		href: "user/files/video"
 	}, {
 		text: "Documents",
-		value: "images",
+		value: "document",
 		href: "user/files/documents"
 	}],
 
