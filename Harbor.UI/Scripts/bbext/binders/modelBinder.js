@@ -205,7 +205,7 @@ var modelBinder = function ($, _, config, nameValueParser) {
 			    update;
 			
 			update = function () {
-				pageLoaded = true;
+				// pageLoaded = true; jch* testing delay
 				_.each(self.bindings, function (binding, propName) {
 					_.each(binding, function (el) {
 						if (el.is(":text,:password,select")) {
