@@ -1,5 +1,4 @@
 ﻿/*
-
 A grouped collection is a collection of models with the following structure:
 	{
 		name: groupName,

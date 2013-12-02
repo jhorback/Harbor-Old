@@ -5,7 +5,7 @@ function startRouterExt(mixin, Backbone) {
 	var routerMixin, extension;
 	
 	extension = {
-		start: function (options) {
+		start: function () {
 			Backbone.history.start({
 				pushState: true,
 				root: this.root
