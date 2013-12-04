@@ -15,7 +15,7 @@ fileAdmin.fileAdminView.prototype = {
 		this.listenTo(this.model.pagerModel, "change:skip", this.fileAdminViewModelRepo.updateAlbums);
 		this.listenTo(this.model, "change:filter", this.onChangeFilter);
 	},
-	
+
 	onRender: function () {
 		this.menuListFactory.create(this.$("#fileAdminMenuList"), {
 			items: this.model.filters,
@@ -27,9 +27,9 @@ fileAdmin.fileAdminView.prototype = {
 	onChangeFilter: function () {
 		var filter = this.model.get("filter");
 		if (filter === "search") {
-			this.pageAdminRouter.search(this.model.get("search"));
-		} else if (this.pageAdminRouter[filter]) {
-			this.pageAdminRouter[filter]();
+			this.fileAdminRouter.search(this.model.get("search"));
+		} else if (this.fileAdminRouter[filter]) {
+			this.fileAdminRouter[filter]();
 		} else {
 			alert("Filter not defined: " + filter);
 		}

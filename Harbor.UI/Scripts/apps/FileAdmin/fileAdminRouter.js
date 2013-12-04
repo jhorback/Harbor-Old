@@ -1,9 +1,9 @@
 ﻿
-function fileAdminRouter(fileAdminRepo, editFile, appurl, Backbone) {
+function fileAdminRouter(fileAdminRepo, editFile, appurl, fileAdminViewModelRepo) {
 	this.fileAdminRepo = fileAdminRepo;
 	this.editFileComponent = editFile;
 	this.root = appurl.get("user/files/");
-	this.history = Backbone.history;
+	this.model = fileAdminViewModelRepo.getViewModel();
 }
 
 
@@ -65,5 +65,5 @@ fileAdminRouter.prototype = {
 };
 
 fileAdmin.router("fileAdminRouter", [
-	"fileAdminRepo", "editFile", "appurl", "Backbone",
+	"fileAdminRepo", "editFile", "appurl", "fileAdminViewModelRepo",
 	fileAdminRouter]);

@@ -12,7 +12,7 @@ fileAdmin.fileAdminRepo = function (fileRepo, modelFactory) {
 		},
 
 		fetchAlbums: function (data) {
-			var albums = this.getAlbumns();
+			var albums = this.getAlbums();
 			
 			fileRepo.fetchFiles(albums.groupSource, data).then(triggerAlbumSync(albums));
 		},
