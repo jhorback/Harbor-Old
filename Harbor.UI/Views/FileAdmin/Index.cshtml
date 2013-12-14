@@ -30,7 +30,7 @@
 			<div data-bind="id: uploadTargetId, showif: uploadTargetViewVisible"
 			     data-templatefor="uploadTargetView">
 			</div>
-
+			
 			<div id="fileadmin-filelist">
 
 				<!-- -->
@@ -41,7 +41,7 @@
 
 						<!-- files -->
 						<li class="tile col5 hover text-center" data-bind="id: id"
-							data-event="clickTile"
+						    data-event="clickTile"
 						    data-collection="models">
 							<a data-bind="href: editLink" class="media">
 								<img data-bind="src: thumbUrl, alt: name" />
@@ -57,10 +57,10 @@
 				</div>
 				<!-- -->
 				
-				
-				<div class="float-right">
-					@Html.Partial("~/views/appui/_pagerView.cshtml")
-				</div>
+			</div>
+
+			<div class="float-right">
+				@Html.Partial("~/views/appui/_pagerView.cshtml")
 			</div>
 		</div>
 	</div>
