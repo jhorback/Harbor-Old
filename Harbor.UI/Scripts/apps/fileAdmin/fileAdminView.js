@@ -31,7 +31,7 @@ fileAdmin.fileAdminView.prototype = {
 		} else if (this.fileAdminRouter[filter]) {
 			this.fileAdminRouter[filter]();
 		} else {
-			alert("Filter not defined: " + filter);
+			alert("Filter not defined on the router: " + filter);
 		}
 	},
 	

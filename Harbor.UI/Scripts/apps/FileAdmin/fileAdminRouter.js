@@ -44,6 +44,11 @@ fileAdminRouter.prototype = {
 		this.navigate("video");
 	},
 	
+	documents: function () {
+		this.model.set("filter", "documents");
+		this.navigate("documents");
+	},
+	
 	search: function (search) {
 		this.model.set({
 			"filter": "search",
