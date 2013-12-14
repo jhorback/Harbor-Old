@@ -40,7 +40,7 @@ fileAdmin.fileAdminViewModel.prototype = {
 		href: "user/files/video"
 	}, {
 		text: "Documents",
-		value: "document",
+		value: "documents",
 		href: "user/files/documents"
 	}],
 
