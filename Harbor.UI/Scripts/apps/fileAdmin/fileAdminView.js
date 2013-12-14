@@ -51,6 +51,12 @@ fileAdmin.fileAdminView.prototype = {
 	clickUpload: function (event) {
 		event.preventDefault();
 		this.model.toggleUploadState();
+	},
+	
+	submitSearchForm: function (event) {
+		event.preventDefault();
+		this.model.set("filter", "search");
+		this.fileAdminRouter.search(this.model.get("search"));
 	}
 };
 
