@@ -21,9 +21,9 @@ fileModel.fileRepo = function (_, collectionFactory, ajaxRequest) {
 			return files;
 		},
 
-		getAlbums: function (data) {
+		createAlbums: function () {
 			var albums = collectionFactory.create("albums", null, {				
-				groupSource: this.getFiles(data),
+				groupSource: this.createFiles(),
 			});
 
 			return albums;

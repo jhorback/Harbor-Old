@@ -3,6 +3,7 @@ fileAdmin.fileAdminRepo = function (fileRepo, modelFactory) {
 
 	var albums;
 
+	// jch! - remove this in favor of fileAdminViewModelRepo - will need to update getFile()
 	return {
 		getAlbums: function () {
 			if (!albums) {
