@@ -3,12 +3,12 @@
  *     .pagerModel
  *     .albums
  */
-function fileAdminViewModelRepo(_, modelFactory, fileAdminRepo) {
+function fileAdminViewModelRepo(_, modelFactory, fileRepo) {
 	var viewModel;
 
 	viewModel = modelFactory.create("fileAdminViewModel", {}, {
 		pagerModel: modelFactory.create("pagerModel", { take: 5 }),
-		albums: fileAdminRepo.getAlbums()
+		albums: fileRepo.createAlbums()
 	});
 
 	
@@ -44,11 +44,23 @@ function fileAdminViewModelRepo(_, modelFactory, fileAdminRepo) {
 	}
 	
 	function updateAlbums() {
-		fileAdminRepo.fetchAlbums(viewModel.albums, viewModel.pagerModel.extend({
+		var albums, data;
+		
+		albums = viewModel.albums;
+		data = viewModel.pagerModel.extend({
 			orderDesc: "modified",
 			filter: viewModel.get("filter"),
 			search: viewModel.get("search")
-		}));
+		});
+		
+		fileRepo.fetchFiles(albums.groupSource, data).then(triggerAlbumSync(albums));
+	}
+	
+	function triggerAlbumSync(albums) {
+		return function () {
+			albums.totalCount = albums.groupSource.totalCount;
+			albums.trigger("sync");
+		};
 	}
 }
 
@@ -57,6 +69,6 @@ function fileAdminViewModelRepo(_, modelFactory, fileAdminRepo) {
 fileAdmin.service("fileAdminViewModelRepo", [
 	"_",
 	"modelFactory",
-	"fileAdminRepo",
+	"fileRepo",
 	fileAdminViewModelRepo
 ]);
