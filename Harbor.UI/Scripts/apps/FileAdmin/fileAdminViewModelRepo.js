@@ -3,7 +3,7 @@
  *     .pagerModel
  *     .albums
  */
-function fileAdminViewModelRepo(_, modelFactory, fileRepo) {
+function fileAdminViewModelRepo(_, $, modelFactory, fileRepo) {
 	var viewModel;
 
 	viewModel = modelFactory.create("fileAdminViewModel", {}, {
@@ -18,6 +18,26 @@ function fileAdminViewModelRepo(_, modelFactory, fileRepo) {
 	viewModel.set("filter", "recent");
 
 	return {
+		getFile: function (fileID) {
+			var dfd, file;
+		
+			dfd = $.Deferred();
+			file = viewModel.albums.groupSource.find(function (f) {
+				return f.get("id") === fileID;
+			});
+			
+
+			if (file) {			
+				dfd.resolve(file);
+			} else {
+				fileRepo.fetchFile(fileID).then(function (file) {
+					dfd.resolve(file);
+				});
+			}
+			
+			return dfd;
+		},
+		
 		getViewModel: function () {
 			return viewModel;
 		},
@@ -68,6 +88,7 @@ function fileAdminViewModelRepo(_, modelFactory, fileRepo) {
 
 fileAdmin.service("fileAdminViewModelRepo", [
 	"_",
+	"$",
 	"modelFactory",
 	"fileRepo",
 	fileAdminViewModelRepo

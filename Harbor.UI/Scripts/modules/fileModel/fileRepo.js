@@ -1,6 +1,6 @@
 ﻿
 
-fileModel.fileRepo = function (_, collectionFactory, ajaxRequest) {
+fileModel.fileRepo = function (_, $, collectionFactory, ajaxRequest, modelFactory) {
 
 	return {
 		createFiles: function () {
@@ -9,6 +9,20 @@ fileModel.fileRepo = function (_, collectionFactory, ajaxRequest) {
 		
 		fetchFiles: function (files, data) {
 			return ajaxRequest.handle(files.fetch({ data: data }));
+		},
+		
+		fetchFile: function (fileID) {
+			var dfd = $.Deferred();
+			
+			var file = modelFactory.create("file", {
+				id: fileID
+			});
+			
+			ajaxRequest.handle(file.fetch()).then(function () {
+				dfd.resolve(file);
+			});
+			
+			return dfd;
 		},
 		
 		getFiles: function (data, pageData) {
@@ -42,8 +56,9 @@ fileModel.fileRepo = function (_, collectionFactory, ajaxRequest) {
 
 fileModel.service("fileRepo", [
 	"_",
+	"$",
 	"collectionFactory",
 	"ajaxRequest",
-	"ajaxRequest",
+	"modelFactory",
 	fileModel.fileRepo
 ]);

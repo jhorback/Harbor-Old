@@ -40,7 +40,7 @@
 			<div id="fileadmin-filelist">
 
 				<!-- -->
-				<div class="tiles selectable" data-collection="albums">
+				<div class="tiles" data-collection="albums">
 					<h2 class="pad-left">{{name}}</h2>
 					<div id="{{uploadId}}"></div>
 					<ul data-rel="files">
@@ -49,7 +49,7 @@
 						<li class="tile col5 hover text-center" data-bind="id: id"
 						    data-event="clickTile"
 						    data-collection="models">
-							<a data-bind="href: editLink" class="media">
+							<a data-bind="href: editLink" class="media" data-event="clickTile">
 								<img data-bind="src: thumbUrl, alt: name" />
 							</a>
 							<div class="caption">
