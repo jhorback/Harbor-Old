@@ -7,7 +7,7 @@ function fileAdminViewModelRepo(_, $, modelFactory, fileRepo) {
 	var viewModel;
 
 	viewModel = modelFactory.create("fileAdminViewModel", {}, {
-		pagerModel: modelFactory.create("pagerModel", { take: 5 }),
+		pagerModel: modelFactory.create("pagerModel", { take: 20 }),
 		albums: fileRepo.createAlbums()
 	});
 
