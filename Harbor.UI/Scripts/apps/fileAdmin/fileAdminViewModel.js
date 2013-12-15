@@ -15,34 +15,66 @@ fileAdmin.fileAdminViewModel.prototype = {
 		uploadButtonText: "Upload files",
 		uploadButtonDisabled: false,
 		uploadTargetId: null,
-		uploadTargetViewVisible: false
+		uploadTargetViewVisible: false,
+		noResultsMsg: "",
+		thereAreNoResults: false
 	},
 	
 	initialize: function () {
 		this.set("uploadTargetId", this.uploadTargetId);
+		
+		this.pagerModel.on("change:totalCount", function () {
+			var results =  this.get("thereAreNoResults");
+			this.set("thereAreNoResults", results);
+		}, this);
 	},
 	
 	filters: [{
 		text: "Recent",
 		value: "recent",
-		href: "user/files/recent"
+		href: "user/files/recent",
+		noResultsMsg: "There are no recent files."
 	}, {
 		text: "Images",
 		value: "images",
-		href: "user/files/images"
+		href: "user/files/images",
+		noResultsMsg: "There are no images."
 	}, {
 		text: "Audio",
 		value: "audio",
-		href: "user/files/audio"
+		href: "user/files/audio",
+		noResultsMsg: "There are no audio files."
 	}, {
 		text: "Video",
 		value: "video",
-		href: "user/files/video"
+		href: "user/files/video",
+		noResultsMsg: "There are no videos."
 	}, {
 		text: "Documents",
 		value: "documents",
-		href: "user/files/documents"
+		href: "user/files/documents",
+		noResultsMsg: "There are no documents."
 	}],
+	
+	"[noResultsMsg]": {
+		get: function (value) {
+			var filter = _.find(this.filters, function (item) {
+				return item.value === this.attributes.filter;	
+			}, this);
+			
+			return filter ?
+				filter.noResultsMsg :
+				"No files matched your search";
+		},
+		bind: ["filter"]
+	},
+	
+	"[thereAreNoResults]": {
+		get: function (value) {
+			var thereAreNoResults = this.pagerModel.get("totalCount") == 0;
+			return thereAreNoResults;
+		}
+	},
 
 	uploadTargetViewVisible: {
 		get: function () {

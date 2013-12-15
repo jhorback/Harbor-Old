@@ -31,6 +31,12 @@
 			     data-templatefor="uploadTargetView">
 			</div>
 			
+			<div data-bind="showif: thereAreNoResults">
+				<hr />
+				<div class="text-center" data-bind="text: noResultsMsg"></div>
+				<hr />
+			</div>
+			
 			<div id="fileadmin-filelist">
 
 				<!-- -->

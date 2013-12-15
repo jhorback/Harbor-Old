@@ -36,7 +36,7 @@ fileAdmin.fileAdminView.prototype = {
 	},
 	
 	albumsSync: function () {
-		var totalCount = this.model.albums.totalCount; // jch! need to manage
+		var totalCount = this.model.albums.totalCount;
 		this.model.pagerModel.set("totalCount", totalCount);
 		this.$el.closest("body").scrollTop(0);	
 	},

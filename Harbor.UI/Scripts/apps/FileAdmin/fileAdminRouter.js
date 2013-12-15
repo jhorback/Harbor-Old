@@ -71,5 +71,5 @@ fileAdminRouter.prototype = {
 };
 
 fileAdmin.router("fileAdminRouter", [
-	"fileAdminRepo", "editFile", "appurl", "fileAdminViewModelRepo",
+	"editFile", "appurl", "fileAdminViewModelRepo",
 	fileAdminRouter]);
