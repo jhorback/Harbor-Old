@@ -1,7 +1,7 @@
 ﻿
 pageEditor.component("addPageComponent");
 
-// jch! - here
+
 pageEditor.addPageComponentView = function (
 	options,
 	modelFactory,

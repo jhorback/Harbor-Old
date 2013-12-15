@@ -221,15 +221,6 @@ namespace Harbor.Data.Repositories
 			}
 			return page;
 		}
-
-		// jch! remove 
-		//bool updatePageResources(Page page)
-		//{
-		//	// add remove page resources
-		//	var resourceManager = new PageRepositoryResourceManager(context);
-		//	var pageResourceUpdater = new PageResourceUpdater(componentRepository, resourceManager);
-		//	return pageResourceUpdater.UpdateResources(page);
-		//}
 		#endregion
 	}
 }
