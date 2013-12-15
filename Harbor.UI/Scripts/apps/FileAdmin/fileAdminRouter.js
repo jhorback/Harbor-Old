@@ -1,6 +1,5 @@
 ﻿
-function fileAdminRouter(fileAdminRepo, editFile, appurl, fileAdminViewModelRepo) {
-	this.fileAdminRepo = fileAdminRepo;
+function fileAdminRouter(editFile, appurl, fileAdminViewModelRepo) {
 	this.editFileComponent = editFile;
 	this.root = appurl.get("user/files/");
 	this.model = fileAdminViewModelRepo.getViewModel();
@@ -14,6 +13,7 @@ fileAdminRouter.prototype = {
 		"audio": "audio",
 		"video": "video",
 		"documents": "documents",
+		"search/:search": "search",
 		"edit/:id": "editFile",
 		"*defaultRoute": "defaultRoute"
 	},
@@ -51,14 +51,15 @@ fileAdminRouter.prototype = {
 	
 	search: function (search) {
 		this.model.set({
-			"filter": "search",
+			"filter": "none",
 			"search": search
 		});
 		this.navigate("search/" + search);
 	},
 
 	editFile: function (fileId) {
-		this.fileAdminRepo.getFile(fileId).then(_.bind(function (file) {
+		
+		this.fileAdminViewModelRepo.getFile(fileId).then(_.bind(function (file) {
 			this.editFileView = this.editFileComponent.render({
 				model: file
 			}).on("close", function () {

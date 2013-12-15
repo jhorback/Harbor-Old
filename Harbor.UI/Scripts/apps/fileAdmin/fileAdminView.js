@@ -26,7 +26,7 @@ fileAdmin.fileAdminView.prototype = {
 	
 	onChangeFilter: function () {
 		var filter = this.model.get("filter");
-		if (filter === "search") {
+		if (filter === "none") {
 			this.fileAdminRouter.search(this.model.get("search"));
 		} else if (this.fileAdminRouter[filter]) {
 			this.fileAdminRouter[filter]();
@@ -55,7 +55,7 @@ fileAdmin.fileAdminView.prototype = {
 	
 	submitSearchForm: function (event) {
 		event.preventDefault();
-		this.model.set("filter", "search");
+		this.model.set("filter", "none");
 		this.fileAdminRouter.search(this.model.get("search"));
 	}
 };

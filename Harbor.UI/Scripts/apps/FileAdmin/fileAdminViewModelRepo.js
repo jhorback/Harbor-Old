@@ -29,7 +29,7 @@ function fileAdminViewModelRepo(_, modelFactory, fileRepo) {
 	
 	function changeFilter() {
 		var filter = viewModel.get("filter");
-		if (filter !== "search") {
+		if (filter !== "none") {
 			this.set("search", "");
 		}
 		viewModel.pagerModel.first();
@@ -38,7 +38,7 @@ function fileAdminViewModelRepo(_, modelFactory, fileRepo) {
 	
 	function changeSearch() {
 		var filter = viewModel.get("filter");
-		if (filter === "search") {
+		if (filter === "none") {
 			updateAlbums();
 		}
 	}

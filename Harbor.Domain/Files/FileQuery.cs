@@ -13,25 +13,34 @@ namespace Harbor.Domain.Files
 
 			ModifyQuery = modifyQuery;
 		}
-		
 
 		public string Name { get; set; }
 		public FileTypeFilter Filter { get; set; }
+		public string Search { get; set; }
 		public string CurrentUserName { get; set; }
 
 		
 		IQueryable<File> modifyQuery(IQueryable<File> queryable)
 		{
-			// queryable = queryable.Where(d => d.Enabled == true);
+			if (string.IsNullOrEmpty(Search) == false)
+			{
+				Name = Search;
+			}
 
 			if (string.IsNullOrEmpty(Name) == false)
-				queryable = queryable.Where(p => p.Name.Contains(Name));
+			{
+				queryable = queryable.Where(p => p.Name.ToLower().Contains(Name.ToLower()));
+			}
 
 			if (string.IsNullOrEmpty(CurrentUserName) == false)
+			{
 				queryable = queryable.Where((p => p.UserName == CurrentUserName));
+			}
 
 			if (Filter != FileTypeFilter.None)
+			{
 				queryable = applyFilter(queryable);
+			}
 
 			return queryable;
 		}
