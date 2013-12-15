@@ -3,6 +3,7 @@ function fileAdminRouter(editFile, appurl, fileAdminViewModelRepo) {
 	this.editFileComponent = editFile;
 	this.root = appurl.get("user/files/");
 	this.model = fileAdminViewModelRepo.getViewModel();
+	this.fileAdminViewModelRepo = fileAdminViewModelRepo;
 }
 
 
@@ -58,7 +59,6 @@ fileAdminRouter.prototype = {
 	},
 
 	editFile: function (fileId) {
-		
 		this.fileAdminViewModelRepo.getFile(fileId).then(_.bind(function (file) {
 			this.editFileView = this.editFileComponent.render({
 				model: file

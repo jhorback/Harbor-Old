@@ -7,7 +7,10 @@ fileAdmin.fileAdminView = function (options, fileAdminViewModelRepo, menuListFac
 };
 
 
-fileAdmin.fileAdminView.prototype = {	
+fileAdmin.fileAdminView.prototype = {
+	events: {
+		"click [data-event=clickTile]": "clickTile"
+	},
 	initialize: function () {
 		this.model = this.fileAdminViewModelRepo.getViewModel();
 		
@@ -41,13 +44,6 @@ fileAdmin.fileAdminView.prototype = {
 		this.$el.closest("body").scrollTop(0);	
 	},
 	
-	clickTile: function (event) {
-		var fileId = $(event.target).closest(".tile").attr("id");
-			
-		event.preventDefault();
-		this.fileAdminRouter.editFile(fileId);
-	},
-	
 	clickUpload: function (event) {
 		event.preventDefault();
 		this.model.toggleUploadState();
@@ -57,6 +53,13 @@ fileAdmin.fileAdminView.prototype = {
 		event.preventDefault();
 		this.model.set("filter", "none");
 		this.fileAdminRouter.search(this.model.get("search"));
+	},
+	
+	clickTile: function (event) {
+		var fileId = $(event.target).closest(".tile").attr("id");
+		
+		event.preventDefault();
+		this.fileAdminRouter.editFile(fileId);
 	}
 };
 
@@ -64,3 +67,22 @@ fileAdmin.fileAdminView.prototype = {
 fileAdmin.view("fileAdminView", [
 	"options", "fileAdminViewModelRepo", "menuListFactory", "fileAdminRouter",
 	fileAdmin.fileAdminView]);
+
+
+
+
+
+// jch! remove
+//fileAdmin.fileItemView = function (options, fileAdminRouter) {
+//	this.fileAdminRouter = fileAdminRouter;
+//};
+
+//fileAdmin.fileItemView.prototype = {
+	
+//};
+
+//fileAdmin.view("fileItemView", [
+//	"options",
+//	"fileAdminRouter",
+//	fileAdmin.fileItemView
+//])
