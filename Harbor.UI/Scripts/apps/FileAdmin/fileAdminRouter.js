@@ -20,7 +20,6 @@ fileAdminRouter.prototype = {
 	},
 
 	defaultRoute: function () {
-		this.editFileView && this.editFileView.close();
 		this.model.set("filter", "recent");
 		this.navigate("/");
 	},
@@ -57,16 +56,31 @@ fileAdminRouter.prototype = {
 		});
 		this.navigate("search/" + search);
 	},
+	
+	syncUrl: function () {
+		var filter = this.model.get("filter");
+		if (filter === "none") {
+			this.navigate("search/" + this.model.get("search"));
+		} else if (this[filter]) {
+			this.navigate(filter);
+		} else {
+			alert("Filter not defined on the router: " + filter);
+		}
+	},
 
 	editFile: function (fileId) {
-		this.fileAdminViewModelRepo.getFile(fileId).then(_.bind(function (file) {
-			this.editFileView = this.editFileComponent.render({
+		function renderFileComponent(file) {
+			file.set("allowClose", this.model.get("filter") !== "");
+			this.editFileComponent.render({
 				model: file
 			}).on("close", function () {
-				this.defaultRoute();
+				this.editFileComponent.close();
+				this.syncUrl();
 			}, this);
 			this.navigate("edit/" + fileId);
-		}, this));
+		}
+
+		this.fileAdminViewModelRepo.getFile(fileId).then(_.bind(renderFileComponent, this));
 	}
 };
 

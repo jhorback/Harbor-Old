@@ -15,7 +15,6 @@ function fileAdminViewModelRepo(_, $, modelFactory, fileRepo) {
 	viewModel.on("change:filter", changeFilter);	
 	viewModel.on("change:search", changeSearch);
 	updateAlbums = _.debounce(updateAlbums);
-	viewModel.set("filter", "recent");
 
 	return {
 		getFile: function (fileID) {
@@ -27,9 +26,10 @@ function fileAdminViewModelRepo(_, $, modelFactory, fileRepo) {
 			});
 			
 
-			if (file) {			
+			if (file) {
 				dfd.resolve(file);
 			} else {
+				// viewModel.set("filter", "recent");
 				fileRepo.fetchFile(fileID).then(function (file) {
 					dfd.resolve(file);
 				});

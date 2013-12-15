@@ -3,7 +3,7 @@
 		<h1><span data-bind="value: name" contenteditable data-type="contenteditable"></span></h1>
 		<div class="float-left quiet pad-left pad-top">(click title to rename)</div>
 		<fieldset class="float-right">
-			<button type="button" class="loud" data-event="done">Done</button>
+			<button type="button" class="loud" data-event="done" data-bind="showif:allowClose">Close</button>
 		</fieldset>
 	</div>
 	<div class="page-body"> 
@@ -31,7 +31,7 @@
 					</p>
 				</fieldset>
 				<div class="form-controls">
-					<button type="button" class="loud" data-event="done">Done</button>
+					<button type="button" class="loud" data-event="done" data-bind="showif:allowClose">Close</button>
 				</div>
 			</form>
 		</div>
