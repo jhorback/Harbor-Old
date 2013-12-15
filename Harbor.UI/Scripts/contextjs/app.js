@@ -118,7 +118,7 @@ var module = (function (context) {
 				throw new Error("The inner construct function did not return anything.");
 			}
 			app.register(name, protoObj);
-			app.register(name + ".construct", protoObj, "object"); // jch! add test - making available the raw construct through injection and document
+			app.register(name + ".construct", protoObj, "object"); // jch* add test - making available the raw construct through injection and document
 		},
 
 		mixinRegistries: function (dest, src) {
