@@ -23,7 +23,6 @@ var FileUploader = new Application({
 			name: "foo",
 			postUrl: "bar.aspx",
 			onClientLoadStart: function (e, file) {
-				alert("here");
 //				var upload = $("#upload");
 //				if (upload.is(":hidden")) {
 //					upload.show();

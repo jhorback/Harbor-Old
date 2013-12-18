@@ -14,8 +14,10 @@ namespace Harbor.Domain.Pages
 		{
 			pageTypes = new List<PageType>
 				{
-					new PageTypes.Document(),
-					new PageTypes.Page()
+					new PageTypes.PageListing(),
+					new PageTypes.Page(),
+					new PageTypes.Article(),
+					new PageTypes.Product()
 				};
 
 			init();

@@ -55,7 +55,6 @@ pageAdminView.prototype = {
 	},
 	
 	clickTile: function (event) {
-		alert("HERE");
 		var target = $(event.target);
 		var tile = target.closest(".tile");
 		document.location = tile.find("a").attr("href");
