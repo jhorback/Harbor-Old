@@ -20,6 +20,7 @@ template.prototype = {
 		header: null,
 		content: [],
 		aside: [],
+		defaultContentClassName: "col1",
 		componentCounter: 0,
 		//
 		layout: "stretch", // stretch, centered, leftaligned
@@ -101,7 +102,7 @@ template.prototype = {
 			this.aside.push(content);
 			ret = this.aside.get(uicid);
 		} else {
-			content.classNames = ["col1"];
+			content.classNames = this.attributes.defaultContentClassName;
 			this.content.push(content);
 			ret = this.content.get(uicid);
 		}

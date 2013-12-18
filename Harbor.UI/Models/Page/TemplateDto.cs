@@ -49,6 +49,7 @@ namespace Harbor.UI.Models
 		public PageHeader header { get; set; }
 		public List<PageAside> aside { get; set; }
 		public List<PageContent> content { get; set; }
+		public string defaultContentClassName { get; set; }
 		public int componentCounter { get; set; }
 
 		public static implicit operator TemplateDto(Template page)

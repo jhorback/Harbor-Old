@@ -11,6 +11,7 @@ namespace Harbor.Domain.Pages
 			Aside = new List<PageAside>();
 			Content = new List<PageContent>();
 			PageID = pageID;
+			DefaultContentClassName = ContentClassNames.Col1;
 		}
 
 		public Template(): this(0) { }
@@ -49,6 +50,11 @@ namespace Harbor.Domain.Pages
 		/// The list of components to display as the document content.
 		/// </summary>
 		public List<PageContent> Content { get; set; }
+
+		/// <summary>
+		/// The class name to be used for new content.
+		/// </summary>
+		public string DefaultContentClassName { get; set; }
 		#endregion
 
 		#region base implementation
