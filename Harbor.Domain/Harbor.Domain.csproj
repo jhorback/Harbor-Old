@@ -131,9 +131,11 @@
     <Compile Include="Pages\PageTypeContext.cs" />
     <Compile Include="Pages\IPageTypeRepository.cs" />
     <Compile Include="Pages\PageTypeRepository.cs" />
+    <Compile Include="Pages\PageTypes\Article.cs" />
     <Compile Include="Pages\PageTypes\Page.cs" />
+    <Compile Include="Pages\PageTypes\Product.cs" />
     <Compile Include="Pages\Template\Template.cs" />
-    <Compile Include="Pages\PageTypes\Document.cs" />
+    <Compile Include="Pages\PageTypes\PageListing.cs" />
     <Compile Include="Pages\Template\PageAside.cs" />
     <Compile Include="Pages\Template\ContentClassNames.cs" />
     <Compile Include="Pages\Template\PageContent.cs" />

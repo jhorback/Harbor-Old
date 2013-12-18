@@ -1,24 +1,21 @@
 ﻿
 namespace Harbor.Domain.Pages.PageTypes
 {
-	/// <summary>
-	/// Defines a generic document template.
-	/// </summary>
-	public class Document : PageType
+	public class PageListing : PageType
 	{
 		public override string Key
 		{
-			get { return "document"; }
+			get { return "pageListing"; }
 		}
 
 		public override string Name
 		{
-			get { return "Document"; }
+			get { return "Page Listing"; }
 		}
 
 		public override string Description
 		{
-			get { return "A generic empty document."; }
+			get { return "A page with navigation links and tiled content."; }
 		}
 
 		public override void DefineTemplate(PageTypeContext context)
@@ -26,7 +23,8 @@ namespace Harbor.Domain.Pages.PageTypes
 			context.SetLayout(LayoutProperties.None)
 				.SetHeader(Components.Title.KEY)
 				.AddAside(Components.Links.KEY)
-				.AddContent(Components.Text.KEY);
+				.AddContent(Components.Text.KEY)
+				.SetDefaultContentClassName(ContentClassNames.Tile);
 		}
 	}
 }

@@ -47,7 +47,7 @@ namespace Harbor.Domain.Pages
 
 		public PageTypeContext AddContent(string type)
 		{
-			return AddContent(type, new[] { ContentClassNames.Col1 });
+			return AddContent(type, new[] { template.DefaultContentClassName });
 		}
 
 		public PageTypeContext AddContent(string type, string[] classNames)
@@ -59,6 +59,12 @@ namespace Harbor.Domain.Pages
 			};
 
 			template.Content.Add(item);
+			return this;
+		}
+
+		public PageTypeContext SetDefaultContentClassName(string className)
+		{
+			template.DefaultContentClassName = className;
 			return this;
 		}
 	}

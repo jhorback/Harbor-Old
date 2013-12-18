@@ -102,7 +102,7 @@ template.prototype = {
 			this.aside.push(content);
 			ret = this.aside.get(uicid);
 		} else {
-			content.classNames = this.attributes.defaultContentClassName;
+			content.classNames = [this.attributes.defaultContentClassName];
 			this.content.push(content);
 			ret = this.content.get(uicid);
 		}

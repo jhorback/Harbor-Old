@@ -8,5 +8,6 @@ namespace Harbor.Domain.Pages
 		public const string Col3 = "col3";
 		public const string Col3_2 = "col3-2";
 		public const string Clear = "clear";
+		public const string Tile = "tile";
 	}
 }
