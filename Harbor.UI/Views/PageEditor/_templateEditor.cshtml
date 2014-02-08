@@ -1,4 +1,5 @@
-﻿
+﻿@using Harbor.Domain.Pages
+
 
 <div data-templatefor="pageUICMenuView" class="uic-menu">
     <span class="icon-move" data-bind="showif: showMove"></span>
@@ -35,32 +36,32 @@
 			<div>
 				<div class="float-left pad">
 					<label for="colClassName-col1">
-						<input type="radio" id="colClassName-col1" name="colClassName" value="col1" />
+						<input type="radio" id="colClassName-col1" name="colClassName" value="@ContentClassNames.Col1" />
 						Full row
 					</label>
 				</div>
 				<div class="float-left pad">
 					<label for="colClassName-tile">
-						<input type="radio" id="colClassName-tile" name="colClassName" value="col5" />
+						<input type="radio" id="colClassName-tile" name="colClassName" value="@ContentClassNames.Tile" />
 						Tile
 					</label>
 				</div>	
 
 				<div class="clear float-left pad">
 					<label for="colClassName-col2">
-						<input type="radio" id="colClassName-col2" name="colClassName" value="col2" />
+						<input type="radio" id="colClassName-col2" name="colClassName" value="@ContentClassNames.Col2" />
 						Half row
 					</label>
 				</div>
 				<div class="float-left pad">
 					<label for="colClassName-col3">
-						<input type="radio" id="colClassName-col3" name="colClassName" value="col3" />
+						<input type="radio" id="colClassName-col3" name="colClassName" value="@ContentClassNames.Col3" />
 						Thrid row
 					</label>
 				</div>
 				<div class="float-left pad">
 					<label for="colClassName-col3-2">
-						<input type="radio" id="colClassName-col3-2" name="colClassName" value="col3-2" />
+						<input type="radio" id="colClassName-col3-2" name="colClassName" value="@ContentClassNames.Col3_2" />
 						Two thirds row
 					</label>
 				</div>

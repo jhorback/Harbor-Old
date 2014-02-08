@@ -23,7 +23,7 @@ namespace Harbor.Domain.Pages.PageTypes
 			context.SetLayout(LayoutProperties.None)
 				.SetHeader(Components.Title.KEY)
 				.AddAside(Components.Links.KEY)
-				.AddContent(Components.Text.KEY)
+				.AddContent(Components.Text.KEY, new [] {ContentClassNames.Tile})
 				.SetDefaultContentClassName(ContentClassNames.Tile);
 		}
 	}
