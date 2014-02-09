@@ -17,6 +17,7 @@ pageEditor.changeLayoutView = function (
 	
 	currentPage = this.currentPageRepo.getCurrentPage();
 	this.componentModel = currentPage.template.content.get(options.uicid);
+	this.template = currentPage.template;
 	this.model.setClassNames(this.componentModel.get("classNames"));
 };
 
@@ -33,10 +34,13 @@ pageEditor.changeLayoutView.prototype = {
 	},
 
 	save: function () {
-		var classNames = this.model.getClassNames();
-		this.componentModel.set("classNames", classNames);
+		var classNamesArray = this.model.getClassNames();
+		var classNames = classNamesArray.join(" ");
+		
+		this.componentModel.set("classNames", classNamesArray);
+		this.template.set("defaultContentClassName", classNames);
 		this.currentPageRepo.saveCurrentPage();
-		$("#" + this.componentModel.get("id")).removeClass().addClass(classNames.join(" ") + " uic");
+		$("#" + this.componentModel.get("id")).removeClass().addClass(classNames + " uic");
 		this.close();
 	},
 

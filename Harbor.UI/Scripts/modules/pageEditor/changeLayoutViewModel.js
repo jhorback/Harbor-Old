@@ -19,11 +19,16 @@ pageEditor.changeLayoutViewModel = {
 		if (contentPositionClassName !== "text-left") {
 			classNames.push(contentPositionClassName);
 		}
-		return classNames;
+		return classNames.join(" ").split(" ");
 	},
 	
 	setClassNames: function (classNames) {
 		var self = this;
+
+		if (_.isArray(classNames)) {
+			classNames = classNames.join(" ");
+		}
+		classNames = classNames.split(" ");
 
 		this.set("clear", false);
 		_.each(classNames, function (className) {
