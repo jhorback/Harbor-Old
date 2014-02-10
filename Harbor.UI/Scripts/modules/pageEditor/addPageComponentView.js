@@ -12,7 +12,8 @@ pageEditor.addPageComponentView = function (
 ) {
 
 	this.model = modelFactory.create("addPageComponentViewModel", {		
-		componentType: options.type // "header", "content", "aside"
+		componentType: options.type, // "header", "content", "aside"
+		pageComponentKey: "image" // jch! testing
 	});
 
 	this.model.page = currentPageRepo.getCurrentPage();
@@ -33,6 +34,11 @@ pageEditor.addPageComponentView.prototype = {
 	onRender: function () {
 		
 		this.dialog = this.dialogFactory.create(this.$el);
+		setTimeout(_.bind(function () {
+			debugger;
+			this.model.set("pageComponentKey", "text"); //jch! testing
+			
+		}, this), 1000);
 	},
 	
 	formSubmit: function (event) {
