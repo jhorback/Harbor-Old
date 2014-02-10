@@ -110,6 +110,7 @@ var modelBinderConfig = {
 		"text": "text",
 		"showif": "visibility",
 		"dontshowif": "visibility",
+		"val": "value" // uses el.val() 
 	},
 	
 	attributeTypes: { // attributeBinders
@@ -140,6 +141,9 @@ var modelBinderConfig = {
 			attr === "showif" ?
 				el.css("display", value ? initialDisplay : "none") :
 				el.css("display", value ? "none" : initialDisplay); // dontshowif
+		},
+		"value": function (el, attr, value) {
+			el.val(value);
 		}
 	}
 };
