@@ -37,6 +37,7 @@ templateBinderShim.prototype = {
 			view = viewRenderer.render(templateFor, {
 				model: model,
 				el: templateEl.data("collection") ? templateEl.parent() : templateEl
+				// jch* if a collection use the parent so the modelbinder can work on select elements
 			});
 			
 			templateEl.remove();

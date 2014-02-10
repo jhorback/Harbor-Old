@@ -51,11 +51,14 @@ appui.service("shims", ["_", "globalCache", "context", function (_, globalCache,
 				if (shim.matches) {
 					matches = shim.matches(el);
 				}
-				
-				shim.render && shim.render(el, model, matches);
-				shim.resolve && setTimeout(function () {
-					shim.resolve(el, model, matches);
-				}, 0);
+
+
+				if (matches.length > 0 || (!shim.selector && !shim.matches)) {
+					shim.render && shim.render(el, model, matches);
+					shim.resolve && setTimeout(function () {
+						shim.resolve(el, model, matches);
+					}, 0);
+				}
 			});
 		}
 	};
