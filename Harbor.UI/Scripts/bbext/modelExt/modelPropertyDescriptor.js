@@ -46,7 +46,7 @@ function modelPropertyDescriptor(_, console) {
 		}
 
 		proto.propertyDescriptor = descriptor;
-		console.debug("modelPropertyDescriptor: parse model:", model.name, "descriptor:", descriptor);
+		console.log("modelPropertyDescriptor: parse model:", model.name, "descriptor:", descriptor);
 		return descriptor;
 	};
 	

@@ -32,7 +32,7 @@ function errorDisplayViewExt(_, console) {
 			var errorAttr = errors && errors[attr],
 			    errorStr;
 			
-			if (!errorAttr.join) {
+			if (!errorAttr || !errorAttr.join) {
 				return;
 			}
 			
