@@ -544,7 +544,6 @@
     <Content Include="Scripts\bbext\JSPM.js" />
     <Content Include="Scripts\bbext\modelExt\backupModelExt.js" />
     <Content Include="Scripts\bbextv1\Controller.js" />
-    <Content Include="Scripts\appui\Selectable.js" />
     <Content Include="Scripts\bbext\mvcorConstruct.js" />
     <Content Include="Scripts\bbextv1\modelBinderExtension.js" />
     <Content Include="Scripts\bbext\viewExt\childViewExt.js" />
