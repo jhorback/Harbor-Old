@@ -50,7 +50,7 @@ function closeViewExt(_, Backbone, mixin, console) {
 		remove: function () {
 			this.close();
 			Backbone.View.prototype.remove.apply(this);
-			console.debug("closeViewExt: removing view", this.name);
+			console.log("closeViewExt: removing view", this.name);
 		}
 	};
 	

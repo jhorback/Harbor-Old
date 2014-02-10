@@ -84,11 +84,18 @@ $(function () {
 		   // implement checkall
 		   this._checkall = this.element.find("[data-role=checkall]");
 		   this.row(this._checkall).attr("data-selectable", false);
-		   this._checkall.bind("click.selectlist", function () {
-			   var rows = self.element.find("tbody " + self.options.rowSelector);
-			   self._selectRange(rows.first(), rows.last(), self._checkall.prop("checked"));
-		   });
+		   this._checkall.bind("click.selectlist", $.proxy(this._checkallClick, this));
 	   },
+	   
+		clear: function () {
+			this._checkall.prop("checked", false);
+			this._checkallClick();
+		},
+	   
+		_checkallClick: function () {
+			 var rows = this.element.find("tbody " + this.options.rowSelector);
+			 this._selectRange(rows.first(), rows.last(), this._checkall.prop("checked"));
+		},
 	   
 	   _clickList: function (event) {
 		   var selectable,
@@ -113,11 +120,10 @@ $(function () {
 					   }
 				   }
 				   this._fireChange();
-			   } else {
-				   window.location = target.attr("href");
+				   
+					event.stopImmediatePropagation();
 			   }
-			   
-			   event.stopImmediatePropagation();
+			  
 			   return;
 		   }		
 
@@ -298,3 +304,25 @@ $(function () {
 	}
 });
 /**/
+
+
+bbext.selectlistFactory = function () {
+	return {
+		create: function (el, options) {
+
+			el.selectlist(options);
+
+			return {				
+				clear: function () {
+					el.selectlist("clear");
+				},
+				
+				destroy: function () {
+					el.selectlist("destroy");
+				}
+			};
+		}
+	};
+};
+
+bbext.service("selectlistFactory", bbext.selectlistFactory);

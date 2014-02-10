@@ -10,6 +10,12 @@ Adding/removing items to the filtered collection will add/remove them on the sou
 function filterColExt(mixin, collectionFactory) {
 	
 	var filterColExt = {
+		afterInit: function (models, options) {
+			if (options && options.filter) {
+				this.setFilter(options.filter);
+			}
+		},
+		
 		setFilter: function (filter) {
 			var filtered;
 

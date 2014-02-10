@@ -12,14 +12,13 @@ this.collection = ["foo", "bar"];
 In static binding 'this' points to the window object so only {{value}}
 is supported for simple arrays.
 */
-var collectionRenderer = function (_, templateCache, viewFactory, modelBinder, Backbone) {
+var collectionRenderer = function (_, templateCache, viewFactory, modelBinder, viewRenderer, Backbone) {
 	"use strict";
 
 	function renderer(view) {
 		var templateEl, templateFn;
 
 		this.view = view;
-		this.viewRenderer = view.context.get("viewRenderer");
 		this.collection = view.collection = ensureBBCollection(view.collection);
 
 		// cache the template for the itemView and set the view el to the parent
@@ -56,7 +55,7 @@ var collectionRenderer = function (_, templateCache, viewFactory, modelBinder, B
 
 			itemAtIndex = this.view.$el.children().eq(index);
 
-			itemView = this.viewRenderer.render(this.itemViewName, { model: model });
+			itemView = viewRenderer.render(this.itemViewName, { model: model });
 			itemView.$el.attr("data-cid", model.cid);
 			this.view.views.add(itemView);
 			
@@ -109,5 +108,5 @@ var collectionRenderer = function (_, templateCache, viewFactory, modelBinder, B
 
 
 bbext.service("bbext.collectionRenderer", [
-	"_", "templateCache", "viewFactory", "modelBinder", "Backbone",
+	"_", "templateCache", "viewFactory", "modelBinder", "viewRenderer", "Backbone",
 	bbext.collectionRenderer = collectionRenderer]);

@@ -68,6 +68,12 @@ function templateCache($, _, globalCache) {
 			}
 
 			return templateFn;
+		},
+
+		// method is good if the template markup is not used on app start and the markup
+		// could be detached from the dom before called upon.
+		preloadTemplate: function (name) {
+			this.getTemplateFor(name);
 		}
 	};
 

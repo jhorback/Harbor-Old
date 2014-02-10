@@ -21,7 +21,7 @@ collectionRendererShim.prototype = {
 			templateEl = $(templateEl);
 			data = templateEl.data();
 			templateEl.attr("data-templatefor", genericViewName);
-			console.debug("Found generic view for", data.model ? "model: " + data.model : "collection: " + data.collection);
+			console.log("Found generic view for", data.model ? "model: " + data.model : "collection: " + data.collection);
 		});
 	}
 };

@@ -88,13 +88,7 @@ var modelBinderConfig = {
 			}
 		},
 		"radio": {
-			get: function (el) {
-				debugger;
-				var val = el.val();
-				return val;
-			},
 			set: function (el, value) {
-				debugger;
 				el.attr("checked", el.val() === value);
 			}
 		},
@@ -115,7 +109,7 @@ var modelBinderConfig = {
 		"checked": "boolean",
 		"text": "text",
 		"showif": "visibility",
-		"val": "value" // uses val() to set the value
+		"dontshowif": "visibility",
 	},
 	
 	attributeTypes: { // attributeBinders
@@ -143,10 +137,9 @@ var modelBinderConfig = {
 				}
 				el.data("initialDisplay", initialDisplay);
 			}
-			el.css("display", value ? initialDisplay : "none");
-		},
-		"value": function (el, attr, value) {
-			el.val(value);
+			attr === "showif" ?
+				el.css("display", value ? initialDisplay : "none") :
+				el.css("display", value ? "none" : initialDisplay); // dontshowif
 		}
 	}
 };

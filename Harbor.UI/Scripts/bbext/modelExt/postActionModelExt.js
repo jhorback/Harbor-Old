@@ -10,13 +10,17 @@ function postActionModelExt(mixin) {
 	var postActionModelExt = {
 		postAction: function (action, data) {
 			var root = this.urlRoot || (this.collection && this.collection.url),
-				url;
+			    url,
+			    id;
 		
 			if (!root) {
 				throw new Error("A url is required for postAction.");
 			}
 
-			url = root + "/" + this.get("id") + "/" + action;
+			id = this.get("id");
+			url = root + "/" + id + "/" + action;
+			data = data || {};
+			data.id = id;
 			return this.sync(action, this, {
 				url: url,
 				type: "POST",
