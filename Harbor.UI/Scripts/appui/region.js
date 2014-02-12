@@ -21,14 +21,19 @@ function region($, console) {
 
 		region = {
 			push: function (el) {
-				var currentChildren = regionEl.children();
+				var currentChildren = regionEl.children(),
+				    templates = regionEl.find("[data-templatefor]"),
+				    links = regionEl.find("link");
 				
 				currentChildren.each(function (i, child) {
 					child = $(child);
 					child.data("wasVisible", child.is(":visible"));
 				});
+
+				// do not detach templates and stylesheet links
+				$("body").append(templates).append(links);
 				currentChildren.detach();
-				
+
 				if (currentChildren.length === 1 && currentChildren[0] === el) {
 					// el is already open (its the current child)
 					return;

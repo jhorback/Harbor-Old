@@ -2,6 +2,7 @@
 @import "src/frame";
 @import "src/menulist";
 @import "src/page";
+@import "src/selectlist";
 @import "src/usermenu";
 
 @mixin theme {
@@ -9,5 +10,6 @@
 	@include frame-theme;
 	@include menulist-theme;
 	@include page-theme;
+	@include selectlist-theme;
 	@include usermenu-theme;
 }
