@@ -402,6 +402,12 @@
       <CompileStyle>Nested</CompileStyle>
       <DebugInfo>False</DebugInfo>
     </Content>
+    <Content Include="Content\site\core\selectlist.css">
+      <DependentUpon>selectlist.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\site\core\selectlist.min.css">
+      <DependentUpon>selectlist.scss</DependentUpon>
+    </Content>
     <Content Include="Content\site\core\src\cols.css">
       <DependentUpon>_cols.scss</DependentUpon>
     </Content>
@@ -823,6 +829,8 @@
     <Content Include="Content\site\core\menulist.scss" />
     <Content Include="Content\site\core\webhelpers.scss" />
     <Content Include="Content\site\core\src\_foundation-vars.scss" />
+    <Content Include="Content\site\core\selectlist.scss" />
+    <Content Include="Content\site\core\src\_selectlist.scss" />
     <None Include="Content\site\core\src\_tiles.scss">
       <Compile>False</Compile>
       <Minify>False</Minify>
