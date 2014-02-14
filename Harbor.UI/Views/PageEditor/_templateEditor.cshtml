@@ -11,63 +11,31 @@
 
 
 <div data-templatefor="addPageComponentView">
-    <h1 data-bind="text: title"></h1>
-    <form data-event="submit: formSubmit">
-        <div class="form-field">
-			
-			
-			@*<div>
-				<div class="float-left pad"   data-cid="c35">
-					<label>
-						<input type="radio" name="pageComponentKey" data-bind="radioval: key" value="image">
-						<span data-bind="text:name">Image</span>
-					</label>
-				</div><div class="float-left pad"   data-cid="c37">
-					<label>
-						<input type="radio" name="pageComponentKey" data-bind="radioval: key" value="pageLink">
-						<span data-bind="text:name">Page Link</span>
-					</label>
-				</div><div class="float-left pad"   data-cid="c38">
-					<label>
-						<input type="radio" name="pageComponentKey" data-bind="radioval: key" value="paypalbutton">
-						<span data-bind="text:name">PayPal Button</span>
-					</label>
-				</div><div class="float-left pad"   data-cid="c39">
-					<label>
-						<input type="radio" name="pageComponentKey" data-bind="radioval: key" value="productLink">
-						<span data-bind="text:name">Product Link</span>
-					</label>
-				</div><div class="float-left pad"   data-cid="c40">
-					<label>
-						<input type="radio" name="pageComponentKey" data-bind="radioval: key" value="text">
-						<span data-bind="text:name">Text</span>
-					</label>
-				</div>
-			</div>*@
+	<h1 data-bind="text: title"></h1>
+	<form data-event="submit: formSubmit">
+	<div class="selectlist">
+		<ul>
+			<li class="col3" data-collection="pageComponents" tabindex="0" data-bind="title: description">
+				<input type="radio" name="pageComponentKey" data-bind="val: key" class="hide"/>
+				<h1 data-bind="text:name"></h1>
+				<small data-bind="text: description"></small>
+			</li>
+		</ul>
+	</div>
+			@*
+			<label for="pageeditor-component" data-bind="text: userHint"></label>
+				<select id="pageeditor-component" name="pageComponentKey" class="stretch">
+				<option data-collection="pageComponents" data-bind="text: name, value: key"></option>
+			</select>*@
 
-	        <div>
-		        <div class="float-left pad" data-collection="pageComponents">
-			        <label>
-				        <input type="radio" name="pageComponentKey" data-bind="val: key"/>
-				        <span data-bind="text:name"></span>
-			        </label>
-		        </div>
-	        </div>
-
-	      @*
-		<label for="pageeditor-component" data-bind="text: userHint"></label>
-			<select id="pageeditor-component" name="pageComponentKey" class="stretch">
-			<option data-collection="pageComponents" data-bind="text: name, value: key"></option>
-		</select>*@
-	        
-	        
-			<div data-bind="text: pageComponentDescription"></div>
-        </div>
-        <div class="form-controls">
-            <input type="submit" value="Save" class="loud">
-            <input type="button" value="Cancel" data-rel="back">
-        </div>
-    </form>
+			<div class="form-field">
+				<div data-bind="text: pageComponentDescription"></div>
+			</div>
+			<div class="form-controls">
+				<input type="submit" value="Add" class="loud">
+				<input type="button" value="Cancel" data-rel="back">
+			</div>
+</form>
 </div>
 
 

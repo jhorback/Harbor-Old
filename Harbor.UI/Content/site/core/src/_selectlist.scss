@@ -22,9 +22,11 @@ $selectlist-selected-background-color: $link-color !default;
 				color: $link-color;
 				text-decoration: none;
 				text-shadow: 0 1px 0 rgba(255,255,255,.5);
-				padding: .5em 1em;
-				margin-right: 2px;
+				//padding: .5em 1em;
+				//margin-right: 2px;
+				margin: .2em;
 				border: 1px solid #ddd;
+				overflow: hidden;
 
 				@include border-radius(4px);
 				@include transition(all .2s ease-in-out);
@@ -32,21 +34,24 @@ $selectlist-selected-background-color: $link-color !default;
 				&.selected, &:hover, &:focus {
 					color: $body-color;
 					background-color: $body-background-color;
-					border: 1px solid $color-selected;						
+					border: 1px solid $link-color;						
 					cursor: default;
 					outline: none;
 				}
 				
-				h1, h2, h3, h4 {
+				h1, h2, h3, h4 {					
 					font-size: 1em;
 					font-weight: bold;
 					padding: 0;
 					margin: 0;
 					white-space: nowrap;
+					padding: .5em;
 				}
 				
 				p, span {
 					white-space: nowrap;
+					padding: .5em;
+					padding-top: 0em;
 				}												
 			}			
 		}		
@@ -60,6 +65,10 @@ $selectlist-selected-background-color: $link-color !default;
 			color: $selectlist-selected-color;
 			background-color: $selectlist-selected-background-color;
 			text-shadow: 0 1px 0 #000;
+
+			h1, h2, h3 {
+				color: $selectlist-selected-color !important;
+			}
 		}
 	}
 }
