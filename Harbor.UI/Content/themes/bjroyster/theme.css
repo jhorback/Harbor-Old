@@ -121,3 +121,10 @@ dd {
   .page-header h1 a {
     color: #666666; }
 
+.selectlist > ul > li.selected {
+  color: white;
+  background-color: #336699;
+  text-shadow: 0 1px 0 #000; }
+  .selectlist > ul > li.selected h1, .selectlist > ul > li.selected h2, .selectlist > ul > li.selected h3, .selectlist > ul > li.selected h4 {
+    color: white; }
+

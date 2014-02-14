@@ -3,8 +3,29 @@ component Construct
 
 A UI component is associated with a view that is a root template.
 
+	myApp.component("compx");
+	myApp.start(["compx", function (compx) {
+		compx.render();
+	}]);
 
-//jch* re-thinking this a bit here
+	A template for compxView will be used as the root template for the component.
+	Any options passed to render will be passed to compxView.
+
+	myApp.view("compxView", function () {
+		// Backbone view constructor
+	}, {
+		// Backbone view prototype
+	});
+
+	<div data-templatefor="compxView">
+		<p data-bind="text: message"></p>
+	</div>
+
+
+// jch* review /simplify documentation below
+// I don't think the type option is used - verify
+
+
 Options: 
     * regionEl
 	* parentEl
@@ -56,6 +77,7 @@ These can also be thought of as a page and partial components.
 	someElementComponent.render({ parentEl: ".some-element"});
 	someElementComponent.close(".some-element");
 	
+	Note: The parentEl is handled by the templateRenderer.
 
 
 The two types of unmanged components are dialog and inline components.
@@ -128,7 +150,36 @@ var Component = (function () {
 			
 			return view;
 		},
-	
+		
+		setRegion: function (el) {
+			this.isIndi();
+			this.regionEl = el;
+			return this;
+		},
+		
+		setParent: function (el) {
+			this.isIndi();
+			this.parentEl = el;
+			return this;
+		},
+
+		isInline: function () {
+			this.isIndi();
+			this.insertAfterTemplate = true;
+			return this;
+		},
+		
+		isIndependent: function () {
+			return this.isIndi();
+		},
+		
+		isIndi: function () {
+			delete this.insertAfterTemplate;
+			delete this.regionEl;
+			delete this.parentEl;
+			return this;
+		},
+
 		close: function (el) {
 			var view = null;
 			if (this.region) {
@@ -138,6 +189,7 @@ var Component = (function () {
 				view = el.data("view");
 			}
 			view && view.remove();
+			delete privates[this.cid];
 		}
 	};
 

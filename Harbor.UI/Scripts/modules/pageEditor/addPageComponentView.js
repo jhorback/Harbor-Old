@@ -8,7 +8,8 @@ pageEditor.addPageComponentView = function (
 	currentPageRepo,
 	pageComponentRepo,
 	dialogFactory,
-	componentManager
+	componentManager,
+	selectlistFactory
 ) {
 
 	this.model = modelFactory.create("addPageComponentViewModel", {		
@@ -26,6 +27,7 @@ pageEditor.addPageComponentView = function (
 	this.currentPageRepo = currentPageRepo;
 	this.dialogFactory = dialogFactory;
 	this.componentManager = componentManager;
+	this.selectlistFactory = selectlistFactory;
 };
 
 
@@ -34,11 +36,13 @@ pageEditor.addPageComponentView.prototype = {
 	onRender: function () {
 		
 		this.dialog = this.dialogFactory.create(this.$el);
-		setTimeout(_.bind(function () {
-			debugger;
-			this.model.set("pageComponentKey", "text"); //jch! testing
+		//debugger;
+		this.selectlistFactory.create(this.$el.find(".selectlist"));
+		//setTimeout(_.bind(function () {
+		//	debugger;
+		//	this.model.set("pageComponentKey", "text"); //jch! testing
 			
-		}, this), 1000);
+		//}, this), 1000);
 	},
 	
 	formSubmit: function (event) {
@@ -65,5 +69,6 @@ pageEditor.view("addPageComponentView", [
 	"pageComponentRepo",
 	"dialogFactory",
 	"componentManager",
+	"selectlistFactory",
 	pageEditor.addPageComponentView
 ]);
