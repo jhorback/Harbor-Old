@@ -7,7 +7,7 @@ will return the same region object.
 */
 function region($, console) {
 	return function (el) {
-		var regionEl = $(el),
+		var regionEl = $(el).eq(0),
 			children = [],
 			region;
 

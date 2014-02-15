@@ -21,6 +21,10 @@ function childViewExt(_, mixin) {
 				this.remove(view);
 			}, this));
 		},
+
+		each: function (fn, proxy) {
+			_.each(this.children, fn, proxy);
+		},
 		
 		remove: function (view) {
 			if (!view) { // remove all

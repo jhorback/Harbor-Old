@@ -61,7 +61,11 @@ function errorDisplayViewExt(_, console) {
 		},
 
 		clearErrors: function () {
-			this.displayError(this, "");
+			this.displayError.call(this, ""); // does not work
+		},
+
+		clearError: function (attr) {
+			internal.displayFieldError.call(this, attr, null);
 		}
 	};
 

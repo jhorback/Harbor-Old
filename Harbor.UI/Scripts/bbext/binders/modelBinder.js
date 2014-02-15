@@ -69,17 +69,17 @@ var modelBinder = function ($, _, config, nameValueParser) {
 		this.$el.data("modelbound", true);
 		// this.attrs = attrs || ModelBinder.config.attributes;
 		this.bindings = {};
+		this.models = {};
 		this._modelToViewProxy = $.proxy(_private.modelToView, this);
-		this.model.bind("change", this._modelToViewProxy);
 		_private.init.call(this);
 		return this;
 	};
 
 	ModelBinder.prototype = {
 		model: null, // holds the model
+		models: {}, // holds all bound models
 		$el: null, 	// stores the container that is being bound
 		bindings: {}, // stores binding elements by name (each value is an array of elements).
-
 		updateEl: function (el, name, value) { // name and value are optional
 			var binding, set, haveValue = value !== undefined;
 
@@ -96,10 +96,10 @@ var modelBinder = function ($, _, config, nameValueParser) {
 			
 			value = value === null ? "" : value;
 
-			// if we have a binding name and the name attribute is not passed or is the same a s the binding name then update
+			// if we have a binding name and the name attribute is not passed or is the same as the binding name then update
 			if (binding.name && (!name || binding.name === name)) {
 				set = (config.types[binding.type] && config.types[binding.type].set) || config.types["default"].set;
-				set.call(this, el, haveValue ? value : this.model.get(binding.name));
+				set.call(this, el, haveValue ? value : this.get(binding.name));
 			}
 
 			// set the attributes
@@ -110,7 +110,7 @@ var modelBinder = function ($, _, config, nameValueParser) {
 					if (!name || modelPropertyName === name) {
 						attrType = config.attributes[attr] || config.attributes["default"];
 						setter = config.attributeTypes[attrType];
-						setter(el, attr, haveValue ? value : this.model.get(modelPropertyName));
+						setter(el, attr, haveValue ? value : this.get(modelPropertyName));
 					}
 				}, this));
 			}
@@ -121,8 +121,22 @@ var modelBinder = function ($, _, config, nameValueParser) {
 				return;
 			}
 			this.matches && this.matches.unbind(".modelbinder");
-			this.model && this.model.unbind("change", this._modelToViewProxy);
+			_.each(this.models, function (model, name) {
+				model.unbind("change", this._modelToViewProxy);
+			}, this);
 			this.$el.data("modelbound", false);
+		},
+
+		get: function (name) {
+			var binding = this.bindings[name];
+			return binding ? binding.model.get(binding.attr) : void(0);
+		},
+
+		set: function (name, value) {
+			var binding = this.bindings[name];
+			if (binding) {
+				binding.model.set(binding.attr, value);
+			}
 		},
 
 		off: function () {
@@ -158,25 +172,24 @@ var modelBinder = function ($, _, config, nameValueParser) {
 			if (("value" in bindTo) === false) {
 				bindTo.value = el.attr("name") || el.attr("id");
 			}
+
 			$.each(bindTo, $.proxy(function (what, modelProperty) {
-				var val = this.model.get(modelProperty);
-
-				if (val === undefined) {
-					return; // continue - do not add binding for an undefined attr
-				}
-
 				if (what.toLowerCase() === "value") { // value/type binding
 
 					binding.name = modelProperty;
 					binding.type = el.attr("data-type") || el.attr("type") || el[0].tagName.toLowerCase();
-
+					if (_private.addBinding.call(instance, modelProperty, el) === false) {
+						delete binding.name;
+						delete binding.type;
+					}
 				} else { // attribute binding
 
 					binding.attrs[what] = modelProperty;
-
+					if (_private.addBinding.call(instance, modelProperty, el) === false) {
+						delete binding.attrs[what];
+					}
 				}
-
-				_private.addBinding.call(instance, modelProperty, el); // add binding ref to model property
+				
 			}, this));
 
 			el.data("binding", binding);
@@ -207,7 +220,7 @@ var modelBinder = function ($, _, config, nameValueParser) {
 			update = function () {
 				// pageLoaded = true; jch* testing delay
 				_.each(self.bindings, function (binding, propName) {
-					_.each(binding, function (el) {
+					_.each(binding.els, function (el) {
 						if (el.is(":text,:password,select")) {
 							_private.viewToModel.call(self, el);
 						}
@@ -222,9 +235,61 @@ var modelBinder = function ($, _, config, nameValueParser) {
 			}
 		},
 
+		// add the binding - returns true only if there is a attribute on the model
+		// supports nested models
 		addBinding: function (name, el) {
-			this.bindings[name] = this.bindings[name] || [];
-			this.bindings[name].push(el);
+			var binding;
+			
+			if (!name) {
+				return false;
+			}
+
+			if (!this.bindings[name]) {
+				binding = _private.initBinding.call(this, name);
+				if (!binding) {
+					return false;
+				}
+				this.bindings[name] = binding;
+
+				// create reference on the model for model-to-view binding
+				binding.model.bindings = binding.model.bindings || {};
+				binding.model.bindings[binding.attr] = name;
+			}
+			this.bindings[name].els.push(el);
+			return true;
+		},
+
+		initBinding: function (name) {
+			// 
+			var model = this.model, attr, i, parts;
+
+			if (name.indexOf(".") === -1) {
+				model = this.model;
+				attr = name;
+			} else {
+				parts = name.split(".");
+				for (i = 0; i < parts.length; i++) {
+					attr = parts[i];
+					if (i !== parts.length - 1) {
+						model = model[attr];
+					}
+				}
+			}
+
+			if (model.attributes[attr] === void(0)) {
+				return null;
+			}
+			
+			if (!this.models[model.name]) {
+				model.bind("change", this._modelToViewProxy);
+				this.models[model.name] = model;
+			};
+			return {
+				name: name,
+				els: [],
+				model: model,
+				attr: attr
+			};
 		},
 
 		viewToModelFromEvent: function (event) {
@@ -245,20 +310,20 @@ var modelBinder = function ($, _, config, nameValueParser) {
 
 			// don't trigger a change if the initial model value is falsy
 			val = get.call(this, el, event, binding);
-			if (val === "" && !this.model.get(binding.name)) {
+			if (val === "" && !this.get(binding.name)) {
 				opts = { silent: true };
 			}
-			this.model.set(binding.name, val, opts);
+			this.set(binding.name, val, opts);
 		},
 
 		modelToView: function (model) {
 			var name, els, newVal;
 
 			_.each(model.changed, function (value, key) {
-				name = key;
-				els = this.bindings[name];
+				name = model.bindings && model.bindings[key];
+				els = this.bindings[name] && this.bindings[name].els;
 				if (els) {
-					newVal = model.get(name);
+					newVal = this.get(name);
 					$.each(els, $.proxy(function (index, el) {
 						this.updateEl(el, name, newVal);
 					}, this));
