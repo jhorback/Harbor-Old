@@ -16,6 +16,13 @@ $selectlist-selected-background-color: $link-color !default;
 			@include clearfix;
 			@include no-bullets;			
 
+			.height-medium {
+				height: 7em;
+			}
+			.height-small {
+				height: 4em;
+			}
+
 			& > li {
 				float: left;				
 				display: block;
@@ -27,6 +34,7 @@ $selectlist-selected-background-color: $link-color !default;
 				margin: .2em;
 				border: 1px solid #ddd;
 				overflow: hidden;
+
 
 				@include border-radius(4px);
 				@include transition(all .2s ease-in-out);
@@ -48,11 +56,14 @@ $selectlist-selected-background-color: $link-color !default;
 					padding: .5em;
 				}
 				
-				p, span {
-					white-space: nowrap;
+				p, span, div {					
 					padding: .5em;
 					padding-top: 0em;
-				}												
+				}
+
+				p {
+					white-space: nowrap;
+				}									
 			}			
 		}		
 	}
