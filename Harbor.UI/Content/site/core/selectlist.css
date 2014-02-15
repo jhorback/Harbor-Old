@@ -10,6 +10,10 @@
       list-style-image: none;
       list-style-type: none;
       margin-left: 0px; }
+    .selectlist > ul .height-medium {
+      height: 7em; }
+    .selectlist > ul .height-small {
+      height: 4em; }
     .selectlist > ul > li {
       float: left;
       display: block;
@@ -40,8 +44,9 @@
         margin: 0;
         white-space: nowrap;
         padding: .5em; }
-      .selectlist > ul > li p, .selectlist > ul > li span {
-        white-space: nowrap;
+      .selectlist > ul > li p, .selectlist > ul > li span, .selectlist > ul > li div {
         padding: .5em;
         padding-top: 0em; }
+      .selectlist > ul > li p {
+        white-space: nowrap; }
 
