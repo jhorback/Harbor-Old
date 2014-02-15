@@ -140,6 +140,8 @@ $(function () {
 	   _documentKeyDown: function (event) {
 		   if (event.shiftKey) {
 			   this.disableSelection();
+		   } else if (event.keyCode == 13 || event.keyCode == 32) {
+			   $(event.target).trigger("click"); // click if enter or spacebar
 		   }
 	   },
 	   
@@ -266,11 +268,12 @@ $(function () {
 	   },
 
 	   _fireChange: function () {
-		   var list = this.element;
+		   var list = this.element,
+		       selector = this.options.rowSelector + " :checked";
 		   this._trigger("change", null, {
 			   checkedValues: function () {
 					var checked = [];
-					list.find("tbody :checked").each(function (i, el) {
+					list.find(selector).each(function (i, el) {
 						checked.push($(el).val());
 					});
 					return checked;

@@ -120,19 +120,40 @@ function renderViewExt(_, $, templateCache, collectionRenderer) {
 			return;
 		}
 		
-		retModel = model[modelAttr];
-		if (!retModel && model.get) {
-			getVal = model.get(modelAttr);
-			if (getVal) {
-				retModel = getVal;
-			}
-		}
+		retModel = walkModel(model, modelAttr);
 		
 		if (data.model) {
 			view.model = retModel;
 		} else {
 			view.collection = retModel;
 		}
+	}
+
+	// walks the "."'s - nested models
+	function walkModel(model, modelAttr) {
+		// return model[modelAttr];
+		var i = 0,
+			curr = model,
+			next = null,
+			getVal,
+			attr,
+		    parts = modelAttr.split(".");
+
+		for (; i < parts.length; i++) {
+			attr = parts[i];
+			next = curr[attr];
+			if (!next && curr.get) {
+				getVal = curr.get(attr);
+				if (getVal) {
+					next = getVal;
+				}
+			}
+			if (!next) {
+				return null;
+			}
+			curr = next;
+		}
+		return next;
 	}
 }
 
