@@ -55,7 +55,10 @@ var collectionRenderer = function (_, templateCache, viewFactory, modelBinder, v
 
 			itemAtIndex = this.view.$el.children().eq(index);
 
-			itemView = viewRenderer.render(this.itemViewName, { model: model });
+			itemView = viewRenderer.render(this.itemViewName, {
+				parentModel: this.view.model, 
+				model: model
+			});
 			itemView.$el.attr("data-cid", model.cid);
 			this.view.views.add(itemView);
 			

@@ -277,7 +277,10 @@ $(function () {
 						checked.push($(el).val());
 					});
 					return checked;
-				}
+				},
+			   value: function () {
+				   return this.checkedValues()[0];
+			   }
 		   });
 	   },
 	   

@@ -34,15 +34,18 @@ pageEditor.addPageComponentView = function (
 pageEditor.addPageComponentView.prototype = {
 	
 	onRender: function () {
+		var model = this.model;
 		
 		this.dialog = this.dialogFactory.create(this.$el);
-		//debugger;
-		this.selectlistFactory.create(this.$el.find(".selectlist"));
-		//setTimeout(_.bind(function () {
-		//	debugger;
-		//	this.model.set("pageComponentKey", "text"); //jch! testing
-			
-		//}, this), 1000);
+		
+		this.selectlistFactory.create(this.$el.find(".selectlist"), {
+			change: function (event, info) {
+				model.set("pageComponentKey", info.value());
+			}
+		});
+		
+		debugger;
+		this.$el.find(":radio").eq(0).click();
 	},
 	
 	formSubmit: function (event) {
