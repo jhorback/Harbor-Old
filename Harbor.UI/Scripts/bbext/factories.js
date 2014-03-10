@@ -48,6 +48,9 @@
 
 				createGeneric: function (options) {
 					var args = Array.prototype.slice.call(arguments, 0);
+					if (type === "collection" && args.length == 0) {
+						args = [null, {}];
+					}
 					args.unshift(this.nextGenericName());
 					return this.create.apply(this, args);
 				}

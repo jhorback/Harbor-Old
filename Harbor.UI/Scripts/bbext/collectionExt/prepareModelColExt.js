@@ -1,5 +1,9 @@
 ﻿
+/*
+ Provides knowledge of an injected model to the Backbone collection.
 
+ Also provides a getIdAttribute() method.
+*/
 
 function prepareModelColExt(Backbone, mixin) {
 
@@ -22,6 +26,10 @@ function prepareModelColExt(Backbone, mixin) {
 				return false;
 			}
 			return model;
+		},
+
+		getIdAttribute: function () {
+			return (this.models[0] && this.models[0].idAttribute) || "id";
 		}
 	};
 
