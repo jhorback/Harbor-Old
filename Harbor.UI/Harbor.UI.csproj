@@ -501,6 +501,7 @@
     <Content Include="Scripts\modules\bbextui\pagerModel.js" />
     <Content Include="Scripts\modules\bbextui\pagerView.js" />
     <Content Include="Scripts\modules\bbextui\selectlist.js" />
+    <Content Include="Scripts\modules\bbextui\selectlistFactory.js" />
     <Content Include="Scripts\modules\bbextui\tabFactory.js" />
     <Content Include="Scripts\modules\bbextui\tabFactoryProgressModel.js" />
     <Content Include="Scripts\modules\currentPageModel\navLinks\navLinksCollection.js" />

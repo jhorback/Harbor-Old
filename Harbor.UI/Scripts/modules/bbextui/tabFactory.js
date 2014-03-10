@@ -67,7 +67,7 @@ function tabFactory (_, appurl, collectionFactory, modelFactory) {
 
 		// jch! - render tabs
 		// 	• if item is disabled need to not add a link and no event click handler
-		console.warn("RENDERING");
+		// console.warn("RENDERING");
 
 		this.element.empty();
 		this.element.addClass(this.listType).append('<ul/>');
