@@ -1,28 +1,6 @@
 ﻿/*globals window, document, jQuery*/
-
-/*
-things to do
-----------------
-
-If this remains a jquery widget, will want to rename the file back to Selectlist or something other than selectable.
-
-
-
-Focus and keyboard support.
-	Focus on outer container
-	arrow keys used to move inner selection
-	enter/spacebar to select
-
-
-
-
-*/
-
-
 /*!
  * ui.selectlist.js v1.0.1
- *     modified for jslint
- *     fixed a radio button click error
  */
 /*
 * Descripiton:
@@ -37,17 +15,44 @@ Focus and keyboard support.
 *    rowSelector - selector for the row. Default is tr (could be li, or ul, or whatever markup is used as the row). 
 *    hideInputs - makes any inputs inside the list hidden.
 *
+* Events:
+*     "change", "selectlistchange"
+*      callback(event, info)
+*      info:
+*           checkedValues() - method that returns an array of selected input values.
+* 
+*    "valuechange", "selectlistvaluechange"
+*    callback(event, info)
+*    info:
+*        value - the value of the input that was changed
+*        checked - boolean to indicate the new value
+*
+* Methods:
+*     clear() - clears the selection.
+*     select(value, selected) - sets the selection of the input with the specified value.
+*
+* Note on events:
+*     The primary difference between the two events is that "change" is triggered less frequently, however,
+*     it does not report on what specifically changed. Whereas "valuechange" is triggered more
+*     frequently but reports the information immediately.
+*     "valuechange" was implemented to support the immediate binding of Backbone collections.
+* 
 * Notes:
 *     [data-role=checkall] - An element with a data-role attribute set to checkall will be used to select/unselect all rows.
 *     .selected - Selected rows will have a "selected" class name applied to them.
 *     [data-selectable=false] - Keeps the row from being selected.
 *         this does not keep the checkbox from being checked (disable the checkbox if that is needed).
+* 
+* Things to consider:
+*	Focus and keyboard support.
+*		Focus on outer container
+*		arrow keys used to move inner selection
+*		enter/spacebar to select
 */
-
 $(function () {
    var doc = $(document);
 
-   $.widget("ui.selectlist", {
+   $.widget("bbextui.selectlist", {
 	   options: {
 		   rowSelector: "li",
 		   hideInputs: false
@@ -59,11 +64,13 @@ $(function () {
 		   var self = this,
 			   o = this.options;
 
+		   this._values = {}; // hash of selected values
+
 		   if (o.rowSelector === "li" && this.element[0].tagName.toLowerCase() === "table") {
 			   o.rowSelector = "tr";
 		   }
 
-		   this.element.attr("tabindex", 0);
+		   // this.element.attr("tabindex", 0); add this only when keyboard support is added
 
 		   if (this.options.hideInputs) {
 			   this.element.find(":input").hide();
@@ -76,6 +83,7 @@ $(function () {
 			   var checkbox = $(this);
 			   self.isRowSelectable(checkbox);
 			   self.row(checkbox).addClass("selected");
+			   updateValues.call(self, checkbox, true);
 		   });
 
 		   doc.bind("keydown.selectlist", $.proxy(this._documentKeyDown, this));
@@ -90,6 +98,31 @@ $(function () {
 		clear: function () {
 			this._checkall.prop("checked", false);
 			this._checkallClick();
+		},
+
+		select: function (value, checked) {
+			var input = this.element.find("input[value='" + value + "']");
+			var isChecked = input.prop("checked");
+
+
+			if (isChecked !== checked) {
+				input.prop("checked", checked);
+				updateValues.call(this, input, checked);
+				isChecked = checked;
+			}
+
+			if (isChecked) {
+				this.row(input).addClass("selected");
+			} else {
+				this.row(input).removeClass("selected");
+			}
+		},
+
+		values: function () {
+			var values = $.map(this._values, function(v, i){
+				return i;
+			});
+			return values;
 		},
 	   
 		_checkallClick: function () {
@@ -115,8 +148,10 @@ $(function () {
 				   } else if (target.is(":checkbox")) {
 					   if (target.prop("checked")) {
 						   row.addClass("selected");
+						   updateValues.call(self, target, true);
 					   } else {
 						   row.removeClass("selected");
+						   updateValues.call(self, target, false);
 					   }
 				   }
 				   this._fireChange();
@@ -187,8 +222,9 @@ $(function () {
 		   var list = this.element;
 
 		   checkOne(list.find("input"), radio);
-		   list.find(".selected").removeClass("selected");
+		   removeSelectedValues.call(this);
 		   this.row(radio).addClass("selected");
+		   updateValues.call(this, radio, true);
 		   this._fireChange();
 	   },
 	   
@@ -196,13 +232,14 @@ $(function () {
 		   var list = this.element,
 			   row = this.row(checkbox),
 			   lastCheckbox;
-		   // targetListItem is the row
 
+		   // targetListItem is the row
 		   if (!event.ctrlKey && !event.shiftKey) {
 
+			   removeSelectedValues.call(this);
 			   checkOne(list.find("input"), checkbox);
-			   list.find(".selected").removeClass("selected");
 			   row.addClass("selected");
+			   updateValues.call(this, checkbox, true);
 			   list.data("selectlist.lastcheckbox", checkbox);
 			   this._fireChange();
 			   
@@ -224,22 +261,23 @@ $(function () {
 	   _selectSingle: function (checkbox, checked) {
 		   var row = this.row(checkbox),
 			   list = this.element;
-		   
+
 		   checked = (checked === false) ? false : true;
-		   
 		   check(checkbox, checked);
 		   this._fireChange();
 		   
 		   if (checked === true) {
 			   row.addClass("selected");
+			   updateValues.call(this, checkbox, true);
 		   } else {
 			   row.removeClass("selected");
+			   updateValues.call(this, checkbox, false);
 		   }
 		   list.data("selectlist.lastcheckbox", checkbox);
 	   },
 	   
 	   _selectRange: function (row1, row2, checked) {
-		   var len, currRow, index1, index2;
+		   var len, currRow, index1, index2, input;
 
 		   index1 = row1.index();
 		   index2 = row2.index();
@@ -256,11 +294,14 @@ $(function () {
 		   len = (len < 0) ? (len * -1) + 1 : len + 1;
 
 		   while (len--) { //ignore jslint
-			   check(currRow.find("input"), checked);
+			   input = currRow.find("input");
+			   check(input, checked);
 			   if (checked) {
 				   currRow.addClass("selected");
+				   updateValues.call(this, input, true);
 			   } else {
 				   currRow.removeClass("selected");
+				   updateValues.call(this, input, false);
 			   }
 			   currRow = currRow.next();
 		   }
@@ -268,18 +309,11 @@ $(function () {
 	   },
 
 	   _fireChange: function () {
-		   var list = this.element,
-		       selector = this.options.rowSelector + " :checked";
+		   var self = this;
+
 		   this._trigger("change", null, {
 			   checkedValues: function () {
-					var checked = [];
-					list.find(selector).each(function (i, el) {
-						checked.push($(el).val());
-					});
-					return checked;
-				},
-			   value: function () {
-				   return this.checkedValues()[0];
+				   return self.values();
 			   }
 		   });
 	   },
@@ -308,27 +342,30 @@ $(function () {
 			el.trigger("change");
 		}
 	}
-});
-/**/
 
+	function removeSelectedValues() {
+		var selected = this.element.find(".selected"),
+		    widget = this;
 
-bbext.selectlistFactory = function () {
-	return {
-		create: function (el, options) {
+		$.each(selected, function (i, row) {
+			row = $(row);
+			row.removeClass("selected");
+			updateValues.call(widget, row.find("input"), false);
+		});
+	}
 
-			el.selectlist(options);
+	function updateValues(input, checked) {
+		var value = input.val();
 
-			return {				
-				clear: function () {
-					el.selectlist("clear");
-				},
-				
-				destroy: function () {
-					el.selectlist("destroy");
-				}
-			};
+		if (checked && value !== void(0)) {
+			this._values[value] = true;
+		} else {
+			delete this._values[value];
 		}
-	};
-};
 
-bbext.service("selectlistFactory", bbext.selectlistFactory);
+		this._trigger("valuechange", null, {
+			value: value,
+			checked: checked
+		});
+	}
+});

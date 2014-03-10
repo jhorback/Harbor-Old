@@ -45,8 +45,7 @@ templateBinderShim.prototype = {
 			if (rootView) {
 				rootView.views.add(view);
 			} else {
-				debugger;
-				// jch* - why was rootView null? is that ok?
+				// debugger jch* - why was rootView null? is that ok? yes
 			}
 		});
 	}
