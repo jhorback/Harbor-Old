@@ -19,6 +19,10 @@
  * onRender callback
  *     Calls an optional onRender method after rendering passing the determined model or collection
  *
+ * onResolve callback
+ *     Same as onRender, however, fires after all shims have resolved. Useful when needing to wait for
+ *     sub templates to render for example.
+ *
  * Collection rendering
  *     If the model is not defined but a collection is, the collectionRenderer will be used
  *     to do the rendering.
@@ -47,17 +51,23 @@ function renderViewExt(_, $, templateCache, collectionRenderer) {
 		render: function () {
 			var templateFn,
 			    el,
-			    shims;
+			    shims,
+			    onResolve;
 			
 			if (this.fromServer !== true) {
 				templateFn = templateCache.getTemplateFor(this.name);
 				setModel(this, templateFn.data);
 			}
 
+			onResolve = _.bind(function () {
+				this.trigger("resolve");
+				this.onResolve && this.onResolve(this.model || this.collection);
+			}, this);
+
 			if (this.collection) {
 				
 				collectionRenderer.render(this);
-
+				onResolve();
 			} else {
 
 				if (this.fromServer !== true) {
@@ -74,12 +84,11 @@ function renderViewExt(_, $, templateCache, collectionRenderer) {
 
 				// allow the shims to render
 				shims = this.context.get("shims");
-				shims.render(this.$el, this.model);
+				shims.render(this.$el, this.model).then(onResolve);
 			}
 
 			this.trigger("render");
 			this.onRender && this.onRender(this.model || this.collection);
-
 			return this;
 		},
 		

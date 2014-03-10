@@ -13,6 +13,7 @@ function getSetModelExt(mixin, modelPropertyDescriptor) {
 			this.synced = false;
 			this.once("sync", function () {
 				this.synced = true;
+				this.set("synced", true);
 			}, this);
 			
 			parseBindings.call(this);

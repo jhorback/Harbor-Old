@@ -18,7 +18,7 @@
 // The parentEl argument can be a selector/node where the template should be rendered.
 //     If it is ommited, the root element will be rendered after the
 //     template element in the DOM.
-function templateRenderer(templateCache, viewRenderer, $, shims) {
+function templateRenderer(templateCache, viewRenderer, $, shims, console) {
 
 	return {
 		render: function (name, options) {
@@ -29,34 +29,41 @@ function templateRenderer(templateCache, viewRenderer, $, shims) {
 
 			options = options || {};
 
-			// allow shims to parse the raw template first
-			shims.parse(templateEl);
+			if (templateEl.length !== 0) {
+				// allow shims to parse the raw template first
+				shims.parse(templateEl);
 
-			// collapse the matches in reverse
-			childTemplates = $(templateEl.find("[data-templatefor]").get().reverse());
+				// collapse the matches in reverse
+				childTemplates = $(templateEl.find("[data-templatefor]").get().reverse());
 
-			childTemplates.each(function (i, template) {
-				var viewName;
+				childTemplates.each(function (i, template) {
+					var viewName;
 
-				template = $(template);
-				viewName = template.data("templatefor");
+					template = $(template);
+					viewName = template.data("templatefor");
 
-				templateCache.cacheTemplateFor(viewName, template);
+					templateCache.cacheTemplateFor(viewName, template);
 
-				template.empty();
-			});
+					template.empty();
+				});
 
-			// templateCache.cacheTemplateFor(name, templateEl, true);
-			templateCache.cacheTemplateFor(name, templateEl, { isRoot: true });
-			templateEl.removeAttr("data-templatefrom").attr("data-templatefor", name);
-			
+				// templateCache.cacheTemplateFor(name, templateEl, true);
+				templateCache.cacheTemplateFor(name, templateEl, { isRoot: true });
+				templateEl.removeAttr("data-templatefrom").attr("data-templatefor", name);
+			}
+
 			view = viewRenderer.render(name, options);
 			if (options.region) {
+				console.log("templateRenderer: Adding the root template to a region.");
 				options.region.push(view.$el);
 			} else if (options.parentEl) {
+				console.log("templateRenderer: Adding the root template to a parentEl.");
 				$(options.parentEl).append(view.$el);
 			} else if (options.insertAfterTemplate === true) {
+				console.log("templateRenderer: Inserting the root template after the template element.");
 				templateEl.after(view.$el);
+			} else {
+				console.log("templateRenderer: The template is independent.");
 			}
 			
 			templateEl.remove();
@@ -67,5 +74,5 @@ function templateRenderer(templateCache, viewRenderer, $, shims) {
 }
 
 context.module("bbext").service("templateRenderer", [
-	"templateCache", "viewRenderer", "$", "shims",
+	"templateCache", "viewRenderer", "$", "shims", "console",
 	bbext.templateRenderer = templateRenderer]);

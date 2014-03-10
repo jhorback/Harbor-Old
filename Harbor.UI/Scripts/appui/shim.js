@@ -25,7 +25,7 @@ appui.construct("shim", ["globalCache", function (globalCache) {
 }]);
 
 
-appui.service("shims", ["_", "globalCache", "context", function (_, globalCache, context) {
+appui.service("shims", ["_", "timer", "globalCache", "context", function (_, timer, globalCache, context) {
 
 
 	return {
@@ -35,10 +35,9 @@ appui.service("shims", ["_", "globalCache", "context", function (_, globalCache,
 			});
 		},
 		
+		// returns a deferred resolved when all shims have been resolved
 		render: function (el, model) {
-			//if (model && !model.toJSON) {
-			//	throw new Error("The model must implement toJSON.");
-			//}
+			var dfds = [];
 
 			foreachShim(function (shim) {
 				var matches = [];
@@ -55,11 +54,15 @@ appui.service("shims", ["_", "globalCache", "context", function (_, globalCache,
 
 				if (matches.length > 0 || (!shim.selector && !shim.matches)) {
 					shim.render && shim.render(el, model, matches);
-					shim.resolve && setTimeout(function () {
-						shim.resolve(el, model, matches);
-					}, 0);
+					if (shim.resolve) {
+						dfds.push(timer.wait().then(function () {
+							shim.resolve(el, model, matches);
+						}));
+					}
 				}
 			});
+
+			return timer.waitFor(dfds);
 		}
 	};
 

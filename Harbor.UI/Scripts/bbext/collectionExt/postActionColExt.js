@@ -19,7 +19,7 @@ function postActionColExt(mixin) {
 			}
 
 			data = data || {};
-			idAttribute = (this.models[0] && this.models[0].idAttribute) || "id";
+			idAttribute = this.getIdAttribute();
 			if (!data.ids) {
 				data.ids = this.pluck(idAttribute);
 			}
