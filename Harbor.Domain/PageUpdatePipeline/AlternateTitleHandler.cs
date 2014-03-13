@@ -8,6 +8,9 @@ namespace Harbor.Domain.PageUpdatePipeline
 	/// <summary>
 	/// Update the pages AlternateTitle if the first aside component is a Links component.
 	/// Sets it to the links name.
+	/// jch* -
+	/// If/when implementing a tabbed document, the alt title logic should be:
+	/// tabbed document name first, then first nav links name next.
 	/// </summary>
 	public class AlternateTitleHandler : IPipelineHanlder<Page>
 	{
