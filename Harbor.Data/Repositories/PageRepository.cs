@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
-using System.Diagnostics;
 using System.Linq;
 using System.Runtime.Caching;
 using Harbor.Domain;
 using Harbor.Domain.Pages;
+using Harbor.Domain.PageUpdatePipeline;
 
 namespace Harbor.Data.Repositories
 {
@@ -14,6 +14,7 @@ namespace Harbor.Data.Repositories
 		readonly HarborContext context;
 		readonly IPageFactory pageFactory;
 		private readonly IPageResourceUpdater _pageResourceUpdater;
+		private readonly IObjectFactory _objectFactory;
 		private readonly ILogger _logger;
 
 		string pageCacheKey = "Harbor.Data.Repositories.PageRepository.";
@@ -21,12 +22,12 @@ namespace Harbor.Data.Repositories
 		public PageRepository(
 			HarborContext context,
 			IPageFactory pageFactory,
-			IPageResourceUpdater pageResourceUpdater,
+			IObjectFactory objectFactory,
 			ILogger logger
 		) {
 			this.context = context;
 			this.pageFactory = pageFactory;
-			_pageResourceUpdater = pageResourceUpdater;
+			_objectFactory = objectFactory;
 			_logger = logger;
 		}
 
@@ -127,16 +128,14 @@ namespace Harbor.Data.Repositories
 			}
 			entity.DeletedPageRoles = new List<PageRole>();
 
-
-			_pageResourceUpdater.UpdateResources(entity);
-
-
 			// update the modified date
 			entity.Modified = DateTime.Now;
 
 
 			try
 			{
+				var pageUpdatePipeline = new PageUpdatePipeline(_objectFactory);
+				pageUpdatePipeline.Execute(entity);
 				context.SaveChanges();
 			}
 			catch (DbEntityValidationException dbEx)

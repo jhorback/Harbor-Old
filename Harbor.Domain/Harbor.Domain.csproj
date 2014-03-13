@@ -81,6 +81,7 @@
     <Compile Include="Files\IFileRepository.cs" />
     <Compile Include="Files\FileQuery.cs" />
     <Compile Include="ILogger.cs" />
+    <Compile Include="IObjectFactory.cs" />
     <Compile Include="JSON.cs" />
     <Compile Include="PageNav\INavLinksRepository.cs" />
     <Compile Include="PageNav\NavLinks.cs" />
@@ -152,6 +153,13 @@
     <Compile Include="IFactory.cs" />
     <Compile Include="IRespository.cs" />
     <Compile Include="IValueObject.cs" />
+    <Compile Include="PageUpdatePipeline\ResourceUpdater.cs" />
+    <Compile Include="PageUpdatePipeline\AlternateTitleHandler.cs" />
+    <Compile Include="PageUpdatePipeline\PageUpdatePipeline.cs" />
+    <Compile Include="Pipeline\BasePipeline.cs" />
+    <Compile Include="Pipeline\IPipelineHandler.cs" />
+    <Compile Include="Pipeline\PipelineContext.cs" />
+    <Compile Include="Pipeline\IPipelineContext.cs" />
     <Compile Include="Pipeline\IPipeline.cs" />
     <Compile Include="Products\IPayPalButtonRepository.cs" />
     <Compile Include="Products\PayPalButton.cs" />

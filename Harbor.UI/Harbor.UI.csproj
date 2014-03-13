@@ -174,12 +174,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\IoC\ObjectFactoryRegistry.cs" />
     <Compile Include="App_Start\IoC\HarborDataModule.cs" />
     <Compile Include="App_Start\IoC\LogInjectionModule.cs" />
     <Compile Include="App_Start\Bootstrapper.cs" />
     <Compile Include="App_Start\IoC\LoggerRegistry.cs" />
     <Compile Include="App_Start\IoC\StructureMapDependencyResolver.cs" />
     <Compile Include="App_Start\IoC\StructureMapDependencyScope.cs" />
+    <Compile Include="App_Start\IoC\StructureMapObjectFactory.cs" />
     <Compile Include="App_Start\JSPkgs\AppUIPkg.cs" />
     <Compile Include="App_Start\JSPkgs\CurrentPageModelPkg.cs" />
     <Compile Include="App_Start\JSPkgs\CurrentUserModelPkg.cs" />
