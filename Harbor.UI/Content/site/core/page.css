@@ -65,7 +65,8 @@
 
 .centered .page-header, .centered .page-body {
   max-width: 88em;
-  margin: auto; }
+  margin-left: auto;
+  margin-right: auto; }
 .centered .page-aside {
   width: 20%; }
 .centered .page-content {

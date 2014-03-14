@@ -9,6 +9,7 @@ namespace Harbor.Domain.PageUpdatePipeline
 			: base(objectFactory)
 		{
 			AddHandler<AlternateTitleHandler>();
+			AddHandler<ResourceUpdater>();
 		}
 	}
 }

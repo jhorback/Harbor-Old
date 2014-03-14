@@ -5,8 +5,6 @@
 
 #frame-header {
   overflow: hidden;
-  height: 4.286em;
-  line-height: 4.286em;
   z-index: 1; }
   #frame-header a, #frame-header a:visited {
     text-decoration: none; }
