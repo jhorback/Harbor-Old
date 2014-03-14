@@ -85,14 +85,37 @@ $page-header-bottom: $frame-header-height + $page-header-height;
 @mixin page-header-theme {
 	.page-header {		
 		h1 {
+			font-size: 3.14em;
+			font-weight: normal;
 			color: $page-title-color;
 			//font-weight: normal;
 			 a {			
 				color: $page-title-color;
-			
+							
 				&:hover {
 					// color: $page-title-color;				
 				}
+			}			
+		}
+	}
+
+	.centered {
+		.page-header {
+			text-align: center;
+			margin-bottom: 1em;
+			h1 {
+				float: none;
+			}
+			h1:after {
+				background-color: $page-title-color;
+				display: block;
+				height: 1px;
+				width: 100px;
+				content: '';
+				//bottom: -37px;
+				position: absolute;
+				margin-left: -50px;
+				left: 50%;
 			}
 		}
 	}
@@ -130,7 +153,8 @@ $page-header-bottom: $frame-header-height + $page-header-height;
 	.centered {
 		.page-header, .page-body {
 			max-width: $page-readable-width;
-			margin: auto;
+			margin-left: auto;
+			margin-right: auto;
 		}
 		.page-aside {
 			width: $page-aside-width;

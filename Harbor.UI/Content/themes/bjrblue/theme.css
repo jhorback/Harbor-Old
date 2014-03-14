@@ -90,16 +90,24 @@ dd {
   margin-left: 10.0002px; }
 
 #frame-header {
+  height: 4.286em;
+  line-height: 4.286em;
   color: #eeeeee;
-  background: transparent; }
+  background: transparent;
+  position: fixed;
+  width: 100%;
+  -moz-box-shadow: 0 2px 4px rgba(105, 105, 105, 0.25);
+  -webkit-box-shadow: 0 2px 4px rgba(105, 105, 105, 0.25);
+  -ms-box-shadow: 0 2px 4px rgba(105, 105, 105, 0.25);
+  box-shadow: 0 2px 4px rgba(105, 105, 105, 0.25); }
   #frame-header a, #frame-header a:visited {
     color: #eeeeee; }
 
 #frame-logo a {
   text-indent: -99999px;
   display: block;
-  width: 200px;
-  height: 50px;
+  width: 150px;
+  height: 51px;
   background: url(images/logo.png) no-repeat; }
 
 #frame-nav ul li:hover {
@@ -111,15 +119,34 @@ dd {
   #frame-nav ul li.selected a {
     color: #333333; }
 
-#frame-body ::-webkit-scrollbar-thumb {
-  background: #cccccc; }
-  #frame-body ::-webkit-scrollbar-thumb:hover {
-    background: #b3b3b3; }
+#frame-body {
+  top: 4.286em; }
+  #frame-body ::-webkit-scrollbar-thumb {
+    background: #cccccc; }
+    #frame-body ::-webkit-scrollbar-thumb:hover {
+      background: #b3b3b3; }
 
 .page-header h1 {
+  font-size: 3.14em;
+  font-weight: normal;
   color: white; }
   .page-header h1 a {
     color: white; }
+
+.centered .page-header {
+  text-align: center;
+  margin-bottom: 1em; }
+  .centered .page-header h1 {
+    float: none; }
+  .centered .page-header h1:after {
+    background-color: white;
+    display: block;
+    height: 1px;
+    width: 100px;
+    content: '';
+    position: absolute;
+    margin-left: -50px;
+    left: 50%; }
 
 .selectlist > ul > li.selected {
   color: white;
