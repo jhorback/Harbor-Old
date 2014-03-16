@@ -111,7 +111,11 @@ dd {
   background: url(images/logo.png) no-repeat; }
 
 #frame-nav ul li:hover {
-  background-color: white; }
+  background-color: white;
+  -moz-box-shadow: 0 6px 14px rgba(105, 105, 105, 0.6);
+  -webkit-box-shadow: 0 6px 14px rgba(105, 105, 105, 0.6);
+  -ms-box-shadow: 0 6px 14px rgba(105, 105, 105, 0.6);
+  box-shadow: 0 6px 14px rgba(105, 105, 105, 0.6); }
   #frame-nav ul li:hover a {
     color: #333333; }
 #frame-nav ul li.selected {
