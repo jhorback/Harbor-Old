@@ -93,7 +93,7 @@ dd {
   height: 6em;
   line-height: 6em;
   color: #336699;
-  background: #eeeeee;
+  background: #e1ebf4;
   position: fixed;
   width: 100%;
   -moz-box-shadow: 0 2px 4px rgba(105, 105, 105, 0.25);
@@ -111,7 +111,11 @@ dd {
   background: url(images/logo.png) no-repeat; }
 
 #frame-nav ul li:hover {
-  background-color: #1188aa; }
+  background-color: #1188aa;
+  -moz-box-shadow: 0 6px 14px rgba(105, 105, 105, 0.6);
+  -webkit-box-shadow: 0 6px 14px rgba(105, 105, 105, 0.6);
+  -ms-box-shadow: 0 6px 14px rgba(105, 105, 105, 0.6);
+  box-shadow: 0 6px 14px rgba(105, 105, 105, 0.6); }
   #frame-nav ul li:hover a {
     color: white; }
 #frame-nav ul li.selected {

@@ -1,27 +1,29 @@
 ﻿@using Harbor.UI
-<fieldset>
-	<legend>Development</legend>
-	<div class="pad-left">
-		<a href="@Url.Action("Index", "StyleGuide")">Style Guide</a>
-	</div>
-	<div class="pad-left">
-		<a href="~/Home/AppJsApi">App<span class="attn">js</span> Documentation</a>
-	</div>
-	<div class="pad-left">
-		<a href="@Url.Action("JavaScriptPackages", "Home")">JavaScript Packages</a>
-	</div>
-	<div class="pad-left">
-		<a href="~/elmah.axd">Http Errors</a>
-	</div>
+<div class="menulist">
+	@*<h2>Development</h2>*@
+	<ul>
+		<li>
+			<a href="@Url.Action("Index", "StyleGuide")">Style Guide</a>
+		</li>
+		<li>
+			<a href="~/Home/AppJsApi">App<span class="attn">js</span> Documentation</a>
+		</li>
+		<li>
+			<a href="@Url.Action("JavaScriptPackages", "Home")">JavaScript Packages</a>
+		</li>
+		<li>
+			<a href="~/elmah.axd">Elmah (Http Errors)</a>
+		</li>
+	</ul>
 	<hr />
-	<div class="pad-left">
+	<div>
 		@if (string.IsNullOrEmpty(HarborApplication.GoogleAnalyticsAccount)) {
-			<span>There is no google analytics account.</span>
+			<span>Google analytics is not configured.</span>
 		} else {
 			<a href="https://www.google.com/analytics">Google Analytics (@HarborApplication.GoogleAnalyticsAccount)</a>		
 		}
 	</div>
-</fieldset>
+</div>
 @*
 <h2>Development</h2>
 <ul>

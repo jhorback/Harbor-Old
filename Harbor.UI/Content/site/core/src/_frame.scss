@@ -70,6 +70,7 @@ $frame-logo-use-image: true !default;
 			li {		
 				&:hover {
 					background-color: $framenav-background-color-hover;
+					@include box-shadow(0 6px 14px rgba(105,105,105,.60));
 					// @include border-radius(50px);
 					a {
 						color: $framenav-color-hover;
