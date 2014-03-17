@@ -48,7 +48,6 @@ namespace Harbor.Domain.Pages
 			return comp as T;
 		}
 
-
 		PageComponent createComponent(Type type, Page page, string uicid)
 		{
 			var factory = factories.ContainsKey(type) ? factories[type] : defaultFactory;

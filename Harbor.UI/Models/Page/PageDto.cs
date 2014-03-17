@@ -70,6 +70,7 @@ namespace Harbor.UI.Models
 
 		public int id { get; set; }
 		public string title { get; set; }
+		public string alternateTitle { get; set; }
 		public string author { get; set; }
 		public string pageTypeKey { get; set; }
 		public string created { get; set; }

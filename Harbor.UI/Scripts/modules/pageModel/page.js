@@ -16,6 +16,7 @@ page.prototype = {
 	defaults: {
 		id: null,
 		title: null,
+		alternateTitle: null,
 		author: null,
 		pageTypeKey: "document",
 		created: null,
