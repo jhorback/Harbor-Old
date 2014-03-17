@@ -29,15 +29,14 @@ namespace Harbor.Domain.PageUpdatePipeline
 				return;
 			}
 
-			var firstAside = page.Template.Aside.First();
-			if (firstAside.key == Harbor.Domain.Pages.Components.Links.KEY)
+			var firstAside = page.Template.Aside.FirstOrDefault();
+			
+			if (firstAside != null && firstAside.key == Pages.Components.Links.KEY)
 			{
-				// maybe add a method to comprepository: GetCoimponent(page, firstAside); instead of above if block
 				var links = _pageComponentRepository.GetComponent<Links>(page, firstAside.uicid);
 				if (links != null)
 				{
-					// page.Title = links.Name;
-					// page.AlternateTitle = links.Name;
+					page.AlternateTitle = links.Name;
 				}
 			}
 		}
