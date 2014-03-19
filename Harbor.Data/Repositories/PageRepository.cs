@@ -6,6 +6,7 @@ using System.Runtime.Caching;
 using Harbor.Domain;
 using Harbor.Domain.Pages;
 using Harbor.Domain.PageUpdatePipeline;
+using System.Data.Entity;
 
 namespace Harbor.Data.Repositories
 {
@@ -57,20 +58,21 @@ namespace Harbor.Data.Repositories
 		public IQueryable<Page> Query(IncludePageResources include)
 		{
 			context.Configuration.ProxyCreationEnabled = false;
-			var pages =  context.Pages.Include("Properties");
+			var pages =  context.Pages.Include(p => p.Properties);
 			if (include.HasFlag(IncludePageResources.Roles))
-				pages = pages.Include("PageRoles");
+				pages = pages.Include(p => p.PageRoles);
 			if (include.HasFlag(IncludePageResources.PreviewImage))
-				pages = pages.Include("PreviewImage");
+				pages = pages.Include(p => p.PreviewImage);
 			if (include.HasFlag(IncludePageResources.Files))
-				pages = pages.Include("Files");
+				pages = pages.Include(p => p.Files); //.Select(f => f.Owner)); // jch! this does work owner is null before but not after	
+			// pages = pages.Include(p => p.PageLayout
 			if (include.HasFlag(IncludePageResources.PageLinks))
-				pages = pages.Include("PageLinks");
+				pages = pages.Include(p => p.PageLinks);
 			if (include.HasFlag(IncludePageResources.NavLinks))
-				pages = pages.Include("NavLinks");
+				pages = pages.Include(p => p.NavLinks);
 			if (include.HasFlag(IncludePageResources.PayPalButtons))
-				pages = pages.Include("PayPalButtons");
-			return pages.AsQueryable();
+				pages = pages.Include(p => p.PayPalButtons);
+			return pages;
 		}
 
 		public IQueryable<Page> Query()

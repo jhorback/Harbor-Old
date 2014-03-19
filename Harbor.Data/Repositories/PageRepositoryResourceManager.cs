@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Harbor.Domain.Files;
+﻿using System.Collections.Generic;
 using Harbor.Domain.Pages;
 using Harbor.Domain.Pages.PageResources;
 using Harbor.Domain.Products;
@@ -37,13 +34,13 @@ namespace Harbor.Data.Repositories
 			{
 				var res = resource as LinksResource;
 				var pageRes = context.NavLinks.Find(res.NavLinksID);
-				if (page != null) page.NavLinks.Add(pageRes);
+				if (pageRes != null) page.NavLinks.Add(pageRes);
 			}
 			else if (resource is PayPalButtonResource)
 			{
 				var res = resource as PayPalButtonResource;
 				var pageRes = context.PayPalButtons.Find(res.PayPalButtonID);
-				if (page != null) page.PayPalButtons.Add(pageRes);
+				if (pageRes != null) page.PayPalButtons.Add(pageRes);
 			}
 		}
 

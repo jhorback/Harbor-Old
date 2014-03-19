@@ -158,8 +158,6 @@
     <Compile Include="PageUpdatePipeline\PageUpdatePipeline.cs" />
     <Compile Include="Pipeline\BasePipeline.cs" />
     <Compile Include="Pipeline\IPipelineHandler.cs" />
-    <Compile Include="Pipeline\PipelineContext.cs" />
-    <Compile Include="Pipeline\IPipelineContext.cs" />
     <Compile Include="Pipeline\IPipeline.cs" />
     <Compile Include="Products\IPayPalButtonRepository.cs" />
     <Compile Include="Products\PayPalButton.cs" />
