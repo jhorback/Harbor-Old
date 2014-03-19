@@ -15,9 +15,9 @@ namespace Harbor.Domain.PageUpdatePipeline
 			_pageResourceUpdater = pageResourceUpdater;
 		}
 
-		public void Execute(IPipelineContext<Page> context)
+		public void Execute(Page page)
 		{
-			_pageResourceUpdater.UpdateResources(context.Target);
+			_pageResourceUpdater.UpdateResources(page);
 		}
 	}
 }
