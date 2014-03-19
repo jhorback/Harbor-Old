@@ -21,9 +21,8 @@ namespace Harbor.Domain.PageUpdatePipeline
 			_pageComponentRepository = pageComponentRepository;
 		}
 
-		public void Execute(IPipelineContext<Page> context)
+		public void Execute(Page page)
 		{
-			var page = context.Target;
 			if (!page.Template.Aside.Any())
 			{
 				return;
