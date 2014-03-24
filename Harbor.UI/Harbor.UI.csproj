@@ -497,6 +497,8 @@
     <Content Include="Scripts\bbext\collectionExt\sortColExt.js" />
     <Content Include="Scripts\bbext\modelExt\modelPropertyDescriptor.js" />
     <Content Include="Scripts\bbext\modelExt\postActionModelExt.js" />
+    <Content Include="Scripts\bbext\routerExt\managedRouterExt.js" />
+    <Content Include="Scripts\bbext\routerExt\previousRouterExt.js" />
     <Content Include="Scripts\bbext\routerExt\startRouterExt.js" />
     <Content Include="Scripts\bbext\_dependent\router.js" />
     <Content Include="Scripts\modules\bbextui\menuListFactory.js" />
@@ -1092,7 +1094,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>55934</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
