@@ -35,6 +35,10 @@
 		○ Creates the component and adds the options (passed to showComponent) cached off in the routeCache.
 
 
+NOTE:
+Only supports routes defined by the routes object on the router.
+Does not currently support the router.route method (would have to curry that method if desired).
+router.route(route, {[name, cache, url], callback});
 */
 function managedRouterExt(mixin, Backbone, _, context) {
 	var routerMixin, managedRouterExt;
@@ -43,10 +47,14 @@ function managedRouterExt(mixin, Backbone, _, context) {
 		beforeInit: function (options) {
 			
 			this.routeCache = {
-				currentRoute: null
+				previousRoute: null,
+				currentRoute: null,
+				names: {},
+				routes: {}
 			};
 
 			// adapted from Backbone router constructor and _bindRoutes
+			// basically runs through the routes object and records the metadata
 			options || (options = {});
 			if (options.routes) {
 				this.routes = options.routes;
@@ -57,18 +65,19 @@ function managedRouterExt(mixin, Backbone, _, context) {
 			
 			this.routes = _.result(this, 'routes');
 			_.each(this.routes, function (callback, pattern) {
-				callback = _.isFunction(callback) ? callback : this[callback];
-				this[pattern] = this.routes[pattern] = routeCurry.call(this, pattern, callback);
+				if (_.isFunction(callback) === false && _.isObject(callback) === true) {
+					addRouteMetaData.call(this, pattern, callback);
+				}
 			}, this);
 		},
 		
 		/*
 		    name - the name of the component to show
-			options - all options used to create the component;
+			options - all options used to create the view
 			    additional options include:
-				*navigate - a fragment to pass to the Backbone router to keep the url in sync.
-				**lifetime - static, single, instance
-				**runRoute
+				region: // node/selector of the region the component should be displayed in
+				cache: // boolean - determined dynamically by the arguments passed to the surrounding route method
+				       // can be overridden here
 		*/
 		showComponent: function (name, options) {
 			var component, routeInfo;
@@ -97,23 +106,47 @@ function managedRouterExt(mixin, Backbone, _, context) {
 	};
 	
 
-	// this would fire immediately before showComponent
 	function routeCurry(pattern, callback) {
-		
-		var routeInfo = this.routeCache[this.routeCache.currentRoute];
-		if (routeInfo) {
-			if (routeInfo.options && routeInfo.options.parentEl) {
-				routeInfo.component.close(routeInfo.options.parentEl);
-				// jch* may need to hide the el of the component if not region
-			} else {
-				routeInfo.component.close();
-			}
-		}
-
+		this.routeCache.previousRoute = this.routeCache.currentRoute;
 		this.routeCache.currentRoute = pattern;
 		return function () {
 			callback.apply(this, arguments);
+			// jch! if showComponent is not called what happens 0 anything need to be cleaned up
 		};
+	}
+
+
+	function addRouteMetaData(pattern, routeInfo) {
+
+		// ensure a name, url, and callback
+		routeInfo.name = routeInfo.name || pattern;
+		routeInfo.url = routeInfo.url || pattern;
+		routeInfo.callback = routeInfo.callback || routeInfo.name;
+
+
+		// add names and routes to the routeCache
+		if (routeInfo.name !== pattern) {
+			if (this.routeCache.names[routeInfo.name]) {
+				console.warn("The route name '" + routeInfo.name + "' will be overriden");
+			}
+			this.routeCache.names[routeInfo.name] = pattern;
+		}
+		if (this.routeCache.routes[pattern]) {
+			console.warn("The route for '" + pattern + "' will be overriden");
+		}
+		this.routeCache.routes[pattern] = routeInfo;
+
+
+		// set the curried function in the routes object or on the router
+		if (_.isFunction(routeInfo.callback)) {
+			this.routes[pattern] = routeCurry.call(this, pattern, routeInfo.callback);
+		} else {
+			this.routes[pattern] = routeInfo.callback;
+			if (!this[pattern].curried) {
+				this[pattern] = routeCurry.call(this, pattern, this[pattern]);
+				this[pattern].curried = true;
+			}
+		}
 	}
 
 	routerMixin = mixin("router");
