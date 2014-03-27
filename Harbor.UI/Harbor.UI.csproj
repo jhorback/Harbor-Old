@@ -499,6 +499,7 @@
     <Content Include="Scripts\bbext\modelExt\postActionModelExt.js" />
     <Content Include="Scripts\bbext\routerExt\managedRouterExt.js" />
     <Content Include="Scripts\bbext\routerExt\previousRouterExt.js" />
+    <Content Include="Scripts\bbext\routerExt\routerInfo.js" />
     <Content Include="Scripts\bbext\routerExt\startRouterExt.js" />
     <Content Include="Scripts\bbext\_dependent\router.js" />
     <Content Include="Scripts\modules\bbextui\menuListFactory.js" />
