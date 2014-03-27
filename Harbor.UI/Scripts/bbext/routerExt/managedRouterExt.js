@@ -40,7 +40,7 @@ Only supports routes defined by the routes object on the router.
 Does not currently support the router.route method (would have to curry that method if desired).
 router.route(route, {[name, cache, url], callback});
 */
-function managedRouterExt(mixin, Backbone, _, context) {
+function managedRouterExt(mixin, Backbone, _, routerInfo, context) {
 	var routerMixin, managedRouterExt;
 	
 	managedRouterExt = {
@@ -49,6 +49,7 @@ function managedRouterExt(mixin, Backbone, _, context) {
 			this.routeCache = {
 				previousRoute: null,
 				currentRoute: null,
+				currentRouteArgs: [],
 				names: {},
 				routes: {}
 			};
@@ -71,6 +72,10 @@ function managedRouterExt(mixin, Backbone, _, context) {
 			}, this);
 		},
 		
+		setRoot: function (root) {
+			// this is passed to Backbone.History in the startRouterExt
+			this.root = routerInfo.setRoot(root);
+		},
 		/*
 		    name - the name of the component to show
 			options - all options used to create the view
@@ -80,47 +85,56 @@ function managedRouterExt(mixin, Backbone, _, context) {
 				       // can be overridden here
 		*/
 		showComponent: function (name, options) {
-			var component, routeInfo;
-		
-			// render the component
-			routeInfo = this.routeCache[this.routeCache.currentRoute];
-			if (routeInfo) {
-				component = routeInfo.component;
-			} else {
-				component = context.instantiate(name, [options]);  // jch* could use a component factory
-			}
-			component.render(options);
-			
-			// cache the route info
-			this.routeCache[this.routeCache.currentRoute] = {
-				options: options,
-				component: component
-			};
-			
-			// navigate
-			if (options.navigate) {
-				this.navigate(_.results(options.navigate));
-			}
-			return component;
+			var routeCache = this.routeCache;
+			var url = routerInfo.routeUrl(routeCache.currentRoute, routeCache.currentRouteArgs);
+
+			debugger;
+			this.navigate(url);
+
+			//var component, routeInfo;
+
+			//// render the component
+			//routeInfo = this.routeCache[this.routeCache.currentRoute];
+			//if (routeInfo) {
+			//	component = routeInfo.component;
+			//} else {
+			//	component = context.instantiate(name, [options]);  // jch* could use a component factory
+			//}
+			//component.render(options);
+
+			//// cache the route info
+			//this.routeCache[this.routeCache.currentRoute] = {
+			//	options: options,
+			//	component: component
+			//};
+
+			//// navigate
+			//if (options.navigate) {
+			//	this.navigate(_.results(options.navigate));
+			//}
+			//return component;
 		}
 	};
 	
 
 	function routeCurry(pattern, callback) {
-		this.routeCache.previousRoute = this.routeCache.currentRoute;
-		this.routeCache.currentRoute = pattern;
+		var router = this;
+		
 		return function () {
-			callback.apply(this, arguments);
+			router.routeCache.previousRoute = router.routeCache.currentRoute;
+			router.routeCache.currentRoute = pattern;
+			router.routeCache.currentRouteArgs = arguments;
+			callback.apply(router, arguments);
 			// jch! if showComponent is not called what happens 0 anything need to be cleaned up
 		};
 	}
 
-
+	// jch! - when done review need for routeCache.routes - doesn't look like (at least) we don't need url and callback
 	function addRouteMetaData(pattern, routeInfo) {
 
 		// ensure a name, url, and callback
 		routeInfo.name = routeInfo.name || pattern;
-		routeInfo.url = routeInfo.url || pattern;
+		routeInfo.url = routeInfo.url === void(0) ? pattern : routeInfo.url;
 		routeInfo.callback = routeInfo.callback || routeInfo.name;
 
 
@@ -137,14 +151,21 @@ function managedRouterExt(mixin, Backbone, _, context) {
 		this.routeCache.routes[pattern] = routeInfo;
 
 
+		// inform routeInfo of the url
+		routerInfo.setUrl(routeInfo.name, routeInfo.url, this); // name path router
+		if (routeInfo.name !== pattern) {
+			routerInfo.setUrl(pattern, routeInfo.url, this);
+		}
+
+
 		// set the curried function in the routes object or on the router
 		if (_.isFunction(routeInfo.callback)) {
 			this.routes[pattern] = routeCurry.call(this, pattern, routeInfo.callback);
 		} else {
 			this.routes[pattern] = routeInfo.callback;
-			if (!this[pattern].curried) {
-				this[pattern] = routeCurry.call(this, pattern, this[pattern]);
-				this[pattern].curried = true;
+			if (!this[routeInfo.callback].curried) {
+				this[routeInfo.callback] = routeCurry.call(this, pattern, this[routeInfo.callback]);
+				this[routeInfo.callback].curried = true;
 			}
 		}
 	}
@@ -154,4 +175,10 @@ function managedRouterExt(mixin, Backbone, _, context) {
 }
 
 
-bbext.config(["mixin", "Backbone", "_", managedRouterExt]);
+bbext.config([
+	"mixin",
+	"Backbone",
+	"_",
+	"routerInfo",
+	managedRouterExt
+]);
