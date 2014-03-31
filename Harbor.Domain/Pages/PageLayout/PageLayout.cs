@@ -9,7 +9,11 @@ namespace Harbor.Domain.Pages
 
 		public LayoutDisplayProperties DisplayProperties { get; set; }
 
+		public string HeaderKey { get; set; }
+
 		public string HeaderData { get; set; }
+
+		public string AsideKey { get; set; }
 
 		public string AsideData { get; set; }
 
