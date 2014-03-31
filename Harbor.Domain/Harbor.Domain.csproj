@@ -117,6 +117,7 @@
     <Compile Include="Pages\PageFeature.cs" />
     <Compile Include="Pages\PageFeatureRole.cs" />
     <Compile Include="Pages\PageFunctionalRoleRepository.cs" />
+    <Compile Include="Pages\PageLayout\PageLayout.cs" />
     <Compile Include="Pages\PagePermissions.cs" />
     <Compile Include="Pages\PageProperty.cs" />
     <Compile Include="Pages\PageQuery.cs" />
@@ -141,7 +142,7 @@
     <Compile Include="Pages\Template\ContentClassNames.cs" />
     <Compile Include="Pages\Template\PageContent.cs" />
     <Compile Include="Pages\Template\PageUIC.cs" />
-    <Compile Include="Pages\Template\LayoutProperties.cs" />
+    <Compile Include="Pages\Template\LayoutDisplayProperties.cs" />
     <Compile Include="Pages\IComponentRepository.cs" />
     <Compile Include="Pages\IPageRepository.cs" />
     <Compile Include="Pages\Roles\Author.cs" />
@@ -153,7 +154,7 @@
     <Compile Include="IFactory.cs" />
     <Compile Include="IRespository.cs" />
     <Compile Include="IValueObject.cs" />
-    <Compile Include="PageUpdatePipeline\ResourceUpdater.cs" />
+    <Compile Include="PageUpdatePipeline\ContentResourceUpdater.cs" />
     <Compile Include="PageUpdatePipeline\AlternateTitleHandler.cs" />
     <Compile Include="PageUpdatePipeline\PageUpdatePipeline.cs" />
     <Compile Include="Pipeline\BasePipeline.cs" />

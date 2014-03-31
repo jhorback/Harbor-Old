@@ -23,7 +23,7 @@ namespace Harbor.Domain.Pages
 			}
 		}
 
-		public PageTypeContext SetLayout(LayoutProperties layout)
+		public PageTypeContext SetLayout(LayoutDisplayProperties layout)
 		{
 			template.Layout = layout;
 			return this;

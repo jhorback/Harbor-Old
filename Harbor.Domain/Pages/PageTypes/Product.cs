@@ -20,7 +20,7 @@ namespace Harbor.Domain.Pages.PageTypes
 
 		public override void DefineTemplate(PageTypeContext context)
 		{
-			context.SetLayout(LayoutProperties.ContentCentered | LayoutProperties.NoAside)
+			context.SetLayout(LayoutDisplayProperties.ContentCentered | LayoutDisplayProperties.NoAside)
 				.SetHeader(Components.Title.KEY)
 				.AddContent(Components.Image.KEY, new[] { ContentClassNames.Col2 })
 				.AddContent(Components.Text.KEY, new[] { ContentClassNames.Col2 })

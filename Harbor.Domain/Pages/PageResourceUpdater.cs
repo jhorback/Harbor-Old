@@ -55,6 +55,7 @@ namespace Harbor.Domain.Pages
 		#region private
 		IEnumerable<PageResource> getComponentResources(Page page)
 		{
+			// jch* I dont use the header and the aside is only used for links
 			foreach (var res in getUICDeclarations(page, page.Template.Header))
 			{
 				yield return res;

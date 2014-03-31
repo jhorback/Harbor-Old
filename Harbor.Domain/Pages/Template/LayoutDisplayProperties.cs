@@ -3,7 +3,7 @@
 namespace Harbor.Domain.Pages
 {
 	[Flags]
-	public enum LayoutProperties
+	public enum LayoutDisplayProperties
 	{
 		None = 0,
 		ContentReadable = 1,

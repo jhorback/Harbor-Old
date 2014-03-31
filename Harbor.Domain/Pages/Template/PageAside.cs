@@ -5,6 +5,7 @@ using System.Text;
 
 namespace Harbor.Domain.Pages
 {
+	[Obsolete("Aside is now part of the page layout.")]
 	public class PageAside : PageUIC
 	{
 		public PageAside() { }

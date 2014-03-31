@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Script.Serialization;
@@ -29,21 +30,25 @@ namespace Harbor.Domain.Pages
 		/// <summary>
 		/// The key of the page type used to create the template.
 		/// </summary>
+		[Obsolete("This is on the page.")]
 		public string PageTypeKey { get; set; }
 
 		/// <summary>
 		/// The flags that set the various layout properties.
 		/// </summary>
-		public LayoutProperties Layout { get; set; }
+		[Obsolete]
+		public LayoutDisplayProperties Layout { get; set; }
 
 		/// <summary>
 		/// The component to use as the document header.
 		/// </summary>
+		[Obsolete]
 		public PageHeader Header { get; set; }
 
 		/// <summary>
 		/// The list of components to display in the document gutter.
 		/// </summary>
+		[Obsolete]
 		public List<PageAside> Aside { get; set; }
 
 		/// <summary>

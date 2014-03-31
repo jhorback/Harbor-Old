@@ -12,29 +12,29 @@ namespace Harbor.UI.Models
 				.BeforeMap((d, dto) =>
 				{
 					var props = d.Layout;
-					var noAside = d.Layout.HasFlag(LayoutProperties.NoAside);
+					var noAside = d.Layout.HasFlag(LayoutDisplayProperties.NoAside);
 				})
 				.ForMember(dest => dest.layoutIsCentered,
-						   opt => opt.MapFrom(src => src.Layout.HasFlag(LayoutProperties.ContentCentered)))
+						   opt => opt.MapFrom(src => src.Layout.HasFlag(LayoutDisplayProperties.ContentCentered)))
 				.ForMember(dest => dest.layoutIsReadable,
-						   opt => opt.MapFrom(src => src.Layout.HasFlag(LayoutProperties.ContentReadable)))
+						   opt => opt.MapFrom(src => src.Layout.HasFlag(LayoutDisplayProperties.ContentReadable)))
 				.ForMember(dest => dest.layoutHasNoSidebar,
-						   opt => opt.MapFrom(src => src.Layout.HasFlag(LayoutProperties.NoAside)));
+						   opt => opt.MapFrom(src => src.Layout.HasFlag(LayoutDisplayProperties.NoAside)));
 
 			Mapper.CreateMap<TemplateDto, Template>()
 				.ForMember(dest => dest.Layout,
 				           opt => opt.MapFrom(src => getLayoutProperties(src)));
 		}
 
-		LayoutProperties getLayoutProperties(TemplateDto dto)
+		LayoutDisplayProperties getLayoutProperties(TemplateDto dto)
 		{
-			var p = LayoutProperties.None;
+			var p = LayoutDisplayProperties.None;
 			if (dto.layoutHasNoSidebar)
-				p = p | LayoutProperties.NoAside;
+				p = p | LayoutDisplayProperties.NoAside;
 			if (dto.layoutIsCentered)
-				p = p | LayoutProperties.ContentCentered;
+				p = p | LayoutDisplayProperties.ContentCentered;
 			if (dto.layoutIsReadable)
-				p = p | LayoutProperties.ContentReadable;
+				p = p | LayoutDisplayProperties.ContentReadable;
 			return p;
 		}
 	}

@@ -5,7 +5,7 @@ var pageLoader = context.app("pageLoader").use("bbext", "pageEditor", "pageSetti
 function pageLoaderStart(app) {
 	
 	app.render({
-		parentEl: "#frame-body"
+		region: "#frame-body"
 	});
 	
 }
