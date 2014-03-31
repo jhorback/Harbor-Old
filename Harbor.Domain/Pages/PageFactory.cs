@@ -15,11 +15,10 @@ namespace Harbor.Domain.Pages
 
 		public Page Create(string userName, string pageTypeKey, string title, bool publish)
 		{
-			// jch! - here - when to allow the page type to set itself up?
 			var pageType = pageTypeRep.GetPageType(pageTypeKey);
 
 			if (pageType == null)
-				throw new DomainValidationException("Pages cannot be created without a template.");
+				throw new DomainValidationException("Pages cannot be created without a page type.");
 
 			var page = new Page
 			    {
