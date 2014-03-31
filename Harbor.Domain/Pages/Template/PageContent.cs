@@ -5,6 +5,7 @@ using System.Text;
 
 namespace Harbor.Domain.Pages
 {
+	// jch* PageContent and PageUIC can merge after the PageAside and PageHeader are removed.
 	public class PageContent : PageUIC
 	{
 		private string[] _classNames;

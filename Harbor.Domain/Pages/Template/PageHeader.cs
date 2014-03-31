@@ -5,6 +5,7 @@ using System.Text;
 
 namespace Harbor.Domain.Pages
 {
+	[Obsolete("Header is now part of the page layout.")]
 	public class PageHeader : PageUIC
 	{
 		public PageHeader() {}

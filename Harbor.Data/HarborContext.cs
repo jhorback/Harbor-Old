@@ -43,6 +43,7 @@ namespace Harbor.Data
 		public DbSet<File> Files { get; set; }
 		public DbSet<NavLinks> NavLinks { get; set; }
 		public DbSet<PayPalButton> PayPalButtons { get; set; }
+		public DbSet<PageLayout> PageLayouts { get; set; }
 
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -64,6 +65,7 @@ namespace Harbor.Data
 			public PageConfiguration()
 			{
 				HasRequired(m => m.Author).WithMany().HasForeignKey(m => m.AuthorsUserName);
+				HasOptional(m => m.Layout).WithMany().HasForeignKey(m => m.PageLayoutID);
 				HasMany(m => m.PageRoles)
 					.WithRequired()
 					.HasForeignKey(dr => dr.PageID)

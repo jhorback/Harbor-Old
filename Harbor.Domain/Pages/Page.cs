@@ -41,6 +41,9 @@ namespace Harbor.Domain.Pages
 		#region properties
 		public int PageID { get; set; }
 
+
+		public int PageLayoutID { get; set; }
+
 		[Required]
 		[StringLength(50)]
 		public string AuthorsUserName { get; set; }
@@ -102,6 +105,7 @@ namespace Harbor.Domain.Pages
 
 		#region associations
 		public Template Template { get; set; }
+		public PageLayout Layout { get; set; }
 
 		public ICollection<PageProperty> Properties { get; set; }
 		public ICollection<File> Files { get; set; } 

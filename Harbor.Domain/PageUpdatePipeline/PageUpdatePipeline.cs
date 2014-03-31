@@ -9,10 +9,59 @@ namespace Harbor.Domain.PageUpdatePipeline
 			: base(objectFactory)
 		{
 			AddHandler<AlternateTitleHandler>();
-			// jch! - testing - AddHandler<LayoutHandler>();
-			AddHandler<ResourceUpdater>();
+			AddHandler<PageTypeUpdateHandler>();
+			AddHandler<ContentResourceUpdater>();
 		}
 	}
+
+
+
+	public class PageTypeUpdateHandler : IPipelineHanlder<Page>
+	{
+		private readonly IPageTypeRepository _pageTypeRepository;
+
+		public PageTypeUpdateHandler(IPageTypeRepository pageTypeRepository)
+		{
+			_pageTypeRepository = pageTypeRepository;
+		}
+
+		public void Execute(Page page)
+		{
+			var pageType = _pageTypeRepository.GetPageType(page.PageTypeKey);
+			pageType.OnPageUpdate(page);
+		}
+	}
+
+
+
+
+	public class PageCreatePipeline : BasePipeline<Page>
+	{
+		public PageCreatePipeline(IObjectFactory objectFactory) : base(objectFactory)
+		{
+			AddHandler<PageTypeCreateHandler>();
+		}
+	}
+
+
+
+
+	public class PageTypeCreateHandler : IPipelineHanlder<Page>
+	{
+		private readonly IPageTypeRepository _pageTypeRepository;
+
+		public PageTypeCreateHandler(IPageTypeRepository pageTypeRepository)
+		{
+			_pageTypeRepository = pageTypeRepository;
+		}
+
+		public void Execute(Page page)
+		{
+			var pageType = _pageTypeRepository.GetPageType(page.PageTypeKey);
+			pageType.OnPageCreate(page);
+		}
+	}
+
 
 
 	//public class LayoutHandler : IPipelineHanlder<Page>
