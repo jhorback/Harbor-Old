@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Web.Script.Serialization;
+﻿using System.Web.Script.Serialization;
 
 namespace Harbor.Domain.Pages
 {

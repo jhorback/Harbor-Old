@@ -18,7 +18,7 @@ namespace Harbor.Domain.Pages.PageTypes
 			get { return "A centered page with an image, text, and a PayPal button."; }
 		}
 
-		public override void DefineTemplate(PageTypeContext context)
+		public override void OnPageCreate(PageTypeCreationContext context)
 		{
 			context.SetLayout(LayoutDisplayProperties.ContentCentered | LayoutDisplayProperties.NoAside)
 				.SetHeader(Components.Title.KEY)
