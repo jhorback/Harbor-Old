@@ -4,22 +4,15 @@ namespace Harbor.Domain.Pages
 {
 	public class PageFactory : IPageFactory
 	{
-		IPageTypeRepository pageTypeRep;
-		private readonly IObjectFactory _objectFactory;
+		private readonly PageCreatePipeline _pageCreatePipeline;
 
-		public PageFactory(IPageTypeRepository pageTypeRep, IObjectFactory objectFactory)
+		public PageFactory(IPageTypeRepository pageTypeRep, PageCreatePipeline pageCreatePipeline)
 		{
-			this.pageTypeRep = pageTypeRep;
-			_objectFactory = objectFactory;
+			_pageCreatePipeline = pageCreatePipeline;
 		}
 
 		public Page Create(string userName, string pageTypeKey, string title, bool publish)
 		{
-			var pageType = pageTypeRep.GetPageType(pageTypeKey);
-
-			if (pageType == null)
-				throw new DomainValidationException("Pages cannot be created without a page type.");
-
 			var page = new Page
 			    {
 			        AuthorsUserName = userName,
@@ -32,7 +25,8 @@ namespace Harbor.Domain.Pages
 					Enabled = true
 			    };
 
-			pageType.OnPageCreate(new PageTypeCreationContext(page));
+			_pageCreatePipeline.Execute(page);
+
 			return page;
 		}
 	}
