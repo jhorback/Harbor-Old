@@ -18,7 +18,7 @@ namespace Harbor.Domain.Pages.PageTypes
 			get { return "A simple centered page with text."; }
 		}
 
-		public override void DefineTemplate(PageTypeContext context)
+		public override void OnPageCreate(PageTypeCreationContext context)
 		{
 			context.SetLayout(LayoutDisplayProperties.ContentCentered | LayoutDisplayProperties.NoAside)
 				.SetHeader(Components.Title.KEY)

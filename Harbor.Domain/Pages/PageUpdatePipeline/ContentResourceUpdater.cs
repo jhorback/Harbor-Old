@@ -1,7 +1,6 @@
-﻿using Harbor.Domain.Pages;
-using Harbor.Domain.Pipeline;
+﻿using Harbor.Domain.Pipeline;
 
-namespace Harbor.Domain.PageUpdatePipeline
+namespace Harbor.Domain.Pages
 {
 	/// <summary>
 	/// Calls on the page resource udpater

@@ -18,11 +18,11 @@ namespace Harbor.Domain.Pages.PageTypes
 			get { return "A page with navigation links and tiled content."; }
 		}
 
-		public override void DefineTemplate(PageTypeContext context)
+		public override void OnPageCreate(PageTypeCreationContext context)
 		{
 			context.SetLayout(LayoutDisplayProperties.None)
 				.SetHeader(Components.Title.KEY)
-				.AddAside(Components.Links.KEY)
+				.SetAside(Components.Links.KEY)
 				.AddContent(Components.Text.KEY, new [] {ContentClassNames.Tile})
 				.SetDefaultContentClassName(ContentClassNames.Tile);
 		}

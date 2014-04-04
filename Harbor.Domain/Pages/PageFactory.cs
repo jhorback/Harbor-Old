@@ -29,11 +29,10 @@ namespace Harbor.Domain.Pages
 			        Created = DateTime.Now,
 			        Modified = DateTime.Now,
 			        AllPageRoles = new PageFeatureRoleRepository().GetRoles(),
-					Enabled = true,
-					Template = pageType.Template
+					Enabled = true
 			    };
 
-			pageType.OnPageCreate(page);
+			pageType.OnPageCreate(new PageTypeCreationContext(page));
 			return page;
 		}
 	}

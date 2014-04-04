@@ -1,9 +1,8 @@
 ﻿using System.Linq;
-using Harbor.Domain.Pages;
 using Harbor.Domain.Pages.PageComponents;
 using Harbor.Domain.Pipeline;
 
-namespace Harbor.Domain.PageUpdatePipeline
+namespace Harbor.Domain.Pages
 {
 	/// <summary>
 	/// Update the pages AlternateTitle if the first aside component is a Links component.
