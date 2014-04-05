@@ -4,7 +4,7 @@ using Harbor.Domain.Pages.Content;
 
 namespace Harbor.Domain.Pages
 {
-	public class PageComponentRepository : IPageComponentRepository
+	public class PageContentRepository : IPageContentRepository
 	{
 		private readonly IPageContentTypeRepository _componentRepository;
 
@@ -19,7 +19,7 @@ namespace Harbor.Domain.Pages
 		private readonly IDictionary<Type, PageComponentFactory> factories;
 
 
-		public PageComponentRepository(IPageContentTypeRepository componentRepository, Func<IPageRepository> getPageRepository)
+		public PageContentRepository(IPageContentTypeRepository componentRepository, Func<IPageRepository> getPageRepository)
 		{
 			_componentRepository = componentRepository;
 
@@ -30,7 +30,7 @@ namespace Harbor.Domain.Pages
 		}
 
 
-		public PageContent GetComponent(string key, Page page, string uicid)
+		public PageContent GetContent(string key, Page page, string uicid)
 		{
 			var componentType = _componentRepository.GetTypeOfPageContentType(key);
 			if (componentType == null)
@@ -41,7 +41,7 @@ namespace Harbor.Domain.Pages
 		}
 
 
-		public T GetComponent<T>(Page page, string uicid) where T : PageContent
+		public T GetContent<T>(Page page, string uicid) where T : PageContent
 		{
 			var comp = createComponent(typeof(T), page, uicid);
 			// var comp = (T)Activator.CreateInstance(typeof(T), this, uicid);
