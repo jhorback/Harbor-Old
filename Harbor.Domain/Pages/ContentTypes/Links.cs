@@ -1,9 +1,10 @@
 ﻿using System;
 using Harbor.Domain.Pages.PageResources;
 
-namespace Harbor.Domain.Pages.Components
+namespace Harbor.Domain.Pages.ContentTypes
 {
-	public class Links : AsideComponent
+	[Obsolete("Moving to the page layout")]
+	public class Links : PageContentType
 	{
 		public const string KEY = "links";
 
@@ -30,7 +31,7 @@ namespace Harbor.Domain.Pages.Components
 
 		public override Type PageComponent
 		{
-			get { return typeof(PageComponents.Links); }
+			get { return typeof(Content.Links); }
 		}
 	}
 }

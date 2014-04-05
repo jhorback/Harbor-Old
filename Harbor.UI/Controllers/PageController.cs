@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 using Harbor.Domain.Pages;
-using Harbor.Domain.Pages.PageComponents;
+using Harbor.Domain.Pages.Content;
 using Harbor.Domain.Security;
 using Harbor.UI.Models;
 using Harbor.UI.Models.Components;

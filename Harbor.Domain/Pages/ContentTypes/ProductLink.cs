@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Harbor.Domain.Pages.Components
+namespace Harbor.Domain.Pages.ContentTypes
 {
-	public class ProductLink : ContentComponent
+	public class ProductLink : PageContentType
 	{
 		public const string KEY = "productLink";
 
@@ -29,7 +29,7 @@ namespace Harbor.Domain.Pages.Components
 
 		public override Type PageComponent
 		{
-			get { return typeof(PageComponents.PageLink); }
+			get { return typeof(Content.PageLink); }
 		}
 	}
 }

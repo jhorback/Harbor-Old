@@ -1,7 +1,7 @@
 ﻿
 using System;
 using Harbor.Domain.Files;
-using Harbor.Domain.Pages.PageComponents;
+using Harbor.Domain.Pages.Content;
 
 namespace Harbor.UI.Models.Components
 {

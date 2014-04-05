@@ -21,10 +21,10 @@ namespace Harbor.Domain.Pages.PageTypes
 		public override void OnPageCreate(PageTypeCreationContext context)
 		{
 			context.SetLayout(PageLayout.LayoutDisplayProperties.ContentCentered | PageLayout.LayoutDisplayProperties.NoAside)
-				.SetHeader(Components.Title.KEY)
-				.AddContent(Components.Image.KEY, new[] { Template.ContentClassNames.Col2 })
-				.AddContent(Components.Text.KEY, new[] { Template.ContentClassNames.Col2 })
-				.AddContent(Components.PayPalButton.KEY, new[] { Template.ContentClassNames.Col2 });
+				.SetHeader(ContentTypes.Title.KEY)
+				.AddContent(ContentTypes.Image.KEY, new[] { Template.ContentClassNames.Col2 })
+				.AddContent(ContentTypes.Text.KEY, new[] { Template.ContentClassNames.Col2 })
+				.AddContent(ContentTypes.PayPalButton.KEY, new[] { Template.ContentClassNames.Col2 });
 		}
 	}
 }

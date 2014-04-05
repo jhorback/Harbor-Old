@@ -21,9 +21,9 @@ namespace Harbor.Domain.Pages.PageTypes
 		public override void OnPageCreate(PageTypeCreationContext context)
 		{
 			context.SetLayout(PageLayout.LayoutDisplayProperties.None)
-				.SetHeader(Components.Title.KEY)
-				.SetAside(Components.Links.KEY)
-				.AddContent(Components.Text.KEY, new [] {Template.ContentClassNames.Tile})
+				.SetHeader(ContentTypes.Title.KEY)
+				.SetAside(ContentTypes.Links.KEY)
+				.AddContent(ContentTypes.Text.KEY, new [] {Template.ContentClassNames.Tile})
 				.SetDefaultContentClassName(Template.ContentClassNames.Tile);
 		}
 	}

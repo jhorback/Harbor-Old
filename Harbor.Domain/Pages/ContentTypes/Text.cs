@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Harbor.Domain.Pages.Components
+namespace Harbor.Domain.Pages.ContentTypes
 {
-	public class Text : ContentComponent
+	public class Text : PageContentType
 	{
 		public const string KEY = "text";
 
@@ -31,7 +31,7 @@ namespace Harbor.Domain.Pages.Components
 		{
 			get
 			{
-				return typeof(PageComponents.Text);
+				return typeof(Content.Text);
 			}
 		}
 	}

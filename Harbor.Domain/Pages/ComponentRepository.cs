@@ -6,23 +6,23 @@ namespace Harbor.Domain.Pages
 {
 	public class ComponentRepository : IComponentRepository
 	{
-		List<ComponentType> components;
+		List<PageContentType> components;
 
 		public ComponentRepository()
 		{
-			components = new List<ComponentType>
+			components = new List<PageContentType>
 				{
-					new Components.Image(),
-					new Components.Links(),
-					new Components.PageLink(),
-					new Components.PayPalButton(),
-					new Components.ProductLink(),
-					new Components.Text(),
-					new Components.Title()
+					new ContentTypes.Image(),
+					new ContentTypes.Links(),
+					new ContentTypes.PageLink(),
+					new ContentTypes.PayPalButton(),
+					new ContentTypes.ProductLink(),
+					new ContentTypes.Text(),
+					new ContentTypes.Title()
 				};
 		}
 
-		public List<ComponentType> GetAllComponents()
+		public List<PageContentType> GetAllComponents()
 		{
 			return components;
 		}
@@ -39,22 +39,12 @@ namespace Harbor.Domain.Pages
 			return type;
 		}
 
-		public List<HeaderComponent> GetHeaderComponents()
+		public List<PageContentType> GetContentComponents()
 		{
 			throw new NotImplementedException();
 		}
 
-		public List<AsideComponent> GetAsideComponents()
-		{
-			throw new NotImplementedException();
-		}
-
-		public List<ContentComponent> GetContentComponents()
-		{
-			throw new NotImplementedException();
-		}
-
-		public ComponentType GetComponent(string key)
+		public PageContentType GetComponent(string key)
 		{
 			throw new NotImplementedException();
 		}

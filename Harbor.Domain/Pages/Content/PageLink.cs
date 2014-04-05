@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using Harbor.Domain.Pages.PageResources;
 using Harbor.Domain.Security;
 
-namespace Harbor.Domain.Pages.PageComponents
+namespace Harbor.Domain.Pages.Content
 {
-	public class PageLink : PageComponent
+	public class PageLink : PageContent
 	{
 		public PageLink(Page page, string uicid) : base(page, uicid)
 		{

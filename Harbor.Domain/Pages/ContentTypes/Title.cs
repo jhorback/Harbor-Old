@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Harbor.Domain.Pages.Components
+namespace Harbor.Domain.Pages.ContentTypes
 {
-	public class Title : HeaderComponent
+	public class Title : PageContentType
 	{
 		public const string KEY = "title";
 

@@ -4,9 +4,9 @@ using Harbor.Domain.Files;
 using Harbor.Domain.Pages.PageResources;
 using Harbor.Domain.Security;
 
-namespace Harbor.Domain.Pages.PageComponents
+namespace Harbor.Domain.Pages.Content
 {
-	public class Image : PageComponent
+	public class Image : PageContent
 	{
 		public Image(Page page, string uicid)
 			: base(page, uicid)
