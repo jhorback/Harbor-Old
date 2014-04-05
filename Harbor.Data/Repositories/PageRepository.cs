@@ -13,7 +13,6 @@ namespace Harbor.Data.Repositories
 	{
 		readonly HarborContext context;
 		readonly IPageFactory pageFactory;
-		private readonly IPageResourceUpdater _pageResourceUpdater;
 		private readonly IObjectFactory _objectFactory;
 		private readonly ILogger _logger;
 
