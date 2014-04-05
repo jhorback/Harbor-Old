@@ -6,19 +6,21 @@ using System.Net.Http;
 using System.Web.Http;
 using AutoMapper;
 using Harbor.Domain;
-using Harbor.Domain.PageNav;
+using Harbor.Domain.Pages;
 using Harbor.Domain.Pages;
 using Harbor.Domain.Security;
 using Harbor.UI.Extensions;
-using Harbor.UI.Models.Components;
+using Harbor.UI.Models.Content;
+using Harbor.UI.Models.Page;
 
 namespace Harbor.UI.Controllers.Api
 {
+	//jch! rename
     public class NavLinksController : ApiController
     {
-	    private readonly INavLinksRepository linksRep;
+	    private readonly IPageLayoutRepository linksRep;
 
-	    public NavLinksController(INavLinksRepository linksRepository)
+	    public NavLinksController(IPageLayoutRepository linksRepository)
 		{
 			linksRep = linksRepository;
 		}
@@ -28,10 +30,10 @@ namespace Harbor.UI.Controllers.Api
 		/// Returns all NavLinks for the current user.
 		/// </summary>
 		/// <returns></returns>
-        public IEnumerable<NavLinksDto> Get()
+        public IEnumerable<PageLayoutDto> Get()
         {
             // query.CurrentUserName = User.Identity.Name;
-			return linksRep.FindAll(i => i.UserName == User.Identity.Name).Select(NavLinksDto.FromNavLinks);
+			return linksRep.FindAll(i => i.UserName == User.Identity.Name).Select(PageLayoutDto.FromPageLayout);
         }
 
         // GET api/navlinks/5
@@ -41,15 +43,15 @@ namespace Harbor.UI.Controllers.Api
 			if (links == null || links.UserName != User.Identity.Name)
 				return Request.CreateNotFoundResponse();
 
-			var linksDto = NavLinksDto.FromNavLinks(links);
+			var linksDto = PageLayoutDto.FromPageLayout(links);
 			return Request.CreateOKResponse(linksDto);
         }
 
         // POST api/navlinks
 		[Permit(UserFeature.Pages, Permissions.Create)]
-        public HttpResponseMessage Post(NavLinksDto navLinks)
+		public HttpResponseMessage Post(PageLayoutDto navLinks)
         {
-			var navLinksDO = (NavLinks)navLinks;
+			var navLinksDO = PageLayoutDto.ToPageLayout(navLinks);
 			navLinksDO.UserName = User.Identity.Name;
 
 			var errors = DomainObjectValidator.Validate(navLinksDO);
@@ -65,11 +67,11 @@ namespace Harbor.UI.Controllers.Api
 				return Request.CreateBadRequestResponse(exception.Message);
 			}
 
-			return Request.CreateOKResponse(NavLinksDto.FromNavLinks(navLinksDO));
+			return Request.CreateOKResponse(PageLayoutDto.FromPageLayout(navLinksDO));
         }
 
         // PUT api/navlinks/5
-        public HttpResponseMessage Put(NavLinksDto navLinks)
+		public HttpResponseMessage Put(PageLayoutDto navLinks)
         {
 			var navLinksDO = linksRep.FindById(navLinks.id, readOnly: false);
 
@@ -86,8 +88,8 @@ namespace Harbor.UI.Controllers.Api
 			{
 				return Request.CreateBadRequestResponse(e);
 			}
-			
-			var navLinksDto = NavLinksDto.FromNavLinks(navLinksDO);
+
+			var navLinksDto = PageLayoutDto.FromPageLayout(navLinksDO);
 			return Request.CreateOKResponse(navLinksDto);
         }
 

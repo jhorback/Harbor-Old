@@ -8,7 +8,7 @@ using Harbor.Domain;
 using Harbor.Domain.Products;
 using Harbor.Domain.Security;
 using Harbor.UI.Extensions;
-using Harbor.UI.Models.Components;
+using Harbor.UI.Models.Content;
 
 namespace Harbor.UI.Controllers.Api
 {

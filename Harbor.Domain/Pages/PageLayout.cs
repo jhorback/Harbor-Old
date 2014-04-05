@@ -5,7 +5,7 @@ using Harbor.Domain.Security;
 
 namespace Harbor.Domain.Pages
 {
-	public class PageLayout
+	public class PageLayout : IAggregateRoot
 	{
 		[Flags]
 		public enum LayoutDisplayProperties

@@ -3,7 +3,7 @@ using Harbor.Domain.Pages;
 using Harbor.Domain.Pages.Content;
 using Harbor.Domain.Security;
 using Harbor.UI.Models;
-using Harbor.UI.Models.Components;
+using Harbor.UI.Models.Content;
 
 namespace Harbor.UI.Controllers
 {
@@ -43,14 +43,15 @@ namespace Harbor.UI.Controllers
 
 		public PartialViewResult Links(Page page, string uicid)
 		{
-			var links = _pageContentRepository.GetContent<Links>(page, uicid);
-			ViewBag.Page = page;
-			if (links.IsNew())
-			{
-				return PartialView("Links-None");
-			}
+			//var links = _pageContentRepository.GetContent<Links>(page, uicid);
+			//ViewBag.Page = page;
+			//if (links.IsNew())
+			//{
+			//	return PartialView("Links-None");
+			//}
 
-			var model = (NavLinksDto)links;
+			//var model = (NavLinksDto)links;
+			var model = new object();
 			return PartialView("Links", model);
 		}
 

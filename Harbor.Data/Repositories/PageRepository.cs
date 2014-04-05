@@ -66,8 +66,6 @@ namespace Harbor.Data.Repositories
 			// pages = pages.Include(p => p.PageLayout
 			if (include.HasFlag(IncludePageResources.PageLinks))
 				pages = pages.Include(p => p.PageLinks);
-			if (include.HasFlag(IncludePageResources.NavLinks))
-				pages = pages.Include(p => p.NavLinks);
 			if (include.HasFlag(IncludePageResources.PayPalButtons))
 				pages = pages.Include(p => p.PayPalButtons);
 			return pages;

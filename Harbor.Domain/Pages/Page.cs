@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web.Script.Serialization;
 using Harbor.Domain.Files;
-using Harbor.Domain.PageNav;
+using Harbor.Domain.Pages;
 using Harbor.Domain.Pages.PageResources;
 using Harbor.Domain.Products;
 using Harbor.Domain.Security;
@@ -26,7 +26,6 @@ namespace Harbor.Domain.Pages
 			// page resources
 			Files = new List<File>();
 			PageLinks = new List<Page>();
-			NavLinks = new List<NavLinks>();
 			PayPalButtons = new List<PayPalButton>();
 
 
@@ -107,7 +106,6 @@ namespace Harbor.Domain.Pages
 		public ICollection<PageProperty> Properties { get; set; }
 		public ICollection<File> Files { get; set; } 
 		public ICollection<Page> PageLinks { get; set; } 
-		public ICollection<NavLinks> NavLinks { get; set; }
 		public ICollection<PayPalButton> PayPalButtons { get; set; }
 
 		internal ICollection<PageRole> PageRoles { get; set; }
@@ -201,11 +199,6 @@ namespace Harbor.Domain.Pages
 		public Page GetPageLink(int pageID)
 		{
 			return PageLinks.FirstOrDefault(p => p.PageID == pageID);
-		}
-
-		public NavLinks GetNavLinks(int navLinksID)
-		{
-			return NavLinks.FirstOrDefault(l => l.NavLinksID == navLinksID);
 		}
 
 		public PayPalButton GetPayPalButton(int payPalButtonID)

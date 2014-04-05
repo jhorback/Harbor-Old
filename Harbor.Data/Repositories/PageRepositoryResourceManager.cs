@@ -30,12 +30,6 @@ namespace Harbor.Data.Repositories
 				var pageLink = context.Pages.Find(res.PageID);
 				if (pageLink != null) page.PageLinks.Add(pageLink);
 			}
-			else if (resource is LinksResource)
-			{
-				var res = resource as LinksResource;
-				var pageRes = context.NavLinks.Find(res.NavLinksID);
-				if (pageRes != null) page.NavLinks.Add(pageRes);
-			}
 			else if (resource is PayPalButtonResource)
 			{
 				var res = resource as PayPalButtonResource;
@@ -57,12 +51,6 @@ namespace Harbor.Data.Repositories
 				var res = resource as PageLinkResource;
 				var pageLink = page.GetPageLink(res.PageID);
 				page.PageLinks.Remove(pageLink);
-			}
-			else if (resource is LinksResource)
-			{
-				var res = resource as LinksResource;
-				var pageRes = page.GetNavLinks(res.NavLinksID);
-				page.NavLinks.Remove(pageRes);
 			}
 			else if (resource is PayPalButtonResource)
 			{
@@ -87,11 +75,6 @@ namespace Harbor.Data.Repositories
 			foreach (var res in page.PageLinks)
 			{
 				resources.Add(new PageLinkResource(page, res.PageID));
-			}
-
-			foreach (var res in page.NavLinks)
-			{
-				resources.Add(new LinksResource(page, res.NavLinksID));
 			}
 
 			foreach (var res in page.PayPalButtons)
