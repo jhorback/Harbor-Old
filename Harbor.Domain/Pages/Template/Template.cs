@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Web.Script.Serialization;
 
 namespace Harbor.Domain.Pages
@@ -25,8 +24,18 @@ namespace Harbor.Domain.Pages
 			set { pageID = value; initUICIDs(); }
 		}
 
+		/// <summary>
+		/// The list of components to display as the document content.
+		/// </summary>
+		public List<PageContent> Content { get; set; }
 
-		#region virtual to override
+		/// <summary>
+		/// The class name to be used for new content.
+		/// </summary>
+		public string DefaultContentClassName { get; set; }
+
+
+		#region obsolete
 		/// <summary>
 		/// The key of the page type used to create the template.
 		/// </summary>
@@ -50,20 +59,10 @@ namespace Harbor.Domain.Pages
 		/// </summary>
 		[Obsolete]
 		public List<PageAside> Aside { get; set; }
-
-		/// <summary>
-		/// The list of components to display as the document content.
-		/// </summary>
-		public List<PageContent> Content { get; set; }
-
-		/// <summary>
-		/// The class name to be used for new content.
-		/// </summary>
-		public string DefaultContentClassName { get; set; }
 		#endregion
 
-		#region base implementation
 
+		#region base implementation
 		/// <summary>
 		/// For every component added to the document the component counter is incremented.
 		/// This is used to keep uicid's unique.
@@ -99,7 +98,6 @@ namespace Harbor.Domain.Pages
 		{
 			return new JavaScriptSerializer().Serialize(this);
 		}
-		#endregion
 
 		const string idFormat = "pc-{0}-{1}";
 
@@ -122,6 +120,8 @@ namespace Harbor.Domain.Pages
 			foreach (var item in Content)
 				item.uicid = string.Format(idFormat, PageID, ComponentCounter++);
 		}
+
+		#endregion
 	}
 }
 

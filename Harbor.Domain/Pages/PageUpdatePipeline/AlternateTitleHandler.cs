@@ -22,12 +22,7 @@ namespace Harbor.Domain.Pages
 
 		public void Execute(Page page)
 		{
-			if (!page.Template.Aside.Any())
-			{
-				return;
-			}
-
-			var firstAside = page.Template.Aside.FirstOrDefault();
+			var aside = page.Template.Aside.FirstOrDefault();
 			
 			if (firstAside != null && firstAside.key == Pages.Components.Links.KEY)
 			{
