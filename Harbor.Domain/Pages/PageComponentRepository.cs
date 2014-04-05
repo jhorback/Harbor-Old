@@ -6,7 +6,7 @@ namespace Harbor.Domain.Pages
 {
 	public class PageComponentRepository : IPageComponentRepository
 	{
-		private readonly IComponentRepository _componentRepository;
+		private readonly IPageContentTypeRepository _componentRepository;
 
 		private delegate PageContent PageComponentFactory(Type type, Page page, string uicid);
 
@@ -19,7 +19,7 @@ namespace Harbor.Domain.Pages
 		private readonly IDictionary<Type, PageComponentFactory> factories;
 
 
-		public PageComponentRepository(IComponentRepository componentRepository, Func<IPageRepository> getPageRepository)
+		public PageComponentRepository(IPageContentTypeRepository componentRepository, Func<IPageRepository> getPageRepository)
 		{
 			_componentRepository = componentRepository;
 
@@ -32,7 +32,7 @@ namespace Harbor.Domain.Pages
 
 		public PageContent GetComponent(string key, Page page, string uicid)
 		{
-			var componentType = _componentRepository.GetPageComponentType(key);
+			var componentType = _componentRepository.GetTypeOfPageContentType(key);
 			if (componentType == null)
 				return null;
 

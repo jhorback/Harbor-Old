@@ -8,16 +8,16 @@ namespace Harbor.UI.Controllers.Api
 {
     public class PageComponentsController : ApiController
     {
-		IComponentRepository compRep;
+		IPageContentTypeRepository compRep;
 
-		public PageComponentsController(IComponentRepository compRep)
+		public PageComponentsController(IPageContentTypeRepository compRep)
 		{
 			this.compRep = compRep;
 		}
 
 		public IEnumerable<PageComponentDto> Get()
 		{
-			return compRep.GetAllComponents().Select(pt => (PageComponentDto)pt);
+			return compRep.GetPageContentTypes().Select(pt => (PageComponentDto)pt);
 		}
     }
 }
