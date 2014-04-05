@@ -86,6 +86,17 @@ namespace Harbor.Data
 			}
 		}
 
+		public class PageLayoutConfiguration : EntityTypeConfiguration<PageLayout>
+		{
+			public PageLayoutConfiguration()
+			{
+				HasRequired(m => m.Owner)
+					.WithMany()
+					.HasForeignKey(m => m.UserName)
+					.WillCascadeOnDelete(false);
+			}
+		}
+
 		public class UserConfiguration : EntityTypeConfiguration<User>
 		{
 			public UserConfiguration()

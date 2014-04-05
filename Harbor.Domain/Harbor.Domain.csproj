@@ -95,6 +95,7 @@
     <Compile Include="Pages\ContentTypes\Title.cs" />
     <Compile Include="Pages\ContentTypes\Links.cs" />
     <Compile Include="Pages\ContentTypes\Text.cs" />
+    <Compile Include="Pages\Headers\Title.cs" />
     <Compile Include="Pages\PageContentType.cs" />
     <Compile Include="Pages\IPageContentRepository.cs" />
     <Compile Include="Pages\IPageFactory.cs" />
@@ -105,7 +106,7 @@
     <Compile Include="Pages\PageContentRepository.cs" />
     <Compile Include="Pages\Content\ProductLink.cs" />
     <Compile Include="Pages\Content\PayPalButton.cs" />
-    <Compile Include="Pages\Content\Links.cs" />
+    <Compile Include="Pages\Asides\Links.cs" />
     <Compile Include="Pages\Content\PageLink.cs" />
     <Compile Include="Pages\Content\Text.cs" />
     <Compile Include="Pages\Content\Image.cs" />

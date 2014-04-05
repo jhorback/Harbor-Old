@@ -1,5 +1,7 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.Web.Script.Serialization;
+using Harbor.Domain.Security;
 
 namespace Harbor.Domain.Pages
 {
@@ -15,6 +17,12 @@ namespace Harbor.Domain.Pages
 		}
 
 		public int PageLayoutID { get; set; }
+
+		[StringLength(50)]
+		public string UserName { get; set; }
+
+		[StringLength(100)]
+		public string Title { get; set; }
 
 		public LayoutDisplayProperties DisplayProperties { get; set; }
 
@@ -38,5 +46,9 @@ namespace Harbor.Domain.Pages
 			var aside = new JavaScriptSerializer().Deserialize<T>(AsideData);
 			return aside;
 		}
+
+		#region associations
+		public User Owner { get; set; }
+		#endregion
 	}
 }

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using Harbor.Domain.PageNav;
 using Harbor.Domain.Pages.PageResources;
 
-namespace Harbor.Domain.Pages.Content
+namespace Harbor.Domain.Pages.Asides
 {
 	[Obsolete("Moving to the page layout aside")]
-	public class Links : PageContent
+	public class Links
 	{
 		private readonly NavLinks _links;
 

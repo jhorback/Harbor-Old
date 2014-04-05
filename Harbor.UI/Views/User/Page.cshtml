@@ -33,21 +33,22 @@
 }
 <div id="page" class="@layoutClassNames">
 	<header class="page-header ">
-		@if (Model.Template.Header != null)
+		@if (Model.Layout.HeaderKey != null)
 		{
-			var header = Model.Template.Header;
-			<div class="uic" id="@Model.Template.Header.uicid" data-type="@Model.Template.Header.key">
-				@Html.PageComponent(Model.PageID, header.key, header.uicid)
+			var header = Model.Layout.HeaderKey;
+			<div data-type="@header">
+				@Html.PageComponent(Model.PageID, header)
 			</div>
 		}
 	</header>
 	<div class="page-body">		
 		<aside class="page-aside">
-			@foreach (var item in Model.Template.Aside)
+			@if (Model.Layout.AsideKey != null)
 			{
-				<div class="uic" id="@item.uicid" data-type="@item.key">
-					@Html.PageComponent(Model.PageID, item.key, item.uicid)
-				</div>	
+				var aside = Model.Layout.AsideKey;
+				<div data-type="@aside">
+					@Html.PageComponent(Model.PageID, aside)
+				</div>
 			}
 		</aside>
 		<div class="page-content">
