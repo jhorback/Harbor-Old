@@ -1,5 +1,0 @@
-﻿
-namespace Harbor.Domain.Pages
-{
-	
-}
