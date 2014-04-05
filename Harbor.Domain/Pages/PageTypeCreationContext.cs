@@ -11,7 +11,7 @@ namespace Harbor.Domain.Pages
 		public Page Page { get; set; }
 
 
-		public PageTypeCreationContext SetLayout(LayoutDisplayProperties layout)
+		public PageTypeCreationContext SetLayout(PageLayout.LayoutDisplayProperties layout)
 		{
 			Page.Layout.DisplayProperties = layout;
 			return this;

@@ -1,9 +1,19 @@
-﻿using System.Web.Script.Serialization;
+﻿using System;
+using System.Web.Script.Serialization;
 
 namespace Harbor.Domain.Pages
 {
 	public class PageLayout
 	{
+		[Flags]
+		public enum LayoutDisplayProperties
+		{
+			None = 0,
+			ContentReadable = 1,
+			ContentCentered = 2,
+			NoAside = 4
+		}
+
 		public int PageLayoutID { get; set; }
 
 		public LayoutDisplayProperties DisplayProperties { get; set; }

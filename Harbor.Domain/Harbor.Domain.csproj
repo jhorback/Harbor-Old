@@ -119,7 +119,7 @@
     <Compile Include="Pages\PageFeature.cs" />
     <Compile Include="Pages\PageFeatureRole.cs" />
     <Compile Include="Pages\PageFunctionalRoleRepository.cs" />
-    <Compile Include="Pages\PageLayout\PageLayout.cs" />
+    <Compile Include="Pages\PageLayout.cs" />
     <Compile Include="Pages\PagePermissions.cs" />
     <Compile Include="Pages\PageProperty.cs" />
     <Compile Include="Pages\PageQuery.cs" />
@@ -142,7 +142,6 @@
     <Compile Include="Pages\PageUpdatePipeline\PageTypeUpdateHandler.cs" />
     <Compile Include="Pages\Template.cs" />
     <Compile Include="Pages\PageTypes\PageListing.cs" />
-    <Compile Include="Pages\PageLayout\LayoutDisplayProperties.cs" />
     <Compile Include="Pages\IComponentRepository.cs" />
     <Compile Include="Pages\IPageRepository.cs" />
     <Compile Include="Pages\Roles\Author.cs" />

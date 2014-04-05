@@ -18,9 +18,9 @@ namespace Harbor.UI.Models.Page
 			return new PageLayoutDto
 			{
 				id = layout.PageLayoutID,
-				layoutIsCentered = layout.DisplayProperties.HasFlag(LayoutDisplayProperties.ContentCentered),
-				layoutIsReadable = layout.DisplayProperties.HasFlag(LayoutDisplayProperties.ContentReadable),
-				layoutHasNoSidebar = layout.DisplayProperties.HasFlag(LayoutDisplayProperties.NoAside),
+				layoutIsCentered = layout.DisplayProperties.HasFlag(PageLayout.LayoutDisplayProperties.ContentCentered),
+				layoutIsReadable = layout.DisplayProperties.HasFlag(PageLayout.LayoutDisplayProperties.ContentReadable),
+				layoutHasNoSidebar = layout.DisplayProperties.HasFlag(PageLayout.LayoutDisplayProperties.NoAside),
 				headerKey = layout.HeaderKey,
 				headerData = layout.HeaderData,
 				asideKey = layout.AsideKey,
@@ -30,13 +30,13 @@ namespace Harbor.UI.Models.Page
 
 		public static PageLayout ToPageLayout(PageLayoutDto layout)
 		{
-			var props = LayoutDisplayProperties.None;
+			var props = PageLayout.LayoutDisplayProperties.None;
 			if (layout.layoutHasNoSidebar)
-				props = props | LayoutDisplayProperties.NoAside;
+				props = props | PageLayout.LayoutDisplayProperties.NoAside;
 			if (layout.layoutIsCentered)
-				props = props | LayoutDisplayProperties.ContentCentered;
+				props = props | PageLayout.LayoutDisplayProperties.ContentCentered;
 			if (layout.layoutIsReadable)
-				props = props | LayoutDisplayProperties.ContentReadable;
+				props = props | PageLayout.LayoutDisplayProperties.ContentReadable;
 
 			return new PageLayout
 			{
