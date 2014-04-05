@@ -36,7 +36,7 @@ namespace Harbor.Domain.Pages
 
 		public PageTypeCreationContext AddContent(string type, string[] classNames)
 		{
-			var item = new PageContent
+			var item = new Template.Uic
 			{
 				key = type,
 				classNames = classNames

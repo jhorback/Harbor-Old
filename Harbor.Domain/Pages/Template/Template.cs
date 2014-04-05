@@ -8,8 +8,7 @@ namespace Harbor.Domain.Pages
 	{
 		public Template(int pageID)
 		{
-			Aside = new List<PageAside>();
-			Content = new List<PageContent>();
+			Content = new List<Uic>();
 			PageID = pageID;
 			DefaultContentClassName = ContentClassNames.Col1;
 		}
@@ -27,40 +26,60 @@ namespace Harbor.Domain.Pages
 		/// <summary>
 		/// The list of components to display as the document content.
 		/// </summary>
-		public List<PageContent> Content { get; set; }
+		public List<Uic> Content { get; set; }
 
 		/// <summary>
 		/// The class name to be used for new content.
 		/// </summary>
 		public string DefaultContentClassName { get; set; }
 
-
-		#region obsolete
-		/// <summary>
-		/// The key of the page type used to create the template.
-		/// </summary>
-		[Obsolete("This is on the page.")]
-		public string PageTypeKey { get; set; }
-
-		/// <summary>
-		/// The flags that set the various layout properties.
-		/// </summary>
-		[Obsolete]
-		public LayoutDisplayProperties Layout { get; set; }
-
-		/// <summary>
-		/// The component to use as the document header.
-		/// </summary>
-		[Obsolete]
-		public PageHeader Header { get; set; }
-
-		/// <summary>
-		/// The list of components to display in the document gutter.
-		/// </summary>
-		[Obsolete]
-		public List<PageAside> Aside { get; set; }
+		#region ContentClassNames
+		public class ContentClassNames
+		{
+			public const string Col1 = "col1";
+			public const string Col2 = "col2";
+			public const string Col3 = "col3";
+			public const string Col3_2 = "col3-2";
+			public const string Clear = "clear";
+			public const string Tile = "col5";
+		}
 		#endregion
 
+		#region Uic
+		public class Uic
+		{
+			private string[] _classNames;
+
+			public string[] classNames
+			{
+				get
+				{
+					if (_classNames == null || _classNames.Length == 0)
+						return new[] { ContentClassNames.Col1 };
+					return _classNames;
+				}
+				set { _classNames = value; }
+			}
+
+			public string id
+			{
+				get
+				{
+					return uicid;
+				}
+			}
+
+			/// <summary>
+			/// The key/type of the Document Component.
+			/// </summary>
+			public string key { get; set; }
+
+			/// <summary>
+			/// The ID of the component in the template.
+			/// </summary>
+			public string uicid { get; set; }
+		}
+		#endregion
 
 		#region base implementation
 		/// <summary>
@@ -110,12 +129,6 @@ namespace Harbor.Domain.Pages
 				return;
 
 			ComponentCounter++; // start with 1
-
-			if (Header != null)
-				Header.uicid = string.Format(idFormat, PageID, ComponentCounter++);
-
-			foreach (var item in Aside)
-				item.uicid = string.Format(idFormat, PageID, ComponentCounter++);
 
 			foreach (var item in Content)
 				item.uicid = string.Format(idFormat, PageID, ComponentCounter++);
