@@ -52,9 +52,6 @@ namespace Harbor.Domain.Pages
 		[StringLength(100)]
 		public string Title { get; set; }
 
-		[StringLength(100)]
-		public string AlternateTitle { get; set; }
-
 		[Required]
 		[StringLength(50)]
 		public string PageTypeKey { get; set; }
