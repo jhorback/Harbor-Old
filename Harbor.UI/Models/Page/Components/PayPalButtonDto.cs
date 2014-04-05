@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using PageComponents = Harbor.Domain.Pages.PageComponents;
+using PageComponents = Harbor.Domain.Pages.Content;
 using Products = Harbor.Domain.Products;
 
 

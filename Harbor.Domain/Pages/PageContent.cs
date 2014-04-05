@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Harbor.Domain.Pages
 {
-	public abstract class PageComponent
+	/// <summary>
+	/// A base class for all content mapped via the page template content.
+	/// </summary>
+	public abstract class PageContent
 	{
-		protected PageComponent(Page page, string uicid)
+		protected PageContent(Page page, string uicid)
 		{
 			Page = page;
 			UicID = uicid;

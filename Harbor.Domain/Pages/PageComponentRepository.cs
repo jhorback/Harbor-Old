@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Harbor.Domain.Pages.PageComponents;
+using Harbor.Domain.Pages.Content;
 
 namespace Harbor.Domain.Pages
 {
@@ -8,12 +8,12 @@ namespace Harbor.Domain.Pages
 	{
 		private readonly IComponentRepository _componentRepository;
 
-		private delegate PageComponent PageComponentFactory(Type type, Page page, string uicid);
+		private delegate PageContent PageComponentFactory(Type type, Page page, string uicid);
 
-		private PageComponent defaultFactory(Type type, Page page, string uicid)
+		private PageContent defaultFactory(Type type, Page page, string uicid)
 		{
 			var comp = Activator.CreateInstance(type, page, uicid);
-			return comp as PageComponent;
+			return comp as PageContent;
 		}
 
 		private readonly IDictionary<Type, PageComponentFactory> factories;
@@ -30,25 +30,25 @@ namespace Harbor.Domain.Pages
 		}
 
 
-		public PageComponent GetComponent(string key, Page page, string uicid)
+		public PageContent GetComponent(string key, Page page, string uicid)
 		{
 			var componentType = _componentRepository.GetPageComponentType(key);
 			if (componentType == null)
 				return null;
 
 			var comp = createComponent(componentType, page, uicid);
-			return comp as PageComponent;
+			return comp as PageContent;
 		}
 
 
-		public T GetComponent<T>(Page page, string uicid) where T : PageComponent
+		public T GetComponent<T>(Page page, string uicid) where T : PageContent
 		{
 			var comp = createComponent(typeof(T), page, uicid);
 			// var comp = (T)Activator.CreateInstance(typeof(T), this, uicid);
 			return comp as T;
 		}
 
-		PageComponent createComponent(Type type, Page page, string uicid)
+		PageContent createComponent(Type type, Page page, string uicid)
 		{
 			var factory = factories.ContainsKey(type) ? factories[type] : defaultFactory;
 			var comp = factory(type, page, uicid);

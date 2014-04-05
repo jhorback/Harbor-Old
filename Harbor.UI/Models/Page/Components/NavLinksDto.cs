@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using AutoMapper;
 using Harbor.Domain.PageNav;
-using Harbor.Domain.Pages.PageComponents;
+using Harbor.Domain.Pages.Content;
 
 namespace Harbor.UI.Models.Components
 {

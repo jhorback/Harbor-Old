@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using Harbor.Domain.Files;
 
-namespace Harbor.Domain.Pages.PageComponents
+namespace Harbor.Domain.Pages.Content
 {
-	public class Text : PageComponent
+	public class Text : PageContent
 	{
 		public Text(Page page, string uicid) : base(page, uicid)
 		{

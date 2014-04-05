@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace Harbor.Domain.Pages.PageComponents
+namespace Harbor.Domain.Pages.Content
 {
 	public class ProductLink : PageLink
 	{

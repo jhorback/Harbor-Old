@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Harbor.Domain.PageNav;
 using Harbor.Domain.Pages.PageResources;
 
-namespace Harbor.Domain.Pages.PageComponents
+namespace Harbor.Domain.Pages.Content
 {
-	public class Links : PageComponent
+	[Obsolete("Moving to the page layout aside")]
+	public class Links : PageContent
 	{
 		private readonly NavLinks _links;
 

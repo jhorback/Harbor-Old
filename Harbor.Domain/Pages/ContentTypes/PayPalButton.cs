@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Harbor.Domain.Pages.Components
+namespace Harbor.Domain.Pages.ContentTypes
 {
-	public class PayPalButton : ContentComponent
+	public class PayPalButton : PageContentType
 	{
 		public const string KEY = "paypalbutton";
 
@@ -29,7 +29,7 @@ namespace Harbor.Domain.Pages.Components
 
 		public override Type PageComponent
 		{
-			get { return typeof(PageComponents.PayPalButton); }
+			get { return typeof(Content.PayPalButton); }
 		}
 	}
 }

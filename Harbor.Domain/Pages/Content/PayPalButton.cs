@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using Harbor.Domain.Pages.PageResources;
 using Harbor.Domain.Products;
 
-namespace Harbor.Domain.Pages.PageComponents
+namespace Harbor.Domain.Pages.Content
 {
-	public class PayPalButton : PageComponent
+	public class PayPalButton : PageContent
 	{
 		public PayPalButton(Page page, string uicid)
 			: base(page, uicid)

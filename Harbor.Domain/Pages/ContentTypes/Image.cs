@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Harbor.Domain.Pages.Components
+namespace Harbor.Domain.Pages.ContentTypes
 {
-	public class Image : ContentComponent
+	public class Image : PageContentType
 	{
 		public const string KEY = "image";
 
@@ -29,7 +29,7 @@ namespace Harbor.Domain.Pages.Components
 
 		public override Type PageComponent
 		{
-			get { return typeof(PageComponents.Image); }
+			get { return typeof(Content.Image); }
 		}
 	}
 }

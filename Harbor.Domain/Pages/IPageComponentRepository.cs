@@ -7,7 +7,7 @@ namespace Harbor.Domain.Pages
 	/// </summary>
 	public interface IPageComponentRepository
 	{
-		PageComponent GetComponent(string key, Page page, string uicid);
-		T GetComponent<T>(Page page, string uicid) where T: PageComponent;
+		PageContent GetComponent(string key, Page page, string uicid);
+		T GetComponent<T>(Page page, string uicid) where T: PageContent;
 	}
 }
