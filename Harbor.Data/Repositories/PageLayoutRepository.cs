@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Caching;
 using Harbor.Domain;
-using Harbor.Domain.PageNav;
+using Harbor.Domain.Pages;
 
 namespace Harbor.Data.Repositories
 {
-	public class NavLinksRepository : INavLinksRepository
+	public class PageLayoutRepository : IPageLayoutRepository
 	{
 		readonly HarborContext context;
 
-		public NavLinksRepository(HarborContext context)
+		public PageLayoutRepository(HarborContext context)
 		{
 			this.context = context;
 		}
 
-		public IEnumerable<NavLinks> FindAll(Func<NavLinks, bool> filter = null)
+		public IEnumerable<PageLayout> FindAll(Func<PageLayout, bool> filter = null)
 		{
 			return filter == null ?
 				Query().AsEnumerable()
@@ -24,47 +24,47 @@ namespace Harbor.Data.Repositories
 				Query().Where(filter).AsEnumerable();
 		}
 
-		public IQueryable<NavLinks> Query()
+		public IQueryable<PageLayout> Query()
 		{
-			return context.NavLinks.AsQueryable();
+			return context.PageLayouts.AsQueryable();
 		}
 
-		public NavLinks FindById(object id)
+		public PageLayout FindById(object id)
 		{
 			return findCachedItemByID(id as int?);
 		}
 
-		public NavLinks FindById(int id, bool readOnly)
+		public PageLayout FindById(int id, bool readOnly)
 		{
 			if (readOnly)
 				return findCachedItemByID(id);
 			return findItemByID(id);
 		}
 
-		public NavLinks FindById(object id, bool readOnly)
+		public PageLayout FindById(object id, bool readOnly)
 		{
 			if (readOnly)
 				return findCachedItemByID(id as int?);
 			return findItemByID(id as int?);
 		}
 
-		public NavLinks Create(NavLinks entity)
+		public PageLayout Create(PageLayout entity)
 		{
 			DomainObjectValidator.ThrowIfInvalid(entity);
 
 			// make sure the name/username is unique
-			var links = FindAll(l => l.UserName == entity.UserName && l.Name.ToLower() == entity.Name.ToLower()).FirstOrDefault();
+			var links = FindAll(l => l.UserName == entity.UserName && l.Title.ToLower() == entity.Title.ToLower()).FirstOrDefault();
 			if (links != null)
 			{
-				throw new DomainValidationException(string.Format("There is already a set of links named {0}.", entity.Name));
+				throw new DomainValidationException(string.Format("There is already a set of links named {0}.", entity.Title));
 			}
 
-			entity = context.NavLinks.Add(entity);
+			entity = context.PageLayouts.Add(entity);
 			context.SaveChanges();
 			return entity;
 		}
 
-		public NavLinks Update(NavLinks entity)
+		public PageLayout Update(PageLayout entity)
 		{
 			var entry = context.Entry(entity);
 			if (entry.State == System.Data.EntityState.Detached)
@@ -74,35 +74,35 @@ namespace Harbor.Data.Repositories
 
 			
 			context.SaveChanges();
-			clearCachedItemByID(entity.NavLinksID);
+			clearCachedItemByID(entity.PageLayoutID);
 			return entity;
 		}
 
-		public void Delete(NavLinks entity)
+		public void Delete(PageLayout entity)
 		{
 			if (context.Entry(entity).State == System.Data.EntityState.Detached)
 			{
-				context.NavLinks.Attach(entity);
+				context.PageLayouts.Attach(entity);
 			}
-			
-			clearCachedItemByID(entity.NavLinksID);
-			context.NavLinks.Remove(entity);
+
+			clearCachedItemByID(entity.PageLayoutID);
+			context.PageLayouts.Remove(entity);
 			context.SaveChanges();
 		}
 
 		#region private caching
-		private const string itemCacheKey = "Harbor.Data.Repositories.NavLinksRepository.";
+		private const string itemCacheKey = "Harbor.Data.Repositories.PageLayoutRepository";
 
-		private NavLinks findItemByID(int? id)
+		private PageLayout findItemByID(int? id)
 		{
-			NavLinks item = FindAll(d => d.NavLinksID == id).FirstOrDefault();
+			PageLayout item = FindAll(d => d.PageLayoutID == id).FirstOrDefault();
 			return item;
 		}
 
-		private NavLinks findCachedItemByID(int? id)
+		private PageLayout findCachedItemByID(int? id)
 		{
 			var cacheKey = itemCacheKey + id;
-			var item = MemoryCache.Default.Get(cacheKey) as NavLinks;
+			var item = MemoryCache.Default.Get(cacheKey) as PageLayout;
 			if (item == null)
 			{
 				item = findItemByID(id);

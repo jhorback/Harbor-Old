@@ -83,17 +83,12 @@
     <Compile Include="ILogger.cs" />
     <Compile Include="IObjectFactory.cs" />
     <Compile Include="JSON.cs" />
-    <Compile Include="PageNav\INavLinksRepository.cs" />
-    <Compile Include="PageNav\NavLinks.cs" />
-    <Compile Include="PageNav\NavLinksSection.cs" />
-    <Compile Include="PageNav\NavLinksSectionLink.cs" />
-    <Compile Include="PageNav\NavLinksTemplate.cs" />
+    <Compile Include="Pages\IPageLayoutRepository.cs" />
     <Compile Include="Pages\ContentTypes\ProductLink.cs" />
     <Compile Include="Pages\ContentTypes\PayPalButton.cs" />
     <Compile Include="Pages\ContentTypes\PageLink.cs" />
     <Compile Include="Pages\ContentTypes\Image.cs" />
     <Compile Include="Pages\ContentTypes\Title.cs" />
-    <Compile Include="Pages\ContentTypes\Links.cs" />
     <Compile Include="Pages\ContentTypes\Text.cs" />
     <Compile Include="Pages\Headers\Title.cs" />
     <Compile Include="Pages\PageContentType.cs" />
@@ -124,7 +119,6 @@
     <Compile Include="Pages\PageResource.cs" />
     <Compile Include="Pages\IncludePageResources.cs" />
     <Compile Include="Pages\PageResources\PayPalButtonResource.cs" />
-    <Compile Include="Pages\PageResources\LinksResource.cs" />
     <Compile Include="Pages\PageResources\PageLinkResource.cs" />
     <Compile Include="Pages\PageResources\FileResource.cs" />
     <Compile Include="Pages\PageResourceUpdater.cs" />
@@ -181,7 +175,7 @@
     <Compile Include="Security\UserRole.cs" />
     <Compile Include="Security\UserSetting.cs" />
     <Compile Include="DomainObjectValidator.cs" />
-    <Compile Include="DomainValidationException.cs" />
+    <Compile Include="Security\DomainValidationException.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

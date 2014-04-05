@@ -3,7 +3,7 @@ using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
 using Harbor.Domain.Pages;
-using Harbor.UI.Models.Components;
+using Harbor.UI.Models.Content;
 using Harbor.UI.Models.Page;
 
 namespace Harbor.UI.Models
@@ -19,7 +19,6 @@ namespace Harbor.UI.Models
 				.ForMember(dest => dest.properties, opt => opt.MapFrom(src => src.Properties))
 				.ForMember(dest => dest.created, opt => opt.MapFrom(src => src.Created.ToShortDateString()))
 				.ForMember(dest => dest.modified, opt => opt.MapFrom(src => src.Modified.ToShortDateString()))
-				.ForMember(dest => dest.navLinks, opt => opt.MapFrom(src => src.NavLinks))
 				.ForMember(dest => dest.pageLinks, opt => opt.Ignore())
 				.ForMember(dest => dest.template, opt => opt.MapFrom(src => TemplateDto.FromTemplate(src.Template)))
 				.ForMember(dest => dest.layout, opt => opt.MapFrom(src => PageLayoutDto.FromPageLayout(src.Layout)))
@@ -41,7 +40,6 @@ namespace Harbor.UI.Models
 				.ForMember(dest => dest.PreviewImage, opt => opt.Ignore())
 				.ForMember(dest => dest.Files, opt => opt.Ignore())
 				.ForMember(dest => dest.PageLinks, opt => opt.Ignore())
-				.ForMember(dest => dest.NavLinks, opt => opt.Ignore())
 				.ForMember(dest => dest.PayPalButtons, opt => opt.Ignore())
 				.AfterMap((dto, DO) =>
 				    {
@@ -93,7 +91,6 @@ namespace Harbor.UI.Models
 
 		public List<FileDto> files { get; set; }
 		public List<PageReferenceDto> pageLinks { get; set; }
-		public List<NavLinksDto> navLinks { get; set; }
 		public List<PayPalButtonDto> payPalButtons { get; set; }
 		
 		public static implicit operator PageDto(Domain.Pages.Page page)

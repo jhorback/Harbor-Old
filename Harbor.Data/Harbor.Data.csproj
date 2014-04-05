@@ -129,8 +129,8 @@
       <DependentUpon>201403180141389_PageAlternateTitle.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Repositories\PageLayoutRepository.cs" />
     <Compile Include="Repositories\PayPalButtonRepository.cs" />
-    <Compile Include="Repositories\NavLinksRepository.cs" />
     <Compile Include="Repositories\PageRepositoryResourceManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AppSettingRepository.cs" />

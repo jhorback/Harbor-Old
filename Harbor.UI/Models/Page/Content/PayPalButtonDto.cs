@@ -3,7 +3,7 @@ using PageComponents = Harbor.Domain.Pages.Content;
 using Products = Harbor.Domain.Products;
 
 
-namespace Harbor.UI.Models.Components
+namespace Harbor.UI.Models.Content
 {
 	public class PayPalButtonDtoMapper : IBootstrapperTask
 	{

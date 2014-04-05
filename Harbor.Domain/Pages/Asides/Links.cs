@@ -1,74 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using Harbor.Domain.PageNav;
-using Harbor.Domain.Pages.PageResources;
+﻿using System.Collections.Generic;
 
 namespace Harbor.Domain.Pages.Asides
 {
-	[Obsolete("Moving to the page layout aside")]
 	public class Links
 	{
-		private readonly NavLinks _links;
-
-
-		public Links(Page page, string uicid) : base(page, uicid)
+		public class LinksSections
 		{
-			if (IsNew() == false)
-			{
-				_links = page.GetNavLinks(NavLinksID);
-			}
+			public string Title { get; set; }
+			public List<LinksSectionLink> Links { get; set; }
 		}
 
-
-		public bool IsNew()
+		public class LinksSectionLink
 		{
-			return NavLinksID == 0;
+			public int pageID { get; set; }
+			public string text { get; set; }
 		}
 
-		public int NavLinksID
-		{
-			get
-			{
-				var id = GetProperty("navLinksID");
-				return id == null ? 0 : int.Parse(id);
-			}
-		}
-
-		public string UserName
-		{
-			get
-			{
-				if (_links == null) return null;
-				return _links.UserName;
-			}
-		}
-
-		public string Name
-		{
-			get
-			{
-				if (_links == null) return null;
-				return _links.Name;
-			}
-		}
-
-		public List<NavLinksSection> Sections
-		{
-			get
-			{
-				if (_links == null) return new List<NavLinksSection>();
-				return _links.Sections;
-			}
-		}
-
-		public override IEnumerable<PageResource> DeclareResources()
-		{
-			if (IsNew())
-			{
-				yield break;
-			}
-			
-			yield return new LinksResource(Page, NavLinksID);
-		}
+		public List<LinksSections> Sections { get; set; }
 	}
 }

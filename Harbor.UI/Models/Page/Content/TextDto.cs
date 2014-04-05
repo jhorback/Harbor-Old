@@ -1,5 +1,5 @@
 ﻿
-namespace Harbor.UI.Models.Components
+namespace Harbor.UI.Models.Content
 {
 	public class TextDto
 	{

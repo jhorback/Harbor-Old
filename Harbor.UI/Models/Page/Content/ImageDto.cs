@@ -3,7 +3,7 @@ using System;
 using Harbor.Domain.Files;
 using Harbor.Domain.Pages.Content;
 
-namespace Harbor.UI.Models.Components
+namespace Harbor.UI.Models.Content
 {
 	public class ImageDto
 	{
