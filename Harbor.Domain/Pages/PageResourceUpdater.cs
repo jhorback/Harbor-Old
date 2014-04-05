@@ -5,12 +5,12 @@ namespace Harbor.Domain.Pages
 {
 	public class PageResourceUpdater : IPageResourceUpdater
 	{
-		readonly IComponentRepository componentRepository;
+		readonly IPageContentTypeRepository componentRepository;
 		private readonly IPageRepositoryResourceManager resourceManager;
 		private readonly IPageComponentRepository _pageComponentRepository;
 
 		public PageResourceUpdater(
-			IComponentRepository componentRepository,
+			IPageContentTypeRepository componentRepository,
 			IPageRepositoryResourceManager resourceManager,
 			IPageComponentRepository pageComponentRepository)
 		{

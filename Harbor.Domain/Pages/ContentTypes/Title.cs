@@ -2,6 +2,7 @@
 
 namespace Harbor.Domain.Pages.ContentTypes
 {
+	[Obsolete("Moving to the page layout")]
 	public class Title : PageContentType
 	{
 		public const string KEY = "title";

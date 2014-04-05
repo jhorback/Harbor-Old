@@ -109,7 +109,7 @@
     <Compile Include="Pages\Content\PageLink.cs" />
     <Compile Include="Pages\Content\Text.cs" />
     <Compile Include="Pages\Content\Image.cs" />
-    <Compile Include="Pages\ComponentRepository.cs" />
+    <Compile Include="Pages\PageContentTypeRepository.cs" />
     <Compile Include="Pages\PageCreatePipeline\PageCreatePipeline.cs" />
     <Compile Include="Pages\PageCreatePipeline\PageTypeCreateHandler.cs" />
     <Compile Include="Pages\PageFactory.cs" />
@@ -139,7 +139,7 @@
     <Compile Include="Pages\PageUpdatePipeline\PageTypeUpdateHandler.cs" />
     <Compile Include="Pages\Template.cs" />
     <Compile Include="Pages\PageTypes\PageListing.cs" />
-    <Compile Include="Pages\IComponentRepository.cs" />
+    <Compile Include="Pages\IPageContentTypeRepository.cs" />
     <Compile Include="Pages\IPageRepository.cs" />
     <Compile Include="Pages\Roles\Author.cs" />
     <Compile Include="Extensions\AppSetting\AsBool.cs" />
