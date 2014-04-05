@@ -283,6 +283,7 @@
     <Compile Include="Models\Page\Components\ImageDto.cs" />
     <Compile Include="Models\Page\Components\TextDto.cs" />
     <Compile Include="Models\Page\Components\NavLinksSectionLinkDto.cs" />
+    <Compile Include="Models\Page\PageLayoutDto.cs" />
     <Compile Include="Models\Page\PageModelBinder.cs" />
     <Compile Include="Models\Page\PageReferenceDto.cs" />
     <Compile Include="Models\Page\TemplateDto.cs" />

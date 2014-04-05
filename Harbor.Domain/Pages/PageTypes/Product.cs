@@ -22,9 +22,9 @@ namespace Harbor.Domain.Pages.PageTypes
 		{
 			context.SetLayout(LayoutDisplayProperties.ContentCentered | LayoutDisplayProperties.NoAside)
 				.SetHeader(Components.Title.KEY)
-				.AddContent(Components.Image.KEY, new[] { ContentClassNames.Col2 })
-				.AddContent(Components.Text.KEY, new[] { ContentClassNames.Col2 })
-				.AddContent(Components.PayPalButton.KEY, new[] { ContentClassNames.Col2 });
+				.AddContent(Components.Image.KEY, new[] { Template.ContentClassNames.Col2 })
+				.AddContent(Components.Text.KEY, new[] { Template.ContentClassNames.Col2 })
+				.AddContent(Components.PayPalButton.KEY, new[] { Template.ContentClassNames.Col2 });
 		}
 	}
 }

@@ -7,7 +7,6 @@ namespace Harbor.Domain.Pages
 		public PageUpdatePipeline(IObjectFactory objectFactory)
 			: base(objectFactory)
 		{
-			AddHandler<AlternateTitleHandler>();
 			AddHandler<PageTypeUpdateHandler>();
 			AddHandler<ContentResourceUpdater>();
 		}

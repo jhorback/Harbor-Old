@@ -159,7 +159,6 @@
     <Compile Include="IRespository.cs" />
     <Compile Include="IValueObject.cs" />
     <Compile Include="Pages\PageUpdatePipeline\ContentResourceUpdater.cs" />
-    <Compile Include="Pages\PageUpdatePipeline\AlternateTitleHandler.cs" />
     <Compile Include="Pages\PageUpdatePipeline\PageUpdatePipeline.cs" />
     <Compile Include="Pipeline\BasePipeline.cs" />
     <Compile Include="Pipeline\IPipelineHandler.cs" />

@@ -1,65 +1,45 @@
 ﻿using System.Collections.Generic;
-using AutoMapper;
 using Harbor.Domain.Pages;
 
 namespace Harbor.UI.Models
 {
-	public class TemplateDtoMapCreator : IBootstrapperTask
-	{
-		public void Execute()
-		{
-			Mapper.CreateMap<Template, TemplateDto>()
-				.BeforeMap((d, dto) =>
-				{
-					var props = d.Layout;
-					var noAside = d.Layout.HasFlag(LayoutDisplayProperties.NoAside);
-				})
-				.ForMember(dest => dest.layoutIsCentered,
-						   opt => opt.MapFrom(src => src.Layout.HasFlag(LayoutDisplayProperties.ContentCentered)))
-				.ForMember(dest => dest.layoutIsReadable,
-						   opt => opt.MapFrom(src => src.Layout.HasFlag(LayoutDisplayProperties.ContentReadable)))
-				.ForMember(dest => dest.layoutHasNoSidebar,
-						   opt => opt.MapFrom(src => src.Layout.HasFlag(LayoutDisplayProperties.NoAside)));
-
-			Mapper.CreateMap<TemplateDto, Template>()
-				.ForMember(dest => dest.Layout,
-				           opt => opt.MapFrom(src => getLayoutProperties(src)));
-		}
-
-		LayoutDisplayProperties getLayoutProperties(TemplateDto dto)
-		{
-			var p = LayoutDisplayProperties.None;
-			if (dto.layoutHasNoSidebar)
-				p = p | LayoutDisplayProperties.NoAside;
-			if (dto.layoutIsCentered)
-				p = p | LayoutDisplayProperties.ContentCentered;
-			if (dto.layoutIsReadable)
-				p = p | LayoutDisplayProperties.ContentReadable;
-			return p;
-		}
-	}
-
 	public class TemplateDto
 	{
 		public int pageID { get; set; }
-		public string pageTypeKey { get; set; }
-		public bool layoutIsCentered { get; set; }
-		public bool layoutIsReadable { get; set; }
-		public bool layoutHasNoSidebar { get; set; }
-		public PageHeader header { get; set; }
-		public List<PageAside> aside { get; set; }
-		public List<PageContent> content { get; set; }
+		public List<Template.Uic> content { get; set; }
 		public string defaultContentClassName { get; set; }
 		public int componentCounter { get; set; }
 
-		public static implicit operator TemplateDto(Template page)
+		public static implicit operator TemplateDto(Template template)
 		{
-			return Mapper.Map<Template, TemplateDto>(page);
+			return FromTemplate(template);
 		}
 
-		public static implicit operator Template(TemplateDto page)
+		public static implicit operator Template(TemplateDto template)
 		{
-			return Mapper.Map<TemplateDto, Template>(page);
+			return ToTemplate(template);
+		}
+
+		public static TemplateDto FromTemplate(Template template)
+		{
+			return new TemplateDto
+			{
+				pageID = template.PageID,
+				content = template.Content,
+				defaultContentClassName = template.DefaultContentClassName,
+				componentCounter = template.ComponentCounter
+			};
+		}
+
+		public static Template ToTemplate(TemplateDto template)
+		{
+			return new Template
+			{
+				PageID = template.pageID,
+				Content = template.content,
+				DefaultContentClassName = template.defaultContentClassName,
+				ComponentCounter = template.componentCounter
+			};
 		}
 	}
 }
