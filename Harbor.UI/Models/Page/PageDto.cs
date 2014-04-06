@@ -92,17 +92,10 @@ namespace Harbor.UI.Models
 		public List<FileDto> files { get; set; }
 		public List<PageReferenceDto> pageLinks { get; set; }
 		public List<PayPalButtonDto> payPalButtons { get; set; }
-		
-		public static implicit operator PageDto(Domain.Pages.Page page)
-		{
-			return Mapper.Map<Domain.Pages.Page, PageDto>(page);
-		}
 
-		public static implicit operator Domain.Pages.Page(PageDto page)
+		public static PageDto FromPage(Domain.Pages.Page page)
 		{
-			var factory = DependencyResolver.Current.GetService<IPageFactory>();
-			var pageDO = factory.Create(page.author, page.pageTypeKey, page.title, page.published);
-			return pageDO;
+			return Mapper.Map<Domain.Pages.Page, PageDto>(page);			
 		}
 	}
 }
