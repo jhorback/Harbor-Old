@@ -41,18 +41,10 @@ namespace Harbor.UI.Controllers
 			return PartialView("Image", model);
 		}
 
-		public PartialViewResult Links(Page page, string uicid)
+		public PartialViewResult Links(Page page)
 		{
-			//var links = _pageContentRepository.GetContent<Links>(page, uicid);
-			//ViewBag.Page = page;
-			//if (links.IsNew())
-			//{
-			//	return PartialView("Links-None");
-			//}
-
-			//var model = (NavLinksDto)links;
-			var model = new object();
-			return PartialView("Links", model);
+			var links = page.Layout.GetAside<Links>();
+			return PartialView("Links", links);
 		}
 
 		public PartialViewResult PageLink(Page page, string uicid)

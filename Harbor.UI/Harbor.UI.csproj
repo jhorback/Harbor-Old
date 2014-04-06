@@ -234,7 +234,7 @@
     <Compile Include="Controllers\Api\AppSettingsController.cs" />
     <Compile Include="Controllers\Api\FilesController.cs" />
     <Compile Include="Controllers\Api\PayPalButtonsController.cs" />
-    <Compile Include="Controllers\Api\NavLinksController.cs" />
+    <Compile Include="Controllers\Api\PageLayoutController.cs" />
     <Compile Include="Controllers\Api\PageComponentsController.cs" />
     <Compile Include="Controllers\Api\PagesController.cs" />
     <Compile Include="Controllers\Api\PageTypesController.cs" />
