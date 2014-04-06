@@ -18,6 +18,11 @@ namespace Harbor.Domain.Pages
 
 		public int PageLayoutID { get; set; }
 
+		public bool IsNew()
+		{
+			return PageLayoutID == 0;
+		}
+
 		[StringLength(50)]
 		public string UserName { get; set; }
 
@@ -37,6 +42,7 @@ namespace Harbor.Domain.Pages
 
 		public T GetHeader<T>()
 		{
+			// jch! - need the ObjectFactory for injection here!?
 			var header = new JavaScriptSerializer().Deserialize<T>(HeaderData);
 			return header;
 		}

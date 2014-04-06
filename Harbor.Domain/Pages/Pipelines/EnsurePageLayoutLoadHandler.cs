@@ -19,7 +19,7 @@ namespace Harbor.Domain.Pages
 
 		public void Execute(Page page)
 		{
-			if (page.Layout != null)
+			if (page.Layout != null && page.Layout.PageLayoutID != 0)
 			{
 				return;
 			}
@@ -33,8 +33,7 @@ namespace Harbor.Domain.Pages
 				throw new Exception("A page type could not be determined for the page. PageID: " + page.PageID);
 			}
 
-			// the page load context overrides the add content methods
-			pageType.OnPageCreate(new PageTypeLoadContext(page));
+			pageType.SetLayout(new PageTypeLayoutContext(page));
 		}
 	}
 }

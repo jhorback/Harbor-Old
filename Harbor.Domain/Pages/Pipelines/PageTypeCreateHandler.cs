@@ -15,6 +15,7 @@ namespace Harbor.Domain.Pages
 
 		public void Execute(Page page)
 		{
+			// determine the page type
 			var pageType = _pageTypeRepository.GetPageType(page.PageTypeKey);
 			if (pageType == null)
 			{
@@ -26,8 +27,22 @@ namespace Harbor.Domain.Pages
 				throw new DomainValidationException("Pages cannot be created without a page type.");				
 			}
 
-			var creationContext = new PageTypeCreationContext(page);
-			pageType.OnPageCreate(creationContext);
+
+			// setup the layout if new
+			if (page.Layout.IsNew())
+			{
+				page.Layout.Title = page.Title;
+				page.Layout.UserName = page.AuthorsUserName;
+				pageType.SetLayout(new PageTypeLayoutContext(page));
+			}
+
+
+			// setup the page template
+			pageType.SetTemplate(new PageTypeTemplateContext(page));
+		
+			
+			// allow any specialized handling
+			pageType.OnPageCreate(page);
 		}
 	}
 }
