@@ -9,4 +9,5 @@ function pageTypeRepo(collectionFactory, ajaxRequest) {
 	};
 }
 
+
 pageModel.service("pageTypeRepo", ["collectionFactory", "ajaxRequest", pageTypeRepo]);
