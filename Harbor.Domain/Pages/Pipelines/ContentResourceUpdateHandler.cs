@@ -5,11 +5,11 @@ namespace Harbor.Domain.Pages
 	/// <summary>
 	/// Calls on the page resource udpater
 	/// </summary>
-	public class ContentResourceUpdater  : IPipelineHanlder<Page>
+	public class ContentResourceUpdateHandler  : IPipelineHanlder<Page>
 	{
 		private readonly IPageResourceUpdater _pageResourceUpdater;
 
-		public ContentResourceUpdater(IPageResourceUpdater pageResourceUpdater)
+		public ContentResourceUpdateHandler(IPageResourceUpdater pageResourceUpdater)
 		{
 			_pageResourceUpdater = pageResourceUpdater;
 		}

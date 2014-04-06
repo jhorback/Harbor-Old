@@ -214,7 +214,8 @@ namespace Harbor.Data.Repositories
 			Page page = FindAll(d => d.PageID == pageID).FirstOrDefault();
 			if (page != null)
 			{
-				page.AllPageRoles = new PageFeatureRoleRepository().GetRoles();
+				var loadPipeline = new PageLoadPipeline(_objectFactory);
+				loadPipeline.Execute(page);
 			}
 			return page;
 		}
