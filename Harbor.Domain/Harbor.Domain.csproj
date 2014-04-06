@@ -107,6 +107,8 @@
     <Compile Include="Pages\Content\Text.cs" />
     <Compile Include="Pages\Content\Image.cs" />
     <Compile Include="Pages\PageContentTypeRepository.cs" />
+    <Compile Include="Pages\PageTypeLayoutContext.cs" />
+    <Compile Include="Pages\PageTypeTemplateContext.cs" />
     <Compile Include="Pages\Pipelines\EnsurePageLayoutLoadHandler.cs" />
     <Compile Include="Pages\Pipelines\SetAllPageRolesLoadHandler.cs" />
     <Compile Include="Pages\Pipelines\PageCreatePipeline.cs" />
@@ -129,7 +131,6 @@
     <Compile Include="Pages\PageResourceUpdater.cs" />
     <Compile Include="Pages\PageRole.cs" />
     <Compile Include="Pages\PageType.cs" />
-    <Compile Include="Pages\PageTypeCreationContext.cs" />
     <Compile Include="Pages\IPageTypeRepository.cs" />
     <Compile Include="Pages\PageTypeRepository.cs" />
     <Compile Include="Pages\PageTypes\Article.cs" />

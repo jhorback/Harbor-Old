@@ -14,7 +14,7 @@ namespace Harbor.Domain.Pages
 		public void Execute(Page page)
 		{
 			var pageType = _pageTypeRepository.GetPageType(page.PageTypeKey);
-			pageType.OnPageUpdate(new PageTypeUpdateContext(page));
+			pageType.OnPageUpdate(page);
 		}
 	}
 }
