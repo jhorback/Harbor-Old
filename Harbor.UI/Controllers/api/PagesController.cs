@@ -16,10 +16,12 @@ namespace Harbor.UI.Controllers.Api
     public class PagesController : ApiController
     {
 		IPageRepository pageRep;
+		private readonly IPageFactory _pageFactory;
 
-		public PagesController(IPageRepository pageRep)
+		public PagesController(IPageRepository pageRep, IPageFactory pageFactory)
 		{
 			this.pageRep = pageRep;
+			_pageFactory = pageFactory;
 		}
 
 
@@ -44,13 +46,11 @@ namespace Harbor.UI.Controllers.Api
         }
 
 		[Http.Permit(UserFeature.Pages, Permissions.Create)]
-		public HttpResponseMessage Post(PageDto page)
+		public HttpResponseMessage Post(string author, string pageTypeKey, string title, bool published)
         {
-			var pageDO = (Page)page;
-			if (pageDO == null)
-				return Request.CreateBadRequestResponse("The page posted was null.");
-
+			var pageDO = _pageFactory.Create(author, pageTypeKey, title, published);
 			var errors = DomainObjectValidator.Validate(pageDO);
+			
 			if (errors.Count != 0)
 				return Request.CreateBadRequestResponse(errors);
 			
@@ -63,7 +63,7 @@ namespace Harbor.UI.Controllers.Api
 				return Request.CreateBadRequestResponse(exception.Message);
 			}
 
-			return Request.CreateOKResponse((PageDto)pageDO);
+			return Request.CreateOKResponse(PageDto.FromPage(pageDO));
         }
 
 		[Http.PagePermit(Permissions.Update)]
