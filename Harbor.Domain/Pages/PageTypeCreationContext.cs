@@ -1,6 +1,24 @@
 ﻿
 namespace Harbor.Domain.Pages
 {
+	public class PageTypeLoadContext : PageTypeCreationContext
+	{
+		public PageTypeLoadContext(Page page) : base(page)
+		{
+			
+		}
+
+		public override PageTypeCreationContext AddContent(string type)
+		{
+			return this;
+		}
+
+		public override PageTypeCreationContext AddContent(string type, string[] classNames)
+		{
+			return this;
+		}
+	}
+
 	public class PageTypeCreationContext
 	{
 		public PageTypeCreationContext(Page page)
@@ -29,12 +47,12 @@ namespace Harbor.Domain.Pages
 			return this;
 		}
 
-		public PageTypeCreationContext AddContent(string type)
+		public virtual PageTypeCreationContext AddContent(string type)
 		{
 			return AddContent(type, new[] { Page.Template.DefaultContentClassName });
 		}
 
-		public PageTypeCreationContext AddContent(string type, string[] classNames)
+		public virtual PageTypeCreationContext AddContent(string type, string[] classNames)
 		{
 			var item = new Template.Uic
 			{

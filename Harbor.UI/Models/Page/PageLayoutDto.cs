@@ -15,6 +15,11 @@ namespace Harbor.UI.Models.Page
 
 		public static PageLayoutDto FromPageLayout(PageLayout layout)
 		{
+			if (layout == null)
+			{
+				return null;
+			}
+
 			return new PageLayoutDto
 			{
 				id = layout.PageLayoutID,
@@ -30,6 +35,11 @@ namespace Harbor.UI.Models.Page
 
 		public static PageLayout ToPageLayout(PageLayoutDto layout)
 		{
+			if (layout == null)
+			{
+				return null;
+			}
+
 			var props = PageLayout.LayoutDisplayProperties.None;
 			if (layout.layoutHasNoSidebar)
 				props = props | PageLayout.LayoutDisplayProperties.NoAside;

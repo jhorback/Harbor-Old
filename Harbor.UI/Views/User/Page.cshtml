@@ -5,13 +5,13 @@
 @model Harbor.Domain.Pages.Page
 @{
 	ViewBag.Title = Model.Title;
-	bool noAside = Model.Template.Layout.HasFlag(LayoutProperties.NoAside);
+	bool noAside = Model.Layout.DisplayProperties.HasFlag(PageLayout.LayoutDisplayProperties.NoAside);
 	var layoutClassNames = "page";
-	if (Model.Template.Layout.HasFlag(LayoutProperties.ContentCentered))
+	if (Model.Layout.DisplayProperties.HasFlag(PageLayout.LayoutDisplayProperties.ContentCentered))
 	{
 		layoutClassNames = " page centered";
 	}
-	else if (Model.Template.Layout.HasFlag(LayoutProperties.ContentReadable))
+	else if (Model.Layout.DisplayProperties.HasFlag(PageLayout.LayoutDisplayProperties.ContentReadable))
 	{
 		layoutClassNames = "page readable";
 	}

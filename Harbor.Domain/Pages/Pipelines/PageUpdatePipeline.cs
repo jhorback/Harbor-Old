@@ -8,7 +8,7 @@ namespace Harbor.Domain.Pages
 			: base(objectFactory)
 		{
 			AddHandler<PageTypeUpdateHandler>();
-			AddHandler<ContentResourceUpdater>();
+			AddHandler<ContentResourceUpdateHandler>();
 		}
 	}
 }
