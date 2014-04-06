@@ -8,6 +8,7 @@ namespace Harbor.Domain.Pages
 			: base(objectFactory)
 		{
 			AddHandler<PageTypeCreateHandler>();
+			AddHandler<SetAllPageRolesLoadHandler>();
 		}
 	}
 }

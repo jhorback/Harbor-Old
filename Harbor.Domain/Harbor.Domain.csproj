@@ -135,7 +135,6 @@
     <Compile Include="Pages\PageTypes\Article.cs" />
     <Compile Include="Pages\PageTypes\Page.cs" />
     <Compile Include="Pages\PageTypes\Product.cs" />
-    <Compile Include="Pages\PageTypeUpdateContext.cs" />
     <Compile Include="Pages\Pipelines\PageTypeUpdateHandler.cs" />
     <Compile Include="Pages\Template.cs" />
     <Compile Include="Pages\PageTypes\PageListing.cs" />

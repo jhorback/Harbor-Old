@@ -1,27 +1,38 @@
 ﻿
 namespace Harbor.Domain.Pages
 {
-	public class PageTypeLoadContext : PageTypeCreationContext
+	//jch! - move / rename these classes
+	public class PageTypeLayoutContext
 	{
-		public PageTypeLoadContext(Page page) : base(page)
+		public PageTypeLayoutContext(Page page)
 		{
-			
+			Page = page;
 		}
 
-		public override PageTypeCreationContext AddContent(string type)
+		public Page Page { get; set; }
+
+		public PageTypeLayoutContext SetLayout(PageLayout.LayoutDisplayProperties layout)
 		{
+			Page.Layout.DisplayProperties = layout;
 			return this;
 		}
 
-		public override PageTypeCreationContext AddContent(string type, string[] classNames)
+		public PageTypeLayoutContext SetHeader(string type)
 		{
+			Page.Layout.HeaderKey = type;
+			return this;
+		}
+
+		public PageTypeLayoutContext SetAside(string type)
+		{
+			Page.Layout.AsideKey = type;
 			return this;
 		}
 	}
 
-	public class PageTypeCreationContext
+	public class PageTypeTemplateContext
 	{
-		public PageTypeCreationContext(Page page)
+		public PageTypeTemplateContext(Page page)
 		{
 			Page = page;
 		}
@@ -29,30 +40,12 @@ namespace Harbor.Domain.Pages
 		public Page Page { get; set; }
 
 
-		public PageTypeCreationContext SetLayout(PageLayout.LayoutDisplayProperties layout)
-		{
-			Page.Layout.DisplayProperties = layout;
-			return this;
-		}
-
-		public PageTypeCreationContext SetHeader(string type)
-		{
-			Page.Layout.HeaderKey = type;
-			return this;
-		}
-
-		public PageTypeCreationContext SetAside(string type)
-		{
-			Page.Layout.AsideKey = type;
-			return this;
-		}
-
-		public virtual PageTypeCreationContext AddContent(string type)
+		public virtual PageTypeTemplateContext AddContent(string type)
 		{
 			return AddContent(type, new[] { Page.Template.DefaultContentClassName });
 		}
 
-		public virtual PageTypeCreationContext AddContent(string type, string[] classNames)
+		public virtual PageTypeTemplateContext AddContent(string type, string[] classNames)
 		{
 			var item = new Template.Uic
 			{
@@ -64,11 +57,10 @@ namespace Harbor.Domain.Pages
 			return this;
 		}
 
-		public PageTypeCreationContext SetDefaultContentClassName(string className)
+		public PageTypeTemplateContext SetDefaultContentClassName(string className)
 		{
 			Page.Template.DefaultContentClassName = className;
 			return this;
 		}
-
 	}
 }

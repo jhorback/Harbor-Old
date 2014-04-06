@@ -18,11 +18,15 @@ namespace Harbor.Domain.Pages.PageTypes
 			get { return "A simple centered page with an image and text."; }
 		}
 
-		public override void OnPageCreate(PageTypeCreationContext context)
+		public override void SetLayout(PageTypeLayoutContext context)
 		{
 			context.SetLayout(PageLayout.LayoutDisplayProperties.ContentCentered | PageLayout.LayoutDisplayProperties.NoAside)
-				.SetHeader(ContentTypes.Title.KEY)
-				.AddContent(ContentTypes.Image.KEY)
+				.SetHeader(ContentTypes.Title.KEY);
+		}
+
+		public override void SetTemplate(PageTypeTemplateContext context)
+		{
+			context.AddContent(ContentTypes.Image.KEY)
 				.AddContent(ContentTypes.Text.KEY);
 		}
 	}
