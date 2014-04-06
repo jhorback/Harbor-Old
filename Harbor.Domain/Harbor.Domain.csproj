@@ -83,6 +83,7 @@
     <Compile Include="ILogger.cs" />
     <Compile Include="IObjectFactory.cs" />
     <Compile Include="JSON.cs" />
+    <Compile Include="Pages\ContentTypes\Links.cs" />
     <Compile Include="Pages\IPageLayoutRepository.cs" />
     <Compile Include="Pages\ContentTypes\ProductLink.cs" />
     <Compile Include="Pages\ContentTypes\PayPalButton.cs" />
@@ -90,7 +91,7 @@
     <Compile Include="Pages\ContentTypes\Image.cs" />
     <Compile Include="Pages\ContentTypes\Title.cs" />
     <Compile Include="Pages\ContentTypes\Text.cs" />
-    <Compile Include="Pages\Headers\Title.cs" />
+    <Compile Include="Pages\PageAsideType.cs" />
     <Compile Include="Pages\PageContentType.cs" />
     <Compile Include="Pages\IPageContentRepository.cs" />
     <Compile Include="Pages\IPageFactory.cs" />
@@ -101,7 +102,7 @@
     <Compile Include="Pages\PageContentRepository.cs" />
     <Compile Include="Pages\Content\ProductLink.cs" />
     <Compile Include="Pages\Content\PayPalButton.cs" />
-    <Compile Include="Pages\Asides\Links.cs" />
+    <Compile Include="Pages\Content\Links.cs" />
     <Compile Include="Pages\Content\PageLink.cs" />
     <Compile Include="Pages\Content\Text.cs" />
     <Compile Include="Pages\Content\Image.cs" />
@@ -112,6 +113,7 @@
     <Compile Include="Pages\PageFeature.cs" />
     <Compile Include="Pages\PageFeatureRole.cs" />
     <Compile Include="Pages\PageFunctionalRoleRepository.cs" />
+    <Compile Include="Pages\PageHeaderType.cs" />
     <Compile Include="Pages\PageLayout.cs" />
     <Compile Include="Pages\PagePermissions.cs" />
     <Compile Include="Pages\PageProperty.cs" />

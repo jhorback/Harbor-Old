@@ -62,7 +62,7 @@ namespace Harbor.Data.Repositories
 			if (include.HasFlag(IncludePageResources.PreviewImage))
 				pages = pages.Include(p => p.PreviewImage);
 			if (include.HasFlag(IncludePageResources.Files))
-				pages = pages.Include(p => p.Files); //.Select(f => f.Owner)); // jch! this does work owner is null before but not after	
+				pages = pages.Include(p => p.Files); //.Select(f => f.Owner)); // jch* subselecting like this does work owner is null before but not after	
 			// pages = pages.Include(p => p.PageLayout
 			if (include.HasFlag(IncludePageResources.PageLinks))
 				pages = pages.Include(p => p.PageLinks);

@@ -69,20 +69,3 @@ fileAdmin.view("fileAdminView", [
 	fileAdmin.fileAdminView]);
 
 
-
-
-
-// jch! remove
-//fileAdmin.fileItemView = function (options, fileAdminRouter) {
-//	this.fileAdminRouter = fileAdminRouter;
-//};
-
-//fileAdmin.fileItemView.prototype = {
-	
-//};
-
-//fileAdmin.view("fileItemView", [
-//	"options",
-//	"fileAdminRouter",
-//	fileAdmin.fileItemView
-//])

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -7,20 +6,17 @@ using System.Web.Http;
 using AutoMapper;
 using Harbor.Domain;
 using Harbor.Domain.Pages;
-using Harbor.Domain.Pages;
 using Harbor.Domain.Security;
 using Harbor.UI.Extensions;
-using Harbor.UI.Models.Content;
 using Harbor.UI.Models.Page;
 
 namespace Harbor.UI.Controllers.Api
 {
-	//jch! rename
-    public class NavLinksController : ApiController
+    public class PageLayoutController : ApiController
     {
 	    private readonly IPageLayoutRepository linksRep;
 
-	    public NavLinksController(IPageLayoutRepository linksRepository)
+	    public PageLayoutController(IPageLayoutRepository linksRepository)
 		{
 			linksRep = linksRepository;
 		}

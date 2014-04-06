@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 
-namespace Harbor.Domain.Pages.Asides
+namespace Harbor.Domain.Pages.Content
 {
 	public class Links
 	{
 		public class LinksSections
 		{
-			public string Title { get; set; }
-			public List<LinksSectionLink> Links { get; set; }
+			public string title { get; set; }
+			public List<LinksSectionLink> links { get; set; }
 		}
 
 		public class LinksSectionLink
@@ -16,6 +16,6 @@ namespace Harbor.Domain.Pages.Asides
 			public string text { get; set; }
 		}
 
-		public List<LinksSections> Sections { get; set; }
+		public List<LinksSections> sections { get; set; }
 	}
 }

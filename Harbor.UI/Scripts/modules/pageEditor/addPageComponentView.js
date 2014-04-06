@@ -14,7 +14,7 @@ pageEditor.addPageComponentView = function (
 
 	this.model = modelFactory.create("addPageComponentViewModel", {		
 		componentType: options.type, // "header", "content", "aside"
-		pageComponentKey: "image" // jch! testing
+		pageComponentKey: "image" // jch* testing
 	});
 
 	this.model.page = currentPageRepo.getCurrentPage();

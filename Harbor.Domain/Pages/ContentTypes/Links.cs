@@ -1,9 +1,9 @@
 ﻿
 namespace Harbor.Domain.Pages.ContentTypes
 {
-	public class Title : PageHeaderType
+	public class Links : PageAsideType
 	{
-		public const string KEY = "title";
+		public const string KEY = "links";
 
 		public override string Key
 		{
