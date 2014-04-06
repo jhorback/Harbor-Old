@@ -30,7 +30,7 @@ namespace Harbor.UI.Controllers.Api
         	query.CurrentUserName = User.Identity.Name;
 			return new PagedResultDto<PageDto>
 			{
-				results = pageRep.FindAll(query).Select(p => (PageDto)p),
+				results = pageRep.FindAll(query).Select(PageDto.FromPage),
 				totalCount = pageRep.FindAllCount(query)
 			};
 		}
@@ -42,7 +42,7 @@ namespace Harbor.UI.Controllers.Api
 			if (page == null)
 				return Request.CreateNotFoundResponse();
 
-			return Request.CreateOKResponse((PageDto)page);
+			return Request.CreateOKResponse(PageDto.FromPage(page));
         }
 
 		[Http.Permit(UserFeature.Pages, Permissions.Create)]
@@ -88,7 +88,7 @@ namespace Harbor.UI.Controllers.Api
 				return Request.CreateBadRequestResponse(e.Message);
 			}
 			
-			var pageDto = (PageDto)pageDO;
+			var pageDto = PageDto.FromPage(pageDO);
 			return Request.CreateOKResponse(pageDto);
         }
 

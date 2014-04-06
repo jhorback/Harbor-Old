@@ -117,7 +117,7 @@ namespace Harbor.UI.Controllers
 				
 
 			ViewBag.HasWritePermissions = page.HasPermission(User.Identity.Name, Permissions.CreateAndUpdate);
-			ViewBag.PageDto = (PageDto)page;
+			ViewBag.PageDto = PageDto.FromPage(page);
 			return View("Page", page);
 		}
 

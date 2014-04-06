@@ -36,7 +36,7 @@ namespace Harbor.UI.Controllers
 				{
 					Take = 20,
 					CurrentUserName = User.Identity.Name
-				}).Select(p => (PageDto)p);
+				}).Select(PageDto.FromPage);
 			return View("Index", pages);
 		}
 

@@ -36,7 +36,7 @@ namespace Harbor.UI.Models.Setting
 			var homePageID = harborApp.HomePageID;
 			if (homePageID != null)
 			{
-				model.HomePage = pageRepository.FindById(homePageID);
+				model.HomePage = PageDto.FromPage(pageRepository.FindById(homePageID));
 			}
 
 			model.Theme = harborApp.Theme;

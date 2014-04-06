@@ -20,7 +20,7 @@ namespace Harbor.UI.Controllers
 
 		public PartialViewResult Title(Page page)
 		{
-			return PartialView("Title", (PageDto)page);
+			return PartialView("Title", PageDto.FromPage(page));
 		}
 
 		public PartialViewResult Text(Page page, string uicid)
