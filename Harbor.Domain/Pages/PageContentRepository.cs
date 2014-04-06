@@ -1,58 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
-using Harbor.Domain.Pages.Content;
+﻿using System.Collections.Generic;
 
 namespace Harbor.Domain.Pages
 {
 	public class PageContentRepository : IPageContentRepository
 	{
-		private readonly IPageContentTypeRepository _componentRepository;
+		private readonly IPageContentTypeRepository _contentTypeRepository;
+		private readonly IObjectFactory _objectFactory;
 
-		private delegate PageContent PageComponentFactory(Type type, Page page, string uicid);
-
-		private PageContent defaultFactory(Type type, Page page, string uicid)
+		public PageContentRepository(IPageContentTypeRepository contentTypeRepository, IObjectFactory objectFactory)
 		{
-			var comp = Activator.CreateInstance(type, page, uicid);
-			return comp as PageContent;
+			_contentTypeRepository = contentTypeRepository;
+			_objectFactory = objectFactory;
 		}
-
-		private readonly IDictionary<Type, PageComponentFactory> factories;
-
-
-		public PageContentRepository(IPageContentTypeRepository componentRepository, Func<IPageRepository> getPageRepository)
-		{
-			_componentRepository = componentRepository;
-
-			factories = new Dictionary<Type, PageComponentFactory>
-			{
-				{ typeof (ProductLink), (type, page, uicid) => new ProductLink(getPageRepository(), page, uicid) }
-			};
-		}
-
 
 		public PageContent GetContent(string key, Page page, string uicid)
 		{
-			var componentType = _componentRepository.GetTypeOfPageContentType(key);
+			var componentType = _contentTypeRepository.GetTypeOfPageContentType(key);
 			if (componentType == null)
 				return null;
 
-			var comp = createComponent(componentType, page, uicid);
-			return comp as PageContent;
+			return _objectFactory.GetInstanceWithArgs(componentType, getFactoryArgs(page, uicid)) as PageContent;
 		}
-
 
 		public T GetContent<T>(Page page, string uicid) where T : PageContent
 		{
-			var comp = createComponent(typeof(T), page, uicid);
-			// var comp = (T)Activator.CreateInstance(typeof(T), this, uicid);
-			return comp as T;
+			var content = _objectFactory.GetInstanceWithArgs<T>(getFactoryArgs(page, uicid));
+			return content;
 		}
 
-		PageContent createComponent(Type type, Page page, string uicid)
+		private Dictionary<string, object> getFactoryArgs(Page page, string uicid)
 		{
-			var factory = factories.ContainsKey(type) ? factories[type] : defaultFactory;
-			var comp = factory(type, page, uicid);
-			return comp;
+			var args = new Dictionary<string, object>
+			{
+				{ "page", page },
+				{ "uicid", uicid }
+			};
+			return args;
 		}
 	}
 }
