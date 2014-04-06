@@ -5,7 +5,7 @@ namespace Harbor.Domain.Pages.Content
 	public class ProductLink : PageLink
 	{
 
-		public ProductLink(IPageRepository pageRepository, Page page, string uicid) : base(page, uicid)
+		public ProductLink(Page page, string uicid, IPageRepository pageRepository) : base(page, uicid)
 		{
 			if (IsNew() == false)
 			{
