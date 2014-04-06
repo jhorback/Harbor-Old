@@ -128,6 +128,10 @@
     <Compile Include="Migrations\201403180141389_PageAlternateTitle.Designer.cs">
       <DependentUpon>201403180141389_PageAlternateTitle.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201404061413005_PageLayout.cs" />
+    <Compile Include="Migrations\201404061413005_PageLayout.Designer.cs">
+      <DependentUpon>201404061413005_PageLayout.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositories\PageLayoutRepository.cs" />
     <Compile Include="Repositories\PayPalButtonRepository.cs" />
@@ -202,6 +206,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201403180141389_PageAlternateTitle.resx">
       <DependentUpon>201403180141389_PageAlternateTitle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404061413005_PageLayout.resx">
+      <DependentUpon>201404061413005_PageLayout.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

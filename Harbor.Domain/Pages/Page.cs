@@ -41,7 +41,7 @@ namespace Harbor.Domain.Pages
 		public int PageID { get; set; }
 
 
-		public int PageLayoutID { get; set; }
+		public int? PageLayoutID { get; set; }
 
 		[Required]
 		[StringLength(50)]
