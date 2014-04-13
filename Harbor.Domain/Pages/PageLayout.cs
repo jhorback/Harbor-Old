@@ -24,9 +24,11 @@ namespace Harbor.Domain.Pages
 		}
 
 		[StringLength(50)]
+		[Required]
 		public string UserName { get; set; }
 
 		[StringLength(100)]
+		[Required]
 		public string Title { get; set; }
 
 		public LayoutDisplayProperties DisplayProperties { get; set; }
