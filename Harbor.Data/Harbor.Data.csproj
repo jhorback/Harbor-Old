@@ -132,6 +132,10 @@
     <Compile Include="Migrations\201404061413005_PageLayout.Designer.cs">
       <DependentUpon>201404061413005_PageLayout.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201404132119259_RequiredPageLayoutFields.cs" />
+    <Compile Include="Migrations\201404132119259_RequiredPageLayoutFields.Designer.cs">
+      <DependentUpon>201404132119259_RequiredPageLayoutFields.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositories\PageLayoutRepository.cs" />
     <Compile Include="Repositories\PayPalButtonRepository.cs" />
@@ -209,6 +213,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201404061413005_PageLayout.resx">
       <DependentUpon>201404061413005_PageLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404132119259_RequiredPageLayoutFields.resx">
+      <DependentUpon>201404132119259_RequiredPageLayoutFields.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
