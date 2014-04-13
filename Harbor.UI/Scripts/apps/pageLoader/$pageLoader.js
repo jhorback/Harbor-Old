@@ -2,12 +2,14 @@
 var pageLoader = context.app("pageLoader").use("bbext", "pageEditor", "pageSettings");
 
 
-function pageLoaderStart(app) {
+function pageLoaderStart(templateRenderer) {
 	
-	app.render({
-		region: "#frame-body"
-	});
-	
+	var frameBody = $("#frame-body");
+	var view = templateRenderer.render("pageLoaderView");
+	frameBody.append(view.$el);
+	//app.render({
+	//	regionEl: "#frame-body"
+	//});
 }
 
-pageLoader.start(["app", pageLoaderStart]);
+pageLoader.start(["templateRenderer", pageLoaderStart]);
