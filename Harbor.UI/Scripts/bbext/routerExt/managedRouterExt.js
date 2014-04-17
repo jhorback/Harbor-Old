@@ -1,45 +1,70 @@
 ﻿/*
-	// jch! - need to test and to document
-
-	Usage:
-	    userRouter = function () {
-		}
-		userRouter.prototype = {
-			routes: {
-				"users" : "users"
-			},
-			users: function () {
-				this.showComponent("usersComponent", {
-					parentEl: ""
-				});
-			}
-		}
-
-
-	routes: {
-		"users": fn,
-		"users/:id": fn
-		// or -> this could be used to indicate a nested route
-		"users": {
-			default: fn,
-			"users/:id: fn
-		}
-	}
-
-	• Wrap the router functions in a closure that contains the route key.
-		○ On changing route; close the current route -> routeCache[routeCache.currentRoute].component.close(<el>);
-		○ <el> being the parentEl 
-		○ Basically, if there is a currentRoute and it has a component, close it, set the current route, call the method -> then if showComponent is called, the component is cached so it can be closed the next go around.
-			§ The route method should be called every time.
-	• Implement the showComponent method.
-		○ Creates the component and adds the options (passed to showComponent) cached off in the routeCache.
-
-
-NOTE:
-Only supports routes defined by the routes object on the router.
-Does not currently support the router.route method (would have to curry that method if desired).
-router.route(route, {[name, cache, url], callback});
-*/
+ * managedRouterExt router mixin
+ *
+ * Defining managed routes
+ *     The routes object on the router can be modified to include additional information about each route.
+ *         *name - A name to be used to reference the route. Defaults to the route key.
+ *         *url - A url to be used when navigating or retriving for links. 
+ *                This can be a method which takes arguments defined by the route pattern.
+ *                This defaults to the route pattern.
+ *         *callback - A function (or name of a function on the router) to call when the route executes.
+ *                     This callback should have the same method signature as the url option.
+ *                     This defaults to the name option.
+ *       Because of the defaults in the options above, it is possible to define a route with an empty object.
+ *           "viewUsers": {} - would have a name of "viewUsers", url of "viewUsers", and callback function "viewUsers"
+ *
+ *
+ * setRoot(root)
+ *     Sets the root using the routerInfo service. This accounts for the appurl.
+ *         *root - The root to be used by Backbone.History
+ *
+ * showComponent(name, options)
+ *     Creates and manages the component with the specified name.
+ *     Options can be any option to be passed to the components root view.
+ *     Additional options can be:
+ *         *region - A node or selector for the location on the page to render the component in.
+ *         *cache - A boolean flag to indicate if the component should be cached.
+ *                  The default value is determined dynamically by the arguments
+ *                  passed to the surrounding route method.
+ *
+ * Example
+ *     function someRouter(userRepo) {
+ *         this.userRepo = userRepo;
+ *     }
+ *     someRoute.prototype = {
+ *         routes: {
+ *             "users": {},
+ *             "users/:id": {
+ *                 name: "viewUser",
+ *                 url: function (id) {
+ *                     return "users/" + id;
+ *                 },
+ *                 callback: "viewUser
+ *             },
+ *             "*default": {
+ *                 url: "",
+ *                 callback: "users"
+ *             }
+ *         },
+ *         users: function () {
+ *             this.showComponent("usersListComponent", {
+ *                 region: "#frame-body"
+ *             });
+ *         },
+ *         viewUser: function(id) {
+ *             var user = this.userRepo.getUser(id);
+ *             this.showComponent("userComponent", {
+ *                 region: "#frame-body",
+ *                 model: user               
+ *             });
+ *         }
+ *     };
+ *
+ * NOTE
+ *     Only supports routes defined by the routes object on the router.
+ *     Does not currently support the router.route method (would have to curry that method if desired).
+ *     router.route(route, {[name, cache, url], callback});
+ */
 function managedRouterExt(mixin, Backbone, _, routerInfo, context) {
 	var routerMixin, managedRouterExt;
 	
@@ -50,8 +75,15 @@ function managedRouterExt(mixin, Backbone, _, routerInfo, context) {
 				previousRoute: null,
 				currentRoute: null,
 				currentRouteArgs: [],
-				names: {},
-				routes: {}
+				names: {}, // values point to keys in routes
+				components: {}, // holds the components by name
+				routes: {/*
+					"pattern": {
+						name:, url:, callback:, 
+						component: <name of the component to cache>,
+						cache: <bool>
+					}
+				*/}
 			};
 
 			// adapted from Backbone router constructor and _bindRoutes
@@ -76,46 +108,56 @@ function managedRouterExt(mixin, Backbone, _, routerInfo, context) {
 			// this is passed to Backbone.History in the startRouterExt
 			this.root = routerInfo.setRoot(root);
 		},
-		/*
-		    name - the name of the component to show
-			options - all options used to create the view
-			    additional options include:
-				region: // node/selector of the region the component should be displayed in
-				cache: // boolean - determined dynamically by the arguments passed to the surrounding route method
-				       // can be overridden here
-		*/
+
 		showComponent: function (name, options) {
-			var routeCache = this.routeCache;
-			var url = routerInfo.routeUrl(routeCache.currentRoute, routeCache.currentRouteArgs);
+			var routeCache = this.routeCache,
+				previousRouteInfo = routeCache.routes[routeCache.previousRoute],
+				currentRouteInfo = routeCache.routes[routeCache.currentRoute],
+			    url;
 
-			debugger;
+
+			// if we are switching routes or we are not caching
+			if (routeCache.previousRoute !== routeCache.currentRoute || !currentRouteInfo.cache) {
+				
+				// close/cache the previous component
+				if (previousRouteInfo && previousRouteInfo.component) {
+					routeCache.components[previousRouteInfo.component].close(previousRouteInfo.component);
+				}
+			
+			
+				// create the component if not yet created
+				if (!currentRouteInfo.component) {
+					currentRouteInfo.component = name;
+					if (!routeCache.components[name]) {
+						routeCache.components[name] = context.instantiate(name);
+					}
+				}
+
+				// determine the cache setting
+				// default the cache setting to cache if no arguments
+				options.cache = currentRouteInfo.cache = options.cache === void(0) ?
+					routeCache.currentRouteArgs.length === 0 :
+					options.cache;
+
+				// render the component
+				routeCache.components[name].render(name, options);
+			}
+
+			url = routerInfo.routeUrl(routeCache.currentRoute, routeCache.currentRouteArgs);
 			this.navigate(url);
+			return routeCache.components[name];
+		},
 
-			//var component, routeInfo;
-
-			//// render the component
-			//routeInfo = this.routeCache[this.routeCache.currentRoute];
-			//if (routeInfo) {
-			//	component = routeInfo.component;
-			//} else {
-			//	component = context.instantiate(name, [options]);  // jch* could use a component factory
-			//}
-			//component.render(options);
-
-			//// cache the route info
-			//this.routeCache[this.routeCache.currentRoute] = {
-			//	options: options,
-			//	component: component
-			//};
-
-			//// navigate
-			//if (options.navigate) {
-			//	this.navigate(_.results(options.navigate));
-			//}
-			//return component;
+		// name - can be the route name or pattern
+		executeRoute: function (name, args) {
+			var route = this.routeCache.names[name] || name;
+			var routeInfo = this.routeCache.routes[route];
+			var callback = this.routes[route];
+			callback = _.isFunction(callback) ? callback : this[routeInfo.callback];
+			callback.apply(this, args);
 		}
 	};
-	
+
 
 	function routeCurry(pattern, callback) {
 		var router = this;
@@ -125,11 +167,10 @@ function managedRouterExt(mixin, Backbone, _, routerInfo, context) {
 			router.routeCache.currentRoute = pattern;
 			router.routeCache.currentRouteArgs = arguments;
 			callback.apply(router, arguments);
-			// jch! if showComponent is not called what happens 0 anything need to be cleaned up
 		};
 	}
 
-	// jch! - when done review need for routeCache.routes - doesn't look like (at least) we don't need url and callback
+
 	function addRouteMetaData(pattern, routeInfo) {
 
 		// ensure a name, url, and callback

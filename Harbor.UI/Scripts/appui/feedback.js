@@ -14,6 +14,9 @@ Usage:
 		- If the count is included, pending and completed should be objects with 'singular' and 'plural' properties.
 		    If the string has {{count}} in it, it will be replaced with the count variable.
 
+Timer
+    The feedback service provides access to the timer service as a convenience
+	since they can be used together. i.e. feedback.timer.waitFor(dfds).then(wait.finished);
 
 A feedback message is a DOM singleton with the folling markup.
 <div id="message">
@@ -24,7 +27,7 @@ A feedback message is a DOM singleton with the folling markup.
 	</div>
 </div>
 */
-function feedback($) {
+function feedback($, timer) {
 
 	var messageEl,
 	    closeEl,
@@ -81,6 +84,8 @@ function feedback($) {
 	}
 
 	return {
+		timer: timer,
+
 		show: showMessage,
 
 		hide: hideMessage,
@@ -125,5 +130,6 @@ function feedback($) {
 
 appui.service("feedback", [
 	"$",
+	"timer",
 	feedback
 ]);

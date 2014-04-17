@@ -19,7 +19,10 @@
 // it will be considered a root template.
 function templateCache($, _, globalCache) {
 
-	globalCache.set("templates", {});
+	var templates = globalCache.get("templates");
+	if (!templates) {
+		globalCache.set("templates", {});
+	}
 
 	// set the template parsing to {{value}} instead of <%= value %>
 	_.templateSettings = { interpolate: /\{\{(.+?)\}\}/g };
@@ -28,7 +31,7 @@ function templateCache($, _, globalCache) {
 	return {
 		cacheTemplateFor: function (name, templateEl, options) {
 			var html, templateFn, metaData;
-			
+
 			templateFn = getTemplate(name);
 			if (templateFn) {
 				return templateFn;
