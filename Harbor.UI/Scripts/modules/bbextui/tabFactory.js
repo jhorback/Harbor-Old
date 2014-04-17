@@ -1,7 +1,7 @@
 ﻿/*
 	menuListFactory.create(el, options);
 
-	el - The root ul element of the menu list
+	el - The div to enclose the ul element of the menu list
 	options:
 		items - can be one of three things
 			1. A backbone collection with text, value, disabled, and href properties
@@ -35,11 +35,11 @@ function tabFactory (_, appurl, collectionFactory, modelFactory) {
 		this.items.on("change:disabled", render, this);
 		this.options.model.on("change:" + this.options.attr, this.refresh, this);
 
-		this.progress = modelFactory.create("tabFactoryProgressModel", null, {
-			items: this.items,
-			model: this.options.model,
-			modelAttr: this.options.attr
-		});
+		//this.progress = modelFactory.create("tabFactoryProgressModel", null, {
+		//	items: this.items,
+		//	model: this.options.model,
+		//	modelAttr: this.options.attr
+		//});
 
 		render.apply(this);
 	};
@@ -65,7 +65,7 @@ function tabFactory (_, appurl, collectionFactory, modelFactory) {
 	function render() {
 		var dataItemEl;
 
-		// jch! - render tabs
+		// jch* - render tabs
 		// 	• if item is disabled need to not add a link and no event click handler
 		// console.warn("RENDERING");
 
