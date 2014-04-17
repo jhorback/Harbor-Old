@@ -72,6 +72,14 @@
 				self.el.remove();
 				self.popupEl.remove();
 			});
+		},
+
+		position: function () {
+			privates.position.call(this);
+		},
+
+		close: function () {
+			this.destroy();
 		}
 	};
 
@@ -139,9 +147,13 @@
 			}
 
 			// jQuery UI does not support positioning hidden elements.
-			this.popupEl.show();
-			this.popupEl.position(position);
-			this.popupEl.hide();
+			if (this.popupEl.is(":hidden")) {
+				this.popupEl.show();
+				this.popupEl.position(position);
+				this.popupEl.hide();
+			} else {
+				this.popupEl.position(position);
+			}
 		}
 	};
 

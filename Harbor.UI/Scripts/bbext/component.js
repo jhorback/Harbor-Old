@@ -1,153 +1,175 @@
 ﻿/*
-component Construct
-
-A UI component is associated with a view that is a root template.
-
-
-//jch* re-thinking this a bit here
-Options: 
-    * regionEl
-	* parentEl
-	* insertAfterTemplate
-	* type: 
-	    - "instance": Every call to component render creates a new instance (default).
-	    - "singleton": Every call to component render returns the same instance.
-
-
-If the component name is userAdmin, the view and root template that will be
-looked for is userAdminView.
-
-There are two types of managed and unmageaged components. Managed components 
-keep track of the views they create and contain logic around rendering
-and closing them. Unmanaged components rely on the components to close themselves
-or for the code calling render to track and close them as needed.
-
-The two types of managed components are: Region and element components
-These can also be thought of as a page and partial components.
-1. Region / Page
-	Regions are portions of a page (or the entire page) that are, for the 
-	most part, always present. 
-
-	They are singletons and work off of a push/pop pattern. As a new component
-	is added to the region, the existing component is detached. When the new 
-	component is closed the previous component is re-attached.
-
-	Region components can be defined by defining the regionEl property when defining the component.
-
-	myApp.component("someRegionComponent", {
-		regionEl: "#frame-header" // any selector or dom node.
-	});
-	// when injected...
-	someRegionComponent.render(); // regionEl can also be defined in the options passed to render.
-	someRegionComponent.close();
-
-
-2. Element / Partial
-	Element components can be thought of as partials. The code
-	responsible for rendering the component can also close the component through
-	the element it is associated with.
-
-	Element components are instances and work off of a replace pattern. If a new component
-	is created in an element with an existing comonent, the existing component is closed
-	then the new component is created in its place.
-	
-	myApp.component("someElementComponent")
-	// when injected...
-	someElementComponent.render({ parentEl: ".some-element"});
-	someElementComponent.close(".some-element");
-	
-
-
-The two types of unmanged components are dialog and inline components.
-Dialogs can also be though of as overlays.
-1. Dialog / Overlay
-	Dialog components are autonomous components in that they manage their own location
-	and closing. They can be used for any kind of dialog or overlay such as a menu.
-
-	myApp.component("aColorPicker");
-	// when injected...
-	aColorPicker.render(options); 
-
-
-2. Inline
-	Inline components are components that are rendered after their root template in the DOM.
-	Application components are inline by default.
-
-	myApp.component("someInlineComponent", {
-		insertAfterTemplate: true
-	});
-	// when injected...
-	someInlineComponent.render();
-
-
-onClose: A component supports an onClose method that is called after close is called for custom cleanup.
-*/
+ * component Construct
+ * 
+ * A component is used to render a root template in a region.
+ * 
+ * The region can be defined at component creation.
+ * 	   someApp.component("someComponent", {
+ * 		   region: "#frame-body"
+ * 	   });
+ *  
+ *     The name of the component associates the component with a root template.
+ *     Above, "someComponentView" will be rendered during a call to render on the component.
+ * 
+ * 
+ * Or during rendering.
+ * 	   someComponent.render({
+ * 	   	   // options for the root view
+ * 	   	   region: "#frame-body"
+ * 	   });
+ * 
+ * Closing the component:
+ * 	   someComponent.close();
+ * 
+ * 
+ * Managing components
+ *     Components can also be managed by using a key.
+ *         someComponent.render("someKey", options);
+ *         someComponent.close("someKey");
+ *  
+ * Caching components:
+ * 	   If cache: true is set as an option, a call to close only detaches the component.
+ * 	   Then a call to open will reattach if there is a cached component.
+ *
+ * Inserting after the template
+ *     When defining the component, an insertAfterTemplate option can be set to true if
+ *     wanting the template to be rendered in place:
+ *     someApp.component("someComponent", {
+ *         insertAfterTemplate: true
+ *     });
+ */ 
 var Component = (function () {
-	
+
 	var nextCid = 0,
 	    privates = {};
 
-	function Component(templateRenderer, console, region) {
+	function Component(_, templateRenderer, console) {
 		this.cid = nextCid++;
 
 		privates[this.cid] = {
 			templateRenderer: templateRenderer,
 			console: console,
-			region: region
+			_: _,
+			cache: {} // key: { view:, cache:, detached:, region:}
 		};
-
-		this.region = null;
 	}
 
 	Component.prototype = {
 		render: function (options) {
 			var comp = this,
 			    _ = privates[this.cid],
-			    view;
-			
+			    view = null,
+			    key = "",
+			    region,
+			    cached,
+			    o = options;
+
 			_.console.group("component.render:", this.name);
-			
-			options = options || this.defaultOptions || {};
-			options.insertAfterTemplate = this.insertAfterTemplate;
-			if (options.regionEl) {
-				this.regionEl = options.regionEl;
-			}
-			
-			if (this.regionEl) {
-				this.region = options.region = _.region(this.regionEl);
+
+			if (_._.isString(o)) {
+				key = o;
+				o = arguments[1];
 			}
 
-			// this.close(); why was this here - it messed up regions
-			view = _.templateRenderer.render(this.name + "View", options);
-			if (this.region) {
-				this.region.view = view;
+			cached = privates[this.cid].cache[key];
+			if (cached && cached.cache) {
+				view = cached.view;
+			}
+
+			o = o || {};
+			o.region = o.region || o.regionEl || this.region; // regionEl obsolete
+			o.cache = o.cache === void(0) ? this.cache : o.cache;
+			if (!o.region && this.insertAfterTemplate) {
+				o.insertAfterTemplate = true;
+			}
+
+			if (!view) {
+				view = _.templateRenderer.render(this.name + "View", o);
 				view.on("close", function () {
-					comp.close();
+					comp.close(key);
 				});
 			}
+			region = $(o.region);
+			if (region.length === 0) {
+				_.console.error("The region does not exist.");
+			}
+
+			privates[this.cid].cache[key] = {
+				isOpen: true,
+				view: view,
+				cache: o.cache,
+				detached: detachChildren(region),
+				region: region
+			};
+			region.append(view.$el.show());
 
 			_.console.groupEnd();
 			
 			return view;
 		},
 	
-		close: function (el) {
-			var view = null;
-			if (this.region) {
-				view = this.region.view;
-				this.region.pop();
-			} else if (el) {
-				view = el.data("view");
+		close: function (key) {
+			var view = null,
+				 _ = privates[this.cid],
+			    cached;
+
+			key = key || "";
+			cached = privates[this.cid].cache[key];
+			if (!cached) {
+				return;
 			}
-			view && view.remove();
-			this.onClose && this.onClose();
+			_.console.group("component.close:", this.name);
+			if (cached.cache) {
+				cached.view.$el.detach();
+			} else {
+				cached.view.$el.remove();
+				delete privates[this.cid].cache[key];
+			}
+			reattachChildren(cached.region, cached.detached);
+
+			this.onClose && this.onClose({
+				view: cached.view
+			});
+			
+			_.console.groupEnd();
 		}
 	};
 
+
+	function reattachChildren(parent, els) {
+		els.hide();
+		els.each(function (i, el) {
+			el = $(el);
+			if (el.data("wasVisible") === true) {
+				el.show();
+			}
+		});
+		parent.append(els);
+	}
+
+	function detachChildren(parent) {
+		var currentChildren = parent.children(),
+				elsToKeepContainer,
+				elsToKeep;
+
+			currentChildren.each(function (i, child) {
+				child = $(child);
+				child.data("wasVisible", child.is(":visible"));
+			});
+				
+			elsToKeepContainer = parent.add(currentChildren);
+			// dont remove other root templates that have not been used yet
+			elsToKeep = parent.children("[data-templatefor]"); 
+			// do not detach stylesheet links
+			elsToKeep = elsToKeepContainer.find("link").add(elsToKeep);
+			currentChildren.detach();
+			$("body").append(elsToKeep);
+
+		return currentChildren;
+	}
+
 	return Component;
 }());
-
-
 
 
 
@@ -157,7 +179,7 @@ function componentConstruct(constructCreator, Component) {
 
 
 // register the component as an object also so DI does not instantiate it
-Component.prototype.$inject = ["templateRenderer", "console", "region"];
+Component.prototype.$inject = ["_", "templateRenderer", "console"];
 bbext.register("bbext.Component", bbext.Component = Component);
 bbext.register("bbext.Component.construct", bbext.Component, "object");
 
