@@ -8,7 +8,7 @@ var pageAdmin = context.app("pageAdmin").use(
 function pageAdminStart(app, pageAdminRouter) {
 
 	app.render({
-		regionEl: "#frame-body"
+		region: "#frame-body"
 	});
 	
 	pageAdminRouter.start();
