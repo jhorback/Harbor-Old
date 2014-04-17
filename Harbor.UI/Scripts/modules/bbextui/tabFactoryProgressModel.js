@@ -1,4 +1,7 @@
-﻿
+﻿/*
+This turned the tabs into a wizard like step 1,2,3
+Do not need this at this point
+
 bbext.tabFactoryProgressModel = function (attrs, options) {
 
 	this.items = options.items;
@@ -65,8 +68,6 @@ bbext.tabFactoryProgressModel.prototype = {
 	// keep the model in sync with the step
 	stepChanged: function (model, step) {
 		var currItem = this.items.at(step - 1);
-
-		console.warn("SETTING DISABLED"); // jch!
 		currItem.set("disabled", false);
 		this.model.set(this.modelAttr, currItem.attributes.value);
 	},
@@ -92,3 +93,4 @@ bbext.model("tabFactoryProgressModel", [
 	"options",
 	bbext.tabFactoryProgressModel
 ]);
+*/

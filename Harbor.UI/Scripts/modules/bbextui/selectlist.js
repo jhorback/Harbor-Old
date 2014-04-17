@@ -312,12 +312,9 @@ $(function () {
 		   var self = this;
 
 		   this._trigger("change", null, {
-				checkedValues: function () {
-					return self.values();
-				},
-				value: function () {
-					return this.checkedValues()[0];
-				}
+			   checkedValues: function () {
+				   return self.values();
+			   }
 		   });
 	   },
 	   

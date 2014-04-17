@@ -6,12 +6,7 @@ Pager attributes of note:
 	take - Override this to change the page size
 */
 
-bbext.pagerModel = function (attrs, options) {
-	
-};
-
-
-bbext.pagerModel.prototype = {
+bbext.pagerModel =  {
 	defaults: {
 		take: 50,
 		skip: 0,
@@ -126,9 +121,4 @@ bbext.pagerModel.prototype = {
 
 
 
-bbext.model("pagerModel", [
-	"attrs",
-	"options",
-	"_",
-	bbext.pagerModel
-]);
+bbext.model("pagerModel", bbext.pagerModel);
