@@ -55,5 +55,5 @@ fileAdmin.view("editFileView", ["options", "fileRepo", fileAdmin.editFileView]);
 
 
 fileAdmin.component("editFile", {
-	regionEl: "#frame-body"
+	region: "#frame-body"
 });

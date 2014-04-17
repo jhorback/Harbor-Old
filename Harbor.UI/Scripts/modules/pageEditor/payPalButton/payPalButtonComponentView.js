@@ -1,7 +1,7 @@
 ﻿
 
 pageEditor.component("payPalButtonComponent", {
-	regionEl: "#frame-body"
+	region: "#frame-body"
 });
 
 
