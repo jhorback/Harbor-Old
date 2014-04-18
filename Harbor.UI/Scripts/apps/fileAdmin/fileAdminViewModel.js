@@ -10,7 +10,7 @@ fileAdmin.fileAdminViewModel = function (attrs, options, slugify, todaysAlbumNam
 fileAdmin.fileAdminViewModel.prototype = {
 	defaults: {
 		state: "default", // can be default, uploading, ready
-		filter: "", // recent, images, audio, video, search
+		filter: null, // recent, images, audio, video, search
 		search: "",
 		uploadButtonText: "Upload files",
 		uploadButtonDisabled: false,

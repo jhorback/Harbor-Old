@@ -15,6 +15,7 @@ function fileAdminViewModelRepo(_, $, modelFactory, fileRepo) {
 	viewModel.on("change:filter", changeFilter);	
 	viewModel.on("change:search", changeSearch);
 	updateAlbums = _.debounce(updateAlbums);
+	changeSearch();
 
 	return {
 		getFile: function (fileID) {

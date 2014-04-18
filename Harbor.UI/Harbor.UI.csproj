@@ -576,8 +576,8 @@
     <Content Include="Scripts\bbext\modelExt\validationModelExt.js" />
     <Content Include="Scripts\bbext\%24bbext.js" />
     <Content Include="Scripts\modules\fileSelector\%24fileSelector.js" />
-    <Content Include="Scripts\apps\fileAdmin\editFileView.js" />
-    <Content Include="Scripts\apps\fileAdmin\fileAdminView.js" />
+    <Content Include="Scripts\apps\fileAdmin\editFileComponentView.js" />
+    <Content Include="Scripts\apps\fileAdmin\fileAdminComponentView.js" />
     <Content Include="Scripts\apps\fileAdmin\fileAdminViewModel.js" />
     <Content Include="Scripts\apps\fileAdmin\uploadTargetView.js" />
     <Content Include="Scripts\apps\FileUploader\FileUploader.js" />

@@ -1,13 +1,13 @@
 ﻿
-fileAdmin.fileAdminView = function (options, fileAdminViewModelRepo, menuListFactory, fileAdminRouter) {
+fileAdmin.fileAdminComponentView = function (options, fileAdminViewModelRepo, menuListFactory, routerInfo) {
 
-	this.fileAdminRouter = fileAdminRouter;
+	this.routerInfo = routerInfo;
 	this.fileAdminViewModelRepo = fileAdminViewModelRepo;
 	this.menuListFactory = menuListFactory;
 };
 
 
-fileAdmin.fileAdminView.prototype = {
+fileAdmin.fileAdminComponentView.prototype = {
 	events: {
 		"click [data-event=clickTile]": "clickTile"
 	},
@@ -30,11 +30,9 @@ fileAdmin.fileAdminView.prototype = {
 	onChangeFilter: function () {
 		var filter = this.model.get("filter");
 		if (filter === "none") {
-			this.fileAdminRouter.search(this.model.get("search"));
-		} else if (this.fileAdminRouter[filter]) {
-			this.fileAdminRouter[filter]();
+			this.routerInfo.executeRoute("search", [this.model.get("search")]);
 		} else {
-			alert("Filter not defined on the router: " + filter);
+			this.routerInfo.executeRoute(filter);	
 		}
 	},
 	
@@ -52,20 +50,23 @@ fileAdmin.fileAdminView.prototype = {
 	submitSearchForm: function (event) {
 		event.preventDefault();
 		this.model.set("filter", "none");
-		this.fileAdminRouter.search(this.model.get("search"));
+		this.routerInfo.executeRoute("search", [this.model.get("search")]);
 	},
 	
 	clickTile: function (event) {
 		var fileId = $(event.target).closest(".tile").attr("id");
 		
 		event.preventDefault();
-		this.fileAdminRouter.editFile(fileId);
+		this.routerInfo.executeRoute("editFile", [fileId]);
 	}
 };
 
 
-fileAdmin.view("fileAdminView", [
-	"options", "fileAdminViewModelRepo", "menuListFactory", "fileAdminRouter",
-	fileAdmin.fileAdminView]);
+fileAdmin.view("fileAdminComponentView", [
+	"options", "fileAdminViewModelRepo", "menuListFactory", "routerInfo",
+	fileAdmin.fileAdminComponentView]);
 
 
+fileAdmin.component("fileAdminComponent", {
+	region: "#frame-body"
+});
