@@ -5,11 +5,11 @@ var fileAdmin = context.app("fileAdmin").use(
 );
 
 
-fileAdmin.start(["app", "fileAdminRouter", "appurl", function (app, fileAdminRouter) {
+fileAdmin.start(["fileAdminRouter", "appurl", function (fileAdminRouter) {
 
-	app.render({
-		region: "#frame-body"
-	});
+	//app.render({
+	//	region: "#frame-body"
+	//});
 
 	fileAdminRouter.start();
 	

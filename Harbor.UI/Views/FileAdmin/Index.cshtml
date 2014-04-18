@@ -1,20 +1,20 @@
 ﻿@using Harbor.UI.Extensions
 @Html.Partial("~/Views/FileAdmin/_editFileView.cshtml")
-<section class="page" data-templatefor="fileAdminView">
-    <div class="page-header">
-        <h1>Files</h1>
-        <fieldset class="float-right">
-	        <span class="button attn"
-	               data-event="clickUpload"
-	               data-bind="text: uploadButtonText, disabled: uploadButtonDisabled" />
-        </fieldset>
-    </div>
+<section class="page" data-templatefor="fileAdminComponentView">
+	<div class="page-header">
+		<h1>Files</h1>
+		<fieldset class="float-right">
+			<span class="button attn"
+				  data-event="clickUpload"
+				  data-bind="text: uploadButtonText, disabled: uploadButtonDisabled" />
+		</fieldset>
+	</div>
 	<div class="page-body">
 		<div class="page-aside">
 			<div id="fileAdminMenuList"></div>
 		</div>
 		<div class="page-content">
-            
+
 			<div class="clearfix">
 				<div class="form-inline float-left margin-left">
 					<form action="~/user/files/search" data-event="submit:submitSearchForm">
@@ -28,15 +28,15 @@
 			</div>
 
 			<div data-bind="id: uploadTargetId, showif: uploadTargetViewVisible"
-			     data-templatefor="uploadTargetView">
+				 data-templatefor="uploadTargetView">
 			</div>
-			
+
 			<div data-bind="showif: thereAreNoResults">
 				<hr />
 				<div class="text-center" data-bind="text: noResultsMsg"></div>
 				<hr />
 			</div>
-			
+
 			<div id="fileadmin-filelist">
 
 				<!-- -->
@@ -47,8 +47,8 @@
 
 						<!-- files -->
 						<li class="tile col5 hover text-center" data-bind="id: id"
-						    data-event="clickTile"
-						    data-collection="models">
+							data-event="clickTile"
+							data-collection="models">
 							<a data-bind="href: editLink" class="media" data-event="clickTile">
 								<img data-bind="src: thumbUrl, alt: name" />
 							</a>
@@ -62,7 +62,7 @@
 					</ul>
 				</div>
 				<!-- -->
-				
+
 			</div>
 
 			<div class="float-right">

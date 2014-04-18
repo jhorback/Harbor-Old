@@ -1,11 +1,12 @@
 ﻿
 
-fileAdmin.editFileView = function (options, fileRepo) {
+fileAdmin.editFileComponentView = function (options, fileRepo, routerInfo) {
 
+	this.routerInfo = routerInfo;
 	this.fileRepo = fileRepo;
 };
 
-fileAdmin.editFileView.prototype = {
+fileAdmin.editFileComponentView.prototype = {
 	initialize: function () {
 
 		this.listenTo(this.model, "change", this.saveModel);
@@ -25,7 +26,7 @@ fileAdmin.editFileView.prototype = {
 	},
 
 	done: function () {
-		this.close();
+		this.routerInfo.executeRoute("default");
 	},
 	
 	saveModel: function (event) {
@@ -51,9 +52,14 @@ fileAdmin.editFileView.prototype = {
 
 
 
-fileAdmin.view("editFileView", ["options", "fileRepo", fileAdmin.editFileView]);
+fileAdmin.view("editFileComponentView", [
+	"options",
+	"fileRepo",
+	"routerInfo",
+	fileAdmin.editFileComponentView
+]);
 
 
-fileAdmin.component("editFile", {
+fileAdmin.component("editFileComponent", {
 	region: "#frame-body"
 });
