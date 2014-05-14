@@ -38,7 +38,8 @@ namespace Harbor.UI
 
 			IoCConfig.RegisterDependencies();
 			FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-			WebApiConfig.Register(GlobalConfiguration.Configuration);
+			//WebApiConfig.Register(GlobalConfiguration.Configuration);
+			GlobalConfiguration.Configure(WebApiConfig.Register);
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
 			PackageConfig.RegisterPackages(PackageTable.Packages, BundleTable.Bundles);
 			ModelBinderConfig.RegisterModelBinders(ModelBinders.Binders);

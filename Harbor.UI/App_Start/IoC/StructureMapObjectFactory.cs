@@ -2,6 +2,7 @@
 using StructureMap;
 using StructureMap.Pipeline;
 
+
 namespace Harbor.UI.IoC
 {
 	public class StructureMapObjectFactory : IObjectFactory
@@ -16,10 +17,9 @@ namespace Harbor.UI.IoC
 			return ObjectFactory.GetInstance(type);
 		}
 
-		public T GetInstanceWithArgs<T>(System.Collections.Generic.IDictionary<string, object> args)
+		public T GetInstanceWithArgs<T>(System.Collections.Generic.IDictionary<string, object> args) where T : class
 		{
-			var arguments = new ExplicitArguments(args);
-			return ObjectFactory.GetInstance<T>(arguments);
+			return GetInstanceWithArgs(typeof(T), args) as T;
 		}
 
 		public object GetInstanceWithArgs(System.Type type, System.Collections.Generic.IDictionary<string, object> args)

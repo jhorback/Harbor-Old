@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30110.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Harbor.UI", "Harbor.UI\Harbor.UI.csproj", "{A0997DC8-C48F-42A8-BD43-94F216526FE7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Presentation Layer", "1. Presentation Layer", "{EB9AEB32-C83C-4AA4-A854-CFBDE691D125}"
@@ -32,14 +34,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Harbor.Specs", "Harbor.Specs\Harbor.Specs.csproj", "{7260B6AA-2652-4D69-85B2-FBFF4C2B303C}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Harbor.UI.Tests", "Harbor.UI.Tests\Harbor.UI.Tests.csproj", "{95B60B8D-5B60-45DA-8C7F-D24B097B1EB7}"
 EndProject
 Global
-	GlobalSection(TestCaseManagementSettings) = postSolution
-		CategoryFile = Harbor.vsmdi
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -61,10 +58,6 @@ Global
 		{AAFDDC3A-0A93-4564-AE25-6CF36641311B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AAFDDC3A-0A93-4564-AE25-6CF36641311B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AAFDDC3A-0A93-4564-AE25-6CF36641311B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7260B6AA-2652-4D69-85B2-FBFF4C2B303C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7260B6AA-2652-4D69-85B2-FBFF4C2B303C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7260B6AA-2652-4D69-85B2-FBFF4C2B303C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7260B6AA-2652-4D69-85B2-FBFF4C2B303C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{95B60B8D-5B60-45DA-8C7F-D24B097B1EB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{95B60B8D-5B60-45DA-8C7F-D24B097B1EB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95B60B8D-5B60-45DA-8C7F-D24B097B1EB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -78,10 +71,12 @@ Global
 		{F42EF39F-2337-490C-88E7-9DCA84B6E8BD} = {8AEB39CF-06C3-40FB-9FB6-C46CADE7E2E3}
 		{F4453B6A-14D8-4B5B-85AF-8858FE48FFE2} = {C06A5E0F-6884-46F4-A0D6-77FE37A94D20}
 		{AAFDDC3A-0A93-4564-AE25-6CF36641311B} = {F3EE5D44-376A-4B2B-ADA7-7505BA0EE56E}
-		{7260B6AA-2652-4D69-85B2-FBFF4C2B303C} = {F3EE5D44-376A-4B2B-ADA7-7505BA0EE56E}
 		{95B60B8D-5B60-45DA-8C7F-D24B097B1EB7} = {F3EE5D44-376A-4B2B-ADA7-7505BA0EE56E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.2\lib\NET35
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = Harbor.vsmdi
 	EndGlobalSection
 EndGlobal
