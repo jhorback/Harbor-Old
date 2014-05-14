@@ -29,7 +29,8 @@ test("A call to console.log logs a message.", function () {
 	var expectedMsg = "Testing console.log";
 	var loggedMsg = null;
 	var testApp = app(unique()).use("appui");
-	
+	enableLog(true);
+
 	testApp.register("window", function () {
 		return {
 			console: {

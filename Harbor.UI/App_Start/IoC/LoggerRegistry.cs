@@ -8,7 +8,7 @@ namespace Harbor.UI.IoC
 	{
 		public LoggerRegistry()
 		{
-			For<ILogger>().Use(s => new Logger(s.Root.ConcreteType));
+			For<ILogger>().Use(c => new Logger(c.ParentType));
 		}
 	}
 }

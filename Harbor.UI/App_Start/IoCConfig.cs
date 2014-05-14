@@ -4,6 +4,7 @@ using Harbor.Data.Repositories;
 using Harbor.Domain.Security;
 using Harbor.UI.IoC;
 using StructureMap;
+using StructureMap.Graph;
 
 
 namespace Harbor.UI
@@ -25,7 +26,7 @@ namespace Harbor.UI
 				scan.WithDefaultConventions();
 
 				// Harbor.UI
-				scan.TheCallingAssembly();
+				scan.TheCallingAssembly(); // jch! - update
 				// Harbor.Domain
 				scan.AssemblyContainingType(typeof(IUserRepository));
 				// Harbor.Data

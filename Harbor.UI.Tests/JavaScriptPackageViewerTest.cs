@@ -5,7 +5,6 @@ using Harbor.UI.Models.JSPM;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting.Web;
-using System.Web.Mvc;
 
 namespace Harbor.UI.Tests
 {
@@ -38,10 +37,10 @@ namespace Harbor.UI.Tests
 		[ClassInitialize()]
 		public static void MyClassInitialize(TestContext testContext)
 		{
-			HttpContext.Current = new HttpContext(
-				new HttpRequest("", "http://tempuri.org", ""),
-				new HttpResponse(new StringWriter()));
-			BundleTable.MapPathMethod = MapPathMethod;
+			//HttpContext.Current = new HttpContext(
+			//	new HttpRequest("", "http://tempuri.org", ""),
+			//	new HttpResponse(new StringWriter()));
+			//BundleTable.MapPathMethod = MapPathMethod; // use the VirtualPathUtility now instead
 		}
 		//
 		//Use ClassCleanup to run code after all tests in a class have run

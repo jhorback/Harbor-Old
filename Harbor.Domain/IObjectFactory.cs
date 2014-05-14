@@ -6,7 +6,7 @@ namespace Harbor.Domain
 	public interface IObjectFactory
 	{
 		T GetInstance<T>();
-		T GetInstanceWithArgs<T>(IDictionary<string, object> args);
+		T GetInstanceWithArgs<T>(IDictionary<string, object> args) where T : class;
 		object GetInstance(Type type);
 		object GetInstanceWithArgs(Type type, IDictionary<string, object> arg);
 	}
