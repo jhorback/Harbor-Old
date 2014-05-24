@@ -45,10 +45,11 @@ namespace Harbor.UI.Controllers.Api
 			return Request.CreateOKResponse(PageDto.FromPage(page));
         }
 
+		[HttpPost]
 		[Http.Permit(UserFeature.Pages, Permissions.Create)]
-		public HttpResponseMessage Post(string author, string pageTypeKey, string title, bool published)
+		public HttpResponseMessage Post(CreatePageDto page)
         {
-			var pageDO = _pageFactory.Create(author, pageTypeKey, title, published);
+			var pageDO = _pageFactory.Create(page.author, page.pageTypeKey, page.title, page.published);
 			var errors = DomainObjectValidator.Validate(pageDO);
 			
 			if (errors.Count != 0)

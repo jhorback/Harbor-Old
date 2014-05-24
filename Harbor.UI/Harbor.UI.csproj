@@ -8,7 +8,7 @@
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{A0997DC8-C48F-42A8-BD43-94F216526FE7}</ProjectGuid>
-    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Harbor.UI</RootNamespace>
@@ -294,6 +294,7 @@
     <Compile Include="Models\Page\Content\PageLinkDto.cs" />
     <Compile Include="Models\Page\Content\ImageDto.cs" />
     <Compile Include="Models\Page\Content\TextDto.cs" />
+    <Compile Include="Models\Page\CreatePageDto.cs" />
     <Compile Include="Models\Page\PageLayoutDto.cs" />
     <Compile Include="Models\Page\PageModelBinder.cs" />
     <Compile Include="Models\Page\PageReferenceDto.cs" />
