@@ -10,7 +10,13 @@ namespace Harbor.Domain.Pages
 
 		public abstract string Name { get; }
 
-		public virtual string Description { get { return ""; } }
+		public virtual string Description
+		{
+			get
+			{
+				return "";
+			}
+		}
 
 		/// <summary>
 		/// A PageType is required to set the page layout settings.
@@ -24,11 +30,19 @@ namespace Harbor.Domain.Pages
 		/// <param name="context"></param>
 		public abstract void SetTemplate(PageTypeTemplateContext context);
 
+		/// <summary>
+		/// Allows a page type do perform page modifications before the page is updated in the database.
+		/// </summary>
+		/// <param name="page"></param>
 		public virtual void OnPageUpdate(Page page)
 		{
 			
 		}
 
+		/// <summary>
+		/// Allows a page type do perform page modifications before the page is saved in the database.
+		/// </summary>
+		/// <param name="page"></param>
 		public virtual void OnPageCreate(Page page)
 		{
 
