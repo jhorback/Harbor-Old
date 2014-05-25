@@ -23,7 +23,9 @@ page.prototype = {
 		modified: null,
 		enabled: true,
 		published: true,
+		pageLayoutId: null,
 		template: null,
+		pageLayout: null,
 		properties: [],
 		previewImageID: null,
 		previewImage: null, // FileDto
@@ -104,22 +106,6 @@ page.prototype = {
 
 	getUrl: function () {
 		return this.pageurl.get(this.get("id"), this.get("title"));
-	},
-
-	getLayoutClassNames: function () {
-		var classNames = [];
-		if (this.template.get("layoutIsCentered")) {
-			classNames.push("centered");
-		}
-		if (this.template.get("layoutIsReadable")) {
-			classNames.push("readable");
-		}
-		if (!this.template.get("layoutHasNoSidebar")) {
-			classNames.push("aside");
-		} else {
-			classNames.push("noaside");
-		}
-		return classNames.join(" ");
 	},
 
 	getProperty: function (name) {
