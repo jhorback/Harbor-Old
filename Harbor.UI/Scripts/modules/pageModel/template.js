@@ -19,7 +19,7 @@ template.prototype = {
 	},
 	
 	initialize: function () {
-		this.content = this.collectionFactory.createGeneric(attrs.content);
+		this.content = this.collectionFactory.createGeneric(this.attributes.content);
 	},
 	
 	"[content]": {

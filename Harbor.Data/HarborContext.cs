@@ -71,6 +71,7 @@ namespace Harbor.Data
 
 				Ignore(m => m.Template);
 				Ignore(m => m.VirtualPath);
+				Ignore(m => m.PageType);
 
 				HasMany(m => m.Files).WithMany();
 				HasMany(m => m.PageLinks).WithMany();
