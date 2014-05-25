@@ -80,6 +80,7 @@ namespace Harbor.UI.Models
 		public string modified { get; set; }
 		public bool enabled { get; set; }
 		public bool published { get; set; }
+		public int pageLayoutId { get; set; }
 		public TemplateDto template { get; set; }
 		public PageLayoutDto layout { get; set; }
 		public List<PagePropertyDto> properties { get; set; }

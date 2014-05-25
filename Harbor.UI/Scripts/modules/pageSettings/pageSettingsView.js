@@ -14,8 +14,6 @@ function pageSettingsView(options, currentPageRepo, modelFactory, menuFactory, l
 
 pageSettingsView.prototype = {
 	initialize: function () {
-		this.listenTo(this.model.template, "change", this.templateChange);
-		
 		// save events
 		this.listenTo(this.model, "change:title", this.changeTitle);
 		this.listenTo(this.model, "change:published", this.saveModel);
@@ -27,13 +25,6 @@ pageSettingsView.prototype = {
 			transition: "none",
 			container: this.options.container
 		});
-	},
-	
-	templateChange: function () {
-		var classNames = this.model.getLayoutClassNames(),
-			el = $("#page");
-		
-		el.removeClass().addClass("page").addClass(classNames);
 	},
 	
 	changeTitle: function () {
