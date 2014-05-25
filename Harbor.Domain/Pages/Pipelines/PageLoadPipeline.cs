@@ -12,6 +12,7 @@ namespace Harbor.Domain.Pages
 		{
 			AddHandler<SetAllPageRolesLoadHandler>();
 			AddHandler<EnsurePageLayoutLoadHandler>();
+			AddHandler<SetPageTypeLoadHandler>();
 		}
 	}
 }

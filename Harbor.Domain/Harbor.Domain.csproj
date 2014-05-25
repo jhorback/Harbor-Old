@@ -110,10 +110,11 @@
     <Compile Include="Pages\PageContentTypeRepository.cs" />
     <Compile Include="Pages\PageTypeLayoutContext.cs" />
     <Compile Include="Pages\PageTypeTemplateContext.cs" />
-    <Compile Include="Pages\Pipelines\EnsurePageLayoutLoadHandler.cs" />
-    <Compile Include="Pages\Pipelines\SetAllPageRolesLoadHandler.cs" />
+    <Compile Include="Pages\PipelineHandlers\EnsurePageLayoutLoadHandler.cs" />
+    <Compile Include="Pages\PipelineHandlers\SetPageTypeLoadHandler.cs" />
+    <Compile Include="Pages\PipelineHandlers\SetAllPageRolesLoadHandler.cs" />
     <Compile Include="Pages\Pipelines\PageCreatePipeline.cs" />
-    <Compile Include="Pages\Pipelines\PageTypeCreateHandler.cs" />
+    <Compile Include="Pages\PipelineHandlers\PageTypeCreateHandler.cs" />
     <Compile Include="Pages\PageFactory.cs" />
     <Compile Include="Pages\PageFeature.cs" />
     <Compile Include="Pages\PageFeatureRole.cs" />
@@ -137,7 +138,7 @@
     <Compile Include="Pages\PageTypes\Article.cs" />
     <Compile Include="Pages\PageTypes\Page.cs" />
     <Compile Include="Pages\PageTypes\Product.cs" />
-    <Compile Include="Pages\Pipelines\PageTypeUpdateHandler.cs" />
+    <Compile Include="Pages\PipelineHandlers\PageTypeUpdateHandler.cs" />
     <Compile Include="Pages\Template.cs" />
     <Compile Include="Pages\PageTypes\PageListing.cs" />
     <Compile Include="Pages\IPageContentTypeRepository.cs" />
@@ -150,7 +151,7 @@
     <Compile Include="IFactory.cs" />
     <Compile Include="IRespository.cs" />
     <Compile Include="IValueObject.cs" />
-    <Compile Include="Pages\Pipelines\ContentResourceUpdateHandler.cs" />
+    <Compile Include="Pages\PipelineHandlers\ContentResourceUpdateHandler.cs" />
     <Compile Include="Pages\Pipelines\PageUpdatePipeline.cs" />
     <Compile Include="Pipeline\BasePipeline.cs" />
     <Compile Include="Pipeline\IPipelineHandler.cs" />
@@ -186,10 +187,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Pages\PageTypes\PageCreatePipeline\" />
-    <Folder Include="Pages\PageTypes\PageUpdatePipeline\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

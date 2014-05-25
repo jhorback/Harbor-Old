@@ -18,21 +18,9 @@
 					<div data-bind="publishedMessage"></div>
 				</div>
 			</fieldset>
-			<fieldset id="settings-layout" data-model="template">
-				<legend>Layout</legend>
-				<div class="form-field">
-					<input type="radio" id="page-stretch" name="layout" value="stretch" />
-					<label for="page-stretch">Stretch</label>
-				
-					<input type="radio" id="page-leftaligned" name="layout" value="leftaligned" class="margin-left"/>
-					<label for="page-leftaligned">Left Aligned</label>
-				
-					<input type="radio" id="page-centered" name="layout" value="centered" class="margin-left"/>
-					<label for="page-centered">Centered</label>
-				</div>
-				<div class="form-field margin-top">
-					<input type="checkbox" id="page-showSidebar" name="showSidebar" />
-					<label for="page-showSidebar">Show the sidebar</label>
+			<fieldset id="settings-layout">
+				<legend>Page Type</legend>
+				<div data-bind="text: pageTypeName">
 				</div>
 			</fieldset>
 			<fieldset>

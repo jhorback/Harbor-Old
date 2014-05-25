@@ -76,6 +76,7 @@ namespace Harbor.UI.Models
 		public string alternateTitle { get; set; }
 		public string author { get; set; }
 		public string pageTypeKey { get; set; }
+		public string pageTypeName { get; set; }
 		public string created { get; set; }
 		public string modified { get; set; }
 		public bool enabled { get; set; }
@@ -96,7 +97,11 @@ namespace Harbor.UI.Models
 
 		public static PageDto FromPage(Domain.Pages.Page page)
 		{
-			return Mapper.Map<Domain.Pages.Page, PageDto>(page);			
+			var pageDto = Mapper.Map<Domain.Pages.Page, PageDto>(page);
+			pageDto.pageTypeName = page.PageType == null ?
+				string.Format("{0} (deprecated)", page.PageTypeKey) :
+				page.PageType.Name;
+			return pageDto;
 		}
 	}
 }

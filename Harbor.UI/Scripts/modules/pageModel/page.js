@@ -19,6 +19,7 @@ page.prototype = {
 		alternateTitle: null,
 		author: null,
 		pageTypeKey: "document",
+		pageTypeName: null,
 		created: null,
 		modified: null,
 		enabled: true,
@@ -67,7 +68,7 @@ page.prototype = {
 			required: true
 		}
 	},
-	
+
 	"[template]": {
 		get: function () {
 			return this.template.toJSON();
