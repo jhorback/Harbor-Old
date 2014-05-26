@@ -28,7 +28,7 @@ function pageEditorService($, console, componentManager, viewRenderer) {
 		
 		
 		close: function () {
-			componentManager.removeAll();
+			componentManager.destroy();
 			templateEditorView && templateEditorView.close();
 			rendered = false;
 			console.log("pageEditor: close");
