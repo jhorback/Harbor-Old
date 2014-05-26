@@ -51,12 +51,10 @@ pageEditor.templateEditorView = (function () {
 		},
 
 		render: function () {
-			var asideEl = this.$(".page-aside"),
-				contentEl = this.$(".page-content");
+			var contentEl = this.$(".page-content");
 
-			asideEl.append('<div class="uic-add"><span class="icon-plus"/></div>');
 			contentEl.append('<div class="uic-add"><span class="icon-plus"/></div>');
-			asideEl.add(contentEl).sortable({
+			contentEl.sortable({
 				handle: ".icon-move",
 				items: ".uic",
 				revert: false,
