@@ -54,7 +54,7 @@ pageEditor.componentManager = function ($, _, Backbone, context, console, curren
 			}
 		},
 		
-		removeAll: function () {
+		destroy: function () {
 			closeCurrentComponent();
 			
 			$.each(components, function (uicid, comp) {
