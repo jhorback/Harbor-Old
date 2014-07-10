@@ -8,8 +8,8 @@ pagePreviewModel.prototype = {
 		page: null,
 		thumbSrc: null,
 		thumbClass: null,
-		previewText: null,
-		autoPreview: null,
+		previewText: "",
+		autoPreview: true,
 		changeThumbButtonText: null,
 		changeThumbButtonDisabled: null,
 		changeThumbButtonClass: null,
@@ -103,7 +103,8 @@ pagePreviewModel.prototype = {
 		});
 	},
 
-	save: function () {
+	save: function (model) {
+		//debugger;
 		if (this.page.hasChanged()) {
 			this.currentPageRepo.saveCurrentPage();
 		}

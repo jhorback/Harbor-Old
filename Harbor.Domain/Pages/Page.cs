@@ -13,7 +13,7 @@ namespace Harbor.Domain.Pages
 	{
 		public Page()
 		{
-			Layout = new PageLayout();
+			// Layout = new PageLayout();
 
 			Properties = new List<PageProperty>();
 			DeletedProperties = new List<PageProperty>();
