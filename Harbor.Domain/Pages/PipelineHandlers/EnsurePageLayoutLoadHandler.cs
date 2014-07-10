@@ -33,7 +33,10 @@ namespace Harbor.Domain.Pages
 				throw new Exception("A page type could not be determined for the page. PageID: " + page.PageID);
 			}
 
+			page.Layout = page.Layout ?? new PageLayout();
 			pageType.SetLayout(new PageTypeLayoutContext(page));
+			page.Layout.UserName = page.AuthorsUserName;
+			page.Layout.Title = page.Title;
 		}
 	}
 }

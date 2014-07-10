@@ -16,6 +16,11 @@ namespace Harbor.Domain.Pages
 			NoAside = 4
 		}
 
+		public PageLayout()
+		{
+			
+		}
+
 		public int PageLayoutID { get; set; }
 
 		public bool IsNew()
