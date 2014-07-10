@@ -57,6 +57,8 @@ namespace Harbor.Data.Repositories
 		{
 			context.Configuration.ProxyCreationEnabled = false;
 			var pages =  context.Pages.Include(p => p.Properties);
+			if (include.HasFlag(IncludePageResources.PageLayout))
+				pages = pages.Include(p => p.Layout);
 			if (include.HasFlag(IncludePageResources.Roles))
 				pages = pages.Include(p => p.PageRoles);
 			if (include.HasFlag(IncludePageResources.PreviewImage))

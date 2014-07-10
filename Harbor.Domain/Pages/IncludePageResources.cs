@@ -4,13 +4,14 @@ namespace Harbor.Domain.Pages
 	public enum IncludePageResources
 	{
 		Properties = 1,
-		Roles = 2,
-		PreviewImage = 4,
-		Files = 8,
-		Products = 16,
-		PageLinks = 32,
-		PayPalButtons = 64,
-		Basic = (Properties | Roles | PreviewImage),
-		All = (Properties | Roles | PreviewImage | Files | Products | PageLinks | PayPalButtons)
+		PageLayout = 2,
+		Roles = 4,
+		PreviewImage = 8,
+		Files = 16,
+		Products = 32,
+		PageLinks = 64,
+		PayPalButtons = 128,
+		Basic = (Properties | PageLayout | Roles | PreviewImage),
+		All = (Properties | PageLayout | Roles | PreviewImage | Files | Products | PageLinks | PayPalButtons)
 	}
 }
