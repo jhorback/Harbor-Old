@@ -1,6 +1,6 @@
 ﻿using Harbor.Domain.Pages;
 
-namespace Harbor.UI.Models.Page
+namespace Harbor.UI.Models.Pages
 {
 	public class PageLayoutDto
 	{
@@ -33,30 +33,15 @@ namespace Harbor.UI.Models.Page
 			};
 		}
 
-		public static PageLayout ToPageLayout(PageLayoutDto layout)
+		public static PageLayout ToPageLayout(PageLayout pageLayout, PageLayoutDto layoutDto)
 		{
-			if (layout == null)
+			if (layoutDto != null && pageLayout != null)
 			{
-				return null;
+				pageLayout.HeaderData = layoutDto.headerData;
+				pageLayout.AsideData = layoutDto.asideData;
 			}
-
-			var props = PageLayout.LayoutDisplayProperties.None;
-			if (layout.layoutHasNoSidebar)
-				props = props | PageLayout.LayoutDisplayProperties.NoAside;
-			if (layout.layoutIsCentered)
-				props = props | PageLayout.LayoutDisplayProperties.ContentCentered;
-			if (layout.layoutIsReadable)
-				props = props | PageLayout.LayoutDisplayProperties.ContentReadable;
-
-			return new PageLayout
-			{
-				PageLayoutID = layout.id,
-				DisplayProperties = props,
-				HeaderKey = layout.headerKey,
-				HeaderData = layout.headerData,
-				AsideKey = layout.asideKey,
-				AsideData = layout.asideData
-			};
+			
+			return pageLayout;
 		}
 	}
 }

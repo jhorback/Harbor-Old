@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 using Harbor.Domain.Pages;
-using Harbor.UI.Models.Page;
+using Harbor.UI.Models.Pages;
 
 namespace Harbor.UI
 {

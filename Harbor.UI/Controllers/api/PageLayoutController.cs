@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -8,7 +9,7 @@ using Harbor.Domain;
 using Harbor.Domain.Pages;
 using Harbor.Domain.Security;
 using Harbor.UI.Extensions;
-using Harbor.UI.Models.Page;
+using Harbor.UI.Models.Pages;
 
 namespace Harbor.UI.Controllers.Api
 {
@@ -47,23 +48,24 @@ namespace Harbor.UI.Controllers.Api
 		[Permit(UserFeature.Pages, Permissions.Create)]
 		public HttpResponseMessage Post(PageLayoutDto navLinks)
         {
-			var navLinksDO = PageLayoutDto.ToPageLayout(navLinks);
-			navLinksDO.UserName = User.Identity.Name;
+			throw new NotImplementedException();
+			//var navLinksDO = PageLayoutDto.ToPageLayout(navLinks);
+			//navLinksDO.UserName = User.Identity.Name;
 
-			var errors = DomainObjectValidator.Validate(navLinksDO);
-			if (errors.Count != 0)
-				return Request.CreateBadRequestResponse(errors);
+			//var errors = DomainObjectValidator.Validate(navLinksDO);
+			//if (errors.Count != 0)
+			//	return Request.CreateBadRequestResponse(errors);
 			
-			try
-			{
-				navLinksDO = linksRep.Create(navLinksDO);
-			}
-			catch (DomainValidationException exception)
-			{
-				return Request.CreateBadRequestResponse(exception.Message);
-			}
+			//try
+			//{
+			//	navLinksDO = linksRep.Create(navLinksDO);
+			//}
+			//catch (DomainValidationException exception)
+			//{
+			//	return Request.CreateBadRequestResponse(exception.Message);
+			//}
 
-			return Request.CreateOKResponse(PageLayoutDto.FromPageLayout(navLinksDO));
+			//return Request.CreateOKResponse(PageLayoutDto.FromPageLayout(navLinksDO));
         }
 
         // PUT api/navlinks/5
