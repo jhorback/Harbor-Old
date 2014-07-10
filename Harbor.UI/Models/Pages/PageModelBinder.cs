@@ -2,7 +2,7 @@
 using System.Web.Mvc;
 using Harbor.Domain.Pages;
 
-namespace Harbor.UI.Models.Page
+namespace Harbor.UI.Models.Pages
 {
 	public class PageModelBinder : DefaultModelBinder
 	{

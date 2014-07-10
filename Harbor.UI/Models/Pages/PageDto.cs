@@ -4,7 +4,7 @@ using System.Web.Mvc;
 using AutoMapper;
 using Harbor.Domain.Pages;
 using Harbor.UI.Models.Content;
-using Harbor.UI.Models.Page;
+using Harbor.UI.Models.Pages;
 
 namespace Harbor.UI.Models
 {
@@ -32,7 +32,7 @@ namespace Harbor.UI.Models
 				.ForMember(dest => dest.AuthorsUserName, opt => opt.MapFrom(src => src.author))
 				.ForMember(dest => dest.Public, opt => opt.MapFrom(src => src.published))
 				.ForMember(dest => dest.Template, opt => opt.MapFrom(src => TemplateDto.ToTemplate(src.template)))
-				.ForMember(dest => dest.Layout, opt => opt.MapFrom(src => PageLayoutDto.ToPageLayout(src.layout)))
+				.ForMember(dest => dest.Layout, opt => opt.Ignore())
 				.ForMember(dest => dest.Created, opt => opt.Ignore())
 				.ForMember(dest => dest.Modified, opt => opt.Ignore())
 				.ForMember(dest => dest.PageID, opt => opt.Ignore())
@@ -58,6 +58,9 @@ namespace Harbor.UI.Models
 								DO.DeleteProperty(propName);
 							}
 						}
+
+						// page layout
+						DO.Layout = PageLayoutDto.ToPageLayout(DO.Layout, dto.layout);
 				    });
 		}
 	}
