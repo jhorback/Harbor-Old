@@ -75,12 +75,6 @@ namespace Harbor.Data.Repositories
 			DomainObjectValidator.ThrowIfInvalid(entity);
 			throwIfLastEnabledSysAdmin(entity);
 
-			var entry = context.Entry(entity);
-			if (entry.State == System.Data.EntityState.Detached)
-			{
-				throw new Exception("The entity was in a detached state.");
-			}
-
 			// remove roles
 			foreach (var userRole in entity.DeletedUserRoles)
 			{
@@ -121,11 +115,7 @@ namespace Harbor.Data.Repositories
 			if (System.IO.Directory.Exists(usersContentDir))
 				System.IO.Directory.Delete(usersContentDir, recursive: true);
 
-			if (context.Entry(entity).State == System.Data.EntityState.Detached)
-			{
-				throw new Exception("The entity was in a detached state.");
-			}
-
+			
 			// jch* - without deleting files, should have an error if one has been added.
 
 			context.Users.Remove(entity);

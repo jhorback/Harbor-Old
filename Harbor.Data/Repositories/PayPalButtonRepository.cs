@@ -68,10 +68,10 @@ namespace Harbor.Data.Repositories
 
 		public void Delete(PayPalButton entity)
 		{
-			if (context.Entry(entity).State == System.Data.EntityState.Detached)
-			{
-				context.PayPalButtons.Attach(entity);
-			}
+			//if (context.Entry(entity).State == System.Data.EntityState.Detached)
+			//{
+			//	context.PayPalButtons.Attach(entity);
+			//}
 
 			clearCachedItemByID(entity.PayPalButtonID);
 			context.PayPalButtons.Remove(entity);

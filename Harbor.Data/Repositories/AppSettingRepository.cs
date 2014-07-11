@@ -88,12 +88,6 @@ namespace Harbor.Data.Repositories
 		{
 			DomainObjectValidator.ThrowIfInvalid(entity);
 
-			var entry = context.Entry(entity);
-			if (entry.State == System.Data.EntityState.Detached)
-			{
-				throw new Exception("The entity is in a detached state.");
-			}
-
 			context.SaveChanges();
 			clearCache();
 			return entity;
@@ -101,10 +95,6 @@ namespace Harbor.Data.Repositories
 
 		public void Delete(AppSetting entity)
 		{
-			if (context.Entry(entity).State == System.Data.EntityState.Detached)
-			{
-				throw new Exception("The entity is in a detached state.");
-			}
 			context.AppSettings.Remove(entity);
 			context.SaveChanges();
 			clearCache();

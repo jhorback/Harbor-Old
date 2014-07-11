@@ -107,10 +107,6 @@ namespace Harbor.Data.Repositories
 
 		public Page Update(Page entity)
 		{
-			var entry = context.Entry(entity);
-			if (entry.State == System.Data.EntityState.Detached)
-				throw new InvalidOperationException("The entitiy was in a detached state.");
-
 			DomainObjectValidator.ThrowIfInvalid(entity);
 
 			// remove properties
@@ -161,11 +157,6 @@ namespace Harbor.Data.Repositories
 
 		public void Delete(Page entity)
 		{
-			if (context.Entry(entity).State == System.Data.EntityState.Detached)
-			{
-				context.Pages.Attach(entity);
-			}
-
 			clearCachedPageByID(entity.PageID);
 			context.Pages.Remove(entity);
 			context.SaveChanges();
