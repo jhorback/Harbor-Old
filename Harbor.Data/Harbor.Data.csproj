@@ -44,14 +44,16 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
@@ -61,7 +63,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Extensions\ObjectContext\AttachUpdated.cs" />
     <Compile Include="HarborContext.cs" />
     <Compile Include="Migrations\201208230022486_InitialDatabase.cs" />
     <Compile Include="Migrations\201208230022486_InitialDatabase.Designer.cs">
@@ -139,6 +140,10 @@
     <Compile Include="Migrations\201404132119259_RequiredPageLayoutFields.Designer.cs">
       <DependentUpon>201404132119259_RequiredPageLayoutFields.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201407110007255_UpgradeToEF6.cs" />
+    <Compile Include="Migrations\201407110007255_UpgradeToEF6.Designer.cs">
+      <DependentUpon>201407110007255_UpgradeToEF6.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositories\PageLayoutRepository.cs" />
     <Compile Include="Repositories\PayPalButtonRepository.cs" />
@@ -148,9 +153,6 @@
     <Compile Include="Repositories\FileRepository.cs" />
     <Compile Include="Repositories\PageRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Harbor.Domain\Harbor.Domain.csproj">
@@ -219,6 +221,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201404132119259_RequiredPageLayoutFields.resx">
       <DependentUpon>201404132119259_RequiredPageLayoutFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407110007255_UpgradeToEF6.resx">
+      <DependentUpon>201407110007255_UpgradeToEF6.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -94,10 +94,6 @@ namespace Harbor.Data.Repositories
 
 		public File Update(File entity)
 		{
-			var entry = context.Entry(entity);
-			if (entry.State == System.Data.EntityState.Detached)
-				throw new InvalidOperationException("The entitiy was in a detached state.");
-
 			DomainObjectValidator.ThrowIfInvalid(entity);
 
 			try
@@ -114,10 +110,10 @@ namespace Harbor.Data.Repositories
 
 		public void Delete(File entity)
 		{
-			if (context.Entry(entity).State == System.Data.EntityState.Detached)
-			{
-				context.Files.Attach(entity);
-			}
+			//if (context.Entry(entity).State == System.Data.EntityState.Detached)
+			//{
+			//	context.Files.Attach(entity);
+			//}
 
 			var fileID = entity.FileID;
 			var pathsToDelete = new List<string>();

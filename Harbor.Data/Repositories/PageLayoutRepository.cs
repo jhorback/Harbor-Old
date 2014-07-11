@@ -67,11 +67,8 @@ namespace Harbor.Data.Repositories
 		public PageLayout Update(PageLayout entity)
 		{
 			var entry = context.Entry(entity);
-			if (entry.State == System.Data.EntityState.Detached)
-				throw new InvalidOperationException("The entitiy was in a detached state.");
 
 			DomainObjectValidator.ThrowIfInvalid(entity);
-
 			
 			context.SaveChanges();
 			clearCachedItemByID(entity.PageLayoutID);
@@ -80,10 +77,10 @@ namespace Harbor.Data.Repositories
 
 		public void Delete(PageLayout entity)
 		{
-			if (context.Entry(entity).State == System.Data.EntityState.Detached)
-			{
-				context.PageLayouts.Attach(entity);
-			}
+			//if (context.Entry(entity).State == System.Data.EntityState.Detached)
+			//{
+			//	context.PageLayouts.Attach(entity);
+			//}
 
 			clearCachedItemByID(entity.PageLayoutID);
 			context.PageLayouts.Remove(entity);
