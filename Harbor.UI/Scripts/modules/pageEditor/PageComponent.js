@@ -38,7 +38,7 @@ pageEditor.pageComponent = function (console, appurl, context, _, $, modelFactor
 				}
 			}
 
-			// create the model and give the the page model and save method
+			// create the model and give the page model and save method
 			this.model = modelFactory.create(this.model, modelProps, { page: this.page });
 			this.model.page = this.page;
 			if (!this.model.save) {

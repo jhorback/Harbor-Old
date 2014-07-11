@@ -46,6 +46,30 @@ namespace Harbor.Domain.Pages
 
 		public string AsideData { get; set; }
 
+		public Template.Uic Header
+		{
+			get
+			{
+				return new Template.Uic
+				{
+					key = HeaderKey,
+					uicid = string.Format("pl-{0}-{1}", PageLayoutID, HeaderKey)
+				};
+			}
+		}
+
+		public Template.Uic Aside
+		{
+			get
+			{
+				return new Template.Uic
+				{
+					key = AsideKey,
+					uicid = string.Format("pl-{0}-{1}", PageLayoutID, AsideKey)
+				};
+			}
+		}
+
 
 		public T GetHeader<T>()
 		{
