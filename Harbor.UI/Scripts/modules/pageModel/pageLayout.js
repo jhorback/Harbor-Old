@@ -1,6 +1,6 @@
 ﻿
-pageModel.pageLayout = function () {
-	
+pageModel.pageLayout = function (attrs, options, modelFactory) {
+	this.modelFactory = modelFactory;
 };
 
 pageModel.pageLayout.prototype = {
@@ -8,11 +8,20 @@ pageModel.pageLayout.prototype = {
 		id: null, 
 		layoutIsCentered: null, 
 		layoutIsReadable: null, 
-		layoutHasNoSidebar: null, 
+		layoutHasNoSidebar: null,
+
 		headerKey: null, 
-		headerData: null, 
+		header: null, // uicid, key
+		headerData: null,
+		
 		asideKey: null, 
+		aside: null, // uicid, key - 
 		asideData: null
+	},
+
+	initialize: function () {
+		this.header = this.modelFactory.createGeneric(this.attributes.header);
+		this.aside = this.modelFactory.createGeneric(this.attributes.aside);
 	},
 
 	"[headerData]": {
@@ -37,5 +46,10 @@ pageModel.pageLayout.prototype = {
 pageModel.model("pageLayout", [
 	"attrs",
 	"options",
+	"modelFactory",
 	pageModel.pageLayout
 ]);
+
+
+
+

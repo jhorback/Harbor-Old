@@ -23,11 +23,7 @@ pageEditor.linksModel.prototype = {
 		pageProperties: ["navLinksID"],
 
 		getDefaults: function (page, pageProperties) {
-			if (pageProperties.navLinksID) {
-				var props = page.getNavLinks(pageProperties.navLinksID);
-				return _.pick(props, "id", "name", "sections");
-			}
-			return {};
+			return page.layout.get("asideData");
 		}
 	},
 	

@@ -26,7 +26,7 @@ page.prototype = {
 		published: true,
 		pageLayoutId: null,
 		template: null,
-		pageLayout: null,
+		layout: null,
 		properties: [],
 		previewImageID: null,
 		previewImage: null, // FileDto
@@ -58,6 +58,7 @@ page.prototype = {
 
 		this.set("link", this.getUrl());
 		this.template = this.modelFactory.create("template", this.attributes.template);
+		this.layout = this.modelFactory.create("pageLayout", this.attributes.layout);
 		
 		setPreviewFn();
 		this.on("change:previewImage", setPreviewFn);

@@ -4,14 +4,15 @@ pageEditor.componentManager = function ($, _, Backbone, context, console, curren
 	var componentManager,
 		page = currentPageRepo.getCurrentPage(),
 	    template = page.template,
+		layout = page.layout,
 	    components = {},
 	    currentComponent = null;
 
 
 	componentManager = {
 		init: function () {
-			registerComponent(template.header);
-			template.aside.each(registerComponent);
+			registerComponent(layout.header, "header");
+			registerComponent(layout.aside, "aside");
 			template.content.each(registerComponent);
 		},
 
@@ -78,11 +79,11 @@ pageEditor.componentManager = function ($, _, Backbone, context, console, curren
 		}
 	}
 
-	function registerComponent(componentModel) {
-		var type, key, uicid, component, el, instantiateArgs;
+	function registerComponent(componentModel, type) {
+		var key, uicid, component, el, instantiateArgs;
 
+		type = type || "content"; // mostlye informational
 		uicid = componentModel.get("uicid");
-		type = componentModel.get("type");
 		key = componentModel.get("key");
 		
 		el = $("#" + uicid);

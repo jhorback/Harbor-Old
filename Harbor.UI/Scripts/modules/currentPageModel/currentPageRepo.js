@@ -21,9 +21,10 @@ function currentPageRepo(
 		
 		saveCurrentPage: function (handler, proxy) {
 			var dfd = pageRepo.savePage(currentPage, handler, proxy);
-			return dfd.then(function () {
+			dfd.then(function () {
 				globalCache.set("currentPage", currentPage);
 			});
+			return dfd;
 		},
 		
 		deleteCurrentPage: function () {
