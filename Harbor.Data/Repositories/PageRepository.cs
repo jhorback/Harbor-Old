@@ -144,11 +144,12 @@ namespace Harbor.Data.Repositories
 						_logger.Error("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
 					}
 				}
-				throw new Exception("There was an error updating the page. Check the log for mor details.", dbEx);
+				throw new Exception("A data error occured when updating the page.", dbEx);
 			}
 			catch (Exception e)
 			{
 				_logger.Error("UpdatePage", e);
+				throw new Exception("An error occured when updating the page.", e);
 			}
 
 			clearCachedPageByID(entity.PageID);
