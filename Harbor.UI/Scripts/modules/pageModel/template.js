@@ -28,12 +28,11 @@ template.prototype = {
 		}
 	},
 
-	// jch! - don't really need type here since only "content" is supported now
-	addContent: function (type, key) {
+	addContent: function (key) {
 		var ret,
 			uicid = this.getNextUICID(),
 			content = {
-				type: type,
+				type: "content",
 				key: key,
 				uicid: uicid,
 				id: uicid

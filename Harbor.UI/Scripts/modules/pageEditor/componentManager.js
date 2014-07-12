@@ -11,8 +11,8 @@ pageEditor.componentManager = function ($, _, Backbone, context, console, curren
 
 	componentManager = {
 		init: function () {
-			registerComponent(layout.header, "header");
-			registerComponent(layout.aside, "aside");
+			layout.header && registerComponent(layout.header, "header");
+			layout.aside && registerComponent(layout.aside, "aside");
 			template.content.each(registerComponent);
 		},
 

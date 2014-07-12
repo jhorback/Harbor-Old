@@ -20,8 +20,13 @@ pageModel.pageLayout.prototype = {
 	},
 
 	initialize: function () {
-		this.header = this.modelFactory.createGeneric(this.attributes.header);
-		this.aside = this.modelFactory.createGeneric(this.attributes.aside);
+		this.header = this.attributes.headerKey ? 
+			this.modelFactory.createGeneric(this.attributes.header) : 
+			null;
+
+		this.aside = this.attributes.asideKey ?
+			this.modelFactory.createGeneric(this.attributes.aside) :
+			null;
 	},
 
 	"[headerData]": {

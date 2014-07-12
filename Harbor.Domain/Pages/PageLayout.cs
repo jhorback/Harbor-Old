@@ -50,6 +50,11 @@ namespace Harbor.Domain.Pages
 		{
 			get
 			{
+				if (HeaderKey == null)
+				{
+					return null;
+				}
+
 				return new Template.Uic
 				{
 					key = HeaderKey,
@@ -62,6 +67,11 @@ namespace Harbor.Domain.Pages
 		{
 			get
 			{
+				if (AsideKey == null)
+				{
+					return null;
+				}
+
 				return new Template.Uic
 				{
 					key = AsideKey,

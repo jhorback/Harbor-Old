@@ -55,7 +55,7 @@ pageEditor.addPageComponentView.prototype = {
 
 	save: function () {
 		var template = this.model.page.template,
-			component = template.addContent(this.options.type, this.model.get("pageComponentKey"));
+			component = template.addContent(this.model.get("pageComponentKey"));
 		
 		this.currentPageRepo.saveCurrentPage().then(_.bind(function () {
 			this.componentManager.create(component);
