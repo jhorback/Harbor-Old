@@ -8,9 +8,13 @@ namespace Harbor.UI.Models.Pages
 		public bool layoutIsCentered { get; set; }
 		public bool layoutIsReadable { get; set; }
 		public bool layoutHasNoSidebar { get; set; }
+		
 		public string headerKey { get; set; }
+		public Template.Uic header { get; set; }
 		public string headerData { get; set; }
+
 		public string asideKey { get; set; }
+		public Template.Uic aside { get; set; }
 		public string asideData { get; set; }
 
 		public static PageLayoutDto FromPageLayout(PageLayout layout)
@@ -27,8 +31,10 @@ namespace Harbor.UI.Models.Pages
 				layoutIsReadable = layout.DisplayProperties.HasFlag(PageLayout.LayoutDisplayProperties.ContentReadable),
 				layoutHasNoSidebar = layout.DisplayProperties.HasFlag(PageLayout.LayoutDisplayProperties.NoAside),
 				headerKey = layout.HeaderKey,
+				header = layout.Header,
 				headerData = layout.HeaderData,
 				asideKey = layout.AsideKey,
+				aside = layout.Aside,
 				asideData = layout.AsideData
 			};
 		}

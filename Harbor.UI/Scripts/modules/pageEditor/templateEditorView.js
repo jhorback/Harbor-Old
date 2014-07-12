@@ -35,7 +35,6 @@ pageEditor.templateEditorView = (function () {
 			this.listenTo(this.componentManager, "create", this.createUIC, this);
 
 			this.template.content.comparator = templateContentSort;
-			this.template.aside.comparator = templateContentSort;
 		},
 		
 		events: {
@@ -45,8 +44,7 @@ pageEditor.templateEditorView = (function () {
 			},
 			
 			"click .uic-add": function (event) {
-				var type = $(event.target).closest(".page-content").length > 0 ? "content" : "aside";
-				this.addComponent(type);
+				this.addComponent();
 			}
 		},
 
@@ -87,32 +85,20 @@ pageEditor.templateEditorView = (function () {
 			component.$el.fadeOut();
 		},
 		
-		addComponent: function (type) {
-			this.addPageComponent.render({
-				type: type
-			});
+		addComponent: function () {
+			this.addPageComponent.render();
 		},
 		
 		createUIC: function (component) {
 			var type, model = component.componentModel;
 
 			component.$el.addClass("uic").hide();
-			
-			type = model.get("type");
-			if (type === "content") {
-				component.$el.addClass(model.get("classNames").join(" "));
-				$(".page-content").find(".uic-add").before(component.$el);
-			} else if (type === "aside") {
-				$(".page-aside").find(".uic-add").before(component.$el);
-			} else {
-				$(".page-header").html(component.$el);
-			}
-			
+			component.$el.addClass(model.get("classNames").join(" "));
+			$(".page-content").find(".uic-add").before(component.$el);
 			component.$el.fadeIn();
 		},
 		
 		updateOrder: function (event, ui) {
-			this.template.aside.sort();
 			this.template.content.sort();
 			this.currentPageRepo.saveCurrentPage();
 		},
