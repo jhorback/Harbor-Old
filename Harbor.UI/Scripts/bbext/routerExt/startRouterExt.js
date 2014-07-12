@@ -2,6 +2,7 @@
 Adds a start method to the router.
  - Define a 'root' property on the router object to be passed
    to the Backbone.history start call.
+Also adds a bindAll method for convenience.
 */
 function startRouterExt(mixin, Backbone, _) {
 	var routerMixin, extension;
@@ -16,6 +17,12 @@ function startRouterExt(mixin, Backbone, _) {
 			
 
 			Backbone.history.start(options);
+		},
+
+		bindAll: function (methodNames) {
+			var args = Array.prototype.slice.apply(arguments);
+			args.unshift(this);
+			_.bindAll.apply(_, args);
 		}
 	};
 
