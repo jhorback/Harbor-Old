@@ -81,7 +81,8 @@ function managedRouterExt(mixin, Backbone, _, routerInfo, context) {
 					"pattern": {
 						name:, url:, callback:, 
 						component: <name of the component to cache>,
-						cache: <bool>
+						cache: <bool>,
+						previousArgs: []
 					}
 				*/}
 			};
@@ -136,8 +137,7 @@ function managedRouterExt(mixin, Backbone, _, routerInfo, context) {
 				// determine the cache setting
 				// default the cache setting to cache if no arguments
 				options.cache = currentRouteInfo.cache = options.cache === void(0) ?
-					routeCache.currentRouteArgs.length === 0 :
-					options.cache;
+					shouldCache(routeCache) : options.cache;
 
 				// render the component
 				routeCache.components[name].render(name, options);
@@ -154,18 +154,29 @@ function managedRouterExt(mixin, Backbone, _, routerInfo, context) {
 			var routeInfo = this.routeCache.routes[route];
 			var callback = this.routes[route];
 			callback = _.isFunction(callback) ? callback : this[routeInfo.callback];
-			callback.apply(this, args);
+			callback.apply(this, args || []);
 		}
 	};
 
 
+	function shouldCache(routeCache) {
+		var currentArgs = routeCache.currentRouteArgs,
+			prevArgs = routeCache.routes[routeCache.currentRoute].previousArgs,
+			argsOk = prevArgs ? prevArgs.toString() === currentArgs.toString() : true;
+		routeCache.routes[routeCache.currentRoute].previousArgs = currentArgs;
+		return argsOk;
+	}
+
+
 	function routeCurry(pattern, callback) {
-		var router = this;
+		var router = this,
+			routeCache = router.routeCache;
 		
 		return function () {
-			router.routeCache.previousRoute = router.routeCache.currentRoute;
-			router.routeCache.currentRoute = pattern;
-			router.routeCache.currentRouteArgs = arguments;
+			var args = Array.prototype.slice.call(arguments);
+			routeCache.previousRoute = routeCache.currentRoute;
+			routeCache.currentRoute = pattern;
+			routeCache.currentRouteArgs = args;
 			callback.apply(router, arguments);
 		};
 	}
@@ -221,5 +232,6 @@ bbext.config([
 	"Backbone",
 	"_",
 	"routerInfo",
+	"context",
 	managedRouterExt
 ]);

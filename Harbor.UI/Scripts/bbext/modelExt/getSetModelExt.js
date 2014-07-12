@@ -11,10 +11,15 @@ function getSetModelExt(mixin, modelPropertyDescriptor) {
 			// useful for lazyloads when saving model on change
 			// (don't want to save on the initial sync)
 			this.synced = false;
-			this.once("sync", function () {
+            this.set("synced", false);
+			this.on("sync", function () {
 				this.synced = true;
 				this.set("synced", true);
 			}, this);
+            this.on("request", function () {
+                this.synced = false;
+                this.set("synced", false);
+            }, this);
 			
 			parseBindings.call(this);
 		},
@@ -79,6 +84,14 @@ function getSetModelExt(mixin, modelPropertyDescriptor) {
 				this.get(name);
 			} else {
 				this.set(this.toJSON());
+			}
+		},
+
+		// returns a curry of the above refresh function.
+		refreshFn: function (name) {
+			var model = this;
+			return function () {
+				model.refresh(name);
 			}
 		}
 	};

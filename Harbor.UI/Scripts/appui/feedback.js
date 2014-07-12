@@ -1,6 +1,7 @@
 ﻿/*
 Usage: 
 	feedback.show("Three devices have been deleted");
+	feedback.hide(); // hides any visible feedback, useful for when switch screens
 	var wait = feedback.wait("Saving the user.");
 	wait.finished();
 	     - When calling finished without a message, this will simply close the message.
@@ -33,7 +34,7 @@ function feedback($, timer) {
 	    closeEl,
 	    feedbackThreshold = 1000,
 	    hideThreshold = 1000 * 60 * 5,
-	    messageTemplate = '<div id="message"><div class="alert"><div id="message-text"></div><div id="message-close">&times;</div></div></div>';
+	    messageTemplate = '<div id="message"><div class="alert alert-warn"><div id="message-text"></div><div id="message-close">&times;</div></div></div>';
 
 	function showMessage(message, dontShowClose, timerId) {
 		ensureMessageEl();

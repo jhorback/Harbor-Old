@@ -37,6 +37,14 @@
  *     someApp.component("someComponent", {
  *         insertAfterTemplate: true
  *     });
+ *
+ * Events:
+ *     component:show
+ *     component:detached
+ *
+ * Scroll position:
+ *      When detaching/showing cached components, scroll positions will be preserved on all
+ *      elements that have a [data-rel='scroll'] attribute.
  */ 
 var Component = (function () {
 
@@ -71,26 +79,30 @@ var Component = (function () {
 				o = arguments[1];
 			}
 
-			cached = privates[this.cid].cache[key];
-			if (cached && cached.cache) {
-				view = cached.view;
-			}
-
 			o = o || {};
 			o.region = o.region || o.regionEl || this.region; // regionEl obsolete
 			o.cache = o.cache === void(0) ? this.cache : o.cache;
+
+			cached = privates[this.cid].cache[key];
+			if (cached && cached.cache && o.cache) {
+				view = cached.view;
+			}
+			
 			if (!o.region && this.insertAfterTemplate) {
 				o.insertAfterTemplate = true;
 			}
 
 			if (!view) {
+				// if (this.name === "resolutionComponent") alert("component.templateRenderer.render." + this.name);
 				view = _.templateRenderer.render(this.name + "View", o);
 				view.on("close", function () {
 					comp.close(key);
 				});
+				handleScrollPositions(view);
 			}
+
 			region = $(o.region);
-			if (region.length === 0) {
+			if (o.region && region.length === 0) {
 				_.console.error("The region does not exist.");
 			}
 
@@ -102,6 +114,7 @@ var Component = (function () {
 				region: region
 			};
 			region.append(view.$el.show());
+			view.trigger("component:show");
 
 			_.console.groupEnd();
 			
@@ -119,6 +132,7 @@ var Component = (function () {
 				return;
 			}
 			_.console.group("component.close:", this.name);
+			cached.view.trigger("component:detached");
 			if (cached.cache) {
 				cached.view.$el.detach();
 			} else {
@@ -135,9 +149,34 @@ var Component = (function () {
 		}
 	};
 
+	function handleScrollPositions(view) {
+		var els = view.$("[data-rel='scroll']");
+		if (els.length > 0) {
+			view.on("component:detached", function () {
+				els.each(function (i, el) {
+					el = $(el);
+					el.data("lastScrollTop", el.scrollTop());
+				});
+			});
+			view.on("component:show", function () {
+				els.each(function (i, el) {
+					var lastScrollTop;
+					el = $(el);
+					lastScrollTop = el.data("lastScrollTop");
+					lastScrollTop && el.scrollTop(lastScrollTop);
+					setTimeout(function () {
+						lastScrollTop && el.scrollTop(lastScrollTop);
+					}, 0); // yield
+				});
+			});
+
+		}
+		
+	}
+
 
 	function reattachChildren(parent, els) {
-		els.hide();
+        els.not("[data-templatefor]").hide();
 		els.each(function (i, el) {
 			el = $(el);
 			if (el.data("wasVisible") === true) {
@@ -149,21 +188,21 @@ var Component = (function () {
 
 	function detachChildren(parent) {
 		var currentChildren = parent.children(),
-				elsToKeepContainer,
-				elsToKeep;
+			elsToKeepContainer,
+			elsToKeep;
 
-			currentChildren.each(function (i, child) {
-				child = $(child);
-				child.data("wasVisible", child.is(":visible"));
-			});
+		currentChildren.each(function (i, child) {
+			child = $(child);
+			child.data("wasVisible", child.is(":visible"));
+		});
 				
-			elsToKeepContainer = parent.add(currentChildren);
-			// dont remove other root templates that have not been used yet
-			elsToKeep = parent.children("[data-templatefor]"); 
-			// do not detach stylesheet links
-			elsToKeep = elsToKeepContainer.find("link").add(elsToKeep);
-			currentChildren.detach();
-			$("body").append(elsToKeep);
+		elsToKeepContainer = parent.add(currentChildren);
+		// dont remove other root templates that have not been used yet
+		elsToKeep = parent.children("[data-templatefor]"); 
+		// do not detach stylesheet links
+		elsToKeep = elsToKeepContainer.find("link").add(elsToKeep);
+		currentChildren.detach();
+		$("body").append(elsToKeep);
 
 		return currentChildren;
 	}

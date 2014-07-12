@@ -84,7 +84,7 @@ var modelBinder = function ($, _, config, nameValueParser) {
 			var binding, set, haveValue = value !== undefined;
 
 			el = $(el);
-			if (el.is(":focus")) {
+			if (el.is(":focus:not(:button)")) {
 				return;
 			}
 			
@@ -276,6 +276,7 @@ var modelBinder = function ($, _, config, nameValueParser) {
 				}
 			}
 
+			// bindings must be on models
 			if (model.attributes[attr] === void(0)) {
 				return null;
 			}

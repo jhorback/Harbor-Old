@@ -37,6 +37,11 @@ function modelPropertyDescriptor(_, console) {
 					if (value.bind && _.isFunction(value.bind) === false) {
 						boundBind(descriptor, key, value.bind);
 					}
+
+					// observe as an alias for bind
+					if (value.observe && _.isFunction(value.observe) === false) {
+						boundBind(descriptor, key, value.observe);
+					}
 					
 					if (value.validate) {
 						descriptor.validate[key] = value.validate;

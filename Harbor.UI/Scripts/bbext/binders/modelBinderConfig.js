@@ -128,19 +128,9 @@ var modelBinderConfig = {
 			el.html(value);
 		},
 		"visibility": function (el, attr, value) {
-			var initialDisplay = el.data("initialDisplay");
-			if (!initialDisplay) { 
-				initialDisplay = el.css("display");
-				if (initialDisplay === "none") { // respect non block display
-					el.show();
-					initialDisplay = el.css("display");
-					el.hide();
-				}
-				el.data("initialDisplay", initialDisplay);
-			}
 			attr === "showif" ?
-				el.css("display", value ? initialDisplay : "none") :
-				el.css("display", value ? "none" : initialDisplay); // dontshowif
+				el.css("display", value ? "" : "none") :
+				el.css("display", value ? "none" : ""); // dontshowif
 		},
 		"value": function (el, attr, value) {
 			el.val(value);
