@@ -144,6 +144,10 @@
     <Compile Include="Migrations\201407110007255_UpgradeToEF6.Designer.cs">
       <DependentUpon>201407110007255_UpgradeToEF6.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201407141952230_AddedPageLayoutConfiguration.cs" />
+    <Compile Include="Migrations\201407141952230_AddedPageLayoutConfiguration.Designer.cs">
+      <DependentUpon>201407141952230_AddedPageLayoutConfiguration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositories\PageLayoutRepository.cs" />
     <Compile Include="Repositories\PayPalButtonRepository.cs" />
@@ -224,6 +228,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201407110007255_UpgradeToEF6.resx">
       <DependentUpon>201407110007255_UpgradeToEF6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407141952230_AddedPageLayoutConfiguration.resx">
+      <DependentUpon>201407141952230_AddedPageLayoutConfiguration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

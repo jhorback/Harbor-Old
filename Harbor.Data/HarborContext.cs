@@ -45,6 +45,7 @@ namespace Harbor.Data
 			base.OnModelCreating(modelBuilder);
 
 			modelBuilder.Configurations.Add<Page>(new DbSetConfiguration.PageConfiguration());
+			modelBuilder.Configurations.Add<PageLayout>(new DbSetConfiguration.PageLayoutConfiguration());
 			modelBuilder.Configurations.Add<User>(new DbSetConfiguration.UserConfiguration());
 			modelBuilder.Configurations.Add<File>(new DbSetConfiguration.FileConfiguration());
 			modelBuilder.Configurations.Add<PayPalButton>(new DbSetConfiguration.PayPalButtonConfiguration());
