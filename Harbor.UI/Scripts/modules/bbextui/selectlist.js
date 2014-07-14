@@ -314,7 +314,11 @@ $(function () {
 		   this._trigger("change", null, {
 			   checkedValues: function () {
 				   return self.values();
-			   }
+			   },
+
+				value: function () {
+					return self.values()[0];
+				}
 		   });
 	   },
 	   

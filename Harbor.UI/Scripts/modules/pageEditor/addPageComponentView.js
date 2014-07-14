@@ -12,17 +12,12 @@ pageEditor.addPageComponentView = function (
 	selectlistFactory
 ) {
 
-	this.model = modelFactory.create("addPageComponentViewModel", {		
-		componentType: options.type, // "header", "content", "aside"
+	this.model = modelFactory.create("addPageComponentViewModel", {
 		pageComponentKey: "image" // jch* testing
 	});
 
 	this.model.page = currentPageRepo.getCurrentPage();
 	this.model.pageComponents = pageComponentRepo.getPageComponents();
-	this.model.pageComponents.setFilter(function (model) {
-		// console.log(model.get("type"), options.type, model.get("type") === options.type);
-		return model.get("type") === options.type;
-	});
 
 	this.currentPageRepo = currentPageRepo;
 	this.dialogFactory = dialogFactory;
@@ -44,7 +39,6 @@ pageEditor.addPageComponentView.prototype = {
 			}
 		});
 		
-		debugger;
 		this.$el.find(":radio").eq(0).click();
 	},
 	

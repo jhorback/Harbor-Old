@@ -1,32 +1,27 @@
-﻿using AutoMapper;
-using Harbor.Domain.Pages;
+﻿using Harbor.Domain.Pages;
 
 namespace Harbor.UI.Models
 {
-	public class PageComponentDtoMapCreator : IBootstrapperTask
-	{
-		public void Execute()
-		{
-			Mapper.CreateMap<PageContentType, PageComponentDto>();
-			Mapper.CreateMap<PageComponentDto, PageContentType>();
-		}
-	}
-
 	public class PageComponentDto
 	{
 		public string key { get; set; }
-		public string type { get; set; }
 		public string name { get; set; }
 		public string description { get; set; }
 
-		public static implicit operator PageComponentDto(PageContentType componentType)
+		public PageComponentDto()
 		{
-			return Mapper.Map<PageContentType, PageComponentDto>(componentType);
 		}
 
-		public static implicit operator PageContentType(PageComponentDto component)
+		public PageComponentDto(PageContentType pageContentType)
 		{
-			return Mapper.Map<PageComponentDto, PageContentType>(component);
+			key = pageContentType.Key;
+			name = pageContentType.Name;
+			description = pageContentType.Description;
+		}
+
+		public static PageComponentDto FromPageContentType(PageContentType pageContentType)
+		{
+			return new PageComponentDto(pageContentType);
 		}
 	}
 }
