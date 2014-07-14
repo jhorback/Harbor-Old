@@ -37,7 +37,7 @@ namespace Harbor.Data.Repositories
 				Query()
 					.AsEnumerable()
 				:
-				Query().Where(d => d.Enabled == true)
+				Query().Where(d => d.Enabled)
 					.Where(filter)
 					.AsEnumerable();
 		}
@@ -82,8 +82,8 @@ namespace Harbor.Data.Repositories
 		public Page FindById(int id, bool readOnly)
 		{
 			if (readOnly)
-				return findCachedPageByID(id as int?);
-			return findPageByID(id as int?);
+				return findCachedPageByID(id);
+			return findPageByID(id);
 		}
 
 		public Page FindById(object id)
@@ -168,13 +168,13 @@ namespace Harbor.Data.Repositories
 		#region IPageRepository
 		public Page Find(string author, string title)
 		{
-			var pages = this.FindAll(d => d.AuthorsUserName == author && d.Title == title);
+			var pages = FindAll(d => d.AuthorsUserName == author && d.Title == title);
 			return pages.FirstOrDefault();
 		}
 
 		public bool Exists(string author, string title)
 		{
-			return this.Find(author, title) != null;
+			return Find(author, title) != null;
 		}
 		#endregion
 
