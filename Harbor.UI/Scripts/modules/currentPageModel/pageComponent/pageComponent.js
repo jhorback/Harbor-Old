@@ -9,7 +9,6 @@ currentPageModel.pageComponent.prototype = {
 	idAttribute: "key",
 	defaults: {
 		key: null,
-		type: null,
 		name: null,
 		description: null
 	}

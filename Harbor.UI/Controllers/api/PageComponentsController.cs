@@ -17,7 +17,7 @@ namespace Harbor.UI.Controllers.Api
 
 		public IEnumerable<PageComponentDto> Get()
 		{
-			return compRep.GetPageContentTypes().Select(pt => (PageComponentDto)pt);
+			return compRep.GetPageContentTypes().Select(PageComponentDto.FromPageContentType);
 		}
     }
 }
