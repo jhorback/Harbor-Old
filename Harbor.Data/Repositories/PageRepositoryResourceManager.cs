@@ -28,7 +28,10 @@ namespace Harbor.Data.Repositories
 			{
 				var res = resource as PageLinkResource;
 				var pageLink = context.Pages.Find(res.PageID);
-				if (pageLink != null) page.PageLinks.Add(pageLink);
+				if (pageLink != null)
+				{
+					page.PageLinks.Add(pageLink);
+				}
 			}
 			else if (resource is PayPalButtonResource)
 			{
