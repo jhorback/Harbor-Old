@@ -1,5 +1,6 @@
 ﻿using System.Web.Http;
 using System.Web.Mvc;
+using Harbor.Data;
 using Harbor.Data.Repositories;
 using Harbor.Domain.Security;
 using Harbor.UI.IoC;
@@ -17,6 +18,13 @@ namespace Harbor.UI
 
 			DependencyResolver.SetResolver(new StructureMapDependencyResolver(container));
 			GlobalConfiguration.Configuration.DependencyResolver = new StructureMapDependencyResolver(container);
+		}
+
+		public static void Dispose() // jch! - move this if it works
+		{
+			//ObjectFactory.GetInstance<HarborContext>().Dispose();
+			//ObjectFactory.
+			//ObjectFactory.ReleaseAndDisposeAllHttpScopedObjects();
 		}
 
 		private static IContainer getContainer()

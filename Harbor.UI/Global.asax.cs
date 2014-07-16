@@ -48,6 +48,11 @@ namespace Harbor.UI
 			Bootstrapper.ExecuteTasks();
 		}
 
+		protected void Application_EndRequest()
+		{
+			IoCConfig.Dispose();
+		}
+
 		private static HarborApp getApp()
 		{
 			// jch* - request lifetime for this?
