@@ -10,11 +10,13 @@ namespace Harbor.Data.Repositories
 	public class AppSettingRepository : IAppSettingRepository
 	{
 		readonly HarborContext context;
+		private readonly IUnitOfWork _unitOfWork;
 		private readonly ILogger _logger;
 
-		public AppSettingRepository(HarborContext context, ILogger logger)
+		public AppSettingRepository(IUnitOfWork unitOfWork, ILogger logger)
 		{
-			this.context = context;
+			context = unitOfWork.Context;
+			_unitOfWork = unitOfWork;
 			_logger = logger;
 		}
 
@@ -98,6 +100,11 @@ namespace Harbor.Data.Repositories
 			context.AppSettings.Remove(entity);
 			context.SaveChanges();
 			clearCache();
+		}
+
+		public void Save()
+		{
+			_unitOfWork.Save();
 		}
 		#endregion
 

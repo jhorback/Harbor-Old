@@ -12,13 +12,15 @@ namespace Harbor.Data.Repositories
 {
 	public class FileRepository : IFileRepository
 	{
-		HarborContext context;
-		IFileFactory fileFactory;
+		readonly HarborContext context;
+		private readonly IUnitOfWork _unitOfWork;
+		readonly IFileFactory fileFactory;
 		private readonly ILogger _logger;
 
-		public FileRepository(HarborContext context, IFileFactory fileFactory, ILogger logger)
+		public FileRepository(IUnitOfWork unitOfWork, IFileFactory fileFactory, ILogger logger)
 		{
-			this.context = context;
+			context = unitOfWork.Context;
+			_unitOfWork = unitOfWork;
 			this.fileFactory = fileFactory;
 			_logger = logger;
 		}
@@ -141,6 +143,14 @@ namespace Harbor.Data.Repositories
 			}
 		}
 
+		public void Save()
+		{
+			_unitOfWork.Save();
+		}
+
+		#region private
+		string fileCacheKey = "Harbor.Data.Repositories.FileRepository.";
+
 		private void deletePhysicalFile(string path)
 		{
 			try
@@ -153,9 +163,6 @@ namespace Harbor.Data.Repositories
 				_logger.Error("Delete file path failed. Path: {0}", e, path);
 			}
 		}
-
-		#region private
-		string fileCacheKey = "Harbor.Data.Repositories.FileRepository.";
 
 		void clearCachedFileByID(Guid fileID)
 		{

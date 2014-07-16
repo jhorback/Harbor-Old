@@ -9,11 +9,13 @@ namespace Harbor.Data.Repositories
 {
 	public class PayPalButtonRepository : IPayPalButtonRepository
 	{
+		private readonly IUnitOfWork _unitOfWork;
 		readonly HarborContext context;
 
-		public PayPalButtonRepository(HarborContext context)
+		public PayPalButtonRepository(IUnitOfWork unitOfWork)
 		{
-			this.context = context;
+			_unitOfWork = unitOfWork;
+			context = unitOfWork.Context;
 		}
 
 		public IEnumerable<PayPalButton> FindAll(Func<PayPalButton, bool> filter = null)
@@ -78,6 +80,11 @@ namespace Harbor.Data.Repositories
 			context.SaveChanges();
 		}
 
+		public void Save()
+		{
+			_unitOfWork.Save();
+		}
+
 		#region private caching
 		private const string itemCacheKey = "Harbor.Data.Repositories.PayPalButtonRepository.";
 
@@ -108,5 +115,6 @@ namespace Harbor.Data.Repositories
 			MemoryCache.Default.Remove(cacheKey);
 		}
 		#endregion
+
 	}
 }

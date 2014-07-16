@@ -9,11 +9,13 @@ namespace Harbor.Data.Repositories
 {
 	public class PageLayoutRepository : IPageLayoutRepository
 	{
+		private readonly IUnitOfWork _unitOfWork;
 		readonly HarborContext context;
 
-		public PageLayoutRepository(HarborContext context)
+		public PageLayoutRepository(IUnitOfWork unitOfWork)
 		{
-			this.context = context;
+			_unitOfWork = unitOfWork;
+			context = unitOfWork.Context;
 		}
 
 		public IEnumerable<PageLayout> FindAll(Func<PageLayout, bool> filter = null)
@@ -85,6 +87,11 @@ namespace Harbor.Data.Repositories
 			clearCachedItemByID(entity.PageLayoutID);
 			context.PageLayouts.Remove(entity);
 			context.SaveChanges();
+		}
+
+		public void Save()
+		{
+			_unitOfWork.Save();
 		}
 
 		#region private caching

@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HarborContext.cs" />
+    <Compile Include="IUnitOfWork.cs" />
     <Compile Include="Migrations\201208230022486_InitialDatabase.cs" />
     <Compile Include="Migrations\201208230022486_InitialDatabase.Designer.cs">
       <DependentUpon>201208230022486_InitialDatabase.cs</DependentUpon>
@@ -157,6 +158,7 @@
     <Compile Include="Repositories\FileRepository.cs" />
     <Compile Include="Repositories\PageRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
+    <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Harbor.Domain\Harbor.Domain.csproj">

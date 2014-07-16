@@ -18,7 +18,7 @@ namespace Harbor.Domain
 
 		void Delete(T entity);
 
-		// void Save(); jch! one way of pulling out save
+		void Save();
 	}
 }
 

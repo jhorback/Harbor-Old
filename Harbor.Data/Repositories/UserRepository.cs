@@ -11,11 +11,13 @@ namespace Harbor.Data.Repositories
 {
 	public class UserRepository : IUserRepository
 	{
-		HarborContext context;
+		private readonly IUnitOfWork _unitOfWork;
+		readonly HarborContext context;
 
-		public UserRepository(HarborContext context)
+		public UserRepository(IUnitOfWork unitOfWork)
 		{
-			this.context = context;
+			_unitOfWork = unitOfWork;
+			context = unitOfWork.Context;
 		}
 
 		#region IRepository
@@ -121,6 +123,11 @@ namespace Harbor.Data.Repositories
 			context.Users.Remove(entity);
 			context.SaveChanges();
 			clearCachedUser(entity.UserName);
+		}
+
+		public void Save()
+		{
+			_unitOfWork.Save();
 		}
 		#endregion
 
