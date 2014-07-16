@@ -6,6 +6,7 @@ using Harbor.Domain.Security;
 using Harbor.UI.IoC;
 using StructureMap;
 using StructureMap.Graph;
+using StructureMap.Web.Pipeline;
 
 
 namespace Harbor.UI
@@ -20,11 +21,9 @@ namespace Harbor.UI
 			GlobalConfiguration.Configuration.DependencyResolver = new StructureMapDependencyResolver(container);
 		}
 
-		public static void Dispose() // jch! - move this if it works
+		public static void Dispose()
 		{
-			//ObjectFactory.GetInstance<HarborContext>().Dispose();
-			//ObjectFactory.
-			//ObjectFactory.ReleaseAndDisposeAllHttpScopedObjects();
+			HttpContextLifecycle.DisposeAndClearAll();
 		}
 
 		private static IContainer getContainer()
