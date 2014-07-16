@@ -12,6 +12,7 @@ namespace Harbor.Data.Repositories
 	public class PageRepository : IPageRepository
 	{
 		readonly HarborContext context;
+		private readonly IUnitOfWork _unitOfWork;
 		readonly IPageFactory pageFactory;
 		private readonly IObjectFactory _objectFactory;
 		private readonly ILogger _logger;
@@ -19,12 +20,13 @@ namespace Harbor.Data.Repositories
 		string pageCacheKey = "Harbor.Data.Repositories.PageRepository.";
 
 		public PageRepository(
-			HarborContext context,
+			IUnitOfWork	unitOfWork,
 			IPageFactory pageFactory,
 			IObjectFactory objectFactory,
 			ILogger logger
 		) {
-			this.context = context;
+			context = unitOfWork.Context;
+			_unitOfWork = unitOfWork;
 			this.pageFactory = pageFactory;
 			_objectFactory = objectFactory;
 			_logger = logger;
@@ -161,6 +163,11 @@ namespace Harbor.Data.Repositories
 			clearCachedPageByID(entity.PageID);
 			context.Pages.Remove(entity);
 			context.SaveChanges();
+		}
+
+		public void Save()
+		{
+			_unitOfWork.Save();
 		}
 		#endregion
 
