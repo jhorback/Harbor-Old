@@ -4,11 +4,11 @@ using StructureMap.Web;
 
 namespace Harbor.UI.IoC
 {
-	public class HarborContextRegistry : Registry
+	public class UnitOfWorkRegistry : Registry
 	{
-		public HarborContextRegistry()
+		public UnitOfWorkRegistry()
 		{
-			For<HarborContext>().HttpContextScoped();
+			For<IUnitOfWork>().HttpContextScoped();
 		}
 	}
 }

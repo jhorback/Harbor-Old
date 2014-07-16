@@ -195,10 +195,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\IoC\HarborContextRegistry.cs" />
+    <Compile Include="App_Start\IoC\UnitOfWorkRegistry.cs" />
     <Compile Include="App_Start\IoC\ObjectFactoryRegistry.cs" />
-    <Compile Include="App_Start\IoC\HarborDataModule.cs" />
-    <Compile Include="App_Start\IoC\LogInjectionModule.cs" />
     <Compile Include="App_Start\Bootstrapper.cs" />
     <Compile Include="App_Start\IoC\LoggerRegistry.cs" />
     <Compile Include="App_Start\IoC\StructureMapDependencyResolver.cs" />

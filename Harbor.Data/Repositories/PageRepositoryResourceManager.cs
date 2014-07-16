@@ -10,9 +10,9 @@ namespace Harbor.Data.Repositories
 		private readonly HarborContext context;
 		private readonly IPayPalButtonRepository _payPalRepo;
 
-		public PageRepositoryResourceManager(HarborContext context, IPayPalButtonRepository payPalRepo)
+		public PageRepositoryResourceManager(IUnitOfWork unitOfWork, IPayPalButtonRepository payPalRepo)
 		{
-			this.context = context;
+			context = unitOfWork.Context;
 			_payPalRepo = payPalRepo;
 		}
 
