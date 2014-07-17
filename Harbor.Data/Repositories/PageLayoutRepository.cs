@@ -62,17 +62,12 @@ namespace Harbor.Data.Repositories
 			}
 
 			entity = context.PageLayouts.Add(entity);
-			context.SaveChanges();
 			return entity;
 		}
 
 		public PageLayout Update(PageLayout entity)
 		{
-			var entry = context.Entry(entity);
-
 			DomainObjectValidator.ThrowIfInvalid(entity);
-			
-			context.SaveChanges();
 			clearCachedItemByID(entity.PageLayoutID);
 			return entity;
 		}
@@ -86,7 +81,6 @@ namespace Harbor.Data.Repositories
 
 			clearCachedItemByID(entity.PageLayoutID);
 			context.PageLayouts.Remove(entity);
-			context.SaveChanges();
 		}
 
 		public void Save()

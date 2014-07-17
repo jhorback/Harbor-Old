@@ -81,6 +81,7 @@ namespace Harbor.UI.Controllers.Api
 			try
 			{
 				navLinksDO = linksRep.Update(navLinksDO);
+				linksRep.Save();
 			}
 			catch (DomainValidationException e)
 			{
@@ -98,6 +99,7 @@ namespace Harbor.UI.Controllers.Api
 			if (navLinksDO != null && navLinksDO.UserName == User.Identity.Name)
 			{
 				linksRep.Delete(navLinksDO);
+				linksRep.Save();
 			}
 			return Request.CreateResponse(HttpStatusCode.NoContent);
         }

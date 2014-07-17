@@ -55,15 +55,12 @@ namespace Harbor.Data.Repositories
 			DomainObjectValidator.ThrowIfInvalid(entity);
 
 			entity = context.PayPalButtons.Add(entity);
-			context.SaveChanges();
 			return entity;
 		}
 
 		public PayPalButton Update(PayPalButton entity)
 		{
 			DomainObjectValidator.ThrowIfInvalid(entity);
-			
-			context.SaveChanges();
 			clearCachedItemByID(entity.PayPalButtonID);
 			return entity;
 		}
@@ -77,7 +74,6 @@ namespace Harbor.Data.Repositories
 
 			clearCachedItemByID(entity.PayPalButtonID);
 			context.PayPalButtons.Remove(entity);
-			context.SaveChanges();
 		}
 
 		public void Save()

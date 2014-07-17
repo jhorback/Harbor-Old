@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Runtime.Caching;
 using System.Web;
@@ -83,29 +82,12 @@ namespace Harbor.Data.Repositories
 		{
 			DomainObjectValidator.ThrowIfInvalid(file);
 			file = context.Files.Add(file);
-			try
-			{
-				context.SaveChanges();
-			}
-			catch (Exception e)
-			{
-				_logger.Fatal("Create file failed.", e);
-			}
 			return file;
 		}
 
 		public File Update(File entity)
 		{
 			DomainObjectValidator.ThrowIfInvalid(entity);
-
-			try
-			{
-				context.SaveChanges();
-			}
-			catch (Exception e)
-			{
-				_logger.Fatal("Update file failed.", e);
-			}
 			clearCachedFileByID(entity.FileID);
 			return entity;
 		}
@@ -132,7 +114,6 @@ namespace Harbor.Data.Repositories
 				}
 				context.Files.Remove(entity);
 				
-				context.SaveChanges();
 				clearCachedFileByID(fileID);
 				pathsToDelete.ForEach(deletePhysicalFile);
 			}

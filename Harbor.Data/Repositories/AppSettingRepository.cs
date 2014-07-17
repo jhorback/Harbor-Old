@@ -81,7 +81,6 @@ namespace Harbor.Data.Repositories
 				throw new InvalidOperationException("The setting already exists.");
 
 			entity = context.AppSettings.Add(entity);
-			context.SaveChanges();
 			clearCache();
 			return entity;
 		}
@@ -89,8 +88,6 @@ namespace Harbor.Data.Repositories
 		public AppSetting Update(AppSetting entity)
 		{
 			DomainObjectValidator.ThrowIfInvalid(entity);
-
-			context.SaveChanges();
 			clearCache();
 			return entity;
 		}
@@ -98,7 +95,6 @@ namespace Harbor.Data.Repositories
 		public void Delete(AppSetting entity)
 		{
 			context.AppSettings.Remove(entity);
-			context.SaveChanges();
 			clearCache();
 		}
 

@@ -57,6 +57,7 @@ namespace Harbor.UI.Controllers.Api
 			try
 			{
 				dobj = buttonRep.Create(dobj);
+				buttonRep.Save();
 			}
 			catch (DomainValidationException exception)
 			{
@@ -79,6 +80,7 @@ namespace Harbor.UI.Controllers.Api
 			try
 			{
 				dobj = buttonRep.Update(dobj);
+				buttonRep.Save();
 			}
 			catch (DomainValidationException e)
 			{
@@ -96,6 +98,7 @@ namespace Harbor.UI.Controllers.Api
 			if (dobj != null && dobj.UserName == User.Identity.Name)
 			{
 				buttonRep.Delete(dobj);
+				buttonRep.Save();
 			}
 			return Request.CreateResponse(HttpStatusCode.NoContent);
         }

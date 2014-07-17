@@ -58,6 +58,7 @@ namespace Harbor.UI.Controllers.Api
 			try
 			{
 				pageDO = pageRep.Create(pageDO);
+				pageRep.Save();
 			}
 			catch (DomainValidationException exception)
 			{
@@ -83,6 +84,7 @@ namespace Harbor.UI.Controllers.Api
 			try
 			{
 				pageDO = pageRep.Update(pageDO);
+				pageRep.Save();
 			}
 			catch (DomainValidationException e)
 			{
@@ -98,6 +100,7 @@ namespace Harbor.UI.Controllers.Api
         {
 			var pageDO = pageRep.FindById(id, readOnly: false);
 			pageRep.Delete(pageDO);
+			pageRep.Save();
 			return Request.CreateResponse(HttpStatusCode.NoContent);
         }
     }

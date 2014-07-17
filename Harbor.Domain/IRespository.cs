@@ -18,6 +18,9 @@ namespace Harbor.Domain
 
 		void Delete(T entity);
 
+		/// <summary>
+		/// Calls SaveChanges on the DbContext.
+		/// </summary>
 		void Save();
 	}
 }

@@ -62,6 +62,7 @@ namespace Harbor.UI.Controllers.Api
 			try
 			{
 				fileDo = fileRep.Update(fileDo);
+				fileRep.Save();
 			}
 			catch (DomainValidationException e)
 			{
@@ -78,6 +79,7 @@ namespace Harbor.UI.Controllers.Api
         {
 			var fileDo = fileRep.FindById(id);
 			fileRep.Delete(fileDo);
+			fileRep.Save();
 			return Request.CreateResponse(HttpStatusCode.NoContent);
         }
 
