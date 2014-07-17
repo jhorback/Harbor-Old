@@ -84,12 +84,22 @@ namespace Harbor.Domain.Pages
 		public T GetHeader<T>()
 		{
 			// jch! - need the ObjectFactory for injection here!?
+			if (HeaderData == null)
+			{
+				return default(T);
+			}
+
 			var header = new JavaScriptSerializer().Deserialize<T>(HeaderData);
 			return header;
 		}
 
 		public T GetAside<T>()
 		{
+			if (AsideData == null)
+			{
+				return default(T);
+			}
+
 			var aside = new JavaScriptSerializer().Deserialize<T>(AsideData);
 			return aside;
 		}
