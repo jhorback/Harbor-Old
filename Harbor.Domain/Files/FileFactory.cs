@@ -16,7 +16,7 @@ namespace Harbor.Domain.Files
 		public File CreateFile(string userName, HttpPostedFileBase uploadedFile)
 		{
 			var file = new File(userName, uploadedFile.FileName);
-			var originalFilePath = file.GetPhysicalPath();
+			var originalFilePath = file.GetPhysicalPath(FileResolution.Original);
 			var originalFileInfo = new System.IO.FileInfo(originalFilePath);
 			if (originalFileInfo.Directory != null && !originalFileInfo.Directory.Exists)
 			{
@@ -34,6 +34,7 @@ namespace Harbor.Domain.Files
 			createFileResolutions(ref file, originalFileInfo);
 			return file;
 		}
+
 
 		private void createFileResolutions(ref File file, System.IO.FileInfo originalFileInfo)
 		{
@@ -72,4 +73,52 @@ namespace Harbor.Domain.Files
 			file.TotalSize += new System.IO.FileInfo(path).Length;
 		}
 	}
+
+	public class FileResolutionCreator
+	{
+		public string GetFilePath(FileResolution fileResolution, File file)
+		{
+			
+		}
+	}
+	/*
+	 * FileResolutionCreator.CreateResolution(FileResolution fileResolution, File file)
+	 *  - get full path from File.GetPhysicalPath();
+	 * 
+	 * EnsurePhysicalPath???/
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+		FileResolutions:
+		Create
+		Delete
+		Key
+		Exists
+		-FileResolution should be set and File.Exists
+
+
+	 * UploadFile ->
+	 *		-> loop and create all applicable resolutions
+	 *		- FILERESOLUTIONREPOSITORY - for each FILERESOLUTION resolution.create(...)
+	 * DownloadFile ->
+	 *		-> FILERESOLUTIONREPOSITORY -> EnsureResolution(FileResolution, File)
+	 * 
+	 * 
+		FileResolutionCreator
+		-
+
+		FileDownloader
+		-check resolution on the File object
+		--ok then go
+		-not ok?
+		--then create the resolution and add it to the file
+
+		void EnsureFile
+	 * 
+	 * 
+	 * 
+	 * */
 }

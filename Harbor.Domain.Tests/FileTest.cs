@@ -163,44 +163,5 @@ namespace Harbor.Domain.Tests
 			Assert.AreEqual(expected, actual);
 		}
 		#endregion
-
-		#region ResolutionsCreated
-		[TestMethod]
-		public void ResolutionsCreated_SetOneResolution_ResolutionsIntIsCorrect()
-		{
-			File target = new File { UserName = "joe", Public = true };
-			target.ResolutionsCreated = FileResolution.Low;
-			int expected = 2;
-			int actual = target.Resolutions;
-			Assert.AreEqual(expected, actual);
-		}
-
-		[TestMethod]
-		public void ResolutionsCreated_SetTwoResolutions_ResolutionsIntIsCorrect()
-		{
-			File target = new File { UserName = "joe", Public = true };
-			target.ResolutionsCreated = target.ResolutionsCreated.AddRes(FileResolution.Low);
-			int expected = 3;
-			int actual = target.Resolutions;
-
-			Assert.IsTrue(target.ResolutionsCreated.HasFlag(FileResolution.Original));
-			Assert.IsTrue(target.ResolutionsCreated.HasFlag(FileResolution.Low));
-			Assert.AreEqual(expected, actual);
-		}
-
-
-		[TestMethod]
-		public void ResolutionsCreated_SetResolutionsInt_ResolutionsCreatedIsCorrect()
-		{
-			File target = new File { UserName = "joe", Public = true };
-
-			Assert.IsFalse(target.ResolutionsCreated.HasFlag(FileResolution.Low));
-
-			target.Resolutions = 3;
-
-			Assert.IsTrue(target.ResolutionsCreated.HasFlag(FileResolution.Original));
-			Assert.IsTrue(target.ResolutionsCreated.HasFlag(FileResolution.Low));
-		}
-		#endregion
 	}
 }

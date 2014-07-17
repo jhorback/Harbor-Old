@@ -109,7 +109,9 @@ namespace Harbor.Domain.Files
 
 		/// <summary>
 		/// For database persistance of ResolutionsCreated (until .NET 4.5 which can handle enums).
+		/// UPDATED to 4.5 and EF 6 so remove this property and update db when convenient.
 		/// </summary>
+		[Obsolete("Use ResolutionsCreated.")]
 		public int Resolutions
 		{
 			get { return (int)ResolutionsCreated; }
