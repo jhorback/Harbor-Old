@@ -67,6 +67,10 @@ pageEditor.templateEditorView = (function () {
 		},
 		
 		showUICMenu: function (component) {
+			if (!component || component.type !== "content") {
+				return;
+			}
+
 			this.pageUICMenuView = this.pageUICMenu.render({
 				component: component
 			});
@@ -76,6 +80,9 @@ pageEditor.templateEditorView = (function () {
 		},
 		
 		hideUICMenu: function (component) {
+			if (!component || component.type !== "content") {
+				return;
+			}
 			this.pageUICMenuView && this.pageUICMenuView.close();
 			component.$el.removeClass("selected");
 		},
