@@ -36,7 +36,7 @@
 		@if (Model.Layout.HeaderKey != null)
 		{
 			var header = Model.Layout.HeaderKey;
-			<div data-type="@header">
+			<div class="uic" data-type="@header" id="@Model.Layout.Header.uicid">
 				@Html.PageComponent(Model.PageID, header)
 			</div>
 		}
@@ -46,7 +46,7 @@
 			@if (Model.Layout.AsideKey != null)
 			{
 				var aside = Model.Layout.AsideKey;
-				<div data-type="@aside">
+				<div class="uic" data-type="@aside" id="@Model.Layout.Aside.uicid">
 					@Html.PageComponent(Model.PageID, aside)
 				</div>
 			}

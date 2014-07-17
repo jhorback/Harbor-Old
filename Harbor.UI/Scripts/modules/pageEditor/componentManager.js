@@ -27,6 +27,7 @@ pageEditor.componentManager = function ($, _, Backbone, context, console, curren
 			if (currentComponent) {
 				currentComponent.open();
 				componentManager.trigger("open", currentComponent);
+				console.log("componentManager:opened - uicid:", uicid);
 			}
 		},
 
@@ -52,6 +53,7 @@ pageEditor.componentManager = function ($, _, Backbone, context, console, curren
 				componentManager.trigger("delete", comp);
 				componentManager.trigger("remove", comp);
 				delete components[uicid];
+				console.log("componentManager.deleted - uicid:", uicid);
 			}
 		},
 		
@@ -76,6 +78,7 @@ pageEditor.componentManager = function ($, _, Backbone, context, console, curren
 		if (currentComponent) {
 			currentComponent.close();
 			componentManager.trigger("close", currentComponent);
+			console.log("componentManager.closed - uicid:", currentComponent.uicid);
 		}
 	}
 
