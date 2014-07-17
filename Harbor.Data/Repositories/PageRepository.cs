@@ -103,7 +103,6 @@ namespace Harbor.Data.Repositories
 			page.Enabled = true;
 			DomainObjectValidator.ThrowIfInvalid(page);
 			page = context.Pages.Add(page);
-			context.SaveChanges();
 			return page;
 		}
 
@@ -128,31 +127,9 @@ namespace Harbor.Data.Repositories
 
 			// update the modified date
 			entity.Modified = DateTime.Now;
-
-
-			try
-			{
-				var pageUpdatePipeline = new PageUpdatePipeline(_objectFactory);
-				pageUpdatePipeline.Execute(entity);
-				context.SaveChanges();
-			}
-			catch (DbEntityValidationException dbEx)
-			{
-				_logger.Error(dbEx);
-				foreach (var validationErrors in dbEx.EntityValidationErrors)
-				{
-					foreach (var validationError in validationErrors.ValidationErrors)
-					{
-						_logger.Error("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
-					}
-				}
-				throw new Exception("A data error occured when updating the page.", dbEx);
-			}
-			catch (Exception e)
-			{
-				_logger.Error("UpdatePage", e);
-				throw new Exception("An error occured when updating the page.", e);
-			}
+			
+			var pageUpdatePipeline = new PageUpdatePipeline(_objectFactory);
+			pageUpdatePipeline.Execute(entity);
 
 			clearCachedPageByID(entity.PageID);
 			return FindById(entity.PageID);
@@ -162,7 +139,6 @@ namespace Harbor.Data.Repositories
 		{
 			clearCachedPageByID(entity.PageID);
 			context.Pages.Remove(entity);
-			context.SaveChanges();
 		}
 
 		public void Save()

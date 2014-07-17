@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using AutoMapper;
 using Harbor.Domain;
-using Harbor.Domain.App;
 using Harbor.Domain.Security;
 using Harbor.UI.Extensions;
 using Harbor.UI.Models.User;
-using System.Linq;
 
 namespace Harbor.UI.Controllers.Api
 {
@@ -54,6 +51,7 @@ namespace Harbor.UI.Controllers.Api
 			try
 			{
 				userDo = userRep.Create(userDo);
+				userRep.Save();
 			}
 			catch (DomainValidationException exception)
 			{
@@ -76,6 +74,7 @@ namespace Harbor.UI.Controllers.Api
 			try
 			{
 				userDo = userRep.Update(userDo);
+				userRep.Save();
 			}
 			catch (DomainValidationException e)
 			{
@@ -92,6 +91,7 @@ namespace Harbor.UI.Controllers.Api
         {
 			var userDo = userRep.FindUserByName(userName);
 			userRep.Delete(userDo);
+			userRep.Save();
 			return Request.CreateResponse(HttpStatusCode.NoContent);
         }
     }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Web.Http;
 using Harbor.Domain.App;
 using Harbor.Domain.Security;
@@ -31,6 +27,7 @@ namespace Harbor.UI.Controllers.Api
 		public HttpResponseMessage Put(HarborAppDto app)
         {
 			harborApp.SetApp(app, _userRepository.FindUserByName(User.Identity.Name));
+			harborApp.Save();
 			return Request.CreateOKResponse(app);
         }
     }

@@ -68,7 +68,6 @@ namespace Harbor.Data.Repositories
 				throw new DomainValidationException("The user already exists.");
 
 			var user = context.Users.Add(entity);
-			context.SaveChanges();
 			return user;
 		}
 
@@ -91,7 +90,6 @@ namespace Harbor.Data.Repositories
 			}
 			entity.DeletedUserSettings = new List<UserSetting>();
 
-			context.SaveChanges();
 			clearCachedUser(entity.UserName);
 			return entity;
 		}
@@ -121,7 +119,6 @@ namespace Harbor.Data.Repositories
 			// jch* - without deleting files, should have an error if one has been added.
 
 			context.Users.Remove(entity);
-			context.SaveChanges();
 			clearCachedUser(entity.UserName);
 		}
 

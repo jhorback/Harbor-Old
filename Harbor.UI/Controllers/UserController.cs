@@ -132,6 +132,8 @@ namespace Harbor.UI.Controllers
 				returnFile = fileRep.Create(User.Identity.Name, Request.Files[file]);
 			}
 
+			fileRep.Save();
+
 			var fileDto = (FileDto)returnFile;
 			return new JsonResult { Data = fileDto };
 			//return Request.CreateOKResponse(fileDto);

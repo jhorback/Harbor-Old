@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Web.Configuration;
 using Harbor.Domain.Extensions;
 using Harbor.Domain.Pages;
@@ -61,6 +60,11 @@ namespace Harbor.Domain.App
 			}
 		}
 
+		public void Save()
+		{
+			appSettings.Save();
+		}
+
 		private AppSetting setSetting(string name, object value)
 		{
 			var settingDO = appSettings.FindByName(name, readOnly: false);
@@ -68,6 +72,7 @@ namespace Harbor.Domain.App
 			if (settingDO == null)
 			{
 			    settingDO = appSettings.Create(new AppSetting { Name = name, Value = strvalue });
+				appSettings.Save();
 			}
 			else
 			{
