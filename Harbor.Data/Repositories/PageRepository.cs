@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Runtime.Caching;
+using System.Web.Caching;
 using Harbor.Domain;
 using Harbor.Domain.Pages;
 
@@ -171,16 +172,14 @@ namespace Harbor.Data.Repositories
 
 		Page findCachedPageByID(int? pageID = 0)
 		{
-			var cacheKey = pageCacheKey + pageID;
+			var cacheKey = getCacheKey(pageID);
 			var page = MemoryCache.Default.Get(cacheKey) as Page;
 			if (page == null)
 			{
 				page = findPageByID(pageID);
 				if (page != null)
 				{
-					MemoryCache.Default.Set(cacheKey, page, DateTime.Now.AddSeconds(10));
-					// var cacheKey2 = (pageCacheKey + page.AuthorsUserName + page.Name).ToLower();
-					// MemoryCache.Default.Set(cacheKey2, page, DateTime.Now.AddSeconds(10));
+					cachePage(page);
 				}
 			}
 			return page;
@@ -193,8 +192,19 @@ namespace Harbor.Data.Repositories
 			{
 				var loadPipeline = new PageLoadPipeline(_objectFactory);
 				loadPipeline.Execute(page);
+				cachePage(page);
 			}
 			return page;
+		}
+
+		string getCacheKey(int? pageId = 0)
+		{
+			return pageCacheKey + pageId;
+		}
+
+		void cachePage(Page page)
+		{
+			MemoryCache.Default.Set(getCacheKey(page.PageID), page, DateTime.Now.AddSeconds(10));			
 		}
 		#endregion
 	}
