@@ -13,7 +13,11 @@ namespace Harbor.Domain.Pages
 
 		public void Execute(Page page)
 		{
-			page.PageType = _pageTypeRepository.GetPageType((page.PageTypeKey));
+			page.PageType = _pageTypeRepository.GetPageType(page.PageTypeKey, useDefault: true);
+			if (page.PageType != null)
+			{
+				page.PageType.SetLayout(new PageTypeLayoutContext(page));				
+			}
 		}
 	}
 }

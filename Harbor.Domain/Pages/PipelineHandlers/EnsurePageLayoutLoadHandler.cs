@@ -10,7 +10,6 @@ namespace Harbor.Domain.Pages
 	public class EnsurePageLayoutLoadHandler : IPipelineHanlder<Page>
 	{
 		private readonly IPageTypeRepository _pageTypeRepository;
-		private const string DefaultPageTypeKey = "page";
 
 		public EnsurePageLayoutLoadHandler(IPageTypeRepository pageTypeRepository)
 		{
@@ -24,10 +23,7 @@ namespace Harbor.Domain.Pages
 				return;
 			}
 
-			var pageTypeKey = page.PageTypeKey ?? DefaultPageTypeKey;
-			var pageType = _pageTypeRepository.GetPageType(pageTypeKey)
-				?? _pageTypeRepository.GetPageType(DefaultPageTypeKey);
-
+			var pageType = _pageTypeRepository.GetPageType(page.PageTypeKey, useDefault: true);
 			if (pageType == null)
 			{
 				throw new Exception("A page type could not be determined for the page. PageID: " + page.PageID);
