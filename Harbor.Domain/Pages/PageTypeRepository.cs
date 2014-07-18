@@ -7,6 +7,8 @@ namespace Harbor.Domain.Pages
 	{
 		List<PageType> pageTypes;
 
+		private const string DefaultPageTypeKey = "page";
+
 		public PageTypeRepository()
 		{
 			pageTypes = new List<PageType>
@@ -23,9 +25,14 @@ namespace Harbor.Domain.Pages
 			return pageTypes;
 		}
 
-		public PageType GetPageType(string key)
+		public PageType GetPageType(string key, bool useDefault = false)
 		{
-			return pageTypes.FirstOrDefault(pt => pt.Key == key);
+			var pageType = pageTypes.FirstOrDefault(pt => pt.Key == key);
+			if (pageType == null && useDefault == true)
+			{
+				pageType = pageTypes.FirstOrDefault(pt => pt.Key == DefaultPageTypeKey);
+			}
+			return pageType;
 		}
 	}
 }
