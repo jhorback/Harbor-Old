@@ -84,6 +84,7 @@
     <Compile Include="ILogger.cs" />
     <Compile Include="IObjectFactory.cs" />
     <Compile Include="JSON.cs" />
+    <Compile Include="Pages\ContentType.cs" />
     <Compile Include="Pages\ContentTypes\Links.cs" />
     <Compile Include="Pages\IPageLayoutRepository.cs" />
     <Compile Include="Pages\ContentTypes\ProductLink.cs" />
@@ -93,7 +94,9 @@
     <Compile Include="Pages\ContentTypes\Title.cs" />
     <Compile Include="Pages\ContentTypes\Text.cs" />
     <Compile Include="Pages\PageAsideType.cs" />
-    <Compile Include="Pages\PageContentType.cs" />
+    <Compile Include="Pages\PageLayoutContentHandler.cs" />
+    <Compile Include="Pages\TemplateContentHandler.cs" />
+    <Compile Include="Pages\TemplateContentType.cs" />
     <Compile Include="Pages\IPageContentRepository.cs" />
     <Compile Include="Pages\IPageFactory.cs" />
     <Compile Include="Pages\IPageRepositoryResourceManager.cs" />
@@ -107,7 +110,7 @@
     <Compile Include="Pages\Content\PageLink.cs" />
     <Compile Include="Pages\Content\Text.cs" />
     <Compile Include="Pages\Content\Image.cs" />
-    <Compile Include="Pages\PageContentTypeRepository.cs" />
+    <Compile Include="Pages\ContentTypeRepository.cs" />
     <Compile Include="Pages\PageTypeLayoutContext.cs" />
     <Compile Include="Pages\PageTypeTemplateContext.cs" />
     <Compile Include="Pages\Pipelines\PipelineHandlers\EnsurePageLayoutLoadHandler.cs" />
@@ -142,7 +145,7 @@
     <Compile Include="Pages\Pipelines\PipelineHandlers\PageTypeUpdateHandler.cs" />
     <Compile Include="Pages\Template.cs" />
     <Compile Include="Pages\PageTypes\PageListing.cs" />
-    <Compile Include="Pages\IPageContentTypeRepository.cs" />
+    <Compile Include="Pages\IContentTypeRespository.cs" />
     <Compile Include="Pages\IPageRepository.cs" />
     <Compile Include="Pages\Roles\Author.cs" />
     <Compile Include="Extensions\AppSetting\AsBool.cs" />
@@ -154,6 +157,7 @@
     <Compile Include="IValueObject.cs" />
     <Compile Include="Pages\Pipelines\PipelineHandlers\ContentResourceUpdateHandler.cs" />
     <Compile Include="Pages\Pipelines\PageUpdatePipeline.cs" />
+    <Compile Include="Pages\Uic.cs" />
     <Compile Include="Pipeline\BasePipeline.cs" />
     <Compile Include="Pipeline\IPipelineHandler.cs" />
     <Compile Include="Pipeline\IPipeline.cs" />
