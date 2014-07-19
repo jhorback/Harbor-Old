@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Web.Handlers;
 
 namespace Harbor.Domain.Pages
 {
@@ -28,7 +26,7 @@ namespace Harbor.Domain.Pages
 		{
 			get
 			{
-				return this.GetType().Name.ToLower();
+				return GetType().Name.ToLower();
 			}
 		}
 		public abstract Type HandlerType { get; }
@@ -37,8 +35,8 @@ namespace Harbor.Domain.Pages
 
 	public abstract class LayoutContentHandler
 	{
-		public abstract object GetLayoutContent(Page page, Uic uic);
-		public abstract void SetLayoutContent(Page page, Uic uic);
+		public abstract object GetLayoutContent(Page page, Uic uic, string data); // jch! should be a better way/signature
+		public abstract void SetLayoutContent(Page page, Uic uic, string data);
 	}
 
 	public abstract class TemplateContentHandler

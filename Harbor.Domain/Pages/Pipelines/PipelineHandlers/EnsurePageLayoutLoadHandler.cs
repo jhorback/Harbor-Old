@@ -1,7 +1,7 @@
 ﻿using System;
 using Harbor.Domain.Pipeline;
 
-namespace Harbor.Domain.Pages
+namespace Harbor.Domain.Pages.PipelineHandlers
 {
 	/// <summary>
 	/// If there is not a page layout entity, tries to load it using the PageTypeKey 
