@@ -40,13 +40,13 @@ namespace Harbor.Domain.Pages
 
 		public string HeaderKey { get; set; }
 
-		public string HeaderData { get; set; }
+		public string HeaderDataStr { get; set; }
 
 		public string AsideKey { get; set; }
 
-		public string AsideData { get; set; }
+		public string AsideDataStr { get; set; }
 
-		public Template.Uic Header
+		public Uic Header
 		{
 			get
 			{
@@ -55,15 +55,15 @@ namespace Harbor.Domain.Pages
 					return null;
 				}
 
-				return new Template.Uic
+				return new Uic
 				{
-					key = HeaderKey,
-					uicid = string.Format("pl-{0}-{1}", PageLayoutID, HeaderKey)
+					Key = HeaderKey,
+					Id = string.Format("pl-{0}-{1}", PageLayoutID, HeaderKey)
 				};
 			}
 		}
 
-		public Template.Uic Aside
+		public Uic Aside
 		{
 			get
 			{
@@ -72,36 +72,42 @@ namespace Harbor.Domain.Pages
 					return null;
 				}
 
-				return new Template.Uic
+				return new Uic
 				{
-					key = AsideKey,
-					uicid = string.Format("pl-{0}-{1}", PageLayoutID, AsideKey)
+					Key = AsideKey,
+					Id = string.Format("pl-{0}-{1}", PageLayoutID, AsideKey)
 				};
 			}
 		}
 
 
-		public T GetHeader<T>()
-		{
-			// jch! - need the ObjectFactory for injection here!?
-			if (HeaderData == null)
-			{
-				return default(T);
-			}
 
-			var header = new JavaScriptSerializer().Deserialize<T>(HeaderData);
-			return header;
+		private object _header;
+		private object _aside;
+		// needs to be an object Header property?!
+
+		/*Page.Layout.Header<T>
+		 * */
+		//var header = new JavaScriptSerializer().Deserialize<T>(HeaderData);
+
+		public T GetHeaderData<T>()
+		{
+			return (T) _header;
 		}
 
-		public T GetAside<T>()
+		public void SetHeaderData<T>(T header)
 		{
-			if (AsideData == null)
-			{
-				return default(T);
-			}
+			_header = header;
+		}
 
-			var aside = new JavaScriptSerializer().Deserialize<T>(AsideData);
-			return aside;
+		public T GetAsideAdata<T>()
+		{
+			return (T)_aside;
+		}
+
+		public void SetAsideData<T>(T aside)
+		{
+			_aside = aside;
 		}
 
 		#region associations

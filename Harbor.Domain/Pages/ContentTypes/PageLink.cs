@@ -2,7 +2,7 @@
 
 namespace Harbor.Domain.Pages.ContentTypes
 {
-	public class PageLink : PageContentType
+	public class PageLink : TemplateContentType
 	{
 		public const string KEY = "pageLink";
 

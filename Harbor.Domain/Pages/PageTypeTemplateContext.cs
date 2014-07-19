@@ -18,10 +18,10 @@ namespace Harbor.Domain.Pages
 
 		public virtual PageTypeTemplateContext AddContent(string type, string[] classNames)
 		{
-			var item = new Template.Uic
+			var item = new TemplateUic
 			{
-				key = type,
-				classNames = classNames
+				Key = type,
+				ClassNames = classNames
 			};
 
 			Page.Template.Content.Add(item);

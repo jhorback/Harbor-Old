@@ -43,7 +43,7 @@ namespace Harbor.UI.Controllers
 
 		public PartialViewResult Links(Page page)
 		{
-			var links = page.Layout.GetAside<Links>();
+			var links = page.Layout.GetAsideAdata<Links>();
 			if (links == null)
 			{
 				links = new Links();

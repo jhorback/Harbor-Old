@@ -2,7 +2,21 @@
 
 namespace Harbor.Domain.Pages.ContentTypes
 {
-	public class Image : PageContentType
+	public class ImageContentHandler : ContentHandler<Content.Image>
+	{
+
+		public override Content.Image GetContent(Page page, Content.Image uic)
+		{
+			throw new NotImplementedException();
+		}
+	}
+
+	public abstract class ImageContentType : ContentType<ImageContentHandler, Content.Image>
+	{
+		
+	}
+
+	public class Image : ImageContentType
 	{
 		public const string KEY = "image";
 
@@ -30,6 +44,11 @@ namespace Harbor.Domain.Pages.ContentTypes
 		public override Type PageComponent
 		{
 			get { return typeof(Content.Image); }
+		}
+
+		public override ImageContentHandler ContentHandler
+		{
+			get { throw new NotImplementedException(); }
 		}
 	}
 }

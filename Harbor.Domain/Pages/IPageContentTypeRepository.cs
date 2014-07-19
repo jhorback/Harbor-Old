@@ -11,7 +11,7 @@ namespace Harbor.Domain.Pages
 		/// Returns all content types available in the system.
 		/// </summary>
 		/// <returns></returns>
-		List<PageContentType> GetPageContentTypes();
+		List<TemplateContentType> GetPageContentTypes();
 
 		/// <summary>
 		/// The the type of the page content type instance.
@@ -25,6 +25,6 @@ namespace Harbor.Domain.Pages
 		/// </summary>
 		/// <param name="key"></param>
 		/// <returns></returns>
-		PageContentType GetPageContentType(string key);
+		TemplateContentType GetPageContentType(string key);
 	}
 }

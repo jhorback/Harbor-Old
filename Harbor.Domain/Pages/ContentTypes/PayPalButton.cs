@@ -2,7 +2,7 @@
 
 namespace Harbor.Domain.Pages.ContentTypes
 {
-	public class PayPalButton : PageContentType
+	public class PayPalButton : TemplateContentType
 	{
 		public const string KEY = "paypalbutton";
 
