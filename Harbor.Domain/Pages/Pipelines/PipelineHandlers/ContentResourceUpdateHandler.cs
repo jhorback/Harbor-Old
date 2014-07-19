@@ -1,6 +1,6 @@
 ﻿using Harbor.Domain.Pipeline;
 
-namespace Harbor.Domain.Pages
+namespace Harbor.Domain.Pages.PipelineHandlers
 {
 	/// <summary>
 	/// Calls on the page resource udpater

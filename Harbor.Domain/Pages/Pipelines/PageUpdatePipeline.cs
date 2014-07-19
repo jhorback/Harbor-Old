@@ -1,4 +1,5 @@
-﻿using Harbor.Domain.Pipeline;
+﻿using Harbor.Domain.Pages.PipelineHandlers;
+using Harbor.Domain.Pipeline;
 
 namespace Harbor.Domain.Pages
 {
