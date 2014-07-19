@@ -64,9 +64,9 @@ namespace Harbor.Domain.Pages
 			}
 		}
 
-		private IEnumerable<PageResource> getUICDeclarations(Page page, Template.Uic uic)
+		private IEnumerable<PageResource> getUICDeclarations(Page page, TemplateUic uic)
 		{
-			var comp = _pageContentRepository.GetContent(uic.key, page, uic.uicid);
+			var comp = _pageContentRepository.GetContent(uic.Key, page, uic.Id);
 			if (comp != null)
 			{
 				foreach (var res in comp.DeclareResources())

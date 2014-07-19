@@ -12,14 +12,14 @@ namespace Harbor.UI.Models
 		{
 		}
 
-		public PageComponentDto(PageContentType pageContentType)
+		public PageComponentDto(TemplateContentType pageContentType)
 		{
 			key = pageContentType.Key;
 			name = pageContentType.Name;
 			description = pageContentType.Description;
 		}
 
-		public static PageComponentDto FromPageContentType(PageContentType pageContentType)
+		public static PageComponentDto FromPageContentType(TemplateContentType pageContentType)
 		{
 			return new PageComponentDto(pageContentType);
 		}

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Harbor.Domain.Pages;
 
 namespace Harbor.UI.Models
@@ -6,7 +7,7 @@ namespace Harbor.UI.Models
 	public class TemplateDto
 	{
 		public int pageID { get; set; }
-		public List<Template.Uic> content { get; set; }
+		public List<TemplateUicDto> content { get; set; }
 		public string defaultContentClassName { get; set; }
 		public int componentCounter { get; set; }
 
@@ -25,7 +26,7 @@ namespace Harbor.UI.Models
 			return new TemplateDto
 			{
 				pageID = template.PageID,
-				content = template.Content,
+				content = template.Content.Select(TemplateUicDto.FromTemplateUic).ToList(),
 				defaultContentClassName = template.DefaultContentClassName,
 				componentCounter = template.ComponentCounter
 			};
@@ -36,9 +37,70 @@ namespace Harbor.UI.Models
 			return new Template
 			{
 				PageID = template.pageID,
-				Content = template.content,
+				Content = template.content.Select(TemplateUicDto.ToTemplateUic).ToList(),
 				DefaultContentClassName = template.defaultContentClassName,
 				ComponentCounter = template.componentCounter
+			};
+		}
+	}
+
+
+
+	public class UicDto
+	{
+		public string key { get; set; }
+		public string id { get; set; }
+
+		public UicDto() { }
+
+		public UicDto(Uic uic)
+		{
+			key = uic.Key;
+			id = uic.Id;
+		}
+
+		public static UicDto FromUic(Uic uic)
+		{
+			return new UicDto(uic);
+		}
+
+		public static Uic ToUic(UicDto uic)
+		{
+			return new Uic
+			{
+				Key = uic.key,
+				Id = uic.id
+			};
+		}
+	}
+
+	public class TemplateUicDto
+	{
+		public string key { get; set; }
+		public string id { get; set; }
+		public string[] classNames { get; set; }
+
+		public TemplateUicDto() { }
+
+		public TemplateUicDto(TemplateUic uic)
+		{
+			key = uic.Key;
+			id = uic.Id;
+			classNames = uic.ClassNames;
+		}
+
+		public static TemplateUicDto FromTemplateUic(TemplateUic uic)
+		{
+			return new TemplateUicDto(uic);
+		}
+
+		public static TemplateUic ToTemplateUic(TemplateUicDto uic)
+		{
+			return new TemplateUic
+			{
+				Key = uic.key,
+				Id = uic.id,
+				ClassNames = uic.classNames
 			};
 		}
 	}

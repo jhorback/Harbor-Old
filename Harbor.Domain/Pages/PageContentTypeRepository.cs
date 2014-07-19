@@ -6,11 +6,11 @@ namespace Harbor.Domain.Pages
 {
 	public class PageContentTypeRepository : IPageContentTypeRepository
 	{
-		List<PageContentType> contentTypes;
+		List<TemplateContentType> contentTypes;
 
 		public PageContentTypeRepository()
 		{
-			contentTypes = new List<PageContentType>
+			contentTypes = new List<TemplateContentType>
 				{
 					new ContentTypes.Image(),
 					new ContentTypes.PageLink(),
@@ -20,7 +20,7 @@ namespace Harbor.Domain.Pages
 				};
 		}
 
-		public List<PageContentType> GetPageContentTypes()
+		public List<TemplateContentType> GetPageContentTypes()
 		{
 			return contentTypes;
 		}
@@ -37,7 +37,7 @@ namespace Harbor.Domain.Pages
 			return type;
 		}
 
-		public PageContentType GetPageContentType(string key)
+		public TemplateContentType GetPageContentType(string key)
 		{
 			throw new NotImplementedException();
 		}

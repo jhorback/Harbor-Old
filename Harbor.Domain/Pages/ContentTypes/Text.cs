@@ -2,7 +2,7 @@
 
 namespace Harbor.Domain.Pages.ContentTypes
 {
-	public class Text : PageContentType
+	public class Text : TemplateContentType
 	{
 		public const string KEY = "text";
 

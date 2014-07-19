@@ -8,7 +8,7 @@ namespace Harbor.Domain.Pages
 	{
 		public Template(int pageID)
 		{
-			Content = new List<Uic>();
+			Content = new List<TemplateUic>();
 			PageID = pageID;
 			DefaultContentClassName = ContentClassNames.Col1;
 		}
@@ -26,7 +26,7 @@ namespace Harbor.Domain.Pages
 		/// <summary>
 		/// The list of components to display as the document content.
 		/// </summary>
-		public List<Uic> Content { get; set; }
+		public List<TemplateUic> Content { get; set; }
 
 		/// <summary>
 		/// The class name to be used for new content.
@@ -45,41 +45,6 @@ namespace Harbor.Domain.Pages
 		}
 		#endregion
 
-		#region Uic
-		public class Uic
-		{
-			private string[] _classNames;
-
-			public string[] classNames
-			{
-				get
-				{
-					if (_classNames == null || _classNames.Length == 0)
-						return new[] { ContentClassNames.Col1 };
-					return _classNames;
-				}
-				set { _classNames = value; }
-			}
-
-			public string id
-			{
-				get
-				{
-					return uicid;
-				}
-			}
-
-			/// <summary>
-			/// The key/type of the Document Component.
-			/// </summary>
-			public string key { get; set; }
-
-			/// <summary>
-			/// The ID of the component in the template.
-			/// </summary>
-			public string uicid { get; set; }
-		}
-		#endregion
 
 		#region base implementation
 		/// <summary>
@@ -131,10 +96,23 @@ namespace Harbor.Domain.Pages
 			ComponentCounter++; // start with 1
 
 			foreach (var item in Content)
-				item.uicid = string.Format(idFormat, PageID, ComponentCounter++);
+				item.Id = string.Format(idFormat, PageID, ComponentCounter++);
 		}
 
 		#endregion
+
+
+		private IDictionary<string, object> contentData;
+
+		public void SetContentData<T>(string uicid, T data)
+		{
+			contentData.Add(uicid, data);
+		}
+
+		public T GetContentData<T>(string uicid)
+		{
+			return (T) contentData[uicid];
+		}
 	}
 }
 

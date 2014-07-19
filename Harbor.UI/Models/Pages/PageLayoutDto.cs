@@ -1,6 +1,6 @@
 ﻿using Harbor.Domain.Pages;
 
-namespace Harbor.UI.Models.Pages
+namespace Harbor.UI.Models
 {
 	public class PageLayoutDto
 	{
@@ -10,11 +10,11 @@ namespace Harbor.UI.Models.Pages
 		public bool layoutHasNoSidebar { get; set; }
 		
 		public string headerKey { get; set; }
-		public Template.Uic header { get; set; }
+		public UicDto header { get; set; }
 		public string headerData { get; set; }
 
 		public string asideKey { get; set; }
-		public Template.Uic aside { get; set; }
+		public UicDto aside { get; set; }
 		public string asideData { get; set; }
 
 		public static PageLayoutDto FromPageLayout(PageLayout layout)
@@ -31,11 +31,11 @@ namespace Harbor.UI.Models.Pages
 				layoutIsReadable = layout.DisplayProperties.HasFlag(PageLayout.LayoutDisplayProperties.ContentReadable),
 				layoutHasNoSidebar = layout.DisplayProperties.HasFlag(PageLayout.LayoutDisplayProperties.NoAside),
 				headerKey = layout.HeaderKey,
-				header = layout.Header,
-				headerData = layout.HeaderData,
+				header = UicDto.FromUic(layout.Header),
+				headerData = layout.HeaderDataStr,
 				asideKey = layout.AsideKey,
-				aside = layout.Aside,
-				asideData = layout.AsideData
+				aside = UicDto.FromUic(layout.Aside),
+				asideData = layout.AsideDataStr
 			};
 		}
 
@@ -43,8 +43,8 @@ namespace Harbor.UI.Models.Pages
 		{
 			if (layoutDto != null && pageLayout != null)
 			{
-				pageLayout.HeaderData = layoutDto.headerData;
-				pageLayout.AsideData = layoutDto.asideData;
+				pageLayout.HeaderDataStr = layoutDto.headerData;
+				pageLayout.AsideDataStr = layoutDto.asideData;
 			}
 			
 			return pageLayout;
