@@ -4,11 +4,11 @@ using System.Linq;
 
 namespace Harbor.Domain.Pages
 {
-	public class PageContentTypeRepository : IPageContentTypeRepository
+	public class ContentTypeRepository : IContentTypeRepository
 	{
 		List<TemplateContentType> contentTypes;
 
-		public PageContentTypeRepository()
+		public ContentTypeRepository()
 		{
 			contentTypes = new List<TemplateContentType>
 				{
