@@ -16,26 +16,28 @@ namespace Harbor.UI.Models.Content
 		public string link { get; set; }
 		public bool hasPreviewImage { get; set; }
 		public bool exists { get; set; }
-			
-		public static implicit operator PageLinkDto(PageLink link)
-		{
-			var previewImageID = link.PreviewImageID == null ? null : link.PreviewImageID.ToString();
-			var previewImageSrc = previewImageID == null ? null : FileUrls.GetUrl(previewImageID, null, null, FileResolution.Low);
-			var href = link.Exists ? VirtualPathUtility.ToAbsolute(link.VirtualPath) : null;
+		
+		public PageLinkDto() { }
 
-			return new PageLinkDto
-			{
-				pageID = link.PageID,
-				title = link.Title,
-				previewText = link.PreviewText,
-				previewImageID = previewImageID,
-				previewImageSrc = previewImageSrc,
-				tileDisplay = link.TileDisplay,
-				tileClassName = link.TileDisplay == "wide" ? "tile tile-wide" : "tile",
-				link = href,
-				exists = link.Exists,
-				hasPreviewImage = link.HasPreviewImage
-			};
+		public PageLinkDto(PageLink pageLink)
+		{
+			var href = pageLink.Exists ? VirtualPathUtility.ToAbsolute(pageLink.VirtualPath) : null;
+
+			pageID = pageLink.PageID;
+			title = pageLink.Title;
+			previewText = pageLink.PreviewText;
+			previewImageID = pageLink.PreviewImageID == null ? null : pageLink.PreviewImageID.ToString();
+			previewImageSrc = previewImageID == null ? null : FileUrls.GetUrl(previewImageID, null, null, FileResolution.Low);
+			tileDisplay = pageLink.TileDisplay;
+			tileClassName = pageLink.TileDisplay == "wide" ? "tile tile-wide" : "tile";
+			link = href;
+			exists = pageLink.Exists;
+			hasPreviewImage = pageLink.HasPreviewImage;	
+		}
+
+		public static PageLinkDto FromPageLink(PageLink link)
+		{
+			return new PageLinkDto(link);
 		}
 	}
 }
