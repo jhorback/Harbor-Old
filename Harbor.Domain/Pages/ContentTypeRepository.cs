@@ -7,12 +7,15 @@ namespace Harbor.Domain.Pages
 	public class ContentTypeRepository : IContentTypeRepository
 	{
 		private readonly IObjectFactory _objectFactory;
+		private readonly ILogger _logger;
 		readonly Dictionary<string, TemplateContentType> templateContentTypes = new Dictionary<string, TemplateContentType>();
 		readonly Dictionary<string, ContentType> layoutContentTypes = new Dictionary<string, ContentType>(); 
 
-		public ContentTypeRepository(IObjectFactory objectFactory)
+
+		public ContentTypeRepository(IObjectFactory objectFactory, ILogger logger)
 		{
 			_objectFactory = objectFactory;
+			_logger = logger;
 			foreach (var type in getStaticFields<TemplateContentType>(typeof(TemplateContentTypes)))
 			{
 				templateContentTypes.Add(type.Key, type);
@@ -42,34 +45,55 @@ namespace Harbor.Domain.Pages
 			return templateContentTypes.Values;
 		}
 
-		public TemplateContentHandler GetTemplateContentHandler(string key, Page page)
+		public TemplateContentHandler GetTemplateContentHandler(TemplateUic uic, Page page)
 		{
-			var contentType = templateContentTypes[key];
+			var contentType = templateContentTypes[uic.Key];
 			if (contentType == null)
 			{
 				return null;
 			}
 
+			TemplateContentHandler handler = null;
 			try
 			{
-				var handler = _objectFactory.GetInstance(contentType.HandlerType, new
+				handler = _objectFactory.GetInstance(contentType.HandlerType, new
 				{
-
-				});
+					page = page,
+					uic = uic
+				}) as TemplateContentHandler;
 			}
 			catch (Exception e)
 			{
-				
+				var error = string.Format("Could not create content handler. Key: {0}, id: {1}", uic.Key, uic.Id);
+				_logger.Error(error, e);
 			}
 
-			// TemplateContentHandler
-			// contentType.HandlerType
-			
+			return handler;
 		}
 
 		public PageLayoutContentHandler GetLayoutContentHandler(string key, Page page)
 		{
-			throw new NotImplementedException();
+			var contentType = layoutContentTypes[key];
+			if (contentType == null)
+			{
+				return null;
+			}
+
+			PageLayoutContentHandler handler = null;
+			try
+			{
+				handler = _objectFactory.GetInstance(contentType.HandlerType, new
+				{
+					page = page
+				}) as PageLayoutContentHandler;
+			}
+			catch (Exception e)
+			{
+				var error = string.Format("Could not create layout content handler. Key: {0}.", key);
+				_logger.Error(error, e);
+			}
+
+			return handler;
 		}
 	}
 }
