@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Security.Principal;
 using Harbor.Domain.Pages.PageResources;
 
@@ -46,7 +47,7 @@ namespace Harbor.Domain.Pages.ContentTypes
 			return new Content.PageLink(pageId, GetProperty("tileDisplay") ?? "normal", linkedPage, _user.Identity.Name);
 		}
 
-		public override System.Collections.Generic.IEnumerable<PageResource> DeclareResources()
+		public override IEnumerable<PageResource> DeclareResources()
 		{
 			var link = GetContent<Content.PageLink>();
 			if (link.PageID == 0)
