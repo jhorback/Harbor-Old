@@ -22,6 +22,7 @@ namespace Harbor.Domain.Pages.ContentTypes
 		}
 	}
 
+
 	public class PayPalButtonHandler : TemplateContentHandler
 	{
 		public PayPalButtonHandler(Page page, TemplateUic uic) : base(page, uic)
@@ -31,26 +32,26 @@ namespace Harbor.Domain.Pages.ContentTypes
 
 		public override object GetTemplateContent()
 		{
-			//var id = GetProperty("PayPalButtonID");
-			//if (string.IsNullOrEmpty(id))
-			//	return null;
-			//return Convert.ToInt32(id);
-			//if (IsNew == false)
-			//{
-			//	button = page.GetPayPalButton(PayPalButtonID ?? 0);
-			//}
-			return new Content.PayPalButton();
+			Products.PayPalButton button = null;
+			int buttonId;
+			var isValidButtonId = int.TryParse(GetProperty("PayPalButtonID"), out buttonId);
+			if (isValidButtonId)
+			{
+				button = Page.GetPayPalButton(buttonId);
+			}
+			
+			return new Content.PayPalButton(buttonId, button);
 		}
 
 		public override IEnumerable<PageResource> DeclareResources()
 		{
-			var button = Page.Template.GetContent<>()
-			if (PayPalButtonID == null)
+			var button = Page.Template.GetContent<Content.PayPalButton>();
+			if (button.PayPalButtonID == null)
 			{
 				yield break;
 			}
 
-			yield return new PayPalButtonResource(Page, PayPalButtonID ?? 0);
+			yield return new PayPalButtonResource(Page, button.PayPalButtonID ?? 0);
 		}
 	}
 }
