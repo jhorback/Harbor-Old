@@ -19,23 +19,21 @@ namespace Harbor.Domain.Pages
 			if (componentType == null)
 				return null;
 
-			return _objectFactory.GetInstanceWithArgs(componentType, getFactoryArgs(page, uicid)) as PageContent;
+			return _objectFactory.GetInstance(componentType, new
+			{
+				"page" = page,
+				"uicid" = uicid
+			}) as PageContent;
 		}
 
 		public T GetContent<T>(Page page, string uicid) where T : PageContent
 		{
-			var content = _objectFactory.GetInstanceWithArgs<T>(getFactoryArgs(page, uicid));
-			return content;
-		}
-
-		private Dictionary<string, object> getFactoryArgs(Page page, string uicid)
-		{
-			var args = new Dictionary<string, object>
+			var content = _objectFactory.GetInstance<T>(new
 			{
-				{ "page", page },
-				{ "uicid", uicid }
-			};
-			return args;
+				"page" = page,
+				"uicid" = uicid
+			});
+			return content;
 		}
 	}
 }

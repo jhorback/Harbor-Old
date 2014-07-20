@@ -5,10 +5,12 @@ namespace Harbor.Domain.Pages.PipelineHandlers
 	public class ContentLoadHandler : IPipelineHanlder<Page>
 	{
 		private readonly IContentTypeRepository _contentTypeRepository;
+		private readonly ILogger _logger;
 
-		public ContentLoadHandler(IContentTypeRepository contentTypeRepository)
+		public ContentLoadHandler(IContentTypeRepository contentTypeRepository, ILogger logger)
 		{
 			_contentTypeRepository = contentTypeRepository;
+			_logger = logger;
 		}
 
 		public void Execute(Page page)
