@@ -5,18 +5,15 @@ namespace Harbor.Domain.Pages
 {
 	public class PageResourceUpdater : IPageResourceUpdater
 	{
-		readonly IPageContentTypeRepository componentRepository;
-		private readonly IPageRepositoryResourceManager resourceManager;
-		private readonly IPageContentRepository _pageContentRepository;
+		private readonly IPageRepositoryResourceManager _resourceManager;
+		private readonly IContentTypeRepository _contentTypeRepository;
 
 		public PageResourceUpdater(
-			IPageContentTypeRepository componentRepository,
 			IPageRepositoryResourceManager resourceManager,
-			IPageContentRepository pageContentRepository)
+			IContentTypeRepository contentTypeRepository)
 		{
-			this.componentRepository = componentRepository;
-			this.resourceManager = resourceManager;
-			_pageContentRepository = pageContentRepository;
+			_resourceManager = resourceManager;
+			_contentTypeRepository = contentTypeRepository;
 		}
 
 		/// <summary>
@@ -26,7 +23,7 @@ namespace Harbor.Domain.Pages
 		public bool UpdateResources(Page page)
 		{
 			var resourcesUpdated = false;
-			var pageRes = resourceManager.GetResourcesFromPage(page);
+			var pageRes = _resourceManager.GetResourcesFromPage(page);
 			var compRes = getComponentResources(page);
 			
 			// remove non required resources
@@ -34,7 +31,7 @@ namespace Harbor.Domain.Pages
 			{
 				if (!compRes.Any(r => res.Equals(r)))
 				{
-					resourceManager.RemoveResource(page, res);
+					_resourceManager.RemoveResource(page, res);
 					resourcesUpdated = true;
 				}
 			}
@@ -44,7 +41,7 @@ namespace Harbor.Domain.Pages
 			{
 				if (!pageRes.Any(r => res.Equals(r)))
 				{
-					resourceManager.AddResource(page, res);
+					_resourceManager.AddResource(page, res);
 					resourcesUpdated = true;
 				}
 			}
@@ -66,10 +63,10 @@ namespace Harbor.Domain.Pages
 
 		private IEnumerable<PageResource> getUICDeclarations(Page page, TemplateUic uic)
 		{
-			var comp = _pageContentRepository.GetContent(uic.Key, page, uic.Id);
-			if (comp != null)
+			var handler = _contentTypeRepository.GetTemplateContentHandler(uic, page);
+			if (handler != null)
 			{
-				foreach (var res in comp.DeclareResources())
+				foreach (var res in handler.DeclareResources())
 				{
 					yield return res;
 				}
