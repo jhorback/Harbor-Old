@@ -23,7 +23,7 @@ namespace Harbor.Domain.Pages.ContentTypes
 
 		public override void SetLayoutContent()
 		{
-			// throw new NotImplementedException();
+			// noop
 		}
 	}
 }

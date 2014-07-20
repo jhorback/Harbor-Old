@@ -85,7 +85,6 @@
     <Compile Include="IObjectFactory.cs" />
     <Compile Include="JSON.cs" />
     <Compile Include="Pages\ContentType.cs" />
-    <Compile Include="Pages\ContentTypes\ImageHandler.cs" />
     <Compile Include="Pages\ContentTypes\Links.cs" />
     <Compile Include="Pages\IPageLayoutRepository.cs" />
     <Compile Include="Pages\ContentTypes\ProductLink.cs" />

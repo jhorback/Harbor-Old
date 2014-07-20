@@ -8,18 +8,12 @@ namespace Harbor.Domain.Pages.ContentTypes
 	{
 		public override string Name
 		{
-			get
-			{
-				return "Page Link";
-			}
+			get { return "Page Link"; }
 		}
 
 		public override string Description
 		{
-			get
-			{
-				return "Add a link to another internal page.";
-			}
+			get { return "Add a link to another internal page."; }
 		}
 
 		public override Type HandlerType
@@ -54,7 +48,7 @@ namespace Harbor.Domain.Pages.ContentTypes
 
 		public override System.Collections.Generic.IEnumerable<PageResource> DeclareResources()
 		{
-			var link = Page.Template.GetContent<Content.PageLink>(TemplateUic.Id);
+			var link = GetContent<Content.PageLink>();
 			if (link.PageID == 0)
 			{
 				yield break;
