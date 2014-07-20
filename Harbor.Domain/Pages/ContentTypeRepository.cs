@@ -40,7 +40,7 @@ namespace Harbor.Domain.Pages
 		}
 
 
-		public IEnumerable<ContentType> GetTemplateContentTypes()
+		public IEnumerable<TemplateContentType> GetTemplateContentTypes()
 		{
 			return templateContentTypes.Values;
 		}

@@ -10,12 +10,10 @@ namespace Harbor.UI.Controllers
 	public class PageController : Controller
 	{
 		private readonly IUserRepository _userRepo;
-		private readonly IPageContentRepository _pageContentRepository;
 
-		public PageController(IUserRepository userRepo, IPageContentRepository pageContentRepository)
+		public PageController(IUserRepository userRepo)
 		{
 			_userRepo = userRepo;
-			_pageContentRepository = pageContentRepository;
 		}
 
 		public PartialViewResult Title(Page page)
@@ -25,14 +23,14 @@ namespace Harbor.UI.Controllers
 
 		public PartialViewResult Text(Page page, string uicid)
 		{
-			var text = _pageContentRepository.GetContent<Text>(page, uicid);
-			return PartialView("Text", new TextDto { text = text.GetProperty("text") });
+			var text = page.Template.GetContent<Text>(uicid);
+			return PartialView("Text", new TextDto { text = text.Html });
 		}
 
 		public PartialViewResult Image(Page page, string uicid)
 		{
-			var image = _pageContentRepository.GetContent<Image>(page, uicid);
-			if (image.CanDisplay(User.Identity.Name) == false)
+			var image = page.Template.GetContent<Image>(uicid);
+			if (image.CanDisplay == false)
 			{
 				return PartialView("Image-None");
 			}
@@ -55,7 +53,7 @@ namespace Harbor.UI.Controllers
 		{
 			var link = page.Template.GetContent<PageLink>(uicid);
 			//var link = _pageContentRepository.GetContent<PageLink>(page, uicid);
-			if (link.CanDisplay(User.Identity.Name) == false)
+			if (link.CanDisplay == false)
 			{
 				return PartialView("PageLink-None", link);
 			}
@@ -69,7 +67,7 @@ namespace Harbor.UI.Controllers
 			var currentUser = _userRepo.FindUserByName(page.AuthorsUserName);
 			ViewBag.MerchantID = currentUser.PayPalMerchantAccountID;
 
-			var buttonComponent = _pageContentRepository.GetContent<PayPalButton>(page, uicid);
+			var buttonComponent = page.Template.GetContent<PayPalButton>(uicid);
 			if (!buttonComponent.ButtonExists)
 			{
 				return PartialView("PayPalButton-None");
@@ -81,8 +79,8 @@ namespace Harbor.UI.Controllers
 
 		public PartialViewResult ProductLink(Page page, string uicid)
 		{
-			var link = _pageContentRepository.GetContent<ProductLink>(page, uicid);
-			if (link.CanDisplay(User.Identity.Name) == false)
+			var link = page.Template.GetContent<ProductLink>(uicid);
+			if (link.CanDisplay == false)
 			{
 				return PartialView("PageLink-None", link);
 			}

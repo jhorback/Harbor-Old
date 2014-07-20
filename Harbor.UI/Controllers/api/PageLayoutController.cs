@@ -9,6 +9,7 @@ using Harbor.Domain;
 using Harbor.Domain.Pages;
 using Harbor.Domain.Security;
 using Harbor.UI.Extensions;
+using Harbor.UI.Models;
 using Harbor.UI.Models.Pages;
 
 namespace Harbor.UI.Controllers.Api
