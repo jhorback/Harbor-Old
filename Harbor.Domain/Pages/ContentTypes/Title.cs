@@ -1,13 +1,13 @@
 ﻿
+using System;
+
 namespace Harbor.Domain.Pages.ContentTypes
 {
-	public class Title : PageHeaderType
+	public class Title : ContentType
 	{
-		public const string KEY = "title";
-
-		public override string Key
+		public override Type HandlerType
 		{
-			get { return KEY; }
+			get { throw new System.NotImplementedException(); }
 		}
 	}
 }

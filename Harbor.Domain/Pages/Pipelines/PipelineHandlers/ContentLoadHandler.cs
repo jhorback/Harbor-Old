@@ -23,9 +23,9 @@ namespace Harbor.Domain.Pages.PipelineHandlers
 
 			foreach (var item in page.Template.Content)
 			{
-				var contentHandler = _contentTypeRepository.GetTemplateContentHandler(item.Key);
-				var contentData = contentHandler.GetTemplateContent(page, item);
-				page.Template.SetContentData(item.Id, contentData);
+				var contentHandler = _contentTypeRepository.GetTemplateContentHandler(item.Key, page);
+				var contentData = contentHandler.GetTemplateContent();
+				page.Template.SetContent(item.Id, contentData);
 			}
 		}
 	}

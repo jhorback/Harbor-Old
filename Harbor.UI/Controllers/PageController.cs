@@ -53,7 +53,7 @@ namespace Harbor.UI.Controllers
 
 		public PartialViewResult PageLink(Page page, string uicid)
 		{
-			var link = page.Template.GetContentData<PageLink>(uicid);
+			var link = page.Template.GetContent<PageLink>(uicid);
 			//var link = _pageContentRepository.GetContent<PageLink>(page, uicid);
 			if (link.CanDisplay(User.Identity.Name) == false)
 			{

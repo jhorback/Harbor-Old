@@ -104,12 +104,12 @@ namespace Harbor.Domain.Pages
 
 		private readonly IDictionary<string, object> contentData = new Dictionary<string, object>();
 
-		public void SetContentData<T>(string uicid, T data)
+		public void SetContent<T>(string uicid, T data)
 		{
 			contentData.Add(uicid, data);
 		}
 
-		public T GetContentData<T>(string uicid)
+		public T GetContent<T>(string uicid)
 		{
 			return (T) contentData[uicid];
 		}
