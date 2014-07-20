@@ -15,6 +15,7 @@ namespace Harbor.Domain.Pages
 			}
 		}
 		public abstract Type HandlerType { get; }
-		public abstract Type DataType { get; }
+
+		// public abstract Type DataType { get; }
 	}
 }
