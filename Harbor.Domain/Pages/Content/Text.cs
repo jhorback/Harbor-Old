@@ -4,16 +4,13 @@ using Harbor.Domain.Files;
 
 namespace Harbor.Domain.Pages.Content
 {
-	public class Text : PageContent
+	public class Text
 	{
-		public Text(Page page, string uicid) : base(page, uicid)
+		public Text(string html)
 		{
-		
+			Html = html;
 		}
 
-		public override IEnumerable<PageResource> DeclareResources()
-		{
-			return base.DeclareResources();
-		}
+		public string Html { get; private set; }
 	}
 }

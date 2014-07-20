@@ -1,38 +1,40 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Harbor.Domain.Pages.ContentTypes
 {
 	public class Text : TemplateContentType
 	{
-		public const string KEY = "text";
-
-		public override string Key
-		{
-			get { return KEY; }
-		}
-
 		public override string Name
 		{
-			get
-			{
-				return "Text";
-			}
+			get { return "Text"; }
 		}
 
 		public override string Description
 		{
-			get
-			{
-				return "A rich text editor.";
-			}
+			get { return "A rich text editor."; }
 		}
 
-		public override Type PageComponent
+		public override Type HandlerType
 		{
-			get
-			{
-				return typeof(Content.Text);
-			}
+			get { return typeof(TextHandler); }
+		}
+	}
+
+	public class TextHandler : TemplateContentHandler
+	{
+		public TextHandler(Page page, TemplateUic uic) : base(page, uic)
+		{
+		}
+
+		public override object GetTemplateContent()
+		{
+			return new Content.Text(GetProperty("text"));
+		}
+
+		public override IEnumerable<PageResource> DeclareResources()
+		{
+			yield break;
 		}
 	}
 }
