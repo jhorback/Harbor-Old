@@ -21,21 +21,9 @@ namespace Harbor.Domain.Pages.Content
 
 		protected Page LinkedPage { get; set; }
 
-		public bool IsNew
-		{
-			get
-			{
-				return PageID == 0;				
-			}
-		}
+		public bool IsNew { get { return PageID == 0; } }
 
-		public bool Exists
-		{
-			get
-			{
-				return LinkedPage != null;
-			}
-		}
+		public bool Exists { get { return LinkedPage != null; } }
 
 		public string Title
 		{

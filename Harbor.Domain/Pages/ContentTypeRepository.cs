@@ -6,38 +6,68 @@ namespace Harbor.Domain.Pages
 {
 	public class ContentTypeRepository : IContentTypeRepository
 	{
-		List<TemplateContentType> contentTypes;
+		private readonly IObjectFactory _objectFactory;
+		readonly Dictionary<string, TemplateContentType> templateContentTypes = new Dictionary<string, TemplateContentType>();
+		readonly Dictionary<string, ContentType> layoutContentTypes = new Dictionary<string, ContentType>(); 
 
-		public ContentTypeRepository()
+		public ContentTypeRepository(IObjectFactory objectFactory)
 		{
-			contentTypes = new List<TemplateContentType>
+			_objectFactory = objectFactory;
+			foreach (var type in getStaticFields<TemplateContentType>(typeof(TemplateContentTypes)))
+			{
+				templateContentTypes.Add(type.Key, type);
+			}
+
+			foreach (var type in getStaticFields<ContentType>(typeof(LayoutContentTypes)))
+			{
+				layoutContentTypes.Add(type.Key, type);
+			}
+		}
+
+		IEnumerable<T> getStaticFields<T>(Type type)
+		{
+			foreach (var p in type.GetFields(System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.NonPublic))
+			{
+				var contentType = p.GetValue(null);
+				if (contentType is T)
 				{
-					new ContentTypes.Image(),
-					new ContentTypes.PageLink(),
-					new ContentTypes.PayPalButton(),
-					new ContentTypes.ProductLink(),
-					new ContentTypes.Text()
-				};
+					yield return (T) contentType;
+				}
+			}
 		}
 
-		public List<TemplateContentType> GetPageContentTypes()
+
+		public IEnumerable<ContentType> GetTemplateContentTypes()
 		{
-			return contentTypes;
+			return templateContentTypes.Values;
 		}
 
-		public Type GetTypeOfPageContentType(string key)
+		public TemplateContentHandler GetTemplateContentHandler(string key, Page page)
 		{
-			var componentType = this.contentTypes.FirstOrDefault(c => c.Key == key);
-			if (componentType == null)
+			var contentType = templateContentTypes[key];
+			if (contentType == null)
 			{
 				return null;
 			}
 
-			var type = componentType.PageComponent;
-			return type;
+			try
+			{
+				var handler = _objectFactory.GetInstance(contentType.HandlerType, new
+				{
+
+				});
+			}
+			catch (Exception e)
+			{
+				
+			}
+
+			// TemplateContentHandler
+			// contentType.HandlerType
+			
 		}
 
-		public TemplateContentType GetPageContentType(string key)
+		public PageLayoutContentHandler GetLayoutContentHandler(string key, Page page)
 		{
 			throw new NotImplementedException();
 		}
