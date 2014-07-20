@@ -8,6 +8,7 @@ namespace Harbor.Domain.Pages
 	{
 		private readonly IObjectFactory _objectFactory;
 		private readonly ILogger _logger;
+		
 		readonly Dictionary<string, TemplateContentType> templateContentTypes = new Dictionary<string, TemplateContentType>();
 		readonly Dictionary<string, ContentType> layoutContentTypes = new Dictionary<string, ContentType>(); 
 
@@ -16,6 +17,7 @@ namespace Harbor.Domain.Pages
 		{
 			_objectFactory = objectFactory;
 			_logger = logger;
+			
 			foreach (var type in getStaticFields<TemplateContentType>(typeof(TemplateContentTypes)))
 			{
 				templateContentTypes.Add(type.Key, type);
@@ -29,7 +31,7 @@ namespace Harbor.Domain.Pages
 
 		IEnumerable<T> getStaticFields<T>(Type type)
 		{
-			foreach (var p in type.GetFields(System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.NonPublic))
+			foreach (var p in type.GetFields())
 			{
 				var contentType = p.GetValue(null);
 				if (contentType is T)
