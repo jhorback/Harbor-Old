@@ -45,7 +45,7 @@ namespace Harbor.Domain.Pages.ContentTypes
 
 		public override IEnumerable<PageResource> DeclareResources()
 		{
-			var image = Page.Template.GetContentData<Content.Image>(TemplateUic.Id);
+			var image = Page.Template.GetContent<Content.Image>(TemplateUic.Id);
 			if (image.FileID == null)
 			{
 				yield break;

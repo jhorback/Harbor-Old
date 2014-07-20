@@ -30,5 +30,6 @@ namespace Harbor.Domain.Pages
 	public static class LayoutContentTypes
 	{
 		public static ContentType Links = new Links();
+		public static ContentType Title = new Title();
 	}
 }

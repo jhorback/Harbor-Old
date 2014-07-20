@@ -54,7 +54,7 @@ namespace Harbor.Domain.Pages.ContentTypes
 
 		public override System.Collections.Generic.IEnumerable<PageResource> DeclareResources()
 		{
-			var link = Page.Template.GetContentData<Content.PageLink>(TemplateUic.Id);
+			var link = Page.Template.GetContent<Content.PageLink>(TemplateUic.Id);
 			if (link.PageID == 0)
 			{
 				yield break;
