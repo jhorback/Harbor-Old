@@ -1,22 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using Harbor.Domain.Pages.PageResources;
-using Harbor.Domain.Products;
-
+﻿
 namespace Harbor.Domain.Pages.Content
 {
-	public class PayPalButton : PageContent
+	public class PayPalButton
 	{
-		public PayPalButton(Page page, string uicid)
-			: base(page, uicid)
+		public PayPalButton(int? payPalButtonId, Products.PayPalButton button)
 		{
-			if (IsNew == false)
-			{
-				button = page.GetPayPalButton(PayPalButtonID ?? 0);
-			}
+			PayPalButtonID = payPalButtonId;
+			Button = button;
 		}
 
-		private Products.PayPalButton button;
+		public int? PayPalButtonID { get; private set; }
+
+		public Products.PayPalButton Button { get; private set; }
 
 		public bool IsNew
 		{
@@ -30,38 +25,8 @@ namespace Harbor.Domain.Pages.Content
 		{
 			get
 			{
-				return button != null;
+				return Button != null;
 			}
-		}
-
-		public int? PayPalButtonID
-		{
-			get
-			{
-				var id = GetProperty("PayPalButtonID");
-				if (string.IsNullOrEmpty(id))
-					return null;
-				return Convert.ToInt32(id);
-			}
-		}
-
-		public Products.PayPalButton Button
-		{
-			get
-			{
-				return ButtonExists ? button : null;
-			}
-		}
-		
-
-		public override IEnumerable<PageResource> DeclareResources()
-		{
-			if (PayPalButtonID == null)
-			{
-				yield break;
-			}
-
-			yield return new PayPalButtonResource(Page, PayPalButtonID ?? 0);
 		}
 	}
 }

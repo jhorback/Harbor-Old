@@ -28,6 +28,11 @@ namespace Harbor.Domain.Pages
 			Page.SetUICProperty(TemplateUic.Id, name, value);
 		}
 
+		protected T GetContent<T>()
+		{
+			return Page.Template.GetContent<T>(TemplateUic.Id);
+		}
+
 		public abstract object GetTemplateContent();
 		public abstract IEnumerable<PageResource> DeclareResources();
 	}
