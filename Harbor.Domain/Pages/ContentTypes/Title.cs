@@ -7,7 +7,24 @@ namespace Harbor.Domain.Pages.ContentTypes
 	{
 		public override Type HandlerType
 		{
-			get { throw new System.NotImplementedException(); }
+			get { return typeof(TitleHandler); }
+		}
+	}
+
+	public class TitleHandler : PageLayoutContentHandler
+	{
+		public TitleHandler(Page page) : base(page)
+		{
+		}
+
+		public override object GetLayoutContent()
+		{
+			return null;
+		}
+
+		public override void SetLayoutContent()
+		{
+			// noop
 		}
 	}
 }
