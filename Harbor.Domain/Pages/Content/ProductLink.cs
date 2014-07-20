@@ -4,13 +4,9 @@ namespace Harbor.Domain.Pages.Content
 {
 	public class ProductLink : PageLink
 	{
-
-		public ProductLink(Page page, string uicid, IPageRepository pageRepository) : base(page, uicid)
+		public ProductLink(int pageId, string tileDisplay, Page linkedPage, string userName)
+			: base(pageId, tileDisplay, linkedPage, userName)
 		{
-			if (IsNew() == false)
-			{
-				LinkedPage = pageRepository.FindById(PageID);
-			}
 		}
 
 		public int ProductCount
