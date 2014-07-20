@@ -19,7 +19,7 @@ namespace Harbor.Domain.Pages
 		public abstract Type HandlerType { get; }
 	}
 
-	public static class TemplateContentTypes
+	public class TemplateContentTypes
 	{
 		public static TemplateContentType Text = new Text();
 		public static TemplateContentType Image = new Image();
@@ -28,7 +28,7 @@ namespace Harbor.Domain.Pages
 		public static TemplateContentType ProductLink = new ProductLink();
 	}
 
-	public static class LayoutContentTypes
+	public class LayoutContentTypes
 	{
 		public static ContentType Links = new Links();
 		public static ContentType Title = new Title();

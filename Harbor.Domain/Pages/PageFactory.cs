@@ -8,7 +8,6 @@ namespace Harbor.Domain.Pages
 		private readonly IPageLayoutRepository _pageLayoutRepository;
 
 		public PageFactory(
-			IPageTypeRepository pageTypeRep,
 			PageCreatePipeline pageCreatePipeline,
 			IPageLayoutRepository pageLayoutRepository
 			)

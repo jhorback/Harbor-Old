@@ -78,6 +78,7 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ContentTypeRepositoryTest.cs" />
     <Compile Include="FileTest.cs" />
     <Compile Include="FunctionalRoleBaseTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
