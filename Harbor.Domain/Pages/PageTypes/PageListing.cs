@@ -21,13 +21,13 @@ namespace Harbor.Domain.Pages.PageTypes
 		public override void SetLayout(PageTypeLayoutContext context)
 		{
 			context.SetLayout(PageLayout.LayoutDisplayProperties.None)
-				.SetHeader(ContentTypes.Title.KEY)
-				.SetAside(ContentTypes.Links.KEY);
+				.SetHeader(LayoutContentTypes.Title)
+				.SetAside(LayoutContentTypes.Links);
 		}
 
 		public override void SetTemplate(PageTypeTemplateContext context)
 		{
-			context.AddContent(ContentTypes.Text.KEY, new[] { Template.ContentClassNames.Tile })
+			context.AddContent(TemplateContentTypes.Text, new[] { Template.ContentClassNames.Tile })
 				.SetDefaultContentClassName(Template.ContentClassNames.Tile);
 		}
 	}

@@ -21,12 +21,12 @@ namespace Harbor.Domain.Pages.PageTypes
 		public override void SetLayout(PageTypeLayoutContext context)
 		{
 			context.SetLayout(PageLayout.LayoutDisplayProperties.ContentCentered | PageLayout.LayoutDisplayProperties.NoAside)
-				.SetHeader(ContentTypes.Title.KEY);
+				.SetHeader(LayoutContentTypes.Title);
 		}
 
 		public override void SetTemplate(PageTypeTemplateContext context)
 		{
-			context.AddContent(ContentTypes.Text.KEY);
+			context.AddContent(TemplateContentTypes.Text);
 		}
 	}
 }

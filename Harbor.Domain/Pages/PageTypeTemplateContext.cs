@@ -11,16 +11,16 @@ namespace Harbor.Domain.Pages
 		public Page Page { get; set; }
 
 
-		public virtual PageTypeTemplateContext AddContent(string type)
+		public virtual PageTypeTemplateContext AddContent(TemplateContentType type)
 		{
 			return AddContent(type, new[] { Page.Template.DefaultContentClassName });
 		}
 
-		public virtual PageTypeTemplateContext AddContent(string type, string[] classNames)
+		public virtual PageTypeTemplateContext AddContent(TemplateContentType type, string[] classNames)
 		{
 			var item = new TemplateUic
 			{
-				Key = type,
+				Key = type.Key,
 				ClassNames = classNames
 			};
 

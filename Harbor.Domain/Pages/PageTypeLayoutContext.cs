@@ -16,15 +16,15 @@ namespace Harbor.Domain.Pages
 			return this;
 		}
 
-		public PageTypeLayoutContext SetHeader(string type)
+		public PageTypeLayoutContext SetHeader(ContentType headerType)
 		{
-			Page.Layout.HeaderKey = type;
+			Page.Layout.HeaderKey = headerType.Key;
 			return this;
 		}
 
-		public PageTypeLayoutContext SetAside(string type)
+		public PageTypeLayoutContext SetAside(ContentType asideType)
 		{
-			Page.Layout.AsideKey = type;
+			Page.Layout.AsideKey = asideType.Key;
 			return this;
 		}
 	}
