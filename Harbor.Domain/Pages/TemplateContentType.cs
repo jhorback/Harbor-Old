@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿
 namespace Harbor.Domain.Pages
 {
 	/// <summary>
@@ -9,7 +8,5 @@ namespace Harbor.Domain.Pages
 	{
 		public abstract string Name { get; }
 		public abstract string Description { get; }
-		[Obsolete("Using the HandlerType and DataType to provide this via a load handler.")]
-		public abstract Type PageComponent { get; }
 	}
 }

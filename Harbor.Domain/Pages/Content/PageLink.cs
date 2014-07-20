@@ -1,25 +1,32 @@
 ﻿using System;
-using System.Collections.Generic;
-using Harbor.Domain.Pages.PageResources;
 using Harbor.Domain.Security;
 
 namespace Harbor.Domain.Pages.Content
 {
-	public class PageLink : PageContent
+	public class PageLink
 	{
-		public PageLink(Page page, string uicid) : base(page, uicid)
+		private readonly string _userName;
+
+		public PageLink(int pageId, string tileDisplay, Page linkedPage, string userName)
 		{
-			if (IsNew() == false)
-			{
-				LinkedPage = page.GetPageLink(PageID);
-			}
+			_userName = userName;
+			PageID = pageId;
+			TileDisplay = tileDisplay;
+			LinkedPage = linkedPage;
 		}
+
+		public int PageID { get; private set; }
+
+		public string TileDisplay { get; private set; }
 
 		protected Page LinkedPage { get; set; }
 
-		public bool IsNew()
+		public bool IsNew
 		{
-			return PageID == 0;
+			get
+			{
+				return PageID == 0;				
+			}
 		}
 
 		public bool Exists
@@ -37,15 +44,7 @@ namespace Harbor.Domain.Pages.Content
 				return !Exists ? null : LinkedPage.Title;
 			}
 		}
-		
-		public int PageID
-		{
-			get
-			{
-				var id = GetProperty("pageID");
-				return id == null ? 0 : int.Parse(id);
-			}
-		}
+	
 
 		public string PreviewText
 		{
@@ -71,15 +70,6 @@ namespace Harbor.Domain.Pages.Content
 			}
 		}
 
-		public string TileDisplay
-		{
-			get 
-			{
-				var display = GetProperty("tileDisplay");
-				return display ?? "normal";
-			}
-		}
-
 		public string VirtualPath
 		{
 			get
@@ -88,20 +78,13 @@ namespace Harbor.Domain.Pages.Content
 			}
 		}
 
-		public bool CanDisplay(string userName)
+		public bool CanDisplay
 		{
-			var canDisplay = !IsNew() && Exists && LinkedPage.HasPermission(userName, Permissions.Read);
-			return canDisplay;
-		}
-
-		public override IEnumerable<PageResource> DeclareResources()
-		{
-			if (PageID == 0)
+			get
 			{
-				yield break;
+				var canDisplay = !IsNew && Exists && LinkedPage.HasPermission(_userName, Permissions.Read);
+				return canDisplay;
 			}
-
-			yield return new PageLinkResource(Page, pageID: PageID);
 		}
 	}
 }

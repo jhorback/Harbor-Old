@@ -1,4 +1,5 @@
 ﻿using System;
+using Harbor.Domain.Pages.ContentTypes;
 
 namespace Harbor.Domain.Pages
 {
@@ -14,8 +15,20 @@ namespace Harbor.Domain.Pages
 				return GetType().Name.ToLower();
 			}
 		}
-		public abstract Type HandlerType { get; }
 
-		// public abstract Type DataType { get; }
+		public abstract Type HandlerType { get; }
+	}
+
+	public static class TemplateContentTypes
+	{
+		public static TemplateContentType Image = new Image();
+		public static TemplateContentType PageLink = new PageLink();
+		public static TemplateContentType PayPalButton = new PayPalButton();
+		public static TemplateContentType ProductLink = new ProductLink();
+	}
+
+	public static class LayoutContentTypes
+	{
+		public static ContentType Links = new Links();
 	}
 }

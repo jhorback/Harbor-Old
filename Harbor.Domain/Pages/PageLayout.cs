@@ -80,15 +80,8 @@ namespace Harbor.Domain.Pages
 			}
 		}
 
-
-
 		private object _header;
 		private object _aside;
-		// needs to be an object Header property?!
-
-		/*Page.Layout.Header<T> //jch! - still need to figure the best way to do this
-		 * */
-		//var header = new JavaScriptSerializer().Deserialize<T>(HeaderData);
 
 		public T GetHeaderData<T>()
 		{

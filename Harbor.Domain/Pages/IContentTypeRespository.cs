@@ -32,7 +32,7 @@ namespace Harbor.Domain.Pages
 	public interface IContentTypeRepository
 	{
 		IEnumerable<ContentType> GetContentTypes();
-		TemplateContentHandler GetTemplateContentHandler(string key);
-		PageLayoutContentHandler GetLayoutContentHandler(string key);
+		TemplateContentHandler GetTemplateContentHandler(string key, Page page);
+		PageLayoutContentHandler GetLayoutContentHandler(string key, Page page);
 	}
 }

@@ -13,12 +13,12 @@ namespace Harbor.Domain.Pages.PipelineHandlers
 
 		public void Execute(Page page)
 		{
-			var headerHandler = _contentTypeRepository.GetLayoutContentHandler(page.Layout.HeaderKey);
-			var headerData = headerHandler.GetLayoutContent(page, page.Layout.Header, page.Layout.HeaderDataStr);
+			var headerHandler = _contentTypeRepository.GetLayoutContentHandler(page.Layout.HeaderKey, page);
+			var headerData = headerHandler.GetLayoutContent();
 			page.Layout.SetHeaderData(headerData);
 
-			var asideHandler = _contentTypeRepository.GetLayoutContentHandler(page.Layout.AsideKey);
-			var asideData = asideHandler.GetLayoutContent(page, page.Layout.Aside, page.Layout.AsideDataStr);
+			var asideHandler = _contentTypeRepository.GetLayoutContentHandler(page.Layout.AsideKey, page);
+			var asideData = asideHandler.GetLayoutContent();
 			page.Layout.SetAsideData(asideData);
 
 			foreach (var item in page.Template.Content)
