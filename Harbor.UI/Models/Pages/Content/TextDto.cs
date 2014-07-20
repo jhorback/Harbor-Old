@@ -1,4 +1,5 @@
-﻿
+﻿using Harbor.Domain.Pages.Content;
+
 namespace Harbor.UI.Models.Content
 {
 	public class TextDto
@@ -18,6 +19,20 @@ namespace Harbor.UI.Models.Content
 			{
 				_text = value;
 			}
+		}
+
+		public TextDto()
+		{
+		}
+
+		public TextDto(Text text)
+		{
+			_text = text.Html;
+		}
+
+		public static TextDto FromText(Text text)
+		{
+			return new TextDto(text);
 		}
 	}
 }

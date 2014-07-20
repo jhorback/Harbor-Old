@@ -24,7 +24,7 @@ namespace Harbor.UI.Controllers
 		public PartialViewResult Text(Page page, string uicid)
 		{
 			var text = page.Template.GetContent<Text>(uicid);
-			return PartialView("Text", new TextDto { text = text.Html });
+			return PartialView("Text", TextDto.FromText(text));
 		}
 
 		public PartialViewResult Image(Page page, string uicid)
@@ -35,7 +35,7 @@ namespace Harbor.UI.Controllers
 				return PartialView("Image-None");
 			}
 
-			var model = (ImageDto)image;
+			var model = ImageDto.FromImage(image);
 			return PartialView("Image", model);
 		}
 
@@ -52,13 +52,12 @@ namespace Harbor.UI.Controllers
 		public PartialViewResult PageLink(Page page, string uicid)
 		{
 			var link = page.Template.GetContent<PageLink>(uicid);
-			//var link = _pageContentRepository.GetContent<PageLink>(page, uicid);
 			if (link.CanDisplay == false)
 			{
 				return PartialView("PageLink-None", link);
 			}
 
-			var model = (PageLinkDto)link;
+			var model = PageLinkDto.FromPageLink(link);
 			return PartialView("PageLink", model);
 		}
 
@@ -85,7 +84,7 @@ namespace Harbor.UI.Controllers
 				return PartialView("PageLink-None", link);
 			}
 
-			var model = (ProductLinkDto)link;
+			var model = ProductLinkDto.FromProductLink(link);
 			if (model.productCount == 1)
 			{
 				var currentUser = _userRepo.FindUserByName(page.AuthorsUserName);

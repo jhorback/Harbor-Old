@@ -11,17 +11,23 @@ namespace Harbor.UI.Models.Content
 		public string res { get; set; }
 		public string fileID { get; set; }
 
-		public static implicit operator ImageDto(Image image)
-		{
-			var fileID = image.FileID.ToString();
-			var res = (FileResolution)Enum.Parse(typeof(FileResolution), image.Res, true);
 
-			return new ImageDto
-			{
-				fileID = fileID,
-				imgSrc = FileUrls.GetUrl(fileID, image.Name, image.Ext, res),
-				res = image.Res
-			};
+		public ImageDto()
+		{
+		}
+
+		public ImageDto(Image image)
+		{
+			var fileRes = (FileResolution)Enum.Parse(typeof(FileResolution), image.Res, true);
+			
+			fileID = image.FileID.ToString();
+			res = image.Res;
+			imgSrc = FileUrls.GetUrl(fileID, image.Name, image.Ext, fileRes);
+		}
+
+		public static ImageDto FromImage(Image image)
+		{
+			return new ImageDto(image);
 		}
 	}
 }
