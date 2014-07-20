@@ -21,6 +21,7 @@ namespace Harbor.Domain.Pages
 
 	public static class TemplateContentTypes
 	{
+		public static TemplateContentType Text = new Text();
 		public static TemplateContentType Image = new Image();
 		public static TemplateContentType PageLink = new PageLink();
 		public static TemplateContentType PayPalButton = new PayPalButton();
