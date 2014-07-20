@@ -15,20 +15,67 @@ namespace Harbor.Domain.Pages.PipelineHandlers
 
 		public void Execute(Page page)
 		{
-			var headerHandler = _contentTypeRepository.GetLayoutContentHandler(page.Layout.HeaderKey, page);
-			var headerData = headerHandler.GetLayoutContent();
-			page.Layout.SetHeaderData(headerData);
+			setHeader(page);
+			setAside(page);
+			setContent(page);
+		}
 
-			var asideHandler = _contentTypeRepository.GetLayoutContentHandler(page.Layout.AsideKey, page);
-			var asideData = asideHandler.GetLayoutContent();
-			page.Layout.SetAsideData(asideData);
 
+		void setHeader(Page page)
+		{
+			if (page.Layout.HeaderKey != null)
+			{
+				var headerHandler = _contentTypeRepository.GetLayoutContentHandler(page.Layout.HeaderKey, page);
+				if (headerHandler != null)
+				{
+					var headerData = headerHandler.GetLayoutContent();
+					page.Layout.SetHeaderData(headerData);
+				}
+				else
+				{
+					logNoHandler(page.Layout.HeaderKey);
+				}
+			}
+		}
+
+		void setAside(Page page)
+		{
+			if (string.IsNullOrEmpty(page.Layout.AsideKey) == false)
+			{
+				var asideHandler = _contentTypeRepository.GetLayoutContentHandler(page.Layout.AsideKey, page);
+				if (asideHandler != null)
+				{
+					var asideData = asideHandler.GetLayoutContent();
+					page.Layout.SetAsideData(asideData);
+				}
+				else
+				{
+					logNoHandler(page.Layout.AsideKey);
+				}
+			}
+		}
+
+		void setContent(Page page)
+		{
 			foreach (var item in page.Template.Content)
 			{
-				var contentHandler = _contentTypeRepository.GetTemplateContentHandler(item.Key, page);
-				var contentData = contentHandler.GetTemplateContent();
-				page.Template.SetContent(item.Id, contentData);
+				var contentHandler = _contentTypeRepository.GetTemplateContentHandler(item, page);
+				if (contentHandler != null)
+				{
+					var contentData = contentHandler.GetTemplateContent();
+					page.Template.SetContent(item.Id, contentData);
+				}
+				else
+				{
+					logNoHandler(item.Key);
+				}
 			}
+		}
+
+		void logNoHandler(string handlerKey)
+		{
+			var error = string.Format("The handler was null. Handler key: {0}", handlerKey);
+			_logger.Error(error);
 		}
 	}
 }

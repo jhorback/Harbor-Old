@@ -5,7 +5,7 @@ namespace Harbor.Domain.Pages
 	public interface IContentTypeRepository
 	{
 		IEnumerable<ContentType> GetTemplateContentTypes();
-		TemplateContentHandler GetTemplateContentHandler(string key, Page page);
+		TemplateContentHandler GetTemplateContentHandler(TemplateUic uic, Page page);
 		PageLayoutContentHandler GetLayoutContentHandler(string key, Page page);
 	}
 }
