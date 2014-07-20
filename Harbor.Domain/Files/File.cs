@@ -106,18 +106,6 @@ namespace Harbor.Domain.Files
 		/// </summary>
 		public long TotalSize { get; set; }
 
-
-		/// <summary>
-		/// For database persistance of ResolutionsCreated (until .NET 4.5 which can handle enums).
-		/// UPDATED to 4.5 and EF 6 so remove this property and update db when convenient.
-		/// </summary>
-		[Obsolete("Use ResolutionsCreated.")]
-		public int Resolutions
-		{
-			get { return (int)ResolutionsCreated; }
-			set { ResolutionsCreated = (FileResolution)(value); }
-		}
-
 		/// <summary>
 		/// Keeps track of the versions of the file created on disk.
 		/// </summary>
