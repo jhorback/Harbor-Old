@@ -79,7 +79,7 @@ namespace Harbor.UI.Controllers
 		public PartialViewResult ProductLink(Page page, string uicid)
 		{
 			var link = page.Template.GetContent<ProductLink>(uicid);
-			if (link.CanDisplay == false)
+			if (link == null || link.CanDisplay == false)
 			{
 				return PartialView("PageLink-None", link);
 			}

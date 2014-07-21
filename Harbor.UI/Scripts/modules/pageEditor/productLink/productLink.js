@@ -36,4 +36,4 @@ pageEditor.productLink.prototype = {
 };
 
 
-pageEditor.pageComponent("productLink", ["viewRenderer", pageEditor.productLink]);
+pageEditor.pageComponent("productlink", ["viewRenderer", pageEditor.productLink]);

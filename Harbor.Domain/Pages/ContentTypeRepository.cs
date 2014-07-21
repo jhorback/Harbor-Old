@@ -49,12 +49,12 @@ namespace Harbor.Domain.Pages
 
 		public TemplateContentHandler GetTemplateContentHandler(TemplateUic uic, Page page)
 		{
-			var contentType = templateContentTypes[uic.Key];
-			if (contentType == null)
+			if (templateContentTypes.ContainsKey(uic.Key) == false)
 			{
 				return null;
 			}
 
+			var contentType = templateContentTypes[uic.Key];
 			TemplateContentHandler handler = null;
 			try
 			{

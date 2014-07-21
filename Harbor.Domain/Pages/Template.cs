@@ -106,12 +106,23 @@ namespace Harbor.Domain.Pages
 
 		public void SetContent<T>(string uicid, T data)
 		{
-			contentData.Add(uicid, data);
+			if (contentData.ContainsKey(uicid))
+			{
+				contentData[uicid] = data;
+			}
+			else
+			{
+				contentData.Add(uicid, data);				
+			}
 		}
 
 		public T GetContent<T>(string uicid)
 		{
-			return (T) contentData[uicid];
+			if (contentData.ContainsKey(uicid))
+			{
+				return (T)contentData[uicid];
+			}
+			return default(T);
 		}
 	}
 }

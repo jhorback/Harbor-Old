@@ -61,6 +61,11 @@ namespace Harbor.UI.Models
 
 		public static UicDto FromUic(Uic uic)
 		{
+			if (uic == null)
+			{
+				return null;
+			}
+
 			return new UicDto(uic);
 		}
 

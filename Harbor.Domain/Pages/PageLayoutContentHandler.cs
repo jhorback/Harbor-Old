@@ -14,14 +14,24 @@ namespace Harbor.Domain.Pages
 
 		protected T GetHeader<T>()
 		{
-			var header = new JavaScriptSerializer().Deserialize<T>(_page.Layout.HeaderDataStr);
+			var header = deserialize<T>(_page.Layout.HeaderDataStr);
 			return header;
 		}
 
 		protected T GetAside<T>()
 		{
-			var header = new JavaScriptSerializer().Deserialize<T>(_page.Layout.AsideDataStr);
-			return header;
+			var aside = deserialize<T>(_page.Layout.AsideDataStr);
+			return aside;
+		}
+
+		T deserialize<T>(string str)
+		{
+			if (string.IsNullOrEmpty(str))
+			{
+				return default(T);
+			}
+
+			return new JavaScriptSerializer().Deserialize<T>(str);
 		}
 
 		public abstract object GetLayoutContent();

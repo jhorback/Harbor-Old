@@ -177,10 +177,6 @@ namespace Harbor.Data.Repositories
 			if (page == null)
 			{
 				page = findPageByID(pageID);
-				if (page != null)
-				{
-					cachePage(page);
-				}
 			}
 			return page;
 		}

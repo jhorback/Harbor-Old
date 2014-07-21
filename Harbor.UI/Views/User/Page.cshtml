@@ -36,7 +36,7 @@
 		@if (Model.Layout.HeaderKey != null)
 		{
 			var header = Model.Layout.HeaderKey;
-			<div class="uic" data-type="@header" id="@Model.Layout.Header.uicid">
+			<div class="uic" data-type="@header" id="@Model.Layout.Header.Id">
 				@Html.PageComponent(Model.PageID, header)
 			</div>
 		}
@@ -46,7 +46,7 @@
 			@if (Model.Layout.AsideKey != null)
 			{
 				var aside = Model.Layout.AsideKey;
-				<div class="uic" data-type="@aside" id="@Model.Layout.Aside.uicid">
+				<div class="uic" data-type="@aside" id="@Model.Layout.Aside.Id">
 					@Html.PageComponent(Model.PageID, aside)
 				</div>
 			}
@@ -54,8 +54,8 @@
 		<div class="page-content">
 			@foreach (var item in Model.Template.Content)
 			{
-				<div class="uic @String.Join(" ", item.classNames)" id="@item.uicid" data-type="@item.key">
-					@Html.PageComponent(Model.PageID, item.key, item.uicid)
+				<div class="uic @String.Join(" ", item.ClassNames)" id="@item.Id" data-type="@item.Key">
+					@Html.PageComponent(Model.PageID, item.Key, item.Id)
 				</div>
 			}
 		</div>

@@ -3,7 +3,14 @@ namespace Harbor.Domain.Pages
 {
 	public class Uic
 	{
-		public string Key { get; set; }
+		private string _key;
+
+		public string Key
+		{
+			get { return _key; }
+			set { _key = string.IsNullOrEmpty(value) ? null : value.ToLower(); }
+		}
+
 		public string Id { get; set; }
 	}
 

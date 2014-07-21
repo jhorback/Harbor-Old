@@ -1,8 +1,5 @@
-﻿using Harbor.Data;
-using Harbor.Domain;
+﻿using Harbor.Domain;
 using StructureMap.Configuration.DSL;
-using StructureMap.Graph;
-using StructureMap.Web;
 
 namespace Harbor.UI.IoC
 {
