@@ -46,7 +46,7 @@ namespace Harbor.Domain.Pages.ContentTypes
 		public override IEnumerable<PageResource> DeclareResources()
 		{
 			var button = GetContent<Content.PayPalButton>();
-			if (button.PayPalButtonID == null)
+			if (button == null || button.PayPalButtonID == null)
 			{
 				yield break;
 			}

@@ -50,7 +50,7 @@ namespace Harbor.Domain.Pages.ContentTypes
 		public override IEnumerable<PageResource> DeclareResources()
 		{
 			var link = GetContent<Content.ProductLink>();
-			if (link.PageID == 0)
+			if (link == null || link.PageID == 0)
 			{
 				yield break;
 			}
