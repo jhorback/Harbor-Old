@@ -86,7 +86,7 @@ pageEditor.componentManager = function ($, _, Backbone, context, console, curren
 		var key, uicid, component, el, instantiateArgs;
 
 		type = type || "content"; // mostlye informational
-		uicid = componentModel.get("uicid");
+		uicid = componentModel.get("id");
 		key = componentModel.get("key");
 		
 		el = $("#" + uicid);

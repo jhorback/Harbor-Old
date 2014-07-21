@@ -35,4 +35,4 @@ pageEditor.pageLink.prototype = {
 };
 
 
-pageEditor.pageComponent("pageLink", ["viewRenderer", pageEditor.pageLink]);
+pageEditor.pageComponent("pagelink", ["viewRenderer", pageEditor.pageLink]);
