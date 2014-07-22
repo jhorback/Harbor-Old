@@ -31,7 +31,6 @@ namespace Harbor.UI.Models
 			Mapper.CreateMap<PageDto, Domain.Pages.Page>()
 				.ForMember(dest => dest.AuthorsUserName, opt => opt.MapFrom(src => src.author))
 				.ForMember(dest => dest.Public, opt => opt.MapFrom(src => src.published))
-				.ForMember(dest => dest.Template, opt => opt.MapFrom(src => TemplateDto.ToTemplate(src.template)))
 				.ForMember(dest => dest.Layout, opt => opt.Ignore())
 				.ForMember(dest => dest.Created, opt => opt.Ignore())
 				.ForMember(dest => dest.Modified, opt => opt.Ignore())
@@ -41,8 +40,11 @@ namespace Harbor.UI.Models
 				.ForMember(dest => dest.Files, opt => opt.Ignore())
 				.ForMember(dest => dest.PageLinks, opt => opt.Ignore())
 				.ForMember(dest => dest.PayPalButtons, opt => opt.Ignore())
+				.ForMember(dest => dest.Template, opt => opt.Ignore())
 				.AfterMap((dto, DO) =>
 				    {
+						DO.Template = TemplateDto.ToTemplate(dto.template, DO.Template);
+						
 						// add / update
 						foreach (var prop in dto.properties)
 						{

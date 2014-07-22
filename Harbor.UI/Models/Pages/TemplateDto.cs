@@ -16,10 +16,10 @@ namespace Harbor.UI.Models
 			return FromTemplate(template);
 		}
 
-		public static implicit operator Template(TemplateDto template)
-		{
-			return ToTemplate(template);
-		}
+		//public static implicit operator Template(TemplateDto template)
+		//{
+		//	return ToTemplate(template);
+		//}
 
 		public static TemplateDto FromTemplate(Template template)
 		{
@@ -32,15 +32,13 @@ namespace Harbor.UI.Models
 			};
 		}
 
-		public static Template ToTemplate(TemplateDto template)
+		public static Template ToTemplate(TemplateDto templateDto, Template template)
 		{
-			return new Template
-			{
-				PageID = template.pageID,
-				Content = template.content.Select(TemplateUicDto.ToTemplateUic).ToList(),
-				DefaultContentClassName = template.defaultContentClassName,
-				ComponentCounter = template.componentCounter
-			};
+			template.PageID = templateDto.pageID;
+			template.Content = templateDto.content.Select(TemplateUicDto.ToTemplateUic).ToList();
+			template.DefaultContentClassName = templateDto.defaultContentClassName;
+			template.ComponentCounter = templateDto.componentCounter;
+			return template;
 		}
 	}
 
