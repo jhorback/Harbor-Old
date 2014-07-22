@@ -102,7 +102,7 @@ namespace Harbor.Domain.Pages
 		#endregion
 
 
-		private readonly IDictionary<string, object> contentData = new Dictionary<string, object>();
+		public readonly IDictionary<string, object> contentData = new Dictionary<string, object>();
 
 		public void SetContent<T>(string uicid, T data)
 		{
