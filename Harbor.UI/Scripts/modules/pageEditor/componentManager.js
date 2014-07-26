@@ -13,7 +13,9 @@ pageEditor.componentManager = function ($, _, Backbone, context, console, curren
 		init: function () {
 			layout.header && registerComponent(layout.header, "header");
 			layout.aside && registerComponent(layout.aside, "aside");
-			template.content.each(registerComponent);
+			template.content.map(function (component) {
+				registerComponent(component, "content");
+			});
 		},
 
 		open: function (uicid) {
@@ -85,7 +87,7 @@ pageEditor.componentManager = function ($, _, Backbone, context, console, curren
 	function registerComponent(componentModel, type) {
 		var key, uicid, component, el, instantiateArgs;
 
-		type = type || "content"; // mostlye informational
+		type = type || "content"; // mostly informational
 		uicid = componentModel.get("id");
 		key = componentModel.get("key");
 		
