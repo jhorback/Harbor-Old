@@ -14,11 +14,11 @@ namespace Harbor.Data.Repositories
 	{
 		readonly HarborContext context;
 		private readonly IUnitOfWork _unitOfWork;
-		readonly IPageFactory pageFactory;
+		readonly IPageFactory _pageFactory;
 		private readonly IObjectFactory _objectFactory;
 		private readonly ILogger _logger;
 
-		string pageCacheKey = "Harbor.Data.Repositories.PageRepository.";
+		private const string pageCacheKey = "Harbor.Data.Repositories.PageRepository.";
 
 		public PageRepository(
 			IUnitOfWork	unitOfWork,
@@ -26,11 +26,12 @@ namespace Harbor.Data.Repositories
 			IObjectFactory objectFactory,
 			ILogger logger
 		) {
-			context = unitOfWork.Context;
 			_unitOfWork = unitOfWork;
-			this.pageFactory = pageFactory;
+			_pageFactory = pageFactory;
 			_objectFactory = objectFactory;
 			_logger = logger;
+
+			context = _unitOfWork.Context;
 		}
 
 		#region IRepository
@@ -96,7 +97,7 @@ namespace Harbor.Data.Repositories
 
 		public Page Create(Page entity)
 		{
-			var page = pageFactory.Create(entity.AuthorsUserName, entity.PageTypeKey, entity.Title, entity.Public);
+			var page = _pageFactory.Create(entity.AuthorsUserName, entity.PageTypeKey, entity.Title, entity.Public);
 			if (Exists(page.AuthorsUserName, page.Title))
 				throw new DomainValidationException("The page already exists.");
 			page.Created = DateTime.Now;
@@ -131,9 +132,8 @@ namespace Harbor.Data.Repositories
 			
 			var pageUpdatePipeline = new PageUpdatePipeline(_objectFactory);
 			pageUpdatePipeline.Execute(entity);
-
 			clearCachedPageByID(entity.PageID);
-			return FindById(entity.PageID);
+			return entity;
 		}
 
 		public void Delete(Page entity)

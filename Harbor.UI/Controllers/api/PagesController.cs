@@ -90,9 +90,8 @@ namespace Harbor.UI.Controllers.Api
 			{
 				return Request.CreateBadRequestResponse(e.Message);
 			}
-			
-			var pageDto = PageDto.FromPage(pageDO);
-			return Request.CreateOKResponse(pageDto);
+
+			return Get(pageDO.PageID);
         }
 
 		[Http.PagePermit(Permissions.Delete)]

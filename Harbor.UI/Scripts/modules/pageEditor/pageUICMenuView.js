@@ -14,13 +14,10 @@ pageEditor.pageUICMenuView = function (options, modelFactory, componentManager, 
 
 pageEditor.pageUICMenuView.prototype = {
 	removeComponent: function (event) {
-		var type, pageComponent, collection;
+		var pageComponent, collection;
 		
 		if (confirm("Are you sure you want to delete this content?")) {
-			type = this.component.type;
-
-			collection = type === "aside" ? this.currentPage.template.aside :
-				this.currentPage.template.content;
+			collection = this.currentPage.template.content;
 
 			this.componentManager.deleteComponent(this.component.uicid);
 			pageComponent = collection.get(this.component.uicid);
