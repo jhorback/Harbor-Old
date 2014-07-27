@@ -10,7 +10,9 @@ pageEditor.payPalButtonModel.prototype = {
 	},
 	
 	hasButton: function () {
-		return this.get("payPalButtonID") > 0 ? true : false;
+		var id = this.get("payPalButtonID"),
+			hasButton = id == 0 ? false : (this.page.getPayPalButton(id) ? true : false);
+		return hasButton;
 	}
 };
 
