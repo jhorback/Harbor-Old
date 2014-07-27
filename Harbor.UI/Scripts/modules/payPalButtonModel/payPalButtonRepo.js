@@ -15,7 +15,11 @@ payPalButtonModel.payPalButtonRepo = function (ajaxRequest, modelFactory) {
 		getButton: function (id) {
 			var button = this.createButton({id: id});
 			if (id) {
-				this.fetchButton(button);
+				this.fetchButton(button, {
+					404: function () {
+						// noop
+					}
+				});
 			}
 			return button;
 		},

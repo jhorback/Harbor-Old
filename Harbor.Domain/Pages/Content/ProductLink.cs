@@ -13,6 +13,10 @@ namespace Harbor.Domain.Pages.Content
 		{
 			get
 			{
+				if (LinkedPage == null)
+				{
+					return 0;
+				}
 				return LinkedPage.PayPalButtons.Count;
 			}
 		}
@@ -21,6 +25,10 @@ namespace Harbor.Domain.Pages.Content
 		{
 			get
 			{
+				if (LinkedPage == null)
+				{
+					return null;
+				}
 				return LinkedPage.PayPalButtons.FirstOrDefault();
 			}
 		}
