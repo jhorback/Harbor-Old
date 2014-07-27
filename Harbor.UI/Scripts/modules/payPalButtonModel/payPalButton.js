@@ -29,15 +29,15 @@ payPalButtonModel.payPalButton.prototype = {
 	
 	"[price]": {
 		get: function (value) {
-			return parseInt(value);
+			return Number(value).toFixed(2);
 		},
 		set: function (value) {
-			return parseInt(value);
+			return Number(value).toFixed(2);
 		}
 	},
 	"[priceUSD]": {
 		get: function () {
-			var n = this.get("price");
+			var n = Number(this.get("price"));
 			return "$" + n.toFixed(2).replace(/./g, function(c, i, a) {
 				return i && c !== "." && !((a.length - i) % 3) ? "," + c : c;
 			});
