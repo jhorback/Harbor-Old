@@ -19,7 +19,7 @@ namespace Harbor.Domain.Pages.ContentTypes
 
 		public override Type HandlerType
 		{
-			get { throw new NotImplementedException(); }
+			get { return typeof(ProductLinkHandler); }
 		}
 	}
 
