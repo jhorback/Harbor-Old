@@ -14,11 +14,18 @@ payPalButtonModel.payPalButton.prototype = {
 		buttonType: "buynow",
 		itemNumber: "",
 		price: 0,
-		shippingOverride: null,
-		taxOverride: null,
+		shippingOverride: "",
+		taxOverride: "",
+		synced: false,
 		//
 		priceUSD: null,
 		doneButtonText: "Done"
+	},
+
+	initialize: function (attrs, options) {
+		if (!this.attributes.name && options.defaultName) {
+			this.set("name", options.defaultName);
+		}
 	},
 
 	"[name]": {

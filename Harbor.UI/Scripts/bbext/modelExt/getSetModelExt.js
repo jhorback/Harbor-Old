@@ -16,10 +16,12 @@ function getSetModelExt(mixin, modelPropertyDescriptor) {
 				this.synced = true;
 				this.set("synced", true);
 			}, this);
-            this.on("request", function () {
-                this.synced = false;
-                this.set("synced", false);
-            }, this);
+
+			// jch* this was causing loops when listening to just change and saving
+            //this.on("request", function () {
+            //    this.synced = false;
+            //    this.set("synced", false);
+            //}, this);
 			
 			parseBindings.call(this);
 		},

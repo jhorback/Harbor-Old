@@ -20,16 +20,15 @@ pageEditor.payPalButtonComponentView = function (
 
 pageEditor.payPalButtonComponentView.prototype = {
 	initialize: function () {
+		this.saveButton = _.debounce(this.saveButton, 200);
 		this.bindAll("saveComponentModel", "saveButton");
-
-		this.bindAll("saveButton", "saveComponentModel");
 		this.listenTo(this.model, "change:id", this.saveComponentModel);
-		// this.listenTo(this.model, "change", this.saveButton); this was calling a bunch of times
+		this.listenTo(this.model, "change", this.saveButton); // this was calling a bunch of times
 	},
 	
 	onRender: function () {
 		var previewEl;
-		
+
 		previewEl = this.$("[data-rel=buttonPreview]");
 		this.viewRenderer.render("payPalButtonView", {
 			el: previewEl,
@@ -42,8 +41,10 @@ pageEditor.payPalButtonComponentView.prototype = {
 	},
 	
 	saveButton: function () {
-		var notInDatabase = !this.model.attributes.name;
-		if ((this.model.synced || notInDatabase)) {
+		if (this.model.changedAttributes() === false) {
+			return;
+		}
+		if (this.model.synced || this.model.isNew()) {
 			if (this.isModelValid()) {
 				this.model.set("doneButtonText", "Done");	
 				this.payPalButtonRepo.saveButton(this.model);
@@ -54,7 +55,6 @@ pageEditor.payPalButtonComponentView.prototype = {
 	},
 	
 	onClose: function () {
-		this.saveButton();
 		this.$("[data-rel=edit]").remove();
 	}
 };

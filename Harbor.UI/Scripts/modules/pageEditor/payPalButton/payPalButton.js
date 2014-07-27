@@ -11,7 +11,7 @@ pageEditor.payPalButton = function (currentPageRepo, viewRenderer, payPalButtonR
 	});
 	
 	buttonID = this.model.get("payPalButtonID");
-	this.model.payPalButton = payPalButtonRepo.getButton(buttonID);
+	this.model.payPalButton = payPalButtonRepo.getButton(buttonID, this.model.page.get("title"));
 	this.model.payPalButton.on("change:id", function () {
 		var changed = this.model.payPalButton.changedAttributes();
 		if (changed.id) {
