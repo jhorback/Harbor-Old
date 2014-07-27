@@ -3,8 +3,10 @@
 payPalButtonModel.payPalButtonRepo = function (ajaxRequest, modelFactory) {
 
 	return {
-		createButton: function (data) {
-			var model = modelFactory.create("payPalButton", data);
+		createButton: function (data, defaultName) {
+			var model = modelFactory.create("payPalButton", data, {
+				defaultName: defaultName
+			});
 			return model;	
 		},
 
@@ -12,12 +14,13 @@ payPalButtonModel.payPalButtonRepo = function (ajaxRequest, modelFactory) {
 			return ajaxRequest.handle(button.fetch(), handler, proxy);
 		},
 
-		getButton: function (id) {
-			var button = this.createButton({id: id});
+		getButton: function (id, defaultName) {
+			var button = this.createButton({id: id}, defaultName);
 			if (id) {
 				this.fetchButton(button, {
 					404: function () {
-						// noop
+						// button.synced = true;
+						button.set("id", null);
 					}
 				});
 			}
