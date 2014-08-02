@@ -20,12 +20,7 @@ pageEditor.linksModel = function (attrs, options, collectionFactory, currentPage
 
 pageEditor.linksModel.prototype = {
 	component: {
-		isAside: true // -> jch! - have this initi the model with the layout properties, on change of property then set the layout
-		//pageProperties: ["navLinksID"],
-
-		//getDefaults: function (page, pageProperties) {
-		//	return page.layout.get("asideData");
-		//}
+		isAside: true
 	},
 	
 	defaults: {
