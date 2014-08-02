@@ -119,28 +119,19 @@ page.prototype = {
 	},
 
 	setProperty: function (name, value) {
-		var props;
+		var props, prop;
 
-		this.deleteProperty(name);
 		props = this.get("properties");
-
-		props.push({
-			name: name,
-			value: value
-		});
-
-		this.set("properties", props);
-	},
-
-	deleteProperty: function (name) {
-		var props = this.get("properties"),
-			len = props.length;
-
-		while (len--) {
-			if (props[len].name === name) {
-				props.splice(len, 1);
-			}
+		prop = _.findWhere(props, {name: name});
+		if (prop) {
+			prop.value = value;
+		} else {
+			props.push({
+				name: name,
+				value: value
+			});
 		}
+
 		this.set("properties", props);
 	},
 
