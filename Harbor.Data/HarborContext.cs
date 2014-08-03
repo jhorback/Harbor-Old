@@ -88,6 +88,9 @@ namespace Harbor.Data
 					.WithMany()
 					.HasForeignKey(m => m.UserName)
 					.WillCascadeOnDelete(false);
+
+				Ignore(m => m.HeaderData);
+				Ignore(m => m.AsideData);
 			}
 		}
 

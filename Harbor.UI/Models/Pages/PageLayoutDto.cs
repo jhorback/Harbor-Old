@@ -1,4 +1,5 @@
-﻿using Harbor.Domain.Pages;
+﻿using Harbor.Domain;
+using Harbor.Domain.Pages;
 
 namespace Harbor.UI.Models
 {
@@ -11,40 +12,44 @@ namespace Harbor.UI.Models
 		
 		public string headerKey { get; set; }
 		public UicDto header { get; set; }
-		public string headerData { get; set; }
+		public object headerData { get; set; }
 
 		public string asideKey { get; set; }
 		public UicDto aside { get; set; }
-		public string asideData { get; set; }
+		public object asideData { get; set; }
 
-		public static PageLayoutDto FromPageLayout(PageLayout layout)
+		public PageLayoutDto() { }
+
+		public PageLayoutDto(PageLayout layout)
 		{
 			if (layout == null)
 			{
-				return null;
+				layout = new PageLayout();
 			}
 
-			return new PageLayoutDto
-			{
-				id = layout.PageLayoutID,
-				layoutIsCentered = layout.DisplayProperties.HasFlag(PageLayout.LayoutDisplayProperties.ContentCentered),
-				layoutIsReadable = layout.DisplayProperties.HasFlag(PageLayout.LayoutDisplayProperties.ContentReadable),
-				layoutHasNoSidebar = layout.DisplayProperties.HasFlag(PageLayout.LayoutDisplayProperties.NoAside),
-				headerKey = layout.HeaderKey,
-				header = UicDto.FromUic(layout.Header),
-				headerData = layout.HeaderDataStr,
-				asideKey = layout.AsideKey,
-				aside = UicDto.FromUic(layout.Aside),
-				asideData = layout.AsideDataStr
-			};
+			id = layout.PageLayoutID;
+			layoutIsCentered = layout.DisplayProperties.HasFlag(PageLayout.LayoutDisplayProperties.ContentCentered);
+			layoutIsReadable = layout.DisplayProperties.HasFlag(PageLayout.LayoutDisplayProperties.ContentReadable);
+			layoutHasNoSidebar = layout.DisplayProperties.HasFlag(PageLayout.LayoutDisplayProperties.NoAside);
+			headerKey = layout.HeaderKey;
+			header = UicDto.FromUic(layout.Header);
+			headerData = layout.HeaderData;
+			asideKey = layout.AsideKey;
+			aside = UicDto.FromUic(layout.Aside);
+			asideData = layout.AsideData;
+		}
+
+		public static PageLayoutDto FromPageLayout(PageLayout layout)
+		{
+			return new PageLayoutDto(layout);
 		}
 
 		public static PageLayout ToPageLayout(PageLayout pageLayout, PageLayoutDto layoutDto)
 		{
 			if (layoutDto != null && pageLayout != null)
 			{
-				pageLayout.HeaderDataStr = layoutDto.headerData;
-				pageLayout.AsideDataStr = layoutDto.asideData;
+				pageLayout.HeaderDataStr = layoutDto.headerData == null ? null : layoutDto.headerData.ToString();
+				pageLayout.AsideDataStr = layoutDto.asideData == null ? null : layoutDto.asideData.ToString();
 			}
 			
 			return pageLayout;
