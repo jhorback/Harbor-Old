@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Harbor.Domain.Pages;
 
@@ -8,6 +9,7 @@ namespace Harbor.UI.Models
 	{
 		public int pageID { get; set; }
 		public List<TemplateUicDto> content { get; set; }
+		public IDictionary<string, Object> contentData { get; set; }
 		public string defaultContentClassName { get; set; }
 		public int componentCounter { get; set; }
 
@@ -27,6 +29,7 @@ namespace Harbor.UI.Models
 			{
 				pageID = template.PageID,
 				content = template.Content.Select(TemplateUicDto.FromTemplateUic).ToList(),
+				contentData = template.contentData,
 				defaultContentClassName = template.DefaultContentClassName,
 				componentCounter = template.ComponentCounter
 			};
