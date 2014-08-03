@@ -35,6 +35,5 @@ namespace Harbor.Domain.Pages
 		}
 
 		public abstract object GetLayoutContent();
-		public abstract void SetLayoutContent();
 	}
 }
