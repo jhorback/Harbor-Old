@@ -21,11 +21,11 @@ pageModel.pageLayout.prototype = {
 
 	initialize: function () {
 		this.header = this.attributes.headerKey ? 
-			this.modelFactory.createGeneric(this.attributes.header) : 
+			this.modelFactory.createGeneric(_.extend({}, this.get("headerData"), this.attributes.header)) : 
 			null;
 
 		this.aside = this.attributes.asideKey ?
-			this.modelFactory.createGeneric(this.attributes.aside) :
+			this.modelFactory.createGeneric(_.extend({}, this.get("asideData"), this.attributes.aside)):
 			null;
 	},
 
