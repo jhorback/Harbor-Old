@@ -6,15 +6,15 @@ namespace Harbor.Domain.Pages.Content
 	{
 		public Links()
 		{
-			sections = new List<LinksSections>();
+			sections = new List<LinksSection>();
 		}
 
-		public List<LinksSections> sections { get; set; }
+		public List<LinksSection> sections { get; set; }
 
 		
-		public class LinksSections
+		public class LinksSection
 		{
-			public LinksSections()
+			public LinksSection()
 			{
 				links = new List<LinksSectionLink>();
 			}
