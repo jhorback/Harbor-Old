@@ -38,14 +38,30 @@ namespace Harbor.Domain.Pages
 
 		public LayoutDisplayProperties DisplayProperties { get; set; }
 
+		/// <summary>
+		/// The key of the header content type.
+		/// </summary>
 		public string HeaderKey { get; set; }
 
+		/// <summary>
+		/// The header data as stored in the database.
+		/// </summary>
 		public string HeaderDataStr { get; set; }
 
-		public string AsideKey { get; set; }
+		/// <summary>
+		/// Returns the untyped version of GetHeaderData.
+		/// </summary>
+		public object HeaderData
+		{
+			get
+			{
+				return _header;
+			}
+		}
 
-		public string AsideDataStr { get; set; }
-
+		/// <summary>
+		/// The UI fields for the header.
+		/// </summary>
 		public Uic Header
 		{
 			get
@@ -63,6 +79,31 @@ namespace Harbor.Domain.Pages
 			}
 		}
 
+
+		/// <summary>
+		/// The key of the aside content type.
+		/// </summary>
+		public string AsideKey { get; set; }
+
+		/// <summary>
+		/// The aside data as stored in the database.
+		/// </summary>
+		public string AsideDataStr { get; set; }
+
+		/// <summary>
+		/// Returns the untyped version of GetAsideData.
+		/// </summary>
+		public object AsideData
+		{
+			get
+			{
+				return _aside;
+			}
+		}
+
+		/// <summary>
+		/// The UI fields for the aside.
+		/// </summary>
 		public Uic Aside
 		{
 			get

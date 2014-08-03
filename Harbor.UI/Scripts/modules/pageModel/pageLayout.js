@@ -20,31 +20,15 @@ pageModel.pageLayout.prototype = {
 	},
 
 	initialize: function () {
-		this.header = this.attributes.headerKey ? 
-			this.modelFactory.createGeneric(_.extend({}, this.get("headerData"), this.attributes.header)) : 
+		var attrs = this.attributes;
+
+		this.header = attrs.headerKey ? 
+			this.modelFactory.createGeneric(_.extend({}, attrs.headerData, attrs.header)) : 
 			null;
 
-		this.aside = this.attributes.asideKey ?
-			this.modelFactory.createGeneric(_.extend({}, this.get("asideData"), this.attributes.aside)):
+		this.aside = attrs.asideKey ?
+			this.modelFactory.createGeneric(_.extend({}, attrs.asideData, attrs.aside)):
 			null;
-	},
-
-	"[headerData]": {
-		get: function (value) {
-			return JSON.parse(value);
-		},
-		set: function (value) {
-			return JSON.stringify(value);
-		}
-	},
-
-	"[asideData]": {
-		get: function (value) {
-			return JSON.parse(value);
-		},
-		set: function (value) {
-			return JSON.stringify(value);
-		}
 	}
 };
 
