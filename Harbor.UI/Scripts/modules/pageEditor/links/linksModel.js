@@ -1,6 +1,6 @@
 ﻿
 
-pageEditor.linksModel = function (attrs, options, collectionFactory, currentPageRepo, navLinksRepo) {
+pageEditor.linksModel = function (attrs, options, collectionFactory, currentPageRepo) {
 
 	this.sections = collectionFactory.createGeneric(attrs.sections, {
 		model: "linksSectionModel",
@@ -15,7 +15,6 @@ pageEditor.linksModel = function (attrs, options, collectionFactory, currentPage
 	});
 
 	this.currentPageRepo = currentPageRepo;
-	this.navLinksRepo = navLinksRepo;
 };
 
 pageEditor.linksModel.prototype = {
@@ -71,7 +70,7 @@ pageEditor.linksModel.prototype = {
 	save: function () {
 		this.updateIsEmpty();
 		
-		return $.when(this.currentPageRepo.saveCurrentPage(), this.navLinksRepo.updateLink(this));
+		// return $.when(this.currentPageRepo.saveCurrentPage(), this.navLinksRepo.updateLink(this));
 	}
 };
 
@@ -81,6 +80,5 @@ pageEditor.model("linksModel", [
 	"options",
 	"collectionFactory",
 	"currentPageRepo",
-	"navLinksRepo",
 	pageEditor.linksModel
 ]);
