@@ -2,18 +2,7 @@
 
 pageEditor.linksModel = function (attrs, options, collectionFactory, currentPageRepo) {
 
-	this.sections = collectionFactory.createGeneric(attrs.sections, {
-		model: "linksSectionModel",
-		comparator: function (model) {
-			var node = $("[data-cid=" + model.cid + "]");
-			var index = node.index();
-			if (index === -1) {
-				index = 1000;
-			}
-			return index;
-		}
-	});
-
+	this.collectionFactory = collectionFactory;
 	this.currentPageRepo = currentPageRepo;
 };
 
@@ -31,12 +20,23 @@ pageEditor.linksModel.prototype = {
 		isEmpty: true
 	},
 
-	initialize: function () {
+	initialize: function (attrs) {
+		this.sections = this.collectionFactory.createGeneric(attrs.sections, {
+				model: "linksSectionModel",
+				comparator: function (model) {
+					var node = $("[data-cid=" + model.cid + "]");
+					var index = node.index();
+					if (index === -1) {
+						index = 1000;
+					}
+					return index;
+				}
+			});
+
 		this.updateIsEmpty();
-		// this.sections.on("save", this.save, this);
-		//this.on("change:name", function () {
-		//	this.save();
-		//}, this);
+		
+		this.on("change:name", this.save);
+		this.sections.on("save", this.save, this);
 	},
 	
 	"[name]": {
@@ -51,7 +51,7 @@ pageEditor.linksModel.prototype = {
 		},
 		
 		set: function (value) {
-			this.sections.set(value, { silent: true});
+			this.sections && this.sections.set(value); // , { silent: true});
 		}
 	},
 	
@@ -69,8 +69,7 @@ pageEditor.linksModel.prototype = {
 	
 	save: function () {
 		this.updateIsEmpty();
-		
-		// return $.when(this.currentPageRepo.saveCurrentPage(), this.navLinksRepo.updateLink(this));
+		this.currentPageRepo.saveCurrentPage();
 	}
 };
 

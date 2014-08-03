@@ -16,9 +16,7 @@ pageEditor.linkSectionLinkModel.prototype = {
 	},
 	
 	initialize: function () {
-		this.on("change:pageID change:text", function () {
-			this.trigger("save", "linkSectionLinkModel");
-		}, this);
+		this.on("change:pageID change:text", this.save);
 	},
 	
 	"[itemClassName]": {
@@ -39,6 +37,10 @@ pageEditor.linkSectionLinkModel.prototype = {
 		get: function () {
 			return this.pageurl.get(this.get("pageID"), this.get("text"));
 		}
+	},
+
+	save: function () {
+		this.trigger("save");
 	}
 };
 
