@@ -531,7 +531,6 @@
     <Content Include="Scripts\modules\bbextui\selectlistFactory.js" />
     <Content Include="Scripts\modules\bbextui\tabFactory.js" />
     <Content Include="Scripts\modules\bbextui\tabFactoryProgressModel.js" />
-    <Content Include="Scripts\modules\currentPageModel\navLinks\navLinksCollection.js" />
     <Content Include="Scripts\modules\currentPageModel\pageComponent\pageComponent.js" />
     <Content Include="Scripts\modules\currentPageModel\pageComponent\pageComponentRepo.js" />
     <Content Include="Scripts\modules\currentPageModel\pageComponent\pageComponents.js" />
@@ -550,8 +549,6 @@
     <Content Include="Scripts\modules\pageEditor\links\linksView.js" />
     <Content Include="Scripts\modules\pageEditor\links\linksEditView.js" />
     <Content Include="Scripts\modules\pageEditor\links\linksModel.js" />
-    <Content Include="Scripts\modules\currentPageModel\navLinks\navlinksModel.js" />
-    <Content Include="Scripts\modules\currentPageModel\navLinks\navLinksRepo.js" />
     <Content Include="Scripts\modules\pageEditor\%24pageEditor.js" />
     <Content Include="Scripts\apps\pageLoader\pageLoaderModel.js" />
     <Content Include="Scripts\apps\pageLoader\pageLoaderView.js" />
