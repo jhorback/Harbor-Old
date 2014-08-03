@@ -25,7 +25,7 @@ pageEditor.pageComponent = function (console, appurl, context, _, $, modelFactor
 			// gather the default properties (to initialize the model with)
 			pageProps = component.pageProperties;
 			getDefaults = component.getDefaults;
-			modelProps = this.componentModel || {};
+			modelProps = this.componentModel.attributes || {};
 			modelProps.id = this.uicid;
 			_.each(pageProps, function (attrName) {
 				var attrValue = this.getProperty(attrName);
