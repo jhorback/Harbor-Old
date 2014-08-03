@@ -779,6 +779,9 @@
     <Content Include="Views\PageEditor\_productLink.cshtml" />
     <Content Include="Views\AppUI\Index.cshtml" />
     <Content Include="Views\AppUI\_pagerView.cshtml" />
+    <Content Include="Views\PageEditor\links\_linksView.cshtml" />
+    <Content Include="Views\PageEditor\links\_linksNewView.cshtml" />
+    <Content Include="Views\PageEditor\links\_linksEditView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\users\" />
