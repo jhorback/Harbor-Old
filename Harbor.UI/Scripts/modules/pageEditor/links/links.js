@@ -3,7 +3,7 @@ pageEditor.links = function (templateRenderer) {
 	
 	this.templateRenderer = templateRenderer;
 	
-	this.model.on("save", this.open, this);
+	// this.model.on("save", this.open, this);
 
 	this.$el.find("a").on("click.links", function (event) {
 		event.preventDefault();
@@ -18,21 +18,14 @@ pageEditor.links.prototype = {
 	},
 
 	open: function () {
+		debugger;
+
 		this.view && this.view.close();
 		
-		if (this.model.isNew()) {
-			
-			this.view = this.templateRenderer.render("linksNewView", {
-				model: this.model,
-				uicid: this.uicid
-			});
-		} else {
-			
-			this.view = this.templateRenderer.render("linksEditView", {
-				model: this.model,
-				uicid: this.uicid
-			});
-		}
+		this.view = this.templateRenderer.render("linksEditView", {
+			model: this.model,
+			uicid: this.uicid
+		});
 
 		this.$el.empty().append(this.view.$el);
 	},
