@@ -1,23 +1,6 @@
 ﻿
 pageEditor.linksSectionModel = function (attrs, options, collectionFactory) {
-	var links = attrs.links || [];
-	
-	this.links = collectionFactory.createGeneric(links, {
-		model: "linkSectionLinkModel",
-		comparator: function (model) {
-			var node = $("#" + model.cid);
-			var index = node.index();
-			return index;
-		}
-	});
-
-	this.on("change:title", function () {
-		this.trigger("save", "linksSectionModel.title");
-	}, this);
-
-	this.links.on("save add remove", function () {
-		this.trigger("save", "linksSectionModel.links");
-	}, this);
+	this.collectionFactory = collectionFactory;
 };
 
 pageEditor.linksSectionModel.prototype = {
@@ -26,11 +9,30 @@ pageEditor.linksSectionModel.prototype = {
 		hasTitle: false,
 		links: []
 	},
+
+	initialize: function (attrs, options) {
+	
+		this.links = this.collectionFactory.createGeneric(attrs.links || [], {
+			model: "linkSectionLinkModel",
+			comparator: function (model) {
+				var node = $("#" + model.cid);
+				var index = node.index();
+				return index;
+			}
+		});
+
+		this.on("change:title", this.save);
+		this.links.on("save add remove", this.save);
+	},
 	
 	"[links]": {
 		get: function () {
-			var links = this.links.toJSON();
+			var links = this.links && this.links.toJSON();
 			return links;
+		},
+
+		set: function (value) {
+			this.links && this.links.set(value); //, { silent: true});
 		}
 	},
 
@@ -38,6 +40,10 @@ pageEditor.linksSectionModel.prototype = {
 		get: function () {
 			return this.get("title") ? true : false;
 		}
+	},
+
+	save: function () {
+		this.trigger("save");
 	}
 };
 
