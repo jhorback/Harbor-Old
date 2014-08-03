@@ -21,10 +21,5 @@ namespace Harbor.Domain.Pages.ContentTypes
 		{
 			return null;
 		}
-
-		public override void SetLayoutContent()
-		{
-			// noop
-		}
 	}
 }
