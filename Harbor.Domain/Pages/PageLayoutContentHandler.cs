@@ -36,4 +36,32 @@ namespace Harbor.Domain.Pages
 
 		public abstract object GetLayoutContent();
 	}
+
+
+	public class HeaderHandler<T> : PageLayoutContentHandler
+	{
+		public HeaderHandler(Page page)
+			: base(page)
+		{
+		}
+
+		public override object GetLayoutContent()
+		{
+			return GetHeader<T>();
+		}
+	}
+
+
+	public class AsideHandler<T> : PageLayoutContentHandler
+	{
+		public AsideHandler(Page page)
+			: base(page)
+		{
+		}
+
+		public override object GetLayoutContent()
+		{
+			return GetAside<T>();
+		}
+	}
 }
