@@ -6,24 +6,43 @@ namespace Harbor.Domain.Pages.ContentTypes
 	{
 		public override Type HandlerType
 		{
-			get { return typeof(LinksHandler); }
+			get { return typeof(AsideHandler<Content.Links>); }
 		}
 	}
 
-	public class LinksHandler : PageLayoutContentHandler
+	//public class LinksHandler : PageLayoutContentHandler
+	//{
+	//	public LinksHandler(Page page) : base(page)
+	//	{
+	//	}
+
+	//	public override object GetLayoutContent()
+	//	{
+	//		return GetAside<Content.Links>();
+	//	}
+	//}
+
+	public class AsideHandler<T> : PageLayoutContentHandler
 	{
-		public LinksHandler(Page page) : base(page)
+		public AsideHandler(Page page) : base(page)
 		{
 		}
 
 		public override object GetLayoutContent()
 		{
-			return GetAside<Content.Links>();
+			return GetAside<T>();
+		}
+	}
+
+	public class HeaderHandler<T> : PageLayoutContentHandler
+	{
+		public HeaderHandler(Page page) : base(page)
+		{
 		}
 
-		public override void SetLayoutContent()
+		public override object GetLayoutContent()
 		{
-			// noop
+			return GetHeader<T>();
 		}
 	}
 }
