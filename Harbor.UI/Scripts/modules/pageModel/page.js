@@ -122,7 +122,9 @@ page.prototype = {
 		var props, prop;
 
 		props = this.get("properties");
-		prop = _.findWhere(props, {name: name});
+		prop = _.find(props, function (item) {
+			return item.name === name;
+		});
 		if (prop) {
 			prop.value = value;
 		} else {
