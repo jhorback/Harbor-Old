@@ -767,7 +767,7 @@
     <Content Include="Scripts\bbext\Readme.md" />
     <Content Include="Views\StyleGuide\TestApp.cshtml" />
     <Content Include="Views\PageEditor\_image.cshtml" />
-    <Content Include="Views\PageEditor\_links.cshtml" />
+    <Content Include="Views\PageEditor\links\_links.cshtml" />
     <Content Include="Views\PageEditor\_pageLink.cshtml" />
     <Content Include="Views\PageEditor\_text.cshtml" />
     <Content Include="Views\PageEditor\_title.cshtml" />
