@@ -34,7 +34,7 @@ pageEditor.linksModel.prototype = {
 
 	initialize: function () {
 		this.updateIsEmpty();
-		this.sections.on("save", this.save, this);
+		// this.sections.on("save", this.save, this);
 		//this.on("change:name", function () {
 		//	this.save();
 		//}, this);
