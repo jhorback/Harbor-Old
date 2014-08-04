@@ -24,3 +24,6 @@ pageEditor.title.prototype = {
 
 
 pageEditor.pageComponent("title", ["viewRenderer", pageEditor.title]);
+
+
+// need this? pageEditor.model("titleModel");

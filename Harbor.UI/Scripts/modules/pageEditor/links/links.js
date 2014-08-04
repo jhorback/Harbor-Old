@@ -11,14 +11,13 @@ pageEditor.links = function (templateRenderer) {
 };
 
 pageEditor.links.prototype = {
-	model: "linksModel",
+	// model: "linksModel",
 
 	create: function () {
 		this.open();
 	},
 
 	open: function () {
-		debugger;
 
 		this.view && this.view.close();
 		

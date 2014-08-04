@@ -1,16 +1,12 @@
 ﻿
 
-pageEditor.linksModel = function (attrs, options, collectionFactory, currentPageRepo) {
+pageEditor.linksModel = function (attrs, options, collectionFactory) {
 
 	this.collectionFactory = collectionFactory;
-	this.currentPageRepo = currentPageRepo;
 };
 
 pageEditor.linksModel.prototype = {
-	component: {
-		isAside: true
-	},
-	
+
 	defaults: {
 		id: null,
 		name: null,
@@ -21,6 +17,8 @@ pageEditor.linksModel.prototype = {
 	},
 
 	initialize: function (attrs) {
+		this.save = _.debounce(this.save, 250);
+
 		this.sections = this.collectionFactory.createGeneric(attrs.sections, {
 				model: "linksSectionModel",
 				comparator: function (model) {
@@ -36,7 +34,7 @@ pageEditor.linksModel.prototype = {
 		this.updateIsEmpty();
 		
 		this.on("change:name", this.save);
-		this.sections.on("save", this.save, this);
+		this.sections.on("save add remove", this.save, this);
 	},
 	
 	"[name]": {
@@ -66,10 +64,10 @@ pageEditor.linksModel.prototype = {
 	addSection: function () {
 		this.sections.add({});
 	},
-	
+
 	save: function () {
-		this.updateIsEmpty();
-		this.currentPageRepo.saveCurrentPage();
+		debugger;
+		this.savePage();
 	}
 };
 
@@ -78,6 +76,5 @@ pageEditor.model("linksModel", [
 	"attrs",
 	"options",
 	"collectionFactory",
-	"currentPageRepo",
 	pageEditor.linksModel
 ]);
