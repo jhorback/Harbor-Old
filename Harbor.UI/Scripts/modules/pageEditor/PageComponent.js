@@ -15,13 +15,16 @@ pageEditor.pageComponent = function (console, appurl, context, _, $, modelFactor
 		initModel: function () {
 			var temp, pageProps, modelProps, defaultProps, getDefaults, component;
 
+			// for layout (aside and header) components, the componentModel is already mapped back
+			// eventually may want to do the same for template content (and models)
 			if (!this.model) {
+				this.model = this.componentModel;
 				return;
 			}
 
 			temp = context.get(this.model, true);
 			component = temp.prototype.component;
-				
+	
 			// gather the default properties (to initialize the model with)
 			pageProps = component.pageProperties;
 			getDefaults = component.getDefaults;
@@ -42,8 +45,8 @@ pageEditor.pageComponent = function (console, appurl, context, _, $, modelFactor
 			// create the model and give the page model and save method
 			this.model = modelFactory.create(this.model, modelProps, { page: this.page });
 			this.model.page = this.page;
-			if (!this.model.save) {
-				this.model.save = _.bind(this.save, this);
+			if (!this.model.savePage) {
+				this.model.savePage = _.bind(this.save, this);
 			}
 
 			// set up binding on the page properties
@@ -54,19 +57,6 @@ pageEditor.pageComponent = function (console, appurl, context, _, $, modelFactor
 			}, this);
 		},
 			
-		replaceHtmlFromServer: function () {
-			var el = this.$el,
-				url = appurl.get("page/" + this.componentType +
-					"?pageID=" + this.page.get("id") + "&uicid=" + this.uicid);
-			
-			$.ajax({
-				url: url,
-				dataType: "html"
-			}).then(function (response) {
-				el.empty().html(response);
-			});
-		},
-
 		setProperty: function (name, value) {
 			this.page.setProperty(this.uicid + "-" + name, value);
 		},

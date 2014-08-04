@@ -23,12 +23,30 @@ pageModel.pageLayout.prototype = {
 		var attrs = this.attributes;
 
 		this.header = attrs.headerKey ? 
-			this.modelFactory.createGeneric(_.extend({}, attrs.headerData, attrs.header)) : 
+			this.modelFactory.create(attrs.headerKey + "Model", _.extend({}, attrs.headerData, attrs.header)) : 
 			null;
-
+		
 		this.aside = attrs.asideKey ?
-			this.modelFactory.createGeneric(_.extend({}, attrs.asideData, attrs.aside)):
+			this.modelFactory.create(attrs.asideKey + "Model", _.extend({}, attrs.asideData, attrs.aside)):
 			null;
+	},
+
+	"[aside]": {
+		get: function () {
+			return this.aside && this.aside.toJSON();
+		},
+		set: function (value) {
+			this.aside && this.aside.set(value);
+		}
+	},
+
+	"[header]": {
+		get: function () {
+			return this.header.toJSON();
+		},
+		set: function (value) {
+			this.header.set(value);
+		}
 	}
 };
 
