@@ -548,7 +548,7 @@
     <Content Include="Scripts\modules\pageEditor\links\linksSectionView.js" />
     <Content Include="Scripts\modules\pageEditor\links\linksView.js" />
     <Content Include="Scripts\modules\pageEditor\links\linksEditView.js" />
-    <Content Include="Scripts\modules\pageEditor\links\linksModel.js" />
+    <Content Include="Scripts\modules\pageModel\components\linksModel.js" />
     <Content Include="Scripts\modules\pageEditor\%24pageEditor.js" />
     <Content Include="Scripts\apps\pageLoader\pageLoaderModel.js" />
     <Content Include="Scripts\apps\pageLoader\pageLoaderView.js" />
@@ -633,6 +633,7 @@
     <Content Include="Scripts\modules\pageEditor\templateEditorView.js" />
     <Content Include="Scripts\modules\pageEditor\title\titleView.js" />
     <Content Include="Scripts\modules\pageModel\%24pageModel.js" />
+    <Content Include="Scripts\modules\pageModel\components\titleModel.js" />
     <Content Include="Scripts\modules\pageModel\pageLayout.js" />
     <Content Include="Scripts\modules\pageModel\pageRepo.js" />
     <Content Include="Scripts\modules\pageModel\pages.js" />
