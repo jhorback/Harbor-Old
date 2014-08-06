@@ -29,6 +29,15 @@ pageModel.pageLayout.prototype = {
 		this.aside = attrs.asideKey ?
 			this.modelFactory.create(attrs.asideKey + "Model", _.extend({}, attrs.asideData, attrs.aside)):
 			null;
+		
+		this.on("sync", this.onSync);
+	},
+
+	onSync: function () {
+		var attrs = this.attributes;
+
+		this.header && this.header.set(attrs.header);
+		this.aside && this.aside.set(attrs.aside);
 	},
 
 	"[aside]": {

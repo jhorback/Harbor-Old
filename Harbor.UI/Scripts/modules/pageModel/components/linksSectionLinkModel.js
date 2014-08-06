@@ -1,11 +1,11 @@
 ﻿
-pageEditor.linkSectionLinkModel = function (attrs, options, location, pageurl) {
+pageModel.linkSectionLinkModel = function (attrs, options, location, pageurl) {
 	this.location = location;
 	this.pageurl = pageurl;
 };
 
 
-pageEditor.linkSectionLinkModel.prototype = {
+pageModel.linkSectionLinkModel.prototype = {
 	defaults: {
 		pageID: null,
 		text: null,
@@ -44,10 +44,10 @@ pageEditor.linkSectionLinkModel.prototype = {
 	}
 };
 
-pageEditor.model("linkSectionLinkModel", [
+pageModel.model("linkSectionLinkModel", [
 	"attrs",
 	"options",
 	"location",
 	"pageurl",
-	pageEditor.linkSectionLinkModel
+	pageModel.linkSectionLinkModel
 ]);
