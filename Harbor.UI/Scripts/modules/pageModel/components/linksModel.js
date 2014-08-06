@@ -1,11 +1,11 @@
 ﻿
 
-pageEditor.linksModel = function (attrs, options, collectionFactory) {
+pageModel.linksModel = function (attrs, options, collectionFactory) {
 
 	this.collectionFactory = collectionFactory;
 };
 
-pageEditor.linksModel.prototype = {
+pageModel.linksModel.prototype = {
 
 	defaults: {
 		id: null,
@@ -72,9 +72,11 @@ pageEditor.linksModel.prototype = {
 };
 
 
-pageEditor.model("linksModel", [
+pageModel.model("linksModel", [
 	"attrs",
 	"options",
 	"collectionFactory",
-	pageEditor.linksModel
+	pageModel.linksModel
 ]);
+
+
