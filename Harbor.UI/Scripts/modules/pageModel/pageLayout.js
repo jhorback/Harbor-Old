@@ -51,10 +51,10 @@ pageModel.pageLayout.prototype = {
 
 	"[header]": {
 		get: function () {
-			return this.header.toJSON();
+			return this.header && this.header.toJSON();
 		},
 		set: function (value) {
-			this.header.set(value);
+			this.header && this.header.set(value);
 		}
 	}
 };

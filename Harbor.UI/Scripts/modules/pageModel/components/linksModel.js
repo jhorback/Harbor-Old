@@ -19,16 +19,13 @@ pageModel.linksModel.prototype = {
 	initialize: function (attrs) {
 		this.save = _.debounce(this.save, 250);
 
-		setTimeout(function () {
 			
-		
 		this.sections = this.collectionFactory.create("linksSectionCollection", attrs.sections);
 
 		this.updateIsEmpty();
 		
 		this.on("change:name", this.save);
 		this.sections.on("save add remove", this.save, this);
-		}.bind(this), 0);
 	},
 	
 	"[name]": {

@@ -8,14 +8,15 @@ function currentPageRepo(
 	console
 	) {
 
-	var currentPage = globalCache.get("currentPage") ||
-		modelFactory.create("page", currentPageDto);
-
-	globalCache.set("currentPage", currentPage);
-	console.debug("currentPage", currentPage);
+	var currentPage = globalCache.get("currentPage");
+	console.debug("currentPageDto", currentPageDto);
 	
 	return {
 		getCurrentPage: function () {
+			if (!currentPage) {
+				currentPage =  modelFactory.create("page", currentPageDto);
+				globalCache.set("currentPage", currentPage);
+			}
 			return currentPage;
 		},
 		
