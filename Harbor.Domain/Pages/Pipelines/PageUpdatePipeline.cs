@@ -1,4 +1,5 @@
-﻿using Harbor.Domain.Pages.PipelineHandlers;
+﻿using Harbor.Domain.Pages.Content;
+using Harbor.Domain.Pages.PipelineHandlers;
 using Harbor.Domain.Pipeline;
 
 namespace Harbor.Domain.Pages
@@ -12,5 +13,79 @@ namespace Harbor.Domain.Pages
 			AddHandler<ContentLoadHandler>(); // run this before the resource updater
 			AddHandler<ContentResourceUpdateHandler>();
 		}
+	}
+
+
+
+
+
+
+	public class CreatePageInLinksHandler : IPageCommandHandler<CreatePageInLinks>
+	{
+		private readonly IPageRepository _pageRepository;
+		private readonly IPageFactory _pageFactory;
+
+		public CreatePageInLinksHandler(IPageRepository pageRepository, IPageFactory pageFactory)
+		{
+			_pageRepository = pageRepository;
+			_pageFactory = pageFactory;
+		}
+
+		public void Execute(CreatePageInLinks command)
+		{
+			var page = _pageRepository.FindById(command.PageID, readOnly: false);
+			var links = page.Layout.GetAsideAdata<Links>();
+
+
+			var layoutId = page.Layout.PageLayoutID;
+			var publish = page.Public;
+
+			var newPage = _pageFactory.Create(command.User, command.PageType, command.Title, publish, layoutId);
+			_pageRepository.Create(newPage);
+			_pageRepository.Save();
+
+			var section = links.sections[command.SectionIndex];
+			if (section != null) // need more checking here for index
+			{
+				section.links.Add(new Links.LinksSectionLink
+				{
+					pageID = newPage.PageID,
+					text =  command.Title
+				});
+			}
+
+			_pageRepository.Update(page);
+			_pageRepository.Save();
+		}
+	}
+
+
+	public class CreatePageInLinks : ICommand
+	{
+		public string User { get; set; }
+		public int PageID { get; set; }
+		public string Title { get; set; }
+		public string PageType { get; set; }
+		public int SectionIndex { get; set; }
+	}
+
+
+	// need something to load the command handler, context, and execute it.
+	// how does this differ from events...
+
+	public interface IPageCommandHandler<in T> : ICommandHandler<T> where T: ICommand
+	{
+		
+	}
+
+	public interface ICommand
+	{
+		//string Key { get; }
+		string User { get; set; }
+	}
+
+	public interface ICommandHandler<in T> where T : ICommand
+	{
+		void Execute(T command);
 	}
 }
