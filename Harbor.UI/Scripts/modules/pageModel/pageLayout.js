@@ -28,7 +28,6 @@ pageModel.pageLayout.prototype = {
 			this.modelFactory.create(attrs.headerKey + "Model", headerAttrs) : 
 			null;
 		
-		debugger;
 		this.aside = attrs.asideKey ?
 			this.modelFactory.create(attrs.asideKey + "Model", asideAttrs):
 			null;
@@ -49,6 +48,7 @@ pageModel.pageLayout.prototype = {
 		},
 		set: function (value) {
 			this.aside && this.aside.set(value);
+			return value;
 		}
 	},
 
@@ -58,6 +58,7 @@ pageModel.pageLayout.prototype = {
 		},
 		set: function (value) {
 			this.header && this.header.set(value);
+			return value;
 		}
 	}
 };
