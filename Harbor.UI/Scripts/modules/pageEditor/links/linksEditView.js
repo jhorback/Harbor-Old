@@ -7,6 +7,9 @@ pageEditor.linksEditView = function (options, _, componentManager) {
 
 pageEditor.linksEditView.prototype = {
 	initialize: function () {
+		this.listenTo(this.model, "save", function () {
+			debugger;
+		});
 	},
 	
 	events: {
@@ -33,17 +36,6 @@ pageEditor.linksEditView.prototype = {
 
 	updateOrder: function () {
 		this.model.sections.sort();
-	},
-	
-	removeNavLink: function () {
-		var warning = "WARNING\nYou are about to remove shared navigation links. "
-			+ "This may effect other pages.\n\nAre you sure you want to remove these links?";
-		if (confirm(warning)) {
-			// call to navLinksRepo to delete
-			//this.navLinksRepo.deleteLink(this.model).then(this.bind(function () {
-			//	this.componentManager.deleteComponent(this.options.uicid);
-			//}, this));
-		}	
 	}
 };
 

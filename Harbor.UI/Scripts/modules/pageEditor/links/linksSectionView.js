@@ -1,9 +1,9 @@
 ﻿
 
-pageEditor.linksSectionView = function (options, pageSelector, _) {
+pageEditor.linksSectionView = function (options, pageSelector) {
 
 	this.pageSelector = pageSelector;
-	this.bind = _.bind;
+	this.bindAll("updateOrder", "selectPage");
 };
 
 pageEditor.linksSectionView.prototype = {
@@ -23,7 +23,7 @@ pageEditor.linksSectionView.prototype = {
 			revert: false,
 			containment: this.$el.find("ul"),
 			tolerance: "pointer",
-			update: this.bind(this.updateOrder, this)
+			update: this.updateOrder
 		});
 	},
 	
@@ -33,7 +33,7 @@ pageEditor.linksSectionView.prototype = {
 	
 	addLink: function (event) {
 		this.pageSelector.render({
-			select: this.bind(this.selectPage, this)
+			select: this.selectPage
 		});
 	},
 	
@@ -55,7 +55,5 @@ pageEditor.linksSectionView.prototype = {
 pageEditor.view("linksSectionView", [
 	"options",
 	"pageSelector",
-	"_",
-	"currentPageRepo",
 	pageEditor.linksSectionView
 ]);

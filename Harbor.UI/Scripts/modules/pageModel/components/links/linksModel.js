@@ -20,10 +20,10 @@ pageModel.linksModel.prototype = {
 		this.save = _.debounce(this.save, 250);
 
 		this.sections = this.collectionFactory.create("linksSectionCollection", this.attributes.sections);
-		this.sections.on("all", this.refresh("isEmpty"));
+		this.sections.on("add remove", this.refreshFn("isEmpty"));
 
 		this.on("change:name", this.save);
-		this.sections.on("save add remove", this.save, this);
+		this.listenTo(this.sections, "save add remove", this.save);
 	},
 	
 	"[name]": {
@@ -38,7 +38,7 @@ pageModel.linksModel.prototype = {
 		},
 		
 		set: function (value) {
-			this.sections && this.sections.set(value); // , { silent: true});
+			this.sections && this.sections.set(value);
 			return value;
 		}
 	},
@@ -58,8 +58,7 @@ pageModel.linksModel.prototype = {
 	},
 
 	save: function () {
-		debugger;
-		this.savePage();
+		this.trigger("save");
 	}
 };
 
