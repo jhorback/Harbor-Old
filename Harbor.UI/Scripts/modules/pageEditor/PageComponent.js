@@ -19,6 +19,7 @@ pageEditor.pageComponent = function (console, appurl, context, _, $, modelFactor
 			// eventually may want to do the same for template content (and models)
 			if (!this.model) {
 				this.model = this.componentModel;
+				this.model.page = this.page;
 				return;
 			}
 
