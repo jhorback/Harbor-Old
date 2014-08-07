@@ -12,17 +12,10 @@ pageModel.linksSectionModel.prototype = {
 
 	initialize: function (attrs, options) {
 	
-		//this.links = this.collectionFactory.createGeneric(attrs.links || [], {
-		//	model: "linkSectionLinkModel",
-		//	comparator: function (model) {
-		//		var node = $("#" + model.cid);
-		//		var index = node.index();
-		//		return index;
-		//	}
-		//});
+		this.links = this.collectionFactory.create("linkSectionLinkCollection", attrs.links || []);
 
-		//this.on("change:title", this.save);
-		//this.links.on("save add remove", this.save);
+		this.on("change:title", this.save);
+		this.links.on("save add remove", this.save);
 	},
 	
 	"[links]": {
@@ -33,6 +26,7 @@ pageModel.linksSectionModel.prototype = {
 
 		set: function (value) {
 			this.links && this.links.set(value); //, { silent: true});
+			return value;
 		}
 	},
 
@@ -70,4 +64,6 @@ pageModel.linksSectionCollection = {
 		return index;
 	}
 };
-pageModel.collection("linksSectionCollection", pageModel.linksSectionCollection);
+pageModel.collection("linksSectionCollection",
+	pageModel.linksSectionCollection
+);
