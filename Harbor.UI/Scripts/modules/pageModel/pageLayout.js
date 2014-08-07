@@ -20,14 +20,17 @@ pageModel.pageLayout.prototype = {
 	},
 
 	initialize: function () {
-		var attrs = this.attributes;
+		var attrs = this.attributes,
+			headerAttrs = _.extend(attrs.headerData || {}, attrs.header),
+			asideAttrs = _.extend(attrs.asideData || {}, attrs.aside);
 
 		this.header = attrs.headerKey ? 
-			this.modelFactory.create(attrs.headerKey + "Model", _.extend({}, attrs.headerData, attrs.header)) : 
+			this.modelFactory.create(attrs.headerKey + "Model", headerAttrs) : 
 			null;
 		
+		debugger;
 		this.aside = attrs.asideKey ?
-			this.modelFactory.create(attrs.asideKey + "Model", _.extend({}, attrs.asideData, attrs.aside)):
+			this.modelFactory.create(attrs.asideKey + "Model", asideAttrs):
 			null;
 		
 		this.on("sync", this.onSync);

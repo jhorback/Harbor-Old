@@ -8,10 +8,10 @@ pageModel.linksModel = function (attrs, options, collectionFactory) {
 pageModel.linksModel.prototype = {
 
 	defaults: {
+		key: null,
 		id: null,
 		name: null,
 		sections: [],
-		navLinksID: null,
 		//
 		isEmpty: true
 	},
@@ -19,11 +19,9 @@ pageModel.linksModel.prototype = {
 	initialize: function (attrs) {
 		this.save = _.debounce(this.save, 250);
 
-			
-		this.sections = this.collectionFactory.create("linksSectionCollection", attrs.sections);
+		this.sections = this.collectionFactory.create("linksSectionCollection", this.attributes.sections);
+		this.sections.on("all", this.refresh("isEmpty"));
 
-		this.updateIsEmpty();
-		
 		this.on("change:name", this.save);
 		this.sections.on("save add remove", this.save, this);
 	},
@@ -41,15 +39,18 @@ pageModel.linksModel.prototype = {
 		
 		set: function (value) {
 			this.sections && this.sections.set(value); // , { silent: true});
+			return value;
+		}
+	},
+
+	"[isEmpty]": {
+		get: function () {
+			return this.sections.length === 0;
 		}
 	},
 	
 	isNew: function () {
 		return this.get("name") ? false : true;
-	},
-	
-	updateIsEmpty: function () {
-		this.set("isEmpty", this.sections.length === 0);
 	},
 	
 	addSection: function () {

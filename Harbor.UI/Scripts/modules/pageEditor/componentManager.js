@@ -90,6 +90,11 @@ pageEditor.componentManager = function ($, _, Backbone, context, console, curren
 		type = type || "content"; // mostly informational
 		uicid = componentModel.get("id");
 		key = componentModel.get("key");
+
+		// the header or aside can be null
+		if (!key) {
+			return null;
+		}
 		
 		el = $("#" + uicid);
 		if (el.length === 0) {
