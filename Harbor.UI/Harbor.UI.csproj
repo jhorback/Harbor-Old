@@ -543,12 +543,14 @@
     <Content Include="Scripts\modules\fileSelector\fileSelectorViewModel.js" />
     <Content Include="Scripts\modules\pageEditor\addPageComponentViewModel.js" />
     <Content Include="Scripts\modules\pageEditor\changeLayoutViewModel.js" />
-    <Content Include="Scripts\modules\pageModel\components\linksSectionLinkModel.js" />
+    <Content Include="Scripts\modules\pageModel\components\links\linkSectionLinkCollection.js" />
+    <Content Include="Scripts\modules\pageModel\components\links\linksSectionCollection.js" />
+    <Content Include="Scripts\modules\pageModel\components\links\linksSectionLinkModel.js" />
     <Content Include="Scripts\modules\pageEditor\links\linksSectionLinksView.js" />
     <Content Include="Scripts\modules\pageEditor\links\linksSectionView.js" />
     <Content Include="Scripts\modules\pageEditor\links\linksView.js" />
     <Content Include="Scripts\modules\pageEditor\links\linksEditView.js" />
-    <Content Include="Scripts\modules\pageModel\components\linksModel.js" />
+    <Content Include="Scripts\modules\pageModel\components\links\linksModel.js" />
     <Content Include="Scripts\modules\pageEditor\%24pageEditor.js" />
     <Content Include="Scripts\apps\pageLoader\pageLoaderModel.js" />
     <Content Include="Scripts\apps\pageLoader\pageLoaderView.js" />
@@ -604,7 +606,7 @@
     <Content Include="Scripts\modules\currentPageModel\currentPageRepo.js" />
     <Content Include="Scripts\modules\pageAdder\%24pageAdder.js" />
     <Content Include="Scripts\modules\pageEditor\addPageComponentView.js" />
-    <Content Include="Scripts\modules\pageModel\components\linksSectionModel.js" />
+    <Content Include="Scripts\modules\pageModel\components\links\linksSectionModel.js" />
     <Content Include="Scripts\modules\pageEditor\pageLink\pageLinkView.js" />
     <Content Include="Scripts\modules\pageEditor\pageLink\pageLinkModel.js" />
     <Content Include="Scripts\modules\pageEditor\pageLink\pageLink.js" />
