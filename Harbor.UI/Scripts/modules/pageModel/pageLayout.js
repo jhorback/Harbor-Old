@@ -31,15 +31,6 @@ pageModel.pageLayout.prototype = {
 		this.aside = attrs.asideKey ?
 			this.modelFactory.create(attrs.asideKey + "Model", asideAttrs):
 			null;
-		
-		this.on("sync", this.onSync);
-	},
-
-	onSync: function () {
-		var attrs = this.attributes;
-
-		this.header && this.header.set(attrs.header);
-		this.aside && this.aside.set(attrs.aside);
 	},
 
 	"[aside]": {
@@ -52,7 +43,27 @@ pageModel.pageLayout.prototype = {
 		}
 	},
 
+	"[asideData]": {
+		get: function () {
+			return this.aside && this.aside.toJSON();
+		},
+		set: function (value) {
+			this.aside && this.aside.set(value);
+			return value;
+		}
+	},
+
 	"[header]": {
+		get: function () {
+			return this.header && this.header.toJSON();
+		},
+		set: function (value) {
+			this.header && this.header.set(value);
+			return value;
+		}
+	},
+
+	"[headerData]": {
 		get: function () {
 			return this.header && this.header.toJSON();
 		},

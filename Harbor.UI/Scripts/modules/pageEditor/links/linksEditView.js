@@ -7,9 +7,7 @@ pageEditor.linksEditView = function (options, componentManager) {
 
 pageEditor.linksEditView.prototype = {
 	initialize: function () {
-		this.listenTo(this.model, "save", function () {
-			debugger;
-		});
+		this.listenTo(this.model, "save", this.save);
 	},
 	
 	events: {
@@ -36,6 +34,10 @@ pageEditor.linksEditView.prototype = {
 
 	updateOrder: function () {
 		this.model.sections.sort();
+	},
+
+	save: function () {
+		this.model.page.save();
 	}
 };
 
