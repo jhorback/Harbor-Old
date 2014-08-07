@@ -15,7 +15,7 @@ pageModel.linksSectionModel.prototype = {
 		this.links = this.collectionFactory.create("linkSectionLinkCollection", attrs.links || []);
 
 		this.on("change:title", this.save);
-		this.listenTo(this.links, "save add remove", this.save);
+		this.listenTo(this.links, "save add remove sort", this.save);
 	},
 	
 	"[links]": {
