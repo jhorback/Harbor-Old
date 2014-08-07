@@ -1,8 +1,8 @@
 ﻿
-pageEditor.linksEditView = function (options, _, componentManager) {
+pageEditor.linksEditView = function (options, componentManager) {
 
-	this.bind = _.bind;
 	this.componentManager = componentManager;
+	this.bindAll("updateOrder");
 };
 
 pageEditor.linksEditView.prototype = {
@@ -30,7 +30,7 @@ pageEditor.linksEditView.prototype = {
 			revert: false,
 			//containment: this.$el,
 			tolerance: "pointer",
-			update: this.bind(this.updateOrder, this)
+			update: this.updateOrder
 		});
 	},
 
@@ -42,7 +42,6 @@ pageEditor.linksEditView.prototype = {
 
 pageEditor.view("linksEditView", [
 	"options",
-	"_",
 	"componentManager",
 	pageEditor.linksEditView
 ]);

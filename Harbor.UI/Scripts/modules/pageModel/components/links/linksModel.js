@@ -23,7 +23,7 @@ pageModel.linksModel.prototype = {
 		this.sections.on("add remove", this.refreshFn("isEmpty"));
 
 		this.on("change:name", this.save);
-		this.listenTo(this.sections, "save add remove", this.save);
+		this.listenTo(this.sections, "save add remove sort", this.save);
 	},
 	
 	"[name]": {
