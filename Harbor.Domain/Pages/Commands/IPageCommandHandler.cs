@@ -1,6 +1,6 @@
 ﻿namespace Harbor.Domain.Pages
 {
-	public interface IPageCommandHandler<T> where T : IPageCommand
+	public interface IPageCommandHandler<in T> where T : IPageCommand
 	{
 		void Execute(T command);
 	}
