@@ -84,6 +84,12 @@
     <Compile Include="ILogger.cs" />
     <Compile Include="IObjectFactory.cs" />
     <Compile Include="JSON.cs" />
+    <Compile Include="Pages\Commands\AddNewPageToLinks.cs" />
+    <Compile Include="Pages\Commands\AddNewPageToLinksHandler.cs" />
+    <Compile Include="Pages\Commands\IPageCommand.cs" />
+    <Compile Include="Pages\Commands\IPageCommandHandler.cs" />
+    <Compile Include="Pages\Commands\IPageCommandService.cs" />
+    <Compile Include="Pages\Commands\PageCommandService.cs" />
     <Compile Include="Pages\ContentType.cs" />
     <Compile Include="Pages\ContentTypes\Links.cs" />
     <Compile Include="Pages\IPageLayoutRepository.cs" />
