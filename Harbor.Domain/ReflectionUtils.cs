@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Reflection;
 
 namespace Harbor.Domain
 {
 	public class ReflectionUtils
 	{
+		private delegate bool TypeCheckDelegate(Type param, Type type);
+
 		/// <summary>
 		/// Invoke a method on an Object.
 		/// </summary>
@@ -259,5 +262,83 @@ namespace Harbor.Domain
 			return Activator.CreateInstance(type, flags, null, args, null, null);
 		}
 
+		/// <summary>
+		/// Finds types, that implement a particular interface, in loaded assemblies.
+		/// </summary>
+		/// <param name="interfaceType">the interface to search for</param>
+		/// <returns>List of types</returns>
+		/// <remarks>
+		/// This method only searches loaded assemblies in the application domain.
+		/// It will not load assemblies to perform search.
+		/// </remarks>
+		public static IList<Type> FindTypesImplementingInterface(Type interfaceType)
+		{
+			return FindTypesImplementingInterface(interfaceType, AppDomain.CurrentDomain.GetAssemblies());
+		}
+
+		/// <summary>
+		/// Finds types, that implement a particular interface, in specified assemblies.
+		/// </summary>
+		/// <param name="interfaceType">the interface to search for</param>
+		/// <param name="assemblies">the assemblies to search through</param>
+		/// <returns>List of types, may be empty but never null.</returns>
+		/// <remarks>
+		/// This method only searches the specified assemblies.
+		/// It will not load assemblies to perform search.
+		/// </remarks>
+		public static IList<Type> FindTypesImplementingInterface(Type interfaceType, IList<Assembly> assemblies)
+		{
+			var array = new Assembly[assemblies.Count];
+			assemblies.CopyTo(array, 0);
+			return FindTypesImplementingInterface(interfaceType, array);
+		}
+
+		/// <summary>
+		/// Finds types, that implement a particular interface, in specified assemblies.
+		/// </summary>
+		/// <param name="interfaceType">the interface to search for</param>
+		/// <param name="assemblies">Assemblies to search through</param>
+		/// <returns>List of types, may be empty but never null.</returns>
+		/// <remarks>
+		/// This method only searches the specified assemblies.
+		/// It will not load assemblies to perform search.
+		/// </remarks>
+		public static IList<Type> FindTypesImplementingInterface(Type interfaceType, params Assembly[] assemblies)
+		{
+			//interfaceType.CheckNull("interfaceType");
+			if (!interfaceType.IsInterface)
+			{
+				throw new ArgumentException("interfaceType is not an interface");
+			}
+			return FindTypes(interfaceType, new TypeCheckDelegate(InterfaceTypeCheck), assemblies);
+		}
+
+		private static bool InterfaceTypeCheck(Type interfaceType, Type type)
+		{
+			return interfaceType.IsAssignableFrom(type);
+		}
+
+		private static IList<Type> FindTypes(Type type, TypeCheckDelegate typeCheck, IList<Assembly> assemblies)
+		{
+			//assemblies.CheckNull("assemblies");
+
+			IList<Type> types = new List<Type>();
+			foreach (Assembly assembly in assemblies)
+			{
+				if (assembly == null)
+				{
+					continue;
+				}
+				//_logger.DebugFormat("Loading types from {0}", assembly.FullName);
+				foreach (Type assemblyType in assembly.GetTypes())
+				{
+					if (!assemblyType.IsAbstract && typeCheck(type, assemblyType))
+					{
+						types.Add(assemblyType);
+					}
+				}
+			}
+			return types;
+		}
 	}
 }
