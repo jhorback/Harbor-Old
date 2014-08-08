@@ -1,4 +1,5 @@
-﻿using Harbor.Domain.Pages.Content;
+﻿using System.Collections.Generic;
+using Harbor.Domain.Pages.Content;
 using Harbor.Domain.Pages.PipelineHandlers;
 using Harbor.Domain.Pipeline;
 
@@ -20,18 +21,54 @@ namespace Harbor.Domain.Pages
 
 
 
-	public class CreatePageInLinksHandler : IPageCommandHandler<CreatePageInLinks>
+	public interface IPageCommandService
+	{
+		void Execute(IPageCommand command);
+	}
+
+	public class PageCommandService : IPageCommandService
+	{
+		private readonly Dictionary<string, object> handlers = new Dictionary<string, object>();
+		// handlers may be handlerTypes
+		// then have a handlers cache
+		// look in cache first if not found create from handlerTypes.
+
+
+		public PageCommandService()
+		{
+			
+		}
+
+		public void Execute(IPageCommand command)
+		{
+			var commandName = command.GetType().Name.ToLower();
+			var handler = handlers.ContainsKey(commandName) ? handlers[commandName] : null;
+			if (handler != null)
+			{
+				// handler.Execute(command);
+			}
+		}
+	}
+
+
+
+	
+
+
+
+
+	public class AddNewPageToLinksHandler : IPageCommandHandler<AddNewPageToLinks>
 	{
 		private readonly IPageRepository _pageRepository;
 		private readonly IPageFactory _pageFactory;
 
-		public CreatePageInLinksHandler(IPageRepository pageRepository, IPageFactory pageFactory)
+		public AddNewPageToLinksHandler(IPageRepository pageRepository, IPageFactory pageFactory)
 		{
 			_pageRepository = pageRepository;
 			_pageFactory = pageFactory;
 		}
 
-		public void Execute(CreatePageInLinks command)
+		public void Execute(AddNewPageToLinks command)
 		{
 			var page = _pageRepository.FindById(command.PageID, readOnly: false);
 			var links = page.Layout.GetAsideAdata<Links>();
@@ -60,7 +97,12 @@ namespace Harbor.Domain.Pages
 	}
 
 
-	public class CreatePageInLinks : ICommand
+	public interface IPageCommandHandler<T> where T : IPageCommand
+	{
+		void Execute(T command);
+	}
+
+	public class AddNewPageToLinks : IPageCommand
 	{
 		public string User { get; set; }
 		public int PageID { get; set; }
@@ -69,23 +111,8 @@ namespace Harbor.Domain.Pages
 		public int SectionIndex { get; set; }
 	}
 
-
-	// need something to load the command handler, context, and execute it.
-	// how does this differ from events...
-
-	public interface IPageCommandHandler<in T> : ICommandHandler<T> where T: ICommand
+	public interface IPageCommand
 	{
-		
-	}
 
-	public interface ICommand
-	{
-		//string Key { get; }
-		string User { get; set; }
-	}
-
-	public interface ICommandHandler<in T> where T : ICommand
-	{
-		void Execute(T command);
 	}
 }
