@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Harbor.Domain.Pages
 {
@@ -17,6 +19,7 @@ namespace Harbor.Domain.Pages
 
 		public void Execute(IPageCommand command)
 		{
+
 			var commandName = command.GetType().Name.ToLower();
 			var handler = handlers.ContainsKey(commandName) ? handlers[commandName] : null;
 			if (handler != null)
