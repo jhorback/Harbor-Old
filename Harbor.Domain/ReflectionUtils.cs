@@ -5,8 +5,6 @@ namespace Harbor.Domain
 {
 	public class ReflectionUtils
 	{
-		private delegate bool TypeCheckDelegate(Type param, Type type);
-
 		/// <summary>
 		/// Invoke a method on an Object.
 		/// </summary>
@@ -14,7 +12,7 @@ namespace Harbor.Domain
 		/// <param name="obj">The object containing the method.</param>
 		/// <param name="parameters">Any method parameters</param>
 		/// <returns>The return value from the method.</returns>
-		public static object InvokeMethod(object obj, string methodName, params object[] parameters)
+		public object InvokeMethod(object obj, string methodName, params object[] parameters)
 		{
 			return InternalInvokeMember(obj.GetType(), obj, methodName, BindingFlags.InvokeMethod, null, parameters);
 		}
@@ -26,7 +24,7 @@ namespace Harbor.Domain
 		/// <param name="type">The object type</param>
 		/// <param name="parameters">An method parameters</param>
 		/// <returns>The return value from the method.</returns>
-		public static object InvokeStaticMethod(Type type, string methodName, params object[] parameters)
+		public object InvokeStaticMethod(Type type, string methodName, params object[] parameters)
 		{
 			return InternalInvokeMember(type, null, methodName, BindingFlags.InvokeMethod, null, parameters);
 		}
@@ -39,7 +37,7 @@ namespace Harbor.Domain
 		/// <param name="genericParameters">Generic parameter types.</param>
 		/// <param name="parameters">Any method parameters</param>
 		/// <returns>The return value from the method.</returns>
-		public static object InvokeMethod(object obj, string methodName, Type[] genericParameters, params object[] parameters)
+		public object InvokeMethod(object obj, string methodName, Type[] genericParameters, params object[] parameters)
 		{
 			return InternalInvokeMember(obj.GetType(), obj, methodName, BindingFlags.InvokeMethod, genericParameters, parameters);
 		}
@@ -52,7 +50,7 @@ namespace Harbor.Domain
 		/// <param name="genericParameters">genericParameters</param>
 		/// <param name="parameters">Any method parameters</param>
 		/// <returns>The return value from the method.</returns>
-		public static object InvokeStaticMethod(Type type, string methodName, Type[] genericParameters, params object[] parameters)
+		public object InvokeStaticMethod(Type type, string methodName, Type[] genericParameters, params object[] parameters)
 		{
 			return InternalInvokeMember(type, null, methodName, BindingFlags.InvokeMethod, genericParameters, parameters);
 		}
@@ -63,7 +61,7 @@ namespace Harbor.Domain
 		/// <param name="propertyName">The property to get.</param>
 		/// <param name="obj">The object containing the property.</param>
 		/// <returns>The property value.</returns>
-		public static object GetProperty(object obj, string propertyName)
+		public object GetProperty(object obj, string propertyName)
 		{
 			return InternalInvokeMember(obj.GetType(), obj, propertyName, BindingFlags.GetProperty, null);
 		}
@@ -74,7 +72,7 @@ namespace Harbor.Domain
 		/// <param name="propertyName">The property to get.</param>
 		/// <param name="type">The type of the class.</param>
 		/// <returns>The property value.</returns>
-		public static object GetStaticProperty(Type type, string propertyName)
+		public object GetStaticProperty(Type type, string propertyName)
 		{
 			BindingFlags flags = BindingFlags.GetProperty | BindingFlags.FlattenHierarchy
 				| BindingFlags.Public | BindingFlags.Static;
@@ -87,7 +85,7 @@ namespace Harbor.Domain
 		/// <param name="propertyName">The property to set.</param>
 		/// <param name="obj">The object containing the property.</param>
 		/// <param name="parameters">The data used in setting the property.</param>
-		public static void SetProperty(object obj, string propertyName, params object[] parameters)
+		public void SetProperty(object obj, string propertyName, params object[] parameters)
 		{
 			InternalInvokeMember(obj.GetType(), obj, propertyName, BindingFlags.SetProperty, null, parameters);
 		}
@@ -98,12 +96,12 @@ namespace Harbor.Domain
 		/// <param name="propertyName">The property to set.</param>
 		/// <param name="type">The type of the class.</param>
 		/// <param name="parameters">The data used in setting the property.</param>
-		public static void SetStaticProperty(Type type, string propertyName, params object[] parameters)
+		public void SetStaticProperty(Type type, string propertyName, params object[] parameters)
 		{
 			InternalInvokeMember(type, null, propertyName, BindingFlags.SetProperty, null, parameters);
 		}
 
-		private static T InternalGetField<T>(Type type, object instance, string fieldname)
+		private T InternalGetField<T>(Type type, object instance, string fieldname)
 		{
 			BindingFlags flags = BindingFlags.GetField | BindingFlags.NonPublic | BindingFlags.Instance |
 				BindingFlags.FlattenHierarchy | BindingFlags.Public | BindingFlags.Static;
@@ -117,7 +115,7 @@ namespace Harbor.Domain
 		/// <param name="type">Type to get the static field.</param>
 		/// <param name="fieldname">Field Name</param>
 		/// <returns>Value of field specified.</returns>
-		public static T GetStaticField<T>(Type type, string fieldname)
+		public T GetStaticField<T>(Type type, string fieldname)
 		{
 			return InternalGetField<T>(type, null, fieldname);
 		}
@@ -129,12 +127,12 @@ namespace Harbor.Domain
 		/// <param name="instance"></param>
 		/// <param name="fieldname"></param>
 		/// <returns></returns>
-		public static T GetField<T>(object instance, string fieldname)
+		public T GetField<T>(object instance, string fieldname)
 		{
 			return InternalGetField<T>(instance.GetType(), instance, fieldname);
 		}
 
-		private static void InternalSetField(Type type, object instance, string name, object value)
+		private void InternalSetField(Type type, object instance, string name, object value)
 		{
 			BindingFlags flags = BindingFlags.SetField | BindingFlags.NonPublic | BindingFlags.Instance |
 				BindingFlags.FlattenHierarchy | BindingFlags.Public | BindingFlags.Static;
@@ -147,7 +145,7 @@ namespace Harbor.Domain
 		/// <param name="type">Type</param>
 		/// <param name="fieldname">Name of field to set.</param>
 		/// <param name="value">Value to set.</param>
-		public static void SetStaticField(Type type, string fieldname, object value)
+		public void SetStaticField(Type type, string fieldname, object value)
 		{
 			InternalSetField(type, null, fieldname, value);
 		}
@@ -158,12 +156,12 @@ namespace Harbor.Domain
 		/// <param name="instance">Instance.</param>
 		/// <param name="fieldname">Name of field to set.</param>
 		/// <param name="value">Value to set.</param>
-		public static void SetField(object instance, string fieldname, object value)
+		public void SetField(object instance, string fieldname, object value)
 		{
 			InternalSetField(instance.GetType(), instance, fieldname, value);
 		}
 
-		private static object InternalInvokeMember(Type type, object obj, string memberName,
+		private object InternalInvokeMember(Type type, object obj, string memberName,
 			BindingFlags flags, Type[] genericParameters, params object[] parameters)
 		{
 			// .NET FX does not check if an empty string and just returns null making
@@ -199,7 +197,7 @@ namespace Harbor.Domain
 		/// <param name="type">Generic type</param>
 		/// <param name="genericParameters">Generic parameter types</param>
 		/// <returns>Returns the required concrete type, binding generic parameters if required.</returns>
-		public static Type GetGenericType(Type type, params Type[] genericParameters)
+		public Type GetGenericType(Type type, params Type[] genericParameters)
 		{
 			if (genericParameters != null && genericParameters.Length > 0)
 			{
@@ -223,7 +221,7 @@ namespace Harbor.Domain
 		/// <param name="genericParameters">Generic parameter types.</param>
 		/// <param name="args">Any constructor parameters.</param>
 		/// <returns>The new object instance.</returns>
-		public static T CreateInstance<T>(Type[] genericParameters, params object[] args)
+		public T CreateInstance<T>(Type[] genericParameters, params object[] args)
 		{
 			return (T)CreateInstance(GetGenericType(typeof(T), genericParameters), args);
 		}
@@ -235,7 +233,7 @@ namespace Harbor.Domain
 		/// <param name="genericParameters">genericParameters</param>
 		/// <param name="args"></param>
 		/// <returns>The new object instance.</returns>
-		public static object CreateInstance(Type type, Type[] genericParameters, params object[] args)
+		public object CreateInstance(Type type, Type[] genericParameters, params object[] args)
 		{
 			return CreateInstance(GetGenericType(type, genericParameters), args);
 		}
@@ -246,7 +244,7 @@ namespace Harbor.Domain
 		/// <param name="type">The type of the object to create.</param>
 		/// <param name="args"></param>
 		/// <returns>The new object instance.</returns>
-		public static object CreateInstance(Type type, params object[] args)
+		public object CreateInstance(Type type, params object[] args)
 		{
 			BindingFlags flags = BindingFlags.Public | BindingFlags.NonPublic
 				| BindingFlags.CreateInstance | BindingFlags.Instance;
