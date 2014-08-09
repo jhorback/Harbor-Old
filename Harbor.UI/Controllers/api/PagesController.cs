@@ -125,12 +125,17 @@ namespace Harbor.UI.Controllers.Api
 		[Http.PagePermit(Permissions.All)]
 		public HttpResponseMessage ExecuteCommand(string commandName)
 		{
-			// jch! - would be nice to do this dynamically
-			// how to use the model creator/genorator/whatever to get a good ICommand model out of it
-			// then can just call PageService.Execute(Command)
+			var commandType = _pageCommandService.GetCommandType(commandName);
+			if (commandType == null)
+			{
+				return Request.CreateBadRequestResponse("Invalid page command");
+			}
 
-			// worst comes to worst - just need to implement another method per command.
-			// might be good anyway
+			// jch* - would be nice to do this dynamically if the commands get lengthy
+			// how to use the DefaultModelBinder to get a good ICommand model out of it
+			// then can just call PageService.Execute(Command)
+			// There is no DefaultModelBinder in web api, could use something else:
+			// - http://stackoverflow.com/questions/14705794/what-is-the-equivalent-of-mvcs-defaultmodelbinder-in-asp-net-web-api
 
 			throw new NotImplementedException();
 		}
