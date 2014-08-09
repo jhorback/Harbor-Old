@@ -25,5 +25,21 @@ namespace Harbor.Domain.Tests
 
 			Assert.IsTrue(testCommand.TestMessage == "Command Executed");
 		}
+
+		[TestMethod]
+		public void GetCommandType_ReturnsTheType()
+		{
+			var reflectionUtils = new ReflectionUtils();
+			var logger = new Logger(typeof(PageCommandServiceTest));
+			var mockObjectFactory = new Mock<IObjectFactory>();
+
+			mockObjectFactory.Setup(o => o.GetInstance(typeof(TestCommandHandler))).Returns(new TestCommandHandler());
+
+			var pcs = new PageCommandService(reflectionUtils, logger, mockObjectFactory.Object);
+
+			var type = pcs.GetCommandType("TestCommand");
+
+			Assert.AreEqual(typeof(TestCommand), type);
+		}
 	}
 }

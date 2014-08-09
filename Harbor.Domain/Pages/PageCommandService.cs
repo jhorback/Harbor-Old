@@ -10,6 +10,7 @@ namespace Harbor.Domain.Pages
 		private readonly ILogger _logger;
 		private readonly IObjectFactory _objectFactory;
 		private readonly Dictionary<string, Type> handlers = new Dictionary<string, Type>();
+		private readonly Dictionary<string, Type> commands = new Dictionary<string, Type>(); 
 		
 
 		public PageCommandService(ReflectionUtils reflectionUtils, ILogger logger, IObjectFactory objectFactory)
@@ -18,30 +19,39 @@ namespace Harbor.Domain.Pages
 			_logger = logger;
 			_objectFactory = objectFactory;
 
-			findHandlers();
+			findCommandsAndHandlers();
 		}
 
-		void findHandlers()
+		void findCommandsAndHandlers()
 		{
 			var commandHandlers = _reflectionUtils.FindTypesImplementingInterface(typeof(IPageCommandHandler));
-			foreach (var handler in commandHandlers)
+			foreach (var handlerType in commandHandlers)
 			{
-				var types = _reflectionUtils.GetTypeParameters(handler, typeof(IPageCommandHandler<>));
+				var types = _reflectionUtils.GetTypeParameters(handlerType, typeof(IPageCommandHandler<>));
 				if (types == null)
 				{
-					_logger.Warn("A page command handler did not implement a generic type. Handler type: {0}", handler.Name);
+					_logger.Warn("A page command handler did not implement a generic type. Handler type: {0}", handlerType.Name);
 					continue;
 				}
 
-				var type = types.FirstOrDefault();
-				if (type == null)
+				var commandType = types.FirstOrDefault();
+				if (commandType == null)
 				{
-					_logger.Warn("A page command handler did not implement a generic type. Handler type: {0}", handler.Name);
+					_logger.Warn("A page command handler did not implement a generic type. Handler type: {0}", handlerType.Name);
 					continue;
 				}
 
-				handlers.Add(type.Name.ToLower(), handler);
+				var commandKey = commandType.Name.ToLower(); 
+				commands.Add(commandKey, commandType);
+				handlers.Add(commandKey, handlerType);
 			}
+		}
+
+		public Type GetCommandType(string command)
+		{
+			var commandKey = command.ToLower();
+			var commandType = commands.ContainsKey(commandKey) ? commands[commandKey] : null;
+			return commandType;
 		}
 
 		public void Execute(IPageCommand command)
