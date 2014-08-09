@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 
 namespace Harbor.Domain
@@ -271,7 +272,7 @@ namespace Harbor.Domain
 		/// This method only searches loaded assemblies in the application domain.
 		/// It will not load assemblies to perform search.
 		/// </remarks>
-		public static IList<Type> FindTypesImplementingInterface(Type interfaceType)
+		public IList<Type> FindTypesImplementingInterface(Type interfaceType)
 		{
 			return FindTypesImplementingInterface(interfaceType, AppDomain.CurrentDomain.GetAssemblies());
 		}
@@ -286,7 +287,7 @@ namespace Harbor.Domain
 		/// This method only searches the specified assemblies.
 		/// It will not load assemblies to perform search.
 		/// </remarks>
-		public static IList<Type> FindTypesImplementingInterface(Type interfaceType, IList<Assembly> assemblies)
+		public IList<Type> FindTypesImplementingInterface(Type interfaceType, IList<Assembly> assemblies)
 		{
 			var array = new Assembly[assemblies.Count];
 			assemblies.CopyTo(array, 0);
@@ -303,7 +304,7 @@ namespace Harbor.Domain
 		/// This method only searches the specified assemblies.
 		/// It will not load assemblies to perform search.
 		/// </remarks>
-		public static IList<Type> FindTypesImplementingInterface(Type interfaceType, params Assembly[] assemblies)
+		public IList<Type> FindTypesImplementingInterface(Type interfaceType, params Assembly[] assemblies)
 		{
 			//interfaceType.CheckNull("interfaceType");
 			if (!interfaceType.IsInterface)
@@ -313,12 +314,12 @@ namespace Harbor.Domain
 			return FindTypes(interfaceType, new TypeCheckDelegate(InterfaceTypeCheck), assemblies);
 		}
 
-		private static bool InterfaceTypeCheck(Type interfaceType, Type type)
+		private bool InterfaceTypeCheck(Type interfaceType, Type type)
 		{
 			return interfaceType.IsAssignableFrom(type);
 		}
 
-		private static IList<Type> FindTypes(Type type, TypeCheckDelegate typeCheck, IList<Assembly> assemblies)
+		private IList<Type> FindTypes(Type type, TypeCheckDelegate typeCheck, IList<Assembly> assemblies)
 		{
 			//assemblies.CheckNull("assemblies");
 
@@ -339,6 +340,27 @@ namespace Harbor.Domain
 				}
 			}
 			return types;
+		}
+
+		/// <summary>
+		/// Returns a list of types that are supplied to the generic interface.
+		/// <![CDATA[
+		///     With "myType" being an instance of an object that implements: ICommand<SomeCommand>
+		///     GetTypeParameters(myType, typeof(ICommand<>)
+		///     Returns: { typeof(SomeCommand) }
+		/// ]]>
+		/// </summary>
+		/// <param name="type"></param>
+		/// <param name="implementedInterface"></param>
+		/// <returns></returns>
+		public IEnumerable<Type> GetTypeParameters(Type type, Type implementedInterface)
+		{
+			return
+				from interfaceType in type.GetInterfaces()
+				where interfaceType.IsGenericType
+				let baseInterface = interfaceType.GetGenericTypeDefinition()
+				where baseInterface == implementedInterface
+				select interfaceType.GetGenericArguments().FirstOrDefault();
 		}
 	}
 }

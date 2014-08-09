@@ -90,6 +90,7 @@
     <Compile Include="Pages\Commands\IPageCommandHandler.cs" />
     <Compile Include="Pages\Commands\IPageCommandService.cs" />
     <Compile Include="Pages\Commands\PageCommandService.cs" />
+    <Compile Include="Pages\Commands\TestCommand.cs" />
     <Compile Include="Pages\ContentType.cs" />
     <Compile Include="Pages\ContentTypes\Links.cs" />
     <Compile Include="Pages\IPageLayoutRepository.cs" />
