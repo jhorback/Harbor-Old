@@ -2,6 +2,6 @@
 {
 	public interface IPageCommand
 	{
-
+		int PageID { get; set; }
 	}
 }

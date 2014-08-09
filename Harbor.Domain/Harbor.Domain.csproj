@@ -85,11 +85,10 @@
     <Compile Include="IObjectFactory.cs" />
     <Compile Include="JSON.cs" />
     <Compile Include="Pages\Commands\AddNewPageToLinks.cs" />
-    <Compile Include="Pages\Commands\AddNewPageToLinksHandler.cs" />
-    <Compile Include="Pages\Commands\IPageCommand.cs" />
-    <Compile Include="Pages\Commands\IPageCommandHandler.cs" />
-    <Compile Include="Pages\Commands\IPageCommandService.cs" />
-    <Compile Include="Pages\Commands\PageCommandService.cs" />
+    <Compile Include="Pages\IPageCommand.cs" />
+    <Compile Include="Pages\IPageCommandHandler.cs" />
+    <Compile Include="Pages\IPageCommandService.cs" />
+    <Compile Include="Pages\PageCommandService.cs" />
     <Compile Include="Pages\Commands\TestCommand.cs" />
     <Compile Include="Pages\ContentType.cs" />
     <Compile Include="Pages\ContentTypes\Links.cs" />

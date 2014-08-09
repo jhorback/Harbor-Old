@@ -1,5 +1,6 @@
 ﻿using Harbor.Domain.Diagnostics;
 using Harbor.Domain.Pages;
+using Harbor.Domain.Pages.Commands;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 

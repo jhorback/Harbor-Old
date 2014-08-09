@@ -1,8 +1,9 @@
 ﻿
-namespace Harbor.Domain.Pages
+namespace Harbor.Domain.Pages.Commands
 {
 	public class TestCommand : IPageCommand
 	{
+		public int PageID { get; set; }
 		public string TestMessage { get; set; }
 	}
 
