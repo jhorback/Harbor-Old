@@ -29,6 +29,13 @@ namespace Harbor.UI
 			);
 
 			routes.MapHttpRoute(
+				name: "PageCommand",
+				routeTemplate: "api/pages/{id}/{action}",
+				defaults: new { controller = "Pages" }
+			);
+
+
+			routes.MapHttpRoute(
 				name: "DefaultApi",
 				routeTemplate: "api/{controller}/{id}",
 				defaults: new { id = RouteParameter.Optional }

@@ -1,11 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Windows.Input;
 using AutoMapper;
 using Harbor.Domain;
 using Harbor.Domain.Pages;
+using Harbor.Domain.Pages.Commands;
 using Harbor.Domain.Security;
 using Harbor.UI.Extensions;
 using Harbor.UI.Models;
@@ -15,13 +18,15 @@ namespace Harbor.UI.Controllers.Api
 	[Authorize]
     public class PagesController : ApiController
     {
-		IPageRepository pageRep;
+		IPageRepository _pageRep;
 		private readonly IPageFactory _pageFactory;
+		private readonly IPageCommandService _pageCommandService;
 
-		public PagesController(IPageRepository pageRep, IPageFactory pageFactory)
+		public PagesController(IPageRepository pageRep, IPageFactory pageFactory, IPageCommandService pageCommandService)
 		{
-			this.pageRep = pageRep;
+			_pageRep = pageRep;
 			_pageFactory = pageFactory;
+			_pageCommandService = pageCommandService;
 		}
 
 
@@ -30,15 +35,15 @@ namespace Harbor.UI.Controllers.Api
         	query.CurrentUserName = User.Identity.Name;
 			return new PagedResultDto<PageDto>
 			{
-				results = pageRep.FindAll(query).Select(PageDto.FromPage),
-				totalCount = pageRep.FindAllCount(query)
+				results = _pageRep.FindAll(query).Select(PageDto.FromPage),
+				totalCount = _pageRep.FindAllCount(query)
 			};
 		}
 
 		[Http.PagePermit(Permissions.Read)]
         public HttpResponseMessage Get(int id)
         {
-			var page = pageRep.FindById(id);
+			var page = _pageRep.FindById(id);
 			if (page == null)
 				return Request.CreateNotFoundResponse();
 
@@ -57,8 +62,8 @@ namespace Harbor.UI.Controllers.Api
 			
 			try
 			{
-				pageDO = pageRep.Create(pageDO);
-				pageRep.Save();
+				pageDO = _pageRep.Create(pageDO);
+				_pageRep.Save();
 			}
 			catch (DomainValidationException exception)
 			{
@@ -71,7 +76,7 @@ namespace Harbor.UI.Controllers.Api
 		[Http.PagePermit(Permissions.Update)]
 		public HttpResponseMessage Put(PageDto page)
 		{
-			var pageDO = pageRep.FindById(page.id, readOnly: false);
+			var pageDO = _pageRep.FindById(page.id, readOnly: false);
 			if (pageDO == null)
 				return Request.CreateNotFoundResponse();
 
@@ -83,8 +88,8 @@ namespace Harbor.UI.Controllers.Api
 
 			try
 			{
-				pageDO = pageRep.Update(pageDO);
-				pageRep.Save();
+				pageDO = _pageRep.Update(pageDO);
+				_pageRep.Save();
 			}
 			catch (DomainValidationException e)
 			{
@@ -97,10 +102,38 @@ namespace Harbor.UI.Controllers.Api
 		[Http.PagePermit(Permissions.Delete)]
 		public HttpResponseMessage Delete(int id)
         {
-			var pageDO = pageRep.FindById(id, readOnly: false);
-			pageRep.Delete(pageDO);
-			pageRep.Save();
+			var pageDO = _pageRep.FindById(id, readOnly: false);
+			_pageRep.Delete(pageDO);
+			_pageRep.Save();
 			return Request.CreateResponse(HttpStatusCode.NoContent);
         }
-    }
+
+
+
+		#region page commands
+		public HttpResponseMessage AddNewPageToLinks(AddNewPageToLinks command)
+		{
+			return execute(command);
+		}
+
+		private HttpResponseMessage execute(IPageCommand command)
+		{
+			_pageCommandService.Execute(command);
+			return Get(command.PageID);
+		}
+
+		[Http.PagePermit(Permissions.All)]
+		public HttpResponseMessage ExecuteCommand(string commandName)
+		{
+			// jch! - would be nice to do this dynamically
+			// how to use the model creator/genorator/whatever to get a good ICommand model out of it
+			// then can just call PageService.Execute(Command)
+
+			// worst comes to worst - just need to implement another method per command.
+			// might be good anyway
+
+			throw new NotImplementedException();
+		}
+		#endregion
+	}
 }
