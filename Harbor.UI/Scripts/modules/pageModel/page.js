@@ -72,8 +72,23 @@ page.prototype = {
 
 	"[template]": {
 		get: function () {
-			return this.template.toJSON();
-		}	
+			return this.template && this.template.toJSON();
+		},
+		set: function (value) {
+			this.template && this.template.set(value);
+			return value;
+		}
+	},
+
+	"[layout]": {
+		get: function () {
+			return this.layout && this.layout.toJSON();
+		},
+
+		set: function (value) {
+			this.layout && this.layout.set(value);
+			return value;
+		}
 	},
 
 	"[publishedDisplay]": {
