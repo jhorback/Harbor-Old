@@ -1,5 +1,5 @@
 ﻿/*
-	Adds a posAction method to a model.
+	Adds a posAction (alias postCommand) method to a model.
 	
 	Example url: /api/users/5/disable
 		- api/users is the url of the collection
@@ -28,7 +28,9 @@ function postActionModelExt(mixin) {
 				contentType: "application/json",
 				data: JSON.stringify(data)
 			});
-		}
+		},
+
+		postCommand: this.postAction
 	};
 
 	mixin("model").register("bbext.postActionModelExt", postActionModelExt);
