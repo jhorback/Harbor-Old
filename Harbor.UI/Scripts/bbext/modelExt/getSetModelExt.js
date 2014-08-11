@@ -11,19 +11,33 @@ function getSetModelExt(mixin, modelPropertyDescriptor) {
 			// useful for lazyloads when saving model on change
 			// (don't want to save on the initial sync)
 			this.synced = false;
-            this.set("synced", false);
+            this.set({ "synced": false }, {silent: true});
 			this.on("sync", function () {
+				this._settingFromServer = false;
 				this.synced = true;
 				this.set("synced", true);
 			}, this);
 
-			// jch* this was causing loops when listening to just change and saving
-            //this.on("request", function () {
-            //    this.synced = false;
-            //    this.set("synced", false);
-            //}, this);
+			
+            this.on("request", function () {
+                this.synced = false;
+				// jch* this was causing loops when listening to just change and saving
+				// this.set("synced", false);
+            }, this);
 			
 			parseBindings.call(this);
+		},
+
+		parse: function (resp, options) {
+			this._settingFromServer = true;
+			return resp;
+		},
+
+		// Keeps from calling save if the current changes are from the server
+		safeSave: function () {
+			if (this._settingFromServer !== true) {
+				this.save();
+			}
 		},
 
 		get: function (name) {
