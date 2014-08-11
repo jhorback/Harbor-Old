@@ -17,7 +17,7 @@ pageModel.linksSectionModel.prototype = {
 		this.on("change:title", this.save);
 		this.listenTo(this.links, "save add remove sort", this.save);
 	},
-	
+
 	"[links]": {
 		get: function () {
 			var links = this.links && this.links.toJSON();
@@ -32,7 +32,7 @@ pageModel.linksSectionModel.prototype = {
 
 	"[hasTitle]": {
 		get: function () {
-			return this.get("title") ? true : false;
+			return this.attributes.title ? true : false;
 		}
 	},
 
