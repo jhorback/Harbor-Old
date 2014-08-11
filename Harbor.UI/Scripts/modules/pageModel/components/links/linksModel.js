@@ -17,8 +17,7 @@ pageModel.linksModel.prototype = {
 	},
 
 	initialize: function (attrs) {
-		this.save = _.debounce(this.save, 250);
-
+		
 		this.sections = this.collectionFactory.create("linksSectionCollection", this.attributes.sections);
 		this.sections.on("add remove", this.refreshFn("isEmpty"));
 
