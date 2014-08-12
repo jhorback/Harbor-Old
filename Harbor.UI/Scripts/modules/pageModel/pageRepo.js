@@ -24,7 +24,11 @@ function pageRepo(_, collectionFactory, ajaxRequest) {
 		},
 
 		savePage: function (page, handler, proxy) {
-			return ajaxRequest.handle(page.save(), handler, proxy);
+			var pageSaved = page.safeSave();
+			if (!pageSaved) {
+				return ajaxRequest.resolved();
+			}
+			return ajaxRequest.handle(pageSaved, handler, proxy);
 		}
 	};
 }

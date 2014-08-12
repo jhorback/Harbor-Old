@@ -36,8 +36,9 @@ function getSetModelExt(mixin, modelPropertyDescriptor) {
 		// Keeps from calling save if the current changes are from the server
 		safeSave: function () {
 			if (this._settingFromServer !== true) {
-				this.save();
+				return this.save();
 			}
+			return null;
 		},
 
 		get: function (name) {
