@@ -25,6 +25,10 @@ template.prototype = {
 	"[content]": {
 		get: function () {
 			return this.content.toJSON();
+		},
+		set: function (value) {
+			this.content.set(value);
+			return value;
 		}
 	},
 
