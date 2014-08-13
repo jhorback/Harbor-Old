@@ -42,6 +42,7 @@ namespace Harbor.Domain.Pages.ContentTypes
 					}
 				};
 			}
+			aside.EnsureIds();
 			return aside;
 		}
 	}

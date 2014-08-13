@@ -5,6 +5,7 @@ pageModel.linksSectionModel = function (attrs, options, collectionFactory) {
 
 pageModel.linksSectionModel.prototype = {
 	defaults: {
+		id: null,
 		title: null,
 		hasTitle: false,
 		links: []
