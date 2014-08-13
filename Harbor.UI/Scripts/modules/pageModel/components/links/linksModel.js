@@ -11,6 +11,7 @@ pageModel.linksModel.prototype = {
 		key: null,
 		id: null,
 		name: null,
+		nextId: null,
 		sections: [],
 		//
 		isEmpty: true

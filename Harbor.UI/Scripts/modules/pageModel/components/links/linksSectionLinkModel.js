@@ -7,6 +7,7 @@ pageModel.linkSectionLinkModel = function (attrs, options, location, pageurl) {
 
 pageModel.linkSectionLinkModel.prototype = {
 	defaults: {
+		id: null,
 		pageID: null,
 		text: null,
 		//
