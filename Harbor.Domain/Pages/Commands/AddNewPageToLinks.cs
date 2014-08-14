@@ -28,7 +28,6 @@ namespace Harbor.Domain.Pages.Commands
 			var page = _pageRepository.FindById(command.PageID, readOnly: false);
 			var links = page.Layout.GetAsideAdata<Links>();
 
-
 			var layoutId = page.Layout.PageLayoutID;
 			var publish = page.Public;
 
