@@ -30,14 +30,14 @@ namespace Harbor.Domain.Pages
 				var types = _reflectionUtils.GetTypeParameters(handlerType, typeof(IPageCommandHandler<>));
 				if (types == null)
 				{
-					_logger.Warn("A page command handler did not implement a generic type. Handler type: {0}", handlerType.Name);
+					_logger.Warn("A command handler did not implement a generic type. Handler type: {0}", handlerType.Name);
 					continue;
 				}
 
 				var commandType = types.FirstOrDefault();
 				if (commandType == null)
 				{
-					_logger.Warn("A page command handler did not implement a generic type. Handler type: {0}", handlerType.Name);
+					_logger.Warn("A command handler did not implement a generic type. Handler type: {0}", handlerType.Name);
 					continue;
 				}
 
@@ -68,6 +68,12 @@ namespace Harbor.Domain.Pages
 				catch (Exception e)
 				{
 					_logger.Error(e);
+					if (e.InnerException != null)
+					{
+						_logger.Debug("An inner exception occured while executing a command.", e.InnerException);
+						throw e.InnerException;
+					}
+					throw e;
 				}
 			}
 		}
