@@ -248,6 +248,7 @@
     <Compile Include="Attributes\Http\PagePermitAttribute.cs" />
     <Compile Include="Attributes\Http\PermitAttribute.cs" />
     <Compile Include="Attributes\Http\ServerErrorExceptionFilterAttribute.cs" />
+    <Compile Include="Attributes\Http\UnAuthorizedFilterAttribute.cs" />
     <Compile Include="Attributes\LogRequestAttribute.cs" />
     <Compile Include="Attributes\PagePermitAttribute.cs" />
     <Compile Include="Attributes\PermitAttribute.cs" />
