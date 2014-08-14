@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.ModelBinding;
 using System.Windows.Input;
 using AutoMapper;
 using Harbor.Domain;
@@ -12,6 +13,7 @@ using Harbor.Domain.Pages.Commands;
 using Harbor.Domain.Security;
 using Harbor.UI.Extensions;
 using Harbor.UI.Models;
+using Newtonsoft.Json.Linq;
 
 namespace Harbor.UI.Controllers.Api
 {
@@ -20,13 +22,13 @@ namespace Harbor.UI.Controllers.Api
     {
 		IPageRepository _pageRep;
 		private readonly IPageFactory _pageFactory;
-		private readonly IPageCommandService _pageCommandService;
+		private readonly IPageCommandService _commandService;
 
-		public PagesController(IPageRepository pageRep, IPageFactory pageFactory, IPageCommandService pageCommandService)
+		public PagesController(IPageRepository pageRep, IPageFactory pageFactory, IPageCommandService commandService)
 		{
 			_pageRep = pageRep;
 			_pageFactory = pageFactory;
-			_pageCommandService = pageCommandService;
+			_commandService = commandService;
 		}
 
 
@@ -111,33 +113,36 @@ namespace Harbor.UI.Controllers.Api
 
 
 		#region page commands
-		public HttpResponseMessage AddNewPageToLinks(AddNewPageToLinks command)
+		[HttpPost, Http.PagePermit(Permissions.Read)]
+		public HttpResponseMessage ExecuteCommand(int id, string commandName, object command)
 		{
-			return execute(command);
-		}
-
-		private HttpResponseMessage execute(IPageCommand command)
-		{
-			_pageCommandService.Execute(command);
-			return Get(command.PageID);
-		}
-
-		[Http.PagePermit(Permissions.All)]
-		public HttpResponseMessage ExecuteCommand(string commandName)
-		{
-			var commandType = _pageCommandService.GetCommandType(commandName);
-			if (commandType == null)
+			// make sure it's josn
+			var jsonCommand = command as JObject;
+			if (jsonCommand == null)
 			{
-				return Request.CreateBadRequestResponse("Invalid page command");
+				return Request.CreateBadRequestResponse("Invalid media type.");
 			}
 
-			// jch* - would be nice to do this dynamically if the commands get lengthy
-			// how to use the DefaultModelBinder to get a good ICommand model out of it
-			// then can just call PageService.Execute(Command)
-			// There is no DefaultModelBinder in web api, could use something else:
-			// - http://stackoverflow.com/questions/14705794/what-is-the-equivalent-of-mvcs-defaultmodelbinder-in-asp-net-web-api
+			// make sure it's an actual command
+			var commandType = _commandService.GetCommandType(commandName);
+			if (commandType == null)
+			{
+				return Request.CreateBadRequestResponse("Invalid command.");
+			}
 
-			throw new NotImplementedException();
+			// can we convert it
+			var commandToExecute = jsonCommand.ToObject(commandType) as IPageCommand;
+			if (commandToExecute == null)
+			{
+				throw new Exception("Command cannot be null.");
+			}
+
+			// execute the command
+			commandToExecute.PageID = id;
+			_commandService.Execute(commandToExecute);
+
+
+			return Get(id);
 		}
 		#endregion
 	}
