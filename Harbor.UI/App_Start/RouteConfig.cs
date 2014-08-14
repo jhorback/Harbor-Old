@@ -30,16 +30,9 @@ namespace Harbor.UI
 
 			routes.MapHttpRoute(
 				name: "PageCommand",
-				routeTemplate: "api/pages/{id}/{action}",
-				defaults: new { controller = "Pages" }
+				routeTemplate: "api/pages/{id}/{commandName}",
+				defaults: new { controller = "Pages", action = "ExecuteCommand" }
 			);
-
-			//this is if creating a generic command action
-			//routes.MapHttpRoute(
-			//	name: "PageCommand",
-			//	routeTemplate: "api/pages/{id}/{command}",
-			//	defaults: new { controller = "Pages", action = "ExectueCommand"}
-			//);
 
 
 			routes.MapHttpRoute(
