@@ -6,6 +6,8 @@ namespace Harbor.UI
 	{
 		public static void Register(HttpConfiguration config)
 		{
+			// config.Formatters.XmlFormatter.UseXmlSerializer = true;
+
 			config.Filters.Add(new Http.BadRequestFilterAttribute());
 			config.Filters.Add(new Http.UnauthorizedFilterAttribute());
 			config.Filters.Add(new Http.ServerErrorExceptionFilterAttribute());
