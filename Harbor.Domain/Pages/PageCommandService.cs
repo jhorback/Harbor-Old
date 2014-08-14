@@ -63,7 +63,7 @@ namespace Harbor.Domain.Pages
 				var handlerInstance = _objectFactory.GetInstance(handler);
 				try
 				{
-					_reflectionUtils.InvokeMethod(handlerInstance, "Execute", new[] { command });
+					_reflectionUtils.InvokeMethod(handlerInstance, "Execute", new object[] { command });
 				}
 				catch (Exception e)
 				{
