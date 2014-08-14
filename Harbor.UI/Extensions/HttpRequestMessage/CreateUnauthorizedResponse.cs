@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using System.Net.Http;
 
 namespace Harbor.UI.Extensions
@@ -15,6 +16,12 @@ namespace Harbor.UI.Extensions
 			if (string.IsNullOrEmpty(message))
 				return request.CreateUnauthorizedResponse();
 			return request.CreateResponse(HttpStatusCode.Unauthorized, new { message = message });
+		}
+
+		public static HttpResponseMessage CreateUnauthorizedResponse(this HttpRequestMessage request, UnauthorizedAccessException exception)
+		{
+			return request.CreateResponse(HttpStatusCode.Unauthorized, new { message = exception.Message });
+
 		}
 	}
 }
