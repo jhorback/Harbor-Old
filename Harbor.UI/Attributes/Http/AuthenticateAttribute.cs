@@ -27,8 +27,8 @@ namespace Harbor.UI.Http
 
 			string userName = httpContext.Request.Headers["username"];
 			string password = httpContext.Request.Headers["password"];
-			var isAuthenticated = UserRepository.FindUserByName(userName).Authenticate(password);
-			if (string.IsNullOrEmpty(userName) || isAuthenticated == false)
+			var user = UserRepository.FindUserByName(userName);
+			if (string.IsNullOrEmpty(userName) || user == null || user.Authenticate(password) == false)
 			{
 				actionContext.Response = actionContext.Request.CreateUnauthorizedResponse();
 			}
