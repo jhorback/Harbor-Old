@@ -56,6 +56,7 @@
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
@@ -82,8 +83,10 @@
     <Compile Include="Files\IFileRepository.cs" />
     <Compile Include="Files\FileQuery.cs" />
     <Compile Include="ILogger.cs" />
+    <Compile Include="IMemCache.cs" />
     <Compile Include="IObjectFactory.cs" />
     <Compile Include="JSON.cs" />
+    <Compile Include="MemCache.cs" />
     <Compile Include="Pages\Commands\AddNewPageToLinks.cs" />
     <Compile Include="Pages\IPageCommand.cs" />
     <Compile Include="Pages\IPageCommandHandler.cs" />
