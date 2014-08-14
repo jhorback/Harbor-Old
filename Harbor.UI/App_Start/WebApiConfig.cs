@@ -7,7 +7,7 @@ namespace Harbor.UI
 		public static void Register(HttpConfiguration config)
 		{
 			config.Filters.Add(new Http.BadRequestFilterAttribute());
-			config.Filters.Add(new Http.UnAuthorizedFilterAttribute());
+			config.Filters.Add(new Http.UnauthorizedFilterAttribute());
 			config.Filters.Add(new Http.ServerErrorExceptionFilterAttribute());
 			config.Filters.Add(new Http.AuthenticateAttribute());
 			config.Filters.Add(new Http.LogRequestAttribute());

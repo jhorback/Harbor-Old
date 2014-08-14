@@ -4,7 +4,7 @@ using Harbor.UI.Extensions;
 
 namespace Harbor.UI.Http
 {
-	public class UnAuthorizedFilterAttribute : ExceptionFilterAttribute
+	public class UnauthorizedFilterAttribute : ExceptionFilterAttribute
 	{
 		public override void OnException(HttpActionExecutedContext context)
 		{
