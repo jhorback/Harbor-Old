@@ -50,3 +50,4 @@ pageEditor.view("linksEditView", [
 	"currentPageRepo",
 	pageEditor.linksEditView
 ]);
+

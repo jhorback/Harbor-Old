@@ -545,6 +545,7 @@
     <Content Include="Scripts\modules\fileSelector\fileSelectorViewModel.js" />
     <Content Include="Scripts\modules\pageEditor\addPageComponentViewModel.js" />
     <Content Include="Scripts\modules\pageEditor\changeLayoutViewModel.js" />
+    <Content Include="Scripts\modules\pageEditor\links\linksAddLinkView.js" />
     <Content Include="Scripts\modules\pageModel\components\links\linkSectionLinkCollection.js" />
     <Content Include="Scripts\modules\pageModel\components\links\linksSectionCollection.js" />
     <Content Include="Scripts\modules\pageModel\components\links\linksSectionLinkModel.js" />
@@ -782,6 +783,7 @@
     <Content Include="Views\AppUI\_pagerView.cshtml" />
     <Content Include="Views\PageEditor\links\_linksView.cshtml" />
     <Content Include="Views\PageEditor\links\_linksEditView.cshtml" />
+    <Content Include="Views\PageEditor\links\_linksAddLinkView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\users\" />
