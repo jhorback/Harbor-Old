@@ -7,14 +7,6 @@ pageEditor.linksSectionView = function (options, pageSelector) {
 };
 
 pageEditor.linksSectionView.prototype = {
-	//initialize: function () {
-	//	//var $ = this.$;
-	//	this.model.collection.comparator = function (model) {
-	//		var node = $("#" + model.cid);
-	//		var index = node.index();
-	//		return index;
-	//	};
-	//},
 	
 	onRender: function () {
 		this.$el.sortable({
@@ -32,6 +24,9 @@ pageEditor.linksSectionView.prototype = {
 	},
 	
 	addLink: function (event) {
+		// jch! - here
+		// call the linksAddLinkView - 
+		// that view can handle calling the commands (through the repo or what?)
 		this.pageSelector.render({
 			select: this.selectPage
 		});
