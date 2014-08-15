@@ -1,12 +1,15 @@
 ﻿
 
-pageEditor.linksSectionView = function (options, pageSelector) {
+pageEditor.linksSectionView = function (options, templateRenderer) {
 
-	this.pageSelector = pageSelector;
-	this.bindAll("updateOrder", "selectPage");
+	this.templateRenderer = templateRenderer;
 };
 
+
 pageEditor.linksSectionView.prototype = {
+	initialize: function () {
+		this.bindAll("updateOrder");
+	},
 	
 	onRender: function () {
 		this.$el.sortable({
@@ -24,11 +27,8 @@ pageEditor.linksSectionView.prototype = {
 	},
 	
 	addLink: function (event) {
-		// jch! - here
-		// call the linksAddLinkView - 
-		// that view can handle calling the commands (through the repo or what?)
-		this.pageSelector.render({
-			select: this.selectPage
+		this.templateRenderer.render("linksAddLinkView", {
+			model: this.model
 		});
 	},
 	
@@ -36,19 +36,12 @@ pageEditor.linksSectionView.prototype = {
 		if (confirm("Are you sure you want to remove this section of links?")) {
 			this.model.collection.remove(this.model);
 		}
-	},
-	
-	selectPage: function (page) {
-		this.model.links.add({
-			pageID: page.get("id"),
-			text: page.get("title")
-		});
 	}
 };
 
 
 pageEditor.view("linksSectionView", [
 	"options",
-	"pageSelector",
+	"templateRenderer",
 	pageEditor.linksSectionView
 ]);
