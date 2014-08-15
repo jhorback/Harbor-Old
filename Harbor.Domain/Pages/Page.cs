@@ -13,7 +13,8 @@ namespace Harbor.Domain.Pages
 	{
 		public Page()
 		{
-			// Layout = new PageLayout();
+			// Layout = new PageLayout(); // let the factory create the layout
+			// since it is optionally loaded, don't want to overwrite it
 
 			Properties = new List<PageProperty>();
 			DeletedProperties = new List<PageProperty>();

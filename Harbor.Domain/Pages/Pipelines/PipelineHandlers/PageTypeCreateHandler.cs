@@ -29,10 +29,13 @@ namespace Harbor.Domain.Pages.PipelineHandlers
 
 
 			// setup the layout if new
-			if (page.Layout.IsNew())
+			if (page.Layout == null || page.Layout.IsNew())
 			{
-				page.Layout.Title = page.Title;
-				page.Layout.UserName = page.AuthorsUserName;
+				page.Layout = new PageLayout
+				{
+					Title = page.Title,
+					UserName = page.AuthorsUserName
+				};
 				pageType.SetLayout(new PageTypeLayoutContext(page));
 			}
 
