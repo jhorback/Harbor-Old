@@ -31,12 +31,13 @@ namespace Harbor.Data
 				_logger.Error(dbEx);
 				foreach (var validationErrors in dbEx.EntityValidationErrors)
 				{
+					_logger.Error("ENTITY: {0}", validationErrors.Entry.Entity.GetType().FullName);
 					foreach (var validationError in validationErrors.ValidationErrors)
 					{
 						_logger.Error("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
 					}
 				}
-				throw new Exception("An validation error occured when saving changes to the database.", dbEx);
+				throw new Exception("A validation error occured when saving changes to the database.", dbEx);
 			}
 			catch (Exception e)
 			{
