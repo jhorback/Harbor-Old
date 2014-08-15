@@ -16,13 +16,11 @@ namespace Harbor.UI.Controllers.Api
     {
 		IPageRepository _pageRep;
 		private readonly IPageFactory _pageFactory;
-		private readonly IPageCommandService _commandService;
 
-		public PagesController(IPageRepository pageRep, IPageFactory pageFactory, IPageCommandService commandService)
+		public PagesController(IPageRepository pageRep, IPageFactory pageFactory)
 		{
 			_pageRep = pageRep;
 			_pageFactory = pageFactory;
-			_commandService = commandService;
 		}
 
 

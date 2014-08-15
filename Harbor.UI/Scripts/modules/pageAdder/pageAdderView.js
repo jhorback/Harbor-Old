@@ -13,6 +13,9 @@ function pageAdderView(options, modelFactory, currentUserRepo, pageTypeRepo, pag
 pageAdderView.prototype = {
 	initialize: function () {
 		
+		this.on("addPage", this.options.addPage ? this.options.addPage : this.addPage);
+
+
 		this.model = this.modelFactory.create("page", {
 			author: this.currentUser.get("username"),
 			pageTypeDescription: null
@@ -21,6 +24,7 @@ pageAdderView.prototype = {
 		this.model.pageTypes = this.pageTypeRepo.getPageTypes();
 		this.listenTo(this.model, "change:pageTypeKey", this.setPageTypeDescription);
 		this.listenTo(this.model.pageTypes, "sync", this.setPageTypeDescription);
+	
 		this.setPageTypeDescription();
 	},
 	
@@ -37,7 +41,26 @@ pageAdderView.prototype = {
 
 	submitForm: function (event) {
 		event.preventDefault();
-		this.saveModel();
+
+		if (!this.isModelValid()) {
+			return;
+		}
+
+		this.trigger("addPage", this.model);
+	},
+
+	addPage: function (page) {
+		var self = this;
+
+		this.pageRepo.savePage(page, {
+			clientError: function (response) {
+				self.displayErrors(response.errors);
+			},
+			success: function () {
+				var url = page.getUrl();
+				window.location = url;
+			}
+		}, this);
 	},
 	
 	cancel: function () {
@@ -47,27 +70,8 @@ pageAdderView.prototype = {
 	onRender: function () {
 		this.dialogFactory.create(this.$el, {
 			title: "Add a page",
-			modal: true,
-			transition: "fade"
+			modal: true
 		});
-	},
-
-	saveModel: function () {
-		var self = this;
-
-		if (!this.isModelValid()) {
-			return;
-		}
-		
-		this.pageRepo.savePage(this.model, {
-			clientError: function (response) {
-				self.displayErrors(response.errors);
-			},
-			success: function () {
-				var url = this.model.getUrl();
-				window.location = url;
-			}
-		}, this);
 	}
 };
 
