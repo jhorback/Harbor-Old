@@ -91,7 +91,7 @@ namespace Harbor.Domain.Diagnostics
 			var message = string.IsNullOrEmpty(format) ? "" : string.Format(scrub(format), args);
 			if (exception != null)
 			{
-				message = String.Format("{0}{1}{2}", message, exception.Message, exception.StackTrace);
+				message = String.Format("{0} {1} {2}", message, exception.Message, exception.StackTrace);
 			}
 			Trace.TraceError(message);
 		}
