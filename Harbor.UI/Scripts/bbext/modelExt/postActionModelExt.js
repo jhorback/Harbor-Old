@@ -8,33 +8,34 @@
 function postActionModelExt(mixin) {
 	
 	var postActionModelExt = {
-		postAction: function (action, data) {
-			var root = this.urlRoot || (this.collection && this.collection.url),
-			    url,
-			    id;
-		
-			if (!root) {
-				throw new Error("A url is required for postAction.");
-			}
-
-			id = this.get("id");
-			url = root + "/" + id + "/" + action;
-			data = data || {};
-			data.id = id;
-			return this.sync(action, this, {
-				url: url,
-				type: "POST",
-				dataType: "json",
-				contentType: "application/json",
-				data: JSON.stringify(data)
-			});
-		},
-
-		postCommand: this.postAction
+		postAction: doPost,
+		postCommand: doPost
 	};
 
 	mixin("model").register("bbext.postActionModelExt", postActionModelExt);
 
+
+	function doPost(action, data) {
+		var root = this.urlRoot || (this.collection && this.collection.url),
+			url,
+			id;
+		
+		if (!root) {
+			throw new Error("A url is required for postAction.");
+		}
+
+		id = this.get("id");
+		url = root + "/" + id + "/" + action;
+		data = data || {};
+		data.id = id;
+		return this.sync(action, this, {
+			url: url,
+			type: "POST",
+			dataType: "json",
+			contentType: "application/json",
+			data: JSON.stringify(data)
+		});
+	}
 };
 
 
