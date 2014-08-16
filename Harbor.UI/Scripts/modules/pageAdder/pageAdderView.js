@@ -24,6 +24,7 @@ pageAdderView.prototype = {
 		this.model.pageTypes = this.pageTypeRepo.getPageTypes();
 		this.listenTo(this.model, "change:pageTypeKey", this.setPageTypeDescription);
 		this.listenTo(this.model.pageTypes, "sync", this.setPageTypeDescription);
+		this.on("component:detached", this.close);
 	
 		this.setPageTypeDescription();
 	},
@@ -67,8 +68,12 @@ pageAdderView.prototype = {
 		this.close();
 	},
 
+	onClose: function () {
+		this.dialog && this.dialog.close();
+	},
+
 	onRender: function () {
-		this.dialogFactory.create(this.$el, {
+		this.dialog = this.dialogFactory.create(this.$el, {
 			title: "Add a page",
 			modal: true
 		});

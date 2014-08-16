@@ -1,6 +1,7 @@
 ﻿
 pageModel.pageLayout = function (attrs, options, modelFactory) {
 	this.modelFactory = modelFactory;
+	this.page = options.page;
 };
 
 pageModel.pageLayout.prototype = {
@@ -25,11 +26,11 @@ pageModel.pageLayout.prototype = {
 			asideAttrs = _.extend(attrs.asideData || {}, attrs.aside);
 
 		this.header = attrs.headerKey ? 
-			this.modelFactory.create(attrs.headerKey + "Model", headerAttrs) : 
+			this.modelFactory.create(attrs.headerKey + "Model", headerAttrs, {page: this.page} ) : 
 			null;
 		
 		this.aside = attrs.asideKey ?
-			this.modelFactory.create(attrs.asideKey + "Model", asideAttrs):
+			this.modelFactory.create(attrs.asideKey + "Model", asideAttrs, {page: this.page}):
 			null;
 	},
 

@@ -3,6 +3,7 @@
 pageModel.linksModel = function (attrs, options, collectionFactory) {
 
 	this.collectionFactory = collectionFactory;
+	this.page = options.page;
 };
 
 pageModel.linksModel.prototype = {
@@ -19,7 +20,9 @@ pageModel.linksModel.prototype = {
 
 	initialize: function (attrs) {
 		
-		this.sections = this.collectionFactory.create("linksSectionCollection", this.attributes.sections);
+		this.sections = this.collectionFactory.create("linksSectionCollection", this.attributes.sections, {
+			page: this.page
+		});
 		this.sections.on("add remove", this.refreshFn("isEmpty"));
 
 		this.on("change:name", this.save);

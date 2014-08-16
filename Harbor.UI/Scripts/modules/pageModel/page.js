@@ -57,8 +57,8 @@ page.prototype = {
 		}, this);
 
 		this.set("link", this.getUrl());
-		this.template = this.modelFactory.create("template", this.attributes.template);
-		this.layout = this.modelFactory.create("pageLayout", this.attributes.layout);
+		this.template = this.modelFactory.create("template", this.attributes.template, { page: this });
+		this.layout = this.modelFactory.create("pageLayout", this.attributes.layout, { page: this });
 		
 		setPreviewFn();
 		this.on("change:previewImage", setPreviewFn);

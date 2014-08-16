@@ -1,46 +1,61 @@
 ﻿
 
-pageEditor.linksAddLinkView = function (options, pageSelector, pageAdder, dialogFactory) {
+pageEditor.linksAddLinkView = function (options, pageSelector, pageAdder, dialogFactory, commandHandler) {
 
 	this.pageSelector = pageSelector;
 	this.pageAdder = pageAdder;
 	this.dialogFactory = dialogFactory;
+	this.commandHandler = commandHandler;
 };
 
 pageEditor.linksAddLinkView.prototype = {
 	initialize: function () {
-		this.bindAll("addNewPage", "addExistingPage");
-
-		console.log(this.model);
+		this.bindAll("addNewPage", "addExistingPage", "addPage", "selectPage");
+		// this.model.collection.page -> page
 	},
 
 	onRender: function () {
 		this.dialog = this.dialogFactory.create(this.$el, {
 			title: "Add a link",
-			modal: true
+			modal: false
 		});
 	},
 
 	addNewPage: function () {
-		this.close();
+		//this.close();
 		this.pageAdder.render({
 			addPage: this.addPage
 		});
 	},
 
 	addExistingPage: function () {
-		this.close();
+		//this.close();
 		this.pageSelector.render({
 			select: this.selectPage
 		});
 	},
 
-	addPage: function (page) {
-		alert("add page");
-		console.debug(page);
+	addPage: function (pageToAdd) {
+
+		var thisPage = this.model.collection.page;
+
+		this.pageAdder.close();
+		this.commandHandler.execute(thisPage, "addNewPageToLinks", {
+			title: pageToAdd.get("title"),
+			pageType: pageToAdd.get("pageTypeKey"),
+			sectionIndex: this.model.collection.indexOf(this.model)
+		}, {
+			// handler
+			clientError: function (error) {
+				this.displayErrors(error.errors);
+			}
+		}, this);
 	},
 
 	selectPage: function (page) {
+		/*
+		public int ExistingPageID { get; set; }
+		public int SectionIndex { get; set; }*/
 		alert("select page");
 		console.debug(page);
 	},
@@ -60,5 +75,21 @@ pageEditor.view("linksAddLinkView", [
 	"pageSelector",
 	"pageAdder",
 	"dialogFactory",
+	"commandHandler",
 	pageEditor.linksAddLinkView
+]);
+
+
+
+pageEditor.commandHandler = function (ajaxRequest) {
+	return {
+		execute: function (model, commandName, command, handler, context) {
+			ajaxRequest.handle(model.postCommand(commandName, command), handler, context);
+		}
+	};
+};
+
+pageEditor.service("commandHandler", [
+	"ajaxRequest",
+	pageEditor.commandHandler
 ]);
