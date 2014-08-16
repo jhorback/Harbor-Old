@@ -35,11 +35,16 @@ namespace Harbor.Domain.Pages.Commands
 			}
 
 
-			var existingPage = _pageRepository.FindById(command.ExistingPageID, readOnly: true);
+			var existingPage = _pageRepository.FindById(command.ExistingPageID, readOnly: false);
 			if (existingPage == null)
 			{
-				throw new DomainValidationException("Page being added does not exist.");
+				throw new DomainValidationException("Page being linked does not exist.");
 			}
+
+
+			// Update the layout
+			existingPage.PageLayoutID = page.PageLayoutID;
+			existingPage.Layout = page.Layout;
 
 			section.links.Add(new Links.LinksSectionLink
 			{
