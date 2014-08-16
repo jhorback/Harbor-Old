@@ -92,7 +92,9 @@
     <Compile Include="IObjectFactory.cs" />
     <Compile Include="JSON.cs" />
     <Compile Include="MemCache.cs" />
+    <Compile Include="Pages\Commands\AddExistingPageToLinks.cs" />
     <Compile Include="Pages\Commands\AddNewPageToLinks.cs" />
+    <Compile Include="Pages\Commands\UseNewPageLayout.cs" />
     <Compile Include="Pages\PageCommandService.cs" />
     <Compile Include="Pages\Commands\TestCommand.cs" />
     <Compile Include="Pages\ContentType.cs" />

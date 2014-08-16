@@ -30,6 +30,18 @@ namespace Harbor.UI.Controllers.Api
 			return executeCommand(id, command);
 		}
 
+		[HttpPost, Http.PagePermit(Permissions.All)]
+		public HttpResponseMessage AddExistingPageToLinks(int id, AddExistingPageToLinks command)
+		{
+			return executeCommand(id, command);
+		}
+
+		[HttpPost, Http.PagePermit(Permissions.All)]
+		public HttpResponseMessage UseNewPageLayout(int id, UseNewPageLayout command)
+		{
+			return executeCommand(id, command);
+		}
+
 
 
 
