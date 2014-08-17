@@ -34,7 +34,8 @@ namespace Harbor.Domain.Pages.PipelineHandlers
 				page.Layout = new PageLayout
 				{
 					Title = page.Title,
-					UserName = page.AuthorsUserName
+					UserName = page.AuthorsUserName,
+					PageTypeKey = page.PageTypeKey
 				};
 				pageType.SetLayout(new PageTypeLayoutContext(page));
 			}
