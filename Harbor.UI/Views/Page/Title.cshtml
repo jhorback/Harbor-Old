@@ -1,11 +1,2 @@
 ﻿@model Harbor.UI.Models.PageDto
-@functions{
-
-	string getTitle()
-	{
-		return string.IsNullOrEmpty(Model.alternateTitle) ?
-			Model.title : Model.alternateTitle;
-	}
-
-}
-<h1>@getTitle()</h1>
+<h1>Modle.title</h1>
