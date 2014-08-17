@@ -124,7 +124,7 @@
     <Compile Include="Pages\PageTypeTemplateContext.cs" />
     <Compile Include="Pages\Pipelines\PipelineHandlers\EnsurePageLayoutLoadHandler.cs" />
     <Compile Include="Pages\Pipelines\PipelineHandlers\ContentLoadHandler.cs" />
-    <Compile Include="Pages\Pipelines\PipelineHandlers\SetPageTypeLoadHandler.cs" />
+    <Compile Include="Pages\Pipelines\PipelineHandlers\PageTypeLoadHandler.cs" />
     <Compile Include="Pages\Pipelines\PipelineHandlers\SetAllPageRolesLoadHandler.cs" />
     <Compile Include="Pages\Pipelines\PageCreatePipeline.cs" />
     <Compile Include="Pages\Pipelines\PipelineHandlers\PageTypeCreateHandler.cs" />

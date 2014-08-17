@@ -153,6 +153,10 @@
     <Compile Include="Migrations\201407202235182_ColumnChanges.Designer.cs">
       <DependentUpon>201407202235182_ColumnChanges.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201408172128217_PageLayoutPageTypeKey.cs" />
+    <Compile Include="Migrations\201408172128217_PageLayoutPageTypeKey.Designer.cs">
+      <DependentUpon>201408172128217_PageLayoutPageTypeKey.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositories\PageLayoutRepository.cs" />
     <Compile Include="Repositories\PayPalButtonRepository.cs" />
@@ -240,6 +244,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201407202235182_ColumnChanges.resx">
       <DependentUpon>201407202235182_ColumnChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408172128217_PageLayoutPageTypeKey.resx">
+      <DependentUpon>201408172128217_PageLayoutPageTypeKey.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

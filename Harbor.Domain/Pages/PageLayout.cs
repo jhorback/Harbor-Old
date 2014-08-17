@@ -23,6 +23,12 @@ namespace Harbor.Domain.Pages
 
 		public int PageLayoutID { get; set; }
 
+		/// <summary>
+		/// This is the page type of the page when first created.
+		/// </summary>
+		[StringLength(50)]
+		public string PageTypeKey { get; set; }
+
 		public bool IsNew()
 		{
 			return PageLayoutID == 0;
