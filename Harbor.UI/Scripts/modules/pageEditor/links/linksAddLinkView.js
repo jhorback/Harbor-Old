@@ -52,12 +52,12 @@ pageEditor.linksAddLinkView.prototype = {
 		}, this);
 	},
 
-	selectPage: function (page) {
-		/*
-		public int ExistingPageID { get; set; }
-		public int SectionIndex { get; set; }*/
-		alert("select page");
-		console.debug(page);
+	selectPage: function (selectedPage) {
+		var thisPage = this.model.collection.page;
+		this.commandHandler.execute(thisPage, "addExistingPageToLinks", {
+			existingPageID: selectedPage.id,
+			sectionIndex: this.model.collection.indexOf(this.model)
+		}, this);
 	},
 
 	onClose: function () {
@@ -65,10 +65,6 @@ pageEditor.linksAddLinkView.prototype = {
 	}
 };
 
-	//this.model.links.add({
-	//		pageID: page.get("id"),
-	//		text: page.get("title")
-	//	});
 
 pageEditor.view("linksAddLinkView", [
 	"options",

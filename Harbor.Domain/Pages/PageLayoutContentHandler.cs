@@ -30,8 +30,7 @@ namespace Harbor.Domain.Pages
 			{
 				return default(T);
 			}
-
-			return new JavaScriptSerializer().Deserialize<T>(str);
+			return JSON.Parse<T>(str);
 		}
 
 		public abstract object GetLayoutContent();

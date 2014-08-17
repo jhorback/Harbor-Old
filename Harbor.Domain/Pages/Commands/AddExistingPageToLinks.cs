@@ -52,8 +52,10 @@ namespace Harbor.Domain.Pages.Commands
 				text = existingPage.Title
 			});
 			links.EnsureIds();
+			page.Layout.SetAsideData(links);
 
 
+			_pageRepository.Update(existingPage);
 			_pageRepository.Update(page);
 			_pageRepository.Save();
 		}
