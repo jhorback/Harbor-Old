@@ -80,16 +80,3 @@ pageEditor.view("linksAddLinkView", [
 ]);
 
 
-
-pageEditor.commandHandler = function (ajaxRequest) {
-	return {
-		execute: function (model, commandName, command, handler, context) {
-			ajaxRequest.handle(model.postCommand(commandName, command), handler, context);
-		}
-	};
-};
-
-pageEditor.service("commandHandler", [
-	"ajaxRequest",
-	pageEditor.commandHandler
-]);
