@@ -132,6 +132,7 @@ namespace Harbor.Domain.Pages
 		public void SetHeaderData<T>(T header)
 		{
 			_header = header;
+			HeaderDataStr = JSON.Stringify(header);
 		}
 
 		public T GetAsideAdata<T>()
@@ -142,6 +143,7 @@ namespace Harbor.Domain.Pages
 		public void SetAsideData<T>(T aside)
 		{
 			_aside = aside;
+			AsideDataStr = JSON.Stringify(aside);
 		}
 
 		#region associations

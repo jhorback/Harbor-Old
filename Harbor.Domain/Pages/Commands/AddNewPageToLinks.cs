@@ -55,6 +55,7 @@ namespace Harbor.Domain.Pages.Commands
 				text = command.Title
 			});
 			links.EnsureIds();
+			page.Layout.SetAsideData(links);
 
 
 			_pageRepository.Update(page);
