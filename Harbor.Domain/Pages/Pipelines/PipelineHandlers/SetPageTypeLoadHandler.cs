@@ -1,7 +1,9 @@
-﻿using Harbor.Domain.Pipeline;
+﻿using System;
+using Harbor.Domain.Pipeline;
 
 namespace Harbor.Domain.Pages.PipelineHandlers
 {
+	[Obsolete("This was overriding shared layouts. The ensure layout handler should be enough.")]
 	public class SetPageTypeLoadHandler : IPipelineHanlder<Page>
 	{
 		private readonly IPageTypeRepository _pageTypeRepository;
