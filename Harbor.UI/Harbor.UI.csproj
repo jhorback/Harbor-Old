@@ -525,6 +525,7 @@
     <Content Include="Scripts\bbext\routerExt\routerInfo.js" />
     <Content Include="Scripts\bbext\routerExt\startRouterExt.js" />
     <Content Include="Scripts\bbext\timer.js" />
+    <Content Include="Scripts\bbext\commandHandler.js" />
     <Content Include="Scripts\bbext\_dependent\router.js" />
     <Content Include="Scripts\modules\bbextui\menuListFactory.js" />
     <Content Include="Scripts\modules\bbextui\pagerModel.js" />
