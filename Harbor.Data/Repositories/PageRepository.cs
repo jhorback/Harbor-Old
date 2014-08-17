@@ -153,7 +153,8 @@ namespace Harbor.Data.Repositories
 		#region IPageRepository
 		public Page Find(string author, string title)
 		{
-			var pages = FindAll(d => d.AuthorsUserName == author && d.Title == title);
+			var pages = FindAll(d => d.AuthorsUserName.ToLower() == author.ToLower() &&
+				d.Title.ToLower() == title.ToLower());
 			return pages.FirstOrDefault();
 		}
 
