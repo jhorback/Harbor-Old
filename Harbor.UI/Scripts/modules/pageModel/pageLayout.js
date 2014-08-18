@@ -7,6 +7,8 @@ pageModel.pageLayout = function (attrs, options, modelFactory) {
 pageModel.pageLayout.prototype = {
 	defaults:{
 		id: null, 
+		title: null,
+
 		layoutIsCentered: null, 
 		layoutIsReadable: null, 
 		layoutHasNoSidebar: null,
