@@ -1,11 +1,12 @@
 ﻿
 
-function pageSettingsView(options, currentPageRepo, modelFactory, menuFactory, location, appurl) {
+function pageSettingsView(options, currentPageRepo, modelFactory, menuFactory, location, appurl, commandHandler) {
 
 	this.currentPageRepo = currentPageRepo;
 	this.menuFactory = menuFactory;
 	this.location = location;
 	this.appurl = appurl;
+	this.commandHandler = commandHandler;
 
 	this.bindAll("goHome");
 	this.model = this.currentPageRepo.getCurrentPage();
@@ -47,6 +48,12 @@ pageSettingsView.prototype = {
 		this.currentPageRepo.deleteCurrentPage().then(this.goHome);
 	},
 	
+	resetLayout: function () {
+		if (confirm("This will reset the layout and make this page no longer associated with the current layout.")) {
+			this.commandHandler.execute(this.model, "UseNewPageLayout");
+		}
+	},
+
 	goHome: function () {
 		this.location = this.appurl.get();
 	},
@@ -57,5 +64,5 @@ pageSettingsView.prototype = {
 };
 
 pageSettings.view("pageSettingsView", [
-	"options", "currentPageRepo", "modelFactory", "menuFactory", "location", "appurl",
+	"options", "currentPageRepo", "modelFactory", "menuFactory", "location", "appurl", "commandHandler",
 	pageSettingsView]);
