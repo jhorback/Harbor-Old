@@ -17,8 +17,10 @@ function postActionModelExt(mixin) {
 
 	function doPost(action, data) {
 		var root = this.urlRoot || (this.collection && this.collection.url),
-			url,
-			id;
+		    url,
+		    id,
+		    xhr;
+
 		
 		if (!root) {
 			throw new Error("A url is required for postAction.");
@@ -28,13 +30,15 @@ function postActionModelExt(mixin) {
 		url = root + "/" + id + "/" + action;
 		data = data || {};
 		data.id = id;
-		return this.sync(action, this, {
+		xhr = this.sync(action, this, {
 			url: url,
 			type: "POST",
 			dataType: "json",
 			contentType: "application/json",
 			data: JSON.stringify(data)
 		});
+
+		return xhr;
 	}
 };
 
