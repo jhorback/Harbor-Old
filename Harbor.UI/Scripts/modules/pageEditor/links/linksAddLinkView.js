@@ -54,8 +54,9 @@ pageEditor.linksAddLinkView.prototype = {
 		}, {
 			// handler
 			clientError: function (error) {
-				wait.finished(error.errors[""].toString());
-				alert(error.errors[""].toString());
+				var errorMessage = "<h1>" + error.errors[""].toString() +
+					"</h1><p>" + "Try adding the page again.</p>";
+				wait.finished(errorMessage);
 			},
 			success: wait.finishedMessage()
 		}, this);
