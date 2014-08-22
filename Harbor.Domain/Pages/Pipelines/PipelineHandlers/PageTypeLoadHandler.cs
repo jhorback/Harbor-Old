@@ -13,10 +13,10 @@ namespace Harbor.Domain.Pages.PipelineHandlers
 
 		public void Execute(Page page)
 		{
-			var pageType = _pageTypeRepository.GetPageType(page.Layout.PageTypeKey, useDefault: false);
+			var pageType = _pageTypeRepository.GetPageType(page.Layout.PageTypeKey, useDefault: true);
 			if (pageType != null)
 			{
-				page.PageType.SetLayout(new PageTypeLayoutContext(page));				
+				pageType.SetLayout(new PageTypeLayoutContext(page));				
 			}
 		}
 	}
