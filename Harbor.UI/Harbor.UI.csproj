@@ -411,6 +411,12 @@
     <Content Include="Content\site\core\menulist.min.css">
       <DependentUpon>menulist.scss</DependentUpon>
     </Content>
+    <Content Include="Content\site\core\message.css">
+      <DependentUpon>message.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\site\core\message.min.css">
+      <DependentUpon>message.scss</DependentUpon>
+    </Content>
     <Content Include="Content\site\core\page-editor.css">
       <DependentUpon>page-editor.scss</DependentUpon>
     </Content>
