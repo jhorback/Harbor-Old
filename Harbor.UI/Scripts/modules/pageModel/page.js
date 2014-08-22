@@ -123,7 +123,7 @@ page.prototype = {
 	
 	"[isLayoutTitleDifferent]": {
 		get: function () {
-			return this.attributes.title == this.layout.attributes.title;
+			return this.attributes.title !== this.layout.attributes.title;
 		}
 	},
 	
