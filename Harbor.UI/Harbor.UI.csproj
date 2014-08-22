@@ -874,6 +874,7 @@
       <CompileStyle>Nested</CompileStyle>
       <DebugInfo>False</DebugInfo>
     </None>
+    <Content Include="Content\site\core\message.scss" />
     <None Include="Content\site\core\tiles.scss">
       <Compile>True</Compile>
       <Minify>False</Minify>
