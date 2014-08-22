@@ -22,12 +22,11 @@
 				<legend>Page Type</legend>
 				<div data-bind="text: pageTypeName">
 				</div>
-				<div>
+				<div data-bind="showif:isLayoutTitleDifferent">
 					Layout: <span data-bind="text: layout.title"></span>
+					(<span class="link" data-event="resetLayout">Reset layout</span>)
 				</div>
 			</fieldset>
-			
-			
 
 			<fieldset>
 				<legend>Delete</legend>

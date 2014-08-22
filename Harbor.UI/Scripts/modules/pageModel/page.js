@@ -39,7 +39,8 @@ page.prototype = {
 		thumbUrl: "",
 		link: null,
 		publishedDisplay: null,
-		publishedMessage: null
+		publishedMessage: null,
+		isLayoutTitleDifferent: false
 	},
 
 	initialize: function () {
@@ -119,6 +120,13 @@ page.prototype = {
 			return true; // for now, always automate the preview
 		}
 	},
+	
+	"[isLayoutTitleDifferent]": {
+		get: function () {
+			return this.attributes.title == this.layout.attributes.title;
+		}
+	},
+	
 
 	getUrl: function () {
 		return this.pageurl.get(this.get("id"), this.get("title"));
