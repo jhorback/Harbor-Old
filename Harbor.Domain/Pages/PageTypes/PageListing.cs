@@ -18,6 +18,17 @@ namespace Harbor.Domain.Pages.PageTypes
 			get { return "A page with navigation links and tiled content."; }
 		}
 
+		public override string ContentDescription
+		{
+			get { return "Tiled content"; }
+		}
+
+		public override void SetAddPageTypeFilter(AddPageTypeFilterContext context)
+		{
+			context.IsPrimary(true)
+				.ExcludePageType<PageTypes.PageListing>();
+		}
+
 		public override void SetLayout(PageTypeLayoutContext context)
 		{
 			context.SetLayout(PageLayout.LayoutDisplayProperties.None)

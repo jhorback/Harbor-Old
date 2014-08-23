@@ -18,6 +18,16 @@ namespace Harbor.Domain.Pages.PageTypes
 			get { return "A simple centered page with text."; }
 		}
 
+		public override string ContentDescription
+		{
+			get { return "Contains text."; }
+		}
+
+		public override void SetAddPageTypeFilter(AddPageTypeFilterContext context)
+		{
+			context.IsPrimary(false);
+		}
+
 		public override void SetLayout(PageTypeLayoutContext context)
 		{
 			context.SetLayout(PageLayout.LayoutDisplayProperties.ContentCentered | PageLayout.LayoutDisplayProperties.NoAside)
