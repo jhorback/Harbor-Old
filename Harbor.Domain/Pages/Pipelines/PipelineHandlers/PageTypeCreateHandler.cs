@@ -16,12 +16,7 @@ namespace Harbor.Domain.Pages.PipelineHandlers
 		public void Execute(Page page)
 		{
 			// determine the page type
-			var pageType = _pageTypeRepository.GetPageType(page.PageTypeKey);
-			if (pageType == null)
-			{
-				pageType = _pageTypeRepository.GetPageType("page");
-				_logger.Warn("Page type could not be found: {0}.", page.PageTypeKey);
-			}
+			var pageType = _pageTypeRepository.GetPageType(page.PageTypeKey, useDefault: true);
 			if (pageType == null)
 			{
 				throw new DomainValidationException("Pages cannot be created without a page type.");				
