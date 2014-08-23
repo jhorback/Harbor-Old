@@ -34,6 +34,18 @@ namespace Harbor.Domain.Tests
 			Assert.IsTrue(types["other"].Any());
 		}
 
-		// jch! - add more tests for the sub page types
+		[TestMethod]
+		public void GetPageTypesToAdd_PageListingContainsPage_DoesNotContainPageListing()
+		{
+			var repo = new PageTypeRepository();
+
+			var typesDict = repo.GetPageTypesToAdd("pageListing");
+			var types = typesDict["primary"];
+			types.AddRange(typesDict["other"]);
+
+
+			Assert.IsTrue(types.Any(p => p.Key == "page"));
+			Assert.IsFalse(types.Any(p => p.Key == "pageListing"));
+		}
 	}
 }
