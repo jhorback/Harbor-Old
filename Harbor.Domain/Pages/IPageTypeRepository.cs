@@ -9,6 +9,10 @@ namespace Harbor.Domain.Pages
 	{
 		IEnumerable<PageType> GetPageTypes();
 
+		IDictionary<string, List<PageType>> GetPageTypesToAdd();
+
+		IDictionary<string, List<PageType>> GetPageTypesToAdd(string parentPageTypeKey);
+
 		/// <summary>
 		/// Returns the page type matching the specified key.
 		/// </summary>
