@@ -1,33 +1,12 @@
-﻿using System.IO;
-using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 using Harbor.UI.Models.JSPM;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting.Web;
 
 namespace Harbor.UI.Tests
 {
-
-
 	[TestClass()]
 	public class JavaScriptPackageViewerTest
 	{
-
-
-		private TestContext testContextInstance;
-
-		public TestContext TestContext
-		{
-			get
-			{
-				return testContextInstance;
-			}
-			set
-			{
-				testContextInstance = value;
-			}
-		}
 
 		#region Additional test attributes
 		// 

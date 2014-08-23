@@ -7,21 +7,6 @@ namespace Harbor.Domain.Tests
 	[TestClass]
 	public class PageTypeRepositoryTest
 	{
-		private TestContext testContextInstance;
-
-		public TestContext TestContext
-		{
-			get
-			{
-				return testContextInstance;
-			}
-			set
-			{
-				testContextInstance = value;
-			}
-		}
-
-
 		[TestMethod]
 		public void GetPageTypesToAdd_IsNotEmpty()
 		{

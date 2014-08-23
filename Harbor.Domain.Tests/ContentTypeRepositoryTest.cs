@@ -8,22 +8,6 @@ namespace Harbor.Domain.Tests
 	public class ContentTypeRepositoryTest
 	{
 
-
-		private TestContext testContextInstance;
-
-		public TestContext TestContext
-		{
-			get
-			{
-				return testContextInstance;
-			}
-			set
-			{
-				testContextInstance = value;
-			}
-		}
-
-
 		[TestMethod]
 		public void GetTemplateContentTypes_ReturnsAnyStaticTypes()
 		{
