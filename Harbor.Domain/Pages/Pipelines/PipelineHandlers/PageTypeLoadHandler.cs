@@ -16,6 +16,7 @@ namespace Harbor.Domain.Pages.PipelineHandlers
 			var pageType = _pageTypeRepository.GetPageType(page.Layout.PageTypeKey, useDefault: true);
 			if (pageType != null)
 			{
+				page.PageType = pageType;
 				pageType.SetLayout(new PageTypeLayoutContext(page));				
 			}
 		}
