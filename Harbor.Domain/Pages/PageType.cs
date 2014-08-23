@@ -20,11 +20,17 @@ namespace Harbor.Domain.Pages
 		{
 			get
 			{
-				var context = new AddPageTypeFilterContext(this);
-				SetAddPageTypeFilter(context);
-				return context.Filter;
+				if (filter == null)
+				{
+					var context = new AddPageTypeFilterContext(this);
+					filter = context.Filter;
+					SetAddPageTypeFilter(context);
+				}
+				return filter;
 			}
 		}
+		private AddPageTypeFilter filter = null;
+
 
 		/// <summary>
 		/// Sets various options used when adding this page type.
