@@ -22,7 +22,8 @@ pageEditor.linksAddLinkView.prototype = {
 
 	onRender: function () {
 		this.dialog = this.dialogFactory.create(this.$el, {
-			title: "Add a link"
+			title: "Add a link",
+			modal: false
 		});
 	},
 
