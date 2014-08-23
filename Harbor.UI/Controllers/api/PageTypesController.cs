@@ -8,16 +8,25 @@ namespace Harbor.UI.Controllers.Api
 {
     public class PageTypesController : ApiController
     {
-		IPageTypeRepository pageTypeRep;
+		IPageTypeRepository _pageTypeRep;
 
 		public PageTypesController(IPageTypeRepository pageTypeRep)
 		{
-			this.pageTypeRep = pageTypeRep;
+			_pageTypeRep = pageTypeRep;
 		}
 
-		public IEnumerable<PageTypeDto> Get()
+		public IEnumerable<PageTypeDto> Get(string parentPageTypeKey = null)
 		{
-			return pageTypeRep.GetPageTypes().Select(pt => (PageTypeDto)pt);
+			var pageTypes = _pageTypeRep.GetPageTypesToAdd(parentPageTypeKey);
+			foreach (var type in pageTypes["primary"])
+			{
+				yield return PageTypeDto.FromPageType(type, true);
+			}
+
+			foreach (var type in pageTypes["other"])
+			{
+				yield return PageTypeDto.FromPageType(type, false);
+			}
 		}
     }
 }

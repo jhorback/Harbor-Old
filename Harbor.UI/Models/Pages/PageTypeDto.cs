@@ -1,31 +1,27 @@
-﻿using AutoMapper;
-using Harbor.Domain.Pages;
+﻿using Harbor.Domain.Pages;
 
 namespace Harbor.UI.Models
 {
-	public class PageTypeDtoMapCreator : IBootstrapperTask
-	{
-		public void Execute()
-		{
-			Mapper.CreateMap<PageType, PageTypeDto>();
-			Mapper.CreateMap<PageTypeDto, PageType>();
-		}
-	}
-
 	public class PageTypeDto
 	{
 		public string key { get; set; }
 		public string name { get; set; }
 		public string description { get; set; }
+		public string contentDescription { get; set; }
+		public bool isPrimaryToAdd { get; set; }
 
-		public static implicit operator PageTypeDto(PageType pageType)
+		public PageTypeDto(PageType pageType, bool isPrimary)
 		{
-			return Mapper.Map<PageType, PageTypeDto>(pageType);
+			key = pageType.Key;
+			name = pageType.Name;
+			description = pageType.Description;
+			contentDescription = pageType.ContentDescription;
+			isPrimaryToAdd = isPrimary;
 		}
 
-		public static implicit operator PageType(PageTypeDto pageType)
+		public static PageTypeDto FromPageType(PageType pageType, bool isPrimaryToAdd)
 		{
-			return Mapper.Map<PageTypeDto, PageType>(pageType);
+			return new PageTypeDto(pageType, isPrimaryToAdd);
 		}
 	}
 }
