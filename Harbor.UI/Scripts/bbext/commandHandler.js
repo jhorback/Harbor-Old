@@ -6,8 +6,10 @@ bbext.commandHandler = function (ajaxRequest) {
 			var xhr = ajaxRequest.handle(model.postCommand(commandName, command), handler, context);
 
 			xhr.then(function (resp) {
-				var serverAttrs = model.parse(resp, {});
+				var options = {},
+					serverAttrs = model.parse(resp, options);
 				model.set(serverAttrs);
+				model.trigger('sync', model, resp, options);
 			});
 
 			return xhr;
