@@ -107,6 +107,9 @@
     <Compile Include="Pages\ContentTypes\Title.cs" />
     <Compile Include="Pages\ContentTypes\Text.cs" />
     <Compile Include="Pages\PageLayoutContentHandler.cs" />
+    <Compile Include="Pages\Pipelines\PageDeletePipeline.cs" />
+    <Compile Include="Pages\Pipelines\PipelineHandlers\ComponentDeleteHandler.cs" />
+    <Compile Include="Pages\Pipelines\PipelineHandlers\DeleteLayoutDeleteHandler.cs" />
     <Compile Include="Pages\TemplateContentHandler.cs" />
     <Compile Include="Pages\TemplateContentType.cs" />
     <Compile Include="Pages\IPageFactory.cs" />
