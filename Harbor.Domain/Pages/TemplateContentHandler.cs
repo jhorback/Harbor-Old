@@ -35,5 +35,13 @@ namespace Harbor.Domain.Pages
 
 		public abstract object GetTemplateContent();
 		public abstract IEnumerable<PageResource> DeclareResources();
+
+		/// <summary>
+		/// When implemented allows template content to perform operations when the page is being deleted.
+		/// </summary>
+		public virtual void OnDelete()
+		{
+			// noop
+		}
 	}
 }

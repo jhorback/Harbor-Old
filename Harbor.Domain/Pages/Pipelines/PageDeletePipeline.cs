@@ -9,7 +9,7 @@ namespace Harbor.Domain.Pages
 			: base(objectFactory)
 		{
 			AddHandler<DeleteLayoutDeleteHandler>();
-			AddHandler<ComponentDeleteHandler>();
+			AddHandler<ContentDeleteHandler>();
 			// AddHandler<PageTypeDeleteHandler>(); don't need this yet
 		}
 	}
