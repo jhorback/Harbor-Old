@@ -140,6 +140,10 @@ namespace Harbor.Data.Repositories
 		public void Delete(Page entity)
 		{
 			clearCachedPageByID(entity.PageID);
+
+			var deletePipeline = new PageDeletePipeline(_objectFactory);
+			deletePipeline.Execute(entity);
+
 			context.Pages.Remove(entity);
 		}
 
