@@ -34,6 +34,14 @@ namespace Harbor.Domain.Pages
 		}
 
 		public abstract object GetLayoutContent();
+
+		/// <summary>
+		/// Allows layout to perform operations before the page is deleted.
+		/// </summary>
+		public virtual void OnDelete()
+		{
+			// noop
+		}
 	}
 
 
