@@ -50,7 +50,7 @@ Settings.EditNavView = Application.View.extend({
 				items: "li:not(.frame-staticnavitem)",
 				connectWith: "#frame-body",
 				tolerance: "pointer",
-				appendTo: "body",
+				appendTo: "#frame-body",
 				revert: true,
 				out: function (event, ui) {
 					ui.item.addClass("attn");

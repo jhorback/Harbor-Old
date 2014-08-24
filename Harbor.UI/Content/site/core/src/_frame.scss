@@ -43,7 +43,7 @@ $frame-logo-use-image: true !default;
 		color: $framenav-color;
 		background: $framenav-background-color;
 
-		position: fixed;
+		//position: fixed;
 		width:100%;
 		// border-bottom: 1px solid $framenav-background-color-hover;
 		@include box-shadow(0 2px 4px rgba(105,105,105,.25));
@@ -87,7 +87,7 @@ $frame-logo-use-image: true !default;
 	}
 
 	#frame-body {
-		top: $frame-header-height;
+		//top: $frame-header-height;
 
 		::-webkit-scrollbar-thumb {
 			background: $scrollbar-color;
