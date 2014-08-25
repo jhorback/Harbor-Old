@@ -29,6 +29,7 @@ namespace Harbor.Domain.Diagnostics
 #if !DEBUG
 			return;
 #endif
+			if (args == null) args = new object[] {};
 			Trace.WriteLine(string.Format(scrub(format), args), "Debug");
 			Console.WriteLine(scrub(format), args);
 		}
