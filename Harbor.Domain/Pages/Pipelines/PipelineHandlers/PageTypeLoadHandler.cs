@@ -13,7 +13,7 @@ namespace Harbor.Domain.Pages.PipelineHandlers
 
 		public void Execute(Page page)
 		{
-			var pageType = _pageTypeRepository.GetPageType(page.Layout.PageTypeKey, useDefault: true);
+			var pageType = _pageTypeRepository.GetPageType(page.PageTypeKey, useDefault: true);
 			if (pageType != null)
 			{
 				page.PageType = pageType;
