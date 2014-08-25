@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace Harbor.Domain.Pages.ContentTypes
@@ -15,8 +14,11 @@ namespace Harbor.Domain.Pages.ContentTypes
 
 	public class LinksHandler : PageLayoutContentHandler
 	{
-		public LinksHandler(Page page) : base(page)
+		private readonly ILogger _logger;
+
+		public LinksHandler(ILogger logger, Page page) : base(page)
 		{
+			_logger = logger;
 		}
 
 		public override void OnDelete()
@@ -31,7 +33,20 @@ namespace Harbor.Domain.Pages.ContentTypes
 		/// <param name="pageId"></param>
 		public void RemovePageFromLinks(int pageId)
 		{
+			if (Page.Layout == null)
+			{
+				var message = "The page layout is null.";
+				_logger.Error(message);
+				throw new Exception(message);
+			}
+
 			var links = Page.Layout.GetAsideAdata<Content.Links>();
+			if (links == null)
+			{
+				_logger.Debug("The links are null.");
+				return;
+			}
+
 			foreach (var section in links.sections)
 			{
 				var linkToDelete = section.links.FirstOrDefault(l => l.pageID == pageId);

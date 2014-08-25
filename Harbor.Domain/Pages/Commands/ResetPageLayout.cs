@@ -24,14 +24,13 @@ namespace Harbor.Domain.Pages.Commands
 		{
 			var page = _pageRepository.FindById(command.PageID, readOnly: false);
 
-			// this will delete the layout if the page is the only one associated with it.
-			var deleteLayoutHandler = _objectFactory.GetInstance<DeleteLayoutDeleteHandler>();
-			deleteLayoutHandler.DeleteLayoutIfLastUsed(page.PageLayoutID ?? 0);
-
 			// remove the link from the layout
 			var linksHandler = _objectFactory.GetInstance<LinksHandler>(new { page = page });
 			linksHandler.RemovePageFromLinks(page.PageID);
 
+			// this will delete the layout if the page is the only one associated with it.
+			var deleteLayoutHandler = _objectFactory.GetInstance<DeleteLayoutDeleteHandler>();
+			deleteLayoutHandler.DeleteLayoutIfLastUsed(page.PageLayoutID ?? 0);
 
 			page.PageLayoutID = 0;
 			page.Layout = new PageLayout
