@@ -37,7 +37,7 @@ namespace Harbor.UI.Controllers.Api
 		}
 
 		[HttpPost, Http.PagePermit(Permissions.All)]
-		public HttpResponseMessage UseNewPageLayout(int id, UseNewPageLayout command)
+		public HttpResponseMessage ResetPageLayout(int id, ResetPageLayout command)
 		{
 			return executeCommand(id, command);
 		}

@@ -50,7 +50,7 @@ pageSettingsView.prototype = {
 	
 	resetLayout: function () {
 		if (confirm("This will reset the layout and make this page no longer associated with the current layout.")) {
-			this.commandHandler.execute(this.model, "UseNewPageLayout");
+			this.commandHandler.execute(this.model, "resetPageLayout");
 		}
 	},
 

@@ -4,23 +4,23 @@ using Harbor.Domain.Pages.PipelineHandlers;
 
 namespace Harbor.Domain.Pages.Commands
 {
-	public class UseNewPageLayout : IPageCommand
+	public class ResetPageLayout : IPageCommand
 	{
 		public int PageID { get; set; }
 	}
 
-	public class UseNewPageLayoutHandler : IPageCommandHandler<UseNewPageLayout>
+	public class ResetPageLayoutHandler : IPageCommandHandler<ResetPageLayout>
 	{
 		private readonly IPageRepository _pageRepository;
 		private readonly IObjectFactory _objectFactory;
 
-		public UseNewPageLayoutHandler(IPageRepository pageRepository, IObjectFactory objectFactory)
+		public ResetPageLayoutHandler(IPageRepository pageRepository, IObjectFactory objectFactory)
 		{
 			_pageRepository = pageRepository;
 			_objectFactory = objectFactory;
 		}
 
-		public void Execute(UseNewPageLayout command)
+		public void Execute(ResetPageLayout command)
 		{
 			var page = _pageRepository.FindById(command.PageID, readOnly: false);
 
