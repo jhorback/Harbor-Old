@@ -8,17 +8,19 @@ namespace Harbor.Domain.Pages.PipelineHandlers
 	/// </summary>
 	public class DeleteLayoutDeleteHandler : IPipelineHanlder<Page>
 	{
+		private readonly IPageRepository _pageRepository;
 		private readonly IPageLayoutRepository _pageLayoutRepository;
 
-		public DeleteLayoutDeleteHandler(IPageLayoutRepository pageLayoutRepository)
+		public DeleteLayoutDeleteHandler(IPageRepository pageRepository, IPageLayoutRepository pageLayoutRepository)
 		{
+			_pageRepository = pageRepository;
 			_pageLayoutRepository = pageLayoutRepository;
 		}
 
 		public void Execute(Page page)
 		{
-			var layoutCount = _pageLayoutRepository.Query().Count(l => l.PageLayoutID == page.PageLayoutID);
-			if (layoutCount == 1)
+			var pagesCount = _pageRepository.Query().Count(p => p.PageLayoutID == page.PageLayoutID);
+			if (pagesCount == 1)
 			{
 				var layout = _pageLayoutRepository.FindById(page.PageLayoutID);
 				_pageLayoutRepository.Delete(layout);

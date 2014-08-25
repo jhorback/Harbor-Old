@@ -33,7 +33,7 @@ namespace Harbor.Domain.Pages.PipelineHandlers
 				var headerHandler = _contentTypeRepository.GetLayoutContentHandler(page.Layout.HeaderKey, page);
 				if (headerHandler != null)
 				{
-					headerHandler.OnDelete();
+					headerHandler.OnDelete(page);
 				}
 				else
 				{
@@ -49,7 +49,7 @@ namespace Harbor.Domain.Pages.PipelineHandlers
 				var asideHandler = _contentTypeRepository.GetLayoutContentHandler(page.Layout.AsideKey, page);
 				if (asideHandler != null)
 				{
-					asideHandler.OnDelete();
+					asideHandler.OnDelete(page);
 				}
 				else
 				{
