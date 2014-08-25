@@ -9,29 +9,29 @@ namespace Harbor.Domain.Pages.ContentTypes
 		public override Type HandlerType
 		{
 			// get { return typeof(AsideHandler<Content.Links>); }
-			get { return typeof(TestLinksHandler); }
+			get { return typeof(LinksHandler); }
 		}
 	}
 
-	public class TestLinksHandler : PageLayoutContentHandler
+	public class LinksHandler : PageLayoutContentHandler
 	{
-		public TestLinksHandler(Page page) : base(page)
+		public LinksHandler(Page page) : base(page)
 		{
 		}
 
-		public override void OnDelete(Page page)
+		public override void OnDelete()
 		{
 			// if a page being deleted is a link, then remove the link
-			var links = page.Layout.GetAsideAdata<Content.Links>();
+			var links = Page.Layout.GetAsideAdata<Content.Links>();
 			foreach (var section in links.sections)
 			{
-				var linkToDelete = section.links.FirstOrDefault(l => l.pageID == page.PageID);
+				var linkToDelete = section.links.FirstOrDefault(l => l.pageID == Page.PageID);
 				if (linkToDelete != null)
 				{
 					section.links.Remove(linkToDelete);
 				}
 			}
-			page.Layout.SetAsideData(links);
+			Page.Layout.SetAsideData(links);
 		}
 
 		public override object GetLayoutContent()
