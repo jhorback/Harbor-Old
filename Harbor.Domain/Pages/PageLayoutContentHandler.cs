@@ -5,22 +5,22 @@ namespace Harbor.Domain.Pages
 {
 	public abstract class PageLayoutContentHandler
 	{
-		private readonly Page _page;
+		public Page Page { get; private set; }
 
 		protected PageLayoutContentHandler(Page page)
 		{
-			_page = page;
+			Page = page;
 		}
 
 		protected T GetHeader<T>()
 		{
-			var header = deserialize<T>(_page.Layout.HeaderDataStr);
+			var header = deserialize<T>(Page.Layout.HeaderDataStr);
 			return header;
 		}
 
 		protected T GetAside<T>()
 		{
-			var aside = deserialize<T>(_page.Layout.AsideDataStr);
+			var aside = deserialize<T>(Page.Layout.AsideDataStr);
 			return aside;
 		}
 
@@ -38,7 +38,7 @@ namespace Harbor.Domain.Pages
 		/// <summary>
 		/// Allows layout to perform operations before the page is deleted.
 		/// </summary>
-		public virtual void OnDelete(Page page)
+		public virtual void OnDelete()
 		{
 			// noop
 		}

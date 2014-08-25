@@ -1,4 +1,7 @@
 ﻿
+using Harbor.Domain.Pages.ContentTypes;
+using Harbor.Domain.Pages.PipelineHandlers;
+
 namespace Harbor.Domain.Pages.Commands
 {
 	public class UseNewPageLayout : IPageCommand
@@ -9,15 +12,26 @@ namespace Harbor.Domain.Pages.Commands
 	public class UseNewPageLayoutHandler : IPageCommandHandler<UseNewPageLayout>
 	{
 		private readonly IPageRepository _pageRepository;
+		private readonly IObjectFactory _objectFactory;
 
-		public UseNewPageLayoutHandler(IPageRepository pageRepository)
+		public UseNewPageLayoutHandler(IPageRepository pageRepository, IObjectFactory objectFactory)
 		{
 			_pageRepository = pageRepository;
+			_objectFactory = objectFactory;
 		}
 
 		public void Execute(UseNewPageLayout command)
 		{
 			var page = _pageRepository.FindById(command.PageID, readOnly: false);
+
+			// this will delete the layout if the page is the only one associated with it.
+			var deleteLayoutHandler = _objectFactory.GetInstance<DeleteLayoutDeleteHandler>();
+			deleteLayoutHandler.Execute(page);
+
+			// remove the link from the layout
+			var linksHandler = _objectFactory.GetInstance<LinksHandler>(new { page = page });
+			linksHandler.OnDelete();
+
 
 			page.PageLayoutID = 0;
 			page.Layout = new PageLayout
