@@ -67,6 +67,14 @@ page.prototype = {
 	"[title]": {
 		validate: {
 			required: true
+		},
+
+		set: function (value) {
+			// sync the layout title
+			if (this.attributes.isLayoutTitleDifferent === false) {
+				this.layout.set("title", value);
+			}
+			return value;
 		}
 	},
 

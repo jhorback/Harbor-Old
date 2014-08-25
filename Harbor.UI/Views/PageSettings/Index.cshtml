@@ -19,13 +19,17 @@
 				</div>
 			</fieldset>
 			<fieldset id="settings-layout">
-				<legend>Page Type</legend>
-				<div data-bind="text: pageTypeName">
-				</div>
-				<div data-bind="showif:isLayoutTitleDifferent">
-					Layout: <span data-bind="text: layout.title"></span>
-					(<span class="link" data-event="resetLayout">Reset layout</span>)
-				</div>
+				<legend>Page Information</legend>
+				<dl class="list-wide">
+					<dt>Page type</dt>
+					<dd data-bind="text: pageTypeName"></dd>
+					<dt>Layout title</dt>
+					<dd>
+						<span data-bind="text: layout.title"></span>
+						@*<a data-bind="showif:isLayoutTitleDifferent, href: layoutPageHref, text: layout.title"></a>*@
+						<span class="link" data-bind="showif:isLayoutTitleDifferent" data-event="resetLayout">(Reset layout)</span>
+					</dd>
+				</dl>
 			</fieldset>
 
 			<fieldset>
