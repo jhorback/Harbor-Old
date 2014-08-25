@@ -34,7 +34,7 @@ pageSettingsView.prototype = {
 		// jch* really want the current title component to be listening at this point
 		// for now this hack is ok
 		this.saveModel();
-		$("[data-type=title] h1").html(this.model.get("title"));
+		$("[data-type=title] h1").html(this.model.layout.get("title"));
 	},
 	
 	saveModel: function () {
@@ -51,7 +51,7 @@ pageSettingsView.prototype = {
 	},
 	
 	resetLayout: function () {
-		if (confirm("This will reset the layout and make this page no longer associated with the current layout.")) {
+		if (confirm("This will reset the layout and make this page no longer associated with its current layout.")) {
 			this.commandHandler.execute(this.model, "resetPageLayout").then(this.refreshPage);
 		}
 	},

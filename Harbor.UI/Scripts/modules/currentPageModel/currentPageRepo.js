@@ -9,7 +9,7 @@ function currentPageRepo(
 	) {
 
 	var currentPage = globalCache.get("currentPage");
-	console.debug("currentPageDto", currentPageDto);
+	// console.debug("currentPageDto", currentPageDto);
 	
 	return {
 		getCurrentPage: function () {

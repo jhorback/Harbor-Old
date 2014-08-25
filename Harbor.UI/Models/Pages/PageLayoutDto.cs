@@ -51,6 +51,7 @@ namespace Harbor.UI.Models
 		{
 			if (layoutDto != null && pageLayout != null)
 			{
+				pageLayout.Title = layoutDto.title;
 				pageLayout.HeaderDataStr = layoutDto.headerData == null ? null : layoutDto.headerData.ToString();
 				pageLayout.AsideDataStr = layoutDto.asideData == null ? null : layoutDto.asideData.ToString();
 			}
