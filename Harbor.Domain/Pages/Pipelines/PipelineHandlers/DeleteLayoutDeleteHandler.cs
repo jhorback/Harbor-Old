@@ -19,11 +19,19 @@ namespace Harbor.Domain.Pages.PipelineHandlers
 
 		public void Execute(Page page)
 		{
-			var pagesCount = _pageRepository.Query().Count(p => p.PageLayoutID == page.PageLayoutID);
-			if (pagesCount == 1)
+			DeleteLayoutIfLastUsed(page.PageLayoutID ?? 0);
+		}
+
+		public void DeleteLayoutIfLastUsed(int pageLayoutId)
+		{
+			var pagesCount = _pageRepository.Query().Count(p => p.PageLayoutID == pageLayoutId);
+			if (pagesCount <= 1)
 			{
-				var layout = _pageLayoutRepository.FindById(page.PageLayoutID);
-				_pageLayoutRepository.Delete(layout);
+				var layout = _pageLayoutRepository.FindById(pageLayoutId);
+				if (layout != null)
+				{
+					_pageLayoutRepository.Delete(layout);					
+				}
 			}
 		}
 	}

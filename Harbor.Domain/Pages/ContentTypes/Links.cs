@@ -22,10 +22,19 @@ namespace Harbor.Domain.Pages.ContentTypes
 		public override void OnDelete()
 		{
 			// if a page being deleted is a link, then remove the link
+			RemovePageFromLinks(Page.PageID);
+		}
+
+		/// <summary>
+		/// Removes any links to the specified page id.
+		/// </summary>
+		/// <param name="pageId"></param>
+		public void RemovePageFromLinks(int pageId)
+		{
 			var links = Page.Layout.GetAsideAdata<Content.Links>();
 			foreach (var section in links.sections)
 			{
-				var linkToDelete = section.links.FirstOrDefault(l => l.pageID == Page.PageID);
+				var linkToDelete = section.links.FirstOrDefault(l => l.pageID == pageId);
 				if (linkToDelete != null)
 				{
 					section.links.Remove(linkToDelete);

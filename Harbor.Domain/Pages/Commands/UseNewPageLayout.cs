@@ -26,11 +26,11 @@ namespace Harbor.Domain.Pages.Commands
 
 			// this will delete the layout if the page is the only one associated with it.
 			var deleteLayoutHandler = _objectFactory.GetInstance<DeleteLayoutDeleteHandler>();
-			deleteLayoutHandler.Execute(page);
+			deleteLayoutHandler.DeleteLayoutIfLastUsed(page.PageLayoutID ?? 0);
 
 			// remove the link from the layout
 			var linksHandler = _objectFactory.GetInstance<LinksHandler>(new { page = page });
-			linksHandler.OnDelete();
+			linksHandler.RemovePageFromLinks(page.PageID);
 
 
 			page.PageLayoutID = 0;
