@@ -8,13 +8,15 @@ function pageSettingsView(options, currentPageRepo, modelFactory, menuFactory, l
 	this.appurl = appurl;
 	this.commandHandler = commandHandler;
 
-	this.bindAll("goHome");
 	this.model = this.currentPageRepo.getCurrentPage();
 	this.model.pagePreviewModel = modelFactory.create("pagePreviewModel", { page: this.model });
 }
 
 pageSettingsView.prototype = {
 	initialize: function () {
+
+		this.bindAll("goAfterDelete", "refreshPage");
+
 		// save events
 		this.listenTo(this.model, "change:title", this.changeTitle);
 		this.listenTo(this.model, "change:published", this.saveModel);
@@ -45,17 +47,23 @@ pageSettingsView.prototype = {
 			return;
 		}
 		
-		this.currentPageRepo.deleteCurrentPage().then(this.goHome);
+		this.currentPageRepo.deleteCurrentPage().then(this.goAfterDelete);
 	},
 	
 	resetLayout: function () {
 		if (confirm("This will reset the layout and make this page no longer associated with the current layout.")) {
-			this.commandHandler.execute(this.model, "resetPageLayout");
+			this.commandHandler.execute(this.model, "resetPageLayout").then(this.refreshPage);
 		}
 	},
 
-	goHome: function () {
-		this.location = this.appurl.get();
+	goAfterDelete: function (response) {
+
+		this.location.href = response;
+	},
+
+	refreshPage: function () {
+
+		this.location.reload(true);
 	},
 	
 	onClose: function () {
