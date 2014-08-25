@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Harbor.Domain.Pages.ContentTypes
 {
@@ -18,30 +19,24 @@ namespace Harbor.Domain.Pages.ContentTypes
 		{
 		}
 
+		public override void OnDelete(Page page)
+		{
+			// if a page being deleted is a link, then remove the link
+			var links = page.Layout.GetAsideAdata<Content.Links>();
+			foreach (var section in links.sections)
+			{
+				var linkToDelete = section.links.FirstOrDefault(l => l.pageID == page.PageID);
+				if (linkToDelete != null)
+				{
+					section.links.Remove(linkToDelete);
+				}
+			}
+			page.Layout.SetAsideData(links);
+		}
+
 		public override object GetLayoutContent()
 		{
-			var aside = GetAside<Content.Links>();
-			if (aside == null)
-			{
-				aside = new Content.Links
-				{
-					sections = new List<Content.Links.LinksSection>()
-					{
-						new Content.Links.LinksSection()
-						{
-							title = "Test Title",
-							links = new List<Content.Links.LinksSectionLink>()
-							{
-								new Content.Links.LinksSectionLink()
-								{
-									pageID = 50,
-									text = "Test Page Link 50"
-								}
-							}
-						}
-					}
-				};
-			}
+			var aside = GetAside<Content.Links>() ?? new Content.Links();
 			aside.EnsureIds();
 			return aside;
 		}
