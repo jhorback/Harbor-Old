@@ -66,9 +66,13 @@ abbr[title] {
 
 ul, ol {
   margin-bottom: 10.0002px; }
+  ul:only-of-type, ol:only-of-type {
+    margin-bottom: 0; }
 
 dl {
   margin-bottom: 20.0004px; }
+  dl:only-of-type {
+    margin-bottom: 0; }
   dl.list-wide dt {
     width: 11.42em; }
   dl.list-wide dd {
