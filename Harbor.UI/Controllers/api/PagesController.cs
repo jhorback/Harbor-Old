@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 using AutoMapper;
 using Harbor.Domain;
@@ -97,9 +98,20 @@ namespace Harbor.UI.Controllers.Api
 		public HttpResponseMessage Delete(int id)
         {
 			var pageDO = _pageRep.FindById(id, readOnly: false);
+
+
+			var returnToPath = "~/";
+			var firstPageWithSharedLayout = _pageRep.Query().FirstOrDefault(p => p.PageLayoutID == pageDO.PageLayoutID && p.PageID != pageDO.PageID);
+			if (firstPageWithSharedLayout != null)
+			{
+				returnToPath = firstPageWithSharedLayout.VirtualPath;
+			}
+
 			_pageRep.Delete(pageDO);
 			_pageRep.Save();
-			return Request.CreateResponse(HttpStatusCode.NoContent);
+
+			var returnToUrl = VirtualPathUtility.ToAbsolute(returnToPath);
+			return Request.CreateResponse(HttpStatusCode.OK, returnToUrl);
         }
 	}
 }
