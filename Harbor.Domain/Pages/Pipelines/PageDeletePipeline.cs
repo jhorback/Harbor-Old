@@ -8,9 +8,9 @@ namespace Harbor.Domain.Pages
 		public PageDeletePipeline(IObjectFactory objectFactory)
 			: base(objectFactory)
 		{
-			AddHandler<DeleteLayoutDeleteHandler>();
 			AddHandler<ContentDeleteHandler>();
 			// AddHandler<PageTypeDeleteHandler>(); don't need this yet
+			AddHandler<DeleteLayoutDeleteHandler>();
 		}
 	}
 }

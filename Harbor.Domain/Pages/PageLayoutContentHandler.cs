@@ -38,7 +38,7 @@ namespace Harbor.Domain.Pages
 		/// <summary>
 		/// Allows layout to perform operations before the page is deleted.
 		/// </summary>
-		public virtual void OnDelete()
+		public virtual void OnDelete(Page page)
 		{
 			// noop
 		}
