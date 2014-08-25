@@ -253,9 +253,15 @@
 @mixin lists-theme {
 	ul, ol { 
 		margin-bottom: ($body-line-height-px / 2);
+         &:only-of-type {
+            margin-bottom: 0;
+        }
 	}
 	dl {
 		margin-bottom: $body-line-height-px;
+        &:only-of-type {
+            margin-bottom: 0;
+        }
 		&.list-wide {
 			dt {
 				width: $dl-inline-dt-width;
@@ -306,7 +312,7 @@
 		@include border-radius;
 		@include clearfix;
 	}
-
+    
 	.outline + .prettyprint {
 		margin-top: -.5em;
 		padding-top: 1em !important;
