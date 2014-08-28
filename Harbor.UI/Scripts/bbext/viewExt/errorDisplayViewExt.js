@@ -2,7 +2,7 @@
  * Markup:
  *     [data-validation-for] - attribute can be set to the name of a model property that is
  *                             validated and placed where error text should be displayed.
- *     .form-field - if a 'data-validation-for' element is inside a .form-field an error class will be applied
+ *     .form-field, .form-inline - if a 'data-validation-for' element is inside a .form-field (or .form-inline) an error class will be applied
  *     .alert-error - for general form errors (should be an element inside a form)
  *   
  * Usage:
@@ -87,7 +87,7 @@ function errorDisplayViewExt(_, console) {
 				}
 			}
 
-			formField = errorSpan.closest(".form-field");
+			formField = errorSpan.closest(".form-field,.form-inline");
 			if (errorStr) {
 				formField.addClass("error");
 				internal.addErrorHtml.call(view, errorSpan, errorStr);
