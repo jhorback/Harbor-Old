@@ -11,38 +11,36 @@ function pageAdderView(options, modelFactory, currentUserRepo, pageTypeRepo, pag
 
 
 pageAdderView.prototype = {
-	initialize: function (options) {
-		this.parentPageTypeKey = options.parentPageTypeKey;
+	initialize: function () {
 		
-		this.on("addPage", this.options.addPage ? this.options.addPage : this.addPage);
-
-
 		this.model = this.modelFactory.create("page", {
 			author: this.currentUser.get("username"),
-			pageTypeDescription: null
+			hasOtherPageTypes: false
 		});
 		
-		this.model.pageTypes = this.pageTypeRepo.getPageTypes();
-		this.listenTo(this.model, "change:pageTypeKey", this.setPageTypeDescription);
-		this.listenTo(this.model.pageTypes, "sync", this.setPageTypeDescription);
+		this.model.pageTypes = this.pageTypeRepo.createPageTypes();
+		this.model.primaryPageTypes = this.pageTypeRepo.createPageTypes();
+		this.model.otherPageTypes = this.pageTypeRepo.createPageTypes();
+
+		this.listenTo(this.model.pageTypes, "sync", this.pageTypesSync);
 		this.on("component:detached", this.close);
-	
-		this.setPageTypeDescription();
+		this.on("addPage", this.options.addPage ? this.options.addPage : this.addPage);
+
+		this.pageTypeRepo.fetchPageTypes(this.model.pageTypes, this.options.parentPageTypeKey);		
 	},
 	
-	setPageTypeDescription: function () {
-		var pageTypeKey = this.model.get("pageTypeKey"),
-			pageType = this.model.pageTypes.find(function (type) {
-				return type.get("key") === pageTypeKey;
-			});
-		
-		if (pageType) {
-			this.model.set("pageTypeDescription", pageType.get("description"));
+	pageTypesSync: function () {
+		var primary = this.model.pageTypes.where({isPrimaryToAdd: true}),
+			other = this.model.pageTypes.where({isPrimaryToAdd: false});	
+		this.model.primaryPageTypes.reset(primary);
+		this.model.otherPageTypes.reset(other);
+		if (other.length > 0) {
+			this.model.set("hasOtherPageTypes", true);
 		}
 	},
 
-	submitForm: function (event) {
-		event.preventDefault();
+	selectPageType: function (event, model) {
+		this.model.set("pageTypeKey", model.id);
 
 		if (!this.isModelValid()) {
 			return;
@@ -65,6 +63,10 @@ pageAdderView.prototype = {
 		}, this);
 	},
 	
+	submitForm: function (event) {
+		event.preventDefault();
+	},
+
 	cancel: function () {
 		this.close();
 	},

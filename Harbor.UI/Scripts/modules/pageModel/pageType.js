@@ -8,8 +8,11 @@ pageType.prototype = {
 	defaults: {
 		key: null,
 		name: null,
-		description: null
-	}
+		description: null,
+		isPrimaryToAdd: true
+	},
+
+	idAttribute: "key"
 };
 
 
