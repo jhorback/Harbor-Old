@@ -41,12 +41,14 @@ namespace Harbor.Domain.Pages
 
 		/// <summary>
 		/// A PageType is required to set the page layout settings.
+		/// This method is called on load and during page creation.
 		/// </summary>
 		/// <param name="context"></param>
 		public abstract void SetLayout(PageTypeLayoutContext context);
 
 		/// <summary>
 		/// A PageType is required to set the initial page template.
+		/// This method is only called during page creation.
 		/// </summary>
 		/// <param name="context"></param>
 		public abstract void SetTemplate(PageTypeTemplateContext context);
