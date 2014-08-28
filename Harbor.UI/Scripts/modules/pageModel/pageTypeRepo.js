@@ -1,10 +1,18 @@
 ﻿
 function pageTypeRepo(collectionFactory, ajaxRequest) {
 	return {
-		getPageTypes: function (data) {
-			var pages = collectionFactory.create("pageTypes");
-			ajaxRequest.handle(pages.fetch({ data: data }));
-			return pages;
+		createPageTypes: function () {
+			var pageTypes = collectionFactory.create("pageTypes");
+			return pageTypes;
+		},
+
+		fetchPageTypes: function (pageTypes, parentPageTypeKey) {
+			
+			return ajaxRequest.handle(pageTypes.fetch({
+				data: {
+					parentPageTypeKey: parentPageTypeKey
+				}
+			}));
 		}
 	};
 }

@@ -1,22 +1,38 @@
 ﻿<div data-templatefor="pageAdderView">
-	<form  data-event="submit: submitForm">
+	<form data-event="submit:submitForm">
 		<span class="alert-error"></span>
-		<div class="form-field">
+		<div class="form-inline margin-bottom margin-left">
 			<label for="pageadder-title">Title</label>
-			<input id="pageadder-title" type="text" name="title" autofocus size="30" />
+			<input id="pageadder-title" type="text" name="title" autofocus size="40" />
 			<span data-validation-for="title"></span>
 		</div>
-		<div class="form-field">
-			<label for="pageadder-pagetypekey">Page type</label>
 		
-			<select id="pageadder-pagetypekey" name="pageTypeKey">
-				<option data-bind="value: key, text: name" data-collection="pageTypes"></option>
-			</select>
-		
-			<div data-bind="text: pageTypeDescription">Removed This During Refactor</div>
+		<h2>Select a page type</h2>
+		<div class="selectlist">
+			<ul>
+				<li class="col3 height-medium" tabindex="0" data-event="click: selectPageType"
+				    data-collection="primaryPageTypes" data-bind="title: description">
+					<h1 data-bind="text:name"></h1>
+					<div data-bind="text: description"></div>
+				</li>
+			</ul>
 		</div>
+		
+		<h3 data-bind="showif: hasOtherPageTypes">Other page types</h3>
+		<div class="selectlist" data-bind="showif: hasOtherPageTypes">
+			<ul>
+				<li class="col3 height-medium" tabindex="0" data-event="click: selectPageType"
+					data-collection="otherPageTypes" data-bind="title: description">
+					<h1 data-bind="text:name"></h1>
+					<div data-bind="text: description"></div>
+				</li>
+			</ul>
+		</div>
+		
+		
+		
+
 		<div class="form-controls">
-			<input type="submit" value="Add" class="loud">
 			<input type="button" value="Cancel" data-rel="back" data-event="cancel">		
 		</div>
 	</form>
