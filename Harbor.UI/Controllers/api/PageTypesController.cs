@@ -18,14 +18,15 @@ namespace Harbor.UI.Controllers.Api
 		public IEnumerable<PageTypeDto> Get(string parentPageTypeKey = null)
 		{
 			var pageTypes = _pageTypeRep.GetPageTypesToAdd(parentPageTypeKey);
+			var addingToParent = !string.IsNullOrEmpty(parentPageTypeKey);
 			foreach (var type in pageTypes["primary"])
 			{
-				yield return PageTypeDto.FromPageType(type, true);
+				yield return PageTypeDto.FromPageType(type, isPrimaryToAdd: true, addingToParent: addingToParent);
 			}
 
 			foreach (var type in pageTypes["other"])
 			{
-				yield return PageTypeDto.FromPageType(type, false);
+				yield return PageTypeDto.FromPageType(type, isPrimaryToAdd: false, addingToParent: addingToParent);
 			}
 		}
     }
