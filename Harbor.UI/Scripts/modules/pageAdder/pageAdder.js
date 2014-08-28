@@ -1,7 +1,8 @@
 ﻿
 /*
 pageAdder options : {
-	addPage: function (page) { }
+	parentPageTypeKey - An optional page type used to filter and adjust the page type selection.
+	addPage - a callback recieving the selected page as an argument.
 }
 
 If defining the addPage method, this component will simply pass the page model.

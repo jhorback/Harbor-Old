@@ -791,6 +791,7 @@
     <Content Include="Views\PageEditor\links\_linksView.cshtml" />
     <Content Include="Views\PageEditor\links\_linksEditView.cshtml" />
     <Content Include="Views\PageEditor\links\_linksAddLinkView.cshtml" />
+    <Content Include="Views\PageAdder\pageAdderView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\users\" />

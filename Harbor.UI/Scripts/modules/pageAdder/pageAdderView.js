@@ -11,7 +11,8 @@ function pageAdderView(options, modelFactory, currentUserRepo, pageTypeRepo, pag
 
 
 pageAdderView.prototype = {
-	initialize: function () {
+	initialize: function (options) {
+		this.parentPageTypeKey = options.parentPageTypeKey;
 		
 		this.on("addPage", this.options.addPage ? this.options.addPage : this.addPage);
 
