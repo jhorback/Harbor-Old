@@ -19,6 +19,7 @@ template.prototype = {
 	},
 	
 	initialize: function () {
+		// this.attributes.content - loop through, create models from each one, keep in SYNC
 		this.content = this.collectionFactory.createGeneric(this.attributes.content);
 	},
 	
