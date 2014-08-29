@@ -8,7 +8,7 @@
   line-height: 4.999em; }
   .page-header h1 {
     float: left;
-    margin: 0 .5em; }
+    margin: 0 0.5em; }
     .page-header h1 a {
       text-decoration: none; }
   .page-header fieldset {
@@ -33,7 +33,7 @@
     float: left; }
     .page-nav li a {
       font-size: 1.2em;
-      margin: 0 .5em;
+      margin: 0 0.5em;
       text-decoration: none; }
     .page-nav li.selected a {
       font-weight: bold; }
@@ -82,4 +82,3 @@
   display: none; }
 .noaside .page-content {
   width: 98%; }
-

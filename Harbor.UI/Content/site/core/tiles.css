@@ -30,15 +30,15 @@
     .tile .media img {
       max-height: 10em; }
   .tile .caption {
-    padding: .3em;
-    color: #777777;
+    padding: 0.3em;
+    color: #777;
     height: 7em; }
   .tile h2, .tile h3 {
     font-size: 1.4em;
-    margin: .1em 0; }
+    margin: 0.1em 0; }
 
 .hover .tile:hover, .hover .tile:focus, .hover.tile:hover, .hover.tile:focus {
-  border-color: #336699;
+  border-color: #369;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -ms-border-radius: 5px;
@@ -54,8 +54,7 @@
     content: "";
     display: table;
     clear: both; }
-  .tile-wide .media,
-  .tile-wide .caption {
+  .tile-wide .media, .tile-wide .caption {
     float: left; }
   .tile-wide .media {
     text-align: right;
@@ -83,9 +82,8 @@
       width: 58%; } }
   @media (max-width: 30em) {
     .tile-wide {
-      padding: .3em; }
+      padding: 0.3em; }
       .tile-wide .media {
         width: 100%; }
       .tile-wide .caption {
         width: 100%; } }
-

@@ -1,10 +1,10 @@
 .menu {
   position: fixed;
   z-index: 100;
-  color: black;
-  background-color: white;
+  color: #000;
+  background-color: #FFF;
   max-width: 600px;
-  padding: .2em 1em 1em 1.42em;
+  padding: 0.2em 1em 1em 1.42em;
   top: 0;
   right: 0;
   bottom: 0;
@@ -18,7 +18,7 @@
     position: absolute;
     top: 0;
     right: 0;
-    margin: 0 .23em;
+    margin: 0 0.23em;
     font-size: 2.3em;
     cursor: pointer;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
@@ -42,4 +42,3 @@
     left: 0 !important;
     right: 0 !important;
     bottom: 0 !important; } }
-

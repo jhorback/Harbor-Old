@@ -1,19 +1,18 @@
-html,
-body {
+html, body {
   background-color: #0f7c91;
-  color: white;
+  color: #FFF;
   font-size: 14px;
   font-family: "Segoe UI", "Helvetica Neue", Arial;
   line-height: 1.4286; }
 
 a, .link {
   text-decoration: underline;
-  color: white;
+  color: #FFF;
   cursor: pointer; }
   a:visited, a:focus, .link:visited, .link:focus {
-    color: white; }
+    color: #FFF; }
   a:hover, .link:hover {
-    color: #0099ff; }
+    color: #09f; }
   a:active, .link:active {
     color: red; }
 
@@ -38,7 +37,7 @@ h1 {
   color: white; }
 
 h2 {
-  color: white;
+  color: #FFF;
   font-weight: bold; }
 
 .quiet {
@@ -48,7 +47,7 @@ h2 {
   color: #f5f0c5; }
 
 .attn {
-  color: #d14836; }
+  color: #D14836; }
 
 small {
   color: #999999; }
@@ -56,13 +55,13 @@ small {
 hr {
   margin: 20.0004px 0;
   border: 0;
-  border-top: 1px solid #dddddd;
+  border-top: 1px solid #DDD;
   border-bottom: 1px solid white;
   clear: both; }
 
 abbr[title] {
   cursor: help;
-  border-bottom: 1px dotted white; }
+  border-bottom: 1px dotted #FFF; }
 
 ul, ol {
   margin-bottom: 10.0002px; }
@@ -96,7 +95,7 @@ dd {
 #frame-header {
   height: 4.286em;
   line-height: 4.286em;
-  color: #eeeeee;
+  color: #EEE;
   background: transparent;
   width: 100%;
   -moz-box-shadow: 0 2px 4px rgba(105, 105, 105, 0.25);
@@ -104,7 +103,7 @@ dd {
   -ms-box-shadow: 0 2px 4px rgba(105, 105, 105, 0.25);
   box-shadow: 0 2px 4px rgba(105, 105, 105, 0.25); }
   #frame-header a, #frame-header a:visited {
-    color: #eeeeee; }
+    color: #EEE; }
 
 #frame-logo a {
   text-indent: -99999px;
@@ -114,29 +113,29 @@ dd {
   background: url(images/logo.png) no-repeat; }
 
 #frame-nav ul li:hover {
-  background-color: white;
+  background-color: #FFF;
   -moz-box-shadow: 0 6px 14px rgba(105, 105, 105, 0.6);
   -webkit-box-shadow: 0 6px 14px rgba(105, 105, 105, 0.6);
   -ms-box-shadow: 0 6px 14px rgba(105, 105, 105, 0.6);
   box-shadow: 0 6px 14px rgba(105, 105, 105, 0.6); }
   #frame-nav ul li:hover a {
-    color: #333333; }
+    color: #333; }
 #frame-nav ul li.selected {
-  background-color: white; }
+  background-color: #FFF; }
   #frame-nav ul li.selected a {
-    color: #333333; }
+    color: #333; }
 
 #frame-body ::-webkit-scrollbar-thumb {
-  background: #cccccc; }
+  background: #CCC; }
   #frame-body ::-webkit-scrollbar-thumb:hover {
     background: #b3b3b3; }
 
 .page-header h1 {
   font-size: 3.14em;
   font-weight: normal;
-  color: white; }
+  color: #FFF; }
   .page-header h1 a {
-    color: white; }
+    color: #FFF; }
 
 .centered .page-header {
   text-align: center;
@@ -144,7 +143,7 @@ dd {
   .centered .page-header h1 {
     float: none; }
   .centered .page-header h1:after {
-    background-color: white;
+    background-color: #FFF;
     display: block;
     height: 1px;
     width: 100px;
@@ -154,11 +153,11 @@ dd {
     left: 50%; }
 
 .selectlist > ul > li.selected {
-  color: white;
-  background-color: #336699;
+  color: #FFF;
+  background-color: #369;
   text-shadow: 0 1px 0 #000; }
   .selectlist > ul > li.selected h1, .selectlist > ul > li.selected h2, .selectlist > ul > li.selected h3 {
-    color: white !important; }
+    color: #FFF !important; }
 
 .menu {
   background-color: #0f7c91;
@@ -174,4 +173,3 @@ dd {
   height: 240px; }
   #frame-info > div {
     padding-top: 170px; }
-

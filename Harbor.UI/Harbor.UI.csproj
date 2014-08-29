@@ -506,6 +506,7 @@
     </Content>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="gulpfile.js" />
     <Content Include="Scripts\apps\appShim.js" />
     <Content Include="Scripts\apps\fileAdmin\%24fileAdmin.js" />
     <Content Include="Scripts\apps\fileAdmin\fileAdminRouter.js" />

@@ -1,19 +1,18 @@
-html,
-body {
-  background-color: white;
-  color: #333333;
+html, body {
+  background-color: #FFF;
+  color: #333;
   font-size: 14px;
   font-family: "Segoe UI", "Helvetica Neue", Arial;
   line-height: 1.4286; }
 
 a, .link {
   text-decoration: underline;
-  color: #336699;
+  color: #369;
   cursor: pointer; }
   a:visited, a:focus, .link:visited, .link:focus {
-    color: #336699; }
+    color: #369; }
   a:hover, .link:hover {
-    color: #0099ff; }
+    color: #09f; }
   a:active, .link:active {
     color: red; }
 
@@ -38,17 +37,17 @@ h1 {
   color: #666666; }
 
 h2 {
-  color: #336699;
+  color: #369;
   font-weight: bold; }
 
 .quiet {
   color: #999999; }
 
 .loud {
-  color: #2f5bb7; }
+  color: #2F5BB7; }
 
 .attn {
-  color: #d14836; }
+  color: #D14836; }
 
 small {
   color: #999999; }
@@ -56,13 +55,13 @@ small {
 hr {
   margin: 20.0004px 0;
   border: 0;
-  border-top: 1px solid #dddddd;
+  border-top: 1px solid #DDD;
   border-bottom: 1px solid white;
   clear: both; }
 
 abbr[title] {
   cursor: help;
-  border-bottom: 1px dotted #333333; }
+  border-bottom: 1px dotted #333; }
 
 ul, ol {
   margin-bottom: 10.0002px; }
@@ -96,7 +95,7 @@ dd {
 #frame-header {
   height: 4.286em;
   line-height: 4.286em;
-  color: #eeeeee;
+  color: #EEE;
   background: #345276;
   width: 100%;
   -moz-box-shadow: 0 2px 4px rgba(105, 105, 105, 0.25);
@@ -104,23 +103,23 @@ dd {
   -ms-box-shadow: 0 2px 4px rgba(105, 105, 105, 0.25);
   box-shadow: 0 2px 4px rgba(105, 105, 105, 0.25); }
   #frame-header a, #frame-header a:visited {
-    color: #eeeeee; }
+    color: #EEE; }
 
 #frame-nav ul li:hover {
-  background-color: white;
+  background-color: #FFF;
   -moz-box-shadow: 0 6px 14px rgba(105, 105, 105, 0.6);
   -webkit-box-shadow: 0 6px 14px rgba(105, 105, 105, 0.6);
   -ms-box-shadow: 0 6px 14px rgba(105, 105, 105, 0.6);
   box-shadow: 0 6px 14px rgba(105, 105, 105, 0.6); }
   #frame-nav ul li:hover a {
-    color: #333333; }
+    color: #333; }
 #frame-nav ul li.selected {
-  background-color: white; }
+  background-color: #FFF; }
   #frame-nav ul li.selected a {
-    color: #333333; }
+    color: #333; }
 
 #frame-body ::-webkit-scrollbar-thumb {
-  background: #cccccc; }
+  background: #CCC; }
   #frame-body ::-webkit-scrollbar-thumb:hover {
     background: #b3b3b3; }
 
@@ -147,9 +146,8 @@ dd {
     left: 50%; }
 
 .selectlist > ul > li.selected {
-  color: white;
-  background-color: #336699;
+  color: #FFF;
+  background-color: #369;
   text-shadow: 0 1px 0 #000; }
   .selectlist > ul > li.selected h1, .selectlist > ul > li.selected h2, .selectlist > ul > li.selected h3 {
-    color: white !important; }
-
+    color: #FFF !important; }
