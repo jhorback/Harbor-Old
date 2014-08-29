@@ -1,6 +1,20 @@
 ﻿@model Harbor.UI.Models.Content.TextDto
-<div>
-    <div class="richtext">
-        @Html.Raw(Model.text)
-    </div>
-</div>
+@if (Model.hasText)
+{
+	<div>
+		<div class="richtext">
+			@Html.Raw(Model.text)
+		</div>
+	</div>
+}
+else
+{
+	<div class="page-nocontent">
+		<div class="richtext">
+			<span class="icon-align-left"></span>
+			
+			
+			Text
+		</div>
+	</div>
+}
