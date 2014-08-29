@@ -1,4 +1,38 @@
-﻿<div class="page-content">
+﻿@functions {
+
+	IEnumerable<string> icons()
+	{
+		return new[]
+		{
+			"remove", "align-left", "align-center", "align-right", "align-justify", "edit", "move", "plus",
+			"cogs", "reorder", "columns", "help"
+		};
+	}
+}
+<div class="page-content">
+	<style>
+		.icondemo {
+			display: inline-block;
+			white-space: nowrap;
+			width: 12em;
+			cursor: pointer;
+		}
+
+			.icondemo:hover .icon {
+				font-size: 2em;
+			}
+
+		.icon {
+			-webkit-transition: all .2s ease-in-out;
+		}
+	</style>
+	<div class="col">
+		<h2>Font Icons</h2>
+		@foreach (var icon in icons())
+		{
+			<span class="icondemo"><span class="icon icon-@icon"></span> .icon-@icon</span>
+		}
+	</div>
 	<div class="col">
 		<h2>Headings</h2>
 		<p>Headings and sub-headings using <code>span</code>.</p>
@@ -70,12 +104,12 @@ Here is a &lt;button class="link">button link&lt;/button>.
 				Similar to <small>the 'small' tag used for fine print</small>. 					
 			</p>
 			<p>
-					<span class="loud">.loud - make the text stand out.</span>
-					Similar to <strong>the 'strong' tag to bold</strong> or <b>the 'b' tag</b>.		
+				<span class="loud">.loud - make the text stand out.</span>
+				Similar to <strong>the 'strong' tag to bold</strong> or <b>the 'b' tag</b>.		
 			</p>
 			<p>
-					<span class="attn">.attn - draw attention to the text.</span>
-					Similar to <em>the 'em emphasis tag for italics</em> or <i>the 'i' tag</i>.
+				<span class="attn">.attn - draw attention to the text.</span>
+				Similar to <em>the 'em emphasis tag for italics</em> or <i>the 'i' tag</i>.
 			</p>
 			
 			<p>Combine for desired effects.</p>
@@ -125,10 +159,10 @@ Similar to &lt;em>the 'em' emphasis tag&lt;/em> or &lt;i>the 'i' tag&lt;/i>.
 		<p>Can be used for any grouping of the address structure - name/title, info - be it email, physical address, phone number, etc.</p>
 		<div class="outline">
 			<address>
-			  <strong>Zeit Palace</strong><br>
-			  1234 Geist Place<br>
-			  Jose Falace, DE 98765<br>
-			  <abbr title="Phone">P:</abbr> (123) 456-7890
+				<strong>Zeit Palace</strong><br>
+				1234 Geist Place<br>
+				Jose Falace, DE 98765<br>
+				<abbr title="Phone">P:</abbr> (123) 456-7890
 			</address>
 		</div>
 		<pre class="prettyprint linenums">
@@ -143,8 +177,8 @@ Similar to &lt;em>the 'em' emphasis tag&lt;/em> or &lt;i>the 'i' tag&lt;/i>.
 		<h3>Blockquotes</h3>
 		<div class="outline">
 			<blockquote>
-			  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-			  <small>Someone famous <cite title="Source Title">Source Title</cite></small>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+				<small>Someone famous <cite title="Source Title">Source Title</cite></small>
 			</blockquote>
 		</div>
 		<pre class="prettyprint linenums">
@@ -284,7 +318,7 @@ Similar to &lt;em>the 'em' emphasis tag&lt;/em> or &lt;i>the 'i' tag&lt;/i>.
 				<dd title="Etiam porta sem malesuada magna mollis euismod">Etiam porta sem malesuada magna mollis euismod</dd>
 				<dt>Felis euismod semper eget lacinia</dt>
 				<dd>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</dd>
-          </dl>
+			</dl>
 		</div>
 		<pre class="prettyprint linenums">
 &lt;dl class="list-wide">
