@@ -65,3 +65,24 @@
 		bottom: -2em;
 	}
 }
+
+
+.page-nocontent {
+    background: #f5f5f5;
+    color: #bbb;
+    padding: .5em;
+    text-align: center;
+    border: 1px solid #ddd;
+    margin: 1px;
+    cursor: default;
+    @include border-radius(3px);
+
+    font-size: 1.4em;
+    font-weight: bold;
+
+    span {
+        font-weight: normal;
+        font-size: .7em;
+    }
+    // font-style: italic;
+}
