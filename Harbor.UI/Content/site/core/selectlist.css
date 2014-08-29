@@ -17,10 +17,10 @@
     .selectlist > ul > li {
       float: left;
       display: block;
-      color: #336699;
+      color: #369;
       text-decoration: none;
       text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-      margin: .2em;
+      margin: 0.2em;
       border: 1px solid #ddd;
       overflow: hidden;
       -moz-border-radius: 4px;
@@ -32,9 +32,9 @@
       -ms-transition: all 0.2s ease-in-out;
       transition: all 0.2s ease-in-out; }
       .selectlist > ul > li.selected, .selectlist > ul > li:hover, .selectlist > ul > li:focus {
-        color: #333333;
-        background-color: white;
-        border: 1px solid #336699;
+        color: #333;
+        background-color: #FFF;
+        border: 1px solid #369;
         cursor: default;
         outline: none; }
       .selectlist > ul > li h1, .selectlist > ul > li h2, .selectlist > ul > li h3, .selectlist > ul > li h4 {
@@ -43,10 +43,9 @@
         padding: 0;
         margin: 0;
         white-space: nowrap;
-        padding: .5em; }
+        padding: 0.5em; }
       .selectlist > ul > li p, .selectlist > ul > li span, .selectlist > ul > li div {
-        padding: .5em;
+        padding: 0.5em;
         padding-top: 0em; }
       .selectlist > ul > li p {
         white-space: nowrap; }
-

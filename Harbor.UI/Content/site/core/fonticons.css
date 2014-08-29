@@ -40,37 +40,31 @@
 @font-face {
   font-family: 'FontAwesome';
   src: url("font/fontawesome-webfont.eot?v=3.1.0");
-  src: url("font/fontawesome-webfont.eot?#iefix&v=3.1.0") format("embedded-opentype"), url("font/fontawesome-webfont.woff?v=3.1.0") format("woff"), url("font/fontawesome-webfont.ttf?v=3.1.0") format("truetype"), url("font/fontawesome-webfont.svg#fontawesomeregular?v=3.1.0") format("svg");
+  src: url("font/fontawesome-webfont.eot?#iefix&v=3.1.0") format('embedded-opentype'), url("font/fontawesome-webfont.woff?v=3.1.0") format('woff'), url("font/fontawesome-webfont.ttf?v=3.1.0") format('truetype'), url("font/fontawesome-webfont.svg#fontawesomeregular?v=3.1.0") format('svg');
   font-weight: normal;
   font-style: normal; }
 
 /* FONT AWESOME CORE
  * -------------------------- */
-[class^="icon-"],
-[class*=" icon-"] {
+[class^="icon-"], [class*=" icon-"] {
   font-family: FontAwesome;
   font-weight: normal;
   font-style: normal;
   text-decoration: inhearit;
   -webkit-font-smoothing: antialiased;
-  *margin-right: .3em; }
+  *margin-right: 0.3em; }
 
-[class^="icon-"]:before,
-[class*=" icon-"]:before {
+[class^="icon-"]:before, [class*=" icon-"]:before {
   text-decoration: inherit;
   display: inline-block;
   speak: none; }
 
 /* makes sure icons active on rollover in links */
-a [class^="icon-"],
-a [class*=" icon-"],
-a [class^="icon-"]:before,
-a [class*=" icon-"]:before {
+a [class^="icon-"], a [class*=" icon-"], a [class^="icon-"]:before, a [class*=" icon-"]:before {
   display: inline; }
 
 /* Bootstrap 2.0 sprites.less reset */
-[class^="icon-"],
-[class*=" icon-"] {
+[class^="icon-"], [class*=" icon-"] {
   display: inline;
   width: auto;
   height: auto;
@@ -84,4 +78,3 @@ a [class*=" icon-"]:before {
 /* EXTRAS
  * -------------------------- */
 /* Stacked and layered icon */
-

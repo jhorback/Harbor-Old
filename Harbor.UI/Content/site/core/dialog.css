@@ -5,16 +5,16 @@
   right: 0; }
 
 .dialog {
-  color: black;
-  background-color: white;
+  color: #000;
+  background-color: #FFF;
   max-width: 600px;
   min-width: 400px;
   margin: auto;
-  padding: .5em 1em .7em 1em;
-  -moz-box-shadow: 0 0 2em 0.5em #555555;
-  -webkit-box-shadow: 0 0 2em 0.5em #555555;
-  -ms-box-shadow: 0 0 2em 0.5em #555555;
-  box-shadow: 0 0 2em 0.5em #555555;
+  padding: 0.5em 1em 0.7em 1em;
+  -moz-box-shadow: 0 0 2em 0.5em #555;
+  -webkit-box-shadow: 0 0 2em 0.5em #555;
+  -ms-box-shadow: 0 0 2em 0.5em #555;
+  box-shadow: 0 0 2em 0.5em #555;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   -ms-border-radius: 3px;
@@ -25,7 +25,7 @@
     clear: both; }
   .dialog .dialog-header {
     overflow: hidden;
-    padding: .5em 1em; }
+    padding: 0.5em 1em; }
     .dialog .dialog-header h1 {
       display: inline;
       float: left;
@@ -41,7 +41,7 @@
     padding-top: 1em; }
     .dialog .form-controls .input, .dialog .form-controls input, .dialog .form-controls a, .dialog .form-controls button, .dialog .form-controls .link {
       float: right;
-      margin-left: .5em; }
+      margin-left: 0.5em; }
 
 @media screen and (max-width: 600px) {
   .dialog, .dialog-wrapper {
@@ -56,13 +56,14 @@
     -webkit-border-radius: 0;
     -ms-border-radius: 0;
     border-radius: 0; } }
+
 .dialog-close {
-  color: black;
+  color: #000;
   font-family: arial;
   text-decoration: none;
   display: block;
   cursor: default;
-  margin: -.5em -.3em 0 0;
+  margin: -0.5em -0.3em 0 0;
   float: right;
   font-size: 3em;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=10)";
@@ -72,4 +73,3 @@
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
     filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=40);
     opacity: 0.4; }
-

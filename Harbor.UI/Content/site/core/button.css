@@ -1,242 +1,123 @@
-.button,
-button,
-input.button,
-input[type=button],
-input[type=submit] {
+.button, button, input.button, input[type=button], input[type=submit] {
   border: 0;
   display: inline-block;
   box-sizing: content-box;
   text-align: center;
   font-weight: 500;
-  font-family: "Segoe UI Web Semibold", "Segoe UI Web Regular", "Segoe UI", "Segoe UI Symbol", "Helvetica Neue", Arial;
+  font-family: 'Segoe UI Web Semibold', 'Segoe UI Web Regular', 'Segoe UI', 'Segoe UI Symbol', 'Helvetica Neue', Arial;
   font-size: 14px;
   cursor: default;
   text-decoration: none;
   line-height: 1.4286;
   margin: 0 0.2em 4px 0;
-  padding: .35em 1.4em;
+  padding: 0.35em 1.4em;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   -ms-border-radius: 3px;
   border-radius: 3px;
   -moz-user-select: none;
   -webkit-user-select: none;
+  -ms-user-select: none;
   user-select: none;
-  color: black;
-  background-color: #cccccc; }
-  .button:hover,
-  button:hover,
-  input.button:hover,
-  input[type=button]:hover,
-  input[type=submit]:hover {
+  color: #000;
+  background-color: #CCC; }
+  .button:hover, button:hover, input.button:hover, input[type=button]:hover, input[type=submit]:hover {
     background-color: #e6e6e6; }
-  .button[disabled]:hover,
-  button[disabled]:hover,
-  input.button[disabled]:hover,
-  input[type=button][disabled]:hover,
-  input[type=submit][disabled]:hover {
-    background-color: #cccccc; }
-  .button:active,
-  button:active,
-  input.button:active,
-  input[type=button]:active,
-  input[type=submit]:active {
-    color: white !important;
-    background-color: black; }
-  .button:visited,
-  button:visited,
-  input.button:visited,
-  input[type=button]:visited,
-  input[type=submit]:visited {
-    color: black; }
-  .button.loud,
-  button.loud,
-  input.button.loud,
-  input[type=button].loud,
-  input[type=submit].loud {
-    color: white;
-    background-color: #2f5bb7; }
-    .button.loud:hover,
-    button.loud:hover,
-    input.button.loud:hover,
-    input[type=button].loud:hover,
-    input[type=submit].loud:hover {
-      background-color: #4975d0; }
-    .button.loud[disabled]:hover,
-    button.loud[disabled]:hover,
-    input.button.loud[disabled]:hover,
-    input[type=button].loud[disabled]:hover,
-    input[type=submit].loud[disabled]:hover {
-      background-color: #2f5bb7; }
-    .button.loud:active,
-    button.loud:active,
-    input.button.loud:active,
-    input[type=button].loud:active,
-    input[type=submit].loud:active {
-      color: white !important;
-      background-color: black; }
-    .button.loud:visited,
-    button.loud:visited,
-    input.button.loud:visited,
-    input[type=button].loud:visited,
-    input[type=submit].loud:visited {
-      color: white; }
-  .button.attn,
-  button.attn,
-  input.button.attn,
-  input[type=button].attn,
-  input[type=submit].attn {
-    color: white;
-    background-color: #d14836; }
-    .button.attn:hover,
-    button.attn:hover,
-    input.button.attn:hover,
-    input[type=button].attn:hover,
-    input[type=submit].attn:hover {
-      background-color: #da6e60; }
-    .button.attn[disabled]:hover,
-    button.attn[disabled]:hover,
-    input.button.attn[disabled]:hover,
-    input[type=button].attn[disabled]:hover,
-    input[type=submit].attn[disabled]:hover {
-      background-color: #d14836; }
-    .button.attn:active,
-    button.attn:active,
-    input.button.attn:active,
-    input[type=button].attn:active,
-    input[type=submit].attn:active {
-      color: white !important;
-      background-color: black; }
-    .button.attn:visited,
-    button.attn:visited,
-    input.button.attn:visited,
-    input[type=button].attn:visited,
-    input[type=submit].attn:visited {
-      color: white; }
+  .button[disabled]:hover, button[disabled]:hover, input.button[disabled]:hover, input[type=button][disabled]:hover, input[type=submit][disabled]:hover {
+    background-color: #CCC; }
+  .button:active, button:active, input.button:active, input[type=button]:active, input[type=submit]:active {
+    color: #FFF !important;
+    background-color: #000; }
+  .button:visited, button:visited, input.button:visited, input[type=button]:visited, input[type=submit]:visited {
+    color: #000; }
+  .button.loud, button.loud, input.button.loud, input[type=button].loud, input[type=submit].loud {
+    color: #FFF;
+    background-color: #2F5BB7; }
+    .button.loud:hover, button.loud:hover, input.button.loud:hover, input[type=button].loud:hover, input[type=submit].loud:hover {
+      background-color: #4976d0; }
+    .button.loud[disabled]:hover, button.loud[disabled]:hover, input.button.loud[disabled]:hover, input[type=button].loud[disabled]:hover, input[type=submit].loud[disabled]:hover {
+      background-color: #2F5BB7; }
+    .button.loud:active, button.loud:active, input.button.loud:active, input[type=button].loud:active, input[type=submit].loud:active {
+      color: #FFF !important;
+      background-color: #000; }
+    .button.loud:visited, button.loud:visited, input.button.loud:visited, input[type=button].loud:visited, input[type=submit].loud:visited {
+      color: #FFF; }
+  .button.attn, button.attn, input.button.attn, input[type=button].attn, input[type=submit].attn {
+    color: #FFF;
+    background-color: #D14836; }
+    .button.attn:hover, button.attn:hover, input.button.attn:hover, input[type=button].attn:hover, input[type=submit].attn:hover {
+      background-color: #da6c60; }
+    .button.attn[disabled]:hover, button.attn[disabled]:hover, input.button.attn[disabled]:hover, input[type=button].attn[disabled]:hover, input[type=submit].attn[disabled]:hover {
+      background-color: #D14836; }
+    .button.attn:active, button.attn:active, input.button.attn:active, input[type=button].attn:active, input[type=submit].attn:active {
+      color: #FFF !important;
+      background-color: #000; }
+    .button.attn:visited, button.attn:visited, input.button.attn:visited, input[type=button].attn:visited, input[type=submit].attn:visited {
+      color: #FFF; }
 
 a.button {
   margin-bottom: 0;
   *padding-top: 10px;
   *padding-bottom: 10px; }
 
-.button,
-button,
-input.button,
-input[type=button],
-input[type=submit] {
+.button, button, input.button, input[type=button], input[type=submit] {
   border: 0;
   display: inline-block;
   box-sizing: content-box;
   text-align: center;
   font-weight: 500;
-  font-family: "Segoe UI Web Semibold", "Segoe UI Web Regular", "Segoe UI", "Segoe UI Symbol", "Helvetica Neue", Arial;
+  font-family: 'Segoe UI Web Semibold', 'Segoe UI Web Regular', 'Segoe UI', 'Segoe UI Symbol', 'Helvetica Neue', Arial;
   font-size: 14px;
   cursor: default;
   text-decoration: none;
   line-height: 1.4286;
   margin: 0 0.2em 4px 0;
-  padding: .35em 1.4em;
+  padding: 0.35em 1.4em;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   -ms-border-radius: 3px;
   border-radius: 3px;
   -moz-user-select: none;
   -webkit-user-select: none;
+  -ms-user-select: none;
   user-select: none;
-  color: black;
-  background-color: #cccccc; }
-  .button:hover,
-  button:hover,
-  input.button:hover,
-  input[type=button]:hover,
-  input[type=submit]:hover {
+  color: #000;
+  background-color: #CCC; }
+  .button:hover, button:hover, input.button:hover, input[type=button]:hover, input[type=submit]:hover {
     background-color: #e6e6e6; }
-  .button[disabled]:hover,
-  button[disabled]:hover,
-  input.button[disabled]:hover,
-  input[type=button][disabled]:hover,
-  input[type=submit][disabled]:hover {
-    background-color: #cccccc; }
-  .button:active,
-  button:active,
-  input.button:active,
-  input[type=button]:active,
-  input[type=submit]:active {
-    color: white !important;
-    background-color: black; }
-  .button:visited,
-  button:visited,
-  input.button:visited,
-  input[type=button]:visited,
-  input[type=submit]:visited {
-    color: black; }
-  .button.loud,
-  button.loud,
-  input.button.loud,
-  input[type=button].loud,
-  input[type=submit].loud {
-    color: white;
-    background-color: #2f5bb7; }
-    .button.loud:hover,
-    button.loud:hover,
-    input.button.loud:hover,
-    input[type=button].loud:hover,
-    input[type=submit].loud:hover {
-      background-color: #4975d0; }
-    .button.loud[disabled]:hover,
-    button.loud[disabled]:hover,
-    input.button.loud[disabled]:hover,
-    input[type=button].loud[disabled]:hover,
-    input[type=submit].loud[disabled]:hover {
-      background-color: #2f5bb7; }
-    .button.loud:active,
-    button.loud:active,
-    input.button.loud:active,
-    input[type=button].loud:active,
-    input[type=submit].loud:active {
-      color: white !important;
-      background-color: black; }
-    .button.loud:visited,
-    button.loud:visited,
-    input.button.loud:visited,
-    input[type=button].loud:visited,
-    input[type=submit].loud:visited {
-      color: white; }
-  .button.attn,
-  button.attn,
-  input.button.attn,
-  input[type=button].attn,
-  input[type=submit].attn {
-    color: white;
-    background-color: #d14836; }
-    .button.attn:hover,
-    button.attn:hover,
-    input.button.attn:hover,
-    input[type=button].attn:hover,
-    input[type=submit].attn:hover {
-      background-color: #da6e60; }
-    .button.attn[disabled]:hover,
-    button.attn[disabled]:hover,
-    input.button.attn[disabled]:hover,
-    input[type=button].attn[disabled]:hover,
-    input[type=submit].attn[disabled]:hover {
-      background-color: #d14836; }
-    .button.attn:active,
-    button.attn:active,
-    input.button.attn:active,
-    input[type=button].attn:active,
-    input[type=submit].attn:active {
-      color: white !important;
-      background-color: black; }
-    .button.attn:visited,
-    button.attn:visited,
-    input.button.attn:visited,
-    input[type=button].attn:visited,
-    input[type=submit].attn:visited {
-      color: white; }
+  .button[disabled]:hover, button[disabled]:hover, input.button[disabled]:hover, input[type=button][disabled]:hover, input[type=submit][disabled]:hover {
+    background-color: #CCC; }
+  .button:active, button:active, input.button:active, input[type=button]:active, input[type=submit]:active {
+    color: #FFF !important;
+    background-color: #000; }
+  .button:visited, button:visited, input.button:visited, input[type=button]:visited, input[type=submit]:visited {
+    color: #000; }
+  .button.loud, button.loud, input.button.loud, input[type=button].loud, input[type=submit].loud {
+    color: #FFF;
+    background-color: #2F5BB7; }
+    .button.loud:hover, button.loud:hover, input.button.loud:hover, input[type=button].loud:hover, input[type=submit].loud:hover {
+      background-color: #4976d0; }
+    .button.loud[disabled]:hover, button.loud[disabled]:hover, input.button.loud[disabled]:hover, input[type=button].loud[disabled]:hover, input[type=submit].loud[disabled]:hover {
+      background-color: #2F5BB7; }
+    .button.loud:active, button.loud:active, input.button.loud:active, input[type=button].loud:active, input[type=submit].loud:active {
+      color: #FFF !important;
+      background-color: #000; }
+    .button.loud:visited, button.loud:visited, input.button.loud:visited, input[type=button].loud:visited, input[type=submit].loud:visited {
+      color: #FFF; }
+  .button.attn, button.attn, input.button.attn, input[type=button].attn, input[type=submit].attn {
+    color: #FFF;
+    background-color: #D14836; }
+    .button.attn:hover, button.attn:hover, input.button.attn:hover, input[type=button].attn:hover, input[type=submit].attn:hover {
+      background-color: #da6c60; }
+    .button.attn[disabled]:hover, button.attn[disabled]:hover, input.button.attn[disabled]:hover, input[type=button].attn[disabled]:hover, input[type=submit].attn[disabled]:hover {
+      background-color: #D14836; }
+    .button.attn:active, button.attn:active, input.button.attn:active, input[type=button].attn:active, input[type=submit].attn:active {
+      color: #FFF !important;
+      background-color: #000; }
+    .button.attn:visited, button.attn:visited, input.button.attn:visited, input[type=button].attn:visited, input[type=submit].attn:visited {
+      color: #FFF; }
 
 a.button {
   margin-bottom: 0;
   *padding-top: 10px;
   *padding-bottom: 10px; }
-

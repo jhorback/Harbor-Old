@@ -16,12 +16,11 @@
   .menulist > ul .selected {
     font-weight: bold; }
     .menulist > ul .selected span, .menulist > ul .selected a {
-      color: #2f5bb7; }
+      color: #2F5BB7; }
 .menulist h2, .menulist h3 {
-  padding: 0 .7em;
+  padding: 0 0.7em;
   font-family: "Segoe UI", "Helvetica Neue", Arial;
   display: block;
   font-size: 1.4em;
   font-weight: normal;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5); }
-

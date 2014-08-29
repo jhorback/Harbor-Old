@@ -7,26 +7,27 @@
   position: absolute;
   background: #AAA;
   z-index: 1;
-  padding: .2em;
-  right: -.2em;
+  padding: 0.2em;
+  right: -0.2em;
   top: 0;
   margin-top: -2.8em;
-  padding-left: .5em;
-  -moz-box-shadow: 1px 1px 0.2em 0 #333333;
-  -webkit-box-shadow: 1px 1px 0.2em 0 #333333;
-  -ms-box-shadow: 1px 1px 0.2em 0 #333333;
-  box-shadow: 1px 1px 0.2em 0 #333333;
+  padding-left: 0.5em;
+  -moz-box-shadow: 1px 1px 0.2em 0 #333;
+  -webkit-box-shadow: 1px 1px 0.2em 0 #333;
+  -ms-box-shadow: 1px 1px 0.2em 0 #333;
+  box-shadow: 1px 1px 0.2em 0 #333;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   -ms-border-radius: 3px;
   border-radius: 3px;
   -moz-user-select: none;
   -webkit-user-select: none;
+  -ms-user-select: none;
   user-select: none; }
   .uic-menu span {
     color: #fff;
     font-size: 1.8em;
-    padding: .3em; }
+    padding: 0.3em; }
     .uic-menu span:hover {
       text-shadow: rgba(0, 0, 0, 0.4) 2px 2px 4px; }
     .uic-menu span:active {
@@ -44,7 +45,7 @@
   color: #fff;
   text-align: center;
   font-size: 2em;
-  padding: .23em; }
+  padding: 0.23em; }
   .uic-add:hover {
     background: #BFBFBF;
     text-shadow: rgba(0, 0, 0, 0.4) 2px 2px 4px; }
@@ -54,4 +55,3 @@
 .page-header .uic-menu {
   top: auto;
   bottom: -2em; }
-
