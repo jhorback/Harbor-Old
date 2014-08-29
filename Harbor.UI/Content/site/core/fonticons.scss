@@ -25,9 +25,10 @@ $fonticons-path: "font/fontawesome-webfont" !default;
 .icon-cogs:before { content: "\f085"; }
 .icon-reorder:before { content: "\f0c9"; }
 .icon-columns:before { content: "\f0db"; }
-.icon-help:before { content: "\f1ed"; } // icon-question-sign
+.icon-help:before { content: "\f059"; } // icon-question-sign
 .icon-paypal:before { content: "\f1ed"; }
 .icon-image:before {  content: "\f03e"; }
+.icon-link:before {  content: "\f0c1"; }
 
 
 /* FONT PATH
@@ -82,16 +83,17 @@ a [class*=" icon-"]:before {
   margin-top: 0;
 }
 
+}
+
+@include fonticons;
+// @include fonticons-ie7;
 
 
 
-/*!
- *  Font Awesome 4.2.0 by @davegandy - http://fontawesome.io - @fontawesome
- *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
- */
 /* FONT PATH
  * -------------------------- */
-/*@font-face {
+/*
+@font-face {
   font-family: 'FontAwesome';
   src: url('../fonts/fontawesome-webfont.eot?v=4.2.0');
   src: url('../fonts/fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-opentype'), url('../fonts/fontawesome-webfont.woff?v=4.2.0') format('woff'), url('../fonts/fontawesome-webfont.ttf?v=4.2.0') format('truetype'), url('../fonts/fontawesome-webfont.svg?v=4.2.0#fontawesomeregular') format('svg');
@@ -1756,12 +1758,5 @@ a [class*=" icon-"]:before {
 }
 .fa-meanpath:before {
   content: "\f20c";
-}*/
-
-
-
-
-
-
-@include fonticons;
-@include fonticons-ie7;
+}
+*/
