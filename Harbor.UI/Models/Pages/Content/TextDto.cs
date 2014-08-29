@@ -6,6 +6,14 @@ namespace Harbor.UI.Models.Content
 	{
 		private string _text;
 
+		public bool hasText
+		{
+			get
+			{
+				return !string.IsNullOrEmpty(_text);
+			}
+		}
+
 		public string text
 		{
 			get

@@ -3,7 +3,9 @@
 <div data-rel="image" data-templatefor="imageEditView" class="pad-bottom">
 
 	<img data-bind="src: imgSrc,showif:fileExists" />
-	<span data-bind="showif:fileDoesNotExist">Edit this page to add a new image.</span>
+	<div data-bind="showif:fileDoesNotExist" class="page-nocontent">
+		Image
+	</div>
 
 	<div data-rel="edit">
 		<div data-bind="showif: fileExists">
