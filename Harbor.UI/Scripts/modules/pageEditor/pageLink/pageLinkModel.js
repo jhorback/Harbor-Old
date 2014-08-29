@@ -35,7 +35,7 @@ pageEditor.pageLinkModel.prototype = {
 			var previewImageID = this.get("previewImageID"),
 				src;
 			src = previewImageID ? this.appurl.get("file/" +
-				this.get("previewImageID") + "/preview.img?res=low") :
+				previewImageID + "/preview.img?res=low") :
 				null;
 			return src;
 		},
