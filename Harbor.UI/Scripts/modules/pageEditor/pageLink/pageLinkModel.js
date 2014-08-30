@@ -7,16 +7,6 @@ pageEditor.pageLinkModel = function (attrs, options, appurl) {
 pageEditor.pageLinkModel.prototype = {
 	syncPageProperties: ["pageID", "titleDisplay"],
 	
-	//jch! cleanup
-	//component:  {
-	//	pageProperties: ["pageID", "tileDisplay"],
-	
-	//	getDefaults: function (page, pageProperties) {
-	//		return _.pick(page.getPageLink(pageProperties.pageID),
-	//			"title", "previewText", "previewImageID", "link");
-	//	}
-	//},
-	
 	defaults: {
 		pageID: 0,
 		tileDisplay: "normal",

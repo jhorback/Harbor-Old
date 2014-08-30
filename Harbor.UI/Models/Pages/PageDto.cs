@@ -23,13 +23,8 @@ namespace Harbor.UI.Models
 				.ForMember(dest => dest.properties, opt => opt.MapFrom(src => src.Properties))
 				.ForMember(dest => dest.created, opt => opt.MapFrom(src => src.Created.ToShortDateString()))
 				.ForMember(dest => dest.modified, opt => opt.MapFrom(src => src.Modified.ToShortDateString()))
-				.ForMember(dest => dest.pageLinks, opt => opt.Ignore())
 				.ForMember(dest => dest.template, opt => opt.MapFrom(src => TemplateDto.FromTemplate(src.Template, _dtoMapper)))
 				.ForMember(dest => dest.layout, opt => opt.MapFrom(src => PageLayoutDto.FromPageLayout(src.Layout)))
-				.AfterMap((DO, dto) =>
-					{
-						dto.pageLinks = DO.PageLinks.Select(page => (PageReferenceDto) page).ToList();
-					})
 				;
 
 			Mapper.CreateMap<PageDto, Domain.Pages.Page>()
@@ -76,8 +71,6 @@ namespace Harbor.UI.Models
 		public PageDto()
 		{
 			properties = new List<PagePropertyDto>();
-			files = new List<FileDto>();
-			pageLinks = new List<PageReferenceDto>();
 		}
 
 		public int id { get; set; }
@@ -98,10 +91,6 @@ namespace Harbor.UI.Models
 		public string previewImageID { get; set; }
 		public string previewText { get; set; }
 		public bool autoPreview { get; set; }
-
-		public List<FileDto> files { get; set; }
-		public List<PageReferenceDto> pageLinks { get; set; }
-		public List<PayPalButtonDto> payPalButtons { get; set; }
 
 		public static PageDto FromPage(Domain.Pages.Page page)
 		{

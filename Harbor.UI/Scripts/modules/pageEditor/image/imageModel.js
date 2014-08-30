@@ -8,8 +8,6 @@ pageEditor.imageModel.prototype = {
 	
 	initialize: function (attrs, options) {
 		var fileID = this.get("fileID");
-		var file = options.page.getFile(fileID);
-		this.set("fileExists", file !== null);
 	},
 	
 	defaults: {
