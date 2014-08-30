@@ -5,6 +5,11 @@ using System.Reflection;
 
 namespace Harbor.Domain
 {
+	public interface IReflectionUtils
+	{
+		
+	}
+
 	public class ReflectionUtils
 	{
 		private delegate bool TypeCheckDelegate(Type param, Type type);
@@ -262,6 +267,24 @@ namespace Harbor.Domain
 			}
 			return Activator.CreateInstance(type, flags, null, args, null, null);
 		}
+
+		public IList<Type> FindTypesWithAttribute<T>()
+		{
+			var assembly = Assembly.GetExecutingAssembly();
+			var types = from type in assembly.GetTypes()
+				where Attribute.IsDefined(type, typeof(T))
+				select type;
+			return types.ToList();
+		}
+
+		public T GetAttribute<T>(Type type) where T : Attribute
+		{
+			var attrs = Attribute.GetCustomAttributes(type); 
+			var matching = attrs.OfType<T>().Select(attr => attr).ToList();
+			return matching[0];
+		}
+
+
 
 		/// <summary>
 		/// Finds types, that implement a particular interface, in loaded assemblies.
