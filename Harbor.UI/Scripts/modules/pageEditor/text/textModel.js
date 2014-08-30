@@ -1,10 +1,7 @@
 ﻿
 
 pageEditor.textModel = {
-	
-	component: {
-		pageProperties: ["text"]
-	},
+	syncPageProperties: ["text"],
 	
 	defaults: {
 		text: null

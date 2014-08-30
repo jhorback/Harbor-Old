@@ -4,14 +4,7 @@ pageEditor.imageModel = function (attrs, options) {
 };
 
 pageEditor.imageModel.prototype = {
-	
-	component: {
-		pageProperties: ["fileID", "res"],
-	
-		getDefaults: function () {
-			return {};
-		}
-	},
+	syncPageProperties: ["fileID", "res"],
 	
 	initialize: function (attrs, options) {
 		var fileID = this.get("fileID");

@@ -319,7 +319,10 @@
     <Compile Include="Models\Setting\HarborAppDto.cs" />
     <Compile Include="Models\Setting\SettingsViewModel.cs" />
     <Compile Include="Models\Shared\BadRequestDto.cs" />
+    <Compile Include="Models\Shared\DtoMapper.cs" />
+    <Compile Include="Models\Shared\IDtoMapper.cs" />
     <Compile Include="Models\Shared\InternalServerErrorDto.cs" />
+    <Compile Include="Models\Shared\MapDtoFromAttribute.cs" />
     <Compile Include="Models\Shared\NotFoundDto.cs" />
     <Compile Include="Models\Shared\PagedResult.cs" />
     <Compile Include="Models\StyleGuide\StyleGuidePage.cs" />
