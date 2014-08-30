@@ -9,7 +9,6 @@ pageEditor.productLink = function (viewRenderer) {
 };
 
 pageEditor.productLink.prototype = {
-	model: "productLinkModel",
 
 	create: function () {
 		this.open();

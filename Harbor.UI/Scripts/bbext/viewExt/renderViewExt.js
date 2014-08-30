@@ -104,6 +104,10 @@ function renderViewExt(_, $, templateCache, collectionRenderer) {
 			}).then(function (response) {
 				view.$el.empty().html(response);
 			});
+		},
+
+		serverUrl: function () {
+			throw new Error("The serverUrl method was not defined.");
 		}
 	};
 

@@ -11,7 +11,6 @@ pageEditor.links = function (templateRenderer) {
 };
 
 pageEditor.links.prototype = {
-	// model: "linksModel",
 
 	create: function () {
 		this.open();

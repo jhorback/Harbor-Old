@@ -22,7 +22,6 @@ pageEditor.payPalButton = function (currentPageRepo, viewRenderer, payPalButtonR
 };
 
 pageEditor.payPalButton.prototype = {
-	model: "payPalButtonModel",
 
 	create: function () {
 		this.open();

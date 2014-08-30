@@ -9,7 +9,6 @@ pageEditor.text = function (viewRenderer) {
 };
 
 pageEditor.text.prototype = {
-	model: "textModel",
 	
 	create: function () {
 		this.open();
