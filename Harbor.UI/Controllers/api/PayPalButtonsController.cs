@@ -29,7 +29,7 @@ namespace Harbor.UI.Controllers.Api
         public IEnumerable<PayPalButtonDto> Get()
         {
             // query.CurrentUserName = User.Identity.Name;
-			return buttonRep.FindAll(i => i.UserName == User.Identity.Name).Select(i => (PayPalButtonDto)i);
+			return buttonRep.FindAll(i => i.UserName == User.Identity.Name).Select(PayPalButtonDto.FromPayPalButton);
         }
 
         // GET api/navlinks/5
@@ -39,7 +39,7 @@ namespace Harbor.UI.Controllers.Api
 			if (buttons == null || buttons.UserName != User.Identity.Name)
 				return Request.CreateNotFoundResponse();
 
-			var dto = (PayPalButtonDto)buttons;
+			var dto = PayPalButtonDto.FromPayPalButton(buttons);
 			return Request.CreateOKResponse(dto);
         }
 
@@ -47,7 +47,7 @@ namespace Harbor.UI.Controllers.Api
 		[Permit(UserFeature.Pages, Permissions.Create)]
 		public HttpResponseMessage Post(PayPalButtonDto dto)
         {
-			var dobj = (PayPalButton)dto;
+			var dobj = PayPalButtonDto.ToPayPalButton(dto);
 			dobj.UserName = User.Identity.Name;
 
 			var errors = DomainObjectValidator.Validate(dobj);
@@ -64,13 +64,13 @@ namespace Harbor.UI.Controllers.Api
 				return Request.CreateBadRequestResponse(exception.Message);
 			}
 
-			return Request.CreateOKResponse((PayPalButtonDto)dobj);
+			return Request.CreateOKResponse(PayPalButtonDto.FromPayPalButton(dobj));
         }
 
         // PUT api/navlinks/5
 		public HttpResponseMessage Put(PayPalButtonDto dto)
         {
-			var dobj = buttonRep.FindById(dto.id, readOnly: false);
+			var dobj = buttonRep.FindById(dto.id ?? 0, readOnly: false);
 
 			if (dobj == null || dobj.UserName != User.Identity.Name)
 				return Request.CreateNotFoundResponse();
@@ -87,7 +87,7 @@ namespace Harbor.UI.Controllers.Api
 				return Request.CreateBadRequestResponse(e);
 			}
 
-			var navLinksDto = (PayPalButtonDto)dobj;
+			var navLinksDto = PayPalButtonDto.FromPayPalButton(dobj);
 			return Request.CreateOKResponse(navLinksDto);
         }
 

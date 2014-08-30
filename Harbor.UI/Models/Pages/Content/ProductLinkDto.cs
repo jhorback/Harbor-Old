@@ -4,6 +4,7 @@ using Harbor.Domain.Pages.Content;
 
 namespace Harbor.UI.Models.Content
 {
+	[MapDtoFrom(typeof(ProductLink))]
 	public class ProductLinkDto : PageLinkDto
 	{
 		public int productCount { get; set; }

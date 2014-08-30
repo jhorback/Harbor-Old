@@ -2,6 +2,7 @@
 
 namespace Harbor.UI.Models.Content
 {
+	[MapDtoFrom(typeof(Text))]
 	public class TextDto
 	{
 		private string _text;

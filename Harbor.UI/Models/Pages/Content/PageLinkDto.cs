@@ -4,6 +4,7 @@ using Harbor.Domain.Pages.Content;
 
 namespace Harbor.UI.Models.Content
 {
+	[MapDtoFrom(typeof(PageLink))]
 	public class PageLinkDto
 	{
 		public int pageID { get; set; }

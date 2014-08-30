@@ -1,10 +1,10 @@
-﻿
-using System;
+﻿using System;
 using Harbor.Domain.Files;
 using Harbor.Domain.Pages.Content;
 
 namespace Harbor.UI.Models.Content
 {
+	[MapDtoFrom(typeof(Image))]
 	public class ImageDto
 	{
 		public string imgSrc { get; set; }
