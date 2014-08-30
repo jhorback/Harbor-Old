@@ -12,45 +12,10 @@
 pageEditor.pageComponent = function (console, appurl, context, _, $, modelFactory, currentPageRepo) {
 	
 	var pageComponentPrototype = {
-		initModel: function () {
-			var temp, pageProps, modelProps, defaultProps, getDefaults, component;
-
-			// for layout (aside and header) components, the componentModel is already mapped back
-			// eventually may want to do the same for template content (and models)
-			if (!this.model) {
-				this.model = this.componentModel;
-				this.model.page = this.page;
-				return;
-			}
-
-			temp = context.get(this.model, true);
-			component = temp.prototype.component;
-	
-			// gather the default properties (to initialize the model with)
-			pageProps = component.pageProperties;
-			getDefaults = component.getDefaults;
-			modelProps = this.componentModel.attributes || {};
-			modelProps.id = this.uicid;
-			_.each(pageProps, function (attrName) {
-				var attrValue = this.getProperty(attrName);
-				modelProps[attrName] = attrValue;
-			}, this);
-
-			if (getDefaults) {
-				defaultProps = getDefaults(this.page, modelProps);
-				if (defaultProps) {
-					_.extend(modelProps, defaultProps);
-				}
-			}
-
-			// create the model and give the page model and save method
-			this.model = modelFactory.create(this.model, modelProps, { page: this.page });
-			this.model.page = this.page;
-			if (!this.model.savePage) {
-				this.model.savePage = _.bind(this.save, this);
-			}
-
+		
+		initComponentModel: function () {
 			// set up binding on the page properties
+			var pageProps = this.componentModel.syncPageProperties || [];
 			_.each(pageProps, function (attrName) {
 				this.model.on("change:" + attrName, function (model, value) {
 					this.setProperty(attrName, value);
@@ -100,7 +65,7 @@ pageEditor.pageComponent = function (console, appurl, context, _, $, modelFactor
 			this.uicid = options.uicid;
 			this.page = options.page;
 			this.componentModel = options.componentModel;
-			this.initModel();
+			this.initComponentModel();
 			context.call(construct, [], this);
 		};
 		

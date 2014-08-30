@@ -5,14 +5,17 @@ pageEditor.pageLinkModel = function (attrs, options, appurl) {
 };
 
 pageEditor.pageLinkModel.prototype = {
-	component:  {
-		pageProperties: ["pageID", "tileDisplay"],
+	syncPageProperties: ["pageID", "titleDisplay"],
 	
-		getDefaults: function (page, pageProperties) {
-			return _.pick(page.getPageLink(pageProperties.pageID),
-				"title", "previewText", "previewImageID", "link");
-		}
-	},
+	//jch! cleanup
+	//component:  {
+	//	pageProperties: ["pageID", "tileDisplay"],
+	
+	//	getDefaults: function (page, pageProperties) {
+	//		return _.pick(page.getPageLink(pageProperties.pageID),
+	//			"title", "previewText", "previewImageID", "link");
+	//	}
+	//},
 	
 	defaults: {
 		pageID: 0,
@@ -20,9 +23,9 @@ pageEditor.pageLinkModel.prototype = {
 		title: null,
 		previewText: null,
 		previewImageID: null,
+		link: null,
 		previewImageSrc: null,
 		tileClassName: "tile",
-		link: null,
 		hasPreviewImage: false
 	},
 	
@@ -57,6 +60,13 @@ pageEditor.pageLinkModel.prototype = {
 			return val;
 		},
 		bind: ["tileDisplay"]
+	},
+
+	"[link]": {
+		get: function () {
+			return this.pageurl.get(this.attributes.pageID, this.attributes.title);
+		},
+		observe: ["pageID", "title"]
 	}
 };
 

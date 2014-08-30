@@ -5,14 +5,7 @@ pageEditor.productLinkModel = function (attrs, options, appurl) {
 };
 
 pageEditor.productLinkModel.prototype = {
-	component:  {
-		pageProperties: ["pageID", "tileDisplay"],
-	
-		getDefaults: function (page, pageProperties) {
-			return _.pick(page.getPageLink(pageProperties.pageID),
-				"title", "previewText", "previewImageID", "link", "productCount", "firstButton");
-		}
-	},
+	syncPageProperties: ["pageID", "tileDisplay"],
 	
 	defaults: {
 		pageID: 0,

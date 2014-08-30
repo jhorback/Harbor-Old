@@ -13,14 +13,28 @@ template.prototype = {
 	defaults: {
 		pageID: null,
 		content: [],
+		contentData: {},
 		defaultContentClassName: "col1",
 		componentCounter: 0,
 		showSidebar: true
 	},
 	
 	initialize: function () {
-		// this.attributes.content - loop through, create models from each one, keep in SYNC
-		this.content = this.collectionFactory.createGeneric(this.attributes.content);
+		var models = this.getModelsFromContent();
+		this.content = this.collectionFactory.createGeneric(models);
+	},
+
+	createModel: function (meta) {
+		var data = _.extend(meta, this.attributes.contentData[meta.id]);
+		return this.modelFactory.create(meta.key + "Model", data, { page: this.page});
+	},
+
+	getModelsFromContent: function () {
+		var models = [];
+		_.each(this.attributes.content, function (meta) {
+			models.push(this.createModel(meta));	
+		}, this);
+		return models;
 	},
 	
 	"[content]": {
@@ -28,10 +42,16 @@ template.prototype = {
 			return this.content && this.content.toJSON();
 		},
 		set: function (value) {
-			this.content && this.content.set(value);
+			var models;
+			if (this.content) {
+				models = this.getModelsFromContent();
+				this.content.set(models);
+			}
 			return value;
 		}
 	},
+
+	
 
 	addContent: function (key) {
 		var ret,

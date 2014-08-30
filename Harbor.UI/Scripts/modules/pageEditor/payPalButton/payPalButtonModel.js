@@ -5,9 +5,7 @@ pageEditor.payPalButtonModel = function (attrs, options, appurl) {
 };
 
 pageEditor.payPalButtonModel.prototype = {
-	component:  {
-		pageProperties: ["payPalButtonID"]
-	},
+	syncPageProperties: ["payPalButtonID"],
 	
 	hasButton: function () {
 		var id = this.get("payPalButtonID"),
