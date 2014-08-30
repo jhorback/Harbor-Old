@@ -1,15 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web.Mvc;
 using AutoMapper;
-using Harbor.Domain.Pages;
 using Harbor.UI.Models.Content;
-using Harbor.UI.Models.Pages;
 
 namespace Harbor.UI.Models
 {
 	public class PageDtoMapCreator : IBootstrapperTask
 	{
+		private readonly IDtoMapper _dtoMapper;
+
+		public PageDtoMapCreator(IDtoMapper dtoMapper)
+		{
+			_dtoMapper = dtoMapper;
+		}
+
 		public void Execute()
 		{
 			Mapper.CreateMap<Domain.Pages.Page, PageDto>()
@@ -20,7 +24,7 @@ namespace Harbor.UI.Models
 				.ForMember(dest => dest.created, opt => opt.MapFrom(src => src.Created.ToShortDateString()))
 				.ForMember(dest => dest.modified, opt => opt.MapFrom(src => src.Modified.ToShortDateString()))
 				.ForMember(dest => dest.pageLinks, opt => opt.Ignore())
-				.ForMember(dest => dest.template, opt => opt.MapFrom(src => TemplateDto.FromTemplate(src.Template)))
+				.ForMember(dest => dest.template, opt => opt.MapFrom(src => TemplateDto.FromTemplate(src.Template, _dtoMapper)))
 				.ForMember(dest => dest.layout, opt => opt.MapFrom(src => PageLayoutDto.FromPageLayout(src.Layout)))
 				.AfterMap((DO, dto) =>
 					{

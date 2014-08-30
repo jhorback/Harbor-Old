@@ -1,27 +1,11 @@
-﻿using AutoMapper;
-using PageComponents = Harbor.Domain.Pages.Content;
-using Products = Harbor.Domain.Products;
-
+﻿using Products = Harbor.Domain.Products;
 
 namespace Harbor.UI.Models.Content
 {
-	public class PayPalButtonDtoMapper : IBootstrapperTask
-	{
-		public void Execute()
-		{
-			Mapper.CreateMap<PageComponents.PayPalButton, PayPalButtonDto>()
-				.ForMember(dest => dest.id, opt => opt.MapFrom(src => src.PayPalButtonID));
-			Mapper.CreateMap<Products.PayPalButton, PayPalButtonDto>()
-				.ForMember(dest => dest.id, opt => opt.MapFrom(src => src.PayPalButtonID));
-			Mapper.CreateMap<PayPalButtonDto, Products.PayPalButton>()
-				.ForMember(dest => dest.PayPalButtonID, opt => opt.MapFrom(src => src.id));
-		}
-	}
-
-
+	[MapDtoFrom(typeof(Products.PayPalButton))]
 	public class PayPalButtonDto
 	{
-		public int id { get; set; }
+		public int? id { get; set; }
 		public string userName { get; set; }
 		public string name { get; set; }
 		public string description { get; set; }
@@ -32,24 +16,43 @@ namespace Harbor.UI.Models.Content
 		public decimal price { get; set; }
 		public decimal? shippingOverride { get; set; }
 		public decimal? taxOverride { get; set; }
-		
 
-		public static implicit operator PayPalButtonDto(PageComponents.PayPalButton button)
+		public PayPalButtonDto(Products.PayPalButton button)
 		{
-			var dto = Mapper.Map<PageComponents.PayPalButton, PayPalButtonDto>(button);
-			return dto;
+			id = button.PayPalButtonID;
+			userName = button.UserName;
+			name = button.Name;
+			description = button.Description;
+			hosted = button.Hosted;
+			buttonCode = button.ButtonCode;
+			buttonType = button.ButtonType;
+			itemNumber = button.ItemNumber;
+			price = button.Price;
+			shippingOverride = button.ShippingOverride;
+			taxOverride = button.TaxOverride;
 		}
 
-		public static implicit operator PayPalButtonDto(Products.PayPalButton button)
+		public static PayPalButtonDto FromPayPalButton(Products.PayPalButton button)
 		{
-			var dto = Mapper.Map<Products.PayPalButton, PayPalButtonDto>(button);
-			return dto;
+			return new PayPalButtonDto(button);
 		}
 
-		public static implicit operator Products.PayPalButton(PayPalButtonDto button)
+		public static Products.PayPalButton ToPayPalButton(PayPalButtonDto button)
 		{
-			var dto = Mapper.Map<PayPalButtonDto, Products.PayPalButton>(button);
-			return dto;
+			return new Products.PayPalButton
+			{
+				PayPalButtonID = button.id ?? 0,
+				UserName = button.userName,
+				Name = button.name,
+				Description = button.description,
+				Hosted = button.hosted,
+				ButtonCode = button.buttonCode,
+				ButtonType = button.buttonType,
+				ItemNumber = button.itemNumber,
+				Price = button.price,
+				ShippingOverride = button.shippingOverride,
+				TaxOverride = button.taxOverride
+			};
 		}
 	}
 }

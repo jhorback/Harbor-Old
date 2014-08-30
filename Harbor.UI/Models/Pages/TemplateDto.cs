@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web.Mvc;
 using Harbor.Domain.Pages;
+using Harbor.UI.Models.Content;
 
 namespace Harbor.UI.Models
 {
@@ -13,26 +15,27 @@ namespace Harbor.UI.Models
 		public string defaultContentClassName { get; set; }
 		public int componentCounter { get; set; }
 
-		public static implicit operator TemplateDto(Template template)
-		{
-			return FromTemplate(template);
-		}
 
-		//public static implicit operator Template(TemplateDto template)
-		//{
-		//	return ToTemplate(template);
-		//}
-
-		public static TemplateDto FromTemplate(Template template)
+		public static TemplateDto FromTemplate(Template template, IDtoMapper dtoMapper)
 		{
 			return new TemplateDto
 			{
 				pageID = template.PageID,
 				content = template.Content.Select(TemplateUicDto.FromTemplateUic).ToList(),
-				contentData = template.contentData,
+				contentData = convertContentToDtos(template.contentData, dtoMapper),
 				defaultContentClassName = template.DefaultContentClassName,
 				componentCounter = template.ComponentCounter
 			};
+		}
+
+		private static IDictionary<string, object> convertContentToDtos(IDictionary<string, object> contentData, IDtoMapper dtoMapper)
+		{
+			var dtos = new Dictionary<string, object>();
+			foreach (var item in contentData)
+			{
+				dtos.Add(item.Key, dtoMapper.MapFrom(item.Value));
+			}
+			return dtos;
 		}
 
 		public static Template ToTemplate(TemplateDto templateDto, Template template)
