@@ -90,6 +90,7 @@ pageEditor.componentManager = function ($, _, Backbone, context, console, curren
 		type = type || "content"; // mostly informational
 		uicid = componentModel.get("id");
 		key = componentModel.get("key");
+		componentModel.page = page;
 
 		// the header or aside can be null
 		if (!key) {
@@ -110,13 +111,13 @@ pageEditor.componentManager = function ($, _, Backbone, context, console, curren
 			$el: el
 		}];
 
-		try {
+		//try {
 			component = components[uicid] = context.instantiate(key, instantiateArgs);
 			console.log("Created page component", type, key, uicid);
-		} catch (e) {
-			console.error("Could not create page component:", key, "Error:", e.message);
-			component = components[uicid] = context.instantiate("defaultPageComponent", instantiateArgs);
-		}
+		//} catch (e) {
+		//	console.error("Could not create page component:", key, "Error:", e.message);
+		//	component = components[uicid] = context.instantiate("defaultPageComponent", instantiateArgs);
+		//}
 
 		return component;
 	}
