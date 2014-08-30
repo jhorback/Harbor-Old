@@ -1,10 +1,10 @@
 ﻿
 
-pageEditor.pageLinkModel = function (attrs, options, appurl) {
+pageEditor.pagelinkModel = function (attrs, options, appurl) {
 	this.appurl = appurl;
 };
 
-pageEditor.pageLinkModel.prototype = {
+pageEditor.pagelinkModel.prototype = {
 	syncPageProperties: ["pageID", "titleDisplay"],
 	
 	defaults: {
@@ -61,9 +61,9 @@ pageEditor.pageLinkModel.prototype = {
 };
 
 
-pageEditor.model("pageLinkModel", [
+pageEditor.model("pagelinkModel", [
 	"attrs",
 	"options",
 	"appurl",
-	pageEditor.pageLinkModel
+	pageEditor.pagelinkModel
 ]);

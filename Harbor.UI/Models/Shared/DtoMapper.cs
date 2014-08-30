@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using Harbor.Domain;
 
 namespace Harbor.UI.Models
@@ -24,19 +25,24 @@ namespace Harbor.UI.Models
 			if (fromTypeToType == null)
 			{
 				fromTypeToType = new Dictionary<Type, Type>();
-				var types = _reflectionUtils.FindTypesWithAttribute<MapDtoFromAttribute>();
+				var types = _reflectionUtils.FindTypesWithAttribute<MapDtoFromAttribute>(Assembly.GetExecutingAssembly());
 				foreach (var toType in types)
 				{
 					var attribute = _reflectionUtils.GetAttribute<MapDtoFromAttribute>(toType);
 					var fromType = attribute.FromType;
 					fromTypeToType.Add(fromType, toType);
 				}
-				_memCache.SetGlobal("dtoMapperTypes", fromTypeToType, DateTime.Now.AddYears(1));
+				//_memCache.SetGlobal("dtoMapperTypes", fromTypeToType, DateTime.Now.AddYears(1));
 			}
 		}
 
 		public object MapFrom(object source)
 		{
+			if (fromTypeToType.ContainsKey(source.GetType()) == false)
+			{
+				throw new Exception("Type not mapped.");
+			}
+
 			var toType = fromTypeToType[source.GetType()];
 			object dto;
 

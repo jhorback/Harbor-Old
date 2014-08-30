@@ -271,9 +271,14 @@ namespace Harbor.Domain
 		public IList<Type> FindTypesWithAttribute<T>()
 		{
 			var assembly = Assembly.GetExecutingAssembly();
+			return FindTypesWithAttribute<T>(assembly);
+		}
+
+		public IList<Type> FindTypesWithAttribute<T>(Assembly assembly)
+		{
 			var types = from type in assembly.GetTypes()
-				where Attribute.IsDefined(type, typeof(T))
-				select type;
+						where Attribute.IsDefined(type, typeof(T))
+						select type;
 			return types.ToList();
 		}
 

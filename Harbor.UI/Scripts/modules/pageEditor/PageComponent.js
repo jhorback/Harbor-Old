@@ -17,10 +17,12 @@ pageEditor.pageComponent = function (console, appurl, context, _, $, modelFactor
 			// set up binding on the page properties
 			var pageProps = this.componentModel.syncPageProperties || [];
 			_.each(pageProps, function (attrName) {
-				this.model.on("change:" + attrName, function (model, value) {
+				this.componentModel.on("change:" + attrName, function (model, value) {
 					this.setProperty(attrName, value);
 				}, this);
 			}, this);
+
+			this.model = this.componentModel;
 		},
 			
 		setProperty: function (name, value) {

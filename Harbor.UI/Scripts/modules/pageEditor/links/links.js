@@ -46,5 +46,18 @@ pageEditor.links.prototype = {
 	}
 };
 
+/*
+
+Have the component define the create, open, and close mthods?!
+The component can define callbacks for:
+	onInit:
+	onCreate
+	onOpen
+	onClose
+	onRemove
+
+All are optional 
+*/
+
 
 pageEditor.pageComponent("links", ["templateRenderer", pageEditor.links]);

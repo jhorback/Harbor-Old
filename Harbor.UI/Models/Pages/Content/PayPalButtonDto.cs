@@ -2,7 +2,7 @@
 
 namespace Harbor.UI.Models.Content
 {
-	[MapDtoFrom(typeof(Products.PayPalButton))]
+	[MapDtoFrom(typeof(Domain.Pages.Content.PayPalButton))]
 	public class PayPalButtonDto
 	{
 		public int? id { get; set; }
@@ -30,6 +30,29 @@ namespace Harbor.UI.Models.Content
 			price = button.Price;
 			shippingOverride = button.ShippingOverride;
 			taxOverride = button.TaxOverride;
+		}
+
+		public PayPalButtonDto(Domain.Pages.Content.PayPalButton button)
+		{
+			id = button.PayPalButtonID;
+			if (button.ButtonExists)
+			{
+				userName = button.Button.UserName;
+				name = button.Button.Name;
+				description = button.Button.Description;
+				hosted = button.Button.Hosted;
+				buttonCode = button.Button.ButtonCode;
+				buttonType = button.Button.ButtonType;
+				itemNumber = button.Button.ItemNumber;
+				price = button.Button.Price;
+				shippingOverride = button.Button.ShippingOverride;
+				taxOverride = button.Button.TaxOverride;
+			}
+		}
+
+		public static PayPalButtonDto FromPayPalButton(Domain.Pages.Content.PayPalButton button)
+		{
+			return new PayPalButtonDto(button);
 		}
 
 		public static PayPalButtonDto FromPayPalButton(Products.PayPalButton button)
