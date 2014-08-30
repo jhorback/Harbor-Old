@@ -31,10 +31,6 @@ page.prototype = {
 		previewImage: null, // FileDto
 		previewText: "",
 		autoPreview: true,
-		files: [],
-		pageLinks: [],
-		navLinks: [],
-		payPalButtons: [],
 		//
 		thumbUrl: "",
 		link: null,
@@ -208,34 +204,6 @@ page.prototype = {
 			return true;
 		}, this);
 		return retItem;
-	},
-
-	getFile: function (fileID) {
-		var file = _.where(this.attributes.files, { id: fileID });
-		return (file.length === 1) ? file[0] : null;
-	},
-	
-	getPageLink: function (pageID) {
-		var link = _.where(this.get("pageLinks"), { id: parseInt(pageID) });
-		return (link.length === 1) ? link[0] : {};
-	},
-	
-	addPageLinkRef: function (page) {
-		this.get("pageLinks").push(page.toJSON ? page.toJSON() : page);
-	},
-
-	getNavLinks: function (navLinksID) {
-		var links = _.where(this.get("navLinks"), { id: parseInt(navLinksID) });
-		return (links.length === 1) ? links[0] : null;
-	},
-	
-	addNavLinksRef: function (navLink) {
-		this.get("navLinks").push(navLink.toJSON ? navLink.toJSON() : navLink);
-	},
-	
-	getPayPalButton: function (id) {
-		var button = _.where(this.get("payPalButtons"), { id: parseInt(id) });
-		return (button.length === 1) ? button[0] : {};
 	}
 };
 
