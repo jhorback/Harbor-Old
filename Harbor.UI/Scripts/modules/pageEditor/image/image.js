@@ -5,8 +5,6 @@ pageEditor.image = function (viewRenderer) {
 };
 
 pageEditor.image.prototype = {
-	model: "imageModel",
-	
 	create: function () {
 		this.open();
 		this.view.openFileSelector();
