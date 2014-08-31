@@ -26,7 +26,11 @@ template.prototype = {
 
 	createModel: function (meta) {
 		var data = _.extend(meta, this.attributes.contentData[meta.id]);
-		return this.modelFactory.create(meta.key + "Model", data, { page: this.page});
+		try {
+			return this.modelFactory.create(meta.key + "Model", data, { page: this.page });
+		} catch (e) {
+			return data;
+		}
 	},
 
 	getModelsFromContent: function () {
