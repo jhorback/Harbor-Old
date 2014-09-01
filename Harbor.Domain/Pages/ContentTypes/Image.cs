@@ -50,12 +50,14 @@ namespace Harbor.Domain.Pages.ContentTypes
 				{
 					image.FileExists = true;
 					image.CanDisplay = file.HasPermission(_user.Identity.Name, Permissions.Read);
+					image.Name = file.Name;
+					image.Ext = file.Ext;
 				}
 			}
 
 			image.Res = GetProperty("Res") ?? "low";
-			image.Name = GetProperty("Name");
-			image.Ext = GetProperty("ext");
+			//image.Name = GetProperty("Name");
+			//image.Ext = GetProperty("ext");
 
 			return image;
 		}

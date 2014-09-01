@@ -17,6 +17,8 @@ namespace Harbor.UI.Models.Content
 		public decimal? shippingOverride { get; set; }
 		public decimal? taxOverride { get; set; }
 
+		public PayPalButtonDto() { }
+
 		public PayPalButtonDto(Products.PayPalButton button)
 		{
 			id = button.PayPalButtonID;
