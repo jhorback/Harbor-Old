@@ -9,12 +9,14 @@ namespace Harbor.UI.Models
 	{
 		private readonly ReflectionUtils _reflectionUtils;
 		private readonly IMemCache _memCache;
+		private readonly ILogger _logger;
 		Dictionary<Type, Type> fromTypeToType;
 
-		public DtoMapper(ReflectionUtils reflectionUtils, IMemCache memCache)
+		public DtoMapper(ReflectionUtils reflectionUtils, IMemCache memCache, ILogger logger)
 		{
 			_reflectionUtils = reflectionUtils;
 			_memCache = memCache;
+			_logger = logger;
 
 			initTypes();
 		}
@@ -32,7 +34,7 @@ namespace Harbor.UI.Models
 					var fromType = attribute.FromType;
 					fromTypeToType.Add(fromType, toType);
 				}
-				//_memCache.SetGlobal("dtoMapperTypes", fromTypeToType, DateTime.Now.AddYears(1));
+				_memCache.SetGlobal("dtoMapperTypes", fromTypeToType, DateTime.Now.AddYears(1));
 			}
 		}
 
@@ -40,7 +42,8 @@ namespace Harbor.UI.Models
 		{
 			if (fromTypeToType.ContainsKey(source.GetType()) == false)
 			{
-				throw new Exception("Type not mapped.");
+				_logger.Warn("Type not mapped. Source type: {0}", source.GetType());
+				return null;
 			}
 
 			var toType = fromTypeToType[source.GetType()];
