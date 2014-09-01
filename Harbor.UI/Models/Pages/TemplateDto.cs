@@ -18,7 +18,7 @@ namespace Harbor.UI.Models
 
 		public static TemplateDto FromTemplate(Template template, IDtoMapper dtoMapper)
 		{
-			return new TemplateDto
+			var dto = new TemplateDto
 			{
 				pageID = template.PageID,
 				content = template.Content.Select(TemplateUicDto.FromTemplateUic).ToList(),
@@ -26,6 +26,7 @@ namespace Harbor.UI.Models
 				defaultContentClassName = template.DefaultContentClassName,
 				componentCounter = template.ComponentCounter
 			};
+			return dto;
 		}
 
 		private static IDictionary<string, object> convertContentToDtos(IDictionary<string, object> contentData, IDtoMapper dtoMapper)
