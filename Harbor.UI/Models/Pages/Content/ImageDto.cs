@@ -10,7 +10,9 @@ namespace Harbor.UI.Models.Content
 		public string imgSrc { get; set; }
 		public string res { get; set; }
 		public string fileID { get; set; }
-
+		public string name { get; set; }
+		public string ext { get; set; }
+		
 
 		public ImageDto()
 		{
@@ -23,6 +25,8 @@ namespace Harbor.UI.Models.Content
 			fileID = image.FileID.ToString();
 			res = image.Res;
 			imgSrc = FileUrls.GetUrl(fileID, image.Name, image.Ext, fileRes);
+			name = image.Name;
+			ext = image.Ext;
 		}
 
 		public static ImageDto FromImage(Image image)
