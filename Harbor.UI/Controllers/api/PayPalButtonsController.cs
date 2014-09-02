@@ -46,7 +46,7 @@ namespace Harbor.UI.Controllers.Api
         // POST api/navlinks
 		[Permit(UserFeature.Pages, Permissions.Create)]
 		public HttpResponseMessage Post(PayPalButtonDto dto)
-        {
+		{
 			var dobj = PayPalButtonDto.ToPayPalButton(dto);
 			dobj.UserName = User.Identity.Name;
 
@@ -75,7 +75,7 @@ namespace Harbor.UI.Controllers.Api
 			if (dobj == null || dobj.UserName != User.Identity.Name)
 				return Request.CreateNotFoundResponse();
 
-			dobj = PayPalButtonDto.ToPayPalButton(dto);
+			PayPalButtonDto.ToPayPalButton(dobj, dto);
 
 			try
 			{
