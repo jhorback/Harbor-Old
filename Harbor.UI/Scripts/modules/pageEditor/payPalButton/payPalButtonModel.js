@@ -5,7 +5,11 @@ pageEditor.paypalbuttonModel = function (attrs, options, appurl) {
 };
 
 pageEditor.paypalbuttonModel.prototype = {
-	syncPageProperties: ["payPalButtonID"]
+	syncPageProperties: ["payPalButtonID"],
+
+	defaults: {
+		payPalButtonId: null
+	}
 };
 
 

@@ -5,6 +5,11 @@ namespace Harbor.Domain.Pages.Content
 	{
 		public PayPalButton(int? payPalButtonId, Products.PayPalButton button)
 		{
+			if (payPalButtonId == 0)
+			{
+				payPalButtonId = null;
+			}
+
 			PayPalButtonID = payPalButtonId;
 			Button = button;
 		}

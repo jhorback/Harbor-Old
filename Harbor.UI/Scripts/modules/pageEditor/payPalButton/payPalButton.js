@@ -9,7 +9,7 @@ pageEditor.payPalButton = function (currentPageRepo, viewRenderer, payPalButtonR
 	this.$el.find(".paypal-button").on("click.paypalbutton", function (event) {
 		event.preventDefault();
 	});
-	
+
 	buttonID = this.model.get("payPalButtonID");
 	this.model.payPalButton = payPalButtonRepo.getButton(buttonID, this.model.page.get("title"));
 	this.model.payPalButton.on("change:id", function () {

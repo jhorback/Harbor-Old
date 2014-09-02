@@ -298,8 +298,9 @@
     <Compile Include="Models\JSPM\PackageCollection.cs" />
     <Compile Include="Models\JSPM\PackageTable.cs" />
     <Compile Include="Models\JSPM\TemplateAction.cs" />
-    <Compile Include="Models\Pages\Content\ProductLinkDto.cs" />
     <Compile Include="Models\Pages\Content\PayPalButtonDto.cs" />
+    <Compile Include="Models\Pages\Content\ProductLinkDto.cs" />
+    <Compile Include="Models\Products\PayPalButtonDto.cs" />
     <Compile Include="Models\Pages\Content\PageLinkDto.cs" />
     <Compile Include="Models\Pages\Content\ImageDto.cs" />
     <Compile Include="Models\Pages\Content\TextDto.cs" />

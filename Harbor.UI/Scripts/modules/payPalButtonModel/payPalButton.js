@@ -50,6 +50,14 @@ payPalButtonModel.payPalButton.prototype = {
 			});
 		},
 		bind: ["price"]
+	},
+	"[taxOverride]": {
+		set: function (value) {
+			if (!value) {
+				return "";
+			}
+			return value;
+		}
 	}
 };
 
