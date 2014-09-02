@@ -57,7 +57,7 @@ pageEditor.productLinkModel.prototype = {
 };
 
 
-pageEditor.model("productLinkModel", [
+pageEditor.model("productlinkModel", [
 	"attrs",
 	"options",
 	"appurl",
