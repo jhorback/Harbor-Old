@@ -47,17 +47,21 @@ template.prototype = {
 	"[content]": {
 		get: function () {
 			return this.content && this.content.toJSON();
-		},
+		}
+	},
+
+	"[contentData]": {
 		set: function (value) {
 			var models;
 			if (this.content) {
-				models = this.getModelsFromContent();
+				// need to set the attributes firts
+				this.attributes.contentData = value;
+				models = this.getModelsFromContent(value);
 				this.content.set(models);
 			}
 			return value;
 		}
 	},
-
 	
 
 	addContent: function (key) {
