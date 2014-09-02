@@ -23,7 +23,7 @@ pageEditor.payPalButtonComponentView.prototype = {
 		this.saveButton = _.debounce(this.saveButton, 200);
 		this.bindAll("saveComponentModel", "saveButton");
 		this.listenTo(this.model, "change:id", this.saveComponentModel);
-		this.listenTo(this.model, "change", this.saveButton); // this was calling a bunch of times
+		this.listenTo(this.model, "change", this.saveButton);
 	},
 	
 	onRender: function () {

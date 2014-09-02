@@ -8,7 +8,7 @@ using Harbor.Domain;
 using Harbor.Domain.Products;
 using Harbor.Domain.Security;
 using Harbor.UI.Extensions;
-using Harbor.UI.Models.Content;
+using Harbor.UI.Models.Products;
 
 namespace Harbor.UI.Controllers.Api
 {
@@ -75,7 +75,7 @@ namespace Harbor.UI.Controllers.Api
 			if (dobj == null || dobj.UserName != User.Identity.Name)
 				return Request.CreateNotFoundResponse();
 
-			dobj = Mapper.Map(dto, dobj);
+			dobj = PayPalButtonDto.ToPayPalButton(dto);
 
 			try
 			{
