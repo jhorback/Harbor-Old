@@ -38,22 +38,26 @@ namespace Harbor.UI.Models.Products
 			return new PayPalButtonDto(button);
 		}
 
-		public static PayPalButton ToPayPalButton(PayPalButtonDto button)
+		public static PayPalButton ToPayPalButton(PayPalButtonDto dto)
 		{
-			return new PayPalButton
-			{
-				PayPalButtonID = button.id ?? 0,
-				UserName = button.userName,
-				Name = button.name,
-				Description = button.description,
-				Hosted = button.hosted,
-				ButtonCode = button.buttonCode,
-				ButtonType = button.buttonType,
-				ItemNumber = button.itemNumber,
-				Price = button.price,
-				ShippingOverride = button.shippingOverride,
-				TaxOverride = button.taxOverride
-			};
+			var button = new PayPalButton();
+			ToPayPalButton(button, dto);
+			return button;
+		}
+
+		public static void ToPayPalButton(PayPalButton button, PayPalButtonDto dto)
+		{
+			button.PayPalButtonID = dto.id ?? 0;
+			button.UserName = dto.userName;
+			button.Name = dto.name;
+			button.Description = dto.description;
+			button.Hosted = dto.hosted;
+			button.ButtonCode = dto.buttonCode;
+			button.ButtonType = dto.buttonType;
+			button.ItemNumber = dto.itemNumber;
+			button.Price = dto.price;
+			button.ShippingOverride = dto.shippingOverride;
+			button.TaxOverride = dto.taxOverride;
 		}
 	}
 }
