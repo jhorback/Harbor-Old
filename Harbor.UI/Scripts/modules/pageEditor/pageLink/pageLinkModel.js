@@ -6,7 +6,7 @@ pageEditor.pagelinkModel = function (attrs, options, appurl, pageurl) {
 };
 
 pageEditor.pagelinkModel.prototype = {
-	syncPageProperties: ["pageID", "titleDisplay"],
+	syncPageProperties: ["pageID", "tileDisplay"],
 	
 	defaults: {
 		pageID: 0,

@@ -2,10 +2,7 @@
 
 pageEditor.pageLink = function (viewRenderer) {
 	this.viewRenderer = viewRenderer;
-	
-	this.$el.find("a").on("click.link", function (event) {
-		event.preventDefault();
-	});
+	this.disableLinks();
 };
 
 pageEditor.pageLink.prototype = {
@@ -22,10 +19,18 @@ pageEditor.pageLink.prototype = {
 		});
 		
 		this.$el.empty().append(this.view.$el);
+		this.disableLinks();
+	},
+
+	disableLinks: function () {
+		this.$el.find("a").on("click.link", function (event) {
+			event.preventDefault();
+		});
 	},
 
 	close: function () {
 		this.view.close({ remove: false });
+		
 	},
 	
 	remove: function () {
