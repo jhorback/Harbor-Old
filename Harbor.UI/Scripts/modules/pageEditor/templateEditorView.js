@@ -118,7 +118,7 @@ pageEditor.templateEditorView = (function () {
 
 	function templateContentSort(model) {
 		var index = $("#" + model.attributes.uicid).index();
-		console.debug("model index", index);
+		//console.debug("model index", index,  model.attributes);
 		return index;
 	}
 
