@@ -1,7 +1,8 @@
 ﻿
 
-pageEditor.pagelinkModel = function (attrs, options, appurl) {
+pageEditor.pagelinkModel = function (attrs, options, appurl, pageurl) {
 	this.appurl = appurl;
+	this.pageurl = pageurl;
 };
 
 pageEditor.pagelinkModel.prototype = {
@@ -65,5 +66,6 @@ pageEditor.model("pagelinkModel", [
 	"attrs",
 	"options",
 	"appurl",
+	"pageurl",
 	pageEditor.pagelinkModel
 ]);
