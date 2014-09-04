@@ -28,8 +28,13 @@ template.prototype = {
 		var uicid = meta.id;
 		var data = _.extend(meta, this.attributes.contentData[meta.id]);
 		data.uicid = uicid;
-		return this.modelFactory.create(meta.key + "Model", data, { page: this.page });
-		
+		try {
+			return this.modelFactory.create(meta.key + "Model", data, { page: this.page });
+		} catch (e) {
+			// keep this catch here for now
+			// may want to do something else when viewing things like the "Pages" list
+			return data;
+		}
 	},
 
 	getModelsFromContent: function () {
