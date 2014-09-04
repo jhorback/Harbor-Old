@@ -37,6 +37,22 @@ template.prototype = {
 		}
 	},
 
+	addContent: function (key) {
+		var ret,
+			uicid = this.getNextUICID(),
+			content = {
+				type: "content",
+				key: key,
+				uicid: uicid,
+				id: uicid
+			};
+		
+		content.classNames = [this.attributes.defaultContentClassName];
+		this.content.push(content);
+		ret = this.content.get(uicid);
+		return ret;
+	},
+
 	getModelsFromContent: function () {
 		var models = [];
 		_.each(this.attributes.content, function (meta) {
@@ -62,23 +78,6 @@ template.prototype = {
 			}
 			return value;
 		}
-	},
-	
-
-	addContent: function (key) {
-		var ret,
-			uicid = this.getNextUICID(),
-			content = {
-				type: "content",
-				key: key,
-				uicid: uicid,
-				id: uicid
-			};
-		
-		content.classNames = [this.attributes.defaultContentClassName];
-		this.content.push(content);
-		ret = this.content.get(uicid);
-		return ret;
 	},
 
 	getNextUICID: function () {
