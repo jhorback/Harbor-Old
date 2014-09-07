@@ -16,6 +16,7 @@ pageEditor.componentManager = function ($, _, Backbone, context, console, curren
 			template.content.map(function (component) {
 				registerComponent(component, "content");
 			});
+			template.content.on("add", onAddContent);
 		},
 
 		open: function (uicid) {
@@ -31,17 +32,6 @@ pageEditor.componentManager = function ($, _, Backbone, context, console, curren
 				componentManager.trigger("open", currentComponent);
 				console.log("componentManager:opened - uicid:", uicid);
 			}
-		},
-
-		create: function (componentModel) {
-			var component;
-		
-			closeCurrentComponent();
-			component = registerComponent(componentModel);
-			currentComponent = component;
-			componentManager.trigger("create", component);
-			component.create();
-			componentManager.trigger("open", component);
 		},
 
 		deleteComponent: function (uicid) {
@@ -68,6 +58,8 @@ pageEditor.componentManager = function ($, _, Backbone, context, console, curren
 				console.log("Removed page component", comp.type, comp.uicid);
 			});
 			components = {};
+
+			template.content.off("add", onAddContent);
 		},
 	};
 	
@@ -111,17 +103,22 @@ pageEditor.componentManager = function ($, _, Backbone, context, console, curren
 			$el: el
 		}];
 
-		//try {
-			component = components[uicid] = context.instantiate(key, instantiateArgs);
-			console.log("Created page component", type, key, uicid);
-		//} catch (e) {
-		//	console.error("Could not create page component:", key, "Error:", e.message);
-		//	component = components[uicid] = context.instantiate("defaultPageComponent", instantiateArgs);
-		//}
+		// don't catch errors
+		component = components[uicid] = context.instantiate(key, instantiateArgs);
+		console.log("Created page component", type, key, uicid);
 
 		return component;
 	}
 
+	function onAddContent(model, collection, options) {
+		var component = registerComponent(model, "content");
+
+		closeCurrentComponent();
+		currentComponent = component;
+		componentManager.trigger("create", component);
+		component.create();
+		componentManager.trigger("open", component);
+	}
 };
 
 
