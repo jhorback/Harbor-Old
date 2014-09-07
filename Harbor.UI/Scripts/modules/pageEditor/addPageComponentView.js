@@ -8,12 +8,12 @@ pageEditor.addPageComponentView = function (
 	currentPageRepo,
 	pageComponentRepo,
 	dialogFactory,
-	componentManager,
-	selectlistFactory
+	selectlistFactory,
+	commandHandler
 ) {
 
 	this.model = modelFactory.create("addPageComponentViewModel", {
-		pageComponentKey: "image" // jch* testing
+		pageComponentKey: "image" // jch! - how to select the default here!
 	});
 
 	this.model.page = currentPageRepo.getCurrentPage();
@@ -21,8 +21,8 @@ pageEditor.addPageComponentView = function (
 
 	this.currentPageRepo = currentPageRepo;
 	this.dialogFactory = dialogFactory;
-	this.componentManager = componentManager;
 	this.selectlistFactory = selectlistFactory;
+	this.commandHandler = commandHandler;
 };
 
 
@@ -48,14 +48,10 @@ pageEditor.addPageComponentView.prototype = {
 	},
 
 	save: function () {
-		var template = this.model.page.template,
-			component = template.addContent(this.model.get("pageComponentKey"));
-		
-		this.currentPageRepo.saveCurrentPage().then(_.bind(function () {
-			this.componentManager.create(component);
-			this.dialog.close();
-		}, this));
-		
+		this.commandHandler.execute(this.model.page, "addTemplateContent", {
+			key: this.model.get("pageComponentKey")
+		});
+		this.dialog.close();
 	}
 };
 
@@ -65,7 +61,7 @@ pageEditor.view("addPageComponentView", [
 	"currentPageRepo",
 	"pageComponentRepo",
 	"dialogFactory",
-	"componentManager",
 	"selectlistFactory",
+	"commandHandler",
 	pageEditor.addPageComponentView
 ]);

@@ -37,22 +37,6 @@ template.prototype = {
 		}
 	},
 
-	addContent: function (key) {
-		var ret,
-			uicid = this.getNextUICID(),
-			content = {
-				type: "content",
-				key: key,
-				uicid: uicid,
-				id: uicid
-			};
-		
-		content.classNames = [this.attributes.defaultContentClassName];
-		this.content.push(content);
-		ret = this.content.get(uicid);
-		return ret;
-	},
-
 	getModelsFromContent: function () {
 		var models = [];
 		_.each(this.attributes.content, function (meta) {
@@ -78,12 +62,6 @@ template.prototype = {
 			}
 			return value;
 		}
-	},
-
-	getNextUICID: function () {
-		var cc = this.get("componentCounter") + 1;
-		this.set("componentCounter", cc);
-		return "pc-" + this.get("pageID") + "-" + cc;
 	}
 };
 
