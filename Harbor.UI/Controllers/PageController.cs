@@ -23,13 +23,13 @@ namespace Harbor.UI.Controllers
 
 		public PartialViewResult Text(Page page, string uicid)
 		{
-			var text = page.Template.GetContent<Text>(uicid);
+			var text = page.Template.GetContentData<Text>(uicid);
 			return PartialView("Text", TextDto.FromText(text));
 		}
 
 		public PartialViewResult Image(Page page, string uicid)
 		{
-			var image = page.Template.GetContent<Image>(uicid);
+			var image = page.Template.GetContentData<Image>(uicid);
 			if (image.CanDisplay == false)
 			{
 				return PartialView("Image-None");
@@ -51,7 +51,7 @@ namespace Harbor.UI.Controllers
 
 		public PartialViewResult PageLink(Page page, string uicid)
 		{
-			var link = page.Template.GetContent<PageLink>(uicid);
+			var link = page.Template.GetContentData<PageLink>(uicid);
 			if (link.CanDisplay == false)
 			{
 				return PartialView("PageLink-None", link);
@@ -66,7 +66,7 @@ namespace Harbor.UI.Controllers
 			var currentUser = _userRepo.FindUserByName(page.AuthorsUserName);
 			ViewBag.MerchantID = currentUser.PayPalMerchantAccountID;
 
-			var buttonComponent = page.Template.GetContent<PayPalButton>(uicid);
+			var buttonComponent = page.Template.GetContentData<PayPalButton>(uicid);
 			if (!buttonComponent.ButtonExists)
 			{
 				return PartialView("PayPalButton-None");
@@ -78,7 +78,7 @@ namespace Harbor.UI.Controllers
 
 		public PartialViewResult ProductLink(Page page, string uicid)
 		{
-			var link = page.Template.GetContent<ProductLink>(uicid);
+			var link = page.Template.GetContentData<ProductLink>(uicid);
 			if (link == null || link.CanDisplay == false)
 			{
 				return PartialView("PageLink-None", link);

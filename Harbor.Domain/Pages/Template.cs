@@ -96,15 +96,41 @@ namespace Harbor.Domain.Pages
 			ComponentCounter++; // start with 1
 
 			foreach (var item in Content)
-				item.Id = string.Format(idFormat, PageID, ComponentCounter++);
+				item.Id = getNextUICID();
 		}
 
+		private string getNextUICID()
+		{
+			return string.Format(idFormat, PageID, ComponentCounter++);
+		}
 		#endregion
+
+		public void AppendContent(string key)
+		{
+			string[] classNames = DefaultContentClassName.Split(' ');
+			Content.Add(new TemplateUic
+			{
+				ClassNames	= classNames,
+				Id = getNextUICID(),
+				Key = key
+			});
+		}
+
+		public void PrependContent(string key)
+		{
+			string[] classNames = DefaultContentClassName.Split(' ');
+			Content.Insert(0, new TemplateUic
+			{
+				ClassNames	= classNames,
+				Id = getNextUICID(),
+				Key = key
+			});
+		}
 
 
 		public readonly IDictionary<string, object> contentData = new Dictionary<string, object>();
 
-		public void SetContent<T>(string uicid, T data)
+		public void SetContentData<T>(string uicid, T data)
 		{
 			if (contentData.ContainsKey(uicid))
 			{
@@ -116,7 +142,7 @@ namespace Harbor.Domain.Pages
 			}
 		}
 
-		public T GetContent<T>(string uicid)
+		public T GetContentData<T>(string uicid)
 		{
 			if (contentData.ContainsKey(uicid))
 			{
