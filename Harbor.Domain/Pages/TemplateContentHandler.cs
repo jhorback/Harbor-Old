@@ -30,7 +30,7 @@ namespace Harbor.Domain.Pages
 
 		protected T GetContent<T>()
 		{
-			return Page.Template.GetContent<T>(TemplateUic.Id);
+			return Page.Template.GetContentData<T>(TemplateUic.Id);
 		}
 
 		public abstract object GetTemplateContent();

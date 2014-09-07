@@ -63,7 +63,7 @@ namespace Harbor.Domain.Pages.PipelineHandlers
 				if (contentHandler != null)
 				{
 					var contentData = contentHandler.GetTemplateContent();
-					page.Template.SetContent(item.Id, contentData);
+					page.Template.SetContentData(item.Id, contentData);
 				}
 				else
 				{
