@@ -93,6 +93,7 @@
     <Compile Include="JSON.cs" />
     <Compile Include="MemCache.cs" />
     <Compile Include="Pages\Commands\AddExistingPageToLinks.cs" />
+    <Compile Include="Pages\Commands\AddTemplateContent.cs" />
     <Compile Include="Pages\Commands\AddNewPageToLinks.cs" />
     <Compile Include="Pages\Commands\ResetPageLayout.cs" />
     <Compile Include="Pages\PageCommandService.cs" />
