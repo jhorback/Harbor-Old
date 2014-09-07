@@ -1,7 +1,6 @@
 ﻿
-pageEditor.linksEditView = function (options, componentManager, currentPageRepo) {
+pageEditor.linksEditView = function (options, currentPageRepo) {
 
-	this.componentManager = componentManager;
 	this.currentPageRepo = currentPageRepo;
 
 	this.bindAll("updateOrder");
@@ -46,7 +45,6 @@ pageEditor.linksEditView.prototype = {
 
 pageEditor.view("linksEditView", [
 	"options",
-	"componentManager",
 	"currentPageRepo",
 	pageEditor.linksEditView
 ]);
