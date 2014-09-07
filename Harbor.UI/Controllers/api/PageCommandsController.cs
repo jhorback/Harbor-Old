@@ -42,6 +42,11 @@ namespace Harbor.UI.Controllers.Api
 			return executeCommand(id, command);
 		}
 
+		[HttpPost, Http.PagePermit(Permissions.All)]
+		public HttpResponseMessage AddTemplateContent(int id, AddTemplateContent command)
+		{
+			return executeCommand(id, command);
+		}
 
 
 
