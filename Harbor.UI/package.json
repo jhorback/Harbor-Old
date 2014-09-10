@@ -9,7 +9,8 @@
   "author": "",
   "license": "ISC",
   "private": true,
-  "devDependencies": {
-    "grunt": "^0.4.5"
+ "devDependencies": {
+    "gulp": "^3.6.2",
+    "gulp-sass": "^0.7.1"
   }
 }
