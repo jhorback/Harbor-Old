@@ -4,7 +4,8 @@ content comopnent : {
 }
 */
 function template(attrs, options, collectionFactory, modelFactory) {
-	
+
+	this.page = options.page;
 	this.collectionFactory = collectionFactory;
 	this.modelFactory = modelFactory;
 }
@@ -20,6 +21,8 @@ template.prototype = {
 	initialize: function () {
 		var models = this.getModelsFromContent();
 		this.content = this.collectionFactory.createGeneric(models);
+
+		this.listenTo(this.page, "sync", this.onPageSync);
 	},
 
 	createModel: function (meta) {
@@ -42,23 +45,15 @@ template.prototype = {
 		}, this);
 		return models;
 	},
+
+	onPageSync: function () {
+		var models = this.getModelsFromContent();
+		this.content.set(models);
+	},
 	
 	"[content]": {
 		get: function () {
 			return this.content && this.content.toJSON();
-		}
-	},
-
-	"[contentData]": {
-		set: function (value) {
-			var models;
-			if (this.content) {
-				// need to set the attributes firts
-				this.attributes.contentData = value;
-				models = this.getModelsFromContent(value);
-				this.content.set(models);
-			}
-			return value;
 		}
 	}
 };
