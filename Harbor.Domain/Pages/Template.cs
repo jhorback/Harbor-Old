@@ -101,7 +101,8 @@ namespace Harbor.Domain.Pages
 
 		private string getNextUICID()
 		{
-			return string.Format(idFormat, PageID, ComponentCounter++);
+			ComponentCounter = ComponentCounter + 1;
+			return string.Format(idFormat, PageID, ComponentCounter);
 		}
 		#endregion
 

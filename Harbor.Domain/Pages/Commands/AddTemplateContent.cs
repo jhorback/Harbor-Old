@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace Harbor.Domain.Pages.Commands
 {
 	public class AddTemplateContent : IPageCommand
@@ -9,7 +11,7 @@ namespace Harbor.Domain.Pages.Commands
 		}
 
 		public int PageID { get; set; }
-		public string ContentKey { get; set; }
+		public string Key { get; set; }
 		public bool Prepend { get; set; }
 	}
 
@@ -25,14 +27,19 @@ namespace Harbor.Domain.Pages.Commands
 
 		public void Execute(AddTemplateContent command)
 		{
+			if (string.IsNullOrEmpty(command.Key))
+			{
+				throw new DomainValidationException("Key cannot be null.");
+			}
+
 			var page = _pageRepository.FindById(command.PageID, readOnly: false);
 			if (command.Prepend)
 			{
-				page.Template.PrependContent(command.ContentKey);
+				page.Template.PrependContent(command.Key);
 			}
 			else
 			{
-				page.Template.AppendContent(command.ContentKey);				
+				page.Template.AppendContent(command.Key);				
 			}
 			_pageRepository.Update(page);
 			_pageRepository.Save();
