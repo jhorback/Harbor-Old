@@ -18,11 +18,13 @@ namespace Harbor.Domain.Pages.Commands
 	public class AddTemplateContentHandler : IPageCommandHandler<AddTemplateContent>
 	{
 		private readonly IPageRepository _pageRepository;
-		
+		private readonly IContentTypeRepository _contentTypeRepository;
 
-		public AddTemplateContentHandler(IPageRepository pageRepository)
+
+		public AddTemplateContentHandler(IPageRepository pageRepository, IContentTypeRepository contentTypeRepository)
 		{
 			_pageRepository = pageRepository;
+			_contentTypeRepository = contentTypeRepository;
 		}
 
 		public void Execute(AddTemplateContent command)
@@ -30,6 +32,11 @@ namespace Harbor.Domain.Pages.Commands
 			if (string.IsNullOrEmpty(command.Key))
 			{
 				throw new DomainValidationException("Key cannot be null.");
+			}
+
+			if (_contentTypeRepository.TemplateContentTypeExists(command.Key) == false)
+			{
+				throw new DomainValidationException("The template content type does not exist.");
 			}
 
 			var page = _pageRepository.FindById(command.PageID, readOnly: false);
