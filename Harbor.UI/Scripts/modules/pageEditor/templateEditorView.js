@@ -35,6 +35,7 @@ pageEditor.templateEditorView = (function () {
 			this.listenTo(this.componentManager, "create", this.createUIC, this);
 
 			this.template.content.comparator = templateContentSort;
+			this.template.on("change:defaultContentClassName", this.updateAddClass);
 		},
 		
 		events: {
@@ -60,6 +61,13 @@ pageEditor.templateEditorView = (function () {
 				tolerance: "pointer",
 				update: _.bind(this.updateOrder, this)
 			});
+
+			this.updateAddClass();
+		},
+
+		updateAddClass: function () {
+			var defaultClassName = this.template.attributes.defaultContentClassName || "clear";
+			this.$(".uic-add").attr("class", "uic-add " + defaultClassName);
 		},
 		
 		selectUIC: function (uicid) {
