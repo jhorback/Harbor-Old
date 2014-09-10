@@ -10,8 +10,7 @@ namespace Harbor.Domain.Pages
 		private readonly ILogger _logger;
 		
 		readonly Dictionary<string, TemplateContentType> templateContentTypes = new Dictionary<string, TemplateContentType>();
-		readonly Dictionary<string, ContentType> layoutContentTypes = new Dictionary<string, ContentType>(); 
-
+		readonly Dictionary<string, ContentType> layoutContentTypes = new Dictionary<string, ContentType>();
 
 		public ContentTypeRepository(IObjectFactory objectFactory, ILogger logger)
 		{
@@ -20,12 +19,12 @@ namespace Harbor.Domain.Pages
 			
 			foreach (var type in getStaticFields<TemplateContentType>(typeof(TemplateContentTypes)))
 			{
-				templateContentTypes.Add(type.Key, type);
+				templateContentTypes.Add(type.Key.ToLower(), type);
 			}
 
 			foreach (var type in getStaticFields<ContentType>(typeof(LayoutContentTypes)))
 			{
-				layoutContentTypes.Add(type.Key, type);
+				layoutContentTypes.Add(type.Key.ToLower(), type);
 			}
 		}
 
@@ -41,6 +40,11 @@ namespace Harbor.Domain.Pages
 			}
 		}
 
+		public bool TemplateContentTypeExists(string key)
+		{
+			return !string.IsNullOrEmpty(key) && templateContentTypes.ContainsKey(key.ToLower());
+		}
+
 
 		public IEnumerable<TemplateContentType> GetTemplateContentTypes()
 		{
@@ -49,12 +53,12 @@ namespace Harbor.Domain.Pages
 
 		public TemplateContentHandler GetTemplateContentHandler(TemplateUic uic, Page page)
 		{
-			if (templateContentTypes.ContainsKey(uic.Key) == false)
+			if (TemplateContentTypeExists(uic.Key) == false)
 			{
 				return null;
 			}
 
-			var contentType = templateContentTypes[uic.Key];
+			var contentType = templateContentTypes[uic.Key.ToLower()];
 			TemplateContentHandler handler = null;
 			try
 			{
@@ -75,7 +79,7 @@ namespace Harbor.Domain.Pages
 
 		public PageLayoutContentHandler GetLayoutContentHandler(string key, Page page)
 		{
-			var contentType = layoutContentTypes[key];
+			var contentType = layoutContentTypes[key.ToLower()];
 			if (contentType == null)
 			{
 				return null;
