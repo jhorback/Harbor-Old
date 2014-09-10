@@ -14,9 +14,7 @@ template.prototype = {
 		pageID: null,
 		content: [],
 		contentData: {},
-		defaultContentClassName: "col1",
-		componentCounter: 0,
-		showSidebar: true
+		defaultContentClassName: "col1"
 	},
 	
 	initialize: function () {
