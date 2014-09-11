@@ -19,12 +19,12 @@ namespace Harbor.Domain.Pages
 			
 			foreach (var type in getStaticFields<TemplateContentType>(typeof(TemplateContentTypes)))
 			{
-				templateContentTypes.Add(type.Key.ToLower(), type);
+				templateContentTypes.Add(type.Key, type);
 			}
 
 			foreach (var type in getStaticFields<ContentType>(typeof(LayoutContentTypes)))
 			{
-				layoutContentTypes.Add(type.Key.ToLower(), type);
+				layoutContentTypes.Add(type.Key, type);
 			}
 		}
 
