@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Harbor.Domain.Pages.PageResources;
+using Harbor.Domain.Products;
 
 namespace Harbor.Domain.Pages.ContentTypes
 {
@@ -25,9 +26,11 @@ namespace Harbor.Domain.Pages.ContentTypes
 
 	public class PayPalButtonHandler : TemplateContentHandler
 	{
-		public PayPalButtonHandler(Page page, TemplateUic uic) : base(page, uic)
-		{
+		private readonly IPayPalButtonRepository _payPalButtonRepository;
 
+		public PayPalButtonHandler(Page page, TemplateUic uic, IPayPalButtonRepository payPalButtonRepository) : base(page, uic)
+		{
+			_payPalButtonRepository = payPalButtonRepository;
 		}
 
 		public override object GetTemplateContent()
@@ -52,6 +55,21 @@ namespace Harbor.Domain.Pages.ContentTypes
 			}
 
 			yield return new PayPalButtonResource(Page, button.PayPalButtonID ?? 0);
+		}
+
+		public override void OnDelete()
+		{
+			var contentButton = GetContent<Content.PayPalButton>();
+			if (!contentButton.ButtonExists)
+			{
+				return;
+			}
+
+			var button = _payPalButtonRepository.FindById(contentButton.PayPalButtonID ?? 0, readOnly: false);
+			if (button != null)
+			{
+				_payPalButtonRepository.Delete(button);				
+			}
 		}
 	}
 }
