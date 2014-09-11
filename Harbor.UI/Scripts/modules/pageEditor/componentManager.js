@@ -17,6 +17,7 @@ pageEditor.componentManager = function ($, _, Backbone, context, console, curren
 				registerComponent(component, "content");
 			});
 			template.content.on("add", onAddContent);
+			template.content.on("remove", onRemoveContent);
 		},
 
 		open: function (uicid) {
@@ -31,21 +32,6 @@ pageEditor.componentManager = function ($, _, Backbone, context, console, curren
 				currentComponent.open();
 				componentManager.trigger("open", currentComponent);
 				console.log("componentManager:opened - uicid:", uicid);
-			}
-		},
-
-		deleteComponent: function (uicid) {
-			var comp = components[uicid];
-
-			if (comp) {
-				if (currentComponent && currentComponent.uicid === comp.uicid) {
-					closeCurrentComponent();
-				}
-				comp.remove();
-				componentManager.trigger("delete", comp);
-				componentManager.trigger("remove", comp);
-				delete components[uicid];
-				console.log("componentManager.deleted - uicid:", uicid);
 			}
 		},
 		
@@ -118,6 +104,23 @@ pageEditor.componentManager = function ($, _, Backbone, context, console, curren
 		componentManager.trigger("create", component);
 		component.create();
 		componentManager.trigger("open", component);
+	}
+
+	function onRemoveContent(model, colleciton, options) {
+		var uicid = model.id;
+		
+		var comp = components[uicid];
+
+		if (comp) {
+			if (currentComponent && currentComponent.uicid === comp.uicid) {
+				closeCurrentComponent();
+			}
+			comp.remove();
+			componentManager.trigger("delete", comp);
+			componentManager.trigger("remove", comp);
+			delete components[uicid];
+			console.log("componentManager.deleted - uicid:", uicid);
+		}
 	}
 };
 
