@@ -48,7 +48,12 @@ namespace Harbor.UI.Controllers.Api
 			return executeCommand(id, command);
 		}
 
-
+		[HttpPost, Http.PagePermit(Permissions.All)]
+		public HttpResponseMessage DeleteTemplateContent(int id, DeleteTemplateContent command)
+		{
+			return executeCommand(id, command);
+		}
+		
 
 
 		private HttpResponseMessage executeCommand(int id, IPageCommand command)
