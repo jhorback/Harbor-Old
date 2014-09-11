@@ -3,26 +3,25 @@
 pageEditor.component("pageUICMenu");
 
 
-pageEditor.pageUICMenuView = function (options, modelFactory, componentManager, currentPageRepo, changeLayout) {
-
+pageEditor.pageUICMenuView = function (
+	options,
+	currentPageRepo,
+	changeLayout,
+	commandHandler
+) {
 	this.component = options.component;
-	this.componentManager = componentManager;
 	this.currentPageRepo = currentPageRepo;
 	this.currentPage = currentPageRepo.getCurrentPage();
 	this.changeLayoutComponent = changeLayout;
+	this.commandHandler = commandHandler;
 };
 
 pageEditor.pageUICMenuView.prototype = {
 	removeComponent: function (event) {
-		var pageComponent, collection;
-		
 		if (confirm("Are you sure you want to delete this content?")) {
-			collection = this.currentPage.template.content;
-
-			this.componentManager.deleteComponent(this.component.uicid);
-			pageComponent = collection.get(this.component.uicid);
-			collection.remove(pageComponent);
-			this.currentPageRepo.saveCurrentPage();
+			this.commandHandler.execute(this.currentPage, "deleteTemplateContent", {
+				uicid: this.component.uicid
+			});
 		}
 	},
 	
@@ -35,5 +34,9 @@ pageEditor.pageUICMenuView.prototype = {
 
 
 pageEditor.view("pageUICMenuView", [
-	"options", "modelFactory", "componentManager", "currentPageRepo", "changeLayout",
-	pageEditor.pageUICMenuView]);
+	"options",
+	"currentPageRepo",
+	"changeLayout",
+	"commandHandler",
+	pageEditor.pageUICMenuView
+]);
