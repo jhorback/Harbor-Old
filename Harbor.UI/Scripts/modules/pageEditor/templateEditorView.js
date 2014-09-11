@@ -35,7 +35,7 @@ pageEditor.templateEditorView = (function () {
 			this.listenTo(this.componentManager, "create", this.createUIC, this);
 
 			this.template.content.comparator = templateContentSort;
-			this.template.on("change:defaultContentClassName", this.updateAddClass);
+			this.template.on("change:defaultContentClassName", this.updateAddClass, this);
 		},
 		
 		events: {
