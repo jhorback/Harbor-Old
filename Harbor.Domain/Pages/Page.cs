@@ -143,15 +143,20 @@ namespace Harbor.Domain.Pages
 			prop.Value = property;
 		}
 
+		public string UICPropertyName(string uicid, string name)
+		{
+			return uicid + "-" + name;
+		}
+
 		public string GetUICProperty(string uicid, string name)
 		{
-			return GetProperty(uicid + "-" + name);
+			return GetProperty(UICPropertyName(uicid, name));
 		}
 
 
 		public void SetUICProperty(string uicid, string name, string value)
 		{
-			SetProperty(uicid + "-" + name, value);
+			SetProperty(UICPropertyName(uicid, name), value);
 		}
 
 
