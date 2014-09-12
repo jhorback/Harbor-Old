@@ -42,7 +42,7 @@ pageEditor.pageLinkView.prototype = {
 
 
 
-pageEditor.view("pageLinkView", [
+pageEditor.view("pagelinkView", [
 	"options",
 	"currentPageRepo",
 	"pageSelector",

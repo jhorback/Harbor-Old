@@ -1,50 +1,33 @@
 ﻿
 
-pageEditor.payPalButton = function (currentPageRepo, viewRenderer, payPalButtonRepo) {
-	var buttonID;
+pageEditor.payPalButton = function (currentPageRepo, payPalButtonRepo) {
 	
 	this.currentPageRepo = currentPageRepo;
-	this.viewRenderer = viewRenderer;
-	
-	this.$el.find(".paypal-button").on("click.paypalbutton", function (event) {
-		event.preventDefault();
-	});
-
-	buttonID = this.model.get("payPalButtonID");
-	this.model.payPalButton = payPalButtonRepo.getButton(buttonID, this.model.page.get("title"));
-	this.model.payPalButton.on("change:id", function () {
-		var changed = this.model.payPalButton.changedAttributes();
-		if (changed.id) {
-			this.model.set("payPalButtonID", this.model.payPalButton.get("id"));
-			this.currentPageRepo.saveCurrentPage();
-		}
-	}, this);
+	this.payPalButtonRepo = payPalButtonRepo;
 };
 
 pageEditor.payPalButton.prototype = {
 
-	create: function () {
-		this.open();
-	},
+	init: function () {
+		var buttonID;
 
-	open: function () {
-		this.renderView(true);
-	},
-
-	close: function () {
-		this.renderView(false); // jch! don't need allow edit since it will be a refresh from the server.
-	},
-	
-	renderView: function (allowEdit) {
-		this.view && this.view.close({ remove: false });
-		this.view = this.viewRenderer.render("payPalButtonView", {
-			el: this.$el,
-			model: this.model.payPalButton,
-			allowEdit: allowEdit
+		this.$el.find(".paypal-button").on("click.paypalbutton", function (event) {
+			event.preventDefault();
 		});
+
+		// this could probably be done better
+		buttonID = this.model.get("payPalButtonID");
+		this.model.payPalButton = this.payPalButtonRepo.getButton(buttonID, this.model.page.get("title"));
+		this.model.payPalButton.on("change:id", function () {
+			var changed = this.model.payPalButton.changedAttributes();
+			if (changed.id) {
+				this.model.set("payPalButtonID", this.model.payPalButton.get("id"));
+				this.currentPageRepo.saveCurrentPage();
+			}
+		}, this);
 	},
 	
-	remove: function () {
+	onRemove: function () {
 		this.$el.find(".paypal-button").unbind(".paypalbutton");
 	}
 };
@@ -53,7 +36,6 @@ pageEditor.payPalButton.prototype = {
 
 pageEditor.pageComponent("paypalbutton", [
 	"currentPageRepo",
-	"viewRenderer", 
 	"payPalButtonRepo",
 	pageEditor.payPalButton
 ]);

@@ -64,7 +64,7 @@ pageEditor.pageComponent = function (
 		},
 
 		open: function () {
-			this.view = this.templateRenderer.render(this.compoentType + "View", {
+			this.view = this.templateRenderer.render(this.componentType + "View", {
 				model: this.model,
 				uicid: this.uicid
 			});

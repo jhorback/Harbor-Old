@@ -45,7 +45,7 @@ pageEditor.productLinkView.prototype = {
 
 
 
-pageEditor.view("productLinkView", [
+pageEditor.view("productlinkView", [
 	"options",
 	"currentPageRepo",
 	"pageSelector",
