@@ -39,7 +39,7 @@ pageEditor.textView.prototype = {
 			html = ctr.getCode();
 			
 			try {
-				trimmedHtml = $.trim($(html).text());
+				trimmedHtml = $.trim($("<div>" + html + "</div>").text());
 				if (trimmedHtml === "") {
 					html = "";
 				}
