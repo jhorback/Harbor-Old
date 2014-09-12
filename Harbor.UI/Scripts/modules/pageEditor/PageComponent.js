@@ -1,15 +1,35 @@
 ﻿/*
- * modelType - function that returns a component model
- *     which will be converted into a proxy to the page model.
- *     this.model will have:
- *         a page property
- *         a save method which calls save method on the page
- *         and changes will be bound to update page properties according to the uicid. 
- * getDefaults - use to fill the default properties of the model.
- *     defaults will be populated off of the uic properties
- *     defining this static method is useful for any live properties (on a page resource).
+ *  A view will be created and given the associated model. componentType + "View";
+ *  
+ *  A component can define callbacks for all states:
+ *      init - when the component is created (on page edit)
+ *      onCreate - called if the user is adding a new component to the page
+ *                 open is called first so this.view will exist.
+ *      onOpen - called when the user has focused the compenet to make changes
+ *      onClose - called when the user has finished making changes to the view
+ *                this will also call a refresh from server
+ *      onRemove - called when the page is done editing.
+ *
+ *  create, open, close, and remove methods can be overridden in any component.
+ *
+ *  Component properties
+ *      type - the type of the component, i.e. content, aside, header
+ *      componentType - the key of the component, i.e. text, image, links, etc.
+ *      $el - the jquery element which contains the component
+ *      uicid
+ *      page
+ *      componentModel - created from componentType + "Model" (by the template)
+ *      model - alias for componentModel
+ *      templateRenderer
  */
-pageEditor.pageComponent = function (console, appurl, context, _, $, modelFactory, currentPageRepo) {
+pageEditor.pageComponent = function (
+	console,
+	appurl,
+	context,
+	modelFactory,
+	currentPageRepo,
+	templateRenderer
+) {
 	
 	var pageComponentPrototype = {
 		
@@ -39,22 +59,30 @@ pageEditor.pageComponent = function (console, appurl, context, _, $, modelFactor
 		},
 
 		create: function () {
-			// called when a new instance is added to the page
-			console.warn("Component type not implemented.");
+			this.open();
+			this.onCreate && this.onCreate();
 		},
 
 		open: function () {
-			// called when this instance has been opened for edit
+			this.view = this.templateRenderer.render(this.compoentType + "View", {
+				model: this.model,
+				uicid: this.uicid
+			});
+			this.$el.empty().html(this.view.$el);
+			this.onOpen && this.onOpen();
 		},
 
+		// called when done editing this component
+		// clean up from create or close
 		close: function () {
-			// called when done editing this component
-			// clean up from create or close
+			this.view.close({ remove: false });
+			this.onClose && this.onClose();
 		},
-			
+		
+		// called when the user is done editing the page
+		// clean up from constructor/init
 		remove: function () {
-			// called when the user is done editing the page
-			// clean up from constructor
+			this.onRemove && this.onRemove();
 		}
 	};
 
@@ -68,7 +96,9 @@ pageEditor.pageComponent = function (console, appurl, context, _, $, modelFactor
 			this.page = options.page;
 			this.componentModel = options.componentModel;
 			this.initComponentModel();
+			this.templateRenderer = templateRenderer;
 			context.call(construct, [], this);
+			this.init && this.init();
 		};
 		
 		pageComponentConstructor.prototype = pageComponentPrototype;
@@ -80,8 +110,14 @@ pageEditor.pageComponent = function (console, appurl, context, _, $, modelFactor
 
 
 pageEditor.construct("pageComponent", [
-	"console", "appurl", "context", "_", "$", "modelFactory", "currentPageRepo",
-	pageEditor.pageComponent]);
+	"console",
+	"appurl",
+	"context",
+	"modelFactory",
+	"currentPageRepo",
+	"templateRenderer",
+	pageEditor.pageComponent
+]);
 
 
 pageEditor.pageComponent("defaultPageComponent", {});

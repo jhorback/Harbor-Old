@@ -564,7 +564,6 @@
     <Content Include="Scripts\modules\pageEditor\links\linksSectionLinksView.js" />
     <Content Include="Scripts\modules\pageEditor\links\linksSectionView.js" />
     <Content Include="Scripts\modules\pageEditor\links\linksView.js" />
-    <Content Include="Scripts\modules\pageEditor\links\linksEditView.js" />
     <Content Include="Scripts\modules\pageModel\components\links\linksModel.js" />
     <Content Include="Scripts\modules\pageEditor\%24pageEditor.js" />
     <Content Include="Scripts\apps\pageLoader\pageLoaderModel.js" />
@@ -626,7 +625,7 @@
     <Content Include="Scripts\modules\pageEditor\pageLink\pageLinkModel.js" />
     <Content Include="Scripts\modules\pageEditor\pageLink\pageLink.js" />
     <Content Include="Scripts\modules\pageEditor\image\imageModel.js" />
-    <Content Include="Scripts\modules\pageEditor\image\imageEditView.js" />
+    <Content Include="Scripts\modules\pageEditor\image\imageView.js" />
     <Content Include="Scripts\modules\pageEditor\image\image.js" />
     <Content Include="Scripts\modules\pageEditor\componentManager.js" />
     <Content Include="Scripts\modules\pageEditor\payPalButton\payPalButtonComponentView.js" />
@@ -794,7 +793,6 @@
     <Content Include="Views\AppUI\Index.cshtml" />
     <Content Include="Views\AppUI\_pagerView.cshtml" />
     <Content Include="Views\PageEditor\links\_linksView.cshtml" />
-    <Content Include="Views\PageEditor\links\_linksEditView.cshtml" />
     <Content Include="Views\PageEditor\links\_linksAddLinkView.cshtml" />
     <Content Include="Views\PageAdder\pageAdderView.cshtml" />
   </ItemGroup>
