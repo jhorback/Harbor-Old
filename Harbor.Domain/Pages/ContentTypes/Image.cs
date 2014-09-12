@@ -55,7 +55,7 @@ namespace Harbor.Domain.Pages.ContentTypes
 				}
 			}
 
-			image.Res = GetProperty("Res") ?? "low";
+			image.Res = GetProperty("res") ?? "low";
 			//image.Name = GetProperty("Name");
 			//image.Ext = GetProperty("ext");
 
@@ -77,7 +77,7 @@ namespace Harbor.Domain.Pages.ContentTypes
 		public override IEnumerable<string> DeclarePropertyNames()
 		{
 			yield return UICPropertyName("fileID");
-			yield return UICPropertyName("Res");
+			yield return UICPropertyName("res");
 		}
 	}
 }

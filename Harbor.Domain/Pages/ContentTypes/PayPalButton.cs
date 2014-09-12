@@ -37,7 +37,7 @@ namespace Harbor.Domain.Pages.ContentTypes
 		{
 			Products.PayPalButton button = null;
 			int buttonId;
-			var isValidButtonId = int.TryParse(GetProperty("PayPalButtonID"), out buttonId);
+			var isValidButtonId = int.TryParse(GetProperty("payPalButtonID"), out buttonId);
 			if (isValidButtonId)
 			{
 				button = Page.GetPayPalButton(buttonId);
@@ -59,7 +59,7 @@ namespace Harbor.Domain.Pages.ContentTypes
 
 		public override IEnumerable<string> DeclarePropertyNames()
 		{
-			yield return UICPropertyName("PayPalButtonID");
+			yield return UICPropertyName("payPalButtonID");
 		}
 
 		public override void OnDelete()
