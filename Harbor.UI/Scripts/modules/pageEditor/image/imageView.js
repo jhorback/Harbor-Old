@@ -1,6 +1,6 @@
 ﻿
 
-pageEditor.imageEditView = function (options, currentPageRepo, fileSelector) {
+pageEditor.imageView = function (options, currentPageRepo, fileSelector) {
 
 	this.currentPageRepo = currentPageRepo;
 	this.fileSelector = fileSelector;
@@ -8,7 +8,7 @@ pageEditor.imageEditView = function (options, currentPageRepo, fileSelector) {
 };
 
 
-pageEditor.imageEditView.prototype = {
+pageEditor.imageView.prototype = {
 	
 	initialize: function () {
 		_.bindAll(this, "close", "save", "selectFile");
@@ -49,7 +49,7 @@ pageEditor.imageEditView.prototype = {
 
 
 
-pageEditor.view("imageEditView", [
+pageEditor.view("imageView", [
 	"options", "currentPageRepo", "fileSelector",
-	pageEditor.imageEditView
+	pageEditor.imageView
 ]);

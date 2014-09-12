@@ -32,7 +32,7 @@ pageEditor.payPalButton.prototype = {
 	},
 
 	close: function () {
-		this.renderView(false);
+		this.renderView(false); // jch! don't need allow edit since it will be a refresh from the server.
 	},
 	
 	renderView: function (allowEdit) {
