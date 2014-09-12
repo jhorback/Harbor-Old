@@ -57,6 +57,12 @@ namespace Harbor.Domain.Pages.ContentTypes
 
 			yield return new PageLinkResource(Page, pageID: link.PageID);
 		}
+
+		public override IEnumerable<string> DeclarePropertyNames()
+		{
+			yield return UICPropertyName("tileDisplay");
+			yield return UICPropertyName("pageID");
+		}
 	}
 }
 
