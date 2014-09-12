@@ -130,8 +130,10 @@ namespace Harbor.Domain.Pages
 
 		public void SetProperty(string name, string property)
 		{
-			var prop = this.Properties.Where(p => string.Compare(name, p.Name, true) == 0).FirstOrDefault();
-			if (prop == null)
+			var props = Properties.Where(p => string.Compare(name, p.Name, true) == 0).ToList();
+			
+			PageProperty prop;
+			if (props.Count == 0)
 			{
 				prop = new PageProperty
 				{
@@ -140,6 +142,18 @@ namespace Harbor.Domain.Pages
 				};
 				Properties.Add(prop);
 			}
+			else
+			{
+				prop = props[0];
+			}
+			
+			// make sure there is only one property with the same name
+			if (props.Count > 1)
+			{
+				// delete removes the last property
+				DeleteProperty(name);
+			}
+			
 			prop.Value = property;
 		}
 
@@ -162,7 +176,7 @@ namespace Harbor.Domain.Pages
 
 		public void DeleteProperty(string name)
 		{
-			var prop = Properties.FirstOrDefault(p => string.Compare(name, p.Name, true) == 0);
+			var prop = Properties.LastOrDefault(p => string.Compare(name, p.Name, true) == 0);
 			if (prop != null)
 			{
 				this.DeletedProperties.Add(prop);
