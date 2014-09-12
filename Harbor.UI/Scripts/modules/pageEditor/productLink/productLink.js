@@ -1,38 +1,20 @@
 ﻿
 
-pageEditor.productLink = function (viewRenderer) {
-	this.viewRenderer = viewRenderer;
-	
-	this.$el.find("a").on("click.link", function (event) {
-		event.preventDefault();
-	});
-};
+pageEditor.productLink = {
+	init: function () {
+		this.$el.find("a").on("click.link", function (event) {
+			event.preventDefault();
+		});
+	},
 
-pageEditor.productLink.prototype = {
-
-	create: function () {
-		this.open();
+	onCreate: function () {
 		this.view.openPageSelector();
 	},
 
-	open: function () {
-		this.view = this.viewRenderer.render("productLinkView", {
-			model: this.model,
-			uicid: this.uicid
-		});
-		
-		this.$el.empty().append(this.view.$el);
-	},
-
-	close: function () {
-		this.view.close({ remove: false });
-		// this.replaceHtmlFromServer();
-	},
-	
-	remove: function () {
+	onRemove: function () {
 		this.$el.find("a").unbind(".link");
 	}
 };
 
 
-pageEditor.pageComponent("productlink", ["viewRenderer", pageEditor.productLink]);
+pageEditor.pageComponent("productlink", pageEditor.productLink);

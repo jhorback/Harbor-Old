@@ -1,24 +1,15 @@
 ﻿
 
-pageEditor.pageLink = function (viewRenderer) {
-	this.viewRenderer = viewRenderer;
-	this.disableLinks();
-};
+pageEditor.pageLink = {
+	init: function () {
+		this.disableLinks();
+	},
 
-pageEditor.pageLink.prototype = {
-
-	create: function () {
-		this.open();
+	onCreate: function () {
 		this.view.openPageSelector();
 	},
 
-	open: function () {
-		this.view = this.viewRenderer.render("pageLinkView", {
-			model: this.model,
-			uicid: this.uicid
-		});
-		
-		this.$el.empty().append(this.view.$el);
+	onOpen: function () {
 		this.disableLinks();
 	},
 
@@ -28,15 +19,10 @@ pageEditor.pageLink.prototype = {
 		});
 	},
 
-	close: function () {
-		this.view.close({ remove: false });
-		
-	},
-	
-	remove: function () {
+	onRemove: function () {
 		this.$el.find("a").unbind(".link");
 	}
 };
 
 
-pageEditor.pageComponent("pagelink", ["viewRenderer", pageEditor.pageLink]);
+pageEditor.pageComponent("pagelink", pageEditor.pageLink);
