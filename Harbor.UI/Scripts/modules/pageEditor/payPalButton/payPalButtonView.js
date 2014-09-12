@@ -18,9 +18,8 @@ pageEditor.payPalButtonView.prototype = {
 			tax = this.model.get("taxOverride"),
 			str = "";
 		
-		if (this.options.allowEdit) {
-			str += '<div><button class="float-right margin">Edit PayPal Button</button></div>';
-		}
+		
+		str += '<div><button class="float-right margin">Edit PayPal Button</button></div>';
 		
 		str += '<span>' + this.model.get("description") + '</span> ' +
 			'<div><span>Price:</span> <strong class="loud">' + this.model.get("priceUSD") + '</strong></div>' +
@@ -54,12 +53,10 @@ pageEditor.payPalButtonView.prototype = {
 	},
 
 	clickPayPalButton: function (event) {
-		if (this.options.allowEdit) {
-			event.preventDefault();
-			this.payPalButtonComponent.render({
-				model: this.model
-			});
-		}
+		event.preventDefault();
+		this.payPalButtonComponent.render({
+			model: this.model
+		});
 	},
 	
 	onClose: function () {
@@ -68,7 +65,7 @@ pageEditor.payPalButtonView.prototype = {
 };
 
 
-pageEditor.view("payPalButtonView", [
+pageEditor.view("paypalbuttonView", [
 	"options",
 	"appurl",
 	"currentUserRepo",

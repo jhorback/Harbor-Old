@@ -30,7 +30,7 @@ pageEditor.payPalButtonComponentView.prototype = {
 		var previewEl;
 
 		previewEl = this.$("[data-rel=buttonPreview]");
-		this.viewRenderer.render("payPalButtonView", {
+		this.viewRenderer.render("paypalbuttonView", {
 			el: previewEl,
 			model: this.model
 		});
