@@ -57,15 +57,11 @@ namespace Harbor.Domain.Pages
 					propsToDelete.Add(prop.Name);
 				}
 			}
-			// jch! - here - doesn't seem like Delete ever worked??
-			// NO IT DID = the Update method of the page repository used
-			// the deleted properties to remove those
-			// is update not called here?
-			// can I do this will a cascade on the db?
-			//foreach (var prop in propsToDelete)
-			//{
-			//	page.DeleteProperty(prop);				
-			//}
+
+			foreach (var prop in propsToDelete)
+			{
+				page.DeleteProperty(prop);
+			}
 
 			return resourcesUpdated;
 		}
