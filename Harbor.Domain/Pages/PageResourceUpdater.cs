@@ -24,7 +24,8 @@ namespace Harbor.Domain.Pages
 		{
 			var resourcesUpdated = false;
 			var pageRes = _resourceManager.GetResourcesFromPage(page);
-			var compRes = getComponentResources(page);
+			var decs = getUICDeclarations(page);
+			var compRes = decs.PageResources;
 			
 			// remove non required resources
 			foreach (var res in pageRes)
@@ -46,31 +47,50 @@ namespace Harbor.Domain.Pages
 				}
 			}
 
+			// remove any unused properties
+			var propsInUse = decs.PagePropertyNames;
+			var propsToDelete = new List<string>();
+			foreach (var prop in page.Properties)
+			{
+				if (propsInUse.All(p => p != prop.Name))
+				{
+					propsToDelete.Add(prop.Name);
+				}
+			}
+			// jch! - here - doesn't seem like Delete ever worked??
+			// NO IT DID = the Update method of the page repository used
+			// the deleted properties to remove those
+			// is update not called here?
+			// can I do this will a cascade on the db?
+			//foreach (var prop in propsToDelete)
+			//{
+			//	page.DeleteProperty(prop);				
+			//}
+
 			return resourcesUpdated;
 		}
 
 		#region private
-		IEnumerable<PageResource> getComponentResources(Page page)
+		UICDeclarations getUICDeclarations(Page page)
 		{
+			var uicd = new UICDeclarations();
 			foreach (var content in page.Template.Content)
 			{
-				foreach (var res in getUICDeclarations(page, content))
+				var handler = _contentTypeRepository.GetTemplateContentHandler(content, page);
+				if (handler != null)
 				{
-					yield return res;
+					uicd.PageResources.AddRange(handler.DeclareResources());
+					uicd.PagePropertyNames.AddRange(handler.DeclarePropertyNames());
 				}
 			}
+			return uicd;
 		}
 
-		private IEnumerable<PageResource> getUICDeclarations(Page page, TemplateUic uic)
+		class UICDeclarations
 		{
-			var handler = _contentTypeRepository.GetTemplateContentHandler(uic, page);
-			if (handler != null)
-			{
-				foreach (var res in handler.DeclareResources())
-				{
-					yield return res;
-				}
-			}
+
+			public List<PageResource> PageResources = new List<PageResource>();
+			public List<string> PagePropertyNames = new List<string>();
 		}
 		#endregion
 	}

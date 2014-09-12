@@ -13,6 +13,11 @@ namespace Harbor.Domain.Pages
 			TemplateUic = uic;
 		}
 
+		protected string UICPropertyName(string name)
+		{
+			return Page.UICPropertyName(TemplateUic.Id, name);
+		}
+
 		protected bool HasProperty(string name)
 		{
 			return GetProperty(name) != null;
@@ -35,6 +40,7 @@ namespace Harbor.Domain.Pages
 
 		public abstract object GetTemplateContent();
 		public abstract IEnumerable<PageResource> DeclareResources();
+		public abstract IEnumerable<string> DeclarePropertyNames();
 
 		/// <summary>
 		/// When implemented allows template content to perform operations when the page is being deleted.
