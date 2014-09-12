@@ -113,13 +113,19 @@ namespace Harbor.Data.Repositories
 		{
 			DomainObjectValidator.ThrowIfInvalid(entity);
 
+			
+			// run the update pipeline before removing deleted page roles and deleted properties
+			var pageUpdatePipeline = new PageUpdatePipeline(_objectFactory);
+			pageUpdatePipeline.Execute(entity);
+
+
 			// remove properties
 			foreach (var prop in entity.DeletedProperties)
 			{
 				context.PageProperties.Remove(prop);
 			}
 			entity.DeletedProperties = new List<PageProperty>();
-
+		
 
 			// remove roles
 			foreach (var role in entity.DeletedPageRoles)
@@ -128,11 +134,9 @@ namespace Harbor.Data.Repositories
 			}
 			entity.DeletedPageRoles = new List<PageRole>();
 
-			// update the modified date
-			entity.Modified = DateTime.Now;
 			
-			var pageUpdatePipeline = new PageUpdatePipeline(_objectFactory);
-			pageUpdatePipeline.Execute(entity);
+			// update the modified date and clear the cache
+			entity.Modified = DateTime.Now;
 			clearCachedPageByID(entity.PageID);
 			return entity;
 		}
