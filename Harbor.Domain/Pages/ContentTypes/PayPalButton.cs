@@ -57,6 +57,11 @@ namespace Harbor.Domain.Pages.ContentTypes
 			yield return new PayPalButtonResource(Page, button.PayPalButtonID ?? 0);
 		}
 
+		public override IEnumerable<string> DeclarePropertyNames()
+		{
+			yield return UICPropertyName("PayPalButtonID");
+		}
+
 		public override void OnDelete()
 		{
 			var contentButton = GetContent<Content.PayPalButton>();

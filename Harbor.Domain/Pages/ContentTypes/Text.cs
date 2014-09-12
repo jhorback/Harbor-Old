@@ -36,5 +36,10 @@ namespace Harbor.Domain.Pages.ContentTypes
 		{
 			yield break;
 		}
+
+		public override IEnumerable<string> DeclarePropertyNames()
+		{
+			yield return UICPropertyName("text");
+		}
 	}
 }

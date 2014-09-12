@@ -73,5 +73,11 @@ namespace Harbor.Domain.Pages.ContentTypes
 
 			yield return new FileResource(Page, (Guid)image.FileID);
 		}
+
+		public override IEnumerable<string> DeclarePropertyNames()
+		{
+			yield return UICPropertyName("fileID");
+			yield return UICPropertyName("Res");
+		}
 	}
 }
