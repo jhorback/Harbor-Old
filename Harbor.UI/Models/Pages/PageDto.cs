@@ -49,16 +49,6 @@ namespace Harbor.UI.Models
 						{
 							DO.SetProperty(prop.name, prop.value);
 						}
-						
-						// delete
-						var propNames = DO.Properties.Select(p => p.Name).ToList();
-						foreach (var propName in propNames)
-						{
-							if (dto.properties.Find(p => p.name == propName) == null)
-							{
-								DO.DeleteProperty(propName);
-							}
-						}
 
 						// page layout
 						DO.Layout = PageLayoutDto.ToPageLayout(DO.Layout, dto.layout);
