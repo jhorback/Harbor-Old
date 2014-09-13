@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Security.Principal;
+using System.Web.Mvc;
 using Harbor.Domain.Pages;
 using Harbor.Domain.Pages.Content;
 using Harbor.Domain.Security;
@@ -32,7 +33,7 @@ namespace Harbor.UI.Controllers
 			var image = page.Template.GetContentData<Image>(uicid);
 			if (image.CanDisplay == false)
 			{
-				return PartialView("Image-None");
+				return NoPageContent(page, "Image", "icon-image");
 			}
 
 			var model = ImageDto.FromImage(image);
@@ -54,7 +55,7 @@ namespace Harbor.UI.Controllers
 			var link = page.Template.GetContentData<PageLink>(uicid);
 			if (link.CanDisplay == false)
 			{
-				return PartialView("PageLink-None", link);
+				return NoPageContent(page, "Page Link", "icon-pagelink");
 			}
 
 			var model = PageLinkDto.FromPageLink(link);
@@ -69,7 +70,7 @@ namespace Harbor.UI.Controllers
 			var buttonComponent = page.Template.GetContentData<PayPalButton>(uicid);
 			if (!buttonComponent.ButtonExists)
 			{
-				return PartialView("PayPalButton-None");
+				return NoPageContent(page, "PayPal Button", "icon-paypal");
 			}
 
 			var button = page.GetPayPalButton(buttonComponent.PayPalButtonID ?? 0);
@@ -81,7 +82,7 @@ namespace Harbor.UI.Controllers
 			var link = page.Template.GetContentData<ProductLink>(uicid);
 			if (link == null || link.CanDisplay == false)
 			{
-				return PartialView("PageLink-None", link);
+				return NoPageContent(page, "Product Link", "icon-link");
 			}
 
 			var model = ProductLinkDto.FromProductLink(link);
@@ -91,6 +92,23 @@ namespace Harbor.UI.Controllers
 				ViewBag.MerchantID = currentUser.PayPalMerchantAccountID;
 			}
 			return PartialView("ProductLink", model);
+		}
+
+		public PartialViewResult NoPageContent(Page page, string text, string icon)
+		{
+			return new NoPageContentResult(User, page, text, icon);
+		}
+	}
+
+
+	public class NoPageContentResult : PartialViewResult
+	{
+		public NoPageContentResult(IPrincipal user, Page page, string text, string icon)
+		{
+			ViewName = "NoPageContent";
+			ViewBag.IsOwner = page.AuthorsUserName == user.Identity.Name;
+			ViewBag.NoContentText = text;
+			ViewBag.NoContentIcon = icon;
 		}
 	}
 }

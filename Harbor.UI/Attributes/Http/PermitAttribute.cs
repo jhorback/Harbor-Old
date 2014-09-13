@@ -6,8 +6,12 @@ using System.Net.Http;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.Controllers;
+using System.Web.Mvc;
+using Harbor.Domain.Pages;
 using Harbor.Domain.Security;
 using Harbor.UI.Extensions;
+using ActionFilterAttribute = System.Web.Http.Filters.ActionFilterAttribute;
+using AuthorizeAttribute = System.Web.Http.AuthorizeAttribute;
 
 namespace Harbor.UI.Http
 {

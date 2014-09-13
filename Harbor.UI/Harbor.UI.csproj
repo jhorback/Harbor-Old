@@ -761,7 +761,6 @@
     <Content Include="Views\Home\JavaScriptPackages.cshtml" />
     <Content Include="Views\Home\_JSPMParser.cshtml" />
     <Content Include="Views\FileSelector\Index.cshtml" />
-    <Content Include="Views\Page\Image-None.cshtml" />
     <Content Include="Views\PageSettings\_PagePreview.cshtml" />
     <Content Include="Views\StyleGuide\_PageNav.cshtml" />
     <Content Include="Views\StyleGuide\Scaffolding.cshtml" />
@@ -770,10 +769,8 @@
     <Content Include="Views\StyleGuide\Components.cshtml" />
     <Content Include="Views\PageSettings\Index.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Page\PageLink-None.cshtml" />
     <Content Include="Views\Page\PageLink.cshtml" />
     <Content Include="Views\Home\ApplicationJsApi.cshtml" />
-    <Content Include="Views\Page\Links-None.cshtml" />
     <Content Include="Scripts\contextjs\Readme.md" />
     <Content Include="Scripts\bbext\_bbext.cshtml" />
     <Content Include="Scripts\appui\Readme.md" />
@@ -785,7 +782,6 @@
     <Content Include="Views\PageEditor\_text.cshtml" />
     <Content Include="Views\PageEditor\_title.cshtml" />
     <Content Include="Views\User\_EditPayPalID.cshtml" />
-    <Content Include="Views\Page\PayPalButton-None.cshtml" />
     <Content Include="Views\Page\PayPalButton.cshtml" />
     <Content Include="Views\PageEditor\_payPalButton.cshtml" />
     <Content Include="Views\Page\ProductLink.cshtml" />
@@ -795,6 +791,7 @@
     <Content Include="Views\PageEditor\links\_linksView.cshtml" />
     <Content Include="Views\PageEditor\links\_linksAddLinkView.cshtml" />
     <Content Include="Views\PageAdder\pageAdderView.cshtml" />
+    <Content Include="Views\Page\NoPageContent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\users\" />
