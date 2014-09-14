@@ -41,7 +41,6 @@ namespace Harbor.Domain.Pages.PageTypes
 
 		public override void SetAddContentTypeFilter(AddContentTypeFilterContext context)
 		{
-			throw new System.NotImplementedException();
 		}
 	}
 }

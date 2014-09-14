@@ -10,31 +10,25 @@ namespace Harbor.Domain.Pages
 	{
 		protected AddTypeFilter()
 		{
-			IsPrimary = true;
-			SuggestedPageTypes = new List<Type>();
-			IncludePageTypes = new List<Type>();
-			ExcludePageTypes = new List<Type>();
+			SuggestedTypes = new List<Type>();
+			IncludeTypes = new List<Type>();
+			ExcludeTypes = new List<Type>();
 		}
-
-		/// <summary>
-		/// Shows up in the first grouping when adding a root page.
-		/// </summary>
-		public bool IsPrimary { get; set; }
 
 		/// <summary>
 		/// If set, shows this list in order first and any other matching the
 		/// include or exclude that are not ruled out.
 		/// </summary>
-		public List<Type> SuggestedPageTypes { get; set; }
+		public List<Type> SuggestedTypes { get; set; }
 
 		/// <summary>
 		/// If set, only includes these page types when adding a sub page.
 		/// </summary>
-		public List<Type> IncludePageTypes { get; set; }
+		public List<Type> IncludeTypes { get; set; }
 
 		/// <summary>
 		/// If set, includes all page types except for these listed.
 		/// </summary>
-		public List<Type> ExcludePageTypes { get; set; }
+		public List<Type> ExcludeTypes { get; set; }
 	}
 }

@@ -20,7 +20,7 @@ namespace Harbor.Domain.Pages
 			{
 				if (addPageTypeFilter == null)
 				{
-					var context = new AddPageTypeFilterContext(this);
+					var context = new AddPageTypeFilterContext();
 					addPageTypeFilter = context.Filter;
 					SetAddPageTypeFilter(context);
 				}
@@ -28,13 +28,14 @@ namespace Harbor.Domain.Pages
 			}
 		}
 
+		
 		public AddContentTypeFilter AddContentTypeFilter
 		{
 			get
 			{
 				if (addContentTypeFilter == null)
 				{
-					var context = new AddContentTypeFilterContext(this);
+					var context = new AddContentTypeFilterContext();
 					addContentTypeFilter = context.Filter;
 					SetAddContentTypeFilter(context);
 				}

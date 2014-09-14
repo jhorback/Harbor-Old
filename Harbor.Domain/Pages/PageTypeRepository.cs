@@ -47,17 +47,17 @@ namespace Harbor.Domain.Pages
 
 			// determine all of the included page types based on the include/exclude lists
 			var included = new List<PageType>();
-			if (pageType.AddPageTypeFilter.IncludePageTypes.Count > 0)
+			if (pageType.AddPageTypeFilter.IncludeTypes.Count > 0)
 			{
-				foreach (var include in pageType.AddPageTypeFilter.IncludePageTypes)
+				foreach (var include in pageType.AddPageTypeFilter.IncludeTypes)
 				{
 					included.Add(pageTypesByType[include]);
 				}
 			}
-			else if (pageType.AddPageTypeFilter.ExcludePageTypes.Count > 0)
+			else if (pageType.AddPageTypeFilter.ExcludeTypes.Count > 0)
 			{
 				included = pageTypes;
-				foreach (var exclude in pageType.AddPageTypeFilter.ExcludePageTypes)
+				foreach (var exclude in pageType.AddPageTypeFilter.ExcludeTypes)
 				{
 					included.Remove(pageTypesByType[exclude]);
 				}
@@ -70,9 +70,9 @@ namespace Harbor.Domain.Pages
 
 			// determine the primary and other based on the suggested list
 			Dictionary<string, List<PageType>> dict;
-			if (pageType.AddPageTypeFilter.SuggestedPageTypes.Count > 0)
+			if (pageType.AddPageTypeFilter.SuggestedTypes.Count > 0)
 			{
-				var suggested = pageType.AddPageTypeFilter.SuggestedPageTypes;
+				var suggested = pageType.AddPageTypeFilter.SuggestedTypes;
 				dict = new Dictionary<string, List<PageType>>
 				{
 					{ "primary", included.Where(p => suggested.Contains(p.GetType())).ToList() },
