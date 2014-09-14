@@ -8,11 +8,9 @@ pageEditor.component("payPalButtonComponent", {
 
 pageEditor.payPalButtonComponentView = function (
 	options,
-	currentPageRepo,
 	viewRenderer,
 	payPalButtonRepo
 ) {
-	this.currentPageRepo = currentPageRepo;
 	this.viewRenderer = viewRenderer;
 	this.payPalButtonRepo = payPalButtonRepo;
 };
@@ -20,9 +18,9 @@ pageEditor.payPalButtonComponentView = function (
 
 pageEditor.payPalButtonComponentView.prototype = {
 	initialize: function () {
+		debugger;
+		this.bindAll("saveButton");
 		this.saveButton = _.debounce(this.saveButton, 200);
-		this.bindAll("saveComponentModel", "saveButton");
-		this.listenTo(this.model, "change:id", this.saveComponentModel);
 		this.listenTo(this.model, "change", this.saveButton);
 	},
 	
@@ -30,14 +28,10 @@ pageEditor.payPalButtonComponentView.prototype = {
 		var previewEl;
 
 		previewEl = this.$("[data-rel=buttonPreview]");
-		this.viewRenderer.render("paypalbuttonView", {
-			el: previewEl,
-			model: this.model
-		});
-	},
-	
-	saveComponentModel: function () {
-		this.currentPageRepo.saveCurrentPage();
+		//this.viewRenderer.render("paypalbuttonView", {
+		//	el: previewEl,
+		//	model: this.model
+		//});
 	},
 	
 	saveButton: function () {
@@ -62,7 +56,6 @@ pageEditor.payPalButtonComponentView.prototype = {
 
 pageEditor.view("payPalButtonComponentView", [
 	"options",
-	"currentPageRepo",
 	"viewRenderer",
 	"payPalButtonRepo",
 	pageEditor.payPalButtonComponentView

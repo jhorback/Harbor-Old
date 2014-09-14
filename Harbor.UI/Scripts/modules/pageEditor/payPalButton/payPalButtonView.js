@@ -10,25 +10,28 @@ pageEditor.payPalButtonView.prototype = {
 	events: {
 		"click button": "clickPayPalButton"
 	},
+	
 	initialize: function () {
-		this.listenTo(this.model, "change", this.render);
+		this.listenTo(this.model.payPalButton, "change", this.render);
+		this.model.on("change:payPalButtonID", this.saveCurrentPage);
 	},
+
 	render: function () {
-		var shipping = this.model.get("shippingOverride"),
-			tax = this.model.get("taxOverride"),
+		var shipping = this.model.payPalButton.get("shippingOverride"),
+			tax = this.model.payPalButton.get("taxOverride"),
 			str = "";
 		
 		
 		str += '<div><button class="float-right margin">Edit PayPal Button</button></div>';
 		
-		str += '<span>' + this.model.get("description") + '</span> ' +
-			'<div><span>Price:</span> <strong class="loud">' + this.model.get("priceUSD") + '</strong></div>' +
+		str += '<span>' + this.model.payPalButton.get("description") + '</span> ' +
+			'<div><span>Price:</span> <strong class="loud">' + this.model.payPalButton.get("priceUSD") + '</strong></div>' +
 			'<script src="' +
 			this.appurl.get("scripts/paypal-button-minicart.min.js?merchant=" + this.merchantID) + '" ' +
-			'data-button="' + this.model.get("buttonType") + '"' +
-			'data-name="' + this.model.get("name") + '"' +
+			'data-button="' + this.model.payPalButton.get("buttonType") + '"' +
+			'data-name="' + this.model.payPalButton.get("name") + '"' +
 			'data-quantity="1"' +
-			'data-amount="' + this.model.get("price") + '"' +
+			'data-amount="' + this.model.payPalButton.get("price") + '"' +
 			'data-currency="USD"';
 		
 		if (shipping) {
@@ -41,12 +44,10 @@ pageEditor.payPalButtonView.prototype = {
 		str += '></script>';
 		
 		
-		
 		if (!this.merchantID) {
 			str += '<div class="alert margin"><h1>No Merchant ID</h1>' +
 				'<p>You need to set your Merchant ID in your account settings.</p></div>';
 		}
-		
 
 		this.$el.empty();
 		this.$el.append($(str));
@@ -55,7 +56,7 @@ pageEditor.payPalButtonView.prototype = {
 	clickPayPalButton: function (event) {
 		event.preventDefault();
 		this.payPalButtonComponent.render({
-			model: this.model
+			model: this.model.payPalButton
 		});
 	},
 	
