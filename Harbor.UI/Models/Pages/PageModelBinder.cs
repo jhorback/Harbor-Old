@@ -21,7 +21,15 @@ namespace Harbor.UI.Models.Pages
 			{
 				pageID = Convert.ToInt32(controllerContext.RequestContext.HttpContext.Request["pageID"]);
 			}
-			var page = PageRepository.FindById(pageID);
+			
+			var readOnly = true;
+			var fromCache = controllerContext.RouteData.Values["pageID"];
+			if (fromCache != null && fromCache.ToString().ToLower() == "false")
+			{
+				readOnly = false;
+			}
+
+			var page = PageRepository.FindById(pageID, readOnly: readOnly);
 			return page;
 		}
 	}
