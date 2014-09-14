@@ -90,14 +90,11 @@ pageEditor.pageComponent = function (
 			this.view.close({ remove: false });
 			this.onClose && this.onClose();
 			
-			// yield
+			// yield, wait until latest save, then
+			latestSave = latestSave || $.Deferred().resolve().promise();
 			setTimeout(_.bind(function () {
-				if (latestSave) {
-					latestSave.then(_.bind(this.view.renderFromServer, this));
-				} else {
-					this.view.renderFromServer();		
-				}
-			}, this), 100);
+				latestSave.then(_.bind(this.view.renderFromServer, this));
+			}, this), 0);
 		},
 		
 		// called when the user is done editing the page
