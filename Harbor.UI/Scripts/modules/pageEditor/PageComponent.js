@@ -68,6 +68,7 @@ pageEditor.pageComponent = function (
 				model: this.model,
 				uicid: this.uicid
 			});
+			this.view.saveCurrentPage = currentPageRepo.saveCurrentPage;
 			this.$el.empty().html(this.view.$el);
 			this.onOpen && this.onOpen();
 		},
