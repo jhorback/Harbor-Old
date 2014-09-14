@@ -109,6 +109,11 @@
     <Compile Include="Pages\ContentTypes\Title.cs" />
     <Compile Include="Pages\ContentTypes\Text.cs" />
     <Compile Include="Pages\PageLayoutContentHandler.cs" />
+    <Compile Include="Pages\PageType\AddContentTypeFilterContext.cs" />
+    <Compile Include="Pages\PageType\AddPageTypeFilter.cs" />
+    <Compile Include="Pages\PageType\AddContentTypeFilter.cs" />
+    <Compile Include="Pages\PageType\AddPageTypeFilterContext.cs" />
+    <Compile Include="Pages\PageType\AddTypeFilter.cs" />
     <Compile Include="Pages\Pipelines\PageDeletePipeline.cs" />
     <Compile Include="Pages\Pipelines\PipelineHandlers\ComponentDeleteHandler.cs" />
     <Compile Include="Pages\Pipelines\PipelineHandlers\DeleteLayoutDeleteHandler.cs" />

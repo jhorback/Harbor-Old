@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
+﻿
 namespace Harbor.Domain.Pages
 {
 	/// <summary>
@@ -20,23 +18,41 @@ namespace Harbor.Domain.Pages
 		{
 			get
 			{
-				if (filter == null)
+				if (addPageTypeFilter == null)
 				{
 					var context = new AddPageTypeFilterContext(this);
-					filter = context.Filter;
+					addPageTypeFilter = context.Filter;
 					SetAddPageTypeFilter(context);
 				}
-				return filter;
+				return addPageTypeFilter;
 			}
 		}
-		private AddPageTypeFilter filter = null;
 
+		public AddContentTypeFilter AddContentTypeFilter
+		{
+			get
+			{
+				if (addContentTypeFilter == null)
+				{
+					var context = new AddContentTypeFilterContext(this);
+					addContentTypeFilter = context.Filter;
+					SetAddContentTypeFilter(context);
+				}
+				return addContentTypeFilter;
+			}
+		}
+
+		private AddPageTypeFilter addPageTypeFilter = null;
+		private AddContentTypeFilter addContentTypeFilter = null;
 
 		/// <summary>
 		/// Sets various options used when adding this page type.
 		/// </summary>
 		/// <param name="context"></param>
 		public abstract void SetAddPageTypeFilter(AddPageTypeFilterContext context);
+
+
+		public abstract void SetAddContentTypeFilter(AddContentTypeFilterContext context);
 
 
 		/// <summary>
@@ -70,96 +86,5 @@ namespace Harbor.Domain.Pages
 		{
 
 		}
-	}
-
-	public class AddPageTypeFilterContext
-	{
-		private readonly PageType _pageType;
-
-		public AddPageTypeFilterContext(PageType pageType)
-		{
-			_pageType = pageType;
-
-			Filter = new AddPageTypeFilter();
-		}
-
-		public AddPageTypeFilter Filter { get; set; }
-
-		/// <summary>
-		/// Shows up in the first grouping when adding a root page.
-		/// </summary>
-		/// <param name="isPrimary"></param>
-		/// <returns></returns>
-		public AddPageTypeFilterContext IsPrimary(bool isPrimary)
-		{
-			_pageType.AddPageTypeFilter.IsPrimary = isPrimary;
-			return this;
-		}
-
-		/// <summary>
-		/// If set, shows this list in order first and any other matching the
-		/// include or exclude that are not ruled out.
-		/// </summary>
-		/// <typeparam name="T"></typeparam>
-		/// <returns></returns>
-		public AddPageTypeFilterContext SuggestPageType<T>() where T : PageType
-		{
-			Filter.SuggestedPageTypes.Add(typeof(T));
-			return this;
-		}
-
-		/// <summary>
-		/// If set, only includes these page types when adding a sub page.
-		/// </summary>
-		/// <typeparam name="T"></typeparam>
-		/// <returns></returns>
-		public AddPageTypeFilterContext IncludePageType<T>() where T : PageType
-		{
-			Filter.IncludePageTypes.Add(typeof(T));
-			return this;
-		}
-
-		/// <summary>
-		/// If set, includes all page types except for these listed.
-		/// </summary>
-		/// <typeparam name="T"></typeparam>
-		/// <returns></returns>
-		public AddPageTypeFilterContext ExcludePageType<T>() where T : PageType
-		{
-			Filter.ExcludePageTypes.Add(typeof(T));
-			return this;	
-		}
-	}
-
-	public class AddPageTypeFilter
-	{
-		public AddPageTypeFilter()
-		{
-			IsPrimary = true;
-			SuggestedPageTypes = new List<Type>();
-			IncludePageTypes = new List<Type>();
-			ExcludePageTypes = new List<Type>();
-		}
-
-		/// <summary>
-		/// Shows up in the first grouping when adding a root page.
-		/// </summary>
-		public bool IsPrimary { get; set; }
-
-		/// <summary>
-		/// If set, shows this list in order first and any other matching the
-		/// include or exclude that are not ruled out.
-		/// </summary>
-		public List<Type> SuggestedPageTypes { get; set; }
-
-		/// <summary>
-		/// If set, only includes these page types when adding a sub page.
-		/// </summary>
-		public List<Type> IncludePageTypes { get; set; }
-
-		/// <summary>
-		/// If set, includes all page types except for these listed.
-		/// </summary>
-		public List<Type> ExcludePageTypes { get; set; }
 	}
 }

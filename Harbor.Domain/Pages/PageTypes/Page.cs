@@ -38,5 +38,10 @@ namespace Harbor.Domain.Pages.PageTypes
 		{
 			context.AddContent(TemplateContentTypes.Text);
 		}
+
+		public override void SetAddContentTypeFilter(AddContentTypeFilterContext context)
+		{
+			throw new System.NotImplementedException();
+		}
 	}
 }

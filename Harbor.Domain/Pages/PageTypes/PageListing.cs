@@ -41,5 +41,10 @@ namespace Harbor.Domain.Pages.PageTypes
 			context.AddContent(TemplateContentTypes.Text, new[] { Template.ContentClassNames.Tile })
 				.SetDefaultContentClassName(Template.ContentClassNames.Tile);
 		}
+
+		public override void SetAddContentTypeFilter(AddContentTypeFilterContext context)
+		{
+			throw new System.NotImplementedException();
+		}
 	}
 }
