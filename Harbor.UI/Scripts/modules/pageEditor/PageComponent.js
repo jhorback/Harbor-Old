@@ -75,7 +75,7 @@ pageEditor.pageComponent = function (
 		},
 
 		serverUrl: function () {
-			var url = appurl.get("page/" + this.componentType + "?pageID=" + this.page.id);
+			var url = appurl.get("page/" + this.componentType + "?fromcache=false&pageID=" + this.page.id);
 			if (this.uicid) {
 				url += "&uicid=" + this.uicid;
 			}
