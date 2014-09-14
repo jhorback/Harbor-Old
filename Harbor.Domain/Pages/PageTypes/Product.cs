@@ -40,5 +40,10 @@ namespace Harbor.Domain.Pages.PageTypes
 				.AddContent(TemplateContentTypes.Text, new[] { Template.ContentClassNames.Col2 })
 				.AddContent(TemplateContentTypes.PayPalButton, new[] { Template.ContentClassNames.Col2 });
 		}
+
+		public override void SetAddContentTypeFilter(AddContentTypeFilterContext context)
+		{
+			throw new System.NotImplementedException();
+		}
 	}
 }
