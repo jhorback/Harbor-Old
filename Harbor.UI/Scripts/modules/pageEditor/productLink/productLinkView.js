@@ -1,8 +1,7 @@
 ﻿
 
-pageEditor.productLinkView = function (options, currentPageRepo, pageSelector, viewRenderer) {
+pageEditor.productLinkView = function (options, pageSelector, viewRenderer) {
 
-	this.currentPageRepo = currentPageRepo;
 	this.pageSelector = pageSelector;
 	this.viewRenderer = viewRenderer;
 };
@@ -16,7 +15,7 @@ pageEditor.productLinkView.prototype = {
 	},
 	
 	save: function () {
-		this.currentPageRepo.saveCurrentPage();
+		this.saveCurrentPage();
 	},
 
 	openPageSelector: function () {
@@ -47,7 +46,6 @@ pageEditor.productLinkView.prototype = {
 
 pageEditor.view("productlinkView", [
 	"options",
-	"currentPageRepo",
 	"pageSelector",
 	"viewRenderer",
 	pageEditor.productLinkView

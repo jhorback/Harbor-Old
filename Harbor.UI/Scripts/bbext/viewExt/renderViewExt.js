@@ -95,7 +95,7 @@ function renderViewExt(_, $, templateCache, collectionRenderer) {
 		renderFromServer: function () {
 			var serverUrl,
 				view = this;
-			
+
 			this.fromServer = true;
 			serverUrl = this.serverUrl();
 			$.ajax({

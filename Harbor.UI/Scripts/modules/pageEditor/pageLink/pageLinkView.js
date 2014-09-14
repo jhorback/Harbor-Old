@@ -1,8 +1,7 @@
 ﻿
 
-pageEditor.pageLinkView = function (options, currentPageRepo, pageSelector) {
+pageEditor.pageLinkView = function (options, pageSelector) {
 
-	this.currentPageRepo = currentPageRepo;
 	this.pageSelector = pageSelector;
 };
 
@@ -15,7 +14,7 @@ pageEditor.pageLinkView.prototype = {
 	},
 	
 	save: function () {
-		this.currentPageRepo.saveCurrentPage();
+		this.saveCurrentPage();
 	},
 
 	openPageSelector: function () {
@@ -44,7 +43,6 @@ pageEditor.pageLinkView.prototype = {
 
 pageEditor.view("pagelinkView", [
 	"options",
-	"currentPageRepo",
 	"pageSelector",
 	pageEditor.pageLinkView
 ]);
