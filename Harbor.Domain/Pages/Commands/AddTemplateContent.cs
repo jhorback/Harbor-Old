@@ -5,14 +5,8 @@ namespace Harbor.Domain.Pages.Commands
 {
 	public class AddTemplateContent : IPageCommand
 	{
-		public AddTemplateContent() 
-		{
-			Prepend = false;
-		}
-
 		public int PageID { get; set; }
 		public string Key { get; set; }
-		public bool Prepend { get; set; }
 	}
 
 	public class AddTemplateContentHandler : IPageCommandHandler<AddTemplateContent>
@@ -40,14 +34,7 @@ namespace Harbor.Domain.Pages.Commands
 			}
 
 			var page = _pageRepository.FindById(command.PageID, readOnly: false);
-			if (command.Prepend)
-			{
-				page.Template.PrependContent(command.Key);
-			}
-			else
-			{
-				page.Template.AppendContent(command.Key);				
-			}
+			page.Template.AddContent(command.Key);
 			_pageRepository.Update(page);
 			_pageRepository.Save();
 		}

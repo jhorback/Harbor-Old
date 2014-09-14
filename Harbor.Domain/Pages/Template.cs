@@ -33,6 +33,11 @@ namespace Harbor.Domain.Pages
 		/// </summary>
 		public string DefaultContentClassName { get; set; }
 
+		/// <summary>
+		/// If true, a call to AddContent will prepend rather than append
+		/// the content.
+		/// </summary>
+		public bool PrependContentByDefault { get; set; }
 		#region ContentClassNames
 		public class ContentClassNames
 		{
@@ -106,26 +111,23 @@ namespace Harbor.Domain.Pages
 		}
 		#endregion
 
-		public void AppendContent(string key)
+		public void AddContent(string key)
 		{
-			string[] classNames = DefaultContentClassName.Split(' ');
-			Content.Add(new TemplateUic
-			{
-				ClassNames	= classNames,
-				Id = getNextUICID(),
-				Key = key
-			});
-		}
+			var content = new TemplateUic
+				{
+					ClassNames = DefaultContentClassName.Split(' '),
+					Id = getNextUICID(),
+					Key = key
+				};
 
-		public void PrependContent(string key)
-		{
-			string[] classNames = DefaultContentClassName.Split(' ');
-			Content.Insert(0, new TemplateUic
+			if (PrependContentByDefault)
 			{
-				ClassNames	= classNames,
-				Id = getNextUICID(),
-				Key = key
-			});
+				Content.Insert(0, content);
+			}
+			else
+			{
+				Content.Add(content);
+			}
 		}
 
 
