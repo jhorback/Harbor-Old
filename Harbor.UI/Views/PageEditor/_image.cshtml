@@ -3,10 +3,6 @@
 <div data-rel="image" data-templatefor="imageView" class="pad-bottom">
 
 	<img data-bind="src: imgSrc,showif:fileExists" />
-	<div data-bind="showif:fileDoesNotExist" class="page-nocontent">
-		<span class="icon-image"></span>
-		Image
-	</div>
 
 	<div data-rel="edit">
 		<div data-bind="showif: fileExists">

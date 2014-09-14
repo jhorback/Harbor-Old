@@ -25,6 +25,10 @@ namespace Harbor.UI.Controllers
 		public PartialViewResult Text(Page page, string uicid)
 		{
 			var text = page.Template.GetContentData<Text>(uicid);
+			if (text.HasContent == false)
+			{
+				return NoPageContent(page, "Text", "icon-align-left");
+			}
 			return PartialView("Text", TextDto.FromText(text));
 		}
 

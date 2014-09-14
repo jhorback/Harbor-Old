@@ -19,9 +19,6 @@ namespace Harbor.UI.Models.Content
 		{
 			get
 			{
-				if (string.IsNullOrEmpty(_text)) {
-					return "Edit this page to add text.";
-				}
 				return _text;
 			}
 			set
