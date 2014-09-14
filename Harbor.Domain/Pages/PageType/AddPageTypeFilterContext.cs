@@ -3,12 +3,9 @@ namespace Harbor.Domain.Pages
 {
 	public class AddPageTypeFilterContext
 	{
-		private readonly PageType _pageType;
 
-		public AddPageTypeFilterContext(PageType pageType)
+		public AddPageTypeFilterContext()
 		{
-			_pageType = pageType;
-
 			Filter = new AddPageTypeFilter();
 		}
 
@@ -21,7 +18,7 @@ namespace Harbor.Domain.Pages
 		/// <returns></returns>
 		public AddPageTypeFilterContext IsPrimary(bool isPrimary)
 		{
-			_pageType.AddPageTypeFilter.IsPrimary = isPrimary;
+			Filter.IsPrimary = isPrimary;
 			return this;
 		}
 
@@ -33,7 +30,7 @@ namespace Harbor.Domain.Pages
 		/// <returns></returns>
 		public AddPageTypeFilterContext SuggestPageType<T>() where T : PageType
 		{
-			Filter.SuggestedPageTypes.Add(typeof(T));
+			Filter.SuggestedTypes.Add(typeof(T));
 			return this;
 		}
 
@@ -44,7 +41,7 @@ namespace Harbor.Domain.Pages
 		/// <returns></returns>
 		public AddPageTypeFilterContext IncludePageType<T>() where T : PageType
 		{
-			Filter.IncludePageTypes.Add(typeof(T));
+			Filter.IncludeTypes.Add(typeof(T));
 			return this;
 		}
 
@@ -55,7 +52,7 @@ namespace Harbor.Domain.Pages
 		/// <returns></returns>
 		public AddPageTypeFilterContext ExcludePageType<T>() where T : PageType
 		{
-			Filter.ExcludePageTypes.Add(typeof(T));
+			Filter.ExcludeTypes.Add(typeof(T));
 			return this;
 		}
 	}

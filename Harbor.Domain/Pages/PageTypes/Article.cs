@@ -23,10 +23,7 @@ namespace Harbor.Domain.Pages.PageTypes
 			get { return "Contains image and text."; }
 		}
 
-		public override void SetAddPageTypeFilter(AddPageTypeFilterContext context)
-		{
-			context.IsPrimary(false);
-		}
+		
 
 		public override void SetLayout(PageTypeLayoutContext context)
 		{
@@ -40,9 +37,13 @@ namespace Harbor.Domain.Pages.PageTypes
 				.AddContent(TemplateContentTypes.Text);
 		}
 
+		public override void SetAddPageTypeFilter(AddPageTypeFilterContext context)
+		{
+			context.IsPrimary(false);
+		}
+
 		public override void SetAddContentTypeFilter(AddContentTypeFilterContext context)
 		{
-			throw new System.NotImplementedException();
 		}
 	}
 }
