@@ -20,17 +20,20 @@ namespace Harbor.UI.Models.Products
 
 		public PayPalButtonDto(PayPalButton button)
 		{
-			id = button.PayPalButtonID;
-			userName = button.UserName;
-			name = button.Name;
-			description = button.Description;
-			hosted = button.Hosted;
-			buttonCode = button.ButtonCode;
-			buttonType = button.ButtonType;
-			itemNumber = button.ItemNumber;
-			price = button.Price;
-			shippingOverride = button.ShippingOverride;
-			taxOverride = button.TaxOverride;
+			if (button != null)
+			{
+				id = button.PayPalButtonID;
+				userName = button.UserName;
+				name = button.Name;
+				description = button.Description;
+				hosted = button.Hosted;
+				buttonCode = button.ButtonCode;
+				buttonType = button.ButtonType;
+				itemNumber = button.ItemNumber;
+				price = button.Price;
+				shippingOverride = button.ShippingOverride;
+				taxOverride = button.TaxOverride;
+			}
 		}
 
 		public static PayPalButtonDto FromPayPalButton(PayPalButton button)

@@ -3,14 +3,14 @@ namespace Harbor.Domain.Pages.Content
 {
 	public class PayPalButton
 	{
-		public PayPalButton(int? payPalButtonId, Products.PayPalButton button)
+		public PayPalButton(int? payPalButtonID, Products.PayPalButton button)
 		{
-			if (payPalButtonId == 0)
+			if (payPalButtonID == 0)
 			{
-				payPalButtonId = null;
+				payPalButtonID = null;
 			}
 
-			PayPalButtonID = payPalButtonId;
+			PayPalButtonID = payPalButtonID;
 			Button = button;
 		}
 

@@ -7,11 +7,17 @@ namespace Harbor.UI.Models.Content
 	{
 		public int? payPalButtonID { get; set; }
 
+		public Products.PayPalButtonDto button { get; set; }
+
 		public PayPalButtonDto() { }
 
 		public PayPalButtonDto(PayPalButton button)
 		{
-			payPalButtonID = button.PayPalButtonID;
+			if (button != null)
+			{
+				payPalButtonID = button.PayPalButtonID;
+				this.button = Products.PayPalButtonDto.FromPayPalButton(button.Button);
+			}
 		}
 
 		public static PayPalButtonDto FromPayPalButton(PayPalButton button)
