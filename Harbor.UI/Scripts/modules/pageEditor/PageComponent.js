@@ -69,8 +69,17 @@ pageEditor.pageComponent = function (
 				uicid: this.uicid
 			});
 			this.view.saveCurrentPage = currentPageRepo.saveCurrentPage;
+			this.view.serverUrl = _.bind(this.serverUrl, this);
 			this.$el.empty().html(this.view.$el);
 			this.onOpen && this.onOpen();
+		},
+
+		serverUrl: function () {
+			var url = appurl.get("page/" + this.componentType + "?pageID=" + this.page.id);
+			if (this.uicid) {
+				url += "&uicid=" + this.uicid;
+			}
+			return url;
 		},
 
 		// called when done editing this component
@@ -78,6 +87,7 @@ pageEditor.pageComponent = function (
 		close: function () {
 			this.view.close({ remove: false });
 			this.onClose && this.onClose();
+			this.view.renderFromServer();
 		},
 		
 		// called when the user is done editing the page
@@ -86,6 +96,7 @@ pageEditor.pageComponent = function (
 			this.onRemove && this.onRemove();
 		}
 	};
+
 
 	return function (name, construct) {
 
