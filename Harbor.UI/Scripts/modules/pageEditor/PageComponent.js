@@ -30,6 +30,7 @@ pageEditor.pageComponent = function (
 	currentPageRepo,
 	templateRenderer
 ) {
+	var latestSave;
 	
 	var pageComponentPrototype = {
 		
@@ -55,7 +56,8 @@ pageEditor.pageComponent = function (
 		},
 
 		save: function () {
-			return currentPageRepo.saveCurrentPage();
+			latestSave = currentPageRepo.saveCurrentPage();
+			return latestSave;
 		},
 
 		create: function () {
@@ -68,7 +70,7 @@ pageEditor.pageComponent = function (
 				model: this.model,
 				uicid: this.uicid
 			});
-			this.view.saveCurrentPage = currentPageRepo.saveCurrentPage;
+			this.view.saveCurrentPage = this.save;
 			this.view.serverUrl = _.bind(this.serverUrl, this);
 			this.$el.empty().html(this.view.$el);
 			this.onOpen && this.onOpen();
@@ -87,7 +89,15 @@ pageEditor.pageComponent = function (
 		close: function () {
 			this.view.close({ remove: false });
 			this.onClose && this.onClose();
-			this.view.renderFromServer();
+			
+			// yield
+			setTimeout(_.bind(function () {
+				if (latestSave) {
+					latestSave.then(_.bind(this.view.renderFromServer, this));
+				} else {
+					this.view.renderFromServer();		
+				}
+			}, this), 100);
 		},
 		
 		// called when the user is done editing the page

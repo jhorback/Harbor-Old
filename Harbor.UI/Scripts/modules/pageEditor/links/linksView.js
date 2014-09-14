@@ -1,7 +1,5 @@
 ﻿
-pageEditor.linksView = function (options, currentPageRepo) {
-
-	this.currentPageRepo = currentPageRepo;
+pageEditor.linksView = function (options) {
 
 	this.bindAll("updateOrder");
 };
@@ -38,14 +36,13 @@ pageEditor.linksView.prototype = {
 	},
 
 	save: function () {
-		this.currentPageRepo.saveCurrentPage();
+		this.saveCurrentPage();
 	}
 };
 
 
 pageEditor.view("linksView", [
 	"options",
-	"currentPageRepo",
 	pageEditor.linksView
 ]);
 
