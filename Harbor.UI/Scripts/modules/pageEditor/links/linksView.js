@@ -36,7 +36,7 @@ pageEditor.linksView.prototype = {
 	},
 
 	save: function () {
-		this.saveCurrentPage();
+		this.options.saveCurrentPage();
 	}
 };
 

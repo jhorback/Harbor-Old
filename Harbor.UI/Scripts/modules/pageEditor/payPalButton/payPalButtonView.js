@@ -11,9 +11,9 @@ pageEditor.payPalButtonView.prototype = {
 		"click button": "clickPayPalButton"
 	},
 	
-	initialize: function () {
+	initialize: function (options) {
 		this.listenTo(this.model.payPalButton, "change", this.render);
-		this.model.on("change:payPalButtonID", this.saveCurrentPage, this);
+		this.model.on("change:payPalButtonID", options.saveCurrentPage);
 	},
 
 	render: function () {

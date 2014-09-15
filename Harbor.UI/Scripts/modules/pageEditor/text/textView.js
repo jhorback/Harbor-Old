@@ -47,7 +47,7 @@ pageEditor.textView.prototype = {
 
 			this.model.set("text", html);
 			this.model.page.updatePagePreviewText(this.model.get("id"), html);
-			this.saveCurrentPage();
+			this.options.saveCurrentPage();
 		}
 
 		ctr.destroyEditor && ctr.destroyEditor();
