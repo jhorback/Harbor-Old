@@ -101,7 +101,9 @@ pageEditor.templateEditorView = (function () {
 		},
 		
 		addComponent: function () {
-			this.addPageComponent.render();
+			this.addPageComponent.render({
+				parentPageTypeKey: this.page.attributes.pageTypeKey
+			});
 		},
 		
 		createUIC: function (component) {

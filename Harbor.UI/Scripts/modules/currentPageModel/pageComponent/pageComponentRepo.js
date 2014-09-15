@@ -5,15 +5,17 @@ function pageComponentRepo(
 	collectionFactory
 	) {
 
-	var components;
-
 	return {
-		getPageComponents: function () {
-			if (!components) {
-				components = collectionFactory.create("pageComponents");
-				ajaxRequest.handle(components.fetch());
-			}
-			return components;
+		createPageComponents: function () {
+			return collectionFactory.create("pageComponents");
+		},
+
+		fetchPageComponents: function (components, pageTypeKey) {
+			return ajaxRequest.handle(components.fetch({
+				data: {
+					parentPageTypeKey: pageTypeKey
+				}
+			}));
 		}
 	};
 }
@@ -22,4 +24,5 @@ function pageComponentRepo(
 currentPageModel.service("pageComponentRepo", [
 	"ajaxRequest",
 	"collectionFactory",
-	pageComponentRepo]);
+	pageComponentRepo
+]);

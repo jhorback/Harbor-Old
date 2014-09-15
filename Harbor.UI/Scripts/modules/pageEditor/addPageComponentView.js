@@ -11,15 +11,9 @@ pageEditor.addPageComponentView = function (
 	selectlistFactory,
 	commandHandler
 ) {
-
-	this.model = modelFactory.create("addPageComponentViewModel", {
-		pageComponentKey: "image" // jch! - how to select the default here!
-	});
-
-	this.model.page = currentPageRepo.getCurrentPage();
-	this.model.pageComponents = pageComponentRepo.getPageComponents();
-
+	this.modelFactory = modelFactory;
 	this.currentPageRepo = currentPageRepo;
+	this.pageComponentRepo = pageComponentRepo;
 	this.dialogFactory = dialogFactory;
 	this.selectlistFactory = selectlistFactory;
 	this.commandHandler = commandHandler;
@@ -27,6 +21,26 @@ pageEditor.addPageComponentView = function (
 
 
 pageEditor.addPageComponentView.prototype = {
+	initialize: function () {
+		this.model = this.modelFactory.create("addPageComponentViewModel");
+		this.model.page = this.currentPageRepo.getCurrentPage();
+		this.model.pageComponents = this.pageComponentRepo.createPageComponents();
+		this.model.primaryComponents = this.pageComponentRepo.createPageComponents();
+		this.model.otherComponents = this.pageComponentRepo.createPageComponents();
+		this.listenTo(this.model.pageComponents, "sync", this.componentsSync);
+
+		this.pageComponentRepo.fetchPageComponents(this.model.pageComponents, this.options.parentPageTypeKey);	
+	},
+
+	componentsSync: function () {
+		var primary = this.model.pageComponents.where({isPrimaryToAdd: true}),
+			other = this.model.pageComponents.where({isPrimaryToAdd: false});	
+		this.model.primaryComponents.reset(primary);
+		this.model.otherComponents.reset(other);
+		if (other.length > 0) {
+			this.model.set("hasOtherComponentTypes", true);
+		}
+	},
 	
 	onRender: function () {
 		var model = this.model;
@@ -38,8 +52,6 @@ pageEditor.addPageComponentView.prototype = {
 				model.set("pageComponentKey", info.value());
 			}
 		});
-		
-		this.$el.find(":radio").eq(0).click();
 	},
 	
 	formSubmit: function (event) {
