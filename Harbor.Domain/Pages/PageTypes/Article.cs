@@ -26,13 +26,15 @@ namespace Harbor.Domain.Pages.PageTypes
 
 		public override void SetLayout(PageTypeLayoutContext context)
 		{
-			context.SetLayout(PageLayout.LayoutDisplayProperties.ContentCentered | PageLayout.LayoutDisplayProperties.NoAside)
+			context
+				.SetLayout(PageLayout.LayoutDisplayProperties.ContentCentered | PageLayout.LayoutDisplayProperties.NoAside)
 				.SetHeader(LayoutContentTypes.Title);
 		}
 
 		public override void SetTemplate(PageTypeTemplateContext context)
 		{
-			context.AddContent(TemplateContentTypes.Image)
+			context
+				.AddContent(TemplateContentTypes.Image)
 				.AddContent(TemplateContentTypes.Text);
 		}
 

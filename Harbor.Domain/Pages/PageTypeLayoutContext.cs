@@ -27,5 +27,11 @@ namespace Harbor.Domain.Pages
 			Page.Layout.AsideKey = asideType.Key;
 			return this;
 		}
+
+		public PageTypeLayoutContext PrependTemplateContent(bool prepend = true)
+		{
+			Page.Template.PrependContentByDefault = prepend;
+			return this;
+		}
 	}
 }

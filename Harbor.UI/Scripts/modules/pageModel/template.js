@@ -15,7 +15,8 @@ template.prototype = {
 		pageID: null,
 		content: [],
 		contentData: {},
-		defaultContentClassName: "col1"
+		defaultContentClassName: "col1",
+		prependContentByDefault: false
 	},
 	
 	initialize: function () {

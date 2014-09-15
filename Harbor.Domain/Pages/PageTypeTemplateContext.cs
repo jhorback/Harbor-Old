@@ -28,7 +28,7 @@ namespace Harbor.Domain.Pages
 			return this;
 		}
 
-		public PageTypeTemplateContext PrendContent(bool prepend = true)
+		public PageTypeTemplateContext PrependContent(bool prepend = true)
 		{
 			Page.Template.PrependContentByDefault = prepend;
 			return this;
