@@ -12,7 +12,7 @@ namespace Harbor.Domain.Pages
 		
 		readonly Dictionary<string, TemplateContentType> templateContentTypes = new Dictionary<string, TemplateContentType>();
 		readonly Dictionary<string, ContentType> layoutContentTypes = new Dictionary<string, ContentType>();
-		Dictionary<Type, TemplateContentType> contentTypesByType = new Dictionary<Type, TemplateContentType>();
+		readonly Dictionary<Type, TemplateContentType> contentTypesByType = new Dictionary<Type, TemplateContentType>();
 
 
 		public ContentTypeRepository(IObjectFactory objectFactory, IPageTypeRepository pageTypeRepository, ILogger logger)
@@ -24,6 +24,7 @@ namespace Harbor.Domain.Pages
 			foreach (var type in getStaticFields<TemplateContentType>(typeof(TemplateContentTypes)))
 			{
 				templateContentTypes.Add(type.Key, type);
+				contentTypesByType.Add(type.GetType(), type);
 			}
 
 			foreach (var type in getStaticFields<ContentType>(typeof(LayoutContentTypes)))
@@ -71,17 +72,17 @@ namespace Harbor.Domain.Pages
 
 			// determine all of the included page types based on the include/exclude lists
 			var included = new List<TemplateContentType>();
-			if (pageType.AddPageTypeFilter.IncludeTypes.Count > 0)
+			if (pageType.AddContentTypeFilter.IncludeTypes.Count > 0)
 			{
-				foreach (var include in pageType.AddPageTypeFilter.IncludeTypes)
+				foreach (var include in pageType.AddContentTypeFilter.IncludeTypes)
 				{
 					included.Add(contentTypesByType[include]);
 				}
 			}
-			else if (pageType.AddPageTypeFilter.ExcludeTypes.Count > 0)
+			else if (pageType.AddContentTypeFilter.ExcludeTypes.Count > 0)
 			{
 				included = templateContentTypes.Values.ToList();
-				foreach (var exclude in pageType.AddPageTypeFilter.ExcludeTypes)
+				foreach (var exclude in pageType.AddContentTypeFilter.ExcludeTypes)
 				{
 					included.Remove(contentTypesByType[exclude]);
 				}
@@ -94,9 +95,9 @@ namespace Harbor.Domain.Pages
 
 			// determine the primary and other based on the suggested list
 			Dictionary<string, List<TemplateContentType>> dict;
-			if (pageType.AddPageTypeFilter.SuggestedTypes.Count > 0)
+			if (pageType.AddContentTypeFilter.SuggestedTypes.Count > 0)
 			{
-				var suggested = pageType.AddPageTypeFilter.SuggestedTypes;
+				var suggested = pageType.AddContentTypeFilter.SuggestedTypes;
 				dict = new Dictionary<string, List<TemplateContentType>>
 				{
 					{ "primary", included.Where(p => suggested.Contains(p.GetType())).ToList() },

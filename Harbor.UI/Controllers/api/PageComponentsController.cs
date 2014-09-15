@@ -17,7 +17,6 @@ namespace Harbor.UI.Controllers.Api
 		public IEnumerable<PageComponentDto> Get(string parentPageTypeKey = null)
 		{
 			var contentTypes = _contentTypeRepository.GetTemplateContentTypes(parentPageTypeKey);
-			var addingToParent = !string.IsNullOrEmpty(parentPageTypeKey);
 			foreach (var type in contentTypes["primary"])
 			{
 				yield return PageComponentDto.FromPageContentType(type, isPrimaryToAdd: true);
