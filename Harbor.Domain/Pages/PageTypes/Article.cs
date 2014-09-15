@@ -22,7 +22,6 @@ namespace Harbor.Domain.Pages.PageTypes
 		{
 			get { return "Contains image and text."; }
 		}
-
 		
 
 		public override void SetLayout(PageTypeLayoutContext context)
@@ -44,6 +43,9 @@ namespace Harbor.Domain.Pages.PageTypes
 
 		public override void SetAddContentTypeFilter(AddContentTypeFilterContext context)
 		{
+			context
+				.SuggestContentType<ContentTypes.Image>()
+				.SuggestContentType<ContentTypes.Text>();
 		}
 	}
 }
