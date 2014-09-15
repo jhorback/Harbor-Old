@@ -1,28 +1,33 @@
-﻿@model Harbor.UI.Models.Content.ProductLinkDto
+﻿@model  Harbor.Domain.Pages.Content.ProductLink
+@using Harbor.Domain.Files
 @using Harbor.UI.Extensions
-<div data-rel="productLink" class="@Model.tileClassName">
-	@if (Model.hasPreviewImage)
+@using Harbor.UI.Models
+@{
+	var link = VirtualPathUtility.ToAbsolute(Model.VirtualPath);
+}
+<div data-rel="productLink" class="@Model.TileClassName">
+	@if (Model.HasPreviewImage)
 	{
-		<a href="@Model.link" class="media">
-			<img src="@Model.previewImageSrc" />
+		<a href="@link" class="media">
+			<img src="@FileUrls.GetUrl(Model.PreviewImageID.ToString(), null, null, FileResolution.Low)" />
 		</a>
 	}
 	<div class="caption">
-		<h2><a href="@Model.link">@Model.title</a></h2>
+		<h2><a href="@link">@Model.Title</a></h2>
 		@*<p>
 			@Model.previewText
 		</p>*@
-		@if (Model.productCount > 0)
+		@if (Model.ProductCount > 0)
 		{
-			if (Model.productCount > 1)
+			if (Model.ProductCount > 1)
 			{
 				<div>
-					<a href="@Model.link" class="button loud">See Purchase Options</a>
+					<a href="@link" class="button loud">See Purchase Options</a>
 				</div>
 			}
 			else
 			{
-				@Html.PayPalButton(ViewBag.MerchantID as String, Model.firstButton)
+				@Html.PayPalButton(ViewBag.MerchantID as String, Model.FirstButton)
 			}
 		}
 	</div>

@@ -8,7 +8,7 @@ namespace Harbor.UI.Models.Content
 	public class ProductLinkDto : PageLinkDto
 	{
 		public int productCount { get; set; }
-		public Domain.Products.PayPalButton firstButton { get; set; }
+		public Products.PayPalButtonDto firstButton { get; set; }
 
 		public ProductLinkDto() { }
 
@@ -18,14 +18,14 @@ namespace Harbor.UI.Models.Content
 			title = pageLink.Title;
 			previewText = pageLink.PreviewText;
 			previewImageID = pageLink.PreviewImageID == null ? null : pageLink.PreviewImageID.ToString();;
-			previewImageSrc = previewImageID == null ? null : FileUrls.GetUrl(previewImageID, null, null, FileResolution.Low);;
+			previewImageSrc = previewImageID == null ? null : FileUrls.GetUrl(previewImageID, null, null, FileResolution.Low);
 			tileDisplay = pageLink.TileDisplay;
-			tileClassName = pageLink.TileDisplay == "wide" ? "tile tile-wide" : "tile";
+			tileClassName = pageLink.TileClassName;
 			link = pageLink.Exists ? VirtualPathUtility.ToAbsolute(pageLink.VirtualPath) : null;;
 			exists = pageLink.Exists;
 			hasPreviewImage = pageLink.HasPreviewImage;
 			productCount = pageLink.ProductCount;
-			firstButton = pageLink.FirstButton;
+			firstButton = Products.PayPalButtonDto.FromPayPalButton(pageLink.FirstButton);
 		}
 
 		public static ProductLinkDto FromProductLink(ProductLink productLink)
