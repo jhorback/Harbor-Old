@@ -16,7 +16,7 @@ pageEditor.imageView.prototype = {
 	},
 
 	save: function () {
-		this.saveCurrentPage();
+		this.options.saveCurrentPage();
 	},
 
 	openFileSelector: function () {

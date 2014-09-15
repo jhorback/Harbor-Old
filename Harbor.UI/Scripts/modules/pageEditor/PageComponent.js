@@ -56,6 +56,7 @@ pageEditor.pageComponent = function (
 		},
 
 		save: function () {
+			debugger;
 			latestSave = currentPageRepo.saveCurrentPage();
 			return latestSave;
 		},
@@ -68,9 +69,9 @@ pageEditor.pageComponent = function (
 		open: function () {
 			this.view = this.templateRenderer.render(this.componentType + "View", {
 				model: this.model,
-				uicid: this.uicid
+				uicid: this.uicid,
+				saveCurrentPage: this.save
 			});
-			this.view.saveCurrentPage = this.save;
 			this.view.serverUrl = _.bind(this.serverUrl, this);
 			this.$el.empty().html(this.view.$el);
 			this.onOpen && this.onOpen();

@@ -15,7 +15,7 @@ pageEditor.productLinkView.prototype = {
 	},
 	
 	save: function () {
-		this.saveCurrentPage();
+		this.options.saveCurrentPage();
 	},
 
 	openPageSelector: function () {
