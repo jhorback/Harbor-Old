@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web.Mvc;
 using Harbor.Domain.Pages;
-using Harbor.UI.Models.Content;
 
 namespace Harbor.UI.Models
 {
@@ -13,7 +11,7 @@ namespace Harbor.UI.Models
 		public List<TemplateUicDto> content { get; set; }
 		public IDictionary<string, Object> contentData { get; set; }
 		public string defaultContentClassName { get; set; }
-		public int componentCounter { get; set; }
+		public bool prependContentByDefault { get; set; }
 
 
 		public static TemplateDto FromTemplate(Template template, IDtoMapper dtoMapper)
@@ -24,7 +22,7 @@ namespace Harbor.UI.Models
 				content = template.Content.Select(TemplateUicDto.FromTemplateUic).ToList(),
 				contentData = convertContentToDtos(template.contentData, dtoMapper),
 				defaultContentClassName = template.DefaultContentClassName,
-				componentCounter = template.ComponentCounter
+				prependContentByDefault = template.PrependContentByDefault
 			};
 			return dto;
 		}
@@ -44,7 +42,7 @@ namespace Harbor.UI.Models
 			template.PageID = templateDto.pageID;
 			template.Content = templateDto.content.Select(TemplateUicDto.ToTemplateUic).ToList();
 			template.DefaultContentClassName = templateDto.defaultContentClassName;
-			template.ComponentCounter = templateDto.componentCounter;
+			template.PrependContentByDefault = templateDto.prependContentByDefault;
 			return template;
 		}
 	}

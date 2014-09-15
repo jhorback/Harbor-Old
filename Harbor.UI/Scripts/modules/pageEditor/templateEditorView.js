@@ -50,9 +50,13 @@ pageEditor.templateEditorView = (function () {
 		},
 
 		render: function () {
-			var contentEl = this.$(".page-content");
+			var contentEl = this.$(".page-content"),
+			    addTemplate = '<div class="uic-add"><span class="icon-plus"/></div>';
 
-			contentEl.append('<div class="uic-add"><span class="icon-plus"/></div>');
+			this.template.attributes.prependContentByDefault ?
+				contentEl.prepend(addTemplate) :
+				contentEl.append(addTemplate);
+				
 			contentEl.sortable({
 				handle: ".icon-move",
 				items: ".uic",
