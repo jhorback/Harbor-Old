@@ -9,10 +9,13 @@ pageEditor.component("payPalButtonComponent", {
 pageEditor.payPalButtonComponentView = function (
 	options,
 	viewRenderer,
-	payPalButtonRepo
+	payPalButtonRepo,
+	payPalButtonRenderer
 ) {
 	this.viewRenderer = viewRenderer;
 	this.payPalButtonRepo = payPalButtonRepo;
+	this.payPalButtonRenderer = payPalButtonRenderer;
+	this.merchantID = options.merchantID;
 };
 
 
@@ -20,19 +23,21 @@ pageEditor.payPalButtonComponentView.prototype = {
 	initialize: function () {
 		this.bindAll("saveButton");
 		this.saveButton = _.debounce(this.saveButton, 200);
-		this.listenTo(this.model, "change", this.saveButton);
+		this.listenTo(this.model, "change", this.buttonChanged);
 	},
 	
 	onRender: function () {
 		var previewEl;
 
 		previewEl = this.$("[data-rel=buttonPreview]");
-		//this.viewRenderer.render("paypalbuttonView", {
-		//	el: previewEl,
-		//	model: this.model
-		//});
+		this.payPalButtonRenderer.render(previewEl, this.model, this.merchantID);
 	},
-	
+
+	buttonChanged: function () {
+		this.saveButton();
+		this.onRender();
+	},
+
 	saveButton: function () {
 		if (this.model.changedAttributes() === false) {
 			return;
@@ -56,5 +61,6 @@ pageEditor.view("payPalButtonComponentView", [
 	"options",
 	"viewRenderer",
 	"payPalButtonRepo",
+	"payPalButtonRenderer",
 	pageEditor.payPalButtonComponentView
 ]);

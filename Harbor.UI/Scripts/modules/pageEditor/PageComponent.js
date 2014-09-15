@@ -56,7 +56,6 @@ pageEditor.pageComponent = function (
 		},
 
 		save: function () {
-			debugger;
 			latestSave = currentPageRepo.saveCurrentPage();
 			return latestSave;
 		},

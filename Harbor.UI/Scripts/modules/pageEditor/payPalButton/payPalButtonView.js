@@ -1,8 +1,10 @@
 ﻿
 
-pageEditor.payPalButtonView = function (options, appurl, currentUserRepo, payPalButtonComponent) {
+pageEditor.payPalButtonView = function (options, appurl, currentUserRepo, payPalButtonComponent, payPalButtonRenderer) {
 	this.appurl = appurl;
 	this.payPalButtonComponent = payPalButtonComponent;
+	this.payPalButtonRenderer = payPalButtonRenderer;
+
 	this.merchantID = currentUserRepo.getCurrentUser().get("payPalMerchantAccountID");
 };
 
@@ -17,45 +19,14 @@ pageEditor.payPalButtonView.prototype = {
 	},
 
 	render: function () {
-		var shipping = this.model.payPalButton.get("shippingOverride"),
-			tax = this.model.payPalButton.get("taxOverride"),
-			str = "";
-
-		str += '<div><button class="float-right margin">Edit PayPal Button</button></div>';
-		
-		str += '<span>' + this.model.payPalButton.get("description") + '</span> ' +
-			'<div><span>Price:</span> <strong class="loud">' + this.model.payPalButton.get("priceUSD") + '</strong></div>' +
-			'<script src="' +
-			this.appurl.get("scripts/paypal-button-minicart.min.js?merchant=" + this.merchantID) + '" ' +
-			'data-button="' + this.model.payPalButton.get("buttonType") + '"' +
-			'data-name="' + this.model.payPalButton.get("name") + '"' +
-			'data-quantity="1"' +
-			'data-amount="' + this.model.payPalButton.get("price") + '"' +
-			'data-currency="USD"';
-		
-		if (shipping) {
-			str += 'data-shipping="' + shipping + '"';
-		}
-
-		if (tax) {
-			str += 'data-tax="' + tax + '"';
-		}
-		str += '></script>';
-		
-		
-		if (!this.merchantID) {
-			str += '<div class="alert margin"><h1>No Merchant ID</h1>' +
-				'<p>You need to set your Merchant ID in your account settings.</p></div>';
-		}
-
-		this.$el.empty();
-		this.$el.append($(str));
+		this.payPalButtonRenderer.render(this.$el, this.model.payPalButton, this.merchantID);
 	},
 
 	clickPayPalButton: function (event) {
 		event.preventDefault();
 		this.payPalButtonComponent.render({
-			model: this.model.payPalButton
+			model: this.model.payPalButton,
+			merchantID: this.merchantID
 		});
 	},
 	
@@ -70,5 +41,51 @@ pageEditor.view("paypalbuttonView", [
 	"appurl",
 	"currentUserRepo",
 	"payPalButtonComponent",
+	"payPalButtonRenderer",
 	pageEditor.payPalButtonView
 ]);
+
+
+
+
+pageEditor.payPalButtonRenderer = function (appurl) {
+	return {
+		render: function (el, button, merchantId) {
+			var shipping = button.get("shippingOverride"),
+				tax = button.get("taxOverride"),
+				str = "";
+
+			str += '<div><button class="float-right margin">Edit PayPal Button</button></div>';
+		
+			str += '<span>' + button.get("description") + '</span> ' +
+				'<div><span>Price:</span> <strong class="loud">' + button.get("priceUSD") + '</strong></div>' +
+				'<script src="' +
+				appurl.get("scripts/paypal-button-minicart.min.js?merchant=" + merchantId) + '" ' +
+				'data-button="' + button.get("buttonType") + '"' +
+				'data-name="' + button.get("name") + '"' +
+				'data-quantity="1"' +
+				'data-amount="' + button.get("price") + '"' +
+				'data-currency="USD"';
+		
+			if (shipping) {
+				str += 'data-shipping="' + shipping + '"';
+			}
+
+			if (tax) {
+				str += 'data-tax="' + tax + '"';
+			}
+			str += '></script>';
+		
+		
+			if (!merchantId) {
+				str += '<div class="alert margin"><h1>No Merchant ID</h1>' +
+					'<p>You need to set your Merchant ID in your account settings.</p></div>';
+			}
+
+			el.empty();
+			el.append($(str));
+		}
+	}
+};
+
+pageEditor.service("payPalButtonRenderer", ["appurl", pageEditor.payPalButtonRenderer]);
