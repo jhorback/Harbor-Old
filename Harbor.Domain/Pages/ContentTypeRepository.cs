@@ -7,14 +7,18 @@ namespace Harbor.Domain.Pages
 	public class ContentTypeRepository : IContentTypeRepository
 	{
 		private readonly IObjectFactory _objectFactory;
+		private readonly IPageTypeRepository _pageTypeRepository;
 		private readonly ILogger _logger;
 		
 		readonly Dictionary<string, TemplateContentType> templateContentTypes = new Dictionary<string, TemplateContentType>();
 		readonly Dictionary<string, ContentType> layoutContentTypes = new Dictionary<string, ContentType>();
+		Dictionary<Type, TemplateContentType> contentTypesByType = new Dictionary<Type, TemplateContentType>();
 
-		public ContentTypeRepository(IObjectFactory objectFactory, ILogger logger)
+
+		public ContentTypeRepository(IObjectFactory objectFactory, IPageTypeRepository pageTypeRepository, ILogger logger)
 		{
 			_objectFactory = objectFactory;
+			_pageTypeRepository = pageTypeRepository;
 			_logger = logger;
 			
 			foreach (var type in getStaticFields<TemplateContentType>(typeof(TemplateContentTypes)))
@@ -46,9 +50,69 @@ namespace Harbor.Domain.Pages
 		}
 
 
-		public IEnumerable<TemplateContentType> GetTemplateContentTypes()
+		public IDictionary<string, List<TemplateContentType>> GetContentTypesToAdd()
 		{
-			return templateContentTypes.Values;
+			var contentTypes = templateContentTypes.Values;
+			var dict = new Dictionary<string, List<TemplateContentType>>
+			{
+				{ "primary", contentTypes.ToList() },
+				{ "other", new List<TemplateContentType>() }
+			};
+			return dict;
+		}
+
+		public IDictionary<string, List<TemplateContentType>> GetTemplateContentTypes(string parentPageTypeKey = null)
+		{
+			var pageType =_pageTypeRepository.GetPageType(parentPageTypeKey);
+			if (pageType == null)
+			{
+				return GetContentTypesToAdd();
+			}
+
+			// determine all of the included page types based on the include/exclude lists
+			var included = new List<TemplateContentType>();
+			if (pageType.AddPageTypeFilter.IncludeTypes.Count > 0)
+			{
+				foreach (var include in pageType.AddPageTypeFilter.IncludeTypes)
+				{
+					included.Add(contentTypesByType[include]);
+				}
+			}
+			else if (pageType.AddPageTypeFilter.ExcludeTypes.Count > 0)
+			{
+				included = templateContentTypes.Values.ToList();
+				foreach (var exclude in pageType.AddPageTypeFilter.ExcludeTypes)
+				{
+					included.Remove(contentTypesByType[exclude]);
+				}
+			}
+			else
+			{
+				included = templateContentTypes.Values.ToList(); ;
+			}
+
+
+			// determine the primary and other based on the suggested list
+			Dictionary<string, List<TemplateContentType>> dict;
+			if (pageType.AddPageTypeFilter.SuggestedTypes.Count > 0)
+			{
+				var suggested = pageType.AddPageTypeFilter.SuggestedTypes;
+				dict = new Dictionary<string, List<TemplateContentType>>
+				{
+					{ "primary", included.Where(p => suggested.Contains(p.GetType())).ToList() },
+					{ "other", included.Where(p => !suggested.Contains(p.GetType())).ToList() }
+				};
+			}
+			else
+			{
+				dict = new Dictionary<string, List<TemplateContentType>>
+				{
+					{ "primary", included },
+					{ "other", new List<TemplateContentType>() }
+				};
+			}
+
+			return dict;
 		}
 
 		public TemplateContentHandler GetTemplateContentHandler(TemplateUic uic, Page page)

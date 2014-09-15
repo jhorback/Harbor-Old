@@ -11,7 +11,7 @@ namespace Harbor.Domain.Tests
 		[TestMethod]
 		public void GetTemplateContentTypes_ReturnsAnyStaticTypes()
 		{
-			var repo = new ContentTypeRepository(null, null);
+			var repo = new ContentTypeRepository(null, null, null);
 
 			var contentTypes = repo.GetTemplateContentTypes();
 			
