@@ -28,10 +28,7 @@ namespace Harbor.Domain.Pages.Content
 
 		public bool ButtonExists
 		{
-			get
-			{
-				return Button != null;
-			}
+			get { return Button != null && Button.PayPalButtonID != 0; }
 		}
 	}
 }

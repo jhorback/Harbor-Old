@@ -1,6 +1,4 @@
-﻿using System;
-using System.Text;
-using System.Web;
+﻿using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Harbor.Domain.Products;
@@ -11,6 +9,11 @@ namespace Harbor.UI.Extensions
 	{
 		public static MvcHtmlString PayPalButton(this HtmlHelper helper, string merchantID, PayPalButton button)
 		{
+			if (button == null)
+			{
+				return new MvcHtmlString("Error loading button.");
+			}
+
 			if (button.Hosted)
 			{
 				return new MvcHtmlString(button.ButtonCode);

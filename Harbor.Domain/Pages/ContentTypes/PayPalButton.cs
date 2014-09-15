@@ -42,7 +42,13 @@ namespace Harbor.Domain.Pages.ContentTypes
 			{
 				button = Page.GetPayPalButton(buttonId);
 			}
-			
+			else
+			{
+				button = new Products.PayPalButton
+				{
+					Name = Page.Title
+				};
+			}
 			return new Content.PayPalButton(buttonId, button);
 		}
 

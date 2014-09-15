@@ -13,15 +13,14 @@ pageEditor.payPalButtonView.prototype = {
 	
 	initialize: function () {
 		this.listenTo(this.model.payPalButton, "change", this.render);
-		this.model.on("change:payPalButtonID", this.saveCurrentPage);
+		this.model.on("change:payPalButtonID", this.saveCurrentPage, this);
 	},
 
 	render: function () {
 		var shipping = this.model.payPalButton.get("shippingOverride"),
 			tax = this.model.payPalButton.get("taxOverride"),
 			str = "";
-		
-		
+
 		str += '<div><button class="float-right margin">Edit PayPal Button</button></div>';
 		
 		str += '<span>' + this.model.payPalButton.get("description") + '</span> ' +
