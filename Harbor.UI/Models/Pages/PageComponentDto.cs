@@ -18,7 +18,7 @@ namespace Harbor.UI.Models
 			key = pageContentType.Key;
 			name = pageContentType.Name;
 			description = pageContentType.Description;
-			isPrimaryToAdd = isPrimaryToAdd;
+			this.isPrimaryToAdd = isPrimaryToAdd;
 		}
 
 		public static PageComponentDto FromPageContentType(TemplateContentType pageContentType, bool isPrimaryToAdd)

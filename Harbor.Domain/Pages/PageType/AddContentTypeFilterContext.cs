@@ -5,6 +5,7 @@ namespace Harbor.Domain.Pages
 	{
 		public AddContentTypeFilterContext()
 		{
+			Filter = new AddContentTypeFilter();
 		}
 
 		public AddContentTypeFilter Filter { get; set; }
