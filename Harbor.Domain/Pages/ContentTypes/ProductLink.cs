@@ -44,7 +44,8 @@ namespace Harbor.Domain.Pages.ContentTypes
 				linkedPage = Page.GetPageLink(pageId);
 			}
 
-			return new Content.ProductLink(pageId, GetProperty("tileDisplay") ?? "normal", linkedPage, _user.Identity.Name);
+			var content = new Content.ProductLink(pageId, GetProperty("tileDisplay") ?? "normal", linkedPage, _user.Identity.Name);
+			return content;
 		}
 
 		public override IEnumerable<PageResource> DeclareResources()

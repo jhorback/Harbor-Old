@@ -89,13 +89,13 @@ namespace Harbor.UI.Controllers
 				return NoPageContent(page, "Product Link", "icon-link");
 			}
 
-			var model = ProductLinkDto.FromProductLink(link);
-			if (model.productCount == 1)
+			// var model = ProductLinkDto.FromProductLink(link);
+			if (link.ProductCount == 1)
 			{
 				var currentUser = _userRepo.FindUserByName(page.AuthorsUserName);
 				ViewBag.MerchantID = currentUser.PayPalMerchantAccountID;
 			}
-			return PartialView("ProductLink", model);
+			return PartialView("ProductLink", link);
 		}
 
 		public PartialViewResult NoPageContent(Page page, string text, string icon)

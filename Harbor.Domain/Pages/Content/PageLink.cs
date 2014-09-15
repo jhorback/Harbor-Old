@@ -19,6 +19,14 @@ namespace Harbor.Domain.Pages.Content
 
 		public string TileDisplay { get; private set; }
 
+		public string TileClassName
+		{
+			get
+			{
+				return TileDisplay == "wide" ? "tile tile-wide" : "tile";
+			}
+		}
+
 		protected Page LinkedPage { get; set; }
 
 		public bool IsNew { get { return PageID == 0; } }
