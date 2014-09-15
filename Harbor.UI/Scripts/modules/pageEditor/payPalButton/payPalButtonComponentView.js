@@ -18,7 +18,6 @@ pageEditor.payPalButtonComponentView = function (
 
 pageEditor.payPalButtonComponentView.prototype = {
 	initialize: function () {
-		debugger;
 		this.bindAll("saveButton");
 		this.saveButton = _.debounce(this.saveButton, 200);
 		this.listenTo(this.model, "change", this.saveButton);
@@ -38,13 +37,12 @@ pageEditor.payPalButtonComponentView.prototype = {
 		if (this.model.changedAttributes() === false) {
 			return;
 		}
-		if (this.model.synced || this.model.isNew()) {
-			if (this.isModelValid()) {
-				this.model.set("doneButtonText", "Done");	
-				this.payPalButtonRepo.saveButton(this.model);
-			} else {
-				this.model.set("doneButtonText", "Cancel");
-			}
+		
+		if (this.isModelValid()) {
+			this.model.set("doneButtonText", "Done");	
+			this.payPalButtonRepo.saveButton(this.model);
+		} else {
+			this.model.set("doneButtonText", "Cancel");
 		}
 	},
 	

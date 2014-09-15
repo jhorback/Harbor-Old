@@ -28,7 +28,11 @@ payPalButtonModel.payPalButtonRepo = function (ajaxRequest, modelFactory) {
 		},
 
 		saveButton: function (button, handler, proxy) {
-			return ajaxRequest.handle(button.save(), handler, proxy);
+			var buttonSaved = button.safeSave();
+			if (!buttonSaved) {
+				return ajaxRequest.resolved();
+			}
+			return ajaxRequest.handle(buttonSaved, handler, proxy);
 		}
 	};
 };

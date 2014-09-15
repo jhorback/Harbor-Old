@@ -28,6 +28,15 @@ payPalButtonModel.payPalButton.prototype = {
 		}
 	},
 
+	"[id]": {
+		get: function (value) {
+			return value === 0 ? null : value;
+		},
+		set: function (value) {
+			return value === 0 ? null : value;
+		}
+	},
+
 	"[name]": {
 		validate: {
 			required: true
