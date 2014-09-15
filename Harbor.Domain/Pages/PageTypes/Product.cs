@@ -43,6 +43,10 @@ namespace Harbor.Domain.Pages.PageTypes
 
 		public override void SetAddContentTypeFilter(AddContentTypeFilterContext context)
 		{
+			context
+				.SuggestContentType<ContentTypes.Image>()
+				.SuggestContentType<ContentTypes.Text>()
+				.SuggestContentType<ContentTypes.PayPalButton>();
 		}
 	}
 }
