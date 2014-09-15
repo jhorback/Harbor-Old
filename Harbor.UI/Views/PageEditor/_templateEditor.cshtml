@@ -12,24 +12,30 @@
 <div data-templatefor="addPageComponentView">
 	<h1>Add content</h1>
 	<form data-event="submit: formSubmit">
-	<div class="selectlist">
-		<ul>
-			<li class="col3 height-medium" data-collection="pageComponents" tabindex="0" data-bind="title: description">
-				<input type="radio" name="pageComponentKey" data-bind="val: key" class="hide"/>
-				<h1 data-bind="text:name"></h1>
-				<div data-bind="text: description"></div>
-			</li>
-		</ul>
-	</div>
-		@*
-		<label for="pageeditor-component" data-bind="text: userHint"></label>
-			<select id="pageeditor-component" name="pageComponentKey" class="stretch">
-			<option data-collection="pageComponents" data-bind="text: name, value: key"></option>
-		</select>*@
-
-		<div class="form-field">
-			<div data-bind="text: pageComponentDescription"></div>
+		<h2 data-bind="showif: hasOtherComponentTypes">Suggested content</h2>
+		<div class="selectlist">
+			<ul>
+				<li class="col3 height-medium" data-collection="primaryComponents" tabindex="0" data-bind="title: description">
+					<input type="radio" name="pageComponentKey" data-bind="val: key" class="hide"/>
+					<h1 data-bind="text:name"></h1>
+					<div data-bind="text: description"></div>
+				</li>
+			</ul>
 		</div>
+		
+		<div data-bind="showif: hasOtherComponentTypes">
+			<h2>Other content</h2>
+			<div class="selectlist">
+				<ul>
+					<li class="col3 height-medium" data-collection="otherComponents" tabindex="0" data-bind="title: description">
+						<input type="radio" name="pageComponentKey" data-bind="val: key" class="hide" />
+						<h1 data-bind="text:name"></h1>
+						<div data-bind="text: description"></div>
+					</li>
+				</ul>
+			</div>
+		</div>
+
 		<div class="form-controls">
 			<input type="submit" value="Add" class="loud">
 			<input type="button" value="Cancel" data-rel="back">
