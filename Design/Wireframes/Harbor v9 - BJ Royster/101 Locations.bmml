@@ -1,0 +1,39 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1254" measuredH="807" mockupW="1024" mockupH="768">
+  <controls>
+    <control controlID="16" controlTypeID="com.balsamiq.mockups::Component" x="230" y="39" w="1024" h="768" measuredW="1024" measuredH="768" zOrder="0" locked="true" isInGroup="-1">
+      <controlProperties>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22208%2C125%2C250%2C149%22%20href%3D%2210%2520Home.bmml%22%20alt%3D%2210%20Home%22%20id%3D%220%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22292%2C125%2C345%2C149%22%20href%3D%2220%2520Artwork.bmml%22%20alt%3D%2220%20Artwork%22%20id%3D%221%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22384%2C125%2C431%2C149%22%20href%3D%2230%2520Events.bmml%22%20alt%3D%2230%20Events%22%20id%3D%222%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22478%2C125%2C515%2C149%22%20href%3D%2240%2520Shop.bmml%22%20alt%3D%2240%20Shop%22%20id%3D%223%22/%3E</map>
+        <override controlID="2:0">
+          <bold>false</bold>
+          <href>10%20Home%26bm%3B10%20Home.bmml%26bm%3B10%20Home.bmml%26bm%3B10%20Home.bmml</href>
+        </override>
+        <src>./assets/symbols.bmml#Layout</src>
+      </controlProperties>
+    </control>
+    <control controlID="17" controlTypeID="com.balsamiq.mockups::Label" x="1197" y="164" w="-1" h="-1" measuredW="41" measuredH="21" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Sign%20in</text>
+      </controlProperties>
+    </control>
+    <control controlID="18" controlTypeID="com.balsamiq.mockups::Icon" x="1216" y="119" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>FacebookIcon%7Csmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="20" controlTypeID="com.balsamiq.mockups::HCurly" x="783" y="148" w="399" h="121" measuredW="200" measuredH="80" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Top%20background%20can%20be%20differnt%20for%20each%20nav%20item.%0Abjrtheme.css%0A%20%0A%20%20%20%20.header--background--home%0A%20%20%20%20.header--background--events%0A%20%20%20%20...etc</text>
+      </controlProperties>
+    </control>
+    <control controlID="21" controlTypeID="com.balsamiq.mockups::Title" x="268" y="228" w="-1" h="-1" measuredW="466" measuredH="41" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Where%20to%20find%20BJs%27%20Artwork</text>
+      </controlProperties>
+    </control>
+    <control controlID="22" controlTypeID="com.balsamiq.mockups::Paragraph" x="275" y="284" w="932" h="430" measuredW="275" measuredH="80" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>1.%20BJ%20Royster%20Ocean%20Gallery%0AArtist%20BJ%20Royster%2C%20Gold%20by%20James%2C%20Gisele%20Long%20%2CKeys%20Beach%20Bling%20By%20Clara%20Werner%20and%20Connie%20Faast%20and%20Annmarie%20Anderson%20The%20Gallery%20is%20a%20working%20studio%20and%20will%20be%20closed%20due%20to%20shows.%20The%20regular%20hours%20are%20Mon%3A%2010-5%20Tuesday%3A%2010-4%20Wednesday%3A%2010-5%20Thursday%3A%2010-5%20Friday%3A%2010-5%20Saturday%3A%2010-5%20Sunday%3A%20Closed%20%0A81.6%20Bayside%0AIslamorada%2C%20FL%2033036%0A386-569-6331%0Awww.bjroyster.com%0AGet%20Directions%0A2.%20Artist%20In%20Paradise%0AArtists%20in%20Paradise%20Gallery%20was%20created%20in%201994%20by%2014%20Florida%20Lower%20Keys%20artists.%20They%20were%20able%20to%20lease%20a%20storefront%20for%20one%20week%20in%20the%20Big%20Pine%20Shopping%20Center.%20They%20scrubbed%2C%20painted%2C%20hammered%20and%20nailed%20and%20had%20an%20opening%20reception.%20They%20were%20overwhelmed%20by%20the%20community%20approval%20and%20patronage.%20They%20quickly%20began%20looking%20for%20a%20more%20permanent%20location%20and%20have%20evolved%20into%20the%20going%20concern%20you%20see%20today.%20The%2014%20artists%20have%20become%2030%20or%20more%20and%20the%20mediums%20are%20constantly%20changing%20as%20is%20the%20artwork.%0A221%20Key%20Deer%20Blvd.%0ABig%20Pine%20Key%2C%20FL%2033043%0A305-872-1828%0Awww.artists@artistsinparadise.com%0AGet%20Directions%0A3.%20Redbone%20Gallery%0AThe%20foremost%20marine%20and%20wildlife%20gallery%20of%20art%20featuring%20renowned%20artists%20as%20Don%20Ray%2C%20David%20Wirth%2C%20Kathleen%20Denis%2C%20Pasta%20Pantaleo%2C%20Tim%20Borski%2C%20BJ%20Royster%2C%20Millard%20Wells%20and%20many%20more.%20Portion%20of%20all%20original%20art%20sales%20benefit%20The%20Cystic%20Fibrosis%20Foundation.%0A200%20Morada%20Way%0AIslamorada%2C%20FL%2033036%0A305-664-2002%0Awww.redbone.org%0AGet%20Directions%0A4.%20Unique%20by%20Kennedy%20Studio%0AMon%20-%20Fri%2010-5%3A30%20Sat%2010%3A00%20-%20%3F%20Sun%20Closed%0A11400%20Overseas%20Hwy%20%23112%0AMarathon%2C%20FL%2033050%0A305-743-2040%0AGet%20Directions%0A5.%20Gallery%20of%20Local%20Art%0AFounded%20in%202007%2C%20The%20Gallery%20of%20Local%20Art%20has%20been%20a%20starting%20point%20for%20many%20local%20artists.%20You%20are%20sure%20to%20be%20greeted%20by%20a%20local%20artists%20every%20time%20you%20visit%2C%20as%20the%20volunteer%20staff%20is%20made%20up%20of%20the%20artists%20from%20the%20gallery.%20The%20gallery%20holds%20monthly%20shows%2C%20ranging%20from%20Plein%20Air%20paint%20offs%2C%20Photography%2C%20pottery%2C%20and%20much%20more.%20Artists%20receptions%20are%20held%20every%20first%20Friday%20of%20the%20month%20from%206%3A00pm%20to%208%3A00pm%2C%20and%20are%20free%20to%20the%20public.%20Gola%20welcomes%20you%20to%20visit%20the%20gallery%20and%20meet%20our%20talented%20artists.%0A208-E%20S%20Central%20Avenue%0AFlagler%20Beach%2C%20FL%2032136%0A386-439-6659%0Ahttp%3A//galleryoflocalart.com/%0AGet%20Directions%0ACraigs%20Restaurant%20-%20A%20Treasure%20of%20the%20Florida%20Key%0ACome%20in%20and%20have%20a%20meal%20and%20take%20home%20art.%20Craigs%20Restaurant%20is%20open%20every%20day%208AM%20to%2010%20PM.%20On%20Tuesday%2C%20they%20are%20proud%20to%20host%20their%20local%20Rotary%20Club%20from%2011%3A30AM%20-%201PM%20and%20can%20only%20provide%20take-out%20service%20during%20that%20time.%20Great%20food%20and%20Great%20Art%0A90154%20Overseas%20Hwy%0ATavernier%2C%20FL%2033070%0A%28305%29%20852-9424%0Ahttp%3A//www.craigsrestaurant.com/%0AGet%20Directions%0AIsland%20Trendz%20Tropical%20Gift%0AStop%20by%20and%20see%20us%20in%20Islamorada%20Fl%2C%20Located%20in%20the%20Hampton%20Inn.%20Ocean%20side%0AIslamorada%2C%20FL%20%0Ahttp%3A//stores.islandtrendztropicalgifts.com/%0AGet%20Directions%0AThe%20Jolly%20Pelican%0AIsland%20Gifts%20and%20Clothing%0A90775%20Old%20Hwy%20%234%0ATavernier%2C%20FL%2033070%0A305-440-3654%0AGet%20Directions%0AThe%20Mystical%20Mermaid%0AHandcrafted%20Gifts%0A82245%20Overseas%20Hwy%0AIslamorada%2C%20FL%20%0Ahttp%3A//www.themysticalmermaid.com/%0AGet%20Directions</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
