@@ -1,0 +1,85 @@
+<mockup version="1.0" skin="sketch" measuredW="997" measuredH="632" mockupW="800" mockupH="600">
+  <controls>
+    <control controlID="9" controlTypeID="com.balsamiq.mockups::Component" x="197" y="32" w="800" h="600" measuredW="800" measuredH="600" zOrder="0" locked="true" isInGroup="-1">
+      <controlProperties>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22701%2C81%2C785%2C102%22%20href%3D%2210%2520User%2520Menu.bmml%22%20alt%3D%2210%20User%20Menu%22%20id%3D%225%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22151%2C69%2C237%2C133%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%226%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22701%2C81%2C785%2C102%22%20href%3D%2210%2520User%2520Menu.bmml%22%20alt%3D%2210%20User%20Menu%22%20id%3D%225%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22151%2C69%2C237%2C133%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%226%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22701%2C81%2C785%2C102%22%20href%3D%2210%2520User%2520Menu.bmml%22%20alt%3D%2210%20User%20Menu%22%20id%3D%225%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22151%2C69%2C237%2C133%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%226%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22701%2C81%2C785%2C102%22%20href%3D%2210%2520User%2520Menu.bmml%22%20alt%3D%2210%20User%20Menu%22%20id%3D%225%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22151%2C69%2C237%2C133%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%226%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22701%2C81%2C785%2C102%22%20href%3D%2210%2520User%2520Menu.bmml%22%20alt%3D%2210%20User%20Menu%22%20id%3D%225%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22151%2C69%2C237%2C133%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%226%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22701%2C81%2C785%2C102%22%20href%3D%2210%2520User%2520Menu.bmml%22%20alt%3D%2210%20User%20Menu%22%20id%3D%225%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22151%2C69%2C237%2C133%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%226%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22701%2C81%2C785%2C102%22%20href%3D%2210%2520User%2520Menu.bmml%22%20alt%3D%2210%20User%20Menu%22%20id%3D%225%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22151%2C69%2C237%2C133%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%226%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22701%2C81%2C785%2C102%22%20href%3D%2210%2520User%2520Menu.bmml%22%20alt%3D%2210%20User%20Menu%22%20id%3D%225%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22151%2C69%2C237%2C133%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%226%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22701%2C81%2C785%2C102%22%20href%3D%2210%2520User%2520Menu.bmml%22%20alt%3D%2210%20User%20Menu%22%20id%3D%225%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22151%2C69%2C237%2C133%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%226%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22701%2C81%2C785%2C102%22%20href%3D%2210%2520User%2520Menu.bmml%22%20alt%3D%2210%20User%20Menu%22%20id%3D%225%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22151%2C69%2C237%2C133%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%226%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22701%2C81%2C785%2C102%22%20href%3D%2210%2520User%2520Menu.bmml%22%20alt%3D%2210%20User%20Menu%22%20id%3D%225%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22151%2C69%2C237%2C133%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%226%22/%3E</map>
+        <src>./assets/symbols.bmml#Layout</src>
+      </controlProperties>
+    </control>
+    <control controlID="11" controlTypeID="com.balsamiq.mockups::SubTitle" x="218" y="173" w="-1" h="-1" measuredW="69" measuredH="33" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Users</text>
+      </controlProperties>
+    </control>
+    <control controlID="48" controlTypeID="com.balsamiq.mockups::Button" x="883" y="176" w="-1" h="-1" measuredW="87" measuredH="27" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <href>310%20Users%20-%20Create%26bm%3B310%20Users%20-%20Create.bmml%26bm%3B310%20Users%20-%20Create.bmml%26bm%3B310%20Users%20-%20Create.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22686%2C144%2C773%2C171%22%20href%3D%22310%2520Users%2520-%2520Create.bmml%22%20alt%3D%22310%20Users%20-%20Create%22%20id%3D%2248%22/%3E</map>
+        <text>Add%20a%20user</text>
+      </controlProperties>
+    </control>
+    <control controlID="49" controlTypeID="com.balsamiq.mockups::Label" x="253" y="228" w="-1" h="-1" measuredW="102" measuredH="24" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>16</size>
+        <text>John%20Horback</text>
+      </controlProperties>
+    </control>
+    <control controlID="50" controlTypeID="com.balsamiq.mockups::Label" x="256" y="252" w="-1" h="-1" measuredW="151" measuredH="24" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>16</size>
+        <text>jhorback@gmail.com</text>
+      </controlProperties>
+    </control>
+    <control controlID="53" controlTypeID="com.balsamiq.mockups::StickyNote" x="576" y="300" w="178" h="101" measuredW="109" measuredH="123" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>An%20disabled%20user%20will%20indicate%20so%20and%20possibly%20be%20faded%20in%20color.</text>
+      </controlProperties>
+    </control>
+    <control controlID="54" controlTypeID="com.balsamiq.mockups::Label" x="256" y="276" w="-1" h="-1" measuredW="170" measuredH="24" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>16</size>
+        <text>Last%20seen%20on%207/7/2012</text>
+      </controlProperties>
+    </control>
+    <control controlID="56" controlTypeID="com.balsamiq.mockups::LinkBar" x="260" y="302" w="-1" h="-1" measuredW="87" measuredH="21" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <hrefs>320%20Users%20-%20Update%26bm%3B320%20Users%20-%20Update.bmml%26bm%3B320%20Users%20-%20Update.bmml%26bm%3B320%20Users%20-%20Update.bmml%2C330%20Users%20-%20Delete%26bm%3B330%20Users%20-%20Delete.bmml%26bm%3B330%20Users%20-%20Delete.bmml%26bm%3B330%20Users%20-%20Delete.bmml</hrefs>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%2263%2C270%2C89%2C291%22%20href%3D%22320%2520Users%2520-%2520Update.bmml%22%20alt%3D%22320%20Users%20-%20Update%22%20id%3D%2256_0%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22107%2C270%2C150%2C291%22%20href%3D%22330%2520Users%2520-%2520Delete.bmml%22%20alt%3D%22330%20Users%20-%20Delete%22%20id%3D%2256_1%22/%3E%0A</map>
+        <text>edit%2C%20delete</text>
+      </controlProperties>
+    </control>
+    <control controlID="57" controlTypeID="com.balsamiq.mockups::Label" x="467" y="228" w="-1" h="-1" measuredW="148" measuredH="24" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>6710886</color>
+        <size>16</size>
+        <text>Frank%20Dux%20%28disabled%29</text>
+      </controlProperties>
+    </control>
+    <control controlID="58" controlTypeID="com.balsamiq.mockups::Label" x="470" y="252" w="-1" h="-1" measuredW="151" measuredH="24" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>6710886</color>
+        <size>16</size>
+        <text>jhorback@gmail.com</text>
+      </controlProperties>
+    </control>
+    <control controlID="59" controlTypeID="com.balsamiq.mockups::Label" x="470" y="276" w="-1" h="-1" measuredW="170" measuredH="24" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>6710886</color>
+        <size>16</size>
+        <text>Last%20seen%20on%207/7/2012</text>
+      </controlProperties>
+    </control>
+    <control controlID="60" controlTypeID="com.balsamiq.mockups::LinkBar" x="474" y="302" w="-1" h="-1" measuredW="87" measuredH="21" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <hrefs>320%20Users%20-%20Update%26bm%3B320%20Users%20-%20Update.bmml%26bm%3B320%20Users%20-%20Update.bmml%26bm%3B320%20Users%20-%20Update.bmml%2C330%20Users%20-%20Delete%26bm%3B330%20Users%20-%20Delete.bmml%26bm%3B330%20Users%20-%20Delete.bmml%26bm%3B330%20Users%20-%20Delete.bmml</hrefs>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22277%2C270%2C303%2C291%22%20href%3D%22320%2520Users%2520-%2520Update.bmml%22%20alt%3D%22320%20Users%20-%20Update%22%20id%3D%2260_0%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22321%2C270%2C364%2C291%22%20href%3D%22330%2520Users%2520-%2520Delete.bmml%22%20alt%3D%22330%20Users%20-%20Delete%22%20id%3D%2260_1%22/%3E%0A</map>
+        <text>edit%2C%20delete</text>
+      </controlProperties>
+    </control>
+    <control controlID="61" controlTypeID="com.balsamiq.mockups::StickyNote" x="295" y="423" w="239" h="133" measuredW="109" measuredH="123" zOrder="12" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Both%20edit%20and%20add%20views%20should%20be%20able%20to%20be%20closed%20by%20the%20back%20button..%0A%20%0ACreate%20a%20view%20extension%20for%20this%3F</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

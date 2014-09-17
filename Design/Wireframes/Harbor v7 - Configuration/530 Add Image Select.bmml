@@ -1,0 +1,85 @@
+<mockup version="1.0" skin="sketch" measuredW="997" measuredH="632" mockupW="800" mockupH="600">
+  <controls>
+    <control controlID="9" controlTypeID="com.balsamiq.mockups::Component" x="197" y="32" w="800" h="600" measuredW="800" measuredH="600" zOrder="0" locked="true" isInGroup="-1">
+      <controlProperties>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22701%2C81%2C786%2C103%22%20href%3D%2210%2520User%2520Menu.bmml%22%20alt%3D%2210%20User%20Menu%22%20id%3D%225%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22151%2C69%2C237%2C133%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%226%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22250%2C90%2C389%2C117%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%227%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22701%2C81%2C786%2C103%22%20href%3D%2210%2520User%2520Menu.bmml%22%20alt%3D%2210%20User%20Menu%22%20id%3D%225%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22151%2C69%2C237%2C133%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%226%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22250%2C90%2C389%2C117%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%227%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22701%2C81%2C786%2C103%22%20href%3D%2210%2520User%2520Menu.bmml%22%20alt%3D%2210%20User%20Menu%22%20id%3D%225%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22151%2C69%2C237%2C133%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%226%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22250%2C90%2C389%2C117%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%227%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22701%2C81%2C786%2C103%22%20href%3D%2210%2520User%2520Menu.bmml%22%20alt%3D%2210%20User%20Menu%22%20id%3D%225%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22151%2C69%2C237%2C133%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%226%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22250%2C90%2C389%2C117%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%227%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22701%2C81%2C786%2C103%22%20href%3D%2210%2520User%2520Menu.bmml%22%20alt%3D%2210%20User%20Menu%22%20id%3D%225%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22151%2C69%2C237%2C133%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%226%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22250%2C90%2C389%2C117%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%227%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22701%2C81%2C786%2C103%22%20href%3D%2210%2520User%2520Menu.bmml%22%20alt%3D%2210%20User%20Menu%22%20id%3D%225%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22151%2C69%2C237%2C133%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%226%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22250%2C90%2C389%2C117%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%227%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22701%2C81%2C786%2C103%22%20href%3D%2210%2520User%2520Menu.bmml%22%20alt%3D%2210%20User%20Menu%22%20id%3D%225%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22151%2C69%2C237%2C133%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%226%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22250%2C90%2C389%2C117%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%227%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22701%2C81%2C786%2C103%22%20href%3D%2210%2520User%2520Menu.bmml%22%20alt%3D%2210%20User%20Menu%22%20id%3D%225%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22151%2C69%2C237%2C133%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%226%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22250%2C90%2C389%2C117%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%227%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22701%2C81%2C786%2C103%22%20href%3D%2210%2520User%2520Menu.bmml%22%20alt%3D%2210%20User%20Menu%22%20id%3D%225%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22151%2C69%2C237%2C133%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%226%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22250%2C90%2C389%2C117%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%227%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22701%2C81%2C786%2C103%22%20href%3D%2210%2520User%2520Menu.bmml%22%20alt%3D%2210%20User%20Menu%22%20id%3D%225%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22151%2C69%2C237%2C133%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%226%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22250%2C90%2C389%2C117%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%227%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22701%2C81%2C786%2C103%22%20href%3D%2210%2520User%2520Menu.bmml%22%20alt%3D%2210%20User%20Menu%22%20id%3D%225%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22151%2C69%2C237%2C133%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%226%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22250%2C90%2C389%2C117%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%227%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22701%2C81%2C786%2C103%22%20href%3D%2210%2520User%2520Menu.bmml%22%20alt%3D%2210%20User%20Menu%22%20id%3D%225%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22151%2C69%2C237%2C133%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%226%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22250%2C90%2C389%2C117%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%227%22/%3E</map>
+        <src>./assets/symbols.bmml#Layout</src>
+      </controlProperties>
+    </control>
+    <control controlID="46" controlTypeID="com.balsamiq.mockups::SubTitle" x="218" y="173" w="-1" h="-1" measuredW="84" measuredH="33" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Images</text>
+      </controlProperties>
+    </control>
+    <control controlID="47" controlTypeID="com.balsamiq.mockups::Image" x="354" y="316" w="62" h="58" measuredW="77" measuredH="79" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties/>
+    </control>
+    <control controlID="48" controlTypeID="com.balsamiq.mockups::Paragraph" x="423" y="316" w="421" h="46" measuredW="200" measuredH="80" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <align>left</align>
+        <size>11</size>
+        <text>Text%20for%20the%20home%20page%20pulled%20from%20the%20document%20text.%20This%20can%20go%20on%20and%20on%20until%20the%20end%20of%20the%20first%20paragraph%20or%20a%20set%20number%20of%20characters%20are%20reached.</text>
+      </controlProperties>
+    </control>
+    <control controlID="49" controlTypeID="com.balsamiq.mockups::TextInput" x="354" y="230" w="298" h="-1" measuredW="40" measuredH="28" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Reef</text>
+      </controlProperties>
+    </control>
+    <control controlID="50" controlTypeID="com.balsamiq.mockups::Image" x="354" y="410" w="62" h="58" measuredW="77" measuredH="79" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties/>
+    </control>
+    <control controlID="51" controlTypeID="com.balsamiq.mockups::Paragraph" x="423" y="410" w="421" h="46" measuredW="200" measuredH="80" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <align>left</align>
+        <size>11</size>
+        <text>Text%20for%20the%20home%20page%20pulled%20from%20the%20document%20text.%20This%20can%20go%20on%20and%20on%20until%20the%20end%20of%20the%20first%20paragraph%20or%20a%20set%20number%20of%20characters%20are%20reached.</text>
+      </controlProperties>
+    </control>
+    <control controlID="52" controlTypeID="com.balsamiq.mockups::StickyNote" x="805" y="182" w="169" h="123" measuredW="109" measuredH="123" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Results%20appear%20only%20after%20clicking%20search.</text>
+      </controlProperties>
+    </control>
+    <control controlID="53" controlTypeID="com.balsamiq.mockups::Button" x="659" y="230" w="-1" h="-1" measuredW="65" measuredH="27" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Search</text>
+      </controlProperties>
+    </control>
+    <control controlID="54" controlTypeID="com.balsamiq.mockups::Button" x="722" y="537" w="-1" h="-1" measuredW="100" measuredH="27" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>4555150</color>
+        <href>530%20Add%20Image%26bm%3B530%20Add%20Image.bmml%26bm%3B530%20Add%20Image.bmml%26bm%3B530%20Add%20Image.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22525%2C505%2C625%2C532%22%20href%3D%22530%2520Add%2520Image.bmml%22%20alt%3D%22530%20Add%20Image%22%20id%3D%2254%22/%3E</map>
+        <text>Select%20Image</text>
+      </controlProperties>
+    </control>
+    <control controlID="55" controlTypeID="com.balsamiq.mockups::Button" x="831" y="537" w="-1" h="-1" measuredW="64" measuredH="27" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <href>530%20Add%20Image%26bm%3B530%20Add%20Image.bmml%26bm%3B530%20Add%20Image.bmml%26bm%3B530%20Add%20Image.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22634%2C505%2C698%2C532%22%20href%3D%22530%2520Add%2520Image.bmml%22%20alt%3D%22530%20Add%20Image%22%20id%3D%2255%22/%3E</map>
+        <text>Cancel</text>
+      </controlProperties>
+    </control>
+    <control controlID="56" controlTypeID="com.balsamiq.mockups::Canvas" x="345" y="384" w="509" h="98" measuredW="100" measuredH="70" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <backgroundAlpha>0.25</backgroundAlpha>
+        <borderStyle>none</borderStyle>
+        <color>2848996</color>
+      </controlProperties>
+    </control>
+    <control controlID="57" controlTypeID="com.balsamiq.mockups::CheckBox" x="354" y="385" w="-1" h="-1" measuredW="158" measuredH="25" zOrder="12" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>16</size>
+        <state>selected</state>
+        <text>Reef%20over%20my%20hamy</text>
+      </controlProperties>
+    </control>
+    <control controlID="58" controlTypeID="com.balsamiq.mockups::CheckBox" x="354" y="291" w="-1" h="-1" measuredW="109" measuredH="25" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>16</size>
+        <text>Ocean%20Reef</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
