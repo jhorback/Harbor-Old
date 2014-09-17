@@ -16,9 +16,14 @@
         <icon>FacebookIcon%7Csmall</icon>
       </controlProperties>
     </control>
-    <control controlID="19" controlTypeID="com.balsamiq.mockups::Title" x="271" y="239" w="-1" h="-1" measuredW="135" measuredH="41" zOrder="3" locked="false" isInGroup="-1">
+    <control controlID="19" controlTypeID="com.balsamiq.mockups::Title" x="271" y="239" w="-1" h="-1" measuredW="122" measuredH="41" zOrder="3" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Events</text>
+      </controlProperties>
+    </control>
+    <control controlID="20" controlTypeID="com.balsamiq.mockups::StickyNote" x="338" y="307" w="340" h="145" measuredW="109" measuredH="123" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>List%20of%20events%3A%0AEvent%20Name%2C%20Date%0AEvent%20Description%0ACould%20take%20full%20row%20or%20have%20photo%201/3%20content%202/3%3F%0A--%0AIt%27s%20a%20prepend%20text%20content</text>
       </controlProperties>
     </control>
   </controls>
