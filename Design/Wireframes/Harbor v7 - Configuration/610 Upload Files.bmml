@@ -1,0 +1,113 @@
+<mockup version="1.0" skin="sketch" measuredW="997" measuredH="632" mockupW="800" mockupH="600">
+  <controls>
+    <control controlID="9" controlTypeID="com.balsamiq.mockups::Component" x="197" y="32" w="800" h="600" measuredW="800" measuredH="600" zOrder="0" locked="true" isInGroup="-1">
+      <controlProperties>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22701%2C81%2C785%2C102%22%20href%3D%2210%2520User%2520Menu.bmml%22%20alt%3D%2210%20User%20Menu%22%20id%3D%225%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22151%2C69%2C237%2C133%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%226%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22701%2C81%2C785%2C102%22%20href%3D%2210%2520User%2520Menu.bmml%22%20alt%3D%2210%20User%20Menu%22%20id%3D%225%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22151%2C69%2C237%2C133%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%226%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22701%2C81%2C785%2C102%22%20href%3D%2210%2520User%2520Menu.bmml%22%20alt%3D%2210%20User%20Menu%22%20id%3D%225%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22151%2C69%2C237%2C133%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%226%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22701%2C81%2C785%2C102%22%20href%3D%2210%2520User%2520Menu.bmml%22%20alt%3D%2210%20User%20Menu%22%20id%3D%225%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22151%2C69%2C237%2C133%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%226%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22701%2C81%2C785%2C102%22%20href%3D%2210%2520User%2520Menu.bmml%22%20alt%3D%2210%20User%20Menu%22%20id%3D%225%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22151%2C69%2C237%2C133%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%226%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22701%2C81%2C785%2C102%22%20href%3D%2210%2520User%2520Menu.bmml%22%20alt%3D%2210%20User%20Menu%22%20id%3D%225%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22151%2C69%2C237%2C133%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%226%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22701%2C81%2C785%2C102%22%20href%3D%2210%2520User%2520Menu.bmml%22%20alt%3D%2210%20User%20Menu%22%20id%3D%225%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22151%2C69%2C237%2C133%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%226%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22701%2C81%2C785%2C102%22%20href%3D%2210%2520User%2520Menu.bmml%22%20alt%3D%2210%20User%20Menu%22%20id%3D%225%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22151%2C69%2C237%2C133%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%226%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22701%2C81%2C785%2C102%22%20href%3D%2210%2520User%2520Menu.bmml%22%20alt%3D%2210%20User%20Menu%22%20id%3D%225%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22151%2C69%2C237%2C133%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%226%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22701%2C81%2C785%2C102%22%20href%3D%2210%2520User%2520Menu.bmml%22%20alt%3D%2210%20User%20Menu%22%20id%3D%225%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22151%2C69%2C237%2C133%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%226%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22838%2C93%2C922%2C114%22%20href%3D%2210%2520User%2520Menu.bmml%22%20alt%3D%2210%20User%20Menu%22%20id%3D%225%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22288%2C81%2C374%2C145%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%226%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22701%2C81%2C785%2C102%22%20href%3D%2210%2520User%2520Menu.bmml%22%20alt%3D%2210%20User%20Menu%22%20id%3D%225%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22151%2C69%2C237%2C133%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%226%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22838%2C93%2C922%2C114%22%20href%3D%2210%2520User%2520Menu.bmml%22%20alt%3D%2210%20User%20Menu%22%20id%3D%225%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22288%2C81%2C374%2C145%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%226%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22701%2C81%2C785%2C102%22%20href%3D%2210%2520User%2520Menu.bmml%22%20alt%3D%2210%20User%20Menu%22%20id%3D%225%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22151%2C69%2C237%2C133%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%226%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22701%2C81%2C785%2C102%22%20href%3D%2210%2520User%2520Menu.bmml%22%20alt%3D%2210%20User%20Menu%22%20id%3D%225%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22151%2C69%2C237%2C133%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%226%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22701%2C81%2C785%2C102%22%20href%3D%2210%2520User%2520Menu.bmml%22%20alt%3D%2210%20User%20Menu%22%20id%3D%225%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22151%2C69%2C237%2C133%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%226%22/%3E</map>
+        <src>./assets/symbols.bmml#Layout</src>
+      </controlProperties>
+    </control>
+    <control controlID="11" controlTypeID="com.balsamiq.mockups::SubTitle" x="218" y="173" w="-1" h="-1" measuredW="55" measuredH="33" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Files</text>
+      </controlProperties>
+    </control>
+    <control controlID="36" controlTypeID="com.balsamiq.mockups::Button" x="856" y="188" w="106" h="27" measuredW="54" measuredH="27" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13369344</color>
+        <href>600%20Files%26bm%3B600%20Files.bmml%26bm%3B600%20Files.bmml%26bm%3B600%20Files.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22659%2C156%2C765%2C183%22%20href%3D%22600%2520Files.bmml%22%20alt%3D%22600%20Files%22%20id%3D%2236%22/%3E</map>
+        <text>Done</text>
+      </controlProperties>
+    </control>
+    <control controlID="51" controlTypeID="com.balsamiq.mockups::HRule" x="288" y="377" w="545" h="-1" measuredW="100" measuredH="5" zOrder="3" locked="false" isInGroup="-1"/>
+    <control controlID="52" controlTypeID="com.balsamiq.mockups::Label" x="288" y="354" w="-1" h="-1" measuredW="122" measuredH="21" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>December%2010%2C%202012</text>
+      </controlProperties>
+    </control>
+    <control controlID="53" controlTypeID="com.balsamiq.mockups::Label" x="288" y="215" w="-1" h="-1" measuredW="120" measuredH="21" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>December%2011%2C%202012</text>
+      </controlProperties>
+    </control>
+    <control controlID="54" controlTypeID="com.balsamiq.mockups::Canvas" x="288" y="236" w="545" h="103" measuredW="100" measuredH="70" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderColor>10066329</borderColor>
+        <borderStyle>roundedDotted</borderStyle>
+      </controlProperties>
+    </control>
+    <control controlID="56" controlTypeID="com.balsamiq.mockups::Label" x="467" y="271" w="-1" h="-1" measuredW="161" measuredH="33" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>10066329</color>
+        <size>24</size>
+        <text>Drop%20files%20here</text>
+      </controlProperties>
+    </control>
+    <control controlID="65" controlTypeID="com.balsamiq.mockups::Label" x="325" y="450" w="-1" h="-1" measuredW="76" measuredH="24" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>3480693</color>
+        <href>620%20File%26bm%3B620%20File.bmml%26bm%3B620%20File.bmml%26bm%3B620%20File.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22128%2C418%2C204%2C442%22%20href%3D%22620%2520File.bmml%22%20alt%3D%22620%20File%22%20id%3D%2265%22/%3E</map>
+        <size>16</size>
+        <text>Let%27s%20Play</text>
+      </controlProperties>
+    </control>
+    <control controlID="66" controlTypeID="com.balsamiq.mockups::Label" x="460" y="448" w="115" h="41" measuredW="232" measuredH="24" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>3480693</color>
+        <href>620%20File%26bm%3B620%20File.bmml%26bm%3B620%20File.bmml%26bm%3B620%20File.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22263%2C416%2C378%2C457%22%20href%3D%22620%2520File.bmml%22%20alt%3D%22620%20File%22%20id%3D%2266%22/%3E</map>
+        <size>16</size>
+        <text>BJ%20Royster%20Florida%20Keys%20Gallery</text>
+      </controlProperties>
+    </control>
+    <control controlID="67" controlTypeID="com.balsamiq.mockups::Label" x="608" y="450" w="-1" h="-1" measuredW="62" measuredH="24" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>3480693</color>
+        <href>620%20File%26bm%3B620%20File.bmml%26bm%3B620%20File.bmml%26bm%3B620%20File.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22411%2C418%2C473%2C442%22%20href%3D%22620%2520File.bmml%22%20alt%3D%22620%20File%22%20id%3D%2267%22/%3E</map>
+        <size>16</size>
+        <text>Del%20Ray</text>
+      </controlProperties>
+    </control>
+    <control controlID="68" controlTypeID="com.balsamiq.mockups::Label" x="325" y="558" w="-1" h="-1" measuredW="89" measuredH="24" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>3480693</color>
+        <href>620%20File%26bm%3B620%20File.bmml%26bm%3B620%20File.bmml%26bm%3B620%20File.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22128%2C526%2C217%2C550%22%20href%3D%22620%2520File.bmml%22%20alt%3D%22620%20File%22%20id%3D%2268%22/%3E</map>
+        <size>16</size>
+        <text>Home%20Page</text>
+      </controlProperties>
+    </control>
+    <control controlID="69" controlTypeID="com.balsamiq.mockups::Image" x="327" y="397" w="54" h="48" measuredW="250" measuredH="204" zOrder="12" locked="false" isInGroup="-1">
+      <controlProperties>
+        <src>http%3A//bjroyster.com/siteadmin/content/files/137.jpg</src>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="70" controlTypeID="com.balsamiq.mockups::Image" x="460" y="397" w="54" h="48" measuredW="784" measuredH="519" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <src>http%3A//www.flaglerkeys100.com/wp-content/uploads/2011/03/florida-keys-bridge.gif</src>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="71" controlTypeID="com.balsamiq.mockups::Image" x="608" y="397" w="54" h="48" measuredW="350" measuredH="279" zOrder="14" locked="false" isInGroup="-1">
+      <controlProperties>
+        <src>http%3A//www.sun-sentinel.com/media/alternatethumbnails/story/2005-06/561932.jpg</src>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="72" controlTypeID="com.balsamiq.mockups::Image" x="325" y="504" w="54" h="48" measuredW="500" measuredH="375" zOrder="15" locked="false" isInGroup="-1">
+      <controlProperties>
+        <src>http%3A//bjroyster.com/siteadmin/content/files/393.JPG</src>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="74" controlTypeID="com.balsamiq.mockups::StickyNote" x="840" y="221" w="157" h="161" measuredW="109" measuredH="123" zOrder="16" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>12</size>
+        <text>Done%20button%20greyed%20out%20while%20upload%20is%20in%20progress.%0A%20%0AProgress%20percentage%20shown%20only%20while%20uploading.</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

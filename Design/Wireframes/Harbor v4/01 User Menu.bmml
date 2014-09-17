@@ -1,0 +1,14 @@
+<mockup version="1.0" skin="sketch" measuredW="1174" measuredH="602" mockupW="1000" mockupH="601">
+  <controls>
+    <control controlID="6" controlTypeID="com.balsamiq.mockups::Component" x="174" y="1" w="1000" h="601" measuredW="1000" measuredH="601" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <src>./assets/symbols.bmml#Page</src>
+      </controlProperties>
+    </control>
+    <control controlID="25" controlTypeID="com.balsamiq.mockups::Component" x="892" y="105" w="275" h="267" measuredW="275" measuredH="267" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <src>./assets/symbols.bmml#User Menu</src>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

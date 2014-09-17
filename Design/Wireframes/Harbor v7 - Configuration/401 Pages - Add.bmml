@@ -1,0 +1,116 @@
+<mockup version="1.0" skin="sketch" measuredW="997" measuredH="632" mockupW="800" mockupH="600">
+  <controls>
+    <control controlID="9" controlTypeID="com.balsamiq.mockups::Component" x="197" y="32" w="800" h="600" measuredW="800" measuredH="600" zOrder="0" locked="true" isInGroup="-1">
+      <controlProperties>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22701%2C81%2C786%2C103%22%20href%3D%2210%2520User%2520Menu.bmml%22%20alt%3D%2210%20User%20Menu%22%20id%3D%225%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22151%2C69%2C237%2C133%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%226%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22250%2C90%2C389%2C117%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%227%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22701%2C81%2C786%2C103%22%20href%3D%2210%2520User%2520Menu.bmml%22%20alt%3D%2210%20User%20Menu%22%20id%3D%225%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22151%2C69%2C237%2C133%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%226%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22250%2C90%2C389%2C117%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%227%22/%3E</map>
+        <src>./assets/symbols.bmml#Layout</src>
+      </controlProperties>
+    </control>
+    <control controlID="11" controlTypeID="com.balsamiq.mockups::SubTitle" x="218" y="173" w="-1" h="-1" measuredW="74" measuredH="33" zOrder="1" locked="true" isInGroup="-1">
+      <controlProperties>
+        <text>Pages</text>
+      </controlProperties>
+    </control>
+    <control controlID="32" controlTypeID="com.balsamiq.mockups::Label" x="291" y="230" w="-1" h="-1" measuredW="73" measuredH="24" zOrder="2" locked="true" isInGroup="-1">
+      <controlProperties>
+        <color>3480693</color>
+        <size>16</size>
+        <text>Let%27s%20Play</text>
+      </controlProperties>
+    </control>
+    <control controlID="33" controlTypeID="com.balsamiq.mockups::Label" x="291" y="320" w="-1" h="-1" measuredW="226" measuredH="24" zOrder="3" locked="true" isInGroup="-1">
+      <controlProperties>
+        <color>3480693</color>
+        <size>16</size>
+        <text>BJ%20Royster%20Florida%20Keys%20Gallery</text>
+      </controlProperties>
+    </control>
+    <control controlID="34" controlTypeID="com.balsamiq.mockups::Label" x="287" y="411" w="-1" h="-1" measuredW="61" measuredH="24" zOrder="4" locked="true" isInGroup="-1">
+      <controlProperties>
+        <color>3480693</color>
+        <size>16</size>
+        <text>Del%20Ray</text>
+      </controlProperties>
+    </control>
+    <control controlID="35" controlTypeID="com.balsamiq.mockups::Label" x="285" y="497" w="-1" h="-1" measuredW="90" measuredH="24" zOrder="5" locked="true" isInGroup="-1">
+      <controlProperties>
+        <color>3480693</color>
+        <size>16</size>
+        <text>Home%20Page</text>
+      </controlProperties>
+    </control>
+    <control controlID="36" controlTypeID="com.balsamiq.mockups::Button" x="856" y="188" w="106" h="27" measuredW="90" measuredH="27" zOrder="6" locked="true" isInGroup="-1">
+      <controlProperties>
+        <color>13369344</color>
+        <text>Add%20a%20page</text>
+      </controlProperties>
+    </control>
+    <control controlID="38" controlTypeID="com.balsamiq.mockups::Image" x="291" y="254" w="54" h="48" measuredW="250" measuredH="204" zOrder="7" locked="true" isInGroup="-1">
+      <controlProperties>
+        <src>http%3A//bjroyster.com/siteadmin/content/files/137.jpg</src>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="39" controlTypeID="com.balsamiq.mockups::Paragraph" x="357" y="254" w="297" h="48" measuredW="200" measuredH="80" zOrder="8" locked="true" isInGroup="-1"/>
+    <control controlID="40" controlTypeID="com.balsamiq.mockups::Image" x="291" y="348" w="54" h="48" measuredW="784" measuredH="519" zOrder="9" locked="true" isInGroup="-1">
+      <controlProperties>
+        <src>http%3A//www.flaglerkeys100.com/wp-content/uploads/2011/03/florida-keys-bridge.gif</src>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="41" controlTypeID="com.balsamiq.mockups::Paragraph" x="357" y="348" w="297" h="48" measuredW="200" measuredH="80" zOrder="10" locked="true" isInGroup="-1"/>
+    <control controlID="42" controlTypeID="com.balsamiq.mockups::Image" x="291" y="435" w="54" h="48" measuredW="350" measuredH="279" zOrder="11" locked="true" isInGroup="-1">
+      <controlProperties>
+        <src>http%3A//www.sun-sentinel.com/media/alternatethumbnails/story/2005-06/561932.jpg</src>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="43" controlTypeID="com.balsamiq.mockups::Paragraph" x="357" y="435" w="297" h="48" measuredW="200" measuredH="80" zOrder="12" locked="true" isInGroup="-1"/>
+    <control controlID="44" controlTypeID="com.balsamiq.mockups::Image" x="291" y="521" w="54" h="48" measuredW="500" measuredH="375" zOrder="13" locked="true" isInGroup="-1">
+      <controlProperties>
+        <src>http%3A//bjroyster.com/siteadmin/content/files/393.JPG</src>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="45" controlTypeID="com.balsamiq.mockups::Paragraph" x="357" y="521" w="297" h="48" measuredW="200" measuredH="80" zOrder="14" locked="true" isInGroup="-1"/>
+    <control controlID="46" controlTypeID="com.balsamiq.mockups::Canvas" x="197" y="102" w="800" h="506" measuredW="100" measuredH="70" zOrder="15" locked="true" isInGroup="-1">
+      <controlProperties>
+        <backgroundAlpha>0.5</backgroundAlpha>
+        <color>0</color>
+      </controlProperties>
+    </control>
+    <control controlID="47" controlTypeID="com.balsamiq.mockups::Canvas" x="406" y="206" w="383" h="252" measuredW="100" measuredH="70" zOrder="16" locked="true" isInGroup="-1"/>
+    <control controlID="48" controlTypeID="com.balsamiq.mockups::Title" x="435" y="211" w="-1" h="-1" measuredW="150" measuredH="38" zOrder="17" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>28</size>
+        <text>Add%20a%20page</text>
+      </controlProperties>
+    </control>
+    <control controlID="51" controlTypeID="com.balsamiq.mockups::ComboBox" x="435" y="306" w="109" h="-1" measuredW="99" measuredH="84" zOrder="18" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Blank%20Page%0AArticle%0AProduct%0ASong</text>
+      </controlProperties>
+    </control>
+    <control controlID="52" controlTypeID="com.balsamiq.mockups::TextInput" x="435" y="267" w="324" h="-1" measuredW="81" measuredH="28" zOrder="19" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderColor>6710886</borderColor>
+        <text>Enter%20name</text>
+      </controlProperties>
+    </control>
+    <control controlID="53" controlTypeID="com.balsamiq.mockups::Button" x="624" y="416" w="-1" h="-1" measuredW="64" measuredH="27" zOrder="20" locked="false" isInGroup="-1">
+      <controlProperties>
+        <href>400%20Pages%26bm%3B400%20Pages.bmml%26bm%3B400%20Pages.bmml%26bm%3B400%20Pages.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22427%2C384%2C491%2C411%22%20href%3D%22400%2520Pages.bmml%22%20alt%3D%22400%20Pages%22%20id%3D%2253%22/%3E</map>
+        <text>Cancel</text>
+      </controlProperties>
+    </control>
+    <control controlID="54" controlTypeID="com.balsamiq.mockups::Button" x="695" y="416" w="-1" h="-1" measuredW="79" measuredH="27" zOrder="21" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13369344</color>
+        <href>510%20Page%20Edit%26bm%3B510%20Page%20Edit.bmml%26bm%3B510%20Page%20Edit.bmml%26bm%3B510%20Page%20Edit.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22498%2C384%2C577%2C411%22%20href%3D%22510%2520Page%2520Edit.bmml%22%20alt%3D%22510%20Page%20Edit%22%20id%3D%2254%22/%3E</map>
+        <text>Add%20page</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

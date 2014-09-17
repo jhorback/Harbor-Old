@@ -1,0 +1,116 @@
+<mockup version="1.0" skin="sketch" measuredW="997" measuredH="632" mockupW="800" mockupH="600">
+  <controls>
+    <control controlID="9" controlTypeID="com.balsamiq.mockups::Component" x="197" y="32" w="800" h="600" measuredW="800" measuredH="600" zOrder="0" locked="true" isInGroup="-1">
+      <controlProperties>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22701%2C81%2C786%2C103%22%20href%3D%2210%2520User%2520Menu.bmml%22%20alt%3D%2210%20User%20Menu%22%20id%3D%225%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22151%2C69%2C237%2C133%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%226%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22250%2C90%2C389%2C117%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%227%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22701%2C81%2C786%2C103%22%20href%3D%2210%2520User%2520Menu.bmml%22%20alt%3D%2210%20User%20Menu%22%20id%3D%225%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22151%2C69%2C237%2C133%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%226%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22250%2C90%2C389%2C117%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%227%22/%3E</map>
+        <src>./assets/symbols.bmml#Layout</src>
+      </controlProperties>
+    </control>
+    <control controlID="10" controlTypeID="com.balsamiq.mockups::Title" x="330" y="183" w="-1" h="-1" measuredW="130" measuredH="38" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>28</size>
+        <text>Page%20Title</text>
+      </controlProperties>
+    </control>
+    <control controlID="15" controlTypeID="com.balsamiq.mockups::Paragraph" x="334" y="246" w="109" h="80" measuredW="200" measuredH="80" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Description%20of%20some%20other%20page.</text>
+      </controlProperties>
+    </control>
+    <control controlID="16" controlTypeID="com.balsamiq.mockups::Link" x="334" y="225" w="-1" h="-1" measuredW="110" measuredH="22" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Some%20Other%20Page</text>
+      </controlProperties>
+    </control>
+    <control controlID="17" controlTypeID="com.balsamiq.mockups::Paragraph" x="480" y="250" w="423" h="69" measuredW="200" measuredH="80" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Basic%20rich%20text%20content.%0A%20%0AIn%20settings%2C%20layout%20will%20allow%20the%20adjustment%20of%20centered%2C%20readable%2C%20and%20no%20gutter/aside.</text>
+      </controlProperties>
+    </control>
+    <control controlID="18" controlTypeID="com.balsamiq.mockups::Label" x="478" y="223" w="-1" h="-1" measuredW="89" measuredH="24" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>false</bold>
+        <color>7880452</color>
+        <size>16</size>
+        <text>Text%20content</text>
+      </controlProperties>
+    </control>
+    <control controlID="22" controlTypeID="com.balsamiq.mockups::Icon" x="950" y="175" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderStyle>none</borderStyle>
+        <color>13421772</color>
+        <href>520%20Page%20Settings%26bm%3B520%20Page%20Settings.bmml%26bm%3B520%20Page%20Settings.bmml%26bm%3B520%20Page%20Settings.bmml</href>
+        <icon>ListIcon%7Csmall</icon>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22753%2C143%2C777%2C167%22%20href%3D%22520%2520Page%2520Settings.bmml%22%20alt%3D%22520%20Page%20Settings%22%20id%3D%2222%22/%3E</map>
+      </controlProperties>
+    </control>
+    <control controlID="23" controlTypeID="com.balsamiq.mockups::Icon" x="918" y="175" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>3480693</color>
+        <href>00%20Index%26bm%3B00%20Index.bmml%26bm%3B00%20Index.bmml%26bm%3B00%20Index.bmml</href>
+        <icon>WriteIcon%7Csmall</icon>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22721%2C143%2C745%2C167%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%2223%22/%3E</map>
+      </controlProperties>
+    </control>
+    <control controlID="30" controlTypeID="com.balsamiq.mockups::Button" x="849" y="174" w="-1" h="-1" measuredW="54" measuredH="27" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13369344</color>
+        <href>00%20Index%26bm%3B00%20Index.bmml%26bm%3B00%20Index.bmml%26bm%3B00%20Index.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22652%2C142%2C706%2C169%22%20href%3D%2200%2520Index.bmml%22%20alt%3D%2200%20Index%22%20id%3D%2230%22/%3E</map>
+        <text>Done</text>
+      </controlProperties>
+    </control>
+    <control controlID="31" controlTypeID="com.balsamiq.mockups::Canvas" x="756" y="212" w="132" h="46" measuredW="100" measuredH="70" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderColor>13421772</borderColor>
+        <borderStyle>roundedSolid</borderStyle>
+        <color>13421772</color>
+      </controlProperties>
+    </control>
+    <control controlID="34" controlTypeID="com.balsamiq.mockups::Icon" x="771" y="223" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>PlusIcon%7Csmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="35" controlTypeID="com.balsamiq.mockups::Icon" x="810" y="223" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <href>520%20Layout%20Content%26bm%3B520%20Layout%20Content.bmml%26bm%3B520%20Layout%20Content.bmml%26bm%3B520%20Layout%20Content.bmml</href>
+        <icon>ColumnsIcon%7Csmall</icon>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22613%2C191%2C637%2C215%22%20href%3D%22520%2520Layout%2520Content.bmml%22%20alt%3D%22520%20Layout%20Content%22%20id%3D%2235%22/%3E</map>
+      </controlProperties>
+    </control>
+    <control controlID="36" controlTypeID="com.balsamiq.mockups::Icon" x="849" y="223" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="12" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>XIcon%7Csmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="37" controlTypeID="com.balsamiq.mockups::Canvas" x="480" y="334" w="423" h="46" measuredW="100" measuredH="70" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderColor>13421772</borderColor>
+        <borderStyle>roundedSolid</borderStyle>
+        <color>14540253</color>
+        <href>530%20Add%20Content%26bm%3B530%20Add%20Content.bmml%26bm%3B530%20Add%20Content.bmml%26bm%3B530%20Add%20Content.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22283%2C302%2C706%2C348%22%20href%3D%22530%2520Add%2520Content.bmml%22%20alt%3D%22530%20Add%20Content%22%20id%3D%2237%22/%3E</map>
+      </controlProperties>
+    </control>
+    <control controlID="38" controlTypeID="com.balsamiq.mockups::Icon" x="679" y="345" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="14" locked="false" isInGroup="-1">
+      <controlProperties>
+        <href>530%20Add%20Content%26bm%3B530%20Add%20Content.bmml%26bm%3B530%20Add%20Content.bmml%26bm%3B530%20Add%20Content.bmml</href>
+        <icon>PlusBigIcon%7Csmall</icon>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22482%2C313%2C506%2C337%22%20href%3D%22530%2520Add%2520Content.bmml%22%20alt%3D%22530%20Add%20Content%22%20id%3D%2238%22/%3E</map>
+      </controlProperties>
+    </control>
+    <control controlID="39" controlTypeID="com.balsamiq.mockups::Canvas" x="333" y="299" w="125" h="46" measuredW="100" measuredH="70" zOrder="15" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderColor>13421772</borderColor>
+        <borderStyle>roundedSolid</borderStyle>
+        <color>14540253</color>
+      </controlProperties>
+    </control>
+    <control controlID="40" controlTypeID="com.balsamiq.mockups::Icon" x="383" y="310" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="16" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>PlusBigIcon%7Csmall</icon>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

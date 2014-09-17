@@ -1,0 +1,69 @@
+<mockup version="1.0" skin="sketch" measuredW="1174" measuredH="602" mockupW="1000" mockupH="601">
+  <controls>
+    <control controlID="6" controlTypeID="com.balsamiq.mockups::Component" x="174" y="1" w="1000" h="601" measuredW="1000" measuredH="601" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22930%2C84%2C983%2C105%22%20href%3D%2201%2520User%2520Menu.bmml%22%20alt%3D%2201%20User%20Menu%22%20id%3D%222%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22155%2C84%2C193%2C105%22%20href%3D%2200%2520Harbor.bmml%22%20alt%3D%2200%20Harbor%22%20id%3D%223_0%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22369%2C84%2C448%2C105%22%20href%3D%22200%2520Document.bmml%22%20alt%3D%22200%20Document%22%20id%3D%223_1%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22930%2C84%2C983%2C105%22%20href%3D%2201%2520User%2520Menu.bmml%22%20alt%3D%2201%20User%20Menu%22%20id%3D%222%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22155%2C84%2C193%2C105%22%20href%3D%2200%2520Harbor.bmml%22%20alt%3D%2200%20Harbor%22%20id%3D%223_0%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22369%2C84%2C448%2C105%22%20href%3D%22200%2520Document.bmml%22%20alt%3D%22200%20Document%22%20id%3D%223_1%22/%3E%0A</map>
+        <src>./assets/symbols.bmml#Page</src>
+      </controlProperties>
+    </control>
+    <control controlID="46" controlTypeID="com.balsamiq.mockups::Component" x="174" y="113" w="1000" h="463" measuredW="1000" measuredH="463" zOrder="1" locked="true" isInGroup="-1">
+      <controlProperties>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22164%2C179%2C284%2C203%22%20href%3D%22100%2520Settings.bmml%22%20alt%3D%22100%20Settings%22%20id%3D%220%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22157%2C220%2C284%2C244%22%20href%3D%22110%2520Website%2520Settings.bmml%22%20alt%3D%22110%20Website%20Settings%22%20id%3D%221%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22207%2C261%2C284%2C285%22%20href%3D%22120%2520Storefront.bmml%22%20alt%3D%22120%20Storefront%22%20id%3D%222%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22237%2C302%2C284%2C326%22%20href%3D%22140%2520My%2520Documents.bmml%22%20alt%3D%22140%20My%20Documents%22%20id%3D%224%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22164%2C179%2C284%2C203%22%20href%3D%22100%2520Settings.bmml%22%20alt%3D%22100%20Settings%22%20id%3D%220%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22157%2C220%2C284%2C244%22%20href%3D%22110%2520Website%2520Settings.bmml%22%20alt%3D%22110%20Website%20Settings%22%20id%3D%221%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22207%2C261%2C284%2C285%22%20href%3D%22120%2520Storefront.bmml%22%20alt%3D%22120%20Storefront%22%20id%3D%222%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22237%2C302%2C284%2C326%22%20href%3D%22140%2520My%2520Documents.bmml%22%20alt%3D%22140%20My%20Documents%22%20id%3D%224%22/%3E</map>
+        <override controlID="1">
+          <text>Media</text>
+        </override>
+        <src>./assets/symbols.bmml#Settings Page</src>
+      </controlProperties>
+    </control>
+    <control controlID="132" controlTypeID="com.balsamiq.mockups::Button" x="621" y="242" w="-1" h="-1" measuredW="126" measuredH="27" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>16777215</color>
+        <text>Add%20a%20document...</text>
+      </controlProperties>
+    </control>
+    <control controlID="136" controlTypeID="com.balsamiq.mockups::Button" x="621" y="279" w="-1" h="-1" measuredW="162" measuredH="27" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <href>141%20Manage%20Documents%26bm%3B141%20Manage%20Documents.bmml%26bm%3B141%20Manage%20Documents.bmml%26bm%3B141%20Manage%20Documents.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22447%2C278%2C609%2C305%22%20href%3D%22141%2520Manage%2520Documents.bmml%22%20alt%3D%22141%20Manage%20Documents%22%20id%3D%22136%22/%3E</map>
+        <text>Manage%20your%20documents</text>
+      </controlProperties>
+    </control>
+    <control controlID="137" controlTypeID="com.balsamiq.mockups::Title" x="491" y="212" w="-1" h="-1" measuredW="111" measuredH="24" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <size>16</size>
+        <text>Documents%20list</text>
+      </controlProperties>
+    </control>
+    <control controlID="142" controlTypeID="com.balsamiq.mockups::HRule" x="491" y="321" w="493" h="-1" measuredW="100" measuredH="5" zOrder="5" locked="false" isInGroup="-1"/>
+    <control controlID="145" controlTypeID="com.balsamiq.mockups::HRule" x="491" y="199" w="493" h="-1" measuredW="100" measuredH="5" zOrder="6" locked="false" isInGroup="-1"/>
+    <control controlID="146" controlTypeID="com.balsamiq.mockups::Title" x="510" y="341" w="-1" h="-1" measuredW="40" measuredH="24" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <size>16</size>
+        <text>Files</text>
+      </controlProperties>
+    </control>
+    <control controlID="147" controlTypeID="com.balsamiq.mockups::Button" x="621" y="380" w="-1" h="-1" measuredW="98" measuredH="27" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>16777215</color>
+        <text>Upload%20files...</text>
+      </controlProperties>
+    </control>
+    <control controlID="148" controlTypeID="com.balsamiq.mockups::Button" x="621" y="340" w="-1" h="-1" measuredW="149" measuredH="27" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Manage%20uploaded%20files</text>
+      </controlProperties>
+    </control>
+    <control controlID="149" controlTypeID="com.balsamiq.mockups::StickyNote" x="902" y="386" w="-1" h="-1" measuredW="109" measuredH="123" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Consider%20other%20information%20such%20as%20file%20quota%2C%20used%20space%2C%20etc.</text>
+      </controlProperties>
+    </control>
+    <control controlID="150" controlTypeID="com.balsamiq.mockups::Label" x="621" y="214" w="-1" h="-1" measuredW="192" measuredH="21" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>You%20currently%20have%200%20documents.</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

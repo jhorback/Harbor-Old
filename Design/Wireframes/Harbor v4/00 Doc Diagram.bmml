@@ -1,0 +1,196 @@
+<mockup version="1.0" skin="sketch" measuredW="1399" measuredH="685" mockupW="1240" mockupH="642">
+  <controls>
+    <control controlID="29" controlTypeID="com.balsamiq.mockups::Component" x="159" y="43" w="1238" h="70" measuredW="1238" measuredH="70" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <override controlID="2">
+          <text>Doc%20Diagram</text>
+        </override>
+        <src>./assets/symbols.bmml#Sketch Header</src>
+      </controlProperties>
+    </control>
+    <control controlID="178" controlTypeID="com.balsamiq.mockups::RoundButton" x="185" y="143" w="99" h="89" measuredW="32" measuredH="32" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>SearchIcon%7Csmall</icon>
+        <shape>circle</shape>
+        <text>ILookup</text>
+      </controlProperties>
+    </control>
+    <control controlID="180" controlTypeID="com.balsamiq.mockups::HCurly" x="159" y="232" w="156" h="113" measuredW="200" measuredH="80" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>11</size>
+        <text>Job%20is%20to%20find%20one%20or%20more%20Docs%0A---%0Asimple%20searches%20first%20then%20can%20extend%20to%20adjustments%20to%20IQueryable%20from%20exports.</text>
+      </controlProperties>
+    </control>
+    <control controlID="184" controlTypeID="com.balsamiq.mockups::RoundButton" x="889" y="128" w="332" h="197" measuredW="32" measuredH="32" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <align>left</align>
+        <color>15658734</color>
+        <shape>rectangle</shape>
+        <size>12</size>
+        <text>Doc%0A---%0ADocID%0AAuthor%20%28UserName%29%0AParentDocID%0APreviewImage%20%28either%20an%20ID%20or%20some%20link%20to%20a%20CMS%29%0ABasedOnTemplate%20%28TemplateKey%29%0AName%0ACreated%0AModified%0ATemplate%20-%20xml%3F%20or%20a%20pivot%20field%20here</text>
+      </controlProperties>
+    </control>
+    <control controlID="185" controlTypeID="com.balsamiq.mockups::RoundButton" x="1240" y="128" w="157" h="152" measuredW="32" measuredH="32" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <align>left</align>
+        <color>15658734</color>
+        <shape>rectangle</shape>
+        <size>12</size>
+        <text>DocData%0A-%0ADocDataID%0ADocID%0AName%0AContext%0AValue</text>
+      </controlProperties>
+    </control>
+    <control controlID="186" controlTypeID="com.balsamiq.mockups::RoundButton" x="395" y="143" w="139" h="84" measuredW="32" measuredH="32" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <shape>circle</shape>
+        <text>IDocDataService</text>
+      </controlProperties>
+    </control>
+    <control controlID="187" controlTypeID="com.balsamiq.mockups::HCurly" x="373" y="230" w="178" h="79" measuredW="200" measuredH="80" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Gets%20and%20sets%20DocData%2C%20also%20Add%2C%20Edit%2C%20Delete%20of%20a%20Doc%0AFast%20%28cached%29</text>
+      </controlProperties>
+    </control>
+    <control controlID="193" controlTypeID="com.balsamiq.mockups::RoundButton" x="633" y="125" w="188" h="45" measuredW="32" measuredH="32" zOrder="14" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>14540253</color>
+        <shape>rectangle</shape>
+        <size>13</size>
+        <text>public%20class%20%0AHarbor.Docs.Template</text>
+      </controlProperties>
+    </control>
+    <control controlID="194" controlTypeID="com.balsamiq.mockups::HCurly" x="610" y="279" w="227" h="71" measuredW="200" measuredH="80" zOrder="15" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>9</size>
+        <text>can%20take%20a%20document%20id%20or%20a%20document%20in%20constructor%20-%20makes%20available%20the%20LayoutProperties%2C%20Header%2C%20Gutter%2C%20and%20Content</text>
+      </controlProperties>
+    </control>
+    <control controlID="195" controlTypeID="__group__" x="785" y="349" w="354" h="294" measuredW="354" measuredH="294" zOrder="13" locked="false" isInGroup="-1">
+      <groupChildrenDescriptors>
+        <control controlID="0" controlTypeID="com.balsamiq.mockups::RoundButton" x="34" y="161" w="144" h="39" measuredW="32" measuredH="32" zOrder="0" locked="false" isInGroup="195">
+          <controlProperties>
+            <bold>true</bold>
+            <shape>roundRect</shape>
+            <size>12</size>
+            <text>HeaderComponent</text>
+          </controlProperties>
+        </control>
+        <control controlID="1" controlTypeID="com.balsamiq.mockups::RoundButton" x="61" y="99" w="233" h="54" measuredW="32" measuredH="32" zOrder="1" locked="false" isInGroup="195">
+          <controlProperties>
+            <shape>parallelogram</shape>
+            <text>NavigationComponentStore</text>
+          </controlProperties>
+        </control>
+        <control controlID="2" controlTypeID="com.balsamiq.mockups::RoundButton" x="114" y="0" w="126" h="90" measuredW="32" measuredH="32" zOrder="2" locked="false" isInGroup="195">
+          <controlProperties>
+            <text>INavigation</text>
+          </controlProperties>
+        </control>
+        <control controlID="3" controlTypeID="com.balsamiq.mockups::HCurly" x="0" y="207" w="354" h="87" measuredW="200" measuredH="80" zOrder="3" locked="false" isInGroup="195">
+          <controlProperties>
+            <text>Components%20in%20the%20gutter%20and%20header.%0AGutter%20has%20a%20setting%20that%20can%20choose%201%20or%20more%20and%20re-order%0AHeader%20has%20a%20setting%20which%20can%20choose%201%0A%28the%20default%20header%20is%20just%20the%20title%29</text>
+          </controlProperties>
+        </control>
+        <control controlID="4" controlTypeID="com.balsamiq.mockups::RoundButton" x="178" y="161" w="144" h="39" measuredW="32" measuredH="32" zOrder="4" locked="false" isInGroup="195">
+          <controlProperties>
+            <bold>true</bold>
+            <shape>roundRect</shape>
+            <size>12</size>
+            <text>GutterComponent</text>
+          </controlProperties>
+        </control>
+      </groupChildrenDescriptors>
+    </control>
+    <control controlID="196" controlTypeID="__group__" x="1158" y="349" w="241" h="288" measuredW="241" measuredH="288" zOrder="12" locked="false" isInGroup="-1">
+      <groupChildrenDescriptors>
+        <control controlID="0" controlTypeID="com.balsamiq.mockups::RoundButton" x="71" y="0" w="90" h="90" measuredW="32" measuredH="32" zOrder="0" locked="false" isInGroup="196">
+          <controlProperties>
+            <text>ISettings</text>
+          </controlProperties>
+        </control>
+        <control controlID="1" controlTypeID="com.balsamiq.mockups::RoundButton" x="38" y="160" w="166" h="39" measuredW="32" measuredH="32" zOrder="1" locked="false" isInGroup="196">
+          <controlProperties>
+            <bold>true</bold>
+            <shape>roundRect</shape>
+            <size>12</size>
+            <text>SettingsCategory%0ASettingsSection</text>
+          </controlProperties>
+        </control>
+        <control controlID="2" controlTypeID="com.balsamiq.mockups::RoundButton" x="51" y="99" w="131" h="54" measuredW="32" measuredH="32" zOrder="2" locked="false" isInGroup="196">
+          <controlProperties>
+            <shape>parallelogram</shape>
+            <text>SettingsStore</text>
+          </controlProperties>
+        </control>
+        <control controlID="3" controlTypeID="com.balsamiq.mockups::HCurly" x="0" y="204" w="241" h="84" measuredW="200" measuredH="80" zOrder="3" locked="false" isInGroup="196">
+          <controlProperties>
+            <text>Flexible%20settings%20only%20a%20%22writer%22%20can%20see.%0ACan%20store%20data%20in%20%20DocData.</text>
+          </controlProperties>
+        </control>
+      </groupChildrenDescriptors>
+    </control>
+    <control controlID="197" controlTypeID="__group__" x="496" y="347" w="233" h="324" measuredW="233" measuredH="324" zOrder="7" locked="false" isInGroup="-1">
+      <groupChildrenDescriptors>
+        <control controlID="0" controlTypeID="com.balsamiq.mockups::RoundButton" x="16" y="159" w="199" h="40" measuredW="32" measuredH="32" zOrder="0" locked="false" isInGroup="197">
+          <controlProperties>
+            <bold>true</bold>
+            <shape>roundRect</shape>
+            <size>12</size>
+            <text>ContentComponentCategory%0AContentComponent</text>
+          </controlProperties>
+        </control>
+        <control controlID="1" controlTypeID="com.balsamiq.mockups::RoundButton" x="0" y="99" w="233" h="54" measuredW="32" measuredH="32" zOrder="1" locked="false" isInGroup="197">
+          <controlProperties>
+            <shape>parallelogram</shape>
+            <text>ContentComponentStore</text>
+          </controlProperties>
+        </control>
+        <control controlID="2" controlTypeID="com.balsamiq.mockups::RoundButton" x="58" y="0" w="96" h="90" measuredW="32" measuredH="32" zOrder="2" locked="false" isInGroup="197">
+          <controlProperties>
+            <text>IContent</text>
+          </controlProperties>
+        </control>
+        <control controlID="3" controlTypeID="com.balsamiq.mockups::HCurly" x="16" y="206" w="200" h="118" measuredW="200" measuredH="80" zOrder="3" locked="false" isInGroup="197">
+          <controlProperties>
+            <text>Content%20components%20define%20their%20default%20content%20layout%20and%20action.%0A-Audio%2C%20Video%2C%20Text%2C%20Image%2C%20Address%2C...</text>
+          </controlProperties>
+        </control>
+      </groupChildrenDescriptors>
+    </control>
+    <control controlID="199" controlTypeID="com.balsamiq.mockups::RoundButton" x="220" y="508" w="144" h="39" measuredW="32" measuredH="32" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <shape>roundRect</shape>
+        <size>12</size>
+        <text>Property</text>
+      </controlProperties>
+    </control>
+    <control controlID="200" controlTypeID="com.balsamiq.mockups::RoundButton" x="186" y="446" w="233" h="54" measuredW="32" measuredH="32" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <shape>parallelogram</shape>
+        <text>PropertyStore</text>
+      </controlProperties>
+    </control>
+    <control controlID="201" controlTypeID="com.balsamiq.mockups::RoundButton" x="244" y="347" w="96" h="90" measuredW="32" measuredH="32" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>IProperties</text>
+      </controlProperties>
+    </control>
+    <control controlID="202" controlTypeID="com.balsamiq.mockups::HCurly" x="202" y="551" w="200" h="134" measuredW="200" measuredH="80" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Properties%20get%20displayed%20special%20%28visible%20on/off%20by%20author%29.%0A-Tags%2C%20Rating%2C%20Keywords%2C...%20%28author%2C%20created%2C...%20are%20default%20properties%29.%0AStores%20data%20in%20DocData</text>
+      </controlProperties>
+    </control>
+    <control controlID="203" controlTypeID="com.balsamiq.mockups::RoundButton" x="654" y="245" w="142" h="25" measuredW="32" measuredH="32" zOrder="16" locked="false" isInGroup="-1">
+      <controlProperties>
+        <shape>parallelogram</shape>
+        <text>TemplateStore</text>
+      </controlProperties>
+    </control>
+    <control controlID="204" controlTypeID="com.balsamiq.mockups::RoundButton" x="677" y="177" w="96" h="62" measuredW="32" measuredH="32" zOrder="17" locked="false" isInGroup="-1">
+      <controlProperties>
+        <shape>circle</shape>
+        <text>ITemplates</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
