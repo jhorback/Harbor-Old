@@ -6,6 +6,7 @@ pageEditor.productLinkModel = function (attrs, options, appurl, modelFactory) {
 	this.modelFactory = modelFactory;
 };
 
+
 pageEditor.productLinkModel.prototype = {
 	syncPageProperties: ["pageID", "tileDisplay"],
 	
@@ -18,8 +19,7 @@ pageEditor.productLinkModel.prototype = {
 		previewImageSrc: null,
 		tileClassName: "tile",
 		link: null,
-		hasPreviewImage: false,
-		// merchantID: null, // jch! fill this out - also need to render the other button if count > 0 if 0 then empty
+		hasPreviewImage: false, 
 		// product link properties
 		productCount: 0,
 		firstButton: null
@@ -28,7 +28,6 @@ pageEditor.productLinkModel.prototype = {
 	initialize: function () {
 		this.on("change:productCount change:firstButton", this.onRender);
 		this.firstButton = this.modelFactory.create("payPalButton", this.attributes.firstButton);
-		debugger;
 	},
 
 	hasPageLink: function () {
