@@ -26,18 +26,18 @@
                 <text>Home</text>
               </controlProperties>
             </control>
-            <control controlID="1" controlTypeID="com.balsamiq.mockups::Label" x="84" y="1" w="-1" h="-1" measuredW="53" measuredH="24" zOrder="1" locked="false" isInGroup="2">
+            <control controlID="1" controlTypeID="com.balsamiq.mockups::Label" x="84" y="1" w="-1" h="-1" measuredW="57" measuredH="24" zOrder="1" locked="false" isInGroup="2">
               <controlProperties>
                 <href>20%20Artwork%26bm%3B20%20Artwork.bmml%26bm%3B20%20Artwork.bmml%26bm%3B20%20Artwork.bmml</href>
-                <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22295%2C84%2C348%2C108%22%20href%3D%2220%2520Artwork.bmml%22%20alt%3D%2220%20Artwork%22%20id%3D%221%22/%3E</map>
+                <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22295%2C84%2C352%2C108%22%20href%3D%2220%2520Artwork.bmml%22%20alt%3D%2220%20Artwork%22%20id%3D%221%22/%3E</map>
                 <size>16</size>
                 <text>Artwork</text>
               </controlProperties>
             </control>
-            <control controlID="2" controlTypeID="com.balsamiq.mockups::Label" x="176" y="1" w="-1" h="-1" measuredW="47" measuredH="24" zOrder="2" locked="false" isInGroup="2">
+            <control controlID="2" controlTypeID="com.balsamiq.mockups::Label" x="176" y="1" w="-1" h="-1" measuredW="51" measuredH="24" zOrder="2" locked="false" isInGroup="2">
               <controlProperties>
                 <href>30%20Events%26bm%3B30%20Events.bmml%26bm%3B30%20Events.bmml%26bm%3B30%20Events.bmml</href>
-                <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22387%2C84%2C434%2C108%22%20href%3D%2230%2520Events.bmml%22%20alt%3D%2230%20Events%22%20id%3D%222%22/%3E</map>
+                <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22387%2C84%2C438%2C108%22%20href%3D%2230%2520Events.bmml%22%20alt%3D%2230%20Events%22%20id%3D%222%22/%3E</map>
                 <size>16</size>
                 <text>Events</text>
               </controlProperties>
@@ -72,7 +72,7 @@
             <text>Google+</text>
           </controlProperties>
         </control>
-        <control controlID="11" controlTypeID="com.balsamiq.mockups::IconLabel" x="481" y="649" w="-1" h="-1" measuredW="85" measuredH="24" zOrder="6" locked="false" isInGroup="0">
+        <control controlID="11" controlTypeID="com.balsamiq.mockups::IconLabel" x="481" y="649" w="-1" h="-1" measuredW="84" measuredH="24" zOrder="6" locked="false" isInGroup="0">
           <controlProperties>
             <color>15658734</color>
             <icon>FacebookIcon%7Csmall</icon>
@@ -80,23 +80,23 @@
             <text>Facebook</text>
           </controlProperties>
         </control>
-        <control controlID="24" controlTypeID="__group__" x="25" y="642" w="52" h="93" measuredW="52" measuredH="93" zOrder="8" locked="false" isInGroup="0">
+        <control controlID="24" controlTypeID="__group__" x="25" y="642" w="53" h="93" measuredW="53" measuredH="93" zOrder="8" locked="false" isInGroup="0">
           <groupChildrenDescriptors>
-            <control controlID="0" controlTypeID="com.balsamiq.mockups::Label" x="0" y="0" w="-1" h="-1" measuredW="33" measuredH="21" zOrder="0" locked="false" isInGroup="24">
+            <control controlID="0" controlTypeID="com.balsamiq.mockups::Label" x="0" y="0" w="-1" h="-1" measuredW="31" measuredH="21" zOrder="0" locked="false" isInGroup="24">
               <controlProperties>
                 <bold>true</bold>
                 <color>10856103</color>
                 <href>40%20Shop%26bm%3B40%20Shop.bmml%26bm%3B40%20Shop.bmml%26bm%3B40%20Shop.bmml</href>
-                <map>%3Carea%20shape%3D%22rect%22%20coords%3D%2225%2C642%2C58%2C663%22%20href%3D%2240%2520Shop.bmml%22%20alt%3D%2240%20Shop%22%20id%3D%220%22/%3E</map>
+                <map>%3Carea%20shape%3D%22rect%22%20coords%3D%2225%2C642%2C56%2C663%22%20href%3D%2240%2520Shop.bmml%22%20alt%3D%2240%20Shop%22%20id%3D%220%22/%3E</map>
                 <text>Shop</text>
               </controlProperties>
             </control>
-            <control controlID="1" controlTypeID="com.balsamiq.mockups::Label" x="0" y="18" w="-1" h="-1" measuredW="52" measuredH="21" zOrder="1" locked="false" isInGroup="24">
+            <control controlID="1" controlTypeID="com.balsamiq.mockups::Label" x="0" y="18" w="-1" h="-1" measuredW="53" measuredH="21" zOrder="1" locked="false" isInGroup="24">
               <controlProperties>
                 <bold>false</bold>
                 <color>10856103</color>
-                <href>40%20Shop%26bm%3B40%20Shop.bmml%26bm%3B40%20Shop.bmml%26bm%3B40%20Shop.bmml</href>
-                <map>%3Carea%20shape%3D%22rect%22%20coords%3D%2225%2C660%2C77%2C681%22%20href%3D%2240%2520Shop.bmml%22%20alt%3D%2240%20Shop%22%20id%3D%221%22/%3E</map>
+                <href>41%20Shop%20Catalog%26bm%3B41%20Shop%20Catalog.bmml%26bm%3B41%20Shop%20Catalog.bmml%26bm%3B41%20Shop%20Catalog.bmml</href>
+                <map>%3Carea%20shape%3D%22rect%22%20coords%3D%2225%2C660%2C78%2C681%22%20href%3D%2241%2520Shop%2520Catalog.bmml%22%20alt%3D%2241%20Shop%20Catalog%22%20id%3D%221%22/%3E</map>
                 <text>Originals</text>
               </controlProperties>
             </control>
@@ -104,55 +104,55 @@
               <controlProperties>
                 <bold>false</bold>
                 <color>10856103</color>
-                <href>40%20Shop%26bm%3B40%20Shop.bmml%26bm%3B40%20Shop.bmml%26bm%3B40%20Shop.bmml</href>
-                <map>%3Carea%20shape%3D%22rect%22%20coords%3D%2225%2C678%2C60%2C699%22%20href%3D%2240%2520Shop.bmml%22%20alt%3D%2240%20Shop%22%20id%3D%222%22/%3E</map>
+                <href>41%20Shop%20Catalog%26bm%3B41%20Shop%20Catalog.bmml%26bm%3B41%20Shop%20Catalog.bmml%26bm%3B41%20Shop%20Catalog.bmml</href>
+                <map>%3Carea%20shape%3D%22rect%22%20coords%3D%2225%2C678%2C60%2C699%22%20href%3D%2241%2520Shop%2520Catalog.bmml%22%20alt%3D%2241%20Shop%20Catalog%22%20id%3D%222%22/%3E</map>
                 <text>Prints</text>
               </controlProperties>
             </control>
-            <control controlID="3" controlTypeID="com.balsamiq.mockups::Label" x="0" y="54" w="-1" h="-1" measuredW="44" measuredH="21" zOrder="3" locked="false" isInGroup="24">
+            <control controlID="3" controlTypeID="com.balsamiq.mockups::Label" x="0" y="54" w="-1" h="-1" measuredW="46" measuredH="21" zOrder="3" locked="false" isInGroup="24">
               <controlProperties>
                 <bold>false</bold>
                 <color>10856103</color>
-                <href>40%20Shop%26bm%3B40%20Shop.bmml%26bm%3B40%20Shop.bmml%26bm%3B40%20Shop.bmml</href>
-                <map>%3Carea%20shape%3D%22rect%22%20coords%3D%2225%2C696%2C69%2C717%22%20href%3D%2240%2520Shop.bmml%22%20alt%3D%2240%20Shop%22%20id%3D%223%22/%3E</map>
+                <href>41%20Shop%20Catalog%26bm%3B41%20Shop%20Catalog.bmml%26bm%3B41%20Shop%20Catalog.bmml%26bm%3B41%20Shop%20Catalog.bmml</href>
+                <map>%3Carea%20shape%3D%22rect%22%20coords%3D%2225%2C696%2C71%2C717%22%20href%3D%2241%2520Shop%2520Catalog.bmml%22%20alt%3D%2241%20Shop%20Catalog%22%20id%3D%223%22/%3E</map>
                 <text>Jewelry</text>
               </controlProperties>
             </control>
-            <control controlID="4" controlTypeID="com.balsamiq.mockups::Label" x="0" y="72" w="-1" h="-1" measuredW="28" measuredH="21" zOrder="4" locked="false" isInGroup="24">
+            <control controlID="4" controlTypeID="com.balsamiq.mockups::Label" x="0" y="72" w="-1" h="-1" measuredW="29" measuredH="21" zOrder="4" locked="false" isInGroup="24">
               <controlProperties>
                 <bold>false</bold>
                 <color>10856103</color>
-                <href>40%20Shop%26bm%3B40%20Shop.bmml%26bm%3B40%20Shop.bmml%26bm%3B40%20Shop.bmml</href>
-                <map>%3Carea%20shape%3D%22rect%22%20coords%3D%2225%2C714%2C53%2C735%22%20href%3D%2240%2520Shop.bmml%22%20alt%3D%2240%20Shop%22%20id%3D%224%22/%3E</map>
+                <href>41%20Shop%20Catalog%26bm%3B41%20Shop%20Catalog.bmml%26bm%3B41%20Shop%20Catalog.bmml%26bm%3B41%20Shop%20Catalog.bmml</href>
+                <map>%3Carea%20shape%3D%22rect%22%20coords%3D%2225%2C714%2C54%2C735%22%20href%3D%2241%2520Shop%2520Catalog.bmml%22%20alt%3D%2241%20Shop%20Catalog%22%20id%3D%224%22/%3E</map>
                 <text>Gifts</text>
               </controlProperties>
             </control>
           </groupChildrenDescriptors>
         </control>
-        <control controlID="28" controlTypeID="__group__" x="130" y="643" w="152" h="79" measuredW="152" measuredH="79" zOrder="7" locked="false" isInGroup="0">
+        <control controlID="28" controlTypeID="__group__" x="130" y="643" w="156" h="79" measuredW="156" measuredH="79" zOrder="7" locked="false" isInGroup="0">
           <groupChildrenDescriptors>
-            <control controlID="0" controlTypeID="com.balsamiq.mockups::Label" x="0" y="0" w="-1" h="-1" measuredW="48" measuredH="21" zOrder="0" locked="false" isInGroup="28">
+            <control controlID="0" controlTypeID="com.balsamiq.mockups::Label" x="0" y="0" w="-1" h="-1" measuredW="51" measuredH="21" zOrder="0" locked="false" isInGroup="28">
               <controlProperties>
                 <bold>true</bold>
                 <color>10856103</color>
                 <href>103%20Contact%26bm%3B103%20Contact.bmml%26bm%3B103%20Contact.bmml%26bm%3B103%20Contact.bmml</href>
-                <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22130%2C643%2C178%2C664%22%20href%3D%22103%2520Contact.bmml%22%20alt%3D%22103%20Contact%22%20id%3D%220%22/%3E</map>
+                <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22130%2C643%2C181%2C664%22%20href%3D%22103%2520Contact.bmml%22%20alt%3D%22103%20Contact%22%20id%3D%220%22/%3E</map>
                 <text>Contact</text>
               </controlProperties>
             </control>
-            <control controlID="1" controlTypeID="com.balsamiq.mockups::Label" x="0" y="19" w="-1" h="-1" measuredW="49" measuredH="21" zOrder="1" locked="false" isInGroup="28">
+            <control controlID="1" controlTypeID="com.balsamiq.mockups::Label" x="0" y="19" w="-1" h="-1" measuredW="50" measuredH="21" zOrder="1" locked="false" isInGroup="28">
               <controlProperties>
                 <color>10856103</color>
                 <href>102%20Articles%26bm%3B102%20Articles.bmml%26bm%3B102%20Articles.bmml%26bm%3B102%20Articles.bmml</href>
-                <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22130%2C662%2C179%2C683%22%20href%3D%22102%2520Articles.bmml%22%20alt%3D%22102%20Articles%22%20id%3D%221%22/%3E</map>
+                <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22130%2C662%2C180%2C683%22%20href%3D%22102%2520Articles.bmml%22%20alt%3D%22102%20Articles%22%20id%3D%221%22/%3E</map>
                 <text>From%20BJ</text>
               </controlProperties>
             </control>
-            <control controlID="2" controlTypeID="com.balsamiq.mockups::Label" x="0" y="58" w="-1" h="-1" measuredW="152" measuredH="21" zOrder="2" locked="false" isInGroup="28">
+            <control controlID="2" controlTypeID="com.balsamiq.mockups::Label" x="0" y="58" w="-1" h="-1" measuredW="156" measuredH="21" zOrder="2" locked="false" isInGroup="28">
               <controlProperties>
                 <color>10856103</color>
                 <href>100%20BROG%26bm%3B100%20BROG.bmml%26bm%3B100%20BROG.bmml%26bm%3B100%20BROG.bmml</href>
-                <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22130%2C701%2C282%2C722%22%20href%3D%22100%2520BROG.bmml%22%20alt%3D%22100%20BROG%22%20id%3D%222%22/%3E</map>
+                <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22130%2C701%2C286%2C722%22%20href%3D%22100%2520BROG.bmml%22%20alt%3D%22100%20BROG%22%20id%3D%222%22/%3E</map>
                 <text>BJ%20Royster%20Ocean%20Gallery</text>
               </controlProperties>
             </control>
