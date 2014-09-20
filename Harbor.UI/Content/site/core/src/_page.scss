@@ -19,9 +19,11 @@ $page-header-background: #FFF;
 
 $page-header-height: 7em;
 $page-aside-width: 20%;
+$page-aside-width-centered: 25%;
 $page-content-width: 78%;
+$page-content-width-centered: 73%;
 $page-content-gutter-width: 1%;
-$page-readable-width: 88em;
+$page-readable-width: 77em;
 $page-header-bottom: $frame-header-height + $page-header-height;
 
 
@@ -117,17 +119,18 @@ $page-header-bottom: $frame-header-height + $page-header-height;
 		@include clearfix;
 	}
 	.page-aside {
+        padding-top: 2em;
+        width: $page-aside-width;
 		position: relative;
-		width: $page-aside-width;
 		float: left;
 	}
 	.page-content {
 		position: relative;
-        padding-top: 2em;
+        padding: 2em $page-content-gutter-width;
 		float: left;
 		width: $page-content-width;
-		padding-right: $page-content-gutter-width;
-		padding-left: $page-content-gutter-width;
+		*width: $page-content-width - (.5 / 100 * 100 * 1%);
+		
 		&:first-child { // if there is no aside
 			width: 98%;
 		}
@@ -140,19 +143,26 @@ $page-header-bottom: $frame-header-height + $page-header-height;
 			margin-right: auto;
 		}
 		.page-aside {
-			width: $page-aside-width;
+            width: $page-aside-width-centered;
 		}		
 		.page-content {
-			float: left;
-			width: $page-content-width;
-			*width: $page-content-width - (.5 / 100 * 100 * 1%);
-			padding-right: $page-content-gutter-width;
-			padding-left: $page-content-gutter-width;
+            width: $page-content-width-centered;
+		    *width: $page-content-width-centered - (.5 / 100 * 100 * 1%);
 		}
 		.page-content:first-child { // if there is no aside
 			width: 98%;
 		}
 	}
+
+    @media (max-width: $page-readable-width) {
+        .page-aside {
+            width: $page-aside-width-centered;
+		}		
+		.page-content {
+            width: $page-content-width-centered;
+		    *width: $page-content-width-centered - (.5 / 100 * 100 * 1%);
+		}
+    }
 
 	.noaside {
 		.page-aside { display: none; }
