@@ -47,7 +47,7 @@
 	background:#ddd;
 	@include border-radius(3px);
 	color: #fff;
-	text-align: center;
+	text-align: center !important;
 	font-size: 2em;
 	padding: .23em;
 	&:hover {

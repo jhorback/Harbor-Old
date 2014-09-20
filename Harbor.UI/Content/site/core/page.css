@@ -55,6 +55,7 @@
 
 .page-content {
   position: relative;
+  padding-top: 2em;
   float: left;
   width: 78%;
   padding-right: 1%;
@@ -62,10 +63,7 @@
   .page-content:first-child {
     width: 98%; }
 
-.readable .page-body, .readable .page-header {
-  max-width: 88em; }
-
-.centered .page-header, .centered .page-body {
+.centered .page-header-content, .centered .page-body {
   max-width: 88em;
   margin-left: auto;
   margin-right: auto; }

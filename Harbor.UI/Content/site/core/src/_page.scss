@@ -94,26 +94,14 @@ $page-header-bottom: $frame-header-height + $page-header-height;
 		}
 	}
 
-	.centered {
+	/*.centered {
 		.page-header {
-			text-align: center;
 			margin-bottom: 1em;
 			h1 {
 				float: none;
 			}
-			h1:after {
-				background-color: $page-title-color;
-				display: block;
-				height: 1px;
-				width: 100px;
-				content: '';
-				//bottom: -37px;
-				position: absolute;
-				margin-left: -50px;
-				left: 50%;
-			}
 		}
-	}
+	}*/
 }
 
 
@@ -130,6 +118,7 @@ $page-header-bottom: $frame-header-height + $page-header-height;
 	}
 	.page-content {
 		position: relative;
+        padding-top: 2em;
 		float: left;
 		width: $page-content-width;
 		padding-right: $page-content-gutter-width;
@@ -139,14 +128,8 @@ $page-header-bottom: $frame-header-height + $page-header-height;
 		}
 	}
 
-	.readable {
-		.page-body, .page-header {
-			max-width: $page-readable-width;
-		}
-	}
-
 	.centered {
-		.page-header, .page-body {
+		.page-header-content, .page-body {
 			max-width: $page-readable-width;
 			margin-left: auto;
 			margin-right: auto;
