@@ -20,13 +20,13 @@ $menulist-arrow-top: ($menulist-item-height - $menulist-arrow-height) / 2;
 	.menulist {
 		//border: 1px solid #DDD;
 		//@include border-radius;
-        background: #f7f7f7;
         margin: 0 0 2em 1em;
 
 		& > ul {
 			@include no-bullets;
 			margin: 0 0 1.42em 0;
             border-top: $menulist-border-style;
+            background: #f7f7f7;
 
 			& > li {
 				& > span,
@@ -52,7 +52,6 @@ $menulist-arrow-top: ($menulist-item-height - $menulist-arrow-height) / 2;
 		}
 
 		h2, h3 {
-            border-top: $menulist-border-style;
 			padding: 0 .5em;
 			font-family: $body-font-family;
 			display: block;
