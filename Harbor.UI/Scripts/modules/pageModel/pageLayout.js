@@ -10,7 +10,6 @@ pageModel.pageLayout.prototype = {
 		title: null,
 
 		layoutIsCentered: null, 
-		layoutIsReadable: null, 
 		layoutHasNoSidebar: null,
 
 		headerKey: null, 

@@ -10,6 +10,11 @@
 
 
 <div class="page-content">
+	<div>
+		<p>A sample of page structure and layout can be viewed on the  @Html.ActionLink("Page Example", "Index", new { pageKey = "Page" }).</p>
+		
+	</div>
+	<hr />
 	<ul>
 		@foreach (var page in Model)
 		{
@@ -27,8 +32,8 @@
 		<li>
 			<a href="~/Home/ThrowError">Server Error</a>
 			<a href="~/Views/Shared/_404.cshtml">~/Views/Shared/_404.cshtml</a>	<p>
-				A static link that will throw an error.
-			</p>
+					                                                                   A static link that will throw an error.
+				                                                                   </p>
 		</li>
 		<li>
 			<a href="~/Foo">Page Not Found</a>

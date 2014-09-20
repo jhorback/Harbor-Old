@@ -9,7 +9,6 @@ namespace Harbor.UI.Models
 		public string title { get; set; }
 
 		public bool layoutIsCentered { get; set; }
-		public bool layoutIsReadable { get; set; }
 		public bool layoutHasNoSidebar { get; set; }
 		
 		public string headerKey { get; set; }
@@ -32,7 +31,6 @@ namespace Harbor.UI.Models
 			id = layout.PageLayoutID;
 			title = layout.Title;
 			layoutIsCentered = layout.DisplayProperties.HasFlag(PageLayout.LayoutDisplayProperties.ContentCentered);
-			layoutIsReadable = layout.DisplayProperties.HasFlag(PageLayout.LayoutDisplayProperties.ContentReadable);
 			layoutHasNoSidebar = layout.DisplayProperties.HasFlag(PageLayout.LayoutDisplayProperties.NoAside);
 			headerKey = layout.HeaderKey;
 			header = UicDto.FromUic(layout.Header);
