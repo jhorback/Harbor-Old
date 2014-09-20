@@ -1,10 +1,10 @@
 .menulist {
-  background: #f7f7f7;
   margin: 0 0 2em 1em; }
   .menulist > ul {
     list-style: none;
     margin: 0 0 1.42em 0;
-    border-top: 1px solid #ccc; }
+    border-top: 1px solid #ccc;
+    background: #f7f7f7; }
     .menulist > ul li {
       list-style-image: none;
       list-style-type: none;
@@ -23,7 +23,6 @@
       .menulist > ul .selected span, .menulist > ul .selected a {
         color: #2F5BB7; }
   .menulist h2, .menulist h3 {
-    border-top: 1px solid #ccc;
     padding: 0 0.5em;
     font-family: "OpenSans", "Segoe UI", "Helvetica Neue", Arial;
     display: block;
