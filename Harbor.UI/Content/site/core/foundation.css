@@ -1,3 +1,6 @@
+* {
+  margin: 0; }
+
 article, aside, details, figcaption, figure, footer, header, nav, section {
   display: block; }
 
@@ -188,7 +191,7 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0;
   clear: left;
   text-rendering: optimizelegibility;
-  font-family: "Segoe UI Light", "Segoe UI", "Helvetica Neue", Arial; }
+  font-family: "OpenSans", "Segoe UI Light", "Segoe UI", "Helvetica Neue", Arial; }
   h1 .subheading, h2 .subheading, h3 .subheading, h4 .subheading, h5 .subheading, h6 .subheading {
     margin-left: 1em;
     font-weight: normal;

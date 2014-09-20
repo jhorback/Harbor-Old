@@ -4,16 +4,16 @@
 $body-color: #369;
 $body-background-color: #FFF;
 
-$frame-logo-width:		200px;
-$frame-logo-height:		84px;
-$frame-header-height:	6em; // 84px (logo image) / 14px base font size
+$frame-logo-width:		150px;
+$frame-logo-height:		50px;
+//$frame-header-height:	6em; // 84px (logo image) / 14px base font size
 
-$framenav-background-color: #E1EBF4;
+$framenav-background-color: #FFF;
 $framenav-color: $body-color;
-$framenav-background-color-hover: #1188AA; // #0f7c91;
+$framenav-background-color-hover: #67A3B6; // #0f7c91;
 $framenav-color-hover: #FFF;
 
-
-
+$page-header-background: #67A3B6;
+$page-title-color: #FFF;
 
 @include theme;
