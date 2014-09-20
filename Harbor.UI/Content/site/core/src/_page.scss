@@ -16,6 +16,8 @@
 
 $page-title-color: lighten($body-color, 20%) !default;
 $page-header-background: #FFF;
+$page-body-background: #fff;
+$page-content-background: #fff;
 
 $page-header-height: 7em;
 $page-aside-width: 20%;
@@ -114,6 +116,7 @@ $page-header-bottom: $frame-header-height + $page-header-height;
 
 @mixin page-body {
 	.page-body {
+        background: $page-body-background;
 		position: relative;
 		clear: left;
 		@include clearfix;
@@ -130,6 +133,7 @@ $page-header-bottom: $frame-header-height + $page-header-height;
 		float: left;
 		width: $page-content-width;
 		*width: $page-content-width - (.5 / 100 * 100 * 1%);
+        background: $page-content-background;
 		
 		&:first-child { // if there is no aside
 			width: 98%;

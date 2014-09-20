@@ -1,6 +1,6 @@
 html, body {
   background-color: #FFF;
-  color: #369;
+  color: #585a5b;
   font-size: 16px;
   font-family: "OpenSans", "Segoe UI", "Helvetica Neue", Arial;
   line-height: 1.4286; }
@@ -55,7 +55,7 @@ hr {
 
 abbr[title] {
   cursor: help;
-  border-bottom: 1px dotted #369; }
+  border-bottom: 1px dotted #585a5b; }
 
 ul, ol {
   margin-bottom: 11.4288px; }
@@ -89,7 +89,7 @@ dd {
 #frame-header {
   height: 3.15em;
   line-height: 3.15em;
-  color: #369;
+  color: #585a5b;
   background: #FFF;
   width: 100%;
   -moz-box-shadow: 0 2px 4px rgba(105, 105, 105, 0.25);
@@ -97,7 +97,7 @@ dd {
   -ms-box-shadow: 0 2px 4px rgba(105, 105, 105, 0.25);
   box-shadow: 0 2px 4px rgba(105, 105, 105, 0.25); }
   #frame-header a, #frame-header a:visited {
-    color: #369; }
+    color: #585a5b; }
 
 #frame-logo a {
   text-indent: -99999px;
