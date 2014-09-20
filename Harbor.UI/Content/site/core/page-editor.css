@@ -42,7 +42,7 @@
   -ms-border-radius: 3px;
   border-radius: 3px;
   color: #fff;
-  text-align: center;
+  text-align: center !important;
   font-size: 2em;
   padding: 0.23em; }
   .uic-add:hover {

@@ -32,27 +32,29 @@
 	</style>
 }
 <section class="page">
-	 <header class="page-header">
-		<h1>Tiltle of the Page</h1>
-		<nav class="page-nav">
-			<ul>
-				<li>@Html.ActionLink("Scaffolding", "Index", new { pageKey = "Scaffolding" })</li>
-				<li class="selected"><a href="#">Page Example</a></li>		
-			</ul>
-		</nav>
-		<form class="float-right form-inline">
-			<fieldset>
-				<select id="page-options" name="layoutOptions">
-					<option value="aside">Default</option>
-					<option value="aside readable">Constrain Width</option>
-					<option value="aside centered">Centered</option>
-					<option value="">No Sidebar</option>
-					<option value="readable">No Sidebar, constrain width</option>
-					<option value="centered">No Sidebar, centered</option>
-				</select>
-			</fieldset>
-		</form>
-	 </header>
+	<header class="page-header">
+		<div class="page-header-content">
+			<h1>Tiltle of the Page</h1>
+			<nav class="page-nav">
+				<ul>
+					<li>@Html.ActionLink("Scaffolding", "Index", new { pageKey = "Scaffolding" })</li>
+					<li class="selected"><a href="#">Page Example</a></li>
+				</ul>
+			</nav>
+			<form class="float-right form-inline">
+				<fieldset>
+					<select id="page-options" name="layoutOptions">
+						<option value="aside">Default</option>
+						<option value="aside readable">Constrain Width</option>
+						<option value="aside centered">Centered</option>
+						<option value="">No Sidebar</option>
+						<option value="readable">No Sidebar, constrain width</option>
+						<option value="centered">No Sidebar, centered</option>
+					</select>
+				</fieldset>
+			</form>
+		</div>
+	</header>
 	<div class="page-body">
 		<aside class="page-aside">
 			<div class="col text-justify">

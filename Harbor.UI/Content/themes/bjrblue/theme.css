@@ -144,21 +144,14 @@ dd {
     .page-header h1 a {
       color: #FFF; }
 
-.centered .page-header {
-  text-align: center;
-  margin-bottom: 1em; }
-  .centered .page-header h1 {
-    float: none; }
-  .centered .page-header h1:after {
-    background-color: #FFF;
-    display: block;
-    height: 1px;
-    width: 100px;
-    content: '';
-    position: absolute;
-    margin-left: -50px;
-    left: 50%; }
-
+/*.centered {
+		.page-header {
+			margin-bottom: 1em;
+			h1 {
+				float: none;
+			}
+		}
+	}*/
 .selectlist > ul > li.selected {
   color: #FFF;
   background-color: #369;
