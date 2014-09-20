@@ -1,6 +1,10 @@
 
 
 @mixin normalize {
+    * {
+        margin: 0; // for bottom footer
+      }
+
 	// adapted from http://github.com/necolas/normalize.css
 
 	

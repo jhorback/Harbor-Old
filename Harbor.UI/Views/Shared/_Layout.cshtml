@@ -57,23 +57,25 @@
 				</nav>
 			</header>	
 			<div id="frame-body">
-			@RenderBody()
-			</div>
-			<footer id="frame-info">
+				@RenderBody()
+				<div class="frame-footer-height"></div></div>
+		</div>
+		<footer id="frame-footer" class="frame-footer-height">
+			<div>
 				<div>
-					<div>
 					@if (Html.UserHasPermit(UserFeature.SiteSettings) || Html.UserHasPermit(UserFeature.SystemSettings))
 					{
 						<a href="~/Home/About">@footerText</a>
-					} else
+					}
+					else
 					{
 						@footerText
 					}
-					</div>
-					<div class="quiet media-print"><small>@Harbor.UI.HarborApplication.FullVersion - @DateTime.Now</small></div>
 				</div>
-			</footer>
-		</div>
+				<div class="quiet media-print"><small>@Harbor.UI.HarborApplication.FullVersion - @DateTime.Now</small></div>
+			</div>
+		</footer>
+		
 		<script>
 			if (typeof window.JSON === 'undefined') { document.write('<script src="@Url.Content("~/Scripts/json2.min.js")"><\/script>'); }
 			window.baseUrl = "@Url.Content("~/")";

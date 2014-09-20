@@ -2,7 +2,7 @@ html, body {
   background-color: #FFF;
   color: #369;
   font-size: 14px;
-  font-family: "Segoe UI", "Helvetica Neue", Arial;
+  font-family: "OpenSans", "Segoe UI", "Helvetica Neue", Arial;
   line-height: 1.4286; }
 
 a, .link {
@@ -93,10 +93,10 @@ dd {
   margin-left: 10.0002px; }
 
 #frame-header {
-  height: 6em;
-  line-height: 6em;
+  height: 3.6em;
+  line-height: 3.6em;
   color: #369;
-  background: #E1EBF4;
+  background: #FFF;
   width: 100%;
   -moz-box-shadow: 0 2px 4px rgba(105, 105, 105, 0.25);
   -webkit-box-shadow: 0 2px 4px rgba(105, 105, 105, 0.25);
@@ -108,12 +108,13 @@ dd {
 #frame-logo a {
   text-indent: -99999px;
   display: block;
-  width: 200px;
-  height: 84px;
-  background: url(images/logo.png) no-repeat; }
+  width: 150px;
+  height: 50px;
+  background: url(images/logo.png) no-repeat;
+  background-size: contain; }
 
 #frame-nav ul li:hover {
-  background-color: #1188AA;
+  background-color: #67A3B6;
   -moz-box-shadow: 0 6px 14px rgba(105, 105, 105, 0.6);
   -webkit-box-shadow: 0 6px 14px rgba(105, 105, 105, 0.6);
   -ms-box-shadow: 0 6px 14px rgba(105, 105, 105, 0.6);
@@ -130,12 +131,18 @@ dd {
   #frame-body ::-webkit-scrollbar-thumb:hover {
     background: #b3b3b3; }
 
-.page-header h1 {
-  font-size: 3.14em;
-  font-weight: normal;
-  color: #666666; }
-  .page-header h1 a {
-    color: #666666; }
+#frame-footer {
+  background: #2d3033;
+  color: #a5a6a7; }
+  #frame-footer a {
+    color: #a5a6a7; }
+
+.page-header {
+  background: #67A3B6; }
+  .page-header h1 {
+    color: #FFF; }
+    .page-header h1 a {
+      color: #FFF; }
 
 .centered .page-header {
   text-align: center;
@@ -143,7 +150,7 @@ dd {
   .centered .page-header h1 {
     float: none; }
   .centered .page-header h1:after {
-    background-color: #666666;
+    background-color: #FFF;
     display: block;
     height: 1px;
     width: 100px;

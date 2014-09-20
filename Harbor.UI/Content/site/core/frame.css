@@ -1,7 +1,8 @@
-#frame:after {
-  content: "";
-  display: table;
-  clear: both; }
+#frame {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -8em; }
 
 #frame-header {
   overflow: hidden;
@@ -12,7 +13,7 @@
 #frame-logo {
   font-size: 2.3em;
   float: left;
-  margin: 0 1em 0 0.5em;
+  margin: 0 0em 0 0.5em;
   text-shadow: rgba(0, 0, 0, 0.6) 1px 1px 2px; }
 
 #frame-nav {
@@ -56,13 +57,13 @@
     text-align: center; }
 
 #frame-body {
-  position: relative;
-  min-height: 23em; }
+  position: relative; }
 
-#frame-info {
-  margin-top: 2em;
+.frame-footer-height {
+  height: 8em; }
+
+#frame-footer {
   clear: left;
-  height: 3.3em;
   text-align: center;
   min-height: 5em; }
 

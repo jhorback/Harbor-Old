@@ -15,9 +15,9 @@
 // </div>
 
 $page-title-color: lighten($body-color, 20%) !default;
+$page-header-background: #FFF;
 
-
-$page-header-height: 5em;
+$page-header-height: 7em;
 $page-aside-width: 20%;
 $page-content-width: 78%;
 $page-content-gutter-width: 1%;
@@ -43,12 +43,13 @@ $page-header-bottom: $frame-header-height + $page-header-height;
 @mixin page-header {
 	.page-header {
 		height: $page-header-height;		
-		line-height: $page-header-height - (.1 / 100);
+		line-height: $page-header-height; // - (.1 / 100);
 
 		h1 {
 			float: left;
 			margin: 0 .5em;
-			
+			font-size: 2.5em;            
+			font-weight: normal;
 			//@include single-text-shadow(rgba(#000, 0.4), 1px, 1px, 2px);
 			a {
 				text-decoration: none;
@@ -83,18 +84,12 @@ $page-header-bottom: $frame-header-height + $page-header-height;
 }
 
 @mixin page-header-theme {
-	.page-header {		
+	.page-header {
+        background: $page-header-background;
 		h1 {
-			font-size: 3.14em;
-			font-weight: normal;
 			color: $page-title-color;
-			//font-weight: normal;
 			 a {			
 				color: $page-title-color;
-							
-				&:hover {
-					// color: $page-title-color;				
-				}
 			}			
 		}
 	}
