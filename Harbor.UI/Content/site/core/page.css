@@ -49,34 +49,38 @@
     clear: both; }
 
 .page-aside {
-  position: relative;
+  padding-top: 2em;
   width: 20%;
+  position: relative;
   float: left; }
 
 .page-content {
   position: relative;
-  padding-top: 2em;
+  padding: 2em 1%;
   float: left;
   width: 78%;
-  padding-right: 1%;
-  padding-left: 1%; }
+  *width: 77.5%; }
   .page-content:first-child {
     width: 98%; }
 
 .centered .page-header-content, .centered .page-body {
-  max-width: 88em;
+  max-width: 77em;
   margin-left: auto;
   margin-right: auto; }
 .centered .page-aside {
-  width: 20%; }
+  width: 25%; }
 .centered .page-content {
-  float: left;
-  width: 78%;
-  *width: 77.5%;
-  padding-right: 1%;
-  padding-left: 1%; }
+  width: 73%;
+  *width: 72.5%; }
 .centered .page-content:first-child {
   width: 98%; }
+
+@media (max-width: 77em) {
+  .page-aside {
+    width: 25%; }
+  .page-content {
+    width: 73%;
+    *width: 72.5%; } }
 
 .noaside .page-aside {
   display: none; }
