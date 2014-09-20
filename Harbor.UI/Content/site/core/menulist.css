@@ -23,6 +23,7 @@
       .menulist > ul .selected span, .menulist > ul .selected a {
         color: #2F5BB7; }
   .menulist h2, .menulist h3 {
+    border-top: 1px solid #ccc;
     padding: 0 0.5em;
     font-family: "OpenSans", "Segoe UI", "Helvetica Neue", Arial;
     display: block;

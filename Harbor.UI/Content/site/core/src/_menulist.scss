@@ -52,6 +52,7 @@ $menulist-arrow-top: ($menulist-item-height - $menulist-arrow-height) / 2;
 		}
 
 		h2, h3 {
+            border-top: $menulist-border-style;
 			padding: 0 .5em;
 			font-family: $body-font-family;
 			display: block;
