@@ -11,6 +11,7 @@ namespace Harbor.Domain.Pages
 		public enum LayoutDisplayProperties
 		{
 			None = 0,
+			[Obsolete("Only centered uses readable, there is no longer any default readable class names.")]
 			ContentReadable = 1,
 			ContentCentered = 2,
 			NoAside = 4

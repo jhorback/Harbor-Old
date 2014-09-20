@@ -2,8 +2,8 @@
 $body-font-family:			"OpenSans", "Segoe UI", "Helvetica Neue", Arial	!default;
 $headings-font-family:		"OpenSans", "Segoe UI Light", "Segoe UI", "Helvetica Neue", Arial	!default;
 $pre-font-family:			Monaco, Menlo, Consolas, 'Courier New', monospace		!default;
-$body-font-size:			14px					!default;
-$body-line-height:			1.4286					!default; // @14px font = 20px line-height
+$body-font-size:			16px					!default;
+$body-line-height:			1.4286					!default; // @16px font = 23px line-height
 $body-line-height-px:		$body-line-height * $body-font-size;
 
 $body-background-color:		#FFF					!default;
@@ -11,7 +11,7 @@ $body-color:				#333					!default;
 $link-color:				#369					!default;
 $link-color-hover:			#09f					!default;
 $link-color-active:			red						!default;
-$body-heading-color:		#369					!default;
+$body-heading-color:		#393d40					!default;
 $hr-color:					#DDD					!default;
 $dl-inline-dt-width:		11.42em					!default; // ~160px
 

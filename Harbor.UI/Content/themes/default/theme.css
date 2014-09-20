@@ -1,7 +1,7 @@
 html, body {
   background-color: #FFF;
   color: #333;
-  font-size: 14px;
+  font-size: 16px;
   font-family: "OpenSans", "Segoe UI", "Helvetica Neue", Arial;
   line-height: 1.4286; }
 
@@ -31,14 +31,8 @@ p {
     margin-bottom: 0; }
 
 h1, h2, h3, h4, h5, h6 {
-  margin: 10.0002px 0; }
-
-h1 {
-  color: #666666; }
-
-h2 {
-  color: #369;
-  font-weight: bold; }
+  color: #393d40;
+  margin: 11.4288px 0; }
 
 .quiet {
   color: #999999; }
@@ -53,7 +47,7 @@ small {
   color: #999999; }
 
 hr {
-  margin: 20.0004px 0;
+  margin: 22.8576px 0;
   border: 0;
   border-top: 1px solid #DDD;
   border-bottom: 1px solid white;
@@ -64,12 +58,12 @@ abbr[title] {
   border-bottom: 1px dotted #333; }
 
 ul, ol {
-  margin-bottom: 10.0002px; }
+  margin-bottom: 11.4288px; }
   ul:only-of-type, ol:only-of-type {
     margin-bottom: 0; }
 
 dl {
-  margin-bottom: 20.0004px; }
+  margin-bottom: 22.8576px; }
   dl:only-of-type {
     margin-bottom: 0; }
   dl.list-wide dt {
@@ -87,14 +81,14 @@ dl {
 
 dt, dd {
   line-height: 1.4286;
-  margin-bottom: 10.0002px; }
+  margin-bottom: 11.4288px; }
 
 dd {
-  margin-left: 10.0002px; }
+  margin-left: 11.4288px; }
 
 #frame-header {
-  height: 3.6em;
-  line-height: 3.6em;
+  height: 3.15em;
+  line-height: 3.15em;
   color: #EEE;
   background: #345276;
   width: 100%;
