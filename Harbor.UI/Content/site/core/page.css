@@ -41,6 +41,7 @@
       font-weight: bold; }
 
 .page-body {
+  background: #fff;
   position: relative;
   clear: left; }
   .page-body:after {
@@ -59,7 +60,8 @@
   padding: 2em 1%;
   float: left;
   width: 78%;
-  *width: 77.5%; }
+  *width: 77.5%;
+  background: #fff; }
   .page-content:first-child {
     width: 98%; }
 
