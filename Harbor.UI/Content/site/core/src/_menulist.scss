@@ -4,44 +4,39 @@
 @import "foundation-vars";
 
 
-$menulist-selected-arrow: left !default; // left or right
+$menulist-item-height: 2.2em;
 $menulist-selected-color: $link-color !default;
 $menulist-selected-background-color: null !default;
+$menulist-border-style: 1px solid #ccc;
 
-
-$menulist-item-height: 2.2em;
+$menulist-selected-arrow: left !default; // left or right
 $menulist-arrow-height: 1.4em;
 $menulist-arrow-top: ($menulist-item-height - $menulist-arrow-height) / 2;
 
 
+// to be used in the aside
 @mixin menulist {
 
 	.menulist {
 		//border: 1px solid #DDD;
 		//@include border-radius;
+        background: #f7f7f7;
+        margin: 0 0 2em 1em;
 
 		& > ul {
 			@include no-bullets;
-			margin-bottom: 1.42em;			
-			margin-left: 1em;
+			margin: 0 0 1.42em 0;
+            border-top: $menulist-border-style;
 
 			& > li {
 				& > span,
 				& > a {
-					display: block;
-					// color: $body-color;
-					// padding: 0 .5em;
+					display: block;					
 					line-height: $menulist-item-height;
+                    padding-left: 1em;
 					text-decoration: none;
 					text-shadow: 0 1px 0 rgba(255,255,255,.5);
-//					&:before {
-//						content: "-";
-//					}
-//					&:hover,
-//					&:focus {
-//						color: $body-color;
-//						background-color: #eee;
-//					}
+                    border-bottom: $menulist-border-style;
 				}
 				& > span {
 					cursor: default;
@@ -52,27 +47,19 @@ $menulist-arrow-top: ($menulist-item-height - $menulist-arrow-height) / 2;
 				font-weight: bold;
 				span, a {
 					color: $body-color-loud;
-				}
-//				position: relative;
-//				&:after {
-//					position: absolute;						
-//					top: $menulist-arrow-top;
-//					content: "";
-//					width: 0; 
-//					height: 0;	
-//				}				
+				}		
 			}
 		}
 
 		h2, h3 {
-			padding: 0 .7em;
+			padding: 0 .5em;
 			font-family: $body-font-family;
 			display: block;
-			font-size: 1.4em;
+			font-size: 1.3em;
 			font-weight: normal;
-			//color: $body-color-loud;
 			text-shadow: 0 1px 0 rgba(255,255,255,.5);
-			//text-transform: uppercase;
+            margin:0;
+            line-height: 2em;
 		}	
 	}
 }
