@@ -19,7 +19,9 @@ namespace Harbor.UI.Controllers
 
 		public PartialViewResult Title(Page page)
 		{
-			return PartialView("Title", PageDto.FromPage(page));
+			var title = page.Layout.GetHeaderData<Title>();
+			var titleDto = TitleDto.FromTitle(title);
+			return PartialView("Title", titleDto);
 		}
 
 		public PartialViewResult Text(Page page, string uicid)

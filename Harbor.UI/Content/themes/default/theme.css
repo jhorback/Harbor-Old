@@ -136,6 +136,9 @@ dd {
     .page-header h1 a {
       color: #666666; }
 
+.page-nav a {
+  color: #666666; }
+
 /*.centered {
 		.page-header {
 			margin-bottom: 1em;

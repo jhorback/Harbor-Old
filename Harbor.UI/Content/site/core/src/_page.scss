@@ -93,6 +93,11 @@ $page-header-bottom: $frame-header-height + $page-header-height;
 			}			
 		}
 	}
+    .page-nav {
+        a {
+            color: $page-title-color;
+        }
+    }
 
 	/*.centered {
 		.page-header {

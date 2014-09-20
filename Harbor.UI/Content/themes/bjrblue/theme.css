@@ -144,6 +144,9 @@ dd {
     .page-header h1 a {
       color: #FFF; }
 
+.page-nav a {
+  color: #FFF; }
+
 /*.centered {
 		.page-header {
 			margin-bottom: 1em;

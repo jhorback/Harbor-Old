@@ -19,7 +19,24 @@ namespace Harbor.Domain.Pages.ContentTypes
 
 		public override object GetLayoutContent()
 		{
-			return null;
+			string title;
+			if (Page.Layout.PageTypeKey == Page.PageTypeKey)
+			{
+				title = Page.Title;
+				if (string.IsNullOrEmpty(title))
+				{
+					title = Page.Layout.Title;
+				}
+			}
+			else
+			{
+				title = Page.Layout.Title;
+				if (string.IsNullOrEmpty(title))
+				{
+					title = Page.Title;
+				}
+			}
+			return new Content.Title(title);
 		}
 	}
 }

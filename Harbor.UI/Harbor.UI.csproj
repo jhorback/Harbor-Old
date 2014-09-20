@@ -300,6 +300,7 @@
     <Compile Include="Models\JSPM\TemplateAction.cs" />
     <Compile Include="Models\Pages\Content\PayPalButtonDto.cs" />
     <Compile Include="Models\Pages\Content\ProductLinkDto.cs" />
+    <Compile Include="Models\Pages\Content\TitleDto.cs" />
     <Compile Include="Models\Products\PayPalButtonDto.cs" />
     <Compile Include="Models\Pages\Content\PageLinkDto.cs" />
     <Compile Include="Models\Pages\Content\ImageDto.cs" />
