@@ -71,7 +71,7 @@
        .menulist {
            margin-left: 1em;
 
-		    & > ul {
+		   & > ul {
 			    border-top: $page-aside-menulist-border-style;
                 background: $page-aside-menulist-background;
 
@@ -83,7 +83,10 @@
                         border-bottom: $page-aside-menulist-border-style;
 				    }
 			    }
-		    }	
+		   }
+           h2, h3 {
+               padding: 0 .5em;
+           }	
 	    }
 	}
 }
