@@ -61,18 +61,8 @@
 				<div class="frame-footer-height"></div></div>
 		</div>
 		<footer id="frame-footer" class="frame-footer-height">
-			<div>
-				<div>
-					@if (Html.UserHasPermit(UserFeature.SiteSettings) || Html.UserHasPermit(UserFeature.SystemSettings))
-					{
-						<a href="~/Home/About">@footerText</a>
-					}
-					else
-					{
-						@footerText
-					}
-				</div>
-				<div class="quiet media-print"><small>@Harbor.UI.HarborApplication.FullVersion - @DateTime.Now</small></div>
+			<div class="pad margin">
+				@footerText	
 			</div>
 		</footer>
 		

@@ -20,6 +20,17 @@
 	<div class="form-field">	
 		<a href="~/User/SignOut" id="usermenu-signout" class="button attn ">Sign Out</a>
 	</div>
+	
+	@if (Html.UserHasPermit(UserFeature.SiteSettings) || Html.UserHasPermit(UserFeature.SystemSettings))
+	{
+		<hr />
+		<h2><a href="~/Home/About">
+			    About @HarborApplication.Version
+		    </a>
+		</h2>
+		<div class="quiet"><small>Current full version: @HarborApplication.FullVersion</small></div>
+	}
+	
 	@if (Html.UserHasPermit(UserFeature.SystemSettings))
 	{
 		<hr />
