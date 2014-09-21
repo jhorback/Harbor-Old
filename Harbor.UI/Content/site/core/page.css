@@ -54,6 +54,15 @@
   width: 20%;
   position: relative;
   float: left; }
+  .page-aside .menulist {
+    margin-left: 1em; }
+    .page-aside .menulist > ul {
+      border-top: 1px solid #ccc;
+      background: #f7f7f7; }
+      .page-aside .menulist > ul > li > span, .page-aside .menulist > ul > li > a {
+        padding-left: 1em;
+        line-height: 2.2em;
+        border-bottom: 1px solid #ccc; }
 
 .page-content {
   position: relative;
