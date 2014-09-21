@@ -1,4 +1,5 @@
 ﻿@using Harbor.Domain.Security
+@using Harbor.UI
 @using Harbor.UI.Extensions
 @using Harbor.UI.JSPkgs
 @using Harbor.UI.Models.JSPM.Extensions
@@ -10,7 +11,7 @@
 		ViewBag.Title += " - " + Harbor.UI.HarborApplication.AppName;	
 	}
 	
-	var footerText = new HtmlString(
+	var copyrightText = new HtmlString(
 		string.Format("{0} &copy; {1}",
 			Request.ServerVariables["SERVER_NAME"],
 			DateTime.Now.Year));
@@ -63,7 +64,10 @@
 		</div>
 		<footer id="frame-footer" class="frame-footer-height">
 			<div class="pad margin">
-				@footerText	
+				@HarborApplication.foo
+				<div class="frame-footer-copyright">
+					@copyrightText	
+				</div>
 			</div>
 		</footer>
 		

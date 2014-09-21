@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Harbor.Domain;
 using Harbor.Domain.App;
 using Harbor.UI.Models.JSPM;
 using Harbor.UI.Models.Theming;
@@ -32,6 +33,14 @@ namespace Harbor.UI
 			}
 		}
 
+		public static string FooterText
+		{
+			get
+			{
+				return getApp().FooterHtml;
+			}
+		}
+
 		protected void Application_Start()
 		{
 			AreaRegistration.RegisterAllAreas();
@@ -55,7 +64,6 @@ namespace Harbor.UI
 
 		private static HarborApp getApp()
 		{
-			// jch* - request lifetime for this?
 			var appRep = DependencyResolver.Current.GetService<IHarborAppRepository>();
 			var app = appRep.GetApp();
 			return app ?? new HarborApp();
