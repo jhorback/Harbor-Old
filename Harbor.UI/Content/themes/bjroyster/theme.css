@@ -132,7 +132,8 @@ dd {
     color: #a5a6a7; }
 
 .page-header {
-  background: #67A3B6; }
+  background: #67A3B6;
+  color: #FFF; }
   .page-header h1 {
     color: #FFF; }
     .page-header h1 a {
