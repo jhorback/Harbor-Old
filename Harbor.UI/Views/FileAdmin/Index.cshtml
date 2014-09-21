@@ -28,7 +28,7 @@
 			</div>
 
 			<div data-bind="id: uploadTargetId, showif: uploadTargetViewVisible"
-				 data-templatefor="uploadTargetView">
+			     data-templatefor="uploadTargetView">
 			</div>
 
 			<div data-bind="showif: thereAreNoResults">
@@ -47,8 +47,8 @@
 
 						<!-- files -->
 						<li class="tile col5 hover text-center" data-bind="id: id"
-							data-event="clickTile"
-							data-collection="models">
+						    data-event="clickTile"
+						    data-collection="models">
 							<a data-bind="href: editLink" class="media" data-event="clickTile">
 								<img data-bind="src: thumbUrl, alt: name" />
 							</a>
@@ -70,4 +70,5 @@
 			</div>
 		</div>
 	</div>
+	<div class="frame-footer-height"></div>
 </section>
