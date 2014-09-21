@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Web.Configuration;
 using Harbor.Domain.Extensions;
 using Harbor.Domain.Pages;
@@ -8,45 +9,60 @@ namespace Harbor.Domain.App
 {
 	public class HarborAppRepository : IHarborAppRepository
 	{
-		IAppSettingRepository appSettings;
-		IPageRepository pageRepository;
+		readonly IAppSettingRepository _appSettings;
+		readonly IPageRepository _pageRepository;
+		private readonly IMemCache _memCache;
 
-		public HarborAppRepository(IAppSettingRepository appSettings, IPageRepository pageRepository)
+		public HarborAppRepository(IAppSettingRepository appSettings, IPageRepository pageRepository, IMemCache memCache)
 		{
-			this.appSettings = appSettings;
-			this.pageRepository = pageRepository;
+			_appSettings = appSettings;
+			_pageRepository = pageRepository;
+			_memCache = memCache;
 		}
 
 		public HarborApp GetApp()
 		{
-			var app = new HarborApp();
+			var app = _memCache.GetGlobal<HarborApp>(harborAppCacheKey);
+			if (app != null)
+			{
+				return app;
+			}
 
-			var showSignInLink = appSettings.GetSetting("ShowSignInLink").AsBool();
+			app = new HarborApp();
+
+			var showSignInLink = _appSettings.GetSetting("ShowSignInLink").AsBool();
 			if (showSignInLink != null)
 				app.ShowSignInLink = showSignInLink ?? false;
 
-			var appName = appSettings.GetSetting("ApplicationName").AsString();
+			var appName = _appSettings.GetSetting("ApplicationName").AsString();
 			if (appName != null)
 				app.ApplicationName = appName;
 
-			app.HomePageID = appSettings.GetSetting("HomePageID").AsInt();
+			app.HomePageID = _appSettings.GetSetting("HomePageID").AsInt();
 			if (app.HomePageID != null)
 			{
-				app.HomePage = pageRepository.FindById(app.HomePageID);
+				app.HomePage = _pageRepository.FindById(app.HomePageID);
 			}
 			
 			app.NavigationLinks = GetNavigationLinks();
 
-			app.Theme = appSettings.GetSetting("Theme").AsString();
+			app.Theme = _appSettings.GetSetting("Theme").AsString();
 			if (string.IsNullOrEmpty(app.Theme))
 				app.Theme = "default";
 
+			app.FooterHtml = _appSettings.GetSetting("FooterHtml").AsString();
+
 			app.GoogleAnalyticsAccount = WebConfigurationManager.AppSettings["googleAnalyticsAccount"];
+
+			_memCache.SetGlobal(harborAppCacheKey, app, DateTime.Now.AddDays(1));
 			return app;
 		}
 
+		private const string harborAppCacheKey = "HarborApp";
+
 		public void SetApp(HarborApp app, User user)
 		{
+			_memCache.BustGlobal<HarborApp>(harborAppCacheKey);
 			if (user.HasPermission(UserFeature.SystemSettings))
 			{
 				setSetting("Theme", app.Theme);
@@ -57,29 +73,30 @@ namespace Harbor.Domain.App
 				setSetting("ShowSignInLink", app.ShowSignInLink);
 				setSetting("HomePageID", app.HomePageID);
 				setSetting("NavigationLinks", JSON.Stringify(app.NavigationLinks));
+				setSetting("FooterHtml", app.FooterHtml);
 			}
 		}
 
 		public void Save()
 		{
-			appSettings.Save();
+			_appSettings.Save();
 		}
 
 		private AppSetting setSetting(string name, object value)
 		{
-			var settingDO = appSettings.FindByName(name, readOnly: false);
+			var settingDO = _appSettings.FindByName(name, readOnly: false);
 			var strvalue = value == null ? null : value.ToString();
 			if (settingDO == null)
 			{
-			    settingDO = appSettings.Create(new AppSetting { Name = name, Value = strvalue });
-				appSettings.Save();
+			    settingDO = _appSettings.Create(new AppSetting { Name = name, Value = strvalue });
+				_appSettings.Save();
 			}
 			else
 			{
 				if (settingDO.Value != strvalue)
 				{
 					settingDO.Value = strvalue;
-					settingDO = appSettings.Update(settingDO);
+					settingDO = _appSettings.Update(settingDO);
 				}
 			}
 			return settingDO;
@@ -88,7 +105,7 @@ namespace Harbor.Domain.App
 		public IEnumerable<NavigationLink> GetNavigationLinks()
 		{
 			IEnumerable<NavigationLink> links = null;
-			var navLinksSetting = appSettings.GetSetting("NavigationLinks");
+			var navLinksSetting = _appSettings.GetSetting("NavigationLinks");
 			links = JSON.Parse<IEnumerable<NavigationLink>>(navLinksSetting.Value);
 
 			if (links == null)
