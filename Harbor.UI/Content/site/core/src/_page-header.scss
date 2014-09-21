@@ -1,0 +1,73 @@
+@import "page-vars";
+
+
+
+@mixin page-header {
+	.page-header {
+		height: $page-header-height;		
+		line-height: $page-header-height; // - (.1 / 100);
+
+		h1 {
+			float: left;
+			margin: 0 .5em;
+			font-size: 2em;            
+			font-weight: normal;
+			//@include single-text-shadow(rgba(#000, 0.4), 1px, 1px, 2px);
+			a {
+				text-decoration: none;
+			}
+		}
+		fieldset {
+			margin: 0 1em;
+		}
+	}
+
+	.page-nav {
+		display: block;
+		float: left;
+		margin-left: 1em;
+		.ul {			
+			@include no-bullets;			
+			@include clearfix;
+		}
+		li {
+			display: block;
+			float: left;
+			a {
+				font-size: 1.2em;
+				margin: 0 .5em;
+				text-decoration: none;				
+			}
+			&.selected a {
+				font-weight: bold;
+			}
+		}
+	}
+}
+
+@mixin page-header-theme {
+	.page-header {
+        background: $page-header-background;
+		h1 {
+			color: $page-title-color;
+			 a {			
+				color: $page-title-color;
+			}			
+		}
+	}
+    .page-nav {
+        a {
+            color: $page-title-color;
+        }
+    }
+
+	/*.centered {
+		.page-header {
+			margin-bottom: 1em;
+			h1 {
+				float: none;
+			}
+		}
+	}*/
+}
+

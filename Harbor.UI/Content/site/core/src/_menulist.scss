@@ -5,38 +5,26 @@
 
 
 $menulist-item-height: 2.2em;
-$menulist-selected-color: $link-color !default;
-$menulist-selected-background-color: null !default;
-$menulist-border-style: 1px solid #ccc;
-
-$menulist-selected-arrow: left !default; // left or right
-$menulist-arrow-height: 1.4em;
-$menulist-arrow-top: ($menulist-item-height - $menulist-arrow-height) / 2;
+$menulist-border-style: 1px solid #ccc; 
 
 
 // to be used in the aside
 @mixin menulist {
 
 	.menulist {
-		//border: 1px solid #DDD;
-		//@include border-radius;
-        margin: 0 0 2em 1em;
+        margin: 0 0 2em 0em;
 
 		& > ul {
 			@include no-bullets;
 			margin: 0 0 1.42em 0;
-            border-top: $menulist-border-style;
-            background: #f7f7f7;
 
 			& > li {
 				& > span,
 				& > a {
 					display: block;					
-					line-height: $menulist-item-height;
-                    padding-left: 1em;
+                    
 					text-decoration: none;
 					text-shadow: 0 1px 0 rgba(255,255,255,.5);
-                    border-bottom: $menulist-border-style;
 				}
 				& > span {
 					cursor: default;
@@ -65,40 +53,6 @@ $menulist-arrow-top: ($menulist-item-height - $menulist-arrow-height) / 2;
 }
 
 @mixin menulist-theme {
-	//@include menulist-arrow($menulist-selected-arrow, $menulist-selected-color, $menulist-selected-background-color);
+
 }
 
-
-@mixin menulist-arrow($position, $color, $background-color: null) {
-
-	.menulist > ul .selected {
-	
-		&:after {
-			@if ($position == right) {
-				right: -1px;
-				border-top: $menulist-arrow-height/2 solid transparent;
-				border-bottom: $menulist-arrow-height/2 solid transparent;	
-				border-right: $menulist-arrow-height/2 solid $color;
-			} @else {
-				left: 0;
-				border-top: $menulist-arrow-height/2 solid transparent;
-				border-bottom: $menulist-arrow-height/2 solid transparent;	
-				border-left: $menulist-arrow-height/2 solid $color;
-			}	
-		}
-		span, a {
-			color: $color;
-			@if ($background-color != null) {
-				background-color: $background-color;
-			}
-			text-shadow: 0 -1px 0 rgba(0,0,0,.2);
-			&:hover,
-			&:focus {
-				color: $color;
-				@if ($background-color != null) {
-					background-color: $background-color;
-				}
-			}
-		}
-	}
-}

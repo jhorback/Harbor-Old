@@ -1,34 +1,19 @@
 @import "../../mixins/text-shadow";
 @import "../../mixins/clearfix";
 @import "../../mixins/no-bullets";
-@import "foundation";
-@import "frame";
-
+@import "foundation-vars";
+@import "page-vars";
+@import "page-header";
+@import "page-body";
 
 // Markup
-// <section class="page"> <!-- can have .readable or .centered -->
+// <!-- can have .readable or .centered -->
 //	<header class="page-header"><!-- page header content --></header>
 //	<div class="page-body">
 //		<aside class="page-aside"><!-- page aside content --></aside>
 //		<div class="page-content"><!-- page content --></div>
 //	</div>
 // </div>
-
-$page-title-color: lighten($body-color, 20%) !default;
-$page-header-background: #FFF;
-$page-body-background: #fff;
-$page-content-background: #fff;
-
-$page-header-height: 7em;
-$page-aside-width: 20%;
-$page-aside-width-centered: 25%;
-$page-content-width: 78%;
-$page-content-width-centered: 73%;
-$page-content-gutter-width: 1%;
-$page-readable-width: 77em;
-$page-header-bottom: $frame-header-height + $page-header-height;
-
-
 
 @mixin page {
 	.page {
@@ -42,138 +27,6 @@ $page-header-bottom: $frame-header-height + $page-header-height;
 @mixin page-theme {
 	@include page-header-theme;
 }
-
-
-@mixin page-header {
-	.page-header {
-		height: $page-header-height;		
-		line-height: $page-header-height; // - (.1 / 100);
-
-		h1 {
-			float: left;
-			margin: 0 .5em;
-			font-size: 2em;            
-			font-weight: normal;
-			//@include single-text-shadow(rgba(#000, 0.4), 1px, 1px, 2px);
-			a {
-				text-decoration: none;
-			}
-		}
-		fieldset {
-			margin: 0 1em;
-		}
-	}
-
-	.page-nav {
-		display: block;
-		float: left;
-		margin-left: 1em;
-		.ul {			
-			@include no-bullets;			
-			@include clearfix;
-		}
-		li {
-			display: block;
-			float: left;
-			a {
-				font-size: 1.2em;
-				margin: 0 .5em;
-				text-decoration: none;				
-			}
-			&.selected a {
-				font-weight: bold;
-			}
-		}
-	}
-}
-
-@mixin page-header-theme {
-	.page-header {
-        background: $page-header-background;
-		h1 {
-			color: $page-title-color;
-			 a {			
-				color: $page-title-color;
-			}			
-		}
-	}
-    .page-nav {
-        a {
-            color: $page-title-color;
-        }
-    }
-
-	/*.centered {
-		.page-header {
-			margin-bottom: 1em;
-			h1 {
-				float: none;
-			}
-		}
-	}*/
-}
-
-
-@mixin page-body {
-	.page-body {
-        background: $page-body-background;
-		position: relative;
-		clear: left;
-		@include clearfix;
-	}
-	.page-aside {
-        padding-top: 2em;
-        width: $page-aside-width;
-		position: relative;
-		float: left;
-	}
-	.page-content {
-		position: relative;
-        padding: 2em $page-content-gutter-width;
-		float: left;
-		width: $page-content-width;
-		*width: $page-content-width - (.5 / 100 * 100 * 1%);
-        background: $page-content-background;
-		
-		&:first-child { // if there is no aside
-			width: 98%;
-		}
-	}
-
-	.centered {
-		.page-header-content, .page-body {
-			max-width: $page-readable-width;
-			margin-left: auto;
-			margin-right: auto;
-		}
-		.page-aside {
-            width: $page-aside-width-centered;
-		}		
-		.page-content {
-            width: $page-content-width-centered;
-		    *width: $page-content-width-centered - (.5 / 100 * 100 * 1%);
-		}
-		.page-content:first-child { // if there is no aside
-			width: 98%;
-		}
-	}
-
-    @media (max-width: $page-readable-width) {
-        .page-aside {
-            width: $page-aside-width-centered;
-		}		
-		.page-content {
-            width: $page-content-width-centered;
-		    *width: $page-content-width-centered - (.5 / 100 * 100 * 1%);
-		}
-    }
-
-	.noaside {
-		.page-aside { display: none; }
-		.page-content { width: 98% }
-	}
-}
-
 
 
 @mixin page-debug {

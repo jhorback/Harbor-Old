@@ -877,6 +877,9 @@
     <Content Include="Content\site\core\src\_foundation-vars.scss" />
     <Content Include="Content\site\core\selectlist.scss" />
     <Content Include="Content\site\core\src\_selectlist.scss" />
+    <Content Include="Content\site\core\src\_page-header.scss" />
+    <Content Include="Content\site\core\src\_page-body.scss" />
+    <Content Include="Content\site\core\src\_page-vars.scss" />
     <None Include="Content\site\core\src\_tiles.scss">
       <Compile>False</Compile>
       <Minify>False</Minify>
