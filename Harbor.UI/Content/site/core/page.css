@@ -55,7 +55,11 @@
   position: relative;
   float: left; }
   .page-aside .menulist {
-    margin-left: 1em; }
+    margin-left: 1em;
+    max-width: 18em;
+    width: 100%;
+    float: right;
+    clear: both; }
     .page-aside .menulist > ul {
       border-top: 1px solid #ccc;
       background: #f7f7f7; }

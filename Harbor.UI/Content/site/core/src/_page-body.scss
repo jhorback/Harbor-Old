@@ -70,6 +70,10 @@
 
        .menulist {
            margin-left: 1em;
+           max-width: 18em;
+           width: 100%;
+           float: right;
+           clear: both;
 
 		   & > ul {
 			    border-top: $page-aside-menulist-border-style;
