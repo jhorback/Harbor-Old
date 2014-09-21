@@ -10,7 +10,8 @@
 		span {
 			font-size: 1.8em;
 			margin-left: .6em;
-			@include opacity(.2);
+            color: #fff;
+			@include opacity(.4);
 			&:hover, &.selected, &:focus {
 				@include opacity(1);
 				outline: none;
