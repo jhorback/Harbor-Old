@@ -51,6 +51,10 @@ namespace Harbor.Domain.App
 				app.Theme = "default";
 
 			app.FooterHtml = _appSettings.GetSetting("FooterHtml").AsString();
+			if (string.IsNullOrEmpty(app.FooterHtml))
+			{
+				app.FooterHtml = "NO FOOTER";
+			}
 
 			app.GoogleAnalyticsAccount = WebConfigurationManager.AppSettings["googleAnalyticsAccount"];
 
