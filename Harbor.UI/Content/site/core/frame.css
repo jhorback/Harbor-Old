@@ -2,7 +2,7 @@
   min-height: 100%;
   height: auto !important;
   height: 100%;
-  margin: 0 auto -8em; }
+  margin: 0 auto -12em; }
 
 #frame-header {
   overflow: hidden;
@@ -60,7 +60,7 @@
   position: relative; }
 
 .frame-footer-height {
-  height: 8em; }
+  height: 12em; }
 
 #frame-footer {
   clear: left;
