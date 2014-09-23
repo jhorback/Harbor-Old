@@ -16,7 +16,8 @@
 		homePage: null,
 		navigationLinks: [],
 		theme: "default",
-		thumbUrl: null
+		thumbUrl: null,
+		footerHtml: null
 	},
 
 	initialize: function () {
@@ -43,6 +44,12 @@
 		}
 	},
 	
+	footerHtml: {
+		set: function (value) {
+			return $("<div>" + value + "</value>").html();
+		}
+	},
+
 	homePage: null,
 	
 	applicationName: {

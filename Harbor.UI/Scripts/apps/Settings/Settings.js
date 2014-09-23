@@ -65,7 +65,7 @@ var Settings = new Application({
 		this.settingsModel.setHomePage(null);
 		AjaxRequest.handle(this.settingsModel.save());
 	},
-	
+
 	updateNav: function () {
 		var view = new Settings.EditNavView({
 			el: $(document.body),
@@ -79,5 +79,14 @@ var Settings = new Application({
 		AjaxRequest.handle(Settings.settingsModel.save()).then(function () {
 			location = location;
 		});
+	},
+	
+	updateFooter: function () {
+		var view = new Settings.UpdateFooterView({
+			// el: $(document.body),
+			model: Settings.settingsModel
+		});
+
+		view.render();
 	}
 });

@@ -33,23 +33,6 @@
 						</div>
 					</div>
 				</fieldset>
-			}
-			@if (Model.CanViewUsers)
-			{
-				<fieldset>
-					<legend>Website users</legend>
-					<div>
-						<a href="~/User/Admin">User Administration</a>
-					</div>
-					<div>
-						<p>
-							Add, edit, update users and their permissions.
-						</p>
-					</div>
-				</fieldset>
-			}
-			@if (Model.CanUpdateSiteSettings)
-			{
 				<fieldset>
 					<legend>Home page</legend>
 					<div class="settings-homepage" id="settings-changehome">
@@ -67,24 +50,6 @@
 						<button id="settings-resethome" class="@(Model.HomePage == null ? "hide" : "")">Reset</button>
 					</div>
 				</fieldset>
-							
-			}
-			@if (Model.CanUpdateSystemSettings)
-			{
-				<fieldset>
-					<legend>Theme</legend>
-					<div class="form-field">
-						<select name="theme" id="settings-theme" style="min-width:auto;">
-							@foreach (var theme in Model.Themes)
-							{
-								<option @(theme == Model.Theme ? "selected" : "")>@theme</option>
-							}
-						</select>
-					</div>
-				</fieldset>
-			}
-			@if (Model.CanUpdateSiteSettings)
-			{
 				<fieldset>
 					<legend>Sign in link</legend>
 					<div class="form-field">
@@ -98,13 +63,43 @@
 						</p>
 					</div>
 				</fieldset>
+				<fieldset>
+					<legend>Footer</legend>
+					<button id="settings-updatefooter">Update the website footer</button>
+				</fieldset>
+			}
+			@if (Model.CanViewUsers)
+			{
+				<fieldset>
+					<legend>Website users</legend>
+					<div>
+						<a href="~/User/Admin">User Administration</a>
+					</div>
+					<div>
+						<p>
+							Add, edit, update users and their permissions.
+						</p>
+					</div>
+				</fieldset>
 			}
 			@if (Model.CanUpdateSystemSettings)
 			{ 
+				<h2>System Settings</h2>
 				<fieldset class="clear">
 					<legend>Application name</legend>
 					<div class="form-field editable" id="settings-applicationName">
 						<button type="button" class="input"><span data-bind="applicationName"></span></button>
+					</div>
+				</fieldset>
+				<fieldset>
+					<legend>Theme</legend>
+					<div class="form-field">
+						<select name="theme" id="settings-theme" style="min-width:auto;">
+							@foreach (var theme in Model.Themes)
+							{
+								<option @(theme == Model.Theme ? "selected" : "")>@theme</option>
+							}
+						</select>
 					</div>
 				</fieldset>
 				@Html.Partial("_DevLinks")

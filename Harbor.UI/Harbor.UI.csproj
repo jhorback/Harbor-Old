@@ -520,6 +520,7 @@
     <Content Include="Scripts\apps\pageAdmin\pageAdminView.js" />
     <Content Include="Scripts\apps\pageAdmin\pageAdminViewModel.js" />
     <Content Include="Scripts\apps\pageAdmin\pageAdminViewModelRepo.js" />
+    <Content Include="Scripts\apps\Settings\UpdateFooterView.js" />
     <Content Include="Scripts\appui\cookie.js" />
     <Content Include="Scripts\appui\feedback.js" />
     <Content Include="Scripts\appui\isodate.js" />
@@ -794,6 +795,7 @@
     <Content Include="Views\PageEditor\links\_linksAddLinkView.cshtml" />
     <Content Include="Views\PageAdder\pageAdderView.cshtml" />
     <Content Include="Views\Page\NoPageContent.cshtml" />
+    <Content Include="Views\User\_UpdateFooter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\users\" />
