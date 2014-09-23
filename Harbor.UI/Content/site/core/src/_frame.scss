@@ -113,12 +113,70 @@ $frame-logo-use-image: true !default;
     .frame-footer-height {
 		height: $frame-footer-height;
     }
+
 	#frame-footer  {
-		//padding-top: 2em;
-		clear: left;        
-		text-align: center;
-		min-height: 5em;
+		position: relative;       
+
+        .menulist {
+             font-size: .8em;
+             line-height: 1.8em;
+
+            a {
+                text-decoration: none;
+            }
+
+            h2, h3 {
+                font-size: 1.1em;
+                font-weight: bold;
+            }
+        }
+
+        .social-links {
+            line-height: 2em;
+            padding-top: .5em;
+            a {
+                text-decoration: none;
+                display: block;
+            }
+            span {
+                font-size: 1.5em;
+                position: relative;
+                top: .25em;
+                width: 1em;
+                text-align: right;
+                display: block;
+                float: left;
+                clear: left;
+                margin-right: .4em;
+            }
+            
+        }
 	}
+
+    #frame-footer-copyright {
+        position: absolute;
+        bottom: 1em;
+        left: 50%;
+        position: absolute;
+        -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        transform: translateX(-50%);
+        font-size: 75%;
+    }
+    /*
+        <div class="col4">
+	<div class="menulist">
+		<h2><a href="#">Shop</a></h2>
+		<ul>
+			<li><a href="#">Originals</a></li>
+			<li><a href="#">Prints</a></li>
+			<li><a href="#">Jewelry</a></li>
+			<li><a href="#">Gifts</a></li>
+		</ul>
+	</div>
+</div>
+<div id="frame-footer-copyright"></div>
+*/
 }
 
 
