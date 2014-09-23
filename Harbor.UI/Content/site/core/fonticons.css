@@ -44,6 +44,12 @@
 .icon-link:before {
   content: "\f0c1"; }
 
+.icon-google-plus:before {
+  content: "\f0d5"; }
+
+.icon-facebook:before {
+  content: "\f09a"; }
+
 /* FONT PATH
  * -------------------------- */
 @font-face {

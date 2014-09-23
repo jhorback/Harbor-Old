@@ -63,10 +63,56 @@
   height: 12em; }
 
 #frame-footer {
-  clear: left;
-  text-align: center;
-  min-height: 5em; }
+  position: relative; }
+  #frame-footer .menulist {
+    font-size: 0.8em;
+    line-height: 1.8em; }
+    #frame-footer .menulist a {
+      text-decoration: none; }
+    #frame-footer .menulist h2, #frame-footer .menulist h3 {
+      font-size: 1.1em;
+      font-weight: bold; }
+  #frame-footer .social-links {
+    line-height: 2em;
+    padding-top: 0.5em; }
+    #frame-footer .social-links a {
+      text-decoration: none;
+      display: block; }
+    #frame-footer .social-links span {
+      font-size: 1.5em;
+      position: relative;
+      top: 0.25em;
+      width: 1em;
+      text-align: right;
+      display: block;
+      float: left;
+      clear: left;
+      margin-right: 0.4em; }
 
+#frame-footer-copyright {
+  position: absolute;
+  bottom: 1em;
+  left: 50%;
+  position: absolute;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  font-size: 75%; }
+
+/*
+        <div class="col4">
+	<div class="menulist">
+		<h2><a href="#">Shop</a></h2>
+		<ul>
+			<li><a href="#">Originals</a></li>
+			<li><a href="#">Prints</a></li>
+			<li><a href="#">Jewelry</a></li>
+			<li><a href="#">Gifts</a></li>
+		</ul>
+	</div>
+</div>
+<div id="frame-footer-copyright"></div>
+*/
 #overlay, .overlay {
   background-color: #000;
   z-index: 10;
