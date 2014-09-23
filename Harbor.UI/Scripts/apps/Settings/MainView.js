@@ -18,6 +18,10 @@ Settings.MainView = Application.View.extend({
 				Settings.editName(editable);
 			}
 		},
+		"click #settings-updatefooter": function (event) {
+			event.preventDefault();
+			Settings.updateFooter();
+		},
 		
 		"click #settings-changehome": Settings.changeHomePage,
 		"click #settings-resethome": function () {	
