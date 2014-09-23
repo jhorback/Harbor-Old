@@ -83,7 +83,6 @@ var Settings = new Application({
 	
 	updateFooter: function () {
 		var view = new Settings.UpdateFooterView({
-			// el: $(document.body),
 			model: Settings.settingsModel
 		});
 

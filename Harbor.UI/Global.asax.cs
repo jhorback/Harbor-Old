@@ -33,11 +33,12 @@ namespace Harbor.UI
 			}
 		}
 
-		public static string FooterText
+		public static string FooterHtml
 		{
 			get
 			{
-				return getApp().FooterHtml;
+				var html = getApp().ParsedFooterHtml;
+				return html;
 			}
 		}
 

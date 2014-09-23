@@ -28,7 +28,7 @@ namespace Harbor.UI.Controllers.Api
         {
 			harborApp.SetApp(app, _userRepository.FindUserByName(User.Identity.Name));
 			harborApp.Save();
-			return Request.CreateOKResponse(app);
+			return Request.CreateOKResponse((HarborAppDto)harborApp.GetApp());
         }
     }
 }

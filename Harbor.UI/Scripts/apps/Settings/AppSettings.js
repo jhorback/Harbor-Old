@@ -17,7 +17,8 @@
 		navigationLinks: [],
 		theme: "default",
 		thumbUrl: null,
-		footerHtml: null
+		footerHtml: null,
+		parsedFooterHtml: null
 	},
 
 	initialize: function () {
