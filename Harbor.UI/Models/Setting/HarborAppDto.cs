@@ -11,6 +11,7 @@ namespace Harbor.UI.Models.Setting
 		public NavigationLinkDto[] navigationLinks { get; set; }
 		public string theme { get; set; }
 		public string footerHtml { get; set; }
+		public string parsedFooterHtml { get; set; }
 
 		public static implicit operator HarborAppDto(Domain.App.HarborApp app)
 		{

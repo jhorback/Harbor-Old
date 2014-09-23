@@ -47,7 +47,7 @@
 			<header id="frame-header">
 				<div id="frame-logo">
 					<a href="~/">
-						@Harbor.UI.HarborApplication.AppName
+						@HarborApplication.AppName
 					</a>
 				</div>	
 				<nav id="frame-nav">
@@ -65,11 +65,10 @@
 		<footer id="frame-footer" class="frame-footer-height">
 			<div class="pad">
 				<div id="frame-footer-content">
-					@Html.Raw(HarborApplication.FooterText)
+					@Html.Raw(HarborApplication.FooterHtml)
 				</div>
 				<div class="frame-footer-copyright">
 					@copyrightText
-					<a href="http://www.orbharbor.com">orbharbor.com</a>
 				</div>
 			</div>
 		</footer>

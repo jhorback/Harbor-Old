@@ -36,6 +36,8 @@ namespace Harbor.Domain.App
 
 		public string FooterHtml { get; set; }
 
+		public string ParsedFooterHtml { get; set; }
+
 		public IEnumerable<NavigationLink> NavigationLinks { get; set; }
 
 		public string GoogleAnalyticsAccount { get; set; }

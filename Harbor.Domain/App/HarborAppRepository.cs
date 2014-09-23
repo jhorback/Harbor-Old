@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Web;
 using System.Web.Configuration;
+using System.Web.Hosting;
 using Harbor.Domain.Extensions;
 using Harbor.Domain.Pages;
 using Harbor.Domain.Security;
@@ -55,11 +57,19 @@ namespace Harbor.Domain.App
 			{
 				app.FooterHtml = "NO FOOTER";
 			}
+			app.ParsedFooterHtml = parseFooter(app.FooterHtml);
 
 			app.GoogleAnalyticsAccount = WebConfigurationManager.AppSettings["googleAnalyticsAccount"];
 
 			_memCache.SetGlobal(harborAppCacheKey, app, DateTime.Now.AddDays(1));
 			return app;
+		}
+
+		private string parseFooter(string html)
+		{
+			var webRoot = VirtualPathUtility.ToAbsolute("~/");
+			var replacedHtml = html.Replace("href=\"~/", "href=\"" + webRoot);
+			return replacedHtml;
 		}
 
 		private const string harborAppCacheKey = "HarborApp";

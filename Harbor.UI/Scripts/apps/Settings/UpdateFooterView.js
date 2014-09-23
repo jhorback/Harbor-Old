@@ -34,7 +34,7 @@
 	saveModel: function () {
 		var thisView = this;
 		AjaxRequest.handle(this.model.save()).then(function () {
-			$("#frame-footer-content").html(thisView.model.attributes.footerHtml);
+			$("#frame-footer-content").html(thisView.model.attributes.parsedFooterHtml);
 			thisView.dialog.destroy();
 		});
 	}
