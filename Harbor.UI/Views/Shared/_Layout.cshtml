@@ -59,14 +59,17 @@
 			</header>	
 			<div id="frame-body">
 				@RenderBody()
-				<div class="frame-footer-height"></div>
 			</div>
+			<div class="frame-footer-height"></div>
 		</div>
 		<footer id="frame-footer" class="frame-footer-height">
-			<div class="pad margin">
-				@HarborApplication.FooterText
+			<div class="pad">
+				<div id="frame-footer-content">
+					@Html.Raw(HarborApplication.FooterText)
+				</div>
 				<div class="frame-footer-copyright">
-					@copyrightText	
+					@copyrightText
+					<a href="http://www.orbharbor.com">orbharbor.com</a>
 				</div>
 			</div>
 		</footer>
