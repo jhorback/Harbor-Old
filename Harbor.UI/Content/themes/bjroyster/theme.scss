@@ -17,3 +17,17 @@ $page-header-background: #67A3B6;
 $page-title-color: #FFF;
 
 @include theme;
+
+
+#frame-footer-image {
+    //position: absolute;
+   // bottom: 0;
+    //width: 310px;
+    background: url(images/signature.png) no-repeat left center !important;
+    height: $frame-footer-height - 2em;
+    //margin-bottom: 3em;
+    //right: 0;
+   // margin-right: 3em;
+    @include opacity(.3)
+}
+
