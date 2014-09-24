@@ -108,6 +108,14 @@ table {
   h2, h3 {
     page-break-after: avoid; } }
 
+@font-face {
+  font-family: 'OpenSans';
+  src: url("font/opensans/OpenSans-Regular-webfont.eot");
+  src: url("font/opensans/OpenSans-Regular-webfont.eot?#iefix") format('embedded-opentype'), url("font/opensans/OpenSans-Regular-webfont.woff") format('woff'), url("font/opensans/OpenSans-Regular-webfont.ttf") format('truetype'), url("font/opensans/OpenSans-Regular-webfont.svg#OpenSansRegular") format('svg');
+  font-weight: normal;
+  font-weight: 400;
+  font-style: normal; }
+
 html, body {
   height: 100%;
   min-height: 100%;
