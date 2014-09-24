@@ -30,6 +30,21 @@
 
 
 @mixin body {
+    $opensans-fontpath: "font/opensans/OpenSans-Regular-";
+
+    @font-face {
+        font-family: 'OpenSans';
+    
+        src: url($opensans-fontpath + 'webfont.eot');
+        src: url($opensans-fontpath + 'webfont.eot?#iefix') format('embedded-opentype'),
+             url($opensans-fontpath + 'webfont.woff') format('woff'),
+             url($opensans-fontpath + 'webfont.ttf') format('truetype'),
+             url($opensans-fontpath + 'webfont.svg#OpenSansRegular') format('svg');
+        font-weight: normal;
+        font-weight: 400;
+        font-style: normal;
+    }
+
 	html, body {
 		height: 100%;
 		min-height: 100%;
