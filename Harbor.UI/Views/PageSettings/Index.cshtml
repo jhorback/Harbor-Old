@@ -1,42 +1,39 @@
-﻿<section class="page" data-templatefor="pageSettingsView">
-	<div class="page-header">
+﻿<section data-templatefor="pageSettingsView">
+	<header>
 		<h1 class="float-left">
 			<span data-bind="value:title" data-type="contenteditable" id="page-title" contenteditable></span>
 		</h1>
 		<div class="float-left pad-left pad-top">(click title to rename)</div>
-	</div>
-	<div class="page-body">
-		<div class="page-content">
-			@Html.Partial("~/Views/PageSettings/_PagePreview.cshtml")
-			<fieldset id="settings-visibility" class="clear">
-				<legend>Visibility</legend>
-				<div>
-					<div class="form-field">
-						<input type="checkbox" name="published" id="visibility-published">
-						<label for="visibility-published">Published</label>
-					</div>
-					<div data-bind="publishedMessage"></div>
+	</header>
+	<div class="clear">
+		@Html.Partial("~/Views/PageSettings/_PagePreview.cshtml")
+		<fieldset id="settings-visibility" class="clear">
+			<legend>Visibility</legend>
+			<div>
+				<div class="form-field">
+					<input type="checkbox" name="published" id="visibility-published">
+					<label for="visibility-published">Published</label>
 				</div>
-			</fieldset>
-			<fieldset id="settings-layout">
-				<legend>Page Information</legend>
-				<dl class="list-wide">
-					<dt>Page type</dt>
-					<dd data-bind="text: pageTypeName"></dd>
-					<dt>Layout title</dt>
-					<dd>
-						<span data-bind="text: layout.title"></span>
-						@*<a data-bind="showif:isLayoutTitleDifferent, href: layoutPageHref, text: layout.title"></a>*@
-						<span class="link" data-bind="showif:isLayoutTitleDifferent" data-event="resetLayout">(Reset layout)</span>
-					</dd>
-				</dl>
-			</fieldset>
-
-			<fieldset>
-				<legend>Delete</legend>
-				<button data-event="deletePage">Delete this page</button>
-				<div class="quiet">Deleting this page will not remove any uploaded content associated with this page.</div>
-			</fieldset>
-		</div>
+				<div data-bind="publishedMessage"></div>
+			</div>
+		</fieldset>
+		<fieldset id="settings-layout">
+			<legend>Page Information</legend>
+			<dl class="list-wide">
+				<dt>Page type</dt>
+				<dd data-bind="text: pageTypeName"></dd>
+				<dt data-bind="showif:isLayoutTitleDifferent">Layout page</dt>
+				<dd data-bind="showif:isLayoutTitleDifferent">
+					<span data-bind="text: layout.title"></span><br />
+					@*<a data-bind="showif:isLayoutTitleDifferent, href: layoutPageHref, text: layout.title"></a>*@
+					<span class="link" data-event="resetLayout">(Reset layout)</span>
+				</dd>
+			</dl>
+		</fieldset>
+		<fieldset>
+			<legend>Delete</legend>
+			<button data-event="deletePage">Delete this page</button>
+			<div class="quiet">Deleting this page will not remove any uploaded content associated with this page.</div>
+		</fieldset>
 	</div>
 </section>
