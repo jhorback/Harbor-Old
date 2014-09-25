@@ -36,7 +36,8 @@ namespace Harbor.Domain.Pages.Commands
 			page.Layout = new PageLayout
 			{
 				Title = page.Title,
-				UserName = page.AuthorsUserName
+				UserName = page.AuthorsUserName,
+				PageTypeKey = page.PageType == null ? page.PageTypeKey : page.PageType.Key
 			};
 
 			_pageRepository.Update(page);
