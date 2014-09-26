@@ -59,6 +59,13 @@ namespace Harbor.UI.Controllers.Api
 			{
 				pageDO = _pageRep.Create(pageDO);
 				_pageRep.Save();
+
+				// add the parent page id to the layout if null
+				if (pageDO.Layout.ParentPageID == null)
+				{
+					pageDO.Layout.ParentPageID = pageDO.PageID;
+					_pageRep.Save();
+				}
 			}
 			catch (DomainValidationException exception)
 			{

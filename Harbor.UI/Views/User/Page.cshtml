@@ -28,14 +28,16 @@
 	}
 }
 <div id="page" class="@layoutClassNames">
-	<header class="page-header ">
-		@if (Model.Layout.HeaderKey != null)
-		{
-			var header = Model.Layout.HeaderKey;
-			<div class="uic" data-type="@header" id="@Model.Layout.Header.Id">
-				@Html.PageComponent(Model.PageID, header)
-			</div>
-		}
+	<header class="page-header">
+		<div class="page-header-content">
+			@if (Model.Layout.HeaderKey != null)
+			{
+				var header = Model.Layout.HeaderKey;
+				<div class="uic" data-type="@header" id="@Model.Layout.Header.Id">
+					@Html.PageComponent(Model.PageID, header)
+				</div>
+			}
+		</div>
 	</header>
 	<div class="page-body">		
 		<aside class="page-aside">

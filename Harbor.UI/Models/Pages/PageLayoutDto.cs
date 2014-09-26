@@ -6,6 +6,7 @@ namespace Harbor.UI.Models
 	public class PageLayoutDto
 	{
 		public int id { get; set; }
+		public int? parentPageId { get; set; }
 		public string title { get; set; }
 
 		public bool layoutIsCentered { get; set; }
@@ -29,6 +30,7 @@ namespace Harbor.UI.Models
 			}
 
 			id = layout.PageLayoutID;
+			parentPageId = layout.ParentPageID;
 			title = layout.Title;
 			layoutIsCentered = layout.DisplayProperties.HasFlag(PageLayout.LayoutDisplayProperties.ContentCentered);
 			layoutHasNoSidebar = layout.DisplayProperties.HasFlag(PageLayout.LayoutDisplayProperties.NoAside);

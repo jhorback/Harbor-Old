@@ -16,7 +16,13 @@ namespace Harbor.Domain.Pages.PipelineHandlers
 			var pageType = _pageTypeRepository.GetPageType(page.PageTypeKey);
 			if (pageType != null)
 			{
-				pageType.OnPageUpdate(page);				
+				pageType.OnPageUpdate(page);
+			}
+
+			// ensure the parent page id (lazy migration)
+			if (page.Layout.ParentPageID == null && page.Layout.Title == page.Title)
+			{
+				page.Layout.ParentPageID = page.PageID;
 			}
 		}
 	}

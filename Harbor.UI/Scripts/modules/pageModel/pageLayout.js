@@ -6,7 +6,8 @@ pageModel.pageLayout = function (attrs, options, modelFactory) {
 
 pageModel.pageLayout.prototype = {
 	defaults:{
-		id: null, 
+		id: null,
+		parentPageId: null,
 		title: null,
 
 		layoutIsCentered: null, 
@@ -71,6 +72,13 @@ pageModel.pageLayout.prototype = {
 		},
 		set: function (value) {
 			this.header && this.header.set(value);
+			return value;
+		}
+	},
+
+	"[parentPageId]": {
+		get: function (value) {
+			console.debug("PARENT PAGE ID", value);
 			return value;
 		}
 	}

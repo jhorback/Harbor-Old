@@ -43,6 +43,10 @@ namespace Harbor.Domain.Pages.Commands
 
 
 			// Update the layout
+			if (page.Layout.ParentPageID == null)
+			{
+				page.Layout.ParentPageID = page.PageID;
+			}
 			existingPage.PageLayoutID = page.PageLayoutID;
 			existingPage.Layout = page.Layout;
 
