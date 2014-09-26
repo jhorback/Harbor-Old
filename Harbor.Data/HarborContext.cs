@@ -19,13 +19,8 @@ namespace Harbor.Data
 	 */
 	public class HarborContext : DbContext
 	{
-		public static int count = 0;
-
-		public int thisCount = 0;
-
 		public HarborContext()
 		{
-			thisCount = count++;	
 		}
 
 		public DbSet<AppSetting> AppSettings { get; set; }

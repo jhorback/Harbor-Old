@@ -24,6 +24,10 @@ namespace Harbor.Domain.Pages
 
 		public int PageLayoutID { get; set; }
 
+		
+		public int? ParentPageID { get; set; }
+
+
 		/// <summary>
 		/// This is the page type of the page when first created.
 		/// </summary>

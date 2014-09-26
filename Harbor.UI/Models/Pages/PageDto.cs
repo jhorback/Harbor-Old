@@ -80,7 +80,8 @@ namespace Harbor.UI.Models
 		public FileDto previewImage { get; set; }
 		public string previewImageID { get; set; }
 		public string previewText { get; set; }
-		public bool autoPreview { get; set; }
+		public bool autoPreviewText { get; set; }
+		public bool autoPreviewImage { get; set; }
 
 		public static PageDto FromPage(Domain.Pages.Page page)
 		{
