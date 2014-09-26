@@ -34,7 +34,7 @@ namespace Harbor.Domain.Pages
 			Public = true;
 			Enabled = true;
 			TemplateStr = "";
-			AutoPreview = true;
+			AutoPreviewText = true;
 		}
 
 		#region properties
@@ -67,7 +67,10 @@ namespace Harbor.Domain.Pages
 		public string PreviewText { get; set; }
 
 		[DefaultValue(true)]
-		public bool AutoPreview { get; set; }
+		public bool AutoPreviewText { get; set; }
+
+		[DefaultValue(true)]
+		public bool AutoPreviewImage { get; set; }
 
 		/// <summary>
 		/// Setting this sets the Template property.

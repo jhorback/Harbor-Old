@@ -24,7 +24,8 @@ namespace Harbor.UI.Models
 		public bool published { get; set; }
 		public string previewImageID { get; set; }
 		public string previewText { get; set; }
-		public bool autoPreview { get; set; }
+		public bool autoPreviewText { get; set; }
+		public bool autoPreviewImage { get; set; }
 
 		public static implicit operator PageReferenceDto(Domain.Pages.Page page)
 		{
