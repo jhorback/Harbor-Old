@@ -24,8 +24,7 @@
 				<dd data-bind="text: pageTypeName"></dd>
 				<dt data-bind="showif:isLayoutTitleDifferent">Layout page</dt>
 				<dd data-bind="showif:isLayoutTitleDifferent">
-					<span data-bind="text: layout.title"></span><br />
-					@*<a data-bind="showif:isLayoutTitleDifferent, href: layoutPageHref, text: layout.title"></a>*@
+					<a data-bind="href: parentPageUrl, text: layout.title"></a><br />
 					<span class="link" data-event="resetLayout">(Reset layout)</span>
 				</dd>
 			</dl>

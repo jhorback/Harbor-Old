@@ -74,13 +74,6 @@ pageModel.pageLayout.prototype = {
 			this.header && this.header.set(value);
 			return value;
 		}
-	},
-
-	"[parentPageId]": {
-		get: function (value) {
-			console.debug("PARENT PAGE ID", value);
-			return value;
-		}
 	}
 };
 
