@@ -30,7 +30,8 @@ page.prototype = {
 		previewImageID: null,
 		previewImage: null, // FileDto
 		previewText: "",
-		autoPreview: true,
+		autoPreviewText: true,
+		autoPreviewImage: true,
 		//
 		thumbUrl: "",
 		link: null,
@@ -118,12 +119,6 @@ page.prototype = {
 			return this.previewImage && this.previewImage.get("thumbUrl");
 		}
 	},
-
-	"[autoPreview]": {
-		get: function () {
-			return true; // for now, always automate the preview
-		}
-	},
 	
 	"[isLayoutTitleDifferent]": {
 		get: function () {
@@ -166,7 +161,7 @@ page.prototype = {
 	updatePagePreviewImage: function (uicid, fileID) {
 		var firstImage;
 
-		if (this.get("autoPreview") === false) {
+		if (this.get("autoPreviewImage") === false) {
 			return;
 		}
 
@@ -180,7 +175,7 @@ page.prototype = {
 		var prevText,
 			firstText;
 
-		if (this.get("autoPreview") === false) {
+		if (this.get("autoPreviewText") === false) {
 			return;
 		}
 

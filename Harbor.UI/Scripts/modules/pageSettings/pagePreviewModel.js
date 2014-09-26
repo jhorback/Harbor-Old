@@ -9,7 +9,8 @@ pagePreviewModel.prototype = {
 		thumbSrc: null,
 		thumbClass: null,
 		previewText: "",
-		autoPreview: true,
+		autoPreviewText: true,
+		autoPreviewImage: true,
 		changeThumbButtonText: null,
 		changeThumbButtonDisabled: null,
 		changeThumbButtonClass: null,
@@ -20,7 +21,8 @@ pagePreviewModel.prototype = {
 		this.page = this.get("page");
 
 		this.on("change:previewText", this.save, this);
-		this.on("change:autoPreview", this.save, this);
+		this.on("change:autoPreviewText", this.save, this);
+		this.on("change:autoPreviewImage", this.save, this);
 	},
 
 	thumbClass: {
@@ -52,7 +54,7 @@ pagePreviewModel.prototype = {
 	changeThumbButtonClass: {
 		get: function () {
 			return ""; // always leave this visible for now
-			//			var className = this.get("autoPreview") ? "hide" : "";
+			//			var className = this.get("autoPreviewImage") ? "hide" : "";
 			//			return className;
 		}
 	},
@@ -74,12 +76,13 @@ pagePreviewModel.prototype = {
 		}
 	},
 
-	autoPreview: {
+	// jch! - need to review
+	autoPreviewText: {
 		get: function () {
-			return this.page && this.page.get("autoPreview");
+			return this.page && this.page.get("autoPreviewText");
 		},
 		set: function (value) {
-			this.page && this.page.set("autoPreview", value);
+			this.page && this.page.set("autoPreviewText", value);
 			return value;
 		}
 	},
