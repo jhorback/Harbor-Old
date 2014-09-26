@@ -37,7 +37,8 @@ page.prototype = {
 		link: null,
 		publishedDisplay: null,
 		publishedMessage: null,
-		isLayoutTitleDifferent: false
+		isLayoutTitleDifferent: false,
+		parentPageUrl: null
 	},
 
 	initialize: function () {
@@ -122,10 +123,15 @@ page.prototype = {
 	
 	"[isLayoutTitleDifferent]": {
 		get: function () {
-			return this.attributes.title !== this.layout.attributes.title;
+			return this.layout.attributes.parentPageId && this.id !== this.layout.attributes.parentPageId;
 		}
 	},
-	
+
+	"[parentPageUrl]": {
+		get: function () {
+			return this.pageurl.get(this.layout.attributes.parentPageId, this.layout.attributes.title);
+		}
+	},
 
 	getUrl: function () {
 		return this.pageurl.get(this.get("id"), this.get("title"));
