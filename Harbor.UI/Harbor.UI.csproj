@@ -308,7 +308,6 @@
     <Compile Include="Models\Pages\CreatePageDto.cs" />
     <Compile Include="Models\Pages\PageLayoutDto.cs" />
     <Compile Include="Models\Pages\PageModelBinder.cs" />
-    <Compile Include="Models\Pages\PageReferenceDto.cs" />
     <Compile Include="Models\Pages\TemplateDto.cs" />
     <Compile Include="Models\Pages\PageComponentDto.cs" />
     <Compile Include="Models\Pages\PageDto.cs" />
