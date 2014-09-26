@@ -36,6 +36,7 @@ namespace Harbor.Domain.Pages.Commands
 			page.Layout = new PageLayout
 			{
 				Title = page.Title,
+				ParentPageID = page.PageID,
 				UserName = page.AuthorsUserName,
 				PageTypeKey = page.PageType == null ? page.PageTypeKey : page.PageType.Key
 			};

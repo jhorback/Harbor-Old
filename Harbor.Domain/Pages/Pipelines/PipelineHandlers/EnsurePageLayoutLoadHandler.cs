@@ -29,7 +29,7 @@ namespace Harbor.Domain.Pages.PipelineHandlers
 				throw new Exception("A page type could not be determined for the page. PageID: " + page.PageID);
 			}
 
-			page.Layout = page.Layout ?? new PageLayout();
+			page.Layout = page.Layout ?? new PageLayout {ParentPageID = page.PageID};
 			pageType.SetLayout(new PageTypeLayoutContext(page));
 			page.Layout.UserName = page.AuthorsUserName;
 			page.Layout.Title = page.Title;
