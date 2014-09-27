@@ -663,7 +663,6 @@
     <Content Include="Scripts\modules\pageAdder\pageAdder.js" />
     <Content Include="Scripts\modules\pageAdder\pageAdderView.js" />
     <Content Include="Scripts\modules\pageEditor\templateEditorView.js" />
-    <Content Include="Scripts\modules\pageEditor\title\titleView.js" />
     <Content Include="Scripts\modules\pageModel\%24pageModel.js" />
     <Content Include="Scripts\modules\pageModel\components\titleModel.js" />
     <Content Include="Scripts\modules\pageModel\pageLayout.js" />
