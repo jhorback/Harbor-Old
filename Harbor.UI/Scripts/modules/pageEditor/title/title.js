@@ -16,4 +16,4 @@ pageEditor.titleModel = {
 };
 
 pageEditor.view("titleView", pageEditor.titleView);
-pageEditor.view("titleModel", pageEditor.titleModel);
+pageEditor.model("titleModel", pageEditor.titleModel);

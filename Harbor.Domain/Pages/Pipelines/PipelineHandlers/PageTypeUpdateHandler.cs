@@ -19,10 +19,16 @@ namespace Harbor.Domain.Pages.PipelineHandlers
 				pageType.OnPageUpdate(page);
 			}
 
+
 			// ensure the parent page id (lazy migration)
 			if (page.Layout.ParentPageID == null && page.Layout.Title == page.Title)
 			{
 				page.Layout.ParentPageID = page.PageID;
+			}
+
+			if (page.Layout.ParentPageID == page.PageID)
+			{
+				page.Layout.Title = page.Title;
 			}
 		}
 	}
