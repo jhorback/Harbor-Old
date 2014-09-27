@@ -162,49 +162,6 @@ page.prototype = {
 		}
 
 		this.set("properties", props);
-	},
-
-	updatePagePreviewImage: function (uicid, fileID) {
-		var firstImage;
-
-		if (this.get("autoPreviewImage") === false) {
-			return;
-		}
-
-		firstImage = this.findFirstContentOfType("image");
-		if (firstImage && firstImage.uicid === uicid) {
-			this.set("previewImageID", fileID);
-		}
-	},
-
-	updatePagePreviewText: function (uicid, html) {
-		var prevText,
-			firstText;
-
-		if (this.get("autoPreviewText") === false) {
-			return;
-		}
-
-		firstText = this.findFirstContentOfType("text");
-		if (firstText && firstText.uicid === uicid) {
-			html = html.replace(/></g, "> <");
-			prevText = $('<div/>').html(html).text().substring(0, 223);
-			prevText = prevText.substring(0, prevText.lastIndexOf(" ")) + " ...";
-			this.set("previewText", prevText);
-		}
-	},
-
-	findFirstContentOfType: function (type) {
-		/// <summary>type - component type/key.</summary>
-		var retItem = null;
-		_.every(this.template.get("content"), function (item) {
-			if (item.key === type) {
-				retItem = item;
-				return false;
-			}
-			return true;
-		}, this);
-		return retItem;
 	}
 };
 

@@ -10,6 +10,7 @@ namespace Harbor.Domain.Pages
 		{
 			AddHandler<PageTypeUpdateHandler>();
 			AddHandler<ContentLoadHandler>(); // run this before the resource updater
+			AddHandler<AutoPreviewUpdateHandler>();
 			AddHandler<ContentResourceUpdateHandler>();
 		}
 	}

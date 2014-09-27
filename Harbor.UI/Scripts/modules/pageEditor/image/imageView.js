@@ -37,7 +37,6 @@ pageEditor.imageView.prototype = {
 			fileExists: true
 			// dont include max since we are saving on max change too
 		});
-		this.model.page.updatePagePreviewImage(this.options.uicid, fileID);
 		this.save();
 	},
 

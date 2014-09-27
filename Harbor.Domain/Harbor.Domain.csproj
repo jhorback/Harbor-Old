@@ -48,6 +48,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Harbor.UI\Bin\Harbor.Domain.dll</HintPath>
     </Reference>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\packages\HtmlAgilityPack.1.4.9\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
     <Reference Include="log4net">
       <HintPath>..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
     </Reference>
@@ -117,6 +120,7 @@
     <Compile Include="Pages\PageType\AddTypeFilter.cs" />
     <Compile Include="Pages\Pipelines\PageDeletePipeline.cs" />
     <Compile Include="Pages\Pipelines\PipelineHandlers\ComponentDeleteHandler.cs" />
+    <Compile Include="Pages\Pipelines\PipelineHandlers\AutoPreviewUpdateHandler.cs" />
     <Compile Include="Pages\Pipelines\PipelineHandlers\DeleteLayoutDeleteHandler.cs" />
     <Compile Include="Pages\TemplateContentHandler.cs" />
     <Compile Include="Pages\TemplateContentType.cs" />

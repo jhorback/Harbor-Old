@@ -46,7 +46,6 @@ pageEditor.textView.prototype = {
 			} catch (e) {}
 
 			this.model.set("text", html);
-			this.model.page.updatePagePreviewText(this.model.get("id"), html);
 			this.options.saveCurrentPage();
 		}
 
