@@ -24,6 +24,8 @@ pagePreviewModel.prototype = {
 		this.on("change:previewText", this.save, this);
 		this.on("change:autoPreviewText", this.save, this);
 		this.on("change:autoPreviewImage", this.save, this);
+		this.listenTo(this.page, "change:previewImageID", this.refreshFn("thumbSrc"));
+		this.listenTo(this.page, "change:previewText", this.refreshFn("previewText"));
 	},
 
 	"[thumbClass]": {
