@@ -121,7 +121,9 @@ page.prototype = {
 
 	"[parentPageUrl]": {
 		get: function () {
-			return this.pageurl.get(this.layout.attributes.parentPageId, this.layout.attributes.title);
+			var parentId = this.layout.attributes.parentPageId;
+			return parentId ? this.pageurl.get(parentId, this.layout.attributes.title) :
+				null;
 		}
 	},
 
