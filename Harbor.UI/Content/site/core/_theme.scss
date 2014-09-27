@@ -1,5 +1,6 @@
 @import "src/foundation";
 @import "src/frame";
+@import "src/form";
 @import "src/menulist";
 @import "src/page";
 @import "src/selectlist";
@@ -8,6 +9,7 @@
 @mixin theme {
 	@include foundation-theme;
 	@include frame-theme;
+    @include form-theme;
 	@include menulist-theme;
 	@include page-theme;
 	@include selectlist-theme;

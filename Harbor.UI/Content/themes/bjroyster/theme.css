@@ -131,6 +131,12 @@ dd {
   #frame-footer a {
     color: #a5a6a7; }
 
+legend {
+  color: #393d40; }
+
+[contenteditable]:hover {
+  background: #eaeaea; }
+
 .page-header {
   background: #67A3B6;
   color: #FFF; }

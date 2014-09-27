@@ -35,6 +35,12 @@ $form-error-color: #b94a48;
 
 @mixin form-theme {
 	legend { color: $form-legend-color; }
+
+    [contenteditable] {
+        &:hover {
+            background: #eaeaea;
+        }
+    }
 }
 
 
