@@ -53,11 +53,11 @@ namespace Harbor.Domain.Pages.PipelineHandlers
 		string extractText(string html)
 		{
 			var doc = new HtmlDocument();
+			html = html.Replace("><", "> <"); // add spaces between tags
 			doc.LoadHtml(html);
 
 			var text = doc.DocumentNode.InnerText;
 
-			text = text.Replace("><", "> <"); // add spaces between tags
 
 			if (text.Length > 223)
 			{
