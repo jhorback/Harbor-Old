@@ -1,13 +1,19 @@
 ﻿
+// just sets up a listener for the title
 pageEditor.title = {
-
-	open: function () {
-		return;
-	},
-
-	close: function () {
-		return;
-	}
+	
 };
 
 pageEditor.pageComponent("title", pageEditor.title);
+
+
+pageEditor.titleView = {};
+
+pageEditor.titleModel = {
+	defaults: {
+		displayTitle: null
+	}
+};
+
+pageEditor.view("titleView", pageEditor.titleView);
+pageEditor.view("titleModel", pageEditor.titleModel);
