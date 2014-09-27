@@ -8,6 +8,12 @@ function pagePreviewView(options, currentPageRepo, fileSelector) {
 pagePreviewView.prototype = {
 	changeThumb: function () {
 		
+		if (this.model.page.get("autoPreviewImage")) {
+			return;
+		}
+
+		this.model.trigger("pagepreview:openfileselector");
+
 		this.fileSelector.render({
 			filter: "images",
 			

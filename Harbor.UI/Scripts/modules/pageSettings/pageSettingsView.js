@@ -20,6 +20,7 @@ pageSettingsView.prototype = {
 		// save events
 		this.listenTo(this.model, "change:title", this.changeTitle);
 		this.listenTo(this.model, "change:published", this.saveModel);
+		this.listenTo(this.model.pagePreviewModel, "pagepreview:openfileselector", this.close);
 		this.listenTo(this.model.template, "change", this.saveModel);
 	},
 	
@@ -31,10 +32,7 @@ pageSettingsView.prototype = {
 	},
 	
 	changeTitle: function () {
-		// jch* really want the current title component to be listening at this point
-		// for now this hack is ok
 		this.saveModel();
-		$("[data-type=title] h1").html(this.model.layout.get("title"));
 	},
 	
 	saveModel: function () {
