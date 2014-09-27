@@ -774,7 +774,7 @@
     <Content Include="Views\Home\JavaScriptPackages.cshtml" />
     <Content Include="Views\Home\_JSPMParser.cshtml" />
     <Content Include="Views\FileSelector\Index.cshtml" />
-    <Content Include="Views\PageSettings\_PagePreview.cshtml" />
+    <Content Include="Views\PageSettings\PagePreviewView.cshtml" />
     <Content Include="Views\StyleGuide\_PageNav.cshtml" />
     <Content Include="Views\StyleGuide\Scaffolding.cshtml" />
     <Content Include="Views\StyleGuide\Typography.cshtml" />
@@ -806,6 +806,7 @@
     <Content Include="Views\PageAdder\pageAdderView.cshtml" />
     <Content Include="Views\Page\NoPageContent.cshtml" />
     <Content Include="Views\User\_UpdateFooter.cshtml" />
+    <Content Include="Views\PageSettings\PageSettingsView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\users\" />

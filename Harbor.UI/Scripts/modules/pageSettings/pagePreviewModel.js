@@ -13,8 +13,9 @@ pagePreviewModel.prototype = {
 		autoPreviewImage: true,
 		changeThumbButtonText: null,
 		changeThumbButtonDisabled: null,
-		changeThumbButtonClass: null,
-		hasThumb: false
+		hasThumb: false,
+		canEditText: false,
+		canEditImage: false
 	},
 
 	initialize: function () {
@@ -25,7 +26,7 @@ pagePreviewModel.prototype = {
 		this.on("change:autoPreviewImage", this.save, this);
 	},
 
-	thumbClass: {
+	"[thumbClass]": {
 		get: function (value) {
 			var ret = this.get("hasThumb") ? "float-left pad-right pad-bottom" : "hide";
 			return ret;
@@ -33,7 +34,7 @@ pagePreviewModel.prototype = {
 		bind: ["thumbSrc"]
 	},
 
-	thumbSrc: {
+	"[thumbSrc]": {
 		get: function (value) {
 			var previewImage = this.page && this.page.previewImage;
 			if (!previewImage) {
@@ -43,30 +44,22 @@ pagePreviewModel.prototype = {
 		}
 	},
 
-	changeThumbButtonText: {
+	"[changeThumbButtonText]": {
 		get: function (value) {
 			return this.get("hasThumb") ?
-				"Change image" : "Select a thumbnail image";
+				"Change image" : "Select an image";
 		},
 		bind: ["thumbSrc"]
 	},
 
-	changeThumbButtonClass: {
-		get: function () {
-			return ""; // always leave this visible for now
-			//			var className = this.get("autoPreviewImage") ? "hide" : "";
-			//			return className;
-		}
-	},
-
-	hasThumb: {
+	"[hasThumb]": {
 		get: function () {
 			return this.get("thumbSrc") ? true : false;
 		},
 		bind: ["thumbSrc"]
 	},
 
-	previewText: {
+	"[previewText]": {
 		get: function () {
 			return this.page && this.page.get("previewText");
 		},
@@ -76,8 +69,7 @@ pagePreviewModel.prototype = {
 		}
 	},
 
-	// jch! - need to review
-	autoPreviewText: {
+	"[autoPreviewText]": {
 		get: function () {
 			return this.page && this.page.get("autoPreviewText");
 		},
@@ -85,6 +77,30 @@ pagePreviewModel.prototype = {
 			this.page && this.page.set("autoPreviewText", value);
 			return value;
 		}
+	},
+
+	"[autoPreviewImage]": {
+		get: function () {
+			return this.page && this.page.get("autoPreviewImage");
+		},
+		set: function (value) {
+			this.page && this.page.set("autoPreviewImage", value);
+			return value;
+		}
+	},
+
+	"[canEditText]": {
+		get: function (value) {
+			return !this.attributes.autoPreviewText;
+		},
+		observe: ["autoPreviewText"]
+	},
+
+	"[canEditImage]": {
+		get: function (value) {
+			return !this.attributes.autoPreviewImage;
+		},
+		observe: ["autoPreviewImage"]
 	},
 
 	setPreviewImage: function (selectedFile) {

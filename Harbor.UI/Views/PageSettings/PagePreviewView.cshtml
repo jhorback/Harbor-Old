@@ -1,0 +1,32 @@
+﻿<div class="pad-bottom clearfix" data-model="pagePreviewModel" data-templatefor="pagePreviewView">
+	<h2>Page Preview</h2>
+	<div class="form-inline clear pad-right">
+		<div title="Automatically update the preview image." class="col2">
+			<input id="settings-autoPreviewImage" type="checkbox" name="autoPreviewImage">
+			<label for="settings-autoPreviewImage">Auto preview image</label>
+		</div>
+		<div title="Automatically update the preview text." class="col2">
+			<input id="settings-autoPreviewText" type="checkbox" name="autoPreviewText">
+			<label for="settings-autoPreviewText">Auto preview text</label>
+		</div>
+	</div>
+	<div class="pad-right">
+		<div class="col2">
+			<img data-bind="class: thumbClass, src: thumbSrc" data-event="changeThumb" />
+		</div>
+		<div id="settings-previewtext"
+			name="previewText"
+			data-bind="contenteditable: canEditText"
+			data-type="contenteditable"
+			class="col2">
+		</div>			
+	</div>
+	<div class="clear" data-bind="showif:canEditImage">
+		<input type="button"
+		       id="settings-changethumb" name="changeThumbButtonText" value="Change image" data-event="changeThumb" />
+		<input type="button"
+		       data-bind="showif: hasThumb"
+		       id="settings-removethumb" value="Remove image" data-event="removeThumb" />
+	</div>
+</div>
+
