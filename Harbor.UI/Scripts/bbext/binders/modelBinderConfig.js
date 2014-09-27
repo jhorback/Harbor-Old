@@ -107,6 +107,7 @@ var modelBinderConfig = {
 		"id": "string",
 		"disabled": "boolean",
 		"checked": "boolean",
+		"contenteditable": "boolean",
 		"text": "text",
 		"showif": "visibility",
 		"dontshowif": "visibility",

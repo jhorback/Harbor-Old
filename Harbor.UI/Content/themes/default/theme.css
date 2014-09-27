@@ -123,6 +123,12 @@ dd {
   #frame-footer a {
     color: #a5a6a7; }
 
+legend {
+  color: #393d40; }
+
+[contenteditable]:hover {
+  background: #eaeaea; }
+
 .page-header {
   background: #FFF;
   color: #666666; }
