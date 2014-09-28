@@ -17,11 +17,13 @@ namespace Harbor.UI.Controllers.Api
     public class PageLayoutController : ApiController
     {
 	    private readonly IPageLayoutRepository linksRep;
+	    private readonly IDtoMapper _dtoMapper;
 
-	    public PageLayoutController(IPageLayoutRepository linksRepository)
-		{
-			linksRep = linksRepository;
-		}
+	    public PageLayoutController(IPageLayoutRepository linksRepository, IDtoMapper dtoMapper)
+	    {
+		    linksRep = linksRepository;
+		    _dtoMapper = dtoMapper;
+	    }
 
 	    // GET api/navlinks
 		/// <summary>
@@ -31,7 +33,7 @@ namespace Harbor.UI.Controllers.Api
         public IEnumerable<PageLayoutDto> Get()
         {
             // query.CurrentUserName = User.Identity.Name;
-			return linksRep.FindAll(i => i.UserName == User.Identity.Name).Select(PageLayoutDto.FromPageLayout);
+			return linksRep.FindAll(i => i.UserName == User.Identity.Name).Select(p => PageLayoutDto.FromPageLayout(p, _dtoMapper));
         }
 
         // GET api/navlinks/5
@@ -41,8 +43,8 @@ namespace Harbor.UI.Controllers.Api
 			if (links == null || links.UserName != User.Identity.Name)
 				return Request.CreateNotFoundResponse();
 
-			var linksDto = PageLayoutDto.FromPageLayout(links);
-			return Request.CreateOKResponse(linksDto);
+			var layoutDto = PageLayoutDto.FromPageLayout(links, _dtoMapper);
+			return Request.CreateOKResponse(layoutDto);
         }
 
         // POST api/navlinks
@@ -89,7 +91,7 @@ namespace Harbor.UI.Controllers.Api
 				return Request.CreateBadRequestResponse(e);
 			}
 
-			var navLinksDto = PageLayoutDto.FromPageLayout(navLinksDO);
+			var navLinksDto = PageLayoutDto.FromPageLayout(navLinksDO, _dtoMapper);
 			return Request.CreateOKResponse(navLinksDto);
         }
 

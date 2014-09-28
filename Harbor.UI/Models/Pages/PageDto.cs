@@ -24,7 +24,7 @@ namespace Harbor.UI.Models
 				.ForMember(dest => dest.created, opt => opt.MapFrom(src => src.Created.ToShortDateString()))
 				.ForMember(dest => dest.modified, opt => opt.MapFrom(src => src.Modified.ToShortDateString()))
 				.ForMember(dest => dest.template, opt => opt.MapFrom(src => TemplateDto.FromTemplate(src.Template, _dtoMapper)))
-				.ForMember(dest => dest.layout, opt => opt.MapFrom(src => PageLayoutDto.FromPageLayout(src.Layout)))
+				.ForMember(dest => dest.layout, opt => opt.MapFrom(src => PageLayoutDto.FromPageLayout(src.Layout, _dtoMapper)))
 				;
 
 			Mapper.CreateMap<PageDto, Domain.Pages.Page>()

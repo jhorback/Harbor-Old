@@ -2,6 +2,7 @@
 
 namespace Harbor.UI.Models.Content
 {
+	[MapDtoFrom(typeof(Title))]
 	public class TitleDto
 	{
 		public TitleDto(Title title)
