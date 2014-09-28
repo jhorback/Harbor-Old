@@ -22,7 +22,7 @@ namespace Harbor.UI.Models
 
 		public PageLayoutDto() { }
 
-		public PageLayoutDto(PageLayout layout)
+		public PageLayoutDto(PageLayout layout, IDtoMapper dtoMapper)
 		{
 			if (layout == null)
 			{
@@ -36,15 +36,15 @@ namespace Harbor.UI.Models
 			layoutHasNoSidebar = layout.DisplayProperties.HasFlag(PageLayout.LayoutDisplayProperties.NoAside);
 			headerKey = layout.HeaderKey;
 			header = UicDto.FromUic(layout.Header);
-			headerData = layout.HeaderData;
+			headerData = dtoMapper.MapFrom(layout.HeaderData) ?? layout.HeaderData;
 			asideKey = layout.AsideKey;
 			aside = UicDto.FromUic(layout.Aside);
-			asideData = layout.AsideData;
+			asideData = dtoMapper.MapFrom(layout.AsideData) ?? layout.AsideData;
 		}
 
-		public static PageLayoutDto FromPageLayout(PageLayout layout)
+		public static PageLayoutDto FromPageLayout(PageLayout layout, IDtoMapper dtoMapper)
 		{
-			return new PageLayoutDto(layout);
+			return new PageLayoutDto(layout, dtoMapper);
 		}
 
 		public static PageLayout ToPageLayout(PageLayout pageLayout, PageLayoutDto layoutDto)
