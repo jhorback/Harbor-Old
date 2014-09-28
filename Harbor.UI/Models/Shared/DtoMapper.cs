@@ -40,6 +40,11 @@ namespace Harbor.UI.Models
 
 		public object MapFrom(object source)
 		{
+			if (source == null)
+			{
+				return null;
+			}
+
 			if (fromTypeToType.ContainsKey(source.GetType()) == false)
 			{
 				_logger.Warn("Type not mapped. Source type: {0}", source.GetType());

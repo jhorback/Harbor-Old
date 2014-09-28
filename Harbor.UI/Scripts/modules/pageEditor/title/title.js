@@ -1,7 +1,13 @@
 ﻿
-// just sets up a listener for the title
+// just sets up a listener for the displayTitle on page edit
 pageEditor.title = {
-	
+	init: function () {
+		this.open();
+	},
+
+	onRemove: function () {
+		this.close();
+	}
 };
 
 pageEditor.pageComponent("title", pageEditor.title);
