@@ -1,40 +1,47 @@
-﻿<div class="page centered">
+﻿<style>
+	.currentVersion {
+		font-weight: normal;
+		background:#e7e7e7;
+	}
+</style>
+<div class="page centered">
 	<div class="page-header">
 		<h1>@Harbor.UI.HarborApplication.AppName @Harbor.UI.HarborApplication.Version</h1>
 	</div>
 	<div class="page-body">
 		<div class="page-content">
 			<small>Current full version: @Harbor.UI.HarborApplication.FullVersion</small>
-			<h2>Upcoming Features</h2>
-			<ul>
-				<li>Pages and Files administration enhancements</li>
-				<li>Theme enhancements</li>
-				<li>Initial templates.</li>
-				<li>Audio / video</li>
-			</ul>
-
+			
 			<h2>Releases</h2>
 
 			<table class="datatable">
 				<thead>
 					<tr>
-						<th>Version</th>
-						<th>Release</th>
-						<th>Name</th>
+						<th width="10%">Version</th>
+						<th width="15%">Release Date</th>
+						<th width="20%">Name</th>
 						<th>Description</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<td>v8 (beta)</td>
-						<td>Projected December 2014</td>
-						<td>BJRoyster</td>
+						<td>v9 (beta)</td>
+						<td>10/2014?</td>
+						<td>BJ Royster</td>
 						<td>
-							Features to satisfy the first 'new' major release of bjroyster.com.
+							Usability improvements; basic SEO; new page types; and support for BJ Royster pages.
 						</td>
 					</tr>
-					<tr class="attn">
-						<td>v7.0 (beta)</td>
+					<tr>
+						<td>v8 (beta)</td>
+						<td>10/2014?</td>
+						<td>Intelligent Design</td>
+						<td>
+							Shift to a flux style architecture with command and query separation; page layouts; smart page types.
+						</td>
+					</tr>
+					<tr class="attn currentVersion">
+						<td>v7 (beta)</td>
 						<td>11/15/2013</td>
 						<td>Stores Open</td>
 						<td>
@@ -42,11 +49,11 @@
 						</td>
 					</tr>
 					<tr>
-						<td>v6.1 (beta)</td>
+						<td>v6 (beta)</td>
 						<td>11/1/2013</td>
 						<td>Links</td>
 						<td>
-							Analytics and error handling, page links, and navigation links.
+							Analytics and error handling, page links, and navigation links. (v6.1 patch)
 						</td>
 					</tr>
 					<tr>
@@ -59,8 +66,8 @@
 					</tr>
 					<tr>
 						<td>1.5</td>
-						<td>Started 8/18/12</td>
-						<td>Re-write</td>
+						<td>8/18/12</td>
+						<td>Starting re-write</td>
 						<td>
 							Purge/rewrite using only the best practices learned. DDD, Backbone, etc.
 							Version shift 1.5 -> 5.0
@@ -71,7 +78,7 @@
 						<td>4/2012</td>
 						<td>Client Lessons</td>
 						<td>
-							Main development line while switching to a domain model and MVC on client.
+							Refactor of development line while switching to a domain model and MVC on client.
 						</td>
 					</tr>							
 					<tr>
