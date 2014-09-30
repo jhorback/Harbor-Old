@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web;
 using System.Web.Configuration;
-using System.Web.Hosting;
 using Harbor.Domain.Extensions;
 using Harbor.Domain.Pages;
 using Harbor.Domain.Security;
@@ -86,8 +86,24 @@ namespace Harbor.Domain.App
 			{
 				setSetting("ShowSignInLink", app.ShowSignInLink);
 				setSetting("HomePageID", app.HomePageID);
+				syncNavigationLinks(app);
 				setSetting("NavigationLinks", JSON.Stringify(app.NavigationLinks));
 				setSetting("FooterHtml", app.FooterHtml);
+			}
+		}
+
+		void syncNavigationLinks(HarborApp app)
+		{
+			// keep the link text in sync
+			var navLinks = app.NavigationLinks.ToList();
+			var pageIDs = navLinks.Select(l => l.PageID).Distinct().ToArray();
+			var pages = _pageRepository.Query().Where(p => pageIDs.Contains(p.PageID)).ToDictionary(p => p.PageID);
+			foreach (var link in navLinks)
+			{
+				if (pages.ContainsKey(link.PageID))
+				{
+					link.Text = pages[link.PageID].Title;
+				}
 			}
 		}
 
