@@ -6,9 +6,9 @@
 @{
 	// make this an html helper?
 	if (ViewBag.Title == null) {
-		ViewBag.Title = Harbor.UI.HarborApplication.AppName;
+		ViewBag.Title = HarborApplication.AppName;
 	} else {
-		ViewBag.Title += " - " + Harbor.UI.HarborApplication.AppName;	
+		ViewBag.Title += " - " + HarborApplication.AppName;	
 	}
 	
 	var copyrightText = new HtmlString(
@@ -16,7 +16,7 @@
 			Request.ServerVariables["SERVER_NAME"],
 			DateTime.Now.Year));
 
-	var gaAccount = Harbor.UI.HarborApplication.GoogleAnalyticsAccount;
+	var gaAccount = HarborApplication.GoogleAnalyticsAccount;
 }
 <!DOCTYPE html>
 <html>
