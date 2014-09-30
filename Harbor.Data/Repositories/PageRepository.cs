@@ -210,7 +210,7 @@ namespace Harbor.Data.Repositories
 
 		void cachePage(Page page)
 		{
-			MemoryCache.Default.Set(getCacheKey(page.PageID), page, DateTime.Now.AddSeconds(10));			
+			MemoryCache.Default.Set(getCacheKey(page.PageID), page, DateTime.Now.AddHours(8));			
 		}
 		#endregion
 	}
