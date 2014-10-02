@@ -512,6 +512,7 @@
     </Content>
     <Content Include="Content\themes\bjrblue\images\logo.png" />
     <Content Include="Content\themes\bjroyster\images\logo.png" />
+    <Content Include="Content\themes\bjroyster\images\signature.png" />
     <Content Include="Content\themes\bjroyster\theme.css">
       <DependentUpon>theme.scss</DependentUpon>
     </Content>
