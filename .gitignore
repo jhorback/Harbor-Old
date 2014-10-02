@@ -275,3 +275,4 @@ pip-log.txt
 .DS_Store
 /Harbor.UI/node_modules
 /Design/Wireframes/Harbor v9 - BJ Royster/41 Shop Catalog.bmml
+node_modules
