@@ -121,18 +121,4 @@ namespace Harbor.UI
 			);
 		}
 	}
-
-
-
-	public class RootPageConstraint : IRouteConstraint
-	{
-		// jch! - here push this logic to the repository since it can have a cached list and do a case insensitive match.
-		public bool Match(System.Web.HttpContextBase httpContext, Route route, string parameterName, RouteValueDictionary values, RouteDirection routeDirection)
-		{
-			var pageName = values["pageName"] as string;
-			var rep = DependencyResolver.Current.GetService<IRootPagesRepository>();
-			var pages = rep.GetRootPages();
-			return pages.Pages.ContainsValue(pageName);
-		}
-	}
 }

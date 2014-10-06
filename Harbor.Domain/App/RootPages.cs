@@ -7,6 +7,11 @@ namespace Harbor.Domain.App
 	/// </summary>
 	public class RootPages
 	{
+		public RootPages()
+		{
+			Pages = new Dictionary<int, string>();
+		}
+
 		public Dictionary<int, string> Pages { get; set; }
 	}
 }

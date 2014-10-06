@@ -1,7 +1,7 @@
 ﻿
 namespace Harbor.Domain.App
 {
-	public class RootPagesRepository
+	public class RootPagesRepository : IRootPagesRepository
 	{
 		private readonly IAppSettingRepository _appSettingRepository;
 
@@ -20,6 +20,13 @@ namespace Harbor.Domain.App
 			}
 
 			return pages ?? (pages = new RootPages());
+		}
+
+		public bool IsRootPage(string name)
+		{
+			// jch! cache and make case insensitive
+			var pages = GetRootPages();
+			return pages.Pages.ContainsValue(name);
 		}
 
 		public void RemoveRootPage(int id)
@@ -65,6 +72,7 @@ namespace Harbor.Domain.App
 	public interface IRootPagesRepository
 	{
 		RootPages GetRootPages();
+		bool IsRootPage(string name);
 		void RemoveRootPage(int id);
 		void AddRootPage(int id, string text);
 		void Save();

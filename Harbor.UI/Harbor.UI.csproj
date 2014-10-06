@@ -211,6 +211,7 @@
     <Compile Include="App_Start\JSPkgs\CurrentUserModelPkg.cs" />
     <Compile Include="App_Start\JSPkgs\PayPalButtonModelPkg.cs" />
     <Compile Include="App_Start\JSPkgs\PageSettingsPkg.cs" />
+    <Compile Include="App_Start\RootPageConstraint.cs" />
     <Compile Include="App_Start\ThemeConfig.cs" />
     <Compile Include="App_Start\ModelBinderConfig.cs" />
     <Compile Include="App_Start\DbConfig.cs" />
