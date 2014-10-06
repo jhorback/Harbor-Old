@@ -75,6 +75,8 @@
     <Compile Include="App\IAppSettingRepository.cs" />
     <Compile Include="App\IHarborAppRepository.cs" />
     <Compile Include="App\NavigationLink.cs" />
+    <Compile Include="App\RootPages.cs" />
+    <Compile Include="App\RootPagesRepository.cs" />
     <Compile Include="Command\CommandContainer.cs" />
     <Compile Include="Command\CommandContainerRepository.cs" />
     <Compile Include="Command\CommandService.cs" />
