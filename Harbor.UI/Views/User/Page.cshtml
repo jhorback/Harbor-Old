@@ -15,6 +15,9 @@
         layoutClassNames += " noaside";
     }
 }
+@section head {
+	<meta name="description" content="@Model.PreviewText" />
+}
 @section scripts {
 	@if (ViewBag.HasWritePermissions)
 	{ 
