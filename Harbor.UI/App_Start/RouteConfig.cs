@@ -1,6 +1,7 @@
 ﻿using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Harbor.Domain.App;
 
 namespace Harbor.UI
 {
@@ -104,10 +105,34 @@ namespace Harbor.UI
 			);
 
 			routes.MapRoute(
+				name: "RootPages",
+				url: "{controller}/{pageName}",
+				defaults: new { controller = "Home", action = "RootPage" },
+				constraints: new
+                {
+                    pageName = new RootPageConstraint()
+                }
+			);
+
+			routes.MapRoute(
 				name: "Default",
 				url: "{controller}/{action}/{*pathInfo}",
 				defaults: new { controller = "Home", action = "Index", pathInfo = UrlParameter.Optional }
 			);
+		}
+	}
+
+
+
+	public class RootPageConstraint : IRouteConstraint
+	{
+		// jch! - here push this logic to the repository since it can have a cached list and do a case insensitive match.
+		public bool Match(System.Web.HttpContextBase httpContext, Route route, string parameterName, RouteValueDictionary values, RouteDirection routeDirection)
+		{
+			var pageName = values["pageName"] as string;
+			var rep = DependencyResolver.Current.GetService<IRootPagesRepository>();
+			var pages = rep.GetRootPages();
+			return pages.Pages.ContainsValue(pageName);
 		}
 	}
 }
