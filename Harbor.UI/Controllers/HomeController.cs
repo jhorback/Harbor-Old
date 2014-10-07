@@ -63,7 +63,8 @@ namespace Harbor.UI.Controllers
 			return PartialView("_FrameNav", model);
 		}
 
-		[ActionName("404")]
+		[Route("404/{*aspxerrorpath}")]
+		//[ActionName("404")]
 		public ActionResult Error404()
 		{
 			if (Request.IsAjaxRequest())
@@ -71,6 +72,7 @@ namespace Harbor.UI.Controllers
 			return View("404");
 		}
 
+		[Route("Error")]
 		public ActionResult Error()
 		{
 			if (Request.IsAjaxRequest())

@@ -10,8 +10,10 @@ namespace Harbor.UI
 		public static void RegisterRoutes(RouteCollection routes)
 		{
 			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+			routes.MapMvcAttributeRoutes();
+
 			registerApiRoutes(routes);
-			registerErrorRoutes(routes);
+			// registerErrorRoutes(routes);
 			registerSiteRoutes(routes);
 		}
 
@@ -50,20 +52,20 @@ namespace Harbor.UI
 		}
 
 
-		private static void registerErrorRoutes(RouteCollection routes)
-		{
-			routes.MapRoute(
-				name: "404",
-				url: "404/{*aspxerrorpath}",
-				defaults: new { controller = "Home", action = "404" }
-			);
+		//private static void registerErrorRoutes(RouteCollection routes)
+		//{
+		//	routes.MapRoute(
+		//		name: "404",
+		//		url: "404/{*aspxerrorpath}",
+		//		defaults: new { controller = "Home", action = "404" }
+		//	);
 
-			routes.MapRoute(
-				name: "Error",
-				url: "Error",
-				defaults: new { controller = "Home", action = "Error" }
-			);
-		}
+		//	routes.MapRoute(
+		//		name: "Error",
+		//		url: "Error",
+		//		defaults: new { controller = "Home", action = "Error" }
+		//	);
+		//}
 
 		
 		private static void registerSiteRoutes(RouteCollection routes)
