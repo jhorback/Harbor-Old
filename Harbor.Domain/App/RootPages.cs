@@ -9,9 +9,10 @@ namespace Harbor.Domain.App
 	{
 		public RootPages()
 		{
-			Pages = new Dictionary<int, string>();
+			Pages = new Dictionary<string, int>();
+			Pages.Add("artwork", 33);
 		}
 
-		public Dictionary<int, string> Pages { get; set; }
+		public Dictionary<string, int> Pages { get; set; }
 	}
 }

@@ -4,9 +4,10 @@ namespace Harbor.Domain.App
 	public interface IRootPagesRepository
 	{
 		RootPages GetRootPages();
-		bool IsRootPage(string name);
-		void RemoveRootPage(int id);
-		void AddRootPage(int id, string text);
+		bool IsARootPage(string name);
+		int? GetRootPageID(string name);
+		void RemoveRootPage(string name);
+		void AddRootPage(string name, int pageId);
 		void Save();
 	}
 }

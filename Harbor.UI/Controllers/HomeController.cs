@@ -15,11 +15,13 @@ namespace Harbor.UI.Controllers
 	{
 		IHarborAppRepository appRep;
 		IPageRepository pageRep;
+		private readonly IRootPagesRepository _rootPagesRepository;
 
-		public HomeController(IHarborAppRepository appRep, IPageRepository pageRep)
+		public HomeController(IHarborAppRepository appRep, IPageRepository pageRep, IRootPagesRepository rootPagesRepository)
 		{
 			this.appRep = appRep;
 			this.pageRep = pageRep;
+			_rootPagesRepository = rootPagesRepository;
 		}
 
 		public ActionResult Index()
@@ -28,8 +30,7 @@ namespace Harbor.UI.Controllers
 			var homePageID = app.HomePageID;
 			if (homePageID != null)
 			{
-				var url = Url.RouteUrl(new { controller = "user", action = "page", id = homePageID});
-				Server.TransferRequest(url, true); // change to false to pass query string parameters if you have already processed them
+				return transferToPage(homePageID);
 			}
 
 			var pages = pageRep.FindAll(new PageQuery(q => q.OrderByDescending(p => p.Modified))
@@ -38,6 +39,19 @@ namespace Harbor.UI.Controllers
 					CurrentUserName = User.Identity.Name
 				}).Select(PageDto.FromPage);
 			return View("Index", pages);
+		}
+
+		public ActionResult RootPage(string pageName)
+		{
+			var pageID = _rootPagesRepository.GetRootPageID(pageName);
+			return transferToPage(pageID);
+		}
+
+		private ActionResult transferToPage(int? pageId)
+		{
+			var url = Url.RouteUrl(new { controller = "user", action = "page", id = pageId });
+			Server.TransferRequest(url, true); // change to false to pass query string parameters if you have already processed them
+			return Content("");
 		}
 
 		public ActionResult FrameNav()

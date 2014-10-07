@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Harbor.Domain.App
@@ -8,6 +9,8 @@ namespace Harbor.Domain.App
 		private readonly IAppSettingRepository _appSettingRepository;
 		private readonly IMemCache _memCache;
 		const string rootPagesKey = "RootPages";
+		string[] reservedRoutes = { "error", "404", "styleguide", "jst", "signin" };
+
 
 		public RootPagesRepository(IAppSettingRepository appSettingRepository, IMemCache memCache)
 		{
@@ -25,29 +28,55 @@ namespace Harbor.Domain.App
 				{
 					pages = JSON.Parse<RootPages>(appSetting.Value);
 				}
+				else
+				{
+					appSetting = new AppSetting
+					{
+						Name = rootPagesKey
+					};
+				}
 				pages = pages ?? (pages = new RootPages());
 				_memCache.SetGlobal(rootPagesKey, appSetting, DateTime.Now.AddMonths(1));
 			}
 			return pages;
 		}
 
-		public bool IsRootPage(string name)
+		public bool IsARootPage(string name)
 		{
-			var rootPages = GetRootPages();
-			return rootPages.Pages.Any(i => String.Equals(i.Value, name, StringComparison.CurrentCultureIgnoreCase));
+			return GetRootPageID(name) != null;
 		}
 
-		public void RemoveRootPage(int id)
+		public int? GetRootPageID(string name)
+		{
+			name = name.ToLower();
+
+			var rootPages = GetRootPages();
+			if (rootPages.Pages.ContainsKey(name) == false)
+			{
+				return null;
+			}
+
+			return rootPages.Pages[name];
+		}
+
+
+		public void RemoveRootPage(string name)
 		{
 			var pages = GetRootPages();
-			pages.Pages.Remove(id);
+			pages.Pages.Remove(name);
 			saveAppSetting(pages);
 		}
 
-		public void AddRootPage(int id, string text)
+		public void AddRootPage(string name, int pageId)
 		{
+			name = name.ToLower();
+			if (reservedRoutes.Contains(name))
+			{
+				throw new InvalidOperationException(string.Format("'{0}' is a reserved route.", name));
+			}
+
 			var pages = GetRootPages();
-			pages.Pages.Add(id, text);
+			pages.Pages.Add(name, pageId);
 			saveAppSetting(pages);
 		}
 

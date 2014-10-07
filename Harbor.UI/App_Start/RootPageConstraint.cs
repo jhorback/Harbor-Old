@@ -21,7 +21,7 @@ namespace Harbor.UI
 		public bool Match(System.Web.HttpContextBase httpContext, Route route, string parameterName, RouteValueDictionary values, RouteDirection routeDirection)
 		{
 			var pageName = values["pageName"] as string;
-			return _rootPagesRepository.IsRootPage(pageName);
+			return _rootPagesRepository.IsARootPage(pageName);
 		}
 	}
 }

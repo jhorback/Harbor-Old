@@ -106,7 +106,7 @@ namespace Harbor.UI
 
 			routes.MapRoute(
 				name: "RootPages",
-				url: "{controller}/{pageName}",
+				url: "{pageName}",
 				defaults: new { controller = "Home", action = "RootPage" },
 				constraints: new
                 {
