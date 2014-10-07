@@ -9,6 +9,10 @@ namespace Harbor.UI.IoC
 		public StaticInstanceRegistry()
 		{
 			For<IPrincipal>().Use(c => HttpContext.Current.User);
+			For<HttpServerUtilityBase>()
+				.Singleton()
+				.Use<HttpServerUtilityWrapper>()
+				.Ctor<HttpServerUtility>().Is(HttpContext.Current.Server);
 		}
 	}
 }

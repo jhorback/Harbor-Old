@@ -4,6 +4,7 @@ namespace Harbor.Domain.App
 	public interface IRootPagesRepository
 	{
 		RootPages GetRootPages();
+		string GetRootPageToken(int pageId);
 		bool IsARootPage(string name);
 		int? GetRootPageID(string name);
 		void RemoveRootPage(string name);

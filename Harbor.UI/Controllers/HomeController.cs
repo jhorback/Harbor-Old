@@ -58,7 +58,7 @@ namespace Harbor.UI.Controllers
 		{
 			if (Request.IsAjaxRequest())
 				return new HttpNotFoundResult();
-			var model = appRep.GetNavigationLinks().Select(i => (NavigationLinkDto)i).ToList();
+			var model = appRep.GetNavigationLinkUrls();
 			ViewBag.RootPages = _rootPagesRepository.GetRootPages();
 			return PartialView("_FrameNav", model);
 		}

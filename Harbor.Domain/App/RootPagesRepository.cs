@@ -46,6 +46,16 @@ namespace Harbor.Domain.App
 			return GetRootPageID(name) != null;
 		}
 
+		public string GetRootPageToken(int pageId)
+		{
+			var rootPages = GetRootPages();
+			if (rootPages.Pages.ContainsValue(pageId))
+			{
+				return rootPages.Pages.FirstOrDefault(i => i.Value == pageId).Key;
+			}
+			return null;
+		}
+
 		public int? GetRootPageID(string name)
 		{
 			name = name.ToLower();
@@ -69,7 +79,7 @@ namespace Harbor.Domain.App
 
 		public void AddRootPage(string name, int pageId)
 		{
-			name = name.ToLower();
+			name = tokenize(name);
 			if (reservedRoutes.Contains(name))
 			{
 				throw new InvalidOperationException(string.Format("'{0}' is a reserved route.", name));
@@ -84,6 +94,11 @@ namespace Harbor.Domain.App
 		{
 			_memCache.BustGlobal<RootPages>(rootPagesKey);
 			_appSettingRepository.Save();
+		}
+
+		private string tokenize(string name)
+		{
+			return name.ToLower().Replace(" ", "");
 		}
 
 		private void saveAppSetting(RootPages pages)

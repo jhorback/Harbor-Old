@@ -14,12 +14,22 @@ namespace Harbor.Domain.App
 		readonly IAppSettingRepository _appSettings;
 		readonly IPageRepository _pageRepository;
 		private readonly IMemCache _memCache;
+		private readonly IPathUtility _pathUtility;
+		private readonly IRootPagesRepository _rootPagesRepository;
 
-		public HarborAppRepository(IAppSettingRepository appSettings, IPageRepository pageRepository, IMemCache memCache)
+		public HarborAppRepository(
+			IAppSettingRepository appSettings,
+			IPageRepository pageRepository,
+			IMemCache memCache,
+			IPathUtility pathUtility,
+			IRootPagesRepository rootPagesRepository 
+			)
 		{
 			_appSettings = appSettings;
 			_pageRepository = pageRepository;
 			_memCache = memCache;
+			_pathUtility = pathUtility;
+			_rootPagesRepository = rootPagesRepository;
 		}
 
 		public HarborApp GetApp()
@@ -148,6 +158,75 @@ namespace Harbor.Domain.App
 				linksList.Add(new NavigationLink { PageID = 0, Text = "Home" });
 			}
 			return linksList;
+		}
+
+
+		/// <summary>
+		/// The is the page name and the value is the url.
+		/// </summary>
+		/// <returns></returns>
+		public IEnumerable<KeyValuePair<string, string>> GetNavigationLinkUrls()
+		{
+			string url;
+			var links = GetNavigationLinks();
+			foreach (var link in links)
+			{
+				var rootPageToken = _rootPagesRepository.GetRootPageToken(link.PageID);
+				if (link.PageID == 0)
+				{
+					url = "~/";
+				}
+				else if (rootPageToken != null)
+				{
+					url = string.Format("~/{0}", rootPageToken);
+				}
+				else
+				{
+					url = string.Format("~/id/{0}/{1}", link.PageID, link.Text.ToLower().Replace(' ', '-'));
+				}
+				
+				url = _pathUtility.ToAbsolute(url);
+				yield return new KeyValuePair<string, string>(url, link.Text);
+			}
+		}
+	}
+
+	// jch! move this out
+	public interface IPathUtility
+	{
+		/// <summary>
+		/// Converts a virtual path to an absolute path
+		/// </summary>
+		/// <param name="virtualPath"></param>
+		/// <returns></returns>
+		string ToAbsolute(string virtualPath);
+
+		/// <summary>
+		/// Does a Server.MapPath after converting the virtual path to an absolute path.
+		/// </summary>
+		/// <param name="virtualPath"></param>
+		/// <returns></returns>
+		string MapVirtualPath(string virtualPath);
+	}
+
+	public class PathUtility : IPathUtility
+	{
+		private readonly HttpServerUtilityBase _server;
+
+		public PathUtility(HttpServerUtilityBase server)
+		{
+			_server = server;
+		}
+
+		public string ToAbsolute(string virtualPath)
+		{
+			return VirtualPathUtility.ToAbsolute(virtualPath);
+		}
+
+
+		public string MapVirtualPath(string virtualPath)
+		{
+			return _server.MapPath(ToAbsolute(virtualPath));
 		}
 	}
 }

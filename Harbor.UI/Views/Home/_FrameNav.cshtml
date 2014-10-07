@@ -1,16 +1,7 @@
-﻿@model IEnumerable<NavigationLinkDto>
-@using Harbor.UI.Models.Setting
-@functions {
-	string getPageLink(NavigationLinkDto link)
-	{
-		if (link.pageID == 0)
-			return Url.Content("~/");
-		return Url.Content(string.Format("~/id/{0}/{1}", link.pageID, link.text.ToLower().Replace(' ', '-')));
-	}
-}
+﻿@model IEnumerable<KeyValuePair<string, string>>
 <ul>
 	@foreach (var link in Model)
 	{
-		<li class="frame-navitem"><a href="@getPageLink(link)">@link.text</a></li>
+		<li class="frame-navitem"><a href="@link.Key">@link.Value</a></li>
 	}
 </ul>
