@@ -96,6 +96,7 @@
     <Compile Include="ILogger.cs" />
     <Compile Include="IMemCache.cs" />
     <Compile Include="IObjectFactory.cs" />
+    <Compile Include="IPathUtility.cs" />
     <Compile Include="JSON.cs" />
     <Compile Include="MemCache.cs" />
     <Compile Include="Pages\Commands\AddExistingPageToLinks.cs" />
@@ -184,6 +185,7 @@
     <Compile Include="Pages\Pipelines\PipelineHandlers\ContentResourceUpdateHandler.cs" />
     <Compile Include="Pages\Pipelines\PageUpdatePipeline.cs" />
     <Compile Include="Pages\Uic.cs" />
+    <Compile Include="PathUtility.cs" />
     <Compile Include="Pipeline\BasePipeline.cs" />
     <Compile Include="Pipeline\IPipelineHandler.cs" />
     <Compile Include="Pipeline\IPipeline.cs" />
