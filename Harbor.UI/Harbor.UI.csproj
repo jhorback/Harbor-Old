@@ -773,7 +773,6 @@
     <Content Include="Views\User\_HomePageSetting.cshtml" />
     <Content Include="Views\StyleGuide\Collections.cshtml" />
     <Content Include="Views\Home\_FrameNav.cshtml" />
-    <Content Include="Views\Home\_FrameNavItem.cshtml" />
     <Content Include="Views\Page\Image.cshtml" />
     <Content Include="Views\Home\JavaScriptPackages.cshtml" />
     <Content Include="Views\Home\_JSPMParser.cshtml" />
