@@ -71,18 +71,6 @@ namespace Harbor.UI
 		private static void registerSiteRoutes(RouteCollection routes)
 		{
 			routes.MapRoute(
-				"File",
-				"file/{id}.{ext}",
-				new { controller = "User", action = "Download" }
-			);
-
-			routes.MapRoute(
-				"FileWithName",
-				"file/{id}/{name}.{ext}",
-				new { controller = "User", action = "Download" }
-			);
-
-			routes.MapRoute(
 				name: "StyleGuide",
 				url: "styleguide/{pageKey}",
 				defaults: new { controller = "StyleGuide", action = "Index", pageKey = "Home" }
