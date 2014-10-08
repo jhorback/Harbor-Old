@@ -70,6 +70,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App\AppSetting.cs" />
+    <Compile Include="App\Events\RootPagesChanged.cs" />
+    <Compile Include="App\Events\HarborAppChanged.cs" />
     <Compile Include="App\HarborApp.cs" />
     <Compile Include="App\HarborAppRepository.cs" />
     <Compile Include="App\IAppSettingRepository.cs" />
@@ -87,6 +89,7 @@
     <Compile Include="Diagnostics\HarborTextWriterTraceListener.cs" />
     <Compile Include="Diagnostics\Logger.cs" />
     <Compile Include="Event\EventPublisher.cs" />
+    <Compile Include="Event\IEvent.cs" />
     <Compile Include="Event\IEventPublisher.cs" />
     <Compile Include="Event\IEventSubscriber.cs" />
     <Compile Include="Extensions\AppSetting\AsInt.cs" />

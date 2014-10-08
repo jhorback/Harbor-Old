@@ -13,28 +13,28 @@ namespace Harbor.Domain.App
 	{
 		readonly IAppSettingRepository _appSettings;
 		readonly IPageRepository _pageRepository;
-		private readonly IMemCache _memCache;
+		private readonly IGlobalCache<HarborApp> _harborAppCache;
 		private readonly IPathUtility _pathUtility;
 		private readonly IRootPagesRepository _rootPagesRepository;
 
 		public HarborAppRepository(
 			IAppSettingRepository appSettings,
 			IPageRepository pageRepository,
-			IMemCache memCache,
+			IGlobalCache<HarborApp> harborAppCache,
 			IPathUtility pathUtility,
 			IRootPagesRepository rootPagesRepository 
 			)
 		{
 			_appSettings = appSettings;
 			_pageRepository = pageRepository;
-			_memCache = memCache;
+			_harborAppCache = harborAppCache;
 			_pathUtility = pathUtility;
 			_rootPagesRepository = rootPagesRepository;
 		}
 
 		public HarborApp GetApp()
 		{
-			var app = _memCache.GetGlobal<HarborApp>(harborAppCacheKey);
+			var app = _harborAppCache.Get();
 			if (app != null)
 			{
 				return app;
@@ -71,7 +71,7 @@ namespace Harbor.Domain.App
 
 			app.GoogleAnalyticsAccount = WebConfigurationManager.AppSettings["googleAnalyticsAccount"];
 
-			_memCache.SetGlobal(harborAppCacheKey, app, DateTime.Now.AddDays(1));
+			_harborAppCache.Set(app, DateTime.Now.AddDays(1));
 			return app;
 		}
 
@@ -86,7 +86,7 @@ namespace Harbor.Domain.App
 
 		public void SetApp(HarborApp app, User user)
 		{
-			_memCache.BustGlobal<HarborApp>(harborAppCacheKey);
+			_harborAppCache.Remove();
 			if (user.HasPermission(UserFeature.SystemSettings))
 			{
 				setSetting("Theme", app.Theme);
@@ -161,6 +161,7 @@ namespace Harbor.Domain.App
 		}
 
 
+		// jch! would like to cache this
 		/// <summary>
 		/// The is the page name and the value is the url.
 		/// </summary>

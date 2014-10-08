@@ -1,26 +1,33 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
+using Harbor.Domain.App.Events;
+using Harbor.Domain.Event;
 
 namespace Harbor.Domain.App
 {
 	public class RootPagesRepository : IRootPagesRepository
 	{
 		private readonly IAppSettingRepository _appSettingRepository;
-		private readonly IMemCache _memCache;
+		private readonly IGlobalCache<RootPages> _rootPagesCache;
+		private readonly IEventPublisher<RootPagesChanged> _rootPagesChangedPublisher;
 		const string rootPagesKey = "RootPages";
 		string[] reservedRoutes = { "error", "404", "styleguide", "jst", "signin" };
 
 
-		public RootPagesRepository(IAppSettingRepository appSettingRepository, IMemCache memCache)
+		public RootPagesRepository(
+			IAppSettingRepository appSettingRepository,
+			IGlobalCache<RootPages> rootPagesCache,
+			IEventPublisher<RootPagesChanged> rootPagesChangedPublisher
+			)
 		{
 			_appSettingRepository = appSettingRepository;
-			_memCache = memCache;
+			_rootPagesCache = rootPagesCache;
+			_rootPagesChangedPublisher = rootPagesChangedPublisher;
 		}
 
 		public RootPages GetRootPages()
 		{
-			var pages = _memCache.GetGlobal<RootPages>(rootPagesKey);
+			var pages =	_rootPagesCache.Get();
 			if (pages == null)
 			{
 				var appSetting = _appSettingRepository.FindByName(rootPagesKey);
@@ -36,7 +43,7 @@ namespace Harbor.Domain.App
 					};
 				}
 				pages = pages ?? (pages = new RootPages());
-				_memCache.SetGlobal(rootPagesKey, appSetting, DateTime.Now.AddMonths(1));
+				_rootPagesCache.Set(pages);
 			}
 			return pages;
 		}
@@ -92,7 +99,8 @@ namespace Harbor.Domain.App
 
 		public void Save()
 		{
-			_memCache.BustGlobal<RootPages>(rootPagesKey);
+			_rootPagesChangedPublisher.Publish();
+			_rootPagesCache.Remove();
 			_appSettingRepository.Save();
 		}
 
