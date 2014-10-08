@@ -198,6 +198,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\IoC\CacheRegistry.cs" />
     <Compile Include="App_Start\IoC\EventRegistry.cs" />
     <Compile Include="App_Start\IoC\StaticInstanceRegistry.cs" />
     <Compile Include="App_Start\IoC\UnitOfWorkRegistry.cs" />
