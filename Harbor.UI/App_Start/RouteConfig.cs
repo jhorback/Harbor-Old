@@ -70,11 +70,7 @@ namespace Harbor.UI
 		
 		private static void registerSiteRoutes(RouteCollection routes)
 		{
-			routes.MapRoute(
-				name: "StyleGuide",
-				url: "styleguide/{pageKey}",
-				defaults: new { controller = "StyleGuide", action = "Index", pageKey = "Home" }
-			);
+			
 
 			routes.MapRoute(
 				name: "JST",

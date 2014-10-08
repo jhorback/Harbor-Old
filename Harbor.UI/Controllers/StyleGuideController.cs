@@ -8,7 +8,7 @@ using Harbor.UI.Models.StyleGuide;
 
 namespace Harbor.UI.Controllers
 {
-	[Permit(UserFeature.SystemSettings, Permissions.Read)]
+	[Permit(UserFeature.SystemSettings, Permissions.Read), RoutePrefix("styleguide")]
 	public class StyleGuideController : Controller
 	{
 		StyleGuidePageRepository repository;
@@ -18,6 +18,7 @@ namespace Harbor.UI.Controllers
 			this.repository = repository;
 		}
 
+		[Route("{pageKey=home}")]
 		public ActionResult Index(string pageKey)
 		{
 			var page = repository.GetPage(pageKey);
@@ -44,6 +45,7 @@ namespace Harbor.UI.Controllers
 			return PartialView("_PageNav", pages);
 		}
 
+		[Route("testapp")]
 		public ViewResult TestApp()
 		{
 			return View("TestApp");
