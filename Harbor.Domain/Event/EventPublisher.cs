@@ -2,7 +2,7 @@
 
 namespace Harbor.Domain.Event
 {
-	public class EventPublisher<T> : IEventPublisher<T>
+	public class EventPublisher<T> : IEventPublisher<T> where T : IEvent
 	{
 		private readonly IEnumerable<IEventSubscriber<T>> _consumers;
 
