@@ -71,12 +71,6 @@ namespace Harbor.UI
 		private static void registerSiteRoutes(RouteCollection routes)
 		{
 			routes.MapRoute(
-				name: "SignIn",
-				url: "signin/{*pathInfo}",
-				defaults: new {  controller = "User", action = "SignIn" }
-			);
-
-			routes.MapRoute(
 				name: "RootPages",
 				url: "{pageName}",
 				defaults: new { controller = "Home", action = "RootPage" },

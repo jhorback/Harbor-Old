@@ -36,6 +36,8 @@ namespace Harbor.UI.Controllers
 			_logger = logger;
 		}
 
+
+		[Route("~/signin/{*pathInfo}")]
 		public ViewResult SignIn()
 		{
 			return View("SignIn");
