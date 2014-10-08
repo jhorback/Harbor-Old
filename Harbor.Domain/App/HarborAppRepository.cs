@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Configuration;
+using Harbor.Domain.App.Events;
+using Harbor.Domain.Event;
 using Harbor.Domain.Extensions;
 using Harbor.Domain.Pages;
 using Harbor.Domain.Security;
@@ -16,13 +18,17 @@ namespace Harbor.Domain.App
 		private readonly IGlobalCache<HarborApp> _harborAppCache;
 		private readonly IPathUtility _pathUtility;
 		private readonly IRootPagesRepository _rootPagesRepository;
+		private readonly IEventPublisher<HarborAppChanged> _harborAppChangedPublisher;
+		private readonly IGlobalCache<NavigationUrls> _navigationUrlsCache;
 
 		public HarborAppRepository(
 			IAppSettingRepository appSettings,
 			IPageRepository pageRepository,
 			IGlobalCache<HarborApp> harborAppCache,
 			IPathUtility pathUtility,
-			IRootPagesRepository rootPagesRepository 
+			IRootPagesRepository rootPagesRepository ,
+			IEventPublisher<HarborAppChanged> harborAppChangedPublisher,
+			IGlobalCache<NavigationUrls> navigationUrlsCache
 			)
 		{
 			_appSettings = appSettings;
@@ -30,6 +36,8 @@ namespace Harbor.Domain.App
 			_harborAppCache = harborAppCache;
 			_pathUtility = pathUtility;
 			_rootPagesRepository = rootPagesRepository;
+			_harborAppChangedPublisher = harborAppChangedPublisher;
+			_navigationUrlsCache = navigationUrlsCache;
 		}
 
 		public HarborApp GetApp()
@@ -86,6 +94,7 @@ namespace Harbor.Domain.App
 
 		public void SetApp(HarborApp app, User user)
 		{
+			_harborAppChangedPublisher.Publish();
 			_harborAppCache.Remove();
 			if (user.HasPermission(UserFeature.SystemSettings))
 			{
@@ -161,34 +170,40 @@ namespace Harbor.Domain.App
 		}
 
 
-		// jch! would like to cache this
 		/// <summary>
 		/// The is the page name and the value is the url.
 		/// </summary>
 		/// <returns></returns>
 		public IEnumerable<KeyValuePair<string, string>> GetNavigationLinkUrls()
 		{
-			string url;
-			var links = GetNavigationLinks();
-			foreach (var link in links)
+			var urls = _navigationUrlsCache.Get();
+			if (urls == null)
 			{
-				var rootPageToken = _rootPagesRepository.GetRootPageToken(link.PageID);
-				if (link.PageID == 0)
+				urls = new NavigationUrls();
+				string url;
+				var links = GetNavigationLinks();
+				foreach (var link in links)
 				{
-					url = "~/";
+					var rootPageToken = _rootPagesRepository.GetRootPageToken(link.PageID);
+					if (link.PageID == 0)
+					{
+						url = "~/";
+					}
+					else if (rootPageToken != null)
+					{
+						url = string.Format("~/{0}", rootPageToken);
+					}
+					else
+					{
+						url = string.Format("~/id/{0}/{1}", link.PageID, link.Text.ToLower().Replace(' ', '-'));
+					}
+
+					url = _pathUtility.ToAbsolute(url);
+					urls.Urls.Add(new KeyValuePair<string, string>(url, link.Text));
 				}
-				else if (rootPageToken != null)
-				{
-					url = string.Format("~/{0}", rootPageToken);
-				}
-				else
-				{
-					url = string.Format("~/id/{0}/{1}", link.PageID, link.Text.ToLower().Replace(' ', '-'));
-				}
-				
-				url = _pathUtility.ToAbsolute(url);
-				yield return new KeyValuePair<string, string>(url, link.Text);
+				_navigationUrlsCache.Set(urls);
 			}
+			return urls.Urls;
 		}
 	}
 }
