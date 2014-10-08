@@ -49,7 +49,7 @@ namespace Harbor.UI.Controllers
 
 		private ActionResult transferToPage(int? pageId)
 		{
-			var url = Url.RouteUrl(new { controller = "user", action = "page", id = pageId });
+			var url = Url.RouteUrl("Page", new { pageId = pageId });
 			Server.TransferRequest(url, true); // change to false to pass query string parameters if you have already processed them
 			return Content("");
 		}

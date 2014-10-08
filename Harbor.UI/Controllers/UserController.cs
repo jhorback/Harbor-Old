@@ -105,21 +105,7 @@ namespace Harbor.UI.Controllers
 			return View("Settings", model);
 		}
 
-		[PagePermit(Permissions.Read)]
-		public ActionResult Page(int? id)
-		{
-			var page = pageRep.FindById(id);
-			if (page == null)
-			{
-				_logger.Debug("Page Not Found. ID: {0}", id);
-				return new HttpStatusCodeResult(HttpStatusCode.NotFound);
-			}
-				
-
-			ViewBag.HasWritePermissions = page.HasPermission(User.Identity.Name, Permissions.CreateAndUpdate);
-			ViewBag.PageDto = PageDto.FromPage(page);
-			return View("Page", page);
-		}
+		
 
 		[Permit(UserFeature.Files, Permissions.Create)]
 		public JsonResult Upload()
