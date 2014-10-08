@@ -70,14 +70,6 @@ namespace Harbor.UI
 		
 		private static void registerSiteRoutes(RouteCollection routes)
 		{
-			
-
-			routes.MapRoute(
-				name: "JST",
-				url: "jst/{*viewpath}",
-				defaults: new { controller = "Home", action = "JST", jst = true }
-			);
-
 			routes.MapRoute(
 				name: "SignIn",
 				url: "signin/{*pathInfo}",

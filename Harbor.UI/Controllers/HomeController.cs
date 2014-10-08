@@ -90,7 +90,8 @@ namespace Harbor.UI.Controllers
 		/// </summary>
 		/// <param name="viewpath"></param>
 		/// <returns></returns>
-		public PartialViewResult JST(string viewpath)
+		[Route("jst/{*viewpath}")]
+		public PartialViewResult Jst(string viewpath)
 		{
 			var path = string.Format("{0}/{1}{2}", "~/Views/", viewpath, ".cshtml");
 			return PartialView(path);
