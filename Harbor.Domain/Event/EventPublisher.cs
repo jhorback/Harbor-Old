@@ -18,5 +18,10 @@ namespace Harbor.Domain.Event
 				consumer.Handle(data);
 			}
 		}
+
+		public void Publish()
+		{
+			Publish(default(T));
+		}
 	}
 }
