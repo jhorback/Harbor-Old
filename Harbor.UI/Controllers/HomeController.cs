@@ -41,6 +41,8 @@ namespace Harbor.UI.Controllers
 			return View("Index", pages);
 		}
 
+
+		[Route("{pageName:rootpage}")]
 		public ActionResult RootPage(string pageName)
 		{
 			var pageID = _rootPagesRepository.GetRootPageID(pageName);

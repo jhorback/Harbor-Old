@@ -10,10 +10,13 @@ namespace Harbor.UI
 		public static void RegisterRoutes(RouteCollection routes)
 		{
 			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-			routes.MapMvcAttributeRoutes();
+
+			var mvcConstraintsResolver = new System.Web.Mvc.Routing.DefaultInlineConstraintResolver();
+			mvcConstraintsResolver.ConstraintMap.Add("rootpage", typeof(RootPageConstraint));
+			routes.MapMvcAttributeRoutes(mvcConstraintsResolver);
+
 
 			registerApiRoutes(routes);
-			// registerErrorRoutes(routes);
 			registerSiteRoutes(routes);
 		}
 
@@ -51,35 +54,9 @@ namespace Harbor.UI
 			);
 		}
 
-
-		//private static void registerErrorRoutes(RouteCollection routes)
-		//{
-		//	routes.MapRoute(
-		//		name: "404",
-		//		url: "404/{*aspxerrorpath}",
-		//		defaults: new { controller = "Home", action = "404" }
-		//	);
-
-		//	routes.MapRoute(
-		//		name: "Error",
-		//		url: "Error",
-		//		defaults: new { controller = "Home", action = "Error" }
-		//	);
-		//}
-
 		
 		private static void registerSiteRoutes(RouteCollection routes)
 		{
-			routes.MapRoute(
-				name: "RootPages",
-				url: "{pageName}",
-				defaults: new { controller = "Home", action = "RootPage" },
-				constraints: new
-                {
-                    pageName = new RootPageConstraint()
-                }
-			);
-
 			routes.MapRoute(
 				name: "Default",
 				url: "{controller}/{action}/{*pathInfo}",
