@@ -79,6 +79,7 @@
     <Compile Include="App\IRootPagesRepository.cs" />
     <Compile Include="App\NavigationLink.cs" />
     <Compile Include="App\NavigationUrls.cs" />
+    <Compile Include="App\NavigationUrlsCacheBuster.cs" />
     <Compile Include="App\RootPages.cs" />
     <Compile Include="App\RootPagesRepository.cs" />
     <Compile Include="Command\CommandContainer.cs" />

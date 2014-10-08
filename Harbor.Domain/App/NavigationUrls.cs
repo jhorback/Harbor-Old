@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using Harbor.Domain.App.Events;
+using Harbor.Domain.Event;
 
 namespace Harbor.Domain.App
 {
