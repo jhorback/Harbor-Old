@@ -1,28 +1,28 @@
 ﻿using System;
 using Harbor.Domain.Caching;
 
-namespace Harbor.Domain
+namespace Harbor.Domain.Command
 {
-	public class CommandContainerRepository : ICommandContainerRepository
+	public class CommandProvider : ICommandProvider
 	{
 		private readonly IObjectFactory _objectFactory;
-		private readonly IMemCache _memCache;
+		private readonly IGlobalCache<CommandContainer> _commandContainerCache;
 
-		public CommandContainerRepository(IObjectFactory objectFactory, IMemCache memCache)
+		public CommandProvider(IObjectFactory objectFactory, IGlobalCache<CommandContainer> commandContainerCache)
 		{
 			_objectFactory = objectFactory;
-			_memCache = memCache;
+			_commandContainerCache = commandContainerCache;
 		}
 
 		public CommandContainer GetCommandContainer(Type handlerType, Type genericHandlerType)
 		{
 			var cacheKey = "CommandContainer:" + handlerType.FullName;
-			var commandContainer = _memCache.GetGlobal<CommandContainer>(cacheKey);
+			var commandContainer = _commandContainerCache.Get(cacheKey);
 			if (commandContainer == null)
 			{
 				commandContainer = _objectFactory.GetInstance<CommandContainer>();
 				commandContainer.Initialize(handlerType, genericHandlerType);
-				_memCache.SetGlobal<CommandContainer>(cacheKey, commandContainer, DateTime.Now.AddDays(1));
+				_commandContainerCache.Set(cacheKey, commandContainer, DateTime.Now.AddDays(1));
 			}
 			return commandContainer;
 		}

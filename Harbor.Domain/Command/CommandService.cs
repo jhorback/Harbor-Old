@@ -1,12 +1,12 @@
 ﻿using System;
 
-namespace Harbor.Domain
+namespace Harbor.Domain.Command
 {
 	public abstract class CommandService<T> where T : ICommand
 	{
 		private readonly CommandContainer commandContainer;
 
-		public CommandService(ICommandContainerRepository commandContainerRepository, Type handlerType, Type genericHandlerType)
+		public CommandService(ICommandProvider commandContainerRepository, Type handlerType, Type genericHandlerType)
 		{
 			commandContainer = commandContainerRepository.GetCommandContainer(handlerType, genericHandlerType);
 		}

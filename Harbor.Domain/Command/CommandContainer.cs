@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Harbor.Domain
+namespace Harbor.Domain.Command
 {
 	public class CommandContainer
 	{

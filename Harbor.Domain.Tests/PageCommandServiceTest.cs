@@ -1,4 +1,5 @@
 ﻿using Harbor.Domain.Caching;
+using Harbor.Domain.Command;
 using Harbor.Domain.Diagnostics;
 using Harbor.Domain.Pages;
 using Harbor.Domain.Pages.Commands;
@@ -16,7 +17,7 @@ namespace Harbor.Domain.Tests
 			var reflectionUtils = new ReflectionUtils();
 			var logger = new Logger(typeof(PageCommandServiceTest));
 			var mockObjectFactory = new Mock<IObjectFactory>();
-			var commandRepository = new CommandContainerRepository(mockObjectFactory.Object, new Mock<IMemCache>().Object);
+			var commandRepository = new CommandProvider(mockObjectFactory.Object, new Mock<IMemCache>().Object);
 			// var mockCommandContainerRepository = new Mock<CommandContainerRepository>();
 			var commandContainer = new CommandContainer(reflectionUtils, logger, mockObjectFactory.Object);
 

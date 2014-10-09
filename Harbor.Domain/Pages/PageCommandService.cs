@@ -1,9 +1,10 @@
-﻿
+﻿using Harbor.Domain.Command;
+
 namespace Harbor.Domain.Pages
 {
 	public class PageCommandService : CommandService<IPageCommand>, IPageCommandService
 	{
-		public PageCommandService(ICommandContainerRepository commandContainerRepository)
+		public PageCommandService(ICommandProvider commandContainerRepository)
 			: base(commandContainerRepository, typeof(IPageCommandHandler), typeof(IPageCommandHandler<>))
 		{
 			

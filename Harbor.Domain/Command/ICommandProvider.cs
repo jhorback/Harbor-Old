@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Harbor.Domain
+namespace Harbor.Domain.Command
 {
-	public interface ICommandContainerRepository
+	public interface ICommandProvider
 	{
 		CommandContainer GetCommandContainer(Type handlerType, Type genericHandlerType);
 	}
