@@ -5,6 +5,7 @@ using Harbor.UI.Models;
 
 namespace Harbor.UI.Controllers.Api
 {
+	[RoutePrefix("api/pagetypes")]
     public class PageTypesController : ApiController
     {
 		IPageTypeRepository _pageTypeRep;
@@ -14,6 +15,7 @@ namespace Harbor.UI.Controllers.Api
 			_pageTypeRep = pageTypeRep;
 		}
 
+		[HttpGet, Route("")]
 		public IEnumerable<PageTypeDto> Get(string parentPageTypeKey = null)
 		{
 			var pageTypes = _pageTypeRep.GetPageTypesToAdd(parentPageTypeKey);

@@ -3,39 +3,42 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using AutoMapper;
 using Harbor.Domain;
 using Harbor.Domain.Products;
 using Harbor.Domain.Security;
 using Harbor.UI.Extensions;
 using Harbor.UI.Models.Products;
 
+// JCH! - review permissions here, consider creating a permit attribute for paypalbuttons.
+
 namespace Harbor.UI.Controllers.Api
 {
+	[RoutePrefix("api/paypalbuttons")]
     public class PayPalButtonsController : ApiController
     {
-	    private readonly IPayPalButtonRepository buttonRep;
+	    private readonly IPayPalButtonRepository _buttonRep;
 
-		public PayPalButtonsController(IPayPalButtonRepository linksRepository)
+		public PayPalButtonsController(IPayPalButtonRepository buttonRep)
 		{
-			buttonRep = linksRepository;
+			_buttonRep = buttonRep;
 		}
 
-	    // GET api/navlinks
 		/// <summary>
-		/// Returns all NavLinks for the current user.
+		/// Returns all PayPalButtons for the current user.
 		/// </summary>
 		/// <returns></returns>
+		[HttpGet, Route("")]
         public IEnumerable<PayPalButtonDto> Get()
         {
             // query.CurrentUserName = User.Identity.Name;
-			return buttonRep.FindAll(i => i.UserName == User.Identity.Name).Select(PayPalButtonDto.FromPayPalButton);
+			return _buttonRep.FindAll(i => i.UserName == User.Identity.Name).Select(PayPalButtonDto.FromPayPalButton);
         }
 
-        // GET api/navlinks/5
+
+		[HttpGet, Route("{id:int}")]
         public HttpResponseMessage Get(int id)
         {
-            var buttons = buttonRep.FindById(id);
+            var buttons = _buttonRep.FindById(id);
 			if (buttons == null || buttons.UserName != User.Identity.Name)
 				return Request.CreateNotFoundResponse();
 
@@ -43,7 +46,7 @@ namespace Harbor.UI.Controllers.Api
 			return Request.CreateOKResponse(dto);
         }
 
-        // POST api/navlinks
+        [HttpPost, Route("")]
 		[Permit(UserFeature.Pages, Permissions.Create)]
 		public HttpResponseMessage Post(PayPalButtonDto dto)
 		{
@@ -56,8 +59,8 @@ namespace Harbor.UI.Controllers.Api
 			
 			try
 			{
-				dobj = buttonRep.Create(dobj);
-				buttonRep.Save();
+				dobj = _buttonRep.Create(dobj);
+				_buttonRep.Save();
 			}
 			catch (DomainValidationException exception)
 			{
@@ -67,10 +70,10 @@ namespace Harbor.UI.Controllers.Api
 			return Request.CreateOKResponse(PayPalButtonDto.FromPayPalButton(dobj));
         }
 
-        // PUT api/navlinks/5
+		[HttpPut, Route("{id:int}")]
 		public HttpResponseMessage Put(PayPalButtonDto dto)
         {
-			var dobj = buttonRep.FindById(dto.id ?? 0, readOnly: false);
+			var dobj = _buttonRep.FindById(dto.id ?? 0, readOnly: false);
 
 			if (dobj == null || dobj.UserName != User.Identity.Name)
 				return Request.CreateNotFoundResponse();
@@ -79,8 +82,8 @@ namespace Harbor.UI.Controllers.Api
 
 			try
 			{
-				dobj = buttonRep.Update(dobj);
-				buttonRep.Save();
+				dobj = _buttonRep.Update(dobj);
+				_buttonRep.Save();
 			}
 			catch (DomainValidationException e)
 			{
@@ -91,14 +94,14 @@ namespace Harbor.UI.Controllers.Api
 			return Request.CreateOKResponse(navLinksDto);
         }
 
-        // DELETE api/navlinks/5
+		[HttpDelete, Route("{id:int}")]
         public HttpResponseMessage Delete(int id)
         {
-			var dobj = buttonRep.FindById(id);
+			var dobj = _buttonRep.FindById(id);
 			if (dobj != null && dobj.UserName == User.Identity.Name)
 			{
-				buttonRep.Delete(dobj);
-				buttonRep.Save();
+				_buttonRep.Delete(dobj);
+				_buttonRep.Save();
 			}
 			return Request.CreateResponse(HttpStatusCode.NoContent);
         }

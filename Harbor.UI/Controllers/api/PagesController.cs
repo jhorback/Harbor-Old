@@ -12,7 +12,7 @@ using Harbor.UI.Models;
 
 namespace Harbor.UI.Controllers.Api
 {
-	[Authorize]
+	[Authorize, RoutePrefix("api/pages")]
     public class PagesController : ApiController
     {
 		IPageRepository _pageRep;
@@ -24,7 +24,7 @@ namespace Harbor.UI.Controllers.Api
 			_pageFactory = pageFactory;
 		}
 
-
+		[HttpGet, Route("")]
 		public PagedResultDto<PageDto> Get([FromUri]PageQuery query)
 		{
         	query.CurrentUserName = User.Identity.Name;
@@ -35,6 +35,7 @@ namespace Harbor.UI.Controllers.Api
 			};
 		}
 
+		[HttpGet, Route("{id:int}")]
 		[Http.PagePermit(Permissions.Read)]
         public HttpResponseMessage Get(int id)
         {
@@ -45,7 +46,7 @@ namespace Harbor.UI.Controllers.Api
 			return Request.CreateOKResponse(PageDto.FromPage(page));
         }
 
-		[HttpPost]
+		[HttpPost, Route("")]
 		[Http.Permit(UserFeature.Pages, Permissions.Create)]
 		public HttpResponseMessage Post(CreatePageDto page)
         {
@@ -75,6 +76,7 @@ namespace Harbor.UI.Controllers.Api
 			return Request.CreateOKResponse(PageDto.FromPage(pageDO));
         }
 
+		[HttpPut, Route("{id:int}")]
 		[Http.PagePermit(Permissions.Update)]
 		public HttpResponseMessage Put(PageDto page)
 		{
@@ -101,6 +103,7 @@ namespace Harbor.UI.Controllers.Api
 			return Get(pageDO.PageID);
         }
 
+		[HttpDelete, Route("{id:int}")]
 		[Http.PagePermit(Permissions.Delete)]
 		public HttpResponseMessage Delete(int id)
         {

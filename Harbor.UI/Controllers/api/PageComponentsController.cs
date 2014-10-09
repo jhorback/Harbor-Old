@@ -5,6 +5,7 @@ using Harbor.UI.Models;
 
 namespace Harbor.UI.Controllers.Api
 {
+	[RoutePrefix("api/pagecomponents")]
     public class PageComponentsController : ApiController
     {
 	    private readonly IContentTypeRepository _contentTypeRepository;
@@ -14,6 +15,7 @@ namespace Harbor.UI.Controllers.Api
 			_contentTypeRepository = contentTypeRepository;
 		}
 
+		[HttpGet, Route("")]
 		public IEnumerable<PageComponentDto> Get(string parentPageTypeKey = null)
 		{
 			var contentTypes = _contentTypeRepository.GetTemplateContentTypes(parentPageTypeKey);

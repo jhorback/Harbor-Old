@@ -1,34 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
-using AutoMapper;
-using Harbor.Domain;
-using Harbor.Domain.App;
-using Harbor.Domain.Security;
-using Harbor.UI.Extensions;
-using Harbor.UI.Models.User;
+﻿using System.Collections.Generic;
 using System.Linq;
+using System.Web.Http;
+using Harbor.Domain.Security;
+using Harbor.UI.Models.User;
 
 namespace Harbor.UI.Controllers.Api
 {
-	[Http.Permit(UserFeature.Users, Permissions.Read)]
+	[Http.Permit(UserFeature.Users, Permissions.Read), RoutePrefix("api/userroles")]
     public class UserRolesController : ApiController
     {
-		IUserFeatureRoleRepository roleRep;
+		readonly IUserFeatureRoleRepository _roleRep;
 
 		public UserRolesController(IUserFeatureRoleRepository roleRep)
 		{
-			this.roleRep = roleRep;
+			_roleRep = roleRep;
 		}
 
-        // GET api/users
+        [HttpGet, Route("")]
 		[Http.Permit(UserFeature.Users, Permissions.Read)]
         public IEnumerable<UserRoleDto> Get()
 		{
-			return roleRep.GetUserRoles().Select(u => (UserRoleDto)u);
+			return _roleRep.GetUserRoles().Select(u => (UserRoleDto)u);
 		}
     }
 }

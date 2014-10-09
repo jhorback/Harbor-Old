@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -10,10 +9,10 @@ using Harbor.Domain.Pages;
 using Harbor.Domain.Security;
 using Harbor.UI.Extensions;
 using Harbor.UI.Models;
-using Harbor.UI.Models.Pages;
 
 namespace Harbor.UI.Controllers.Api
 {
+	[RoutePrefix("api/pagelayout")]
     public class PageLayoutController : ApiController
     {
 	    private readonly IPageLayoutRepository linksRep;
@@ -25,18 +24,16 @@ namespace Harbor.UI.Controllers.Api
 		    _dtoMapper = dtoMapper;
 	    }
 
-	    // GET api/navlinks
-		/// <summary>
-		/// Returns all NavLinks for the current user.
-		/// </summary>
-		/// <returns></returns>
+
+	    [HttpGet, Route("")]
         public IEnumerable<PageLayoutDto> Get()
         {
             // query.CurrentUserName = User.Identity.Name;
 			return linksRep.FindAll(i => i.UserName == User.Identity.Name).Select(p => PageLayoutDto.FromPageLayout(p, _dtoMapper));
         }
 
-        // GET api/navlinks/5
+
+		[HttpGet, Route("{id:int}")]
         public HttpResponseMessage Get(int id)
         {
             var links = linksRep.FindById(id);
@@ -47,31 +44,8 @@ namespace Harbor.UI.Controllers.Api
 			return Request.CreateOKResponse(layoutDto);
         }
 
-        // POST api/navlinks
-		[Permit(UserFeature.Pages, Permissions.Create)]
-		public HttpResponseMessage Post(PageLayoutDto navLinks)
-        {
-			throw new NotImplementedException();
-			//var navLinksDO = PageLayoutDto.ToPageLayout(navLinks);
-			//navLinksDO.UserName = User.Identity.Name;
 
-			//var errors = DomainObjectValidator.Validate(navLinksDO);
-			//if (errors.Count != 0)
-			//	return Request.CreateBadRequestResponse(errors);
-			
-			//try
-			//{
-			//	navLinksDO = linksRep.Create(navLinksDO);
-			//}
-			//catch (DomainValidationException exception)
-			//{
-			//	return Request.CreateBadRequestResponse(exception.Message);
-			//}
-
-			//return Request.CreateOKResponse(PageLayoutDto.FromPageLayout(navLinksDO));
-        }
-
-        // PUT api/navlinks/5
+		[HttpPut, Route("{id:int}")]
 		public HttpResponseMessage Put(PageLayoutDto navLinks)
         {
 			var navLinksDO = linksRep.FindById(navLinks.id, readOnly: false);
@@ -95,7 +69,8 @@ namespace Harbor.UI.Controllers.Api
 			return Request.CreateOKResponse(navLinksDto);
         }
 
-        // DELETE api/navlinks/5
+        
+		[HttpDelete, Route("{id:int}")]
         public HttpResponseMessage Delete(int id)
         {
 			var navLinksDO = linksRep.FindById(id);

@@ -15,19 +15,6 @@ namespace Harbor.UI
 			var mvcConstraintsResolver = new System.Web.Mvc.Routing.DefaultInlineConstraintResolver();
 			mvcConstraintsResolver.ConstraintMap.Add("rootpage", typeof(RootPageConstraint));
 			routes.MapMvcAttributeRoutes(mvcConstraintsResolver);
-
-
-			routes.MapHttpRoute(
-				name: "DefaultApi",
-				routeTemplate: "api/{controller}/{id}",
-				defaults: new { id = RouteParameter.Optional }
-			);
-
-			//routes.MapRoute(
-			//	name: "Default",
-			//	url: "{controller}/{action}/{*pathInfo}",
-			//	defaults: new { controller = "Home", action = "Index", pathInfo = UrlParameter.Optional }
-			//);
 		}
 	}
 }
