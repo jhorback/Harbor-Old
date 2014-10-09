@@ -1,9 +1,9 @@
-﻿using Harbor.Domain.Diagnostics;
+﻿using Harbor.Domain.Caching;
+using Harbor.Domain.Diagnostics;
 using Harbor.Domain.Pages;
 using Harbor.Domain.Pages.Commands;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using Moq.AutoMock;
 
 namespace Harbor.Domain.Tests
 {

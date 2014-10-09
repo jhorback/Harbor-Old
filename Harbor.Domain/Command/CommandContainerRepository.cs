@@ -1,4 +1,5 @@
 ﻿using System;
+using Harbor.Domain.Caching;
 
 namespace Harbor.Domain
 {

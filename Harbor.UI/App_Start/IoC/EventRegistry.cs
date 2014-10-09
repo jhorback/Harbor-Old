@@ -1,4 +1,5 @@
 ﻿using Harbor.Domain;
+using Harbor.Domain.Caching;
 using StructureMap.Configuration.DSL;
 
 namespace Harbor.UI.IoC

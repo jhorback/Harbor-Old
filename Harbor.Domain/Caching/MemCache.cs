@@ -3,7 +3,7 @@ using System.Runtime.Caching;
 using System.Security.Principal;
 
 
-namespace Harbor.Domain
+namespace Harbor.Domain.Caching
 {
 	public class MemCache : IMemCache
 	{

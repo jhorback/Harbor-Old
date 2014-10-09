@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Configuration;
 using Harbor.Domain.App.Events;
+using Harbor.Domain.Caching;
 using Harbor.Domain.Event;
 using Harbor.Domain.Extensions;
 using Harbor.Domain.Pages;

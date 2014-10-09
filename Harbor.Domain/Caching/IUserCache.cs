@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Harbor.Domain
+namespace Harbor.Domain.Caching
 {
 	public interface IUserCache<T>
 	{

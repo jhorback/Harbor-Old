@@ -1,19 +1,19 @@
 ﻿using System;
 
-namespace Harbor.Domain
+namespace Harbor.Domain.Caching
 {
-	public class UserCache<T> : IUserCache<T>
+	public class GlobalCache<T> : IGlobalCache<T>
 	{
 		private readonly IMemCache _memCache;
 
-		public UserCache(IMemCache memCache)
+		public GlobalCache(IMemCache memCache)
 		{
 			_memCache = memCache;
 		}
 
 		public T Get(object key)
 		{
-			return _memCache.Get<T>(key);
+			return _memCache.GetGlobal<T>(key);
 		}
 
 		public T Get()
@@ -23,7 +23,7 @@ namespace Harbor.Domain
 
 		public void Set(object key, T value, DateTimeOffset expiration)
 		{
-			_memCache.Set(key, value, expiration);
+			_memCache.SetGlobal(key, value, expiration);
 		}
 
 		public void Set(object key, T value)
@@ -43,7 +43,7 @@ namespace Harbor.Domain
 
 		public void Remove(object key)
 		{
-			_memCache.Bust<T>(key);
+			_memCache.BustGlobal<T>(key);
 		}
 
 		public void Remove()

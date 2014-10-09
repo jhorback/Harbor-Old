@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 using Harbor.Domain;
+using Harbor.Domain.Caching;
 
 namespace Harbor.UI.Models
 {
