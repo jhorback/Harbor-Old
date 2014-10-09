@@ -268,7 +268,6 @@
     <Compile Include="Controllers\Api\PagesController.cs" />
     <Compile Include="Controllers\Api\PageTypesController.cs" />
     <Compile Include="Controllers\Api\UserRolesController.cs" />
-    <Compile Include="Controllers\Api\SettingsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Controllers\StyleGuideController.cs" />

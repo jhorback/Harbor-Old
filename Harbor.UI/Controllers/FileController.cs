@@ -63,10 +63,10 @@ namespace Harbor.UI.Controllers
 			return File(path, file.ContentType);
 		}
 
-		public ActionResult Thumbnail(string name)
-		{
-			var path = FileUrls.GetThumbUrl(name);
-			return File(path, "image/png");
-		}
+		//public ActionResult Thumbnail(string name)
+		//{
+		//	var path = FileUrls.GetThumbUrl(name);
+		//	return File(path, "image/png");
+		//}
     }
 }
