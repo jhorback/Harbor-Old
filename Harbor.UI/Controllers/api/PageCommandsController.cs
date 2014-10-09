@@ -9,7 +9,7 @@ using Harbor.UI.Models;
 
 namespace Harbor.UI.Controllers.Api
 {
-	[Authorize]
+	[Authorize, RoutePrefix("api/pages/{id:int}")]
     public class PageCommandsController : ApiController
     {
 		IPageRepository _pageRep;
@@ -22,33 +22,33 @@ namespace Harbor.UI.Controllers.Api
 			_pageFactory = pageFactory;
 			_commandService = commandService;
 		}
-		
 
-		[HttpPost, Http.PagePermit(Permissions.All)]
+
+		[HttpPost, Http.PagePermit(Permissions.All), Route("AddNewPageToLinks")]
 		public HttpResponseMessage AddNewPageToLinks(int id, AddNewPageToLinks command)
 		{
 			return executeCommand(id, command);
 		}
 
-		[HttpPost, Http.PagePermit(Permissions.All)]
+		[HttpPost, Http.PagePermit(Permissions.All), Route("AddExistingPageToLinks")]
 		public HttpResponseMessage AddExistingPageToLinks(int id, AddExistingPageToLinks command)
 		{
 			return executeCommand(id, command);
 		}
 
-		[HttpPost, Http.PagePermit(Permissions.All)]
+		[HttpPost, Http.PagePermit(Permissions.All), Route("ResetPageLayout")]
 		public HttpResponseMessage ResetPageLayout(int id, ResetPageLayout command)
 		{
 			return executeCommand(id, command);
 		}
 
-		[HttpPost, Http.PagePermit(Permissions.All)]
+		[HttpPost, Http.PagePermit(Permissions.All), Route("AddTemplateContent")]
 		public HttpResponseMessage AddTemplateContent(int id, AddTemplateContent command)
 		{
 			return executeCommand(id, command);
 		}
 
-		[HttpPost, Http.PagePermit(Permissions.All)]
+		[HttpPost, Http.PagePermit(Permissions.All), Route("DeleteTemplateContent")]
 		public HttpResponseMessage DeleteTemplateContent(int id, DeleteTemplateContent command)
 		{
 			return executeCommand(id, command);
