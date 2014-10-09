@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Net.Http;
 using System.Web;
 using System.Web.Http;
@@ -36,10 +37,27 @@ namespace Harbor.UI.Http
 			if (actionContext == null)
 				throw new ArgumentNullException("actionContext");
 
+			var routeData = actionContext.Request.GetRouteData();
+			if (routeData == null)
+			{
+				throw new HttpResponseException(HttpStatusCode.NotFound);
+			}
+
+			var values = routeData.Values;
+			if (values.ContainsKey("id") == false)
+			{
+				throw new HttpResponseException(HttpStatusCode.NotFound);				
+			}
+
 			var userName = HttpContext.Current.User.Identity.Name;
-			var pageID = Convert.ToInt32(actionContext.Request.GetRouteData().Values["id"]);
+			var pageID = Convert.ToInt32(values["id"]);
 			var page = PageRepository.FindById(pageID);
-			if (page != null && page.HasPermission(userName, this.feature, this.permissions) == false)
+			if (page == null)
+			{
+				throw new HttpResponseException(HttpStatusCode.NotFound);
+			}
+
+			if (page.HasPermission(userName, this.feature, this.permissions) == false)
 			{
 				actionContext.Response = actionContext.Request.CreateUnauthorizedResponse();
 			}

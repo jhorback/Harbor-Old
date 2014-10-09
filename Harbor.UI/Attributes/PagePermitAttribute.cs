@@ -32,11 +32,24 @@ namespace Harbor.UI
 			if (filterContext == null)
 				throw new ArgumentNullException("filterContext");
 
+			var values = filterContext.RouteData.Values;
+			if (values.ContainsKey("id") == false)
+			{
+				throw new HttpException(404, "Not found");				
+			}
+
 			var userName = filterContext.HttpContext.User.Identity.Name;
-			var pageID = Convert.ToInt32(filterContext.RouteData.Values["id"]);
+			var pageID = Convert.ToInt32(values["id"]);
 			var page = PageRepository.FindById(pageID);
-			if (page != null && page.HasPermission(userName, this.feature, this.permissions) == false)
+			if (page == null)
+			{
+				throw new HttpException(404, "Not found");				
+			}
+
+			if (page.HasPermission(userName, this.feature, this.permissions) == false)
+			{
 				filterContext.Result = new HttpUnauthorizedResult();
+			}
 		}
 	}
 }
