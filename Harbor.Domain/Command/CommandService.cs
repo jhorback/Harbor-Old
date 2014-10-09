@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace Harbor.Domain.Command
 {
@@ -14,6 +15,11 @@ namespace Harbor.Domain.Command
 		public void Execute(T command)
 		{
 			commandContainer.Execute(command);
+		}
+
+		public Task ExecuteAsnyc(T command)
+		{
+			return new TaskFactory().StartNew(() => Execute(command));
 		}
 	}
 }
