@@ -204,6 +204,9 @@
     <Compile Include="Products\IPayPalButtonRepository.cs" />
     <Compile Include="Products\PayPalButton.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Query\CachedQueryBase.cs" />
+    <Compile Include="Query\IQuery.cs" />
+    <Compile Include="Query\QueryBase.cs" />
     <Compile Include="ReflectionUtils.cs" />
     <Compile Include="RepositoryQuery.cs" />
     <Compile Include="Security\FeaturePermissions.cs" />
