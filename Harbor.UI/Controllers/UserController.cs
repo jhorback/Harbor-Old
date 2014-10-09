@@ -88,7 +88,7 @@ namespace Harbor.UI.Controllers
 			return View("Pages");
 		}
 
-		[Permit(UserFeature.Files, Permissions.Read), HttpGet, Route("Files")]
+		[Permit(UserFeature.Files, Permissions.Read), HttpGet, Route("Files/{*pathInfo}")]
 		public ViewResult Files()
 		{
 			return View("Files");

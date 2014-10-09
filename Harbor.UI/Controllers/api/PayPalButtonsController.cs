@@ -9,7 +9,6 @@ using Harbor.Domain.Security;
 using Harbor.UI.Extensions;
 using Harbor.UI.Models.Products;
 
-// JCH! - review permissions here, consider creating a permit attribute for paypalbuttons.
 
 namespace Harbor.UI.Controllers.Api
 {
