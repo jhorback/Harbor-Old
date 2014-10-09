@@ -23,23 +23,10 @@ namespace Harbor.UI
 		private static void registerApiRoutes(RouteCollection routes)
 		{
 			routes.MapHttpRoute(
-				name: "UsersApi",
-				routeTemplate: "api/users/{userName}",
-				defaults: new { controller = "Users", userName = RouteParameter.Optional }
-			);
-
-			routes.MapHttpRoute(
 				name: "SettingsApi",
 				routeTemplate: "api/settings/{name}",
 				defaults: new { controller = "Settings", name = RouteParameter.Optional }
 			);
-
-			//routes.MapHttpRoute(
-			//	name: "PageCommand",
-			//	routeTemplate: "api/pages/{id}/{commandName}",
-			//	defaults: new { controller = "Pages", action = "ExecuteCommand" }
-			//);
-
 
 			routes.MapHttpRoute(
 				name: "DefaultApi",
