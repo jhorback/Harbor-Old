@@ -42,7 +42,7 @@ namespace Harbor.UI.Controllers
 			return View("SignIn");
 		}
 
-		[HttpPost, Route("~/signin/{*pathInfo}")]
+		[HttpPost, Route("~/signin/{*pathInfo}"), Route("signin/{*pathInfo}")]
 		public HttpStatusCodeResult SignIn(string username, string password, bool? rememberMe)
 		{
 			var user = _userRep.FindUserByName(username);
@@ -94,7 +94,7 @@ namespace Harbor.UI.Controllers
 			return View("Files");
 		}
 
-		[Permit(UserFeature.Users, Permissions.Read), HttpGet, Route("Admin")]
+		[Permit(UserFeature.Users, Permissions.Read), HttpGet, Route("Admin/{*pathInfo}")]
 		public ViewResult Admin()
 		{
 			return View("Admin");

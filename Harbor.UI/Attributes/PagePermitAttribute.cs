@@ -33,13 +33,23 @@ namespace Harbor.UI
 				throw new ArgumentNullException("filterContext");
 
 			var values = filterContext.RouteData.Values;
-			if (values.ContainsKey("id") == false)
+			object id = null;
+			if (values.ContainsKey("id"))
 			{
-				throw new HttpException(404, "Not found");				
+				id = values["id"];
+			}
+			else if (values.ContainsKey("pageID"))
+			{
+				id = values["pageID"];
+			}
+
+			if (id == null)
+			{
+				throw new HttpException(404, "Not found");								
 			}
 
 			var userName = filterContext.HttpContext.User.Identity.Name;
-			var pageID = Convert.ToInt32(values["id"]);
+			var pageID = Convert.ToInt32(id);
 			var page = PageRepository.FindById(pageID);
 			if (page == null)
 			{
