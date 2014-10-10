@@ -1,8 +1,10 @@
 ﻿using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using Harbor.Domain.Command2;
 using Harbor.Domain.Pages;
 using Harbor.Domain.Pages.Commands;
+using Harbor.Domain.Pages.Queries;
 using Harbor.Domain.Security;
 using Harbor.UI.Extensions;
 using Harbor.UI.Models;
@@ -14,14 +16,17 @@ namespace Harbor.UI.Controllers.Api
     {
 		IPageRepository _pageRep;
 		private readonly ICommandService _commandService;
+		private readonly IPageQuery _pageQuery;
 
 		public PageCommandsController(
 			IPageRepository pageRep,
-			ICommandService commandService
+			ICommandService commandService,
+			IPageQuery pageQuery
 			)
 		{
 			_pageRep = pageRep;
 			_commandService = commandService;
+			_pageQuery = pageQuery;
 		}
 
 
@@ -54,18 +59,19 @@ namespace Harbor.UI.Controllers.Api
 		}
 
 		[HttpPost, Http.PagePermit(Permissions.All), Route("DeleteTemplateContent")]
-		public HttpResponseMessage DeleteTemplateContent(int id, DeleteTemplateContent command)
+		public Task<HttpResponseMessage> DeleteTemplateContent(int id, DeleteTemplateContent command)
 		{
 			_commandService.Execute(command);
-			return getPage(id);
+			return getPageResponse(id);
 		}
 
-		/*
-		 * await _pageCommandService.ExecuteAsync(command);
-		 * return await pageResponse(id);
-		 * 
-		 * */
-		
+		// jch! - here make sure I'm doing this correctly
+		private async Task<HttpResponseMessage> getPageResponse(int id)
+		{
+			var queryParams = new PageQueryParams { PageID = id };
+			var page = _pageQuery.ExecuteCached(queryParams) ?? await _pageQuery.ExecuteAsync(queryParams);
+			return Request.CreateOKResponse(PageDto.FromPage(page));
+		}
 
 		private HttpResponseMessage getPage(int id)
 		{
