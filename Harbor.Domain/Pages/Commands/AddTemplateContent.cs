@@ -1,15 +1,13 @@
-﻿
-using System;
+﻿using Harbor.Domain.Command2;
 
 namespace Harbor.Domain.Pages.Commands
 {
-	public class AddTemplateContent : IPageCommand
+	public class AddTemplateContent : PageCommand
 	{
-		public int PageID { get; set; }
 		public string Key { get; set; }
 	}
 
-	public class AddTemplateContentHandler : IPageCommandHandler<AddTemplateContent>
+	public class AddTemplateContentHandler : ICommandHandler<AddTemplateContent>
 	{
 		private readonly IPageRepository _pageRepository;
 		private readonly IContentTypeRepository _contentTypeRepository;
@@ -21,7 +19,7 @@ namespace Harbor.Domain.Pages.Commands
 			_contentTypeRepository = contentTypeRepository;
 		}
 
-		public void Execute(AddTemplateContent command)
+		public void Handle(AddTemplateContent command)
 		{
 			if (string.IsNullOrEmpty(command.Key))
 			{

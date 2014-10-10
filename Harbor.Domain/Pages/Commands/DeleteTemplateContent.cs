@@ -1,14 +1,14 @@
 ﻿using System.Linq;
+using Harbor.Domain.Command2;
 
 namespace Harbor.Domain.Pages.Commands
 {
-	public class DeleteTemplateContent : IPageCommand
+	public class DeleteTemplateContent : PageCommand
 	{
-		public int PageID { get; set; }
 		public string UicId { get; set; }
 	}
 
-	public class DeleteTemplateContentHandler : IPageCommandHandler<DeleteTemplateContent>
+	public class DeleteTemplateContentHandler : ICommandHandler<DeleteTemplateContent>
 	{
 		private readonly IPageRepository _pageRepository;
 		private readonly IContentTypeRepository _contentTypeRepository;
@@ -20,7 +20,7 @@ namespace Harbor.Domain.Pages.Commands
 			_contentTypeRepository = contentTypeRepository;
 		}
 
-		public void Execute(DeleteTemplateContent command)
+		public void Handle(DeleteTemplateContent command)
 		{
 			var page = _pageRepository.FindById(command.PageID, readOnly: false);
 

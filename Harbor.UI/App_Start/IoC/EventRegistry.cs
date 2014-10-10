@@ -1,7 +1,6 @@
 ﻿using System;
 using Harbor.Domain;
 using Harbor.Domain.App;
-using Harbor.Domain.Command2;
 using Harbor.Domain.Event;
 using StructureMap.Configuration.DSL;
 

@@ -10,6 +10,7 @@ namespace Harbor.UI.IoC
 	{
 		public CommandRegistry()
 		{
+			For(typeof(ICommandExecutor<>)).Use(typeof(CommandExecutor<>));
 			registerSingleGenericImplementationFor(typeof(ICommandHandler<>));
 		}
 

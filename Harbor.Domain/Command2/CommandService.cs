@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 
 namespace Harbor.Domain.Command2
 {
@@ -13,14 +14,26 @@ namespace Harbor.Domain.Command2
 
 		public void Execute<T>(T command) where T : ICommand
 		{
+			guardArgs(command);
+
 			var executor = _objectFactory.GetInstance<ICommandExecutor<T>>();
 			executor.Execute(command);
 		}
 
 		public Task ExecuteAsync<T>(T command) where T : ICommand
 		{
+			guardArgs(command);
+			
 			var executor = _objectFactory.GetInstance<ICommandExecutor<T>>();
 			return executor.ExecuteAsync(command);
+		}
+
+		private void guardArgs<T>(T argument)
+		{
+			if (typeof(T) == typeof(ICommand))
+			{
+				throw new Exception(string.Format("Cannot determine command from ICommand: {0}", argument.GetType()));
+			}
 		}
 	}
 }

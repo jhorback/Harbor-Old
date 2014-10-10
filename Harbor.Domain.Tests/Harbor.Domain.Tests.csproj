@@ -89,7 +89,6 @@
     <Compile Include="FileTest.cs" />
     <Compile Include="FunctionalRoleBaseTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PageCommandServiceTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Harbor.Domain\Harbor.Domain.csproj">

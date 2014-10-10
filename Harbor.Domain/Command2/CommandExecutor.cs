@@ -1,19 +1,23 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Harbor.Domain.Command2
 {
 	public class CommandExecutor<T> : ICommandExecutor<T> where T : ICommand
 	{
-		private readonly ICommandHandler<T> _handler;
+		private readonly IEnumerable<ICommandHandler<T>> _handlers;
 
-		public CommandExecutor(ICommandHandler<T> handler)
+		public CommandExecutor(IEnumerable<ICommandHandler<T>> handlers)
 		{
-			_handler = handler;
+			_handlers = handlers;
 		}
 
 		public void Execute(T command)
 		{
-			_handler.Handle(command);
+			foreach (var handler in _handlers)
+			{
+				handler.Handle(command);				
+			}
 		}
 
 		public Task ExecuteAsync(T command)

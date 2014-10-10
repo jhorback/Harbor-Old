@@ -1,15 +1,15 @@
-﻿using Harbor.Domain.Pages.Content;
+﻿using Harbor.Domain.Command2;
+using Harbor.Domain.Pages.Content;
 
 namespace Harbor.Domain.Pages.Commands
 {
-	public class AddExistingPageToLinks : IPageCommand
+	public class AddExistingPageToLinks : PageCommand
 	{
-		public int PageID { get; set; }
 		public int ExistingPageID { get; set; }
 		public int SectionIndex { get; set; }
 	}
 
-	public class AddExistingPageToLinksHandler : IPageCommandHandler<AddExistingPageToLinks>
+	public class AddExistingPageToLinksHandler : ICommandHandler<AddExistingPageToLinks>
 	{
 		private readonly IPageRepository _pageRepository;
 
@@ -18,7 +18,7 @@ namespace Harbor.Domain.Pages.Commands
 			_pageRepository = pageRepository;
 		}
 
-		public void Execute(AddExistingPageToLinks command)
+		public void Handle(AddExistingPageToLinks command)
 		{
 			var page = _pageRepository.FindById(command.PageID, readOnly: false);
 			var links = page.Layout.GetAsideAdata<Links>();
