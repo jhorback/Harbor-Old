@@ -17,7 +17,7 @@ namespace Harbor.Domain.Tests
 			var reflectionUtils = new ReflectionUtils();
 			var logger = new Logger(typeof(PageCommandServiceTest));
 			var mockObjectFactory = new Mock<IObjectFactory>();
-			var commandRepository = new CommandProvider(mockObjectFactory.Object, new Mock<IMemCache>().Object);
+			var commandRepository = new CommandProvider(mockObjectFactory.Object, new Mock<IGlobalCache<CommandContainer>>().Object);
 			// var mockCommandContainerRepository = new Mock<CommandContainerRepository>();
 			var commandContainer = new CommandContainer(reflectionUtils, logger, mockObjectFactory.Object);
 

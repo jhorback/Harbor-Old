@@ -53,6 +53,12 @@ namespace Harbor.UI.Controllers.Api
 		{
 			return executeCommand(id, command);
 		}
+
+		/*
+		 * await _pageCommandService.ExecuteAsync(command);
+		 * return await pageResponse(id);
+		 * 
+		 * */
 		
 
 
