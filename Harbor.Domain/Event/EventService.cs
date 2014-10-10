@@ -1,11 +1,11 @@
 ﻿
 namespace Harbor.Domain.Event
 {
-	public class EventPublisherService : IEventPublisherService
+	public class EventService : IEventService
 	{
 		private readonly IObjectFactory _objectFactory;
 
-		public EventPublisherService(IObjectFactory objectFactory)
+		public EventService(IObjectFactory objectFactory)
 		{
 			_objectFactory = objectFactory;
 		}

@@ -95,10 +95,10 @@
     <Compile Include="Diagnostics\HarborTextWriterTraceListener.cs" />
     <Compile Include="Diagnostics\Logger.cs" />
     <Compile Include="Event\EventPublisher.cs" />
-    <Compile Include="Event\EventPublisherService.cs" />
+    <Compile Include="Event\EventService.cs" />
     <Compile Include="Event\IEvent.cs" />
     <Compile Include="Event\IEventPublisher.cs" />
-    <Compile Include="Event\IEventPublisherService.cs" />
+    <Compile Include="Event\IEventService.cs" />
     <Compile Include="Event\IEventSubscriber.cs" />
     <Compile Include="Extensions\AppSetting\AsInt.cs" />
     <Compile Include="Files\File.cs" />
