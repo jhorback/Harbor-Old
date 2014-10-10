@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using Harbor.Domain.Command2;
+using Harbor.Domain.Command;
 
 namespace Harbor.Domain.Pages.Commands
 {

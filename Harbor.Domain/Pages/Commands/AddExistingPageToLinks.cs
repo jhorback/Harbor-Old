@@ -1,4 +1,4 @@
-﻿using Harbor.Domain.Command2;
+﻿using Harbor.Domain.Command;
 using Harbor.Domain.Pages.Content;
 
 namespace Harbor.Domain.Pages.Commands

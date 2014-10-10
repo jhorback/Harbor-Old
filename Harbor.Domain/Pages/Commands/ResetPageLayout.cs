@@ -1,4 +1,4 @@
-﻿using Harbor.Domain.Command2;
+﻿using Harbor.Domain.Command;
 using Harbor.Domain.Pages.ContentTypes;
 using Harbor.Domain.Pages.PipelineHandlers;
 

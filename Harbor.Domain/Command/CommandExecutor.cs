@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Harbor.Domain.Command2
+namespace Harbor.Domain.Command
 {
 	public class CommandExecutor<T> : ICommandExecutor<T> where T : ICommand
 	{

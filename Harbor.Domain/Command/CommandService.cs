@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace Harbor.Domain.Command2
+namespace Harbor.Domain.Command
 {
 	public class CommandService : ICommandService
 	{

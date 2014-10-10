@@ -1,7 +1,7 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
-using Harbor.Domain.Command2;
+using Harbor.Domain.Command;
 using Harbor.Domain.Pages;
 using Harbor.Domain.Pages.Commands;
 using Harbor.Domain.Pages.Queries;
