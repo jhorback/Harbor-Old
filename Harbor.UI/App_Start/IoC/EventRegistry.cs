@@ -1,6 +1,7 @@
 ﻿using System;
-using System.Linq;
+using Harbor.Domain;
 using Harbor.Domain.App;
+using Harbor.Domain.Command2;
 using Harbor.Domain.Event;
 using StructureMap.Configuration.DSL;
 
@@ -21,38 +22,19 @@ namespace Harbor.UI.IoC
 		///   This is to support returning things such as all implementations of: IEventSubscriber<SomeEvent>
 		/// ]]>
 		/// </summary>
-		void registerAllGenericImplementationsFor(Type generic)
+		void registerAllGenericImplementationsFor(Type genericType)
 		{
+			var reflectionUtils = new ReflectionUtils();
+			var implementingTypes = reflectionUtils.GetTypesImplementingGenericType(genericType, typeof(HarborApp).Assembly);
 
-			var assemblyToSearch = typeof(HarborApp).Assembly;
-
-			var types = assemblyToSearch.GetExportedTypes()
-				.Where(t => !t.IsInterface && !t.IsAbstract)
-				.Where(t => IsAssignableToGenericType(t, generic))
-				.ToArray();
-
-			foreach (var type in types)
+			foreach (var type in implementingTypes)
 			{
+				// AsImplementedInterfaces
 				foreach (var implementedInterface in type.GetInterfaces())
 				{
 					For(implementedInterface).Add(type);
 				}
 			}
-		}
-
-		private static bool IsAssignableToGenericType(Type givenType, Type genericType)
-		{
-			var interfaceTypes = givenType.GetInterfaces();
-
-			if (interfaceTypes.Where(it => it.IsGenericType).Any(it => it.GetGenericTypeDefinition() == genericType))
-				return true;
-
-			var baseType = givenType.BaseType;
-			if (baseType == null) return false;
-
-			return baseType.IsGenericType &&
-				   baseType.GetGenericTypeDefinition() == genericType ||
-				   IsAssignableToGenericType(baseType, genericType);
 		}
 	}
 }

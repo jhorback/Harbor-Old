@@ -86,6 +86,12 @@
     <Compile Include="Caching\IGlobalCache.cs" />
     <Compile Include="Caching\IUserCache.cs" />
     <Compile Include="Caching\UserCache.cs" />
+    <Compile Include="Command2\CommandExecutor.cs" />
+    <Compile Include="Command2\CommandService.cs" />
+    <Compile Include="Command2\ICommand.cs" />
+    <Compile Include="Command2\ICommandExecutor.cs" />
+    <Compile Include="Command2\ICommandHandler.cs" />
+    <Compile Include="Command2\ICommandService.cs" />
     <Compile Include="Command\CommandContainer.cs" />
     <Compile Include="Command\CommandProvider.cs" />
     <Compile Include="Command\CommandService.cs" />
