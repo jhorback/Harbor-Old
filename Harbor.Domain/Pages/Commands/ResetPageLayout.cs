@@ -21,7 +21,7 @@ namespace Harbor.Domain.Pages.Commands
 
 		public void Handle(ResetPageLayout command)
 		{
-			var page = _pageRepository.FindById(command.PageID, readOnly: false);
+			var page = _pageRepository.FindById(command.PageID);
 
 			// remove the link from the layout
 			var linksHandler = _objectFactory.GetInstance<LinksHandler>(new { page = page });

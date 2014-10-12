@@ -2,6 +2,7 @@
 using System.Web;
 using System.Web.Mvc;
 using Harbor.Domain.Pages;
+using Harbor.Domain.Pages.Queries;
 using Harbor.Domain.Security;
 
 namespace Harbor.UI
@@ -27,6 +28,14 @@ namespace Harbor.UI
 			get { return DependencyResolver.Current.GetService(typeof(IPageRepository)) as IPageRepository; }
 		}
 
+		public virtual IPageQuery PageQuery
+		{
+			get
+			{
+				return DependencyResolver.Current.GetService<IPageQuery>();
+			}
+		}
+
 		public override void OnActionExecuting(ActionExecutingContext filterContext)
 		{
 			if (filterContext == null)
@@ -49,8 +58,7 @@ namespace Harbor.UI
 			}
 
 			var userName = filterContext.HttpContext.User.Identity.Name;
-			var pageID = Convert.ToInt32(id);
-			var page = PageRepository.FindById(pageID);
+			var page = PageQuery.ExecuteFromCache(new PageQueryParams { PageID = Convert.ToInt32(id) });
 			if (page == null)
 			{
 				throw new HttpException(404, "Not found");				

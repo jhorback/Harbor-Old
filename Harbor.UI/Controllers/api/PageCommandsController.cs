@@ -31,54 +31,44 @@ namespace Harbor.UI.Controllers.Api
 
 
 		[HttpPost, Http.PagePermit(Permissions.All), Route("AddNewPageToLinks")]
-		public HttpResponseMessage AddNewPageToLinks(int id, AddNewPageToLinks command)
+		public async Task<HttpResponseMessage> AddNewPageToLinks(int id, AddNewPageToLinks command)
 		{
-			_commandService.Execute(command);
-			return getPage(id);
+			await _commandService.ExecuteAsync(command);
+			return await pageResponse(id);
 		}
 
 		[HttpPost, Http.PagePermit(Permissions.All), Route("AddExistingPageToLinks")]
-		public HttpResponseMessage AddExistingPageToLinks(int id, AddExistingPageToLinks command)
+		public async Task<HttpResponseMessage> AddExistingPageToLinks(int id, AddExistingPageToLinks command)
 		{
-			_commandService.Execute(command);
-			return getPage(id);
+			await _commandService.ExecuteAsync(command);
+			return await pageResponse(id);
 		}
 
 		[HttpPost, Http.PagePermit(Permissions.All), Route("ResetPageLayout")]
-		public HttpResponseMessage ResetPageLayout(int id, ResetPageLayout command)
+		public async Task<HttpResponseMessage> ResetPageLayout(int id, ResetPageLayout command)
 		{
-			_commandService.Execute(command);
-			return getPage(id);
+			await _commandService.ExecuteAsync(command);
+			return await pageResponse(id);
 		}
 
 		[HttpPost, Http.PagePermit(Permissions.All), Route("AddTemplateContent")]
-		public HttpResponseMessage AddTemplateContent(int id, AddTemplateContent command)
+		public async Task<HttpResponseMessage> AddTemplateContent(int id, AddTemplateContent command)
 		{
-			_commandService.Execute(command);
-			return getPage(id);
+			await _commandService.ExecuteAsync(command);
+			return await pageResponse(id);
 		}
 
 		[HttpPost, Http.PagePermit(Permissions.All), Route("DeleteTemplateContent")]
-		public Task<HttpResponseMessage> DeleteTemplateContent(int id, DeleteTemplateContent command)
+		public async Task<HttpResponseMessage> DeleteTemplateContent(int id, DeleteTemplateContent command)
 		{
-			_commandService.Execute(command);
-			return getPageResponse(id);
+			await _commandService.ExecuteAsync(command);
+			return await pageResponse(id);
 		}
 
-		// jch! - here make sure I'm doing this correctly
-		private async Task<HttpResponseMessage> getPageResponse(int id)
+		async Task<HttpResponseMessage> pageResponse(int id)
 		{
 			var queryParams = new PageQueryParams { PageID = id };
-			var page = _pageQuery.ExecuteCached(queryParams) ?? await _pageQuery.ExecuteAsync(queryParams);
-			return Request.CreateOKResponse(PageDto.FromPage(page));
-		}
-
-		private HttpResponseMessage getPage(int id)
-		{
-			var page = _pageRep.FindById(id);
-			if (page == null)
-				return Request.CreateNotFoundResponse();
-
+			var page = await _pageQuery.ExecuteFromCacheAsync(queryParams);
 			return Request.CreateOKResponse(PageDto.FromPage(page));
 		}
 	}

@@ -123,6 +123,9 @@
     <Compile Include="Pages\Content\Title.cs" />
     <Compile Include="Pages\ContentType.cs" />
     <Compile Include="Pages\ContentTypes\Links.cs" />
+    <Compile Include="Pages\Events\PageCacheBustEventSubscriber.cs" />
+    <Compile Include="Pages\Events\PageDeletedEvent.cs" />
+    <Compile Include="Pages\Events\PageChangedEvent.cs" />
     <Compile Include="Pages\IPageLayoutRepository.cs" />
     <Compile Include="Pages\ContentTypes\ProductLink.cs" />
     <Compile Include="Pages\ContentTypes\PayPalButton.cs" />

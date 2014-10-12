@@ -20,7 +20,7 @@ namespace Harbor.Domain.Pages.Commands
 
 		public void Handle(AddExistingPageToLinks command)
 		{
-			var page = _pageRepository.FindById(command.PageID, readOnly: false);
+			var page = _pageRepository.FindById(command.PageID);
 			var links = page.Layout.GetAsideAdata<Links>();
 			if (links == null)
 			{
@@ -35,7 +35,7 @@ namespace Harbor.Domain.Pages.Commands
 			}
 
 
-			var existingPage = _pageRepository.FindById(command.ExistingPageID, readOnly: false);
+			var existingPage = _pageRepository.FindById(command.ExistingPageID);
 			if (existingPage == null)
 			{
 				throw new DomainValidationException("Page being linked does not exist.");

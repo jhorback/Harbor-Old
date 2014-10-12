@@ -22,7 +22,7 @@ namespace Harbor.Domain.Pages.Commands
 
 		public void Handle(DeleteTemplateContent command)
 		{
-			var page = _pageRepository.FindById(command.PageID, readOnly: false);
+			var page = _pageRepository.FindById(command.PageID);
 
 			var uic = page.Template.Content.FirstOrDefault(c => c.Id == command.UicId);
 			if (uic == null)

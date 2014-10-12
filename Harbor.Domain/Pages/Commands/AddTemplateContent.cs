@@ -31,7 +31,7 @@ namespace Harbor.Domain.Pages.Commands
 				throw new DomainValidationException("The template content type does not exist.");
 			}
 
-			var page = _pageRepository.FindById(command.PageID, readOnly: false);
+			var page = _pageRepository.FindById(command.PageID);
 			page.Template.AddContent(command.Key);
 			_pageRepository.Update(page);
 			_pageRepository.Save();

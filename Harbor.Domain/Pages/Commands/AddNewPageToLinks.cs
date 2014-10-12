@@ -26,7 +26,7 @@ namespace Harbor.Domain.Pages.Commands
 
 		public void Handle(AddNewPageToLinks command)
 		{
-			var page = _pageRepository.FindById(command.PageID, readOnly: false);
+			var page = _pageRepository.FindById(command.PageID);
 			var links = page.Layout.GetAsideAdata<Links>();
 			if (links == null)
 			{

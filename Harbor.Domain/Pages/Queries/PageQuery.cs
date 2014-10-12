@@ -3,6 +3,11 @@ using Harbor.Domain.Query;
 
 namespace Harbor.Domain.Pages.Queries
 {
+	public class PageQueryParams
+	{
+		public int PageID { get; set; }
+	}
+
 	public interface IPageQuery : ICachedQuery<Page, PageQueryParams>
 	{
 		
@@ -19,19 +24,16 @@ namespace Harbor.Domain.Pages.Queries
 			_pageCache = pageCache;
 		}
 
-		public override Page ExecuteCached(PageQueryParams query)
+		public override Page FromCache(PageQueryParams query)
 		{
 			return _pageCache.Get(query.PageID);
 		}
 
 		public override Page Execute(PageQueryParams query)
 		{
-			return _pageRepository.FindById(query.PageID);
+			var page = _pageRepository.FindById(query.PageID);
+			_pageCache.Set(query.PageID, page);
+			return page;
 		}
-	}
-
-	public class PageQueryParams
-	{
-		public int PageID { get; set; }
 	}
 }

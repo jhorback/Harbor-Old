@@ -12,7 +12,7 @@ namespace Harbor.Domain.Pages
 
 		Page Find(string author, string name);
 
-		Page FindById(int id, bool readOnly);
+		Page FindById(int id);
 
 		bool Exists(string author, string name);
 	}

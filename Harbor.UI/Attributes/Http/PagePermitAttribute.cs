@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Http.Controllers;
 using Harbor.Domain.Pages;
+using Harbor.Domain.Pages.Queries;
 using Harbor.Domain.Security;
 using Harbor.UI.Extensions;
 using AuthorizeAttribute = System.Web.Http.AuthorizeAttribute;
@@ -27,9 +28,12 @@ namespace Harbor.UI.Http
 			this.permissions = permissions;
 		}
 
-		public virtual IPageRepository PageRepository
+		public virtual IPageQuery PageQuery
 		{
-			get { return GlobalConfiguration.Configuration.DependencyResolver.GetService(typeof(IPageRepository)) as IPageRepository; }
+			get
+			{
+				return GlobalConfiguration.Configuration.DependencyResolver.GetService(typeof(IPageQuery)) as IPageQuery;
+			}
 		}
 
 		public override void OnAuthorization(HttpActionContext actionContext)
@@ -51,7 +55,7 @@ namespace Harbor.UI.Http
 
 			var userName = HttpContext.Current.User.Identity.Name;
 			var pageID = Convert.ToInt32(values["id"]);
-			var page = PageRepository.FindById(pageID);
+			var page = PageQuery.ExecuteFromCache(new PageQueryParams { PageID = pageID });
 			if (page == null)
 			{
 				throw new HttpResponseException(HttpStatusCode.NotFound);

@@ -6,9 +6,11 @@ using System.Web.Http;
 using AutoMapper;
 using Harbor.Domain;
 using Harbor.Domain.Pages;
+using Harbor.Domain.Pages.Queries;
 using Harbor.Domain.Security;
 using Harbor.UI.Extensions;
 using Harbor.UI.Models;
+using PageQuery = Harbor.Domain.Pages.PageQuery;
 
 namespace Harbor.UI.Controllers.Api
 {
@@ -17,11 +19,16 @@ namespace Harbor.UI.Controllers.Api
     {
 		IPageRepository _pageRep;
 		private readonly IPageFactory _pageFactory;
+		private readonly IPageQuery _pageQuery;
 
-		public PagesController(IPageRepository pageRep, IPageFactory pageFactory)
+		public PagesController(
+			IPageRepository pageRep,
+			IPageFactory pageFactory,
+			IPageQuery pageQuery)
 		{
 			_pageRep = pageRep;
 			_pageFactory = pageFactory;
+			_pageQuery = pageQuery;
 		}
 
 		[HttpGet, Route("")]
@@ -39,7 +46,9 @@ namespace Harbor.UI.Controllers.Api
 		[Http.PagePermit(Permissions.Read)]
         public HttpResponseMessage Get(int id)
         {
-			var page = _pageRep.FindById(id);
+			var pageQueryParams = new PageQueryParams { PageID = id };
+			var page = _pageQuery.ExecuteFromCache(pageQueryParams);
+
 			if (page == null)
 				return Request.CreateNotFoundResponse();
 
@@ -80,7 +89,7 @@ namespace Harbor.UI.Controllers.Api
 		[Http.PagePermit(Permissions.Update)]
 		public HttpResponseMessage Put(PageDto page)
 		{
-			var pageDO = _pageRep.FindById(page.id, readOnly: false);
+			var pageDO = _pageRep.FindById(page.id);
 			if (pageDO == null)
 				return Request.CreateNotFoundResponse();
 
@@ -107,7 +116,7 @@ namespace Harbor.UI.Controllers.Api
 		[Http.PagePermit(Permissions.Delete)]
 		public HttpResponseMessage Delete(int id)
         {
-			var pageDO = _pageRep.FindById(id, readOnly: false);
+			var pageDO = _pageRep.FindById(id);
 
 
 			var returnToPath = "~/";
