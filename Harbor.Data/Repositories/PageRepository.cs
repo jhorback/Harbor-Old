@@ -15,14 +15,14 @@ namespace Harbor.Data.Repositories
 		private readonly IUnitOfWork _unitOfWork;
 		private readonly IObjectFactory _objectFactory;
 		private readonly ILogger _logger;
-		private readonly IEventService _eventPublisher;
+		private readonly IEventPublisher _eventPublisher;
 
 
 		public PageRepository(
 			IUnitOfWork	unitOfWork,
 			IObjectFactory objectFactory,
 			ILogger logger,
-			IEventService eventPublisher 
+			IEventPublisher eventPublisher 
 		) {
 			_unitOfWork = unitOfWork;
 			_objectFactory = objectFactory;

@@ -1,27 +1,38 @@
-﻿using System.Collections.Generic;
+﻿
+using System;
 
 namespace Harbor.Domain.Event
 {
-	public class EventPublisher<T> : IEventPublisher<T> where T : IEvent
+	public class EventPublisher : IEventPublisher
 	{
-		private readonly IEnumerable<IEventSubscriber<T>> _consumers;
+		private readonly IObjectFactory _objectFactory;
 
-		public EventPublisher(IEnumerable<IEventSubscriber<T>> consumers)
+		public EventPublisher(IObjectFactory objectFactory)
 		{
-			_consumers = consumers;
+			_objectFactory = objectFactory;
 		}
 
-		public void Publish(T data)
+		public void Publish<T>(T @event) where T : IEvent
 		{
-			foreach (var consumer in _consumers)
-			{
-				consumer.Handle(data);
-			}
+			guardArgs(@event);
+
+			var publisher = _objectFactory.GetInstance<IEventPublisher<T>>();
+			publisher.Publish(@event);
 		}
 
-		public void Publish()
+		public void Publish<T>() where T : IEvent
 		{
 			Publish(default(T));
+		}
+
+	
+		private void guardArgs<T>(T argument)
+		{
+			// the T cannot be IEvent, must be a specific event
+			if (typeof(T) == typeof(IEvent))
+			{
+				throw new Exception(string.Format("Cannot determine command from IEvent: {0}", argument.GetType()));
+			}
 		}
 	}
 }

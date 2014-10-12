@@ -1,9 +1,9 @@
 ﻿
 namespace Harbor.Domain.Event
 {
-	public interface IEventPublisher<in T> where T : IEvent
+	public interface IEventPublisher
 	{
-		void Publish();
-		void Publish(T data);
+		void Publish<T>(T @event) where T : IEvent;
+		void Publish<T>() where T : IEvent;
 	}
 }
