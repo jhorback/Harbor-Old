@@ -65,6 +65,13 @@ namespace Harbor.UI.Controllers.Api
 			return await pageResponse(id);
 		}
 
+		[HttpPost, Http.PagePermit(Permissions.All), Route("UpdateRootPages")]
+		public async Task<HttpResponseMessage> UpdateRootPages(int id, UpdateRootPages command)
+		{
+			await _commandService.ExecuteAsync(command);
+			return await pageResponse(id);
+		}
+
 		async Task<HttpResponseMessage> pageResponse(int id)
 		{
 			var queryParams = new PageQueryParams { PageID = id };

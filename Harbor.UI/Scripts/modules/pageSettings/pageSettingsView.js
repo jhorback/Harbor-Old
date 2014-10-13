@@ -41,6 +41,8 @@ pageSettingsView.prototype = {
 	},
 
 	changeRootPage: function () {
+		console.debug(arguments);
+		alert("change root page");
 		this.commandHandler.execute(this.model, "updateRootPages", {
 			isARootPage: this.model.attributes.isARootPage,
 			name: this.model.attributes.title

@@ -4,6 +4,6 @@ namespace Harbor.Domain.Pages.Events
 {
 	public class PageChangedEvent : IEvent
 	{
-		public Page Page { get; set; }
+		public int PageID { get; set; }
 	}
 }

@@ -1,5 +1,7 @@
 ﻿using Harbor.Domain.App;
 using Harbor.Domain.Command;
+using Harbor.Domain.Event;
+using Harbor.Domain.Pages.Events;
 
 namespace Harbor.Domain.Pages.Commands
 {
@@ -12,10 +14,12 @@ namespace Harbor.Domain.Pages.Commands
 	public class UpdateRootPagesHandler : ICommandHandler<UpdateRootPages>
 	{
 		private readonly IRootPagesRepository _rootPagesRepository;
+		private readonly IEventPublisher _eventPublisher;
 
-		public UpdateRootPagesHandler(IRootPagesRepository rootPagesRepository)
+		public UpdateRootPagesHandler(IRootPagesRepository rootPagesRepository, IEventPublisher eventPublisher)
 		{
 			_rootPagesRepository = rootPagesRepository;
+			_eventPublisher = eventPublisher;
 		}
 
 		public void Handle(UpdateRootPages command)
@@ -30,6 +34,7 @@ namespace Harbor.Domain.Pages.Commands
 			}
 
 			_rootPagesRepository.Save();
+			_eventPublisher.Publish(new PageChangedEvent {PageID = command.PageID});
 		}
 	}
 }

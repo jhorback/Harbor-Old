@@ -143,7 +143,7 @@ namespace Harbor.Data.Repositories
 
 			
 			entity.Modified = DateTime.Now;
-			_eventPublisher.Publish(new PageChangedEvent { Page = entity });
+			_eventPublisher.Publish(new PageChangedEvent { PageID = entity.PageID });
 			return entity;
 		}
 

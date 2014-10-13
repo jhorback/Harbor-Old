@@ -82,6 +82,8 @@ namespace Harbor.UI.Models
 		public string previewText { get; set; }
 		public bool autoPreviewText { get; set; }
 		public bool autoPreviewImage { get; set; }
+		public bool? isARootPage { get; set; }
+		public string rootPageUrl { get; set; }
 
 		public static PageDto FromPage(Domain.Pages.Page page)
 		{

@@ -88,7 +88,7 @@ namespace Harbor.Domain.App
 		public void RemoveRootPage(string name)
 		{
 			var pages = GetRootPages();
-			pages.Pages.Remove(name);
+			pages.Pages.Remove(tokenize(name));
 			saveAppSetting(pages);
 		}
 
@@ -101,8 +101,11 @@ namespace Harbor.Domain.App
 			}
 
 			var pages = GetRootPages();
-			pages.Pages.Add(name, pageId);
-			saveAppSetting(pages);
+			if (pages.Pages.ContainsKey(name) == false)
+			{
+				pages.Pages.Add(name, pageId);
+				saveAppSetting(pages);
+			}
 		}
 
 		public void Save()

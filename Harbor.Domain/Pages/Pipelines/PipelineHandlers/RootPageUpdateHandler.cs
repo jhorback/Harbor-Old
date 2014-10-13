@@ -3,11 +3,11 @@ using Harbor.Domain.Pipeline;
 
 namespace Harbor.Domain.Pages.PipelineHandlers
 {
-	public class RootPageUpdateHandler : IPipelineHanlder<Page>
+	public class RootPageLoadHandler : IPipelineHanlder<Page>
 	{
 		private readonly IRootPagesRepository _rootPagesRepository;
 
-		public RootPageUpdateHandler(IRootPagesRepository rootPagesRepository)
+		public RootPageLoadHandler(IRootPagesRepository rootPagesRepository)
 		{
 			_rootPagesRepository = rootPagesRepository;
 		}
