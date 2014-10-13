@@ -12,6 +12,10 @@ namespace Harbor.Domain.Caching
 		void Set(T value);
 		void Remove(object key);
 		void Remove();
+		/// <summary>
+		/// Alias for Remove; resets the container.
+		/// </summary>
+		void RemoveAll();
 	}
 
 }

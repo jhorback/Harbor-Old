@@ -32,6 +32,8 @@ page.prototype = {
 		previewText: "",
 		autoPreviewText: true,
 		autoPreviewImage: true,
+		isARootPage: null,
+		rootPageUrl: null,
 		//
 		thumbUrl: "",
 		link: null,

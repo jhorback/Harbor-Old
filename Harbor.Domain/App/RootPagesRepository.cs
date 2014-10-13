@@ -54,7 +54,7 @@ namespace Harbor.Domain.App
 			return GetRootPageID(name) != null;
 		}
 
-		public string GetRootPageToken(int pageId)
+		public string GetRootPageToken(int pageId) // GetExistingRootPageToken
 		{
 			var rootPages = GetRootPages();
 			if (rootPages.Pages.ContainsValue(pageId))
@@ -64,9 +64,9 @@ namespace Harbor.Domain.App
 			return null;
 		}
 
-		public int? GetRootPageID(string name)
+		public int? GetRootPageID(string name) // GetExistingRootPageID
 		{
-			name = name.ToLower();
+			name = tokenize(name);
 
 			var rootPages = GetRootPages();
 			if (rootPages.Pages.ContainsKey(name) == false)
@@ -77,6 +77,13 @@ namespace Harbor.Domain.App
 			return rootPages.Pages[name];
 		}
 
+		public string GetRootPageUrl(string name)
+		{
+			// could inject the domain to be cleaner
+			var requestUrl = System.Web.HttpContext.Current.Request.Url;
+			var root = requestUrl.GetLeftPart(UriPartial.Authority);
+			return root + "/" + tokenize(name);
+		}
 
 		public void RemoveRootPage(string name)
 		{

@@ -114,6 +114,7 @@
     <Compile Include="IPathUtility.cs" />
     <Compile Include="JSON.cs" />
     <Compile Include="Caching\MemCache.cs" />
+    <Compile Include="Pages\Commands\UpdateRootPages.cs" />
     <Compile Include="Pages\Commands\AddExistingPageToLinks.cs" />
     <Compile Include="Pages\Commands\DeleteTemplateContent.cs" />
     <Compile Include="Pages\Commands\AddTemplateContent.cs" />
@@ -143,6 +144,7 @@
     <Compile Include="Pages\Pipelines\PipelineHandlers\ComponentDeleteHandler.cs" />
     <Compile Include="Pages\Pipelines\PipelineHandlers\AutoPreviewUpdateHandler.cs" />
     <Compile Include="Pages\Pipelines\PipelineHandlers\DeleteLayoutDeleteHandler.cs" />
+    <Compile Include="Pages\Pipelines\PipelineHandlers\RootPageUpdateHandler.cs" />
     <Compile Include="Pages\Queries\PageQuery.cs" />
     <Compile Include="Pages\TemplateContentHandler.cs" />
     <Compile Include="Pages\TemplateContentType.cs" />

@@ -16,12 +16,12 @@ namespace Harbor.Domain.Pages.Events
 
 		public void Handle(PageChangedEvent data)
 		{
-			_pageCache.Remove(data.Page.PageID);
+			_pageCache.RemoveAll();
 		}
 
 		public void Handle(PageDeletedEvent data)
 		{
-			_pageCache.Remove(data.Page.PageID);
+			_pageCache.RemoveAll();
 		}
 	}
 }

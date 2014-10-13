@@ -1,4 +1,5 @@
-﻿
+﻿using System;
+
 namespace Harbor.Domain.App
 {
 	public interface IRootPagesRepository
@@ -7,6 +8,7 @@ namespace Harbor.Domain.App
 		string GetRootPageToken(int pageId);
 		bool IsARootPage(string name);
 		int? GetRootPageID(string name);
+		string GetRootPageUrl(string name);
 		void RemoveRootPage(string name);
 		void AddRootPage(string name, int pageId);
 		void Save();

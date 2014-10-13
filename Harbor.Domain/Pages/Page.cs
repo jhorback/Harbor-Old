@@ -100,6 +100,9 @@ namespace Harbor.Domain.Pages
 				return string.Format("~/id/{0}/{1}", PageID, Title.ToLower().Replace(" ", "-"));
 			}
 		}
+
+		public bool? IsARootPage { get; set; }
+		public string RootPageUrl { get; set; }
 		#endregion
 
 		#region associations
