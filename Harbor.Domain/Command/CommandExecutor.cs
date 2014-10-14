@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace Harbor.Domain.Command
 {
@@ -22,7 +23,11 @@ namespace Harbor.Domain.Command
 
 		public Task ExecuteAsync(T command)
 		{
-			return new TaskFactory().StartNew(() => Execute(command));
+			return new TaskFactory().StartNew((httpContext) =>
+			{
+				HttpContext.Current = httpContext as HttpContext;
+				Execute(command);
+			}, HttpContext.Current);
 		}
 	}
 }

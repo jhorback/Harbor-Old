@@ -75,7 +75,8 @@ namespace Harbor.UI.Controllers.Api
 		async Task<HttpResponseMessage> pageResponse(int id)
 		{
 			var queryParams = new PageQueryParams { PageID = id };
-			var page = await _pageQuery.ExecuteFromCacheAsync(queryParams);
+			///var page = await _pageQuery.ExecuteFromCacheAsync(queryParams);
+			var page = _pageQuery.ExecuteFromCache(queryParams);
 			return Request.CreateOKResponse(PageDto.FromPage(page));
 		}
 	}

@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using System.Web;
 
 namespace Harbor.Domain.Query
 {
@@ -18,7 +19,11 @@ namespace Harbor.Domain.Query
 
 		public virtual Task<TResponse> ExecuteAsync()
 		{
-			return new TaskFactory<TResponse>().StartNew(Execute);
+			return new TaskFactory<TResponse>().StartNew((httpContext) =>
+			{
+				HttpContext.Current = httpContext as HttpContext;
+				return Execute();
+			}, HttpContext.Current);
 		}
 	}
 }
