@@ -1,10 +1,13 @@
-﻿using System.Web;
+﻿using System.Net.Http;
+using System.Web;
 using Harbor.UI;
+using Harbor.UI.Controllers.Api;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting.Web;
 using System.Web.Routing;
 using Moq;
+using MvcRouteTester;
 
 namespace Harbor.UI.Tests
 {
@@ -61,12 +64,14 @@ namespace Harbor.UI.Tests
 		{
 			var routes = new RouteCollection();
 			RouteConfig.RegisterRoutes(routes);
+			//routes.ShouldMap("/api/users/jbond").To<UsersController>(HttpMethod.Get, c => c.Get("jbond"));
+			//RouteAssert.HasApiRoute()
 
-			AssertRoute(routes, "~/api/users/jbond", new
-			{
-				controller = "users",
-				userName = "jbond"
-			});
+			//AssertRoute(routes, "~/api/users/jbond", new
+			//{
+			//	controller = "users",
+			//	userName = "jbond"
+			//});
 		}
 
 		[TestMethod]
