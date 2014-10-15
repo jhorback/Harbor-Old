@@ -67,6 +67,21 @@
 					<legend>Footer</legend>
 					<button id="settings-updatefooter">Update the website footer</button>
 				</fieldset>
+				<fieldset>
+					<legend>Root Pages</legend>
+					<div>
+						<ul class="list-style-none">
+							@foreach (var url in Model.RootPageUrls)
+							{
+								<li><a href="@url">@url</a></li>
+							}
+						</ul>
+						@if (!Model.RootPageUrls.Any())
+						{
+							<span>No pages are assigned as root pages.</span>
+						}
+					</div>
+				</fieldset>
 			}
 			@if (Model.CanViewUsers)
 			{
