@@ -8,7 +8,10 @@ namespace Harbor.UI
 		public static void RegisterRoutes(RouteCollection routes)
 		{
 			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+		}
 
+		public static void MapMvcAttributeRoutes(RouteCollection routes)
+		{
 			// enable mvc attribute routing (api is setup in WebApiConfig)
 			var mvcConstraintsResolver = new System.Web.Mvc.Routing.DefaultInlineConstraintResolver();
 			mvcConstraintsResolver.ConstraintMap.Add("rootpage", typeof(RootPageConstraint));

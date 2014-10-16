@@ -1,16 +1,13 @@
-﻿using System.Net.Http;
+﻿using System;
 using System.Web;
-using Harbor.UI;
-using Harbor.UI.Controllers.Api;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting.Web;
 using System.Web.Routing;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using MvcRouteTester;
 
 namespace Harbor.UI.Tests
 {
+	[Ignore] // jch* need to figure out how the constraints work with the route tester
 	[TestClass()]
 	public class RouteConfigTest
 	{
@@ -43,19 +40,25 @@ namespace Harbor.UI.Tests
 		//public static void MyClassCleanup()
 		//{
 		//}
-		//
+		
 		//Use TestInitialize to run code before running each test
-		//[TestInitialize()]
-		//public void MyTestInitialize()
-		//{
-		//}
-		//
+		[TestInitialize()]
+		public void MyTestInitialize()
+		{
+			Routes = new RouteCollection();
+			RouteConfig.RegisterRoutes(Routes);
+			Routes.MapAttributeRoutesInAssembly(typeof(HarborApplication));
+		}
+
+		public RouteCollection Routes { get; set; }
+		
 		//Use TestCleanup to run code after each test has run
-		//[TestCleanup()]
-		//public void MyTestCleanup()
-		//{
-		//}
-		//
+		[TestCleanup()]
+		public void MyTestCleanup()
+		{
+			Routes = null;
+		}
+		
 		#endregion
 
 
@@ -64,7 +67,12 @@ namespace Harbor.UI.Tests
 		{
 			var routes = new RouteCollection();
 			RouteConfig.RegisterRoutes(routes);
-			//routes.ShouldMap("/api/users/jbond").To<UsersController>(HttpMethod.Get, c => c.Get("jbond"));
+			// Routes.ShouldMap("/api/users/jbond").To<UsersController>(HttpMethod.Get, c => c.Get("jbond"));
+			RouteAssert.HasRoute(routes, "/api/users/jbond", new
+			{
+				controller = "users",
+				userName = "jbond"
+			});
 			//RouteAssert.HasApiRoute()
 
 			//AssertRoute(routes, "~/api/users/jbond", new
