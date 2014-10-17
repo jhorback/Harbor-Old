@@ -15,38 +15,34 @@ namespace Harbor.Domain.Pages.PageTypes
 
 		public override string Description
 		{
-			get { return "A page with navigation links and tiled content."; }
+			get { return "A tiled listing of page links."; }
 		}
 
 		public override string ContentDescription
 		{
-			get { return "Tiled content"; }
+			get { return "Tiled page links."; }
 		}
 
 		public override void SetAddPageTypeFilter(AddPageTypeFilterContext context)
 		{
-			context.IsPrimary(true)
-				.ExcludePageType<PageListing>();
+			context.IsPrimary(true);
 		}
 
 		public override void SetLayout(PageTypeLayoutContext context)
 		{
-			context.SetLayoutStretchedWithSidebar()
-				.SetHeader(LayoutContentTypes.Title)
-				.SetAside(LayoutContentTypes.Links);
+			context.SetLayoutStretchedWithoutSidebar()
+				.SetHeader(LayoutContentTypes.Title);
 		}
 
 		public override void SetTemplate(PageTypeTemplateContext context)
 		{
-			context.AddContent(TemplateContentTypes.Text, new[] { Template.ContentClassNames.Col1 })
-				.SetDefaultContentClassName(Template.ContentClassNames.Col1);
+			context.AddContent(TemplateContentTypes.PageLink, new[] { Template.ContentClassNames.Tile })
+				.SetDefaultContentClassName(Template.ContentClassNames.Tile);
 		}
 
 		public override void SetAddContentTypeFilter(AddContentTypeFilterContext context)
 		{
-			context.SuggestContentType<ContentTypes.Text>()
-				.SuggestContentType<ContentTypes.Image>()
-				.SuggestContentType<ContentTypes.ProductLink>();
+			context.SuggestContentType<ContentTypes.PageLink>();
 		}
 	}
 }

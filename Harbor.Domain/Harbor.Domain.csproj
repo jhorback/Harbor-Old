@@ -140,6 +140,9 @@
     <Compile Include="Pages\ContentTypes\Text.cs" />
     <Compile Include="Pages\IPageType.cs" />
     <Compile Include="Pages\PageLayoutContentHandler.cs" />
+    <Compile Include="Pages\PageTypes\Events.cs" />
+    <Compile Include="Pages\PageTypes\Weblog.cs" />
+    <Compile Include="Pages\PageTypes\Catalog.cs" />
     <Compile Include="Pages\PageType\AddContentTypeFilterContext.cs" />
     <Compile Include="Pages\PageType\AddPageTypeFilter.cs" />
     <Compile Include="Pages\PageType\AddContentTypeFilter.cs" />
