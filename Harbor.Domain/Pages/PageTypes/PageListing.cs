@@ -26,12 +26,12 @@ namespace Harbor.Domain.Pages.PageTypes
 		public override void SetAddPageTypeFilter(AddPageTypeFilterContext context)
 		{
 			context.IsPrimary(true)
-				.ExcludePageType<PageTypes.PageListing>();
+				.ExcludePageType<PageListing>();
 		}
 
 		public override void SetLayout(PageTypeLayoutContext context)
 		{
-			context.SetLayout(PageLayout.LayoutDisplayProperties.None)
+			context.SetLayoutStretchedWithSidebar()
 				.SetHeader(LayoutContentTypes.Title)
 				.SetAside(LayoutContentTypes.Links);
 		}
