@@ -118,6 +118,13 @@
     <Compile Include="Pages\Commands\AddNewPageToLinks.cs" />
     <Compile Include="Pages\Commands\PageCommand.cs" />
     <Compile Include="Pages\Commands\ResetPageLayout.cs" />
+    <Compile Include="Pages\ContentTypes\Handlers\ImageHandler.cs" />
+    <Compile Include="Pages\ContentTypes\Handlers\LinksHandler.cs" />
+    <Compile Include="Pages\ContentTypes\Handlers\PageLinkHandler.cs" />
+    <Compile Include="Pages\ContentTypes\Handlers\PayPalButtonHandler.cs" />
+    <Compile Include="Pages\ContentTypes\Handlers\ProductLinkHandler.cs" />
+    <Compile Include="Pages\ContentTypes\Handlers\TextHandler.cs" />
+    <Compile Include="Pages\ContentTypes\Handlers\TitleHandler.cs" />
     <Compile Include="Pages\Content\Title.cs" />
     <Compile Include="Pages\ContentType.cs" />
     <Compile Include="Pages\ContentTypes\Links.cs" />

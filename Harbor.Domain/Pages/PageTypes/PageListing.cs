@@ -38,12 +38,15 @@ namespace Harbor.Domain.Pages.PageTypes
 
 		public override void SetTemplate(PageTypeTemplateContext context)
 		{
-			context.AddContent(TemplateContentTypes.Text, new[] { Template.ContentClassNames.Tile })
-				.SetDefaultContentClassName(Template.ContentClassNames.Tile);
+			context.AddContent(TemplateContentTypes.Text, new[] { Template.ContentClassNames.Col1 })
+				.SetDefaultContentClassName(Template.ContentClassNames.Col1);
 		}
 
 		public override void SetAddContentTypeFilter(AddContentTypeFilterContext context)
 		{
+			context.SuggestContentType<ContentTypes.Text>()
+				.SuggestContentType<ContentTypes.Image>()
+				.SuggestContentType<ContentTypes.ProductLink>();
 		}
 	}
 }
