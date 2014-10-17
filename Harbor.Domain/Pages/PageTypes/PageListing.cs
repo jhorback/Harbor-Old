@@ -1,7 +1,7 @@
 ﻿
 namespace Harbor.Domain.Pages.PageTypes
 {
-	public class PageListing : PageType
+	public class PageListing : PageType, IPageType
 	{
 		public override string Key
 		{

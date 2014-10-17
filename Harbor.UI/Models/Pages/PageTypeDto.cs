@@ -9,7 +9,7 @@ namespace Harbor.UI.Models
 		public string description { get; set; }
 		public bool isPrimaryToAdd { get; set; }
 
-		public PageTypeDto(PageType pageType, bool isPrimary, bool addingToParent)
+		public PageTypeDto(IPageType pageType, bool isPrimary, bool addingToParent)
 		{
 			key = pageType.Key;
 			name = pageType.Name;
@@ -17,7 +17,7 @@ namespace Harbor.UI.Models
 			isPrimaryToAdd = isPrimary;
 		}
 
-		public static PageTypeDto FromPageType(PageType pageType, bool isPrimaryToAdd, bool addingToParent)
+		public static PageTypeDto FromPageType(IPageType pageType, bool isPrimaryToAdd, bool addingToParent)
 		{
 			return new PageTypeDto(pageType, isPrimaryToAdd, addingToParent);
 		}

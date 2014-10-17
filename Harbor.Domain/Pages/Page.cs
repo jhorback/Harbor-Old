@@ -108,7 +108,7 @@ namespace Harbor.Domain.Pages
 		#region associations
 		public Template Template { get; set; }
 		public PageLayout Layout { get; set; }
-		public PageType PageType { get; set; }
+		public IPageType PageType { get; set; }
 
 		public ICollection<PageProperty> Properties { get; set; }
 		public ICollection<File> Files { get; set; } 

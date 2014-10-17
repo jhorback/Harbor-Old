@@ -1,4 +1,5 @@
 ﻿using System;
+using Harbor.Domain.Pages.ContentTypes.Handlers;
 
 namespace Harbor.Domain.Pages.ContentTypes
 {

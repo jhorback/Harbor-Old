@@ -7,11 +7,11 @@ namespace Harbor.Domain.Pages
 {
 	public interface IPageTypeRepository
 	{
-		IEnumerable<PageType> GetPageTypes();
+		IEnumerable<IPageType> GetPageTypes();
 
-		IDictionary<string, List<PageType>> GetPageTypesToAdd();
+		IDictionary<string, List<IPageType>> GetPageTypesToAdd();
 
-		IDictionary<string, List<PageType>> GetPageTypesToAdd(string parentPageTypeKey);
+		IDictionary<string, List<IPageType>> GetPageTypesToAdd(string parentPageTypeKey);
 
 		/// <summary>
 		/// Returns the page type matching the specified key.
@@ -19,6 +19,6 @@ namespace Harbor.Domain.Pages
 		/// <param name="key"></param>
 		/// <param name="useDefault">If the key or page type cannot be determined, the default page type will be returned.</param>
 		/// <returns></returns>
-		PageType GetPageType(string key, bool useDefault = false);
+		IPageType GetPageType(string key, bool useDefault = false);
 	}
 }
