@@ -140,6 +140,7 @@
     <Compile Include="Pages\ContentTypes\Text.cs" />
     <Compile Include="Pages\IPageType.cs" />
     <Compile Include="Pages\PageLayoutContentHandler.cs" />
+    <Compile Include="Pages\PageTypes\Artwork.cs" />
     <Compile Include="Pages\PageTypes\Store.cs" />
     <Compile Include="Pages\PageTypes\Events.cs" />
     <Compile Include="Pages\PageTypes\ProductListing.cs" />
