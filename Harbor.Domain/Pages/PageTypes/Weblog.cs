@@ -40,7 +40,8 @@ namespace Harbor.Domain.Pages.PageTypes
 
 		public override void SetAddPageTypeFilter(AddPageTypeFilterContext context)
 		{
-			context.IsPrimary(true);
+			context.IsPrimary(true)
+				.SuggestPageType<PageTypes.Article>();
 		}
 
 		public override void SetAddContentTypeFilter(AddContentTypeFilterContext context)

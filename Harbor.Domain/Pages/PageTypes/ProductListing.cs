@@ -25,7 +25,8 @@ namespace Harbor.Domain.Pages.PageTypes
 
 		public override void SetAddPageTypeFilter(AddPageTypeFilterContext context)
 		{
-			context.IsPrimary(true);
+			context.IsPrimary(true)
+				.SuggestPageType<PageTypes.Product>();
 		}
 
 		public override void SetLayout(PageTypeLayoutContext context)

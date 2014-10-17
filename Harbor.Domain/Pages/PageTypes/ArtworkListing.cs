@@ -1,16 +1,16 @@
 ﻿
 namespace Harbor.Domain.Pages.PageTypes
 {
-	public class PageListing : PageType
+	public class ArtworkListing : PageType
 	{
 		public override string Key
 		{
-			get { return "pageListing"; }
+			get { return "artworklisting"; }
 		}
 
 		public override string Name
 		{
-			get { return "Page Listing"; }
+			get { return "Artwork Listing"; }
 		}
 
 		public override string Description
@@ -26,7 +26,7 @@ namespace Harbor.Domain.Pages.PageTypes
 		public override void SetAddPageTypeFilter(AddPageTypeFilterContext context)
 		{
 			context.IsPrimary(true)
-				.SuggestPageType<PageTypes.Page>();
+				.SuggestPageType<Artwork>();
 		}
 
 		public override void SetLayout(PageTypeLayoutContext context)
@@ -37,7 +37,7 @@ namespace Harbor.Domain.Pages.PageTypes
 
 		public override void SetTemplate(PageTypeTemplateContext context)
 		{
-			context.AddContent(TemplateContentTypes.PageLink, new[] { Template.ContentClassNames.Tile })
+			context.AddContent(TemplateContentTypes.PageLink, Template.ContentClassNames.Tile)
 				.SetDefaultContentClassName(Template.ContentClassNames.Tile);
 		}
 
