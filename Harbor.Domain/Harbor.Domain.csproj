@@ -138,6 +138,7 @@
     <Compile Include="Pages\ContentTypes\Image.cs" />
     <Compile Include="Pages\ContentTypes\Title.cs" />
     <Compile Include="Pages\ContentTypes\Text.cs" />
+    <Compile Include="Pages\IPageType.cs" />
     <Compile Include="Pages\PageLayoutContentHandler.cs" />
     <Compile Include="Pages\PageType\AddContentTypeFilterContext.cs" />
     <Compile Include="Pages\PageType\AddPageTypeFilter.cs" />
