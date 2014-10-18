@@ -3,6 +3,7 @@
 pageSelector options
 	filter - If not set, all pages will be shown. Can be: "products"
 	addFilterPageType - The page type to use for the add page type filter.
+    allowPageAdd - Displays a button (if an author) to create a new page.
 	select - fn(page) - callback that recieves the selected page.
 	close - fn() - callback when the selector closes
 }

@@ -31,9 +31,12 @@ pageSelector.pageSelectorView.prototype = {
 	},
 
 	addPage: function () {
-		// jch! add page
-		// use this.options.addFilterPageType
-		// on add page - this.selectAndClose(pageID) - must be in this.model.pages
+		pageAdder.render({
+			parentPageTypeKey: this.options.addFilterPageType,
+			onAddPage: function (page) {
+				this.selectAndClose(page.id); // jch! - page must be in this.model.pages
+			}
+		});
 	},
 	
 	onSync: function () {

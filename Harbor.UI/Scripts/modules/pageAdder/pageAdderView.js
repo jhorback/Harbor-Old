@@ -57,8 +57,14 @@ pageAdderView.prototype = {
 				self.displayErrors(response.errors);
 			},
 			success: function () {
-				var url = page.getUrl();
-				window.location = url;
+				var url;
+
+				if (this.options.onAddPage) {
+					this.options.onAddPage(page);
+				} else {
+					url = page.getUrl();
+					window.location = url;
+				}
 			}
 		}, this);
 	},
