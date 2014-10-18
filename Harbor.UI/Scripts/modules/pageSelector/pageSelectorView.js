@@ -1,33 +1,39 @@
 ﻿
 
 pageSelector.pageSelectorView = function (options, pageRepo, modelFactory) {
-	var pagerModel;
 	
 	this.pageRepo = pageRepo;
-	
-	pagerModel = modelFactory.create("pagerModel", {
-		take: 20,
-		totalCount: 0
-	});
-
-	this.model = modelFactory.create("pageSelectorViewModel", {
-		title: options.filter === "products" ? "Products" : "Pages",
-		search: ""
-	}, {
-		pagerModel: pagerModel
-	});
-
-
-	this.model.pages = pageRepo.createPages();
-	this.listenTo(this.model.pages, "sync", this.onSync);
-	this.listenTo(pagerModel, "change:skip", this.search);
+	this.modelFactory = modelFactory;
 };
 
 pageSelector.pageSelectorView.prototype = {
 
-	initialize: function () {
+	initialize: function (options) {
+
+		this.model = this.modelFactory.create("pageSelectorViewModel", {
+			title: this.options.filter === "products" ? "Products" : "Pages",
+			search: ""
+		});
+
+		this.model.pages = pageRepo.createPages();
+		
+		this.model.pagerModel = modelFactory.create("pagerModel", {
+			take: 20,
+			totalCount: 0
+		});
+
+
+		this.listenTo(this.model.pages, "sync", this.onSync);
+		this.listenTo(this.model.pagerModel, "change:skip", this.search);
+
 		this.on("close", this.options.close);
 		this.on("select", this.options.select);
+	},
+
+	addPage: function () {
+		// jch! add page
+		// use this.options.addFilterPageType
+		// on add page - this.selectAndClose(pageID) - must be in this.model.pages
 	},
 	
 	onSync: function () {

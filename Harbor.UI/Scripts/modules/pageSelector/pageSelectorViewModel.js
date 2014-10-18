@@ -1,9 +1,5 @@
 ﻿
 pageSelector.pageSelectorViewModel = {
-	initialize: function (attrs, options) {
-		this.pagerModel = options.pagerModel;
-	},
-	
 	defaults: {
 		search: null,
 		resultsCount: 0,
