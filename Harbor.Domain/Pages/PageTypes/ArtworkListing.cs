@@ -25,7 +25,7 @@ namespace Harbor.Domain.Pages.PageTypes
 
 		public override void SetAddPageTypeFilter(AddPageTypeFilterContext context)
 		{
-			context.IsPrimary(true)
+			context.IsPrimary(false)
 				.SuggestPageType<Artwork>();
 		}
 

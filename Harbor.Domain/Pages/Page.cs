@@ -34,6 +34,7 @@ namespace Harbor.Domain.Pages
 			Public = true;
 			Enabled = true;
 			TemplateStr = "";
+			AutoPreviewImage = true;
 			AutoPreviewText = true;
 		}
 
