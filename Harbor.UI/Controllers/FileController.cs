@@ -54,6 +54,12 @@ namespace Harbor.UI.Controllers
 				return new HttpStatusCodeResult(HttpStatusCode.NotFound);
 			}
 
+			// only owners can see the original (for now; until a download full size feature is considered)
+			if (!file.HasPermission(User.Identity.Name, Permissions.All) && res == FileResolution.Original)
+			{
+				res = FileResolution.High;
+			}
+
 			var path = file.GetPhysicalPath(res, max);
 			if (System.IO.File.Exists(path) == false)
 			{
