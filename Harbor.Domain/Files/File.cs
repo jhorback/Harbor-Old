@@ -160,8 +160,7 @@ namespace Harbor.Domain.Files
 		{
 			if ((permission.IsRequesting(Permissions.Create) ||
 					permission.IsRequesting(Permissions.Update) ||
-					permission.IsRequesting(Permissions.Delete) ||
-					permission.IsRequesting(Permissions.All)
+					permission.IsRequesting(Permissions.Delete)
 				) && IsOwner(userName))
 				return true;
 

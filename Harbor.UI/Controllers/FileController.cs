@@ -55,7 +55,7 @@ namespace Harbor.UI.Controllers
 			}
 
 			// only owners can see the original (for now; until a download full size feature is considered)
-			if (!file.HasPermission(User.Identity.Name, Permissions.All) && res == FileResolution.Original)
+			if (!file.HasPermission(User.Identity.Name, Permissions.Create) && res == FileResolution.Original)
 			{
 				res = FileResolution.High;
 			}

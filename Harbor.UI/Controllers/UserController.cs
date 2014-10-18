@@ -107,44 +107,47 @@ namespace Harbor.UI.Controllers
 			return View("Settings", model);
 		}
 
-		[Permit(UserFeature.Files, Permissions.Create), Route("Upload")]
-		public JsonResult Upload()
-		{
-			// to truly handle multiple files need to return an array
-			// if  more than one file
-			Harbor.Domain.Files.File returnFile = null;
-			foreach (string file in Request.Files)
-			{
-				returnFile = _fileRep.Create(User.Identity.Name, Request.Files[file]);
-			}
 
-			_fileRep.Save();
+		// UPLOAD/DOWNLOAD files are part of the FileController
 
-			var fileDto = (FileDto)returnFile;
-			return new JsonResult { Data = fileDto };
-			//return Request.CreateOKResponse(fileDto);
-			//return new HttpStatusCodeResult(HttpStatusCode.OK);
-		}
+		//[Permit(UserFeature.Files, Permissions.Create), Route("Upload")]
+		//public JsonResult Upload()
+		//{
+		//	// to truly handle multiple files need to return an array
+		//	// if  more than one file
+		//	Harbor.Domain.Files.File returnFile = null;
+		//	foreach (string file in Request.Files)
+		//	{
+		//		returnFile = _fileRep.Create(User.Identity.Name, Request.Files[file]);
+		//	}
 
-		// will have ext and perhaps name as well
-		[FilePermit(Permissions.Read), Route("Download")]
-		public ActionResult Download(string id, FileResolution res = FileResolution.Original, int? max = null, string name = null)
-		{
-			var file = _fileRep.FindById(id);
-			if (file == null)
-			{
-				_logger.Info("Download: File does not exist in the database. ID: {0}", id);
-				return new HttpStatusCodeResult(HttpStatusCode.NotFound);
-			}
+		//	_fileRep.Save();
 
-			var path = file.GetPhysicalPath(res, max);
-			if (System.IO.File.Exists(path) == false)
-			{
-				_logger.Warn("Download: File exists in database but not on file system. File: {0}", file);
-				return new HttpStatusCodeResult(HttpStatusCode.NotFound);				
-			}
-			return File(path, file.ContentType);
-		}
+		//	var fileDto = (FileDto)returnFile;
+		//	return new JsonResult { Data = fileDto };
+		//	//return Request.CreateOKResponse(fileDto);
+		//	//return new HttpStatusCodeResult(HttpStatusCode.OK);
+		//}
+
+		//// will have ext and perhaps name as well
+		//[FilePermit(Permissions.Read), Route("Download")]
+		//public ActionResult Download(string id, FileResolution res = FileResolution.Original, int? max = null, string name = null)
+		//{
+		//	var file = _fileRep.FindById(id);
+		//	if (file == null)
+		//	{
+		//		_logger.Info("Download: File does not exist in the database. ID: {0}", id);
+		//		return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+		//	}
+
+		//	var path = file.GetPhysicalPath(res, max);
+		//	if (System.IO.File.Exists(path) == false)
+		//	{
+		//		_logger.Warn("Download: File exists in database but not on file system. File: {0}", file);
+		//		return new HttpStatusCodeResult(HttpStatusCode.NotFound);				
+		//	}
+		//	return File(path, file.ContentType);
+		//}
 
 		//public ActionResult Thumbnail(string name)
 		//{
