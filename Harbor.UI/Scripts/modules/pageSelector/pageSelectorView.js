@@ -30,7 +30,9 @@ pageSelector.pageSelectorView.prototype = {
 		this.on("select", this.options.select);
 	},
 
+	//jch! - only show button if options.allowAddPage is true
 	addPage: function () {
+		//jch! this.pageAdder?!
 		pageAdder.render({
 			parentPageTypeKey: this.options.addFilterPageType,
 			onAddPage: function (page) {
