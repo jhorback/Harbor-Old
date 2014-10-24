@@ -601,7 +601,6 @@
     <Content Include="Scripts\appui\constructCreator.js" />
     <Content Include="Scripts\appui\deprecate.js" />
     <Content Include="Scripts\appui\%24appui.js" />
-    <Content Include="Scripts\appui\region.js" />
     <Content Include="Scripts\appui\ajaxRequest.js" />
     <Content Include="Scripts\bbext\appEvents.js" />
     <Content Include="Scripts\bbext\binders\collectionRendererShim.js" />
