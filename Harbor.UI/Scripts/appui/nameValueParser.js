@@ -28,4 +28,4 @@ var nameValueParser = function ($) {
 	};
 };
 
-context.module("bbext").service("nameValueParser", ["$", bbext.nameValueParser = nameValueParser]);
+context.module("appui").service("nameValueParser", ["$", nameValueParser]);

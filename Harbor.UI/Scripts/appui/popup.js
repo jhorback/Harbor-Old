@@ -120,7 +120,11 @@
 		render: function () {
 			this.popupEl = $($.parseHTML(Popup.template));
 			this.popupEl.addClass(this.options.placement);
-			this.popupEl.find(".popup-title").html(this.options.title);
+			if (this.options.title) {
+				this.popupEl.find(".popup-title").html(this.options.title);
+			} else {
+				this.popupEl.find(".popup-title").remove();
+			}
 			this.popupEl.find(".popup-content").append(this.el.detach().show());
 			console.log(this.options.container);
 			if (this.options.container) {

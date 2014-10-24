@@ -1,22 +1,37 @@
-﻿
+/** @module appui */
 var appui = context.module("appui");
 
-
+/**
+ * An injectable reference to the window object
+ * @name appui.window
+ */
 appui.register("window", function () {
 	return window;
 });
 
-
+/**
+ * An injectable reference to window.location
+ * @name appui.location
+ */
 appui.register("location", function () {
 	return window.location;
 });
 
-
+/**
+ * An injectable reference to the document object (window.document)
+ * @name appui.document
+ */
 appui.register("document", function () {
 	return window.document;
 });
 
-
+/**
+ * An injectable console interface that supports logging to local storage. Adds an
+ * `enableLog(enable)` method to the window object to enable logging through the
+ * browser console.
+ * @name appui.console
+ * @augments window
+ */
 appui.service("console", ["window", function (window) {
 	var console, winConsole, log,
 	    okToLog = localStorage && localStorage.getItem("okToLog");
@@ -28,6 +43,13 @@ appui.service("console", ["window", function (window) {
 	};
 
 	// jch* update this after researching a bit
+    /**
+     * Turns logging to local storage on and off. Returns a string that says whether
+     * okToLog is set to true or false.
+     * @param {boolean} enable
+     * @returns {string}
+     * @name window.enableLog
+     */
 	window.enableLog = function (enable) {
 		okToLog = enable ? "yes" : "no";
 		localStorage && localStorage.setItem("okToLog", okToLog);
@@ -51,6 +73,7 @@ appui.service("console", ["window", function (window) {
 
 	console = {
 		log: log("log"),
+		info: log("info"),
 		warn: log("warn"),
 		error: log("error"),
 		debug: log("debug"),

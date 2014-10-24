@@ -34,6 +34,7 @@ function templateCache($, _, globalCache) {
 
 			templateFn = getTemplate(name);
 			if (templateFn) {
+				templateEl.removeAttr("data-templatefor").attr("data-templatefrom", name);
 				return templateFn;
 			}
 
