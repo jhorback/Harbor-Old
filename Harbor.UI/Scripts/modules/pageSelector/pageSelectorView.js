@@ -59,13 +59,14 @@ pageSelector.pageSelectorView.prototype = {
 	},
 	
 	search: function () {
-		var searchTerm = this.model.get("search");
+		var searchTerm = this.model.get("search"),
+			wait = this.feedback.wait("Searching...");
 		
 		this.pageRepo.fetchPages(this.model.pages, this.model.pagerModel.extend({
 			orderDesc: "modified",
 			title: searchTerm,
 			filter: this.options.filter
-		}));
+		})).then(wait.finished);
 	},
 	
 	clickItem: function (event) {
@@ -102,6 +103,7 @@ pageSelector.view("pageSelectorView", [
 	"options",
 	"pageRepo",
 	"modelFactory",
+	"pageAdder",
 	"feedback",
 	pageSelector.pageSelectorView
 ]);
