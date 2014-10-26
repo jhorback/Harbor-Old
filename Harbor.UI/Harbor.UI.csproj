@@ -670,7 +670,6 @@
     <Content Include="Scripts\modules\pageEditor\changeLayoutView.js" />
     <Content Include="Scripts\modules\currentUserModel\%24currentUserModel.js" />
     <Content Include="Scripts\modules\currentUserModel\currentUserRepo.js" />
-    <Content Include="Scripts\modules\pageAdder\pageAdder.js" />
     <Content Include="Scripts\modules\pageAdder\pageAdderView.js" />
     <Content Include="Scripts\modules\pageEditor\templateEditorView.js" />
     <Content Include="Scripts\modules\pageModel\%24pageModel.js" />
