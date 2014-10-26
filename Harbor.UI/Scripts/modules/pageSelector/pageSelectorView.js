@@ -33,8 +33,8 @@ pageSelector.pageSelectorView.prototype = {
 		this.on("select", this.options.select);
 	},
 
-	addPage: function () {
-		
+	addPage: function (event) {
+
 		this.pageAdder.render({
 			parentPageTypeKey: this.options.addFilterPageType,
 			onAddPage: function (page) {

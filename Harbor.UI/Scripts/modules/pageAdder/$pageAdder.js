@@ -4,7 +4,6 @@ pageAdder options
 	onAddPage - a callback recieving the selected page as an argument.
 	createPage - if false, the page save is not called
 */
-
 var pageAdder = context.module("pageAdder").use("bbext", "currentUserModel", "pageModel");
 
 pageAdder.component("pageAdder", {
