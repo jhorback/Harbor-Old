@@ -140,6 +140,8 @@
     <Compile Include="Pages\ContentTypes\Text.cs" />
     <Compile Include="Pages\IPageType.cs" />
     <Compile Include="Pages\PageLayoutContentHandler.cs" />
+    <Compile Include="Pages\PageTypeAdmin\PageTypeDto.cs" />
+    <Compile Include="Pages\PageTypeAdmin\Queries\PageTypeQuery.cs" />
     <Compile Include="Pages\PageTypes\Artwork.cs" />
     <Compile Include="Pages\PageTypes\ArtworkListing.cs" />
     <Compile Include="Pages\PageTypes\Gallery.cs" />
