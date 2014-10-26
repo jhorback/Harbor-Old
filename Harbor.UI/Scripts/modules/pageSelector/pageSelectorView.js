@@ -1,9 +1,11 @@
 ﻿
 
-pageSelector.pageSelectorView = function (options, pageRepo, modelFactory) {
+pageSelector.pageSelectorView = function (options, pageRepo, modelFactory, pageAdder, feedback) {
 	
 	this.pageRepo = pageRepo;
 	this.modelFactory = modelFactory;
+	this.pageAdder = pageAdder;
+	this.feedback = feedback;
 };
 
 pageSelector.pageSelectorView.prototype = {
@@ -12,12 +14,13 @@ pageSelector.pageSelectorView.prototype = {
 
 		this.model = this.modelFactory.create("pageSelectorViewModel", {
 			title: this.options.filter === "products" ? "Products" : "Pages",
+			allowPageAdd: this.options.allowPageAdd || false,
 			search: ""
 		});
 
-		this.model.pages = pageRepo.createPages();
+		this.model.pages = this.pageRepo.createPages();
 		
-		this.model.pagerModel = modelFactory.create("pagerModel", {
+		this.model.pagerModel = this.modelFactory.create("pagerModel", {
 			take: 20,
 			totalCount: 0
 		});
@@ -30,14 +33,14 @@ pageSelector.pageSelectorView.prototype = {
 		this.on("select", this.options.select);
 	},
 
-	//jch! - only show button if options.allowAddPage is true
 	addPage: function () {
-		//jch! this.pageAdder?!
-		pageAdder.render({
+		
+		this.pageAdder.render({
 			parentPageTypeKey: this.options.addFilterPageType,
 			onAddPage: function (page) {
-				this.selectAndClose(page.id); // jch! - page must be in this.model.pages
-			}
+				this.selectPageAndClose(page);
+			},
+			createPage: this.options.createPage
 		});
 	},
 	
@@ -84,7 +87,11 @@ pageSelector.pageSelectorView.prototype = {
 		page = this.model.pages.find(function (item) {
 			return item.get("id") === selectedPageID;
 		});
-		
+
+		this.selectPageAndClose(page);
+	},
+
+	selectPageAndClose: function (page) {
 		this.trigger("select", page);
 		this.close();
 	}
@@ -95,5 +102,6 @@ pageSelector.view("pageSelectorView", [
 	"options",
 	"pageRepo",
 	"modelFactory",
+	"feedback",
 	pageSelector.pageSelectorView
 ]);

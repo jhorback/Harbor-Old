@@ -21,6 +21,7 @@ pageEditor.pageLinkView.prototype = {
 		this.pageSelector.render({
 			select: this.selectPage,
 			allowPageAdd: true,
+			createPage: true,
 			addFilterPageType: this.model.page.attributes.pageTypeKey
 		}, this);
 	},

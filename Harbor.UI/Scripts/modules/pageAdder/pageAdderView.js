@@ -52,6 +52,11 @@ pageAdderView.prototype = {
 	addPage: function (page) {
 		var self = this;
 
+		if (this.options.createPage === false) {
+			this.options.onAddPage && this.options.onAddPage(page);
+			return;
+		}
+
 		this.pageRepo.savePage(page, {
 			clientError: function (response) {
 				self.displayErrors(response.errors);

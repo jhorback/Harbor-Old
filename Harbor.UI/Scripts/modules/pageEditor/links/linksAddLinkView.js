@@ -31,8 +31,8 @@ pageEditor.linksAddLinkView.prototype = {
 		this.close();
 		this.pageAdder.render({
 			parentPageTypeKey: this.model.collection.page.attributes.pageTypeKey,
-			addPage: this.addPage,
-			dontAdd: true
+			onAddPage: this.addPage,
+			createPage: false
 		});
 	},
 

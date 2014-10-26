@@ -2,6 +2,7 @@
 pageSelector.pageSelectorViewModel = {
 	defaults: {
 		search: null,
+		allowPageAdd: false,
 		resultsCount: 0,
 		resultsMessage: ""
 	},
