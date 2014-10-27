@@ -1,11 +1,11 @@
 ﻿using System.Net;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Web.Security;
 using Harbor.Domain;
 using Harbor.Domain.Files;
-using Harbor.Domain.Pages;
+using Harbor.Domain.Pages.PageTypeAdmin.Queries;
 using Harbor.Domain.Security;
-using Harbor.UI.Models;
 using Harbor.UI.Models.Setting;
 using Harbor.UI.Models.User;
 
@@ -19,13 +19,15 @@ namespace Harbor.UI.Controllers
 		readonly IFileRepository _fileRep;
 		readonly ISettingsViewModelRepository _settingsViewModelRepository;
 	    private readonly ILogger _logger;
+		private readonly IPageTypeQuery _pageTypeQuery;
 
-	    public UserController(
+		public UserController(
 			IUserRepository userRep,
 			ICurrentUserRepository currentUserRep,
 			IFileRepository fileRep,
 			ISettingsViewModelRepository settingsViewModelRepository,
-			ILogger logger
+			ILogger logger,
+			IPageTypeQuery pageTypeQuery
 			)
 		{
 			_userRep = userRep;
@@ -33,6 +35,7 @@ namespace Harbor.UI.Controllers
 			_fileRep = fileRep;
 			_settingsViewModelRepository = settingsViewModelRepository;
 			_logger = logger;
+		    _pageTypeQuery = pageTypeQuery;
 		}
 
 
@@ -107,6 +110,13 @@ namespace Harbor.UI.Controllers
 			return View("Settings", model);
 		}
 
+		[HttpGet, Route("PageTypeAdmin")]
+		[Permit(UserFeature.Pages, Permissions.All)]
+		public async Task<ViewResult> PageTypeAdmin()
+		{
+			var pageTypes = await _pageTypeQuery.ExecuteFromCacheAsync();
+			return View("PageTypeAdmin", pageTypes);
+		}
 
 		// UPLOAD/DOWNLOAD files are part of the FileController
 

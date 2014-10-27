@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Harbor.Domain.Pages.PageTypeAdmin.PageTypeDto>
+<section id="settings-main" class="page centered">
+	<div class="page-header">
+		<div class="page-header-content">
+			<h1>Page Types</h1>
+		</div>
+	</div>
+	<div class="page-body">
+		<div class="page-content">
+			<div>
+				<table class="datatable">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Description</th>
+							<th>Content</th>
+							<th>Pages</th>
+						</tr>
+					</thead>
+					<tbody>
+						@foreach (var type in Model)
+						{
+							<tr>
+								<td>@type.name (@type.key)</td>
+								<td>@type.description (@type.contentDescription)</td>
+								<td>@Html.Raw(type.addContentFilterDescription)</td>
+								<td>@Html.Raw(@type.addPageFilterDescription)</td>
+							</tr>
+						}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</section>
