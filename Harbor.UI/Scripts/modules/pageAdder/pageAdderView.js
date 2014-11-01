@@ -5,22 +5,19 @@ pageAdder.pageAdderView = function (
 	modelFactory,
 	currentUserRepo,
 	pageTypeRepo,
-	pageRepo
+	commandHandler
 ) {
 	this.modelFactory = modelFactory;
 	this.currentUser = currentUserRepo.getCurrentUser();
 	this.pageTypeRepo = pageTypeRepo;
-	this.pageRepo = pageRepo;
+	this.commandHandler = commandHandler;
 }
-
-
 
 
 pageAdder.pageAdderView.prototype = {
 	initialize: function () {
 		
-		this.model = this.modelFactory.create("page", {
-			author: this.currentUser.get("username"),
+		this.model = this.modelFactory.create("pageAdderViewModel", {
 			hasOtherPageTypes: false
 		});
 		
@@ -30,7 +27,6 @@ pageAdder.pageAdderView.prototype = {
 
 		this.listenTo(this.model.pageTypes, "sync", this.pageTypesSync);
 		this.on("component:detached", this.close);
-		this.on("addPage", this.options.addPage ? this.options.addPage : this.addPage);
 
 		this.pageTypeRepo.fetchPageTypes(this.model.pageTypes, this.options.parentPageTypeKey);		
 	},
@@ -45,25 +41,29 @@ pageAdder.pageAdderView.prototype = {
 		}
 	},
 
-	selectPageType: function (event, model) {
-		this.model.set("pageTypeKey", model.id);
+	submitForm: function (event) {
+		event.preventDefault();
 
 		if (!this.isModelValid()) {
 			return;
 		}
 
-		this.trigger("addPage", this.model);
+		this.addPage();
 	},
 
-	addPage: function (page) {
-		var self = this;
+	addPage: function () {
+		var self = this,
+			page = this.model;
 
 		if (this.options.createPage === false) {
 			this.options.onAddPage && this.options.onAddPage(page);
 			return;
 		}
 
-		this.pageRepo.savePage(page, {
+		// this.model
+		// title, pageTypeKey
+		//saveModel: function (model, attrs, options, handler, context) {
+		this.commandHandler.saveModel(page, null, null, {
 			clientError: function (response) {
 				self.displayErrors(response.errors);
 			},
@@ -78,10 +78,6 @@ pageAdder.pageAdderView.prototype = {
 				}
 			}
 		}, this);
-	},
-	
-	submitForm: function (event) {
-		event.preventDefault();
 	},
 
 	cancel: function () {
@@ -99,6 +95,6 @@ pageAdder.view("pageAdderView", [
 	"modelFactory",
 	"currentUserRepo",
 	"pageTypeRepo",
-	"pageRepo",
+	"commandHandler",
 	pageAdder.pageAdderView
 ]);
