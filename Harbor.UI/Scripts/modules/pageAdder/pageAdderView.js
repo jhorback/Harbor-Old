@@ -1,6 +1,6 @@
 ﻿
 
-function pageAdderView(
+pageAdder.pageAdderView = function (
 	options,
 	modelFactory,
 	currentUserRepo,
@@ -14,7 +14,9 @@ function pageAdderView(
 }
 
 
-pageAdderView.prototype = {
+
+
+pageAdder.pageAdderView.prototype = {
 	initialize: function () {
 		
 		this.model = this.modelFactory.create("page", {
@@ -98,5 +100,5 @@ pageAdder.view("pageAdderView", [
 	"currentUserRepo",
 	"pageTypeRepo",
 	"pageRepo",
-	pageAdderView
+	pageAdder.pageAdderView
 ]);

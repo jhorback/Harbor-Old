@@ -584,6 +584,7 @@
     <Content Include="Scripts\modules\fileModel\files.js" />
     <Content Include="Scripts\modules\fileSelector\fileSelectorView.js" />
     <Content Include="Scripts\modules\fileSelector\fileSelectorViewModel.js" />
+    <Content Include="Scripts\modules\pageAdder\pageAdderViewModel.js" />
     <Content Include="Scripts\modules\pageEditor\addPageComponentViewModel.js" />
     <Content Include="Scripts\modules\pageEditor\changeLayoutViewModel.js" />
     <Content Include="Scripts\modules\pageEditor\links\linksAddLinkView.js" />
