@@ -1,12 +1,16 @@
 ﻿
 
-function pageAdderView(options, modelFactory, currentUserRepo, pageTypeRepo, pageRepo, dialogFactory) {
-
+function pageAdderView(
+	options,
+	modelFactory,
+	currentUserRepo,
+	pageTypeRepo,
+	pageRepo
+) {
 	this.modelFactory = modelFactory;
 	this.currentUser = currentUserRepo.getCurrentUser();
 	this.pageTypeRepo = pageTypeRepo;
 	this.pageRepo = pageRepo;
-	this.dialogFactory = dialogFactory;
 }
 
 
@@ -84,17 +88,15 @@ pageAdderView.prototype = {
 
 	onClose: function () {
 		this.dialog && this.dialog.close();
-	},
-
-	onRender: function () {
-		this.dialog = this.dialogFactory.create(this.$el, {
-			title: "Add a page",
-			modal: true
-		});
 	}
 };
 
 
 pageAdder.view("pageAdderView", [
-	"options", "modelFactory", "currentUserRepo", "pageTypeRepo", "pageRepo", "dialogFactory",
-	pageAdderView]);
+	"options",
+	"modelFactory",
+	"currentUserRepo",
+	"pageTypeRepo",
+	"pageRepo",
+	pageAdderView
+]);

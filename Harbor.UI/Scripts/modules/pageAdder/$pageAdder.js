@@ -7,5 +7,5 @@ pageAdder options
 var pageAdder = context.module("pageAdder").use("bbext", "currentUserModel", "pageModel");
 
 pageAdder.component("pageAdder", {
-	el: "#dialog"
+	region: "#frame-body"
 });
