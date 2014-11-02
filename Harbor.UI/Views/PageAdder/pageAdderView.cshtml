@@ -7,38 +7,55 @@
 			<form data-event="submit:submitForm">
 				<span class="alert-error"></span>
 				
-				<div class="form-inline margin-bottom margin-left">
-					<label for="pageadder-title">Title</label>
-					<input id="pageadder-title" type="text" name="title" autofocus size="40" />
-					<span data-validation-for="title"></span>
-					<div class="float-right">
-						<input type="submit" value="Add" class="loud">
-						<input type="button" value="Cancel" data-rel="back" data-event="cancel">
+				<div>
+					<div>
+						<h2 class="float-left">Page title</h2>
+						<div class="float-right">
+							<input type="submit" value="Add" class="loud">
+							<input type="button" value="Cancel" data-rel="back" data-event="cancel">
+						</div>
+					</div>
+					<div class="clear form-inline margin-bottom margin-left">
+						<input id="pageadder-title" type="text" name="title" autofocus size="40" />
+						<span data-validation-for="title"></span>
 					</div>
 				</div>
-
-				<h2>Select a page type</h2>
-				<div class="selectlist">
-					<ul>
-						<li class="col3 height-medium" tabindex="0"
-						    data-collection="primaryPageTypes" data-bind="title: description">
-							<input type="radio" name="pageTypeKey" data-bind="val: key" class="hide" />
-							<h1 data-bind="text:name"></h1>
-							<div data-bind="text: description"></div>
-						</li>
-					</ul>
-				</div>
-
-				<h3 data-bind="showif: hasOtherPageTypes">Other page types</h3>
-				<div class="selectlist" data-bind="showif: hasOtherPageTypes">
-					<ul>
-						<li class="col3 height-medium" tabindex="0"
-						    data-collection="otherPageTypes" data-bind="title: description">
-							<input type="radio" name="pageTypeKey" data-bind="val: key" class="hide" />
-							<h1 data-bind="text:name"></h1>
-							<div data-bind="text: description"></div>
-						</li>
-					</ul>
+				
+				<div>
+					<h2 class="margin-top">Select a page type</h2>
+					<table class="datatable hover">
+						<thead>
+							
+						</thead>
+						<tbody>
+							<tr>
+								<th>Suggested</th>	
+							</tr>
+						</tbody>
+						<tbody>
+							<tr tabindex="0" data-collection="primaryPageTypes">
+								<td>
+									<input type="radio" name="pageTypeKey" data-bind="val: key" class="hide" />
+									<label data-bind="text:name"></label>
+									<span data-bind="text: description"></span>
+								</td>
+							</tr>
+						</tbody>
+						<tbody>
+							<tr data-bind="showif: hasOtherPageTypes">
+								<th>Other</th>
+							</tr>
+						</tbody>
+						<tbody>
+								<tr tabindex="0" data-collection="otherPageTypes">
+									<td>
+										<input type="radio" name="pageTypeKey" data-bind="val: key" class="hide" />
+										<label data-bind="text:name"></label>
+										<span data-bind="text: description"></span>
+									</td>
+								</tr>
+						</tbody>
+					</table>
 				</div>
 
 				<div class="form-controls">

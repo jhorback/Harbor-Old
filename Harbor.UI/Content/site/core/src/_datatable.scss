@@ -1,11 +1,14 @@
 @import "foundation";
 @import "media";
+@import "../mixins/opacity";
 
 $table-background-color: transparent;
 $table-border-color: #DDD;
 $table-row-backgrond-color-accent: #F9F9F9;
 $table-row-backgrond-color-hover: #F5F5F5;
 
+$datalist-selected-color: #FFF !default;
+$datalist-selected-background-color: $link-color !default;
 
 @mixin datatable {
 
@@ -53,6 +56,12 @@ $table-row-backgrond-color-hover: #F5F5F5;
 	  tbody + tbody {
 		border-top: 2px solid $table-border-color;
 	  }
+      // labels
+      label {
+          display: inline-block;
+          min-width: 8em;
+          font-weight: bold;
+      }
 
 	  // Nesting
 	  .datatable {
@@ -64,7 +73,10 @@ $table-row-backgrond-color-hover: #F5F5F5;
 		
 		// groups
 		th {
-			padding-top: 2em; 
+            //margin:0;
+			padding-top: 1.5em;
+            font-size: 1.3em;
+            @include opacity(.5);
 		}		
 	  }
 
@@ -92,6 +104,14 @@ $table-row-backgrond-color-hover: #F5F5F5;
 		  background-color: $table-row-backgrond-color-accent;
 		}
 	}
+
+    tr.selected td {
+		color: $datalist-selected-color;
+		background-color: $datalist-selected-background-color;
+        &:hover {
+	    	background-color: $datalist-selected-background-color;
+        }
+	}	
 
 
 	// CONDENSED TABLE W/ HALF PADDING

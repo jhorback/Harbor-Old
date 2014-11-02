@@ -28,7 +28,7 @@ pageAdder.pageAdderView.prototype = {
 	onRender: function () {
 		var model = this.model;
 
-		this.selectlistFactory.create(this.$el.find(".selectlist"), {
+		this.selectlistFactory.create(this.$el.find(".datatable"), {
 			change: function (event, info) {
 				model.set("pageTypeKey", info.value());
 			}

@@ -21,10 +21,18 @@ table {
     border-top: 0; }
   .datatable tbody + tbody {
     border-top: 2px solid #DDD; }
+  .datatable label {
+    display: inline-block;
+    min-width: 8em;
+    font-weight: bold; }
   .datatable .datatable {
     background-color: #FFF; }
   .datatable tbody th {
-    padding-top: 2em; }
+    padding-top: 1.5em;
+    font-size: 1.3em;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+    opacity: 0.5; }
   @media (min-width: 100em) {
     .datatable th, .datatable td {
       padding: 0.8em; } }
@@ -40,6 +48,12 @@ table {
 
 .striped .striped > td, .striped > tr:nth-child(odd) > td {
   background-color: #F9F9F9; }
+
+tr.selected td {
+  color: #FFF;
+  background-color: #369; }
+  tr.selected td:hover {
+    background-color: #369; }
 
 .condensed th, .condensed td {
   padding: 0.3em; }
