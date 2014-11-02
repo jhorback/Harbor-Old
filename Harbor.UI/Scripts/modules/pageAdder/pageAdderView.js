@@ -3,12 +3,12 @@
 pageAdder.pageAdderView = function (
 	options,
 	modelFactory,
-	//selectlistFactory,
+	selectlistFactory,
 	queryHandler,
 	commandHandler
 ) {
 	this.modelFactory = modelFactory;
-	//this.selectlistFactory = selectlistFactory;
+	this.selectlistFactory = selectlistFactory;
 	this.queryHandler = queryHandler;
 	this.commandHandler = commandHandler;
 }
@@ -28,11 +28,11 @@ pageAdder.pageAdderView.prototype = {
 	onRender: function () {
 		var model = this.model;
 
-		//this.selectlistFactory.create(this.$el.find(".selectlist"), {
-		//	change: function (event, info) {
-		//		model.set("pageTypeKey", info.value());
-		//	}
-		//});
+		this.selectlistFactory.create(this.$el.find(".selectlist"), {
+			change: function (event, info) {
+				model.set("pageTypeKey", info.value());
+			}
+		});
 	},
 
 	submitForm: function (event) {
@@ -87,7 +87,7 @@ pageAdder.pageAdderView.prototype = {
 pageAdder.view("pageAdderView", [
 	"options",
 	"modelFactory",
-	//"selectlistFactory",
+	"selectlistFactory",
 	"queryHandler",
 	"commandHandler",
 	pageAdder.pageAdderView
