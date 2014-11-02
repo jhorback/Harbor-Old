@@ -30,6 +30,8 @@ table {
   .datatable tbody th {
     padding-top: 1.5em;
     font-size: 1.3em;
+    font-weight: normal;
+    padding-left: 0.3em;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
     filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
     opacity: 0.5; }

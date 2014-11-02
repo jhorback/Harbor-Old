@@ -76,6 +76,8 @@ $datalist-selected-background-color: $link-color !default;
             //margin:0;
 			padding-top: 1.5em;
             font-size: 1.3em;
+            font-weight: normal;
+            padding-left:.3em;
             @include opacity(.5);
 		}		
 	  }
