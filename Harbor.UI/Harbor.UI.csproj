@@ -558,8 +558,10 @@
     <Content Include="Scripts\bbext\collectionExt\parseColExt.js" />
     <Content Include="Scripts\bbext\collectionExt\postCommandColExt.js" />
     <Content Include="Scripts\bbext\collectionExt\sortColExt.js" />
+    <Content Include="Scripts\bbext\modelExt\factoryInjectionModelExt.js" />
     <Content Include="Scripts\bbext\modelExt\modelPropertyDescriptor.js" />
     <Content Include="Scripts\bbext\modelExt\postCommandModelExt.js" />
+    <Content Include="Scripts\bbext\queryHandler.js" />
     <Content Include="Scripts\bbext\routerExt\managedRouterExt.js" />
     <Content Include="Scripts\bbext\routerExt\previousRouterExt.js" />
     <Content Include="Scripts\bbext\routerExt\routerInfo.js" />
@@ -585,6 +587,7 @@
     <Content Include="Scripts\modules\fileSelector\fileSelectorView.js" />
     <Content Include="Scripts\modules\fileSelector\fileSelectorViewModel.js" />
     <Content Include="Scripts\modules\pageAdder\pageAdderViewModel.js" />
+    <Content Include="Scripts\modules\pageAdder\pageTypeCollection.js" />
     <Content Include="Scripts\modules\pageEditor\addPageComponentViewModel.js" />
     <Content Include="Scripts\modules\pageEditor\changeLayoutViewModel.js" />
     <Content Include="Scripts\modules\pageEditor\links\linksAddLinkView.js" />
@@ -678,8 +681,7 @@
     <Content Include="Scripts\modules\pageModel\pageLayout.js" />
     <Content Include="Scripts\modules\pageModel\pageRepo.js" />
     <Content Include="Scripts\modules\pageModel\pages.js" />
-    <Content Include="Scripts\modules\pageModel\pageType.js" />
-    <Content Include="Scripts\modules\pageModel\pageTypeRepo.js" />
+    <Content Include="Scripts\modules\pageAdder\pageTypeModel.js" />
     <Content Include="Scripts\modules\pageModel\pageurl.js" />
     <Content Include="Scripts\modules\pageModel\template.js" />
     <Content Include="Scripts\modules\pageSelector\pageSelectorViewModel.js" />
