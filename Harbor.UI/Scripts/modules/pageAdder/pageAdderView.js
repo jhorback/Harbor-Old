@@ -3,42 +3,36 @@
 pageAdder.pageAdderView = function (
 	options,
 	modelFactory,
-	currentUserRepo,
-	pageTypeRepo,
+	//selectlistFactory,
+	queryHandler,
 	commandHandler
 ) {
 	this.modelFactory = modelFactory;
-	this.currentUser = currentUserRepo.getCurrentUser();
-	this.pageTypeRepo = pageTypeRepo;
+	//this.selectlistFactory = selectlistFactory;
+	this.queryHandler = queryHandler;
 	this.commandHandler = commandHandler;
 }
 
 
 pageAdder.pageAdderView.prototype = {
 	initialize: function () {
+		this.model = this.modelFactory.create("pageAdderViewModel", {});
 		
-		this.model = this.modelFactory.create("pageAdderViewModel", {
-			hasOtherPageTypes: false
-		});
-		
-		this.model.pageTypes = this.pageTypeRepo.createPageTypes();
-		this.model.primaryPageTypes = this.pageTypeRepo.createPageTypes();
-		this.model.otherPageTypes = this.pageTypeRepo.createPageTypes();
-
-		this.listenTo(this.model.pageTypes, "sync", this.pageTypesSync);
 		this.on("component:detached", this.close);
 
-		this.pageTypeRepo.fetchPageTypes(this.model.pageTypes, this.options.parentPageTypeKey);		
+		this.queryHandler.fetch(this.model.pageTypes, {
+			parentPageTypeKey: this.options.parentPageTypeKey
+		});	
 	},
-	
-	pageTypesSync: function () {
-		var primary = this.model.pageTypes.where({isPrimaryToAdd: true}),
-			other = this.model.pageTypes.where({isPrimaryToAdd: false});	
-		this.model.primaryPageTypes.reset(primary);
-		this.model.otherPageTypes.reset(other);
-		if (other.length > 0) {
-			this.model.set("hasOtherPageTypes", true);
-		}
+
+	onRender: function () {
+		var model = this.model;
+
+		//this.selectlistFactory.create(this.$el.find(".selectlist"), {
+		//	change: function (event, info) {
+		//		model.set("pageTypeKey", info.value());
+		//	}
+		//});
 	},
 
 	submitForm: function (event) {
@@ -62,8 +56,8 @@ pageAdder.pageAdderView.prototype = {
 
 		// this.model
 		// title, pageTypeKey
-		//saveModel: function (model, attrs, options, handler, context) {
-		this.commandHandler.saveModel(page, null, null, {
+		//saveModel: function (model, attrs, options, handler, context) { // jch! - don't like null, null here
+		this.commandHandler.saveModel(page, null, {
 			clientError: function (response) {
 				self.displayErrors(response.errors);
 			},
@@ -93,8 +87,8 @@ pageAdder.pageAdderView.prototype = {
 pageAdder.view("pageAdderView", [
 	"options",
 	"modelFactory",
-	"currentUserRepo",
-	"pageTypeRepo",
+	//"selectlistFactory",
+	"queryHandler",
 	"commandHandler",
 	pageAdder.pageAdderView
 ]);
