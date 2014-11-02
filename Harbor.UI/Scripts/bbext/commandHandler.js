@@ -20,8 +20,8 @@
  *     Returns the xhr promise from the Backbone.Model destroy call.
  *
  *
- * commandHandler.saveModel(model, attrs, options, handler, context)
- *     Calls model.save(attrs, options) wrapped in the ajaxRequest object
+ * commandHandler.saveModel(model, options, handler, context)
+ *     Calls model.save(null, options) wrapped in the ajaxRequest object
  *     which can submit a post, put, or patch verb to the model url - see Backbone.
  *     Returns the xhr promise from the Backbone.Model save call.
  */
@@ -35,8 +35,8 @@ bbext.commandHandler = function (ajaxRequest) {
 			return ajaxRequest.handle(model.destroy(options), handler, context);
 		},
 
-		saveModel: function (model, attrs, options, handler, context) {
-			return ajaxRequest.handle(model.save(attrs, options), handler, context);
+		saveModel: function (model, options, handler, context) {
+			return ajaxRequest.handle(model.save(null, options), handler, context);
 		}
 	};
 };
