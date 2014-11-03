@@ -11,6 +11,7 @@ pageSelector.pageSelectorView = function (options, pageRepo, modelFactory, pageA
 pageSelector.pageSelectorView.prototype = {
 
 	initialize: function (options) {
+		this.bindAll("selectPageAndClose");
 
 		this.model = this.modelFactory.create("pageSelectorViewModel", {
 			title: this.options.filter === "products" ? "Products" : "Pages",
@@ -30,16 +31,13 @@ pageSelector.pageSelectorView.prototype = {
 		this.listenTo(this.model.pagerModel, "change:skip", this.search);
 
 		this.on("close", this.options.close);
-		this.on("select", this.options.select);
 	},
 
 	addPage: function (event) {
 
 		this.pageAdder.render({
 			parentPageTypeKey: this.options.addFilterPageType,
-			onAddPage: function (page) {
-				this.selectPageAndClose(page);
-			},
+			onAddPage: this.selectPageAndClose,
 			createPage: this.options.createPage
 		});
 	},
@@ -93,7 +91,8 @@ pageSelector.pageSelectorView.prototype = {
 	},
 
 	selectPageAndClose: function (page) {
-		this.trigger("select", page);
+		this.pageAdder && this.pageAdder.close();
+		this.options.select && this.options.select(page);
 		this.close();
 	}
 };

@@ -36,7 +36,8 @@ bbext.commandHandler = function (ajaxRequest) {
 		},
 
 		saveModel: function (model, options, handler, context) {
-			return ajaxRequest.handle(model.save(null, options), handler, context);
+			var save = _.bind(model.safeSave || model.save, model);
+			return ajaxRequest.handle(save(null, options), handler, context);
 		}
 	};
 };

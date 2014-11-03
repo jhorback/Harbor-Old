@@ -58,7 +58,8 @@ namespace Harbor.UI.Controllers.Api
 		[HttpPost, Route("")]
 		[Http.Permit(UserFeature.Pages, Permissions.Create)]
 		public HttpResponseMessage Post(CreatePageDto page)
-        {
+		{
+			page.author = User.Identity.Name;
 			var pageDO = _pageFactory.Create(page.author, page.pageTypeKey, page.title, page.published);
 			var errors = DomainObjectValidator.Validate(pageDO);
 			

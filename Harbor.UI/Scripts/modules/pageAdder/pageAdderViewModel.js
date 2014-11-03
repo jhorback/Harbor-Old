@@ -1,14 +1,6 @@
 ﻿
 
-pageAdder.pageAdderViewModel = function (
-	attrs,
-	options,
-	appurl
-) {
-	this.urlRoot = appurl.get("api/pages");
-};
-
-pageAdder.pageAdderViewModel.prototype = {
+pageAdder.pageAdderViewModel = {
 	defaults: {
 		title: null,
 		pageTypeKey: null,
@@ -49,9 +41,4 @@ pageAdder.pageAdderViewModel.prototype = {
 	}
 };
 
-pageAdder.model("pageAdderViewModel", [
-	"attrs",
-	"options",
-	"appurl",
-	pageAdder.pageAdderViewModel
-]);
+pageAdder.model("pageAdderViewModel", pageAdder.pageAdderViewModel);

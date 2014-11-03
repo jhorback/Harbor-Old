@@ -5,6 +5,7 @@
 	<div class="page-body">
 		<div class="page-content">
 			<form data-event="submit:submitForm">
+				<div class="alert-error"></div>
 				<div>
 					<div>
 						<h2 class="float-left">Page title</h2>
@@ -48,13 +49,13 @@
 							</tr>
 						</tbody>
 						<tbody>
-								<tr tabindex="0" data-collection="otherPageTypes">
-									<td>
-										<input type="radio" name="pageTypeKey" data-bind="val: key" class="hide" />
-										<label data-bind="text:name"></label>
-										<span data-bind="text: description"></span>
-									</td>
-								</tr>
+							<tr tabindex="0" data-collection="otherPageTypes">
+								<td>
+									<input type="radio" name="pageTypeKey" data-bind="val: key" class="hide" />
+									<label data-bind="text:name"></label>
+									<span data-bind="text: description"></span>
+								</td>
+							</tr>
 						</tbody>
 					</table>
 				</div>

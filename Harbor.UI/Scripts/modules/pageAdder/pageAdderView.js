@@ -38,7 +38,6 @@ pageAdder.pageAdderView.prototype = {
 	submitForm: function (event) {
 		event.preventDefault();
 
-		debugger;
 		if (!this.isModelValid()) {
 			return;
 		}
@@ -48,18 +47,13 @@ pageAdder.pageAdderView.prototype = {
 
 	addPage: function () {
 		var self = this,
-			page = this.model;
-
+			page = this.modelFactory.create("page", this.model.attributes);
+		
 		if (this.options.createPage === false) {
 			this.options.onAddPage && this.options.onAddPage(page);
 			return;
 		}
-
-		return;
-
-		// this.model
-		// title, pageTypeKey
-		//saveModel: function (model, attrs, options, handler, context) { // jch! - don't like null, null here
+		
 		this.commandHandler.saveModel(page, null, {
 			clientError: function (response) {
 				self.displayErrors(response.errors);

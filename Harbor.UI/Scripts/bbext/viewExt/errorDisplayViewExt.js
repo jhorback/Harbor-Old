@@ -66,7 +66,8 @@ function errorDisplayViewExt(_, console) {
 				memo[key] = [];
 				return memo;
 			}, {"":[]});
-			this.displayErrors.call(this, attrs); 
+
+			this.displayErrors.call(this, attrs, false); 
 		},
 
 		clearError: function (attr) {
@@ -83,7 +84,7 @@ function errorDisplayViewExt(_, console) {
 				return $(this).attr("data-validation-for").toLowerCase() === attr.toLowerCase();
 			});
 
-			if (errorSpan.length === 0) {
+			if (errorStr && errorSpan.length === 0) {
 				if (showAll) {
 					internal.displayGeneralError.call(view, "An error occured with: " + attr + " - " + errorStr);
 				} else {
@@ -144,6 +145,9 @@ function errorDisplayViewExt(_, console) {
 	
 	function formatGeneralError(errors) {
 		var formatted = [];
+		if (errors.length === 0) {
+			return "";
+		}
 		formatted.push("<h1>" + errors.shift() + "</h1><p>");
 		formatted.push(errors.join("</p><p>"));
 		return formatted.join("") + "</p>";
