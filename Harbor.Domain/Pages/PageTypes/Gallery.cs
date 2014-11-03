@@ -10,7 +10,7 @@ namespace Harbor.Domain.Pages.PageTypes
 
 		public override string Name
 		{
-			get { return "Galery"; }
+			get { return "Gallery"; }
 		}
 
 		public override string Description
