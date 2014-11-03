@@ -1,8 +1,10 @@
 ﻿
 pageSelector.pageSelectorViewModel = {
 	defaults: {
+		title: "",
 		search: null,
 		allowPageAdd: false,
+		addPageButtonText: "",
 		resultsCount: 0,
 		resultsMessage: ""
 	},

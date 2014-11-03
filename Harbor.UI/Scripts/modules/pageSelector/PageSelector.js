@@ -10,6 +10,7 @@
  *		---when allowPageAdd is true ---
  *		parentPageTypeKey - An optional page type used to filter and adjust the page type selection.
  *		layoutPageTypeKey - Same as parentPageTypeKey. Use this when in the context of a page layout.
+ *      newPageTypeFilter - An array of page types to filter by.
  *	}
  */
 var pageSelector = context.module("pageSelector").use("bbext", "pageModel");

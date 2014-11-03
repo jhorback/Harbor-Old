@@ -7,8 +7,14 @@ namespace Harbor.Domain.Pages.Queries
 {
 	public class PageTypesQueryParams : CacheableQueryParams
 	{
+		public PageTypesQueryParams()
+		{
+			NewPageTypeFilter = new string[] {};
+		}
+
 		public string ParentPageTypeKey { get; set; }
 		public string LayoutPageTypeKey { get; set; }
+		public string[] NewPageTypeFilter { get; set; }
 	}
 
 	public interface IPageTypesQuery : ICachedQuery<IEnumerable<PageTypeDto>, PageTypesQueryParams>
@@ -34,9 +40,16 @@ namespace Harbor.Domain.Pages.Queries
 
 		public override IEnumerable<PageTypeDto> Execute(PageTypesQueryParams query)
 		{
-			var types = getPageTypes(query).ToList();
-			_pageTypeGlobalCache.Set(query.GetCacheKey(), types);
-			return types;
+			var types = getPageTypes(query);
+
+			if (query.NewPageTypeFilter.Length > 0)
+			{
+				types = types.Where(t => query.NewPageTypeFilter.Contains(t.key));
+			}
+
+			var filteredTypes = types.ToList();
+			_pageTypeGlobalCache.Set(query.GetCacheKey(), filteredTypes);
+			return filteredTypes;
 		}
 
 		IEnumerable<PageTypeDto> getPageTypes(PageTypesQueryParams query)

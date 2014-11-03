@@ -22,7 +22,8 @@ pageAdder.pageAdderView.prototype = {
 
 		this.queryHandler.fetch(this.model.pageTypes, {
 			parentPageTypeKey: this.options.parentPageTypeKey,
-			layoutPageTypeKey: this.options.layoutPageTypeKey
+			layoutPageTypeKey: this.options.layoutPageTypeKey,
+			newPageTypeFilter: this.options.newPageTypeFilter
 		});	
 	},
 

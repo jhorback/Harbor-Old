@@ -15,6 +15,7 @@ pageSelector.pageSelectorView.prototype = {
 
 		this.model = this.modelFactory.create("pageSelectorViewModel", {
 			title: this.options.filter === "products" ? "Products" : "Pages",
+			addPageButtonText: this.options.filter === "products" ? "Add a new product" : "Add a new page",
 			allowPageAdd: this.options.allowPageAdd || false,
 			search: ""
 		});
@@ -38,6 +39,7 @@ pageSelector.pageSelectorView.prototype = {
 		this.pageAdder.render({
 			parentPageTypeKey: this.options.parentPageTypeKey,
 			layoutPageTypeKey: this.options.layoutPageTypeKey,
+			newPageTypeFilter: this.options.newPageTypeFilter,
 			onAddPage: this.selectPageAndClose,
 			createPage: this.options.createPage
 		});
