@@ -590,7 +590,6 @@
     <Content Include="Scripts\modules\pageAdder\pageTypeCollection.js" />
     <Content Include="Scripts\modules\pageEditor\addPageComponentViewModel.js" />
     <Content Include="Scripts\modules\pageEditor\changeLayoutViewModel.js" />
-    <Content Include="Scripts\modules\pageEditor\links\linksAddLinkView.js" />
     <Content Include="Scripts\modules\pageEditor\payPalButton\payPalButtonRenderer.js" />
     <Content Include="Scripts\modules\pageModel\components\links\linkSectionLinkCollection.js" />
     <Content Include="Scripts\modules\pageModel\components\links\linksSectionCollection.js" />
@@ -815,7 +814,6 @@
     <Content Include="Views\AppUI\Index.cshtml" />
     <Content Include="Views\AppUI\_pagerView.cshtml" />
     <Content Include="Views\PageEditor\links\_linksView.cshtml" />
-    <Content Include="Views\PageEditor\links\_linksAddLinkView.cshtml" />
     <Content Include="Views\PageAdder\pageAdderView.cshtml" />
     <Content Include="Views\Page\NoPageContent.cshtml" />
     <Content Include="Views\User\_UpdateFooter.cshtml" />
