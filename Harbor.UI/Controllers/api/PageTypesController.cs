@@ -18,7 +18,7 @@ namespace Harbor.UI.Controllers.Api
 		[HttpGet, Route("")]
 		public async Task<IEnumerable<PageTypeDto>> Get([FromUri]PageTypesQueryParams queryParams)
 		{
-			return await _pageTypesQuery.ExecuteFromCacheAsync(queryParams);
+			return await _pageTypesQuery.ExecuteFromCacheAsync(queryParams ?? new PageTypesQueryParams());
 		}
     }
 }
