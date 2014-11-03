@@ -24,6 +24,7 @@ function errorDisplayViewExt(_, console) {
 			/// Will look at the view.model property if the model is not passed.
 			/// </summary>
 			model = model || this.model;
+			this.clearErrors(model);
 			return this.displayErrors(model.getErrors(), false);
 		},
 
@@ -60,12 +61,16 @@ function errorDisplayViewExt(_, console) {
 			return true;
 		},
 
-		clearErrors: function () {
-			this.displayError.call(this, ""); // does not work
+		clearErrors: function (model) {
+			var attrs = _.reduce(model.attributes, function (memo, value, key) {
+				memo[key] = [];
+				return memo;
+			}, {"":[]});
+			this.displayErrors.call(this, attrs); 
 		},
 
 		clearError: function (attr) {
-			internal.displayFieldError.call(this, attr, null);
+			internal.displayFieldError.call(this, attr, []);
 		}
 	};
 
