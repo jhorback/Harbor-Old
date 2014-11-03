@@ -22,7 +22,7 @@ pageEditor.pageLinkView.prototype = {
 			select: this.selectPage,
 			allowPageAdd: true,
 			createPage: true,
-			addFilterPageType: this.model.page.attributes.pageTypeKey
+			parentPageTypeKey: this.model.page.attributes.pageTypeKey
 		}, this);
 	},
 	

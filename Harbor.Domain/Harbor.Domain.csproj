@@ -162,6 +162,8 @@
     <Compile Include="Pages\Pipelines\PipelineHandlers\DeleteLayoutDeleteHandler.cs" />
     <Compile Include="Pages\Pipelines\PipelineHandlers\RootPageUpdateHandler.cs" />
     <Compile Include="Pages\Queries\PageQuery.cs" />
+    <Compile Include="Pages\Queries\PageTypeDto.cs" />
+    <Compile Include="Pages\Queries\PageTypesQuery.cs" />
     <Compile Include="Pages\TemplateContentHandler.cs" />
     <Compile Include="Pages\TemplateContentType.cs" />
     <Compile Include="Pages\IPageFactory.cs" />
@@ -232,6 +234,7 @@
     <Compile Include="Query\ICachedQuery.cs" />
     <Compile Include="Query\IQuery.cs" />
     <Compile Include="Query\QueryBase.cs" />
+    <Compile Include="Query\CacheableQueryParams.cs" />
     <Compile Include="ReflectionUtils.cs" />
     <Compile Include="RepositoryQuery.cs" />
     <Compile Include="Security\FeaturePermissions.cs" />

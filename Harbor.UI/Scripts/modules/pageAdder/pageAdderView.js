@@ -21,7 +21,8 @@ pageAdder.pageAdderView.prototype = {
 		this.on("component:detached", this.close);
 
 		this.queryHandler.fetch(this.model.pageTypes, {
-			parentPageTypeKey: this.options.parentPageTypeKey
+			parentPageTypeKey: this.options.parentPageTypeKey,
+			layoutPageTypeKey: this.options.layoutPageTypeKey
 		});	
 	},
 

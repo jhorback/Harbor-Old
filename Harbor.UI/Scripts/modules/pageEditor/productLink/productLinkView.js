@@ -39,7 +39,7 @@ pageEditor.productLinkView.prototype = {
 			filter: "products",
 			select: this.selectPage,
 			allowPageAdd: true,
-			addFilterPageType: this.model.page.attributes.pageTypeKey
+			parentPageTypeKey: this.model.page.attributes.pageTypeKey
 		}, this);
 	},
 	

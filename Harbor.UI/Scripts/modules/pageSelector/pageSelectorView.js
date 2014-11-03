@@ -36,7 +36,8 @@ pageSelector.pageSelectorView.prototype = {
 	addPage: function (event) {
 
 		this.pageAdder.render({
-			parentPageTypeKey: this.options.addFilterPageType,
+			parentPageTypeKey: this.options.parentPageTypeKey,
+			layoutPageTypeKey: this.options.layoutPageTypeKey,
 			onAddPage: this.selectPageAndClose,
 			createPage: this.options.createPage
 		});

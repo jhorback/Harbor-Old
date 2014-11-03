@@ -1,34 +1,24 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Web.Http;
-using Harbor.Domain.Pages;
-using Harbor.UI.Models;
+using Harbor.Domain.Pages.Queries;
 
 namespace Harbor.UI.Controllers.Api
 {
 	[RoutePrefix("api/pagetypes")]
     public class PageTypesController : ApiController
     {
-		IPageTypeRepository _pageTypeRep;
+		private readonly IPageTypesQuery _pageTypesQuery;
 
-		public PageTypesController(IPageTypeRepository pageTypeRep)
+		public PageTypesController(IPageTypesQuery pageTypesQuery)
 		{
-			_pageTypeRep = pageTypeRep;
+			_pageTypesQuery = pageTypesQuery;
 		}
 
 		[HttpGet, Route("")]
-		public IEnumerable<PageTypeDto> Get(string parentPageTypeKey = null)
+		public async Task<IEnumerable<PageTypeDto>> Get([FromUri]PageTypesQueryParams queryParams)
 		{
-			var pageTypes = _pageTypeRep.GetPageTypesToAdd(parentPageTypeKey);
-			var addingToParent = !string.IsNullOrEmpty(parentPageTypeKey);
-			foreach (var type in pageTypes["primary"])
-			{
-				yield return PageTypeDto.FromPageType(type, isPrimaryToAdd: true, addingToParent: addingToParent);
-			}
-
-			foreach (var type in pageTypes["other"])
-			{
-				yield return PageTypeDto.FromPageType(type, isPrimaryToAdd: false, addingToParent: addingToParent);
-			}
+			return await _pageTypesQuery.ExecuteFromCacheAsync(queryParams);
 		}
     }
 }

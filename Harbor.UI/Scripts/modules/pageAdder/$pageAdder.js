@@ -1,6 +1,7 @@
 ﻿/*
 pageAdder options
 	parentPageTypeKey - An optional page type used to filter and adjust the page type selection.
+	layoutPageTypeKey - Same as parentPageTypeKey. Use this when in the context of a page layout.
 	onAddPage - a callback recieving the selected page as an argument.
 	createPage - if false, the page save is not called
 */
