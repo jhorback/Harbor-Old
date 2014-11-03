@@ -38,6 +38,7 @@ pageAdder.pageAdderView.prototype = {
 	submitForm: function (event) {
 		event.preventDefault();
 
+		debugger;
 		if (!this.isModelValid()) {
 			return;
 		}
@@ -53,6 +54,8 @@ pageAdder.pageAdderView.prototype = {
 			this.options.onAddPage && this.options.onAddPage(page);
 			return;
 		}
+
+		return;
 
 		// this.model
 		// title, pageTypeKey

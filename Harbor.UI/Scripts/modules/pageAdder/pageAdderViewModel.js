@@ -35,8 +35,16 @@ pageAdder.pageAdderViewModel.prototype = {
 	},
 
 	"[title]": {
-		validation: {
+		validate: {
 			required: true
+		}
+	},
+
+	"[pageTypeKey]": {
+		validate: {
+			required: {
+				message: "Please select a page type."
+			}
 		}
 	}
 };
