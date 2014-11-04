@@ -51,6 +51,7 @@ namespace Harbor.UI
 			//WebApiConfig.Register(GlobalConfiguration.Configuration);
 			GlobalConfiguration.Configure(WebApiConfig.Register);
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
+			RouteConfig.MapMvcAttributeRoutes(RouteTable.Routes);
 			PackageConfig.RegisterPackages(PackageTable.Packages, BundleTable.Bundles);
 			ModelBinderConfig.RegisterModelBinders(ModelBinders.Binders);
 			ThemeConfig.RegisterThemes(ThemeTable.Themes, BundleTable.Bundles);

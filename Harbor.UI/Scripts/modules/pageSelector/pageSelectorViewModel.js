@@ -1,11 +1,10 @@
 ﻿
 pageSelector.pageSelectorViewModel = {
-	initialize: function (attrs, options) {
-		this.pagerModel = options.pagerModel;
-	},
-	
 	defaults: {
+		title: "",
 		search: null,
+		allowPageAdd: false,
+		addPageButtonText: "",
 		resultsCount: 0,
 		resultsMessage: ""
 	},

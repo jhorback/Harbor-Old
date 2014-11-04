@@ -13,6 +13,7 @@ using Harbor.UI.Models;
 
 namespace Harbor.UI.Controllers.Api
 {
+	[RoutePrefix("api/files")]
     public class FilesController : ApiController
     {
     	readonly IFileRepository fileRep;
@@ -22,7 +23,8 @@ namespace Harbor.UI.Controllers.Api
 			this.fileRep = fileRep;
 		}
 
-        // GET api/files
+
+		[HttpGet, Route("")]
 		public PagedResultDto<FileDto> Get([FromUri]FileQuery query)
         {
 			query.CurrentUserName = User.Identity.Name;
@@ -33,8 +35,9 @@ namespace Harbor.UI.Controllers.Api
 			};
         }
 
-        // GET api/files/5
-		[FilePermit(Permissions.Read)]
+
+		[HttpGet, Route("{id:guid}")]
+		[Http.FilePermit(Permissions.Read)]
         public HttpResponseMessage Get(Guid id)
         {
 			var file = fileRep.FindById(id);
@@ -45,8 +48,9 @@ namespace Harbor.UI.Controllers.Api
 			return Request.CreateOKResponse(fileDto);
         }
 
-        // PUT api/files/5
-		[FilePermit(Permissions.Update)]
+
+		[HttpPut, Route("{id}")]
+		[Http.FilePermit(Permissions.Update)]
 		public HttpResponseMessage Put(FileDto file)
         {
 			var fileDo = fileRep.FindById(file.id, readOnly: false);
@@ -73,8 +77,9 @@ namespace Harbor.UI.Controllers.Api
 			return Request.CreateOKResponse(fileDto);
         }
 
-        // DELETE api/files/5
-		[FilePermit(Permissions.Delete)]
+
+		[HttpDelete, Route("{id:guid}")]
+		[Http.FilePermit(Permissions.Delete)]
 		public HttpResponseMessage Delete(Guid id)
         {
 			var fileDo = fileRep.FindById(id);
@@ -82,57 +87,5 @@ namespace Harbor.UI.Controllers.Api
 			fileRep.Save();
 			return Request.CreateResponse(HttpStatusCode.NoContent);
         }
-
-		// jch* - uploading files only via the standard user controller for now
-		// POST api/files - accepts multipart form data for upload and: album
-		//public Task<HttpResponseMessage> PostFormData()
-		//{
-		//    // Check if the request contains multipart/form-data.
-		//    if (!Request.Content.IsMimeMultipartContent())
-		//    {
-		//        throw new HttpResponseException(HttpStatusCode.UnsupportedMediaType);
-		//    }
-
-		//    string root = HttpContext.Current.Server.MapPath("~/App_Data/temp");
-		//    var provider = new MultipartFormDataStreamProvider(root);
-
-		//    // Read the form data and return an async task.
-		//    var task = Request.Content.ReadAsMultipartAsync(provider).
-		//        ContinueWith<HttpResponseMessage>(t =>
-		//        {
-		//            if (t.IsFaulted || t.IsCanceled)
-		//            {
-		//                return Request.CreateInternalServerErrorResponse(t.Exception);
-		//            }
-
-		//            // get the album
-		//            string album = "";
-		//            foreach (var key in provider.FormData.AllKeys)
-		//            {
-		//                if (key.ToLower() == "album")
-		//                {
-		//                    foreach (var val in provider.FormData.GetValues(key))
-		//                    {
-		//                        album = val;
-		//                        break;
-		//                    }
-		//                }
-		//            }
-
-		//            // create the file
-		//            File fileToReturn = default(File);
-		//            foreach (MultipartFileData file in provider.FileData)
-		//            {
-		//                //Trace.WriteLine(file.Headers.ContentDisposition.FileName);
-		//                //Trace.WriteLine("Server file path: " + file.LocalFileName);
-		//                var contentType = file.Headers.ContentType.MediaType;
-		//                fileToReturn = fileRep.Create(file.LocalFileName, contentType, album);
-		//            }
-
-		//            return Request.CreateResponse(HttpStatusCode.OK, fileToReturn);
-		//        });
-
-		//    return task;
-		//}
     }
 }

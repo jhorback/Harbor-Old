@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Web.Mvc;
-using Harbor.Domain.Pages;
+using Harbor.Domain.Pages.Queries;
 
 namespace Harbor.UI.Models.Pages
 {
 	public class PageModelBinder : DefaultModelBinder
 	{
-		public virtual IPageRepository PageRepository
+		public virtual IPageQuery PageQuery
 		{
 			get
 			{
-				return DependencyResolver.Current.GetService<IPageRepository>();
+				return DependencyResolver.Current.GetService<IPageQuery>();
 			}
 		}
 
@@ -21,15 +21,8 @@ namespace Harbor.UI.Models.Pages
 			{
 				pageID = Convert.ToInt32(controllerContext.RequestContext.HttpContext.Request["pageID"]);
 			}
-			
-			var readOnly = true;
-			var fromCache = controllerContext.RouteData.Values["pageID"];
-			if (fromCache != null && fromCache.ToString().ToLower() == "false")
-			{
-				readOnly = false;
-			}
 
-			var page = PageRepository.FindById(pageID, readOnly: readOnly);
+			var page = PageQuery.ExecuteFromCache(new PageQueryParams { PageID = pageID });
 			return page;
 		}
 	}

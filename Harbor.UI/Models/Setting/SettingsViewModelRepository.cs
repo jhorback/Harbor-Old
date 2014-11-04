@@ -14,12 +14,19 @@ namespace Harbor.UI.Models.Setting
 		IUserRepository userRepository;
 		IHarborAppRepository harborAppRepository;
 		IPageRepository pageRepository;
+		private readonly IRootPagesRepository _rootPagesRepository;
 
-		public SettingsViewModelRepository(IUserRepository userRepository, IHarborAppRepository harborAppRepository, IPageRepository pageRepository)
+		public SettingsViewModelRepository(
+			IUserRepository userRepository,
+			IHarborAppRepository harborAppRepository,
+			IPageRepository pageRepository,
+			IRootPagesRepository rootPagesRepository
+			)
 		{
 			this.userRepository = userRepository;
 			this.harborAppRepository = harborAppRepository;
 			this.pageRepository = pageRepository;
+			_rootPagesRepository = rootPagesRepository;
 		}
 
 		public SettingsViewModel GetSettingsViewModel(string currentUserName)
@@ -42,6 +49,7 @@ namespace Harbor.UI.Models.Setting
 			model.Theme = harborApp.Theme;
 			model.Themes = ThemeTable.Themes.Select(t => t.Name).ToArray();
 
+			model.RootPageUrls = _rootPagesRepository.GetRootPages().Pages.Select(p => _rootPagesRepository.GetRootPageUrl(p.Key)).ToList();
 			return model;
 		}
 	}

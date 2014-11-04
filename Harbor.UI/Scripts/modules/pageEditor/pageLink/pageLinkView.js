@@ -19,7 +19,10 @@ pageEditor.pageLinkView.prototype = {
 
 	openPageSelector: function () {
 		this.pageSelector.render({
-			select: this.selectPage
+			select: this.selectPage,
+			allowPageAdd: true,
+			createPage: true,
+			parentPageTypeKey: this.model.page.attributes.pageTypeKey
 		}, this);
 	},
 	

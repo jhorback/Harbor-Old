@@ -34,6 +34,7 @@ namespace Harbor.Domain.Pages
 			Public = true;
 			Enabled = true;
 			TemplateStr = "";
+			AutoPreviewImage = true;
 			AutoPreviewText = true;
 		}
 
@@ -100,12 +101,15 @@ namespace Harbor.Domain.Pages
 				return string.Format("~/id/{0}/{1}", PageID, Title.ToLower().Replace(" ", "-"));
 			}
 		}
+
+		public bool? IsARootPage { get; set; }
+		public string RootPageUrl { get; set; }
 		#endregion
 
 		#region associations
 		public Template Template { get; set; }
 		public PageLayout Layout { get; set; }
-		public PageType PageType { get; set; }
+		public IPageType PageType { get; set; }
 
 		public ICollection<PageProperty> Properties { get; set; }
 		public ICollection<File> Files { get; set; } 

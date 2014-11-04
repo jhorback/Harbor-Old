@@ -11,7 +11,7 @@ using Harbor.UI.Models.User;
 
 namespace Harbor.UI.Controllers.Api
 {
-	[Authorize]
+	[Authorize, RoutePrefix("api/users")]
     public class UsersController : ApiController
     {
 		IUserRepository userRep;
@@ -21,7 +21,7 @@ namespace Harbor.UI.Controllers.Api
 			this.userRep = userRep;
 		}
 
-        // GET api/users
+        [HttpGet, Route("")]
 		[Http.Permit(UserFeature.Users, Permissions.Read)]
         public IEnumerable<UserDto> Get()
 		{
@@ -29,8 +29,7 @@ namespace Harbor.UI.Controllers.Api
 		}
 
 
-        // GET api/users/5
-		// [Http.Permit(UserFeature.Users, Permissions.Read)]
+		[HttpGet, Route("{userName}")]
 		[Authorize]
         public HttpResponseMessage Get(string userName)
         {
@@ -42,7 +41,8 @@ namespace Harbor.UI.Controllers.Api
 			return Request.CreateOKResponse(userDto);
         }
 
-        // POST api/users
+
+		[HttpPost, Route("")]
 		[Http.Permit(UserFeature.Users, Permissions.Create)]
 		public HttpResponseMessage Post(UserDto user)
         {
@@ -61,7 +61,8 @@ namespace Harbor.UI.Controllers.Api
 			return Request.CreateOKResponse((UserDto)userDo);
         }
 
-        // PUT api/users/5
+
+		[HttpPut, Route("{userName}")]
 		[Http.Permit(UserFeature.Users, Permissions.Update)]
 		public HttpResponseMessage Put(UserDto user)
         {
@@ -85,7 +86,8 @@ namespace Harbor.UI.Controllers.Api
 			return Request.CreateOKResponse(userDto);
         }
 
-        // DELETE api/users/5
+
+        [HttpDelete, Route("{userName}")]
 		[Http.Permit(UserFeature.Users, Permissions.Delete)]
 		public HttpResponseMessage Delete(string userName)
         {

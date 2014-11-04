@@ -15,6 +15,7 @@ namespace Harbor.Domain.Pages
 			AddHandler<EnsurePageLayoutLoadHandler>();
 			AddHandler<PageTypeLoadHandler>();
 			AddHandler<ContentLoadHandler>();
+			AddHandler<RootPageLoadHandler>();
 		}
 	}
 }

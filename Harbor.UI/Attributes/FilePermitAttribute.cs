@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web;
 using System.Web.Mvc;
 using Harbor.Domain.Files;
 using Harbor.Domain.Security;
@@ -25,10 +26,23 @@ namespace Harbor.UI
 				throw new ArgumentNullException("filterContext");
 
 			var userName = filterContext.HttpContext.User.Identity.Name;
-			var fileID = filterContext.RouteData.Values["id"];
+			var fileParam = filterContext.RouteData.Values["id"];
+			if (fileParam == null)
+			{
+				throw new HttpException(404, "Not found");
+			}
+
+			var fileID = Guid.Parse(fileParam.ToString());
 			var file = FileRepository.FindById(fileID);
-			if (file != null && file.HasPermission(userName, this.permissions) == false)
+			if (file == null)
+			{
+				throw new HttpException(404, "Not found");				
+			}
+
+			if (file.HasPermission(userName, this.permissions) == false)
+			{
 				filterContext.Result = new HttpUnauthorizedResult();
+			}
 		}
 	}
 }

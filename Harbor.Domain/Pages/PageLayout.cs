@@ -10,10 +10,19 @@ namespace Harbor.Domain.Pages
 		[Flags]
 		public enum LayoutDisplayProperties
 		{
+			/// <summary>
+			/// Has a sidebar and stretches across the screen.
+			/// </summary>
 			None = 0,
 			[Obsolete("Only centered uses readable, there is no longer any default readable class names.")]
 			ContentReadable = 1,
+			/// <summary>
+			/// Is centered with a readable width.
+			/// </summary>
 			ContentCentered = 2,
+			/// <summary>
+			/// Does not have a sidebar.
+			/// </summary>
 			NoAside = 4
 		}
 

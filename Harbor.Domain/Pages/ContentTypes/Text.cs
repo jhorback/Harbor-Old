@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using Harbor.Domain.Pages.ContentTypes.Handlers;
 
 namespace Harbor.Domain.Pages.ContentTypes
 {
@@ -18,28 +18,6 @@ namespace Harbor.Domain.Pages.ContentTypes
 		public override Type HandlerType
 		{
 			get { return typeof(TextHandler); }
-		}
-	}
-
-	public class TextHandler : TemplateContentHandler
-	{
-		public TextHandler(Page page, TemplateUic uic) : base(page, uic)
-		{
-		}
-
-		public override object GetTemplateContent()
-		{
-			return new Content.Text(GetProperty("text"));
-		}
-
-		public override IEnumerable<PageResource> DeclareResources()
-		{
-			yield break;
-		}
-
-		public override IEnumerable<string> DeclarePropertyNames()
-		{
-			yield return UICPropertyName("text");
 		}
 	}
 }

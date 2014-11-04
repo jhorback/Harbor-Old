@@ -1,6 +1,6 @@
 ﻿
 fileAdmin.uploadTargetView = function (options, appurl, modelFactory) {
-	this.uploadUrl = appurl.get("user/upload");
+	this.uploadUrl = appurl.get("file/upload");
 	this.modelFactory = modelFactory;
 };
 

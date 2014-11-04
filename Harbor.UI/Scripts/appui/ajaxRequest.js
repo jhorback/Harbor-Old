@@ -1,8 +1,8 @@
-﻿/*
+/*
  * Description:
  *    Provides for the handling of ajax calls in a consistant manner and through http codes
  *    allowing you to override them at the view level where neccessary.
- * 
+ *
  * Response handler:
  *     handler: {
  *         success: fn,
@@ -13,12 +13,28 @@
  *         // any status code...
  *     }
  */
+/**
+ * @module appui
+ * @constructor
+ * @param {jquery} $
+ * @param {function} defaultHandler
+ * @param {object} console
+ * @returns {{handle: function, resolved: function}}
+ */
 appui.ajaxRequest = function ($, defaultHandler, console) {
 
 	/* Default ajax handling */
 	$.ajaxSetup({ dataType: "json" });
 
 	return {
+        /**
+         * Does graceful error handling in case of an error, otherwise returns
+         * a promise for the request.
+         * @param {deferred} deferred - an HTTP request to handle
+         * @param {function=} [handler]
+         * @param {function=} [proxy]
+         * @returns {promise}
+         */
 		handle: function (deferred, handler, proxy) {
 			/// <summary>A static version to handle deferreds.</summary>
 			var dfdHandler;
@@ -29,15 +45,16 @@ appui.ajaxRequest = function ($, defaultHandler, console) {
 			deferred.fail(dfdHandler.error);
 			return deferred.promise();
 		},
-		
-		// util method to return a resolved promise object
+
+		/** util method to return a resolved promise object */
 		resolved: function () {
 			var dfd = $.Deferred();
 			dfd.resolve();
 			return dfd.promise();
 		}
 	};
-	
+
+    /** @private */
 	function getDeferredHandler (responseHandler, proxy) {
 		/// <summary>Translates success and error callbacks to a responseHandler.</summary>
 		proxy = proxy || this;
@@ -55,7 +72,8 @@ appui.ajaxRequest = function ($, defaultHandler, console) {
 			}
 		};
 	}
-	
+
+    /** @private */
 	function callHandlerCallbackFromError(callback) {
 		/// <summary>Curry for an xhr response, callback(response, xhr) - the response is the JSON parsed response.</summary>
 		return function (xhr) {

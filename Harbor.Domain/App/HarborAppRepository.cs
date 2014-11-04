@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Configuration;
+using Harbor.Domain.App.Events;
+using Harbor.Domain.Caching;
+using Harbor.Domain.Event;
 using Harbor.Domain.Extensions;
 using Harbor.Domain.Pages;
 using Harbor.Domain.Security;
@@ -13,18 +16,34 @@ namespace Harbor.Domain.App
 	{
 		readonly IAppSettingRepository _appSettings;
 		readonly IPageRepository _pageRepository;
-		private readonly IMemCache _memCache;
+		private readonly IGlobalCache<HarborApp> _harborAppCache;
+		private readonly IPathUtility _pathUtility;
+		private readonly IRootPagesRepository _rootPagesRepository;
+		private readonly IEventPublisher<HarborAppChanged> _harborAppChangedPublisher;
+		private readonly IGlobalCache<NavigationUrls> _navigationUrlsCache;
 
-		public HarborAppRepository(IAppSettingRepository appSettings, IPageRepository pageRepository, IMemCache memCache)
+		public HarborAppRepository(
+			IAppSettingRepository appSettings,
+			IPageRepository pageRepository,
+			IGlobalCache<HarborApp> harborAppCache,
+			IPathUtility pathUtility,
+			IRootPagesRepository rootPagesRepository ,
+			IEventPublisher<HarborAppChanged> harborAppChangedPublisher,
+			IGlobalCache<NavigationUrls> navigationUrlsCache
+			)
 		{
 			_appSettings = appSettings;
 			_pageRepository = pageRepository;
-			_memCache = memCache;
+			_harborAppCache = harborAppCache;
+			_pathUtility = pathUtility;
+			_rootPagesRepository = rootPagesRepository;
+			_harborAppChangedPublisher = harborAppChangedPublisher;
+			_navigationUrlsCache = navigationUrlsCache;
 		}
 
 		public HarborApp GetApp()
 		{
-			var app = _memCache.GetGlobal<HarborApp>(harborAppCacheKey);
+			var app = _harborAppCache.Get();
 			if (app != null)
 			{
 				return app;
@@ -61,7 +80,7 @@ namespace Harbor.Domain.App
 
 			app.GoogleAnalyticsAccount = WebConfigurationManager.AppSettings["googleAnalyticsAccount"];
 
-			_memCache.SetGlobal(harborAppCacheKey, app, DateTime.Now.AddDays(1));
+			_harborAppCache.Set(app, DateTime.Now.AddDays(1));
 			return app;
 		}
 
@@ -76,7 +95,8 @@ namespace Harbor.Domain.App
 
 		public void SetApp(HarborApp app, User user)
 		{
-			_memCache.BustGlobal<HarborApp>(harborAppCacheKey);
+			_harborAppChangedPublisher.Publish();
+			_harborAppCache.Remove();
 			if (user.HasPermission(UserFeature.SystemSettings))
 			{
 				setSetting("Theme", app.Theme);
@@ -148,6 +168,43 @@ namespace Harbor.Domain.App
 				linksList.Add(new NavigationLink { PageID = 0, Text = "Home" });
 			}
 			return linksList;
+		}
+
+
+		/// <summary>
+		/// The is the page name and the value is the url.
+		/// </summary>
+		/// <returns></returns>
+		public IEnumerable<KeyValuePair<string, string>> GetNavigationLinkUrls()
+		{
+			var urls = _navigationUrlsCache.Get();
+			if (urls == null)
+			{
+				urls = new NavigationUrls();
+				string url;
+				var links = GetNavigationLinks();
+				foreach (var link in links)
+				{
+					var rootPageToken = _rootPagesRepository.GetRootPageToken(link.PageID);
+					if (link.PageID == 0)
+					{
+						url = "~/";
+					}
+					else if (rootPageToken != null)
+					{
+						url = string.Format("~/{0}", rootPageToken);
+					}
+					else
+					{
+						url = string.Format("~/id/{0}/{1}", link.PageID, link.Text.ToLower().Replace(' ', '-'));
+					}
+
+					url = _pathUtility.ToAbsolute(url);
+					urls.Urls.Add(new KeyValuePair<string, string>(url, link.Text));
+				}
+				_navigationUrlsCache.Set(urls);
+			}
+			return urls.Urls;
 		}
 	}
 }

@@ -45,6 +45,11 @@
  * Scroll position:
  *      When detaching/showing cached components, scroll positions will be preserved on all
  *      elements that have a [data-rel='scroll'] attribute.
+ * 
+ *  Ignoring scrolling
+ *       For some parent components, ignoring scroll handling may be desired.
+ *       Add a scroll: false option to turn off scroll handling.
+ *       This option can be set when defining the component or when calling render.
  */ 
 var Component = (function () {
 
@@ -98,7 +103,10 @@ var Component = (function () {
 				view.on("close", function () {
 					comp.close(key);
 				});
-				handleScrollPositions(view);
+				
+				if (o.scroll !== false && this.scroll !== false) {
+					handleScrollPositions(view);
+				}
 			}
 
 			region = $(o.region);
@@ -146,18 +154,32 @@ var Component = (function () {
 			});
 			
 			_.console.groupEnd();
+		},
+
+		view: function (key) {
+			var view = null,
+				 _ = privates[this.cid],
+			    cached;
+
+			key = key || "";
+			cached = privates[this.cid].cache[key];
+			return cached ? cached.view : null;
 		}
 	};
 
+
 	function handleScrollPositions(view) {
 		var els = view.$("[data-rel='scroll']");
+
 		if (els.length > 0) {
+
 			view.on("component:detached", function () {
 				els.each(function (i, el) {
 					el = $(el);
 					el.data("lastScrollTop", el.scrollTop());
 				});
 			});
+
 			view.on("component:show", function () {
 				els.each(function (i, el) {
 					var lastScrollTop;
@@ -169,9 +191,7 @@ var Component = (function () {
 					}, 0); // yield
 				});
 			});
-
 		}
-		
 	}
 
 

@@ -55,6 +55,7 @@ bbext.routerInfo = function (appurl, console, _) {
 		executeRoute: function (name, args) {
 			var url = urls[name];
 			url.router.executeRoute(name, args);
+			url.router.trigger("route", name, args);
 		},
 
 		routeUrl: function (name, args) {

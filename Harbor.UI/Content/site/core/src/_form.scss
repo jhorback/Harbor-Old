@@ -307,5 +307,13 @@ $form-error-color: #b94a48;
 			  @include box-shadow-value(unquote($shadow));
 			}
 		}
+
+        [data-validation-for] {		
+			background: $form-error-color;
+			color: #FFF;
+			padding: .5em;
+			margin: .2em;
+			@include border-radius(3px);
+		}
 	}
 }

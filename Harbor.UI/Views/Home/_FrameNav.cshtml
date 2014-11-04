@@ -1,8 +1,7 @@
-﻿@model IEnumerable<NavigationLinkDto>
-@using Harbor.UI.Models.Setting
+﻿@model IEnumerable<KeyValuePair<string, string>>
 <ul>
 	@foreach (var link in Model)
 	{
-		@Html.Partial("_FrameNavItem", link)
+		<li class="frame-navitem"><a href="@link.Key">@link.Value</a></li>
 	}
 </ul>

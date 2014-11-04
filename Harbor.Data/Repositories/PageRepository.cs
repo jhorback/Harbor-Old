@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Data.Entity.Validation;
 using System.Linq;
-using System.Runtime.Caching;
-using System.Web.Caching;
 using Harbor.Domain;
+using Harbor.Domain.Event;
 using Harbor.Domain.Pages;
+using Harbor.Domain.Pages.Events;
 
 namespace Harbor.Data.Repositories
 {
@@ -14,22 +13,21 @@ namespace Harbor.Data.Repositories
 	{
 		readonly HarborContext context;
 		private readonly IUnitOfWork _unitOfWork;
-		readonly IPageFactory _pageFactory;
 		private readonly IObjectFactory _objectFactory;
 		private readonly ILogger _logger;
+		private readonly IEventPublisher _eventPublisher;
 
-		private const string pageCacheKey = "Harbor.Data.Repositories.PageRepository.";
 
 		public PageRepository(
 			IUnitOfWork	unitOfWork,
-			IPageFactory pageFactory,
 			IObjectFactory objectFactory,
-			ILogger logger
+			ILogger logger,
+			IEventPublisher eventPublisher 
 		) {
 			_unitOfWork = unitOfWork;
-			_pageFactory = pageFactory;
 			_objectFactory = objectFactory;
 			_logger = logger;
+			_eventPublisher = eventPublisher;
 
 			context = _unitOfWork.Context;
 		}
@@ -83,16 +81,25 @@ namespace Harbor.Data.Repositories
 		}
 
 
-		public Page FindById(int id, bool readOnly)
+		public Page FindById(int id)
 		{
-			if (readOnly)
-				return findCachedPageByID(id);
-			return findPageByID(id);
+			return findById(id);
 		}
 
 		public Page FindById(object id)
 		{
-			return findCachedPageByID(id as int?);
+			return findById(id as int?);
+		}
+
+		Page findById(int? id)
+		{
+			Page page = FindAll(d => d.PageID == id).FirstOrDefault();
+			if (page != null)
+			{
+				var loadPipeline = new PageLoadPipeline(_objectFactory);
+				loadPipeline.Execute(page);
+			}
+			return page;
 		}
 
 		public Page Create(Page entity)
@@ -135,20 +142,18 @@ namespace Harbor.Data.Repositories
 			entity.DeletedPageRoles = new List<PageRole>();
 
 			
-			// update the modified date and clear the cache
 			entity.Modified = DateTime.Now;
-			clearCachedPageByID(entity.PageID);
+			_eventPublisher.Publish(new PageChangedEvent { PageID = entity.PageID });
 			return entity;
 		}
 
 		public void Delete(Page entity)
 		{
-			clearCachedPageByID(entity.PageID);
-
 			var deletePipeline = new PageDeletePipeline(_objectFactory);
 			deletePipeline.Execute(entity);
-
 			context.Pages.Remove(entity);
+
+			_eventPublisher.Publish(new PageDeletedEvent { Page = entity });
 		}
 
 		public void Save()
@@ -169,48 +174,6 @@ namespace Harbor.Data.Repositories
 		public bool Exists(string author, string title)
 		{
 			return Find(author, title) != null;
-		}
-		#endregion
-
-
-		#region private
-		void clearCachedPageByID(int? pageID = 0)
-		{
-			var cacheKey = pageCacheKey + pageID;
-			MemoryCache.Default.Remove(cacheKey);
-		}
-
-		Page findCachedPageByID(int? pageID = 0)
-		{
-			var cacheKey = getCacheKey(pageID);
-			var page = MemoryCache.Default.Get(cacheKey) as Page;
-			if (page == null)
-			{
-				page = findPageByID(pageID);
-			}
-			return page;
-		}
-
-		Page findPageByID(int? pageID = 0)
-		{
-			Page page = FindAll(d => d.PageID == pageID).FirstOrDefault();
-			if (page != null)
-			{
-				var loadPipeline = new PageLoadPipeline(_objectFactory);
-				loadPipeline.Execute(page);
-				cachePage(page);
-			}
-			return page;
-		}
-
-		string getCacheKey(int? pageId = 0)
-		{
-			return pageCacheKey + pageId;
-		}
-
-		void cachePage(Page page)
-		{
-			MemoryCache.Default.Set(getCacheKey(page.PageID), page, DateTime.Now.AddHours(8));			
 		}
 		#endregion
 	}

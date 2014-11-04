@@ -1,17 +1,17 @@
 ﻿using System.Security.Principal;
+using Harbor.Domain.Command;
 using Harbor.Domain.Pages.Content;
 
 namespace Harbor.Domain.Pages.Commands
 {
-	public class AddNewPageToLinks : IPageCommand
+	public class AddNewPageToLinks : PageCommand
 	{
-		public int PageID { get; set; }
 		public string Title { get; set; }
 		public string PageType { get; set; }
 		public int SectionIndex { get; set; }
 	}
 
-	public class AddNewPageToLinksHandler : IPageCommandHandler<AddNewPageToLinks>
+	public class AddNewPageToLinksHandler : ICommandHandler<AddNewPageToLinks>
 	{
 		private readonly IPageRepository _pageRepository;
 		private readonly IPageFactory _pageFactory;
@@ -24,9 +24,9 @@ namespace Harbor.Domain.Pages.Commands
 			_user = user;
 		}
 
-		public void Execute(AddNewPageToLinks command)
+		public void Handle(AddNewPageToLinks command)
 		{
-			var page = _pageRepository.FindById(command.PageID, readOnly: false);
+			var page = _pageRepository.FindById(command.PageID);
 			var links = page.Layout.GetAsideAdata<Links>();
 			if (links == null)
 			{

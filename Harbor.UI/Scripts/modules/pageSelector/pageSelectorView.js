@@ -1,33 +1,48 @@
 ﻿
 
-pageSelector.pageSelectorView = function (options, pageRepo, modelFactory) {
-	var pagerModel;
+pageSelector.pageSelectorView = function (options, pageRepo, modelFactory, pageAdder, feedback) {
 	
 	this.pageRepo = pageRepo;
-	
-	pagerModel = modelFactory.create("pagerModel", {
-		take: 20,
-		totalCount: 0
-	});
-
-	this.model = modelFactory.create("pageSelectorViewModel", {
-		title: options.filter === "products" ? "Products" : "Pages",
-		search: ""
-	}, {
-		pagerModel: pagerModel
-	});
-
-
-	this.model.pages = pageRepo.createPages();
-	this.listenTo(this.model.pages, "sync", this.onSync);
-	this.listenTo(pagerModel, "change:skip", this.search);
+	this.modelFactory = modelFactory;
+	this.pageAdder = pageAdder;
+	this.feedback = feedback;
 };
 
 pageSelector.pageSelectorView.prototype = {
 
-	initialize: function () {
+	initialize: function (options) {
+		this.bindAll("selectPageAndClose");
+
+		this.model = this.modelFactory.create("pageSelectorViewModel", {
+			title: this.options.filter === "products" ? "Products" : "Pages",
+			addPageButtonText: this.options.filter === "products" ? "Add a new product" : "Add a new page",
+			allowPageAdd: this.options.allowPageAdd || false,
+			search: ""
+		});
+
+		this.model.pages = this.pageRepo.createPages();
+		
+		this.model.pagerModel = this.modelFactory.create("pagerModel", {
+			take: 20,
+			totalCount: 0
+		});
+
+
+		this.listenTo(this.model.pages, "sync", this.onSync);
+		this.listenTo(this.model.pagerModel, "change:skip", this.search);
+
 		this.on("close", this.options.close);
-		this.on("select", this.options.select);
+	},
+
+	addPage: function (event) {
+
+		this.pageAdder.render({
+			parentPageTypeKey: this.options.parentPageTypeKey,
+			layoutPageTypeKey: this.options.layoutPageTypeKey,
+			newPageTypeFilter: this.options.newPageTypeFilter,
+			onAddPage: this.selectPageAndClose,
+			createPage: this.options.createPage
+		});
 	},
 	
 	onSync: function () {
@@ -45,13 +60,14 @@ pageSelector.pageSelectorView.prototype = {
 	},
 	
 	search: function () {
-		var searchTerm = this.model.get("search");
+		var searchTerm = this.model.get("search"),
+			wait = this.feedback.wait("Searching...");
 		
 		this.pageRepo.fetchPages(this.model.pages, this.model.pagerModel.extend({
 			orderDesc: "modified",
 			title: searchTerm,
 			filter: this.options.filter
-		}));
+		})).then(wait.finished);
 	},
 	
 	clickItem: function (event) {
@@ -73,8 +89,13 @@ pageSelector.pageSelectorView.prototype = {
 		page = this.model.pages.find(function (item) {
 			return item.get("id") === selectedPageID;
 		});
-		
-		this.trigger("select", page);
+
+		this.selectPageAndClose(page);
+	},
+
+	selectPageAndClose: function (page) {
+		this.pageAdder && this.pageAdder.close();
+		this.options.select && this.options.select(page);
 		this.close();
 	}
 };
@@ -84,5 +105,7 @@ pageSelector.view("pageSelectorView", [
 	"options",
 	"pageRepo",
 	"modelFactory",
+	"pageAdder",
+	"feedback",
 	pageSelector.pageSelectorView
 ]);

@@ -8,6 +8,7 @@ using Harbor.UI.Models.Content;
 
 namespace Harbor.UI.Controllers
 {
+	[RoutePrefix("page")]
 	public class PageController : Controller
 	{
 		private readonly IUserRepository _userRepo;
@@ -17,6 +18,15 @@ namespace Harbor.UI.Controllers
 			_userRepo = userRepo;
 		}
 
+		[PagePermit(Permissions.Read), Route("~/id/{pageID}/{title?}", Name = "Page")]
+		public ActionResult Page(Page page)
+		{
+			ViewBag.HasWritePermissions = page.HasPermission(User.Identity.Name, Permissions.CreateAndUpdate);
+			ViewBag.PageDto = PageDto.FromPage(page);
+			return View("Page", page);
+		}
+
+		[HttpGet, Route("title")]
 		public PartialViewResult Title(Page page)
 		{
 			var title = page.Layout.GetHeaderData<Title>();
@@ -24,6 +34,7 @@ namespace Harbor.UI.Controllers
 			return PartialView("Title", titleDto);
 		}
 
+		[HttpGet, Route("text")]
 		public PartialViewResult Text(Page page, string uicid)
 		{
 			var text = page.Template.GetContentData<Text>(uicid);
@@ -34,6 +45,7 @@ namespace Harbor.UI.Controllers
 			return PartialView("Text", TextDto.FromText(text));
 		}
 
+		[HttpGet, Route("image")]
 		public PartialViewResult Image(Page page, string uicid)
 		{
 			var image = page.Template.GetContentData<Image>(uicid);
@@ -46,6 +58,7 @@ namespace Harbor.UI.Controllers
 			return PartialView("Image", model);
 		}
 
+		[HttpGet, Route("links")]
 		public PartialViewResult Links(Page page)
 		{
 			var links = page.Layout.GetAsideAdata<Links>();
@@ -56,6 +69,7 @@ namespace Harbor.UI.Controllers
 			return PartialView("Links", links);
 		}
 
+		[HttpGet, Route("pagelink")]
 		public PartialViewResult PageLink(Page page, string uicid)
 		{
 			var link = page.Template.GetContentData<PageLink>(uicid);
@@ -68,6 +82,7 @@ namespace Harbor.UI.Controllers
 			return PartialView("PageLink", model);
 		}
 
+		[HttpGet, Route("paypalbutton")]
 		public PartialViewResult PayPalButton(Page page, string uicid)
 		{
 			var currentUser = _userRepo.FindUserByName(page.AuthorsUserName);
@@ -83,6 +98,7 @@ namespace Harbor.UI.Controllers
 			return PartialView("PayPalButton", button);
 		}
 
+		[HttpGet, Route("productlink")]
 		public PartialViewResult ProductLink(Page page, string uicid)
 		{
 			var link = page.Template.GetContentData<ProductLink>(uicid);
@@ -100,6 +116,7 @@ namespace Harbor.UI.Controllers
 			return PartialView("ProductLink", link);
 		}
 
+		//[HttpGet, Route("nopagecontent")]
 		public PartialViewResult NoPageContent(Page page, string text, string icon)
 		{
 			return new NoPageContentResult(User, page, text, icon);

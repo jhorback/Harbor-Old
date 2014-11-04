@@ -1,19 +1,39 @@
 ﻿using System;
+using System.Threading.Tasks;
 
-namespace Harbor.Domain
+namespace Harbor.Domain.Command
 {
-	public abstract class CommandService<T> where T : ICommand
+	public class CommandService : ICommandService
 	{
-		private readonly CommandContainer commandContainer;
+		private readonly IObjectFactory _objectFactory;
 
-		public CommandService(ICommandContainerRepository commandContainerRepository, Type handlerType, Type genericHandlerType)
+		public CommandService(IObjectFactory objectFactory)
 		{
-			commandContainer = commandContainerRepository.GetCommandContainer(handlerType, genericHandlerType);
+			_objectFactory = objectFactory;
 		}
 
-		public void Execute(T command)
+		public void Execute<T>(T command) where T : ICommand
 		{
-			commandContainer.Execute(command);
+			guardArgs(command);
+
+			var executor = _objectFactory.GetInstance<ICommandExecutor<T>>();
+			executor.Execute(command);
+		}
+
+		public Task ExecuteAsync<T>(T command) where T : ICommand
+		{
+			guardArgs(command);
+			
+			var executor = _objectFactory.GetInstance<ICommandExecutor<T>>();
+			return executor.ExecuteAsync(command);
+		}
+
+		private void guardArgs<T>(T argument)
+		{
+			if (typeof(T) == typeof(ICommand))
+			{
+				throw new Exception(string.Format("Cannot determine command from ICommand: {0}", argument.GetType()));
+			}
 		}
 	}
 }

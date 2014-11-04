@@ -7,6 +7,7 @@ using Harbor.UI.Models.Setting;
 
 namespace Harbor.UI.Controllers.Api
 {
+	[RoutePrefix("api/appsettings")]
     public class AppSettingsController : ApiController
     {
     	readonly IHarborAppRepository harborApp;
@@ -18,12 +19,14 @@ namespace Harbor.UI.Controllers.Api
 			_userRepository = userRepository;
 		}
 
+		[HttpGet, Route("")]
     	public HttpResponseMessage Get()
         {
 			var app = harborApp.GetApp();
 			return Request.CreateOKResponse((HarborAppDto)app);
         }
 
+		[HttpPut, Route("")]
 		public HttpResponseMessage Put(HarborAppDto app)
         {
 			harborApp.SetApp(app, _userRepository.FindUserByName(User.Identity.Name));
