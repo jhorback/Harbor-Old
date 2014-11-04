@@ -15,7 +15,7 @@
 	<ul>
 		@foreach (var page in Model)
 		{
-			<li class="@selected(page.Key)">@Html.ActionLink(page.Name, page.Key)</li>
+			<li class="@selected(page.Key)">@Html.RouteLink(page.Name, "StyleGuidePage", new { pageKey = page.Key})</li>
 		}
 	</ul>
 </nav>

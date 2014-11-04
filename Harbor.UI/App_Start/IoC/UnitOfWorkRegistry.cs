@@ -8,9 +8,8 @@ namespace Harbor.UI.IoC
 	{
 		public UnitOfWorkRegistry()
 		{
-			// StructureMap.Web.WebLifecycles.HttpContext;
-
-			For<IUnitOfWork>().HttpContextScoped();
+			For<IUnitOfWork>().HybridHttpOrThreadLocalScoped();
+			//For<IUnitOfWork>().HttpContextScoped();
 		}
 	}
 }

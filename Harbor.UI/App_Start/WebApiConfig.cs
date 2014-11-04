@@ -6,7 +6,8 @@ namespace Harbor.UI
 	{
 		public static void Register(HttpConfiguration config)
 		{
-			// config.Formatters.XmlFormatter.UseXmlSerializer = true;
+			// enable attribute routing
+			config.MapHttpAttributeRoutes();
 
 			config.Filters.Add(new Http.BadRequestFilterAttribute());
 			config.Filters.Add(new Http.UnauthorizedFilterAttribute());

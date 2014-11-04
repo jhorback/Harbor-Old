@@ -1,4 +1,6 @@
-﻿<section data-templatefor="pageSettingsView">
+﻿@using Harbor.Domain.Security
+@using Harbor.UI.Extensions
+<section data-templatefor="pageSettingsView">
 	<header>
 		<h1 data-bind="value:title" data-type="contenteditable" id="page-title" contenteditable></h1>
 	</header>
@@ -10,8 +12,17 @@
 				<div class="form-field">
 					<input type="checkbox" name="published" id="visibility-published">
 					<label for="visibility-published">Published</label>
+					<div data-bind="text: publishedMessage" class="quiet pad-left"></div>
 				</div>
-				<div data-bind="publishedMessage"></div>
+				@* root pages permission *@
+				@if (Html.UserHasPermit(UserFeature.SiteSettings, Permissions.Read))
+				{
+					<div class="form-field">
+						<input type="checkbox" name="isARootPage" id="visibility-rootpage">
+						<label for="visibility-rootpage">Asign this page a prominent url</label>
+						<label data-bind="text: rootPageUrl" class="quiet pad-left">http://www.bjroyster.com/testurl</label>
+					</div>
+				}
 			</div>
 		</fieldset>
 		<fieldset id="settings-layout">

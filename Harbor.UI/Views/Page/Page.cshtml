@@ -1,0 +1,65 @@
+﻿@using Harbor.Domain.Pages
+@using Harbor.UI.Extensions
+@using Harbor.UI.Models.JSPM.Extensions
+@using Harbor.UI.JSPkgs
+@model Harbor.Domain.Pages.Page
+@{
+	ViewBag.Title = Model.Title;
+	bool noAside = Model.Layout.DisplayProperties.HasFlag(PageLayout.LayoutDisplayProperties.NoAside);
+	var layoutClassNames = "page";
+	if (Model.Layout.DisplayProperties.HasFlag(PageLayout.LayoutDisplayProperties.ContentCentered))
+	{
+		layoutClassNames = " page centered";
+	}
+    if (noAside) {
+        layoutClassNames += " noaside";
+    }
+}
+@section head {
+	<meta name="description" content="@Model.PreviewText" />
+}
+@section scripts {
+	@if (ViewBag.HasWritePermissions)
+	{ 
+	    <script>
+    	    context.module("currentPageModel").register("currentPageDto", @Html.Raw(Json.Encode(ViewBag.PageDto)));
+    	</script>
+		@Html.InstallJavaScriptPackage(PageLoaderAppPkg.PackageName)
+		<script>
+		    pageLoader.start();
+		</script>
+	}
+}
+<div id="page" class="@layoutClassNames">
+	<header class="page-header">
+		<div class="page-header-content">
+			@if (Model.Layout.HeaderKey != null)
+			{
+				var header = Model.Layout.HeaderKey;
+				<div class="uic" data-type="@header" id="@Model.Layout.Header.Id">
+					@Html.PageComponent(Model.PageID, header)
+				</div>
+			}
+		</div>
+	</header>
+	<div class="page-body">		
+		<aside class="page-aside">
+			@if (Model.Layout.AsideKey != null)
+			{
+				var aside = Model.Layout.AsideKey;
+				<div class="uic" data-type="@aside" id="@Model.Layout.Aside.Id">
+					@Html.PageComponent(Model.PageID, aside)
+				</div>
+			}
+		</aside>
+		<div class="page-content">
+			@foreach (var item in Model.Template.Content)
+			{
+				<div class="uic @String.Join(" ", item.ClassNames)" id="@item.Id" data-type="@item.Key">
+					@Html.PageComponent(Model.PageID, item.Key, item.Id)
+				</div>
+			}
+		</div>
+	</div>
+</div>
+<div id="page-modal"></div>

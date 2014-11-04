@@ -1,15 +1,14 @@
-﻿
-using Harbor.Domain.Pages.ContentTypes;
+﻿using Harbor.Domain.Command;
+using Harbor.Domain.Pages.ContentTypes.Handlers;
 using Harbor.Domain.Pages.PipelineHandlers;
 
 namespace Harbor.Domain.Pages.Commands
 {
-	public class ResetPageLayout : IPageCommand
+	public class ResetPageLayout : PageCommand
 	{
-		public int PageID { get; set; }
 	}
 
-	public class ResetPageLayoutHandler : IPageCommandHandler<ResetPageLayout>
+	public class ResetPageLayoutHandler : ICommandHandler<ResetPageLayout>
 	{
 		private readonly IPageRepository _pageRepository;
 		private readonly IObjectFactory _objectFactory;
@@ -20,9 +19,9 @@ namespace Harbor.Domain.Pages.Commands
 			_objectFactory = objectFactory;
 		}
 
-		public void Execute(ResetPageLayout command)
+		public void Handle(ResetPageLayout command)
 		{
-			var page = _pageRepository.FindById(command.PageID, readOnly: false);
+			var page = _pageRepository.FindById(command.PageID);
 
 			// remove the link from the layout
 			var linksHandler = _objectFactory.GetInstance<LinksHandler>(new { page = page });

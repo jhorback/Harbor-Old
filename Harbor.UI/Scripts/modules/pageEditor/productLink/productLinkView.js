@@ -37,7 +37,10 @@ pageEditor.productLinkView.prototype = {
 	openPageSelector: function () {
 		this.pageSelector.render({
 			filter: "products",
-			select: this.selectPage
+			select: this.selectPage,
+			allowPageAdd: true,
+			parentPageTypeKey: this.model.page.attributes.pageTypeKey,
+			newPageTypeFilter: ["product"]
 		}, this);
 	},
 	

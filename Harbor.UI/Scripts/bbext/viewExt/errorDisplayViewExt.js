@@ -24,6 +24,7 @@ function errorDisplayViewExt(_, console) {
 			/// Will look at the view.model property if the model is not passed.
 			/// </summary>
 			model = model || this.model;
+			this.clearErrors(model);
 			return this.displayErrors(model.getErrors(), false);
 		},
 
@@ -60,12 +61,17 @@ function errorDisplayViewExt(_, console) {
 			return true;
 		},
 
-		clearErrors: function () {
-			this.displayError.call(this, ""); // does not work
+		clearErrors: function (model) {
+			var attrs = _.reduce(model.attributes, function (memo, value, key) {
+				memo[key] = [];
+				return memo;
+			}, {"":[]});
+
+			this.displayErrors.call(this, attrs, false); 
 		},
 
 		clearError: function (attr) {
-			internal.displayFieldError.call(this, attr, null);
+			internal.displayFieldError.call(this, attr, []);
 		}
 	};
 
@@ -78,7 +84,7 @@ function errorDisplayViewExt(_, console) {
 				return $(this).attr("data-validation-for").toLowerCase() === attr.toLowerCase();
 			});
 
-			if (errorSpan.length === 0) {
+			if (errorStr && errorSpan.length === 0) {
 				if (showAll) {
 					internal.displayGeneralError.call(view, "An error occured with: " + attr + " - " + errorStr);
 				} else {
@@ -139,6 +145,9 @@ function errorDisplayViewExt(_, console) {
 	
 	function formatGeneralError(errors) {
 		var formatted = [];
+		if (errors.length === 0) {
+			return "";
+		}
 		formatted.push("<h1>" + errors.shift() + "</h1><p>");
 		formatted.push(errors.join("</p><p>"));
 		return formatted.join("") + "</p>";

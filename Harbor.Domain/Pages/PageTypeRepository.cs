@@ -6,38 +6,31 @@ namespace Harbor.Domain.Pages
 {
 	public class PageTypeRepository : IPageTypeRepository
 	{
-		readonly List<PageType> pageTypes;
-		Dictionary<Type, PageType> pageTypesByType = new Dictionary<Type, PageType>();
+		readonly List<IPageType> _pageTypes;
+		Dictionary<Type, IPageType> pageTypesByType = new Dictionary<Type, IPageType>();
 
 		private const string DefaultPageTypeKey = "page";
 
-		public PageTypeRepository()
+		public PageTypeRepository(IEnumerable<IPageType> pageTypes)
 		{
-			pageTypes = new List<PageType>
-				{
-					new PageTypes.PageListing(),
-					new PageTypes.Page(),
-					new PageTypes.Article(),
-					new PageTypes.Product()
-				};
-
-			foreach (var type in pageTypes)
+			_pageTypes = pageTypes.ToList();
+			foreach (var type in _pageTypes)
 			{
 				pageTypesByType.Add(type.GetType(), type);
 			}
 		}
 
-		public IDictionary<string, List<PageType>> GetPageTypesToAdd()
+		public IDictionary<string, List<IPageType>> GetPageTypesToAdd()
 		{
-			var dict = new Dictionary<string, List<PageType>>
+			var dict = new Dictionary<string, List<IPageType>>
 			{
-				{ "primary", pageTypes.Where(p => p.AddPageTypeFilter.IsPrimary).ToList() },
-				{ "other", pageTypes.Where(p => !p.AddPageTypeFilter.IsPrimary).ToList() }
+				{ "primary", _pageTypes.Where(p => p.AddPageTypeFilter.IsPrimary).ToList() },
+				{ "other", _pageTypes.Where(p => !p.AddPageTypeFilter.IsPrimary).ToList() }
 			};
 			return dict;
 		}
 
-		public IDictionary<string, List<PageType>> GetPageTypesToAdd(string parentPageTypeKey)
+		public IDictionary<string, List<IPageType>> GetPageTypesToAdd(string parentPageTypeKey)
 		{
 			var pageType = GetPageType(parentPageTypeKey);
 			if (pageType == null)
@@ -46,7 +39,7 @@ namespace Harbor.Domain.Pages
 			}
 
 			// determine all of the included page types based on the include/exclude lists
-			var included = new List<PageType>();
+			var included = new List<IPageType>();
 			if (pageType.AddPageTypeFilter.IncludeTypes.Count > 0)
 			{
 				foreach (var include in pageType.AddPageTypeFilter.IncludeTypes)
@@ -56,7 +49,7 @@ namespace Harbor.Domain.Pages
 			}
 			else if (pageType.AddPageTypeFilter.ExcludeTypes.Count > 0)
 			{
-				included = pageTypes;
+				included = _pageTypes;
 				foreach (var exclude in pageType.AddPageTypeFilter.ExcludeTypes)
 				{
 					included.Remove(pageTypesByType[exclude]);
@@ -64,16 +57,16 @@ namespace Harbor.Domain.Pages
 			}
 			else
 			{
-				included = pageTypes;
+				included = _pageTypes;
 			}
 
 
 			// determine the primary and other based on the suggested list
-			Dictionary<string, List<PageType>> dict;
+			Dictionary<string, List<IPageType>> dict;
 			if (pageType.AddPageTypeFilter.SuggestedTypes.Count > 0)
 			{
 				var suggested = pageType.AddPageTypeFilter.SuggestedTypes;
-				dict = new Dictionary<string, List<PageType>>
+				dict = new Dictionary<string, List<IPageType>>
 				{
 					{ "primary", included.Where(p => suggested.Contains(p.GetType())).ToList() },
 					{ "other", included.Where(p => !suggested.Contains(p.GetType())).ToList() }
@@ -81,10 +74,10 @@ namespace Harbor.Domain.Pages
 			}
 			else
 			{
-				dict = new Dictionary<string, List<PageType>>
+				dict = new Dictionary<string, List<IPageType>>
 				{
 					{ "primary", included },
-					{ "other", new List<PageType>() }
+					{ "other", new List<IPageType>() }
 				};
 			}
 
@@ -92,17 +85,17 @@ namespace Harbor.Domain.Pages
 		}
 
 
-		public IEnumerable<PageType> GetPageTypes()
+		public IEnumerable<IPageType> GetPageTypes()
 		{
-			return pageTypes;
+			return _pageTypes;
 		}
 
-		public PageType GetPageType(string key, bool useDefault = false)
+		public IPageType GetPageType(string key, bool useDefault = false)
 		{
-			var pageType = pageTypes.FirstOrDefault(pt => pt.Key == key);
+			var pageType = _pageTypes.FirstOrDefault(pt => pt.Key == key);
 			if (pageType == null && useDefault == true)
 			{
-				pageType = pageTypes.FirstOrDefault(pt => pt.Key == DefaultPageTypeKey);
+				pageType = _pageTypes.FirstOrDefault(pt => pt.Key == DefaultPageTypeKey);
 			}
 			return pageType;
 		}

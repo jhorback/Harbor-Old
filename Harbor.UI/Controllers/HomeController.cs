@@ -1,38 +1,44 @@
 ﻿using System;
+using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using Harbor.Domain.App;
 using Harbor.Domain.Pages;
-using System.Linq;
 using Harbor.Domain.Security;
 using Harbor.UI.Models;
 using Harbor.UI.Models.JSPM;
-using Harbor.UI.Models.Setting;
 
 namespace Harbor.UI.Controllers
 {
+	[RoutePrefix("Home")]
 	public class HomeController : Controller
 	{
-		IHarborAppRepository appRep;
-		IPageRepository pageRep;
+		readonly IHarborAppRepository _appRep;
+		readonly IPageRepository _pageRep;
+		private readonly IRootPagesRepository _rootPagesRepository;
 
-		public HomeController(IHarborAppRepository appRep, IPageRepository pageRep)
+		public HomeController(
+			IHarborAppRepository appRep,
+			IPageRepository pageRep,
+			IRootPagesRepository rootPagesRepository
+			)
 		{
-			this.appRep = appRep;
-			this.pageRep = pageRep;
+			_appRep = appRep;
+			_pageRep = pageRep;
+			_rootPagesRepository = rootPagesRepository;
 		}
 
+		[Route("~/", Name = "Home")]
 		public ActionResult Index()
 		{
-			var app = appRep.GetApp();
+			var app = _appRep.GetApp();
 			var homePageID = app.HomePageID;
 			if (homePageID != null)
 			{
-				var url = Url.RouteUrl(new { controller = "user", action = "page", id = homePageID});
-				Server.TransferRequest(url, true); // change to false to pass query string parameters if you have already processed them
+				return transferToPage(homePageID);
 			}
 
-			var pages = pageRep.FindAll(new PageQuery(q => q.OrderByDescending(p => p.Modified))
+			var pages = _pageRep.FindAll(new PageQuery(q => q.OrderByDescending(p => p.Modified))
 				{
 					Take = 20,
 					CurrentUserName = User.Identity.Name
@@ -40,15 +46,32 @@ namespace Harbor.UI.Controllers
 			return View("Index", pages);
 		}
 
+
+		[Route("~/{pageName:rootpage}")]
+		public ActionResult RootPage(string pageName)
+		{
+			var pageID = _rootPagesRepository.GetRootPageID(pageName);
+			return transferToPage(pageID);
+		}
+
+		private ActionResult transferToPage(int? pageId)
+		{
+			var url = Url.RouteUrl("Page", new { pageId = pageId });
+			Server.TransferRequest(url, true); // change to false to pass query string parameters if you have already processed them
+			return Content("");
+		}
+
+		[Route("FrameNav")]
 		public ActionResult FrameNav()
 		{
 			if (Request.IsAjaxRequest())
 				return new HttpNotFoundResult();
-			var model = appRep.GetNavigationLinks().Select(i => (NavigationLinkDto)i).ToList();
+			var model = _appRep.GetNavigationLinkUrls();
 			return PartialView("_FrameNav", model);
 		}
 
-		[ActionName("404")]
+		[Route("~/404/{*aspxerrorpath}")]
+		//[ActionName("404")]
 		public ActionResult Error404()
 		{
 			if (Request.IsAjaxRequest())
@@ -56,6 +79,7 @@ namespace Harbor.UI.Controllers
 			return View("404");
 		}
 
+		[Route("~/Error")]
 		public ActionResult Error()
 		{
 			if (Request.IsAjaxRequest())
@@ -63,6 +87,7 @@ namespace Harbor.UI.Controllers
 			return View("Error");
 		}
 
+		[Route("ThrowError")]
 		public ViewResult ThrowError()
 		{
 			throw new NotImplementedException();
@@ -74,13 +99,14 @@ namespace Harbor.UI.Controllers
 		/// </summary>
 		/// <param name="viewpath"></param>
 		/// <returns></returns>
-		public PartialViewResult JST(string viewpath)
+		[Route("~/jst/{*viewpath}")]
+		public PartialViewResult Jst(string viewpath)
 		{
 			var path = string.Format("{0}/{1}{2}", "~/Views/", viewpath, ".cshtml");
 			return PartialView(path);
 		}
 
-
+		[Route("~/JSPM")]
 		public JsonResult JSPM(string name)
 		{
 			var package = PackageTable.Packages.GetPackage(name);
@@ -88,7 +114,7 @@ namespace Harbor.UI.Controllers
 		}
 
 
-		[Permit(UserFeature.SystemSettings)]
+		[Permit(UserFeature.SystemSettings), Route("JavaScriptPackages")]
 		public ViewResult JavaScriptPackages()
 		{
 			var sPackages = PackageTable.Packages;
@@ -102,17 +128,19 @@ namespace Harbor.UI.Controllers
 			return View("JavaScriptPackages", packages);
 		}
 
-
+		[Route("AppJsApi")]
 		public ViewResult AppJsApi()
 		{
 			return View("ApplicationJsApi");
 		}
 
+		[Route("About")]
 		public ViewResult About()
 		{
 			return View("About");
 		}
 
+		[Route("KeepAlive")]
 		public string KeepAlive()
 		{
 			return DateTime.Now.ToLongTimeString();

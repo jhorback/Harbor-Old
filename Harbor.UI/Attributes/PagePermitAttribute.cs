@@ -2,6 +2,7 @@
 using System.Web;
 using System.Web.Mvc;
 using Harbor.Domain.Pages;
+using Harbor.Domain.Pages.Queries;
 using Harbor.Domain.Security;
 
 namespace Harbor.UI
@@ -27,16 +28,46 @@ namespace Harbor.UI
 			get { return DependencyResolver.Current.GetService(typeof(IPageRepository)) as IPageRepository; }
 		}
 
+		public virtual IPageQuery PageQuery
+		{
+			get
+			{
+				return DependencyResolver.Current.GetService<IPageQuery>();
+			}
+		}
+
 		public override void OnActionExecuting(ActionExecutingContext filterContext)
 		{
 			if (filterContext == null)
 				throw new ArgumentNullException("filterContext");
 
+			var values = filterContext.RouteData.Values;
+			object id = null;
+			if (values.ContainsKey("id"))
+			{
+				id = values["id"];
+			}
+			else if (values.ContainsKey("pageID"))
+			{
+				id = values["pageID"];
+			}
+
+			if (id == null)
+			{
+				throw new HttpException(404, "Not found");								
+			}
+
 			var userName = filterContext.HttpContext.User.Identity.Name;
-			var pageID = Convert.ToInt32(filterContext.RouteData.Values["id"]);
-			var page = PageRepository.FindById(pageID);
-			if (page != null && page.HasPermission(userName, this.feature, this.permissions) == false)
+			var page = PageQuery.ExecuteFromCache(new PageQueryParams { PageID = Convert.ToInt32(id) });
+			if (page == null)
+			{
+				throw new HttpException(404, "Not found");				
+			}
+
+			if (page.HasPermission(userName, this.feature, this.permissions) == false)
+			{
 				filterContext.Result = new HttpUnauthorizedResult();
+			}
 		}
 	}
 }

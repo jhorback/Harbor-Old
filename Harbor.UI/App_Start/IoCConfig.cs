@@ -1,6 +1,7 @@
 ﻿using System.Web.Http;
 using System.Web.Mvc;
 using Harbor.Data.Repositories;
+using Harbor.Domain.Pages;
 using Harbor.Domain.Security;
 using Harbor.UI.IoC;
 using StructureMap;
@@ -40,6 +41,7 @@ namespace Harbor.UI
 
 				// add the bootstrapper tasks to the container
 				scan.AddAllTypesOf<IBootstrapperTask>();
+				scan.AddAllTypesOf<IPageType>();
 
 				// manual registries
 				scan.LookForRegistries();

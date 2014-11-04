@@ -6,25 +6,32 @@ using System.Web.Http;
 using AutoMapper;
 using Harbor.Domain;
 using Harbor.Domain.Pages;
+using Harbor.Domain.Pages.Queries;
 using Harbor.Domain.Security;
 using Harbor.UI.Extensions;
 using Harbor.UI.Models;
+using PageQuery = Harbor.Domain.Pages.PageQuery;
 
 namespace Harbor.UI.Controllers.Api
 {
-	[Authorize]
+	[Authorize, RoutePrefix("api/pages")]
     public class PagesController : ApiController
     {
 		IPageRepository _pageRep;
 		private readonly IPageFactory _pageFactory;
+		private readonly IPageQuery _pageQuery;
 
-		public PagesController(IPageRepository pageRep, IPageFactory pageFactory)
+		public PagesController(
+			IPageRepository pageRep,
+			IPageFactory pageFactory,
+			IPageQuery pageQuery)
 		{
 			_pageRep = pageRep;
 			_pageFactory = pageFactory;
+			_pageQuery = pageQuery;
 		}
 
-
+		[HttpGet, Route("")]
 		public PagedResultDto<PageDto> Get([FromUri]PageQuery query)
 		{
         	query.CurrentUserName = User.Identity.Name;
@@ -35,20 +42,24 @@ namespace Harbor.UI.Controllers.Api
 			};
 		}
 
+		[HttpGet, Route("{id:int}")]
 		[Http.PagePermit(Permissions.Read)]
         public HttpResponseMessage Get(int id)
         {
-			var page = _pageRep.FindById(id);
+			var pageQueryParams = new PageQueryParams { PageID = id };
+			var page = _pageQuery.ExecuteFromCache(pageQueryParams);
+
 			if (page == null)
 				return Request.CreateNotFoundResponse();
 
 			return Request.CreateOKResponse(PageDto.FromPage(page));
         }
 
-		[HttpPost]
+		[HttpPost, Route("")]
 		[Http.Permit(UserFeature.Pages, Permissions.Create)]
 		public HttpResponseMessage Post(CreatePageDto page)
-        {
+		{
+			page.author = User.Identity.Name;
 			var pageDO = _pageFactory.Create(page.author, page.pageTypeKey, page.title, page.published);
 			var errors = DomainObjectValidator.Validate(pageDO);
 			
@@ -75,10 +86,11 @@ namespace Harbor.UI.Controllers.Api
 			return Request.CreateOKResponse(PageDto.FromPage(pageDO));
         }
 
+		[HttpPut, Route("{id:int}")]
 		[Http.PagePermit(Permissions.Update)]
 		public HttpResponseMessage Put(PageDto page)
 		{
-			var pageDO = _pageRep.FindById(page.id, readOnly: false);
+			var pageDO = _pageRep.FindById(page.id);
 			if (pageDO == null)
 				return Request.CreateNotFoundResponse();
 
@@ -101,10 +113,11 @@ namespace Harbor.UI.Controllers.Api
 			return Get(pageDO.PageID);
         }
 
+		[HttpDelete, Route("{id:int}")]
 		[Http.PagePermit(Permissions.Delete)]
 		public HttpResponseMessage Delete(int id)
         {
-			var pageDO = _pageRep.FindById(id, readOnly: false);
+			var pageDO = _pageRep.FindById(id);
 
 
 			var returnToPath = "~/";

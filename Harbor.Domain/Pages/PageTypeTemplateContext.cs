@@ -16,7 +16,7 @@ namespace Harbor.Domain.Pages
 			return AddContent(type, new[] { Page.Template.DefaultContentClassName });
 		}
 
-		public virtual PageTypeTemplateContext AddContent(TemplateContentType type, string[] classNames)
+		public virtual PageTypeTemplateContext AddContent(TemplateContentType type, params string[] classNames)
 		{
 			var item = new TemplateUic
 			{

@@ -16,6 +16,7 @@ namespace Harbor.UI.JSPkgs
 
 			AddDependency(PageModelPkg.PackageName);
 			AddDependency(CurrentUserModelPkg.PackageName);
+			AddDependency(AppUIPkg.PackageName);
 		}
 	}
 }

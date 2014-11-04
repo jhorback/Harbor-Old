@@ -1,7 +1,7 @@
 ﻿
 pageEditor.linksSectionLinksView = {
 	removeLink: function (event) {
-		event.preventDefault;
+		event.preventDefault();
 		this.model.collection.remove(this.model);
 	},
 };

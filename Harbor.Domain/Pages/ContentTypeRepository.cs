@@ -50,6 +50,10 @@ namespace Harbor.Domain.Pages
 			return !string.IsNullOrEmpty(key) && templateContentTypes.ContainsKey(key.ToLower());
 		}
 
+		public IEnumerable<TemplateContentType> GetAllTemplateContentTypes()
+		{
+			return templateContentTypes.Values;
+		}
 
 		public IDictionary<string, List<TemplateContentType>> GetContentTypesToAdd()
 		{

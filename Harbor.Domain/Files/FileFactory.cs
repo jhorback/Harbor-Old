@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Web;
 
 namespace Harbor.Domain.Files
@@ -62,9 +63,11 @@ namespace Harbor.Domain.Files
 			var newWidth = (int)(source.Width * ratio);
 			var newHeight = (int)(source.Height * ratio);
             var newImage = new Bitmap(newWidth, newHeight);
+			newImage.SetResolution(72, 72); // default is 96
 			using (Graphics g = Graphics.FromImage(newImage))
+			{
 				g.DrawImage(source, 0, 0, newWidth, newHeight);
-			
+			}
 
 			// update the file properties and save the image to disk
 			file.ResolutionsCreated = file.ResolutionsCreated.AddRes(res);

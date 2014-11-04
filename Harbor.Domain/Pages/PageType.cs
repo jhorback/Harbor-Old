@@ -4,7 +4,7 @@ namespace Harbor.Domain.Pages
 	/// <summary>
 	/// Used to help define a page Template.
 	/// </summary>
-	public abstract class PageType
+	public abstract class PageType : IPageType
 	{
 		public abstract string Key { get; }
 

@@ -12,6 +12,67 @@ namespace Harbor.Domain
 
 	public class ReflectionUtils
 	{
+		/// <summary>
+		/// Returns a list of types that implement a generic type.
+		/// </summary>
+		/// <param name="genericType"></param>
+		/// <param name="assemblies"></param>
+		/// <returns></returns>
+		public IEnumerable<Type> GetTypesImplementingGenericType(Type genericType, params Assembly[] assemblies)
+		{
+			var types = assemblies.SelectMany(a => a.GetExportedTypes())
+				.Where(t => !t.IsInterface && !t.IsAbstract)
+				.Where(t => IsAssignableToGenericType(t, genericType));
+			return types;
+		}
+
+
+		/// <summary>
+		/// Returns true if the given type implements the generic type.
+		/// </summary>
+		/// <param name="givenType"></param>
+		/// <param name="genericType"></param>
+		/// <returns></returns>
+		public bool IsAssignableToGenericType(Type givenType, Type genericType)
+		{
+			var interfaceTypes = givenType.GetInterfaces();
+
+			if (interfaceTypes.Where(it => it.IsGenericType).Any(it => it.GetGenericTypeDefinition() == genericType))
+				return true;
+
+			var baseType = givenType.BaseType;
+			if (baseType == null) return false;
+
+			return baseType.IsGenericType &&
+				   baseType.GetGenericTypeDefinition() == genericType ||
+				   IsAssignableToGenericType(baseType, genericType);
+		}
+
+
+		/// <summary>
+		/// Returns a list of types that are supplied to the generic interface.
+		/// <![CDATA[
+		///     With "myType" being an instance of an object that implements: ICommand<SomeCommand>
+		///     GetTypeParameters(myType, typeof(ICommand<>)
+		///     Returns: { typeof(SomeCommand) }
+		/// ]]>
+		/// </summary>
+		/// <param name="type"></param>
+		/// <param name="implementedInterface"></param>
+		/// <returns></returns>
+		public IEnumerable<Type> GetTypeParameters(Type type, Type implementedInterface)
+		{
+			return
+				from interfaceType in type.GetInterfaces()
+				where interfaceType.IsGenericType
+				let baseInterface = interfaceType.GetGenericTypeDefinition()
+				where baseInterface == implementedInterface
+				select interfaceType.GetGenericArguments().FirstOrDefault();
+		}
+
+
+
+
 		private delegate bool TypeCheckDelegate(Type param, Type type);
 
 		/// <summary>
@@ -368,27 +429,6 @@ namespace Harbor.Domain
 				}
 			}
 			return types;
-		}
-
-		/// <summary>
-		/// Returns a list of types that are supplied to the generic interface.
-		/// <![CDATA[
-		///     With "myType" being an instance of an object that implements: ICommand<SomeCommand>
-		///     GetTypeParameters(myType, typeof(ICommand<>)
-		///     Returns: { typeof(SomeCommand) }
-		/// ]]>
-		/// </summary>
-		/// <param name="type"></param>
-		/// <param name="implementedInterface"></param>
-		/// <returns></returns>
-		public IEnumerable<Type> GetTypeParameters(Type type, Type implementedInterface)
-		{
-			return
-				from interfaceType in type.GetInterfaces()
-				where interfaceType.IsGenericType
-				let baseInterface = interfaceType.GetGenericTypeDefinition()
-				where baseInterface == implementedInterface
-				select interfaceType.GetGenericArguments().FirstOrDefault();
 		}
 	}
 }

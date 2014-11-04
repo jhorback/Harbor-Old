@@ -10,6 +10,31 @@ namespace Harbor.Domain.Pages
 
 		public Page Page { get; set; }
 
+		public PageTypeLayoutContext SetLayoutStretchedWithSidebar()
+		{
+			Page.Layout.DisplayProperties = PageLayout.LayoutDisplayProperties.None;
+			return this;
+		}
+		
+		public PageTypeLayoutContext SetLayoutCenteredWithSidebar()
+		{
+			Page.Layout.DisplayProperties = PageLayout.LayoutDisplayProperties.ContentCentered;
+			return this;
+		}
+
+		public PageTypeLayoutContext SetLayoutStretchedWithoutSidebar()
+		{
+			Page.Layout.DisplayProperties = PageLayout.LayoutDisplayProperties.NoAside;
+			return this;
+		}
+
+		public PageTypeLayoutContext SetLayoutCenteredWithoutSidebar()
+		{
+			Page.Layout.DisplayProperties = PageLayout.LayoutDisplayProperties.ContentCentered |
+				PageLayout.LayoutDisplayProperties.NoAside;
+			return this;
+		}
+
 		public PageTypeLayoutContext SetLayout(PageLayout.LayoutDisplayProperties layout)
 		{
 			Page.Layout.DisplayProperties = layout;
