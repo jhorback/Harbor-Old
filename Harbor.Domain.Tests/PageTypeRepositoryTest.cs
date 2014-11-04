@@ -1,30 +1,16 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using Harbor.Domain.Pages;
-using Harbor.Domain.Pages.PageTypes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Harbor.Domain.Tests
 {
-
 	[TestClass]
 	public class PageTypeRepositoryTest
 	{
-		List<PageType> getPageTypes()
-		{
-			return new List<PageType>
-			{
-				new PageListing(),
-				new Pages.PageTypes.Page(),
-				new Article(),
-				new Product()
-			};
-		}
-
 		[TestMethod]
 		public void GetPageTypesToAdd_IsNotEmpty()
 		{
-			var repo = new PageTypeRepository(getPageTypes());
+			var repo = new PageTypeRepository();
 
 			var types = repo.GetPageTypesToAdd();
 
@@ -36,7 +22,7 @@ namespace Harbor.Domain.Tests
 		[TestMethod]
 		public void GetPageTypesToAdd_PageListingContainsPage_DoesNotContainPageListing()
 		{
-			var repo = new PageTypeRepository(getPageTypes());
+			var repo = new PageTypeRepository();
 
 			var typesDict = repo.GetPageTypesToAdd("pageListing");
 			var types = typesDict["primary"];
