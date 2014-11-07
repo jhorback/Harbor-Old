@@ -13,7 +13,7 @@
  *      newPageTypeFilter - An array of page types to filter by.
  *	}
  */
-var pageSelector = context.module("pageSelector").use("bbext", "pageModel");
+var pageSelector = context.module("pageSelector").use("bbext", "pageModel", "pageAdder");
 
 
 pageSelector.component("pageSelector", {

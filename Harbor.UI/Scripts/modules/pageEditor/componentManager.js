@@ -59,6 +59,7 @@ pageEditor.componentManager = function ($, _, Backbone, context, console, curren
 			currentComponent.close();
 			componentManager.trigger("close", currentComponent);
 			console.log("componentManager.closed - uicid:", currentComponent.uicid);
+			currentComponent = null;
 		}
 	}
 

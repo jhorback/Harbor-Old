@@ -4,7 +4,7 @@ using Harbor.Domain.Pages.Content;
 
 namespace Harbor.Domain.Pages.Commands
 {
-	public class AddNewPageToLinks : PageCommand, ICommand
+	public class AddNewPageToLinks : PageCommand
 	{
 		public string Title { get; set; }
 		public string PageType { get; set; }
