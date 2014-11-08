@@ -16,6 +16,7 @@ namespace Harbor.UI.JSPkgs
 
 			AddDependency(FileModelPkg.PackageName);
 			AddDependency(AppUIPkg.PackageName);
+			AddDependency(Html5UploaderPkg.PackageName);
 		}
 	}
 }

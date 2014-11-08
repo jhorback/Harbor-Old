@@ -1,35 +1,39 @@
-﻿
-/*
+﻿/*
 	options : {
 		filter: "none | images",
 		select: function (file) { },
 		close: function () { },
 	}
 */
-function fileSelectorView(options, modelFactory, fileRepo) {
-	var pagerModel;
-
+function fileSelectorView(
+	options,
+	modelFactory,
+	fileRepo,
+	appurl
+) {
+	this.modelFactory = modelFactory;
 	this.fileRepo = fileRepo;
-
-	pagerModel = modelFactory.create("pagerModel", {
-		take: 20,
-		totalCount: 0
-	});
-	
-	this.model = modelFactory.create("fileSelectorViewModel", {
-		title: options.filter === "images" ? "Images" : "Files"
-	}, {
-		pagerModel: pagerModel
-	});
-
-	this.model.files = fileRepo.createFiles();
-	
-	this.listenTo(this.model.files, "sync", this.onSync);
-	this.listenTo(pagerModel, "change:skip", this.search);
+	this.uploadUrl = appurl.get("file/upload");
 }
 
 fileSelectorView.prototype = {
-	initialize: function () {
+	initialize: function (options) {
+		this.bindAll("onUpload");
+
+		this.model = this.modelFactory.create("fileSelectorViewModel", {
+			title: options.filter === "images" ? "Images" : "Files"
+		}, {
+			pagerModel: this.modelFactory.create("pagerModel", {
+				take: 20,
+				totalCount: 0
+			})
+		});
+
+		this.model.files = this.fileRepo.createFiles();
+	
+		this.listenTo(this.model.files, "sync", this.onSync);
+		this.listenTo(this.model.pagerModel, "change:skip", this.search);
+
 		this.on("close", this.options.close);
 		this.on("select", this.options.select);
 	},
@@ -57,7 +61,7 @@ fileSelectorView.prototype = {
 			name: searchTerm
 		}));
 	},
-	
+
 	selectThisAndClose: function (event) {
 		var selectedFileID = $(event.target).closest("[fileId]").attr("fileId");
 
@@ -78,10 +82,42 @@ fileSelectorView.prototype = {
 			return item.get("id") === selectedFileID;
 		});
 
+		this.selectAndCloseFile(file);
+		
+	},
+
+	selectAndCloseFile: function (file) {
 		this.trigger("select", file);
 		this.close();
+	},
+
+	// jch! - working on this
+	clickUpload: function () {
+		this.setupDropTarget();
+	},
+	
+	setupDropTarget: function () {
+		var el = this.$("#fileselectorview-upload");
+
+		el.addClass("dropzone");
+		el.dropzone({
+			url: this.uploadUrl,
+			success: this.onUpload
+		});
+	},
+
+	onUpload: function (uploadedFile, response) {
+		var file = this.modelFactory.create("file", JSON.parse(response));
+		uploadedFile.previewTemplate.addClass("success");
+		this.selectAndCloseFile(file);
 	}
 };
 
 
-fileSelector.view("fileSelectorView", ["options", "modelFactory", "fileRepo", fileSelectorView]);
+fileSelector.view("fileSelectorView", [
+	"options",
+	"modelFactory",
+	"fileRepo",
+	"appurl",
+	fileSelectorView
+]);

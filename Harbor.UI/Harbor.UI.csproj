@@ -821,6 +821,7 @@
     <Content Include="Views\PageSelector\PageSelectorView.cshtml" />
     <Content Include="Views\User\PageTypeAdmin.cshtml" />
     <Content Include="Views\FileSelector\FileSelectorView.cshtml" />
+    <Content Include="Views\FileAdmin\FileAdminComponentView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\users\" />
