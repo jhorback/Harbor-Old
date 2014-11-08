@@ -17,7 +17,9 @@ pageEditor.titleView = {};
 
 pageEditor.titleModel = {
 	defaults: {
-		displayTitle: null
+		displayTitle: null,
+		parentUrl: null,
+		hasParentUrl: false
 	}
 };
 

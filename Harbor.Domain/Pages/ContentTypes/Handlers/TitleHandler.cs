@@ -3,9 +3,12 @@ namespace Harbor.Domain.Pages.ContentTypes.Handlers
 {
 	public class TitleHandler : PageLayoutContentHandler
 	{
-		public TitleHandler(Page page)
+		private readonly IPathUtility _pathUtility;
+
+		public TitleHandler(Page page, IPathUtility pathUtility)
 			: base(page)
 		{
+			_pathUtility = pathUtility;
 		}
 
 		public override object GetLayoutContent()
@@ -15,7 +18,18 @@ namespace Harbor.Domain.Pages.ContentTypes.Handlers
 			{
 				title = Page.Title;
 			}
-			return new Content.Title(title);
+
+			string parentUrl = null;
+			if (Page.Layout.ParentPageID != Page.PageID)
+			{
+				parentUrl = _pathUtility.ToAbsolute(Page.GetVirtualPath(Page.Layout.ParentPageID ?? 0, Page.Layout.Title));
+			}
+
+			return new Content.Title
+			{
+				DisplayTitle = title,
+				ParentUrl = parentUrl
+			};
 		}
 	}
 }

@@ -1,4 +1,13 @@
 ﻿@model Harbor.UI.Models.Content.TitleDto
 <div>
-	<h1>@Model.displayTitle</h1>
+	<h1>
+		@if (Model.hasParentUrl)
+		{
+			<a href="@Model.parentUrl">@Model.displayTitle</a>
+		}
+		else
+		{
+			@Model.displayTitle
+		}
+	</h1>
 </div>

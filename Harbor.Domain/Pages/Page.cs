@@ -98,8 +98,18 @@ namespace Harbor.Domain.Pages
 		{
 			get
 			{
-				return string.Format("~/id/{0}/{1}", PageID, Title.ToLower().Replace(" ", "-"));
+				return GetVirtualPath(this);
 			}
+		}
+
+		public static string GetVirtualPath(Page page)
+		{
+			return GetVirtualPath(page.PageID, page.Title);
+		}
+
+		public static string GetVirtualPath(int pageId, string pageTitle)
+		{
+			return string.Format("~/id/{0}/{1}", pageId, pageTitle.ToLower().Replace(" ", "-"));			
 		}
 
 		public bool? IsARootPage { get; set; }
