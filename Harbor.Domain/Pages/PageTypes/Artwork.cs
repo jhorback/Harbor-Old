@@ -34,8 +34,8 @@ namespace Harbor.Domain.Pages.PageTypes
 		public override void SetTemplate(PageTypeTemplateContext context)
 		{
 			context
-				.AddContent(TemplateContentTypes.Image)
-				.AddContent(TemplateContentTypes.Text);
+				.AddContent(TemplateContentTypes.Image, Template.ContentClassNames.Col2, Template.ContentClassNames.Text_Right)
+				.AddContent(TemplateContentTypes.Text, Template.ContentClassNames.Col2);
 		}
 
 		public override void SetAddPageTypeFilter(AddPageTypeFilterContext context)
