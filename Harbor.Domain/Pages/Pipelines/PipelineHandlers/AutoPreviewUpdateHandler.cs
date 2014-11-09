@@ -15,8 +15,8 @@ namespace Harbor.Domain.Pages.PipelineHandlers
 
 		public void Execute(Page page)
 		{
-			var foundFirstImage = false;
-			var foundFirstText = false;
+			var foundFirstImage = !page.AutoPreviewImage; // set to true if no auto preview
+			var foundFirstText = !page.AutoPreviewText;   // set to true if no auto preview
 
 			if (page.AutoPreviewImage || page.AutoPreviewText)
 			{
@@ -48,7 +48,21 @@ namespace Harbor.Domain.Pages.PipelineHandlers
 					}
 				}
 			}
+
+			if (page.AutoPreviewImage && foundFirstImage == false)
+			{
+				setPreviewImageFromChildren(page);
+			}
 		}
+
+
+		void setPreviewImageFromChildren(Page page)
+		{
+			// would want to do this on page load?!
+			// yes change this to a load and update handler
+			// 
+		}
+
 
 		string extractText(string html)
 		{
