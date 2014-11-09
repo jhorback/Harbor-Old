@@ -37,7 +37,7 @@ namespace Harbor.Domain.Pages.ContentTypes.Handlers
 				}
 			}
 
-			image.Res = GetProperty("res") ?? "low";
+			image.Res = GetProperty("res") ?? "high";
 			//image.Name = GetProperty("Name");
 			//image.Ext = GetProperty("ext");
 
