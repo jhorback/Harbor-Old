@@ -35,7 +35,8 @@ namespace Harbor.Domain.Pages.PageTypes
 		{
 			context
 				.AddContent(TemplateContentTypes.PageLink, Template.ContentClassNames.Col1)
-				.SetDefaultContentClassName(Template.ContentClassNames.Col1);
+				.SetDefaultContentClassName(Template.ContentClassNames.Col1)
+				.PrependContent();
 		}
 
 		public override void SetAddPageTypeFilter(AddPageTypeFilterContext context)
