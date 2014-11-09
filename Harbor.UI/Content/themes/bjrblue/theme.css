@@ -144,6 +144,8 @@ legend {
     color: #FFF; }
     .page-header h1 a {
       color: #FFF; }
+  .page-header [contenteditable]:hover, .page-header [contenteditable]:focus {
+    background: #e6e6e6; }
 
 .page-nav a {
   color: #FFF; }

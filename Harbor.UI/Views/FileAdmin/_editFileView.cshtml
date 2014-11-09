@@ -1,13 +1,13 @@
 ﻿<div class="page centered" data-templatefor="editFileComponentView">
 	<div class="page-header">
-		<h1><span data-bind="value: name" contenteditable data-type="contenteditable"></span></h1>
+		<h1 class="float-left"><span data-bind="value: name" contenteditable data-type="contenteditable"></span></h1>
 		<div class="float-left pad-left pad-top">(click title to rename)</div>
-		<fieldset class="float-right">
-			<button type="button" class="loud" data-event="done" data-bind="showif:allowClose">Close</button>
-		</fieldset>
 	</div>
 	<div class="page-body">
 		<div class="page-content">
+			<div class="float-right">
+				<button type="button" class="loud" data-event="done" data-bind="showif:allowClose">Close</button>
+			</div>
 			<form>
 				<div class="alert-error" data-validation-for="name"></div>
 				<fieldset>

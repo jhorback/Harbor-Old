@@ -55,6 +55,11 @@
 				color: $page-title-color;
 			}			
 		}
+         [contenteditable] {
+            &:hover, &:focus {
+                background: darken($page-header-background, 10%);
+            }
+        }
 	}
     .page-nav {
         a {
