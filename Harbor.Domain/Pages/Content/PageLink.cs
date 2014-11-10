@@ -3,7 +3,7 @@ using Harbor.Domain.Security;
 
 namespace Harbor.Domain.Pages.Content
 {
-	public class PageLink
+	public class PageLink : PageContent
 	{
 		private readonly string _userName;
 

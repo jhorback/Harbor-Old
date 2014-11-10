@@ -1,7 +1,7 @@
 ﻿
 namespace Harbor.Domain.Pages.Content
 {
-	public class PayPalButton
+	public class PayPalButton : PageContent
 	{
 		public PayPalButton(int? payPalButtonID, Products.PayPalButton button)
 		{

@@ -125,6 +125,7 @@
     <Compile Include="Pages\ContentTypes\Handlers\ProductLinkHandler.cs" />
     <Compile Include="Pages\ContentTypes\Handlers\TextHandler.cs" />
     <Compile Include="Pages\ContentTypes\Handlers\TitleHandler.cs" />
+    <Compile Include="Pages\Content\IPageContent.cs" />
     <Compile Include="Pages\Content\Title.cs" />
     <Compile Include="Pages\ContentType.cs" />
     <Compile Include="Pages\ContentTypes\Links.cs" />

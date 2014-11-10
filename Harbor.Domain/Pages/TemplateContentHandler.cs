@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Harbor.Domain.Pages.Content;
 
 namespace Harbor.Domain.Pages
 {
@@ -33,7 +34,7 @@ namespace Harbor.Domain.Pages
 			Page.SetUICProperty(TemplateUic.Id, name, value);
 		}
 
-		protected T GetContent<T>()
+		protected T GetContent<T>() where T : IPageContent
 		{
 			return Page.Template.GetContentData<T>(TemplateUic.Id);
 		}

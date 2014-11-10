@@ -1,6 +1,6 @@
-using System;
 using System.Collections.Generic;
 using System.Web.Script.Serialization;
+using Harbor.Domain.Pages.Content;
 
 namespace Harbor.Domain.Pages
 {
@@ -138,7 +138,7 @@ namespace Harbor.Domain.Pages
 
 		public readonly IDictionary<string, object> contentData = new Dictionary<string, object>();
 
-		public void SetContentData<T>(string uicid, T data)
+		public void SetContentData(string uicid, object data)
 		{
 			if (contentData.ContainsKey(uicid))
 			{
@@ -150,7 +150,7 @@ namespace Harbor.Domain.Pages
 			}
 		}
 
-		public T GetContentData<T>(string uicid)
+		public T GetContentData<T>(string uicid) where T : IPageContent
 		{
 			if (contentData.ContainsKey(uicid))
 			{

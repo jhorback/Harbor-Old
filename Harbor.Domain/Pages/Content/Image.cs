@@ -2,7 +2,7 @@
 
 namespace Harbor.Domain.Pages.Content
 {
-	public class Image
+	public class Image : PageContent
 	{
 		public bool IsNew { get; set; }
 		public bool FileExists { get; set; }
