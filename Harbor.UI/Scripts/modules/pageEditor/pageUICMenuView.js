@@ -32,11 +32,34 @@ pageEditor.pageUICMenuView.prototype = {
 	},
 
 	movePrevious: function () {
-		alert("Move previous");
+
+		var thisUic = this.component.view.$el.closest(".uic"),
+			nextUic = thisUic.prev(".uic");
+		
+		if (nextUic.length === 0) {
+			return;
+		}
+
+		nextUic.before(thisUic);
+		this.saveContentOrder();
 	},
 
 	moveNext: function () {
-		alert("Move next");
+		var thisUic = this.component.view.$el.closest(".uic"),
+			nextUic = thisUic.next(".uic");
+		
+		if (nextUic.length === 0) {
+			return;
+		}
+
+		nextUic.after(thisUic);
+		this.saveContentOrder();
+		return;
+	},
+
+	saveContentOrder: function () {
+		this.currentPage.template.content.sort();
+		this.currentPageRepo.saveCurrentPage();
 	}
 };
 
