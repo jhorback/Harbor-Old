@@ -1,15 +1,13 @@
 ﻿<section class="page" data-templatefor="pageAdminView">
 	<div class="page-header">
 		<h1>Pages</h1>
-		<fieldset class="float-right">
-			<button class="attn" data-event="addPage">Add a page</button>
-		</fieldset>
 	</div>
 	<div class="page-body">
 		<div class="page-aside">
 			<div id="pageAdminMenuList"></div>
 		</div>
 		<div class="page-content">
+			
 			<div class="clearfix">
 				<div class="form-inline float-left margin-left">
 					<form action="~/user/pages/search" data-event="submit:submitSearchForm">
@@ -17,12 +15,16 @@
 						<button>Search</button>
 					</form>
 				</div>
-				<div class="float-right" data-model="pagerModel">
-					<div data-bind="text: description"></div>
-				</div>
+				<fieldset class="float-right">
+					<button class="attn" data-event="addPage">Add a page</button>
+				</fieldset>
 			</div>
 			
-			<div>
+			<div data-model="pagerModel">
+				<div class="float-right" data-bind="text: description"></div>
+			</div>
+
+			<div class="clear">
 				<div class="tiles">
 					<ul class="pages-list">
 						<li class="tile col5 hover" data-event="clickTile" data-collection="pages" data-bind="title: pageTypeName">
