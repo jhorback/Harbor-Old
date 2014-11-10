@@ -10,7 +10,6 @@
 			<div id="pageAdminMenuList"></div>
 		</div>
 		<div class="page-content">
-			
 			<div class="clearfix">
 				<div class="form-inline float-left margin-left">
 					<form action="~/user/pages/search" data-event="submit:submitSearchForm">
@@ -23,22 +22,23 @@
 				</div>
 			</div>
 			
-
-			<div class="tiles">
-				<ul class="pages-list">
-					<li class="tile col5 hover" data-event="clickTile" data-collection="pages" data-bind="title: pageTypeName">
-						<div class="media">
-							<img data-bind="src:thumbUrl" />
-						</div>
-						<div class="caption">
-							<h3 class="nowrap" title="{{title}}"><a href="{{link}}">{{title}}</a></h3>
-							<p>
-								Modified: {{modified}}<br/>
-								{{publishedMessage}}
-							</p>
-						</div>
-					</li>
-				</ul>
+			<div>
+				<div class="tiles">
+					<ul class="pages-list">
+						<li class="tile col5 hover" data-event="clickTile" data-collection="pages" data-bind="title: pageTypeName">
+							<div class="media">
+								<img data-bind="src:thumbUrl" />
+							</div>
+							<div class="caption">
+								<h3 class="nowrap" title="{{title}}"><a href="{{link}}">{{title}}</a></h3>
+								<p>
+									Modified: {{modified}}<br/>
+									{{publishedMessage}}
+								</p>
+							</div>
+						</li>
+					</ul>
+				</div>
 			</div>
 			
 			<div class="float-right">
