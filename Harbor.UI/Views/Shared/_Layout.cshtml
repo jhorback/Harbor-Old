@@ -12,9 +12,10 @@
 	}
 	
 	var copyrightText = new HtmlString(
-		string.Format("{0} &copy; {1}",
+		string.Format("{0} &copy; {1} - {2}",
 			Request.ServerVariables["SERVER_NAME"],
-			DateTime.Now.Year));
+			DateTime.Now.Year,
+			HarborApplication.Version));
 
 	var gaAccount = HarborApplication.GoogleAnalyticsAccount;
 }
