@@ -50,6 +50,12 @@
 .icon-facebook:before {
   content: "\f09a"; }
 
+.icon-next:before {
+  content: "\f0da"; }
+
+.icon-previous:before {
+  content: "\f0d9"; }
+
 /* FONT PATH
  * -------------------------- */
 @font-face {

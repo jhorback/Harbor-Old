@@ -8,7 +8,7 @@
 }
 <section class="page centered">
 	 <header class="page-header">
-	 	<h1>@Html.ActionLink("Style Guide", "Index", new { pageKey = "Home" })</h1>
+	 	<h1 class="float-left">@Html.ActionLink("Style Guide", "Index", new { pageKey = "Home" })</h1>
 	 	@Html.Action("PageNav")
 		@RenderSection("pageheader", required: false)
 	 </header>
