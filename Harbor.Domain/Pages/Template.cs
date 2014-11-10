@@ -150,7 +150,7 @@ namespace Harbor.Domain.Pages
 			}
 		}
 
-		public T GetContentData<T>(string uicid) where T : IPageContent
+		public T GetContentData<T>(string uicid)
 		{
 			if (contentData.ContainsKey(uicid))
 			{

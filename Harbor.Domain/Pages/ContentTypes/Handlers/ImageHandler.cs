@@ -61,5 +61,11 @@ namespace Harbor.Domain.Pages.ContentTypes.Handlers
 			yield return UICPropertyName("fileID");
 			yield return UICPropertyName("res");
 		}
+
+		public override Guid? GetPagePreviewImageID()
+		{
+			var image = GetContent<Content.Image>();
+			return image.FileExists ? image.FileID : null;
+		}
 	}
 }

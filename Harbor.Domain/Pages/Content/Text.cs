@@ -1,7 +1,7 @@
 ﻿
 namespace Harbor.Domain.Pages.Content
 {
-	public class Text : PageContent
+	public class Text
 	{
 		public Text(string html)
 		{
