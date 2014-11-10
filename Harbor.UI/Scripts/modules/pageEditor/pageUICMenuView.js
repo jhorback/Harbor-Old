@@ -29,6 +29,14 @@ pageEditor.pageUICMenuView.prototype = {
 		this.changeLayoutComponent.render({
 			uicid: this.component.uicid
 		});
+	},
+
+	movePrevious: function () {
+		alert("Move previous");
+	},
+
+	moveNext: function () {
+		alert("Move next");
 	}
 };
 
