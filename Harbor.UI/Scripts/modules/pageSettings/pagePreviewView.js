@@ -6,6 +6,11 @@ function pagePreviewView(options, currentPageRepo, fileSelector) {
 }
 
 pagePreviewView.prototype = {
+	initialize: function () {
+	
+		this.bindAll("onSelectFile");
+	},
+	
 	changeThumb: function () {
 		
 		if (this.model.page.get("autoPreviewImage")) {
@@ -16,13 +21,14 @@ pagePreviewView.prototype = {
 
 		this.fileSelector.render({
 			filter: "images",
-			
-			select: _.bind(function (selectedFile) {
-
-				this.model.setPreviewImage(selectedFile);
-				this.currentPageRepo.saveCurrentPage();
-			}, this)
+			maxFiles: 1,
+			select: this.onSelectFile
 		});
+	},
+
+	onSelectFile: function (selectedFile) {
+		this.model.setPreviewImage(selectedFile);
+		this.currentPageRepo.saveCurrentPage();
 	},
 
 	removeThumb: function () {

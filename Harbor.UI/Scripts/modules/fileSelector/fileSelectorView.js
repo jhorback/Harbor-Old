@@ -1,8 +1,9 @@
 ﻿/*
 	options : {
-		filter: "none | images",
+		filter - "none | images". If "images", uploads will be limited to bitmap extensions
 		select: function (file) { },
 		close: function () { },
+		maxFiles - Set to limit the number of files allowed to be uploaded
 	}
 */
 function fileSelectorView(
@@ -18,7 +19,7 @@ function fileSelectorView(
 
 fileSelectorView.prototype = {
 	initialize: function (options) {
-		this.bindAll("onUpload");
+		this.bindAll("onUpload", "onAcceptFile");
 
 		this.model = this.modelFactory.create("fileSelectorViewModel", {
 			title: options.filter === "images" ? "Images" : "Files"
@@ -99,11 +100,33 @@ fileSelectorView.prototype = {
 	setupDropTarget: function () {
 		var el = this.$("#fileselectorview-upload");
 
+		if (el.hasClass("dropzone")) {
+			return;
+		}
+
 		el.addClass("dropzone");
 		el.dropzone({
 			url: this.uploadUrl,
-			success: this.onUpload
+			success: this.onUpload,
+			accept: this.onAcceptFile,
+			maxFiles: this.options.maxFiles
 		});
+	},
+
+	onAcceptFile: function (file, done) {
+		if (this.options.filter !== "images") {
+			done();
+		}
+
+		debugger;
+		var ext = file.name.toLowerCase().split(".").pop();
+		done("No files with ext: " + ext);
+
+		//if (file.name == "justinbieber.jpg") {
+		//	done("Naha, you don't.");
+		//} else {
+		//	done();
+		//}
 	},
 
 	onUpload: function (uploadedFile, response) {

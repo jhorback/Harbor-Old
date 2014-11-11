@@ -11,6 +11,9 @@ var fileSelectorViewModel = {
 		resultsMessage: ""
 	},
 	
+	// From Harbor.Domain.Files.File.cs
+	BitmapExtensions: [".bmp", ".gif", ".exif", ".jpg", ".png", ".tiff" ],
+
 	resultsMessage: {
 		get: function () {
 			var str = "";
