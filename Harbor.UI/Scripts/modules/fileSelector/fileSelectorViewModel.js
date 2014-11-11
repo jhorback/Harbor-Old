@@ -31,6 +31,10 @@ var fileSelectorViewModel = {
 			return str ? "<hr><div class='text-center'>" + str + "</div><hr>" : "";
 		},
 		bind: ["resultsCount"]
+	},
+
+	isBitmap: function (ext) {
+		return _.contains(this.BitmapExtensions, "." + ext);
 	}
 };
 

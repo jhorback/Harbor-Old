@@ -24,7 +24,8 @@ pageEditor.imageView.prototype = {
 		this.fileSelector.render({
 			filter: "images",
 			xclose: this.close,
-			select: this.selectFile
+			select: this.selectFile,
+			maxFiles: 1
 		});
 	},
 	
