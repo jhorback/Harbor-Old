@@ -10,10 +10,10 @@ namespace Harbor.UI.JSPkgs
 		public Html5UploaderPkg()
 		{
 			Name = PackageName;
-			ScriptBundle = new ScriptBundle("~/Scripts/jquery.html5uploader.min.js")
-				.Include("~/scripts/dropzone.js");
-			StyleBundle = new StyleBundle("~/content/dropzone.min.css")
-				.Include("~/content/dropzone.css");
+			ScriptBundle = new ScriptBundle("~/Scripts/html5uploader.min.js")
+				.Include("~/scripts/dropzone/dropzone.js");
+			StyleBundle = new StyleBundle("~/scripts/dropzone/css/dropzone.min.css")
+				.Include("~/scripts/dropzone/css/dropzone.css");
 			Category = Categories.UI;
 		}
 	}

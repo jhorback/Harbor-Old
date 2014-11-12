@@ -82,7 +82,7 @@ namespace Harbor.UI.Controllers.Api
 		[Http.FilePermit(Permissions.Delete)]
 		public HttpResponseMessage Delete(Guid id)
         {
-			var fileDo = fileRep.FindById(id);
+			var fileDo = fileRep.FindById(id, readOnly: false);
 			fileRep.Delete(fileDo);
 			fileRep.Save();
 			return Request.CreateResponse(HttpStatusCode.NoContent);

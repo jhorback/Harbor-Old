@@ -1,8 +1,11 @@
 ﻿/*
 	options : {
-		filter: "none | images",
-		select: function (file) { },
+		filter - "none | images". If "images", uploads will be limited to bitmap extensions
+		select: function (file) { } - Called each time a file is uploaded.
+		done: function () {} - Called when all files have completed being uploaded.
 		close: function () { },
+		maxFiles - Set to limit the number of files allowed to be uploaded.
+		autoClose - When all files have completed uploading, the file selector will close itself.
 	}
 */
 function fileSelectorView(
@@ -18,7 +21,7 @@ function fileSelectorView(
 
 fileSelectorView.prototype = {
 	initialize: function (options) {
-		this.bindAll("onUpload");
+		this.bindAll("onUpload", "onAcceptFile", "uploadComplete");
 
 		this.model = this.modelFactory.create("fileSelectorViewModel", {
 			title: options.filter === "images" ? "Images" : "Files"
@@ -36,6 +39,7 @@ fileSelectorView.prototype = {
 
 		this.on("close", this.options.close);
 		this.on("select", this.options.select);
+		this.on("done", this.uploadComplete);
 	},
 	
 	onSync: function () {
@@ -82,34 +86,59 @@ fileSelectorView.prototype = {
 			return item.get("id") === selectedFileID;
 		});
 
-		this.selectAndCloseFile(file);
-		
-	},
-
-	selectAndCloseFile: function (file) {
 		this.trigger("select", file);
 		this.close();
 	},
 
-	// jch! - working on this
 	clickUpload: function () {
 		this.setupDropTarget();
 	},
 	
 	setupDropTarget: function () {
-		var el = this.$("#fileselectorview-upload");
+		var el = this.$("#fileselectorview-upload"),
+		    dz;
+
+		if (el.hasClass("dropzone")) {
+			return;
+		}
 
 		el.addClass("dropzone");
-		el.dropzone({
+		dz = new Dropzone(el[0], {
 			url: this.uploadUrl,
-			success: this.onUpload
+			success: this.onUpload,
+			accept: this.onAcceptFile,
+			maxFiles: this.options.maxFiles,
+			queuecomplete: this.uploadComplete
 		});
+
+		dz.on("queuecomplete", this.uploadComplete);
+	},
+
+	onAcceptFile: function (file, done) {
+		if (this.options.filter !== "images") {
+			done();
+		}
+
+		var ext = file.name.toLowerCase().split(".").pop();
+
+		if (this.model.isBitmap(ext) === false) {
+			done(file.name + " is not an image.");
+		} else {
+			done();
+		}
 	},
 
 	onUpload: function (uploadedFile, response) {
-		var file = this.modelFactory.create("file", JSON.parse(response));
-		uploadedFile.previewTemplate.addClass("success");
-		this.selectAndCloseFile(file);
+		var file = this.modelFactory.create("file", response);
+		uploadedFile.previewElement.classList.add("dz-success");
+		this.trigger("select", file);
+	},
+
+	uploadComplete: function () {
+		this.options.done && this.options.done();
+		if (this.options.autoClose !== false) {
+			this.close();
+		}
 	}
 };
 

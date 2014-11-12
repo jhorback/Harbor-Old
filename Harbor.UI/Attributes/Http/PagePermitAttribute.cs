@@ -44,13 +44,15 @@ namespace Harbor.UI.Http
 			var routeData = actionContext.Request.GetRouteData();
 			if (routeData == null)
 			{
-				throw new HttpResponseException(HttpStatusCode.NotFound);
+				actionContext.Response = actionContext.Request.CreateNotFoundResponse();
+				return;
 			}
 
 			var values = routeData.Values;
 			if (values.ContainsKey("id") == false)
 			{
-				throw new HttpResponseException(HttpStatusCode.NotFound);				
+				actionContext.Response = actionContext.Request.CreateNotFoundResponse();
+				return;				
 			}
 
 			var userName = HttpContext.Current.User.Identity.Name;
@@ -58,7 +60,8 @@ namespace Harbor.UI.Http
 			var page = PageQuery.ExecuteFromCache(new PageQueryParams { PageID = pageID });
 			if (page == null)
 			{
-				throw new HttpResponseException(HttpStatusCode.NotFound);
+				actionContext.Response = actionContext.Request.CreateNotFoundResponse();
+				return;
 			}
 
 			if (page.HasPermission(userName, this.feature, this.permissions) == false)

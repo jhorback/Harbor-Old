@@ -9,10 +9,10 @@ fileAdmin.editFileComponentView = function (options, fileRepo, routerInfo) {
 fileAdmin.editFileComponentView.prototype = {
 	initialize: function () {
 
-		this.listenTo(this.model, "change", this.saveModel);
+		this.listenTo(this.model, "change:name change:public", this.saveModel);
 		this.model.store();
 
-		this.bindAll("saveModel", "close");
+		this.bindAll("saveModel", "done");
 	},
 
 	clickDelete: function () {
@@ -22,7 +22,7 @@ fileAdmin.editFileComponentView.prototype = {
 			return;
 		}
 
-		this.fileRepo.deleteFile(this.model).then(this.close);
+		this.fileRepo.deleteFile(this.model).then(this.done);
 	},
 
 	done: function () {
