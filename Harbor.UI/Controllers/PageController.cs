@@ -18,7 +18,7 @@ namespace Harbor.UI.Controllers
 			_userRepo = userRepo;
 		}
 
-		[PagePermit(Permissions.Read), Route("~/id/{pageID}/{title?}", Name = "Page")]
+		[PagePermit(Permissions.Read), Route("~/id/{pageID}/{*pathInfo}", Name = "Page")]
 		public ActionResult Page(Page page)
 		{
 			ViewBag.HasWritePermissions = page.HasPermission(User.Identity.Name, Permissions.CreateAndUpdate);
