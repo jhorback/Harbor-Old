@@ -51,5 +51,11 @@ namespace Harbor.Domain.Pages.ContentTypes.Handlers
 			var link = GetContent<Content.PageLink>();
 			return link.PreviewImageID;
 		}
+
+		public override string GetPagePreviewText()
+		{
+			var link = GetContent<Content.PageLink>();
+			return link.PreviewText;
+		}
 	}
 }
