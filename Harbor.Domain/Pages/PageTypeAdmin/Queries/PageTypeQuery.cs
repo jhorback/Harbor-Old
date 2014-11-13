@@ -73,12 +73,12 @@ namespace Harbor.Domain.Pages.PageTypeAdmin.Queries
 				if (filter is AddContentTypeFilter)
 				{
 					var suggestedType = contentTypesByKey[type.FullName];
-					suggested.Add(suggestedType.Name + " (" + suggestedType.Key + ")");
+					suggested.Add(suggestedType.Name); // + " (" + suggestedType.Key + ")");
 				}
 				else
 				{
 					var suggestedType = pageTypesByKey[type.FullName];
-					suggested.Add(suggestedType.Name + " (" + suggestedType.Key + ")");
+					suggested.Add(suggestedType.Name); // + " (" + suggestedType.Key + ")");
 				}
 			}
 
@@ -87,12 +87,12 @@ namespace Harbor.Domain.Pages.PageTypeAdmin.Queries
 				if (filter is AddContentTypeFilter)
 				{
 					var includeType = contentTypesByKey[type.FullName];
-					include.Add(includeType.Name + " (" + includeType.Key + ")");
+					include.Add(includeType.Name); // + " (" + includeType.Key + ")");
 				}
 				else
 				{
 					var includeType = pageTypesByKey[type.FullName];
-					include.Add(includeType.Name + " (" + includeType.Key + ")");
+					include.Add(includeType.Name); // + " (" + includeType.Key + ")");
 				}
 			}
 
@@ -101,12 +101,12 @@ namespace Harbor.Domain.Pages.PageTypeAdmin.Queries
 				if (filter is AddContentTypeFilter)
 				{
 					var excludeType = contentTypesByKey[type.FullName];
-					exclude.Add(excludeType.Name + " (" + excludeType.Key + ")");
+					exclude.Add(excludeType.Name); // + " (" + excludeType.Key + ")");
 				}
 				else
 				{
 					var excludeType = pageTypesByKey[type.FullName];
-					exclude.Add(excludeType.Name + " (" + excludeType.Key + ")");
+					exclude.Add(excludeType.Name); // + " (" + excludeType.Key + ")");
 				}
 			}
 
