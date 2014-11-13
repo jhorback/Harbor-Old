@@ -49,7 +49,7 @@ namespace Harbor.Domain.Pages.PageTypeAdmin.Queries
 			var pageTypeDtos = pageTypes.Select(pt => new PageTypeDto
 			{
 				key = pt.Key,
-				name = pt.Name,
+				name = pt.Name + (pt.AddPageTypeFilter.IsPrimary ? "*" : ""),
 				description = pt.Description,
 				contentDescription = pt.ContentDescription,
 				addContentFilterDescription = getAddTypeFilgerDescription(pt.AddContentTypeFilter),
@@ -117,11 +117,11 @@ namespace Harbor.Domain.Pages.PageTypeAdmin.Queries
 
 			if (include.Count > 0)
 			{
-				description.Add("Include: " + string.Join(", ", include));
+				description.Add("Include only: " + string.Join(", ", include));
 			}
 			else if (exclude.Count > 0)
 			{
-				description.Add("Exclude: " + string.Join(", ", exclude));
+				description.Add("Excluded: " + string.Join(", ", exclude));
 			}
 
 			return string.Join("<br>", description);
@@ -130,10 +130,6 @@ namespace Harbor.Domain.Pages.PageTypeAdmin.Queries
 		string getPageFilterDescription(AddPageTypeFilter filter)
 		{
 			var description = getAddTypeFilgerDescription(filter);
-			if (filter.IsPrimary)
-			{
-				description = "<b>" + description + "</b>";
-			}
 			return description;
 		}
 	}
