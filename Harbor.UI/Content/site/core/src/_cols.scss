@@ -40,13 +40,16 @@ $col-gutter-width: 1%;
 	}
 
 	@include onphone {
-		.col,
-		.col1,
-		.col2,
-		.col3,
-		.col3-2,
-		.col4,
-		.col5 { @include col-span(1); }
+
+        *, .hasaside {
+            .col,
+		    .col1,
+		    .col2,
+		    .col3,
+		    .col3-2,
+		    .col4,
+		    .col5 { @include col-span(1); }
+        }
 	}
 }
 

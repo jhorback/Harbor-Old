@@ -84,7 +84,7 @@
     margin-left: 2%; } }
 
 @media (max-width: 48em) {
-  .col, .col1, .col2, .col3, .col3-2, .col4, .col5 {
+  * .col, * .col1, * .col2, * .col3, * .col3-2, * .col4, * .col5, .hasaside .col, .hasaside .col1, .hasaside .col2, .hasaside .col3, .hasaside .col3-2, .hasaside .col4, .hasaside .col5 {
     float: left;
     width: 98%;
     *width: 93%;
