@@ -28,7 +28,7 @@ $tile-caption-color: #777;
 @mixin tile {
 	.tile {
 		display: block;
-		//overflow: hidden;
+		overflow-x: hidden;
 		border: 1px solid transparent;
 		margin-bottom: 1em;
 		//border-color: #DDD;

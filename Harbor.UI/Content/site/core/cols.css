@@ -59,6 +59,11 @@
     float: left;
     width: 18%;
     *width: 17%;
+    margin-left: 2%; }
+  .hasaside .col5 {
+    float: left;
+    width: 23%;
+    *width: 21.75%;
     margin-left: 2%; } }
 
 @media (max-width: 64em) {
@@ -71,6 +76,11 @@
     float: left;
     width: 31.33333%;
     *width: 29.66667%;
+    margin-left: 2%; }
+  .hasaside .col3, .hasaside .col3-2, .hasaside .col4, .hasaside .col5 {
+    float: left;
+    width: 48%;
+    *width: 45.5%;
     margin-left: 2%; } }
 
 @media (max-width: 48em) {
