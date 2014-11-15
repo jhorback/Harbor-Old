@@ -8,6 +8,7 @@ $col-gutter-width: 1%;
 
 @mixin cols {
 	@include rows;
+    @include row-tiles;
 
 	@include ondesktop {
 		.col,
@@ -52,6 +53,52 @@ $col-gutter-width: 1%;
         }
 	}
 }
+
+
+
+
+@mixin row-tiles {
+
+    @include ondesktop {
+
+        .row {
+            .col5:nth-of-type(5n+1) { clear:left; }
+        }
+
+        .hasaside {
+            .row {
+                .col5:nth-of-type(5n+1) { clear: none; }
+                .col5:nth-of-type(4n+1) { clear: left; }
+            }
+        }
+    }
+
+
+    @include ontablet {
+        .row {
+            .col5:nth-of-type(3n+1) { clear:left; }
+        }
+
+        .hasaside {
+            .row {
+                .col5:nth-of-type(3n+1) { clear:none; }
+                .col5:nth-of-type(2n+1) { clear:left; }
+            }
+        }
+    }
+
+
+    @include onphone {
+        .hasaside {
+             .row {
+                .col5:nth-of-type(1n+1) { clear:left; }
+            }
+        }
+    }
+}
+
+
+
 
 
 
