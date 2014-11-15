@@ -2,7 +2,15 @@
 @import "media";
 @import "page-vars";
 
-
+/*
+    .col,
+		.col1 { @include col-span(1); }
+		.col2 { @include col-span(2); }
+		.col3 { @include col-span(3); }
+		.col3-2 { @include col-span(3, 2); }
+		.col4 { @include col-span(4); }
+		.col5 { @include col-span(5); }
+*/
 
 @mixin page-content-tiles {
 
@@ -10,14 +18,23 @@
 
 
         .row {
-            .col5:nth-of-type(5n+1) {
-                clear:left; 
-            }
+
+            .col5:nth-of-type(5n+1) { clear:left; }
 
         }
     }
 
-    .noaside .page-content {
+
+    @include ontablet {
+
+    }
+
+
+    @include onphone {
+
+    }
+
+    .noaside .row {
 
     }
 }
