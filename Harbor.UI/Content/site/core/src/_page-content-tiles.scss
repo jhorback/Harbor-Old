@@ -9,7 +9,7 @@
     @include ondesktop {
 
 
-        .page-content {
+        .row {
             .col5:nth-of-type(5n+1) {
                 clear:left; 
             }
