@@ -12,7 +12,7 @@ fieldset {
   margin-bottom: 22.8576px; }
   fieldset > * {
     padding-left: 1.4em; }
-    @media (max-width: 30em) {
+    @media (max-width: 48em) {
       fieldset > * {
         padding-left: 0; } }
 
@@ -113,7 +113,7 @@ input[type="radio"][disabled], input[type="checkbox"][disabled], input[type="rad
   .form-field input + span {
     display: inline-block;
     margin-left: 0.5em; }
-    @media (max-width: 30em) {
+    @media (max-width: 48em) {
       .form-field input + span {
         display: block;
         margin-left: 0; } }
@@ -138,7 +138,7 @@ input[type="radio"][disabled], input[type="checkbox"][disabled], input[type="rad
     width: 11.42em;
     padding-top: 5px;
     text-align: right; }
-    @media (max-width: 48em) {
+    @media (max-width: 64em) {
       .form-wide .form-field label {
         float: none;
         display: block;
@@ -148,7 +148,7 @@ input[type="radio"][disabled], input[type="checkbox"][disabled], input[type="rad
     float: left;
     margin-left: 1.42em;
     margin-bottom: 0; }
-    @media (max-width: 48em) {
+    @media (max-width: 64em) {
       .form-wide .form-field input, .form-wide .form-field select, .form-wide .form-field textarea, .form-wide .form-field .input, .form-wide .form-field label ~ * {
         float: none;
         margin-left: 0; } }
@@ -156,7 +156,7 @@ input[type="radio"][disabled], input[type="checkbox"][disabled], input[type="rad
     line-height: 32.8576px;
     vertical-align: middle;
     display: inline; }
-    @media (max-width: 48em) {
+    @media (max-width: 64em) {
       .form-wide .form-field span, .form-wide .form-field div {
         display: block; } }
   .form-wide .form-field input[type=checkbox], .form-wide .form-field input[type=radio] {
@@ -164,20 +164,20 @@ input[type="radio"][disabled], input[type="checkbox"][disabled], input[type="rad
     *margin-top: 0;
     margin-top: 1px \9;
     /* IE8-9 */ }
-    @media (max-width: 48em) {
+    @media (max-width: 64em) {
       .form-wide .form-field input[type=checkbox], .form-wide .form-field input[type=radio] {
         margin-left: 0;
         display: inline-block; } }
   .form-wide .form-field input + label {
     width: auto;
     padding-top: 0; }
-    @media (max-width: 48em) {
+    @media (max-width: 64em) {
       .form-wide .form-field input + label {
         display: inline-block;
         float: none; } }
 .form-wide .form-controls {
   padding-left: 14.26em; }
-  @media (max-width: 48em) {
+  @media (max-width: 64em) {
     .form-wide .form-controls {
       padding-left: 0; } }
 

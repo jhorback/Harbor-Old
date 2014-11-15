@@ -1,0 +1,26 @@
+@import "../../mixins/col";
+@import "media";
+@import "page-vars";
+
+
+
+@mixin page-content-tiles {
+
+    @include ondesktop {
+
+
+        .page-content {
+            .col5:nth-of-type(5n+1) {
+                clear:left; 
+            }
+
+        }
+    }
+
+    .noaside .page-content {
+
+    }
+}
+
+
+

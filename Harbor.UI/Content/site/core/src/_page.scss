@@ -5,6 +5,7 @@
 @import "page-vars";
 @import "page-header";
 @import "page-body";
+@import "page-content-tiles";
 
 // Markup
 // <!-- can have .readable or .centered -->
@@ -21,6 +22,7 @@
 	}
 	@include page-header;
 	@include page-body;
+    @include page-content-tiles;
 	//@include page-debug;
 }
 

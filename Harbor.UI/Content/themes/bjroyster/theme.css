@@ -70,7 +70,7 @@ dl {
     width: 11.42em; }
   dl.list-wide dd {
     margin-left: 12.82em; }
-  @media (max-width: 30em) {
+  @media (max-width: 48em) {
     dl.list-wide dt {
       float: none;
       display: block;

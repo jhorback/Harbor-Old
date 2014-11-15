@@ -944,6 +944,7 @@
     <Content Include="Content\site\core\src\_page-header.scss" />
     <Content Include="Content\site\core\src\_page-body.scss" />
     <Content Include="Content\site\core\src\_page-vars.scss" />
+    <Content Include="Content\site\core\src\_page-content-tiles.scss" />
     <None Include="Content\site\core\src\_tiles.scss">
       <Compile>False</Compile>
       <Minify>False</Minify>
