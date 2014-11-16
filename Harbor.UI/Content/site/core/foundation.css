@@ -47,7 +47,7 @@ img {
   -ms-interpolation-mode: bicubic; }
 
 a:active img {
-  zoom: 0.9; }
+  zoom: 0.99; }
 
 button, input, select, textarea {
   font-size: 100%;

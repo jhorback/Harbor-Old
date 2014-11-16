@@ -54,8 +54,8 @@ pageEditor.templateEditorView = (function () {
 			    addTemplate = '<div class="uic-add"><span class="icon-plus"/></div>';
 
 			this.template.attributes.prependContentByDefault ?
-				contentEl.prepend(addTemplate) :
-				contentEl.append(addTemplate);
+				contentEl.find(".row:first").prepend(addTemplate) :
+				contentEl.find(".row:last").append(addTemplate);
 				
 			contentEl.sortable({
 				handle: ".icon-move",
