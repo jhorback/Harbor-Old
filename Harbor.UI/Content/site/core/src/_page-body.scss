@@ -58,6 +58,12 @@
 		.page-aside { display: none; }
 		.page-content { width: 98% }
 	}
+
+    .page-content-edit {
+        .row {
+            outline: 1px dashed #CCC;
+        }   
+    }
 }
 
 @mixin page-aside {

@@ -53,6 +53,7 @@ pageEditor.templateEditorView = (function () {
 			var contentEl = this.$(".page-content"),
 			    addTemplate = '<div class="uic-add"><span class="icon-plus"/></div>';
 
+			contentEl.addClass("page-content-edit");
 			this.template.attributes.prependContentByDefault ?
 				contentEl.find(".row:first").prepend(addTemplate) :
 				contentEl.find(".row:last").append(addTemplate);
@@ -99,11 +100,6 @@ pageEditor.templateEditorView = (function () {
 			component.$el.removeClass("selected");
 		},
 		
-		deleteUIC: function (component) {
-			// jch* test
-			component.$el.fadeOut();
-		},
-		
 		addComponent: function () {
 			this.addPageComponent.render({
 				parentPageTypeKey: this.page.attributes.pageTypeKey
@@ -113,10 +109,16 @@ pageEditor.templateEditorView = (function () {
 		createUIC: function (component) {
 			var type, model = component.componentModel;
 
+			debugger;
 			component.$el.addClass("uic").hide();
 			component.$el.addClass(model.get("classNames").join(" "));
 			$(".page-content").find(".uic-add").before(component.$el);
 			component.$el.fadeIn();
+		},
+
+		deleteUIC: function (component) {
+			// jch* test
+			component.$el.fadeOut();
 		},
 		
 		updateOrder: function (event, ui) {
@@ -125,6 +127,7 @@ pageEditor.templateEditorView = (function () {
 		},
 		
 		onClose: function () {
+			this.$(".page-content").removeClass("page-content-edit");
 			this.$(".uic-add").remove();
 		}
 	};
@@ -150,4 +153,5 @@ pageEditor.view("templateEditorView", [
 	"componentManager",
 	"pageUICMenu",
 	"addPageComponent",
-	pageEditor.templateEditorView]);
+	pageEditor.templateEditorView
+]);

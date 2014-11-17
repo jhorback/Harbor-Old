@@ -87,6 +87,7 @@ namespace Harbor.UI.Models
 		public string key { get; set; }
 		public string id { get; set; }
 		public string[] classNames { get; set; }
+		public bool startsNewRow { get; set; }
 
 		public TemplateUicDto() { }
 
@@ -95,6 +96,7 @@ namespace Harbor.UI.Models
 			key = uic.Key;
 			id = uic.Id;
 			classNames = uic.ClassNames;
+			startsNewRow = uic.StartsNewRow;
 		}
 
 		public static TemplateUicDto FromTemplateUic(TemplateUic uic)

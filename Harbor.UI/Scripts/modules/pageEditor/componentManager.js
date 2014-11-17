@@ -1,5 +1,27 @@
 ﻿
 
+//// create the colleciton with the template.content
+//pageEditor.contentRowsGroupedCollection = {
+//	groupSourceBy: function (model) {
+//		this._rowIndex = this._rowIndex || 0;
+
+//		if (model.get("startsNewRow") === true) {
+//			this._rowindex = this._rowIndex + 1;
+//		}
+
+//		return "grouprow" + this._rowIndex;
+//	}
+//};
+
+//pageEditor.collection("contentRowsGroupedCollection",
+//	pageEditor.contentRowsGroupedCollection
+//);
+
+
+
+
+
+
 pageEditor.componentManager = function ($, _, Backbone, context, console, currentPageRepo) {
 	var componentManager,
 		page = currentPageRepo.getCurrentPage(),

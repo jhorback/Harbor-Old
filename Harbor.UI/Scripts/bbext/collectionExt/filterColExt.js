@@ -1,11 +1,13 @@
 ﻿/*
-Calling setFilter will create a source collection from the current models
-then filter the collection. The source collection is not meant to be interacted with.
-
-Adding/removing models on the source collection will not add/remove them from the filtered collection
-unless re-filtering.
-
-Adding/removing items to the filtered collection will add/remove them on the source.
+ *  Helpers to filter a collection
+ *
+ *     Calling setFilter will create a source collection from the current models
+ *     then filter the collection.
+ *     
+ *     Adding/removing models on the source collection will not add/remove them from the filtered collection 
+ *     unless re-filtering.
+ *
+ *     Adding/removing items to the filtered collection will add/remove them on the source.
 */
 function filterColExt(mixin, collectionFactory) {
 	

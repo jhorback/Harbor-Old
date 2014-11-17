@@ -102,3 +102,6 @@
   display: none; }
 .noaside .page-content {
   width: 98%; }
+
+.page-content-edit .row {
+  outline: 1px dashed #CCC; }
