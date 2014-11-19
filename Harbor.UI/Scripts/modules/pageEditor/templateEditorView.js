@@ -29,7 +29,8 @@ pageEditor.templateEditorView.prototype = {
 		this.listenTo(this.componentManager, "create", this.createUIC, this);
 
 		this.template.content.comparator = this.templateContentSort;
-		this.template.on("change:defaultContentClassName", this.updateAddClass, this);
+		this.listenTo(this.template, "change:defaultContentClassName", this.updateAddClass);
+		this.listenTo(this.template.content, "change:startsNewRow", this.updateContentRows);
 	},
 		
 	events: {
@@ -122,6 +123,15 @@ pageEditor.templateEditorView.prototype = {
 		var index = $("#" + model.attributes.uicid).index();
 		//console.debug("model index", index,  model.attributes);
 		return index;
+	},
+
+	updateContentRows: function () {
+		 // alert("update content rows");
+		/*
+			first test to see if all clear classes are first
+				and see if all rows start with a clear item in them (first row is implied/not required).
+			unwrap all rows then loop through all content and put them in rows
+		*/
 	},
 		
 	onClose: function () {
