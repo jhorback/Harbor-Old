@@ -60,7 +60,11 @@ pageEditor.templateEditorView.prototype = {
 			revert: false,
 			containment: "document",
 			tolerance: "pointer",
-			update: _.bind(this.updateOrder, this)
+			update: _.bind(this.updateOrder, this),
+			start: function (event, ui) {
+				// clear is enforced by .row, remove those while dragging
+				ui.item.closest(".page-content").find(".clear").removeClass("clear");
+			}
 		});
 
 		this.updateAddClass();

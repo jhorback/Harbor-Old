@@ -90,7 +90,7 @@ pageEditor.pageUICMenuView.prototype = {
 	updateClearElement: function () {
 		var row = this.component.view.$el.closest(".row");
 		row.find(".clear").removeClass("clear");
-		row.find(".uic:first-child").addClass("clear"); // also need to update that content!!!!!!!!!
+		row.find(".uic:first-child").addClass("clear"); 
 	},
 
 	saveContentOrder: function () {
