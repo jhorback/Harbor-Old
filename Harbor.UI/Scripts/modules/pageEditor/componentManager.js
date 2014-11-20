@@ -1,4 +1,9 @@
-﻿
+﻿/*
+ * Primarily responsible for creating and registering components
+ *     
+ *
+ * 
+ */
 
 pageEditor.componentManager = function ($, _, Backbone, context, console, currentPageRepo) {
 	var componentManager,

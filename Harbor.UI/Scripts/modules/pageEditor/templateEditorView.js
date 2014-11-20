@@ -6,7 +6,8 @@ pageEditor.templateEditorView = function (
 	componentManager,
 	pageUICMenu,
 	addPageComponent,
-	templateRenderer
+	templateRenderer,
+	contentRowUpdater
 ) {
 	this.fromServer = true;
 	this.page = currentPageRepo.getCurrentPage();
@@ -16,6 +17,7 @@ pageEditor.templateEditorView = function (
 	this.currentPageRepo = currentPageRepo;
 	this.addPageComponent = addPageComponent;
 	this.templateRenderer = templateRenderer;
+	this.contentRowUpdater = contentRowUpdater;
 
 	this.pageUICMenuView = null;
 }
@@ -126,12 +128,7 @@ pageEditor.templateEditorView.prototype = {
 	},
 
 	updateContentRows: function () {
-		 // alert("update content rows");
-		/*
-			first test to see if all clear classes are first
-				and see if all rows start with a clear item in them (first row is implied/not required).
-			unwrap all rows then loop through all content and put them in rows
-		*/
+		this.contentRowUpdater.update(this.$(".page-content"), this.template);
 	},
 		
 	onClose: function () {
@@ -150,5 +147,57 @@ pageEditor.view("templateEditorView", [
 	"pageUICMenu",
 	"addPageComponent",
 	"templateRenderer",
+	"contentRowUpdater",
 	pageEditor.templateEditorView
+]);
+
+
+
+
+
+
+
+
+pageEditor.contentRowUpdater = function () {
+
+		/*
+			first test to see if all clear classes are first
+				and see if all rows start with a clear item in them (first row is implied/not required).
+			unwrap all rows then loop through all content and put them in rows
+		*/
+
+
+	return {
+		update: function (pageContentEl, pageTemplate) {
+			if (needsUpdate(pageContentEl, pageTemplate) === false) {
+				alert("no update needed");
+				return;
+			}
+
+			alert("need update");
+		}
+	};
+
+	
+	function needsUpdate(pageContentEl, pageTemplate) {
+		var clearUics = pageContentEl.find(".uic.clear"),
+		    clearUicsAreFirst = true;
+
+		clearUics.each(function (index, uic) {
+			uic = $(uic);
+			if (uic.is(".uic:first") === false) {
+				console.debug(uic.attr("id"));
+				debugger;
+				clearUicsAreFirst = false;
+				return false;
+			}
+			return true;
+		});
+
+		return clearUicsAreFirst === false;
+	}
+};
+
+pageEditor.service("contentRowUpdater", [
+	pageEditor.contentRowUpdater
 ]);
