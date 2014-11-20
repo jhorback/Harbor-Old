@@ -52,6 +52,10 @@ pageEditor.componentManager = function ($, _, Backbone, context, console, curren
 
 			template.content.off("add", onAddContent);
 		},
+
+		getComponentById: function (uicid) {
+			return components[uicid];
+		}
 	};
 	
 	_.extend(componentManager, Backbone.Events);

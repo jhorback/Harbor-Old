@@ -39,9 +39,7 @@ pageEditor.contentRowUpdater = function (console) {
 				currentRow = $(rowTemplate).appendTo(pageContentEl);
 			}
 			currentRow.append(uic.detach()); 
-		});
-	
-		// need to also move the uic-add guy		
+		});	
 	}
 
 	
