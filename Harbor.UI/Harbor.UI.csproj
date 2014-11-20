@@ -595,6 +595,7 @@
     <Content Include="Scripts\modules\pageAdder\pageTypeCollection.js" />
     <Content Include="Scripts\modules\pageEditor\addPageComponentViewModel.js" />
     <Content Include="Scripts\modules\pageEditor\changeLayoutViewModel.js" />
+    <Content Include="Scripts\modules\pageEditor\contentRowUpdater.js" />
     <Content Include="Scripts\modules\pageEditor\payPalButton\payPalButtonRenderer.js" />
     <Content Include="Scripts\modules\pageModel\components\links\linkSectionLinkCollection.js" />
     <Content Include="Scripts\modules\pageModel\components\links\linksSectionCollection.js" />
