@@ -24,6 +24,7 @@
 				<div class="float-right" data-bind="text: description"></div>
 			</div>
 
+<<<<<<< HEAD
 			<div class="tiles row">
 				<ul class="pages-list">
 					<li class="tile col5" data-event="clickTile" data-collection="pages" data-bind="title: pageTypeName">
@@ -39,6 +40,25 @@
 						</div>
 					</li>
 				</ul>
+=======
+			<div class="clear">
+				<div class="tiles">
+					<ul class="pages-list">
+						<li class="tile col5 hover" data-event="clickTile" data-collection="pages" data-bind="title: pageTypeName">
+							<div class="media">
+								<img data-bind="src:thumbUrl" />
+							</div>
+							<div class="caption">
+								<h3 class="nowrap" title="{{title}}"><a href="{{link}}">{{title}}</a></h3>
+								<p>
+									Modified: {{modified}}<br/>
+									{{publishedMessage}}
+								</p>
+							</div>
+						</li>
+					</ul>
+				</div>
+>>>>>>> b9f89d018db2f0d6532b57358b10c31c55d9d8af
 			</div>
 			
 			<div class="float-right">

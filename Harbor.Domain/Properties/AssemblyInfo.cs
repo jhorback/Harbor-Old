@@ -32,7 +32,11 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
+<<<<<<< HEAD
 [assembly: AssemblyVersion("8.3.6.*")]
+=======
+[assembly: AssemblyVersion("8.3.0.*")]
+>>>>>>> b9f89d018db2f0d6532b57358b10c31c55d9d8af
 
 
 // Setup InternalsVisibleTo
