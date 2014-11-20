@@ -1,6 +1,4 @@
-﻿using Harbor.Domain.Pages.Content;
-using Harbor.Domain.Pipeline;
-using HtmlAgilityPack;
+﻿using Harbor.Domain.Pipeline;
 
 namespace Harbor.Domain.Pages.PipelineHandlers
 {
@@ -9,14 +7,17 @@ namespace Harbor.Domain.Pages.PipelineHandlers
 	/// </summary>
 	public class AutoPreviewUpdateHandler  : IPipelineHanlder<Page>
 	{
-		public AutoPreviewUpdateHandler()
+		private readonly IContentTypeRepository _contentTypeRepository;
+
+		public AutoPreviewUpdateHandler(IContentTypeRepository contentTypeRepository)
 		{
+			_contentTypeRepository = contentTypeRepository;
 		}
 
 		public void Execute(Page page)
 		{
-			var foundFirstImage = false;
-			var foundFirstText = false;
+			var foundFirstImage = !page.AutoPreviewImage; // set to true if no auto preview
+			var foundFirstText = !page.AutoPreviewText;   // set to true if no auto preview
 
 			if (page.AutoPreviewImage || page.AutoPreviewText)
 			{
@@ -27,50 +28,23 @@ namespace Harbor.Domain.Pages.PipelineHandlers
 						break;
 					}
 
-					if (!foundFirstImage && page.AutoPreviewImage)
+					var handler = _contentTypeRepository.GetTemplateContentHandler(content, page);
+					var previewImageID = handler.GetPagePreviewImageID();
+					var previewText = handler.GetPagePreviewText();
+
+					if (!foundFirstImage && page.AutoPreviewImage && previewImageID != null)
 					{
-						if (content.Key.ToLower() == "image")
-						{
-							var image = page.Template.GetContentData<Image>(content.Id);
-							page.PreviewImageID = image.FileID;
-							foundFirstImage = true;
-						}
+						page.PreviewImageID = previewImageID;
+						foundFirstImage = true;
 					}
 
-					if (!foundFirstText && page.AutoPreviewText)
+					if (!foundFirstText && page.AutoPreviewText && string.IsNullOrEmpty(previewText) == false)
 					{
-						if (content.Key.ToLower() == "text")
-						{
-							var text = page.Template.GetContentData<Text>(content.Id);
-							page.PreviewText = extractText(text.Html);
-							foundFirstText = true;
-						}
+						page.PreviewText = previewText;
+						foundFirstText = true;
 					}
 				}
 			}
-		}
-
-		string extractText(string html)
-		{
-			var text = "";
-			if (html == null)
-			{
-				return text;
-			}
-
-			var doc = new HtmlDocument();
-			html = html.Replace("><", "> <"); // add spaces between tags
-			doc.LoadHtml(html);
-
-			text = doc.DocumentNode.InnerText;
-
-
-			if (text.Length > 223)
-			{
-				text = text.Substring(0, 223);
-				text = text + " ...";
-			}
-			return text;
 		}
 	}
 }

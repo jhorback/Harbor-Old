@@ -41,6 +41,7 @@ pageEditor.changeLayoutView.prototype = {
 		this.template.set("defaultContentClassName", classNames);
 		this.currentPageRepo.saveCurrentPage();
 		$("#" + this.componentModel.get("id")).removeClass().addClass(classNames + " uic");
+		this.componentModel.set("startsNewRow", classNames.indexOf("clear") > -1);
 		this.close();
 	},
 

@@ -1,35 +1,38 @@
 ﻿/*
-A grouped collection is a collection of models with the following structure:
-	{
-		name: groupName,
-		models: groupedCollection
-	}
-
-A grouped collection is a standard collection and can even have defined model types.
-
-
-setGroupBy
-	To use the setGroupBy() method, the collection needs to be created with a 'groupSource' option.
-	The 'groupSource' is the ungrouped collection.
-	groupBy can also be passed in on the options during creation or on the prototype of the collection itself.
-
-
-groupSource
-	The groupSource collection can also be interacted with directly to add/remove models.
-	The grouped collection has listeners on the groupSource to keep items grouped as neccessary.
-
-
-Sorting the grouped collections
-    The models are a collection created as the same type of the 'groupSource' so the comparator 
-    will keep the items sorted.
-
-*/
-function groupColExt(mixin, _, collectionFactory) {
+ * collection options
+ *     groupSource - The source collection
+ *     groupBy - A function that is mapped to return the group name.
+ * 
+ * groupBy - can be a property in the prototype of a collection.
+ * 
+ * A grouped collection is a collection of models with the following structure:
+ *  	{
+ *  		name: groupName,
+ *  		models: groupedCollection
+ *  	}
+ *  
+ * A grouped collection is a standard collection and can have defined model types
+ * which can be useful if a more advanced group model is needed.
+ * 
+ *
+ * Methods 
+ *    setGroupBy(groupBy)
+ *        Use to set the group by after the creation of the collection.
+ *    setGroupSort(sort) 
+ *        Passes the sort function down to the group source.
+ *        Using the comparator when sorting is known up front. 
+ *  
+ */
+bbext.groupColExt = function (mixin, _, collectionFactory) {
 	
 	var groupColExt = {
 		afterInit: function (models, options) {
 			if (options && options.groupSource) {
 				setGroupSource.call(this, options);
+			}
+
+			if (options && (options.groupBy || this.groupSourceBy)) {
+				this.setGroupBy(options.groupBy || this.groupSourceBy);
 			}
 		},
 
@@ -100,4 +103,4 @@ function groupColExt(mixin, _, collectionFactory) {
 };
 
 
-bbext.config(["mixin", "_", "collectionFactory", groupColExt]);
+bbext.config(["mixin", "_", "collectionFactory", bbext.groupColExt]);

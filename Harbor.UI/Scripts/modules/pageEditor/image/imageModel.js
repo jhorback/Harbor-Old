@@ -17,8 +17,8 @@ pageEditor.imageModel.prototype = {
 		ext: null,
 		name: null,
 		//
-		fileExists: true,
-		fileDoesNotExist: false
+		fileExists: false,
+		fileDoesNotExist: true
 	},
 
 	imgSrc: {

@@ -37,7 +37,7 @@ namespace Harbor.Domain.Pages.ContentTypes.Handlers
 				}
 			}
 
-			image.Res = GetProperty("res") ?? "low";
+			image.Res = GetProperty("res") ?? "high";
 			//image.Name = GetProperty("Name");
 			//image.Ext = GetProperty("ext");
 
@@ -60,6 +60,12 @@ namespace Harbor.Domain.Pages.ContentTypes.Handlers
 		{
 			yield return UICPropertyName("fileID");
 			yield return UICPropertyName("res");
+		}
+
+		public override Guid? GetPagePreviewImageID()
+		{
+			var image = GetContent<Content.Image>();
+			return image.FileExists ? image.FileID : null;
 		}
 	}
 }

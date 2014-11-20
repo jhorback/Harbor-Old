@@ -9,11 +9,9 @@
 	var layoutClassNames = "page";
 	if (Model.Layout.DisplayProperties.HasFlag(PageLayout.LayoutDisplayProperties.ContentCentered))
 	{
-		layoutClassNames = " page centered";
+		layoutClassNames = "page centered";
 	}
-    if (noAside) {
-        layoutClassNames += " noaside";
-    }
+	layoutClassNames += noAside ? " noaside" : " hasaside";
 }
 @section head {
 	<meta name="description" content="@Model.PreviewText" />
@@ -53,12 +51,18 @@
 			}
 		</aside>
 		<div class="page-content">
-			@foreach (var item in Model.Template.Content)
-			{
-				<div class="uic @String.Join(" ", item.ClassNames)" id="@item.Id" data-type="@item.Key">
-					@Html.PageComponent(Model.PageID, item.Key, item.Id)
-				</div>
-			}
+			<div class="row">
+				@foreach (var item in Model.Template.Content)
+				{
+					 if (item.StartsNewRow)
+					 {
+						 @Html.Raw("</div><div class=\"row\">") 
+					 }
+					<div class="uic @String.Join(" ", item.ClassNames)" id="@item.Id" data-type="@item.Key">
+						@Html.PageComponent(Model.PageID, item.Key, item.Id)
+					</div>
+				}
+			</div>
 		</div>
 	</div>
 </div>

@@ -38,10 +38,10 @@ table {
   @media (min-width: 100em) {
     .datatable th, .datatable td {
       padding: 0.8em; } }
-  @media (max-width: 48em) {
+  @media (max-width: 64em) {
     .datatable th, .datatable td {
       padding: 0.3em; } }
-  @media (max-width: 30em) {
+  @media (max-width: 48em) {
     .datatable th, .datatable td {
       padding: 0.1em; } }
 

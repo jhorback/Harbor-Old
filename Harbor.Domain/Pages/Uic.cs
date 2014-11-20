@@ -1,4 +1,6 @@
 ﻿
+using System.Linq;
+
 namespace Harbor.Domain.Pages
 {
 	public class Uic
@@ -17,5 +19,13 @@ namespace Harbor.Domain.Pages
 	public class TemplateUic : Uic
 	{
 		public string[] ClassNames { get; set; }
+
+		public bool StartsNewRow
+		{
+			get
+			{
+				return ClassNames.Contains("clear");
+			}
+		}
 	}
 }

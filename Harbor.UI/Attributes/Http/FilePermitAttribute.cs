@@ -33,12 +33,14 @@ namespace Harbor.UI.Http
 			var values = actionContext.Request.GetRouteData().Values;
 			if (values == null)
 			{
-				throw new HttpResponseException(HttpStatusCode.NotFound);
+				actionContext.Response = actionContext.Request.CreateNotFoundResponse();
+				return;
 			}
 
 			if (!values.ContainsKey("id"))
 			{
-				throw new HttpResponseException(HttpStatusCode.NotFound);
+				actionContext.Response = actionContext.Request.CreateNotFoundResponse();
+				return;
 			}
 
 			var userName = HttpContext.Current.User.Identity.Name;
@@ -46,7 +48,8 @@ namespace Harbor.UI.Http
 			var file = FileRepository.FindById(fileID);
 			if (file == null)
 			{
-				throw new HttpResponseException(HttpStatusCode.NotFound);
+				actionContext.Response = actionContext.Request.CreateNotFoundResponse();
+				return;
 			}
 
 			if (file.HasPermission(userName, this.permissions) == false)

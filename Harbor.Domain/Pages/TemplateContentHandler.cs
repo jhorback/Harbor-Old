@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using Harbor.Domain.Pages.Content;
 
 namespace Harbor.Domain.Pages
 {
@@ -41,6 +43,23 @@ namespace Harbor.Domain.Pages
 		public abstract object GetTemplateContent();
 		public abstract IEnumerable<PageResource> DeclareResources();
 		public abstract IEnumerable<string> DeclarePropertyNames();
+
+		public virtual string GetPagePreviewText()
+		{
+			return null;
+		}
+
+		public virtual Guid? GetPagePreviewImageID()
+		{
+			return null;
+		}
+
+		public virtual int? GetPagePreviewPageID()
+		{
+			return null;
+		}
+
+
 
 		/// <summary>
 		/// When implemented allows template content to perform operations when the page is being deleted.

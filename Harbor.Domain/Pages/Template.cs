@@ -1,6 +1,6 @@
-using System;
 using System.Collections.Generic;
 using System.Web.Script.Serialization;
+using Harbor.Domain.Pages.Content;
 
 namespace Harbor.Domain.Pages
 {
@@ -47,6 +47,11 @@ namespace Harbor.Domain.Pages
 			public const string Col3_2 = "col3-2";
 			public const string Clear = "clear";
 			public const string Tile = "col5";
+
+			public const string Text_Left = "text-left";
+			public const string Text_Center = "text-center";
+			public const string Text_Right = "text-right";
+			public const string Text_Justify = "text-justify";
 		}
 		#endregion
 
@@ -133,7 +138,7 @@ namespace Harbor.Domain.Pages
 
 		public readonly IDictionary<string, object> contentData = new Dictionary<string, object>();
 
-		public void SetContentData<T>(string uicid, T data)
+		public void SetContentData(string uicid, object data)
 		{
 			if (contentData.ContainsKey(uicid))
 			{

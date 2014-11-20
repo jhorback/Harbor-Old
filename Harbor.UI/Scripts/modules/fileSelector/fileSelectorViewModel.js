@@ -11,6 +11,9 @@ var fileSelectorViewModel = {
 		resultsMessage: ""
 	},
 	
+	// From Harbor.Domain.Files.File.cs
+	BitmapExtensions: [".bmp", ".gif", ".exif", ".jpg", ".png", ".tiff" ],
+
 	resultsMessage: {
 		get: function () {
 			var str = "";
@@ -28,6 +31,10 @@ var fileSelectorViewModel = {
 			return str ? "<hr><div class='text-center'>" + str + "</div><hr>" : "";
 		},
 		bind: ["resultsCount"]
+	},
+
+	isBitmap: function (ext) {
+		return _.contains(this.BitmapExtensions, "." + ext);
 	}
 };
 

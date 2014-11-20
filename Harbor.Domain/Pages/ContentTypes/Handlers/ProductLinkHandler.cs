@@ -46,5 +46,17 @@ namespace Harbor.Domain.Pages.ContentTypes.Handlers
 			yield return UICPropertyName("tileDisplay");
 			yield return UICPropertyName("pageID");
 		}
+
+		public override System.Guid? GetPagePreviewImageID()
+		{
+			var link = GetContent<Content.ProductLink>();
+			return link.PreviewImageID;
+		}
+
+		public override string GetPagePreviewText()
+		{
+			var link = GetContent<Content.PageLink>();
+			return link.PreviewText;
+		}
 	}
 }

@@ -8,58 +8,102 @@ $col-gutter-width: 1%;
 
 @mixin cols {
 	@include rows;
+    @include row-tiles;
 
-	.col, .col1, .col2, .col3, .col4, .col5 {
-		width: 99%;
-		margin-left: $col-gutter-width;
-	}
-
-	@media (min-width: 64em) {
+	@include ondesktop {
 		.col,
 		.col1 { @include col-span(1); }
 		.col2 { @include col-span(2); }
 		.col3 { @include col-span(3); }
 		.col3-2 { @include col-span(3, 2); }
 		.col4 { @include col-span(4); }
-		//.col5-4 { @include col-span(5, 4); }
-		.col5 { @include col-span(5); }	
-	}
+		.col5 { @include col-span(5); }
+
+        .hasaside {
+		    .col5 { @include col-span(4); }
+        }
+    }
 	
-	@media screen and (min-width: 48em) and (max-width: 64em) {
-//		.col,
-//		.col1 { @include col-span(1); }
+	
+	@include ontablet {
 		.col2 { @include col-span(2); }
 		.col3,
 		.col3-2,
 		.col4,
-		//.col5-4 { @include col-span(3, 2); }
 		.col5 { @include col-span(3); }
+
+        .hasaside {
+            .col3,
+		    .col3-2,
+		    .col4,
+		    .col5 { @include col-span(2); }
+        }
 	}
 
-	@media screen and (min-width: 30em) and (max-width: 48em) {
-		//		.col,
-		//		.col1 { @include col-span(1); }
-		.col2,
-		.col3,
-		.col3-2,
-		.col4,
-		//.col5-4,
-		.col5 { @include col-span(2); }
-	}
+	@include onphone {
 
-	@include onphone { // 30em 
-		.col,
-		.col1,
-		.col2,
-		.col3,
-		.col3-2,
-		.col4,
-		//.col5-4,
-		.col5 { @include col-span(1); }
+        *, .hasaside {
+            .col,
+		    .col1,
+		    .col2,
+		    .col3,
+		    .col3-2,
+		    .col4,
+		    .col5 { @include col-span(1); }
+        }
 	}
 }
 
+
+
+
+@mixin row-tiles {
+
+    @include ondesktop {
+
+        .row {
+            .col5:nth-of-type(5n+1) { clear:left; }
+        }
+
+        .hasaside {
+            .row {
+                .col5:nth-of-type(5n+1) { clear: none; }
+                .col5:nth-of-type(4n+1) { clear: left; }
+            }
+        }
+    }
+
+
+    @include ontablet {
+        .row {
+            .col5:nth-of-type(3n+1) { clear:left; }
+        }
+
+        .hasaside {
+            .row {
+                .col5:nth-of-type(3n+1) { clear:none; }
+                .col5:nth-of-type(2n+1) { clear:left; }
+            }
+        }
+    }
+
+
+    @include onphone {
+        .hasaside {
+             .row {
+                .col5:nth-of-type(1n+1) { clear:left; }
+            }
+        }
+    }
+}
+
+
+
+
+
+
 @mixin rows {
+    /* the row classes are not really used - think about removing them */
 	.row, .row-small, .row-medium, .row-large {
 		@include clearfix;
 		clear: both;		

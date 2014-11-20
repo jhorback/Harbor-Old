@@ -352,7 +352,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Readme\Elmah.txt" />
-    <Content Include="Content\dropzone.css" />
     <Content Include="Content\images\layoutcols\full.png" />
     <Content Include="Content\images\layoutcols\half.png" />
     <Content Include="Content\images\layoutcols\layoutcols.png" />
@@ -365,8 +364,6 @@
       <CompileStyle>Nested</CompileStyle>
       <DebugInfo>False</DebugInfo>
     </None>
-    <Content Include="Content\images\spritemap%402x.png" />
-    <Content Include="Content\images\spritemap.png" />
     <Content Include="Content\images\thumbs\audio.png" />
     <Content Include="Content\images\thumbs\doc.png" />
     <Content Include="Content\images\thumbs\file.png" />
@@ -569,6 +566,14 @@
     <Content Include="Scripts\bbext\timer.js" />
     <Content Include="Scripts\bbext\commandHandler.js" />
     <Content Include="Scripts\bbext\_dependent\router.js" />
+    <Content Include="Scripts\dropzone\css\basic.css" />
+    <Content Include="Scripts\dropzone\css\dropzone.css" />
+    <Content Include="Scripts\dropzone\dropzone-amd-module.js" />
+    <Content Include="Scripts\dropzone\dropzone-amd-module.min.js" />
+    <Content Include="Scripts\dropzone\dropzone.js" />
+    <Content Include="Scripts\dropzone\dropzone.min.js" />
+    <Content Include="Scripts\dropzone\images\spritemap%402x.png" />
+    <Content Include="Scripts\dropzone\images\spritemap.png" />
     <Content Include="Scripts\modules\bbextui\menuListFactory.js" />
     <Content Include="Scripts\modules\bbextui\pagerModel.js" />
     <Content Include="Scripts\modules\bbextui\pagerView.js" />
@@ -590,6 +595,7 @@
     <Content Include="Scripts\modules\pageAdder\pageTypeCollection.js" />
     <Content Include="Scripts\modules\pageEditor\addPageComponentViewModel.js" />
     <Content Include="Scripts\modules\pageEditor\changeLayoutViewModel.js" />
+    <Content Include="Scripts\modules\pageEditor\contentRowUpdater.js" />
     <Content Include="Scripts\modules\pageEditor\payPalButton\payPalButtonRenderer.js" />
     <Content Include="Scripts\modules\pageModel\components\links\linkSectionLinkCollection.js" />
     <Content Include="Scripts\modules\pageModel\components\links\linksSectionCollection.js" />
@@ -729,7 +735,6 @@
     <Content Include="Scripts\bbext\_dependent\view.js" />
     <Content Include="Scripts\bbext\mixin.js" />
     <Content Include="Scripts\bbext\viewExt\viewRenderer.js" />
-    <Content Include="Scripts\dropzone.js" />
     <Content Include="Scripts\holder.js" />
     <Content Include="Scripts\holder.min.js" />
     <Content Include="Scripts\jquery-1.9.1-vsdoc.js" />
@@ -820,6 +825,10 @@
     <Content Include="Views\PageSettings\PageSettingsView.cshtml" />
     <Content Include="Views\PageSelector\PageSelectorView.cshtml" />
     <Content Include="Views\User\PageTypeAdmin.cshtml" />
+    <Content Include="Views\FileSelector\FileSelectorView.cshtml" />
+    <Content Include="Views\FileAdmin\FileAdminComponentView.cshtml" />
+    <Content Include="Scripts\dropzone\css\stylus\dropzone.styl" />
+    <Content Include="Scripts\dropzone\css\stylus\basic.styl" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\users\" />

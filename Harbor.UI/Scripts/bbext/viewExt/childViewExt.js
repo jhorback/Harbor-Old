@@ -5,9 +5,11 @@ removeAllViews or does binding handle removing all views?
 need a way for the collection renderer to know how to find it's view
 // could be tracked by the collection renderer
 
-testing
+testing...
+
+Also adds the model and collection factories and methods
 */
-function childViewExt(_, mixin) {
+function childViewExt(mixin, modelFactory, collectionFactory) {
 	
 	function ChildViewContainer(view) {
 		this.view = view;
@@ -44,11 +46,22 @@ function childViewExt(_, mixin) {
 	mixin("view").register("childViewExt", {
 		
 		beforeInit: function () {
+			this.modelFactory = modelFactory;
+			this.collectionFactory = collectionFactory;
 			this.views = new ChildViewContainer(this);
 			this.on("close", _.bind(this.views.remove, this.views));
-		}
+		},
+
+		createModel: modelFactory.create,
+
+		createCollection: collectionFactory.create
 	});
 }
 
 
-bbext.config(["_", "mixin", childViewExt]);
+bbext.config([
+	"mixin",
+	"modelFactory",
+	"collectionFactory",
+	childViewExt
+]);

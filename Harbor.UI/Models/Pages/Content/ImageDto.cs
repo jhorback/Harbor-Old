@@ -12,7 +12,7 @@ namespace Harbor.UI.Models.Content
 		public string fileID { get; set; }
 		public string name { get; set; }
 		public string ext { get; set; }
-		
+		public bool fileExists { get; set; }
 
 		public ImageDto()
 		{
@@ -27,6 +27,7 @@ namespace Harbor.UI.Models.Content
 			imgSrc = FileUrls.GetUrl(fileID, image.Name, image.Ext, fileRes);
 			name = image.Name;
 			ext = image.Ext;
+			fileExists = image.FileExists;
 		}
 
 		public static ImageDto FromImage(Image image)

@@ -1,0 +1,52 @@
+﻿<div class="page centered" data-templatefor="fileSelectorView">
+	<div class="page-header">
+		<h1 class="float-left" data-bind="text: title">Files</h1>
+	</div>
+	<div class="page-body"> 
+		<div class="page-content">
+			<form data-event="submit: formSubmit">
+				<div>
+					<div class="form-inline float-left">
+						<input name="search" type="text" placeholder="search" size="50" autofocus />
+						<input type="submit" value="Search" />
+						<button type="button" data-event="close">Cancel</button>
+					</div>
+					<div class="float-right">
+						<button type="button" class="loud" data-event="clickUpload">Upload</button>
+					</div>
+				</div>
+				<div class="clear float-right pad-top" data-model="pagerModel">
+					<div data-bind="text:description"></div>
+				</div>
+				<div class="clear" id="fileselectorview-upload"></div>
+				<div class="tiles clear">
+					<ul>
+		               
+						<!-- model.files -->
+						<li data-bind="fileId: id" 
+						    class="tile col5 hover" tabindex="0"
+						    data-collection="files"
+						    data-event="click: selectThisAndClose, keypress: selectThisAndCloseOnEnter">
+							<div class="media">
+								<img data-bind="src:thumbUrl" />
+							</div>
+							<div class="caption">
+								<h3>{{name}}</h3>
+								<small>{{uploaded}}</small>
+							</div>
+						</li>
+						<!-- -->
+
+					</ul>
+				</div>
+                
+				<div data-bind="text: resultsMessage" class="margin"></div>
+				
+
+				<div class="float-right">
+					@Html.Partial("~/Views/AppUI/_pagerView.cshtml")
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

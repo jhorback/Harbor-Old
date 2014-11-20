@@ -27,25 +27,25 @@ $mq-widescreen			: 100em; // 1600px
 	}
 }
 
-@mixin onphone {
-	@media (max-width : $mq-mobile-landscape) {
-		@content;
-	}
-}
-
-@mixin ontablet {
+@mixin onphone { // max 48
 	@media (max-width : $mq-tablet-portrait) {
 		@content;
 	}
 }
 
-@mixin ondesktop {
-	@media (max-width : $mq-widescreen) {
+@mixin ontablet { // min 48
+	@media (max-width : $mq-tablet-landscape) {
 		@content;
 	}
 }
 
-@mixin onwidescreen {
+@mixin ondesktop { // min 64
+	@media (min-width : $mq-tablet-landscape) {
+		@content;
+	}
+}
+
+@mixin onwidescreen { // min 100
 	@media (min-width : $mq-widescreen) {
 		@content;
 	}

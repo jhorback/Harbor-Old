@@ -23,7 +23,7 @@ bbext.factoryInjectionModelExt = function (
 		createCollection: collectionFactory.create
 	};
 
-	mixin("model").register("bbext.associationsModelExt", factoryInjectionModelExt);
+	mixin("model").register("bbext.factoryInjectionModelExt", factoryInjectionModelExt);
 };
 
 

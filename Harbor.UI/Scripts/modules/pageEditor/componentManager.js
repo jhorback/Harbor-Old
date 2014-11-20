@@ -1,4 +1,9 @@
-﻿
+﻿/*
+ * Primarily responsible for creating and registering components
+ *     
+ *
+ * 
+ */
 
 pageEditor.componentManager = function ($, _, Backbone, context, console, currentPageRepo) {
 	var componentManager,
@@ -59,6 +64,7 @@ pageEditor.componentManager = function ($, _, Backbone, context, console, curren
 			currentComponent.close();
 			componentManager.trigger("close", currentComponent);
 			console.log("componentManager.closed - uicid:", currentComponent.uicid);
+			currentComponent = null;
 		}
 	}
 

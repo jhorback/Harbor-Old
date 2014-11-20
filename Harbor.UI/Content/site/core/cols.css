@@ -1,3 +1,4 @@
+/* the row classes are not really used - think about removing them */
 .row, .row-small, .row-medium, .row-large {
   clear: both; }
   .row:after, .row-small:after, .row-medium:after, .row-large:after {
@@ -28,9 +29,25 @@
   height: 25em;
   overflow: auto; }
 
-.col, .col1, .col2, .col3, .col4, .col5 {
-  width: 99%;
-  margin-left: 1%; }
+@media (min-width: 64em) {
+  .row .col5:nth-of-type(5n+1) {
+    clear: left; }
+  .hasaside .row .col5:nth-of-type(5n+1) {
+    clear: none; }
+  .hasaside .row .col5:nth-of-type(4n+1) {
+    clear: left; } }
+
+@media (max-width: 64em) {
+  .row .col5:nth-of-type(3n+1) {
+    clear: left; }
+  .hasaside .row .col5:nth-of-type(3n+1) {
+    clear: none; }
+  .hasaside .row .col5:nth-of-type(2n+1) {
+    clear: left; } }
+
+@media (max-width: 48em) {
+  .hasaside .row .col5:nth-of-type(1n+1) {
+    clear: left; } }
 
 @media (min-width: 64em) {
   .col, .col1 {
@@ -62,9 +79,14 @@
     float: left;
     width: 18%;
     *width: 17%;
+    margin-left: 2%; }
+  .hasaside .col5 {
+    float: left;
+    width: 23%;
+    *width: 21.75%;
     margin-left: 2%; } }
 
-@media screen and (min-width: 48em) and (max-width: 64em) {
+@media (max-width: 64em) {
   .col2 {
     float: left;
     width: 48%;
@@ -74,17 +96,15 @@
     float: left;
     width: 31.33333%;
     *width: 29.66667%;
-    margin-left: 2%; } }
-
-@media screen and (min-width: 30em) and (max-width: 48em) {
-  .col2, .col3, .col3-2, .col4, .col5 {
+    margin-left: 2%; }
+  .hasaside .col3, .hasaside .col3-2, .hasaside .col4, .hasaside .col5 {
     float: left;
     width: 48%;
     *width: 45.5%;
     margin-left: 2%; } }
 
-@media (max-width: 30em) {
-  .col, .col1, .col2, .col3, .col3-2, .col4, .col5 {
+@media (max-width: 48em) {
+  * .col, * .col1, * .col2, * .col3, * .col3-2, * .col4, * .col5, .hasaside .col, .hasaside .col1, .hasaside .col2, .hasaside .col3, .hasaside .col3-2, .hasaside .col4, .hasaside .col5 {
     float: left;
     width: 98%;
     *width: 93%;

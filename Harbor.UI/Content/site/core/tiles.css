@@ -10,7 +10,7 @@
 
 .tile {
   display: block;
-  overflow: hidden;
+  word-wrap: break-word;
   border: 1px solid transparent;
   margin-bottom: 1em;
   -moz-transition: all 0.2s ease-in-out;
@@ -25,14 +25,12 @@
     padding: 2px;
     max-width: 100%;
     margin-left: auto;
-    margin-right: auto;
-    height: 10em; }
+    margin-right: auto; }
     .tile .media img {
       max-height: 10em; }
   .tile .caption {
     padding: 0.3em;
-    color: #777;
-    height: 7em; }
+    color: #777; }
   .tile h2, .tile h3 {
     font-size: 1.4em;
     margin: 0.1em 0; }
@@ -75,12 +73,12 @@
     max-height: 15em; }
   .tile-wide.row3 .media {
     line-height: 15em; }
-  @media (max-width: 48em) {
+  @media (max-width: 64em) {
     .tile-wide .media {
       width: 40%; }
     .tile-wide .caption {
       width: 58%; } }
-  @media (max-width: 30em) {
+  @media (max-width: 48em) {
     .tile-wide {
       padding: 0.3em; }
       .tile-wide .media {

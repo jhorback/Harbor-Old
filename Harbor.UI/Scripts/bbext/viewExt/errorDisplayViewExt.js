@@ -62,7 +62,13 @@ function errorDisplayViewExt(_, console) {
 		},
 
 		clearErrors: function (model) {
-			var attrs = _.reduce(model.attributes, function (memo, value, key) {
+			var attrs;
+
+			if (!model) {
+				return;
+			}
+
+			attrs = _.reduce(model.attributes, function (memo, value, key) {
 				memo[key] = [];
 				return memo;
 			}, {"":[]});

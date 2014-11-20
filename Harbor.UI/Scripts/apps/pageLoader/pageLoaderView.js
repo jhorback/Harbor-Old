@@ -9,8 +9,17 @@ function pageLoaderView(options, modelFactory, pageEditor, pageSettings) {
 
 pageLoaderView.prototype = {
 	initialize: function () {
-		this.bindAll("onSettingsClose");
+		this.bindAll("onEditPage", "onSettingsClose");
 		this.model = this.modelFactory.create("pageLoaderModel");
+	},
+
+	onRender: function () {
+		// enable going into edit mode when clicking a nocontent div
+		$(".page-nocontent").on("click", this.onEditPage);
+	},
+
+	onClose: function () {
+		$(".page-nocontent").unbind("click", this.onEditPage);
 	},
 
 	showSettings: function (event) {
@@ -30,9 +39,13 @@ pageLoaderView.prototype = {
 		}
 	},
 
-	editPage: function (event) {
+	onEditPage: function () {
 		this.model.set("editingPage", true);
 		this.pageEditor.render();
+	},
+
+	editPage: function (event) {
+		this.onEditPage();
 	},
 
 	doneEditing: function (event) {

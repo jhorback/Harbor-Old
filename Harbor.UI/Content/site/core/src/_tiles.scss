@@ -28,7 +28,7 @@ $tile-caption-color: #777;
 @mixin tile {
 	.tile {
 		display: block;
-		overflow: hidden;
+        word-wrap:break-word;
 		border: 1px solid transparent;
 		margin-bottom: 1em;
 		//border-color: #DDD;
@@ -48,7 +48,7 @@ $tile-caption-color: #777;
 			margin-left: auto;
 			margin-right: auto;
 
-			height: 10em;
+			//height: 10em;
 			img { max-height: 10em;	}
 		}
 
@@ -56,7 +56,7 @@ $tile-caption-color: #777;
 			padding: .3em;
 			color: $tile-caption-color;
 			
-			height: 7em;
+			//height: 7em;
 		}
 
 		h2, h3 {

@@ -70,7 +70,7 @@ dl {
     width: 11.42em; }
   dl.list-wide dd {
     margin-left: 12.82em; }
-  @media (max-width: 30em) {
+  @media (max-width: 48em) {
     dl.list-wide dt {
       float: none;
       display: block;
@@ -144,6 +144,8 @@ legend {
     color: #FFF; }
     .page-header h1 a {
       color: #FFF; }
+  .page-header [contenteditable]:hover, .page-header [contenteditable]:focus {
+    background: #e6e6e6; }
 
 .page-nav a {
   color: #FFF; }
