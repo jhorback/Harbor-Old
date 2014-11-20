@@ -158,27 +158,41 @@ pageEditor.view("templateEditorView", [
 
 
 
-pageEditor.contentRowUpdater = function () {
-
-		/*
-			first test to see if all clear classes are first
-				and see if all rows start with a clear item in them (first row is implied/not required).
-			unwrap all rows then loop through all content and put them in rows
-		*/
-
+pageEditor.contentRowUpdater = function (console) {
 
 	return {
 		update: function (pageContentEl, pageTemplate) {
-			if (needsUpdate(pageContentEl, pageTemplate) === false) {
-				return;
+			if (needsUpdate(pageContentEl)) {
+				reWrapRows(pageContentEl);
 			}
-		
-			alert("need update");
 		}
 	};
 
+
+	function reWrapRows(pageContentEl) {
+		var rowTemplate = '<div class="row"/>',
+			uics = pageContentEl.find(".uic"),
+			currentRow;
+
+		console.info("REWRAP ROWS");
+		
+		//	unwrap all rows then loop through all content and put them in rows
+		uics.unwrap();
+		
+		currentRow = $(rowTemplate).appendTo(pageContentEl);
+		$.each(uics, function (index, uic) {
+			uic = $(uic);
+			if (index !== 0 && uic.hasClass("clear") === true) {
+				currentRow = $(rowTemplate).appendTo(pageContentEl);
+			}
+			currentRow.append(uic.detach()); 
+		});
 	
-	function needsUpdate(pageContentEl, pageTemplate) {
+		// need to also move the uic-add guy		
+	}
+
+	
+	function needsUpdate(pageContentEl) {
 		var clearUics, rows,
 		    allClearUicsAreFirst = true,
 		    allRowsStartWithAClear = true;
@@ -188,7 +202,7 @@ pageEditor.contentRowUpdater = function () {
 		clearUics.each(function (index, uic) {
 			uic = $(uic);
 			if (uic.index() !== 0) {
-				console.debug(uic.attr("id"));
+				console.info("CONTENT ROWS NEED UPDATE: Clear UIC is not first. UICID: ", uic.attr("id"));
 				allClearUicsAreFirst = false;
 				return false;
 			}
@@ -204,8 +218,8 @@ pageEditor.contentRowUpdater = function () {
 		rows.each(function (index, row) {
 			row = $(row);
 			if (index > -1 && row.find(".uic:first-child").hasClass("clear") === false) {
+				console.info("CONTENT ROWS NEED UPDATE: Row does not have a clear first-child. Row Index: ", index);
 				allRowsStartWithAClear = false;
-				alert("all rows dont start with clear");
 				return false;
 			}
 			return true;
@@ -215,6 +229,8 @@ pageEditor.contentRowUpdater = function () {
 	}
 };
 
+
 pageEditor.service("contentRowUpdater", [
+	"console",
 	pageEditor.contentRowUpdater
 ]);
