@@ -52,12 +52,13 @@
 		</aside>
 		<div class="page-content">
 			<div class="row">
-				@foreach (var item in Model.Template.Content)
+				@for (int index = 0; index < Model.Template.Content.Count; index++)
 				{
-					 if (item.StartsNewRow)
-					 {
-						 @Html.Raw("</div><div class=\"row\">") 
-					 }
+					var item = Model.Template.Content[index];
+					if (item.StartsNewRow && index != 0)
+					{
+						@Html.Raw("</div><div class=\"row\">")
+					}
 					<div class="uic @String.Join(" ", item.ClassNames)" id="@item.Id" data-type="@item.Key">
 						@Html.PageComponent(Model.PageID, item.Key, item.Id)
 					</div>

@@ -66,8 +66,8 @@ pageEditor.templateEditorView.prototype = {
 				ui.item.closest(".page-content").find(".clear").removeClass("clear").addClass("was-clear-on-drag");
 			},
 
-			stop: function (event, ui) {
-				ui.item.closest(".page-content").find(".was-clear-on-drag").removeClass("was-clear-on-drag").addClass("claer");
+			beforeStop: function (event, ui) {
+				ui.item.closest(".page-content").find(".was-clear-on-drag").removeClass("was-clear-on-drag").addClass("clear");
 			}
 		});
 
@@ -130,6 +130,7 @@ pageEditor.templateEditorView.prototype = {
 	},
 
 	templateContentSort: function (model) {
+		// jch! - here - need to account for the row in the sort index here!
 		var index = $("#" + model.attributes.uicid).index();
 		//console.debug("model index", index,  model.attributes);
 		return index;

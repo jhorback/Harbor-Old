@@ -39,7 +39,8 @@ pageEditor.contentRowUpdater = function (componentManager, console) {
 			firstUic,
 			firstUicClassNames;
 
-		if (clearUicEl.attr("id") === firstUicEl.attr("id")) {
+
+		if (clearUicEl.attr("id") === firstUicEl.attr("id") && clearUicEl.length < 2) {
 			return;
 		}
 
@@ -69,7 +70,6 @@ pageEditor.contentRowUpdater = function (componentManager, console) {
 		
 		//	unwrap all rows then loop through all content and put them in rows
 		uics.unwrap();
-		pageContentEl.find(".row").remove();
 		
 		currentRow = $(rowTemplate).appendTo(pageContentEl);
 		$.each(uics, function (index, uic) {
