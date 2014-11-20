@@ -48,13 +48,12 @@ pageEditor.templateEditorView.prototype = {
 
 	render: function () {
 		var contentEl = this.$(".page-content"),
-		    addTemplate = '<div class="uic-add"><span class="icon-plus"/></div>';
-
+			addTemplate = '<div class="uic-add"><span class="icon-plus"/>';
+					   
 		contentEl.addClass("page-content-edit");
-		this.template.attributes.prependContentByDefault ?
-			contentEl.find(".row:first").prepend(addTemplate) :
-			contentEl.find(".row:last").append(addTemplate);
-				
+		contentEl.append(addTemplate);
+		this.contentRowUpdater.positionUicAddButton(contentEl, this.template);
+
 		contentEl.sortable({
 			handle: ".icon-move",
 			items: ".uic",
@@ -159,19 +158,27 @@ pageEditor.view("templateEditorView", [
 
 
 pageEditor.contentRowUpdater = function (console) {
-
+	var rowTemplate = '<div class="row"/>';
+	
 	return {
 		update: function (pageContentEl, pageTemplate) {
 			if (needsUpdate(pageContentEl)) {
 				reWrapRows(pageContentEl);
+				this.positionUicAddButton(pageContentEl, pageTemplate);
 			}
+		},
+
+		positionUicAddButton: function (pageContentEl, pageTemplate) {
+			var uicAddButton = pageContentEl.find(".uic-add");
+			pageTemplate.attributes.prependContentByDefault ?
+				pageContentEl.find(".row:first").prepend(uicAddButton.detach()) :
+				pageContentEl.find(".row:last").append(uicAddButton.detach());
 		}
 	};
 
 
 	function reWrapRows(pageContentEl) {
-		var rowTemplate = '<div class="row"/>',
-			uics = pageContentEl.find(".uic"),
+		var uics = pageContentEl.find(".uic"),
 			currentRow;
 
 		console.info("REWRAP ROWS");
