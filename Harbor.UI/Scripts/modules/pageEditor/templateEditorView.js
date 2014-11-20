@@ -130,9 +130,8 @@ pageEditor.templateEditorView.prototype = {
 	},
 
 	templateContentSort: function (model) {
-		// jch! - here - need to account for the row in the sort index here!
-		var index = $("#" + model.attributes.uicid).index();
-		//console.debug("model index", index,  model.attributes);
+		var uic = $("#" + model.attributes.uicid),
+			index = uic.closest(".row").index() + "." + uic.index();
 		return index;
 	},
 
