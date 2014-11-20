@@ -63,7 +63,11 @@ pageEditor.templateEditorView.prototype = {
 			update: _.bind(this.updateOrder, this),
 			start: function (event, ui) {
 				// clear is enforced by .row, remove those while dragging
-				ui.item.closest(".page-content").find(".clear").removeClass("clear");
+				ui.item.closest(".page-content").find(".clear").removeClass("clear").addClass("was-clear-on-drag");
+			},
+
+			stop: function (event, ui) {
+				ui.item.closest(".page-content").find(".was-clear-on-drag").removeClass("was-clear-on-drag").addClass("claer");
 			}
 		});
 
@@ -120,6 +124,7 @@ pageEditor.templateEditorView.prototype = {
 	},
 		
 	updateOrder: function (event, ui) {
+		this.contentRowUpdater.correctClearElements(this.$(".page-content"));
 		this.template.content.sort();
 		this.currentPageRepo.saveCurrentPage();
 	},
@@ -131,7 +136,7 @@ pageEditor.templateEditorView.prototype = {
 	},
 
 	updateContentRows: function () {
-		this.contentRowUpdater.update(this.$(".page-content"), this.template);
+		this.contentRowUpdater.correctRows(this.$(".page-content"), this.template);
 	},
 		
 	onClose: function () {

@@ -8,14 +8,14 @@ pageEditor.pageUICMenuView = function (
 	currentPageRepo,
 	changeLayout,
 	commandHandler,
-	componentManager
+	contentRowUpdater
 ) {
 	this.component = options.component;
 	this.currentPageRepo = currentPageRepo;
 	this.currentPage = currentPageRepo.getCurrentPage();
 	this.changeLayoutComponent = changeLayout;
 	this.commandHandler = commandHandler;
-	this.componentManager = componentManager;
+	this.contentRowUpdater = contentRowUpdater;
 };
 
 pageEditor.pageUICMenuView.prototype = {
@@ -90,31 +90,7 @@ pageEditor.pageUICMenuView.prototype = {
 	},
 
 	updateClearElement: function () {
-		var row = this.component.view.$el.closest(".row"),
-		    clearUicEl = row.find(".clear"),
-		    firstUicEl = row.find(".uic:first-child"),
-		    clearUic,
-		    firstUic,
-		    firstUicClassNames;
-
-		if (clearUicEl.attr("id") === firstUicEl.attr("id")) {
-			return;
-		}
-
-
-		clearUicEl.removeClass("clear");
-		clearUic = this.componentManager.getComponentById(clearUicEl.attr("id"));
-		clearUic && clearUic.model.set("classNames", _.without(clearUic.model.attributes.classNames, "clear"));
-
-
-		firstUicEl.addClass("clear");
-		firstUic = this.componentManager.getComponentById(firstUicEl.attr("id"));
-		if (firstUic) {
-			firstUicClassNames = _.without(firstUic.model.attributes.classNames, "clear");
-			firstUicClassNames.push("clear");
-			firstUic.model.attributes.classNames.push("clear")
-			firstUic.model.set("classNames", firstUicClassNames);
-		}
+		this.contentRowUpdater.correctClearElements(this.component.view.$el.closest(".page-content"));
 	},
 
 	saveContentOrder: function () {
@@ -129,6 +105,6 @@ pageEditor.view("pageUICMenuView", [
 	"currentPageRepo",
 	"changeLayout",
 	"commandHandler",
-	"componentManager",
+	"contentRowUpdater",
 	pageEditor.pageUICMenuView
 ]);
