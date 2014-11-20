@@ -15,7 +15,7 @@
 	<div class="caption">
 		<h2><a href="@link">@Model.Title</a></h2>
 		@*<p>
-			@Model.previewText
+			@Html.Raw(Model.previewText)
 		</p>*@
 		@if (Model.ProductCount > 0)
 		{
