@@ -170,31 +170,48 @@ pageEditor.contentRowUpdater = function () {
 	return {
 		update: function (pageContentEl, pageTemplate) {
 			if (needsUpdate(pageContentEl, pageTemplate) === false) {
-				alert("no update needed");
 				return;
 			}
-
+		
 			alert("need update");
 		}
 	};
 
 	
 	function needsUpdate(pageContentEl, pageTemplate) {
-		var clearUics = pageContentEl.find(".uic.clear"),
-		    clearUicsAreFirst = true;
+		var clearUics, rows,
+		    allClearUicsAreFirst = true,
+		    allRowsStartWithAClear = true;
 
+		// all uic's with a clear class are first
+		clearUics = pageContentEl.find(".uic.clear");
 		clearUics.each(function (index, uic) {
 			uic = $(uic);
-			if (uic.is(".uic:first") === false) {
+			if (uic.index() !== 0) {
 				console.debug(uic.attr("id"));
-				debugger;
-				clearUicsAreFirst = false;
+				allClearUicsAreFirst = false;
+				return false;
+			}
+			return true;
+		});
+		
+		if (allClearUicsAreFirst === false) {
+			return true;
+		}
+
+		// all rows (except first) have the first uic with a clear class
+		rows = pageContentEl.find(".row");
+		rows.each(function (index, row) {
+			row = $(row);
+			if (index > -1 && row.find(".uic:first-child").hasClass("clear") === false) {
+				allRowsStartWithAClear = false;
+				alert("all rows dont start with clear");
 				return false;
 			}
 			return true;
 		});
 
-		return clearUicsAreFirst === false;
+		return allRowsStartWithAClear === false;
 	}
 };
 
