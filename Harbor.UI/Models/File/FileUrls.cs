@@ -34,6 +34,11 @@ namespace Harbor.UI.Models
 			return GetUrl(file.FileID.ToString(), file.Name, file.Ext);
 		}
 
+		public static string GetUrl(File file, FileResolution res)
+		{
+			return GetUrl(file.FileID.ToString(), file.Name, file.Ext);
+		}
+
 		public static string GetLowResUrl(File file)
 		{
 			return file.ResolutionsCreated.HasFlag(FileResolution.Low)

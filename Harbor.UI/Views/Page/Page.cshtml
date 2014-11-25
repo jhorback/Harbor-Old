@@ -1,5 +1,7 @@
-﻿@using Harbor.Domain.Pages
+﻿@using Harbor.Domain.Files
+@using Harbor.Domain.Pages
 @using Harbor.UI.Extensions
+@using Harbor.UI.Models
 @using Harbor.UI.Models.JSPM.Extensions
 @using Harbor.UI.JSPkgs
 @model Harbor.Domain.Pages.Page
@@ -18,18 +20,68 @@
 }
 @section scripts {
 	@if (ViewBag.HasWritePermissions)
-	{ 
-	    <script>
-    	    context.module("currentPageModel").register("currentPageDto", @Html.Raw(Json.Encode(ViewBag.PageDto)));
-    	</script>
-		@Html.InstallJavaScriptPackage(PageLoaderAppPkg.PackageName)
+	{
 		<script>
-		    pageLoader.start();
+			context.module("currentPageModel").register("currentPageDto", @Html.Raw(Json.Encode(ViewBag.PageDto)));
 		</script>
+		@Html.InstallJavaScriptPackage(PageLoaderAppPkg.PackageName)
+	<script>
+		pageLoader.start();
+
+		sizeAside($(".page-aside"), $(".page-content"));
+
+		function sizeAside(aside, content) {
+
+			var contentHeight = content.height(),
+				asideHeight = aside.height();
+
+			if (contentHeight > asideHeight) {
+				aside.data("previousHeight", asideHeight);
+				aside.height(contentHeight);
+			}
+		}
+
+
+	</script>
 	}
+	@if (Model.PreviewImage != null)
+	{
+		<style>
+			.page-header {
+				position: relative;
+				background-image: url("@FileUrls.GetUrl(Model.PreviewImage, FileResolution.High)");
+				background-repeat: no-repeat;
+				background-size: cover;
+				background-position: 40% 40%;
+			}
+			.page-header-overlay {
+			background: #000;
+			opacity: .23;
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		</style>
+	}
+	<style>
+		.page-header {
+			position: relative;
+		}
+		
+		.page-header h1 {
+			text-shadow: 1px 1px 2px #333;
+			font-size: 2.3em;
+		}
+		.page-aside {
+			background: #F5F6F6;
+		}
+	</style>
 }
 <div id="page" class="@layoutClassNames">
 	<header class="page-header">
+		<div class="page-header-overlay"></div>
 		<div class="page-header-content">
 			@if (Model.Layout.HeaderKey != null)
 			{

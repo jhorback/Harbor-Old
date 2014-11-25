@@ -7,7 +7,7 @@
 
 $frame-logo-width:		150px !default;
 $frame-logo-height:		51px !default;
-$frame-header-height:	3.15em !default; // 50px (logo image) / 16px base font size
+$frame-header-height:	3.15em; // 3.15em !default; // 50px (logo image) / 16px base font size
 $frame-footer-height:	12em !default; 
 
 $overlay-background-color: #000;
@@ -238,12 +238,14 @@ $frame-logo-use-image: true !default;
 		ul {
 			li {		
 				&:hover {
-					background-color: $framenav-background-color-hover;
+					/*background-color: $framenav-background-color-hover;
 					@include box-shadow(0 6px 14px rgba(105,105,105,.60));
 					// @include border-radius(50px);
 					a {
 						color: $framenav-color-hover;
-					}
+					}*/
+                    font-weight: bold;
+                    text-shadow: 1px 1px 1px #ddd;
 				}
 				&.selected{
 					background-color: $framenav-background-color-selected;

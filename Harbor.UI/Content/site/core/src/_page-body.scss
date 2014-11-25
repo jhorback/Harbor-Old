@@ -70,33 +70,53 @@
 
     .page-aside {
         padding-top: 2em;
+        padding-bottom: 2em;
         width: $page-aside-width;
 		position: relative;
 		float: left;
+        box-shadow: inset -1px 1px 1px #ddd;
+        min-height: 600px;
+        //border-right:1px solid #ddd;
+        background: #F5F6F6; // jch!
 
        .menulist {
-           margin-left: 1em;
-           max-width: 18em;
+           margin-left: 0em;
+           //max-width: 18em;
            width: 100%;
-           float: right;
+           //float: right;
            clear: both;
 
+           h2, h3 {
+               padding: .4em .8em !important;
+               //font-weight: bold;
+           }
+
 		   & > ul {
-			    border-top: $page-aside-menulist-border-style;
-                background: $page-aside-menulist-background;
+			   // border-top: $page-aside-menulist-border-style;
+               // background: $page-aside-menulist-background;
 
 			    & > li {
 				    & > span,
 				    & > a {
-                        padding-left: 1em;			    			
-					    line-height: $page-aside-menulist-item-height;                       
-                        border-bottom: $page-aside-menulist-border-style;
+                        padding: .3em 1em;			    			
+					    line-height: $page-aside-menulist-item-height;
+                        color: #555;                       
+                       // border-bottom: $page-aside-menulist-border-style;
 				    }
 			    }
 		   }
            h2, h3 {
                padding: 0 .5em;
-           }	
+           }
+           .selected {
+               background: #E8E9E9;
+               a {
+                   color: $body-color-loud;
+               }
+           }
+           a:hover {
+               background: #E8E9E9;
+           }
 	    }
 	}
 }

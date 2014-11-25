@@ -9,7 +9,7 @@ fieldset {
   padding: 0;
   margin: 0;
   border: 0;
-  margin-bottom: 22.8576px; }
+  margin-bottom: 24px; }
   fieldset > * {
     padding-left: 1.4em; }
     @media (max-width: 48em) {
@@ -29,10 +29,10 @@ legend {
 
 select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .input {
   display: inline-block;
-  height: 22.8576px;
+  height: 24px;
   padding: 4px 6px;
   font-size: 16px;
-  line-height: 1.4286;
+  line-height: 1.5;
   color: #555;
   vertical-align: middle;
   border: 1px solid #bbbbbb;
@@ -79,11 +79,11 @@ textarea {
   height: auto; }
 
 select, input[type="file"] {
-  height: 32.8576px;
+  height: 34px;
   /* In IE7, the height of the select element cannot be changed by height, only font-size */
   *margin-top: 4px;
   /* For IE7, add top margin to align select with labels */
-  line-height: 32.8576px; }
+  line-height: 34px; }
 
 select {
   width: 220px;
@@ -106,7 +106,7 @@ input[type="radio"][disabled], input[type="checkbox"][disabled], input[type="rad
   background-color: transparent; }
 
 .form-field {
-  margin-bottom: 11.4288px; }
+  margin-bottom: 12px; }
   .form-field label {
     display: block;
     margin-bottom: 4px; }
@@ -118,7 +118,7 @@ input[type="radio"][disabled], input[type="checkbox"][disabled], input[type="rad
         display: block;
         margin-left: 0; } }
   .form-field div {
-    margin-bottom: 11.4288px; }
+    margin-bottom: 12px; }
   .form-field input + label {
     display: inline-block;
     vertical-align: middle;
@@ -153,7 +153,7 @@ input[type="radio"][disabled], input[type="checkbox"][disabled], input[type="rad
         float: none;
         margin-left: 0; } }
   .form-wide .form-field span, .form-wide .form-field div {
-    line-height: 32.8576px;
+    line-height: 34px;
     vertical-align: middle;
     display: inline; }
     @media (max-width: 64em) {

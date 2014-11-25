@@ -22,10 +22,11 @@ pageEditor.textView.prototype = {
 		richTextEl = this.$el.find(".richtext");	
 		richTextEl.redactor({
 			focus: true,
-			fixed: true,
+			//fixed: true,
 			//air: true,
 			//airButtons: buttons,
-			buttons: buttons
+			buttons: buttons,
+			// formattingTags: ['p', 'blockquote', 'pre', 'h1', 'h2', 'h3', 'h4']
 		});
 	},
 

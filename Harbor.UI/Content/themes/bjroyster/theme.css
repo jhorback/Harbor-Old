@@ -3,7 +3,7 @@ html, body {
   color: #585a5b;
   font-size: 16px;
   font-family: "OpenSans", "Segoe UI", "Helvetica Neue", Arial;
-  line-height: 1.4286; }
+  line-height: 1.5; }
 
 a, .link {
   text-decoration: underline;
@@ -32,7 +32,7 @@ p {
 
 h1, h2, h3, h4, h5, h6 {
   color: #393d40;
-  margin: 11.4288px 0; }
+  margin: 12px 0; }
 
 .quiet {
   color: #999999; }
@@ -47,7 +47,7 @@ small {
   color: #999999; }
 
 hr {
-  margin: 22.8576px 0;
+  margin: 24px 0;
   border: 0;
   border-top: 1px solid #DDD;
   border-bottom: 1px solid white;
@@ -58,12 +58,12 @@ abbr[title] {
   border-bottom: 1px dotted #585a5b; }
 
 ul, ol {
-  margin-bottom: 11.4288px; }
+  margin-bottom: 12px; }
   ul:only-of-type, ol:only-of-type {
     margin-bottom: 0; }
 
 dl {
-  margin-bottom: 22.8576px; }
+  margin-bottom: 24px; }
   dl:only-of-type {
     margin-bottom: 0; }
   dl.list-wide dt {
@@ -80,11 +80,11 @@ dl {
       margin-left: auto; } }
 
 dt, dd {
-  line-height: 1.4286;
-  margin-bottom: 11.4288px; }
+  line-height: 1.5;
+  margin-bottom: 12px; }
 
 dd {
-  margin-left: 11.4288px; }
+  margin-left: 12px; }
 
 #frame-header {
   height: 3.15em;
@@ -108,13 +108,14 @@ dd {
   background-size: contain; }
 
 #frame-nav ul li:hover {
-  background-color: #67A3B6;
-  -moz-box-shadow: 0 6px 14px rgba(105, 105, 105, 0.6);
-  -webkit-box-shadow: 0 6px 14px rgba(105, 105, 105, 0.6);
-  -ms-box-shadow: 0 6px 14px rgba(105, 105, 105, 0.6);
-  box-shadow: 0 6px 14px rgba(105, 105, 105, 0.6); }
-  #frame-nav ul li:hover a {
-    color: #FFF; }
+  /*background-color: $framenav-background-color-hover;
+					@include box-shadow(0 6px 14px rgba(105,105,105,.60));
+					// @include border-radius(50px);
+					a {
+						color: $framenav-color-hover;
+					}*/
+  font-weight: bold;
+  text-shadow: 1px 1px 1px #ddd; }
 #frame-nav ul li.selected {
   background-color: #FFF; }
   #frame-nav ul li.selected a {

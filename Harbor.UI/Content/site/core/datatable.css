@@ -6,10 +6,10 @@ table {
 
 .datatable {
   width: 100%;
-  margin-bottom: 22.8576px; }
+  margin-bottom: 24px; }
   .datatable th, .datatable td {
     padding: 0.6em;
-    line-height: 1.4286;
+    line-height: 1.5;
     text-align: left;
     vertical-align: top;
     border-top: 1px solid #DDD; }
