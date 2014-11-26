@@ -3,7 +3,7 @@ html, body {
   color: #FFF;
   font-size: 16px;
   font-family: "OpenSans", "Segoe UI", "Helvetica Neue", Arial;
-  line-height: 1.5; }
+  line-height: 1.6; }
 
 a, .link {
   text-decoration: underline;
@@ -32,7 +32,8 @@ p {
 
 h1, h2, h3, h4, h5, h6 {
   color: #FFF;
-  margin: 12px 0; }
+  margin-top: 12.8px;
+  margin-bottom: 4px; }
 
 .quiet {
   color: #999999; }
@@ -47,7 +48,7 @@ small {
   color: #999999; }
 
 hr {
-  margin: 24px 0;
+  margin: 25.6px 0;
   border: 0;
   border-top: 1px solid #DDD;
   border-bottom: 1px solid white;
@@ -58,12 +59,12 @@ abbr[title] {
   border-bottom: 1px dotted #FFF; }
 
 ul, ol {
-  margin-bottom: 12px; }
+  margin-bottom: 12.8px; }
   ul:only-of-type, ol:only-of-type {
     margin-bottom: 0; }
 
 dl {
-  margin-bottom: 24px; }
+  margin-bottom: 25.6px; }
   dl:only-of-type {
     margin-bottom: 0; }
   dl.list-wide dt {
@@ -80,11 +81,11 @@ dl {
       margin-left: auto; } }
 
 dt, dd {
-  line-height: 1.5;
-  margin-bottom: 12px; }
+  line-height: 1.6;
+  margin-bottom: 12.8px; }
 
 dd {
-  margin-left: 12px; }
+  margin-left: 12.8px; }
 
 #frame-header {
   height: 3.15em;
@@ -108,18 +109,14 @@ dd {
   background-size: contain; }
 
 #frame-nav ul li:hover {
-  /*background-color: $framenav-background-color-hover;
-					@include box-shadow(0 6px 14px rgba(105,105,105,.60));
-					// @include border-radius(50px);
-					a {
-						color: $framenav-color-hover;
-					}*/
-  font-weight: bold;
-  text-shadow: 1px 1px 1px #ddd; }
+  background-color: #FFF;
+  font-weight: bold; }
+  #frame-nav ul li:hover a {
+    color: #2F5BB7; }
 #frame-nav ul li.selected {
   background-color: #FFF; }
   #frame-nav ul li.selected a {
-    color: #333; }
+    color: #2F5BB7; }
 
 #frame-body ::-webkit-scrollbar-thumb {
   background: #CCC; }

@@ -17,7 +17,7 @@ $frame-footer-color: #a5a6a7;
 
 $framenav-color:						#EEE								!default;
 $framenav-background-color:				#345276								!default;
-$framenav-color-hover:					$body-color							!default;
+$framenav-color-hover:					$body-color-loud					!default;
 $framenav-background-color-hover:		$body-background-color				!default;
 $framenav-color-selected:				$framenav-color-hover				!default;
 $framenav-background-color-selected:	$framenav-background-color-hover	!default;
@@ -55,7 +55,6 @@ $frame-logo-use-image: true !default;
 		font-size: 2.3em;
 		float:left;
 		margin: 0 0em 0 .5em;
-		//height: 1.6em;
 		@include single-text-shadow(rgba(#000, 0.6), 1px, 1px, 2px);
 	}
 
@@ -68,9 +67,9 @@ $frame-logo-use-image: true !default;
 			li {
 				cursor: pointer;	
 				float:left;
-				// jch! add mixin for transitions - and add to launch
-				-webkit-transition-property: background;
-				-webkit-transition-duration: 0.3s;				
+				// jch - add mixin for transitions - and add to launch
+				//-webkit-transition-property: background;
+				//-webkit-transition-duration: 0.3s;				
 				a {
 					display: inline-block;
 					padding: 0 1em;
@@ -213,7 +212,6 @@ $frame-logo-use-image: true !default;
 
 		//position: fixed;
 		width:100%;
-		// border-bottom: 1px solid $framenav-background-color-hover;
 		@include box-shadow(0 2px 4px rgba(105,105,105,.25));
 
 		a, a:visited {
@@ -238,14 +236,13 @@ $frame-logo-use-image: true !default;
 		ul {
 			li {		
 				&:hover {
-					/*background-color: $framenav-background-color-hover;
-					@include box-shadow(0 6px 14px rgba(105,105,105,.60));
-					// @include border-radius(50px);
-					a {
+					background-color: $framenav-background-color-hover;
+					// @include box-shadow(0 6px 14px rgba(105,105,105,.60));
+					
+                    a {
 						color: $framenav-color-hover;
-					}*/
+					}
                     font-weight: bold;
-                    text-shadow: 1px 1px 1px #ddd;
 				}
 				&.selected{
 					background-color: $framenav-background-color-selected;
@@ -258,24 +255,13 @@ $frame-logo-use-image: true !default;
 	}
 
 	#frame-body {
-		//top: $frame-header-height;
-        //min-height: 100%;
-
+		
 		::-webkit-scrollbar-thumb {
 			background: $scrollbar-color;
 			&:hover{
 				background: darken($scrollbar-color, 10%);				
 			}
-		}
-		
-//		scrollbar-face-color: $button-bg-color;
-//		scrollbar-arrow-color: $button-bg-color;
-//		scrollbar-track-color: $body-bg-color;
-//		scrollbar-shadow-color: $button-bg-color;
-//		scrollbar-highlight-color: $button-bg-color;
-//		scrollbar-3dlight-color: $button-bg-color;
-//		scrollbar-darkshadow-color: $button-bg-color;
-		
+		}		
 	}
 
     #frame-footer {

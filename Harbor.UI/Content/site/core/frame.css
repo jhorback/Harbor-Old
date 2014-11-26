@@ -35,9 +35,7 @@
       white-space: nowrap; }
     #frame-nav ul li {
       cursor: pointer;
-      float: left;
-      -webkit-transition-property: background;
-      -webkit-transition-duration: 0.3s; }
+      float: left; }
       #frame-nav ul li a {
         display: inline-block;
         padding: 0 1em; }

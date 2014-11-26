@@ -76,8 +76,7 @@
 		float: left;
         box-shadow: inset -1px 1px 1px #ddd;
         min-height: 600px;
-        //border-right:1px solid #ddd;
-        background: #F5F6F6; // jch!
+        background: $page-aside-background;
 
        .menulist {
            margin-left: 0em;
@@ -92,16 +91,13 @@
            }
 
 		   & > ul {
-			   // border-top: $page-aside-menulist-border-style;
-               // background: $page-aside-menulist-background;
 
 			    & > li {
 				    & > span,
 				    & > a {
                         padding: .3em 1em;			    			
 					    line-height: $page-aside-menulist-item-height;
-                        color: #555;                       
-                       // border-bottom: $page-aside-menulist-border-style;
+                        color: #555;                      
 				    }
 			    }
 		   }
@@ -109,13 +105,13 @@
                padding: 0 .5em;
            }
            .selected {
-               background: #E8E9E9;
+               background: $page-aside-menulist-selected-background;
                a {
                    color: $body-color-loud;
                }
            }
            a:hover {
-               background: #E8E9E9;
+               background: $page-aside-menulist-selected-background;
            }
 	    }
 	}

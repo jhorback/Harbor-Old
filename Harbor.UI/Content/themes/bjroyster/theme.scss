@@ -1,5 +1,6 @@
 @import "../../site/core/theme";
 
+$theme-color-blue: #67A3B6;
 
 $body-color: #585a5b;
 $body-background-color: #FFF;
@@ -10,10 +11,10 @@ $frame-logo-height:		50px;
 
 $framenav-background-color: #FFF;
 $framenav-color: $body-color;
-$framenav-background-color-hover: #67A3B6; // #0f7c91;
-$framenav-color-hover: #FFF;
+//$framenav-background-color-hover: #67A3B6; // #0f7c91;
+$framenav-color-hover: $theme-color-blue;
 
-$page-header-background: #67A3B6;
+$page-header-background: $theme-color-blue;
 $page-title-color: #FFF;
 
 @include theme;

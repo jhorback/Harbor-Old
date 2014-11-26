@@ -3,7 +3,7 @@ $body-font-family:			"OpenSans", "Segoe UI", "Helvetica Neue", Arial	!default;
 $headings-font-family:		"OpenSans", "Segoe UI Light", "Segoe UI", "Helvetica Neue", Arial	!default;
 $pre-font-family:			Monaco, Menlo, Consolas, 'Courier New', monospace		!default;
 $body-font-size:			16px					!default;
-$body-line-height:			1.5 /*1.4286*/					!default; // @16px font = 23px line-height
+$body-line-height:			1.6 /*1.4286*/			!default; // @16px font = 23px line-height
 $body-line-height-px:		$body-line-height * $body-font-size;
 
 $body-background-color:		#FFF					!default;
