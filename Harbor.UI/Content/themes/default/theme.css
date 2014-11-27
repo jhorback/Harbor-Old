@@ -131,7 +131,10 @@ legend {
   position: relative;
   background: #FFF;
   overflow: hidden;
-  color: #666666; }
+  color: #666666;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 40% 40%; }
   .page-header h1 {
     color: #666666;
     text-shadow: 1px 1px 2px #333;

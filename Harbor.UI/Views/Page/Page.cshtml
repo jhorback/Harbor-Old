@@ -29,21 +29,21 @@
 			pageLoader.start();
 		</script>
 	}
-	@if (Model.PreviewImage != null)
+	@if (string.IsNullOrEmpty(Model.TitleBackgroundUrl) == false)
 	{
 		<style>
 			.page-header {
-				background-image: url("@FileUrls.GetUrl(Model.PreviewImage, FileResolution.High)");
-				background-repeat: no-repeat;
-				background-size: cover;
-				background-position: 40% 40%;
+				background-image: url("@Model.TitleBackgroundUrl)";
 			}	
 		</style>
 	}
 }
 <div id="page" class="@layoutClassNames">
 	<header class="page-header">
-		<div class="page-header-overlay"></div>
+		@if (string.IsNullOrEmpty(Model.TitleBackgroundUrl) == false)
+		{
+			<div class="page-header-overlay"></div>
+		}
 		<div class="page-header-content">
 			@if (Model.Layout.HeaderKey != null)
 			{

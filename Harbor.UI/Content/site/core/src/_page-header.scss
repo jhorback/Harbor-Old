@@ -50,6 +50,11 @@
         background: $page-header-background;
         overflow: hidden;
         color: $page-title-color;
+       
+         // for the background image
+        background-repeat: no-repeat;
+		background-size: cover;
+		background-position: 40% 40%;
 
 		h1 {
 			color: $page-title-color;
