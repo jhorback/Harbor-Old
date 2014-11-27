@@ -52,7 +52,19 @@ namespace Harbor.Domain.Pages
 		[StringLength(100)]
 		public string Title { get; set; }
 
-		public bool EnableTitleBackground { get; set; }
+		public bool? TitleBackgroundEnabled
+		{
+			get
+			{
+				return JSON.Parse<bool?>(GetProperty("TitleBackgroundEnabled"));
+			}
+			set
+			{
+				SetProperty("TitleBackgroundEnabled", JSON.Stringify(value));
+			}
+		}
+
+		public string TitleBackgroundUrl { get; set; }
 
 		[Required]
 		[StringLength(50)]

@@ -102,9 +102,11 @@
     <Compile Include="Files\File.cs" />
     <Compile Include="Files\FileResolution.cs" />
     <Compile Include="Files\FileFactory.cs" />
+    <Compile Include="Files\FileUrl.cs" />
     <Compile Include="Files\IFileFactory.cs" />
     <Compile Include="Files\IFileRepository.cs" />
     <Compile Include="Files\FileQuery.cs" />
+    <Compile Include="Files\IFileUrl.cs" />
     <Compile Include="ILogger.cs" />
     <Compile Include="Caching\IMemCache.cs" />
     <Compile Include="IObjectFactory.cs" />
@@ -162,6 +164,7 @@
     <Compile Include="Pages\Pipelines\PipelineHandlers\AutoPreviewUpdateHandler.cs" />
     <Compile Include="Pages\Pipelines\PipelineHandlers\DeleteLayoutDeleteHandler.cs" />
     <Compile Include="Pages\Pipelines\PipelineHandlers\RootPageUpdateHandler.cs" />
+    <Compile Include="Pages\Pipelines\PipelineHandlers\TitleBackgroundUrlLoadHandler.cs" />
     <Compile Include="Pages\Queries\PageQuery.cs" />
     <Compile Include="Pages\Queries\PageTypeDto.cs" />
     <Compile Include="Pages\Queries\PageTypesQuery.cs" />

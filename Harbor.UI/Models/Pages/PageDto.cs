@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using AutoMapper;
-using Harbor.UI.Models.Content;
 
 namespace Harbor.UI.Models
 {
@@ -65,6 +63,7 @@ namespace Harbor.UI.Models
 
 		public int id { get; set; }
 		public string title { get; set; }
+		public bool titleBackgroundUrl { get; set; }
 		public string author { get; set; }
 		public string pageTypeKey { get; set; }
 		public string pageTypeName { get; set; }

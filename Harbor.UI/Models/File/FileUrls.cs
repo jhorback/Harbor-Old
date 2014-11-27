@@ -10,23 +10,17 @@ namespace Harbor.UI.Models
 {
 	public class FileUrls
 	{
+		static IFileUrl FileUrl
+		{
+			get
+			{
+				return DependencyResolver.Current.GetService<IFileUrl>();
+			}
+		}
+
 		public static string GetUrl(string fileID, string name, string ext, FileResolution? res = null, int? max = null)
 		{
-			string query = "";
-			if (max != null)
-			{
-				query = "?max=" + max;
-			}
-			else if (res != null)
-			{
-				if (res == FileResolution.Low)
-					query = "?res=low";
-				else if (res == FileResolution.High)
-					query = "?res=high";
-			}
-			if (name == null) name = "file";
-			if (ext == null) ext = ".ext";
-			return url.Content(string.Format("~/file/{0}/{1}{2}{3}", fileID, name, ext.ToLower(), query));
+			return FileUrl.GetUrl(fileID, name, ext, res, max);
 		}
 
 		public static string GetUrl(File file)

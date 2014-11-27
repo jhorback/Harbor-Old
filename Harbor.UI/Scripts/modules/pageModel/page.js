@@ -16,6 +16,7 @@ page.prototype = {
 	defaults: {
 		id: null,
 		title: null,
+		titleBackgroundUrl: null,
 		author: null,
 		pageTypeKey: "document",
 		pageTypeName: null,
@@ -40,7 +41,8 @@ page.prototype = {
 		publishedDisplay: null,
 		publishedMessage: null,
 		isLayoutTitleDifferent: false,
-		parentPageUrl: null
+		parentPageUrl: null,
+		hasTitleBackgroundUrl: false
 	},
 
 	initialize: function () {
@@ -128,6 +130,13 @@ page.prototype = {
 				null;
 		}
 	},
+
+	"[hasTitleBackgroundUrl]": {
+		get: function () {
+			return this.attributes.titleBackgroundUrl ? true : false;
+		},
+		observe: ["titleBackgroundUrl"]
+	}
 
 	getUrl: function () {
 		return this.pageurl.get(this.get("id"), this.get("title"));
