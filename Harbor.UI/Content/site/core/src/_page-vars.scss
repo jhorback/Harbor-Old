@@ -8,15 +8,15 @@ $page-header-height: 10em;
 $page-readable-width: 77em;
 $page-body-background: #fff;
 
-$page-aside-background: #F5F6F6 !default;
+$page-aside-background: #F5F6F6; // !default;
 $page-aside-menulist-selected-background: #E8E9E9 !default;
 $page-aside-menulist-item-height: 2.2em;
 
 $page-aside-width: 20%;
+$page-content-gutter-width: 1%;
 $page-aside-width-centered: 25%;
 
+$page-aside-left: 100% - $page-aside-width;
 $page-content-background: #fff;
-$page-content-width: 78%;
-$page-content-width-centered: 73%;
-$page-content-gutter-width: 1%;
+$page-content-width-centered: 100% - $page-aside-width - ($page-content-gutter-width*2);
 

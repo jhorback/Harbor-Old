@@ -7,12 +7,14 @@
 @import "page-body";
 
 // Markup
-// <!-- can have .readable or .centered -->
+//  <div class="page"> <!-- can have .centered, .hasaside, or .noaside -->
 //	<header class="page-header"><!-- page header content --></header>
+//  <div class="page-aside-bg">
 //	<div class="page-body">
 //		<aside class="page-aside"><!-- page aside content --></aside>
 //		<div class="page-content"><!-- page content --></div>
 //	</div>
+//  </div>
 // </div>
 
 @mixin page {

@@ -28,19 +28,19 @@
 	<script>
 		pageLoader.start();
 
-		$(function () {	
-			sizeAside($(".page-aside"), $(".page-content"));
-		});
+		//$(function () {	
+		//	sizeAside($(".page-aside"), $(".page-content"));
+		//});
 
-		function sizeAside(aside, content) {
+		//function sizeAside(aside, content) {
 
-			var contentHeight = content.height(),
-				asideHeight = aside.height();
+		//	var contentHeight = content.height(),
+		//		asideHeight = aside.height();
 
-			contentHeight > asideHeight ?
-				aside.height(contentHeight) :
-				aside.css("height", "auto");
-		}
+		//	contentHeight > asideHeight ?
+		//		aside.height(contentHeight) :
+		//		aside.css("height", "auto");
+		//}
 
 
 	</script>
@@ -75,9 +75,32 @@
 			text-shadow: 1px 1px 2px #333;
 			font-size: 2.3em;
 		}
-		.page-aside {
-			background: #F5F6F6;
+
+		/*
+		.page-aside-bg { /* container 2 * /
+			position:relative;
+			float:left;
+			width:100%;
+			overflow: hidden;
+			background:#F5F6F6;
+			border-right: 10px solid black;
 		}
+		.page-body { /* container 1 * /
+			position: relative;
+			float: left;
+			width: 100%;
+			right: 80%;
+			background: white;
+		}
+		.page-aside { /* content 1 * /
+			left: 80%;
+			position: relative;
+		}
+		.page-content { /* content 2 * /
+			left: 80%;
+			position: relative;	
+		}*/
+		
 	</style>
 }
 <div id="page" class="@layoutClassNames">
@@ -93,29 +116,31 @@
 			}
 		</div>
 	</header>
-	<div class="page-body">		
-		<aside class="page-aside">
-			@if (Model.Layout.AsideKey != null)
-			{
-				var aside = Model.Layout.AsideKey;
-				<div class="uic" data-type="@aside" id="@Model.Layout.Aside.Id">
-					@Html.PageComponent(Model.PageID, aside)
-				</div>
-			}
-		</aside>
-		<div class="page-content">
-			<div class="row">
-				@for (int index = 0; index < Model.Template.Content.Count; index++)
+	<div class="page-aside-bg">
+		<div class="page-body">
+			<aside class="page-aside">
+				@if (Model.Layout.AsideKey != null)
 				{
-					var item = Model.Template.Content[index];
-					if (item.StartsNewRow && index != 0)
-					{
-						@Html.Raw("</div><div class=\"row\">")
-					}
-					<div class="uic @String.Join(" ", item.ClassNames)" id="@item.Id" data-type="@item.Key">
-						@Html.PageComponent(Model.PageID, item.Key, item.Id)
+					var aside = Model.Layout.AsideKey;
+					<div class="uic" data-type="@aside" id="@Model.Layout.Aside.Id">
+						@Html.PageComponent(Model.PageID, aside)
 					</div>
 				}
+			</aside>
+			<div class="page-content">
+				<div class="row">
+					@for (int index = 0; index < Model.Template.Content.Count; index++)
+					{
+						var item = Model.Template.Content[index];
+						if (item.StartsNewRow && index != 0)
+						{
+							@Html.Raw("</div><div class=\"row\">")
+						}
+						<div class="uic @String.Join(" ", item.ClassNames)" id="@item.Id" data-type="@item.Key">
+							@Html.PageComponent(Model.PageID, item.Key, item.Id)
+						</div>
+					}
+				</div>
 			</div>
 		</div>
 	</div>

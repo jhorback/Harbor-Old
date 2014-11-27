@@ -47,6 +47,7 @@
 @mixin page-header-theme {
 	.page-header {
         background: $page-header-background;
+        overflow: hidden;
         color: $page-title-color;
 		h1 {
 			color: $page-title-color;

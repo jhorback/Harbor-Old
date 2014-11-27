@@ -41,22 +41,18 @@
 
 .page-body {
   background: #fff;
-  position: relative;
-  clear: left; }
+  position: relative; }
   .page-body:after {
     content: "";
     display: table;
     clear: both; }
 
 .page-aside {
+  display: none; }
+
+.page-aside {
   padding-top: 2em;
-  padding-bottom: 2em;
-  width: 20%;
-  position: relative;
-  float: left;
-  box-shadow: inset -1px 1px 1px #ddd;
-  min-height: 600px;
-  background: #F5F6F6; }
+  padding-bottom: 2em; }
   .page-aside .menulist {
     margin-left: 0em;
     width: 100%;
@@ -80,21 +76,19 @@
   position: relative;
   padding: 2em 1%;
   float: left;
-  width: 78%;
-  *width: 77.5%;
-  background: #fff; }
-  .page-content:first-child {
-    width: 98%; }
+  width: 98%;
+  background: #fff;
+  /*&:first-child { // if there is no aside
+			width: 98%;
+		}*/ }
 
 .centered .page-header-content, .centered .page-body {
   max-width: 77em;
   margin-left: auto;
   margin-right: auto; }
-.centered .page-aside {
-  width: 25%; }
 .centered .page-content {
-  width: 73%;
-  *width: 72.5%; }
+  width: 78%;
+  *width: 77.5%; }
 .centered .page-content:first-child {
   width: 98%; }
 
@@ -102,13 +96,33 @@
   .page-aside {
     width: 25%; }
   .page-content {
-    width: 73%;
-    *width: 72.5%; } }
+    width: 78%;
+    *width: 77.5%; } }
 
-.noaside .page-aside {
-  display: none; }
-.noaside .page-content {
-  width: 98%; }
+.hasaside .page-aside-bg {
+  float: left;
+  width: 100%;
+  background: #fff;
+  overflow: hidden;
+  position: relative; }
+.hasaside .page-body {
+  float: left;
+  width: 100%;
+  background: #F5F6F6;
+  position: relative;
+  right: 80%; }
+.hasaside .page-aside {
+  display: block;
+  float: left;
+  width: 20%;
+  position: relative;
+  left: 80%;
+  overflow: hidden; }
+.hasaside .page-content {
+  float: left;
+  width: 78%;
+  left: 80%;
+  overflow: hidden; }
 
 .page-content-edit .row {
   outline: 1px dashed #CCC; }

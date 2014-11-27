@@ -137,6 +137,7 @@ legend {
 
 .page-header {
   background: #67A3B6;
+  overflow: hidden;
   color: #FFF; }
   .page-header h1 {
     color: #FFF; }

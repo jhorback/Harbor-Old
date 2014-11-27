@@ -4,26 +4,32 @@
 
 
 @mixin page-body {
+    .page-aside-bg {
+        // clear: left; // jch! - add this back
+    }
+
 	.page-body {
         background: $page-body-background;
 		position: relative;
-		clear: left;
 		@include clearfix;
 	}
-	
+
+    .page-aside {
+         display: none;
+    }
+
     @include page-aside;
 
 	.page-content {
-		position: relative;
+      	position: relative;
         padding: 2em $page-content-gutter-width;
 		float: left;
-		width: $page-content-width;
-		*width: $page-content-width - (.5 / 100 * 100 * 1%);
+		width: 98%;
         background: $page-content-background;
 		
-		&:first-child { // if there is no aside
+		/*&:first-child { // if there is no aside
 			width: 98%;
-		}
+		}*/
 	}
 
 	.centered {
@@ -32,9 +38,6 @@
 			margin-left: auto;
 			margin-right: auto;
 		}
-		.page-aside {
-            width: $page-aside-width-centered;
-		}		
 		.page-content {
             width: $page-content-width-centered;
 		    *width: $page-content-width-centered - (.5 / 100 * 100 * 1%);
@@ -54,9 +57,35 @@
 		}
     }
 
-	.noaside {
-		.page-aside { display: none; }
-		.page-content { width: 98% }
+	.hasaside {       
+        .page-aside-bg {
+            float:left;
+            width:100%;
+            background: $page-body-background;
+            overflow:hidden;
+            position:relative;
+        }
+        .page-body {
+            float:left;
+            width:100%;
+            background: $page-aside-background;
+            position:relative;
+            right: $page-aside-left;
+        }
+        .page-aside {
+            display: block;
+            float:left;
+            width: $page-aside-width;
+            position:relative;
+            left: $page-aside-left;
+            overflow:hidden;
+        }
+        .page-content {
+            float:left;
+            width: $page-aside-left - ($page-content-gutter-width*2);        
+            left: $page-aside-left;
+            overflow:hidden;
+        }
 	}
 
     .page-content-edit {
@@ -68,16 +97,10 @@
 
 @mixin page-aside {
 
-    .page-aside {
+    .page-aside {  
         padding-top: 2em;
         padding-bottom: 2em;
-        width: $page-aside-width;
-		position: relative;
-		float: left;
-        box-shadow: inset -1px 1px 1px #ddd;
-        min-height: 600px;
-        background: $page-aside-background;
-
+              
        .menulist {
            margin-left: 0em;
            //max-width: 18em;

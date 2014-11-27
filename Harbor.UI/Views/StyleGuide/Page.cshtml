@@ -31,7 +31,7 @@
 
 	</style>
 }
-<section class="page">
+<section class="page hasaside">
 	<header class="page-header">
 		<div class="page-header-content">
 			<h1 class="float-left">Title of the Page</h1>
@@ -44,134 +44,135 @@
 			<form class="float-right form-inline">
 				<fieldset>
 					<select id="page-options" name="layoutOptions">
-						<option value="aside">Default</option>
-						<option value="aside centered">Centered</option>
-						<option value="">No Sidebar</option>
-						<option value="centered">No Sidebar, centered</option>
+						<option value="hasaside">With Sidebar</option>
+						<option value="">Without Sidebar</option>
+						<option value="centered">Centered</option>
 					</select>
 				</fieldset>
 			</form>
 		</div>
 	</header>
-	<div class="page-body">
-		<aside class="page-aside">
+	<div class="page-aside-bg">
+		<div class="page-body">
+			<aside class="page-aside">
 			
-			<div class="menulist">
-				<h2>Section Header</h2>
-				<ul>
-					<li class="selected">
-						<a href="#">Menu Item One</a>
-					</li>
-					<li>
-						<a href="#">A Second Item</a>
-					</li>
-					<li>
-						<a href="#">Another One</a>
-					</li>
-					<li>
-						<a href="#">This Makes Four</a>
-					</li>
-					<li>
-						<a href="#">And The Bookend</a>
-					</li>
-				</ul>
-			</div>
+				<div class="menulist">
+					<h2>Section Header</h2>
+					<ul>
+						<li class="selected">
+							<a href="#">Menu Item One</a>
+						</li>
+						<li>
+							<a href="#">A Second Item</a>
+						</li>
+						<li>
+							<a href="#">Another One</a>
+						</li>
+						<li>
+							<a href="#">This Makes Four</a>
+						</li>
+						<li>
+							<a href="#">And The Bookend</a>
+						</li>
+					</ul>
+				</div>
 
-			<div class="clear text-justify pad-left margin-top">
-				<p>
+				<div class="clear text-justify pad-left margin-top">
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					</p>
+				</div>
+			</aside> 
+			<div class="page-content">
+				<p>	
 					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 				</p>
-			</div>
-		</aside> 
-		<div class="page-content">
-			<p>	
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-			</p>
 
-			<h2>Columns</h2>
-			<p>Columns are indented by a left margin and manage the width of content.</p>
+				<h2>Columns</h2>
+				<p>Columns are indented by a left margin and manage the width of content.</p>
 
-			<div class="row">
-				<div class="col1"><div class="outline"><code>.col1</code></div></div>
-			</div>
-			<div class="row">
-				<div class="col2"><div class="outline"><code>.col2</code></div></div>
-				<div class="col2"><div class="outline"><code>.col2</code></div></div>
-			</div>
-			<div class="row">
-				<div class="col3"><div class="outline"><code>.col3</code></div></div>
-				<div class="col3-2"><div class="outline"><code>.col3-2</code></div></div>
-			</div>
-			<div class="row">
-				<div class="col4"><div class="outline"><code>.col4</code></div></div>
-				<div class="col4"><div class="outline"><code>.col4</code></div></div>
-				<div class="col4"><div class="outline"><code>.col4</code></div></div>
-				<div class="col4"><div class="outline"><code>.col4</code></div></div>
-			</div>
-			<div class="row">
-				<div class="col5"><div class="outline"><code>.col5</code></div></div>
-				<div class="col5"><div class="outline"><code>.col5</code></div></div>
-				<div class="col5"><div class="outline"><code>.col5</code></div></div>
-				<div class="col5"><div class="outline"><code>.col5</code></div></div>
-				<div class="col5"><div class="outline"><code>.col5</code></div></div>
-			</div>	
-
-			<hr />
-			
-			<h2>Rows</h2>
-			<p>Rows divide the page vertically, provide float clearing and a grouping clearfix, and help manage the height of content.</p>
-			<div class="outline example padding-none">
 				<div class="row">
-					<div class="col2">
-						@*<h3>.row-small</h3>*@
-						<div class="row5">
-							<p>This is <code>.row5</code></p>
-							<p>
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.					
-							</p>
-						</div>
-						@*<h3>.row-medium</h3>*@
-						<div class="row4">
-							<p>This is <code>.row4</code></p>
-							<p>
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.					
-							</p>
-							<p>
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.					
-							</p>
-						</div>
-					</div>
-					<div class="col2">
-						@*<h3>.row-large</h3>*@
-						<div class="row3">
-							<p>This is <code>.row3</code></p>
-							<p>
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.					
-							</p>
-							<p>
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.					
-							</p>
-							<p>
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.					
-							</p>
-						</div>
-					</div>
+					<div class="col1"><div class="outline"><code>.col1</code></div></div>
 				</div>
-				<hr />
-				<div class="col">
-					<div class="row">
-						<p>This is <code>.row</code></p>
-						<p>Meant to be used to group any number of <code>.col</code> classes. Provides a -1% left margin to offset the 1% left margin of the columns.</p>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.					
-						</p>
-					</div>
+				<div class="row">
+					<div class="col2"><div class="outline"><code>.col2</code></div></div>
+					<div class="col2"><div class="outline"><code>.col2</code></div></div>
 				</div>
-			</div>
+				<div class="row">
+					<div class="col3"><div class="outline"><code>.col3</code></div></div>
+					<div class="col3-2"><div class="outline"><code>.col3-2</code></div></div>
+				</div>
+				<div class="row">
+					<div class="col4"><div class="outline"><code>.col4</code></div></div>
+					<div class="col4"><div class="outline"><code>.col4</code></div></div>
+					<div class="col4"><div class="outline"><code>.col4</code></div></div>
+					<div class="col4"><div class="outline"><code>.col4</code></div></div>
+				</div>
+				<div class="row">
+					<div class="col5"><div class="outline"><code>.col5</code></div></div>
+					<div class="col5"><div class="outline"><code>.col5</code></div></div>
+					<div class="col5"><div class="outline"><code>.col5</code></div></div>
+					<div class="col5"><div class="outline"><code>.col5</code></div></div>
+					<div class="col5"><div class="outline"><code>.col5</code></div></div>
+				</div>	
 
-			<div>
-				<input type="checkbox" id="showPage" />
-				<label for="showPage">Show page outline</label>
+				<hr />
+			
+				<h2>Rows</h2>
+				<p>Rows divide the page vertically, provide float clearing and a grouping clearfix, and help manage the height of content.</p>
+				<div class="outline example padding-none">
+					<div class="row">
+						<div class="col2">
+							@*<h3>.row-small</h3>*@
+							<div class="row5">
+								<p>This is <code>.row5</code></p>
+								<p>
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.					
+								</p>
+							</div>
+							@*<h3>.row-medium</h3>*@
+							<div class="row4">
+								<p>This is <code>.row4</code></p>
+								<p>
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.					
+								</p>
+								<p>
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.					
+								</p>
+							</div>
+						</div>
+						<div class="col2">
+							@*<h3>.row-large</h3>*@
+							<div class="row3">
+								<p>This is <code>.row3</code></p>
+								<p>
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.					
+								</p>
+								<p>
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.					
+								</p>
+								<p>
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.					
+								</p>
+							</div>
+						</div>
+					</div>
+					<hr />
+					<div class="col">
+						<div class="row">
+							<p>This is <code>.row</code></p>
+							<p>Meant to be used to group any number of <code>.col</code> classes. Provides a -1% left margin to offset the 1% left margin of the columns.</p>
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.					
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div>
+					<input type="checkbox" id="showPage" />
+					<label for="showPage">Show page outline</label>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -222,11 +223,11 @@
 			var PageModel = Backbone.Model.extend({
 				defaults: {
 					showPage: false,
-					layoutOptions: "aside"
+					layoutOptions: "hasaside"
 				},
 				hasAside: function() {
 					var lo = this.get("layoutOptions");
-					return (lo && lo.indexOf("aside") > -1) ? true: false;
+					return (lo && lo.indexOf("hasaside") > -1) ? true: false;
 				},
 				getPageClassNames: function() {
 					return this.get("layoutOptions") + " page";
