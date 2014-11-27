@@ -52,6 +52,8 @@ namespace Harbor.Domain.Pages
 		[StringLength(100)]
 		public string Title { get; set; }
 
+		public bool EnableTitleBackground { get; set; }
+
 		[Required]
 		[StringLength(50)]
 		public string PageTypeKey { get; set; }

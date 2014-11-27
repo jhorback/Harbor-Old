@@ -65,6 +65,7 @@ namespace Harbor.Data
 					.WillCascadeOnDelete();
 				HasOptional(m => m.PreviewImage).WithMany().HasForeignKey(m => m.PreviewImageID);
 
+				Ignore(m => m.EnableTitleBackground);
 				Ignore(m => m.Template);
 				Ignore(m => m.VirtualPath);
 				Ignore(m => m.PageType);

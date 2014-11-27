@@ -29,23 +29,6 @@
 			pageLoader.start();
 		</script>
 	}
-	
-	@* add these page properties (ignore in db, use page properties)
-	///    page.EnableTitleBackground - default is false
-	//     pageDto.titleBackgroundImageUrl - default is null
-	//     pageDto.hasTitleBackgroundImage - default is false
-	//
-	// then have a checkbox appear in the title to set the TitleBackgroundImage
-	//  - create a command -> SetTitleBackgroundImage { enable: true }
-	//
-	//
-	// keep in mind updating on the client
-	//     - listen to the page model hasTitleBackgroundImage and titleBackgroundImageUrl properties
-	//
-	// make settable via a page type by having the page type set the pge.EnableTitleBackground = true.
-	// 
-		*@ 
-
 	@if (Model.PreviewImage != null)
 	{
 		<style>
