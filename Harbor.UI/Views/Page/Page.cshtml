@@ -25,83 +25,38 @@
 			context.module("currentPageModel").register("currentPageDto", @Html.Raw(Json.Encode(ViewBag.PageDto)));
 		</script>
 		@Html.InstallJavaScriptPackage(PageLoaderAppPkg.PackageName)
-	<script>
-		pageLoader.start();
-
-		//$(function () {	
-		//	sizeAside($(".page-aside"), $(".page-content"));
-		//});
-
-		//function sizeAside(aside, content) {
-
-		//	var contentHeight = content.height(),
-		//		asideHeight = aside.height();
-
-		//	contentHeight > asideHeight ?
-		//		aside.height(contentHeight) :
-		//		aside.css("height", "auto");
-		//}
-
-
-	</script>
+		<script>
+			pageLoader.start();
+		</script>
 	}
+	
+	@* add these page properties (ignore in db, use page properties)
+	///    page.EnableTitleBackground - default is false
+	//     pageDto.titleBackgroundImageUrl - default is null
+	//     pageDto.hasTitleBackgroundImage - default is false
+	//
+	// then have a checkbox appear in the title to set the TitleBackgroundImage
+	//  - create a command -> SetTitleBackgroundImage { enable: true }
+	//
+	//
+	// keep in mind updating on the client
+	//     - listen to the page model hasTitleBackgroundImage and titleBackgroundImageUrl properties
+	//
+	// make settable via a page type by having the page type set the pge.EnableTitleBackground = true.
+	// 
+		*@ 
+
 	@if (Model.PreviewImage != null)
 	{
 		<style>
 			.page-header {
-				position: relative;
 				background-image: url("@FileUrls.GetUrl(Model.PreviewImage, FileResolution.High)");
 				background-repeat: no-repeat;
 				background-size: cover;
 				background-position: 40% 40%;
-			}
-			.page-header-overlay {
-				background: #000;
-				opacity: .23;
-				width: 100%;
-				height: 100%;
-				position: absolute;
-				top: 0;
-				left: 0;
-			}
+			}	
 		</style>
 	}
-	<style>
-		.page-header {
-			position: relative;
-		}
-		
-		.page-header h1 {
-			text-shadow: 1px 1px 2px #333;
-			font-size: 2.3em;
-		}
-
-		/*
-		.page-aside-bg { /* container 2 * /
-			position:relative;
-			float:left;
-			width:100%;
-			overflow: hidden;
-			background:#F5F6F6;
-			border-right: 10px solid black;
-		}
-		.page-body { /* container 1 * /
-			position: relative;
-			float: left;
-			width: 100%;
-			right: 80%;
-			background: white;
-		}
-		.page-aside { /* content 1 * /
-			left: 80%;
-			position: relative;
-		}
-		.page-content { /* content 2 * /
-			left: 80%;
-			position: relative;	
-		}*/
-		
-	</style>
 }
 <div id="page" class="@layoutClassNames">
 	<header class="page-header">

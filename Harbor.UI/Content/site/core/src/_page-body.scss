@@ -79,6 +79,7 @@
             position:relative;
             left: $page-aside-left;
             overflow:hidden;
+            min-height: 25em;
         }
         .page-content {
             float:left;

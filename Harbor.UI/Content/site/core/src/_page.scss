@@ -8,7 +8,10 @@
 
 // Markup
 //  <div class="page"> <!-- can have .centered, .hasaside, or .noaside -->
-//	<header class="page-header"><!-- page header content --></header>
+//	<header class="page-header">
+//      <div class="page-header-overlay"></div>
+//      <div class="page-header-content"></div>      
+// </header>
 //  <div class="page-aside-bg">
 //	<div class="page-body">
 //		<aside class="page-aside"><!-- page aside content --></aside>

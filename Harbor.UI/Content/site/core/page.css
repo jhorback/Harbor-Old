@@ -117,7 +117,8 @@
   width: 20%;
   position: relative;
   left: 80%;
-  overflow: hidden; }
+  overflow: hidden;
+  min-height: 25em; }
 .hasaside .page-content {
   float: left;
   width: 78%;
