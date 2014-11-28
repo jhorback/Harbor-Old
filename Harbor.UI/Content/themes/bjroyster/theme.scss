@@ -1,4 +1,11 @@
 @import "bjroyster-theme";
 
 
+$frame-logo-name:      "logo-sig-2.png";
+$frame-logo-width:		150px;
+$frame-logo-height:		75px;
+
+$frame-footer-image:    "footer-hog.png" !default;
+
+
 @include bjroyster-theme;

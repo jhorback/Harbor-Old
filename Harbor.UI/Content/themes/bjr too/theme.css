@@ -103,7 +103,7 @@ dd {
 #frame-logo a {
   text-indent: -99999px;
   display: block;
-  width: 150px;
+  width: 85px;
   height: 75px;
   background: url(images/logo-hog.png) no-repeat;
   background-size: contain; }

@@ -11,7 +11,7 @@ namespace Harbor.UI
 
 			themes.Add(new Theme("default"));
 			themes.Add(new Theme("bjroyster"));
-			themes.Add(new Theme("bjrblue"));
+			themes.Add(new Theme("bjr too"));
 		}
 	}
 }

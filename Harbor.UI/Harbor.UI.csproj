@@ -515,13 +515,13 @@
       <CompileStyle>Nested</CompileStyle>
       <DebugInfo>False</DebugInfo>
     </Content>
-    <Content Include="Content\themes\bjrblue\images\bj-dive-fade.png" />
-    <Content Include="Content\themes\bjrblue\images\bj-painting-fade.png" />
-    <Content Include="Content\themes\bjrblue\images\footer-hog.png" />
-    <Content Include="Content\themes\bjrblue\images\footer-signature.png" />
-    <Content Include="Content\themes\bjrblue\images\logo-hog.png" />
-    <Content Include="Content\themes\bjrblue\images\logo-sig-2.png" />
-    <Content Include="Content\themes\bjrblue\images\logo-sig.png" />
+    <Content Include="Content\themes\bjr too\images\bj-dive-fade.png" />
+    <Content Include="Content\themes\bjr too\images\bj-painting-fade.png" />
+    <Content Include="Content\themes\bjr too\images\footer-hog.png" />
+    <Content Include="Content\themes\bjr too\images\footer-signature.png" />
+    <Content Include="Content\themes\bjr too\images\logo-hog.png" />
+    <Content Include="Content\themes\bjr too\images\logo-sig-2.png" />
+    <Content Include="Content\themes\bjr too\images\logo-sig.png" />
     <Content Include="Content\themes\bjroyster\images\footer-hog.png" />
     <Content Include="Content\themes\bjroyster\images\footer-signature.png" />
     <Content Include="Content\themes\bjroyster\images\logo-hog.png" />
@@ -530,7 +530,7 @@
     <Content Include="Content\themes\bjroyster\theme.css">
       <DependentUpon>theme.scss</DependentUpon>
     </Content>
-    <Content Include="Content\themes\bjrblue\theme.css">
+    <Content Include="Content\themes\bjr too\theme.css">
       <DependentUpon>theme.scss</DependentUpon>
     </Content>
     <Content Include="Content\themes\default\images\logo.png" />
@@ -1136,7 +1136,7 @@
       <CompileStyle>Nested</CompileStyle>
       <DebugInfo>False</DebugInfo>
     </None>
-    <None Include="Content\themes\bjrblue\theme.scss">
+    <None Include="Content\themes\bjr too\theme.scss">
       <Compile>True</Compile>
       <Minify>False</Minify>
       <CompileStyle>Nested</CompileStyle>
