@@ -9,12 +9,18 @@ pageEditor.title = {
 	},
 
 	titleBackgroundChanged: function () {
-		
-		// jch! - also make sure to add/remove the overlay
+		var overlay = $(".page-header-overlay");
 
 		if (this.page.attributes.titleBackgroundUrl) {
+
+			if (overlay.length === 0) {
+				overlay = $('<div class="page-header-overlay"/>').appendTo(".page-header");
+			}
+			overlay.show();
+
 			$(".page-header").css("background-image", "url(\"" + this.page.attributes.titleBackgroundUrl + "\")");
 		} else {
+			overlay.hide();	
 			$(".page-header").css("background-image", "none");
 		}
 	},

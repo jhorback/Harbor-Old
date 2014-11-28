@@ -80,16 +80,22 @@ namespace Harbor.Domain.Pages
 				}
 			}
 
-			var headerHandler = _contentTypeRepository.GetLayoutContentHandler(page.Layout.HeaderKey, page);
-			if (headerHandler != null)
+			if (string.IsNullOrEmpty(page.Layout.HeaderKey) == false)
 			{
-				uicd.PagePropertyNames.AddRange(headerHandler.DeclarePropertyNames());
+				var headerHandler = _contentTypeRepository.GetLayoutContentHandler(page.Layout.HeaderKey, page);
+				if (headerHandler != null)
+				{
+					uicd.PagePropertyNames.AddRange(headerHandler.DeclarePropertyNames());
+				}
 			}
 
-			var asideHandler = _contentTypeRepository.GetLayoutContentHandler(page.Layout.AsideKey, page);
-			if (asideHandler != null)
+			if (string.IsNullOrEmpty(page.Layout.AsideKey) == false)
 			{
-				uicd.PagePropertyNames.AddRange(asideHandler.DeclarePropertyNames());
+				var asideHandler = _contentTypeRepository.GetLayoutContentHandler(page.Layout.AsideKey, page);
+				if (asideHandler != null)
+				{
+					uicd.PagePropertyNames.AddRange(asideHandler.DeclarePropertyNames());
+				}
 			}
 
 			return uicd;
