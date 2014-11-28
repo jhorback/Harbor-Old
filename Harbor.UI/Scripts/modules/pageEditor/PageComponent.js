@@ -69,6 +69,7 @@ pageEditor.pageComponent = function (
 			this.view = this.templateRenderer.render(this.componentType + "View", {
 				model: this.model,
 				uicid: this.uicid,
+				page: this.page,
 				saveCurrentPage: this.save
 			});
 			this.view.serverUrl = _.bind(this.serverUrl, this);
