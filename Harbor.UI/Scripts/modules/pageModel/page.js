@@ -136,7 +136,7 @@ page.prototype = {
 			return this.attributes.titleBackgroundUrl ? true : false;
 		},
 		observe: ["titleBackgroundUrl"]
-	}
+	},
 
 	getUrl: function () {
 		return this.pageurl.get(this.get("id"), this.get("title"));
