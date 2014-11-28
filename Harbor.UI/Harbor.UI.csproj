@@ -515,9 +515,18 @@
       <CompileStyle>Nested</CompileStyle>
       <DebugInfo>False</DebugInfo>
     </Content>
-    <Content Include="Content\themes\bjrblue\images\logo.png" />
-    <Content Include="Content\themes\bjroyster\images\logo.png" />
-    <Content Include="Content\themes\bjroyster\images\signature.png" />
+    <Content Include="Content\themes\bjrblue\images\bj-dive-fade.png" />
+    <Content Include="Content\themes\bjrblue\images\bj-painting-fade.png" />
+    <Content Include="Content\themes\bjrblue\images\footer-hog.png" />
+    <Content Include="Content\themes\bjrblue\images\footer-signature.png" />
+    <Content Include="Content\themes\bjrblue\images\logo-hog.png" />
+    <Content Include="Content\themes\bjrblue\images\logo-sig-2.png" />
+    <Content Include="Content\themes\bjrblue\images\logo-sig.png" />
+    <Content Include="Content\themes\bjroyster\images\footer-hog.png" />
+    <Content Include="Content\themes\bjroyster\images\footer-signature.png" />
+    <Content Include="Content\themes\bjroyster\images\logo-hog.png" />
+    <Content Include="Content\themes\bjroyster\images\logo-sig-2.png" />
+    <Content Include="Content\themes\bjroyster\images\logo-sig.png" />
     <Content Include="Content\themes\bjroyster\theme.css">
       <DependentUpon>theme.scss</DependentUpon>
     </Content>
@@ -1120,6 +1129,7 @@
       <CompileStyle>Nested</CompileStyle>
       <DebugInfo>False</DebugInfo>
     </None>
+    <Content Include="Content\themes\bjroyster\_bjroyster-theme.scss" />
     <None Include="Content\themes\bjroyster\theme.scss">
       <Compile>True</Compile>
       <Minify>False</Minify>

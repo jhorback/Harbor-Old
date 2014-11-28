@@ -21,9 +21,9 @@ pageEditor.titleView = {
 	//	alert("onRender");
 	//},
 
-	//onClose: function () {
-	//	alert("close");
-	//}
+	onClose: function () {
+		this.$("form").remove();
+	}
 };
 
 pageEditor.titleModel = {

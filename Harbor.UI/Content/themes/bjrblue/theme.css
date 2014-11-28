@@ -1,16 +1,16 @@
 html, body {
-  background-color: #0f7c91;
-  color: #FFF;
+  background-color: #FFF;
+  color: #585a5b;
   font-size: 16px;
   font-family: "OpenSans", "Segoe UI", "Helvetica Neue", Arial;
   line-height: 1.6; }
 
 a, .link {
   text-decoration: underline;
-  color: #FFF;
+  color: #369;
   cursor: pointer; }
   a:visited, a:focus, .link:visited, .link:focus {
-    color: #FFF; }
+    color: #369; }
   a:hover, .link:hover {
     color: #09f; }
   a:active, .link:active {
@@ -31,7 +31,7 @@ p {
     margin-bottom: 0; }
 
 h1, h2, h3, h4, h5, h6 {
-  color: #FFF;
+  color: #393d40;
   margin-top: 12.8px;
   margin-bottom: 4px; }
 
@@ -39,7 +39,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #999999; }
 
 .loud {
-  color: #f5f0c5; }
+  color: #2F5BB7; }
 
 .attn {
   color: #D14836; }
@@ -56,7 +56,7 @@ hr {
 
 abbr[title] {
   cursor: help;
-  border-bottom: 1px dotted #FFF; }
+  border-bottom: 1px dotted #585a5b; }
 
 ul, ol {
   margin-bottom: 12.8px; }
@@ -88,31 +88,31 @@ dd {
   margin-left: 12.8px; }
 
 #frame-header {
-  height: 3.15em;
-  line-height: 3.15em;
-  color: #EEE;
-  background: transparent;
+  height: 4.7em;
+  line-height: 4.7em;
+  color: #585a5b;
+  background: #FFF;
   width: 100%;
   -moz-box-shadow: 0 2px 4px rgba(105, 105, 105, 0.25);
   -webkit-box-shadow: 0 2px 4px rgba(105, 105, 105, 0.25);
   -ms-box-shadow: 0 2px 4px rgba(105, 105, 105, 0.25);
   box-shadow: 0 2px 4px rgba(105, 105, 105, 0.25); }
   #frame-header a, #frame-header a:visited {
-    color: #EEE; }
+    color: #585a5b; }
 
 #frame-logo a {
   text-indent: -99999px;
   display: block;
   width: 150px;
-  height: 51px;
-  background: url(images/logo.png) no-repeat;
+  height: 75px;
+  background: url(images/logo-hog.png) no-repeat;
   background-size: contain; }
 
 #frame-nav ul li:hover {
   background-color: #FFF;
   font-weight: bold; }
   #frame-nav ul li:hover a {
-    color: #2F5BB7; }
+    color: #67A3B6; }
 #frame-nav ul li.selected {
   background-color: #FFF; }
   #frame-nav ul li.selected a {
@@ -130,14 +130,14 @@ dd {
     color: #a5a6a7; }
 
 legend {
-  color: #eda456; }
+  color: #393d40; }
 
 [contenteditable]:hover {
   background: #eaeaea; }
 
 .page-header {
   position: relative;
-  background: #FFF;
+  background: #67A3B6;
   overflow: hidden;
   color: #FFF;
   background-repeat: no-repeat;
@@ -150,7 +150,7 @@ legend {
     .page-header h1 a {
       color: #FFF; }
   .page-header [contenteditable]:hover, .page-header [contenteditable]:focus {
-    background: #e6e6e6; }
+    background: #4c8b9e; }
 
 .page-header-overlay {
   background: #000;
@@ -179,17 +179,9 @@ legend {
   .selectlist > ul > li.selected h1, .selectlist > ul > li.selected h2, .selectlist > ul > li.selected h3 {
     color: #FFF !important; }
 
-.menu {
-  background-color: #0f7c91;
-  color: white; }
-
-#frame {
-  z-index: 1;
-  background: url(images/bj-dive-fade.png) no-repeat; }
-
-#frame-footer {
-  overflow: hidden;
-  background: url(images/bj-painting-fade.png) no-repeat bottom right;
-  height: 240px; }
-  #frame-footer > div {
-    padding-top: 170px; }
+#frame-footer-image {
+  background: url(images/footer-signature.png) no-repeat left center !important;
+  height: 10em;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30);
+  opacity: 0.3; }

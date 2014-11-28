@@ -1,44 +1,10 @@
-@import "../../site/core/theme";
+@import "../bjroyster/bjroyster-theme";
+
+$frame-logo-name:      "logo-hog.png";
+$frame-logo-width:		150px;
+$frame-logo-height:		75px;
+
+$frame-footer-image:    "footer-signature.png";
 
 
-$c2: #eda456;
-
-$body-color: #FFF;
-$body-heading-color: #FFF;
-//$form-legend-color: #FFF;
-$page-title-color: #FFF;
-$body-background-color: #0f7c91;
-$framenav-background-color: transparent;
-
-$h2-font-color:		$c2;
-$form-legend-color:	$c2;
-
-$link-color:				#FFF;
-$link-color-hover:			#09f;
-
-$body-color-loud: #f5f0c5;
-
-
-
-@include theme;
-
-
-.menu {
-	background-color: $body-background-color;
-	color: white;
-}
-
-#frame {
-	z-index: 1;
-	background: url(images/bj-dive-fade.png) no-repeat;
-}
-
-
-#frame-footer {
-	overflow: hidden;
-	& > div {
-		padding-top: 170px;
-	}
-	background: url(images/bj-painting-fade.png) no-repeat bottom right;
-	height: 240px;
-}
+@include bjroyster-theme;

@@ -1,0 +1,37 @@
+@import "../../site/core/theme";
+
+$theme-color-blue: #67A3B6;
+
+$body-color: #585a5b;
+$body-background-color: #FFF;
+
+$frame-logo-name:      "logo-sig-2.png";
+$frame-logo-width:		150px;
+$frame-logo-height:		75px;
+
+$frame-footer-image:    "footer-hog.png" !default;
+
+
+//$frame-logo-width:		150px;
+//$frame-logo-height:		50px;
+//$frame-header-height:	6em; // 84px (logo image) / 14px base font size
+
+$framenav-background-color: #FFF;
+$framenav-color: $body-color;
+//$framenav-background-color-hover: #67A3B6; // #0f7c91;
+$framenav-color-hover: $theme-color-blue;
+
+$page-header-background: $theme-color-blue;
+$page-title-color: #FFF;
+
+
+
+@mixin bjroyster-theme {
+    @include theme;
+
+    #frame-footer-image {
+        background: url(unquote("images/" + $frame-footer-image)) no-repeat left center !important;
+        height: $frame-footer-height - 2em;
+        @include opacity(.3)
+    }
+}
