@@ -7,7 +7,7 @@ pageEditor.titleView = function (options, commandHandler) {
 
 pageEditor.titleView.prototype = {
 	initialize: function () {
-		this.enableTitleBackground = _.debounce(this.enableTitleBackground, 500);
+		// this.enableTitleBackground = _.debounce(this.enableTitleBackground, 500);
 
 		this.listenTo(this.model, "change:enableTitleBackground", this.enableTitleBackground);
 	},
