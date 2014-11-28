@@ -28,7 +28,8 @@ namespace Harbor.Domain.Pages.PageTypes
 		{
 			context
 				.SetLayout(PageLayout.LayoutDisplayProperties.ContentCentered | PageLayout.LayoutDisplayProperties.NoAside)
-				.SetHeader(LayoutContentTypes.Title);
+				.SetHeader(LayoutContentTypes.Title)
+				.EnableTitleBackgroundImageByDefault();
 		}
 
 		public override void SetTemplate(PageTypeTemplateContext context)

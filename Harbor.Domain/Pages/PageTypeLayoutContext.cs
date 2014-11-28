@@ -58,5 +58,11 @@ namespace Harbor.Domain.Pages
 			Page.Template.PrependContentByDefault = prepend;
 			return this;
 		}
+
+		public PageTypeLayoutContext EnableTitleBackgroundImageByDefault(bool enable = true)
+		{
+			Page.TitleBackgroundEnabled = enable;
+			return this;
+		}
 	}
 }
