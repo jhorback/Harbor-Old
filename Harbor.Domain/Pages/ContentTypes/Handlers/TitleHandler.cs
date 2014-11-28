@@ -28,7 +28,8 @@ namespace Harbor.Domain.Pages.ContentTypes.Handlers
 			return new Content.Title
 			{
 				DisplayTitle = title,
-				ParentUrl = parentUrl
+				ParentUrl = parentUrl,
+				EnableTitleBackground = Page.TitleBackgroundEnabled ?? false
 			};
 		}
 	}

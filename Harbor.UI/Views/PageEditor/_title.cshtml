@@ -1,3 +1,9 @@
-﻿<div data-templatefor="titleView">
-	<h1 data-bind="text:displayTitle"></h1>
+﻿<div data-templatefor="titleView" class="clearfix">
+	<h1 data-bind="text:displayTitle" class="float-left"></h1>
+	<form class="form-inline" style="position:absolute;right: 1em; bottom: 0; line-height: 3;">
+		<label>
+			<input type="checkbox" name="enableTitleBackground" />
+			Enable title background
+		</label>
+	</form>
 </div>

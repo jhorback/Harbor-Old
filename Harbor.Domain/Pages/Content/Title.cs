@@ -5,6 +5,7 @@ namespace Harbor.Domain.Pages.Content
 	{
 		public string DisplayTitle { get; set; }
 		public string ParentUrl { get; set; }
+		public bool EnableTitleBackground { get; set; }
 
 		public bool HasParentUrl
 		{

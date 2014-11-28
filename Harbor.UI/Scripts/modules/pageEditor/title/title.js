@@ -2,24 +2,36 @@
 // just sets up a listener for the displayTitle on page edit
 pageEditor.title = {
 	init: function () {
-		this.open();
+		
 	},
 
 	onRemove: function () {
-		this.close();
 	}
 };
 
 pageEditor.pageComponent("title", pageEditor.title);
 
 
-pageEditor.titleView = {};
+pageEditor.titleView = {
+	//initialize: function () {
+	//	alert("intit title view");
+	//},
+
+	//onRender: function () {
+	//	alert("onRender");
+	//},
+
+	//onClose: function () {
+	//	alert("close");
+	//}
+};
 
 pageEditor.titleModel = {
 	defaults: {
 		displayTitle: null,
 		parentUrl: null,
-		hasParentUrl: false
+		hasParentUrl: false,
+		enableTitleBackground: false
 	}
 };
 
