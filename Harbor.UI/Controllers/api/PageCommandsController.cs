@@ -72,6 +72,14 @@ namespace Harbor.UI.Controllers.Api
 			return await pageResponse(id);
 		}
 
+		[HttpPost, Http.PagePermit(Permissions.All), Route("EnableTitleBackground")]
+		public async Task<HttpResponseMessage> EnableTitleBackground(int id, EnableTitleBackground command)
+		{
+			await _commandService.ExecuteAsync(command);
+			return await pageResponse(id);
+		}
+
+
 		async Task<HttpResponseMessage> pageResponse(int id)
 		{
 			var queryParams = new PageQueryParams { PageID = id };

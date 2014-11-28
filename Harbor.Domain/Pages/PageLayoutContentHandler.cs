@@ -1,4 +1,5 @@
 ﻿
+using System.Collections.Generic;
 using System.Web.Script.Serialization;
 
 namespace Harbor.Domain.Pages
@@ -41,6 +42,11 @@ namespace Harbor.Domain.Pages
 		public virtual void OnDelete()
 		{
 			// noop
+		}
+
+		public virtual IEnumerable<string> DeclarePropertyNames()
+		{
+			yield break;
 		}
 	}
 

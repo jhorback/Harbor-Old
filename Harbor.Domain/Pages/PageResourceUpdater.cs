@@ -79,6 +79,19 @@ namespace Harbor.Domain.Pages
 					uicd.PagePropertyNames.AddRange(handler.DeclarePropertyNames());
 				}
 			}
+
+			var headerHandler = _contentTypeRepository.GetLayoutContentHandler(page.Layout.HeaderKey, page);
+			if (headerHandler != null)
+			{
+				uicd.PagePropertyNames.AddRange(headerHandler.DeclarePropertyNames());
+			}
+
+			var asideHandler = _contentTypeRepository.GetLayoutContentHandler(page.Layout.AsideKey, page);
+			if (asideHandler != null)
+			{
+				uicd.PagePropertyNames.AddRange(asideHandler.DeclarePropertyNames());
+			}
+
 			return uicd;
 		}
 

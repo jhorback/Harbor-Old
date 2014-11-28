@@ -9,7 +9,11 @@ namespace Harbor.Domain.Query
 
 		public virtual Task<TResponse> ExecuteAsync(TRequest query)
 		{
-			return new TaskFactory<TResponse>().StartNew(() => Execute(query));
+			return new TaskFactory<TResponse>().StartNew((httpContext) =>
+			{
+				HttpContext.Current = httpContext as HttpContext;
+				return Execute(query);
+			}, HttpContext.Current);
 		}
 	}
 

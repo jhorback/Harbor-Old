@@ -129,7 +129,10 @@ namespace Harbor.Data.Repositories
 			// remove properties
 			foreach (var prop in entity.DeletedProperties)
 			{
-				context.PageProperties.Remove(prop);
+				if (prop.PagePropertyID != 0)
+				{
+					context.PageProperties.Remove(prop);					
+				}
 			}
 			entity.DeletedProperties = new List<PageProperty>();
 		

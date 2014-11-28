@@ -114,6 +114,7 @@
     <Compile Include="JSON.cs" />
     <Compile Include="Caching\MemCache.cs" />
     <Compile Include="Pages\Commands\MoveContent.cs" />
+    <Compile Include="Pages\Commands\EnableTitleBackground.cs" />
     <Compile Include="Pages\Commands\UpdateRootPages.cs" />
     <Compile Include="Pages\Commands\AddExistingPageToLinks.cs" />
     <Compile Include="Pages\Commands\DeleteTemplateContent.cs" />

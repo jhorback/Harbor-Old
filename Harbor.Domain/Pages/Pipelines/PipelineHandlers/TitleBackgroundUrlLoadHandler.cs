@@ -18,6 +18,10 @@ namespace Harbor.Domain.Pages.PipelineHandlers
 			{
 				page.TitleBackgroundUrl = _fileUrl.GetUrl(page.PreviewImage, FileResolution.High);
 			}
+			else
+			{
+				page.TitleBackgroundUrl = null;
+			}
 		}
 	}
 }

@@ -1,4 +1,6 @@
 ﻿
+using System.Collections.Generic;
+
 namespace Harbor.Domain.Pages.ContentTypes.Handlers
 {
 	public class TitleHandler : PageLayoutContentHandler
@@ -31,6 +33,11 @@ namespace Harbor.Domain.Pages.ContentTypes.Handlers
 				ParentUrl = parentUrl,
 				EnableTitleBackground = Page.TitleBackgroundEnabled ?? false
 			};
+		}
+
+		public override IEnumerable<string> DeclarePropertyNames()
+		{
+			yield return "TitleBackgroundEnabled";
 		}
 	}
 }
