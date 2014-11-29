@@ -19,15 +19,19 @@ pageEditor.productLinkModel.prototype = {
 		previewImageSrc: null,
 		tileClassName: "tile",
 		link: null,
-		hasPreviewImage: false, 
+		hasPreviewImage: false,
+		buttons: [],
 		// product link properties
-		productCount: 0,
-		firstButton: null
+		productCount: 0
 	},
 
 	initialize: function () {
-		this.on("change:productCount change:firstButton", this.onRender);
-		this.firstButton = this.modelFactory.create("payPalButton", this.attributes.firstButton);
+		this.buttons = this.collectionFactory.createGeneric(this.attributes.buttons);
+		this.on("sync", this.onSync);
+	},
+
+	onSync: function () {
+		this.buttons.set(this.attributes.buttons);
 	},
 
 	hasPageLink: function () {
@@ -61,13 +65,6 @@ pageEditor.productLinkModel.prototype = {
 			return val;
 		},
 		bind: ["tileDisplay"]
-	},
-
-	"[firstButton]": {
-		set: function (value) {
-			this.firstButton && this.firstButton.set(value);
-			return value;
-		}
 	}
 };
 

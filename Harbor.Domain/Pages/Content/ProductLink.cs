@@ -45,17 +45,5 @@ namespace Harbor.Domain.Pages.Content
 				return LinkedPage.PayPalButtons.Count;
 			}
 		}
-
-		public Products.PayPalButton FirstButton
-		{
-			get
-			{
-				if (LinkedPage == null)
-				{
-					return null;
-				}
-				return LinkedPage.PayPalButtons.FirstOrDefault();
-			}
-		}
 	}
 }

@@ -5,19 +5,12 @@
         </a>
         <div class="caption">
 	        <h2><a data-bind="text: title, href: link"></a></h2>
-	        
-	        @* 
-			Exchanging the button for price(s)
-				$10.00
-				-- add description if different then title
-				$10.00 - Print
-				$100.00 - Original
-				
-				then description?
-			 *@
-	        
-	        <div data-rel="buttonPreview">
-			</div>
+	        <div>
+		        <p style="margin:0;" data-collection="buttons">
+			        <strong class="attn" data-bind="text: displayPrice"></strong>
+			        <span data-bind="showif: description"> - <span data-bind="text: description"></span></span>
+		        </p>
+	        </div>
         </div>
     </div>
     <div data-rel="edit">

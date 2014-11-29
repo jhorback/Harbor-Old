@@ -1,9 +1,8 @@
 ﻿
 
-pageEditor.productLinkView = function (options, pageSelector, payPalButtonRenderer) {
+pageEditor.productLinkView = function (options, pageSelector) {
 
 	this.pageSelector = pageSelector;
-	this.payPalButtonRenderer = payPalButtonRenderer;
 };
 
 
@@ -12,22 +11,6 @@ pageEditor.productLinkView.prototype = {
 		_.bindAll(this, "save", "selectPage");
 
 		this.listenTo(this.model, "change:tileDisplay", this.save);
-		this.listenTo(this.model, "change:productCount", this.onRender);
-		this.listenTo(this.model.firstButton, "change", this.onRender);
-	},
-	
-	onRender: function () {
-		var previewEl,
-			productCount = this.model.attributes.productCount;
-
-		previewEl = this.$("[data-rel=buttonPreview]");
-		if (productCount === 0) {
-			previewEl.empty();
-		} else if (productCount === 1) {
-			this.payPalButtonRenderer.render(previewEl, this.model.firstButton, "XXX", true);
-		} else {
-			previewEl.empty().append('<span class="button loud">See purchase options</span>');	
-		}
 	},
 
 	save: function () {
@@ -57,7 +40,6 @@ pageEditor.productLinkView.prototype = {
 	
 	onClose: function () {
 		this.$("[data-rel=edit]").remove();
-		this.payPalButtonView && this.payPalButtonView.close();
 	}
 };
 
@@ -66,7 +48,6 @@ pageEditor.productLinkView.prototype = {
 pageEditor.view("productlinkView", [
 	"options",
 	"pageSelector",
-	"payPalButtonRenderer",
 	pageEditor.productLinkView
 ]);
 

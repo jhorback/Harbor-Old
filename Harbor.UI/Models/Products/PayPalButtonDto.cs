@@ -13,6 +13,7 @@ namespace Harbor.UI.Models.Products
 		public string buttonType { get; set; }
 		public string itemNumber { get; set; }
 		public decimal price { get; set; }
+		public string displayPrice { get; set; }
 		public decimal? shippingOverride { get; set; }
 		public decimal? taxOverride { get; set; }
 
@@ -31,6 +32,7 @@ namespace Harbor.UI.Models.Products
 				buttonType = button.ButtonType;
 				itemNumber = button.ItemNumber;
 				price = button.Price;
+				displayPrice = string.Format("{0:C}", button.Price);
 				shippingOverride = button.ShippingOverride;
 				taxOverride = button.TaxOverride;
 			}

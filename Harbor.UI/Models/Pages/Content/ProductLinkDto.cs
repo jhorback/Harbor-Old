@@ -1,6 +1,9 @@
-﻿using System.Web;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 using Harbor.Domain.Files;
 using Harbor.Domain.Pages.Content;
+using Harbor.Domain.Pages.PageTypes;
 
 namespace Harbor.UI.Models.Content
 {
@@ -8,7 +11,7 @@ namespace Harbor.UI.Models.Content
 	public class ProductLinkDto : PageLinkDto
 	{
 		public int productCount { get; set; }
-		public Products.PayPalButtonDto firstButton { get; set; }
+		public List<Products.PayPalButtonDto> buttons { get; set; }
 
 		public ProductLinkDto() { }
 
@@ -25,7 +28,7 @@ namespace Harbor.UI.Models.Content
 			exists = pageLink.Exists;
 			hasPreviewImage = pageLink.HasPreviewImage;
 			productCount = pageLink.ProductCount;
-			firstButton = Products.PayPalButtonDto.FromPayPalButton(pageLink.FirstButton);
+			buttons = pageLink.Buttons.Select(Products.PayPalButtonDto.FromPayPalButton).ToList();
 		}
 
 		public static ProductLinkDto FromProductLink(ProductLink productLink)
