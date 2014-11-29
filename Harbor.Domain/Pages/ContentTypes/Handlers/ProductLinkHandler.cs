@@ -7,11 +7,15 @@ namespace Harbor.Domain.Pages.ContentTypes.Handlers
 	public class ProductLinkHandler : TemplateContentHandler
 	{
 		private readonly IPrincipal _user;
+		private readonly IPageRepository _pageRepository;
+		private readonly ILogger _logger;
 
-		public ProductLinkHandler(Page page, TemplateUic uic, IPrincipal user)
+		public ProductLinkHandler(Page page, TemplateUic uic, IPrincipal user, IPageRepository pageRepository, ILogger logger)
 			: base(page, uic)
 		{
 			_user = user;
+			_pageRepository = pageRepository;
+			_logger = logger;
 		}
 
 		public override object GetTemplateContent()
@@ -24,6 +28,12 @@ namespace Harbor.Domain.Pages.ContentTypes.Handlers
 			else
 			{
 				linkedPage = Page.GetPageLink(pageId);
+			}
+
+			if (validPageId && (linkedPage == null || linkedPage.PayPalButtons.Count == 0))
+			{
+				linkedPage = _pageRepository.FindById(pageId);
+				_logger.Warn("Product link did not load buttons.");
 			}
 
 			var content = new Content.ProductLink(pageId, GetProperty("tileDisplay") ?? "normal", linkedPage, _user.Identity.Name);

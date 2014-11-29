@@ -25,6 +25,12 @@
             {
                 <h2>@sect.title</h2>
             }
+			@if (sect.links.Count == 0)
+			{
+				<div class="pad">
+					There are no links to display. 
+				</div>
+			}
             <ul>
                 @foreach (var link in sect.links)
                 {

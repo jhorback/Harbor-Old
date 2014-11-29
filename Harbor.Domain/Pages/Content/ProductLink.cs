@@ -15,11 +15,7 @@ namespace Harbor.Domain.Pages.Content
 		{
 			get
 			{
-				if (LinkedPage == null || LinkedPage.PayPalButtons == null)
-				{
-					yield break;
-				}
-				else
+				if (LinkedPage != null)
 				{
 					foreach (var button in LinkedPage.PayPalButtons)
 					{
