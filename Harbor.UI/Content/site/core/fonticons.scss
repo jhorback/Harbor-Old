@@ -54,7 +54,7 @@ $fonticons-path: "font/fontawesome/fontawesome-webfont" !default;
   font-family: FontAwesome;
   font-weight: normal;
   font-style: normal;
-  text-decoration: inhearit;
+  text-decoration: none !important;
   -webkit-font-smoothing: antialiased;
   *margin-right: .3em;
 }
