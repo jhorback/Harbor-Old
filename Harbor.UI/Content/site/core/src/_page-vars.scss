@@ -18,5 +18,5 @@ $page-aside-width-centered: 25%;
 
 $page-aside-left: 100% - $page-aside-width;
 $page-content-background: #fff;
-$page-content-width-centered: 100% - $page-aside-width - ($page-content-gutter-width*2);
+$page-content-width-centered: 100% - ($page-content-gutter-width*2);
 

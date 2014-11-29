@@ -8,6 +8,15 @@
   .tiles .tile {
     box-sizing: border-box; }
 
+/*
+        <div class="tile">
+            <a class="media"></a>
+            <div class="caption">
+                <a><h2></h2></a>
+                <p></p>
+            </div>
+        </div>
+    */
 .tile {
   display: block;
   word-wrap: break-word;
@@ -27,16 +36,26 @@
     margin-left: auto;
     margin-right: auto; }
     .tile .media img {
-      max-height: 10em; }
+      max-height: 10em;
+      -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+      -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+      -ms-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055); }
   .tile .caption {
     padding: 0.3em;
     color: #777; }
+    .tile .caption p {
+      font-size: 0.85em; }
+    .tile .caption a {
+      text-decoration: none; }
   .tile h2, .tile h3 {
-    font-size: 1.4em;
+    font-size: 1.1em;
+    white-space: normal;
+    line-height: 1.2;
     margin: 0.1em 0; }
 
 .hover .tile:hover, .hover .tile:focus, .hover.tile:hover, .hover.tile:focus {
-  border-color: #369;
+  border-color: #ccc;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -ms-border-radius: 5px;

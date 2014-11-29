@@ -26,6 +26,15 @@ $tile-caption-color: #777;
 }
 
 @mixin tile {
+    /*
+        <div class="tile">
+            <a class="media"></a>
+            <div class="caption">
+                <a><h2></h2></a>
+                <p></p>
+            </div>
+        </div>
+    */
 	.tile {
 		display: block;
         word-wrap:break-word;
@@ -49,29 +58,39 @@ $tile-caption-color: #777;
 			margin-right: auto;
 
 			//height: 10em;
-			img { max-height: 10em;	}
+			img {
+                max-height: 10em;	
+                @include box-shadow(0 1px 3px rgba(0,0,0,.055));
+			}
 		}
 
 		.caption {
 			padding: .3em;
-			color: $tile-caption-color;
-			
+			color: $tile-caption-color;			
 			//height: 7em;
+
+            p {
+                font-size: .85em;
+            }
+
+             a { 
+                text-decoration: none;
+            }
 		}
 
 		h2, h3 {
-			font-size: 1.4em;
-			margin: .1em 0;
-		}
-
-		
+			font-size: 1.1em;
+            white-space: normal;
+            line-height: 1.2;  
+			margin: .1em 0;       
+		}		
 	}
 
 	.hover {
 		.tile, &.tile {
 			&:hover,
 			&:focus {
-				border-color: $link-color;
+				border-color: #ccc;
 				@include border-radius;
 				@include box-shadow(0 1px 4px rgba(0,105,214,.25));
 			}

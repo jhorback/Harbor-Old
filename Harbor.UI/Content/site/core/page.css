@@ -87,8 +87,8 @@
   margin-left: auto;
   margin-right: auto; }
 .centered .page-content {
-  width: 78%;
-  *width: 77.5%; }
+  width: 98%;
+  *width: 97.5%; }
 .centered .page-content:first-child {
   width: 98%; }
 
@@ -96,8 +96,8 @@
   .page-aside {
     width: 25%; }
   .page-content {
-    width: 78%;
-    *width: 77.5%; } }
+    width: 98%;
+    *width: 97.5%; } }
 
 .hasaside .page-aside-bg {
   float: left;

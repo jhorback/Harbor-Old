@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Harbor.Domain.Pages.Content
 {
@@ -8,6 +10,29 @@ namespace Harbor.Domain.Pages.Content
 			: base(pageId, tileDisplay, linkedPage, userName)
 		{
 		}
+
+		public IEnumerable<Products.PayPalButton> Buttons
+		{
+			get
+			{
+				if (LinkedPage == null || LinkedPage.PayPalButtons == null)
+				{
+					yield break;
+				}
+				else
+				{
+					foreach (var button in LinkedPage.PayPalButtons)
+					{
+						yield return button;						
+					}
+				}
+			}
+		}
+
+
+
+		// jch! - may not need these
+
 
 		public int ProductCount
 		{

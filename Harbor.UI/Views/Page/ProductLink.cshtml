@@ -14,21 +14,20 @@
 	}
 	<div class="caption">
 		<h2><a href="@link">@Model.Title</a></h2>
-		@*<p>
-			@Html.Raw(Model.previewText)
-		</p>*@
-		@if (Model.ProductCount > 0)
-		{
-			if (Model.ProductCount > 1)
+			@foreach (var button in Model.Buttons)
 			{
-				<div>
-					<a href="@link" class="button loud">See purchase options</a>
-				</div>
+				<p style="margin:0;">
+					<strong class="attn">@string.Format("{0:C}", button.Price)</strong>
+					@if (string.IsNullOrEmpty(button.Description) == false)
+					{
+						<span> - @button.Description</span>
+					}
+				</p>
 			}
-			else
-			{
-				@Html.PayPalButton(ViewBag.MerchantID as String, Model.FirstButton)
-			}
-		}
+			@*
+			<hr />
+
+			@Html.Raw(Model.PreviewText)
+				*@
 	</div>
 </div>
