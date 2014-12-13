@@ -3,11 +3,12 @@ content comopnent : {
 	uicid:, key:, classNames:
 }
 */
-function template(attrs, options, collectionFactory, modelFactory) {
+function template(attrs, options, collectionFactory, modelFactory, console) {
 
 	this.page = options.page;
 	this.collectionFactory = collectionFactory;
 	this.modelFactory = modelFactory;
+	this.console = console;
 }
 
 template.prototype = {
@@ -34,8 +35,8 @@ template.prototype = {
 			return this.modelFactory.create(meta.key + "Model", data, { page: this.page });
 		} catch (e) {
 			// keep this catch here for now
-			// may want to do something else when viewing things like the "Pages" list
-			debugger;
+			// A separate light weight collection would work best for page lists.
+			this.console.warn("Cannot create component model.");
 			return data;
 		}
 	},
