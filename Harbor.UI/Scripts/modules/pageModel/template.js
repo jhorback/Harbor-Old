@@ -67,5 +67,6 @@ pageModel.model("template", [
 	"options",
 	"collectionFactory",
 	"modelFactory",
+	"console",
 	pageModel.template = template
 ]);
