@@ -48,9 +48,7 @@ appui.ajaxRequest = function ($, defaultHandler, console) {
 
 		/** util method to return a resolved promise object */
 		resolved: function () {
-			var dfd = $.Deferred();
-			dfd.resolve();
-			return dfd.promise();
+			return $.Deferred().resolve().promise();
 		}
 	};
 

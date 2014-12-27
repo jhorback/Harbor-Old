@@ -1,4 +1,4 @@
-﻿/*
+/*
  * modelBinder
  *     modelBinder.create(model, el);
  *
@@ -24,7 +24,7 @@
  *
  *     Event overriding:
  *     1) data-bind-event="eventName"
- *     
+ *
  *     The modelBinderConfig can be configured to enable additional value and attribute types.
  */
 var modelBinder = function ($, _, config, nameValueParser) {
@@ -35,7 +35,7 @@ var modelBinder = function ($, _, config, nameValueParser) {
 		create: function (model, el, matches) {
 			return new ModelBinder(model, el, matches);
 		},
-		
+
 		updateEl: function (el) {
 			var binding = $(el).data("binding");
 			if (binding) {
@@ -45,14 +45,14 @@ var modelBinder = function ($, _, config, nameValueParser) {
 	};
 
 	// matches come from the modelBinderShim
-	// 
+	//
 
 	function ModelBinder(model, el, matches) {
 
 		if (!model) {
 			return this;
 		}
-		
+
 		this.$el = $(el);
 		matches = matches || el.find("[data-bind]:not([data-templatefrom]),[name],[id]").addBack("[data-bind]");
 		if (matches.length === 0) {
@@ -61,7 +61,7 @@ var modelBinder = function ($, _, config, nameValueParser) {
 
 		this.matches = matches;
 		this.model = model;
-		
+
 		if (this.$el.data("modelbound") === true) {
 			this.unbind();
 		}
@@ -87,13 +87,13 @@ var modelBinder = function ($, _, config, nameValueParser) {
 			if (el.is(":focus:not(:button)")) {
 				return;
 			}
-			
+
 			binding = el.data("binding");
 			if (!binding) {
 				this.unbind();
 				return;
 			}
-			
+
 			value = value === null ? "" : value;
 
 			// if we have a binding name and the name attribute is not passed or is the same as the binding name then update
@@ -149,7 +149,7 @@ var modelBinder = function ($, _, config, nameValueParser) {
 			var $els = this.matches,
 				viewToModelProxy = $.proxy(_private.viewToModelFromEvent, this);
 
-			// build the bindings 
+			// build the bindings
 			$els.each($.proxy(function (index, el) {
 
 				_private.parseBindEl.call(this, el, viewToModelProxy);
@@ -162,12 +162,17 @@ var modelBinder = function ($, _, config, nameValueParser) {
 		parseBindEl: function (el, viewToModelProxy) {
 			var instance = this,
 			    attr,
+                type,
 			    bindTo,
 			    binding = { attrs: {}, binder: this },
 			    changeEvent;
 
 			el = $(el);
 			attr = el.attr("data-bind");
+			if (attr === "false") {
+				return;
+			}
+
 			bindTo = nameValueParser.parse(attr, "value");
 			if (("value" in bindTo) === false) {
 				bindTo.value = el.attr("name") || el.attr("id");
@@ -177,11 +182,13 @@ var modelBinder = function ($, _, config, nameValueParser) {
 				if (what.toLowerCase() === "value") { // value/type binding
 
 					binding.name = modelProperty;
-					binding.type = el.attr("data-type") || el.attr("type") || el[0].tagName.toLowerCase();
+					binding.type = type = el.attr("data-type") || el.attr("type") || el[0].tagName.toLowerCase();
 					if (_private.addBinding.call(instance, modelProperty, el) === false) {
 						delete binding.name;
 						delete binding.type;
-					}
+					} else {
+                        binding.options = $.extend({}, (config.types[type] && config.types[type].options) || {}, nameValueParser.parse(el.attr("data-bind-options")) || {});
+                    }
 				} else { // attribute binding
 
 					binding.attrs[what] = modelProperty;
@@ -189,7 +196,7 @@ var modelBinder = function ($, _, config, nameValueParser) {
 						delete binding.attrs[what];
 					}
 				}
-				
+
 			}, this));
 
 			el.data("binding", binding);
@@ -216,7 +223,7 @@ var modelBinder = function ($, _, config, nameValueParser) {
 			/// <summary>Used to capture autofill values that do not trigger a change event.</summary>
 			var self = this,
 			    update;
-			
+
 			update = function () {
 				// pageLoaded = true; jch* testing delay
 				_.each(self.bindings, function (binding, propName) {
@@ -227,7 +234,7 @@ var modelBinder = function ($, _, config, nameValueParser) {
 					});
 				});
 			};
-			
+
 			if (!pageLoaded) {
 				setTimeout(update, 500);
 			} else {
@@ -239,7 +246,7 @@ var modelBinder = function ($, _, config, nameValueParser) {
 		// supports nested models
 		addBinding: function (name, el) {
 			var binding;
-			
+
 			if (!name) {
 				return false;
 			}
@@ -260,7 +267,7 @@ var modelBinder = function ($, _, config, nameValueParser) {
 		},
 
 		initBinding: function (name) {
-			// 
+			//
 			var model = this.model, attr, i, parts;
 
 			if (name.indexOf(".") === -1) {
@@ -280,11 +287,11 @@ var modelBinder = function ($, _, config, nameValueParser) {
 			if (model.attributes[attr] === void(0)) {
 				return null;
 			}
-			
+
 			if (!this.models[model.name]) {
 				model.bind("change", this._modelToViewProxy);
 				this.models[model.name] = model;
-			};
+			}
 			return {
 				name: name,
 				els: [],

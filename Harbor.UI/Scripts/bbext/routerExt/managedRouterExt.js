@@ -114,6 +114,7 @@ function managedRouterExt(mixin, Backbone, _, routerInfo, context) {
 			var routeCache = this.routeCache,
 				previousRouteInfo = routeCache.routes[routeCache.previousRoute],
 				currentRouteInfo = routeCache.routes[routeCache.currentRoute],
+				component = routeCache.components[name],
 			    url;
 
 
@@ -129,23 +130,24 @@ function managedRouterExt(mixin, Backbone, _, routerInfo, context) {
 				// create the component if not yet created
 				if (!currentRouteInfo.component) {
 					currentRouteInfo.component = name;
-					if (!routeCache.components[name]) {
-						routeCache.components[name] = context.instantiate(name);
+					if (!component) {
+						component = routeCache.components[name] = context.instantiate(name);
 					}
 				}
 
 				// determine the cache setting
 				// default the cache setting to cache if no arguments
+				options = options || {};
 				options.cache = currentRouteInfo.cache = options.cache === void(0) ?
 					shouldCache(routeCache) : options.cache;
 
 				// render the component
-				routeCache.components[name].render(name, options);
+				component.view = component.render(name, options);
 			}
 
 			url = routerInfo.routeUrl(routeCache.currentRoute, routeCache.currentRouteArgs);
 			this.navigate(url);
-			return routeCache.components[name];
+			return component;
 		},
 
 		// name - can be the route name or pattern

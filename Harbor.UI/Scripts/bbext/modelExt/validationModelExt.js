@@ -24,10 +24,10 @@
  * 
  * Error notifications:
  *     Whenever a model property changes, its validation is run.
- *     If there are any errors, an "error" will be triggered on the model.
+ *     If there are any errors, an "invalid" will be triggered on the model.
  * 
  *     var sm = new SomeModel();
- *     sm.on("error", function (model, errors, property) {
+ *     sm.on("invalid", function (model, errors, property) {
  *         // errors - hash of property name : array of error messages. { username: ["Required."] }
  *         //     errors will be null if there was an error but it is now cleared
  *         // property - the name of the property that triggered the error.
@@ -88,10 +88,10 @@ function (_, validators, modelPropertyDescriptor) {
 			errors = {};
 			errors[propertyName] = errorMsgs;
 			model._fieldErrors[propertyName] = true;
-			!silent && model.trigger("error", model, errors, propertyName);
+			!silent && model.trigger("invalid", model, errors, propertyName);
 		} else {
 			if (!silent && model._fieldErrors[propertyName] === true) {
-				model.trigger("error", model, errors, propertyName);
+				model.trigger("invalid", model, errors, propertyName);
 			}
 			delete model._fieldErrors[propertyName];
 		}

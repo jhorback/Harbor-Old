@@ -19,13 +19,21 @@ bbext.selectlistFactory = function (_) {
 	return {
 		create: function (el, options) {
 
+			if (!el.selectlist) {
+				return void(0);
+			}
+
 			el.selectlist(options);
 
 			if (options && options.collection) {
 				bindCollection(el, options.collection);
 			}
 
-			return {				
+			return {
+				clearCheckAll: function () {
+					el.selectlist("clearCheckAll");
+				},
+
 				clear: function () {
 					el.selectlist("clear");
 				},

@@ -22,13 +22,13 @@ function postCommandModelExt(mixin) {
 		postCommand: function (commandName, command) {
 			var root, url, id, xhr, model = this;
 
-			root = _.result(this, "urlRoot") || (this.collection && _.result(this.collection, "url"));
+			root = _.result(this, "urlRoot") || _.result(this, "url") || (this.collection && _.result(this.collection, "url"));
 			if (!root) {
 				throw new Error("A url is required for postCommand.");
 			}
 
 			id = this.get("id");
-			url = root + "/" + id + "/" + commandName;
+			url = id ? root + "/" + id + "/" + commandName : root + "/" + commandName;
 			command = command || {};
 			command.id = id;
 		
@@ -43,8 +43,13 @@ function postCommandModelExt(mixin) {
 			// reset the model properties from the server response
 			xhr.then(function (resp) {
 				var options = {},
-					serverAttrs = model.parse(resp, options);
-					model.set(serverAttrs);
+				    serverAttrs;
+
+				if (!resp) {
+					return;
+				}
+				serverAttrs = model.parse(resp, options);
+				model.set(serverAttrs);
 				model.trigger('sync', model, resp, options);
 			});
 

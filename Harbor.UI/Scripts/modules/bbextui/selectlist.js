@@ -14,6 +14,7 @@
 * Options:
 *    rowSelector - selector for the row. Default is tr (could be li, or ul, or whatever markup is used as the row). 
 *    hideInputs - makes any inputs inside the list hidden.
+*    checkAllEl - A dom element of a checkbox for a check-all - or use the data attribute as noted below.
 *
 * Events:
 *     "change", "selectlistchange"
@@ -90,13 +91,17 @@ $(function () {
 		   doc.bind("keyup.selectlist", $.proxy(this._documentKeyUp, this));
 
 		   // implement checkall
-		   this._checkall = this.element.find("[data-role=checkall]");
+		   this._checkall = this.options.checkAllEl || this.element.find("[data-role=checkall]");
 		   this.row(this._checkall).attr("data-selectable", false);
 		   this._checkall.bind("click.selectlist", $.proxy(this._checkallClick, this));
 	   },
+
+		clearCheckAll: function () {
+			this._checkall.prop("checked", false);
+		},
 	   
 		clear: function () {
-			this._checkall.prop("checked", false);
+			this.clearCheckAll();
 			this._checkallClick();
 		},
 
@@ -126,16 +131,20 @@ $(function () {
 		},
 	   
 		_checkallClick: function () {
-			 var rows = this.element.find("tbody " + this.options.rowSelector);
+			var selector = this.options.rowSelector.toLowerCase() === "tr" ?
+				"tbody tr" : this.options.rowSelector;
+			 var rows = this.element.find(selector);
 			 this._selectRange(rows.first(), rows.last(), this._checkall.prop("checked"));
 		},
 	   
 	   _clickList: function (event) {
 		   var selectable,
-			   self = this,
-			   target = $(event.target),
-			   row = this.row(target);
+		       self = this,
+		       target = $(event.target),
+		       row = this.row(target),
+		       list = this.element;
 
+		   
 		   if (this.isRowSelectable(target) === false) {
 			   return;
 		   }
@@ -153,6 +162,7 @@ $(function () {
 						   row.removeClass("selected");
 						   updateValues.call(self, target, false);
 					   }
+					   list.data("selectlist.lastcheckbox", target.prop("checked") ? target : null);
 				   }
 				   this._fireChange();
 				   
@@ -232,7 +242,7 @@ $(function () {
 		   var list = this.element,
 			   row = this.row(checkbox),
 			   lastCheckbox;
-
+		   
 		   // targetListItem is the row
 		   if (!event.ctrlKey && !event.shiftKey) {
 
@@ -240,22 +250,21 @@ $(function () {
 			   checkOne(list.find("input"), checkbox);
 			   row.addClass("selected");
 			   updateValues.call(this, checkbox, true);
-			   list.data("selectlist.lastcheckbox", checkbox);
 			   this._fireChange();
 			   
 		   } else if (event.ctrlKey) {
 
-			   this._selectSingle(checkbox, !checkbox.prop("checked"));
+			  this._selectSingle(checkbox, !checkbox.prop("checked"));
 
 		   } else if (event.shiftKey) {
 
 			   lastCheckbox = list.data("selectlist.lastcheckbox");
-			   if (lastCheckbox) {
+			   if (lastCheckbox && lastCheckbox.length > 0) {
 				   this._selectRange(row, this.row(lastCheckbox));
-			   } else {
-				   this._selectSingle(checkbox);
 			   }
 		   }
+
+			list.data("selectlist.lastcheckbox", checkbox.prop("checked") ? checkbox : null);
 	   },
 	   
 	   _selectSingle: function (checkbox, checked) {
@@ -264,7 +273,6 @@ $(function () {
 
 		   checked = (checked === false) ? false : true;
 		   check(checkbox, checked);
-		   this._fireChange();
 		   
 		   if (checked === true) {
 			   row.addClass("selected");
@@ -273,7 +281,7 @@ $(function () {
 			   row.removeClass("selected");
 			   updateValues.call(this, checkbox, false);
 		   }
-		   list.data("selectlist.lastcheckbox", checkbox);
+			this._fireChange();
 	   },
 	   
 	   _selectRange: function (row1, row2, checked) {
@@ -295,6 +303,9 @@ $(function () {
 
 		   while (len--) { //ignore jslint
 			   input = currRow.find("input");
+				if (this.isRowSelectable(input) == false) {
+					continue;
+				}
 			   check(input, checked);
 			   if (checked) {
 				   currRow.addClass("selected");
@@ -314,8 +325,7 @@ $(function () {
 		   this._trigger("change", null, {
 			   checkedValues: function () {
 				   return self.values();
-			   },
-
+				},
 				value: function () {
 					return self.values()[0];
 				}

@@ -64,6 +64,7 @@ function errorDisplayViewExt(_, console) {
 		clearErrors: function (model) {
 			var attrs;
 
+			model = model || this.model;
 			if (!model) {
 				return;
 			}
@@ -77,7 +78,7 @@ function errorDisplayViewExt(_, console) {
 		},
 
 		clearError: function (attr) {
-			internal.displayFieldError.call(this, attr, []);
+			internal.displayFieldError.call(this, attr, "");
 		}
 	};
 
@@ -124,7 +125,7 @@ function errorDisplayViewExt(_, console) {
 				internal.addErrorHtml.call(view, summarySpan, errorStr);
 			} else {
 				form.removeClass("error");
-				summarySpan.html("");
+				summarySpan.html("").hide();
 			}
 		},
 
@@ -137,7 +138,7 @@ function errorDisplayViewExt(_, console) {
 					el.fadeIn();
 				});
 			} else {
-				el.html(error);
+				el.html(error).show();
 			}
 		}
 	};
