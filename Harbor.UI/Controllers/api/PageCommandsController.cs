@@ -5,6 +5,7 @@ using Harbor.Domain.Command;
 using Harbor.Domain.Pages;
 using Harbor.Domain.Pages.Commands;
 using Harbor.Domain.Pages.Queries;
+using Harbor.Domain.Query;
 using Harbor.Domain.Security;
 using Harbor.UI.Extensions;
 using Harbor.UI.Models;
@@ -14,19 +15,16 @@ namespace Harbor.UI.Controllers.Api
 	[Authorize, RoutePrefix("api/pages/{id:int}")]
     public class PageCommandsController : ApiController
     {
-		IPageRepository _pageRep;
 		private readonly ICommandService _commandService;
-		private readonly IPageQuery _pageQuery;
+		private readonly IQueryService _queryService;
 
 		public PageCommandsController(
-			IPageRepository pageRep,
 			ICommandService commandService,
-			IPageQuery pageQuery
+			IQueryService queryService
 			)
 		{
-			_pageRep = pageRep;
 			_commandService = commandService;
-			_pageQuery = pageQuery;
+			_queryService = queryService;
 		}
 
 
@@ -83,8 +81,7 @@ namespace Harbor.UI.Controllers.Api
 		async Task<HttpResponseMessage> pageResponse(int id)
 		{
 			var queryParams = new PageQueryParams { PageID = id };
-			///var page = await _pageQuery.ExecuteFromCacheAsync(queryParams);
-			var page = _pageQuery.ExecuteFromCache(queryParams);
+			var page = await _queryService.GetQuery<IPageQuery>().ExecuteFromCacheAsync(queryParams);
 			return Request.CreateOKResponse(PageDto.FromPage(page));
 		}
 	}

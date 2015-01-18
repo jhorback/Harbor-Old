@@ -7,6 +7,7 @@ using AutoMapper;
 using Harbor.Domain;
 using Harbor.Domain.Pages;
 using Harbor.Domain.Pages.Queries;
+using Harbor.Domain.Query;
 using Harbor.Domain.Security;
 using Harbor.UI.Extensions;
 using Harbor.UI.Models;
@@ -19,16 +20,17 @@ namespace Harbor.UI.Controllers.Api
     {
 		IPageRepository _pageRep;
 		private readonly IPageFactory _pageFactory;
-		private readonly IPageQuery _pageQuery;
+		private readonly IQueryService _queryService;
 
 		public PagesController(
 			IPageRepository pageRep,
 			IPageFactory pageFactory,
-			IPageQuery pageQuery)
+			IQueryService queryService
+			)
 		{
 			_pageRep = pageRep;
 			_pageFactory = pageFactory;
-			_pageQuery = pageQuery;
+			_queryService = queryService;
 		}
 
 		[HttpGet, Route("")]
@@ -47,7 +49,7 @@ namespace Harbor.UI.Controllers.Api
         public HttpResponseMessage Get(int id)
         {
 			var pageQueryParams = new PageQueryParams { PageID = id };
-			var page = _pageQuery.ExecuteFromCache(pageQueryParams);
+			var page = _queryService.GetQuery<IPageQuery>().ExecuteFromCache(pageQueryParams);
 
 			if (page == null)
 				return Request.CreateNotFoundResponse();

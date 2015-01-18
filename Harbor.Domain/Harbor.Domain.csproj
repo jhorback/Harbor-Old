@@ -238,8 +238,10 @@
     <Compile Include="Query\CachedQueryBase.cs" />
     <Compile Include="Query\ICachedQuery.cs" />
     <Compile Include="Query\IQuery.cs" />
+    <Compile Include="Query\IQueryService.cs" />
     <Compile Include="Query\QueryBase.cs" />
     <Compile Include="Query\CacheableQueryParams.cs" />
+    <Compile Include="Query\QueryService.cs" />
     <Compile Include="ReflectionUtils.cs" />
     <Compile Include="RepositoryQuery.cs" />
     <Compile Include="Security\FeaturePermissions.cs" />
