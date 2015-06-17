@@ -1,4 +1,3 @@
-
 /** @namespace appui */
 var appui = context.module("appui").use("Underscore", "jQuery");
 
@@ -13,7 +12,6 @@ appui.service("appurl", ["globalCache", function (globalCache) {
  	return {
         /**
          * sets the base URL for the application
-         * @memberof appui.appurl
          * @param {string} url - the URL to set as the new base URL
          */
 		setBaseUrl: function (url) {
@@ -22,14 +20,13 @@ appui.service("appurl", ["globalCache", function (globalCache) {
 		},
 
         /**
-         * returns the base URL for the application. If a url provided it will be joined
+         * returns the base URL for the application. If a relative url is provided it will be joined
          * with the base URL before returning.
-         * @memberof appui.appurl
          * @param {string=} [url] - an optional URL to concatenate onto the base URL
          * @returns string
          */
 		get: function (url) {
-			return (baseUrl || "") + (url || "");
+            return (url && url.charAt(0) === '/') ? url : (baseUrl || "") + (url || "");
 		}
 
 	};
@@ -49,13 +46,23 @@ appui.service("menuFactory", ["context", "appuiMenu", function (context, appuiMe
 	};
 }]);
 
-
+/**
+ * @memberof appui
+ * @constructor
+ * @class appuiDialog
+ */
 appui.register("appuiDialog", function () {
+    /** @type Dialog */
 	return Dialog;
 });
 
-
+/**
+ * @memberof appui
+ * @constructor
+ * @class dialogFactory
+ */
 appui.service("dialogFactory", ["context", "appuiDialog", function (context, appuiDialog) {
+    /** @name appui.dialogFactory */
 	return {
 		create: function (el, options) {
 			return new appuiDialog(el, options);

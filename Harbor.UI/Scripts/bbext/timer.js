@@ -37,6 +37,13 @@ function timer($) {
          */
 		waitFor: function (deferreds) {
 			return $.when.apply($, deferreds);
+		},
+
+		/*
+		 * Calls the callback with the given context with a setTimeout 0.
+		 */
+		yield: function(callback, context) {
+			setTimeout(_.bind(callback, context), 0);
 		}
 	};
 

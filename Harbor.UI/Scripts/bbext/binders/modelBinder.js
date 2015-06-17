@@ -227,8 +227,8 @@ var modelBinder = function ($, _, config, nameValueParser) {
 			update = function () {
 				// pageLoaded = true; jch* testing delay
 				_.each(self.bindings, function (binding, propName) {
-					_.each(binding.els, function (el) {
-						if (el.is(":text,:password,select")) {
+				    _.each(binding.els, function (el) {
+						if (el.is(":text,:password,select") && el.is(":visible")) {
 							_private.viewToModel.call(self, el);
 						}
 					});

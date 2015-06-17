@@ -1,7 +1,7 @@
 ﻿/*
  * modelBinderConfig
  *     Type and attribute processing can be configured.
- *	
+ *
  *	   // eventFromDom, getFromDom, setToDom
  *     modelBinderConfig.types["foo"] = {
  *         event: "click",               // additional dom event(s) to listen on the element to update the model
@@ -25,7 +25,7 @@ var modelBinderConfig = {
 				return el.val();
 			},
 			set: function (el, value) { // set to dom
-				el.is(":input") ? el.val(value) : el.html(String(value));
+				el.is(":input") ? el.val(value) : el.html('' + value);
 			}
 		},
 		"checkbox": {
@@ -38,15 +38,20 @@ var modelBinderConfig = {
 		},
 		"contenteditable": {
 			event: ["keydown", "blur"],
+            options: {
+                // If true, the element will blur (Become unfocused) when the enter key is pressed
+                'bluronenter': true
+            },
 			get: function (el, event, binding) {
-				var val = this.model.get(binding.name);
+				var val = this.model.get(binding.name),
+                    options = binding.options;
 				if (event.type === "keydown") {
 					if (event.keyCode == 27) { // escape
 						setTimeout(function () {
 							el.blur();
 						}, 0);
 						el.text(val);
-					} else if (event.keyCode == 13) { // enter
+					} else if (event.keyCode == 13 && options.bluronenter) { // enter
 						el.blur();
 						val = el.text();
 						el.text(val);
@@ -88,9 +93,16 @@ var modelBinderConfig = {
 			}
 		},
 		"radio": {
-			set: function (el, value) {
-				el.attr("checked", el.val() === value);
-			}
+		    get: function (el) {
+		        var name = el.attr("name");
+		        var selected = this.$el.find("[name='" + name + "']:checked");
+
+		        return selected.val();
+		    },
+		    set: function (el, value) {
+		        el.attr("checked", el.val() == value);  //using a 'loose equality' because the underling html value returns a string
+                                                        //when the intention is numeric
+		    }
 		},
 		"option": {
 			get: function (el) {
@@ -103,17 +115,17 @@ var modelBinderConfig = {
 	},
 
 	attributes: {
-		"default": "string",
-		"id": "string",
-		"disabled": "boolean",
-		"checked": "boolean",
-		"contenteditable": "boolean",
-		"text": "text",
-		"showif": "visibility",
-		"dontshowif": "visibility",
-		"val": "value" // uses el.val() 
+		'default': 'string',
+		'id': 'string',
+		'disabled': 'boolean',
+		'checked': 'boolean',
+        'contenteditable': 'boolean',
+		'text': 'text',
+		'showif': 'visibility',
+		'dontshowif': 'visibility',
+		'val': 'value' // uses el.val()
 	},
-	
+
 	attributeTypes: { // attributeBinders
 		"string": function (el, attr, value) {
 			el.attr(attr, value);

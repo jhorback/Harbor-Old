@@ -115,18 +115,35 @@ function getSetModelExt(mixin, modelPropertyDescriptor) {
 
 
 	function parseBindings() {
-		var model = this;
+		var model = this,
+			descriptor = modelPropertyDescriptor(this);
 
-		this.on("all", function (change) {
-			var prop = change && change.split(":")[1],
-				bindings = modelPropertyDescriptor(model).bound[prop];
+		if (_.isEmpty(descriptor.boundAttributes) === false) {
+			this.on("all", function(change) {
+				var prop = change && change.split(":")[1],
+					bindings = descriptor.boundAttributes[prop];
 
-			if (prop && this.attributes[prop] !== undefined && bindings) {
-				_.each(bindings, function (depPropName) {
-					this.set(depPropName, this.get(depPropName));
-				}, this);
-			}
-		});
+				if (prop && this.attributes[prop] !== undefined && bindings) {
+					_.each(bindings, function(depPropName) {
+						this.set(depPropName, this.get(depPropName));
+					}, this);
+				}
+			});
+		}
+
+		if (_.isEmpty(descriptor.boundAssociations) === false) {
+			_.each(descriptor.boundAssociations, function (observe, attributeName) {
+				_.each(observe, listenToAssociationFn(attributeName), this);
+			}, this);
+		}
+	}
+
+	function listenToAssociationFn (attributeName) {
+		return function(events, associationName) {
+			var assoc = associationName === "this" ? this : this[associationName];
+			events = _.isArray(events) ? events.join(" ") : events;
+			this.listenTo(assoc, events, this.refreshFn(attributeName));
+		};
 	}
 
 	mixin("model").register("bbext.getSetModelExt", getSetModelExt);

@@ -4,7 +4,7 @@
  * Defining managed routes
  *     The routes object on the router can be modified to include additional information about each route.
  *         *name - A name to be used to reference the route. Defaults to the route key.
- *         *url - A url to be used when navigating or retriving for links. 
+ *         *url - A url to be used when navigating or retriving for links.
  *                This can be a method which takes arguments defined by the route pattern.
  *                This defaults to the route pattern.
  *         *callback - A function (or name of a function on the router) to call when the route executes.
@@ -55,7 +55,7 @@
  *             var user = this.userRepo.getUser(id);
  *             this.showComponent("userComponent", {
  *                 region: "#frame-body",
- *                 model: user               
+ *                 model: user
  *             });
  *         }
  *     };
@@ -67,22 +67,55 @@
  */
 function managedRouterExt(mixin, Backbone, _, routerInfo, context) {
 	var routerMixin, managedRouterExt;
-	
+
+    /** @typedef {{
+     *  previousRoute: null,
+     *  currentRoute: null,
+     *  currentRouteArgs: Array,
+     *  names: {},
+     *  components: {},
+     *  routes: {}
+     *  }} RouteCache
+     */
+
+    /** @typedef {{
+     *  name: string,
+     *  url: string,
+     *  callback: function
+     *  component: string
+     *  cache: boolean
+     *  previousArgs: Array
+     *  }} RouteObject
+     */
+
+    /**
+     * @mixin
+     * @extends Backbone.Router.prototype
+     */
 	managedRouterExt = {
+
+        /**
+         * Constructs the routecache, parses options, and creates routes if provided
+         * @param {object} options
+         * @this Backbone.Router.prototype
+         */
 		beforeInit: function (options) {
-			
+
+            /** @type RouteCache */
 			this.routeCache = {
 				previousRoute: null,
 				currentRoute: null,
 				currentRouteArgs: [],
 				names: {}, // values point to keys in routes
 				components: {}, // holds the components by name
+                /** @type {Object.<string, RouteObject>} */
 				routes: {/*
 					"pattern": {
-						name:, url:, callback:, 
+						name:, url:, callback:,
 						component: <name of the component to cache>,
 						cache: <bool>,
-						previousArgs: []
+						previousArgs: [],
+						replaceHistory: false
 					}
 				*/}
 			};
@@ -96,7 +129,7 @@ function managedRouterExt(mixin, Backbone, _, routerInfo, context) {
 			if (!this.routes) {
 				return;
 			}
-			
+
 			this.routes = _.result(this, 'routes');
 			_.each(this.routes, function (callback, pattern) {
 				if (_.isFunction(callback) === false && _.isObject(callback) === true) {
@@ -104,29 +137,47 @@ function managedRouterExt(mixin, Backbone, _, routerInfo, context) {
 				}
 			}, this);
 		},
-		
+
+        /**
+         * Sets the router's root url - current appurl is automatically prepended
+         * @param {string} root - the router's root url relative to app root
+         * @this Backbone.Router.prototype
+         */
 		setRoot: function (root) {
 			// this is passed to Backbone.History in the startRouterExt
 			this.root = routerInfo.setRoot(root);
 		},
 
+        /**
+         * Renders the specified component using the provided options, if any, navigates to
+         * its URL (which may not be different than the current URL), then returns the component
+         * @param {string} name - a component name registered on the context
+         * @param {{
+         *   cache:boolean,
+         *   region: jquery|string
+         * }=} [options] - Any options to send to the component render method. Can also contain
+         *   cache (boolean) and region properties, where region is a node or jquery selector in which
+         *   the component will be inserted
+         * @returns {bbext.component}
+         */
 		showComponent: function (name, options) {
 			var routeCache = this.routeCache,
 				previousRouteInfo = routeCache.routes[routeCache.previousRoute],
 				currentRouteInfo = routeCache.routes[routeCache.currentRoute],
 				component = routeCache.components[name],
-			    url;
+				navigateOptions,
+				url;
 
 
 			// if we are switching routes or we are not caching
 			if (routeCache.previousRoute !== routeCache.currentRoute || !currentRouteInfo.cache) {
-				
+
 				// close/cache the previous component
 				if (previousRouteInfo && previousRouteInfo.component) {
 					routeCache.components[previousRouteInfo.component].close(previousRouteInfo.component);
 				}
-			
-			
+
+
 				// create the component if not yet created
 				if (!currentRouteInfo.component) {
 					currentRouteInfo.component = name;
@@ -146,21 +197,41 @@ function managedRouterExt(mixin, Backbone, _, routerInfo, context) {
 			}
 
 			url = routerInfo.routeUrl(routeCache.currentRoute, routeCache.currentRouteArgs);
-			this.navigate(url);
+			navigateOptions = {
+				replace: currentRouteInfo.replaceHistory
+			};
+			if (currentRouteInfo.navigateOptions) {
+				navigateOptions = currentRouteInfo.navigateOptions;
+				delete currentRouteInfo.navigateOptions;
+			}
+			this.navigate(url, navigateOptions);
 			return component;
 		},
 
-		// name - can be the route name or pattern
-		executeRoute: function (name, args) {
+        /**
+         * Executes the route specified by name or pattern. An array of arguments
+         * to pass to its callback can also be provided.
+         * @param {string} name - the route name or pattern to execute
+         * @param {Array=} [args] - arguments to pass to the callback
+		 * @param {object} [navigateOptions] - options to be passed when router.navigate is called (useful for replaceHistory: true).
+         */
+		executeRoute: function (name, args, navigateOptions) {
 			var route = this.routeCache.names[name] || name;
 			var routeInfo = this.routeCache.routes[route];
 			var callback = this.routes[route];
+			routeInfo.navigateOptions = navigateOptions;
 			callback = _.isFunction(callback) ? callback : this[routeInfo.callback];
 			callback.apply(this, args || []);
 		}
 	};
 
 
+    /**
+     * Checks to see if the route's previous args are the same as the current args - if
+     * they are, or if no previous arguments exist, the route is cached, otherwise it is not.
+     * @param {RouteCache} routeCache
+     * @returns {boolean}
+     */
 	function shouldCache(routeCache) {
 		var currentArgs = routeCache.currentRouteArgs,
 			prevArgs = routeCache.routes[routeCache.currentRoute].previousArgs,
@@ -173,7 +244,7 @@ function managedRouterExt(mixin, Backbone, _, routerInfo, context) {
 	function routeCurry(pattern, callback) {
 		var router = this,
 			routeCache = router.routeCache;
-		
+
 		return function () {
 			var args = Array.prototype.slice.call(arguments);
 			routeCache.previousRoute = routeCache.currentRoute;
@@ -190,6 +261,7 @@ function managedRouterExt(mixin, Backbone, _, routerInfo, context) {
 		routeInfo.name = routeInfo.name || pattern;
 		routeInfo.url = routeInfo.url === void(0) ? pattern : routeInfo.url;
 		routeInfo.callback = routeInfo.callback || routeInfo.name;
+		routeInfo.replaceHistory = routeInfo.replaceHistory || false;
 
 
 		// add names and routes to the routeCache

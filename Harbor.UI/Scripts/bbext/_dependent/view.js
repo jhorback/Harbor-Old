@@ -40,6 +40,3 @@
 	// for generic views, see factories.js
 	bbext.view("view", {});
 }());
-
-
-

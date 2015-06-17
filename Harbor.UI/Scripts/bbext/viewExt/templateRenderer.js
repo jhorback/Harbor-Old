@@ -10,6 +10,8 @@
 //           into the DOM after the template element.
 // NOTE:
 //     if insertAfterTemplate is not true, the view will not be inserted into the dom (it will need to be done manually).
+//     Also, a rootModel property is added to the options (if a model is defined)
+//          and after view rendering for child views to reference.
 //
 function templateRenderer(templateCache, viewRenderer, $, shims, deprecate, console) {
 
@@ -45,7 +47,12 @@ function templateRenderer(templateCache, viewRenderer, $, shims, deprecate, cons
 				templateEl.removeAttr("data-templatefrom").attr("data-templatefor", name);
 			}
 
+			options.rootModel = options.model;
 			view = viewRenderer.render(name, options);
+			if (view.model) {
+				view.rootModel = view.model;
+				view.model.rootModel = view.rootModel;
+			}
 			if (options.insertAfterTemplate === true) {
 				console.log("templateRenderer: Inserting the root template after the template element.");
 				templateEl.after(view.$el);

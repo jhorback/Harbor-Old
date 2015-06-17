@@ -45,7 +45,7 @@ function postCommandModelExt(mixin) {
 				var options = {},
 				    serverAttrs;
 
-				if (!resp) {
+				if (!resp || !_.isObject(resp)) {
 					return;
 				}
 				serverAttrs = model.parse(resp, options);

@@ -14,18 +14,19 @@
  *     }
  */
 /**
- * @module appui
+ * @memberof appui
  * @constructor
  * @param {jquery} $
  * @param {function} defaultHandler
  * @param {object} console
- * @returns {{handle: function, resolved: function}}
+ * @returns {{handle:function,resolved:function}}
  */
 appui.ajaxRequest = function ($, defaultHandler, console) {
 
 	/* Default ajax handling */
 	$.ajaxSetup({ dataType: "json" });
 
+    /** @name appui.ajaxRequest */
 	return {
         /**
          * Does graceful error handling in case of an error, otherwise returns

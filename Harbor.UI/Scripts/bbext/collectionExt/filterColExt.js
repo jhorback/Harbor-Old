@@ -12,7 +12,7 @@
  *     Returns a new collection based on the filter, and listens to the original collection add/remove events to
  * 	   keep in sync
 */
-function filterColExt(mixin, collectionFactory) {
+function filterColExt(mixin, collectionFactory, callbacks) {
 	
 	var filterColExt = {
 		afterInit: function (models, options) {
@@ -26,11 +26,21 @@ function filterColExt(mixin, collectionFactory) {
 			var filtered = createNew.call(this, this.filter(filter));
 			observe = observe ? observe.join(" ") : "";
 
-			filtered.listenTo(this, "add remove " + observe, function (event, model) {
-				if (event === "add" || event === "remove") {
-					filtered.set(this.filter(filter));
-				}
+			filtered.listenTo(this, "add", function(item, collection, event) {
+				filter(item) && filtered.add(item);
 			});
+
+			filtered.listenTo(this, "remove", function(item, collection, data) {
+				filtered.remove(item);
+			});
+
+			filtered.listenTo(this, observe, function (item) {
+				filter(item) ? filtered.add(item) : filtered.remove(item);
+			});
+
+			filtered.filteredSource = this; // add a pointer back to the source for reference
+
+			return filtered;
 		},
 		
 		setFilter: function (filter) {
@@ -76,6 +86,10 @@ function filterColExt(mixin, collectionFactory) {
 		filterNew: function (filter) {
 			var models = this.filter(filter);
 			return createNew.call(this, models);
+		},
+
+		refilter: function() {
+			this.setFilter(this.filter);
 		}
 	};
 
@@ -84,8 +98,9 @@ function filterColExt(mixin, collectionFactory) {
 			return;
 		}
 
-		this.source = createNew.call(this, this.models);
-
+		this.source = createNew.call(this, this.models, {
+			model: this.model
+		});
 		
 		this.on("all", function (event, model) {
 			if (!this._sync && (event === "add" || event === "remove")) {
@@ -103,13 +118,15 @@ function filterColExt(mixin, collectionFactory) {
 		}, this);
 	}
 	
-	function createNew(models) {
-		return collectionFactory.create(this.name, models);
+	function createNew(models, options) {
+		return collectionFactory.create(this.name, models, options);
 	}
+
+	callbacks.create(filterColExt, "refilter");
 
 	mixin("collection").register("bbext.filterColExt", filterColExt);
 
 }
 
 
-bbext.config(["mixin", "collectionFactory", "context", filterColExt]);
+bbext.config(["mixin", "collectionFactory", "callbacks", filterColExt]);

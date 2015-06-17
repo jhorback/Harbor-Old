@@ -6,7 +6,7 @@ function sortColExt(mixin) {
 		setSort: function (fn) {
 			this.comparator = fn;
 			this.sort();
-			this.trigger("reset");
+			// this.trigger("reset");
 		}
 	};
 

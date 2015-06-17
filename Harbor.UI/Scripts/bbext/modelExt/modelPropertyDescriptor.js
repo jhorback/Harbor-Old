@@ -13,8 +13,10 @@ function modelPropertyDescriptor(_, console) {
 		descriptor = {
 			get: {},
 			set: {},
-			bound: {}, // inverse of bind
-			validate: {}
+			validate: {},
+			boundAttributes: {},   // key: attribute to listen for; value: list of attributes to refresh
+			boundAssociations: {}  // key: attribute name to refresh;
+			                       // value: hash whose key is the association name and value is the events to listen for
 		};
 
 
@@ -34,13 +36,9 @@ function modelPropertyDescriptor(_, console) {
 						descriptor.set[key] = value.set;
 					}
 					
-					if (value.bind && _.isFunction(value.bind) === false) {
-						boundBind(descriptor, key, value.bind);
-					}
-
-					// observe as an alias for bind
-					if (value.observe && _.isFunction(value.observe) === false) {
-						boundBind(descriptor, key, value.observe);
+					// alias: observe, bind
+					if ((value.observe || value.bind) && _.isFunction(value.bind) === false) {
+						boundBind(descriptor, key, value.observe || value.bind);
 					}
 					
 					if (value.validate) {
@@ -65,15 +63,49 @@ function modelPropertyDescriptor(_, console) {
 		return key;
 	}
 
-	function boundBind(descriptor, toBound, toBind) {
-		var bind = _.isArray(toBind) ? toBind : [toBind],
-			bound;
+	/* observe can be a string, array, or object
+	   it is de-normalized into an object in which each key is an association name and
+	   each value is an array of events to listen for on that assocation.
+	   There are two keywords that behave differently.
+	   1) "this" - will use the current model as the association
+	   2) "attributes" - will be an array of attributes to listen for change events on.
 
-		_.each(bind, function (prop) {
-			bound = descriptor.bound[prop] || [];
-			bound.push(toBound);
-			descriptor.bound[prop] = bound;
+	   Examples:
+	   observe: "userName" or observe: ["userName"].
+	   will get transformed to => observe { "attributes": ["userName"] }
+
+	   observe: {
+		   "users": "sync request", // or ["sync", "request"],
+		   "this": "request change:firstName",
+	   }
+
+	   Note (attributes is less performant but better on memory):
+	   The "attributes" property is listened to differently. In every other case a single listener
+	   is registered for each event to refresh the property. "attributes" sets up only a single listener
+	   on the model and parses the "change:x" event to determine if a refresh needs to happen.
+	*/
+	function boundBind(descriptor, propertyName, observe) {
+		var attributes, bound, hasBoundAssociations;
+
+		attributes = _.isString(observe) ? [observe] : _.isArray(observe) ? observe : null;
+		hasBoundAssociations = !attributes;
+		
+		if (hasBoundAssociations && observe.attributes) {
+			attributes = _.isArray(observe.attributes) ? observe.attributes : [observe.attributes];
+			delete observe.attributes;
+			hasBoundAssociations = !_.isEmpty(observe);
+		}
+
+		// invert the attributes in "boundAttributes": { "attrToListenTo": ["attributesToRefresh"] }
+		_.each(attributes, function (prop) {
+			bound = descriptor.boundAttributes[prop] || [];
+			bound.push(propertyName);
+			descriptor.boundAttributes[prop] = bound;
 		});
+
+		if (hasBoundAssociations) {
+			descriptor.boundAssociations[propertyName] = observe;
+		}
 	}
 }
 

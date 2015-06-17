@@ -1,21 +1,21 @@
 /*
 Usage:
-	feedback.show("Three devices have been deleted");
-	feedback.hide(); // hides any visible feedback, useful for when switch screens
-	var wait = feedback.wait("Saving the user.");
-	wait.finished();
+	feedback.show("Three devices have been deleted");  jch! - not used directly
+	feedback.hide(); // hides any visible feedback, useful for when switch screens // jch! - used only to clear implied closing
+	var wait = feedback.wait("Saving the user."); // jch! - used in a handlful of places
+	wait.finished(); // jch! - used only by the spelunker
 	     - When calling finished without a message, this will simply close the message.
-	wait.finished("The user was saved successfully.");
-	wait.finishedMessage("The user was saved successfully.");
+	wait.finished("The user was saved successfully."); // jch! - not used
+	wait.finishedMessage("The user was saved successfully."); // jch! - used in a handful of places
 	    - finishedMessage returns a curried function for use with deferreds
 
-	var message = feedback.message(pending, completed, count);
+	var message = feedback.message(pending, completed, count); // jch! - used in a handful of places
         - kicks off the feedback timer and returns a function that can be used with a deferred
 		- Usage: someRepo.getSomeResource().then(message);
 		- If the count is included, pending and completed should be objects with 'singular' and 'plural' properties.
 		    If the string has {{count}} in it, it will be replaced with the count variable.
 
-	feedback.pluralize(res, count) - exposed for convenience
+	feedback.pluralize(res, count) - exposed for convenience // jch! - used rarely
 
 Timer
     The feedback service provides access to the timer service as a convenience
@@ -41,9 +41,9 @@ function feedback($, timer) {
 
 	var messageEl,
 	    closeEl,
-	    feedbackThreshold = 1000,
-	    hideThreshold = 1000 * 60 * 5,
-	    messageTemplate = '<div id="message"><div class="alert alert-warn"><div id="message-text"></div><div id="message-close">&times;</div></div></div>';
+	    feedbackThreshold = 500,
+	    hideThreshold = 1000 * 60 * 1,
+	    messageTemplate = '<div id="message"><div class="alert alert-message"><div id="message-text"></div><div id="message-close">&times;</div></div></div>';
 
     /**
      * Shows the provided message in a feedback widget
@@ -60,7 +60,7 @@ function feedback($, timer) {
 		return function () {
 			messageEl.find("#message-text").html(message);
 			dontShowClose === true ? closeEl.hide() : closeEl.show();
-			messageEl.fadeIn();
+			messageEl.fadeIn("fast");
 			messageEl.data("timerId", timerId);
 			setTimeout(hideMessage, hideThreshold);
 		};
@@ -112,6 +112,21 @@ function feedback($, timer) {
 		hide: hideMessage,
 
 		pluralize: pluralize,
+
+		disable: function (field, message) {
+
+			message = message || "Saving...";
+			field.data("previousHtml", field.html());
+			field.html(message);
+			field.attr("disabled", true);
+
+			return {
+				enable: function () {
+					field.html(field.data("previousHtml"));
+					field.removeAttr("disabled");
+				}
+			}
+		},
 
         /**
          * Shows a message that will remain until finished is called on the object returned from wait.

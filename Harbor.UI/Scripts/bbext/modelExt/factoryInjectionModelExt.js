@@ -13,7 +13,13 @@ bbext.factoryInjectionModelExt = function (
 ) {
 
 	var factoryInjectionModelExt = {
-		afterInit: function () {
+		bindAll: function (methodNames) {
+			var args = Array.prototype.slice.apply(arguments);
+			args.unshift(this);
+			_.bindAll.apply(_, args);
+		},
+
+		beforeInit: function () {
 			this.modelFactory = modelFactory;
 			this.collectionFactory = collectionFactory;
 		},
@@ -23,8 +29,7 @@ bbext.factoryInjectionModelExt = function (
 		createCollection: collectionFactory.create
 	};
 
-	mixin("model").register("bbext.associationsModelExt", factoryInjectionModelExt);
-	mixin("view").register("bbext.associationsViewExt", factoryInjectionModelExt);
+	mixin("model").register("bbext.factoryInjectionModelExt", factoryInjectionModelExt);
 };
 
 

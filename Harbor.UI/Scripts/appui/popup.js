@@ -4,10 +4,11 @@
 
 	JavaScript options:
 		title - the title of the popup
-		placement - top, right, bottom, left
+		placement - top, right, bottom, left (or an object defining the position options i.e. my, at, etc.)
 		anchor - a selector or node to anchor the popup
 		container - a selector or node to append the popup to. If null, the popup will be placed after its anchor.
 		animate - Set to false to turn off the fade animation.
+		onHide - a callback called when the hide method is called.
 
 	Markup options:
 	<div data-placement="top" data-title="Popup Title">
@@ -42,26 +43,35 @@
 
 	Popup.prototype = {		
 		show: function (onShow) {
-			if (this.animate) {
-				this.popupEl.fadeIn(onShow);
-			} else {
-				this.popupEl.show();
-				onShow && onShow();
+			// this.position();
+			if (this.options.animate) {
+				this.popupEl.fadeIn(_.bind(function() {
+					this.showAndPosition(onShow);
+				}, this));
+			} else { 
+				this.showAndPosition(onShow);
 			}
+		},
+
+		showAndPosition: function(onShow) {
+			this.popupEl.show();
+			onShow && onShow();
+			this.position();
 		},
 		
 		hide: function (onHide) {
 			var el = this.el;
 
-			if (this.animate) {
-				this.popupEl.fadeOut(function () {
-					el.trigger("hide");
-					onHide && onHide();
-				});
-			} else {
+			//if (this.options.animate) {
+			//	this.popupEl.fadeOut(function () {
+			//		el.trigger("hide");
+			//		onHide && onHide();
+			//	});
+			//} else {
 				this.popupEl.hide();
 				onHide && onHide();
-			}
+				this.options.onHide && this.options.onHide();
+			//}
 		},
 		
 		destroy: function () {
@@ -86,7 +96,8 @@
 
 	Popup.defaultOptions = {
 		placement: "top",
-		animate: true
+		animate: true,
+		autoShow: true
 	};
 
 	Popup.template = '' +
@@ -114,7 +125,7 @@
 			//}, 0);
 
 			privates.render.call(this);
-			this.show();
+			this.options.autoShow && this.show();
 		},
 		
 		render: function () {
@@ -126,7 +137,7 @@
 				this.popupEl.find(".popup-title").remove();
 			}
 			this.popupEl.find(".popup-content").append(this.el.detach().show());
-			console.log(this.options.container);
+			// console.log(this.options.container);
 			if (this.options.container) {
 				$(this.options.container).append(this.popupEl);
 			} else {
@@ -140,9 +151,10 @@
 					"top":    { my: "center bottom", at: "center top-10"    },
 					"bottom": { my: "center top",    at: "center bottom+10" },
 					"left":   { my: "right center",  at: "left-10 center"   },
-					"right":  { my: "left center",   at: "right+10 center"  }
+					"right":  { my: "left center",   at: "right+10 center"  },
+					"bottomleft": { my: "right+102 top",    at: "center bottom+10" }
 				},
-			    position = placement[this.options.placement];
+			    position = placement[this.options.placement] || placement;
 			
 			position.of = this.anchor;
 			position.collision = "none";

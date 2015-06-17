@@ -30,7 +30,7 @@ appui.register("document", function () {
  * `enableLog(enable)` method to the window object to enable logging through the
  * browser console.
  * @name appui.console
- * @augments window
+ * @requires appui.window
  */
 appui.service("console", ["window", function (window) {
 	var console, winConsole, log,

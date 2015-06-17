@@ -32,7 +32,7 @@ var collectionRenderer = function (_, templateCache, viewFactory, modelBinder, v
 		_.bindAll(this, "addItem", "removeItem", "render", "close");
 		view.listenTo(view.collection, "add", this.addItem);
 		view.listenTo(view.collection, "remove", this.removeItem);
-		view.listenTo(view.collection, "reset", this.render);
+		view.listenTo(view.collection, "reset sort", this.render);
 	}
 
 	renderer.prototype = {

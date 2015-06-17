@@ -1,7 +1,7 @@
 ﻿ /*
   * routerInfo service
   *     Provides urls and route execution for routers that use the managed router extension.
-  * 
+  *
   *  url(name, args)
   *     Provides a fully qualified url of a specified route.
   *     Can be used as the href of links.
@@ -15,14 +15,14 @@
   *         *args - An array of args to pass to the url function of managed router route.
   *
   *
-  * The following methods are called by the managed router extension and should not 
+  * The following methods are called by the managed router extension and should not
   *     be needed to call directly.
   *
   * routeUrl(name, args)
   *     Same as url, however, for use by router.navigate. It excludes the root since the router knows it.
   *         *name - Either the route name or pattern when defining the route.
   *         *args - An array of args to pass to the url function of managed router route.
-  * 
+  *
   * setUrl(name, path, router)
   *     Used by a managed router to register a url with the routerInfo.
   *     This method will log an error if overriding an existing router url.
@@ -46,18 +46,37 @@ bbext.routerInfo = function (appurl, console, _) {
 	    rootSet = false,
 	    urls = {};
 
+    /** @lends bbext.routerInfo */
 	return {
+        /**
+         * Returns the full URL for the specified route using the (optional) provided args array
+         * @param {string} name
+         * @param {Array=} [args]
+         * @returns {string}
+         */
 		url: function (name, args) {
 			var path = this.routeUrl.call(this, name, args);
 			return (root || "") + (path || "");
 		},
 
-		executeRoute: function (name, args) {
+        /**
+         * Executes the specified route using the provided args array and navigation options
+         * @param {string} name
+         * @param {Array=} [args]
+         * @param {{replaceHistory:bool}} navigateOptions
+         */
+		executeRoute: function (name, args, navigateOptions) {
 			var url = urls[name];
-			url.router.executeRoute(name, args);
-			url.router.trigger("route", name, args);
+			url.router.executeRoute(name, args, navigateOptions);
+			url.router.trigger("route", name, args, navigateOptions);
 		},
 
+        /**
+         * Returns the URL for the specified route relative to its router's root path
+         * @param {string} name
+         * @param {Array=} [args]
+         * @returns {string}
+         */
 		routeUrl: function (name, args) {
 			var url = urls[name],
 			    path;
@@ -72,11 +91,24 @@ bbext.routerInfo = function (appurl, console, _) {
 
 			return path;
 		},
-		
+
+        /**
+         * Returns the root set by calling setRoot.
+         * @returns {string}
+         */
 		root: function () {
 			return root;
 		},
-		
+
+        /**
+         * Used by a managed router to register a url with the routerInfo.
+         * This method will log an error if overriding an existing router url.
+         * @param {string} name - A key to refer to the url by. Each route should be registered using
+         *   both the url pattern and the route name if different than the pattern.
+         * @param {string} path - Path can be the route pattern or function to call to get the route pattern.
+         *   If a function, its signature should match any dynamic route parameters.
+         * @param {Backbone.Router} router - The router that is in charge of the specific route.
+         */
 		setUrl: function (name, path, router) {
 			var current = urls[name];
 			if (current && current.path !== path && current.router !== router) {
@@ -87,7 +119,13 @@ bbext.routerInfo = function (appurl, console, _) {
 				router: router
 			};
 		},
-		
+
+        /**
+         * Called by a managed router to set the root url of the page.
+         * Uses the appurl service to determine the app root.
+         * @param {string} path
+         * @returns {string} the new root path
+         */
 		setRoot: function (path) {
 			var newRoot = appurl.get(path);
 			if (rootSet && newRoot !== root) {
@@ -105,5 +143,5 @@ bbext.service("routerInfo", [
 	"appurl",
 	"console",
 	"_",
-	bbext.routerInfo	
+	bbext.routerInfo
 ]);

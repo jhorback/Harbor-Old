@@ -103,8 +103,8 @@ var Component = (function () {
 				view.on("close", function () {
 					comp.close(key);
 				});
-				
-				if (o.scroll !== false && this.scroll !== false) {
+
+				if (o.scroll !== false && this.scroll !== false && view.scroll !== false) {
 					handleScrollPositions(view);
 				}
 			}
@@ -144,7 +144,9 @@ var Component = (function () {
 			if (cached.cache) {
 				cached.view.$el.detach();
 			} else {
-				cached.view.$el.remove();
+				// cached.view.$el.remove() - jch* this was the initial code, seemed wrong
+				// since it did not allow the view to clean up - keep an eye on it.
+				cached.view.close ? cached.view.close() : cached.view.remove();
 				delete privates[this.cid].cache[key];
 			}
 			reattachChildren(cached.region, cached.detached);

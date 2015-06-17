@@ -1,6 +1,6 @@
 ﻿/*
  * renderViewExt
- * 
+ *
  * Description
  *     Implements the render method for Backbone views
  *     Also adds a bindAll method to views which is a util method for _.bindAll
@@ -47,38 +47,38 @@ function renderViewExt(_, $, templateCache, collectionRenderer) {
 			args.unshift(this);
 			_.bindAll.apply(_, args);
 		},
-		
+
 		render: function () {
 			var templateFn,
 			    el,
 			    shims,
 			    onResolve;
-			
+
 			if (this.fromServer !== true) {
 				templateFn = templateCache.getTemplateFor(this.name);
 				setModel(this, templateFn.data);
 			}
 
 			onResolve = _.bind(function () {
-				this.trigger("resolve");
-				this.onResolve && this.onResolve(this.model || this.collection);
-			}, this);
+                    this.trigger("resolve");
+                    this.onResolve && this.onResolve(this.model || this.collection);
+                }, this);
 
-			if (this.collection) {
-				
+            if (this.collection) {
+
 				collectionRenderer.render(this);
 				onResolve();
 			} else {
 
 				if (this.fromServer !== true) {
-					
+
 					el = $(templateFn(modelJSON(this.model)));
 
 					// set the element since the template contains the root
 					this.$el.replaceWith(el);
 					this.setElement(el);
 				}
-				
+
 				// add the view to the $el.data (for the shims)
 				this.$el.data("view", this);
 
@@ -91,7 +91,7 @@ function renderViewExt(_, $, templateCache, collectionRenderer) {
 			this.onRender && this.onRender(this.model || this.collection);
 			return this;
 		},
-		
+
 		renderFromServer: function () {
 			var serverUrl,
 				view = this;
@@ -132,9 +132,9 @@ function renderViewExt(_, $, templateCache, collectionRenderer) {
 		if (!model || !modelAttr) {
 			return;
 		}
-		
+
 		retModel = walkModel(model, modelAttr);
-		
+
 		if (data.model) {
 			view.model = retModel;
 		} else {
