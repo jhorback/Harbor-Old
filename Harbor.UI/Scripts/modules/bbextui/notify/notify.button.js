@@ -1,4 +1,7 @@
-﻿
+﻿/*
+ var buttonNote = notify.button(el).disable("Saving...");;
+ doSomething().then(buttonNote.call.enable());
+ */
 
 bbext.notifyButton = function (notify, callbacks) {
 

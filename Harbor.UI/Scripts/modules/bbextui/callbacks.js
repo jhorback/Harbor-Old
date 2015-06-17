@@ -7,6 +7,7 @@
  */
 bbext.callbacks = function () {
 	return {
+
 		create: function (context, methodNames) {
 			methodNames = Array.prototype.slice.apply(arguments);
 			methodNames.shift();

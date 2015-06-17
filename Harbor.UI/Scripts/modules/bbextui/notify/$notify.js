@@ -1,26 +1,28 @@
 ﻿
 
 
-bbext.notifiy = function (collectionFactory, modelFactory) {
+bbext.notifiy = function(collectionFactory, modelFactory, globalCache) {
 
-	var notifications = collectionFactory.create("bbext.notifications");
+	var notifyModel = globalCache.get("notifyModel");
+	if (!notifyModel) {
+		notifyModel = modelFactory.create("bbext.notifyModel");
+		globalCache.set("notifyModel", notifyModel);
+	}
 
 	return {	
-		show: function (message, attrs) {
-			return callShowMethod("show", message, attrs);
+		message: function (message, attrs) {
+			return callShowMethod("done", message, attrs);
 		},
 		
-		showError: function (message, attrs) {
-			return callShowMethod("showError", message, attrs);
+		errorMessage: function (message, attrs) {
+			return callShowMethod("error", message, attrs);
 		},
 
-		showOnDelay: function (message, attrs) {
-			return callShowMethod("showOnDelay", message, attrs);
+		progress: function (message, attrs) {
+			return callShowMethod("progress", message, attrs);
 		},
 
-		getNotifications: function () {
-			return notifications;
-		},
+		model: notifyModel,
 
 		extend: function (extension) {
 			_.extend(this, extension);
@@ -30,7 +32,7 @@ bbext.notifiy = function (collectionFactory, modelFactory) {
 	function callShowMethod(method, message, attrs) {
 		var notification = modelFactory.create("bbext.notification");
 		notification[method](message, attrs);
-		notifications.add(notification);
+		notifyModel.notifications.add(notification);
 		return notification;
 	}
 };
@@ -39,6 +41,7 @@ bbext.notifiy = function (collectionFactory, modelFactory) {
 bbext.service("notify", [
 	"collectionFactory",
 	"modelFactory",
+	"globalCache",
 	bbext.notifiy
 ]);
 

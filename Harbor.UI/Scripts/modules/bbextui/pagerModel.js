@@ -107,6 +107,7 @@ bbext.pagerModel =  {
 		can = this.canGoPrevious();
 		if (can) {
 			this.set("skip", skip - take);
+			this.trigger("page:change");
 		}
 	},
 
@@ -120,6 +121,7 @@ bbext.pagerModel =  {
 		can = this.canGoNext();
 		if (can) {
 			this.set("skip", take + skip);
+			this.trigger("page:change");
 		}
 	},
 
