@@ -584,7 +584,7 @@
     <Content Include="Scripts\dropzone\dropzone.min.js" />
     <Content Include="Scripts\dropzone\images\spritemap%402x.png" />
     <Content Include="Scripts\dropzone\images\spritemap.png" />
-    <Content Include="Scripts\modules\bbextui\callbacks.js" />
+    <Content Include="Scripts\appui\callbacks.js" />
     <Content Include="Scripts\modules\bbextui\menuListFactory.js" />
     <Content Include="Scripts\modules\bbextui\notify\%24notify.js" />
     <Content Include="Scripts\modules\bbextui\notify\notification.js" />

@@ -5,7 +5,7 @@
  * this.callbacks.create(this, "update", "close");
  * this.get(...).then(this.call.update()).fail(this.call.close());
  */
-bbext.callbacks = function () {
+appui.callbacks = function () {
 	return {
 
 		create: function (context, methodNames) {
@@ -24,4 +24,4 @@ bbext.callbacks = function () {
 	};
 };
 
-bbext.service("callbacks", bbext.callbacks)
+appui.service("callbacks", appui.callbacks)
