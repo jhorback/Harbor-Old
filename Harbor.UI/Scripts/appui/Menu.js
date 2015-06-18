@@ -39,6 +39,7 @@
 
 
 		this.options = $.extend({}, Menu.defaultOptions, options);
+		this.options.anchor = $(this.options.anchor);
 		menu = this.options.anchor.data("_menu");
 		if (menu) {
 			menu.close();
@@ -112,6 +113,10 @@
 					isHidden = !menu.is(":visible");
 
 				isHidden && menu.show();
+				if (o.anchor.length === 0) {
+					return;
+				}
+
 				menu.position({
 					my: "left top",
 					at: "left bottom",

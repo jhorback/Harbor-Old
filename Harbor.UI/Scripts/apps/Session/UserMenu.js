@@ -44,8 +44,8 @@
 		});
 
 		this.showView(new Menu(this.$el, {
-			transition: "fade",
-			anchor: "#profile-link"
+			transition: "fade"
+			//,anchor: "#profile-link"
 		}));
 
 		return this;

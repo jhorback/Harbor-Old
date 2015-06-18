@@ -27,6 +27,7 @@ pageSettingsView.prototype = {
 	
 	onRender: function () {
 		this.menu = this.menuFactory.create(this.$el, {
+			//anchor: "#pageloader",
 			transition: "none",
 			container: this.options.container
 		});
