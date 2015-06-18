@@ -78,7 +78,7 @@
 		_testForClose: function (event) {
 			var target = $(event.target);
 			if (target.is(":visible") &&
-				//target.closest(".menu").length === 0 &&
+				target.closest(this.element).length === 0 &&
 				this.menuEl.is(":visible")) {
 				this.close();
 			}
