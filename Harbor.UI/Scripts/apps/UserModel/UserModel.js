@@ -25,6 +25,10 @@
 		displayEmail: null,
 		displayPayPalMerchantAccountID: ""
 	},
+
+	url: function() {
+		return this.isNewUser() ? this.urlRoot : this.urlRoot + "/" + this.attributes.userName;
+	},
 	
 	sync: function (method, model, options) {
 		if (method === "update" && this.isNewUser()) {
@@ -42,14 +46,14 @@
 			return undefined;
 		}
 
-		pw = this.get("newPassword");
+		pw = this.get("password");
 		cpw = this.get("confirmPassword");
 		errors = modelErrors.create();
 		if (pw !== cpw) {
 			errors.add("The passwords do not match.");
 		}
 		if (this.isNewUser() && pw === null) {
-			errors.add("newPassword", "Required.");
+			errors.add("password", "Required.");
 		}
 		
 		return errors.toJSON();
