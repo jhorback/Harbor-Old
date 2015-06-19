@@ -1,11 +1,19 @@
 @import "bjroyster-theme";
 
 
-$frame-logo-name:      "logo-sig-2.png";
-$frame-logo-width:		150px;
-$frame-logo-height:		75px;
+$frame-logo-name:      "logo-sig.png";
+//$frame-logo-width:		150px;
+//$frame-logo-height:		75px;
+$framenav-color-hover: #000;
+
+$framenav-color-selected: #fff;
+$framenav-background-color-selected: $theme-color-blue;
 
 $frame-footer-image:    "footer-hog.png" !default;
 
+.page-header {
+    border:1px solid #3A5E69;
+    border-width: 1px 0;
+}
 
 @include bjroyster-theme;

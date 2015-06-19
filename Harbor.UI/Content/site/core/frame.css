@@ -2,7 +2,7 @@
   min-height: 100%;
   height: auto !important;
   height: 100%;
-  margin: 0 auto -12em; }
+  margin: 1em auto -12em 0; }
 
 #frame-header {
   overflow: hidden;
@@ -11,14 +11,20 @@
     text-decoration: none; }
 
 #frame-logo {
-  font-size: 2.3em;
   float: left;
-  margin: 0 0em 0 0.5em;
+  margin: 0 1em 0 1em;
   text-shadow: rgba(0, 0, 0, 0.6) 1px 1px 2px; }
+  #frame-logo span {
+    font-size: 2.3em; }
+
+#frame-nav, #frame-session {
+  font-size: 1em;
+  line-height: 2em;
+  position: relative;
+  top: 0.5em; }
 
 #frame-nav {
-  float: left;
-  font-size: 1.1em; }
+  float: left; }
   #frame-nav ul {
     margin: 0;
     padding: 0;
@@ -38,7 +44,9 @@
       float: left; }
       #frame-nav ul li a {
         display: inline-block;
-        padding: 0 1em; }
+        padding: 0 1em;
+        -webkit-transition-property: all;
+        -webkit-transition-duration: 0.4s; }
       #frame-nav ul li.selected a {
         text-shadow: rgba(68, 68, 68, 0.4) 1px 1px 1px 0px 0px 1px; }
       #frame-nav ul li.attn {

@@ -5,10 +5,10 @@
 @import "../../mixins/border-radius";
 @import "foundation";
 
-$frame-logo-width:		150px !default;
-$frame-logo-height:		51px !default;
+$frame-header-height:	4em; // 3.15em !default; // 50px (logo image) / 16px base font size
 $frame-logo-name:       "logo.png" !default;
-$frame-header-height:	4.7em; // 3.15em !default; // 50px (logo image) / 16px base font size
+$frame-logo-width:		'auto' !default;
+$frame-logo-height:		$frame-header-height !default;
 $frame-footer-height:	12em !default; 
 
 $overlay-background-color: #000;
@@ -16,9 +16,9 @@ $overlay-background-color: #000;
 $frame-footer-background: #2d3033;
 $frame-footer-color: #a5a6a7;
 
-$framenav-color:						#EEE								!default;
+$framenav-color:						#aaa	    						!default;
 $framenav-background-color:				#345276								!default;
-$framenav-color-hover:					$body-color-loud					!default;
+$framenav-color-hover:					#000            					!default;
 $framenav-background-color-hover:		$body-background-color				!default;
 $framenav-color-selected:				$framenav-color-hover				!default;
 $framenav-background-color-selected:	$framenav-background-color-hover	!default;
@@ -33,7 +33,7 @@ $frame-logo-use-image: true !default;
 		min-height: 100%;
         height: auto !important;
         height: 100%;
-        margin: 0 auto ($frame-footer-height*-1);
+        margin: 1em auto ($frame-footer-height*-1) 0;
 	}	
 	@include frame-header;
 	@include frame-body;
@@ -43,6 +43,7 @@ $frame-logo-use-image: true !default;
 
 
 @mixin frame-header {
+  
 	#frame-header {
 		overflow: hidden;
 		z-index: 1;		
@@ -53,27 +54,34 @@ $frame-logo-use-image: true !default;
 	}	
 
 	#frame-logo {
-		font-size: 2.3em;
+		span {
+            font-size: 2.3em;
+        }
 		float:left;
-		margin: 0 0em 0 .5em;
+		margin: 0 1em 0 1em;
 		@include single-text-shadow(rgba(#000, 0.6), 1px, 1px, 2px);
 	}
 
+    #frame-nav, #frame-session {
+        font-size: 1em;
+        line-height: 2em;
+        position:relative;
+        top: .5em;
+    }
+
 	#frame-nav {
 		float: left;
-		font-size: 1.1em;
-		//padding-top: 1em;
 		ul {
 			@include inline-block-list;
 			li {
 				cursor: pointer;	
-				float:left;
-				// jch - add mixin for transitions - and add to launch
-				//-webkit-transition-property: background;
-				//-webkit-transition-duration: 0.3s;				
+				float:left;	
 				a {
 					display: inline-block;
 					padding: 0 1em;
+                    // jch - add mixin for transitions - and add to launch
+				    -webkit-transition-property: all;
+				    -webkit-transition-duration: 0.4s;		
 				}
 				&.selected {
 					a {
@@ -216,7 +224,7 @@ $frame-logo-use-image: true !default;
 		@include box-shadow(0 2px 4px rgba(105,105,105,.25));
 
 		a, a:visited {
-			color: $framenav-color;
+		//	color: $framenav-color;
 		}
 	}
 
@@ -234,24 +242,34 @@ $frame-logo-use-image: true !default;
 	}
 
 	#frame-nav {
-		ul {
-			li {		
-				&:hover {
-					background-color: $framenav-background-color-hover;
-					// @include box-shadow(0 6px 14px rgba(105,105,105,.60));
+        a, a:visited {
+            color: $framenav-color;
+            font-weight: bold;
+            font-size:.9em;
+        }
+
+        ul {
+
+        }
+      
+		li {
+            margin-right:.5em;
+            text-transform: uppercase;
+            @include border-radius;          
+			&:hover {
+				background-color: $framenav-background-color-hover;
+                // @include box-shadow(0 6px 14px rgba(105,105,105,.60));
 					
-                    a {
-						color: $framenav-color-hover;
-					}
-                    font-weight: bold;
-				}
-				&.selected{
-					background-color: $framenav-background-color-selected;
-					a {
-						color: $framenav-color-selected;
-					}		
-				}
+                a {
+					color: $framenav-color-hover;
+				}                    
 			}
+			&.selected{
+				background-color: $framenav-background-color-selected;
+				a {
+					color: $framenav-color-selected;
+				}
+			}			
 		}
 	}
 

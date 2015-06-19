@@ -88,27 +88,35 @@ dd {
   margin-left: 12.8px; }
 
 #frame-header {
-  height: 4.7em;
-  line-height: 4.7em;
-  color: #EEE;
+  height: 4em;
+  line-height: 4em;
+  color: #aaa;
   background: #345276;
   width: 100%;
   -moz-box-shadow: 0 2px 4px rgba(105, 105, 105, 0.25);
   -webkit-box-shadow: 0 2px 4px rgba(105, 105, 105, 0.25);
   -ms-box-shadow: 0 2px 4px rgba(105, 105, 105, 0.25);
   box-shadow: 0 2px 4px rgba(105, 105, 105, 0.25); }
-  #frame-header a, #frame-header a:visited {
-    color: #EEE; }
 
-#frame-nav ul li:hover {
-  background-color: #FFF;
-  font-weight: bold; }
-  #frame-nav ul li:hover a {
-    color: #2F5BB7; }
-#frame-nav ul li.selected {
-  background-color: #FFF; }
-  #frame-nav ul li.selected a {
-    color: #2F5BB7; }
+#frame-nav a, #frame-nav a:visited {
+  color: #aaa;
+  font-weight: bold;
+  font-size: 0.9em; }
+#frame-nav li {
+  margin-right: 0.5em;
+  text-transform: uppercase;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px; }
+  #frame-nav li:hover {
+    background-color: #FFF; }
+    #frame-nav li:hover a {
+      color: #000; }
+  #frame-nav li.selected {
+    background-color: #FFF; }
+    #frame-nav li.selected a {
+      color: #000; }
 
 #frame-body ::-webkit-scrollbar-thumb {
   background: #CCC; }
