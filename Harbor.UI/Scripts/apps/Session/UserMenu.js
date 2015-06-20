@@ -13,10 +13,6 @@
 			menu && menu.close && menu.close();
 		},
 
-		"click #usermenu-uploadfile": function () {
-			alert("Upload a file");
-		},
-
 		"click #usermenu-signout": function (event) {
 			event.preventDefault();
 			Session.signOut().then(function () {
@@ -44,8 +40,8 @@
 		});
 
 		this.showView(new Menu(this.$el, {
-			transition: "fade"
-			//,anchor: "#profile-link"
+			transition: "none",
+			anchor: "#profile-link"
 		}));
 
 		return this;

@@ -5,16 +5,17 @@
 @mixin usermenu {
 	
 	.usermenu {
-		width: 20em;
+		min-width: 18em;
 		// @include clearfix;
 
-		h1 {
-			font-size: 1.6em;
-			font-weight: normal;
-			// @include single-text-shadow(rgba(#555, 0.4), 2px, 2px, 2px); 
+		.menulist {
+            margin-bottom: 0 !important;
 		}
+        hr {
+            margin: 1em 0;
+        }
 		ul {
-			padding: 0;
+			padding: 1em 1em 0 1em;
 			padding-right: 2em;
 			margin: 0;
 			@include no-bullets;
@@ -23,8 +24,9 @@
 		}
 
 		button, .button {
-			width: 80%;
-			margin: auto;
+			width: 100%;
+            display: block;
+            box-sizing:border-box;
 		}
 	}
 }

@@ -12,17 +12,14 @@ $menu-border-color: rgba(#000, 0.3);
 @mixin menu {
 	
 	.menu {
-		position: fixed;
+		position: absolute;
 		z-index:100;
 		color: $menu-color;
 		background-color: $menu-background-color;
-		max-width: 600px;
-		padding: .2em 1em 1em 1.42em;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		overflow: auto;
-		border-left: 1px solid $menu-border-color;
+		max-width: 35em;
+		//padding: .2em 1em 1em 1.42em;
+		//overflow: auto;
+		border: 1px solid $menu-border-color;
 
 		.menu-close {
 			position: absolute;
@@ -37,7 +34,8 @@ $menu-border-color: rgba(#000, 0.3);
 			}
 		}
 
-		@include box-shadow-value(-1px 0 1px $menu-border-color);
+        @include border-radius(3px);
+		@include box-shadow-value(-5px 5px 5px $menu-border-color);
 		@include clearfix;
 	}
 	

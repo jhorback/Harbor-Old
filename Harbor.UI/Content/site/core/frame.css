@@ -55,7 +55,8 @@
           color: white !important; }
 
 #frame-session {
-  float: right; }
+  float: right;
+  top: -0.5em; }
   #frame-session a {
     padding: 0 1em;
     font-size: 1.2em;

@@ -1,10 +1,11 @@
 .usermenu {
-  width: 20em; }
-  .usermenu h1 {
-    font-size: 1.6em;
-    font-weight: normal; }
+  min-width: 18em; }
+  .usermenu .menulist {
+    margin-bottom: 0 !important; }
+  .usermenu hr {
+    margin: 1em 0; }
   .usermenu ul {
-    padding: 0;
+    padding: 1em 1em 0 1em;
     padding-right: 2em;
     margin: 0;
     list-style: none;
@@ -15,5 +16,6 @@
       list-style-type: none;
       margin-left: 0px; }
   .usermenu button, .usermenu .button {
-    width: 80%;
-    margin: auto; }
+    width: 100%;
+    display: block;
+    box-sizing: border-box; }

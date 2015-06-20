@@ -1,19 +1,18 @@
 .menu {
-  position: fixed;
+  position: absolute;
   z-index: 100;
   color: #000;
   background-color: #f7f7f7;
-  max-width: 600px;
-  padding: 0.2em 1em 1em 1.42em;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  overflow: auto;
-  border-left: 1px solid rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: -1px 0 1px rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: -1px 0 1px rgba(0, 0, 0, 0.3);
-  -ms-box-shadow: -1px 0 1px rgba(0, 0, 0, 0.3);
-  box-shadow: -1px 0 1px rgba(0, 0, 0, 0.3); }
+  max-width: 35em;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -ms-border-radius: 3px;
+  border-radius: 3px;
+  -moz-box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.3);
+  -ms-box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.3); }
   .menu .menu-close {
     position: absolute;
     top: 0;
