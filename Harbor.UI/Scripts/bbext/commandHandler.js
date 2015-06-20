@@ -114,7 +114,7 @@ bbext.commandHandler = function (ajaxRequest) {
 
 			saveMthod = toSave.safeSave || toSave.save;
 
-			return ajaxRequest.handle(saveMthod(null, options), options.handler, options.context);
+			return ajaxRequest.handle(saveMthod.call(toSave, null, options), options.handler, options.context);
 		}
 	};
 };
