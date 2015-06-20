@@ -1,0 +1,155 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1254" measuredH="807" mockupW="1024" mockupH="768">
+  <controls>
+    <control controlID="16" controlTypeID="com.balsamiq.mockups::Component" x="230" y="39" w="1024" h="768" measuredW="1024" measuredH="768" zOrder="0" locked="true" isInGroup="-1">
+      <controlProperties>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22387%2C84%2C434%2C108%22%20href%3D%2210%2520Events%2520%28view%29.bmml%22%20alt%3D%2210%20Events%20%28view%29%22%20id%3D%222%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22921%2C86%2C1001%2C107%22%20href%3D%2220%2520User%2520menu.bmml%22%20alt%3D%2220%20User%20menu%22%20id%3D%224%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%2225%2C642%2C58%2C663%22%20href%3D%2240%2520Shop.bmml%22%20alt%3D%2240%20Shop%22%20id%3D%220%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%2225%2C660%2C77%2C681%22%20href%3D%2241%2520Shop%2520Catalog.bmml%22%20alt%3D%2241%20Shop%20Catalog%22%20id%3D%221%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%2225%2C678%2C60%2C699%22%20href%3D%2241%2520Shop%2520Catalog.bmml%22%20alt%3D%2241%20Shop%20Catalog%22%20id%3D%222%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%2225%2C696%2C69%2C717%22%20href%3D%2241%2520Shop%2520Catalog.bmml%22%20alt%3D%2241%20Shop%20Catalog%22%20id%3D%223%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%2225%2C714%2C53%2C735%22%20href%3D%2241%2520Shop%2520Catalog.bmml%22%20alt%3D%2241%20Shop%20Catalog%22%20id%3D%224%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22130%2C643%2C178%2C664%22%20href%3D%22103%2520Contact.bmml%22%20alt%3D%22103%20Contact%22%20id%3D%220%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22130%2C662%2C179%2C683%22%20href%3D%22102%2520Articles.bmml%22%20alt%3D%22102%20Articles%22%20id%3D%221%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22130%2C701%2C282%2C722%22%20href%3D%22100%2520BROG.bmml%22%20alt%3D%22100%20BROG%22%20id%3D%222%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22130%2C682%2C178%2C703%22%20href%3D%22104%2520Bio.bmml%22%20alt%3D%22104%20Bio%22%20id%3D%223%22/%3E</map>
+        <override controlID="24" x="25" y="642" w="52" h="93"/>
+        <override controlID="28" x="130" y="643" w="152" h="79"/>
+        <src>./assets/symbols.bmml#Layout</src>
+      </controlProperties>
+    </control>
+    <control controlID="19" controlTypeID="com.balsamiq.mockups::Title" x="268" y="181" w="-1" h="-1" measuredW="122" measuredH="41" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>16777215</color>
+        <text>Events</text>
+      </controlProperties>
+    </control>
+    <control controlID="22" controlTypeID="com.balsamiq.mockups::Canvas" x="230" y="155" w="1023" h="90" measuredW="100" measuredH="70" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderStyle>square</borderStyle>
+        <color>6792118</color>
+      </controlProperties>
+    </control>
+    <control controlID="34" controlTypeID="com.balsamiq.mockups::MenuBar" x="1081" y="241" w="-1" h="-1" measuredW="173" measuredH="29" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <hrefs>10%20Events%20%28view%29%26bm%3B10%20Events%20%28view%29.bmml%26bm%3B10%20Events%20%28view%29.bmml%26bm%3B10%20Events%20%28view%29.bmml%2C11%20Events%20%28edit%29%26bm%3B11%20Events%20%28edit%29.bmml%26bm%3B11%20Events%20%28edit%29.bmml%26bm%3B11%20Events%20%28edit%29.bmml%2C12%20Events%20%28settings%29%26bm%3B12%20Events%20%28settings%29.bmml%26bm%3B12%20Events%20%28settings%29.bmml%26bm%3B12%20Events%20%28settings%29.bmml</hrefs>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22869%2C212%2C906%2C225%22%20href%3D%2210%2520Events%2520%28view%29.bmml%22%20alt%3D%2210%20Events%20%28view%29%22%20id%3D%2234%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22915%2C212%2C948%2C225%22%20href%3D%2211%2520Events%2520%28edit%29.bmml%22%20alt%3D%2211%20Events%20%28edit%29%22%20id%3D%2234%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22957%2C212%2C1015%2C225%22%20href%3D%2212%2520Events%2520%28settings%29.bmml%22%20alt%3D%2212%20Events%20%28settings%29%22%20id%3D%2234%22/%3E</map>
+        <selectedIndex>2</selectedIndex>
+        <text>View%2C%20Edit%2C%20Settings</text>
+      </controlProperties>
+    </control>
+    <control controlID="36" controlTypeID="com.balsamiq.mockups::SubTitle" x="253" y="449" w="-1" h="-1" measuredW="70" measuredH="22" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>20</size>
+        <text>Visibility</text>
+      </controlProperties>
+    </control>
+    <control controlID="37" controlTypeID="com.balsamiq.mockups::SubTitle" x="260" y="548" w="59" h="-1" measuredW="57" measuredH="22" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>20</size>
+        <text>Delete</text>
+      </controlProperties>
+    </control>
+    <control controlID="38" controlTypeID="com.balsamiq.mockups::Button" x="253" y="389" w="-1" h="-1" measuredW="106" measuredH="27" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Change%20image</text>
+      </controlProperties>
+    </control>
+    <control controlID="39" controlTypeID="com.balsamiq.mockups::Paragraph" x="301" y="612" w="421" h="14" measuredW="275" measuredH="80" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <align>left</align>
+        <size>11</size>
+        <text>Deleting%20this%20page%20will%20not%20remove%20any%20uploaded%20content%20associated%20with%20this%20page.</text>
+      </controlProperties>
+    </control>
+    <control controlID="40" controlTypeID="com.balsamiq.mockups::Paragraph" x="576" y="198" w="180" h="14" measuredW="275" measuredH="80" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <align>left</align>
+        <color>10066329</color>
+        <size>11</size>
+        <text>%28click%20to%20rename%29</text>
+      </controlProperties>
+    </control>
+    <control controlID="41" controlTypeID="com.balsamiq.mockups::Image" x="282" y="287" w="81" h="59" measuredW="77" measuredH="79" zOrder="9" locked="false" isInGroup="-1"/>
+    <control controlID="43" controlTypeID="com.balsamiq.mockups::SubTitle" x="735" y="427" w="-1" h="-1" measuredW="153" measuredH="22" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>20</size>
+        <text>Page%20Information</text>
+      </controlProperties>
+    </control>
+    <control controlID="44" controlTypeID="com.balsamiq.mockups::Button" x="303" y="577" w="116" h="27" measuredW="117" measuredH="27" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Delete%20this%20page</text>
+      </controlProperties>
+    </control>
+    <control controlID="45" controlTypeID="com.balsamiq.mockups::Button" x="368" y="389" w="-1" h="-1" measuredW="108" measuredH="27" zOrder="12" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Remove%20image</text>
+      </controlProperties>
+    </control>
+    <control controlID="46" controlTypeID="com.balsamiq.mockups::Label" x="284" y="493" w="-1" h="-1" measuredW="165" measuredH="21" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Everyone%20can%20see%20this%20page.</text>
+      </controlProperties>
+    </control>
+    <control controlID="47" controlTypeID="com.balsamiq.mockups::CheckBox" x="284" y="471" w="-1" h="-1" measuredW="78" measuredH="22" zOrder="14" locked="false" isInGroup="-1">
+      <controlProperties>
+        <state>selected</state>
+        <text>Published</text>
+      </controlProperties>
+    </control>
+    <control controlID="48" controlTypeID="com.balsamiq.mockups::CheckBox" x="253" y="357" w="143" h="22" measuredW="133" measuredH="22" zOrder="15" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Auto%20preview%20image</text>
+      </controlProperties>
+    </control>
+    <control controlID="49" controlTypeID="com.balsamiq.mockups::CheckBox" x="404" y="357" w="-1" h="-1" measuredW="161" measuredH="22" zOrder="16" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Auto%20preview%20description</text>
+      </controlProperties>
+    </control>
+    <control controlID="50" controlTypeID="com.balsamiq.mockups::SubTitle" x="251" y="256" w="-1" h="-1" measuredW="200" measuredH="22" zOrder="17" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>20</size>
+        <text>Image%20and%20Description</text>
+      </controlProperties>
+    </control>
+    <control controlID="51" controlTypeID="com.balsamiq.mockups::TextArea" x="404" y="286" w="267" h="59" measuredW="200" measuredH="140" zOrder="18" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Here%20is%20some%20preview%20text%20generated%20from%20the%20first%20few%20characters%20of%20the%20first%20text%20comopnent%20...</text>
+      </controlProperties>
+    </control>
+    <control controlID="52" controlTypeID="com.balsamiq.mockups::VCurly" x="491" y="384" w="150" h="47" measuredW="180" measuredH="140" zOrder="19" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Hide%20these%20buttons%20if%20auto%20preview</text>
+      </controlProperties>
+    </control>
+    <control controlID="53" controlTypeID="com.balsamiq.mockups::VCurly" x="682" y="286" w="146" h="59" measuredW="180" measuredH="140" zOrder="20" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Textarea%20is%20readonly%20if%20auto%20preview</text>
+      </controlProperties>
+    </control>
+    <control controlID="54" controlTypeID="com.balsamiq.mockups::Label" x="775" y="458" w="-1" h="-1" measuredW="64" measuredH="21" zOrder="21" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <text>Page%20type</text>
+      </controlProperties>
+    </control>
+    <control controlID="55" controlTypeID="com.balsamiq.mockups::Label" x="850" y="458" w="-1" h="-1" measuredW="31" measuredH="21" zOrder="22" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Page</text>
+      </controlProperties>
+    </control>
+    <control controlID="56" controlTypeID="com.balsamiq.mockups::Label" x="766" y="486" w="-1" h="-1" measuredW="79" measuredH="21" zOrder="23" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <text>Layout%20page</text>
+      </controlProperties>
+    </control>
+    <control controlID="57" controlTypeID="com.balsamiq.mockups::Link" x="850" y="506" w="-1" h="-1" measuredW="82" measuredH="19" zOrder="24" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>%28Reset%20layout%29</text>
+      </controlProperties>
+    </control>
+    <control controlID="58" controlTypeID="com.balsamiq.mockups::VCurly" x="942" y="479" w="256" h="48" measuredW="180" measuredH="140" zOrder="25" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Only%20show%20the%20layout%20page%20if%20different.%0AWould%20be%20nice%20to%20link%20to%20the%20page%20also.</text>
+      </controlProperties>
+    </control>
+    <control controlID="59" controlTypeID="com.balsamiq.mockups::Link" x="850" y="487" w="-1" h="-1" measuredW="68" measuredH="19" zOrder="26" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>New%20Listing</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

@@ -1,0 +1,66 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1254" measuredH="807" mockupW="1024" mockupH="768">
+  <controls>
+    <control controlID="16" controlTypeID="com.balsamiq.mockups::Component" x="230" y="39" w="1024" h="768" measuredW="1024" measuredH="768" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22387%2C84%2C434%2C108%22%20href%3D%2210%2520Events%2520%28view%29.bmml%22%20alt%3D%2210%20Events%20%28view%29%22%20id%3D%222%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%2225%2C642%2C58%2C663%22%20href%3D%2240%2520Shop.bmml%22%20alt%3D%2240%20Shop%22%20id%3D%220%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%2225%2C660%2C77%2C681%22%20href%3D%2241%2520Shop%2520Catalog.bmml%22%20alt%3D%2241%20Shop%20Catalog%22%20id%3D%221%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%2225%2C678%2C60%2C699%22%20href%3D%2241%2520Shop%2520Catalog.bmml%22%20alt%3D%2241%20Shop%20Catalog%22%20id%3D%222%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%2225%2C696%2C69%2C717%22%20href%3D%2241%2520Shop%2520Catalog.bmml%22%20alt%3D%2241%20Shop%20Catalog%22%20id%3D%223%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%2225%2C714%2C53%2C735%22%20href%3D%2241%2520Shop%2520Catalog.bmml%22%20alt%3D%2241%20Shop%20Catalog%22%20id%3D%224%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22130%2C643%2C178%2C664%22%20href%3D%22103%2520Contact.bmml%22%20alt%3D%22103%20Contact%22%20id%3D%220%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22130%2C662%2C179%2C683%22%20href%3D%22102%2520Articles.bmml%22%20alt%3D%22102%20Articles%22%20id%3D%221%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22130%2C701%2C282%2C722%22%20href%3D%22100%2520BROG.bmml%22%20alt%3D%22100%20BROG%22%20id%3D%222%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22130%2C682%2C178%2C703%22%20href%3D%22104%2520Bio.bmml%22%20alt%3D%22104%20Bio%22%20id%3D%223%22/%3E</map>
+        <override controlID="24" x="25" y="642" w="52" h="93"/>
+        <override controlID="28" x="130" y="643" w="152" h="79"/>
+        <override controlID="-1"/>
+        <src>./assets/symbols.bmml#Layout</src>
+      </controlProperties>
+    </control>
+    <control controlID="19" controlTypeID="com.balsamiq.mockups::Title" x="268" y="181" w="-1" h="-1" measuredW="122" measuredH="41" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>16777215</color>
+        <text>Events</text>
+      </controlProperties>
+    </control>
+    <control controlID="22" controlTypeID="com.balsamiq.mockups::Canvas" x="230" y="155" w="1023" h="90" measuredW="100" measuredH="70" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderStyle>square</borderStyle>
+        <color>6792118</color>
+      </controlProperties>
+    </control>
+    <control controlID="24" controlTypeID="com.balsamiq.mockups::Paragraph" x="261" y="287" w="951" h="80" measuredW="275" measuredH="80" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>%20%0ADay%20after%20Thanksgiving%20Show%20located%20at%20the%20Postcard%20Inn%20formally%20the%20Holiday%20Isle%20Hotel%20at%20Mile%20Marker%2084%20on%20the%20Oceanside.%0AFri%2C%20Sat%20%26%20Sun%20%0A10%20am%20-%205%20pm%0AMM%2084.5%0Awww.holidayisle.com</text>
+      </controlProperties>
+    </control>
+    <control controlID="25" controlTypeID="com.balsamiq.mockups::Title" x="261" y="266" w="-1" h="-1" measuredW="595" measuredH="26" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>24</size>
+        <text>Post%20Card%20Inn%20Arts%20%26%20Craft%20Show%2011/29/2013%20-%2012/1/2013</text>
+      </controlProperties>
+    </control>
+    <control controlID="26" controlTypeID="com.balsamiq.mockups::Paragraph" x="260" y="405" w="951" h="180" measuredW="275" measuredH="80" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Invites%20you%20to%20our%20annual%20LIGNUMVITAE%20CHRISTMAS%20%245.00%20donation%20children%2012%20and%20under%20free%20Enjoy%20a%20full%20day%20including%20a%20boat%20ride%20to%20the%20island%2C%20ranger%20guided%20tours.%20Enjoy%20the%20history%20of%20the%20Matheson%20house%20decorated%20for%20the%20holidays.%20Complementary%20Holiday%20Cookies%2C%20key%20limeade%20and%20coffee.%20Stop%20by%20the%20art%20room%20and%20paint%20your%20own%20sea%20bean%20ornament.%20Enjoy%20music%20by%20the%20local%20dulcimers.%20Enjoy%20lunch%20on%20the%20island%20Pulled%20pork%20sandwiched%20and%20chips%20available%20for%20a%20%245.00%20donation.%20Silent%20auction%20and%20painting%20demonstration%20by%20local%20artist%20BJ%20Royster.%20Need%20not%20be%20present%20to%20win.%20Boats%20will%20be%20shuttling%20guest%20from%20Robbie%uFFFDs%20Marina%20at%20MM%2077.5%20bayside%2C%20at%20the%20north%20end%20of%20Lower%20Matecumbe%20Key%20All%20donations%20go%20to%20Friends%20of%20the%20Islamorada%20Area%20State%20Parks%2C%20a%20non-profit%20Citizens%uFFFD%20Support%20Organization%20raising%20money%20to%20enhance%20the%20public%uFFFDs%20enjoyment%20of%20our%20local%20State%20parks.%20For%20more%20information%2C%20call%20305-664-2540%20%0A%20%0ASaturday%2C%20December%207%2C%202013%20%0A9%3A00%20am%20to%203%3A00%20pm%20%0Amm%2077.5%20bayside%0AIslamorada%2C%20FL%20</text>
+      </controlProperties>
+    </control>
+    <control controlID="27" controlTypeID="com.balsamiq.mockups::Title" x="260" y="378" w="-1" h="-1" measuredW="531" measuredH="26" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>24</size>
+        <text>Friends%20of%20Islamorada%20Area%20State%20Parks%2012/7/2013</text>
+      </controlProperties>
+    </control>
+    <control controlID="30" controlTypeID="com.balsamiq.mockups::Link" x="259" y="607" w="-1" h="-1" measuredW="98" measuredH="19" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>View%20past%20events</text>
+      </controlProperties>
+    </control>
+    <control controlID="31" controlTypeID="com.balsamiq.mockups::VCurly" x="390" y="599" w="373" h="50" measuredW="180" measuredH="140" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Link%20could%20go%20to%20a%20page%20that%20had%20last%20events.%0Aand/or%20events%20could%20also%20be%20%27blogged%27%20about</text>
+      </controlProperties>
+    </control>
+    <control controlID="32" controlTypeID="com.balsamiq.mockups::HRule" x="256" y="589" w="940" h="-1" measuredW="100" measuredH="10" zOrder="9" locked="false" isInGroup="-1"/>
+    <control controlID="35" controlTypeID="com.balsamiq.mockups::MenuBar" x="1081" y="241" w="-1" h="-1" measuredW="173" measuredH="29" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <hrefs>10%20Events%20%28view%29%26bm%3B10%20Events%20%28view%29.bmml%26bm%3B10%20Events%20%28view%29.bmml%26bm%3B10%20Events%20%28view%29.bmml%2C11%20Events%20%28edit%29%26bm%3B11%20Events%20%28edit%29.bmml%26bm%3B11%20Events%20%28edit%29.bmml%26bm%3B11%20Events%20%28edit%29.bmml%2C12%20Events%20%28settings%29%26bm%3B12%20Events%20%28settings%29.bmml%26bm%3B12%20Events%20%28settings%29.bmml%26bm%3B12%20Events%20%28settings%29.bmml</hrefs>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22869%2C212%2C906%2C225%22%20href%3D%2210%2520Events%2520%28view%29.bmml%22%20alt%3D%2210%20Events%20%28view%29%22%20id%3D%2235%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22915%2C212%2C948%2C225%22%20href%3D%2211%2520Events%2520%28edit%29.bmml%22%20alt%3D%2211%20Events%20%28edit%29%22%20id%3D%2235%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%22957%2C212%2C1015%2C225%22%20href%3D%2212%2520Events%2520%28settings%29.bmml%22%20alt%3D%2212%20Events%20%28settings%29%22%20id%3D%2235%22/%3E</map>
+        <selectedIndex>0</selectedIndex>
+        <text>View%2C%20Edit%2C%20Settings</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
