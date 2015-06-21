@@ -1,7 +1,7 @@
 ﻿var UserAccount = {
 	start: function () {
 		var username = Session.currentUser.get("username");
-		var user = new UserModel({ userName: username });
+		var user = new UserModel({ userName: username, created: true });
 		
 		user.fetch().then(function () {
 			var mainView = new UserAccount.MainView({
