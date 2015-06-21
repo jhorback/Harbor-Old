@@ -40,7 +40,6 @@
 		});
 
 
-		debugger;
 		this.showView(new Menu(this.$el, {
 			transition: "none",
 			anchor: "#profile-link",

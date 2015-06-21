@@ -1,5 +1,11 @@
 ﻿<div data-templatefor="pageLoaderView" id="pageloader">
-	<button class="float-left" data-bind="showif: editingPage" data-event="click: doneEditing, keypress:doneEditing">Done</button>
+	<ul>
+		<li data-collection="tabs" data-bind="class: className" data-event="click:clickPageLoaderTab">
+			<span data-bind="text: text">View</span>
+		</li>
+	</ul>
+
+	@*<button class="float-left" data-bind="showif: editingPage" data-event="click: doneEditing, keypress:doneEditing">Done</button>
 	<span class="icon-edit" data-event="click: editPage, keypress:editPage"  tabindex="0"></span>
-    <span class="icon-reorder" data-event="click: showSettings, keypress:showSettings" tabindex="0"></span>
+	<span class="icon-reorder" data-event="click: showSettings, keypress:showSettings" tabindex="0"></span>*@
 </div>

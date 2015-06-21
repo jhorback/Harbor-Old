@@ -9,7 +9,6 @@ function pageLoaderView(options, modelFactory, pageEditor, pageSettings) {
 
 pageLoaderView.prototype = {
 	initialize: function () {
-		this.bindAll("onEditPage", "onSettingsClose");
 		this.model = this.modelFactory.create("pageLoaderModel");
 	},
 
@@ -22,35 +21,33 @@ pageLoaderView.prototype = {
 		$(".page-nocontent").unbind("click", this.onEditPage);
 	},
 
-	showSettings: function (event) {
-		this.model.set("settingsOpen", true);
-		if (this.model.attributes.editingPage === false) {
-			this.pageEditor.render();
+	clickPageLoaderTab: function (event, tab) {
+		
+		if (tab.get("selected")) {
+			return;
 		}
-		this.settingsView = this.pageSettings.render();
-		this.settingsView.on("close", this.onSettingsClose);
+
+		this.model.tabs.each(function (tab) {
+			tab.set("selected", false);
+		});
+		
+		tab.set("selected", true);
+		this[tab.id + "Tab"]();
 	},
 
-	onSettingsClose: function () {
-		this.settingsView && this.settingsView.off("close", this.onSettingsClose);
-		this.model.set("settingsOpen", false);
-		if (this.model.attributes.editingPage === false) {
-			this.doneEditing();
-		}
+	viewTab: function () {
+		this.pageEditor.close();
+		this.settingsView && this.settingsView.close();
 	},
 
-	onEditPage: function () {
-		this.model.set("editingPage", true);
+	editTab: function () {
+		this.settingsView && this.settingsView.close();
 		this.pageEditor.render();
 	},
 
-	editPage: function (event) {
-		this.onEditPage();
-	},
-
-	doneEditing: function (event) {
+	settingsTab: function () {
 		this.pageEditor.close();
-		this.model.set("editingPage", false);
+		this.settingsView = this.pageSettings.render();
 	}
 };
 

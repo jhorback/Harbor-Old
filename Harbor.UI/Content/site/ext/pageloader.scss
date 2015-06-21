@@ -1,21 +1,45 @@
 @import "../mixins/opacity";
+@import "../mixins/_border-radius.scss";
+@import "../mixins/_inline-block-list.scss";
+@import "../core/src/foundation-vars";
 
 
 @mixin pageloader {
 	#pageloader {
 		position: absolute;
-		top: .5em;
-		right: 1.2em;
+		top: 3em;
+		right: 1em;
+        line-height: 2em;
 		white-space: nowrap;
-		span {
-			font-size: 1.8em;
-			margin-left: .6em;
-            color: #fff;
-			@include opacity(.4);
-			&:hover, &.selected, &:focus {
+        
+        ul {
+            @include inline-block-list;
+           
+        }
+
+         li {
+            text-transform:uppercase;
+            cursor: default;
+            color: #000;
+
+            @include border-radius(3px);        
+			@include opacity(.3);			
+           
+            &:hover, &.selected, &:focus {
 				@include opacity(1);
 				outline: none;
+                //background: #ddd;
 			}
+            &.selected {
+                color: $body-color-attn;
+            }
+        }
+
+		span {
+			font-size: .9em;
+            font-weight: bold;
+			padding: .4em .4em;
+            margin-bottom: .2em;
 		}
 	}
 }

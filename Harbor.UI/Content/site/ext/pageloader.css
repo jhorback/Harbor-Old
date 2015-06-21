@@ -1,17 +1,43 @@
 #pageloader {
   position: absolute;
-  top: 0.5em;
-  right: 1.2em;
+  top: 3em;
+  right: 1em;
+  line-height: 2em;
   white-space: nowrap; }
-  #pageloader span {
-    font-size: 1.8em;
-    margin-left: 0.6em;
-    color: #fff;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=40);
-    opacity: 0.4; }
-    #pageloader span:hover, #pageloader span.selected, #pageloader span:focus {
+  #pageloader ul {
+    margin: 0;
+    padding: 0;
+    border: 0; }
+    #pageloader ul:after {
+      content: "";
+      display: table;
+      clear: both; }
+    #pageloader ul li {
+      list-style-image: none;
+      list-style-type: none;
+      margin-left: 0px;
+      display: inline-block;
+      white-space: nowrap; }
+  #pageloader li {
+    text-transform: uppercase;
+    cursor: default;
+    color: #000;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -ms-border-radius: 3px;
+    border-radius: 3px;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30);
+    opacity: 0.3; }
+    #pageloader li:hover, #pageloader li.selected, #pageloader li:focus {
       -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
       filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
       opacity: 1;
       outline: none; }
+    #pageloader li.selected {
+      color: #D14836; }
+  #pageloader span {
+    font-size: 0.9em;
+    font-weight: bold;
+    padding: 0.4em 0.4em;
+    margin-bottom: 0.2em; }

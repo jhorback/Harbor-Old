@@ -548,6 +548,7 @@
     <Content Include="Scripts\apps\pageAdmin\pageAdminView.js" />
     <Content Include="Scripts\apps\pageAdmin\pageAdminViewModel.js" />
     <Content Include="Scripts\apps\pageAdmin\pageAdminViewModelRepo.js" />
+    <Content Include="Scripts\apps\pageLoader\model\pageLoaderTab.js" />
     <Content Include="Scripts\apps\Settings\UpdateFooterView.js" />
     <Content Include="Scripts\appui\%24globalCache.js" />
     <Content Include="Scripts\appui\%24shim.js" />
@@ -623,7 +624,7 @@
     <Content Include="Scripts\modules\pageEditor\links\linksView.js" />
     <Content Include="Scripts\modules\pageModel\components\links\linksModel.js" />
     <Content Include="Scripts\modules\pageEditor\%24pageEditor.js" />
-    <Content Include="Scripts\apps\pageLoader\pageLoaderModel.js" />
+    <Content Include="Scripts\apps\pageLoader\model\%24pageLoaderModel.js" />
     <Content Include="Scripts\apps\pageLoader\pageLoaderView.js" />
     <Content Include="Scripts\appui\constructCreator.js" />
     <Content Include="Scripts\appui\deprecate.js" />
