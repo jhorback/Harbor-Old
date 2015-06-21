@@ -35,7 +35,8 @@ $menu-border-color: rgba(#000, 0.3);
 		}
 
         @include border-radius(3px);
-		@include box-shadow-value(-5px 5px 5px $menu-border-color);
+        //0 2px 40px rgba(0,0,0,0.4)
+		@include box-shadow-value(-2px 4px 20px $menu-border-color);
 		@include clearfix;
 	}
 	

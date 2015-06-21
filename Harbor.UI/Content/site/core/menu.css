@@ -9,10 +9,10 @@
   -webkit-border-radius: 3px;
   -ms-border-radius: 3px;
   border-radius: 3px;
-  -moz-box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.3);
-  -ms-box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.3);
-  box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.3); }
+  -moz-box-shadow: -2px 4px 20px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: -2px 4px 20px rgba(0, 0, 0, 0.3);
+  -ms-box-shadow: -2px 4px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: -2px 4px 20px rgba(0, 0, 0, 0.3); }
   .menu .menu-close {
     position: absolute;
     top: 0;

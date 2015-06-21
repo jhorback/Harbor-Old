@@ -39,9 +39,15 @@
 			}
 		});
 
+
+		debugger;
 		this.showView(new Menu(this.$el, {
 			transition: "none",
-			anchor: "#profile-link"
+			anchor: "#profile-link",
+			position: {
+				my: "right-10 top",
+				at: "right bottom"
+			}
 		}));
 
 		return this;

@@ -110,6 +110,7 @@
 			setTimeout(function () {
 				var dcCss = {},
 					dcPos,
+					posOpts,
 					isHidden = !menu.is(":visible");
 
 				isHidden && menu.show();
@@ -117,12 +118,14 @@
 					return;
 				}
 
-				menu.position({
+				posOpts = _.extend({
 					my: "left top",
 					at: "left bottom",
 					of: o.anchor
 					//offset: "0 0"
-				});
+				}, o.position);
+
+				menu.position(posOpts);
 
 				dcPos = menu.position();
 				if (dcPos.top < 0) {
