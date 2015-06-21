@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Harbor.Domain.Pages;
 using Harbor.Domain.Security;
 
 namespace Harbor.Domain.App
@@ -8,7 +9,7 @@ namespace Harbor.Domain.App
 		HarborApp GetApp();
 		void SetApp(HarborApp app, User user);
 		IEnumerable<NavigationLink> GetNavigationLinks();
-		IEnumerable<KeyValuePair<string, string>> GetNavigationLinkUrls();
+		IEnumerable<FrameNavigationLink> GetNavigationLinkUrls(Page page);
 		void Save();
 	}
 }

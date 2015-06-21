@@ -22,6 +22,11 @@ namespace Harbor.UI.Models.Pages
 				pageID = Convert.ToInt32(controllerContext.RequestContext.HttpContext.Request["pageID"]);
 			}
 
+			if (pageID == 0)
+			{
+				return null;
+			}
+
 			var page = PageQuery.ExecuteFromCache(new PageQueryParams { PageID = pageID });
 			return page;
 		}

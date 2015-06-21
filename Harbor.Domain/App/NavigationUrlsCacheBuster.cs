@@ -6,9 +6,9 @@ namespace Harbor.Domain.App
 {
 	public class NavigationUrlsCacheBuster : IEventSubscriber<HarborAppChanged>, IEventSubscriber<RootPagesChanged>
 	{
-		private readonly IGlobalCache<NavigationUrls> _navigationUrlsCache;
+		private readonly IGlobalCache<FrameNavigation> _navigationUrlsCache;
 
-		public NavigationUrlsCacheBuster(IGlobalCache<NavigationUrls> navigationUrlsCache)
+		public NavigationUrlsCacheBuster(IGlobalCache<FrameNavigation> navigationUrlsCache)
 		{
 			_navigationUrlsCache = navigationUrlsCache;
 		}

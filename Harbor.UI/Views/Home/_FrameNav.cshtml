@@ -1,7 +1,8 @@
-﻿@model IEnumerable<KeyValuePair<string, string>>
+﻿@using Harbor.Domain.App
+@model IEnumerable<FrameNavigationLink>
 <ul>
 	@foreach (var link in Model)
 	{
-		<li class="frame-navitem"><a href="@link.Key">@link.Value</a></li>
+		<li class="frame-navitem @(link.Selected ? "selected" : null)"><a href="@link.Url">@link.Text</a></li>
 	}
 </ul>

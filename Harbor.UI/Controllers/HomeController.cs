@@ -62,11 +62,12 @@ namespace Harbor.UI.Controllers
 		}
 
 		[Route("FrameNav")]
-		public ActionResult FrameNav()
+		public ActionResult FrameNav(Page page)
 		{
 			if (Request.IsAjaxRequest())
 				return new HttpNotFoundResult();
-			var model = _appRep.GetNavigationLinkUrls();
+
+			var model = _appRep.GetNavigationLinkUrls(page);
 			return PartialView("_FrameNav", model);
 		}
 

@@ -20,7 +20,7 @@ namespace Harbor.Domain.App
 		private readonly IPathUtility _pathUtility;
 		private readonly IRootPagesRepository _rootPagesRepository;
 		private readonly IEventPublisher<HarborAppChanged> _harborAppChangedPublisher;
-		private readonly IGlobalCache<NavigationUrls> _navigationUrlsCache;
+		private readonly IGlobalCache<FrameNavigation> _frameNavigationCache;
 
 		public HarborAppRepository(
 			IAppSettingRepository appSettings,
@@ -29,7 +29,7 @@ namespace Harbor.Domain.App
 			IPathUtility pathUtility,
 			IRootPagesRepository rootPagesRepository ,
 			IEventPublisher<HarborAppChanged> harborAppChangedPublisher,
-			IGlobalCache<NavigationUrls> navigationUrlsCache
+			IGlobalCache<FrameNavigation> frameNavigationCache
 			)
 		{
 			_appSettings = appSettings;
@@ -38,7 +38,7 @@ namespace Harbor.Domain.App
 			_pathUtility = pathUtility;
 			_rootPagesRepository = rootPagesRepository;
 			_harborAppChangedPublisher = harborAppChangedPublisher;
-			_navigationUrlsCache = navigationUrlsCache;
+			_frameNavigationCache = frameNavigationCache;
 		}
 
 		public HarborApp GetApp()
@@ -175,12 +175,12 @@ namespace Harbor.Domain.App
 		/// The is the page name and the value is the url.
 		/// </summary>
 		/// <returns></returns>
-		public IEnumerable<KeyValuePair<string, string>> GetNavigationLinkUrls()
+		public IEnumerable<FrameNavigationLink> GetNavigationLinkUrls(Page page)
 		{
-			var urls = _navigationUrlsCache.Get();
-			if (urls == null)
+			var frameNav = _frameNavigationCache.Get();
+			if (frameNav == null)
 			{
-				urls = new NavigationUrls();
+				frameNav = new FrameNavigation();
 				string url;
 				var links = GetNavigationLinks();
 				foreach (var link in links)
@@ -200,11 +200,20 @@ namespace Harbor.Domain.App
 					}
 
 					url = _pathUtility.ToAbsolute(url);
-					urls.Urls.Add(new KeyValuePair<string, string>(url, link.Text));
+					
+					frameNav.Links.Add(new FrameNavigationLink
+					{
+						PageId = link.PageID,
+						Text = link.Text,
+						Url = url
+					});
 				}
-				_navigationUrlsCache.Set(urls);
+				_frameNavigationCache.Set(frameNav);
 			}
-			return urls.Urls;
+
+			var homePageId = GetApp().HomePageID;
+			var selectPageId = page != null ? page.Layout.ParentPageID ?? page.PageID : -1;
+			return frameNav.GetLinksWithSelectedPage(selectPageId, homePageId);
 		}
 	}
 }
