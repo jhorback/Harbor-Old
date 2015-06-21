@@ -37,17 +37,17 @@ pageLoaderView.prototype = {
 
 	viewTab: function () {
 		this.pageEditor.close();
-		this.settingsView && this.settingsView.close();
+		this.pageSettings.close();
 	},
 
 	editTab: function () {
-		this.settingsView && this.settingsView.close();
+		this.pageSettings.close();
 		this.pageEditor.render();
 	},
 
 	settingsTab: function () {
 		this.pageEditor.close();
-		this.settingsView = this.pageSettings.render();
+		this.pageSettings.render();
 	}
 };
 

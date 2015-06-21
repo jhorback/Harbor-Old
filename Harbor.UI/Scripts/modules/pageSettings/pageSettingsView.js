@@ -1,7 +1,14 @@
 ﻿
 
-function pageSettingsView(options, currentPageRepo, modelFactory, menuFactory, location, appurl, commandHandler) {
-
+function pageSettingsView(
+	options,
+	currentPageRepo,
+	modelFactory,
+	menuFactory,
+	location,
+	appurl,
+	commandHandler
+) {
 	this.currentPageRepo = currentPageRepo;
 	this.menuFactory = menuFactory;
 	this.location = location;
@@ -23,14 +30,6 @@ pageSettingsView.prototype = {
 		this.listenTo(this.model, "change:isARootPage", this.changeRootPage);
 		this.listenTo(this.model.pagePreviewModel, "pagepreview:openfileselector", this.close);
 		this.listenTo(this.model.template, "change", this.saveModel);
-	},
-	
-	onRender: function () {
-		this.menu = this.menuFactory.create(this.$el, {
-			//anchor: "#pageloader",
-			transition: "none",
-			container: this.options.container
-		});
 	},
 	
 	changeTitle: function () {
@@ -79,5 +78,11 @@ pageSettingsView.prototype = {
 };
 
 pageSettings.view("pageSettingsView", [
-	"options", "currentPageRepo", "modelFactory", "menuFactory", "location", "appurl", "commandHandler",
+	"options",
+	"currentPageRepo",
+	"modelFactory",
+	"menuFactory",
+	"location",
+	"appurl",
+	"commandHandler",
 	pageSettingsView]);
