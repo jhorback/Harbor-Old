@@ -67,7 +67,6 @@ appui.ajaxRequest = function ($, defaultHandler, console) {
 				if (status === 400 && responseHandler.clientError) {
 					responseHandler["400"] = responseHandler.clientError;
 				}
-				debugger;
 				callHandlerCallbackFromError(responseHandler[xhr.status] || responseHandler.error).apply(proxy, arguments);
 			}
 		};

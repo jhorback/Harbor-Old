@@ -23,11 +23,6 @@ namespace Harbor.UI.Controllers
 		{
 			ViewBag.HasWritePermissions = page.HasPermission(User.Identity.Name, Permissions.CreateAndUpdate);
 			ViewBag.PageDto = PageDto.FromPage(page);
-
-			if (Request.IsAjaxRequest())
-			{
-				return PartialView("_Page", page);
-			}
 			return View("Page", page);
 		}
 

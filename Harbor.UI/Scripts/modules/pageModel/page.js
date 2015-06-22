@@ -46,31 +46,24 @@ page.prototype = {
 	},
 
 	initialize: function () {
-		this.setPreviewFn = _.bind(this.setPreviewFn, this);
+		var page = this, setPreviewFn;
+
+		setPreviewFn = _.bind(function () {
+			if (this.attributes.previewImage) {
+				// just trying the plain model here to remove the dependency on fileModel
+				this.previewImage = this.modelFactory.create("model", this.attributes.previewImage);
+				// this.previewImage = new FileModel(this.attributes.previewImage);
+			} else {
+				this.previewImage = null;
+			}
+		}, this);
 
 		this.set("link", this.getUrl());
-		this.on("change:previewImage", this.setPreviewFn);
-		this.setPreviewFn();
-	},
-
-	setPreviewFn: function () {
-		var attrs = this.attributes;
-		if (attrs.previewImage) {
-			// just trying the plain model here to remove the dependency on fileModel
-			this.previewImage = this.modelFactory.create("model", attrs.previewImage);
-			// this.previewImage = new FileModel(this.attributes.previewImage);
-		} else {
-			this.previewImage = null;
-		}
-	},
-
-	associations: {
-		"template": {
-			name: "template"
-		},
-		"layout": {
-			name: "pageLayout"
-		}
+		this.template = this.modelFactory.create("template", this.attributes.template, { page: this });
+		this.layout = this.modelFactory.create("pageLayout", this.attributes.layout, { page: this });
+		
+		setPreviewFn();
+		this.on("change:previewImage", setPreviewFn);
 	},
 
 	"[title]": {

@@ -848,7 +848,6 @@
     <Content Include="Views\FileAdmin\FileAdminComponentView.cshtml" />
     <Content Include="Scripts\dropzone\css\stylus\dropzone.styl" />
     <Content Include="Scripts\dropzone\css\stylus\basic.styl" />
-    <Content Include="Views\Page\_Page.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\users\" />

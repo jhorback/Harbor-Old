@@ -19,7 +19,6 @@
  *      uicid
  *      page
  *      componentModel - created from componentType + "Model" (by the template)
- *                       the componentModel can have a syncPageProperties array.
  *      model - alias for componentModel
  *      templateRenderer
  */

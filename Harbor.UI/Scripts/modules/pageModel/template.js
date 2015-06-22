@@ -5,7 +5,7 @@ content comopnent : {
 */
 function template(attrs, options, collectionFactory, modelFactory, console) {
 
-	this.page = options.root;
+	this.page = options.page;
 	this.collectionFactory = collectionFactory;
 	this.modelFactory = modelFactory;
 	this.console = console;
