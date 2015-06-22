@@ -15,6 +15,7 @@
 			},
 
 			error: function (response) {
+				debugger;
 				createErrorView(500, response);
 			}
 		});

@@ -1,9 +1,20 @@
 ﻿
 
-function pageLoaderView(options, modelFactory, pageEditor, pageSettings) {
+function pageLoaderView(
+	options,
+	modelFactory,
+	pageEditor,
+	pageSettings,
+	currentPageRepo,
+	ajaxRequest
+) {
 	this.modelFactory = modelFactory;
 	this.pageEditor = pageEditor;
 	this.pageSettings = pageSettings;
+	this.currentPageRepo = currentPageRepo;
+	this.ajaxRequest = ajaxRequest;
+
+	this.page = this.currentPageRepo.getCurrentPage();
 }
 
 
@@ -38,6 +49,15 @@ pageLoaderView.prototype = {
 	viewTab: function () {
 		this.pageEditor.close();
 		this.pageSettings.close();
+		
+		// load page from server
+		//var url = this.page.get("link");
+		//var dfd = $.get(url, null, null, "html");
+		//this.ajaxRequest.handle(dfd, {
+		//	success: function (response) {
+		//		$("#frame-body").html(response);
+		//	}
+		//});
 	},
 
 	editTab: function () {
@@ -53,5 +73,11 @@ pageLoaderView.prototype = {
 
 
 pageLoader.view("pageLoaderView", [
-	"options", "modelFactory", "pageEditor", "pageSettings",
-	pageLoaderView]);
+	"options",
+	"modelFactory",
+	"pageEditor",
+	"pageSettings",
+	"currentPageRepo",
+	"ajaxRequest",
+	pageLoaderView
+]);
