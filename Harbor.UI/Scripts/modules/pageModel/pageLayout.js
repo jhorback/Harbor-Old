@@ -1,7 +1,7 @@
 ﻿
 pageModel.pageLayout = function (attrs, options, modelFactory) {
 	this.modelFactory = modelFactory;
-	this.page = options.page;
+	this.page = options.root;
 };
 
 pageModel.pageLayout.prototype = {
