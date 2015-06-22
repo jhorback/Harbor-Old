@@ -24,6 +24,9 @@ function pageEditorService($, console, componentManager, viewRenderer) {
 			});
 			rendered = true;
 			console.log("pageEditor: render");
+
+			// remove the no title so the title can be edited
+			frameBody.find(".has-notitle").removeClass("has-notitle");
 		},
 		
 		

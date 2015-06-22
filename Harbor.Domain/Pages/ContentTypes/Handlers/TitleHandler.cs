@@ -31,13 +31,15 @@ namespace Harbor.Domain.Pages.ContentTypes.Handlers
 			{
 				DisplayTitle = title,
 				ParentUrl = parentUrl,
-				EnableTitleBackground = Page.TitleBackgroundEnabled
+				EnableTitleBackground = Page.TitleBackgroundEnabled,
+				HideTitlebar = Page.TitleDispalyNone
 			};
 		}
 
 		public override IEnumerable<string> DeclarePropertyNames()
 		{
 			yield return "TitleBackgroundEnabled";
+			yield return "TitleDispalyNone";
 		}
 	}
 }

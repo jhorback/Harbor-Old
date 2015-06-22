@@ -77,6 +77,13 @@ namespace Harbor.UI.Controllers.Api
 			return await pageResponse(id);
 		}
 
+		[HttpPost, Http.PagePermit(Permissions.All), Route("HideTitlebar")]
+		public async Task<HttpResponseMessage> HideTitlebar(int id, HideTitleBar command)
+		{
+			await _commandService.ExecuteAsync(command);
+			return await pageResponse(id);
+		}
+
 
 		async Task<HttpResponseMessage> pageResponse(int id)
 		{

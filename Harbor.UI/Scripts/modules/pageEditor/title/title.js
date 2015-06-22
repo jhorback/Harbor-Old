@@ -14,7 +14,7 @@ pageEditor.title = {
 		if (this.page.attributes.titleBackgroundUrl) {
 
 			if (overlay.length === 0) {
-				overlay = $('<div class="page-header-overlay"/>').appendTo(".page-header");
+				overlay = $('<div class="page-header-overlay"/>').prependTo(".page-header");
 			}
 			overlay.show();
 

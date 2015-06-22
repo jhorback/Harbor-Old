@@ -21,6 +21,10 @@ namespace Harbor.Domain.Pages.Commands
 			var page = _pageRepository.FindById(command.PageID);
 
 			page.TitleBackgroundEnabled = command.Enable;
+			if (command.Enable)
+			{
+				page.TitleDispalyNone = false;
+			}
 			_pageRepository.Update(page);
 			_pageRepository.Save();
 		}

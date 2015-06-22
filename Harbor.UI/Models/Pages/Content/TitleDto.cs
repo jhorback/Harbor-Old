@@ -11,12 +11,14 @@ namespace Harbor.UI.Models.Content
 			parentUrl = title.ParentUrl;
 			hasParentUrl = title.HasParentUrl;
 			enableTitleBackground = title.EnableTitleBackground;
+			hideTitlebar = title.HideTitlebar;
 		}
 
 		public string displayTitle { get; set;}
 		public string parentUrl { get; set; }
 		public bool hasParentUrl { get; set; }
 		public bool enableTitleBackground { get; set; }
+		public bool hideTitlebar { get; set; }
 
 		public static TitleDto FromTitle(Title title)
 		{

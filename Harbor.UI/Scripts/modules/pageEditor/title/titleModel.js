@@ -5,7 +5,8 @@ pageEditor.titleModel = {
 		displayTitle: null,
 		parentUrl: null,
 		hasParentUrl: false,
-		enableTitleBackground: false
+		enableTitleBackground: false,
+		hideTitlebar: false
 	}
 };
 
