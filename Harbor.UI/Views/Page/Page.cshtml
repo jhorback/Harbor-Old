@@ -1,6 +1,9 @@
 ﻿@using Harbor.UI.Models.JSPM.Extensions
 @using Harbor.UI.JSPkgs
 @model Harbor.Domain.Pages.Page
+@{
+	ViewBag.Title = Model.Title;
+}
 @section head {
 	<meta name="description" content="@Model.PreviewText" />
 }

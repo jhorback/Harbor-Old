@@ -7,7 +7,7 @@
 	// make this an html helper?
 	if (ViewBag.Title == null) {
 		ViewBag.Title = HarborApplication.AppName;
-	} else {
+	} else if (ViewBag.Title.ToLower() != HarborApplication.AppName.ToLower()) {
 		ViewBag.Title += " - " + HarborApplication.AppName;	
 	}
 	
