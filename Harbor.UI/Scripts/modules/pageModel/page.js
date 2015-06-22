@@ -49,6 +49,9 @@ page.prototype = {
 		this.setPreviewFn = _.bind(this.setPreviewFn, this);
 
 		this.set("link", this.getUrl());
+		this.template = this.modelFactory.create("template", this.attributes.template, { page: this, root: this });
+		this.layout = this.modelFactory.create("pageLayout", this.attributes.layout, { page: this, root: this });
+
 		this.on("change:previewImage", this.setPreviewFn);
 		this.setPreviewFn();
 	},
@@ -61,15 +64,6 @@ page.prototype = {
 			// this.previewImage = new FileModel(this.attributes.previewImage);
 		} else {
 			this.previewImage = null;
-		}
-	},
-
-	associations: {
-		"template": {
-			name: "template"
-		},
-		"layout": {
-			name: "pageLayout"
 		}
 	},
 

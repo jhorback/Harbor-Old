@@ -566,6 +566,7 @@
     <Content Include="Scripts\bbext\collectionExt\parseColExt.js" />
     <Content Include="Scripts\bbext\collectionExt\postCommandColExt.js" />
     <Content Include="Scripts\bbext\collectionExt\sortColExt.js" />
+    <Content Include="Scripts\bbext\modelExt\ddfModelExt.js" />
     <Content Include="Scripts\bbext\modelExt\factoryInjectionModelExt.js" />
     <Content Include="Scripts\bbext\modelExt\modelPropertyDescriptor.js" />
     <Content Include="Scripts\bbext\modelExt\postCommandModelExt.js" />

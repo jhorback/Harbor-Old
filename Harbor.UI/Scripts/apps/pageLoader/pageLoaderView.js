@@ -49,15 +49,7 @@ pageLoaderView.prototype = {
 	viewTab: function () {
 		this.pageEditor.close();
 		this.pageSettings.close();
-		
-		// load page from server
-		//var url = this.page.get("link");
-		//var dfd = $.get(url, null, null, "html");
-		//this.ajaxRequest.handle(dfd, {
-		//	success: function (response) {
-		//		$("#frame-body").html(response);
-		//	}
-		//});
+		this.loadPagePartialFromServer();
 	},
 
 	editTab: function () {
@@ -68,6 +60,17 @@ pageLoaderView.prototype = {
 	settingsTab: function () {
 		this.pageEditor.close();
 		this.pageSettings.render();
+	},
+
+	loadPagePartialFromServer: function() {
+		// load page from server
+		var url = this.page.get("link");
+		var dfd = $.get(url, null, null, "html");
+		this.ajaxRequest.handle(dfd, {
+			success: function (response) {
+				$("#frame-body").html(response);
+			}
+		});
 	}
 };
 
