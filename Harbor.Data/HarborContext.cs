@@ -66,6 +66,7 @@ namespace Harbor.Data
 				HasOptional(m => m.PreviewImage).WithMany().HasForeignKey(m => m.PreviewImageID);
 
 				Ignore(m => m.TitleBackgroundEnabled);
+				Ignore(m => m.TitleDispalyNone);
 				Ignore(m => m.TitleBackgroundUrl);
 				Ignore(m => m.Template);
 				Ignore(m => m.VirtualPath);

@@ -11,9 +11,7 @@ $framenav-background-color-selected: $theme-color-blue;
 
 $frame-footer-image:    "footer-hog.png" !default;
 
-.page-header {
-    border:1px solid #3A5E69;
-    border-width: 1px 0;
-}
+$page-header-border-color: #3A5E69;
+
 
 @include bjroyster-theme;

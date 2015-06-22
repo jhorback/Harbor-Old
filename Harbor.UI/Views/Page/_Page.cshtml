@@ -3,25 +3,18 @@
 @model Harbor.Domain.Pages.Page
 @{
 	ViewBag.Title = Model.Title;
-	bool noAside = Model.Layout.DisplayProperties.HasFlag(PageLayout.LayoutDisplayProperties.NoAside);
-	var layoutClassNames = "page";
-	if (Model.Layout.DisplayProperties.HasFlag(PageLayout.LayoutDisplayProperties.ContentCentered))
+}
+@functions {
+
+	string getPageHeaderStyle()
 	{
-		layoutClassNames = "page centered";
+		return string.IsNullOrEmpty(Model.TitleBackgroundUrl) ?
+			null : string.Format("background-image: url('{0}')", Model.TitleBackgroundUrl);
 	}
-	layoutClassNames += noAside ? " noaside" : " hasaside";
+
 }
-@if (string.IsNullOrEmpty(Model.TitleBackgroundUrl) == false)
-{
-	<style>
-			.page-header {
-				height: 10em;
-				background-image: url("@Model.TitleBackgroundUrl");
-			}
-	</style>
-}
-<div @*id="page"*@ class="@layoutClassNames">
-	<header class="page-header">
+<div @*id="page"*@ class="@Model.PageClassNames">
+	<header class="page-header" style="@getPageHeaderStyle()">
 		@if (string.IsNullOrEmpty(Model.TitleBackgroundUrl) == false)
 		{
 			<div class="page-header-overlay"></div>

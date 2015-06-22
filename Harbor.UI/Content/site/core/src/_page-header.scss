@@ -3,9 +3,32 @@
 
 
 @mixin page-header {
+    .has-titlebg {
+        .page-header {
+            height: 10em;
+            line-height: 10em;
+            .page-header-overlay {
+                display: block;
+            }
+        }
+    }
+
+    .has-notitle {
+        .page-header {
+            height: 1px;
+            position:relative;
+            top: -3px; // exposes a shawdow, just playing here; could do this better if long term
+        }
+    }
+
+
 	.page-header {
 		height: $page-header-height;		
 		line-height: $page-header-height; // - (.1 / 100);
+
+        .page-header-overlay {
+            display: none; // for title background images
+        }
 
 		h1 {
 			margin: 0 .5em;
@@ -55,6 +78,10 @@
         background-repeat: no-repeat;
 		background-size: cover;
 		background-position: 40% 40%;
+
+        border-color: $page-header-border-color;
+        border-style: solid;
+        border-width: 1px 0;
 
 		h1 {
 			color: $page-title-color;

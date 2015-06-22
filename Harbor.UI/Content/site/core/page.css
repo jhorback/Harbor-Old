@@ -3,9 +3,22 @@
   display: table;
   clear: both; }
 
+.has-titlebg .page-header {
+  height: 10em;
+  line-height: 10em; }
+  .has-titlebg .page-header .page-header-overlay {
+    display: block; }
+
+.has-notitle .page-header {
+  height: 1px;
+  position: relative;
+  top: -3px; }
+
 .page-header {
   height: 6em;
   line-height: 6em; }
+  .page-header .page-header-overlay {
+    display: none; }
   .page-header h1 {
     margin: 0 0.5em;
     font-size: 2em;

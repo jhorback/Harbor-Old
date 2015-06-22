@@ -52,15 +52,53 @@ namespace Harbor.Domain.Pages
 		[StringLength(100)]
 		public string Title { get; set; }
 
-		public bool? TitleBackgroundEnabled
+		public string PageClassNames
 		{
 			get
 			{
-				return JSON.Parse<bool?>(GetProperty("TitleBackgroundEnabled"));
+				
+				bool noAside = Layout.DisplayProperties.HasFlag(PageLayout.LayoutDisplayProperties.NoAside);
+				var layoutClassNames = "page";
+				if (Layout.DisplayProperties.HasFlag(PageLayout.LayoutDisplayProperties.ContentCentered))
+				{
+					layoutClassNames = "page centered";
+				}
+				layoutClassNames += noAside ? " noaside" : " hasaside";
+
+				if (TitleBackgroundEnabled)
+				{
+					layoutClassNames += " has-titlebg";
+				}
+				else if (TitleDispalyNone)
+				{
+					layoutClassNames += " has-notitle";
+				}
+
+				return layoutClassNames;
+			}
+		}
+
+		public bool TitleBackgroundEnabled
+		{
+			get
+			{
+				return JSON.Parse<bool?>(GetProperty("TitleBackgroundEnabled")) ?? false;
 			}
 			set
 			{
 				SetProperty("TitleBackgroundEnabled", JSON.Stringify(value));
+			}
+		}
+
+		public bool TitleDispalyNone
+		{
+			get
+			{
+				return JSON.Parse<bool?>(GetProperty("TitleDispalyNone")) ?? false;
+			}
+			set
+			{
+				SetProperty("TitleDispalyNone", JSON.Stringify(value));
 			}
 		}
 
