@@ -163,10 +163,12 @@
     <Compile Include="Pages\PageType\AddTypeFilter.cs" />
     <Compile Include="Pages\Pipelines\Delete\PageDeletePipeline.cs" />
     <Compile Include="Pages\Pipelines\Delete\ComponentDeleteHandler.cs" />
+    <Compile Include="Pages\Pipelines\Load\TitlePropertiesLoadHandler.cs" />
     <Compile Include="Pages\Pipelines\Update\AutoPreviewUpdateHandler.cs" />
     <Compile Include="Pages\Pipelines\Delete\DeleteLayoutDeleteHandler.cs" />
     <Compile Include="Pages\Pipelines\Update\RootPageUpdateHandler.cs" />
     <Compile Include="Pages\Pipelines\Load\TitleBackgroundUrlLoadHandler.cs" />
+    <Compile Include="Pages\Pipelines\Update\TitlePropertiesUpdateHandler.cs" />
     <Compile Include="Pages\Queries\PageQuery.cs" />
     <Compile Include="Pages\Queries\PageTypeDto.cs" />
     <Compile Include="Pages\Queries\PageTypesQuery.cs" />

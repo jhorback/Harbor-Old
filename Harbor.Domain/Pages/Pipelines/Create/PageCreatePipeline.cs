@@ -1,4 +1,5 @@
 ﻿using Harbor.Domain.Pages.Pipelines.Load;
+using Harbor.Domain.Pages.Pipelines.Update;
 using Harbor.Domain.Pipeline;
 
 namespace Harbor.Domain.Pages.Pipelines.Create
@@ -10,6 +11,7 @@ namespace Harbor.Domain.Pages.Pipelines.Create
 		{
 			AddHandler<PageTypeCreateHandler>();
 			AddHandler<SetAllPageRolesLoadHandler>();
+			AddHandler<TitlePropertiesUpdateHandler>();
 		}
 	}
 }
