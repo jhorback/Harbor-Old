@@ -1,7 +1,7 @@
-﻿using Harbor.Domain.Pages.PipelineHandlers;
+﻿using Harbor.Domain.Pages.Pipelines.Update;
 using Harbor.Domain.Pipeline;
 
-namespace Harbor.Domain.Pages
+namespace Harbor.Domain.Pages.Pipelines.Load
 {
 	/// <summary>
 	/// Executed when a single page is loaded.

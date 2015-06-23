@@ -1,7 +1,6 @@
-﻿using Harbor.Domain.Pages.PipelineHandlers;
-using Harbor.Domain.Pipeline;
+﻿using Harbor.Domain.Pipeline;
 
-namespace Harbor.Domain.Pages
+namespace Harbor.Domain.Pages.Pipelines.Delete
 {
 	public class PageDeletePipeline : BasePipeline<Page>
 	{

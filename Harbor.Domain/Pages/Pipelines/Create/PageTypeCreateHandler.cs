@@ -1,6 +1,6 @@
 ﻿using Harbor.Domain.Pipeline;
 
-namespace Harbor.Domain.Pages.PipelineHandlers
+namespace Harbor.Domain.Pages.Pipelines.Create
 {
 	public class PageTypeCreateHandler : IPipelineHanlder<Page>
 	{

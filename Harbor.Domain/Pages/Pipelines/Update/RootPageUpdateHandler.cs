@@ -1,7 +1,7 @@
 ﻿using Harbor.Domain.App;
 using Harbor.Domain.Pipeline;
 
-namespace Harbor.Domain.Pages.PipelineHandlers
+namespace Harbor.Domain.Pages.Pipelines.Update
 {
 	public class RootPageLoadHandler : IPipelineHanlder<Page>
 	{

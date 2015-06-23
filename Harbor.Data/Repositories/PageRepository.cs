@@ -6,6 +6,9 @@ using Harbor.Domain;
 using Harbor.Domain.Event;
 using Harbor.Domain.Pages;
 using Harbor.Domain.Pages.Events;
+using Harbor.Domain.Pages.Pipelines.Delete;
+using Harbor.Domain.Pages.Pipelines.Load;
+using Harbor.Domain.Pages.Pipelines.Update;
 
 namespace Harbor.Data.Repositories
 {

@@ -1,6 +1,6 @@
 ﻿using Harbor.Domain.Pipeline;
 
-namespace Harbor.Domain.Pages.PipelineHandlers
+namespace Harbor.Domain.Pages.Pipelines.Update
 {
 	/// <summary>
 	/// Updates the preview image and/or text if auto preview is enabled.

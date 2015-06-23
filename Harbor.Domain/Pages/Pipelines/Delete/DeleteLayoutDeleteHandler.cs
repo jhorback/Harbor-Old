@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using Harbor.Domain.Pipeline;
 
-namespace Harbor.Domain.Pages.PipelineHandlers
+namespace Harbor.Domain.Pages.Pipelines.Delete
 {
 	/// <summary>
 	/// Deletes the layout if the page being deleted is the last one that uses it.va

@@ -1,6 +1,6 @@
 ﻿using Harbor.Domain.Command;
 using Harbor.Domain.Pages.ContentTypes.Handlers;
-using Harbor.Domain.Pages.PipelineHandlers;
+using Harbor.Domain.Pages.Pipelines.Delete;
 
 namespace Harbor.Domain.Pages.Commands
 {

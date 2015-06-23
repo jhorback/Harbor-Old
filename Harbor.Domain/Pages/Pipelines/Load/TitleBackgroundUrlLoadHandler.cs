@@ -1,7 +1,7 @@
 ﻿using Harbor.Domain.Files;
 using Harbor.Domain.Pipeline;
 
-namespace Harbor.Domain.Pages.PipelineHandlers
+namespace Harbor.Domain.Pages.Pipelines.Load
 {
 	public class TitleBackgroundUrlLoadHandler : IPipelineHanlder<Page>
 	{

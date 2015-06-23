@@ -1,6 +1,6 @@
 ﻿using Harbor.Domain.Pipeline;
 
-namespace Harbor.Domain.Pages.PipelineHandlers
+namespace Harbor.Domain.Pages.Pipelines.Delete
 {
 	/// <summary>
 	/// Tells the header, sidebar, and content that the page it is associated with
