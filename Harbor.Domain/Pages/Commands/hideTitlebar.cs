@@ -20,10 +20,10 @@ namespace Harbor.Domain.Pages.Commands
 		{
 			var page = _pageRepository.FindById(command.PageID);
 
-			page.TitleDispalyNone = command.Hide;
+			page.TitleProperties.DisplayNone = command.Hide;
 			if (command.Hide)
 			{
-				page.TitleBackgroundEnabled = false;
+				page.TitleProperties.BackgroundEnabled = false;
 			}
 			_pageRepository.Update(page);
 			_pageRepository.Save();

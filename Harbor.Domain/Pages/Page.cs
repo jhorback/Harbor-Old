@@ -65,11 +65,11 @@ namespace Harbor.Domain.Pages
 				}
 				layoutClassNames += noAside ? " noaside" : " hasaside";
 
-				if (TitleBackgroundEnabled)
+				if (TitleProperties.BackgroundEnabled)
 				{
 					layoutClassNames += " has-titlebg";
 				}
-				else if (TitleDispalyNone)
+				else if (TitleProperties.DisplayNone)
 				{
 					layoutClassNames += " has-notitle";
 				}
@@ -78,38 +78,9 @@ namespace Harbor.Domain.Pages
 			}
 		}
 
-		/* jch! - make this a sub object:
-		 * TitleProperties - store in a single page property as JSON
-		 *  - TitleBackgrondEnabled
-		 *  - TitleDisplayNone
-		 *  - TitleBackgroundUrl
-		 *  - TitleBackgroundPosition
-		 * */
-		public bool TitleBackgroundEnabled
-		{
-			get
-			{
-				return JSON.Parse<bool?>(GetProperty("TitleBackgroundEnabled")) ?? false;
-			}
-			set
-			{
-				SetProperty("TitleBackgroundEnabled", JSON.Stringify(value));
-			}
-		}
 
-		public bool TitleDispalyNone
-		{
-			get
-			{
-				return JSON.Parse<bool?>(GetProperty("TitleDispalyNone")) ?? false;
-			}
-			set
-			{
-				SetProperty("TitleDispalyNone", JSON.Stringify(value));
-			}
-		}
+		public PageTitleProperties TitleProperties { get; set; }
 
-		public string TitleBackgroundUrl { get; set; }
 
 		[Required]
 		[StringLength(50)]
@@ -301,5 +272,22 @@ namespace Harbor.Domain.Pages
 		{
 			return PayPalButtons.FirstOrDefault(l => l.PayPalButtonID == payPalButtonID);			
 		}
+	}
+
+	public class PageTitleProperties
+	{
+		public PageTitleProperties()
+		{
+			BackgroundEnabled = false;
+			DisplayNone = false;
+			BackgroundUrl = null;
+			BackgroundPosition = "40%";
+		}
+
+		public bool BackgroundEnabled { get; set; }
+		public string BackgroundUrl { get; set; }
+		public string BackgroundPosition { get; set; }
+
+		public bool DisplayNone { get; set; }
 	}
 }

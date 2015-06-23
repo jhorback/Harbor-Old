@@ -20,10 +20,10 @@ namespace Harbor.Domain.Pages.Commands
 		{
 			var page = _pageRepository.FindById(command.PageID);
 
-			page.TitleBackgroundEnabled = command.Enable;
+			page.TitleProperties.BackgroundEnabled = command.Enable;
 			if (command.Enable)
 			{
-				page.TitleDispalyNone = false;
+				page.TitleProperties.DisplayNone = false;
 			}
 			_pageRepository.Update(page);
 			_pageRepository.Save();

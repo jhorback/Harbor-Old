@@ -14,13 +14,13 @@ namespace Harbor.Domain.Pages.PipelineHandlers
 
 		public void Execute(Page page)
 		{
-			if (page.TitleBackgroundEnabled == true && page.PreviewImage != null)
+			if (page.TitleProperties.BackgroundEnabled == true && page.PreviewImage != null)
 			{
-				page.TitleBackgroundUrl = _fileUrl.GetUrl(page.PreviewImage, FileResolution.High);
+				page.TitleProperties.BackgroundUrl = _fileUrl.GetUrl(page.PreviewImage, FileResolution.High);
 			}
 			else
 			{
-				page.TitleBackgroundUrl = null;
+				page.TitleProperties.BackgroundUrl = null;
 			}
 		}
 	}

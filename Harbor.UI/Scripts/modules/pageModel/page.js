@@ -16,7 +16,6 @@ page.prototype = {
 	defaults: {
 		id: null,
 		title: null,
-		titleBackgroundUrl: null,
 		author: null,
 		pageTypeKey: "document",
 		pageTypeName: null,
@@ -35,15 +34,26 @@ page.prototype = {
 		autoPreviewImage: true,
 		isARootPage: null,
 		rootPageUrl: null,
+		//titleProperties: {
+		//	backgroundEnabled: false,
+		//	displayNone: false,
+		//	backgroundUrl: null,
+		//	backgroundPosition: "40%"
+		//},
 		//
 		thumbUrl: "",
 		link: null,
 		publishedDisplay: null,
 		publishedMessage: null,
 		isLayoutTitleDifferent: false,
-		parentPageUrl: null,
-		hasTitleBackgroundUrl: false
+		parentPageUrl: null
 	},
+
+	//associations: {
+	//	"titleProperties": {
+	//		type: "model"
+	//	}
+	//},
 
 	initialize: function () {
 		this.setPreviewFn = _.bind(this.setPreviewFn, this);

@@ -61,7 +61,7 @@ namespace Harbor.Domain.Pages
 
 		public PageTypeLayoutContext EnableTitleBackgroundImageByDefault(bool enable = true)
 		{
-			Page.TitleBackgroundEnabled = enable;
+			Page.TitleProperties.BackgroundEnabled = enable;
 			return this;
 		}
 	}

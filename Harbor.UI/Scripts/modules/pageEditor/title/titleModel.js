@@ -6,7 +6,9 @@ pageEditor.titleModel = {
 		parentUrl: null,
 		hasParentUrl: false,
 		enableTitleBackground: false,
-		hideTitlebar: false
+		hideTitlebar: false,
+		backgroundUrl: null,
+		backgroundPosition: "40%"
 	}
 };
 

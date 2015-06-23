@@ -12,6 +12,8 @@ namespace Harbor.UI.Models.Content
 			hasParentUrl = title.HasParentUrl;
 			enableTitleBackground = title.EnableTitleBackground;
 			hideTitlebar = title.HideTitlebar;
+			backgroundPosition = title.BackgroundPosition;
+			backgroundUrl = title.BackgroundUrl;
 		}
 
 		public string displayTitle { get; set;}
@@ -19,6 +21,8 @@ namespace Harbor.UI.Models.Content
 		public bool hasParentUrl { get; set; }
 		public bool enableTitleBackground { get; set; }
 		public bool hideTitlebar { get; set; }
+		public string backgroundPosition { get; set; }
+		public string backgroundUrl { get; set; }
 
 		public static TitleDto FromTitle(Title title)
 		{

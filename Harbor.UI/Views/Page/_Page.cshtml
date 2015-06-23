@@ -1,17 +1,17 @@
 ﻿@using Harbor.UI.Extensions
 @model Harbor.Domain.Pages.Page
 @functions {
-
 	string getPageHeaderStyle()
 	{
-		return string.IsNullOrEmpty(Model.TitleBackgroundUrl) ?
-			null : string.Format("background-image: url('{0}');background-position-y: 40%;", Model.TitleBackgroundUrl);
+		return string.IsNullOrEmpty(Model.TitleProperties.BackgroundUrl) ?
+			null : string.Format("background-image: url('{0}');background-position-y: {1};",
+			Model.TitleProperties.BackgroundUrl, Model.TitleProperties.BackgroundPosition);
 	}
 
 }
 <div @*id="page"*@ class="@Model.PageClassNames">
 	<header class="page-header" style="@getPageHeaderStyle()">
-		@if (string.IsNullOrEmpty(Model.TitleBackgroundUrl) == false)
+		@if (string.IsNullOrEmpty(Model.TitleProperties.BackgroundUrl) == false)
 		{
 			<div class="page-header-overlay"></div>
 		}
