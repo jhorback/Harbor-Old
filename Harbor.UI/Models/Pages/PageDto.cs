@@ -64,6 +64,7 @@ namespace Harbor.UI.Models
 		public int id { get; set; }
 		public string title { get; set; }
 		public string titleBackgroundUrl { get; set; }
+		public string pageClassNames { get; set; }
 		public string author { get; set; }
 		public string pageTypeKey { get; set; }
 		public string pageTypeName { get; set; }

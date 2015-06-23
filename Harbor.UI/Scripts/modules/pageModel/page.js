@@ -23,6 +23,7 @@ page.prototype = {
 		modified: null,
 		enabled: true,
 		published: true,
+		pageClassNames: "page",
 		pageLayoutId: null,
 		template: null,
 		layout: null,

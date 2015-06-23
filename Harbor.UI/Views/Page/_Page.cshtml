@@ -11,10 +11,7 @@
 }
 <div @*id="page"*@ class="@Model.PageClassNames">
 	<header class="page-header" style="@getPageHeaderStyle()">
-		@if (string.IsNullOrEmpty(Model.TitleProperties.BackgroundUrl) == false)
-		{
-			<div class="page-header-overlay"></div>
-		}
+		<div class="page-header-overlay"></div>
 		<div class="page-header-content">
 			@if (Model.Layout.HeaderKey != null)
 			{

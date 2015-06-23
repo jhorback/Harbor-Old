@@ -8,21 +8,7 @@ pageEditor.title = {
 	},
 
 	titleBackgroundChanged: function () {
-		var overlay = $(".page-header-overlay"),
-			attrs = this.model.attributes;
-
-		if (attrs.enableTitleBackground) {
-
-			if (overlay.length === 0) {
-				overlay = $('<div class="page-header-overlay"/>').prependTo(".page-header");
-			}
-			overlay.show();
-
-			$(".page-header").css("background-image", "url(\"" + attrs.backgroundUrl + "\")");
-		} else {
-			overlay.hide();	
-			$(".page-header").css("background-image", "none");
-		}
+		
 	},
 
 	onRemove: function () {

@@ -15,9 +15,9 @@ namespace Harbor.Domain.Pages.Pipelines.Load
 			AddHandler<EnsurePageLayoutLoadHandler>();
 			AddHandler<PageTypeLoadHandler>();
 			AddHandler<TitilePropertiesLoadHandler>();
+			AddHandler<TitleBackgroundUrlLoadHandler>();
 			AddHandler<ContentLoadHandler>();
 			AddHandler<RootPageLoadHandler>();
-			AddHandler<TitleBackgroundUrlLoadHandler>();
 		}
 	}
 }
