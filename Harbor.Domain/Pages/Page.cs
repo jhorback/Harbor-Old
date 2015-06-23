@@ -78,6 +78,13 @@ namespace Harbor.Domain.Pages
 			}
 		}
 
+		/* jch! - make this a sub object:
+		 * TitleProperties - store in a single page property as JSON
+		 *  - TitleBackgrondEnabled
+		 *  - TitleDisplayNone
+		 *  - TitleBackgroundUrl
+		 *  - TitleBackgroundPosition
+		 * */
 		public bool TitleBackgroundEnabled
 		{
 			get

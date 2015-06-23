@@ -5,7 +5,7 @@
 	string getPageHeaderStyle()
 	{
 		return string.IsNullOrEmpty(Model.TitleBackgroundUrl) ?
-			null : string.Format("background-image: url('{0}')", Model.TitleBackgroundUrl);
+			null : string.Format("background-image: url('{0}');background-position-y: 40%;", Model.TitleBackgroundUrl);
 	}
 
 }
