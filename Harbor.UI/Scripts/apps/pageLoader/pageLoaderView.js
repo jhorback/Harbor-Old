@@ -6,23 +6,30 @@ function pageLoaderView(
 	pageEditor,
 	pageSettings,
 	currentPageRepo,
-	ajaxRequest
+	ajaxRequest,
+	notify
 ) {
 	this.modelFactory = modelFactory;
 	this.pageEditor = pageEditor;
 	this.pageSettings = pageSettings;
 	this.currentPageRepo = currentPageRepo;
 	this.ajaxRequest = ajaxRequest;
-
-	this.page = this.currentPageRepo.getCurrentPage();
+	this.notify = notify;
 }
 
 
 pageLoaderView.prototype = {
 	initialize: function () {
+		var notifyPage;
+
 		this.bindAll("selectEditTab");
 
+		this.page = this.currentPageRepo.getCurrentPage();
 		this.model = this.modelFactory.create("pageLoaderModel");
+		
+		notifyPage = this.notify.element($("#frame-body .page:visible"));
+		this.listenTo(this.page, "request", notifyPage.call.loading());
+		this.listenTo(this.page, "sync error", notifyPage.call.finished());
 	},
 
 	onRender: function () {
@@ -91,5 +98,6 @@ pageLoader.view("pageLoaderView", [
 	"pageSettings",
 	"currentPageRepo",
 	"ajaxRequest",
+	"notify",
 	pageLoaderView
 ]);

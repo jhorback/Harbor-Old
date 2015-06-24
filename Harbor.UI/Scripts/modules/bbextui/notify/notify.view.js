@@ -28,7 +28,8 @@ bbext.notifyView = function (notify, callbacks, console) {
 					    }).addClass("notify-view-overlay"),
 						position = el.css("position");
 
-					if (position !== "relative" && position !== "absolute" && el[0].tagName.toUpperCase() !== "TR") {
+					if (position !== "static" && position !== "relative"
+							&& position !== "absolute" && el[0].tagName.toUpperCase() !== "TR") {
 						console.error("notify.view requires a relative or absolute positioned el. Position:" + position);
 					}
 					
