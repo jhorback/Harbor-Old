@@ -20,20 +20,29 @@ function pageLoaderView(
 
 pageLoaderView.prototype = {
 	initialize: function () {
+		this.bindAll("selectEditTab");
+
 		this.model = this.modelFactory.create("pageLoaderModel");
 	},
 
 	onRender: function () {
 		// enable going into edit mode when clicking a nocontent div
-		$(".page-nocontent").on("click", this.onEditPage);
+		$(".page-nocontent").on("click", this.selectEditTab);
 	},
 
 	onClose: function () {
-		$(".page-nocontent").unbind("click", this.onEditPage);
+		$(".page-nocontent").unbind("click", this.selectEditTab);
 	},
 
 	clickPageLoaderTab: function (event, tab) {
-		
+		this.selectTab(tab);
+	},
+
+	selectEditTab: function () {
+		this.selectTab(this.model.tabs.get("edit"));
+	},
+
+	selectTab: function (tab) {
 		if (tab.get("selected")) {
 			return;
 		}

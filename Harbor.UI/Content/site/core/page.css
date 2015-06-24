@@ -116,7 +116,6 @@
   float: left;
   width: 100%;
   background: #fff;
-  overflow: hidden;
   position: relative; }
 .hasaside .page-body {
   float: left;
@@ -135,8 +134,7 @@
 .hasaside .page-content {
   float: left;
   width: 78%;
-  left: 80%;
-  overflow: hidden; }
+  left: 80%; }
 
 .page-content-edit .row {
   outline: 1px dashed #CCC; }

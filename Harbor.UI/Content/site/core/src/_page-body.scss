@@ -62,7 +62,7 @@
             float:left;
             width:100%;
             background: $page-body-background;
-            overflow:hidden;
+             // overflow:hidden; this was causing the uic menu to be chopped
             position:relative;
         }
         .page-body {
@@ -85,7 +85,7 @@
             float:left;
             width: $page-aside-left - ($page-content-gutter-width*2);        
             left: $page-aside-left;
-            overflow:hidden;
+            // overflow:hidden; this was causing the uic menu to be chopped
         }
 	}
 
