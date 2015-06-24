@@ -56,6 +56,12 @@
 .icon-previous:before {
   content: "\f0d9"; }
 
+.icon-up:before {
+  content: "\f0d8"; }
+
+.icon-down:before {
+  content: "\f0d7"; }
+
 /* FONT PATH
  * -------------------------- */
 @font-face {

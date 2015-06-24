@@ -30,6 +30,30 @@ pageEditor.titleView.prototype = {
 		});
 	},
 
+	moveUp: function () {
+		this.moveBg(5);
+	},
+
+	moveDown: function () {
+		this.moveBg(-5);
+	},
+
+	moveBg: function (percent) {
+		var position = parseInt(this.model.attributes.backgroundPosition) + percent + "%";
+
+		this.model.set("backgroundPosition", position);
+		this.pageHeaderEl.css({
+			"background-position-y": position
+		});
+		this.moveBackgroundImage();
+	},
+
+	moveBackgroundImage: _.debounce(function () {
+		this.commandHandler.execute(this.page, "moveTitleBackground", {
+			position: this.model.attributes.backgroundPosition
+		});
+	}, 500),
+
 	enableTitleBackgroundClicked: _.debounce(function (event) {
 		this.commandHandler.execute(this.page, "enableTitleBackground", {
 			enable: this.model.attributes.enableTitleBackground

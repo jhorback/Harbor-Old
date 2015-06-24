@@ -70,6 +70,7 @@ namespace Harbor.UI.Controllers.Api
 			return await pageResponse(id);
 		}
 
+		#region Title
 		[HttpPost, Http.PagePermit(Permissions.All), Route("EnableTitleBackground")]
 		public async Task<HttpResponseMessage> EnableTitleBackground(int id, EnableTitleBackground command)
 		{
@@ -83,6 +84,14 @@ namespace Harbor.UI.Controllers.Api
 			await _commandService.ExecuteAsync(command);
 			return await pageResponse(id);
 		}
+
+		[HttpPost, Http.PagePermit(Permissions.All), Route("MoveTitleBackground")]
+		public async Task<HttpResponseMessage> MoveTitleBackground(int id, MoveTitleBackground command)
+		{
+			await _commandService.ExecuteAsync(command);
+			return await pageResponse(id);
+		}
+		#endregion
 
 
 		async Task<HttpResponseMessage> pageResponse(int id)
