@@ -7,7 +7,7 @@
 		margin-bottom: 1.42em;
 		text-shadow: 0 1px 0 rgba(255,255,255,.5);
 		
-		@include alert-colors($color: #b94a48, $background-color:  #f2dede, $border-color: darken(adjust-hue(#f2dede, -10), 7%));
+		@include alert-colors($color: #fff, $background-color:  #666, $border-color: #666);
 
 
 		@include border-radius;

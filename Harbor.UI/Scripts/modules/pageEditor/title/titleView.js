@@ -1,14 +1,16 @@
 ﻿
 
-pageEditor.titleView = function (options, commandHandler) {
+pageEditor.titleView = function (options, commandHandler, notify) {
 
 	this.commandHandler = commandHandler;
+	this.notify = notify;
 };
 
 pageEditor.titleView.prototype = {
 	initialize: function () {
 		this.page = this.model.page;
 		this.listenTo(this.page, "sync", this.pageSync);
+		this.notify.view(this).ofModel(this.page);
 	},
 
 	onResolve: function () {
@@ -99,5 +101,6 @@ var overlay = $(".page-header-overlay"),
 pageEditor.view("titleView", [
 	"options",
 	"commandHandler",
+	"notify",
 	pageEditor.titleView
 ]);
