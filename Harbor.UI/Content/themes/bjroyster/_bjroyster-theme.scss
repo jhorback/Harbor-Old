@@ -1,25 +1,35 @@
 @import "../../site/core/theme";
 
-$theme-color-blue: #67A3B6;
 
-$body-color: #585a5b;
-$body-background-color: #FFF;
+$color-primary: #0097a7;
+$color-primary-dark: #006064;
+$color-primary-light: #B2EBF2;
+$color-accent: #FF3D00;
+$color-accent-dark: #DD2C00;
+$color-accent-light: #FF6E40;
+
+
+//$theme-color-blue: #0097a7; //#67A3B6;
+$body-color: rgba(0, 0, 0, 0.870588); //#585a5b;
 
 
 
 
-//$frame-logo-width:		150px;
-//$frame-logo-height:		50px;
-//$frame-header-height:	6em; // 84px (logo image) / 14px base font size
 
 $framenav-background-color: #FFF;
-//$framenav-color: $body-color;
-//$framenav-background-color-hover: #67A3B6; // #0f7c91;
-$framenav-color-hover: $theme-color-blue;
-
-$page-header-background: $theme-color-blue;
+$page-header-background: $color-primary;
 $page-title-color: #FFF;
+$frame-logo-name:      "logo-sig.png";
+//$frame-logo-width:		8em;
+//$frame-logo-height:		4em;
+$framenav-color-hover: #000;
+//$framenav-color-selected: #fff;
+$framenav-border-selected: $color-accent-dark;
+$framenav-color-selected: $color-accent-dark;
+$frame-footer-image:    "footer-hog.png" !default;
 
+
+$framenav-background-color: #eee;
 
 
 @mixin bjroyster-theme {
@@ -28,6 +38,11 @@ $page-title-color: #FFF;
     #frame-footer-image {
         background: url(unquote("images/" + $frame-footer-image)) no-repeat left center !important;
         height: $frame-footer-height - 2em;
-        @include opacity(.3)
+        @include opacity(.3);
     }
+
+    /*#frame-logo {
+        position: relative;
+        top:.5em;
+    }*/
 }

@@ -1,8 +1,7 @@
 #frame {
   min-height: 100%;
   height: auto !important;
-  height: 100%;
-  margin: 1em auto -12em 0; }
+  height: 100%; }
 
 #frame-header {
   overflow: hidden;
@@ -12,18 +11,17 @@
 
 #frame-logo {
   float: left;
-  margin: 0 1em 0 1em;
-  text-shadow: rgba(0, 0, 0, 0.6) 1px 1px 2px; }
+  margin: 0 1em 0 1em; }
   #frame-logo span {
-    font-size: 2.3em; }
+    font-size: 2em; }
 
 #frame-nav, #frame-session {
-  font-size: 1em;
   line-height: 2em;
-  position: relative;
-  top: 0.5em; }
+  margin-top: 2em; }
 
 #frame-nav {
+  position: relative;
+  top: -4px;
   float: left; }
   #frame-nav ul {
     margin: 0;
@@ -47,8 +45,6 @@
         padding: 0 1em;
         -webkit-transition-property: all;
         -webkit-transition-duration: 0.4s; }
-      #frame-nav ul li.selected a {
-        text-shadow: rgba(68, 68, 68, 0.4) 1px 1px 1px 0px 0px 1px; }
       #frame-nav ul li.attn {
         background: #FF0000 !important; }
         #frame-nav ul li.attn a {
@@ -59,7 +55,6 @@
   top: -0.5em; }
   #frame-session a {
     padding: 0 1em;
-    font-size: 1.2em;
     display: inline-block;
     text-align: center; }
 
@@ -72,12 +67,12 @@
 #frame-footer {
   position: relative; }
   #frame-footer .menulist {
-    font-size: 0.8em;
-    line-height: 1.8em; }
+    font-size: 0.75em;
+    line-height: 1.5em; }
     #frame-footer .menulist a {
       text-decoration: none; }
     #frame-footer .menulist h2, #frame-footer .menulist h3 {
-      font-size: 1.1em;
+      font-size: 1.5em;
       font-weight: bold; }
   #frame-footer .social-links {
     line-height: 2em;

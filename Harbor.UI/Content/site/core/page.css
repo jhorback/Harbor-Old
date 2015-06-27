@@ -4,19 +4,17 @@
   clear: both; }
 
 .has-titlebg .page-header {
-  height: 10em;
-  line-height: 10em; }
+  height: 8em;
+  line-height: 8em; }
   .has-titlebg .page-header .page-header-overlay {
     display: block; }
 
 .has-notitle .page-header {
-  height: 1px;
-  position: relative;
-  top: -3px; }
+  display: none; }
 
 .page-header {
-  height: 6em;
-  line-height: 6em; }
+  height: 4em;
+  line-height: 4em; }
   .page-header .page-header-overlay {
     display: none; }
   .page-header h1 {

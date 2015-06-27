@@ -19,10 +19,8 @@ $frame-footer-color: #a5a6a7;
 
 $framenav-color:						#aaa	    						!default;
 $framenav-background-color:				#345276								!default;
-$framenav-color-hover:					#000            					!default;
-$framenav-background-color-hover:		$body-background-color				!default;
-$framenav-color-selected:				$framenav-color-hover				!default;
-$framenav-background-color-selected:	$framenav-background-color-hover	!default;
+$framenav-color-selected:				#000                				!default;
+$framenav-border-selected:          	#000                            	!default;
 $scrollbar-color:						#CCC								!default;
 $frame-logo-use-image: true !default;
 
@@ -34,7 +32,7 @@ $frame-logo-use-image: true !default;
 		min-height: 100%;
         height: auto !important;
         height: 100%;
-        margin: 1em auto ($frame-footer-height*-1) 0;
+        //margin: 1em auto ($frame-footer-height*-1) 0;
 	}	
 	@include frame-header;
 	@include frame-body;
@@ -47,7 +45,7 @@ $frame-logo-use-image: true !default;
   
 	#frame-header {
 		overflow: hidden;
-		z-index: 1;		
+		z-index: 1;
 
 		a, a:visited {
 			text-decoration: none;
@@ -56,27 +54,27 @@ $frame-logo-use-image: true !default;
 
 	#frame-logo {
 		span {
-            font-size: 2.3em;
+            font-size: 2em;
         }
 		float:left;
 		margin: 0 1em 0 1em;
-		@include single-text-shadow(rgba(#000, 0.6), 1px, 1px, 2px);
+		//@include single-text-shadow(rgba(#000, 0.6), 1px, 1px, 2px);
 	}
 
     #frame-nav, #frame-session {
-        font-size: 1em;
         line-height: 2em;
-        position:relative;
-        top: .5em;
+        margin-top: 2em;
     }
 
 	#frame-nav {
+        position: relative;
+        top: -4px;
 		float: left;
 		ul {
 			@include inline-block-list;
 			li {
 				cursor: pointer;	
-				float:left;	
+				float:left;
 				a {
 					display: inline-block;
 					padding: 0 1em;
@@ -86,7 +84,7 @@ $frame-logo-use-image: true !default;
 				}
 				&.selected {
 					a {
-						@include single-text-shadow(rgba(#444, 0.4) 1px 1px 1px);
+						//@include single-text-shadow(rgba(#444, 0.4) 1px 1px 1px);
 					}		
 				}
 				&.attn {					
@@ -102,7 +100,7 @@ $frame-logo-use-image: true !default;
         top: -.5em;
 		a {
 			padding: 0 1em;
-			font-size: 1.2em;
+			//font-size: 1em;
 			display: inline-block;
 			text-align: center;
 		}
@@ -128,15 +126,15 @@ $frame-logo-use-image: true !default;
 		position: relative;
         
         .menulist {
-             font-size: .8em;
-             line-height: 1.8em;
+             font-size: .75em;
+             line-height: 1.5em;
 
             a {
                 text-decoration: none;
             }
 
             h2, h3 {
-                font-size: 1.1em;
+                font-size: 1.5em;
                 font-weight: bold;
             }
         }
@@ -223,7 +221,7 @@ $frame-logo-use-image: true !default;
 
 		//position: fixed;
 		width:100%;
-		@include box-shadow(0 2px 4px rgba(105,105,105,.25));
+		//@include box-shadow(0 2px 4px rgba(105,105,105,.25));
 
 		a, a:visited {
 		//	color: $framenav-color;
@@ -257,17 +255,16 @@ $frame-logo-use-image: true !default;
 		li {
             margin-right:.5em;
             text-transform: uppercase;
-            @include border-radius;          
+            border-bottom: 4px solid $framenav-background-color;
+
 			&:hover {
-				background-color: $framenav-background-color-hover;
-                // @include box-shadow(0 6px 14px rgba(105,105,105,.60));
-					
+				//border-bottom: 4px solid $framenav-border-selected;					
                 a {
-					color: $framenav-color-hover;
+					color: $body-color;
 				}                    
 			}
 			&.selected{
-				background-color: $framenav-background-color-selected;
+				border-bottom: 4px solid $framenav-border-selected;
 				a {
 					color: $framenav-color-selected;
 				}

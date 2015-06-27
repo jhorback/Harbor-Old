@@ -92,11 +92,7 @@ dd {
   line-height: 4em;
   color: #aaa;
   background: #345276;
-  width: 100%;
-  -moz-box-shadow: 0 2px 4px rgba(105, 105, 105, 0.25);
-  -webkit-box-shadow: 0 2px 4px rgba(105, 105, 105, 0.25);
-  -ms-box-shadow: 0 2px 4px rgba(105, 105, 105, 0.25);
-  box-shadow: 0 2px 4px rgba(105, 105, 105, 0.25); }
+  width: 100%; }
 
 #frame-nav a, #frame-nav a:visited {
   color: #aaa;
@@ -105,16 +101,11 @@ dd {
 #frame-nav li {
   margin-right: 0.5em;
   text-transform: uppercase;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -ms-border-radius: 5px;
-  border-radius: 5px; }
-  #frame-nav li:hover {
-    background-color: #FFF; }
-    #frame-nav li:hover a {
-      color: #000; }
+  border-bottom: 4px solid #345276; }
+  #frame-nav li:hover a {
+    color: #333; }
   #frame-nav li.selected {
-    background-color: #FFF; }
+    border-bottom: 4px solid #000; }
     #frame-nav li.selected a {
       color: #000; }
 
@@ -141,14 +132,9 @@ legend {
   overflow: hidden;
   color: #666666;
   background-repeat: no-repeat;
-  background-size: cover;
-  border-color: #3A5E69;
-  border-style: solid;
-  border-width: 1px 0; }
+  background-size: cover; }
   .page-header h1 {
-    color: #666666;
-    text-shadow: 1px 1px 2px #333;
-    font-size: 2.3em; }
+    color: #666666; }
     .page-header h1 a {
       color: #666666; }
   .page-header [contenteditable]:hover, .page-header [contenteditable]:focus {

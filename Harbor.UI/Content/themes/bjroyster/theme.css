@@ -1,6 +1,6 @@
 html, body {
   background-color: #FFF;
-  color: #585a5b;
+  color: rgba(0, 0, 0, 0.870588);
   font-size: 16px;
   font-family: "OpenSans", "Segoe UI", "Helvetica Neue", Arial;
   line-height: 1.6; }
@@ -56,7 +56,7 @@ hr {
 
 abbr[title] {
   cursor: help;
-  border-bottom: 1px dotted #585a5b; }
+  border-bottom: 1px dotted rgba(0, 0, 0, 0.870588); }
 
 ul, ol {
   margin-bottom: 12.8px; }
@@ -91,12 +91,8 @@ dd {
   height: 4em;
   line-height: 4em;
   color: #aaa;
-  background: #FFF;
-  width: 100%;
-  -moz-box-shadow: 0 2px 4px rgba(105, 105, 105, 0.25);
-  -webkit-box-shadow: 0 2px 4px rgba(105, 105, 105, 0.25);
-  -ms-box-shadow: 0 2px 4px rgba(105, 105, 105, 0.25);
-  box-shadow: 0 2px 4px rgba(105, 105, 105, 0.25); }
+  background: #eee;
+  width: 100%; }
 
 #frame-logo a {
   text-indent: -99999px;
@@ -113,18 +109,13 @@ dd {
 #frame-nav li {
   margin-right: 0.5em;
   text-transform: uppercase;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -ms-border-radius: 5px;
-  border-radius: 5px; }
-  #frame-nav li:hover {
-    background-color: #FFF; }
-    #frame-nav li:hover a {
-      color: #000; }
+  border-bottom: 4px solid #eee; }
+  #frame-nav li:hover a {
+    color: rgba(0, 0, 0, 0.870588); }
   #frame-nav li.selected {
-    background-color: #67A3B6; }
+    border-bottom: 4px solid #DD2C00; }
     #frame-nav li.selected a {
-      color: #fff; }
+      color: #DD2C00; }
 
 #frame-body ::-webkit-scrollbar-thumb {
   background: #CCC; }
@@ -145,22 +136,17 @@ legend {
 
 .page-header {
   position: relative;
-  background: #67A3B6;
+  background: #0097a7;
   overflow: hidden;
   color: #FFF;
   background-repeat: no-repeat;
-  background-size: cover;
-  border-color: #3A5E69;
-  border-style: solid;
-  border-width: 1px 0; }
+  background-size: cover; }
   .page-header h1 {
-    color: #FFF;
-    text-shadow: 1px 1px 2px #333;
-    font-size: 2.3em; }
+    color: #FFF; }
     .page-header h1 a {
       color: #FFF; }
   .page-header [contenteditable]:hover, .page-header [contenteditable]:focus {
-    background: #4c8b9e; }
+    background: #006a74; }
 
 .page-header-overlay {
   background: #000;
@@ -195,3 +181,8 @@ legend {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30);
   opacity: 0.3; }
+
+/*#frame-logo {
+        position: relative;
+        top:.5em;
+    }*/
