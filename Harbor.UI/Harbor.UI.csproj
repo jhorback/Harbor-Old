@@ -461,9 +461,6 @@
     <Content Include="Content\site\core\selectlist.min.css">
       <DependentUpon>selectlist.scss</DependentUpon>
     </Content>
-    <Content Include="Content\site\core\src\cols.css">
-      <DependentUpon>_cols.scss</DependentUpon>
-    </Content>
     <Content Include="Content\site\core\tiles.css">
       <DependentUpon>tiles.scss</DependentUpon>
     </Content>
@@ -966,6 +963,7 @@
     <Content Include="Content\site\core\src\_page-header.scss" />
     <Content Include="Content\site\core\src\_page-body.scss" />
     <Content Include="Content\site\core\src\_page-vars.scss" />
+    <Content Include="Content\site\core\src\_color.scss" />
     <None Include="Content\site\core\src\_tiles.scss">
       <Compile>False</Compile>
       <Minify>False</Minify>

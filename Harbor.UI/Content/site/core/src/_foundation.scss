@@ -89,8 +89,8 @@
 @mixin body-theme {
 	html,
 	body {
-		background-color: $body-background-color;
-		color: $body-color;
+		background-color: $bg-color-light;
+		@include color-dark;
 		font-size: $body-font-size;
 		font-family: $body-font-family;
 		line-height: $body-line-height;
@@ -100,14 +100,8 @@
 		text-decoration: underline;
 		color: $link-color;
 		cursor: pointer;
-		&:visited, &:focus {
+		&:visited, &:focus, &:hover, &:active {
 			color: $link-color;
-		}
-		&:hover {
-			color: $link-color-hover;
-		}
-		&:active {
-			color: $link-color-active;
 		}
 	}
 	.link {
@@ -118,7 +112,6 @@
 		}
 		&:active {
 			background-color: transparent;
-			color: $link-color-active !important;
 		}
 	}
 
@@ -169,10 +162,10 @@
 }
 
 @mixin emphasis-theme {
-	.quiet          { color: $body-color-quiet; }
+	.quiet          { @include color-light-quiet; }
 	.loud           { color: $body-color-loud; }
 	.attn           { color: $body-color-attn; }
-	small			{ color: $body-color-quiet; }
+	small			{  @include color-light-quiet; }
 }
 
 

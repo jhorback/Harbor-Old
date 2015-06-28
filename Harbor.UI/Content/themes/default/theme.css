@@ -1,20 +1,19 @@
 html, body {
-  background-color: #FFF;
-  color: #333;
+  background-color: #FAFAFA;
+  color: #000;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=87)";
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=87);
+  opacity: 0.87;
   font-size: 16px;
   font-family: "OpenSans", "Segoe UI", "Helvetica Neue", Arial;
   line-height: 1.6; }
 
 a, .link {
   text-decoration: underline;
-  color: #369;
+  color: #FF3D00;
   cursor: pointer; }
-  a:visited, a:focus, .link:visited, .link:focus {
-    color: #369; }
-  a:hover, .link:hover {
-    color: #09f; }
-  a:active, .link:active {
-    color: red; }
+  a:visited, a:focus, a:hover, a:active, .link:visited, .link:focus, .link:hover, .link:active {
+    color: #FF3D00; }
 
 .link {
   background-color: transparent;
@@ -22,8 +21,7 @@ a, .link {
   .link:hover {
     background-color: transparent; }
   .link:active {
-    background-color: transparent;
-    color: red !important; }
+    background-color: transparent; }
 
 p {
   margin-bottom: 1.42em; }
@@ -36,7 +34,10 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 4px; }
 
 .quiet {
-  color: #999999; }
+  color: #FFF;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
+  opacity: 0.7; }
 
 .loud {
   color: #2F5BB7; }
@@ -45,7 +46,10 @@ h1, h2, h3, h4, h5, h6 {
   color: #D14836; }
 
 small {
-  color: #999999; }
+  color: #FFF;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
+  opacity: 0.7; }
 
 hr {
   margin: 25.6px 0;
@@ -91,7 +95,7 @@ dd {
   height: 4em;
   line-height: 4em;
   color: #aaa;
-  background: #345276;
+  background: #F5F5F5;
   width: 100%; }
 
 #frame-nav a, #frame-nav a:visited {
@@ -101,7 +105,7 @@ dd {
 #frame-nav li {
   margin-right: 0.5em;
   text-transform: uppercase;
-  border-bottom: 4px solid #345276; }
+  border-bottom: 4px solid #F5F5F5; }
   #frame-nav li:hover a {
     color: #333; }
   #frame-nav li.selected {
@@ -162,7 +166,7 @@ legend {
 	}*/
 .selectlist > ul > li.selected {
   color: #FFF;
-  background-color: #369;
+  background-color: #FF3D00;
   text-shadow: 0 1px 0 #000; }
   .selectlist > ul > li.selected h1, .selectlist > ul > li.selected h2, .selectlist > ul > li.selected h3 {
     color: #FFF !important; }

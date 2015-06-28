@@ -1,0 +1,95 @@
+@import "../../mixins/opacity";
+
+$color-theme:            "light";
+
+$color-primary:           #0097a7    !default;
+$color-primary-dark:      #006064    !default;
+$color-primary-light:     #B2EBF2    !default;
+$color-accent:            #FF3D00    !default;
+$color-accent-dark:       #DD2C00    !default;
+$color-accent-light:      #FF6E40    !default;
+
+
+$bg-color-light-content:  #FFFFFF; 
+$bg-color-light:          #FAFAFA;        
+$bg-color-light-bar:      #F5F5F5; 
+$bg-color-light-outerbar: #E0E0E0; 
+
+$bg-color-dark-content:   #424242;
+$bg-color-dark:           #303030;
+$bg-color-dark-bar:       #212121;
+$bg-color-dark-outerbar:  #000000;
+
+
+@mixin bg-color-content($dark-or-light: $color-theme) {
+    // use for dialogs, cards
+    @if $dark-or-light == "dark" {
+        background-color: $bg-color-dark-content;
+    } else {
+        background-color: $bg-color-light-content; 
+    }
+}
+
+@mixin bg-color($dark-or-light: $color-theme) {
+    // use for the base background
+    @if $dark-or-light == "dark" {
+        background-color: $bg-color-dark;
+    } else {
+        background-color: $bg-color-light;        
+    }
+}
+
+// jch! here
+@mixin bg-color-bar($dark-or-light: $color-theme) {
+    // use for the primary heading bars
+    @if $dark-or-light == "dark" {        
+          background-color: #212121;
+    } else {
+          background-color: #F5F5F5;
+    }
+}
+
+@mixin bg-color-outerbar($dark-or-light: $color-theme) {
+    // use for contrast against the heading bar as the topmost or bottommost element
+    @if $dark-or-light == "dark" {
+        background-color: #E0E0E0;
+    } else {
+        background-color: #000000;
+    }
+}
+
+@mixin color($dark-or-light: $color-theme) { 
+    // use for standard text
+    @if $dark-or-light == "dark" {
+        color: #000; @include opacity(.87);
+    } else {
+        color: #FFF;
+    }
+}
+
+@mixin color-quiet($dark-or-light: $color-theme) {
+    // use for secondary/quiet text and icons
+    @if $dark-or-light == "dark" {
+        color: #000; @include opacity(.54);
+    } else {
+        color: #FFF; @include opacity(.70);
+    }
+}
+
+@mixin color-disabled($dark-or-light: $color-theme) {
+    // use for disabled and hint text
+     @if $dark-or-light == "dark" {
+        color: #000; @include opacity(.26);
+    } else {
+        color: #FFF; @include opacity(.30);
+    }
+}
+
+@mixin color-divider($dark-or-light: $color-theme) {
+    // use for dividers
+    @if $dark-or-light == "dark" {
+       color: #000; @include opacity(.12);
+    } else {
+        color: #FFF; @include opacity(.12);
+    }
+}
