@@ -1,3 +1,17 @@
+/*
+ * color-container(theme, primary, accent)
+ *
+ * color(theme);
+ * color-quiet(theme);
+ * color-disabled(theme);
+ * color-devicer(theme);
+ *
+ * bg-color-content(theme)
+ * bg-color(theme)
+ * bg-color-bar(theme)
+ * bg-color-outerbar(theme)
+ *
+ */
 #pageloader {
   position: absolute;
   top: 3em;
@@ -35,7 +49,7 @@
       opacity: 1;
       outline: none; }
     #pageloader li.selected {
-      color: #D14836; }
+      color: #FF3D00; }
   #pageloader span {
     font-size: 0.9em;
     font-weight: bold;

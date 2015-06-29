@@ -1,3 +1,31 @@
+/*
+ * color-container(theme, primary, accent)
+ *
+ * color(theme);
+ * color-quiet(theme);
+ * color-disabled(theme);
+ * color-devicer(theme);
+ *
+ * bg-color-content(theme)
+ * bg-color(theme)
+ * bg-color-bar(theme)
+ * bg-color-outerbar(theme)
+ *
+ */
+/*
+ * color-container(theme, primary, accent)
+ *
+ * color(theme);
+ * color-quiet(theme);
+ * color-disabled(theme);
+ * color-devicer(theme);
+ *
+ * bg-color-content(theme)
+ * bg-color(theme)
+ * bg-color-bar(theme)
+ * bg-color-outerbar(theme)
+ *
+ */
 * {
   margin: 0; }
 
@@ -125,7 +153,14 @@ body {
   margin: 0; }
 
 p {
-  margin: 0; }
+  margin: 0;
+  margin-bottom: 1.5em; }
+  p:only-of-type {
+    margin-bottom: 0; }
+
+a, .link {
+  text-decoration: underline;
+  cursor: pointer; }
 
 .text-left {
   text-align: left; }
@@ -248,6 +283,16 @@ address {
   display: block;
   margin-bottom: 1.42em;
   font-style: normal; }
+
+hr {
+  margin: 1.5em 0;
+  border: 0;
+  height: 1px;
+  clear: both; }
+
+abbr[title] {
+  cursor: help;
+  border-bottom: 1px dotted; }
 
 ul, ol {
   padding: 0;

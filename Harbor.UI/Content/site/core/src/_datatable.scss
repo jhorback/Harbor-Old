@@ -8,7 +8,7 @@ $table-row-backgrond-color-accent: #F9F9F9;
 $table-row-backgrond-color-hover: #F5F5F5;
 
 $datalist-selected-color: #FFF !default;
-$datalist-selected-background-color: $link-color !default;
+
 
 @mixin datatable {
 
@@ -63,10 +63,6 @@ $datalist-selected-background-color: $link-color !default;
           font-weight: bold;
       }
 
-	  // Nesting
-	  .datatable {
-		background-color: $body-background-color;
-	  }
 
 	  // stripes
 	  tbody {

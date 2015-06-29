@@ -1,3 +1,31 @@
+/*
+ * color-container(theme, primary, accent)
+ *
+ * color(theme);
+ * color-quiet(theme);
+ * color-disabled(theme);
+ * color-devicer(theme);
+ *
+ * bg-color-content(theme)
+ * bg-color(theme)
+ * bg-color-bar(theme)
+ * bg-color-outerbar(theme)
+ *
+ */
+/*
+ * color-container(theme, primary, accent)
+ *
+ * color(theme);
+ * color-quiet(theme);
+ * color-disabled(theme);
+ * color-devicer(theme);
+ *
+ * bg-color-content(theme)
+ * bg-color(theme)
+ * bg-color-bar(theme)
+ * bg-color-outerbar(theme)
+ *
+ */
 .page:after {
   content: "";
   display: table;
@@ -14,7 +42,10 @@
 
 .page-header {
   height: 4em;
-  line-height: 4em; }
+  line-height: 4em;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-size: cover; }
   .page-header .page-header-overlay {
     display: none; }
   .page-header h1 {
@@ -78,8 +109,6 @@
       padding: 0 0.5em; }
     .page-aside .menulist .selected {
       background: #E8E9E9; }
-      .page-aside .menulist .selected a {
-        color: #2F5BB7; }
     .page-aside .menulist a:hover {
       background: #E8E9E9; }
 

@@ -1,3 +1,17 @@
+/*
+ * color-container(theme, primary, accent)
+ *
+ * color(theme);
+ * color-quiet(theme);
+ * color-disabled(theme);
+ * color-devicer(theme);
+ *
+ * bg-color-content(theme)
+ * bg-color(theme)
+ * bg-color-bar(theme)
+ * bg-color-outerbar(theme)
+ *
+ */
 .button, button, input.button, input[type=button], input[type=submit] {
   border: 0;
   display: inline-block;

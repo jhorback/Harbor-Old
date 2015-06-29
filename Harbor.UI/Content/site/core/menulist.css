@@ -1,3 +1,17 @@
+/*
+ * color-container(theme, primary, accent)
+ *
+ * color(theme);
+ * color-quiet(theme);
+ * color-disabled(theme);
+ * color-devicer(theme);
+ *
+ * bg-color-content(theme)
+ * bg-color(theme)
+ * bg-color-bar(theme)
+ * bg-color-outerbar(theme)
+ *
+ */
 .menulist {
   margin: 0 0 2em 0em; }
   .menulist > ul {
@@ -14,8 +28,6 @@
       cursor: default; }
     .menulist > ul .selected {
       font-weight: bold; }
-      .menulist > ul .selected span, .menulist > ul .selected a {
-        color: #2F5BB7; }
   .menulist h2, .menulist h3 {
     font-family: "OpenSans", "Segoe UI", "Helvetica Neue", Arial;
     display: block;

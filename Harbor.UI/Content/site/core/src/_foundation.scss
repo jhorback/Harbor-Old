@@ -5,6 +5,7 @@
 @import "../../mixins/border-radius";
 @import "media";
 @import "foundation-vars";
+@import "$color";
 
 
 @mixin foundation {
@@ -21,8 +22,6 @@
 @mixin foundation-theme {
 	@include body-theme;
 	@include headings-theme;
-	@include emphasis-theme;
-	@include semantic-theme;
 	@include lists-theme;
 	@include code-theme;
 }
@@ -55,7 +54,18 @@
 		margin: 0;
 	}
 
-	p { margin: 0; }
+	p {
+        margin: 0;
+		margin-bottom: 1.5em;		
+        &:only-of-type {
+			margin-bottom: 0;
+		}
+	}
+
+    a, .link {
+		text-decoration: underline;
+		cursor: pointer;
+	}
 
 	// helper classes
 	.text-left		{ text-align: left; }
@@ -86,41 +96,17 @@
 	[data-templatefor] { display: none !important; }
 }
 
+
 @mixin body-theme {
 	html,
 	body {
-		background-color: $bg-color-light;
-		@include color-dark;
+		@include color-container;
 		font-size: $body-font-size;
 		font-family: $body-font-family;
 		line-height: $body-line-height;
 	}
 
-	a, .link {
-		text-decoration: underline;
-		color: $link-color;
-		cursor: pointer;
-		&:visited, &:focus, &:hover, &:active {
-			color: $link-color;
-		}
-	}
-	.link {
-		background-color: transparent;
-		padding: 0;
-		&:hover {
-			background-color: transparent;
-		}
-		&:active {
-			background-color: transparent;
-		}
-	}
-
-	p {
-		margin-bottom: 1.42em;
-		&:only-of-type {
-			margin-bottom: 0;
-		}
-	}
+    @include color-container;
 }
 
 
@@ -145,7 +131,7 @@
 	h1, h2, h3, h4, h5, h6 {
         color: $body-heading-color; 
 		margin-top: ($body-line-height-px / 2);
-        margin-bottom: 4px;
+        margin-bottom: .25em;
 	}
 }
 
@@ -161,12 +147,7 @@
 	}
 }
 
-@mixin emphasis-theme {
-	.quiet          { @include color-light-quiet; }
-	.loud           { color: $body-color-loud; }
-	.attn           { color: $body-color-attn; }
-	small			{  @include color-light-quiet; }
-}
+
 
 
 @mixin semantic {
@@ -186,22 +167,20 @@
 	  margin-bottom: 1.42em;
 	  font-style: normal;
 	}	
-}
 
-@mixin semantic-theme {
-	hr {
-	  margin: $body-line-height-px 0;
+    hr {
+	  margin: 1.5em 0;
 	  border: 0;
-	  border-top: 1px solid $hr-color;
-	  border-bottom: 1px solid lighten($hr-color, 20%);
+	  height: 1px;
 	  clear:both;
 	}
 
 	abbr[title] {
 	  cursor: help;
-	  border-bottom: 1px dotted $body-color;
+	  border-bottom: 1px dotted;
 	}
 }
+
 
 
 @mixin lists {
@@ -257,6 +236,7 @@
 		}
 	}
 }
+
 
 
 @mixin lists-theme {

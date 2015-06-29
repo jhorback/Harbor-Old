@@ -1,7 +1,23 @@
 @import "../../mixins/opacity";
 
-$color-theme:            "light";
+/*
+ * color-container(theme, primary, accent)
+ *
+ * color(theme);
+ * color-quiet(theme);
+ * color-disabled(theme);
+ * color-devicer(theme);
+ *
+ * bg-color-content(theme)
+ * bg-color(theme)
+ * bg-color-bar(theme)
+ * bg-color-outerbar(theme)
+ *
+ */
 
+$color-theme:            "light"     !default;
+
+// swatch
 $color-primary:           #0097a7    !default;
 $color-primary-dark:      #006064    !default;
 $color-primary-light:     #B2EBF2    !default;
@@ -10,11 +26,14 @@ $color-accent-dark:       #DD2C00    !default;
 $color-accent-light:      #FF6E40    !default;
 
 
-$bg-color-light-content:  #FFFFFF; 
+// light color backgrounds
+$bg-color-light-content:  #FFFFFF;
 $bg-color-light:          #FAFAFA;        
 $bg-color-light-bar:      #F5F5F5; 
 $bg-color-light-outerbar: #E0E0E0; 
 
+
+// dark color backgrounds
 $bg-color-dark-content:   #424242;
 $bg-color-dark:           #303030;
 $bg-color-dark-bar:       #212121;
@@ -39,7 +58,7 @@ $bg-color-dark-outerbar:  #000000;
     }
 }
 
-// jch! here
+
 @mixin bg-color-bar($dark-or-light: $color-theme) {
     // use for the primary heading bars
     @if $dark-or-light == "dark" {        
@@ -92,4 +111,48 @@ $bg-color-dark-outerbar:  #000000;
     } else {
         color: #FFF; @include opacity(.12);
     }
+}
+
+
+
+@mixin color-container(
+    $dark-or-light: $color-theme,
+    $color-primary: $color-primary,
+    $color-accent: $color-accent
+) {
+
+    // sets text color, .quiet, .loud/primary, .attn/accent, small,
+    //     disabled/hint, a, .link, hr colors for a container
+
+    @include color($dark-or-light);
+    
+    .quiet, small {
+        @include color-quiet($dark-or-light);
+    }
+       
+    [disabled], .disabled, .hint {
+        @include color-disabled($dark-or-light);
+    }
+
+     .loud, .link, a {
+        color: $color-primary;
+         &:visited, &:focus, &:hover, &:active {
+			color: $color-primary;
+		}
+    }    
+    
+     .attn {
+         color: $color-accent;
+     }
+
+    hr {
+        @include color-divider;
+    }
+
+    ::-webkit-scrollbar-thumb {
+		@include bg-color-bar($dark-or-light);
+		&:hover{
+           @include bg-color-outerbar($dark-or-light);
+		}
+	}
 }

@@ -1,0 +1,60 @@
+/*
+ *
+ * 24 - dialogs
+ * 16 - top level menus
+ * 12 - pressed (FAB)
+ * 8 - Menu, pressed(card, raised button)
+ * 6 - FAB
+ * 4 - App Bar
+ * 3 - 
+ * 2 - card, raised button
+ * 0
+ *
+ */
+
+// adjust these as neccessary
+// based on one box shadow for ambient lighting based on depth
+// and the primary box shadow based on 45 degree lighting also based on depth.
+
+@mixin z-depth-card {
+    z-index: 2;
+    box-shadow: 0 2px 4px 0   rgba(0, 0, 0, 0.16),
+                0 0   2px 2px rgba(0, 0, 0, 0.12); 
+}
+
+@mixin z-depth-button {
+    z-index: 2;
+    box-shadow: 0 2px 4px 0   rgba(0, 0, 0, 0.16),
+                0 0   2px 2px rgba(0, 0, 0, 0.12); 
+}
+
+@mixin z-depth-bar {
+    z-index: 4;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.16),
+                0 0px 4px 4px rgba(0, 0, 0, 0.12); 
+}
+
+@mixin z-depth-fab {
+    z-index: 6;
+    box-shadow: 0 6px 12px 0   rgba(0, 0, 0, 0.16),
+                0 0px 6px  6px rgba(0, 0, 0, 0.12); 
+}
+
+@mixin z-depth-menu {
+    z-index: 8;
+    box-shadow: 0 8px 16px 0   rgba(0, 0, 0, 0.16),
+                0 0   8px  8px rgba(0, 0, 0, 0.12); 
+}
+
+@mixin z-depth-topmenu {
+    z-index: 16;
+    box-shadow: 0 16px 32px 0    rgba(0, 0, 0, 0.16),
+                0 0    16px 16px rgba(0, 0, 0, 0.12); 
+}
+
+
+@mixin z-depth-dialog {
+    z-index: 24;
+    box-shadow: 0 24px 48px 0    rgba(0, 0, 0, 0.16),
+                0 0    24px 24px rgba(0, 0, 0, 0.12); 
+}

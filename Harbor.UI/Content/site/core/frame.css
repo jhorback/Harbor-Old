@@ -1,3 +1,31 @@
+/*
+ * color-container(theme, primary, accent)
+ *
+ * color(theme);
+ * color-quiet(theme);
+ * color-disabled(theme);
+ * color-devicer(theme);
+ *
+ * bg-color-content(theme)
+ * bg-color(theme)
+ * bg-color-bar(theme)
+ * bg-color-outerbar(theme)
+ *
+ */
+/*
+ * color-container(theme, primary, accent)
+ *
+ * color(theme);
+ * color-quiet(theme);
+ * color-disabled(theme);
+ * color-devicer(theme);
+ *
+ * bg-color-content(theme)
+ * bg-color(theme)
+ * bg-color-bar(theme)
+ * bg-color-outerbar(theme)
+ *
+ */
 #frame {
   min-height: 100%;
   height: auto !important;
@@ -39,7 +67,9 @@
       white-space: nowrap; }
     #frame-nav ul li {
       cursor: pointer;
-      float: left; }
+      float: left;
+      margin-right: 0.5em;
+      text-transform: uppercase; }
       #frame-nav ul li a {
         display: inline-block;
         padding: 0 1em;

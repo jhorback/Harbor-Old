@@ -1,3 +1,31 @@
+/*
+ * color-container(theme, primary, accent)
+ *
+ * color(theme);
+ * color-quiet(theme);
+ * color-disabled(theme);
+ * color-devicer(theme);
+ *
+ * bg-color-content(theme)
+ * bg-color(theme)
+ * bg-color-bar(theme)
+ * bg-color-outerbar(theme)
+ *
+ */
+/*
+ * color-container(theme, primary, accent)
+ *
+ * color(theme);
+ * color-quiet(theme);
+ * color-disabled(theme);
+ * color-devicer(theme);
+ *
+ * bg-color-content(theme)
+ * bg-color(theme)
+ * bg-color-bar(theme)
+ * bg-color-outerbar(theme)
+ *
+ */
 table {
   max-width: 100%;
   background-color: transparent;
@@ -25,8 +53,6 @@ table {
     display: inline-block;
     min-width: 8em;
     font-weight: bold; }
-  .datatable .datatable {
-    background-color: #FAFAFA; }
   .datatable tbody th {
     padding-top: 1.5em;
     font-size: 1.3em;

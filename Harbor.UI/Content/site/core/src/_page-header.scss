@@ -1,5 +1,5 @@
 @import "page-vars";
-
+@import "$color";
 
 
 @mixin page-header {
@@ -26,6 +26,11 @@
 	.page-header {
 		height: $page-header-height;		
 		line-height: $page-header-height; // - (.1 / 100);
+        overflow: hidden;
+        
+        // for the background image
+        background-repeat: no-repeat;
+		background-size: cover;
 
         .page-header-overlay {
             display: none; // for title background images
@@ -71,26 +76,9 @@
 @mixin page-header-theme {
 	.page-header {
         position: relative;
-        background: $page-header-background;
-        overflow: hidden;
-        color: $page-title-color;
-       
-         // for the background image
-        background-repeat: no-repeat;
-		background-size: cover;
-
-		h1 {
-			color: $page-title-color;
-			 a {			
-				color: $page-title-color;
-			}			
-		}
-         [contenteditable] {
-            &:hover, &:focus {
-                background: darken($page-header-background, 10%);
-            }
-        }
+        @include bg-color-bar;
 	}
+
     .page-header-overlay {
 		background: #000;
 		opacity: .23;
@@ -100,19 +88,5 @@
 		top: 0;
 		left: 0;
 	}
-    .page-nav {
-        a {
-            color: $page-title-color;
-        }
-    }
-
-	/*.centered {
-		.page-header {
-			margin-bottom: 1em;
-			h1 {
-				float: none;
-			}
-		}
-	}*/
 }
 

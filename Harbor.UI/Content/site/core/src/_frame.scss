@@ -75,6 +75,8 @@ $frame-logo-use-image: true !default;
 			li {
 				cursor: pointer;	
 				float:left;
+                 margin-right:.5em;
+                text-transform: uppercase;
 				a {
 					display: inline-block;
 					padding: 0 1em;
@@ -111,8 +113,6 @@ $frame-logo-use-image: true !default;
 @mixin frame-body {
 	#frame-body {
 		position: relative;
-		// min-height: 23em;
-		// background-color: $body-background-color;
 	}
 }
 
@@ -217,15 +217,7 @@ $frame-logo-use-image: true !default;
 		height: $frame-header-height;
 		line-height: $frame-header-height;
 		color: $framenav-color;
-		background: $framenav-background-color;
-
-		//position: fixed;
-		width:100%;
-		//@include box-shadow(0 2px 4px rgba(105,105,105,.25));
-
-		a, a:visited {
-		//	color: $framenav-color;
-		}
+		background: $framenav-background-color; // don't think i need this
 	}
 
 		
@@ -242,27 +234,9 @@ $frame-logo-use-image: true !default;
 	}
 
 	#frame-nav {
-        a, a:visited {
-            color: $framenav-color;
-            font-weight: bold;
-            font-size:.9em;
-        }
-
-        ul {
-
-        }
       
-		li {
-            margin-right:.5em;
-            text-transform: uppercase;
+		li {           
             border-bottom: 4px solid $framenav-background-color;
-
-			&:hover {
-				//border-bottom: 4px solid $framenav-border-selected;					
-                a {
-					color: $body-color;
-				}                    
-			}
 			&.selected{
 				border-bottom: 4px solid $framenav-border-selected;
 				a {
@@ -272,14 +246,9 @@ $frame-logo-use-image: true !default;
 		}
 	}
 
-	#frame-body {
-		
-		::-webkit-scrollbar-thumb {
-			background: $scrollbar-color;
-			&:hover{
-				background: darken($scrollbar-color, 10%);				
-			}
-		}		
+
+	#frame-body {		
+				
 	}
 
     #frame-footer {

@@ -1,3 +1,17 @@
+/*
+ * color-container(theme, primary, accent)
+ *
+ * color(theme);
+ * color-quiet(theme);
+ * color-disabled(theme);
+ * color-devicer(theme);
+ *
+ * bg-color-content(theme)
+ * bg-color(theme)
+ * bg-color-bar(theme)
+ * bg-color-outerbar(theme)
+ *
+ */
 .selectlist {
   clear: both; }
   .selectlist > ul {
@@ -32,9 +46,6 @@
       -ms-transition: all 0.2s ease-in-out;
       transition: all 0.2s ease-in-out; }
       .selectlist > ul > li.selected, .selectlist > ul > li:hover, .selectlist > ul > li:focus {
-        color: #333;
-        background-color: #FAFAFA;
-        border: 1px solid #FF3D00;
         cursor: default;
         outline: none; }
       .selectlist > ul > li h1, .selectlist > ul > li h2, .selectlist > ul > li h3, .selectlist > ul > li h4 {
