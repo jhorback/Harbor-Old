@@ -237,10 +237,15 @@ $frame-logo-use-image: true !default;
       
 		li {           
             border-bottom: 4px solid $framenav-background-color;
+            a {
+               //font-weight: bold;
+               @include opacity(.7);
+            }
 			&.selected{
-				border-bottom: 4px solid $framenav-border-selected;
+				border-bottom: 4px solid $color-primary;
 				a {
-					color: $framenav-color-selected;
+                    @include opacity(1);
+					color: $color-primary;
 				}
 			}			
 		}

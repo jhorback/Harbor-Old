@@ -5,8 +5,8 @@
 @mixin page-header {
     .has-titlebg {
         .page-header {
-            height: $page-header-height*2;
-            line-height: $page-header-height*2;
+            height: $page-header-height*3;
+            line-height: $page-header-height*3;
             .page-header-overlay {
                 display: block;
             }
@@ -24,8 +24,8 @@
 
 
 	.page-header {
-		height: $page-header-height;		
-		line-height: $page-header-height; // - (.1 / 100);
+		height: $page-header-height*2;		
+		line-height: $page-header-height*2; // - (.1 / 100);
         overflow: hidden;
         
         // for the background image

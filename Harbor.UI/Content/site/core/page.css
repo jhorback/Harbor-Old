@@ -32,8 +32,8 @@
   clear: both; }
 
 .has-titlebg .page-header {
-  height: 8em;
-  line-height: 8em; }
+  height: 12em;
+  line-height: 12em; }
   .has-titlebg .page-header .page-header-overlay {
     display: block; }
 
@@ -41,8 +41,8 @@
   display: none; }
 
 .page-header {
-  height: 4em;
-  line-height: 4em;
+  height: 8em;
+  line-height: 8em;
   overflow: hidden;
   background-repeat: no-repeat;
   background-size: cover; }

@@ -150,6 +150,9 @@ $bg-color-dark-outerbar:  #000000;
     //     disabled/hint, a, .link, hr colors for a container
 
     @include color($dark-or-light);
+    h1, h2, h3 {
+        @include color($dark-or-light);
+    }
     
     .quiet, small {
         @include color-quiet($dark-or-light);
@@ -159,12 +162,7 @@ $bg-color-dark-outerbar:  #000000;
         @include color-disabled($dark-or-light);
     }
 
-     .loud, .link, a {
-        color: $color-primary;
-         &:visited, &:focus, &:hover, &:active {
-			color: $color-primary;
-		}
-    }    
+        
     
      .attn {
          color: $color-accent;
@@ -180,4 +178,13 @@ $bg-color-dark-outerbar:  #000000;
            @include bg-color-outerbar($dark-or-light);
 		}
 	}
+}
+
+@mixin color-links($color: $color-primary){
+    .loud, .link, a {
+        color: $color;
+         &:visited, &:focus, &:hover, &:active {
+			color: $color;
+		}
+    } 
 }
