@@ -3,8 +3,10 @@
 @import "src/form";
 @import "src/menulist";
 @import "src/page";
+@import "src/_datatable.scss";
 @import "src/selectlist";
 @import "src/usermenu";
+@import "src/alert";
 
 @mixin theme {
 	@include foundation-theme;
@@ -12,6 +14,8 @@
     @include form-theme;
 	@include menulist-theme;
 	@include page-theme;
+    @include datatable-theme;
 	@include selectlist-theme;
 	@include usermenu-theme;
+    @include alert-theme;
 }

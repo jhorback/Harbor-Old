@@ -26,29 +26,39 @@
  * bg-color-outerbar(theme)
  *
  */
+/*
+ * color-container(theme, primary, accent)
+ *
+ * color(theme);
+ * color-quiet(theme);
+ * color-disabled(theme);
+ * color-devicer(theme);
+ *
+ * bg-color-content(theme)
+ * bg-color(theme)
+ * bg-color-bar(theme)
+ * bg-color-outerbar(theme)
+ *
+ */
 table {
   max-width: 100%;
-  background-color: transparent;
   border-collapse: collapse;
   border-spacing: 0; }
 
 .datatable {
   width: 100%;
-  margin-bottom: 25.6px; }
+  margin-bottom: 24px; }
   .datatable th, .datatable td {
-    padding: 0.6em;
-    line-height: 1.6;
+    padding: 0.5em;
+    line-height: 1.5;
     text-align: left;
-    vertical-align: top;
-    border-top: 1px solid #DDD; }
+    vertical-align: top; }
   .datatable th {
     font-weight: bold; }
   .datatable thead th {
     vertical-align: bottom; }
   .datatable colgroup + thead tr:first-child th, .datatable colgroup + thead tr:first-child td, .datatable thead:first-child tr:first-child th, .datatable thead:first-child tr:first-child td {
     border-top: 0; }
-  .datatable tbody + tbody {
-    border-top: 2px solid #DDD; }
   .datatable label {
     display: inline-block;
     min-width: 8em;
@@ -57,10 +67,7 @@ table {
     padding-top: 1.5em;
     font-size: 1.3em;
     font-weight: normal;
-    padding-left: 0.3em;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
-    opacity: 0.5; }
+    padding-left: 0.3em; }
   @media (min-width: 100em) {
     .datatable th, .datatable td {
       padding: 0.8em; } }
@@ -70,18 +77,6 @@ table {
   @media (max-width: 48em) {
     .datatable th, .datatable td {
       padding: 0.1em; } }
-
-.hover tr:hover td {
-  background-color: #F5F5F5; }
-
-.striped .striped > td, .striped > tr:nth-child(odd) > td {
-  background-color: #F9F9F9; }
-
-tr.selected td {
-  color: #FFF;
-  background-color: #FF3D00; }
-  tr.selected td:hover {
-    background-color: #FF3D00; }
 
 .condensed th, .condensed td {
   padding: 0.3em; }

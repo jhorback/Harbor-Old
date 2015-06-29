@@ -335,10 +335,10 @@ pre, code {
   font-family: Monaco, Menlo, Consolas, 'Courier New', monospace;
   background: #F5F5F5;
   border: 1px solid #DDD;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -ms-border-radius: 5px;
-  border-radius: 5px; }
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -ms-border-radius: 3px;
+  border-radius: 3px; }
 
 pre {
   padding: 0.8em;
@@ -357,10 +357,10 @@ code {
   background: #FFF;
   padding: 1em;
   overflow: auto;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -ms-border-radius: 5px;
-  border-radius: 5px; }
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -ms-border-radius: 3px;
+  border-radius: 3px; }
   .outline:after {
     content: "";
     display: table;

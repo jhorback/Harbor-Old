@@ -1,50 +1,42 @@
 @import "foundation";
 @import "media";
-@import "../mixins/opacity";
-
-$table-background-color: transparent;
-$table-border-color: #DDD;
-$table-row-backgrond-color-accent: #F9F9F9;
-$table-row-backgrond-color-hover: #F5F5F5;
-
-$datalist-selected-color: #FFF !default;
+@import "_$color.scss";
 
 
 @mixin datatable {
 
 	// BASE TABLES
 	// -----------------
-
 	table {
 	  max-width: 100%;
-	  background-color: $table-background-color;
 	  border-collapse: collapse;
 	  border-spacing: 0;
 	}
 
-
 	// BASELINE STYLES
 	// ---------------
-
 	.datatable {
 	  width: 100%;
 	  margin-bottom: $body-line-height-px;
+
 	  // Cells
 	  th,
 	  td {
-		padding: .6em;
+		padding: .5em;
 		line-height: $body-line-height;
 		text-align: left;
 		vertical-align: top;
-		border-top: 1px solid $table-border-color;
 	  }
+
 	  th {
 		font-weight: bold;
 	  }
+
 	  // Bottom align for column headings
 	  thead th {
 		vertical-align: bottom;
 	  }
+
 	  // Remove top border from thead by default
 	  colgroup + thead tr:first-child th,
 	  colgroup + thead tr:first-child td,
@@ -52,10 +44,7 @@ $datalist-selected-color: #FFF !default;
 	  thead:first-child tr:first-child td {
 		border-top: 0;
 	  }
-	  // Account for multiple tbody instances
-	  tbody + tbody {
-		border-top: 2px solid $table-border-color;
-	  }
+
       // labels
       label {
           display: inline-block;
@@ -63,54 +52,23 @@ $datalist-selected-color: #FFF !default;
           font-weight: bold;
       }
 
-
 	  // stripes
 	  tbody {
 		
 		// groups
 		th {
-            //margin:0;
 			padding-top: 1.5em;
             font-size: 1.3em;
             font-weight: normal;
             padding-left:.3em;
-            @include opacity(.5);
+            // @include opacity(.5);
 		}		
 	  }
 
 	  @include onwidescreen { th, td { padding: .8em } }
 	  @include ontablet { th, td { padding: .3em } }
 	  @include onphone { th, td { padding: .1em } }
-
 	}
-
-
-	// hover
-	.hover {
-		// tr:hover th,
-		tr:hover td {
-		  background-color: $table-row-backgrond-color-hover;
-		}
-	}
-
-
-	// stripes
-	.striped {
-		//> tr:nth-child(odd) > th,
-		.striped > td,
-		> tr:nth-child(odd) > td {
-		  background-color: $table-row-backgrond-color-accent;
-		}
-	}
-
-    tr.selected td {
-		color: $datalist-selected-color;
-		background-color: $datalist-selected-background-color;
-        &:hover {
-	    	background-color: $datalist-selected-background-color;
-        }
-	}	
-
 
 	// CONDENSED TABLE W/ HALF PADDING
 	// -------------------------------
@@ -119,4 +77,49 @@ $datalist-selected-color: #FFF !default;
 		padding: .3em;
 	  }
 	}
+}
+
+
+@mixin datatable-theme($dark-or-light: $color-theme) {
+    .datatable {
+        @include bg-color-content;
+
+        tr.selected td {
+            @include color-selected-container;
+        }
+
+        td {
+            @if ($dark-or-light == "dark") {
+                border-top: 1px solid $color-dark-divider;
+            } @else {
+                border-top: 1px solid $color-light-divider; 
+            }
+        }
+
+        // hover
+	    &.hover {
+		    // tr:hover th,
+		    tr:hover td {
+                @if ($dark-or-light == "dark") {
+                    background-color: $color-dark-divider;
+                } @else {
+                    background-color: $color-light-divider; 
+                }
+		    }
+	    }
+
+
+	    // stripes
+	    .striped {
+		    //> tr:nth-child(odd) > th,
+		    .striped > td,
+		    > tr:nth-child(odd) > td {
+                @if ($dark-or-light == "dark") {
+                    color: $color-dark-divider;
+                } @else {
+                    color: $color-light-divider; 
+                }
+		    }
+	    }
+    }
 }

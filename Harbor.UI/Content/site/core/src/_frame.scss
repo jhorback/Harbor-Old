@@ -33,7 +33,7 @@ $frame-logo-use-image: true !default;
         height: auto !important;
         height: 100%;
         //margin: 1em auto ($frame-footer-height*-1) 0;
-	}	
+	}
 	@include frame-header;
 	@include frame-body;
 	@include frame-footer;	

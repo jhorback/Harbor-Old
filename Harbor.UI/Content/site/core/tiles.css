@@ -84,10 +84,10 @@
 
 .hover .tile:hover, .hover .tile:focus, .hover.tile:hover, .hover.tile:focus {
   border-color: #ccc;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -ms-border-radius: 5px;
-  border-radius: 5px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -ms-border-radius: 3px;
+  border-radius: 3px;
   -moz-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
   -webkit-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
   -ms-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);

@@ -1,4 +1,9 @@
 #message {
+  /*
+             // height: 3em; would need to specify height if positioning on bottom - then support a 5em .tall height as well?!
+        line-height: 2em;
+        padding: .5em 1em;
+        */
   position: fixed;
   z-index: 1;
   top: 5em;

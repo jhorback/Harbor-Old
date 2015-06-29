@@ -138,6 +138,62 @@
  * bg-color-outerbar(theme)
  *
  */
+/*
+ * color-container(theme, primary, accent)
+ *
+ * color(theme);
+ * color-quiet(theme);
+ * color-disabled(theme);
+ * color-devicer(theme);
+ *
+ * bg-color-content(theme)
+ * bg-color(theme)
+ * bg-color-bar(theme)
+ * bg-color-outerbar(theme)
+ *
+ */
+/*
+ * color-container(theme, primary, accent)
+ *
+ * color(theme);
+ * color-quiet(theme);
+ * color-disabled(theme);
+ * color-devicer(theme);
+ *
+ * bg-color-content(theme)
+ * bg-color(theme)
+ * bg-color-bar(theme)
+ * bg-color-outerbar(theme)
+ *
+ */
+/*
+ * color-container(theme, primary, accent)
+ *
+ * color(theme);
+ * color-quiet(theme);
+ * color-disabled(theme);
+ * color-devicer(theme);
+ *
+ * bg-color-content(theme)
+ * bg-color(theme)
+ * bg-color-bar(theme)
+ * bg-color-outerbar(theme)
+ *
+ */
+/*
+ * color-container(theme, primary, accent)
+ *
+ * color(theme);
+ * color-quiet(theme);
+ * color-disabled(theme);
+ * color-devicer(theme);
+ *
+ * bg-color-content(theme)
+ * bg-color(theme)
+ * bg-color-bar(theme)
+ * bg-color-outerbar(theme)
+ *
+ */
 /*$body - color: rgba(0, 0, 0, 0.870588); //#585a5b;
 $framenav - background-color: #FFF;
 $page- header-background: $color-primary;
@@ -146,51 +202,33 @@ $framenav- color-hover: #000;
 $framenav- border-selected: $color-accent-dark;
 $framenav- color-selected: $color-accent-dark;*/
 html, body {
+  color: rgba(0, 0, 0, 0.87);
   font-size: 16px;
   font-family: "OpenSans", "Segoe UI", "Helvetica Neue", Arial;
-  line-height: 1.6; }
-  html else, body else {
-    color: #FFF; }
-  html .quiet else, html small else, body .quiet else, body small else {
-    color: #FFF;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
-    opacity: 0.7; }
-  html [disabled] else, html .disabled else, html .hint else, body [disabled] else, body .disabled else, body .hint else {
-    color: #FFF;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30);
-    opacity: 0.3; }
+  line-height: 1.5; }
+  html .quiet, html small, body .quiet, body small {
+    color: rgba(0, 0, 0, 0.54); }
+  html [disabled], html .disabled, html .hint, body [disabled], body .disabled, body .hint {
+    color: rgba(0, 0, 0, 0.26); }
   html .loud, html .link, html a, body .loud, body .link, body a {
     color: #0097a7; }
     html .loud:visited, html .loud:focus, html .loud:hover, html .loud:active, html .link:visited, html .link:focus, html .link:hover, html .link:active, html a:visited, html a:focus, html a:hover, html a:active, body .loud:visited, body .loud:focus, body .loud:hover, body .loud:active, body .link:visited, body .link:focus, body .link:hover, body .link:active, body a:visited, body a:focus, body a:hover, body a:active {
       color: #0097a7; }
   html .attn, body .attn {
     color: #FF3D00; }
-  html hr else, body hr else {
-    color: #FFF;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=12)";
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=12);
-    opacity: 0.12; }
-  html ::-webkit-scrollbar-thumb else, body ::-webkit-scrollbar-thumb else {
+  html hr, body hr {
+    color: rgba(0, 0, 0, 0.12); }
+  html ::-webkit-scrollbar-thumb, body ::-webkit-scrollbar-thumb {
     background-color: #F5F5F5; }
-  html ::-webkit-scrollbar-thumb:hover else, body ::-webkit-scrollbar-thumb:hover else {
-    background-color: #000000; }
+    html ::-webkit-scrollbar-thumb:hover, body ::-webkit-scrollbar-thumb:hover {
+      background-color: #000000; }
 
-else {
-  color: #FFF; }
+color: rgba(0, 0, 0, 0.87);
+.quiet, small {
+  color: rgba(0, 0, 0, 0.54); }
 
-.quiet else, small else {
-  color: #FFF;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
-  opacity: 0.7; }
-
-[disabled] else, .disabled else, .hint else {
-  color: #FFF;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30);
-  opacity: 0.3; }
+[disabled], .disabled, .hint {
+  color: rgba(0, 0, 0, 0.26); }
 
 .loud, .link, a {
   color: #0097a7; }
@@ -200,29 +238,26 @@ else {
 .attn {
   color: #FF3D00; }
 
-hr else {
-  color: #FFF;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=12)";
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=12);
-  opacity: 0.12; }
+hr {
+  color: rgba(0, 0, 0, 0.12); }
 
-::-webkit-scrollbar-thumb else {
+::-webkit-scrollbar-thumb {
   background-color: #F5F5F5; }
-::-webkit-scrollbar-thumb:hover else {
-  background-color: #000000; }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #000000; }
 
 h1, h2, h3, h4, h5, h6 {
   color: #393d40;
-  margin-top: 12.8px;
+  margin-top: 12px;
   margin-bottom: 0.25em; }
 
 ul, ol {
-  margin-bottom: 12.8px; }
+  margin-bottom: 12px; }
   ul:only-of-type, ol:only-of-type {
     margin-bottom: 0; }
 
 dl {
-  margin-bottom: 25.6px; }
+  margin-bottom: 24px; }
   dl:only-of-type {
     margin-bottom: 0; }
   dl.list-wide dt {
@@ -239,11 +274,11 @@ dl {
       margin-left: auto; } }
 
 dt, dd {
-  line-height: 1.6;
-  margin-bottom: 12.8px; }
+  line-height: 1.5;
+  margin-bottom: 12px; }
 
 dd {
-  margin-left: 12.8px; }
+  margin-left: 12px; }
 
 #frame-header {
   height: 4em;
@@ -279,9 +314,8 @@ legend {
   background: #eaeaea; }
 
 .page-header {
-  position: relative; }
-  .page-header else {
-    background-color: #F5F5F5; }
+  position: relative;
+  background-color: #F5F5F5; }
 
 .page-header-overlay {
   background: #000;
@@ -292,11 +326,63 @@ legend {
   top: 0;
   left: 0; }
 
+.datatable {
+  background-color: #FFFFFF; }
+  .datatable tr.selected td {
+    background-color: #B2EBF2;
+    color: rgba(0, 0, 0, 0.87); }
+    .datatable tr.selected td .quiet, .datatable tr.selected td small {
+      color: rgba(0, 0, 0, 0.54); }
+    .datatable tr.selected td [disabled], .datatable tr.selected td .disabled, .datatable tr.selected td .hint {
+      color: rgba(0, 0, 0, 0.26); }
+    .datatable tr.selected td .loud, .datatable tr.selected td .link, .datatable tr.selected td a {
+      color: #0097a7; }
+      .datatable tr.selected td .loud:visited, .datatable tr.selected td .loud:focus, .datatable tr.selected td .loud:hover, .datatable tr.selected td .loud:active, .datatable tr.selected td .link:visited, .datatable tr.selected td .link:focus, .datatable tr.selected td .link:hover, .datatable tr.selected td .link:active, .datatable tr.selected td a:visited, .datatable tr.selected td a:focus, .datatable tr.selected td a:hover, .datatable tr.selected td a:active {
+        color: #0097a7; }
+    .datatable tr.selected td .attn {
+      color: #FF3D00; }
+    .datatable tr.selected td hr {
+      color: rgba(0, 0, 0, 0.12); }
+    .datatable tr.selected td ::-webkit-scrollbar-thumb {
+      background-color: #F5F5F5; }
+      .datatable tr.selected td ::-webkit-scrollbar-thumb:hover {
+        background-color: #000000; }
+  .datatable td {
+    border-top: 1px solid rgba(0, 0, 0, 0.12); }
+  .datatable.hover tr:hover td {
+    background-color: rgba(0, 0, 0, 0.12); }
+  .datatable .striped .striped > td, .datatable .striped > tr:nth-child(odd) > td {
+    color: rgba(0, 0, 0, 0.12); }
+
 .selectlist > ul > li.selected {
   color: #FFF;
   background-color: #FF3D00; }
   .selectlist > ul > li.selected h1, .selectlist > ul > li.selected h2, .selectlist > ul > li.selected h3 {
     color: #FFF !important; }
+
+background-color: #FAFAFA;
+color: rgba(0, 0, 0, 0.87);
+.quiet, small {
+  color: rgba(0, 0, 0, 0.54); }
+
+[disabled], .disabled, .hint {
+  color: rgba(0, 0, 0, 0.26); }
+
+.loud, .link, a {
+  color: #0097a7; }
+  .loud:visited, .loud:focus, .loud:hover, .loud:active, .link:visited, .link:focus, .link:hover, .link:active, a:visited, a:focus, a:hover, a:active {
+    color: #0097a7; }
+
+.attn {
+  color: #FF3D00; }
+
+hr {
+  color: rgba(0, 0, 0, 0.12); }
+
+::-webkit-scrollbar-thumb {
+  background-color: #F5F5F5; }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #000000; }
 
 #frame-footer-image {
   background: url(images/footer-signature.png) no-repeat left center !important;

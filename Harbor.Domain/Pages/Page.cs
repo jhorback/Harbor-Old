@@ -36,6 +36,8 @@ namespace Harbor.Domain.Pages
 			TemplateStr = "";
 			AutoPreviewImage = true;
 			AutoPreviewText = true;
+
+			TitleProperties = new PageTitleProperties();
 		}
 
 		#region properties
