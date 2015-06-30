@@ -61,12 +61,9 @@ $frame-logo-use-image: true !default;
 		//@include single-text-shadow(rgba(#000, 0.6), 1px, 1px, 2px);
 	}
 
-    #frame-nav, #frame-session {
+	#frame-nav {
         line-height: 2em;
         margin-top: 2em;
-    }
-
-	#frame-nav {
         position: relative;
         top: -4px;
 		float: left;
@@ -99,6 +96,7 @@ $frame-logo-use-image: true !default;
 
 	#frame-session {
 		float: right;
+        line-height: 2em;
         top: -.5em;
 		a {
 			padding: 0 1em;

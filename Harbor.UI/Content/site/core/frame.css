@@ -43,11 +43,9 @@
   #frame-logo span {
     font-size: 2em; }
 
-#frame-nav, #frame-session {
-  line-height: 2em;
-  margin-top: 2em; }
-
 #frame-nav {
+  line-height: 2em;
+  margin-top: 2em;
   position: relative;
   top: -4px;
   float: left; }
@@ -82,6 +80,7 @@
 
 #frame-session {
   float: right;
+  line-height: 2em;
   top: -0.5em; }
   #frame-session a {
     padding: 0 1em;

@@ -2,6 +2,7 @@
 @import "../mixins/border-radius";
 @import "../mixins/box-shadow";
 @import "../mixins/opacity";
+@import "src/_$z-depth.scss";
 
 $menu-color: #000;
 $menu-title-color: #09c;
@@ -34,9 +35,9 @@ $menu-border-color: rgba(#000, 0.3);
 			}
 		}
 
-        @include border-radius(3px);
-        //0 2px 40px rgba(0,0,0,0.4)
-		@include box-shadow-value(-2px 4px 20px $menu-border-color);
+        @include border-radius;
+        @include z-depth-menu;
+		// @include box-shadow-value(-2px 4px 20px $menu-border-color);
 		@include clearfix;
 	}
 	

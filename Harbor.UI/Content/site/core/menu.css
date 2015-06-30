@@ -1,3 +1,16 @@
+/*
+ *
+ * 24 - dialogs
+ * 16 - top level menus
+ * 12 - pressed (FAB)
+ * 8 - Menu, pressed(card, raised button)
+ * 6 - FAB
+ * 4 - App Bar
+ * 3 - 
+ * 2 - card, raised button
+ * 0
+ *
+ */
 .menu {
   position: absolute;
   z-index: 100;
@@ -9,10 +22,8 @@
   -webkit-border-radius: 3px;
   -ms-border-radius: 3px;
   border-radius: 3px;
-  -moz-box-shadow: -2px 4px 20px rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: -2px 4px 20px rgba(0, 0, 0, 0.3);
-  -ms-box-shadow: -2px 4px 20px rgba(0, 0, 0, 0.3);
-  box-shadow: -2px 4px 20px rgba(0, 0, 0, 0.3); }
+  z-index: 8;
+  box-shadow: 0 4px 16px 2px rgba(0, 0, 0, 0.3), 0 0 2px 1px rgba(0, 0, 0, 0.12); }
   .menu .menu-close {
     position: absolute;
     top: 0;
