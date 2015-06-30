@@ -24,66 +24,72 @@
 	<div class="page-body">
 		<div class="page-content hide">
 			<form class="form-wide">
-				<fieldset>
-					<dl class="list-wide">
-						<dt>Username</dt>
-						<dd data-bind="userName"></dd>
-						<dt>Name</dt>
-						<dd id="ua-name">
-							<span data-bind="displayName"></span>
-							<button type="button" class="margin-left link">change</button>
-						</dd>
-						<dt>Email</dt>
-						<dd id="ua-email">
-							<span data-bind="displayEmail"></span>
-							<button type="button" class="margin-left link">change</button>
-						</dd>
-						<dt></dt>
-						<dd>
-							<input type="button" name="changePassword" value="Change your password" />
-						</dd>
-					</dl>
-				</fieldset>
-				@if (canAuthorPages)
-				{
+				<div class="card pad">
 					<fieldset>
-						<legend>PayPal Settings</legend>
 						<dl class="list-wide">
-							<dt>Merchant account ID</dt>
-							<dd id="ua-paypal">
-								<span data-bind="displayPayPalMerchantAccountID"></span>
+							<dt>Username</dt>
+							<dd data-bind="userName"></dd>
+							<dt>Name</dt>
+							<dd id="ua-name">
+								<span data-bind="displayName"></span>
 								<button type="button" class="margin-left link">change</button>
 							</dd>
+							<dt>Email</dt>
+							<dd id="ua-email">
+								<span data-bind="displayEmail"></span>
+								<button type="button" class="margin-left link">change</button>
+							</dd>
+							<dt></dt>
+							<dd>
+								<input type="button" name="changePassword" value="Change your password" />
+							</dd>
 						</dl>
-						<div>
-							<small>
-								You can find your PayPal merchant account ID on your PayPal profile page:
-								<a href="https://www.paypal.com/webapps/customerprofile/summary.view">https://www.paypal.com/webapps/customerprofile/summary.view</a>
-								<br />
-								If you don't have a merchant ID you can use the e-mail address associated with PayPal.
-							</small>
-						</div>
 					</fieldset>
+				</div>
+				@if (canAuthorPages)
+				{
+					<div class="card pad">
+						<fieldset>
+							<legend>PayPal Settings</legend>
+							<dl class="list-wide">
+								<dt>Merchant account ID</dt>
+								<dd id="ua-paypal">
+									<span data-bind="displayPayPalMerchantAccountID"></span>
+									<button type="button" class="margin-left link">change</button>
+								</dd>
+							</dl>
+							<div>
+								<small>
+									You can find your PayPal merchant account ID on your PayPal profile page:
+									<a href="https://www.paypal.com/webapps/customerprofile/summary.view">https://www.paypal.com/webapps/customerprofile/summary.view</a>
+									<br />
+									If you don't have a merchant ID you can use the e-mail address associated with PayPal.
+								</small>
+							</div>
+						</fieldset>
+					</div>
 				}
 				@if (canViewPages || canViewFiles)
 				{
-					<fieldset id="ua-administrative">
-						<legend>View your...</legend>
-						<ul class="list-style-none">
-							@if (canViewPages)
-							{ 
-								<li>
-									<a href="~/User/Pages">Pages</a>
-								</li>
-							}
-							@if (canViewFiles)
-							{
-								<li>
-									<a href="~/User/Files">Uploaded Files</a>
-								</li>
-							}
-						</ul>			
-					</fieldset>
+					<div class="card pad">
+						<fieldset id="ua-administrative">
+							<legend>View your...</legend>
+							<ul class="list-style-none">
+								@if (canViewPages)
+								{ 
+									<li>
+										<a href="~/User/Pages">Pages</a>
+									</li>
+								}
+								@if (canViewFiles)
+								{
+									<li>
+										<a href="~/User/Files">Uploaded Files</a>
+									</li>
+								}
+							</ul>			
+						</fieldset>
+					</div>
 				}
 			</form>
 		</div>

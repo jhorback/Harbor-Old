@@ -26,6 +26,33 @@
  * bg-color-outerbar(theme)
  *
  */
+/*
+ *
+ * 24 - dialogs
+ * 16 - top level menus
+ * 12 - pressed (FAB)
+ * 8 - Menu, pressed(card, raised button)
+ * 6 - FAB
+ * 4 - App Bar
+ * 3 - 
+ * 2 - card, raised button
+ * 0
+ *
+ */
+/*
+ * color-container(theme, primary, accent)
+ *
+ * color(theme);
+ * color-quiet(theme);
+ * color-disabled(theme);
+ * color-devicer(theme);
+ *
+ * bg-color-content(theme)
+ * bg-color(theme)
+ * bg-color-bar(theme)
+ * bg-color-outerbar(theme)
+ *
+ */
 .tiles {
   margin-left: -1%;
   list-style: none; }
@@ -48,14 +75,11 @@
 .tile {
   display: block;
   word-wrap: break-word;
-  border: 1px solid transparent;
   margin-bottom: 1em;
   -moz-transition: all 0.2s ease-in-out;
   -webkit-transition: all 0.2s ease-in-out;
   -ms-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out; }
-  .tile.selected {
-    overflow: visible; }
   .tile .media {
     text-align: center;
     display: block;
@@ -132,3 +156,9 @@
         width: 100%; }
       .tile-wide .caption {
         width: 100%; } }
+
+.card {
+  background-color: #FFFFFF;
+  z-index: 2;
+  box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.14), 0 0 1px 1px rgba(0, 0, 0, 0.12);
+  margin-bottom: 1em; }

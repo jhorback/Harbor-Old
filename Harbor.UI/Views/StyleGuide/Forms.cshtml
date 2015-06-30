@@ -13,51 +13,52 @@
 	<p>
 		The default form uses labels placed on the same row as the input.
 	</p>
-	<div class="outline example">
-		<form>
-			<fieldset>
-				<legend>Legend</legend>
-				<div class="form-field">
-					<label>Label name</label>
-					<input type="text" placeholder="Type something…">
-					<span>Example extra text in a span.</span>
-				</div>
-				<div class="form-field">
-					<label for="password">Password</label>
-					<input id="password" type="password" placeholder="Enter a password..." />
-					<div>Example extra text in a div.</div>
-				</div>
-				<div class="form-field">
-					<label for="select">Select</label>
-					<select id="select">
-						<option>Option 1</option>
-						<option>Option 2</option>
-					</select>
-				</div>
-				<div class="form-field">
-					<input id="checkbox" type="checkbox" />
-					<label for="checkbox">Checkbox label</label>
-				</div>
-				<div class="form-field">
-					<input type="radio" id="rad_1" name="rad"  value="1" checked />
-					<label for="rad_1">Option 1</label>
-				</div>
-				<div class="form-field">
-					<input type="radio" id="rad_2" name="rad" value="2" />
-					<label for="rad_2">Option 2</label>
-				</div>
-				<div class="form-field">
-					<label for="textarea">Text2</label>
-					<textarea id="textarea" rows="3" cols="30"></textarea>
-				</div>
+	<div class="card">
+		<div class="outline example">
+			<form>
+				<fieldset>
+					<legend>Legend</legend>
+					<div class="form-field">
+						<label>Label name</label>
+						<input type="text" placeholder="Type something…">
+						<span>Example extra text in a span.</span>
+					</div>
+					<div class="form-field">
+						<label for="password">Password</label>
+						<input id="password" type="password" placeholder="Enter a password..." />
+						<div>Example extra text in a div.</div>
+					</div>
+					<div class="form-field">
+						<label for="select">Select</label>
+						<select id="select">
+							<option>Option 1</option>
+							<option>Option 2</option>
+						</select>
+					</div>
+					<div class="form-field">
+						<input id="checkbox" type="checkbox" />
+						<label for="checkbox">Checkbox label</label>
+					</div>
+					<div class="form-field">
+						<input type="radio" id="rad_1" name="rad"  value="1" checked />
+						<label for="rad_1">Option 1</label>
+					</div>
+					<div class="form-field">
+						<input type="radio" id="rad_2" name="rad" value="2" />
+						<label for="rad_2">Option 2</label>
+					</div>
+					<div class="form-field">
+						<label for="textarea">Text2</label>
+						<textarea id="textarea" rows="3" cols="30"></textarea>
+					</div>
 				
-				<div class="form-controls">
-					<button type="submit">Submit</button>
-				</div>
-			</fieldset>
-		</form>
-	</div>
-	<pre class="prettyprint linenums">
+					<div class="form-controls">
+						<button type="submit">Submit</button>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+		<pre class="prettyprint linenums">
 &lt;form>
 	&lt;fieldset>
 		&lt;legend>Legend&lt;/legend>
@@ -100,71 +101,74 @@
 	&lt;/fieldset>
 &lt;/form>
 </pre>
+	</div>
 	
-	
-	<h2>Wide Form</h2>
+		<h2>Wide Form</h2>
 	<p>
 		A wide form places most labels to the left of their inputs taking up more horizontal space.
 		This form will collapse to a default form on smaller screens.
 	</p>
-	<div class="outline example">
-		<form class="form-wide">
-			<fieldset>
-				<legend>Legend</legend>
-				<div class="form-field">
-					<label>Label name</label>
-					<input type="text" placeholder="Type something…">
-					<span>Example extra text in a span.</span>
-					<div>Example extra text in a div.</div>
-				</div>
-				<div class="form-field">
-					<label for="select2">Select</label>
-					<select id="select2">
-						<option>Option 1</option>
-						<option>Option 2</option>
-					</select>
-				</div>
-				<div class="form-field">
-					<input id="checkbox2" type="checkbox" />
-					<label for="checkbox2">Checkbox label</label>
-				</div>
-				<div class="form-field">
-					<input type="radio" id="rad_3" name="rad"  value="1" checked />
-					<label for="rad_3">Option 1</label>
-				</div>
-				<div class="form-field">
-					<input type="radio" id="rad_4" name="rad" value="2" />
-					<label for="rad_4">Option 2</label>
-				</div>
-				<div class="form-field">
-					<label for="textarea">Text2</label>
-					<textarea id="textarea" rows="3" cols="30"></textarea>
-				</div>
-				<div class="form-controls">
-					<button type="submit">Submit</button>
-				</div>
-			</fieldset>
-		</form>
-	</div>
-	<pre class="prettyprint linenums">
+	<div class="card">
+		<div class="outline example">
+			<form class="form-wide">
+				<fieldset>
+					<legend>Legend</legend>
+					<div class="form-field">
+						<label>Label name</label>
+						<input type="text" placeholder="Type something…">
+						<span>Example extra text in a span.</span>
+						<div>Example extra text in a div.</div>
+					</div>
+					<div class="form-field">
+						<label for="select2">Select</label>
+						<select id="select2">
+							<option>Option 1</option>
+							<option>Option 2</option>
+						</select>
+					</div>
+					<div class="form-field">
+						<input id="checkbox2" type="checkbox" />
+						<label for="checkbox2">Checkbox label</label>
+					</div>
+					<div class="form-field">
+						<input type="radio" id="rad_3" name="rad" value="1" checked />
+						<label for="rad_3">Option 1</label>
+					</div>
+					<div class="form-field">
+						<input type="radio" id="rad_4" name="rad" value="2" />
+						<label for="rad_4">Option 2</label>
+					</div>
+					<div class="form-field">
+						<label for="textarea">Text2</label>
+						<textarea id="textarea" rows="3" cols="30"></textarea>
+					</div>
+					<div class="form-controls">
+						<button type="submit">Submit</button>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+		<pre class="prettyprint linenums">
 &lt;form class="form-wide">
 ...
 &lt;/form>
 </pre>
+	</div>
 	
 	<h2>Inline Form</h2>
-	<div class="outline example">
-		<form class="form-inline">
-			<input type="text" placeholder="Email">
-			<input type="password" placeholder="Password">
-			<button type="submit">Sign in</button>
-			<span class="nowrap">
-				<input id="checkbox3" type="checkbox" />
-				<label for="checkbox3">Remember me?</label>
-			</span>
-		</form>
-	</div>
-	<pre class="prettyprint linenums">
+	<div class="card">
+		<div class="outline example">
+			<form class="form-inline">
+				<input type="text" placeholder="Email">
+				<input type="password" placeholder="Password">
+				<button type="submit">Sign in</button>
+				<span class="nowrap">
+					<input id="checkbox3" type="checkbox" />
+					<label for="checkbox3">Remember me?</label>
+				</span>
+			</form>
+		</div>
+		<pre class="prettyprint linenums">
 &lt;form class="form-inline">
 	&lt;input type="text" placeholder="Email">
 	&lt;input type="password" placeholder="Password">
@@ -175,64 +179,69 @@
 	&lt;/span>
 &lt;/form>
 </pre>
-	
-	<hr />
 
-	<h2>Buttons</h2>
-	<p>
-		Native button elements will be styled automatically.
-		If wanting to make a link or span look like a button use the <code>.button</code> class.
-	</p>
+	</div>
+	
+		<h2>Buttons</h2>
+		<p>
+			Native button elements will be styled automatically.
+			If wanting to make a link or span look like a button use the <code>.button</code> class.
+		</p>
 	<p>
 		There is also the <code>.loud</code> class to indicate importance, and the <code>.attn</code>
 		class to grab the users attention. (The attn class should be limited to one per visual screen.)
 	</p>
-	<div class="outline example">
-		<input type="button" value="Standard button" />
-		<button class="loud">Loud button</button>
-		<a href="#" class="button attn">Attn button</a>
-	</div>
-	<pre class="prettyprint linenums">
+	<div class="card">
+
+		<div class="outline example">
+			<input type="button" value="Standard button" />
+			<button class="loud">Loud button</button>
+			<a href="#" class="button attn">Attn button</a>
+		</div>
+		<pre class="prettyprint linenums">
 &lt;input type="button" value="Standard button" />
 &lt;button class="loud">Loud button&lt;/button>
 &lt;a href="#" class="button attn">Attn button&lt;/a>	
 </pre>
-	<h3>Disabled Buttons</h3>
-	<p>
-		All buttons will style accordingly when adding the <code>[disabled]</code> attribute.
-	</p>
-	<div class="outline example">
-		<input type="button" value="Standard button" disabled />
-		<button class="loud" disabled>Loud button</button>
-		<a href="#" class="button attn" disabled>Attn button</a>
 	</div>
-	<pre class="prettyprint linenums">
+		<p>
+			All buttons will style accordingly when adding the <code>[disabled]</code> attribute.
+		</p>
+		<h3>Disabled Buttons</h3>
+	<div class="card">
+		<div class="outline example">
+			<input type="button" value="Standard button" disabled />
+			<button class="loud" disabled>Loud button</button>
+			<a href="#" class="button attn" disabled>Attn button</a>
+		</div>
+		<pre class="prettyprint linenums">
 &lt;input type="button" value="Standard button" disabled />
 &lt;button class="loud" disabled>Loud button&lt;/button>
 &lt;a href="#" class="button attn" disabled>Attn button&lt;/a>	
 </pre>
-	
-	<hr />
 
-	<h2>Additional Form Styling</h2>
-
-	<h3>Errors</h3>
-	<p>To draw attention to a field add a <code>.error</code> class name on the <code>.form-field</code> div.</p>
-	<p>An <code>.alert</code> div can be used for general form errors. h1 - h4 headings can be used (and all style the same way).</p>
-	<div class="outline example">
-		<form class="error">
-			<div class="alert-error"><h1>There was an error</h1>This is a general form alert.</div>
-			<fieldset>
-				<legend>Legend</legend>
-				<div class="form-field error">
-					<label for="text1">Label name</label>
-					<input type="text" id="text1" placeholder="Type something…">
-					<span data-validation-for="text1">Example block-level help in a span.</span>
-				</div>
-			</fieldset>
-		</form>
 	</div>
-	<pre class="prettyprint linenums">
+		<h2>Additional Form Styling</h2>
+
+		<h3>Errors</h3>
+		<p>To draw attention to a field add a <code>.error</code> class name on the <code>.form-field</code> div.</p>
+		<p>An <code>.alert</code> div can be used for general form errors. h1 - h4 headings can be used (and all style the same way).</p>
+	<div class="card">
+
+		<div class="outline example">
+			<form class="error">
+				<div class="alert-error"><h1>There was an error</h1>This is a general form alert.</div>
+				<fieldset>
+					<legend>Legend</legend>
+					<div class="form-field error">
+						<label for="text1">Label name</label>
+						<input type="text" id="text1" placeholder="Type something…">
+						<span data-validation-for="text1">Example block-level help in a span.</span>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+		<pre class="prettyprint linenums">
 &lt;form class="error">
 	&lt;div class="alert-error">&lt;h1>There was an error.&lt;/h1>This is a general form alert.&lt;/div>
 	&lt;fieldset>
@@ -245,35 +254,38 @@
 	&lt;/fieldset>
 &lt;/form>
 </pre>
-	
-
-	<h3>Disabled Fields</h3>
-	<p>Simple use the <code>[disabled]</code> attribute on any item to disable it.</p>
-	<div class="outline example">
-		<label disabled>Disabled label</label>
-		<input type="text" disabled value="This is a disabled field" />
-		<input type="button" disabled valuie="Disabled button" value="Go" />	
 	</div>
-	<pre class="prettyprint linenums">
+
+
+		<h3>Disabled Fields</h3>
+	<p>Simple use the <code>[disabled]</code> attribute on any item to disable it.</p>
+	<div class="card">
+		<div class="outline example">
+			<label disabled>Disabled label</label>
+			<input type="text" disabled value="This is a disabled field" />
+			<input type="button" disabled valuie="Disabled button" value="Go" />
+		</div>
+		<pre class="prettyprint linenums">
 &lt;label disabled>Disabled label&lt;/label>
 &lt;input type="text" disabled value="This is a disabled field" />
 &lt;input type="button" disabled valuie="Disabled button" />	
 </pre>
-
-
-	<h3>Input Impersonator</h3>
-	<p>The <code>.input</code> class will attempt to make any element look like an input field.</p>
-	<div class="outline example">
-		<input type="text" value="This is a normal text input" />
-		<a href="#" class="input">This is a link that looks like an input</a>
 	</div>
-	<pre class="prettyprint linenums">
+
+		<h3>Input Impersonator</h3>
+	<p>The <code>.input</code> class will attempt to make any element look like an input field.</p>
+	<div class="card">
+		<div class="outline example">
+			<input type="text" value="This is a normal text input" />
+			<a href="#" class="input">This is a link that looks like an input</a>
+		</div>
+		<pre class="prettyprint linenums">
 &lt;a href="#" class="input">This is a link that looks like an input&lt;/a>
 </pre>
-
-	
-
+	</div>
 </div>
+
+
 
 @section scripts {
 

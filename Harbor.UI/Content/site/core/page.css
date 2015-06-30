@@ -82,7 +82,6 @@
       font-weight: bold; }
 
 .page-body {
-  background: #fff;
   position: relative; }
   .page-body:after {
     content: "";
@@ -117,7 +116,6 @@
   padding: 2em 1%;
   float: left;
   width: 98%;
-  background: #fff;
   /*&:first-child { // if there is no aside
 			width: 98%;
 		}*/ }
@@ -142,7 +140,6 @@
 .hasaside .page-aside-bg {
   float: left;
   width: 100%;
-  background: #fff;
   position: relative; }
 .hasaside .page-body {
   float: left;

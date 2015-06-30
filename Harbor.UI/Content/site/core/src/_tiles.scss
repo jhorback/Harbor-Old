@@ -6,6 +6,8 @@
 @import "../../core/src/foundation";
 @import "../../core/src/cols";
 @import "../../core/src/media";
+@import "_$z-depth.scss";
+@import "_$color.scss";
 
 $tile-caption-color: #777;
 
@@ -23,7 +25,18 @@ $tile-caption-color: #777;
 
 	@include tile;
 	@include tile-wide;
+    @include card;
 }
+
+// create a seperate mixin for this?
+@mixin card {
+    .card {
+        @include bg-color-content;
+        @include z-depth-card;
+        margin-bottom: 1em;
+    }
+}
+
 
 @mixin tile {
     /*
@@ -38,7 +51,7 @@ $tile-caption-color: #777;
 	.tile {
 		display: block;
         word-wrap:break-word;
-		border: 1px solid transparent;
+		//border: 1px solid transparent;
 		margin-bottom: 1em;
 		//border-color: #DDD;
 		//@include box-shadow(0 1px 3px rgba(0,0,0,.055));
@@ -46,7 +59,7 @@ $tile-caption-color: #777;
 		@include transition(all .2s ease-in-out);
 
 		&.selected {
-			overflow: visible;
+		//	overflow: visible;
 		}
 
 		.media {

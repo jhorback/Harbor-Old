@@ -21,106 +21,121 @@
 		<div class="page-content hide">
 			@if (Model.CanUpdateSiteSettings)
 			{
-				<fieldset>
-					<legend>Navigation</legend>
-					<div class="pad-top settings-navigation">
-						<button id="settings-updatenav">Update navigation</button>
-						<div class="attn" id="settings-updatemsg">
+				<div class="card pad">
+					<fieldset>
+						<legend>Navigation</legend>
+						<div class="pad-top settings-navigation">
+							<button id="settings-updatenav">Update navigation</button>
+							<div class="attn" id="settings-updatemsg">
 							
+							</div>
+							<div class="quiet">
+								Update the website navigation.
+							</div>
 						</div>
-						<div class="quiet">
-							Update the website navigation.
-						</div>
-					</div>
-				</fieldset>
-				<fieldset>
-					<legend>Home page</legend>
-					<div class="settings-homepage" id="settings-changehome">
-						@if (Model.HomePage != null)
-						{
-							@Html.Partial("~/Views/User/_HomePageSetting.cshtml", Model.HomePage)
-						}
-						else
-						{
-							@Html.Partial("~/Views/User/_DefaultHomePage.cshtml")
-						}
-					</div>
-					<div class="clear">
-						@*<button id="settings-changehome">Change the home page</button>*@
-						<button id="settings-resethome" class="@(Model.HomePage == null ? "hide" : "")">Reset</button>
-					</div>
-				</fieldset>
-				<fieldset>
-					<legend>Sign in link</legend>
-					<div class="form-field">
-						<input type="checkbox" name="showSignInLink" id="showSignInLink">
-						<label for="showSignInLink">Show the sign in link</label>
-					</div>
-					<div>
-						<p>
-							If it is hidden, you can go to
-							<a href="~/signin">@Url.Content("~/signin")</a> to sign in.
-						</p>
-					</div>
-				</fieldset>
-				<fieldset>
-					<legend>Footer</legend>
-					<button id="settings-updatefooter">Update the website footer</button>
-				</fieldset>
-				<fieldset>
-					<legend>Root Pages</legend>
-					<div>
-						<ul class="list-style-none">
-							@foreach (var url in Model.RootPageUrls)
+					</fieldset>
+				</div>
+				<div class="card pad">
+					<fieldset>
+						<legend>Home page</legend>
+						<div class="settings-homepage" id="settings-changehome">
+							@if (Model.HomePage != null)
 							{
-								<li><a href="@url">@url</a></li>
+								@Html.Partial("~/Views/User/_HomePageSetting.cshtml", Model.HomePage)
 							}
-						</ul>
-						@if (!Model.RootPageUrls.Any())
-						{
-							<span>No pages are assigned as root pages.</span>
-						}
-					</div>
-				</fieldset>
+							else
+							{
+								@Html.Partial("~/Views/User/_DefaultHomePage.cshtml")
+							}
+						</div>
+						<div class="clear">
+							@*<button id="settings-changehome">Change the home page</button>*@
+							<button id="settings-resethome" class="@(Model.HomePage == null ? "hide" : "")">Reset</button>
+						</div>
+					</fieldset>
+				</div>
+				<div class="card pad">
+					<fieldset>
+						<legend>Sign in link</legend>
+						<div class="form-field">
+							<input type="checkbox" name="showSignInLink" id="showSignInLink">
+							<label for="showSignInLink">Show the sign in link</label>
+						</div>
+						<div>
+							<p>
+								If it is hidden, you can go to
+								<a href="~/signin">@Url.Content("~/signin")</a> to sign in.
+							</p>
+						</div>
+					</fieldset>
+				</div>
+				<div class="card pad">
+					<fieldset>
+						<legend>Footer</legend>
+						<button id="settings-updatefooter">Update the website footer</button>
+					</fieldset>
+				</div>
+				<div class="card pad">
+					<fieldset>
+						<legend>Root Pages</legend>
+						<div>
+							<ul class="list-style-none">
+								@foreach (var url in Model.RootPageUrls)
+								{
+									<li><a href="@url">@url</a></li>
+								}
+							</ul>
+							@if (!Model.RootPageUrls.Any())
+							{
+								<span>No pages are assigned as root pages.</span>
+							}
+						</div>
+					</fieldset>
+				</div>
 			}
 			@if (Model.CanViewUsers)
 			{
-				<fieldset>
-					<legend>Website users</legend>
-					<div>
-						<a href="~/User/Admin">User Administration</a>
-					</div>
-					<div>
-						<p>
-							Add, edit, update users and their permissions.
-						</p>
-					</div>
-				</fieldset>
+				<div class="card pad">
+					<fieldset>
+						<legend>Website users</legend>
+						<div>
+							<a href="~/User/Admin">User Administration</a>
+						</div>
+						<div>
+							<p>
+								Add, edit, update users and their permissions.
+							</p>
+						</div>
+					</fieldset>
+				</div>
 			}
 			@if (Model.CanUpdateSystemSettings)
 			{ 
-				<h2>System Settings</h2>
-				<fieldset class="clear">
-					<legend>Application name</legend>
-					<div class="form-field editable" id="settings-applicationName">
-						<button type="button" class="input"><span data-bind="applicationName"></span></button>
-					</div>
-				</fieldset>
-				<fieldset>
-					<legend>Theme</legend>
-					<div class="form-field">
-						<select name="theme" id="settings-theme" style="min-width:auto;">
-							@foreach (var theme in Model.Themes)
-							{
-								<option @(theme == Model.Theme ? "selected" : "")>@theme</option>
-							}
-						</select>
-					</div>
-				</fieldset>
-				
-				@Html.Partial("_DevLinks")
+				<div class="card pad">
+					<h2>System Settings</h2>
+					<fieldset class="clear">
+						<legend>Application name</legend>
+						<div class="form-field editable" id="settings-applicationName">
+							<button type="button" class="input"><span data-bind="applicationName"></span></button>
+						</div>
+					</fieldset>
+					<fieldset>
+						<legend>Theme</legend>
+						<div class="form-field">
+							<select name="theme" id="settings-theme" style="min-width:auto;">
+								@foreach (var theme in Model.Themes)
+								{
+									<option @(theme == Model.Theme ? "selected" : "")>@theme</option>
+								}
+							</select>
+						</div>
+					</fieldset>
+				</div>
+				<div class="card pad">
+					@Html.Partial("_DevLinks")
+				</div>
 			}
-			<div>
+			<div class="card pad">
 				<h2>Page Types</h2>
 				<a href="~/user/pagetypeadmin">Page Type Administration</a>
 			</div>

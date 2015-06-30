@@ -18,8 +18,8 @@
 
 @mixin z-depth-card {
     z-index: 2;
-    box-shadow: 0 2px 4px 0   rgba(0, 0, 0, 0.16),
-                0 0   2px 1px rgba(0, 0, 0, 0.12); 
+    box-shadow: 0 2px 1px 0   rgba(0, 0, 0, 0.14),
+                0 0   1px 1px rgba(0, 0, 0, 0.12); 
 }
 
 @mixin z-depth-button {

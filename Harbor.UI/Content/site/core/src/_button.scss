@@ -20,6 +20,7 @@ $button-font-family:			'Segoe UI Web Semibold', 'Segoe UI Web Regular', 'Segoe U
 	input.button,
 	input[type=button],
 	input[type=submit] {
+        text-transform: uppercase;
 		@include _button($button-background-color, $button-color);
 		
 		&.selected { }

@@ -1,11 +1,13 @@
 @import "../../mixins/border-radius";
 @import "_$color.scss";
+@import "_$z-depth.scss";
 
 @mixin alert {
 	.alert, .alert-error {
         line-height: 2em;
         padding: .5em 1.5em;
         @include border-radius;
+        @include z-depth-fab;
 
 		h1, h2, h3, h4 {
 			margin: 0;

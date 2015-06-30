@@ -12,13 +12,28 @@
  * bg-color-outerbar(theme)
  *
  */
+/*
+ *
+ * 24 - dialogs
+ * 16 - top level menus
+ * 12 - pressed (FAB)
+ * 8 - Menu, pressed(card, raised button)
+ * 6 - FAB
+ * 4 - App Bar
+ * 3 - 
+ * 2 - card, raised button
+ * 0
+ *
+ */
 .alert, .alert-error {
   line-height: 2em;
   padding: 0.5em 1.5em;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   -ms-border-radius: 3px;
-  border-radius: 3px; }
+  border-radius: 3px;
+  z-index: 6;
+  box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.16), 0 0px 2px 1px rgba(0, 0, 0, 0.12); }
   .alert h1, .alert h2, .alert h3, .alert h4, .alert-error h1, .alert-error h2, .alert-error h3, .alert-error h4 {
     margin: 0;
     font-size: 1.2em; }

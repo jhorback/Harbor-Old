@@ -9,7 +9,6 @@
     }
 
 	.page-body {
-        background: $page-body-background;
 		position: relative;
 		@include clearfix;
 	}
@@ -25,7 +24,6 @@
         padding: 2em $page-content-gutter-width;
 		float: left;
 		width: 98%;
-        background: $page-content-background;
 		
 		/*&:first-child { // if there is no aside
 			width: 98%;
@@ -61,7 +59,6 @@
         .page-aside-bg {
             float:left;
             width:100%;
-            background: $page-body-background;
              // overflow:hidden; this was causing the uic menu to be chopped
             position:relative;
         }
@@ -136,5 +133,9 @@
            }
 	    }
 	}
+}
+
+@mixin page-body-theme {
+
 }
 

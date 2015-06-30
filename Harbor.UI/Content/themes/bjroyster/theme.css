@@ -194,6 +194,19 @@
  * bg-color-outerbar(theme)
  *
  */
+/*
+ *
+ * 24 - dialogs
+ * 16 - top level menus
+ * 12 - pressed (FAB)
+ * 8 - Menu, pressed(card, raised button)
+ * 6 - FAB
+ * 4 - App Bar
+ * 3 - 
+ * 2 - card, raised button
+ * 0
+ *
+ */
 /*$body - color: rgba(0, 0, 0, 0.870588); //#585a5b;
 $framenav - background-color: #FFF;
 $page- header-background: $color-primary;
@@ -202,6 +215,7 @@ $framenav- color-hover: #000;
 $framenav- border-selected: $color-accent-dark;
 $framenav- color-selected: $color-accent-dark;*/
 html, body {
+  background-color: #FAFAFA;
   color: rgba(0, 0, 0, 0.87);
   font-size: 16px;
   font-family: "OpenSans", "Segoe UI", "Helvetica Neue", Arial;
