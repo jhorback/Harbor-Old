@@ -206,7 +206,7 @@ html, body {
   font-size: 16px;
   font-family: "OpenSans", "Segoe UI", "Helvetica Neue", Arial;
   line-height: 1.5; }
-  html h1, html h2, html h3, body h1, body h2, body h3 {
+  html h1, html h2, body h1, body h2 {
     color: rgba(0, 0, 0, 0.87); }
   html .quiet, html small, body .quiet, body small {
     color: rgba(0, 0, 0, 0.54); }
@@ -220,9 +220,11 @@ html, body {
     background-color: #F5F5F5; }
     html ::-webkit-scrollbar-thumb:hover, body ::-webkit-scrollbar-thumb:hover {
       background-color: #000000; }
+  html h1, html h2, body h1, body h2 {
+    color: #0097a7; }
 
 color: rgba(0, 0, 0, 0.87);
-h1, h2, h3 {
+h1, h2 {
   color: rgba(0, 0, 0, 0.87); }
 
 .quiet, small {
@@ -339,7 +341,7 @@ legend {
   .datatable tr.selected td {
     background-color: #B2EBF2;
     color: rgba(0, 0, 0, 0.87); }
-    .datatable tr.selected td h1, .datatable tr.selected td h2, .datatable tr.selected td h3 {
+    .datatable tr.selected td h1, .datatable tr.selected td h2 {
       color: rgba(0, 0, 0, 0.87); }
     .datatable tr.selected td .quiet, .datatable tr.selected td small {
       color: rgba(0, 0, 0, 0.54); }
@@ -366,32 +368,28 @@ legend {
   .selectlist > ul > li.selected h1, .selectlist > ul > li.selected h2, .selectlist > ul > li.selected h3 {
     color: #FFF !important; }
 
-background-color: #FAFAFA;
-color: rgba(0, 0, 0, 0.87);
-h1, h2, h3 {
-  color: rgba(0, 0, 0, 0.87); }
-
-.quiet, small {
-  color: rgba(0, 0, 0, 0.54); }
-
-[disabled], .disabled, .hint {
-  color: rgba(0, 0, 0, 0.26); }
-
-.attn {
-  color: #FF3D00; }
-
-hr {
-  color: rgba(0, 0, 0, 0.12); }
-
-::-webkit-scrollbar-thumb {
-  background-color: #F5F5F5; }
-  ::-webkit-scrollbar-thumb:hover {
-    background-color: #000000; }
+.alert, .alert-error {
+  background-color: #303030;
+  color: white; }
+  .alert h1, .alert h2, .alert-error h1, .alert-error h2 {
+    color: white; }
+  .alert .quiet, .alert small, .alert-error .quiet, .alert-error small {
+    color: rgba(255, 255, 255, 0.7); }
+  .alert [disabled], .alert .disabled, .alert .hint, .alert-error [disabled], .alert-error .disabled, .alert-error .hint {
+    color: rgba(255, 255, 255, 0.3); }
+  .alert .attn, .alert-error .attn {
+    color: #FF3D00; }
+  .alert hr, .alert-error hr {
+    color: rgba(0, 0, 0, 0.12); }
+  .alert ::-webkit-scrollbar-thumb, .alert-error ::-webkit-scrollbar-thumb {
+    background-color: #212121; }
+    .alert ::-webkit-scrollbar-thumb:hover, .alert-error ::-webkit-scrollbar-thumb:hover {
+      background-color: #E0E0E0; }
 
 .page-header {
   background-color: #0097a7;
   color: white; }
-  .page-header h1, .page-header h2, .page-header h3 {
+  .page-header h1, .page-header h2 {
     color: white; }
   .page-header .quiet, .page-header small {
     color: rgba(255, 255, 255, 0.7); }

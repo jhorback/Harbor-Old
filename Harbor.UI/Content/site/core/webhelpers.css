@@ -63,5 +63,5 @@
 .margin-bottom {
   margin-bottom: 1em; }
 
-[data-template], [data-templatefor] {
+[data-templatefor] {
   display: none !important; }

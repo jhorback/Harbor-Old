@@ -14,7 +14,11 @@
  */
 .alert, .alert-error {
   line-height: 2em;
-  padding: 0.5em 1em; }
+  padding: 0.5em 1.5em;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -ms-border-radius: 3px;
+  border-radius: 3px; }
   .alert h1, .alert h2, .alert h3, .alert h4, .alert-error h1, .alert-error h2, .alert-error h3, .alert-error h4 {
     margin: 0;
     font-size: 1.2em; }
