@@ -10,7 +10,6 @@ $button-color-attn:				#FFF;
 $button-background-color-attn:	#D14836;
 $button-color-active:			#FFF;
 $button-backgrond-color-active: #000;
-$button-border-radius:			3px;
 $button-font-family:			'Segoe UI Web Semibold', 'Segoe UI Web Regular', 'Segoe UI', 'Segoe UI Symbol', 'Helvetica Neue', Arial !default;
 
 
@@ -46,18 +45,17 @@ $button-font-family:			'Segoe UI Web Semibold', 'Segoe UI Web Regular', 'Segoe U
 
 @mixin _button-base() {
 	border: 0;
-	display: inline-block;
-	box-sizing: content-box;
+	display: inline-block;	
 	text-align: center;	
-	font-weight: 500; // should download the Segoe UI Web Semibold font
+	font-weight: 500;
 	font-family: $button-font-family;
-	font-size: $body-font-size;
+	font-size: $body-font-size *.8;
 	cursor: default;
 	text-decoration: none;
-	line-height: $body-line-height;
+	line-height: $body-line-height * 1.3;
 	margin: 0 0.2em 4px 0;
 	padding: .35em 1.4em;
-	@include border-radius($button-border-radius);
+	@include border-radius;
 	@include user-select("none");
 }
 
@@ -78,3 +76,36 @@ $button-font-family:			'Segoe UI Web Semibold', 'Segoe UI Web Regular', 'Segoe U
 }
 
 @include button;
+
+
+/*
+.button.flat, .button.flat.loud, .button.flat.attn
+.button, .button.loud, .button.raised.attn
+
+.iconbutton, .iconbutton.loud, .iconbutton.attn, .iconbutton.disabled ([disabled]), .iconbutton.quiet
+
+
+.button.loud.attn - on flat buttons loud and attn just change the text color
+.button.raised - on raised buttons loud and attn change the background and text color
+// so color pallete needs to account for light/dark theme
+
+LIGHT - background and text color the same for raised and non raised buttons
+button:hover, focus { background-color: #EAEAEA hsla(0, 0%, 60%, .20); }
+button:active { background-color: #D5D5D5, hsla(0, 0%, 60%, .40); }
+button.disabled { color: #BCBCBC, hsla(0, 0%, 0%, .26); }
+
+
+DARK
+hover, focus: #1F1F1F hsla(0, 0%, 80%, .15);
+pressed #333333 hsla(0, 0%, 80%, .25);
+disabled text #4C4C4C hsla(0,0%,100%, .30)
+
+
+
+$button-bg-color-light:       #FFFFFF   !default;
+$button-color-theme-light:    "light"   !default;
+$button-effect-light:         "lighten" !default;
+$button-bg-color-dark:        #2196F3   !default;
+$button-color-theme-dark:     "dark"    !default;
+$button-effect-dark:          "lighten" !default;
+*/

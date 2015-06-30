@@ -1,30 +1,44 @@
 /*
+ * theme is either "light" or "dark"
+ * 
  * color-container(theme, primary, accent)
+ * color-links(primary, accent)
+ * color-selected-item(theme)
  *
  * color(theme);
  * color-quiet(theme);
  * color-disabled(theme);
- * color-devicer(theme);
+ * color-divider(theme);
  *
  * bg-color-content(theme)
  * bg-color(theme)
  * bg-color-bar(theme)
  * bg-color-outerbar(theme)
  *
+ * Note: color variables using alpha have an accompanying hex variable
+ *       that works well with the specified light or dark backgrounds.
+ *       This is to be used as long as IE 8 is supported.
  */
 /*
+ * theme is either "light" or "dark"
+ * 
  * color-container(theme, primary, accent)
+ * color-links(primary, accent)
+ * color-selected-item(theme)
  *
  * color(theme);
  * color-quiet(theme);
  * color-disabled(theme);
- * color-devicer(theme);
+ * color-divider(theme);
  *
  * bg-color-content(theme)
  * bg-color(theme)
  * bg-color-bar(theme)
  * bg-color-outerbar(theme)
  *
+ * Note: color variables using alpha have an accompanying hex variable
+ *       that works well with the specified light or dark backgrounds.
+ *       This is to be used as long as IE 8 is supported.
  */
 #frame {
   min-height: 100%;
@@ -120,12 +134,10 @@
       clear: left;
       margin-right: 0.4em; }
 
-#frame-footer-content {
-  background: #2d3033; }
-  #frame-footer-content:after {
-    content: "";
-    display: table;
-    clear: both; }
+#frame-footer-content:after {
+  content: "";
+  display: table;
+  clear: both; }
 
 #frame-footer-copyright {
   position: absolute;

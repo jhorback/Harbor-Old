@@ -1,43 +1,72 @@
 @import "../../mixins/opacity";
 
 /*
+ * theme is either "light" or "dark"
+ * 
  * color-container(theme, primary, accent)
+ * color-links(primary, accent)
+ * color-selected-item(theme)
  *
  * color(theme);
  * color-quiet(theme);
  * color-disabled(theme);
- * color-devicer(theme);
+ * color-divider(theme);
  *
  * bg-color-content(theme)
  * bg-color(theme)
  * bg-color-bar(theme)
  * bg-color-outerbar(theme)
  *
+ * Note: color variables using alpha have an accompanying hex variable
+ *       that works well with the specified light or dark backgrounds.
+ *       This is to be used as long as IE 8 is supported.
  */
 
-$color-theme:            "light"     !default;
+$color-theme:                "light"     !default;
 
-// swatch
-$color-primary:           #0097a7    !default;
-$color-primary-dark:      #006064    !default;
-$color-primary-light:     #B2EBF2    !default;
-$color-accent:            #FF3D00    !default;
-$color-accent-dark:       #DD2C00    !default;
-$color-accent-light:      #FF6E40    !default;
+// primary/accent color swatch
+$color-primary:               #0097a7   !default;
+$color-primary-theme:         "light"   !default;
+$color-primary-darker:        #006064   !default;
+$color-primary-darker-theme:  "light"   !default;
+$color-primary-lighter:       #B2EBF2   !default;
+$color-primary-lighter-theme: "dark"    !default;
+$color-accent:                #FF3D00   !default;
+$color-accent-theme:          "light"   !default;
+$color-accent-darker:         #DD2C00   !default;
+$color-accent-darker-theme:   "light"   !default;
+$color-accent-lighter:        #FF6E40   !default;
+$color-accent-lighter-theme:  "dark"    !default;
+
+// button colors
+$button-bg-color-light:       #FFFFFF   !default;
+$button-color-theme-light:    "light"   !default;
+$button-effect-light:         "lighten" !default;
+$button-bg-color-dark:        #2196F3   !default;
+$button-color-theme-dark:     "dark"    !default;
+$button-effect-dark:          "lighten" !default;
 
 
 // light theme colors
-$color-light: rgba(0, 0, 0, .87);
-$color-light-quiet: rgba(0, 0, 0, .54);
-$color-light-disabled: rgba(0, 0, 0, .26);
-$color-light-divider: rgba(0, 0, 0, .12);
+$color-light:              rgba(0, 0, 0, .87);
+$color-light-hex:          #202020;
+$color-light-quiet:        rgba(0, 0, 0, .54);
+$color-light-quiet-hex:    #747474;
+$color-light-disabled:     rgba(0, 0, 0, .26);
+$color-light-disabled-hex: #BCBCBC;
+$color-light-divider:      rgba(0, 0, 0, .12);
+$color-light-divider-hex:  #E0E0E0;
 
 
 // dark theme colors
-$color-dark: rgba(255, 255, 255, 1);
-$color-dark-quiet: rgba(255, 255, 255, .70);
-$color-dark-disabled: rgba(255, 255, 255, .30);
-$color-dark-divider: rgba(255, 255, 255, .12);
+$color-dark:             rgba(255, 255, 255, 1);
+$color-dark-hex:          #FFFFFF;
+$color-dark-quiet:        rgba(255, 255, 255, .70);
+$color-dark-quiet-hex:    #B3B3B3;
+$color-dark-disabled:     rgba(255, 255, 255, .30);
+$color-dark-disabled-hex: #4C4C4C;
+$color-dark-divider:      rgba(255, 255, 255, .12);
+$color-dark-divider-hex:  #1E1E1E;
 
 
 // light color backgrounds
@@ -54,12 +83,16 @@ $bg-color-dark-bar:       #212121;
 $bg-color-dark-outerbar:  #000000;
 
 
+
+
+
+
 @mixin bg-color-content($dark-or-light: $color-theme) {
     // use for dialogs, cards
     @if $dark-or-light == "dark" {
         background-color: $bg-color-dark-content;
     } @else {
-        background-color: $bg-color-light-content; 
+        background-color: $bg-color-light-content;
     }
 }
 
@@ -94,8 +127,10 @@ $bg-color-dark-outerbar:  #000000;
 @mixin color($dark-or-light: $color-theme) { 
     // use for standard text
     @if $dark-or-light == "dark" {
+        color: $color-dark-hex;
         color: $color-dark;
     } @else {
+        color: $color-light-hex;
         color: $color-light;
     }
 }
@@ -103,8 +138,10 @@ $bg-color-dark-outerbar:  #000000;
 @mixin color-quiet($dark-or-light: $color-theme) {
     // use for secondary/quiet text and icons
     @if $dark-or-light == "dark" {
+        color: $color-dark-quiet-hex;
         color: $color-dark-quiet;
     } @else {
+        color: $color-light-quiet-hex;
         color: $color-light-quiet;
     }
 }
@@ -112,8 +149,10 @@ $bg-color-dark-outerbar:  #000000;
 @mixin color-disabled($dark-or-light: $color-theme) {
     // use for disabled and hint text
      @if $dark-or-light == "dark" {
+        color: $color-dark-disabled-hex;
         color: $color-dark-disabled;
     } @else {
+        color: $color-light-disabled-hex;
         color: $color-light-disabled;
     }
 }
@@ -121,23 +160,17 @@ $bg-color-dark-outerbar:  #000000;
 @mixin color-divider($dark-or-light: $color-theme) {
     // use for dividers
     @if $dark-or-light == "dark" {
+       color: $color-dark-divider-hex;
        color: $color-dark-divider;
     } @else {
+       color: $color-light-divider-hex;
        color: $color-light-divider;
     }
 }
 
 
 
-@mixin color-selected-container($dark-or-light: $color-theme) {
-     @if $dark-or-light == "dark" {
-        background-color: $color-primary-dark;
-        @include color-container("dark");
-    } @else {
-        background-color: $color-primary-light;
-        @include color-container("light");
-    }
-}
+
 
 
 @mixin color-container(
@@ -162,6 +195,10 @@ $bg-color-dark-outerbar:  #000000;
         @include color-disabled($dark-or-light);
     }        
     
+    .loud {
+        color: $color-primary;
+    }
+
      .attn {
          color: $color-accent;
      }
@@ -178,15 +215,25 @@ $bg-color-dark-outerbar:  #000000;
 	}
 }
 
-@mixin color-links($color-primary: $color-primary, $color-accent: $color-accent){
-    .loud, .link, a {
+@mixin color-links($color-primary: $color-primary, $color-accent: $color-accent) {
+    .link, a {
         color: $color-primary;
          &:visited, &:focus, &:hover, &:active {
 			color: $color-primary;
 		}
-
         &.attn {
            // color: $color-accent; // will I ever need this?
         }
     } 
+}
+
+
+@mixin color-selected-item($dark-or-light: $color-theme) {
+     @if $dark-or-light == "dark" {
+        background-color: $color-primary-darker;
+        @include color-container("dark");
+    } @else {
+        background-color: $color-primary-lighter;
+        @include color-container("light");
+    }
 }

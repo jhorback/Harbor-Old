@@ -85,7 +85,7 @@
         @include bg-color-content;
 
         tr.selected td {
-            @include color-selected-container;
+            @include color-selected-item;
         }
 
         td {
