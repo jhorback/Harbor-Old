@@ -1,310 +1,3 @@
-/*
- * theme is either "light" or "dark"
- * 
- * color-container(theme, primary, accent)
- * color-links(primary, accent)
- * color-selected-item(theme)
- *
- * color(theme);
- * color-quiet(theme);
- * color-disabled(theme);
- * color-divider(theme);
- *
- * bg-color-content(theme)
- * bg-color(theme)
- * bg-color-bar(theme)
- * bg-color-outerbar(theme)
- *
- * Note: color variables using alpha have an accompanying hex variable
- *       that works well with the specified light or dark backgrounds.
- *       This is to be used as long as IE 8 is supported.
- */
-/*
- * theme is either "light" or "dark"
- * 
- * color-container(theme, primary, accent)
- * color-links(primary, accent)
- * color-selected-item(theme)
- *
- * color(theme);
- * color-quiet(theme);
- * color-disabled(theme);
- * color-divider(theme);
- *
- * bg-color-content(theme)
- * bg-color(theme)
- * bg-color-bar(theme)
- * bg-color-outerbar(theme)
- *
- * Note: color variables using alpha have an accompanying hex variable
- *       that works well with the specified light or dark backgrounds.
- *       This is to be used as long as IE 8 is supported.
- */
-/*
- * theme is either "light" or "dark"
- * 
- * color-container(theme, primary, accent)
- * color-links(primary, accent)
- * color-selected-item(theme)
- *
- * color(theme);
- * color-quiet(theme);
- * color-disabled(theme);
- * color-divider(theme);
- *
- * bg-color-content(theme)
- * bg-color(theme)
- * bg-color-bar(theme)
- * bg-color-outerbar(theme)
- *
- * Note: color variables using alpha have an accompanying hex variable
- *       that works well with the specified light or dark backgrounds.
- *       This is to be used as long as IE 8 is supported.
- */
-/*
- * theme is either "light" or "dark"
- * 
- * color-container(theme, primary, accent)
- * color-links(primary, accent)
- * color-selected-item(theme)
- *
- * color(theme);
- * color-quiet(theme);
- * color-disabled(theme);
- * color-divider(theme);
- *
- * bg-color-content(theme)
- * bg-color(theme)
- * bg-color-bar(theme)
- * bg-color-outerbar(theme)
- *
- * Note: color variables using alpha have an accompanying hex variable
- *       that works well with the specified light or dark backgrounds.
- *       This is to be used as long as IE 8 is supported.
- */
-/*
- * theme is either "light" or "dark"
- * 
- * color-container(theme, primary, accent)
- * color-links(primary, accent)
- * color-selected-item(theme)
- *
- * color(theme);
- * color-quiet(theme);
- * color-disabled(theme);
- * color-divider(theme);
- *
- * bg-color-content(theme)
- * bg-color(theme)
- * bg-color-bar(theme)
- * bg-color-outerbar(theme)
- *
- * Note: color variables using alpha have an accompanying hex variable
- *       that works well with the specified light or dark backgrounds.
- *       This is to be used as long as IE 8 is supported.
- */
-/*
- * theme is either "light" or "dark"
- * 
- * color-container(theme, primary, accent)
- * color-links(primary, accent)
- * color-selected-item(theme)
- *
- * color(theme);
- * color-quiet(theme);
- * color-disabled(theme);
- * color-divider(theme);
- *
- * bg-color-content(theme)
- * bg-color(theme)
- * bg-color-bar(theme)
- * bg-color-outerbar(theme)
- *
- * Note: color variables using alpha have an accompanying hex variable
- *       that works well with the specified light or dark backgrounds.
- *       This is to be used as long as IE 8 is supported.
- */
-/*
- * theme is either "light" or "dark"
- * 
- * color-container(theme, primary, accent)
- * color-links(primary, accent)
- * color-selected-item(theme)
- *
- * color(theme);
- * color-quiet(theme);
- * color-disabled(theme);
- * color-divider(theme);
- *
- * bg-color-content(theme)
- * bg-color(theme)
- * bg-color-bar(theme)
- * bg-color-outerbar(theme)
- *
- * Note: color variables using alpha have an accompanying hex variable
- *       that works well with the specified light or dark backgrounds.
- *       This is to be used as long as IE 8 is supported.
- */
-/*
- * theme is either "light" or "dark"
- * 
- * color-container(theme, primary, accent)
- * color-links(primary, accent)
- * color-selected-item(theme)
- *
- * color(theme);
- * color-quiet(theme);
- * color-disabled(theme);
- * color-divider(theme);
- *
- * bg-color-content(theme)
- * bg-color(theme)
- * bg-color-bar(theme)
- * bg-color-outerbar(theme)
- *
- * Note: color variables using alpha have an accompanying hex variable
- *       that works well with the specified light or dark backgrounds.
- *       This is to be used as long as IE 8 is supported.
- */
-/*
- * theme is either "light" or "dark"
- * 
- * color-container(theme, primary, accent)
- * color-links(primary, accent)
- * color-selected-item(theme)
- *
- * color(theme);
- * color-quiet(theme);
- * color-disabled(theme);
- * color-divider(theme);
- *
- * bg-color-content(theme)
- * bg-color(theme)
- * bg-color-bar(theme)
- * bg-color-outerbar(theme)
- *
- * Note: color variables using alpha have an accompanying hex variable
- *       that works well with the specified light or dark backgrounds.
- *       This is to be used as long as IE 8 is supported.
- */
-/*
- * theme is either "light" or "dark"
- * 
- * color-container(theme, primary, accent)
- * color-links(primary, accent)
- * color-selected-item(theme)
- *
- * color(theme);
- * color-quiet(theme);
- * color-disabled(theme);
- * color-divider(theme);
- *
- * bg-color-content(theme)
- * bg-color(theme)
- * bg-color-bar(theme)
- * bg-color-outerbar(theme)
- *
- * Note: color variables using alpha have an accompanying hex variable
- *       that works well with the specified light or dark backgrounds.
- *       This is to be used as long as IE 8 is supported.
- */
-/*
- * theme is either "light" or "dark"
- * 
- * color-container(theme, primary, accent)
- * color-links(primary, accent)
- * color-selected-item(theme)
- *
- * color(theme);
- * color-quiet(theme);
- * color-disabled(theme);
- * color-divider(theme);
- *
- * bg-color-content(theme)
- * bg-color(theme)
- * bg-color-bar(theme)
- * bg-color-outerbar(theme)
- *
- * Note: color variables using alpha have an accompanying hex variable
- *       that works well with the specified light or dark backgrounds.
- *       This is to be used as long as IE 8 is supported.
- */
-/*
- * theme is either "light" or "dark"
- * 
- * color-container(theme, primary, accent)
- * color-links(primary, accent)
- * color-selected-item(theme)
- *
- * color(theme);
- * color-quiet(theme);
- * color-disabled(theme);
- * color-divider(theme);
- *
- * bg-color-content(theme)
- * bg-color(theme)
- * bg-color-bar(theme)
- * bg-color-outerbar(theme)
- *
- * Note: color variables using alpha have an accompanying hex variable
- *       that works well with the specified light or dark backgrounds.
- *       This is to be used as long as IE 8 is supported.
- */
-/*
- * theme is either "light" or "dark"
- * 
- * color-container(theme, primary, accent)
- * color-links(primary, accent)
- * color-selected-item(theme)
- *
- * color(theme);
- * color-quiet(theme);
- * color-disabled(theme);
- * color-divider(theme);
- *
- * bg-color-content(theme)
- * bg-color(theme)
- * bg-color-bar(theme)
- * bg-color-outerbar(theme)
- *
- * Note: color variables using alpha have an accompanying hex variable
- *       that works well with the specified light or dark backgrounds.
- *       This is to be used as long as IE 8 is supported.
- */
-/*
- * theme is either "light" or "dark"
- * 
- * color-container(theme, primary, accent)
- * color-links(primary, accent)
- * color-selected-item(theme)
- *
- * color(theme);
- * color-quiet(theme);
- * color-disabled(theme);
- * color-divider(theme);
- *
- * bg-color-content(theme)
- * bg-color(theme)
- * bg-color-bar(theme)
- * bg-color-outerbar(theme)
- *
- * Note: color variables using alpha have an accompanying hex variable
- *       that works well with the specified light or dark backgrounds.
- *       This is to be used as long as IE 8 is supported.
- */
-/*
- *
- * 24 - dialogs
- * 16 - top level menus
- * 12 - pressed (FAB)
- * 8 - Menu, pressed(card, raised button)
- * 6 - FAB
- * 4 - App Bar
- * 3 - 
- * 2 - card, raised button
- * 0
- *
- */
 /*$body - color: rgba(0, 0, 0, 0.870588); //#585a5b;
 $framenav - background-color: #FFF;
 $page- header-background: $color-primary;
@@ -465,6 +158,91 @@ dd {
       background-color: #E0E0E0; }
   #frame-footer a {
     color: #a5a6a7; }
+
+.button, button, input[type=button], input[type=submit] {
+  color: #202020;
+  color: rgba(0, 0, 0, 0.87);
+  background-color: transparent; }
+  .button:hover, .button:focus, button:hover, button:focus, input[type=button]:hover, input[type=button]:focus, input[type=submit]:hover, input[type=submit]:focus {
+    background-color: #EAEAEA;
+    background-color: rgba(153, 153, 153, 0.2); }
+  .button:active, button:active, input[type=button]:active, input[type=submit]:active {
+    color: color("light") !important;
+    background-color: #D5D5D5;
+    background-color: rgba(153, 153, 153, 0.4); }
+  .button[disabled], .button[disabled]:hover, button[disabled], button[disabled]:hover, input[type=button][disabled], input[type=button][disabled]:hover, input[type=submit][disabled], input[type=submit][disabled]:hover {
+    background-color: transparent;
+    color: #BCBCBC;
+    color: rgba(0, 0, 0, 0.26);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+    opacity: 1; }
+  .button:visited, button:visited, input[type=button]:visited, input[type=submit]:visited {
+    color: #202020;
+    color: rgba(0, 0, 0, 0.87); }
+  .button.loud, button.loud, input[type=button].loud, input[type=submit].loud {
+    color: #FFFFFF;
+    color: white;
+    background-color: #0097a7; }
+    .button.loud:hover, .button.loud:focus, button.loud:hover, button.loud:focus, input[type=button].loud:hover, input[type=button].loud:focus, input[type=submit].loud:hover, input[type=submit].loud:focus {
+      background-color: #00b0c1; }
+    .button.loud:active, button.loud:active, input[type=button].loud:active, input[type=submit].loud:active {
+      color: color("dark") !important;
+      background-color: #00c8da; }
+    .button.loud[disabled], .button.loud[disabled]:hover, button.loud[disabled], button.loud[disabled]:hover, input[type=button].loud[disabled], input[type=button].loud[disabled]:hover, input[type=submit].loud[disabled], input[type=submit].loud[disabled]:hover {
+      background-color: #0097a7;
+      color: #4C4C4C;
+      color: rgba(255, 255, 255, 0.3);
+      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+      filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+      opacity: 1; }
+    .button.loud:visited, button.loud:visited, input[type=button].loud:visited, input[type=submit].loud:visited {
+      color: #FFFFFF;
+      color: white; }
+  .button.attn, button.attn, input[type=button].attn, input[type=submit].attn {
+    color: #FFFFFF;
+    color: white;
+    background-color: #FF3D00; }
+    .button.attn:hover, .button.attn:focus, button.attn:hover, button.attn:focus, input[type=button].attn:hover, input[type=button].attn:focus, input[type=submit].attn:hover, input[type=submit].attn:focus {
+      background-color: #e63600; }
+    .button.attn:active, button.attn:active, input[type=button].attn:active, input[type=submit].attn:active {
+      color: color("dark") !important;
+      background-color: #cc3000; }
+    .button.attn[disabled], .button.attn[disabled]:hover, button.attn[disabled], button.attn[disabled]:hover, input[type=button].attn[disabled], input[type=button].attn[disabled]:hover, input[type=submit].attn[disabled], input[type=submit].attn[disabled]:hover {
+      background-color: #FF3D00;
+      color: #4C4C4C;
+      color: rgba(255, 255, 255, 0.3);
+      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+      filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+      opacity: 1; }
+    .button.attn:visited, button.attn:visited, input[type=button].attn:visited, input[type=submit].attn:visited {
+      color: #FFFFFF;
+      color: white; }
+  .button.flat, button.flat, input[type=button].flat, input[type=submit].flat {
+    color: #202020;
+    color: rgba(0, 0, 0, 0.87);
+    background-color: transparent; }
+    .button.flat:hover, .button.flat:focus, button.flat:hover, button.flat:focus, input[type=button].flat:hover, input[type=button].flat:focus, input[type=submit].flat:hover, input[type=submit].flat:focus {
+      background-color: #EAEAEA;
+      background-color: rgba(153, 153, 153, 0.2); }
+    .button.flat:active, button.flat:active, input[type=button].flat:active, input[type=submit].flat:active {
+      color: color("light") !important;
+      background-color: #D5D5D5;
+      background-color: rgba(153, 153, 153, 0.4); }
+    .button.flat[disabled], .button.flat[disabled]:hover, button.flat[disabled], button.flat[disabled]:hover, input[type=button].flat[disabled], input[type=button].flat[disabled]:hover, input[type=submit].flat[disabled], input[type=submit].flat[disabled]:hover {
+      background-color: transparent;
+      color: #BCBCBC;
+      color: rgba(0, 0, 0, 0.26);
+      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+      filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+      opacity: 1; }
+    .button.flat:visited, button.flat:visited, input[type=button].flat:visited, input[type=submit].flat:visited {
+      color: #202020;
+      color: rgba(0, 0, 0, 0.87); }
+    .button.flat.loud, button.flat.loud, input[type=button].flat.loud, input[type=submit].flat.loud {
+      color: #0097a7; }
+    .button.flat.attn, button.flat.attn, input[type=button].flat.attn, input[type=submit].flat.attn {
+      color: #FF3D00; }
 
 legend {
   color: #393d40; }

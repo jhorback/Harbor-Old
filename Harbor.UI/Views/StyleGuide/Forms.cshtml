@@ -8,6 +8,69 @@
 	
 }
 <div class="page-content">
+	
+	<h2>Buttons</h2>
+	<p>
+		Native button elements will be styled automatically.
+		If wanting to make a link or span look like a button use the <code>.button</code> class.
+	</p>
+	<p>
+		There is also the <code>.loud</code> class to indicate importance, and the <code>.attn</code>
+		class to grab the users attention. (The attn class should be limited to one per visual screen.)
+	</p>
+	<div class="card">
+
+		<div class="outline example">
+			<input type="button" value="Standard button" />
+			<button class="loud">Loud button</button>
+			<a href="#" class="button attn">Attn button</a>
+		</div>
+		<pre class="prettyprint linenums">
+&lt;input type="button" value="Standard button" />
+&lt;button class="loud">Loud button&lt;/button>
+&lt;a href="#" class="button attn">Attn button&lt;/a>	
+</pre>
+	</div>
+
+	<h3>Flat Buttons</h3>
+	<p>
+		Add a <code>.flat</code> class name for buttons alread on a raised content area.
+	</p>
+	<div class="card">
+		<div class="outline example">
+			<input type="button" class="flat" value="Standard button" />
+			<button class="flat loud">Loud button</button>
+			<a href="#" class="flat button attn">Attn button</a>
+		</div>
+		<pre class="prettyprint linenums">
+&lt;input type="button" value="Standard button" disabled />
+&lt;button class="loud" disabled>Loud button&lt;/button>
+&lt;a href="#" class="button attn" disabled>Attn button&lt;/a>	
+</pre>
+
+	</div>
+
+	<h3>Disabled Buttons</h3>
+	<p>
+		All buttons will style accordingly when adding the <code>[disabled]</code> attribute.
+	</p>
+	<div class="card">
+		<div class="outline example">
+			<input type="button" value="Standard disabled" disabled />
+			<button class="loud" disabled>Loud disabled</button>
+			<a href="#" class="button attn" disabled>Attn disabled</a>
+			<input type="button" class="flat" value="Standard disabled" disabled />
+			<button class="flat loud" disabled>Loud disabled</button>
+			<a href="#" class="flat button attn" disabled>Attn disabled</a>
+		</div>
+		<pre class="prettyprint linenums">
+&lt;input type="button" value="Standard button" disabled />
+&lt;button class="loud" disabled>Loud button&lt;/button>
+&lt;a href="#" class="button attn" disabled>Attn button&lt;/a>	
+</pre>
+	</div>
+		
+
 
 	<h2>Default Form</h2>
 	<p>
@@ -103,7 +166,7 @@
 </pre>
 	</div>
 	
-		<h2>Wide Form</h2>
+	<h2>Wide Form</h2>
 	<p>
 		A wide form places most labels to the left of their inputs taking up more horizontal space.
 		This form will collapse to a default form on smaller screens.
@@ -181,51 +244,11 @@
 </pre>
 
 	</div>
-	
-		<h2>Buttons</h2>
-		<p>
-			Native button elements will be styled automatically.
-			If wanting to make a link or span look like a button use the <code>.button</code> class.
-		</p>
-	<p>
-		There is also the <code>.loud</code> class to indicate importance, and the <code>.attn</code>
-		class to grab the users attention. (The attn class should be limited to one per visual screen.)
-	</p>
-	<div class="card">
+	<h2>Additional Form Styling</h2>
 
-		<div class="outline example">
-			<input type="button" value="Standard button" />
-			<button class="loud">Loud button</button>
-			<a href="#" class="button attn">Attn button</a>
-		</div>
-		<pre class="prettyprint linenums">
-&lt;input type="button" value="Standard button" />
-&lt;button class="loud">Loud button&lt;/button>
-&lt;a href="#" class="button attn">Attn button&lt;/a>	
-</pre>
-	</div>
-		<p>
-			All buttons will style accordingly when adding the <code>[disabled]</code> attribute.
-		</p>
-		<h3>Disabled Buttons</h3>
-	<div class="card">
-		<div class="outline example">
-			<input type="button" value="Standard button" disabled />
-			<button class="loud" disabled>Loud button</button>
-			<a href="#" class="button attn" disabled>Attn button</a>
-		</div>
-		<pre class="prettyprint linenums">
-&lt;input type="button" value="Standard button" disabled />
-&lt;button class="loud" disabled>Loud button&lt;/button>
-&lt;a href="#" class="button attn" disabled>Attn button&lt;/a>	
-</pre>
-
-	</div>
-		<h2>Additional Form Styling</h2>
-
-		<h3>Errors</h3>
-		<p>To draw attention to a field add a <code>.error</code> class name on the <code>.form-field</code> div.</p>
-		<p>An <code>.alert</code> div can be used for general form errors. h1 - h4 headings can be used (and all style the same way).</p>
+	<h3>Errors</h3>
+	<p>To draw attention to a field add a <code>.error</code> class name on the <code>.form-field</code> div.</p>
+	<p>An <code>.alert</code> div can be used for general form errors. h1 - h4 headings can be used (and all style the same way).</p>
 	<div class="card">
 
 		<div class="outline example">
@@ -257,7 +280,7 @@
 	</div>
 
 
-		<h3>Disabled Fields</h3>
+	<h3>Disabled Fields</h3>
 	<p>Simple use the <code>[disabled]</code> attribute on any item to disable it.</p>
 	<div class="card">
 		<div class="outline example">
@@ -272,7 +295,7 @@
 </pre>
 	</div>
 
-		<h3>Input Impersonator</h3>
+	<h3>Input Impersonator</h3>
 	<p>The <code>.input</code> class will attempt to make any element look like an input field.</p>
 	<div class="card">
 		<div class="outline example">

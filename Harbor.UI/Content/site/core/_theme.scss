@@ -1,6 +1,7 @@
 @import "src/foundation";
 @import "src/frame";
 @import "src/form";
+@import "src/_button.scss";
 @import "src/menulist";
 @import "src/page";
 @import "src/_datatable.scss";
@@ -11,6 +12,7 @@
 @mixin theme {
 	@include foundation-theme;
 	@include frame-theme;
+    @include button-theme;
     @include form-theme;
 	@include menulist-theme;
 	@include page-theme;

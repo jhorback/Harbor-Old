@@ -1,24 +1,3 @@
-/*
- * theme is either "light" or "dark"
- * 
- * color-container(theme, primary, accent)
- * color-links(primary, accent)
- * color-selected-item(theme)
- *
- * color(theme);
- * color-quiet(theme);
- * color-disabled(theme);
- * color-divider(theme);
- *
- * bg-color-content(theme)
- * bg-color(theme)
- * bg-color-bar(theme)
- * bg-color-outerbar(theme)
- *
- * Note: color variables using alpha have an accompanying hex variable
- *       that works well with the specified light or dark backgrounds.
- *       This is to be used as long as IE 8 is supported.
- */
 .selectlist {
   clear: both; }
   .selectlist > ul {

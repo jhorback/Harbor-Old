@@ -1,16 +1,3 @@
-/*
- *
- * 24 - dialogs
- * 16 - top level menus
- * 12 - pressed (FAB)
- * 8 - Menu, pressed(card, raised button)
- * 6 - FAB
- * 4 - App Bar
- * 3 - 
- * 2 - card, raised button
- * 0
- *
- */
 .menu {
   position: absolute;
   z-index: 100;

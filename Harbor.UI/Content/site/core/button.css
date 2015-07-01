@@ -1,37 +1,17 @@
-/*
- * theme is either "light" or "dark"
- * 
- * color-container(theme, primary, accent)
- * color-links(primary, accent)
- * color-selected-item(theme)
- *
- * color(theme);
- * color-quiet(theme);
- * color-disabled(theme);
- * color-divider(theme);
- *
- * bg-color-content(theme)
- * bg-color(theme)
- * bg-color-bar(theme)
- * bg-color-outerbar(theme)
- *
- * Note: color variables using alpha have an accompanying hex variable
- *       that works well with the specified light or dark backgrounds.
- *       This is to be used as long as IE 8 is supported.
- */
-.button, button, input.button, input[type=button], input[type=submit] {
+.button, button, input[type=button], input[type=submit] {
   text-transform: uppercase;
   border: 0;
+  outline: 0;
   display: inline-block;
   text-align: center;
-  font-weight: 500;
+  font-weight: 600;
   font-family: 'Segoe UI Web Semibold', 'Segoe UI Web Regular', 'Segoe UI', 'Segoe UI Symbol', 'Helvetica Neue', Arial;
   font-size: 12.8px;
+  line-height: 1.95;
   cursor: default;
   text-decoration: none;
-  line-height: 1.95;
   margin: 0 0.2em 4px 0;
-  padding: 0.35em 1.4em;
+  padding: 0.25em 1.4em;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   -ms-border-radius: 3px;
@@ -40,134 +20,17 @@
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  color: #000;
-  background-color: #CCC; }
-  .button:hover, button:hover, input.button:hover, input[type=button]:hover, input[type=submit]:hover {
-    background-color: #e6e6e6; }
-  .button[disabled]:hover, button[disabled]:hover, input.button[disabled]:hover, input[type=button][disabled]:hover, input[type=submit][disabled]:hover {
-    background-color: #CCC; }
-  .button:active, button:active, input.button:active, input[type=button]:active, input[type=submit]:active {
-    color: #FFF !important;
-    background-color: #000; }
-  .button:visited, button:visited, input.button:visited, input[type=button]:visited, input[type=submit]:visited {
-    color: #000; }
-  .button.loud, button.loud, input.button.loud, input[type=button].loud, input[type=submit].loud {
-    color: #FFF;
-    background-color: #2F5BB7; }
-    .button.loud:hover, button.loud:hover, input.button.loud:hover, input[type=button].loud:hover, input[type=submit].loud:hover {
-      background-color: #4976d0; }
-    .button.loud[disabled]:hover, button.loud[disabled]:hover, input.button.loud[disabled]:hover, input[type=button].loud[disabled]:hover, input[type=submit].loud[disabled]:hover {
-      background-color: #2F5BB7; }
-    .button.loud:active, button.loud:active, input.button.loud:active, input[type=button].loud:active, input[type=submit].loud:active {
-      color: #FFF !important;
-      background-color: #000; }
-    .button.loud:visited, button.loud:visited, input.button.loud:visited, input[type=button].loud:visited, input[type=submit].loud:visited {
-      color: #FFF; }
-  .button.attn, button.attn, input.button.attn, input[type=button].attn, input[type=submit].attn {
-    color: #FFF;
-    background-color: #D14836; }
-    .button.attn:hover, button.attn:hover, input.button.attn:hover, input[type=button].attn:hover, input[type=submit].attn:hover {
-      background-color: #da6c60; }
-    .button.attn[disabled]:hover, button.attn[disabled]:hover, input.button.attn[disabled]:hover, input[type=button].attn[disabled]:hover, input[type=submit].attn[disabled]:hover {
-      background-color: #D14836; }
-    .button.attn:active, button.attn:active, input.button.attn:active, input[type=button].attn:active, input[type=submit].attn:active {
-      color: #FFF !important;
-      background-color: #000; }
-    .button.attn:visited, button.attn:visited, input.button.attn:visited, input[type=button].attn:visited, input[type=submit].attn:visited {
-      color: #FFF; }
-
-a.button {
-  margin-bottom: 0;
-  *padding-top: 10px;
-  *padding-bottom: 10px; }
-
-/*
-.button.flat, .button.flat.loud, .button.flat.attn
-.button, .button.loud, .button.raised.attn
-
-.iconbutton, .iconbutton.loud, .iconbutton.attn, .iconbutton.disabled ([disabled]), .iconbutton.quiet
-
-
-.button.loud.attn - on flat buttons loud and attn just change the text color
-.button.raised - on raised buttons loud and attn change the background and text color
-// so color pallete needs to account for light/dark theme
-
-LIGHT - background and text color the same for raised and non raised buttons
-button:hover, focus { background-color: #EAEAEA hsla(0, 0%, 60%, .20); }
-button:active { background-color: #D5D5D5, hsla(0, 0%, 60%, .40); }
-button.disabled { color: #BCBCBC, hsla(0, 0%, 0%, .26); }
-
-
-DARK
-hover, focus: #1F1F1F hsla(0, 0%, 80%, .15);
-pressed #333333 hsla(0, 0%, 80%, .25);
-disabled text #4C4C4C hsla(0,0%,100%, .30)
-
-
-
-$button-bg-color-light:       #FFFFFF   !default;
-$button-color-theme-light:    "light"   !default;
-$button-effect-light:         "lighten" !default;
-$button-bg-color-dark:        #2196F3   !default;
-$button-color-theme-dark:     "dark"    !default;
-$button-effect-dark:          "lighten" !default;
-*/
-.button, button, input.button, input[type=button], input[type=submit] {
-  text-transform: uppercase;
-  border: 0;
-  display: inline-block;
-  text-align: center;
-  font-weight: 500;
-  font-family: 'Segoe UI Web Semibold', 'Segoe UI Web Regular', 'Segoe UI', 'Segoe UI Symbol', 'Helvetica Neue', Arial;
-  font-size: 12.8px;
-  cursor: default;
-  text-decoration: none;
-  line-height: 1.95;
-  margin: 0 0.2em 4px 0;
-  padding: 0.35em 1.4em;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  -ms-border-radius: 3px;
-  border-radius: 3px;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  color: #000;
-  background-color: #CCC; }
-  .button:hover, button:hover, input.button:hover, input[type=button]:hover, input[type=submit]:hover {
-    background-color: #e6e6e6; }
-  .button[disabled]:hover, button[disabled]:hover, input.button[disabled]:hover, input[type=button][disabled]:hover, input[type=submit][disabled]:hover {
-    background-color: #CCC; }
-  .button:active, button:active, input.button:active, input[type=button]:active, input[type=submit]:active {
-    color: #FFF !important;
-    background-color: #000; }
-  .button:visited, button:visited, input.button:visited, input[type=button]:visited, input[type=submit]:visited {
-    color: #000; }
-  .button.loud, button.loud, input.button.loud, input[type=button].loud, input[type=submit].loud {
-    color: #FFF;
-    background-color: #2F5BB7; }
-    .button.loud:hover, button.loud:hover, input.button.loud:hover, input[type=button].loud:hover, input[type=submit].loud:hover {
-      background-color: #4976d0; }
-    .button.loud[disabled]:hover, button.loud[disabled]:hover, input.button.loud[disabled]:hover, input[type=button].loud[disabled]:hover, input[type=submit].loud[disabled]:hover {
-      background-color: #2F5BB7; }
-    .button.loud:active, button.loud:active, input.button.loud:active, input[type=button].loud:active, input[type=submit].loud:active {
-      color: #FFF !important;
-      background-color: #000; }
-    .button.loud:visited, button.loud:visited, input.button.loud:visited, input[type=button].loud:visited, input[type=submit].loud:visited {
-      color: #FFF; }
-  .button.attn, button.attn, input.button.attn, input[type=button].attn, input[type=submit].attn {
-    color: #FFF;
-    background-color: #D14836; }
-    .button.attn:hover, button.attn:hover, input.button.attn:hover, input[type=button].attn:hover, input[type=submit].attn:hover {
-      background-color: #da6c60; }
-    .button.attn[disabled]:hover, button.attn[disabled]:hover, input.button.attn[disabled]:hover, input[type=button].attn[disabled]:hover, input[type=submit].attn[disabled]:hover {
-      background-color: #D14836; }
-    .button.attn:active, button.attn:active, input.button.attn:active, input[type=button].attn:active, input[type=submit].attn:active {
-      color: #FFF !important;
-      background-color: #000; }
-    .button.attn:visited, button.attn:visited, input.button.attn:visited, input[type=button].attn:visited, input[type=submit].attn:visited {
-      color: #FFF; }
+  z-index: 2;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25), 0 0 1px 1px rgba(0, 0, 0, 0.12); }
+  .button:active, button:active, input[type=button]:active, input[type=submit]:active {
+    z-index: 8;
+    box-shadow: 0 4px 16px 2px rgba(0, 0, 0, 0.3), 0 0 2px 1px rgba(0, 0, 0, 0.12); }
+  .button.flat, button.flat, input[type=button].flat, input[type=submit].flat {
+    z-index: 0;
+    box-shadow: none; }
+    .button.flat:active, button.flat:active, input[type=button].flat:active, input[type=submit].flat:active {
+      z-index: 0;
+      box-shadow: none; }
 
 a.button {
   margin-bottom: 0;

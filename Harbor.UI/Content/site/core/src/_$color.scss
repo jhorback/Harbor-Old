@@ -1,26 +1,26 @@
 @import "../../mixins/opacity";
 
-/*
- * theme is either "light" or "dark"
- * 
- * color-container(theme, primary, accent)
- * color-links(primary, accent)
- * color-selected-item(theme)
- *
- * color(theme);
- * color-quiet(theme);
- * color-disabled(theme);
- * color-divider(theme);
- *
- * bg-color-content(theme)
- * bg-color(theme)
- * bg-color-bar(theme)
- * bg-color-outerbar(theme)
- *
- * Note: color variables using alpha have an accompanying hex variable
- *       that works well with the specified light or dark backgrounds.
- *       This is to be used as long as IE 8 is supported.
- */
+// 
+// theme is either "light" or "dark"
+// 
+// color-container(theme, primary, accent)
+// color-links(primary, accent)
+// color-selected-item(theme)
+// 
+// color(theme);
+// color-quiet(theme);
+// color-disabled(theme);
+// color-divider(theme);
+// 
+// bg-color-content(theme)
+// bg-color(theme)
+// bg-color-bar(theme)
+// bg-color-outerbar(theme)
+// 
+// Note: color variables using alpha have an accompanying hex variable
+//       that works well with the specified light or dark backgrounds.
+//       This is to be used as long as IE 8 is supported.
+// 
 
 $color-theme:                "light"     !default;
 
@@ -39,12 +39,18 @@ $color-accent-lighter:        #FF6E40   !default;
 $color-accent-lighter-theme:  "dark"    !default;
 
 // button colors
-$button-bg-color-light:       #FFFFFF   !default;
-$button-color-theme-light:    "light"   !default;
-$button-effect-light:         "lighten" !default;
+//$button-bg-color-light:       #FFFFFF   !default;
+//$button-color-theme-light:    "light"   !default;
+//$button-effect-light:         "lighten" !default;
 $button-bg-color-dark:        #2196F3   !default;
 $button-color-theme-dark:     "dark"    !default;
 $button-effect-dark:          "lighten" !default;
+$button-bg-color-primary:     $color-primary !default;
+$button-color-theme-primary:  "dark" !default;
+$button-effect-primary:       "lighten" !default;
+$button-bg-color-accent:       $color-accent !default;
+$button-color-theme-accent:    "dark" !default;
+$button-effect-accent:         "ligthen" !default;
 
 
 // light theme colors
@@ -83,7 +89,21 @@ $bg-color-dark-bar:       #212121;
 $bg-color-dark-outerbar:  #000000;
 
 
+// static light button colors
+$button-bg-color-hover-light:      hsla(0, 0%, 60%, .20);
+$button-bg-color-hover-light-hex:  #EAEAEA;
+$button-bg-color-active-light:     hsla(0, 0%, 60%, .40);
+$button-bg-color-active-light-hex: #D5D5D5;
+$button-color-disabled-light:      hsla(0, 0%, 0%, .26); 
+$button-color-disabled-light-hex:  #BCBCBC;
 
+// static dark button colors
+$button-bg-color-hover-dark:       hsla(0, 0%, 80%, .15);
+$button-bg-color-hover-dark-hex:   #1F1F1F;
+$button-bg-color-active-dark:      hsla(0, 0%, 80%, .25);
+$button-bg-color-active-dark-hex:  #333333;
+$button-color-disabled-dark:       hsla(0,0%,100%, .30); 
+$button-color-disabled-dark-hex:   #4C4C4C;
 
 
 

@@ -1,5 +1,7 @@
 @import "../../mixins/border-radius";
 @import "../../mixins/user-select";
+@import "_$z-depth.scss";
+@import "_$color.scss";
 @import "foundation-vars";
 
 $button-color:					#000;
@@ -13,23 +15,107 @@ $button-backgrond-color-active: #000;
 $button-font-family:			'Segoe UI Web Semibold', 'Segoe UI Web Regular', 'Segoe UI', 'Segoe UI Symbol', 'Helvetica Neue', Arial !default;
 
 
+// .button.flat, .button.flat.loud, .button.flat.attn
+// .button, .button.loud, .button.attn
+// 
+// .iconbutton, .iconbutton.loud, .iconbutton.attn, .iconbutton.disabled ([disabled]), .iconbutton.quiet
+// 
+
+
+// jch! - still working on this one - move it to color.scss when done.
+// => flat buttons need to not have a background
+// => icon buttons
+// => do the fab button
+// $effect: "lighten" or "darken" the background color
+@mixin button-colors($background-color: "transparent", $effect: "lighten", $color-theme: $color-theme){
+   
+    @include color($color-theme);
+	background-color: unquote($background-color);
+
+	&:hover, &:focus { 
+        @if ($background-color == "transparent") {
+            @if ($color-theme == "dark") { // for the flat style
+               background-color: $button-bg-color-hover-dark-hex;
+               background-color: $button-bg-color-hover-dark;
+            } @else {
+               background-color: $button-bg-color-hover-light-hex;
+               background-color: $button-bg-color-hover-light;
+            }
+        } @else {
+              @if ($effect == "lighten") {
+		        background-color: lighten($background-color, 5%); // is there a way to use opacity here?!
+            } @else {
+		        background-color: darken($background-color, 5%);
+            }
+         }
+	}
+
+	&:active {
+        color:  color($color-theme) !important; // for links
+
+        @if ($background-color == "transparent") {
+             @if ($color-theme == "dark") { // for the flat style
+               background-color: $button-bg-color-active-dark-hex;
+               background-color: $button-bg-color-active-dark;
+            } @else {
+               background-color: $button-bg-color-active-light-hex;
+               background-color: $button-bg-color-active-light;
+            }
+        } @else {
+              @if ($effect == "lighten") {
+		        background-color: lighten($background-color, 10%);
+            } @else {
+		        background-color: darken($background-color, 10%);
+            }
+        }         
+	}
+
+    &[disabled], &[disabled]:hover {
+        // font-weight: 700;
+		background-color: unquote($background-color);
+        @include color-disabled($color-theme);
+        @include opacity(1);
+	}
+
+	&:visited { @include color($color-theme); }
+}
+
+
+
 @mixin button {
 	.button,
 	button,
-	input.button,
 	input[type=button],
 	input[type=submit] {
         text-transform: uppercase;
-		@include _button($button-background-color, $button-color);
-		
-		&.selected { }
-		&.loud {
-			@include _button-color($button-background-color-loud, $button-color-loud);			
-		}
-		&.attn {
-			@include _button-color($button-background-color-attn, $button-color-attn);			
-		}
+		border: 0;
+        outline: 0; 
+	    display: inline-block;	
+	    text-align: center;	
+	    font-weight: 600;
+	    font-family: $button-font-family;
+	    font-size: $body-font-size *.8;
+	    line-height: $body-line-height * 1.3;
+	    cursor: default;
+	    text-decoration: none;
+	    margin: 0 .2em 4px 0;
+	    padding: .25em 1.4em;
+	    @include border-radius;
+	    @include user-select("none");
+        @include z-depth-button;
+
+        &:active {
+             @include z-depth-button-pressed;
+        }
+
+        &.flat {
+            @include z-depth-none;
+            &:active {
+                @include z-depth-none;
+            }
+        }
 	}
+
 	a.button {
 		margin-bottom: 0;
 		*padding-top: 10px;
@@ -38,74 +124,40 @@ $button-font-family:			'Segoe UI Web Semibold', 'Segoe UI Web Regular', 'Segoe U
 }
 
 
-@mixin _button($background-color, $color) {
-	@include _button-base();
-	@include _button-color($background-color, $color);
-}
 
 @mixin _button-base() {
-	border: 0;
-	display: inline-block;	
-	text-align: center;	
-	font-weight: 500;
-	font-family: $button-font-family;
-	font-size: $body-font-size *.8;
-	cursor: default;
-	text-decoration: none;
-	line-height: $body-line-height * 1.3;
-	margin: 0 0.2em 4px 0;
-	padding: .35em 1.4em;
-	@include border-radius;
-	@include user-select("none");
+	
 }
 
-@mixin _button-color($background-color, $color) {
-	color: $color;
-	background-color: $background-color;
-	&:hover { 
-		background-color: lighten($background-color, 10%);
-	}
-	&[disabled]:hover {
-		background-color: $background-color;
-	}
-	&:active {
-		color: $button-color-active !important; // for links
-		background-color: $button-backgrond-color-active;
-	}
-	&:visited { color: $color; }
+
+@mixin button-theme {
+    .button,
+	button,
+	input[type=button],
+	input[type=submit] { 
+         @if ($color-theme == "dark") {
+            @include button-colors($button-bg-color-dark, $button-effect-dark, $button-color-theme-dark);
+        } @else {
+            @include button-colors;
+        }
+        &.loud {
+           @include button-colors($button-bg-color-primary, $button-effect-primary, $button-color-theme-primary);
+		}
+		
+        &.attn {
+            @include button-colors($button-bg-color-accent, $button-effect-accent, $button-color-theme-accent);	
+		}
+
+        &.flat {
+            @include button-colors; // transparent bg
+            
+            &.loud {
+                color: $color-primary;
+            }
+            &.attn {
+                color: $color-accent;
+            }
+            
+        }
+    }
 }
-
-@include button;
-
-
-/*
-.button.flat, .button.flat.loud, .button.flat.attn
-.button, .button.loud, .button.raised.attn
-
-.iconbutton, .iconbutton.loud, .iconbutton.attn, .iconbutton.disabled ([disabled]), .iconbutton.quiet
-
-
-.button.loud.attn - on flat buttons loud and attn just change the text color
-.button.raised - on raised buttons loud and attn change the background and text color
-// so color pallete needs to account for light/dark theme
-
-LIGHT - background and text color the same for raised and non raised buttons
-button:hover, focus { background-color: #EAEAEA hsla(0, 0%, 60%, .20); }
-button:active { background-color: #D5D5D5, hsla(0, 0%, 60%, .40); }
-button.disabled { color: #BCBCBC, hsla(0, 0%, 0%, .26); }
-
-
-DARK
-hover, focus: #1F1F1F hsla(0, 0%, 80%, .15);
-pressed #333333 hsla(0, 0%, 80%, .25);
-disabled text #4C4C4C hsla(0,0%,100%, .30)
-
-
-
-$button-bg-color-light:       #FFFFFF   !default;
-$button-color-theme-light:    "light"   !default;
-$button-effect-light:         "lighten" !default;
-$button-bg-color-dark:        #2196F3   !default;
-$button-color-theme-dark:     "dark"    !default;
-$button-effect-dark:          "lighten" !default;
-*/
