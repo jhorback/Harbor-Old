@@ -1,48 +1,56 @@
 /* http://fontawesome.io/icons */
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url("font/material/MaterialIcons-Regular.eot");
+  /* For IE6-8 */
+  src: url("font/material/MaterialIcons-Regular.woff2") format('woff2'), url("font/material/MaterialIcons-Regular.woff") format('woff'), url("font/material/MaterialIcons-Regular.ttf") format('truetype'); }
+
 .icon-remove:before {
-  content: "\f00d"; }
+  content: "\E14C"; }
 
 .icon-align-left:before {
-  content: "\f036"; }
+  content: "\E236"; }
 
 .icon-align-center:before {
-  content: "\f037"; }
+  content: "\E234"; }
 
 .icon-align-right:before {
-  content: "\f038"; }
+  content: "\E237"; }
 
 .icon-align-justify:before {
-  content: "\f039"; }
+  content: "\E235"; }
 
 .icon-edit:before {
-  content: "\f044"; }
+  content: "\E254"; }
 
 .icon-move:before {
-  content: "\f047"; }
+  content: "\E89F"; }
 
 .icon-plus:before {
-  content: "\f067"; }
+  content: "\E145"; }
 
 .icon-cogs:before {
-  content: "\f085"; }
+  content: "\E8B8"; }
 
 .icon-reorder:before {
-  content: "\f0c9"; }
+  content: "\E8FE"; }
 
 .icon-columns:before {
-  content: "\f0db"; }
+  content: "\E8EC"; }
 
 .icon-help:before {
-  content: "\f059"; }
+  content: "\E887"; }
 
 .icon-paypal:before {
-  content: "\f1ed"; }
+  content: "\E8A1"; }
 
 .icon-image:before {
-  content: "\f03e"; }
+  content: "\E3F4"; }
 
 .icon-link:before {
-  content: "\f0c1"; }
+  content: "\E157"; }
 
 .icon-google-plus:before {
   content: "\f0d5"; }
@@ -51,19 +59,19 @@
   content: "\f09a"; }
 
 .icon-next:before {
-  content: "\f0da"; }
+  content: "\E409"; }
 
 .icon-previous:before {
-  content: "\f0d9"; }
+  content: "\E408"; }
 
 .icon-up:before {
-  content: "\f0d8"; }
+  content: "\E5C7"; }
 
 .icon-down:before {
-  content: "\f0d7"; }
+  content: "\E5C5"; }
 
 /* FONT PATH
- * -------------------------- */
+     * -------------------------- */
 @font-face {
   font-family: 'FontAwesome';
   src: url("font/fontawesome/fontawesome-webfont.eot?v=3.1.0");
@@ -72,14 +80,20 @@
   font-style: normal; }
 
 /* FONT AWESOME CORE
- * -------------------------- */
+     * -------------------------- */
 [class^="icon-"], [class*=" icon-"] {
-  font-family: FontAwesome;
+  font-family: 'Material Icons';
   font-weight: normal;
   font-style: normal;
   text-decoration: none !important;
+  cursor: default;
   -webkit-font-smoothing: antialiased;
-  *margin-right: 0.3em; }
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+  /* Support for IE. */
+  font-feature-settings: 'liga'; }
 
 [class^="icon-"]:before, [class*=" icon-"]:before {
   text-decoration: inherit;
@@ -89,18 +103,6 @@
 /* makes sure icons active on rollover in links */
 a [class^="icon-"], a [class*=" icon-"], a [class^="icon-"]:before, a [class*=" icon-"]:before {
   display: inline; }
-
-/* Bootstrap 2.0 sprites.less reset */
-[class^="icon-"], [class*=" icon-"] {
-  display: inline;
-  width: auto;
-  height: auto;
-  line-height: normal;
-  vertical-align: baseline;
-  background-image: none;
-  background-position: 0% 0%;
-  background-repeat: repeat;
-  margin-top: 0; }
 
 /* FONT PATH
  * -------------------------- */
