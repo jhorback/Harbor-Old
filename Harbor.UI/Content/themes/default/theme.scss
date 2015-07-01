@@ -1,7 +1,18 @@
-@import "../../site/core/theme";
-
-
 // $framenav-background-color: red;
 $frame-logo-use-image: false;
+//$color-theme: "dark";
+// $color-primary: #f57b21; // FL orange
+// $color-accent:  #1a144c; // FL blue (purple);
 
+
+
+@import "../../site/core/theme";
 @include theme;
+
+
+
+.page-header {
+    background-color: $color-primary;
+    @include color-container("dark");
+    @include color-links($color-dark);
+}

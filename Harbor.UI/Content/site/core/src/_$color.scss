@@ -50,7 +50,7 @@ $button-color-theme-primary:  "dark" !default;
 $button-effect-primary:       "lighten" !default;
 $button-bg-color-accent:       $color-accent !default;
 $button-color-theme-accent:    "dark" !default;
-$button-effect-accent:         "ligthen" !default;
+$button-effect-accent:         "lighten" !default;
 
 
 // light theme colors
@@ -90,20 +90,24 @@ $bg-color-dark-outerbar:  #000000;
 
 
 // static light button colors
-$button-bg-color-hover-light:      hsla(0, 0%, 60%, .20);
-$button-bg-color-hover-light-hex:  #EAEAEA;
-$button-bg-color-active-light:     hsla(0, 0%, 60%, .40);
-$button-bg-color-active-light-hex: #D5D5D5;
-$button-color-disabled-light:      hsla(0, 0%, 0%, .26); 
-$button-color-disabled-light-hex:  #BCBCBC;
+$button-bg-color-hover-light:        hsla(0, 0%, 60%, .20);
+$button-bg-color-hover-light-hex:    #EAEAEA;
+$button-bg-color-active-light:       hsla(0, 0%, 60%, .40);
+$button-bg-color-active-light-hex:   #D5D5D5;
+$button-bg-color-disabled-light:     #E0E0E0;
+$button-bg-color-disabled-light-hex: hsla(0, 0%, 0%, .12);
+//$button-color-disabled-light:        hsla(0, 0%, 0%, .26); 
+//$button-color-disabled-light-hex:    #BCBCBC;
 
 // static dark button colors
-$button-bg-color-hover-dark:       hsla(0, 0%, 80%, .15);
-$button-bg-color-hover-dark-hex:   #1F1F1F;
-$button-bg-color-active-dark:      hsla(0, 0%, 80%, .25);
-$button-bg-color-active-dark-hex:  #333333;
-$button-color-disabled-dark:       hsla(0,0%,100%, .30); 
-$button-color-disabled-dark-hex:   #4C4C4C;
+$button-bg-color-hover-dark:        hsla(0, 0%, 80%, .15);
+$button-bg-color-hover-dark-hex:    #1F1F1F;
+$button-bg-color-active-dark:       hsla(0, 0%, 80%, .25);
+$button-bg-color-active-dark-hex:   #333333;
+$button-bg-color-disabled-dark:     hsla(0,0%,100%, .12);
+$button-bg-color-disabled-dark-hex: #1E1E1E;
+//$button-color-disabled-dark:        hsla(0,0%,100%, .30); 
+//$button-color-disabled-dark-hex:    #4C4C4C;
 
 
 
@@ -169,11 +173,11 @@ $button-color-disabled-dark-hex:   #4C4C4C;
 @mixin color-disabled($dark-or-light: $color-theme) {
     // use for disabled and hint text
      @if $dark-or-light == "dark" {
-        color: $color-dark-disabled-hex;
-        color: $color-dark-disabled;
+        color: $color-dark-disabled-hex !important;
+        color: $color-dark-disabled !important;
     } @else {
-        color: $color-light-disabled-hex;
-        color: $color-light-disabled;
+        color: $color-light-disabled-hex !important;
+        color: $color-light-disabled !important;
     }
 }
 

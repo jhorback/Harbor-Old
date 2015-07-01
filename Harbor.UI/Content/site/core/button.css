@@ -10,8 +10,9 @@
   line-height: 1.95;
   cursor: default;
   text-decoration: none;
-  margin: 0 0.2em 4px 0;
-  padding: 0.25em 1.4em;
+  margin: 0 0.25em 0 0;
+  padding: 0.25em 1.5em;
+  min-width: 5em;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   -ms-border-radius: 3px;
@@ -26,13 +27,18 @@
     z-index: 8;
     box-shadow: 0 4px 16px 2px rgba(0, 0, 0, 0.3), 0 0 2px 1px rgba(0, 0, 0, 0.12); }
   .button.flat, button.flat, input[type=button].flat, input[type=submit].flat {
+    font-weight: 700;
+    padding: 0.25em 0.75em;
     z-index: 0;
     box-shadow: none; }
     .button.flat:active, button.flat:active, input[type=button].flat:active, input[type=submit].flat:active {
       z-index: 0;
       box-shadow: none; }
+  .button[disabled], .button[disabled]:hover, button[disabled], button[disabled]:hover, input[type=button][disabled], input[type=button][disabled]:hover, input[type=submit][disabled], input[type=submit][disabled]:hover {
+    z-index: 0;
+    box-shadow: none; }
 
 a.button {
-  margin-bottom: 0;
+  margin-right: 0;
   *padding-top: 10px;
   *padding-bottom: 10px; }

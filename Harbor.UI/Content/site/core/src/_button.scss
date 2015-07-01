@@ -4,14 +4,7 @@
 @import "_$color.scss";
 @import "foundation-vars";
 
-$button-color:					#000;
-$button-background-color:		#CCC;
-$button-color-loud:				#FFF;
-$button-background-color-loud:	#2F5BB7;
-$button-color-attn:				#FFF;
-$button-background-color-attn:	#D14836;
-$button-color-active:			#FFF;
-$button-backgrond-color-active: #000;
+
 $button-font-family:			'Segoe UI Web Semibold', 'Segoe UI Web Regular', 'Segoe UI', 'Segoe UI Symbol', 'Helvetica Neue', Arial !default;
 
 
@@ -26,6 +19,7 @@ $button-font-family:			'Segoe UI Web Semibold', 'Segoe UI Web Regular', 'Segoe U
 // => flat buttons need to not have a background
 // => icon buttons
 // => do the fab button
+// => adjust the button height/sizing after taking a look at form input fields
 // $effect: "lighten" or "darken" the background color
 @mixin button-colors($background-color: "transparent", $effect: "lighten", $color-theme: $color-theme){
    
@@ -68,14 +62,7 @@ $button-font-family:			'Segoe UI Web Semibold', 'Segoe UI Web Regular', 'Segoe U
 		        background-color: darken($background-color, 10%);
             }
         }         
-	}
-
-    &[disabled], &[disabled]:hover {
-        // font-weight: 700;
-		background-color: unquote($background-color);
-        @include color-disabled($color-theme);
-        @include opacity(1);
-	}
+	}   
 
 	&:visited { @include color($color-theme); }
 }
@@ -98,8 +85,9 @@ $button-font-family:			'Segoe UI Web Semibold', 'Segoe UI Web Regular', 'Segoe U
 	    line-height: $body-line-height * 1.3;
 	    cursor: default;
 	    text-decoration: none;
-	    margin: 0 .2em 4px 0;
-	    padding: .25em 1.4em;
+	    margin: 0 .25em 0 0;
+	    padding: .25em 1.5em;
+        min-width: 5em;
 	    @include border-radius;
 	    @include user-select("none");
         @include z-depth-button;
@@ -109,15 +97,21 @@ $button-font-family:			'Segoe UI Web Semibold', 'Segoe UI Web Regular', 'Segoe U
         }
 
         &.flat {
+            font-weight: 700;
+            padding: .25em .75em;
             @include z-depth-none;
             &:active {
                 @include z-depth-none;
             }
         }
+
+         &[disabled], &[disabled]:hover {
+              @include z-depth-none;
+         }
 	}
 
 	a.button {
-		margin-bottom: 0;
+		margin-right: 0;
 		*padding-top: 10px;
 		*padding-bottom: 10px;
 	}
@@ -125,21 +119,19 @@ $button-font-family:			'Segoe UI Web Semibold', 'Segoe UI Web Regular', 'Segoe U
 
 
 
-@mixin _button-base() {
-	
-}
 
-
-@mixin button-theme {
+@mixin button-theme {    
     .button,
 	button,
 	input[type=button],
 	input[type=submit] { 
+
          @if ($color-theme == "dark") {
             @include button-colors($button-bg-color-dark, $button-effect-dark, $button-color-theme-dark);
         } @else {
             @include button-colors;
         }
+
         &.loud {
            @include button-colors($button-bg-color-primary, $button-effect-primary, $button-color-theme-primary);
 		}
@@ -156,8 +148,25 @@ $button-font-family:			'Segoe UI Web Semibold', 'Segoe UI Web Regular', 'Segoe U
             }
             &.attn {
                 color: $color-accent;
-            }
-            
+            }            
         }
+
+         &[disabled], &[disabled]:hover {
+            font-weight: 700;
+            @include color-disabled($color-theme);
+            @include opacity(1);
+
+		    @if ($color-theme == "dark") {
+                background-color: $button-bg-color-disabled-dark-hex;
+                background-color: $button-bg-color-disabled-dark;
+            } @else {
+                background-color: $button-bg-color-disabled-light-hex;
+                background-color: $button-bg-color-disabled-light;
+            }
+              
+            &.flat {
+               background-color: transparent;
+            }     
+	    }
     }
 }

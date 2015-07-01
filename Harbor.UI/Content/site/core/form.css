@@ -183,7 +183,6 @@ input[type="radio"][disabled], input[type="checkbox"][disabled], input[type="rad
 
 .form-inline input, .form-inline textarea, .form-inline select, .form-inline span, .form-inline div, .form-inline .input {
   display: inline-block;
-  margin-bottom: 3px;
   vertical-align: middle; }
 
 .form-inline input[type="radio"], .form-inline input[type="checkbox"] {

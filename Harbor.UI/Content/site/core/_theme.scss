@@ -10,14 +10,34 @@
 @import "src/alert";
 
 @mixin theme {
+    /* begin foundation-theme */
 	@include foundation-theme;
+    /* end foundation-theme */
+    /* begin frame-theme */
 	@include frame-theme;
+    /* end frame-theme */
+    /* begin button-theme */
     @include button-theme;
+    /* end button-theme */
+    /* begin form-theme */
     @include form-theme;
+    /* end form-theme */
+    /* begin menulist-theme */
 	@include menulist-theme;
+    /* end menulist-theme*/
+    /* begin page-theme */
 	@include page-theme;
+    /* end page-theme */
+    /* begin datatable-theme */
     @include datatable-theme;
+    /* end datatable-theme */
+    /* begin selectlist-theme */
 	@include selectlist-theme;
+    /* end selectlist-theme*/
+    /* begin usermenu-theme */
 	@include usermenu-theme;
+    /* end usermenu-theme */
+    /* begin alert-theme */
     @include alert-theme;
+    /* end alert theme */
 }
