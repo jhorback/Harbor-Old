@@ -16,7 +16,6 @@ $button-font-family:			'Segoe UI Web Semibold', 'Segoe UI Web Regular', 'Segoe U
 
 
 // jch! - still working on this one - move it to color.scss when done.
-// => flat buttons need to not have a background
 // => icon buttons
 // => do the fab button
 // => adjust the button height/sizing after taking a look at form input fields
@@ -94,6 +93,11 @@ $button-font-family:			'Segoe UI Web Semibold', 'Segoe UI Web Regular', 'Segoe U
 
         &:active {
              @include z-depth-button-pressed;
+             span { // for IE to keep the text from moving
+                position: relative; 
+                left: 0px;
+                top: 0px;
+            }
         }
 
         &.flat {
