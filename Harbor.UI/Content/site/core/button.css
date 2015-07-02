@@ -52,20 +52,30 @@ a.button {
   height: 2em;
   font-size: 1.5em;
   padding: 0 0.5em; }
+  .toolbar:after {
+    content: "";
+    display: table;
+    clear: both; }
+  .toolbar .float-left, .toolbar .float-right {
+    height: 2em; }
+    .toolbar .float-left:after, .toolbar .float-right:after {
+      content: "";
+      display: inline-block; }
   .toolbar.small {
     font-size: 1em; }
-
-[class^="icon-"][role="button"], [class*=" icon-"][role="button"], .iconbutton {
-  margin: 0;
-  padding: 0.25em;
-  color: rgba(0, 0, 0, 0.54);
-  min-width: 0;
-  -moz-border-radius: 1em;
-  -webkit-border-radius: 1em;
-  -ms-border-radius: 1em;
-  border-radius: 1em; }
-  [class^="icon-"][role="button"]:hover, [class^="icon-"][role="button"]:focus, [class*=" icon-"][role="button"]:hover, [class*=" icon-"][role="button"]:focus, .iconbutton:hover, .iconbutton:focus {
-    background-color: rgba(153, 153, 153, 0.2);
-    outline: 0; }
-  [class^="icon-"][role="button"]:active, [class*=" icon-"][role="button"]:active, .iconbutton:active {
-    background-color: rgba(153, 153, 153, 0.4); }
+  .toolbar.large {
+    font-size: 2em; }
+  .toolbar [class^="icon-"], .toolbar [class*=" icon-"] {
+    margin: 0;
+    padding: 0.25em;
+    color: rgba(0, 0, 0, 0.54);
+    min-width: 0;
+    -moz-border-radius: 1em;
+    -webkit-border-radius: 1em;
+    -ms-border-radius: 1em;
+    border-radius: 1em; }
+    .toolbar [class^="icon-"]:hover, .toolbar [class^="icon-"]:focus, .toolbar [class*=" icon-"]:hover, .toolbar [class*=" icon-"]:focus {
+      background-color: rgba(153, 153, 153, 0.2);
+      outline: 0; }
+    .toolbar [class^="icon-"]:active, .toolbar [class*=" icon-"]:active {
+      background-color: rgba(153, 153, 153, 0.4); }

@@ -1,5 +1,6 @@
 @import "../../mixins/border-radius";
 @import "../../mixins/user-select";
+@import "../../mixins/_clearfix.scss";
 @import "_$z-depth.scss";
 @import "_$color.scss";
 @import "foundation-vars";
@@ -125,33 +126,44 @@ $button-font-family:			'Segoe UI Web Semibold', 'Segoe UI Web Regular', 'Segoe U
         height: 2em;
         font-size: 1.5em;
         padding: 0 .5em;
+        @include clearfix;
+
+        .float-left, .float-right {
+            height: 2em;
+            &:after {
+                content: "";
+                display: inline-block;
+            }
+        }
 
         &.small {
             font-size: 1em;
         }
-    }
-
-    [class^="icon-"][role="button"],
-    [class*=" icon-"][role="button"],   .iconbutton {        
-        margin: 0;               
-        padding:.25em;
-        color: hsla(0, 0%, 0%, .54);
-
-        min-width: 0;
-
-        @include border-radius(1em);
-        
-        &:hover,&:focus {
-            background-color: hsla(0, 0%, 60%, .20);
-            outline: 0;
+        &.large {
+            font-size: 2em;
         }
 
-        &:active {
-            background-color:hsla(0, 0%, 60%, .40);
-        }
+        [class^="icon-"],
+        [class*=" icon-"] {        
+            margin: 0;               
+            padding:.25em;
+            color: hsla(0, 0%, 0%, .54);
+            min-width: 0;
 
+            @include border-radius(1em);
         
+            &:hover,&:focus {
+                background-color: hsla(0, 0%, 60%, .20);
+                outline: 0;
+            }
+
+            &:active {
+                background-color:hsla(0, 0%, 60%, .40);
+            }        
+        }
     }
+
+    
 }
 
 
