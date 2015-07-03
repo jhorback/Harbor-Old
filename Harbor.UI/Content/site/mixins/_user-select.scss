@@ -15,3 +15,7 @@
     -moz, -webkit, not -o, not -ms, -khtml, official
   );
 }
+
+@mixin user-select-none {
+    @include user-select("none");
+}
