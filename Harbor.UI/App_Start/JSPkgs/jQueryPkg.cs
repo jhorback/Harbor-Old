@@ -12,6 +12,7 @@ namespace Harbor.UI.JSPkgs
 			Name = PackageName;
 			ScriptBundle = new ScriptBundle("~/Scripts/jquery.min.js")
 				.Include("~/Scripts/jquery-1.*")
+				.Include("~/Scripts/jquery.delegates.js")
 				.Include("~/Scripts/jquery-migrate-1.1.1.js");
 			RequiresRegistration = false;
 			Category = Categories.DomAbstraction;
