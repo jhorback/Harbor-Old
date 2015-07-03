@@ -584,6 +584,7 @@
     <Content Include="Scripts\dropzone\images\spritemap%402x.png" />
     <Content Include="Scripts\dropzone\images\spritemap.png" />
     <Content Include="Scripts\appui\callbacks.js" />
+    <Content Include="Scripts\jquery.delegates.js" />
     <Content Include="Scripts\modules\bbextui\menuListFactory.js" />
     <Content Include="Scripts\modules\bbextui\notify\%24notify.js" />
     <Content Include="Scripts\modules\bbextui\notify\notification.js" />
@@ -865,6 +866,7 @@
       <CompileStyle>Nested</CompileStyle>
       <DebugInfo>False</DebugInfo>
     </None>
+    <Content Include="Content\site\core\toolbar.scss" />
     <None Include="Content\site\core\datatable.scss">
       <Compile>True</Compile>
       <Minify>False</Minify>
@@ -965,6 +967,7 @@
     <Content Include="Content\site\core\src\_page-vars.scss" />
     <Content Include="Content\site\core\src\_%24color.scss" />
     <Content Include="Content\site\core\src\_%24z-depth.scss" />
+    <Content Include="Content\site\core\src\_toolbar.scss" />
     <None Include="Content\site\core\src\_tiles.scss">
       <Compile>False</Compile>
       <Minify>False</Minify>

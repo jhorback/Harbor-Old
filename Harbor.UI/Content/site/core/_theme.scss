@@ -2,6 +2,7 @@
 @import "src/frame";
 @import "src/form";
 @import "src/_button.scss";
+@import "src/_toolbar.scss";
 @import "src/menulist";
 @import "src/page";
 @import "src/_datatable.scss";
@@ -19,6 +20,9 @@
     /* begin button-theme */
     @include button-theme;
     /* end button-theme */
+    /* begin toolbar-theme */
+    @include toolbar-theme;
+    /* end toolbar-theme */
     /* begin form-theme */
     @include form-theme;
     /* end form-theme */

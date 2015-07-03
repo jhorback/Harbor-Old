@@ -1,0 +1,70 @@
+@import "../../mixins/border-radius";
+@import "../../mixins/user-select";
+@import "../../mixins/_clearfix.scss";
+@import "_$z-depth.scss";
+@import "_$color.scss";
+
+// .toolbar
+// .toolbar.large
+// .toolbar.small
+// styles icons as buttons - test this as a button again instead of a span!?!
+//
+
+@mixin toolbar {
+
+	a.button {
+		margin-right: 0;
+		*padding-top: 10px;
+		*padding-bottom: 10px;
+	}
+
+    .toolbar {
+        line-height: 2em;
+        height: 2em;
+        font-size: 1.5em;
+        padding: 0 .5em;
+        @include clearfix;
+        @include user-select-none;
+
+        .float-left, .float-right {
+            height: 2em;
+            &:after {
+                content: "";
+                display: inline-block;
+            }
+        }
+
+        &.small {
+            font-size: 1em;
+        }
+        &.large {
+            font-size: 2em;
+        }
+
+        [role="button"] {                               
+            margin: 0;               
+            padding:.25em;
+            color: hsla(0, 0%, 0%, .54);
+            min-width: 0;
+
+            @include border-radius(1em);
+        
+            &:hover,&:focus {
+                background-color: hsla(0, 0%, 60%, .20);
+                outline: 0;
+            }
+
+            &:active, &.active {
+                background-color:hsla(0, 0%, 60%, .40);
+            }        
+        }
+    }    
+}
+
+
+
+@mixin toolbar-theme {    
+   .toolbar {
+
+   }
+}

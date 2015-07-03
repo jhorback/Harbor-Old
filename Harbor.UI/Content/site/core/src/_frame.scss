@@ -5,6 +5,7 @@
 @import "../../mixins/border-radius";
 @import "foundation";
 
+
 $frame-header-height:	4em; // 3.15em !default; // 50px (logo image) / 16px base font size
 $frame-logo-name:       "logo.png" !default;
 $frame-logo-height:     4em !default;
@@ -211,8 +212,12 @@ $frame-logo-use-image: true !default;
 	#frame-header {
 		height: $frame-header-height;
 		line-height: $frame-header-height;
-		color: $framenav-color;
-		background: $framenav-background-color; // don't think i need this
+		
+        // jch playing
+        // color: $framenav-color;
+        // background: $framenav-background-color; // don't think i need this
+        @include color-container;
+        background-color: $color-primary;
 	}
 
 		
