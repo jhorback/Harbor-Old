@@ -5,10 +5,10 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Harbor.Domain")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Harbor")]
+[assembly: AssemblyDescription("The domain for a custom content based website design.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Harbor Software")]
 [assembly: AssemblyProduct("Harbor.Domain")]
 [assembly: AssemblyCopyright("Copyright ©  2012")]
 [assembly: AssemblyTrademark("")]

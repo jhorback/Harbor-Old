@@ -11,15 +11,19 @@ namespace Harbor.Domain.App
 		{
 			ApplicationName = "Harbor";
 			
+			// make distinction about preview vs actual release
+			// do so with the version # - how.
+
+
 			var harborDomain = Assembly.GetAssembly(typeof(HarborApp));
 			var version = harborDomain.GetName().Version;
 			if (version.Build == 0)
 			{
-				Version = string.Format("v{0}.{1}", version.Major, version.Minor);				
+				Version = string.Format("v{0}.{1} preview", version.Major, version.Minor);				
 			}
 			else
 			{
-				Version = string.Format("v{0}.{1}.{2}", version.Major, version.Minor, version.Build);								
+				Version = string.Format("v{0}.{1}", version.Major, version.Minor);								
 			}
 			FullVersion = version.ToString();
 
