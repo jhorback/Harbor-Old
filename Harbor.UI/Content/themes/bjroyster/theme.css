@@ -110,8 +110,7 @@ dd {
   height: 4em;
   line-height: 4em;
   color: #202020;
-  color: rgba(0, 0, 0, 0.87);
-  background-color: #0097a7; }
+  color: rgba(0, 0, 0, 0.87); }
   #frame-header h1, #frame-header h2 {
     color: #202020;
     color: rgba(0, 0, 0, 0.87); }
@@ -136,24 +135,24 @@ dd {
 #frame-logo a {
   text-indent: -99999px;
   display: block;
-  width: 8em;
+  width: 7em;
   height: 4em;
   background: url(images/logo-sig-4.png) no-repeat;
   background-size: contain; }
 
 #frame-nav li {
-  border-bottom: 4px solid #F5F5F5; }
+  border-bottom: 4px solid #0097a7; }
   #frame-nav li a {
+    color: #ffffff;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
     filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
     opacity: 0.7; }
   #frame-nav li.selected {
-    border-bottom: 4px solid #0097a7; }
+    border-bottom: 4px solid white; }
     #frame-nav li.selected a {
       -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
       filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
-      opacity: 1;
-      color: #0097a7; }
+      opacity: 1; }
 
 #frame-footer {
   background-color: #212121;

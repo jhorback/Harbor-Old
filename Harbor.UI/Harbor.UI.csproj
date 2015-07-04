@@ -964,7 +964,6 @@
     <Content Include="Content\site\core\src\_selectlist.scss" />
     <Content Include="Content\site\core\src\_page-header.scss" />
     <Content Include="Content\site\core\src\_page-body.scss" />
-    <Content Include="Content\site\core\src\_page-vars.scss" />
     <Content Include="Content\site\core\src\_%24color.scss" />
     <Content Include="Content\site\core\src\_%24z-depth.scss" />
     <Content Include="Content\site\core\src\_toolbar.scss" />

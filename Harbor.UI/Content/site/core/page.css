@@ -4,6 +4,7 @@
   clear: both; }
 
 .has-titlebg .page-header {
+  padding-top: 4em;
   height: 12em;
   line-height: 12em; }
   .has-titlebg .page-header .page-header-overlay {
@@ -93,7 +94,7 @@
 		}*/ }
 
 .centered .page-header-content, .centered .page-body {
-  max-width: 77em;
+  max-width: 77.5em;
   margin-left: auto;
   margin-right: auto; }
 .centered .page-content {
@@ -102,7 +103,7 @@
 .centered .page-content:first-child {
   width: 98%; }
 
-@media (max-width: 77em) {
+@media (max-width: 77.5em) {
   .page-aside {
     width: 25%; }
   .page-content {

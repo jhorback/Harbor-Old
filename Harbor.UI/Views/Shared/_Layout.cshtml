@@ -46,17 +46,17 @@
 	<body>
 		<div id="frame">
 			<header id="frame-header">
-				<div id="frame-logo">
-					<a href="~/">
-						<span>@HarborApplication.AppName</span>
-					</a>
-				</div>	
-				<nav id="frame-nav">
-					@Html.Action("FrameNav", "Home")
-				</nav>
-				<nav id="frame-session">
-					@*<a id="signin-link" href="@Url.Action("SignIn", "User")">Sign In</a>*@
-				</nav>
+				<div id="frame-header-content">
+					<div id="frame-logo">
+						<a href="~/">
+							<span>@HarborApplication.AppName</span>
+						</a>
+					</div>
+					<nav id="frame-nav">
+						@Html.Action("FrameNav", "Home")
+					</nav>
+					<nav id="frame-session"></nav>
+				</div>
 			</header>	
 			<div id="frame-body">
 				@RenderBody()

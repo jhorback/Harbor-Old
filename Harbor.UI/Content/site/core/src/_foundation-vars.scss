@@ -16,3 +16,42 @@ $body-heading-color:		#393d40					!default;
 $hr-color:					#DDD					!default;
 $dl-inline-dt-width:		11.42em					!default; // ~160px
 
+
+// readable widths
+$width-readable-content: 77.5em;
+$width-readable-text: 32em;
+$width-readable-text-short: 22em;
+
+
+/////////////////////////// FRAME
+$frame-header-height:	4em; // 3.15em !default; // 50px (logo image) / 16px base font size
+$frame-logo-name:       "logo.png" !default;
+$frame-logo-height:     4em !default;
+$frame-logo-width:		7em !default;
+$frame-logo-height:		$frame-header-height !default;
+
+
+
+
+/////////////////////////// PAGE
+
+// page-header
+$page-header-background: #FFF;
+$page-header-height: 4em;
+
+
+// page-body
+$page-readable-width: $width-readable-content; // remove this variable
+
+$page-aside-background: #F5F6F6; // !default;
+$page-aside-menulist-selected-background: #E8E9E9 !default;
+$page-aside-menulist-item-height: 2.2em;
+
+$page-aside-width: 20%;
+$page-content-gutter-width: 1%;
+$page-aside-width-centered: 25%;
+
+$page-aside-left: 100% - $page-aside-width;
+$page-content-width-centered: 100% - ($page-content-gutter-width*2);
+
+

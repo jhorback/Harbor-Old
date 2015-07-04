@@ -4,23 +4,28 @@
   height: 100%; }
 
 #frame-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   overflow: hidden;
   z-index: 1; }
   #frame-header a, #frame-header a:visited {
     text-decoration: none; }
 
+#frame-header-content {
+  max-width: 77.5em;
+  margin: 0 auto; }
+
 #frame-logo {
   float: left;
-  margin: 0 1em 0 1em; }
-  #frame-logo span {
-    font-size: 2em; }
+  margin: 0 0.5em; }
 
 #frame-nav {
-  line-height: 2em;
-  margin-top: 2em;
+  line-height: 4em;
   position: relative;
   top: -4px;
-  float: left; }
+  float: right; }
   #frame-nav ul {
     margin: 0;
     padding: 0;

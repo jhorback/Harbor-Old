@@ -6,11 +6,7 @@
 @import "foundation";
 
 
-$frame-header-height:	4em; // 3.15em !default; // 50px (logo image) / 16px base font size
-$frame-logo-name:       "logo.png" !default;
-$frame-logo-height:     4em !default;
-$frame-logo-width:		8em !default;
-$frame-logo-height:		$frame-header-height !default;
+
 $frame-footer-height:	12em !default; 
 
 $overlay-background-color: #000;
@@ -45,6 +41,10 @@ $frame-logo-use-image: true !default;
 @mixin frame-header {
   
 	#frame-header {
+        position: fixed;
+        top:0;
+        left:0;
+        right:0;
 		overflow: hidden;
 		z-index: 1;
 
@@ -53,20 +53,22 @@ $frame-logo-use-image: true !default;
 		}		
 	}	
 
+    #frame-header-content {
+        max-width: $width-readable-content;
+        margin: 0 auto;
+    }	
+
 	#frame-logo {
-		span {
-            font-size: 2em;
-        }
 		float:left;
-		margin: 0 1em 0 1em;
+		margin: 0 .5em;
 	}
 
 	#frame-nav {
-        line-height: 2em;
-        margin-top: 2em;
+        line-height: 4em;
+        //margin-top: 2em;
         position: relative;
         top: -4px;
-		float: left;
+		float: right;
 		ul {
 			@include inline-block-list;
 			li {
@@ -209,6 +211,8 @@ $frame-logo-use-image: true !default;
 
 
 @mixin frame-theme {
+
+  
 	#frame-header {
 		height: $frame-header-height;
 		line-height: $frame-header-height;
@@ -217,10 +221,10 @@ $frame-logo-use-image: true !default;
         // color: $framenav-color;
         // background: $framenav-background-color; // don't think i need this
         @include color-container;
-        background-color: $color-primary;
+        //background-color: $color-primary;
 	}
 
-		
+
 
 	@if $frame-logo-use-image {
 		#frame-logo a {
@@ -230,22 +234,24 @@ $frame-logo-use-image: true !default;
 			height: $frame-logo-height;
 			background: url(unquote("images/" + $frame-logo-name)) no-repeat;
             background-size: contain;
+            // margin: 1em .5em;
 		}
 	}
 
 	#frame-nav {
       
 		li {           
-            border-bottom: 4px solid $framenav-background-color;
+            border-bottom: 4px solid $color-primary;
             a {
                //font-weight: bold;
+               color:#ffffff;
                @include opacity(.7);
             }
 			&.selected{
-				border-bottom: 4px solid $color-primary;
+				border-bottom: 4px solid white;
 				a {
                     @include opacity(1);
-					color: $color-primary;
+					// color: $color-primary;
 				}
 			}			
 		}
