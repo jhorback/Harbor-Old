@@ -25,7 +25,7 @@
 	},
 
 	renderSignInLink: function () {
-		var link = $('<a id="signin-link" href="' + Session.url("User/SignIn") + '">Sign in</a>');
+		var link = $('<a id="signin-link" href="' + Session.url("User/SignIn") + '"><span class="icon-menu"></span></a>');
 		link.hide();
 		this.$el.html("").append(link);
 		link.fadeIn("slow");
@@ -33,7 +33,7 @@
 
 	render: function () {
 		var displayName = Session.currentUser.get("usersDisplayName");
-		var link = $('<a id="profile-link" href="' + Session.url("User/Account") + '">' + displayName + '</a>');
+		var link = $('<a id="profile-link" href="' + Session.url("User/Account") + '"><span class="icon-menu"></a>');
 		link.hide();
 		this.$el.html("").append(link);
 		link.fadeIn("slow");

@@ -14,6 +14,7 @@
   display: none; }
 
 .page-header {
+  padding-top: 4em;
   height: 8em;
   line-height: 8em;
   overflow: hidden;

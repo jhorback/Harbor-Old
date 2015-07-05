@@ -25,6 +25,7 @@
 
 
 	.page-header {
+        padding-top: $frame-logo-height;
 		height: $page-header-height*2;		
 		line-height: $page-header-height*2; // - (.1 / 100);
         overflow: hidden;
@@ -76,6 +77,7 @@
 @mixin page-header-theme {
 	.page-header {
         position: relative;
+       // top: $frame-logo-height;
         @include bg-color-bar;
 	}
 

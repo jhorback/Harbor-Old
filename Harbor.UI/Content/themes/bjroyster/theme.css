@@ -141,7 +141,7 @@ dd {
   background-size: contain; }
 
 #frame-nav li {
-  border-bottom: 4px solid #0097a7; }
+  border-bottom: 4px solid transparent; }
   #frame-nav li a {
     color: #ffffff;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";

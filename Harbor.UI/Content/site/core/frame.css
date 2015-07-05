@@ -56,13 +56,14 @@
           color: white !important; }
 
 #frame-session {
-  float: right;
+  position: fixed;
+  top: 0;
+  left: 0;
   line-height: 2em;
-  top: -0.5em; }
+  font-size: 1.5em; }
   #frame-session a {
     padding: 0 1em;
-    display: inline-block;
-    text-align: center; }
+    display: inline-block; }
 
 #frame-body {
   position: relative; }

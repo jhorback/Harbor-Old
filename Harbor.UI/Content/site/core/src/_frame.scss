@@ -96,14 +96,15 @@ $frame-logo-use-image: true !default;
 	}
 
 	#frame-session {
-		float: right;
-        line-height: 2em;
-        top: -.5em;
-		a {
+        position: fixed;
+        top: 0;
+        left: 0;
+		line-height: 2em;
+        font-size:1.5em;
+        a {
 			padding: 0 1em;
 			//font-size: 1em;
 			display: inline-block;
-			text-align: center;
 		}
 	}
 }
@@ -241,7 +242,7 @@ $frame-logo-use-image: true !default;
 	#frame-nav {
       
 		li {           
-            border-bottom: 4px solid $color-primary;
+            border-bottom: 4px solid transparent;
             a {
                //font-weight: bold;
                color:#ffffff;
