@@ -10,7 +10,7 @@
 // color(theme);
 // color-quiet(theme);
 // color-disabled(theme);
-// color-divider(theme);
+// color-divider-bg(theme);
 // 
 // bg-color-content(theme)
 // bg-color(theme)
@@ -183,14 +183,15 @@ $button-bg-color-disabled-dark-hex: #1E1E1E;
     }
 }
 
-@mixin color-divider($dark-or-light: $color-theme) {
+// hr's are colored by coloring the bg
+@mixin color-divider-bg($dark-or-light: $color-theme) {
     // use for dividers
     @if $dark-or-light == "dark" {
-       color: $color-dark-divider-hex;
-       color: $color-dark-divider;
+        background-color: $color-dark-divider-hex;
+        background-color: $color-dark-divider;
     } @else {
-       color: $color-light-divider-hex;
-       color: $color-light-divider;
+        background-color: $color-light-divider-hex;
+        background-color: $color-light-divider;
     }
 }
 
@@ -230,7 +231,7 @@ $button-bg-color-disabled-dark-hex: #1E1E1E;
      }
 
     hr {
-        @include color-divider;
+        @include color-divider-bg;
     }
 
     ::-webkit-scrollbar-thumb {

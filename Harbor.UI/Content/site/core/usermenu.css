@@ -1,20 +1,8 @@
 .usermenu {
-  min-width: 18em; }
-  .usermenu .menulist {
-    margin-bottom: 0 !important; }
-  .usermenu hr {
-    margin: 1em 0; }
-  .usermenu ul {
-    padding: 1em 1em 0 1em;
-    padding-right: 2em;
-    margin: 0;
-    list-style: none;
-    font-size: 1.2em;
-    white-space: nowrap; }
-    .usermenu ul li {
-      list-style-image: none;
-      list-style-type: none;
-      margin-left: 0px; }
+  min-width: 18em;
+  /*hr {
+            margin: 1em 0;
+        }*/ }
   .usermenu button, .usermenu .button {
     width: 100%;
     display: block;

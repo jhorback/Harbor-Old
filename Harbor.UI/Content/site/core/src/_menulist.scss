@@ -12,19 +12,21 @@ $menulist-border-style: 1px solid #ccc;
 @mixin menulist {
 
 	.menulist {
-        margin: 0 0 2em 0em;
+        margin-top: .5em;
 
 		& > ul {
-			@include no-bullets;
-			margin: 0 0 1.42em 0;
+			line-height: 3em;
+			margin: 0 0 .5em 0;
+
+            @include no-bullets;
+            
 
 			& > li {
 				& > span,
 				& > a {
-					display: block;					
-                    
+					display: block;                   
 					text-decoration: none;
-					//text-shadow: 0 1px 0 rgba(255,255,255,.5);
+                    padding: 0 1em;				
 				}
 				& > span {
 					cursor: default;
@@ -36,19 +38,51 @@ $menulist-border-style: 1px solid #ccc;
 			}
 		}
 
+         hr {
+            margin: .5em 0;
+            height: 1px;
+            box-sizing: content-box;
+        }
+
 		h2, h3 {			
-			font-family: $body-font-family;
 			display: block;
-			font-size: 1.3em;
-			font-weight: normal;
-			//text-shadow: 0 1px 0 rgba(255,255,255,.5);
+			font-size: 1em;
+            line-height: 3em;
+            padding: 0 1em;
+			font-weight: normal;			
             margin:0;
-            line-height: 2em;
 		}	
 	}
 }
 
-@mixin menulist-theme {
+@mixin menulist-theme() {
+    .menulist {
+        h2, h3 {
+            @include color-quiet;
+        } 
+        
+       li {
+			span, a {
+                @include color;
+                &:hover {
+                    @if ($color-theme == $theme-onlight-bg) {
+                        background-color: $button-bg-color-hover-light-hex;
+                        background-color: $button-bg-color-hover-light;
+                    } @else {
+                        background-color: $button-bg-color-hover-dark-hex;
+                        background-color: $button-bg-color-hover-dark;
+                    }
+                 }
+                		
+			}
 
+            &.selected {
+                color: $color-primary;
+                a {
+                    color: $color-primary;
+                }
+            }
+		}     
+    }
 }
 

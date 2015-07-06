@@ -1,23 +1,29 @@
 .menulist {
-  margin: 0 0 2em 0em; }
+  margin-top: 0.5em; }
   .menulist > ul {
-    list-style: none;
-    margin: 0 0 1.42em 0; }
+    line-height: 3em;
+    margin: 0 0 0.5em 0;
+    list-style: none; }
     .menulist > ul li {
       list-style-image: none;
       list-style-type: none;
       margin-left: 0px; }
     .menulist > ul > li > span, .menulist > ul > li > a {
       display: block;
-      text-decoration: none; }
+      text-decoration: none;
+      padding: 0 1em; }
     .menulist > ul > li > span {
       cursor: default; }
     .menulist > ul .selected {
       font-weight: bold; }
+  .menulist hr {
+    margin: 0.5em 0;
+    height: 1px;
+    box-sizing: content-box; }
   .menulist h2, .menulist h3 {
-    font-family: "OpenSans", "Segoe UI", "Helvetica Neue", Arial;
     display: block;
-    font-size: 1.3em;
+    font-size: 1em;
+    line-height: 3em;
+    padding: 0 1em;
     font-weight: normal;
-    margin: 0;
-    line-height: 2em; }
+    margin: 0; }
