@@ -35,7 +35,7 @@
 				i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
 					(i[r].q = i[r].q || []).push(arguments)
 				}, i[r].l = 1 * new Date(); a = s.createElement(o),
-				m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+					m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
 			})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 			ga('create', '@gaAccount', 'auto');
 			ga('set', '&uid', '@User.Identity.Name');
@@ -45,6 +45,7 @@
 	</head>
 	<body>
 		<div id="frame">
+			<div id="frame-header-background"></div>
 			<header id="frame-header">
 				<nav id="frame-session"></nav>
 				<div id="frame-header-content">
@@ -89,6 +90,24 @@
 		@Html.InstallJavaScriptPackage(PageAdderPkg.PackageName)
 
 		@RenderSection("scripts", required: false)
+		<script>
+			$(function () {
+				var doc = $(document),
+					body = $("body"),
+					headBg = $("#frame-header-background"),
+					setScrolled = _.throttle(function () {
+						if (doc.scrollTop() > 0) {
+							body.addClass("scrolled");
+							headBg.css("opacity", 1);
+						} else {
+							headBg.css("opacity", .2);
+							body.removeClass("scrolled");
+						}
+					}, 200);
+				doc.on("scroll", setScrolled);
+				setScrolled();
+			});
+		</script>
 
 		@Html.InstallJavaScriptPackage(JQueryUICorePkg.PackageName)
 		@Html.InstallJavaScriptPackage(JQueryUIInteractionsPkg.PackageName)

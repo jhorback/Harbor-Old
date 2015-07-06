@@ -4,8 +4,7 @@
 
 @mixin page-header {
     .has-titlebg {
-        .page-header {
-            padding-top: $frame-logo-height;
+        .page-header {            
             height: $page-header-height*3;
             line-height: $page-header-height*3;
             .page-header-overlay {
@@ -16,16 +15,14 @@
 
     .has-notitle {
         .page-header {
-            display: none;
-            //height: 1px;
-            //position:relative;
-            //top: -3px; // exposes a shawdow, just playing here; could do this better if long term
+            visibility: hidden;
+            height: $frame-header-height;
         }
     }
 
 
 	.page-header {
-        padding-top: $frame-logo-height;
+        padding-top: $frame-header-height;
 		height: $page-header-height*2;		
 		line-height: $page-header-height*2; // - (.1 / 100);
         overflow: hidden;

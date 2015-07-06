@@ -132,6 +132,9 @@ dd {
     #frame-header ::-webkit-scrollbar-thumb:hover {
       background-color: #000000; }
 
+#frame-header-background {
+  background: #0097a7; }
+
 #frame-logo a {
   text-indent: -99999px;
   display: block;

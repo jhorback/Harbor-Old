@@ -3,15 +3,28 @@
   height: auto !important;
   height: 100%; }
 
-#frame-header {
+#frame-header, #frame-header-background {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   overflow: hidden;
-  z-index: 1; }
-  #frame-header a, #frame-header a:visited {
-    text-decoration: none; }
+  z-index: 1;
+  height: 4em; }
+
+#frame-header-background {
+  transition: opacity linear 0.2s; }
+
+.scrolled #frame-header-background {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1; }
+.scrolled #frame-header {
+  z-index: 4;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.16), 0 0px 2px 1px rgba(0, 0, 0, 0.12); }
+
+#frame-header a, #frame-header a:visited {
+  text-decoration: none; }
 
 #frame-header-content {
   max-width: 77.5em;

@@ -54,7 +54,7 @@ $form-error-color: #b94a48;
 	  padding: 0;
 	  margin: 0;
 	  border: 0;
-	  margin-bottom: $body-line-height-px;
+	 // margin-bottom: $body-line-height-px;
 
 	  & > * {
 		padding-left: 1.4em;
@@ -102,12 +102,13 @@ $form-error-color: #b94a48;
 		line-height: $body-line-height;
 		color: $form-input-color;	
 		vertical-align: middle;
-		border: 1px solid $form-input-border-color;
+		border-style: solid;
+        border-color: $form-input-border-color;
+        border-width: 0 0 2px 0;
 		background: $form-input-background-color;
-		@include border-radius(3px);
-		@include box-shadow-value(inset 1px 1px 1px rgba(0,0,0,.1));
-		@include transition(border linear .2s);
-		@include transition(box-shadow linear .2s);
+		// @include box-shadow-value(inset 1px 1px 1px rgba(0,0,0,.1));
+		@include transition(border linear .5s);
+		//@include transition(box-shadow linear .2s);
 
 		&:focus {
 			border-color: $form-input-border-color-focused;
@@ -115,7 +116,8 @@ $form-error-color: #b94a48;
 		    outline: thin dotted \9; /* IE6-9 */
 			color: $form-input-color-focused;
 			background-color: $form-input-background-color-focused;
-			@include box-shadow-value(unquote("inset 1px 1px 1px rgba(0,0,0,.1), 0 0 8px rgba(82,168,236,.6)"));
+			border-color: rgba(82,168,236,.6);
+            //@include box-shadow-value(unquote("inset 1px 1px 1px rgba(0,0,0,.1), 0 0 8px rgba(82,168,236,.6)"));
 		}
 		
 	}
@@ -128,7 +130,7 @@ $form-error-color: #b94a48;
 		&:hover, &:active { // in case styling an anchor like an .input
 			color: $form-input-color !important;
 			background-color: $form-input-background-color;
-			border: 1px solid $form-input-border-color-focused;
+			// border: 1px solid $form-input-border-color-focused;
 		}
 	}
 
@@ -147,7 +149,7 @@ $form-error-color: #b94a48;
 	// Make select elements obey height by applying a border
 	select {
 	  width: 220px; // default input width + 10px of padding that doesn't get applied
-	  border: 1px solid $form-input-border-color;
+	  // border: 1px solid $form-input-border-color;
 	  background-color: $form-input-background-color; // Chrome on Linux and Mobile Safari need background-color
 	}
 

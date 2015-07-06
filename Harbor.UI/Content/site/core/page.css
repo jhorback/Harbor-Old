@@ -4,14 +4,14 @@
   clear: both; }
 
 .has-titlebg .page-header {
-  padding-top: 4em;
   height: 12em;
   line-height: 12em; }
   .has-titlebg .page-header .page-header-overlay {
     display: block; }
 
 .has-notitle .page-header {
-  display: none; }
+  visibility: hidden;
+  height: 4em; }
 
 .page-header {
   padding-top: 4em;

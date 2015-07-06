@@ -8,8 +8,7 @@ form {
 fieldset {
   padding: 0;
   margin: 0;
-  border: 0;
-  margin-bottom: 24px; }
+  border: 0; }
   fieldset > * {
     padding-left: 1.4em; }
     @media (max-width: 48em) {
@@ -35,24 +34,14 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
   line-height: 1.5;
   color: #555;
   vertical-align: middle;
-  border: 1px solid #bbbbbb;
+  border-style: solid;
+  border-color: #bbbbbb;
+  border-width: 0 0 2px 0;
   background: #FFFFFF;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  -ms-border-radius: 3px;
-  border-radius: 3px;
-  -moz-box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.1);
-  -webkit-box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.1);
-  -ms-box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.1);
-  box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.1);
-  -moz-transition: border linear 0.2s;
-  -webkit-transition: border linear 0.2s;
-  -ms-transition: border linear 0.2s;
-  transition: border linear 0.2s;
-  -moz-transition: box-shadow linear 0.2s;
-  -webkit-transition: box-shadow linear 0.2s;
-  -ms-transition: box-shadow linear 0.2s;
-  transition: box-shadow linear 0.2s; }
+  -moz-transition: border linear 0.5s;
+  -webkit-transition: border linear 0.5s;
+  -ms-transition: border linear 0.5s;
+  transition: border linear 0.5s; }
   select:focus, textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, .input:focus {
     border-color: rgba(82, 168, 236, 0.8);
     outline: 0;
@@ -60,10 +49,7 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
     /* IE6-9 */
     color: #333;
     background-color: #FFF;
-    -moz-box-shadow: inset 1px 1px 1px rgba(0,0,0,.1), 0 0 8px rgba(82,168,236,.6);
-    -webkit-box-shadow: inset 1px 1px 1px rgba(0,0,0,.1), 0 0 8px rgba(82,168,236,.6);
-    -ms-box-shadow: inset 1px 1px 1px rgba(0,0,0,.1), 0 0 8px rgba(82,168,236,.6);
-    box-shadow: inset 1px 1px 1px rgba(0,0,0,.1), 0 0 8px rgba(82,168,236,.6); }
+    border-color: rgba(82, 168, 236, 0.6); }
 
 .input {
   text-decoration: none;
@@ -72,8 +58,7 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
   text-align: left; }
   .input:hover, .input:active {
     color: #555 !important;
-    background-color: #FFFFFF;
-    border: 1px solid rgba(82, 168, 236, 0.8); }
+    background-color: #FFFFFF; }
 
 textarea {
   height: auto; }
@@ -87,7 +72,6 @@ select, input[type="file"] {
 
 select {
   width: 220px;
-  border: 1px solid #bbbbbb;
   background-color: #FFFFFF; }
 
 select[multiple], select[size] {
