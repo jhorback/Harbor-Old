@@ -66,6 +66,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppMenu\MenuItem.cs" />
+    <Compile Include="AppMenu\Queries\MenuItemDto.cs" />
     <Compile Include="App\AppSetting.cs" />
     <Compile Include="App\Events\RootPagesChanged.cs" />
     <Compile Include="App\Events\HarborAppChanged.cs" />

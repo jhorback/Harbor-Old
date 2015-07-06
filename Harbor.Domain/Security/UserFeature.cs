@@ -7,6 +7,7 @@ namespace Harbor.Domain.Security
 	/// </summary>
 	public enum UserFeature
 	{
+		None,
 		SystemSettings,
 		SiteSettings,
 		Users,
