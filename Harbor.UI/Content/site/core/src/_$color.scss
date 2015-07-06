@@ -22,7 +22,9 @@
 //       This is to be used as long as IE 8 is supported.
 // 
 
-$color-theme:                "light"     !default;
+$theme-onlight-bg:           "light";
+$theme-ondark-bg:            "dark";
+$color-theme:                $theme-onlight-bg     !default;
 
 // primary/accent color swatch
 $color-primary:               #0097a7   !default;

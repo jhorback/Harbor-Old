@@ -340,31 +340,31 @@ legend {
       background-color: #E0E0E0; }
 
 /* end alert theme */
-.page-header {
+.page-header, #frame-header {
   background-color: #0097a7;
   color: #FFFFFF;
   color: white; }
-  .page-header h1, .page-header h2 {
+  .page-header h1, .page-header h2, #frame-header h1, #frame-header h2 {
     color: #FFFFFF;
     color: white; }
-  .page-header .quiet, .page-header small {
+  .page-header .quiet, .page-header small, #frame-header .quiet, #frame-header small {
     color: #B3B3B3;
     color: rgba(255, 255, 255, 0.7); }
-  .page-header [disabled], .page-header .disabled, .page-header .hint {
+  .page-header [disabled], .page-header .disabled, .page-header .hint, #frame-header [disabled], #frame-header .disabled, #frame-header .hint {
     color: #4C4C4C !important;
     color: rgba(255, 255, 255, 0.3) !important; }
-  .page-header .loud {
+  .page-header .loud, #frame-header .loud {
     color: #0097a7; }
-  .page-header .attn {
+  .page-header .attn, #frame-header .attn {
     color: #FF3D00; }
-  .page-header hr {
+  .page-header hr, #frame-header hr {
     color: #E0E0E0;
     color: rgba(0, 0, 0, 0.12); }
-  .page-header ::-webkit-scrollbar-thumb {
+  .page-header ::-webkit-scrollbar-thumb, #frame-header ::-webkit-scrollbar-thumb {
     background-color: #212121; }
-    .page-header ::-webkit-scrollbar-thumb:hover {
+    .page-header ::-webkit-scrollbar-thumb:hover, #frame-header ::-webkit-scrollbar-thumb:hover {
       background-color: #E0E0E0; }
-  .page-header .link, .page-header a {
+  .page-header .link, .page-header a, #frame-header .link, #frame-header a {
     color: white; }
-    .page-header .link:visited, .page-header .link:focus, .page-header .link:hover, .page-header .link:active, .page-header a:visited, .page-header a:focus, .page-header a:hover, .page-header a:active {
+    .page-header .link:visited, .page-header .link:focus, .page-header .link:hover, .page-header .link:active, .page-header a:visited, .page-header a:focus, .page-header a:hover, .page-header a:active, #frame-header .link:visited, #frame-header .link:focus, #frame-header .link:hover, #frame-header .link:active, #frame-header a:visited, #frame-header a:focus, #frame-header a:hover, #frame-header a:active {
       color: white; }
