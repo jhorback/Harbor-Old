@@ -88,27 +88,7 @@
 		@Html.InstallJavaScriptPackage(ApplicationPkg.PackageName)
 		@Html.Action("SessionApp", "User")
 		@Html.InstallJavaScriptPackage(PageAdderPkg.PackageName)
-
 		@RenderSection("scripts", required: false)
-		<script>
-			$(function () {
-				var doc = $(document),
-					body = $("body"),
-					headBg = $("#frame-header-background"),
-					setScrolled = _.throttle(function () {
-						if (doc.scrollTop() > 0) {
-							body.addClass("scrolled");
-							headBg.css("opacity", 1);
-						} else {
-							headBg.css("opacity", .2);
-							body.removeClass("scrolled");
-						}
-					}, 200);
-				doc.on("scroll", setScrolled);
-				setScrolled();
-			});
-		</script>
-
 		@Html.InstallJavaScriptPackage(JQueryUICorePkg.PackageName)
 		@Html.InstallJavaScriptPackage(JQueryUIInteractionsPkg.PackageName)
 		<div id="theme1"></div>

@@ -3,8 +3,10 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Web.Security;
 using Harbor.Domain;
+using Harbor.Domain.AppMenu.Queries;
 using Harbor.Domain.Files;
 using Harbor.Domain.Pages.PageTypeAdmin.Queries;
+using Harbor.Domain.Query;
 using Harbor.Domain.Security;
 using Harbor.UI.Models.Setting;
 using Harbor.UI.Models.User;
@@ -20,6 +22,7 @@ namespace Harbor.UI.Controllers
 		readonly ISettingsViewModelRepository _settingsViewModelRepository;
 	    private readonly ILogger _logger;
 		private readonly IPageTypeQuery _pageTypeQuery;
+		private readonly IQueryService _queryService;
 
 		public UserController(
 			IUserRepository userRep,
@@ -27,7 +30,8 @@ namespace Harbor.UI.Controllers
 			IFileRepository fileRep,
 			ISettingsViewModelRepository settingsViewModelRepository,
 			ILogger logger,
-			IPageTypeQuery pageTypeQuery
+			IPageTypeQuery pageTypeQuery,
+			IQueryService queryService
 			)
 		{
 			_userRep = userRep;
@@ -36,6 +40,7 @@ namespace Harbor.UI.Controllers
 			_settingsViewModelRepository = settingsViewModelRepository;
 			_logger = logger;
 		    _pageTypeQuery = pageTypeQuery;
+			_queryService = queryService;
 		}
 
 
@@ -76,6 +81,8 @@ namespace Harbor.UI.Controllers
 		public PartialViewResult SessionApp()
 		{	
 			var model = _currentUserRep.GetCurrentUserDto(User.Identity.Name);
+			var menu = _queryService.GetQuery<MenuQuery>().Execute();
+			ViewBag.Menu = menu;
 			return PartialView("SessionApp", model);
 		}
 		
