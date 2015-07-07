@@ -9,13 +9,19 @@ namespace Harbor.Domain.AppMenu
 	/// </summary>
 	public class MenuItemContext
 	{
-		public MenuItemContext(User user, IHarborAppRepository harborAppRepository)
+		private readonly IObjectFactory _objectFactory;
+
+		public MenuItemContext(User user, IObjectFactory objectFactory)
 		{
-			HarborApp = harborAppRepository.GetApp();
+			_objectFactory = objectFactory;
 			User = user;
 		}
 
-		public HarborApp HarborApp { get; set; }
 		public User User { get; set; }
+
+		public T GetDependency<T>()
+		{
+			return _objectFactory.GetInstance<T>();
+		}
 	}
 }

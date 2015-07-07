@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Harbor.Domain.App;
 using Harbor.Domain.Security;
 
 namespace Harbor.Domain.AppMenu.Menus
@@ -139,7 +140,8 @@ namespace Harbor.Domain.AppMenu.Menus
 	
 		public override string GetText(MenuItemContext context)
 		{
-			return "About version " + context.HarborApp.Version;
+			var harborApp = context.GetDependency<IHarborAppRepository>().GetApp();
+			return "About version " + harborApp.Version;
 		}
 	}
 }

@@ -10,7 +10,8 @@ namespace Harbor.Domain.AppMenu.Menus
 			{
 				return new List<MenuItem>()
 				{
-
+					new StyleGuidePageLayoutMenuLink(),
+					new StyleGuideScaffoldingMenuLink()
 				};
 			}
 		}
@@ -26,8 +27,39 @@ namespace Harbor.Domain.AppMenu.Menus
 		}
 	}
 
-	/*
-	 * StyleGuide_LayoutMenu
-			Page Layout 1
-			Scaffolding*/
+	public class StyleGuidePageLayoutMenuLink : MenuLink
+	{
+		public override string Url
+		{
+			get { return "~/styleguide/pagelayout"; }
+		}
+
+		public override string Id
+		{
+			get { return "style-guide-pagelayout"; }
+		}
+
+		public override string Text
+		{
+			get { return "Page Layout"; }
+		}
+	}
+
+	public class StyleGuideScaffoldingMenuLink : MenuLink
+	{
+		public override string Url
+		{
+			get { return "~/styleguide/scaffolding"; }
+		}
+
+		public override string Id
+		{
+			get { return "style-guide-scaffolding"; }
+		}
+
+		public override string Text
+		{
+			get { return "Scaffolding"; }
+		}
+	}
 }

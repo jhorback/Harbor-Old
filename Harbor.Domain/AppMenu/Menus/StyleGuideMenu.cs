@@ -8,9 +8,12 @@ namespace Harbor.Domain.AppMenu.Menus
 		{
 			get
 			{
-				return new List<MenuItem>()
+				return new List<MenuItem>
 				{
-
+					new StyleGuide_ApplicationDesignMenu(),
+					new StyleGuide_LayoutMenu(),
+					new StyleGuide_ApplicationComponentsMenu(),
+					new StyleGuide_ContentComponentsMenu()
 				};
 			}
 		}
@@ -25,11 +28,4 @@ namespace Harbor.Domain.AppMenu.Menus
 			get { return "Style Guide"; }
 		}
 	}
-
-	/* StyleGuideMenu
- *	ApplicationDesignMenu
- *	LayoutMenu
- *	ApplicationComponentsMenu
- *	ContentComponentsMenu
- * */
 }
