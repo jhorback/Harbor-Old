@@ -66,8 +66,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppMenu\DynamicMenuItem.cs" />
+    <Compile Include="AppMenu\Menu.cs" />
     <Compile Include="AppMenu\MenuItem.cs" />
+    <Compile Include="AppMenu\MenuItemContext.cs" />
+    <Compile Include="AppMenu\MenuLink.cs" />
+    <Compile Include="AppMenu\Menus\MainMenu.cs" />
+    <Compile Include="AppMenu\Menus\StyleGuide_ApplicationDesignMenu.cs" />
+    <Compile Include="AppMenu\Menus\StyleGuide_LayoutMenu.cs" />
+    <Compile Include="AppMenu\Menus\StyleGuide_ApplicationComponentsMenu.cs" />
+    <Compile Include="AppMenu\Menus\StyleGuide_ContentComponentsMenu.cs" />
+    <Compile Include="AppMenu\Menus\StyleGuideMenu.cs" />
+    <Compile Include="AppMenu\Menus\SupportMenu.cs" />
+    <Compile Include="AppMenu\Menus\SystemSettingsMenu.cs" />
     <Compile Include="AppMenu\Queries\MenuItemDto.cs" />
+    <Compile Include="AppMenu\Queries\MenuQuery.cs" />
     <Compile Include="App\AppSetting.cs" />
     <Compile Include="App\Events\RootPagesChanged.cs" />
     <Compile Include="App\Events\HarborAppChanged.cs" />
