@@ -23,8 +23,12 @@
   z-index: 4;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.16), 0 0px 2px 1px rgba(0, 0, 0, 0.12); }
 
-#frame-header a, #frame-header a:visited {
-  text-decoration: none; }
+#frame-header {
+  height: 4em;
+  line-height: 4em;
+  font-size: 1em; }
+  #frame-header a, #frame-header a:visited {
+    text-decoration: none; }
 
 #frame-header-content {
   max-width: 77.5em;

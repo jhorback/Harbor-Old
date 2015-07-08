@@ -1,4 +1,5 @@
-﻿using Harbor.Domain.App;
+﻿using System.Security.Principal;
+using Harbor.Domain.App;
 using Harbor.Domain.Security;
 
 namespace Harbor.Domain.AppMenu
@@ -11,10 +12,13 @@ namespace Harbor.Domain.AppMenu
 	{
 		private readonly IObjectFactory _objectFactory;
 
-		public MenuItemContext(User user, IObjectFactory objectFactory)
+		public MenuItemContext(
+			IUserRepository userRepository,
+			IPrincipal user,
+			IObjectFactory objectFactory)
 		{
 			_objectFactory = objectFactory;
-			User = user;
+			User = userRepository.FindUserByName(user.Identity.Name, readOnly: true);
 		}
 
 		public User User { get; set; }

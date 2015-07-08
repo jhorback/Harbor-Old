@@ -107,8 +107,6 @@ dd {
 /* end foundation-theme */
 /* begin frame-theme */
 #frame-header {
-  height: 4em;
-  line-height: 4em;
   color: #202020;
   color: rgba(0, 0, 0, 0.87); }
   #frame-header h1, #frame-header h2 {
@@ -131,6 +129,13 @@ dd {
     background-color: #F5F5F5; }
     #frame-header ::-webkit-scrollbar-thumb:hover {
       background-color: #000000; }
+  #frame-header [role=button] {
+    color: #FFFFFF;
+    color: white; }
+    #frame-header [role=button]:hover {
+      background-color: #00828d; }
+    #frame-header [role=button]:active {
+      background-color: #006a74; }
 
 #frame-header-background {
   background: #0097a7; }

@@ -1,7 +1,14 @@
 ﻿
 
-function currentUserRepo(currentUserDto, modelFactory, globalCache) {
+function currentUserRepo(
+	currentUserDto,
+	menuDto,
+	modelFactory,
+	globalCache
+) {
 	var currentUser = globalCache.get("currentUser") || null;
+
+	console.debug("menuDto", menuDto, menuDto.length);
 
 	return {
 		getCurrentUser: function () {
@@ -15,5 +22,9 @@ function currentUserRepo(currentUserDto, modelFactory, globalCache) {
 }
 
 currentUserModel.service("currentUserRepo", [
-	"currentUserDto", "modelFactory", "globalCache",
-	currentUserRepo]);
+	"currentUserDto",
+	"menuDto",
+	"modelFactory",
+	"globalCache",
+	currentUserRepo
+]);

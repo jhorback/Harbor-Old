@@ -1,26 +1,39 @@
-﻿using Harbor.Domain.App;
+﻿using System.Security.Principal;
+using Harbor.Domain.App;
 using Harbor.Domain.Security;
 
 namespace Harbor.UI.Models.User
 {
 	public class CurrentUserRepository : ICurrentUserRepository
 	{
-		IHarborAppRepository harborApp;
-		IUserRepository userRep;
+		readonly IHarborAppRepository harborApp;
+		private readonly IPrincipal _user;
+		readonly IUserRepository userRep;
 
-		public CurrentUserRepository(IUserRepository userRep, IHarborAppRepository harborApp)
+
+		public CurrentUserRepository(
+			IPrincipal user,
+			IUserRepository userRep,
+			IHarborAppRepository harborApp)
 		{
+			_user = user;
 			this.userRep = userRep;
 			this.harborApp = harborApp;
 		}
 
-		public CurrentUserDto GetCurrentUserDto(string username)
-		{	
-			var user = userRep.FindUserByName(username);
+		public CurrentUserDto GetCurrentUserDto()
+		{
+			var user = GetCurrentUser();
 			var currentUser = user == null ? new CurrentUserDto() : (CurrentUserDto)user;
 			currentUser.showSignInLink = harborApp.GetApp().ShowSignInLink;
-			currentUser.isAuthenticated = user == null ? false : true;
+			currentUser.isAuthenticated = user != null;
 			return currentUser;
+		}
+
+		public Domain.Security.User GetCurrentUser()
+		{
+			var user = userRep.FindUserByName(_user.Identity.Name);
+			return user;
 		}
 	}
 }

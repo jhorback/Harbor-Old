@@ -65,6 +65,9 @@ $frame-logo-use-image: true !default;
     }
 
     #frame-header {
+        height: $frame-header-height;
+		line-height: $frame-header-height;
+        font-size: 1em;
         a, a:visited {
 			text-decoration: none;
 		}
@@ -234,14 +237,22 @@ $frame-logo-use-image: true !default;
 
   
 	#frame-header {
-		height: $frame-header-height;
-		line-height: $frame-header-height;
+		
 		
         // jch playing
         // color: $framenav-color;
         // background: $framenav-background-color; // don't think i need this
         @include color-container;
         //background-color: $color-primary;
+        [role=button] {
+            @include color($theme-ondark-bg);
+            &:hover {
+                background-color: darken($color-primary, 5%);
+            }
+            &:active {
+                background-color: darken($color-primary, 10%);
+            }
+        }
 	}
     
     #frame-header-background {

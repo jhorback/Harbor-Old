@@ -60,7 +60,6 @@ namespace Harbor.UI.Controllers
 					return new HttpStatusCodeResult(HttpStatusCode.BadRequest,
 						string.Format("{0} is disabled.", user.UserName));
 
-				var currentUser = _currentUserRep.GetCurrentUserDto(user.UserName);
 				FormsAuthentication.SetAuthCookie(username, rememberMe ?? false);
 				return new HttpStatusCodeResult(HttpStatusCode.NoContent);
 			}
@@ -80,7 +79,7 @@ namespace Harbor.UI.Controllers
 		[Route("SessionApp")]
 		public PartialViewResult SessionApp()
 		{	
-			var model = _currentUserRep.GetCurrentUserDto(User.Identity.Name);
+			var model = _currentUserRep.GetCurrentUserDto();
 			var menu = _queryService.GetQuery<MenuQuery>().Execute();
 			ViewBag.Menu = menu;
 			return PartialView("SessionApp", model);

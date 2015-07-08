@@ -27,6 +27,11 @@ namespace Harbor.Domain.AppMenu.Menus
 		{
 			get { return "System Settings"; }
 		}
+
+		public override bool HasPermission(MenuItemContext context)
+		{
+			return context.User.HasPermission(UserFeature.SystemSettings);
+		}
 	}
 
 	public class WebsiteUsersMenuLink : MenuLink
@@ -71,7 +76,7 @@ namespace Harbor.Domain.AppMenu.Menus
 
 		public override bool HasPermission(MenuItemContext context)
 		{
-			return context.User.HasPermission(UserFeature.Users);
+			return context.User.HasPermission(UserFeature.PageTemplates);
 		}
 	}
 }

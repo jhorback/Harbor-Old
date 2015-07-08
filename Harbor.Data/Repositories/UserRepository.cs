@@ -132,7 +132,7 @@ namespace Harbor.Data.Repositories
 		#region IUserRepository
 		public User FindUserByName(string userName)
 		{
-			return FindById(userName);
+			return FindById(userName, readOnly: true);
 		}
 
 		public User FindUserByName(string userName, bool readOnly)

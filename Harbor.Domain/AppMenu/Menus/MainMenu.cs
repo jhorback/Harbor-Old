@@ -130,12 +130,12 @@ namespace Harbor.Domain.AppMenu.Menus
 	{
 		public override string Url
 		{
-			get { return "~/user/settings"; }
+			get { return "~/home/about"; }
 		}
 
 		public override string Id
 		{
-			get { return "website-settings"; }
+			get { return "about"; }
 		}
 	
 		public override string GetText(MenuItemContext context)

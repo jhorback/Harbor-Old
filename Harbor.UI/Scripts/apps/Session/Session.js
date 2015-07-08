@@ -84,6 +84,23 @@
 			return AjaxRequest.handle($.ajax({
 				url: Session.url("User/SignOut")
 			}), handler);
+		},
+
+		scrollHeader: function () {
+			var doc = $(document),
+				body = $("body"),
+				headBg = $("#frame-header-background"),
+				setScrolled = _.throttle(function () {
+					if (doc.scrollTop() > 0) {
+						body.addClass("scrolled");
+						headBg.css("opacity", 1);
+					} else {
+						headBg.css("opacity", .2);
+						body.removeClass("scrolled");
+					}
+				}, 200);
+			doc.on("scroll", setScrolled);
+			setScrolled();
 		}
 	};
 
@@ -114,6 +131,7 @@
 		keepAlive.start(appurl.get("home/keepalive"));
 		Session.currentUser = currentUserRepo.getCurrentUser();
 		Session.pageAdder = pageAdder;
+		Session.scrollHeader();
 	}]);
 } ());
 

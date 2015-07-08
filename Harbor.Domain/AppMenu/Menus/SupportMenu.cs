@@ -12,7 +12,7 @@ namespace Harbor.Domain.AppMenu.Menus
 			{
 				return new List<MenuItem>
 				{
-					new StyleGuideMenuLink(),
+					new StyleGuideMenu(),
 					new JavaScriptPackagesMenuLink(),
 					new ElmahMenuLink(),
 					new AnalyticsMenuLink()
@@ -35,24 +35,6 @@ namespace Harbor.Domain.AppMenu.Menus
 		    return context.User.HasPermission(UserFeature.SystemSettings);
 	    }
     }
-
-	public class StyleGuideMenuLink : MenuLink
-	{
-		public override string Url
-		{
-			get { return "~/styleguide"; }
-		}
-
-		public override string Id
-		{
-			get { return "style-guide"; }
-		}
-
-		public override string Text
-		{
-			get { return "Style Guide"; }
-		}
-	}
 
 	public class JavaScriptPackagesMenuLink : MenuLink
 	{
