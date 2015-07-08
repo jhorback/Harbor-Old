@@ -547,6 +547,7 @@
     <Content Include="Scripts\apps\pageAdmin\pageAdminViewModelRepo.js" />
     <Content Include="Scripts\apps\pageLoader\model\pageLoaderTab.js" />
     <Content Include="Scripts\apps\Session\%24session.js" />
+    <Content Include="Scripts\apps\Session\appMenuModel\%24appMenuModel.js" />
     <Content Include="Scripts\apps\Session\scrollHeaderService.js" />
     <Content Include="Scripts\apps\Settings\UpdateFooterView.js" />
     <Content Include="Scripts\appui\%24globalCache.js" />
@@ -721,7 +722,7 @@
     <Content Include="Scripts\apps\pageAdmin\%24pageAdmin.js" />
     <Content Include="Scripts\apps\Session\appMenuView.js" />
     <Content Include="Scripts\apps\Session\sessionNavView.js" />
-    <Content Include="Scripts\apps\Session\Model\signInModel.js" />
+    <Content Include="Scripts\apps\Session\signInModel.js" />
     <Content Include="Scripts\apps\Session\signInView.js" />
     <Content Include="Scripts\apps\Settings\AppSettings.js" />
     <Content Include="Scripts\apps\Settings\EditNameView.js" />

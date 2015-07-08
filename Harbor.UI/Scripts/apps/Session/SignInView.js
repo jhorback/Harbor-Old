@@ -11,6 +11,8 @@ session.signInView.prototype = {
 	},
 	
 	initialize: function () {
+		//model: new Session.SignInModel() - create the model here.
+
 		if (Session.currentUser.get("isAuthenticated") &&
 			window.location.toString().toLowerCase().indexOf("returnurl") > -1) {
 			this.showError("Permission Denied", "You do not have permission to view the requested page.");

@@ -3,44 +3,38 @@
  */
 var session = context.app("session").use("appui", "bbext", "currentUserModel");
 
-session.bootstrap = function (keepAlive,
+session.bootstrap = function (
+	keepAlive,
 	appurl,
 	currentUserRepo,
 	scrollHeader,
-	viewRenderer,
-	appMenuDto
+	viewRenderer
 ) {
-	var currentUser;
+	var currentUser,
+		sessionNavView,
+		signInPageEl,
+		signInView;
 	
 	appurl.setBaseUrl(window.baseUrl);
 	currentUser = currentUserRepo.getCurrentUser();
 	keepAlive.start(appurl.get("home/keepalive"));
 	scrollHeader.start();
 
-	viewRenderer.render("sessionNavView", {
+
+	// render the navigation
+	sessionNavView = viewRenderer.render("sessionNavView", {
 		el: $("#frame-session"),
 		model: currentUser
 	});
 
 
-	// jch* - need to check for #signinpage - then start that up if needed
-	/*
-	startSignIn: function () {
+	// if we are on the sign in page, render the sign in form there
+	signInPageEl = $("#signinpage");
+	if (signInPageEl.length > 0) {
+		signInView = sessionNavView.renderSignInView();
+		signInPageEl.append(signInView.$el);
+	}
 
-		Session.start({
-			showSignInLink: false
-		});
-
-		$("#frame-session").hide();
-
-		var signInView = new Session.SignInView({
-			el: $("#signinpage"),
-			model: new Session.SignInModel()
-		});
-		signInView.render();
-	}*/
-
-	// can create the appMenu now - appMenuDto
 
 	// window.Session is deprecated it is only in use by the old style BackBone apps.
 	window.Session = {
@@ -59,6 +53,5 @@ session.start([
 	"pageAdder",
 	"scrollHeader",
 	"viewRenderer",
-	"appMenuDto",
 	session.bootstrap
 ]);

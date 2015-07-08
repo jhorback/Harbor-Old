@@ -1,48 +1,39 @@
 ﻿
-session.sessionNavView = function (options, currentUserRepo) {
+session.sessionNavView = function (
+	options,
+	currentUserRepo,
+	templateRenderer
+) {
 
 	this.currentUserRepo = currentUserRepo;
+	this.templateRenderer = templateRenderer;
 };
 
 session.sessionNavView.prototype = {
 	initialize: function () {
-		this.currentUser = this.currentUserRepo.getCurrentUser();
-		
+
+		this.model = this.currentUserRepo.getCurrentUser();
 	},
 
-	events: {
-		"click #signin-link": function (event) {
-			event.preventDefault();
-			//$.ajax("/Home/ThrowError");
-			this.showSignInDialog();
-		},
+	showMainMenu: function (event) {
+		event && event.preventDefault();
 
-		"click #profile-link": function (event) {
-			event.preventDefault();
-			this.showView(new Session.UserMenu());
-		}
+		this.templateRenderer.render("appMenuView");
 	},
+
 	
+	showSignInDialog: function (event) {
+		event && event.preventDefault();
 
-	showSignInDialog: function () {
-		var signInView = new Session.SignInView({
-			model: new Session.SignInModel()
-		});
-		signInView.render();
 		var dialog = new Dialog(signInView.$el, {
 			title: "Sign in",
 			modal: true,
 			transition: "fade"
 		});
 	},
-	
-	showView: function (view) {
-		this.view && this.view.close();
-		this.view = view;
-	},
 
-	onClose: function () {
-		this.view && this.view.close();
+	renderSignInView: function () {
+		return this.templateRenderer.render("signInView");
 	}
 };
 
@@ -50,5 +41,6 @@ session.sessionNavView.prototype = {
 session.view("sessionNavView", [
 	"options",
 	"currentUserRepo",
+	"templateRenderer",
 	session.sessionNavView
 ]);
