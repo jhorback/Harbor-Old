@@ -2,12 +2,7 @@
 @model Harbor.UI.Models.User.CurrentUserDto
 @Html.InstallJavaScriptPackage(Harbor.UI.JSPkgs.SessionAppPkg.PackageName)
 <script>
-	module("appui").register("baseUrl", window.baseUrl);
-
-	context.module("currentUserModel").register({
-		"currentUserDto": @Html.Raw(Json.Encode(Model)),
-		"menuDto": @Html.Raw(Json.Encode(ViewBag.Menu))
-	});
-	
-	Session.start();
+	context.module("currentUserModel").register("currentUserDto", @Html.Raw(Json.Encode(Model)));
+	context.app("session").register("appMenuDto", @Html.Raw(Json.Encode(ViewBag.Menu)));
+	context.app("session").start();
 </script>

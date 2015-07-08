@@ -2,13 +2,10 @@
 
 function currentUserRepo(
 	currentUserDto,
-	menuDto,
 	modelFactory,
 	globalCache
 ) {
 	var currentUser = globalCache.get("currentUser") || null;
-
-	console.debug("menuDto", menuDto, menuDto.length);
 
 	return {
 		getCurrentUser: function () {
@@ -23,7 +20,6 @@ function currentUserRepo(
 
 currentUserModel.service("currentUserRepo", [
 	"currentUserDto",
-	"menuDto",
 	"modelFactory",
 	"globalCache",
 	currentUserRepo

@@ -546,6 +546,8 @@
     <Content Include="Scripts\apps\pageAdmin\pageAdminViewModel.js" />
     <Content Include="Scripts\apps\pageAdmin\pageAdminViewModelRepo.js" />
     <Content Include="Scripts\apps\pageLoader\model\pageLoaderTab.js" />
+    <Content Include="Scripts\apps\Session\%24session.js" />
+    <Content Include="Scripts\apps\Session\scrollHeaderService.js" />
     <Content Include="Scripts\apps\Settings\UpdateFooterView.js" />
     <Content Include="Scripts\appui\%24globalCache.js" />
     <Content Include="Scripts\appui\%24shim.js" />
@@ -717,13 +719,10 @@
     <Content Include="Scripts\apps\pageLoader\%24pageLoader.js" />
     <Content Include="Scripts\modules\pageSelector\pageSelector.js" />
     <Content Include="Scripts\apps\pageAdmin\%24pageAdmin.js" />
-    <Content Include="Scripts\apps\Session\UserMenu.js" />
-    <Content Include="Scripts\apps\Session\CurrentUser.js" />
-    <Content Include="Scripts\apps\Session\ErrorView.js" />
-    <Content Include="Scripts\apps\Session\SessionNav.js" />
-    <Content Include="Scripts\apps\Session\Session.js" />
-    <Content Include="Scripts\apps\Session\SignInModel.js" />
-    <Content Include="Scripts\apps\Session\SignInView.js" />
+    <Content Include="Scripts\apps\Session\appMenuView.js" />
+    <Content Include="Scripts\apps\Session\sessionNavView.js" />
+    <Content Include="Scripts\apps\Session\Model\signInModel.js" />
+    <Content Include="Scripts\apps\Session\signInView.js" />
     <Content Include="Scripts\apps\Settings\AppSettings.js" />
     <Content Include="Scripts\apps\Settings\EditNameView.js" />
     <Content Include="Scripts\apps\Settings\EditNavView.js" />
@@ -848,6 +847,7 @@
     <Content Include="Scripts\dropzone\css\stylus\dropzone.styl" />
     <Content Include="Scripts\dropzone\css\stylus\basic.styl" />
     <Content Include="Views\Page\_Page.cshtml" />
+    <Content Include="Views\Session\SessionNavView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\users\" />
@@ -1166,13 +1166,13 @@
     <Content Include="Views\StyleGuide\_StyleGuideLayout.cshtml" />
     <Content Include="Views\StyleGuide\Forms.cshtml" />
     <Content Include="Views\User\SignIn.cshtml" />
-    <Content Include="Views\User\_SignIn.cshtml" />
-    <Content Include="Views\User\SessionTemplates.cshtml" />
+    <Content Include="Views\Session\SignInView.cshtml" />
+    <Content Include="Views\Session\Index.cshtml" />
     <Content Include="Views\User\SessionApp.cshtml" />
     <Content Include="Views\Shared\404.cshtml" />
     <Content Include="Views\Shared\_Error.cshtml" />
     <Content Include="Views\Shared\_404.cshtml" />
-    <Content Include="Views\User\_UserMenu.cshtml" />
+    <Content Include="Views\Session\AppMenuView.cshtml" />
     <Content Include="Views\User\Account.cshtml" />
     <Content Include="Views\User\Files.cshtml" />
     <Content Include="Views\User\Pages.cshtml" />

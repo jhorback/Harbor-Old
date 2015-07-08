@@ -10,11 +10,11 @@ namespace Harbor.UI.JSPkgs
 		{
 			Name = PackageName;
 			ScriptBundle = new AppScriptBundle(PackageName);
-			Templates = new JstTemplateAction("User/SessionTemplates");
+			Templates = new JstTemplateAction("Session/Index");
 			RequiresRegistration = false;
 			Category = Categories.Apps;
 			AddDependency(CurrentUserModelPkg.PackageName);
-			AddDependency(PageAdderPkg.PackageName);
+			AddDependency(PageAdderPkg.PackageName); // jch! - will remove
 		}
 	}
 }

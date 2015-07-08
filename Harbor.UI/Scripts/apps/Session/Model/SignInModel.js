@@ -1,12 +1,15 @@
-﻿Session.SignInModel = Application.Model.extend({
+﻿session.signInModel = {
 	defaults: {
 		username: null,
 		password: null,
 		rememberMe: false
 	},
-	username: {
+
+	"[username]": {
 		validate: {
 			required: true
 		}
 	}
-});
+};
+
+session.model("signInModel", session.signInModel);

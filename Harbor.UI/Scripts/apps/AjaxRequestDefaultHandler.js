@@ -23,21 +23,6 @@
 			}
 		});
 	}]);
-	
-
-	//var createErrorView = function (errorCode, response) {
-	//	/// <summary>errorCode can be 404 or 500</summary>
-	//	var view;
-	//	if (response.Message) {
-	//		response.message = response.Message;
-	//	}
-	//	view = new Session.ErrorView(_.extend({
-	//		el: $("#frame-body"),
-	//		errorCode: errorCode
-	//	}, {
-	//		model: new Backbone.Model(response)
-	//	}));
-	//};
 })();
 
 

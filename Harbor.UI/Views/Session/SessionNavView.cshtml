@@ -1,0 +1,28 @@
+﻿<div data-templatefor="sessionNavView">
+
+
+	if (this.currentUser.get("isAuthenticated") === true) {
+
+	this.render();
+
+	} else if (this.currentUser.get("showSignInLink") === true) {
+	this.renderSignInLink();
+	}
+
+	renderSignInLink: function () {
+	var link = $('<a id="signin-link" href="' + Session.url(" user />SignIn") + '"><span class="icon-menu" role="button" tabindex="0"></span></a>');
+	link.hide();
+	this.$el.html("").append(link);
+	link.fadeIn("slow");
+	},
+
+	render: function () {
+	var displayName = this.currentUser.get("usersDisplayName");
+	var link = $('<a id="profile-link" href="' + Session.url(" user />Account") + '"><span class="icon-menu" role="button" tabindex="0">
+		</a>');
+		link.hide();
+		this.$el.html("").append(link);
+		link.fadeIn("slow");
+		return this;
+		},
+</div>

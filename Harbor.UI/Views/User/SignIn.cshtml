@@ -1,13 +1,10 @@
 ﻿@{
 	ViewBag.Title = "Sign in";
 }
-@section head{
-}
-@section scripts {
-	<script>
-		Session.startSignIn();
-	</script>
-}
+@*
+	This page is driven by the session app;
+	which will look for #signinpage and render the sign in view there.
+*@
 <section class="page centered">
 	<div class="page-header">
 		<div class="page-header-content">

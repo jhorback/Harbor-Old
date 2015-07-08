@@ -1,0 +1,32 @@
+﻿@using Harbor.Domain.Security
+@using Harbor.UI.Extensions
+@using Harbor.UI
+<div data-templatefor="appMenuView">
+	<div class="usermenu menulist">
+		<ul>
+			<li id="usermenu-docslink"><a href="~/User/Pages">Pages</a></li>
+			<li id="usermenu-fileslink"><a href="~/User/Files">Files</a></li>
+			<li id="usermenu-settingslink"><a href="~/User/Settings">Website Settings</a></li>
+			<li><a href="~/User/Account">Account Settings</a></li>
+		</ul>
+		<hr/>
+		<div class="pad-left pad-right">
+			<div class="form-field">
+				<button id="usermenu-addpage">Add a page</button>
+			</div>
+			<div class="form-field">
+				<a href="~/User/SignOut" id="usermenu-signout" class="button attn ">Sign Out</a>
+			</div>
+			@if (Html.UserHasPermit(UserFeature.SiteSettings) || Html.UserHasPermit(UserFeature.SystemSettings))
+			{
+				<div class="float-right" title="Current full version: @HarborApplication.FullVersion">
+					<small>
+						<a href="~/home/about">
+							About @HarborApplication.Version
+						</a>
+					</small>
+				</div>
+			}
+		</div>
+	</div>
+</div>
