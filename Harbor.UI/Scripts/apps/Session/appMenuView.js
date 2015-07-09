@@ -8,7 +8,6 @@ session.appMenuView = function (options, ajaxRequest, appurl) {
 session.appMenuView.prototype = {
 	initialize: function () {
 		this.model = Session.currentUser;
-		this.render();
 	},
 
 	events: {
@@ -20,7 +19,7 @@ session.appMenuView.prototype = {
 
 		event.preventDefault();
 
-		signOutRequest = $.ajax({ url: this.appurl.get("url/signout") });
+		signOutRequest = $.ajax({ url: this.appurl.get("user/signout") });
 
 		this.ajaxRequest.handle(signOutRequest).then(function () {
 			window.location.reload();
@@ -37,31 +36,23 @@ session.appMenuView.prototype = {
 			$el.find("#usermenu-docslink,#usermenu-adddoc").remove();
 		}
 		if (model.get("hasFilePermissions") === false) {
-			$el.find("#usermenu-fileslink,#usermenu-uploadfile	").remove();
+			$el.find("#usermenu-fileslink,#usermenu-uploadfile").remove();
 		}
 		if (model.get("hasSettingsPermissions") === false) {
 			$el.find("#usermenu-settingslink").remove();
 		}
 
-		this.showView(new Menu(this.$el, {
+		var menu = new Menu(this.$el, {
 			transition: "none",
-			anchor: "#profile-link",
+			anchor: "#frame-session",
 			position: {
-				my: "right-10 top",
-				at: "right bottom"
+				my: "left top",
+				at: "left bottom",
+				//of: "#frame-logo"
 			}
-		}));
+		});
 
 		return this;
-	},
-	
-	showView: function (view) {
-		this.view && this.view.close();
-		this.view = view;
-	},
-	
-	onClose: function () {
-		this.view && this.view.close();
 	}
 };
 

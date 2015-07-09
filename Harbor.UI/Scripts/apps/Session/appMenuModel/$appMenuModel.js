@@ -31,6 +31,6 @@ session.appMenuModel.prototype = {
 session.model("appMenuModel", [
 	"attrs",
 	"options",
-	appMenuDto,
+	"appMenuDto",
 	session.appMenuModel
 ])

@@ -50,7 +50,6 @@ session.start([
 	"keepAlive",
 	"appurl",
 	"currentUserRepo",
-	"pageAdder",
 	"scrollHeader",
 	"viewRenderer",
 	session.bootstrap

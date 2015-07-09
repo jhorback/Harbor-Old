@@ -2,11 +2,13 @@
 session.sessionNavView = function (
 	options,
 	currentUserRepo,
-	templateRenderer
+	templateRenderer,
+	dialogFactory
 ) {
 
 	this.currentUserRepo = currentUserRepo;
 	this.templateRenderer = templateRenderer;
+	this.dialogFactory = dialogFactory;
 };
 
 session.sessionNavView.prototype = {
@@ -17,18 +19,20 @@ session.sessionNavView.prototype = {
 
 	showMainMenu: function (event) {
 		event && event.preventDefault();
-
 		this.templateRenderer.render("appMenuView");
 	},
 
 	
 	showSignInDialog: function (event) {
+		var signInView;
+
 		event && event.preventDefault();
 
-		var dialog = new Dialog(signInView.$el, {
-			title: "Sign in",
-			modal: true,
-			transition: "fade"
+		signInView = this.renderSignInView();
+		this.dialogFactory.create(signInView.$el, {
+			title: "Sign in"
+			// transition: "fade" - instead of transion - pass anchor:el - to the dialog
+			// -> the dialog can make the transition
 		});
 	},
 
@@ -42,5 +46,6 @@ session.view("sessionNavView", [
 	"options",
 	"currentUserRepo",
 	"templateRenderer",
+	"dialogFactory",
 	session.sessionNavView
 ]);

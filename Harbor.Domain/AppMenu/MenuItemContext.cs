@@ -18,7 +18,13 @@ namespace Harbor.Domain.AppMenu
 			IObjectFactory objectFactory)
 		{
 			_objectFactory = objectFactory;
+
+			// jch* should I create an ICurrentUserRepository in the domain for this?
 			User = userRepository.FindUserByName(user.Identity.Name, readOnly: true);
+			if (User == null)
+			{
+				User = new User();
+			}
 		}
 
 		public User User { get; set; }

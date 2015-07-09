@@ -1,8 +1,12 @@
-﻿<div data-templatefor="sessionNavView">
+﻿<div data-templatefor="sessionNavView" id="frame-session">
 	<div data-bind="showif:isAuthenticated">
-		<a href="~/user/account" class="icon-menu" role="button" tabindex="0" data-event="click:showMainMenu"></a>
+		<a href="~/user/account" data-event="click:showMainMenu">
+			<span class="icon-menu" role="button" tabindex="0"></span>
+		</a>
 	</div>
 	<div data-bind="dontshowif:isAuthenticated">
-		<a href="~/user/signin" data-bind="showif: showSignInLink" class="icon-menu" role="button" tabindex="0" data-event="click:showSignInDialog"></a>
+		<a href="~/user/signin" data-bind="showif: showSignInLink">
+			<span class="icon-menu" role="button" tabindex="0" data-event="click:showSignInDialog"></span>
+		</a>
 	</div>
 </div>
