@@ -7,10 +7,13 @@ namespace Harbor.Domain.AppMenu.Queries
 	public class MenuQuery : CachedQueryBase<IEnumerable<MenuItemDto>>
 	{
 		private readonly MenuItemContext _menuItemContext;
+		private readonly IPathUtility _pathUtility;
+		private int _nextOrder = 0;
 
-		public MenuQuery(MenuItemContext menuItemContext)
+		public MenuQuery(MenuItemContext menuItemContext, IPathUtility pathUtility)
 		{
 			_menuItemContext = menuItemContext;
+			_pathUtility = pathUtility;
 		}
 
 		// jch* - will want a user session cache (1 day?) with an event to bust the cache.
@@ -63,12 +66,13 @@ namespace Harbor.Domain.AppMenu.Queries
 			{
 				parentId = parentId,
 				id = item.Id,
-				text = item.GetText(_menuItemContext)
+				text = item.GetText(_menuItemContext),
+				order = _nextOrder++
 			};
 
 			if (item is MenuLink)
 			{
-				dto.url = (item as MenuLink).Url;
+				dto.url = _pathUtility.ToAbsolute((item as MenuLink).Url);
 			}
 
 			return dto;

@@ -13,13 +13,17 @@ session.sessionNavView = function (
 
 session.sessionNavView.prototype = {
 	initialize: function () {
-
 		this.model = this.currentUserRepo.getCurrentUser();
+		if (this.model.attributes.isAuthenticated) {
+			this.appMenuModel = this.modelFactory.create("appMenuModel");
+		}
 	},
 
 	showMainMenu: function (event) {
 		event && event.preventDefault();
-		this.templateRenderer.render("appMenuView");
+		this.templateRenderer.render("appMenuView", {
+			model: this.appMenuModel
+		});
 	},
 
 	

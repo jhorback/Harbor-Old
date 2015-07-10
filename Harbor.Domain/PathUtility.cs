@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using System;
+using System.Web;
 
 namespace Harbor.Domain
 {
@@ -13,7 +14,9 @@ namespace Harbor.Domain
 
 		public string ToAbsolute(string virtualPath)
 		{
-			return VirtualPathUtility.ToAbsolute(virtualPath);
+			return virtualPath != null && virtualPath.IndexOf("~", StringComparison.Ordinal) == 0
+				? VirtualPathUtility.ToAbsolute(virtualPath)
+				: virtualPath;
 		}
 
 

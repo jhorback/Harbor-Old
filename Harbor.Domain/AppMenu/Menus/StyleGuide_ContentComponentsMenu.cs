@@ -27,12 +27,12 @@ namespace Harbor.Domain.AppMenu.Menus
 
 		public override string Id
 		{
-			get { return "styleguide"; }
+			get { return "styleguide-content-components"; }
 		}
 
 		public override string Text
 		{
-			get { return "Style Guide"; }
+			get { return "Content Components"; }
 		}
 	}
 

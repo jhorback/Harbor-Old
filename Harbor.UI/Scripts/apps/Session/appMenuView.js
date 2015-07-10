@@ -7,7 +7,7 @@ session.appMenuView = function (options, ajaxRequest, appurl) {
 
 session.appMenuView.prototype = {
 	initialize: function () {
-		this.model = Session.currentUser;
+		
 	},
 
 	events: {

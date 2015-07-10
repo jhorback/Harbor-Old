@@ -18,12 +18,12 @@ namespace Harbor.Domain.AppMenu.Menus
 
 		public override string Id
 		{
-			get { return "styleguide"; }
+			get { return "styleguide-layout"; }
 		}
 
 		public override string Text
 		{
-			get { return "Style Guide"; }
+			get { return "Layout"; }
 		}
 	}
 
