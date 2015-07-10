@@ -12,7 +12,10 @@
     font-size: 1.2em; }
 
 .alert-error {
-  display: none; }
+  display: none;
+  z-index: 0;
+  box-shadow: none;
+  margin-bottom: 1.5em; }
 
 .error .alert-error {
   display: block; }

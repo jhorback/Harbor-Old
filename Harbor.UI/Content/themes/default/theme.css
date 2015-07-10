@@ -99,6 +99,15 @@ dd {
 
 /* end foundation-theme */
 /* begin frame-theme */
+.scrolled #frame-header-background {
+  background: #0097a7;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1; }
+.scrolled #frame-header {
+  z-index: 4;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.16), 0 0px 2px 1px rgba(0, 0, 0, 0.12); }
+
 #frame-header {
   color: #202020;
   color: rgba(0, 0, 0, 0.87); }
@@ -131,7 +140,8 @@ dd {
       background-color: #006a74; }
 
 #frame-header-background {
-  background: #0097a7; }
+  transition: all linear 0.2s;
+  background-color: #000000; }
 
 #frame-nav li {
   border-bottom: 4px solid transparent; }

@@ -1,73 +1,69 @@
-﻿session.signInView = function () {
+﻿
+session.signInView = function (options, ajaxRequest, appurl) {
 
+	this.ajaxRequest = ajaxRequest;
+	this.appurl = appurl;
 };
 
 session.signInView.prototype = {
-	events: {
-		"submit form": function (event) {
-			event.preventDefault();
-			this.signIn();
-		}
-	},
 	
 	initialize: function () {
+		// this.bindAll("showError", "clear")
 		//model: new Session.SignInModel() - create the model here.
+		this.model = this.modelFactory.create("signInModel");
 
-		if (Session.currentUser.get("isAuthenticated") &&
+		if (this.options.currentUser.get("isAuthenticated") &&
 			window.location.toString().toLowerCase().indexOf("returnurl") > -1) {
 			this.showError("Permission Denied", "You do not have permission to view the requested page.");
 		}
 	},
-	
-	signIn: function () {
-		var showError = _.bind(this.showError, this),
-			clearErrors = _.bind(this.clearErrors, this);
-		
+
+	submitForm: function (event) {
+		event.preventDefault();
 		if (!this.isModelValid()) {
 			return;
 		}
+		this.signIn();
+	},
+	
+	signIn: function () {
+		var signInRequest = $.ajax({
+			url: this.appurl.get("user/signin"),
+			data: this.model.toJSON(),
+			type: "POST"
+		});
 
-		this.requestSignIn(this.model.toJSON(), {
+		this.ajaxRequest.handle(signInRequest, {
 			clientError: function (error) {
-				showError("Sign in failed", error);
+				this.showError("Sign in failed", error);
 			},
 			success: function () {
-				clearErrors();
+				this.clearErrors();
+				this.onLoginSuccess();
 			}
-		});
+		}, this);
 	},
 
-	requestSignIn: function (signInModel, handler, handlerProxy) {
-		/// <summary>Executes the sign in ajax request.</summary>
-		var request = AjaxRequest.handle($.ajax({
-			url: Session.url("User/SignIn"),
-			data: signInModel,
-			type: "POST"
-		}), handler);
-			
-		request.then(function () {
-			var returnUrl = this.getUrlParam("returnUrl");
-			if (returnUrl) {
-				window.location = returnUrl;
+	onLoginSuccess: function () {
+		var returnUrl = this.getUrlParam("returnUrl");
+		if (returnUrl) {
+			window.location = returnUrl;
+		} else {
+			if (window.location.toString().toLowerCase().indexOf("user/signin") > -1) {
+				window.location = this.appurl.get();
 			} else {
-				if (window.location.toString().toLowerCase().indexOf("user/signin") > -1) {
-					window.location = Session.url();
-				} else {
-					try {
+				try {
 
-						if (window.location.pathname.toLowerCase().indexOf("/signin") > -1) {
-							window.location = "/";
-						} else {
-							window.location.reload();
-						}
-					} catch (e) {
+					if (window.location.pathname.toLowerCase().indexOf("/signin") > -1) {
 						window.location = "/";
+					} else {
+						window.location.reload();
 					}
+				} catch (e) {
+					window.location = "/";
 				}
 			}
-		});
-
-		return request;
+		}
 	},
 
 	getUrlParam: function (name) { // jch! - only used here
@@ -83,20 +79,16 @@ session.signInView.prototype = {
 	},
 	
 	showError: function (error, message) {
-		var displayErrors = _.bind(this.displayErrors, this);
-
-		setTimeout(function () {
-			context.app("session").call(["modelErrors", function (modelErrors) {
-				var errors = modelErrors.create();
-				errors.add(error);
-				errors.add(message);
-				displayErrors(errors.toJSON());
-			}]);
-		}, 1);
+		var errors = modelErrors.create();
+		errors.add(error);
+		errors.add(message);
+		this.displayErrors(errors.toJSON());
 	}
 };
 
 session.view("signInView", [
 	"options",
+	"ajaxRequest",
+	"appurl",
 	session.signInView
 ]);

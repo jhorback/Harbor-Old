@@ -3,6 +3,7 @@
 @import "_$z-depth.scss";
 
 @mixin alert {
+
 	.alert, .alert-error {
         line-height: 2em;
         padding: .5em 1.5em;
@@ -17,6 +18,8 @@
 
 	.alert-error {
 		display: none;
+        @include z-depth-none;
+        margin-bottom: 1.5em;
 	}
 
 	.error {

@@ -26,6 +26,9 @@ $framenav- color-selected: $color-accent-dark;*/
 
 @mixin bjroyster-theme {
     @include theme;
+    #frame-logo a {
+        height: 2em;
+    }
 
     .page-header {
         background-color: $color-primary;

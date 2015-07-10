@@ -37,7 +37,9 @@ session.sessionNavView.prototype = {
 	},
 
 	renderSignInView: function () {
-		return this.templateRenderer.render("signInView");
+		return this.templateRenderer.render("signInView",  {
+			currentUser: this.model
+		});
 	}
 };
 

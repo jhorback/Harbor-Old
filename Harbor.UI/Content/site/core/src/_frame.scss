@@ -51,18 +51,6 @@ $frame-logo-use-image: true !default;
         height: $frame-header-height;
 	}
 
-    #frame-header-background {
-        transition: opacity linear .2s;
-    }
-
-    .scrolled {
-        #frame-header-background {
-            @include opacity(1);
-        }
-        #frame-header {
-            @include z-depth-bar;
-        }
-    }
 
     #frame-header {
         height: $frame-header-height;
@@ -234,8 +222,17 @@ $frame-logo-use-image: true !default;
 
 
 @mixin frame-theme {
-
   
+    .scrolled {
+        #frame-header-background {
+            background: $color-primary;
+            @include opacity(1);
+        }
+        #frame-header {
+            @include z-depth-bar;
+        }
+    }
+
 	#frame-header {
 		
 		
@@ -256,7 +253,8 @@ $frame-logo-use-image: true !default;
 	}
     
     #frame-header-background {
-        background: $color-primary;
+        transition: all linear .2s;
+        @include bg-color-outerbar;
     }
 
 

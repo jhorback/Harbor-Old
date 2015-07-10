@@ -15,10 +15,11 @@ session.bootstrap = function (
 		signInPageEl,
 		signInView;
 	
+
+	scrollHeader.start();
 	appurl.setBaseUrl(window.baseUrl);
 	currentUser = currentUserRepo.getCurrentUser();
 	keepAlive.start(appurl.get("home/keepalive"));
-	scrollHeader.start();
 
 
 	// render the navigation
@@ -36,7 +37,7 @@ session.bootstrap = function (
 	}
 
 
-	// window.Session is deprecated it is only in use by the old style BackBone apps.
+	// window.Session is deprecated; it is only in use by the old style BackBone apps.
 	window.Session = {
 		currentUser: currentUser,
 		url: function (url) {
