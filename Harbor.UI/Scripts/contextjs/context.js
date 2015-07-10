@@ -91,9 +91,6 @@ var context = (function () {
 					resolved.push(request.get(deps[t]));
 			}
 
-			if (resolved[resolved.length - 1] !== request.context) {
-				resolved.push(request.context);
-			}
 			return method.apply(context, resolved);
 		},
 

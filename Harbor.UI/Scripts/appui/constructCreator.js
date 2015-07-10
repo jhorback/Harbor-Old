@@ -4,7 +4,7 @@ Base one object off of another while executing each constructor and mixing each 
 In this case, this is done for the app.js construct.
 Arguments are not passed down since each constructor is injected via the context DI container.
 */
-function constructCreator(_) {
+function constructCreator(_, context) {
 
 	return {
 		createFrom: function (Parent) {
@@ -12,8 +12,6 @@ function constructCreator(_) {
 			return function (name, construct) {
 
 				var constructor = function () {
-					var context = arguments[arguments.length - 1];
-
 					this.name = name;
 					context.call(Parent, [], this);
 					context.call(construct, [], this);
@@ -27,4 +25,8 @@ function constructCreator(_) {
 	};
 }
 
-appui.service("appui.constructCreator", ["_", appui.constructCreator = constructCreator]);
+appui.service("appui.constructCreator", [
+	"_",
+	"context",
+	appui.constructCreator = constructCreator
+]);

@@ -7,7 +7,7 @@
  *    Similar to the factories, this code has been extracted to keep things dry.
  *    Properties name and context are added to each view instance before the constructor is called.
  */
-function mvcorConstruct(console) {
+function mvcorConstruct(console, context) {
 
 	return {
 		create: function (bbextMVCoR) {
@@ -15,7 +15,6 @@ function mvcorConstruct(console) {
 				var proto = construct.prototype;
 
 				proto.constructor = function () {
-					var context = arguments[arguments.length - 1];
 
 					// add name and context meta properties for future reference
 					this.name = this.name ? this.name : name;
@@ -39,4 +38,8 @@ function mvcorConstruct(console) {
 };
 
 
-context.module("bbext").service("bbext.mvcorConstruct", ["console", bbext.mvcorConstruct = mvcorConstruct]);
+context.module("bbext").service("bbext.mvcorConstruct", [
+	"console",
+	"context",
+	bbext.mvcorConstruct = mvcorConstruct
+]);

@@ -86,7 +86,7 @@ var module = (function (context) {
 				// don't require a constructor (if just an empty function)
 				if (typeof construct !== "function" && !_.isArray(construct)) {
 					proto = arguments[1];
-					construct = [function () { }];
+					construct = function () { };
 				}
 
 				modvars.constructInstances.push({

@@ -57,7 +57,7 @@ module("BackboneExtensions").construct("view", function () {
 		}
 
 		protoProps.constructor = function () {
-			var context = arguments[arguments.length - 1];
+			var context = arguments[arguments.length - 1]; // no longer supported - inject context instead
 
 			// inject the constructor
 			if (this._ctor) {
@@ -75,7 +75,7 @@ module("BackboneExtensions").construct("view", function () {
 
 The simple goal of the code above is to hijack the constructor so it can be injected with the context.
 The context, retrieved using this: `var context = arguments[arguments.length - 1];` is added as the last argument
-by the context script during instantiation.
+by the context script during instantiation. NO LONGER SUPPORTED - INJECT CONTEXT INSTEAD.
 
 **Using Constructs**
 ```js

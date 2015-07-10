@@ -8,8 +8,7 @@ session.signInView = function (options, ajaxRequest, appurl) {
 session.signInView.prototype = {
 	
 	initialize: function () {
-		// this.bindAll("showError", "clear")
-		//model: new Session.SignInModel() - create the model here.
+
 		this.model = this.modelFactory.create("signInModel");
 
 		if (this.options.currentUser.get("isAuthenticated") &&

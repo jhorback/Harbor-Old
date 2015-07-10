@@ -325,27 +325,6 @@ test("Functions can be registered by setting the type", function () {
 });
 
 
-test("The call method adds the current context as the last argument", function () {
-	expect(3);
-	
-	var ctx = context.create();
-	ctx.register("foo", function () {
-		var ctx2 = arguments[arguments.length - 1];
-		this.ctx = ctx2;
-		equal(ctx2, ctx);
-	});
-	
-	ctx.register("foo2", function (foo) {
-		var ctx2 = arguments[arguments.length - 1];
-		equal(ctx2, ctx);
-		equal(foo.ctx, ctx);
-	});
-
-	ctx.get("foo");
-	ctx.get("foo2");
-});
-
-
 test("Calling get with true returns the raw registered object", function () {
 	expect(2);
 	
