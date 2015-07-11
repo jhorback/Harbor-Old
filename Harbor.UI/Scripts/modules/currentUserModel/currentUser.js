@@ -1,9 +1,6 @@
 ﻿
-
-
-function currentUser() { }
-
-currentUser.prototype = {
+currentUserModel.currentUser = {
+	
 	defaults: {
 		showSignInLink: true,
 		isAuthenticated: false,
@@ -13,16 +10,18 @@ currentUser.prototype = {
 		hasFilePermissions: false,
 		hasSettingsPermissions: false,
 		isSysAdmin: false,
-		payPalMerchantAccountID: null
+		payPalMerchantAccountID: null,
+		//
+		dispalySignInLink: true
 	},
 	
-	isSysAdmin: {
+	"[dispalySignInLink]": {
 		get: function (value) {
-			return value;
-		},
-		bind:["isAuthenticated"]
+			return this.attributes.showSignInLink &&
+				document.location.toString().toLowerCase().indexOf("/signin") === -1;
+		}
 	}
 };
 
 
-currentUserModel.model("currentUser", [currentUser]);
+currentUserModel.model("currentUser", currentUserModel.currentUser);

@@ -25,7 +25,6 @@ session.sessionNavView.prototype = {
 			model: this.appMenuModel
 		});
 	},
-
 	
 	showSignInDialog: function (event) {
 		var signInView;

@@ -18,35 +18,31 @@ session.appMenuModel.prototype = {
 	initialize: function () {
 		this.currentUser = this.currentUserRepo.getCurrentUser();
 		this.initSelectedMenuItemId();
-		this.parentItems.set(this.getParentItems());
-		this.childItems.set(this.getChildItems());
+		this.onMenuChange();
 	},
 
 	associations: {
 		"menuItems": {
-			// model: "menuItems",
 			type: "collection",
+			name: "menuItemCollection",
 			initialize: function () {
-				this.setSort(this.root.sortItems); // jch* may want a first class collection for this
 				this.set(this.root.appMenuDto);
 			}
 		},
 
 		"parentItems": {
-			//model: "menuItems",
 			type: "collection",
-			initialize: function () {
-				this.setSort(this.root.sortItems);
-			}
+			name: "menuItemCollection"
 		},
 
 		"childItems": {
-			//model: "menuItems",
 			type: "collection",
-			initialize: function () {
-				this.setSort(this.root.sortItems);
-			}
+			name: "menuItemCollection"
 		}
+	},
+
+	events: {
+		"changeMenu": "onMenuChange"
 	},
 
 	sortItems: function (item) {
@@ -72,9 +68,15 @@ session.appMenuModel.prototype = {
 		}
 	},
 
+	onMenuChange: function (menu) {
+		this.parentItems.set(this.getParentItems());
+		this.childItems.set(this.getChildItems());
+	},
+
 	getParentItems: function () {
 		var parents = [],
 			nextId = this.attributes.selectedMenuItemId,
+			currentItem = this.menuItems.get(nextId),
 			nextItem;
 
 		if (nextId == null) {
@@ -87,17 +89,29 @@ session.appMenuModel.prototype = {
 			nextId = nextItem.attributes.parentId;
 		}
 
-		parents.shift(); // remove the current item
+		if (currentItem && currentItem.attributes.isMenu == false) {
+			parents.shift(); // remove the current item
+		}
 		return parents;
 	},
 
 	getChildItems: function () {
-		var parentItem = this.parentItems.last();
+		var lastParent = this.parentItems.last(),
+			parentItemId = lastParent ? lastParent.id : null,
+			children = [];
 
-		// jch! - here - finding the child items
-		console.debug("parentItemId", parentItem && parentItem.id);
+		if (parentItemId == null) {
+			debugger;
+			return children;
+		}
 
-		return [];
+		this.menuItems.each(function (item) {
+			if (item.attributes.parentId === parentItemId) {
+				children.push(item);
+			}
+		});
+
+		return children;
 	}
 };
 
@@ -107,4 +121,27 @@ session.model("appMenuModel", [
 	"currentUserRepo",
 	"appMenuDto",
 	session.appMenuModel
-])
+]);
+
+
+session.menuItem = {
+	defaults: {
+		selected: false,
+		className: ""
+	},
+	"[className]": {
+		get: function () {
+			return this.attributes.selected ? "selected" : "";
+		},
+		observe: "className"
+	}
+};
+session.model("menuItem", session.menuItem);
+
+session.menuItemCollection = {
+	model: "menuItem",
+	comparator: function (item) {
+		return item.attributes.order;
+	}
+};
+session.collection("menuItemCollection", session.menuItemCollection);

@@ -1,40 +1,18 @@
-﻿@using Harbor.Domain.Security
-@using Harbor.UI.Extensions
-@using Harbor.UI
-<div data-templatefor="appMenuView">
-	<div class="usermenu menulist">
+﻿<div data-templatefor="appMenuView" style="max-width:25em;">
+	<div class="clearfix pad">
+		<span data-bind="text: currentUser.usersDisplayName" class="float-left"></span>
+		<a href="~/User/SignOut" data-event="signOut" class="float-right button flat attn">Sign Out</a>
+	</div>
+	<div class="menulist">
 		<ul>
-			<li id="usermenu-docslink"><a href="~/User/Pages">Pages</a></li>
-			<li id="usermenu-fileslink"><a href="~/User/Files">Files</a></li>
-			<li id="usermenu-settingslink"><a href="~/User/Settings">Website Settings</a></li>
-			<li><a href="~/User/Account">Account Settings</a></li>
+			<li data-collection="parentItems">
+				<span data-bind="text:text" data-event="selectMenu"></span>
+			</li>
 		</ul>
-		<hr/>
-		<div class="pad-left pad-right">
-			<div class="form-field">
-				<button id="usermenu-addpage">Add a page</button>
-			</div>
-			<div class="form-field">
-				<a href="~/User/SignOut" id="usermenu-signout" class="button attn ">Sign Out</a>
-			</div>
-			@if (Html.UserHasPermit(UserFeature.SiteSettings) || Html.UserHasPermit(UserFeature.SystemSettings))
-			{
-				<div class="float-right" title="Current full version: @HarborApplication.FullVersion">
-					<small>
-						<a href="~/home/about">
-							About @HarborApplication.Version
-						</a>
-					</small>
-				</div>
-			}
-		</div>
-		<hr/>
-		<div class="menulist">
-			<ul>
-				<li data-collection="parentItems">
-					<span data-bind="text:text"></span>
-				</li>
-			</ul>
-		</div>
+		<ul>
+			<li data-collection="childItems" data-bind="class: className">
+				<a data-bind="text:text, href: url" data-event="selectMenuItem"></a>
+			</li>
+		</ul>
 	</div>
 </div>

@@ -10,8 +10,14 @@ session.appMenuView.prototype = {
 		
 	},
 
-	events: {
-		"click #usermenu-signout": "signOut"
+	selectMenu: function (event, menuItem) {
+		this.model.set("selectedMenuItemId", menuItem.id);
+		this.model.trigger("changeMenu");
+	},
+
+	selectMenuItem: function (event, menuItem) {
+		this.model.set("selectedMenuItemId", menuItem.id);
+		this.model.trigger("changeMenu");
 	},
 
 	signOut: function (event) {
@@ -27,21 +33,6 @@ session.appMenuView.prototype = {
 	},
 
 	onRender: function () {
-		var $el = this.$el,
-			model = this.model;
-
-		
-		$el.find("h1").html(model.get("usersDisplayName"));
-		if (model.get("hasDocPermissions") === false) {
-			$el.find("#usermenu-docslink,#usermenu-adddoc").remove();
-		}
-		if (model.get("hasFilePermissions") === false) {
-			$el.find("#usermenu-fileslink,#usermenu-uploadfile").remove();
-		}
-		if (model.get("hasSettingsPermissions") === false) {
-			$el.find("#usermenu-settingslink").remove();
-		}
-
 		var menu = new Menu(this.$el, {
 			transition: "none",
 			anchor: "#frame-session",
@@ -51,8 +42,6 @@ session.appMenuView.prototype = {
 				//of: "#frame-logo"
 			}
 		});
-
-		return this;
 	}
 };
 
