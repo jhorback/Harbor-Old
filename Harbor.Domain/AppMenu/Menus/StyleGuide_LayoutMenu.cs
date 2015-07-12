@@ -31,7 +31,7 @@ namespace Harbor.Domain.AppMenu.Menus
 	{
 		public override string Url
 		{
-			get { return "~/styleguide/pagelayout"; }
+			get { return "~/styleguide/page"; }
 		}
 
 		public override string Id

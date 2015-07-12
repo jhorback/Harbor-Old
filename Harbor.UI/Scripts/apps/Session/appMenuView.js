@@ -7,7 +7,6 @@ session.appMenuView = function (options, ajaxRequest, appurl) {
 
 session.appMenuView.prototype = {
 	initialize: function () {
-		
 	},
 
 	selectMenu: function (event, menuItem) {
@@ -37,11 +36,15 @@ session.appMenuView.prototype = {
 
 	onRender: function () {
 		var body = $("body");
-		// need to create overlay too
+
 		this.overlay = $('<div class="overlay"/>');
 		body.append(this.overlay.show());
 		body.append(this.$el);
 		this.$el.addClass("open");
+		
+		this.overlay.on("click", _.bind(function () {
+			this.closeMenu();
+		}, this));
 	},
 
 	closeMenu: function () {
