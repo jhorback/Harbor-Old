@@ -8,7 +8,7 @@ $menulist-item-height: 2.2em;
 $menulist-border-style: 1px solid #ccc; 
 
 
-// to be used in the aside
+// need review - and to support icons on left + icons or text on right
 @mixin menulist {
 
 	.menulist {
@@ -62,6 +62,12 @@ $menulist-border-style: 1px solid #ccc;
         } 
         
        li {
+           @if ($color-theme == $theme-onlight-bg) {
+               border-color: $color-light-divider;
+           } @else {
+               border-color: $color-dark-divider;
+           }
+
 			& > span, & > a {
                 @include color;
                 &:hover {

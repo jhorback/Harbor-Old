@@ -294,16 +294,18 @@ legend {
 .menulist h2, .menulist h3 {
   color: #747474;
   color: rgba(0, 0, 0, 0.54); }
-.menulist li > span, .menulist li > a {
-  color: #202020;
-  color: rgba(0, 0, 0, 0.87); }
-  .menulist li > span:hover, .menulist li > a:hover {
-    background-color: #EAEAEA;
-    background-color: rgba(153, 153, 153, 0.2); }
-.menulist li.selected {
-  color: #0097a7; }
-  .menulist li.selected a {
+.menulist li {
+  border-color: rgba(0, 0, 0, 0.12); }
+  .menulist li > span, .menulist li > a {
+    color: #202020;
+    color: rgba(0, 0, 0, 0.87); }
+    .menulist li > span:hover, .menulist li > a:hover {
+      background-color: #EAEAEA;
+      background-color: rgba(153, 153, 153, 0.2); }
+  .menulist li.selected {
     color: #0097a7; }
+    .menulist li.selected a {
+      color: #0097a7; }
 
 /* end menulist-theme*/
 /* begin page-theme */

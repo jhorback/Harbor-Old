@@ -76,6 +76,9 @@
 .icon-down:before {
   content: "\E5C5"; }
 
+.icon-lens:before {
+  content: "\E3FA"; }
+
 /* FONT PATH
      * -------------------------- */
 @font-face {

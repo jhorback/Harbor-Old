@@ -18,8 +18,16 @@ $appmenu-width: 25em;
         top: 0;
         bottom: 0;
         transition: left 1s linear;
-        font-size: 1em;
         overflow: auto;
+
+        h2 {
+            font-size: .667em;
+            padding-left: 3.5em;
+        }
+
+        hr {
+            margin: 0 0 3px 0;
+        }
 
         // hide scrollbar
         @include appmenu-hide-scrollbar;
@@ -28,24 +36,36 @@ $appmenu-width: 25em;
         &.open {
             left: 0;
         }
-	}
 
+        .toolbar {
+           height: 4em;     
+             
+        }
+        .icon-close {
+            position: relative;
+            top: .25em;
+            padding: 0 .25em;
+        }   
+    }
 
+    .appmenu-logout {
+        margin: 1em;
+    }
 
-    .appmenu-titlebar {
-        border-bottom: 1px solid $color-light-divider; // move to theme
+    .appmenu {
+        .toolbar {
+            //border-bottom: 1px solid $color-light-divider;
+        }
     }
 
     .appmenu-parentlist {
         li {
-            border-bottom: 1px solid $color-light-divider; // move to theme
+            border-bottom: 1px solid;
             &.selected span:hover {
                 background-color: transparent;
             }
         }
     }
-
-
 }
 
 @mixin appmenu-hide-scrollbar {

@@ -8,16 +8,19 @@
 			<h2 data-bind="text: currentUser.usersDisplayName"></h2>
 		</div>
 	</div>
+	<hr />
 	<div class="menulist">
 		<ul class="appmenu-parentlist">
 			<li data-collection="parentItems" data-bind="class: className">
-				<span data-bind="text:text" data-event="selectMenu"></span>
+				<span data-event="selectMenu">
+					<strong data-bind="text:text"></strong>
+				</span>
 			</li>
 		</ul>
 		<ul class="appmenu-childlist">
 			<li data-collection="childItems" data-bind="class: className">
-				<a data-bind="href: url" data-event="selectMenuItem">
-					<span data-bind="text:text"></span>
+				<a data-bind="href: url" data-event="selectMenuItem" class="clearfix">
+					<span class="float-left" data-bind="text:text"></span>
 					<span class="float-right icon-next" data-bind="showif:isMenu"></span>
 				</a>
 			</li>

@@ -112,7 +112,7 @@ $frame-logo-use-image: true !default;
 		line-height: 4em;
         a {
             font-size:1.5em;
-			padding: 0 1em;
+			padding: 0 .667em; // keep a 16px gutter
 			//font-size: 1em;
 			display: inline-block;
 		}
