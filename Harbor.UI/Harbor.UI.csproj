@@ -548,6 +548,8 @@
     <Content Include="Scripts\apps\pageLoader\model\pageLoaderTab.js" />
     <Content Include="Scripts\apps\session\%24session.js" />
     <Content Include="Scripts\apps\session\appMenuModel\%24appMenuModel.js" />
+    <Content Include="Scripts\apps\session\appMenuModel\menuItem.js" />
+    <Content Include="Scripts\apps\session\appMenuModel\menuItemCollection.js" />
     <Content Include="Scripts\apps\session\scrollHeaderService.js" />
     <Content Include="Scripts\apps\Settings\UpdateFooterView.js" />
     <Content Include="Scripts\appui\%24globalCache.js" />

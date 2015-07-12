@@ -53,7 +53,12 @@ appmenu-childlist
 .appmenu-logout {
   margin: 1em; }
 
-.appmenu-parentlist li {
-  border-bottom: 1px solid; }
-  .appmenu-parentlist li.selected span:hover {
-    background-color: transparent; }
+.appmenu-parentlist {
+  font-weight: bold; }
+  .appmenu-parentlist li {
+    border-bottom: 1px solid; }
+    .appmenu-parentlist li.selected span:hover {
+      background-color: transparent; }
+
+.appmenu-childlist .loud {
+  font-weight: bold; }

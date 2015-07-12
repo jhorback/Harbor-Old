@@ -128,26 +128,3 @@ session.model("appMenuModel", [
 	"appMenuDto",
 	session.appMenuModel
 ]);
-
-
-session.menuItem = {
-	defaults: {
-		selected: false,
-		className: ""
-	},
-	"[className]": {
-		get: function () {
-			return this.attributes.selected ? "selected" : "";
-		},
-		observe: "selected"
-	}
-};
-session.model("menuItem", session.menuItem);
-
-session.menuItemCollection = {
-	model: "menuItem",
-	comparator: function (item) {
-		return item.attributes.order;
-	}
-};
-session.collection("menuItemCollection", session.menuItemCollection);
