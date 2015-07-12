@@ -33,7 +33,7 @@ appmenu-childlist
   overflow: -moz-scrollbars-none;
   -ms-overflow-style: none;
   z-index: 16;
-  box-shadow: 0 16px 32px 0 rgba(0, 0, 0, 0.16), 0 0 2px 1px rgba(0, 0, 0, 0.12); }
+  box-shadow: 0 16px 32px 0 rgba(0, 0, 0, 0.5), 0 0 2px 1px rgba(0, 0, 0, 0.12); }
   .appmenu h2 {
     font-size: 0.667em;
     padding-left: 3.5em; }
