@@ -5,12 +5,15 @@ session.scrollHeader = function () {
 			var doc = $(document),
 				body = $("body"),
 				headBg = $("#frame-header-background"),
+
 				setScrolled = _.throttle(function () {
 					if (doc.scrollTop() > 0) {
 						body.addClass("scrolled");
 						headBg.css("opacity", 1);
 					} else {
-						headBg.css("opacity", .2);
+						if (body.find(".has-titlebg").length > 0) {
+							headBg.css("opacity", 0);
+						}
 						body.removeClass("scrolled");
 					}
 				}, 200);

@@ -10,7 +10,8 @@
   right: 0;
   overflow: hidden;
   z-index: 1;
-  height: 4em; }
+  height: 4em;
+  transition: all linear 0.2s; }
 
 #frame-header {
   height: 4em;
