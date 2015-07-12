@@ -1,35 +1,86 @@
 @import "../../mixins/no-bullets";
 @import "../../mixins/text-shadow";
-//@import "../../mixins/clearfix";
+@import "../../mixins/clearfix";
+@import "_$z-depth.scss";
+@import "_$color.scss";
+
+
+$appmenu-width: 25em;
+
 
 @mixin usermenu {
 	
-	.usermenu {
-		min-width: 18em;
-		// @include clearfix;
+	.appmenu {
+		//min-width: 18em;
+        width: $appmenu-width;
+        position: fixed;
+        left: $appmenu-width * -1;
+        top: 0;
+        bottom: 0;
+        transition: left 1s linear;
+        font-size: 1em;
+        overflow: auto;
 
-		.menulist {
-           // margin-bottom: 0 !important;
-		}
-        /*hr {
-            margin: 1em 0;
-        }*/
-		ul {
-			//padding: 1em 1em 0 1em;
-			//padding-right: 2em;
-			//margin: 0;
-			//@include no-bullets;
-			//font-size: 1.2em;
-			//white-space: nowrap;
-		}
+        // hide scrollbar
+        @include appmenu-hide-scrollbar;
+        @include z-depth-topmenu;
 
-		button, .button {
-			width: 100%;
-            display: block;
-            box-sizing:border-box;
-		}
+        &.open {
+            left: 0;
+        }
 	}
+
+
+
+    .appmenu-titlebar {
+        border-bottom: 1px solid $color-light-divider; // move to theme
+    }
+
+    .appmenu-parentlist {
+        li {
+            border-bottom: 1px solid $color-light-divider; // move to theme
+            &.selected span:hover {
+                background-color: transparent;
+            }
+        }
+    }
+
+
 }
 
+@mixin appmenu-hide-scrollbar {
+    &::-webkit-scrollbar { width: 0 !important }
+    overflow: -moz-scrollbars-none;
+    -ms-overflow-style: none;
+}
+/*
+	.icon-close
+appmenu-user
+appmenu-logout
+appmenu-parentlist
+appmenu-childlist
+
+
+
+
+    	- appmenu-overlay
+	- appmenu - test z-depth (test also on app bar)
+			fixed with max/min width
+	- appmenu-header
+	- appmenu-signout-link
+	- appmenu - menulist
+			parent items need to have a border
+			the current parent should not have a hover effect
+				clicking it does nothing
+				(could try styling the current parent different?)
+			All other siblings have no border
+			The selected item is bold primary color
+
+*/
+
 @mixin usermenu-theme {
+    // @include color;
+    .appmenu {
+        @include bg-color-content;
+    }
 }

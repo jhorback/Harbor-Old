@@ -12,12 +12,6 @@
 
 @mixin toolbar {
 
-	a.button {
-		margin-right: 0;
-		*padding-top: 10px;
-		*padding-bottom: 10px;
-	}
-
     .toolbar {
         line-height: 2em;
         height: 2em;
@@ -27,7 +21,6 @@
         @include user-select-none;
 
         .float-left, .float-right {
-            height: 2em;
             &:after {
                 content: "";
                 display: inline-block;
@@ -39,6 +32,11 @@
         }
         &.large {
             font-size: 2em;
+        }
+
+        h2, h3 {
+            font-size: 1em;
+            margin: 0;
         }
 
         [role="button"] {                               

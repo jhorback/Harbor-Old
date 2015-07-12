@@ -1,17 +1,25 @@
-﻿<div data-templatefor="appMenuView" style="max-width:25em;">
-	<div class="clearfix pad">
-		<span data-bind="text: currentUser.usersDisplayName" class="float-left"></span>
-		<a href="~/User/SignOut" data-event="signOut" class="float-right button flat attn">Sign Out</a>
+﻿<div data-templatefor="appMenuView" class="appmenu">
+	<div class="toolbar">
+		<div>
+			<span class="icon-close float-left" data-event="closeMenu"></span>
+			<a href="~/User/SignOut" data-event="signOut" class="appmenu-logout button flat attn float-right">Sign Out</a>
+		</div>
+		<div>
+			<h2 data-bind="text: currentUser.usersDisplayName"></h2>
+		</div>
 	</div>
 	<div class="menulist">
-		<ul>
-			<li data-collection="parentItems">
+		<ul class="appmenu-parentlist">
+			<li data-collection="parentItems" data-bind="class: className">
 				<span data-bind="text:text" data-event="selectMenu"></span>
 			</li>
 		</ul>
-		<ul>
+		<ul class="appmenu-childlist">
 			<li data-collection="childItems" data-bind="class: className">
-				<a data-bind="text:text, href: url" data-event="selectMenuItem"></a>
+				<a data-bind="href: url" data-event="selectMenuItem">
+					<span data-bind="text:text"></span>
+					<span class="float-right icon-next" data-bind="showif:isMenu"></span>
+				</a>
 			</li>
 		</ul>
 	</div>

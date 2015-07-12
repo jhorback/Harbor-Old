@@ -62,7 +62,7 @@ $menulist-border-style: 1px solid #ccc;
         } 
         
        li {
-			span, a {
+			& > span, & > a {
                 @include color;
                 &:hover {
                     @if ($color-theme == $theme-onlight-bg) {

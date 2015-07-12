@@ -16,6 +16,9 @@ session.appMenuView.prototype = {
 	},
 
 	selectMenuItem: function (event, menuItem) {
+		if (this.model.attributes.selectedMenuItemId === menuItem.id) {
+			return;
+		}
 		this.model.set("selectedMenuItemId", menuItem.id);
 		this.model.trigger("changeMenu");
 	},
@@ -33,15 +36,22 @@ session.appMenuView.prototype = {
 	},
 
 	onRender: function () {
-		var menu = new Menu(this.$el, {
-			transition: "none",
-			anchor: "#frame-session",
-			position: {
-				my: "left top",
-				at: "left bottom",
-				//of: "#frame-logo"
-			}
-		});
+		var body = $("body");
+		// need to create overlay too
+		this.overlay = $('<div class="overlay"/>');
+		body.append(this.overlay.show());
+		body.append(this.$el);
+		this.$el.addClass("open");
+	},
+
+	closeMenu: function () {
+		this.$el.removeClass("open");
+		this.close();
+		this.overlay && this.overlay.remove();
+	},
+
+	onClose: function () {
+		// debugger;
 	}
 };
 

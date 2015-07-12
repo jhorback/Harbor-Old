@@ -1,3 +1,27 @@
+/*
+	.icon-close
+appmenu-user
+appmenu-logout
+appmenu-parentlist
+appmenu-childlist
+
+
+
+
+    	- appmenu-overlay
+	- appmenu - test z-depth (test also on app bar)
+			fixed with max/min width
+	- appmenu-header
+	- appmenu-signout-link
+	- appmenu - menulist
+			parent items need to have a border
+			the current parent should not have a hover effect
+				clicking it does nothing
+				(could try styling the current parent different?)
+			All other siblings have no border
+			The selected item is bold primary color
+
+*/
 /*$body - color: rgba(0, 0, 0, 0.870588); //#585a5b;
 $framenav - background-color: #FFF;
 $page- header-background: $color-primary;
@@ -285,10 +309,10 @@ legend {
 .menulist h2, .menulist h3 {
   color: #747474;
   color: rgba(0, 0, 0, 0.54); }
-.menulist li span, .menulist li a {
+.menulist li > span, .menulist li > a {
   color: #202020;
   color: rgba(0, 0, 0, 0.87); }
-  .menulist li span:hover, .menulist li a:hover {
+  .menulist li > span:hover, .menulist li > a:hover {
     background-color: #EAEAEA;
     background-color: rgba(153, 153, 153, 0.2); }
 .menulist li.selected {
@@ -356,6 +380,9 @@ legend {
 
 /* end selectlist-theme*/
 /* begin usermenu-theme */
+.appmenu {
+  background-color: #FFFFFF; }
+
 /* end usermenu-theme */
 /* begin alert-theme */
 .alert, .alert-error {

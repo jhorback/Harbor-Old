@@ -1,8 +1,3 @@
-a.button {
-  margin-right: 0;
-  *padding-top: 10px;
-  *padding-bottom: 10px; }
-
 .toolbar {
   line-height: 2em;
   height: 2em;
@@ -16,15 +11,16 @@ a.button {
     content: "";
     display: table;
     clear: both; }
-  .toolbar .float-left, .toolbar .float-right {
-    height: 2em; }
-    .toolbar .float-left:after, .toolbar .float-right:after {
-      content: "";
-      display: inline-block; }
+  .toolbar .float-left:after, .toolbar .float-right:after {
+    content: "";
+    display: inline-block; }
   .toolbar.small {
     font-size: 1em; }
   .toolbar.large {
     font-size: 2em; }
+  .toolbar h2, .toolbar h3 {
+    font-size: 1em;
+    margin: 0; }
   .toolbar [role="button"] {
     margin: 0;
     padding: 0.25em;

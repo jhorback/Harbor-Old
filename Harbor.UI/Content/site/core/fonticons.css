@@ -13,6 +13,9 @@
 .icon-remove:before {
   content: "\E14C"; }
 
+.icon-close:before {
+  content: "\E14C"; }
+
 .icon-align-left:before {
   content: "\E236"; }
 

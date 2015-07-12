@@ -1,9 +1,49 @@
-.usermenu {
-  min-width: 18em;
-  /*hr {
-            margin: 1em 0;
-        }*/ }
-  .usermenu button, .usermenu .button {
-    width: 100%;
-    display: block;
-    box-sizing: border-box; }
+/*
+	.icon-close
+appmenu-user
+appmenu-logout
+appmenu-parentlist
+appmenu-childlist
+
+
+
+
+    	- appmenu-overlay
+	- appmenu - test z-depth (test also on app bar)
+			fixed with max/min width
+	- appmenu-header
+	- appmenu-signout-link
+	- appmenu - menulist
+			parent items need to have a border
+			the current parent should not have a hover effect
+				clicking it does nothing
+				(could try styling the current parent different?)
+			All other siblings have no border
+			The selected item is bold primary color
+
+*/
+.appmenu {
+  width: 25em;
+  position: fixed;
+  left: -25em;
+  top: 0;
+  bottom: 0;
+  transition: left 1s linear;
+  font-size: 1em;
+  overflow: auto;
+  overflow: -moz-scrollbars-none;
+  -ms-overflow-style: none;
+  z-index: 16;
+  box-shadow: 0 16px 32px 0 rgba(0, 0, 0, 0.16), 0 0 2px 1px rgba(0, 0, 0, 0.12); }
+  .appmenu::-webkit-scrollbar {
+    width: 0 !important; }
+  .appmenu.open {
+    left: 0; }
+
+.appmenu-titlebar {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12); }
+
+.appmenu-parentlist li {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12); }
+  .appmenu-parentlist li.selected span:hover {
+    background-color: transparent; }

@@ -69,7 +69,12 @@ session.appMenuModel.prototype = {
 	},
 
 	onMenuChange: function (menu) {
+		this.parentItems.each(function (item) {
+			item.set("selected", false);
+		});
+		//this.menuItems.get(this.attributes.selectedMenuItemId).set("selected", true);
 		this.parentItems.set(this.getParentItems());
+		this.parentItems.last().set("selected", true);
 		this.childItems.set(this.getChildItems());
 	},
 
@@ -92,6 +97,7 @@ session.appMenuModel.prototype = {
 		if (currentItem && currentItem.attributes.isMenu == false) {
 			parents.shift(); // remove the current item
 		}
+
 		return parents;
 	},
 
@@ -133,7 +139,7 @@ session.menuItem = {
 		get: function () {
 			return this.attributes.selected ? "selected" : "";
 		},
-		observe: "className"
+		observe: "selected"
 	}
 };
 session.model("menuItem", session.menuItem);
