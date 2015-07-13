@@ -28,7 +28,7 @@ appmenu-childlist
   left: -25em;
   top: 0;
   bottom: 0;
-  transition: left 1s linear;
+  transition: left 0.2s;
   overflow: auto;
   overflow: -moz-scrollbars-none;
   -ms-overflow-style: none;

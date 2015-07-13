@@ -17,7 +17,7 @@ $appmenu-width: 25em;
         left: $appmenu-width * -1;
         top: 0;
         bottom: 0;
-        transition: left 1s linear;
+        transition: left .2s; // linear - default is ease
         overflow: auto;
 
         h2 {

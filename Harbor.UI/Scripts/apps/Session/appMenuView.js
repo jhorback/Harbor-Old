@@ -40,7 +40,9 @@ session.appMenuView.prototype = {
 		this.overlay = $('<div class="overlay"/>');
 		body.append(this.overlay.show());
 		body.append(this.$el);
-		this.$el.addClass("open");
+		setTimeout(_.bind(function () {
+			this.$el.addClass("open");
+		}, this), 0);
 		
 		this.overlay.on("click", _.bind(function () {
 			this.closeMenu();
@@ -49,8 +51,10 @@ session.appMenuView.prototype = {
 
 	closeMenu: function () {
 		this.$el.removeClass("open");
-		this.close();
-		this.overlay && this.overlay.remove();
+		setTimeout(_.bind(function () {
+			this.close();
+			this.overlay && this.overlay.remove();
+		}, this), 250);
 	},
 
 	onClose: function () {
