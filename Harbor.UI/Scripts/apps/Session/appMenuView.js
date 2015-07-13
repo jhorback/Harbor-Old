@@ -1,12 +1,18 @@
 ﻿
-session.appMenuView = function (options, ajaxRequest, appurl) {
-
+session.appMenuView = function (
+	options,
+	ajaxRequest,
+	appurl,
+	timer
+) {
 	this.ajaxRequest = ajaxRequest;
 	this.appurl = appurl;
+	this.timer = timer;
 };
 
 session.appMenuView.prototype = {
 	initialize: function () {
+		this.bindAll("close");
 	},
 
 	selectMenu: function (event, menuItem) {
@@ -40,9 +46,8 @@ session.appMenuView.prototype = {
 		this.overlay = $('<div class="overlay"/>');
 		body.append(this.overlay.show());
 		body.append(this.$el);
-		setTimeout(_.bind(function () {
-			this.$el.addClass("open");
-		}, this), 0);
+
+		this.timer.transitionTo(this.$el, "open");
 		
 		this.overlay.on("click", _.bind(function () {
 			this.closeMenu();
@@ -50,15 +55,11 @@ session.appMenuView.prototype = {
 	},
 
 	closeMenu: function () {
-		this.$el.removeClass("open");
-		setTimeout(_.bind(function () {
-			this.close();
-			this.overlay && this.overlay.remove();
-		}, this), 250);
+		this.timer.transitionFrom(this.$el, "open").then(this.close);
 	},
 
 	onClose: function () {
-		// debugger;
+		this.overlay && this.overlay.remove();
 	}
 };
 
@@ -66,5 +67,6 @@ session.view("appMenuView", [
 	"options",
 	"ajaxRequest",
 	"appurl",
+	"timer",
 	session.appMenuView
 ]);

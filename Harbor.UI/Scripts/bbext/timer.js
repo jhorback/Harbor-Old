@@ -44,6 +44,25 @@ function timer($) {
 		 */
 		yield: function(callback, context) {
 			setTimeout(_.bind(callback, context), 0);
+		},
+
+
+		transitionTo: function (el, className) {
+			var dfd = $.Deferred();
+			setTimeout(function () {
+				$(el).addClass(className);
+				dfd.resolve();
+			}, 25);
+			return dfd.promise();
+		},
+
+		transitionFrom: function (el, className) {
+			var dfd = $.Deferred();
+			$(el).removeClass(className);
+			setTimeout(function () {
+				dfd.resolve();
+			}, 300);
+			return dfd.promise();
 		}
 	};
 
