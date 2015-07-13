@@ -55,11 +55,12 @@ session.appMenuView.prototype = {
 	},
 
 	closeMenu: function () {
+		this.overlay && this.overlay.remove();
 		this.timer.transitionFrom(this.$el, "open").then(this.close);
 	},
 
 	onClose: function () {
-		this.overlay && this.overlay.remove();
+		
 	}
 };
 
