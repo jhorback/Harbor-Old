@@ -80,7 +80,7 @@ namespace Harbor.UI.Controllers
 		public PartialViewResult SessionApp()
 		{	
 			var model = _currentUserRep.GetCurrentUserDto();
-			var menu = _queryService.GetQuery<MenuQuery>().Execute();
+			var menu = _queryService.GetQuery<MenuQuery>().ExecuteFromCache();
 			ViewBag.Menu = menu;
 			return PartialView("SessionApp", model);
 		}

@@ -17,14 +17,6 @@ $materialicons-path: "font/material/MaterialIcons-Regular" !default;
 }
 
 
-
-
-
-
-$fonticons-path: "font/fontawesome/fontawesome-webfont" !default;
-
-
-
 @mixin fonticons {
 
     .icon-menu:before          { content: "\E5D2"; }
@@ -52,20 +44,7 @@ $fonticons-path: "font/fontawesome/fontawesome-webfont" !default;
     .icon-down:before          { content: "\E5C5"; }
     .icon-lens:before         { content: "\E3FA"; }
 
-    /* FONT PATH
-     * -------------------------- */
-    @font-face {
-      font-family: 'FontAwesome';
-      src: url($fonticons-path + '.eot?v=3.1.0');
-      src: url($fonticons-path + '.eot?#iefix&v=3.1.0') format('embedded-opentype'),
-	       url($fonticons-path + '.woff?v=3.1.0') format('woff'),
-	       url($fonticons-path + '.ttf?v=3.1.0') format('truetype'),
-	       url($fonticons-path + '.svg#fontawesomeregular?v=3.1.0') format('svg');
-      font-weight: normal;
-      font-style: normal;
-    }
-    /* FONT AWESOME CORE
-     * -------------------------- */
+   
     [class^="icon-"],
     [class*=" icon-"] {
       font-family: 'Material Icons';
