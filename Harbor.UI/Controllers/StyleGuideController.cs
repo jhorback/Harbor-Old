@@ -18,38 +18,6 @@ namespace Harbor.UI.Controllers
 			_queryService = queryService;
 		}
 
-		//[Route("{pageKey=home}", Name = "StyleGuidePage")]
-		//public ActionResult Index(string pageKey)
-		//{
-		//	var page = repository.GetPage(pageKey);
-		//	if (page == null || page.Key == "Home")
-		//	{
-		//		if (pageKey == null)
-		//		{
-		//			pageKey = "Home";
-		//			ViewBag.Title = "Style Guide";
-		//		}
-		//		else ViewBag.Title = pageKey;
-		//	}
-		//	else
-		//	{
-		//		ViewBag.Title = page.Name + " - Style Guide";
-		//	}
-		//	var pages = repository.GetPages();
-		//	return View(pageKey, pages);
-		//}
-
-		// MOVE THIS TO STAGING
-		[Route("TestApp")]
-		public ViewResult TestApp()
-		{
-			return View("TestApp");
-		}
-
-
-
-
-
 		[Route("{menuId}", Name = "NewStyleGuidePage")]
 		public ActionResult ShowStyleGuidePage(string menuId)
 		{
@@ -64,6 +32,11 @@ namespace Harbor.UI.Controllers
 					title = item.text;
 					break;
 				}
+			}
+
+			if (string.IsNullOrEmpty(title))
+			{
+				title = "Style Guide";
 			}
 
 			ViewBag.Title = title;
