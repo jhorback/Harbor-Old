@@ -1,0 +1,36 @@
+﻿.outline {
+		position: relative;
+		border: 1px solid #DDD;
+		background: #FFF;
+		padding: 1em;
+		overflow: auto; // not sure why this is needed in addition to the clearfix
+		@include border-radius;
+		@include clearfix;
+	}
+    
+	.outline + .prettyprint {
+		margin-top: -.5em;
+		padding-top: 1em !important;
+		margin-bottom: 2em;
+	}
+	.outline + .outline {
+		margin-top: .5em;
+	}
+	.example {
+		padding-top: 1.8em;
+		&:after {
+		  content: "Example";
+		  position: absolute;
+		  top: -1px;
+		  left: -1px;
+		  padding: 3px 7px;
+		  font-size: 12px;
+		  font-weight: bold;
+		  background-color: #f5f5f5;
+		  border: 1px solid #ddd;
+		  color: #9da0a4;
+		  -webkit-border-radius: 4px 0 4px 0;
+			 -moz-border-radius: 4px 0 4px 0;
+				  border-radius: 4px 0 4px 0;
+		}	
+	}

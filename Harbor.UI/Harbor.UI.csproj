@@ -337,8 +337,6 @@
     <Compile Include="Models\Shared\MapDtoFromAttribute.cs" />
     <Compile Include="Models\Shared\NotFoundDto.cs" />
     <Compile Include="Models\Shared\PagedResult.cs" />
-    <Compile Include="Models\StyleGuide\StyleGuidePage.cs" />
-    <Compile Include="Models\StyleGuide\StyleGuidePageRepository.cs" />
     <Compile Include="Models\Theming\ITheme.cs" />
     <Compile Include="Models\Theming\Theme.cs" />
     <Compile Include="Models\Theming\ThemeCollection.cs" />
@@ -812,7 +810,6 @@
     <Content Include="Views\Home\_JSPMParser.cshtml" />
     <Content Include="Views\FileSelector\Index.cshtml" />
     <Content Include="Views\PageSettings\PagePreviewView.cshtml" />
-    <Content Include="Views\StyleGuide\_PageNav.cshtml" />
     <Content Include="Views\StyleGuide\Scaffolding.cshtml" />
     <Content Include="Views\StyleGuide\Typography.cshtml" />
     <Content Include="Views\Shared\_DevLinks.cshtml" />
@@ -1079,6 +1076,7 @@
       <CompileStyle>Nested</CompileStyle>
       <DebugInfo>False</DebugInfo>
     </None>
+    <Content Include="Content\site\ext\styleguide.scss" />
     <None Include="Content\site\mixins\_col.scss">
       <Compile>False</Compile>
       <Minify>False</Minify>

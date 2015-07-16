@@ -4,14 +4,13 @@
 }
 @section head {
 	@RenderSection("head", required: false)
+	<link rel="stylesheet" href="~/content/site/ext/styleguide.css" type="text/css" />
 	<link rel="stylesheet" href="~/content/prettify/prettify.css" type="text/css" />	
 }
 <section class="page centered">
 	<header class="page-header">
 		<div class="page-header-content">
-			<h1 class="float-left">@Html.ActionLink("Style Guide", "Index", new { pageKey = "Home" })</h1>
-			@Html.Action("PageNav")
-			@RenderSection("pageheader", required: false)
+			<h1>@ViewBag.Title</h1>
 		</div>
 	</header>
 	<div class="page-body">
