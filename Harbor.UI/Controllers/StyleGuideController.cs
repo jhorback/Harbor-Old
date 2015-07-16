@@ -1,5 +1,5 @@
-﻿using System.Web.Mvc;
-using System.Web.WebPages;
+﻿using System.Linq;
+using System.Web.Mvc;
 using Harbor.Domain.AppMenu.Queries;
 using Harbor.Domain.Query;
 using Harbor.Domain.Security;
@@ -18,28 +18,40 @@ namespace Harbor.UI.Controllers
 			_queryService = queryService;
 		}
 
-		[Route("{menuId}", Name = "NewStyleGuidePage")]
+		[Route("{menuId}")]
 		public ActionResult ShowStyleGuidePage(string menuId)
 		{
 			var url = Request.Url.ToString().ToLower();
+			MenuItemDto currentItem = null;
 			var title = "";
+			var category = "";
 
 			var menuItems = _queryService.GetQuery<MenuQuery>().ExecuteFromCache();
 			foreach (var item in menuItems)
 			{
 				if (item.url != null && url.IndexOf(item.url.ToLower()) > -1)
 				{
-					title = item.text;
+					currentItem = item;
 					break;
 				}
 			}
 
-			if (string.IsNullOrEmpty(title))
+			if (currentItem != null)
 			{
-				title = "Style Guide";
-			}
+				ViewBag.Title = currentItem.text + " - Style Guide";
+				ViewBag.PageTitle = currentItem.text;
 
-			ViewBag.Title = title;
+				var parentItem = menuItems.FirstOrDefault(i => i.id == currentItem.parentId);
+				if (parentItem != null)
+				{
+					ViewBag.Category = parentItem.text;
+				}
+			}
+			else
+			{
+				ViewBag.PageTitle = "Style Guide";
+				ViewBag.Title = "Style Guide";
+			}
 
 			return View(menuId);
 		}

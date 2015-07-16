@@ -13,7 +13,8 @@ namespace Harbor.Domain.AppMenu.Menus
 					new StyleGuide_ApplicationDesignMenu(),
 					new StyleGuide_LayoutMenu(),
 					new StyleGuide_ApplicationComponentsMenu(),
-					new StyleGuide_ContentComponentsMenu()
+					new StyleGuide_ContentComponentsMenu(),
+					new StyleGuide_ActiveDesignsMenu()
 				};
 			}
 		}

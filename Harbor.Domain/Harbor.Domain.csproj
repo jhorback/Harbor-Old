@@ -72,6 +72,7 @@
     <Compile Include="AppMenu\MenuItemContext.cs" />
     <Compile Include="AppMenu\MenuLink.cs" />
     <Compile Include="AppMenu\Menus\MainMenu.cs" />
+    <Compile Include="AppMenu\Menus\StyleGuide_ActiveDesignsMenu.cs" />
     <Compile Include="AppMenu\Menus\StyleGuide_ApplicationDesignMenu.cs" />
     <Compile Include="AppMenu\Menus\StyleGuide_LayoutMenu.cs" />
     <Compile Include="AppMenu\Menus\StyleGuide_ApplicationComponentsMenu.cs" />

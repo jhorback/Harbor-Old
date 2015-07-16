@@ -1,26 +1,38 @@
 ﻿@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section head {
 	@RenderSection("head", required: false)
 	<link rel="stylesheet" href="~/content/site/ext/styleguide.css" type="text/css" />
-	<link rel="stylesheet" href="~/content/prettify/prettify.css" type="text/css" />	
+	<link rel="stylesheet" href="~/content/prettify/prettify.css" type="text/css" />
 }
-<section class="page centered">
+<section class="page">
 	<header class="page-header">
-		<div class="page-header-content">
-			<h1>@ViewBag.Title</h1>
-		</div>
+		@if (ViewBag.Category != null)
+		{
+			<h1>
+				@ViewBag.Category
+				<i class="icon-next"></i>
+				@ViewBag.PageTitle
+			</h1>
+		}
+		else
+		{
+			<h1>@ViewBag.PageTitle</h1>
+		}
+
+
+		@RenderSection("pageheader", required: false)
 	</header>
 	<div class="page-body">
 		@RenderBody()
 	</div>
- </section>
+</section>
 @section scripts {
 	@RenderSection("scripts", required: false)
 	<script src="~/scripts/prettify/prettify.js"></script>
 	<script>
-		$(function() {
+		$(function () {
 			prettyPrint();
 		});
 	</script>
