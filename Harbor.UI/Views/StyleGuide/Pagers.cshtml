@@ -1,0 +1,53 @@
+﻿@*
+	Use this as a template to create new style guide pages.
+*@
+@section head {
+}
+@section scripts {
+	<script>
+	</script>
+}
+<div class="page-content">
+
+	<h2>Pager</h2>
+	<p>
+		The pager is a div containing an unorderd list of page options. Add the <code>.pager</code> class to the outer div.
+	</p>
+	<p>
+		A <code>.selected</code> class can be added to the currently selected page.
+	</p>
+	<p>
+		A <code>[disabled]</code> attribute can be added to those items which are disabled.
+	</p>
+	<div class="outline example">
+		<div class="pager">
+			<ul>
+				<li disabled title="first page"><span>&laquo;</span></li>
+				<li disabled title="previous page"><span>&lsaquo;</span></li>
+				<li class="selected"><a href="#">1</a></li>
+				<li><a href="#">2</a></li>
+				<li><a href="#">3</a></li>
+				<li><a href="#">4</a></li>
+				<li><a href="#">5</a></li>
+				<li><a href="#" title="next page">&rsaquo;</a></li>
+				<li><a href="#" title="last page">&raquo;</a></li>
+			</ul>
+		</div>
+	</div>
+<pre class="prettyprint linenums">
+&lt;div class="pager">
+	&lt;ul>
+		&lt;li disabled title="first page">&lt;span>&amp;laquo;&lt;/span>&lt;/li>
+		&lt;li disabled title="previous page">&lt;span>&amp;lsaquo;&lt;/span>&lt;/li>
+		&lt;li class="selected">&lt;a href="#">1&lt;/a>&lt;/li>
+		&lt;li>&lt;a href="#">2&lt;/a>&lt;/li>
+		&lt;li>&lt;a href="#">3&lt;/a>&lt;/li>
+		&lt;li>&lt;a href="#">4&lt;/a>&lt;/li>
+		&lt;li>&lt;a href="#">5&lt;/a>&lt;/li>
+		&lt;li>&lt;a href="#" title="next page">&amp;rsaquo;&lt;/a>&lt;/li>
+		&lt;li>&lt;a href="#" title="last page">&amp;raquo;&lt;/a>&lt;/li>
+	&lt;/ul>
+&lt;/div>
+</pre>
+
+</div>

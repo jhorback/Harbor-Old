@@ -1,190 +1,155 @@
-﻿@functions {
+﻿<div class="page-content">
 
-	IEnumerable<string> icons()
-	{
-		return new[]
-		{
-			"remove", "align-left", "align-center", "align-right", "align-justify", "edit", "move", "plus",
-			"cogs", "reorder", "columns", "help", "paypal", "image", "link", "google-plus", "facebook",
-			"previous", "next", "up", "down"
-		};
-	}
-}
-<div class="page-content">
-	<style>
-		.icondemo {
-			display: inline-block;
-			white-space: nowrap;
-			width: 12em;
-			cursor: pointer;
-		}
+@*
 
-			.icondemo:hover .icon {
-				font-size: 1.5em;
-			}
+		Typography
+	- font sizes
+	- line heights
+	- margins and spacing
+	Is there a way to scope content differently then headings, sub headings, P tags etc!
+	---How to rationalize the h1,h2,etc. semantics with the material design font options?
+	google uses "section" for spacing as well as the headings
+	---
+	Typography ->
+		NEED THIS?
+		Maybe to state overall screen rhythm like when to use what line heights and font sizes.
+		But also as a content element since each container may define different elements
+		- there are a bunch of these - block quotes, abbrev., etc.
+		---blurb on font
+			Use Roboto?
+			Use Typographic Scale - pentatonic scale
+			-button, menu, caption, body1, body2, subhead, title, headline, display 1 - display 4
 
-		.icon {
-			-webkit-transition: all .2s ease-in-out;
-		}
-	</style>
-	<div class="margin-bottom">
-		<h2>Font Icons</h2>
-		@foreach (var icon in icons())
-		{
-			<span class="icondemo"><span class="icon icon-@icon"></span> .icon-@icon</span>
-		}
-	</div>
-	<div>
-		<h2>Example Text Styles</h2>
-		<div class="outline example">
-			<div>
-				<h2>Lorem Ipsum Dolor</h2>
-				<p>
-					Lorem ipsum dolor sit amet, eam ut tritani philosophia, vocibus atomorum at usu, an zril iuvaret sapientem has. Nam erant quidam sensibus ea, ne brute ullum graecis cum, qui quod dolore accusam at. Ei zril luptatum mel. No iudico dictas quaerendum vim. Pro ex consul scribentur, an eum eligendi torquatos liberavisse, mundi nemore persius cum no. Magna tempor dissentiunt no pri.
-				</p>
-				<p>
-					Sed ad soluta senserit, usu sumo consul et. Mei ei alia iuvaret denique, ipsum instructior et vix, dicam fierent recusabo mel id. Audiam nominavi eleifend cu ius, timeam eleifend ad mei, in quem scripta voluptatum mel. Ad his putent voluptaria, ut agam iriure ornatus quo. Quod dicit dicant id est, nam illud error indoctum et, qui latine urbanitas ex.
-					View <a href="#">this link here</a>.
-				</p>
-				<h2>Usu Paulo Direct</h2>
-				<p>
-					Usu paulo diceret an. Eam aperiam virtute an, sea diam dictas luptatum ea. In congue laoreet reformidans eam, graecis commune eam ne. Ex nam esse quidam, cu duo mazim quando commune, vis quot dolor percipit cu.
-				</p>
-			</div>
-		</div>
-	<div class="col">
-		<h2>Headings</h2>
-		<p>Headings and sub-headings using <code>span</code>.</p>
-		<div class="outline example">
-			<h1>h1. Heading 1</h1>
-			
-			<h1>
-				h1. Heading 1
-				<span class="subheading">span. Subtitle in Heading Group</span>			
-			</h1>
-			
-			<h2>h2. Heading 2</h2>
-			
-			<h2>
-				h2. Heading 2
-				<span class="subheading">span. Subtitle in Heading Group</span>
-			</h2>
-			<h3>h3. Heading 3</h3>
-			<h4>h4. Heading 4</h4>
-			<h5>h5. Heading 5</h5>
-			<h6>h6. Heading 6</h6>
-		</div>
-		
-		<h2>Body Copy</h2>
-		<div class="outline example">
-			<p>
-				Here is a simple paragraph <a href="#">with a standard link</a>.
-			</p>
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.			
-			</p>
-		</div>
-		<pre class="prettyprint linenums">
+*@
+<div class="col">
+        <h2>Headings</h2>
+        <p>Headings and sub-headings using <code>span</code>.</p>
+        <div class="outline example">
+            <h1>h1. Heading 1</h1>
+
+            <h1>
+                h1. Heading 1
+                <span>span. Subtitle in Heading Group</span>
+            </h1>
+
+            <h2>h2. Heading 2</h2>
+
+            <h2>
+                h2. Heading 2
+                <span>span. Subtitle in Heading Group</span>
+            </h2>
+            <h3>h3. Heading 3</h3>
+            <h4>h4. Heading 4</h4>
+            <h5>h5. Heading 5</h5>
+            <h6>h6. Heading 6</h6>
+        </div>
+
+        <h2>Body Copy</h2>
+        <div class="outline example">
+            <p>
+                Here is a simple paragraph <a href="#">with a standard link</a>.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+        </div>
+        <pre class="prettyprint linenums">
 &lt;p>...&lt;/p>
 </pre>
 
-		<h3>Alignment</h3>
-		<p>
-			Align inline elements.
-		</p>
-		<div class="outline example">
-			<div class="text-left"><code>.text-left</code></div>
-			<div class="text-center"><code>.text-center</code></div>
-			<div class="text-right"><code>.text-right</code></div>
-			<div class="text-justify"><code>.text-justify</code></div>
-		</div>
-		<pre class="prettyprint">
+        <h3>Alignment</h3>
+        <p>
+            Align inline elements.
+        </p>
+        <div class="outline example">
+            <div class="text-left"><code>.text-left</code></div>
+            <div class="text-center"><code>.text-center</code></div>
+            <div class="text-right"><code>.text-right</code></div>
+            <div class="text-justify"><code>.text-justify</code></div>
+        </div>
+        <pre class="prettyprint linenums">
 &lt;div class="text-left">&lt;code>.text-left&lt;/code>&lt;/div>
 &lt;div class="text-center">&lt;code>.text-center&lt;/code>&lt;/div>
 &lt;div class="text-right">&lt;code>.text-right&lt;/code>&lt;/div>
 &lt;div class="text-justify">&lt;code>.text-justify&lt;/code>&lt;/div>
 </pre>
-		
-		<h3>Link impersonator</h3>
-		<div class="outline">
-			Attempt to make any element look like a <span class="link">standard link</span>.
-			Here is a <button class="link">button link</button>.	
-		</div>
-		<pre class="prettyprint linenums">
+
+        <h3>Link impersonator</h3>
+        <div class="outline">
+            Attempt to make any element look like a <span class="link">standard link</span>.
+        </div>
+        <pre class="prettyprint linenums">
 Attempt to make any element look like a &lt;span class="link">standard link&lt;/span>.
-Here is a &lt;button class="link">button link&lt;/button>.
 </pre>
 
 
-		<h2>Priority and Emphasis</h2>
-		<div class="outline example">
-			<p>
-				<span class="quiet">.quiet - dampen or detract from the text.</span>
-				Similar to <small>the 'small' tag used for fine print</small>. 					
-			</p>
-			<p>
-				<span class="loud">.loud - make the text stand out.</span>
-				Similar to <strong>the 'strong' tag to bold</strong> or <b>the 'b' tag</b>.		
-			</p>
-			<p>
-				<span class="attn">.attn - draw attention to the text.</span>
-				Similar to <em>the 'em emphasis tag for italics</em> or <i>the 'i' tag</i>.
-			</p>
-			
-			<p>Combine for desired effects.</p>
-			<p>
-				<small class="quiet">Small and quiet.</small>
-				<strong class="loud">Strong and loud.</strong>
-				<em class="loud">Em and loud.</em>
-				<strong class="attn">Strong and attn.</strong>
-				<em class="attn">Em and attn.</em>
-			</p>
-			<p>Color is meant to draw the eye where the tag is to portray context and meaning.</p>	
-		</div>
-		<pre class="prettyprint linenums">
+        <h2>Priority and Emphasis</h2>
+        <div class="outline example">
+            <p>
+                <span class="quiet">.quiet - dampen or detract from the text.</span>
+                Similar to <small>the 'small' tag used for fine print</small>.
+            </p>
+            <p>
+                <span class="loud">.loud - make the text stand out.</span>
+                Similar to <strong>the 'strong' tag to bold</strong> or <b>the 'b' tag</b>.
+            </p>
+            <p>
+                <span class="attn">.attn - draw attention to the text.</span>
+                Similar to <em>the 'em emphasis tag for italics</em> or <i>the 'i' tag</i>.
+            </p>
+
+            <p>Combine for desired effects.</p>
+            <p>
+                <small class="quiet">Small and quiet.</small>
+                <strong class="loud">Strong and loud.</strong>
+                <em class="loud">Em and loud.</em>
+                <strong class="attn">Strong and attn.</strong>
+                <em class="attn">Em and attn.</em>
+            </p>
+            <p>Color is meant to draw the eye where the tag is to portray context and meaning.</p>
+        </div>
+        <pre class="prettyprint linenums">
 &lt;span class="quiet">.quiet - dampen or detract from the text.&lt;/span>
 Similar to &lt;small>the 'small' tag&lt;/small>.
-
 &lt;span class="loud">.loud - make the text stand out.&lt;/span>
 Similar to &lt;strong>the 'strong' tag&lt;/strong> or &lt;b>the 'b' tag&lt;/b>.	
-
 &lt;span class="attn">.attn - draw attention to the text.&lt;/span>
 Similar to &lt;em>the 'em' emphasis tag&lt;/em> or &lt;i>the 'i' tag&lt;/i>.
 </pre>
-		
 
-		<h2>Decorative and Semantic</h2>
 
-		<h3>Horizontal Divider</h3>
-		<div class="outline example">
-			Above the divider.
-			<hr />
-			Below the divider.
-		</div>
-		<pre class="prettyprint linenums">
+        <h2>Decorative and Semantic</h2>
+
+        <h3>Horizontal Divider</h3>
+        <div class="outline example">
+            Above the divider.
+            <hr />
+            Below the divider.
+        </div>
+        <pre class="prettyprint linenums">
 &lt;hr/>
 </pre>
-		
-		<h3>Abbreviations</h3>
-		<div class="outline">
-			The abbreviation <abbr title="Asynchronous JavaScript and XML">AJAX</abbr> may mean more tnan one thing.
-		</div>
-		<pre class="prettyprint linenums">
+
+        <h3>Abbreviations</h3>
+        <div class="outline">
+            The abbreviation <abbr title="Asynchronous JavaScript and XML">AJAX</abbr> may mean more tnan one thing.
+        </div>
+        <pre class="prettyprint linenums">
 &lt;abbr title="Asynchronous JavaScript and XML">AJAX&lt;/abbr>
 </pre>
-		
-		
-		<h3>Addresses</h3>
-		<p>Can be used for any grouping of the address structure - name/title, info - be it email, physical address, phone number, etc.</p>
-		<div class="outline">
-			<address>
-				<strong>Zeit Palace</strong><br>
-				1234 Geist Place<br>
-				Jose Falace, DE 98765<br>
-				<abbr title="Phone">P:</abbr> (123) 456-7890
-			</address>
-		</div>
-		<pre class="prettyprint linenums">
+
+
+        <h3>Addresses</h3>
+        <p>Can be used for any grouping of the address structure - name/title, info - be it email, physical address, phone number, etc.</p>
+        <div class="outline">
+            <address>
+                <strong>Zeit Palace</strong><br>
+                1234 Geist Place<br>
+                Jose Falace, DE 98765<br>
+                <abbr title="Phone">P:</abbr> (123) 456-7890
+            </address>
+        </div>
+        <pre class="prettyprint linenums">
 &lt;address>
 	&lt;strong>Zeit Palace&lt;/strong>&lt;br>
 	1234 Geist Place&lt;br>
@@ -192,174 +157,205 @@ Similar to &lt;em>the 'em' emphasis tag&lt;/em> or &lt;i>the 'i' tag&lt;/i>.
 	&lt;abbr title="Phone">P:&lt;/abbr> (123) 456-7890
 &lt;/address>
 </pre>
-		
-		<h3>Blockquotes</h3>
-		<div class="outline">
-			<blockquote>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-				<small>Someone famous <cite title="Source Title">Source Title</cite></small>
-			</blockquote>
-		</div>
-		<pre class="prettyprint linenums">
+
+        <h3>Blockquotes</h3>
+        <div class="outline">
+            <blockquote>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                <small>Someone famous <cite title="Source Title">Source Title</cite></small>
+            </blockquote>
+        </div>
+        <pre class="prettyprint linenums">
 &lt;blockquote>
 	&lt;p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&lt;/p>
 	&lt;small>Someone famous &lt;cite title="Source Title">Source Title&lt;/cite>&lt;/small>
 &lt;/blockquote>
 </pre>
-	
-	
-		<h2>Lists</h2>
-		<h3>Unordered</h3>
-		<p>A list of items in which the order does not matter.</p>
-		<div class="outline example">
-			<ul>
-				<li>Lorem ipsum dolor sit amet</li>
-				<li>Consectetur adipiscing elit</li>
-				<li>Integer molestie lorem at massa</li>
-				<li>Facilisis in pretium nisl aliquet</li>
-				<li>Nulla volutpat aliquam velit
-					<ul>
-						<li>Phasellus iaculis neque</li>
-						<li>Purus sodales ultricies</li>
-						<li>Vestibulum laoreet porttitor sem</li>
-						<li>Ac tristique libero volutpat at</li>
-					</ul>
-				</li>
-				<li>Faucibus porta lacus fringilla vel</li>
-				<li>Aenean sit amet erat nunc</li>
-				<li>Eget porttitor lorem</li>
-			</ul>
-		</div>
-		<pre class="prettyprint linenums">
+
+
+        <h2>Lists</h2>
+        <h3>Unordered</h3>
+        <p>A list of items in which the order does not matter.</p>
+        <div class="outline example">
+            <ul>
+                <li>Lorem ipsum dolor sit amet</li>
+                <li>Consectetur adipiscing elit</li>
+                <li>Integer molestie lorem at massa</li>
+                <li>Facilisis in pretium nisl aliquet</li>
+                <li>
+                    Nulla volutpat aliquam velit
+                    <ul>
+                        <li>Phasellus iaculis neque</li>
+                        <li>Purus sodales ultricies</li>
+                        <li>Vestibulum laoreet porttitor sem</li>
+                        <li>Ac tristique libero volutpat at</li>
+                    </ul>
+                </li>
+                <li>Faucibus porta lacus fringilla vel</li>
+                <li>Aenean sit amet erat nunc</li>
+                <li>Eget porttitor lorem</li>
+            </ul>
+        </div>
+        <pre class="prettyprint linenums">
 &lt;ul>
 	&lt;li>...&lt;/li>
 &lt;/ul>
 </pre>
 
-		<h3>Ordered</h3>
-		<p>A numbered list (where order does matter).</p>
-		<div class="outline example">
-			<ol>
-				<li>Lorem ipsum dolor sit amet</li>
-				<li>Consectetur adipiscing elit</li>
-				<li>Integer molestie lorem at massa</li>
-				<li>Facilisis in pretium nisl aliquet</li>
-				<li>Nulla volutpat aliquam velit
-					<ol>
-						<li>Phasellus iaculis neque</li>
-						<li>Purus sodales ultricies</li>
-						<li>Vestibulum laoreet porttitor sem</li>
-						<li>Ac tristique libero volutpat at</li>
-					</ol>
-				</li>
-				<li>Faucibus porta lacus fringilla vel</li>
-				<li>Aenean sit amet erat nunc</li>
-				<li>Eget porttitor lorem</li>
-			</ol>
-		</div>
-		<pre class="prettyprint linenums">
+        <h3>Ordered</h3>
+        <p>A numbered list (where order does matter).</p>
+        <div class="outline example">
+            <ol>
+                <li>Lorem ipsum dolor sit amet</li>
+                <li>Consectetur adipiscing elit</li>
+                <li>Integer molestie lorem at massa</li>
+                <li>Facilisis in pretium nisl aliquet</li>
+                <li>
+                    Nulla volutpat aliquam velit
+                    <ol>
+                        <li>Phasellus iaculis neque</li>
+                        <li>Purus sodales ultricies</li>
+                        <li>Vestibulum laoreet porttitor sem</li>
+                        <li>Ac tristique libero volutpat at</li>
+                    </ol>
+                </li>
+                <li>Faucibus porta lacus fringilla vel</li>
+                <li>Aenean sit amet erat nunc</li>
+                <li>Eget porttitor lorem</li>
+            </ol>
+        </div>
+        <pre class="prettyprint linenums">
 &lt;ol>
 	&lt;li>...&lt;/li>
 &lt;/ol>
 </pre>
-		
-		<h3>List Style None</h3>
-		<p>Remove the <code>list-style</code> on lists.</p>
-		<div class="outline">
-			<ul class="list-style-none">
-				<li>Lorem ipsum dolor sit amet</li>
-				<li>Consectetur adipiscing elit</li>
-				<li>Integer molestie lorem at massa</li>
-				<li>Facilisis in pretium nisl aliquet</li>
-				<li>Nulla volutpat aliquam velit
-					<ul>
-						<li>Phasellus iaculis neque</li>
-						<li>Purus sodales ultricies</li>
-						<li>Vestibulum laoreet porttitor sem</li>
-						<li>Ac tristique libero volutpat at</li>
-					</ul>
-				</li>
-				<li>Faucibus porta lacus fringilla vel</li>
-				<li>Aenean sit amet erat nunc</li>
-				<li>Eget porttitor lorem</li>
-			</ul>
-		</div>
-		<pre class="prettyprint linenums">
+
+        <h3>List Style None</h3>
+        <p>Remove the <code>list-style</code> on lists.</p>
+        <div class="outline">
+            <ul class="list-style-none">
+                <li>Lorem ipsum dolor sit amet</li>
+                <li>Consectetur adipiscing elit</li>
+                <li>Integer molestie lorem at massa</li>
+                <li>Facilisis in pretium nisl aliquet</li>
+                <li>
+                    Nulla volutpat aliquam velit
+                    <ul>
+                        <li>Phasellus iaculis neque</li>
+                        <li>Purus sodales ultricies</li>
+                        <li>Vestibulum laoreet porttitor sem</li>
+                        <li>Ac tristique libero volutpat at</li>
+                    </ul>
+                </li>
+                <li>Faucibus porta lacus fringilla vel</li>
+                <li>Aenean sit amet erat nunc</li>
+                <li>Eget porttitor lorem</li>
+            </ul>
+        </div>
+        <pre class="prettyprint linenums">
 &lt;ul class="list-style-none">
 	&lt;li>...&lt;/li>
 &lt;/ul>
 </pre>
-		
-		
-		<h3>Inline List</h3>
-		<p>Place all list items on a single line with <code>.inline-block</code> with some light padding.</p>
-		<div class="outline example">
-			<ul class="list-inline">
-				<li>Lorem ipsum</li>
-				<li>Phasellus iaculis</li>
-				<li>Nulla volutpat</li>
-			</ul>
-		</div>
-		<pre class="prettyprint linenums">
-&lt;ul class="list-inline">
+
+
+        <h3>Inline List</h3>
+        <p>Place all list items on a single line with <code>.inline-block</code> with some light padding.</p>
+        <div class="outline example">
+            <ul class="inline">
+                <li>Lorem ipsum</li>
+                <li>Phasellus iaculis</li>
+                <li>Nulla volutpat</li>
+            </ul>
+        </div>
+        <pre class="prettyprint linenums">
+&lt;ul class="inline">
 	&lt;li>...&lt;/li>
 &lt;/ul>
 </pre>
-		
-		<h3>Definition Lists</h3>
-		<div class="outline example">
-			<dl>
-				<dt>Description lists</dt>
-				<dd>A description list is perfect for defining terms.</dd>
-				<dt>Euismod</dt>
-				<dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
-				<dd>Donec id elit non mi porta gravida at eget metus.</dd>
-				<dt>Malesuada porta</dt>
-				<dd>Etiam porta sem malesuada magna mollis euismod.</dd>
-			</dl>
-		</div>
-		<pre class="prettyprint linenums">
+
+        <h3>Definition Lists</h3>
+        <div class="outline example">
+            <dl>
+                <dt>Description lists</dt>
+                <dd>A description list is perfect for defining terms.</dd>
+                <dt>Euismod</dt>
+                <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+                <dd>Donec id elit non mi porta gravida at eget metus.</dd>
+                <dt>Malesuada porta</dt>
+                <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+            </dl>
+        </div>
+        <pre class="prettyprint linenums">
 &lt;dl>
   &lt;dt>...&lt;/dt>
   &lt;dd>...&lt;/dd>
 &lt;/dl>
 </pre>
-		
-		<h4>Inline Definition List</h4>
-		<div class="outline example">
-			<dl class="list-wide">
-				<dt>Description lists</dt>
-				<dd>A description list is perfect for defining terms.</dd>
-				<dt>Euismod</dt>
-				<dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
-				<dd>Donec id elit non mi porta gravida at eget metus.</dd>
-				<dt>Malesuada porta</dt>
-				<dd title="Etiam porta sem malesuada magna mollis euismod">Etiam porta sem malesuada magna mollis euismod</dd>
-				<dt>Felis euismod semper eget lacinia</dt>
-				<dd>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</dd>
-			</dl>
-		</div>
-		<pre class="prettyprint linenums">
-&lt;dl class="list-wide">
+
+        <h4>Inline Definition List</h4>
+        <div class="outline example">
+            <dl class="inline">
+                <dt>Description lists</dt>
+                <dd>A description list is perfect for defining terms.</dd>
+                <dt>Euismod</dt>
+                <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+                <dd>Donec id elit non mi porta gravida at eget metus.</dd>
+                <dt>Malesuada porta</dt>
+                <dd title="Etiam porta sem malesuada magna mollis euismod">Etiam porta sem malesuada magna mollis euismod</dd>
+                <dt>Felis euismod semper eget lacinia</dt>
+                <dd>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</dd>
+            </dl>
+        </div>
+        <pre class="prettyprint linenums">
+&lt;dl class="inline">
   &lt;dt>...&lt;/dt>
   &lt;dd>...&lt;/dd>
 &lt;/dl>
 </pre>
-		
-		<h2>Code</h2>
-		<h3>Inline</h3>
-		<div class="outline">
-			Here is <code>code in a code block</code> and now back outside.
-		</div>
-		<h3>Pre</h3>
-		<div class="outline">
-			<pre>
+
+        <h4>Simple Inline Definition List</h4>
+        <p>
+            Designed for use in small spaces (datatable cells, for example) when you want a label: value format with appropriate styling. Colons
+            are automatically inserted after the definition term, and you can have more than one per line by adding the "no-break" class to any
+            <code>dd</code> tag after which you want no line break.
+        </p>
+    <div class="outline example">
+        <dl class="inline-simple">
+            <dt>Stock Number</dt>
+            <dd>116821354</dd>
+            <dt>Make</dt>
+            <dd class="no-break">RAM</dd>
+            <dt>Model</dt>
+            <dd>CHASSIS</dd>
+            <dt>Color</dt>
+            <dd class="no-break">Blue</dd>
+            <dt>Year</dt>
+            <dd>2014</dd>
+        </dl>
+    </div>
+    <pre class="prettyprint linenums">
+&lt;dl class="inline-simple">
+    &lt;dt>Stock Number&lt;/dt>&lt;dd>116821354&lt;/dd>
+    &lt;dt>Make&lt;/dt>&lt;dd class="no-break">RAM&lt;/dd>
+    &lt;dt>Model&lt;/dt>&lt;dd>CHASSIS&lt;/dd>
+    &lt;dt>Color&lt;/dt>&lt;dd class="no-break">Blue&lt;/dd>
+    &lt;dt>Year&lt;/dt>&lt;dd>2014&lt;/dd>
+&lt;/dl></pre>
+        <h2>Code</h2>
+        <h3>Inline</h3>
+        <div class="outline">
+            Here is <code>code in a code block</code> and now back outside.
+        </div>
+        <h3>Pre</h3>
+        <div class="outline">
+        <pre>
 &lt;p&gt;Sample text here...&lt;/p&gt;
 </pre>
-		</div>
-	</div>
+        </div>
+    </div>
 </div>
 @section scripts {
-	<script>
-	</script>
+    <script>
+    </script>
 }

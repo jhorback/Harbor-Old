@@ -1,0 +1,54 @@
+﻿@*
+	Icons
+	Split out the icons page
+	Icons ->
+		show all icons - blurb about use in typography, toolbars, and wherever else..
+
+	Review / remove the googleWebFonts
+	Did Jeremy Add these ? WHERE?!
+
+
+*@
+@functions {
+
+    IEnumerable<string> icons()
+    {
+        return new[]
+		{
+			"menu", "back", "cogs", "contact", "caret-down", "caret-up", "caret-left", "caret-right",
+			"search", "circle", "dealer", "audit", "location", "user", "attachment", "delete", "close", "info", "comment",
+			"comments", "plus", "supplemental", "contextmenu", "ok", "complete", "error", "client"
+		};
+    }
+}
+<div class="page-content">
+    <style>
+        .icondemo {
+            display: inline-block;
+            white-space: nowrap;
+            width: 12em;
+            cursor: pointer;
+        }
+
+            .icondemo:hover .icon {
+                font-size: 2em;
+            }
+
+        .icon {
+            -webkit-transition: all .2s ease-in-out;
+        }
+    </style>
+    <div class="col">
+        <h2>Font Icons</h2>
+        @foreach (var icon in icons())
+        {
+            <span class="icondemo"><span class="icon icon-@icon"></span> .icon-@icon</span>
+        }
+    </div>
+
+
+ </div>
+@section scripts {
+    <script>
+    </script>
+}

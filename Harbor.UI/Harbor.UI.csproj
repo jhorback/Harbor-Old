@@ -803,7 +803,7 @@
     <Content Include="Views\PageSelector\Index.cshtml" />
     <Content Include="Views\User\_DefaultHomePage.cshtml" />
     <Content Include="Views\User\_HomePageSetting.cshtml" />
-    <Content Include="Views\StyleGuide\Collections.cshtml" />
+    <Content Include="Views\StyleGuide\migrate\Collections.cshtml" />
     <Content Include="Views\Home\_FrameNav.cshtml" />
     <Content Include="Views\Page\Image.cshtml" />
     <Content Include="Views\Home\JavaScriptPackages.cshtml" />
@@ -811,9 +811,9 @@
     <Content Include="Views\FileSelector\Index.cshtml" />
     <Content Include="Views\PageSettings\PagePreviewView.cshtml" />
     <Content Include="Views\StyleGuide\Scaffolding.cshtml" />
-    <Content Include="Views\StyleGuide\Typography.cshtml" />
+    <Content Include="Views\StyleGuide\migrate\Typography.cshtml" />
     <Content Include="Views\Shared\_DevLinks.cshtml" />
-    <Content Include="Views\StyleGuide\Components.cshtml" />
+    <Content Include="Views\StyleGuide\migrate\Components.cshtml" />
     <Content Include="Views\PageSettings\Index.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Page\PageLink.cshtml" />
@@ -848,6 +848,27 @@
     <Content Include="Scripts\dropzone\css\stylus\basic.styl" />
     <Content Include="Views\Page\_Page.cshtml" />
     <Content Include="Views\Session\SessionNavView.cshtml" />
+    <Content Include="Views\StyleGuide\Animations.cshtml" />
+    <Content Include="Views\StyleGuide\Buttons.cshtml" />
+    <Content Include="Views\StyleGuide\Cards.cshtml" />
+    <Content Include="Views\StyleGuide\Color.cshtml" />
+    <Content Include="Views\StyleGuide\DataLists.cshtml" />
+    <Content Include="Views\StyleGuide\DataTables.cshtml" />
+    <Content Include="Views\StyleGuide\Dialogs.cshtml" />
+    <Content Include="Views\StyleGuide\Dividers.cshtml" />
+    <Content Include="Views\StyleGuide\Elevations.cshtml" />
+    <Content Include="Views\StyleGuide\Feedbacks.cshtml" />
+    <Content Include="Views\StyleGuide\HandlingErrors.cshtml" />
+    <Content Include="Views\StyleGuide\HelperClasses.cshtml" />
+    <Content Include="Views\StyleGuide\Icons.cshtml" />
+    <Content Include="Views\StyleGuide\MenuLists.cshtml" />
+    <Content Include="Views\StyleGuide\Menus.cshtml" />
+    <Content Include="Views\StyleGuide\migrate\Scaffolding.cshtml" />
+    <Content Include="Views\StyleGuide\Pagers.cshtml" />
+    <Content Include="Views\StyleGuide\SelectionControls.cshtml" />
+    <Content Include="Views\StyleGuide\TextInput.cshtml" />
+    <Content Include="Views\StyleGuide\Toolbars.cshtml" />
+    <Content Include="Views\StyleGuide\Typography.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\users\" />
@@ -1162,10 +1183,10 @@
       <CompileStyle>Nested</CompileStyle>
       <DebugInfo>False</DebugInfo>
     </None>
-    <Content Include="Views\StyleGuide\Home.cshtml" />
+    <Content Include="Views\StyleGuide\migrate\Home.cshtml" />
     <Content Include="Views\StyleGuide\_ViewStart.cshtml" />
     <Content Include="Views\StyleGuide\_StyleGuideLayout.cshtml" />
-    <Content Include="Views\StyleGuide\Forms.cshtml" />
+    <Content Include="Views\StyleGuide\migrate\Forms.cshtml" />
     <Content Include="Views\User\SignIn.cshtml" />
     <Content Include="Views\Session\SignInView.cshtml" />
     <Content Include="Views\Session\Index.cshtml" />
@@ -1178,8 +1199,8 @@
     <Content Include="Views\User\Files.cshtml" />
     <Content Include="Views\User\Pages.cshtml" />
     <Content Include="Views\User\Settings.cshtml" />
-    <Content Include="Views\StyleGuide\Page.cshtml" />
-    <Content Include="Views\StyleGuide\Framework.cshtml" />
+    <Content Include="Views\StyleGuide\PageLayout.cshtml" />
+    <Content Include="Views\StyleGuide\migrate\Framework.cshtml" />
     <Content Include="Views\User\_EditName.cshtml" />
     <Content Include="Views\User\UserAccountTemplates.cshtml" />
     <Content Include="Views\User\_EditApplicationName.cshtml" />

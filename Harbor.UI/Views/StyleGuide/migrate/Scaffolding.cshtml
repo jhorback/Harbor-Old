@@ -12,12 +12,11 @@
 <div class="page-content">
 	<div class="col text-justify">
 		<section>
-			
-
+			<h1>Structure</h1>
 			<h2>Columns (width constraints)</h2>
 			<p>Fluid layouts are provided with a <code>.col[#]</code> class.</p>
 			<div class="outline example">
-				<div class="row">
+				<div>
 					<div class="col1"><div class="outline">.col1</div></div>
 					<div class="col2"><div class="outline">.col2</div></div>
 					<div class="col2"><div class="outline">.col2</div></div>
@@ -36,22 +35,32 @@
 			</div>
 
 			<h2>Rows (height constraints)</h2>
-			<p>An important note is that columns do not require wrapping them in a 'row' even though rows are made to work with columns.</p>
+			<p>
+				Columns <code>.col[#]</code> and rows are independent of each other. A <code>.row</code> (without
+				height constraint applies the negative left margin for cols to align nicely in the <code>.page-content</code>.
+			</p>
+			<p>All height constraints will be removed on small resolutions.</p>
 			<ul class="list-style-none">
 				<li>
 					<code>.row</code> - wraps content without any height constraint.
 				</li>
 				<li>
-					<code>.row-small</code> - wraps content with a small height constraint.
+					<code>.row5</code> - 1/5<sup>th</sup> height constraint on the row (small, 5em).
 				</li>
 				<li>
-					<code>.row-medium</code> - wraps content with a medium height constraint.
+					<code>.row4</code> - 1/4<sup>th</sup> height constraint on the row (medium, 10em).
 				</li>
 				<li>
-					<code>.row-large</code> - wraps content with a large height constraint.
+					<code>.row3</code> - 1/3<sup>rd</sup> height constraint on the row (large, 15em).
+				</li>
+				<li>
+					<code>.row2</code> - 1/2 height constraint on the row (larger, 20em).
+				</li>
+				<li>
+					<code>.row1</code> - Maximum height constraint on the row (25em).
 				</li>
 			</ul>
-
+			
 			<h2>Helper Classes</h2>
 			<div class="col2">
 				<h3>Display</h3>
@@ -133,8 +142,7 @@
 &lt;/section>
 </pre>
 			<p>
-				The <code>.page</code> section can have a <code>.centered</code> class to constrain the width and center the page,
-				or a <code>.readable</code> class to constrain the width only.
+				The <code>.page</code> section can have a <code>.centered</code> class to constrain the width and center the page.
 			</p>
 			<p>
 				The <code>.page-aside</code> is optional if needing a sidebar.
@@ -186,24 +194,6 @@
 					<strong>Red</strong> - Widescreen
 				</li>
 			</ul>
-		</section>
-		
-		
-		
-		<section>
-			<h1>Print Support</h1>
-			<p>There are two classes available to help with printing:
-				<code>.print-none</code> and <code>.print-only</code>.
-			</p>
-			<div class="outline example">
-				<div class="print-only">Will only dipslay on the printer.</div>
-				<div class="print-none">Will not print.</div>
-			</div>
-			<pre class="prettyprint linenums">
-&lt;div class="print-only">Will only dipslay on the printer.&lt;/div>
-&lt;div class="print-none">Will not print.&lt;/div>
-</pre>
-
 		</section>
 	</div>
 </div>

@@ -1,0 +1,81 @@
+﻿@using LaunchTechnologies.Web.LaunchSite.JsPkgs
+@using LaunchTechnologies.Web.LaunchSite.Models.JSPM.Extensions
+@*
+	Use this as a template to create new style guide pages.
+*@
+@section head {
+}
+@section scripts {
+	@Html.InstallJavaScriptPackage(JQueryUIInteractionsPkg.PackageName)
+
+	<script>
+		(function exampleApp () {
+
+			var ea = context.app("exampleApp").use("bbext");
+			
+			ea.start(["app", function (app) {
+				app.render();
+			}]);
+
+			ea.view("exampleAppView");
+
+			ea.view("dialogExampleView", function (options, viewFactory) {
+				this.viewFactory = viewFactory;
+			}, {
+				$inject: ["options", "viewFactory"],
+				openDialog: function () {
+					this.dialogView = this.viewFactory.create("dialogView");
+					this.dialogView.render();
+					// this.$el.after(this.dialogView.$el);
+				}
+			});
+
+
+			ea.view("dialogView", function (options, dialogFactory) {
+				this.dialogFactory = dialogFactory;
+			}, {
+				$inject: ["options", "dialogFactory"],
+
+				onRender: function () {
+					this.dialogFactory.create(this.$el, {
+						transition: "none"
+					});
+				},
+
+				onClose: function () {
+					// debugger;
+				}
+			});
+
+			ea.start();
+		}());
+
+	</script>
+}
+<div class="page-content" data-templatefor="exampleAppView">
+
+	<h2>Dialog</h2>
+	<p>The dialog is an overlay that can be positioned in the center of the window, on top of an anchor element, or against a specific position.</p>
+	<pre class="prettyprint linenums">
+&lt;div data-transition="fade">
+	&lt;h1>Dialog Title&lt;/h1>
+	&lt;p>This is a dialog.&lt;/p>
+	&lt;button data-rel="close">Close&lt;/button>
+&lt;/div>
+</pre>
+	<h3>Live Example</h3>
+	<p>The dialog requires JavaScript. Use the <code>dialogFactory</code> to create a dialog.</p>
+	<div data-templatefor="dialogExampleView" class="show">
+		<button data-event="openDialog">Open Dialog</button>
+	</div>
+
+
+
+</div>
+
+
+<div data-templatefor="dialogView" data-transition="fade">
+	<h1>Dialog Title</h1>
+	<p>This is a dialog.</p>
+	<button data-rel="close">Close</button>
+</div>

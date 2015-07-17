@@ -1,0 +1,45 @@
+﻿@*
+	Use this as a template to create new style guide pages.
+*@
+@section head {
+}
+@section scripts {
+	<script>
+	</script>
+}
+<div class="page-content">
+	<h2>Buttons</h2>
+	<p>
+		Native button elements will be styled automatically.
+		If wanting to make a link or span look like a button use the <code>.button</code> class.
+	</p>
+	<p>
+		There is also the <code>.loud</code> class to indicate importance, and the <code>.attn</code>
+		class to grab the users attention. (The attn class should be limited to one per visual screen.)
+	</p>
+	<div class="outline example">
+		<input type="button" value="Standard button" />
+		<button class="loud">Loud button</button>
+		<a href="#" class="button attn">Attn button</a>
+	</div>
+	<pre class="prettyprint linenums">
+&lt;input type="button" value="Standard button" />
+&lt;button class="loud">Loud button&lt;/button>
+&lt;a href="#" class="button attn">Attn button&lt;/a>	
+</pre>
+	<h3>Disabled Buttons</h3>
+	<p>
+		All buttons will style accordingly when adding the <code>[disabled]</code> attribute.
+	</p>
+	<div class="outline example">
+		<input type="button" value="Standard button" disabled />
+		<button class="loud" disabled>Loud button</button>
+		<a href="#" class="button attn" disabled>Attn button</a>
+	</div>
+	<pre class="prettyprint linenums">
+&lt;input type="button" value="Standard button" disabled />
+&lt;button class="loud" disabled>Loud button&lt;/button>
+&lt;a href="#" class="button attn" disabled>Attn button&lt;/a>	
+</pre>
+
+</div>

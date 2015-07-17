@@ -1,0 +1,72 @@
+﻿@*
+		Feedbacks
+	--- TAKE A LOOK AT A BETTER DESIGN
+	Use feedback for the group change message (way less obtrusive!!!!!!)
+	 Logged in as Admin 	[change]
+	---
+
+
+
+*@
+@section head {
+}
+@section scripts {
+	<script>
+		var testMsg = context.app("testMsg").use("appui", "bbext");
+
+	testMsg.bootstrap  = function ($, feedback, menuFactory) {
+		
+		$("#showMessageBtn").click(function () {
+
+			feedback.show("This is a feedback message");
+
+		});
+
+		$("#queueMessageBtn").click(function () {
+
+			var wait = feedback.wait("Still saving the user...");
+			setTimeout(function () {
+				wait.finished("The user was saved successfully.");
+			}, 3000);
+
+		});
+
+		$(".icon-contextmenu").click(function(event) {
+			var icon = $(event.target),
+				el = $("#contextmenu-examplemenu").clone().show();
+
+			menuFactory.create(el, {
+				anchor: icon
+			});
+		});
+	};
+
+	testMsg.start([
+		"$",
+		"feedback",
+		"menuFactory",
+		testMsg.bootstrap
+	]);
+
+		testMsg.start();
+	</script>
+}
+<div class="page-content">
+
+	<h2>Feedback messages</h2>
+	<p>
+		Feedback messages are created via JavaScript. There are two primary cases for feedback.
+	</p>
+	<ol>
+		<li>
+			<strong>Showing a message</strong> - A simple message that can be dismissed.
+		</li>
+		<li>
+			<strong>Queing a message</strong> - Waiting a second before showing the message and then showing a simple confirmation message (or closing the message) when done.
+		</li>
+	</ol>
+	<div class="outline example">
+		<button id="showMessageBtn">Show a message</button>
+		<button id="queueMessageBtn">Queue a message</button>
+	</div>
+</div>

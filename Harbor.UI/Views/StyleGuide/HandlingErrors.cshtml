@@ -1,0 +1,86 @@
+﻿@*
+	Handling errors
+	data entry and from the server.
+*@
+@section head {
+}
+@section scripts {
+	<script>
+		var bootstrap = function (ajaxRequest) {
+
+			$("[data-event=ajaxRequest").click(function (event) {
+				var target;
+
+				event.preventDefault();
+				target = $(event.target);
+				ajaxRequest.handle($.get(target.attr("href")));
+			});
+		};
+
+		var testApp = context.app("testApp").use("bbext");
+		testApp.start([
+			"ajaxRequest",
+			bootstrap
+		]);
+		testApp.start();
+	</script>
+}
+<div class="page-content pad">
+	<p>
+		TODO: Add documentation on ways to handle errors.
+	</p>
+
+	<h2>Additional Form Styling</h2>
+
+	<h3>Errors</h3>
+	<p>To draw attention to a field add a <code>.error</code> class name on the <code>.form-field</code> div.</p>
+	<p>An <code>.alert</code> div can be used for general form errors. h1 - h4 headings can be used (and all style the same way).</p>
+	<div class="outline example">
+		<form>
+			<div class="alert"><h1>There was an error.</h1>This is a general form alert wich shows as an error. Same as alert-error, or alert-formerror.</div>
+			<div class="alert-warn"><h1>Class name alert-warn</h1>A message to consider.</div>
+			<div class="alert-ok"><h1>Class name alert-ok</h1>A message of success or confirmation.</div>
+			<div class="alert-info"><h1>Class name alert-info</h1>Any generic message.</div>
+			<div class="alert-message"><h1>Class name alert-message</h1>Temporary use for feedback messages until notifications are introduced.</div>
+			<fieldset>
+				<legend>Legend</legend>
+				<div class="form-field error">
+					<label for="text1">Label name</label>
+					<input type="text" id="text1" placeholder="Type something…">
+					<span data-validation-for="text1">Example block-level help in a span.</span>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+	<pre class="prettyprint linenums">
+&lt;form>
+	&lt;div class="alert">&lt;h1>There was an error.&lt;/h1>This is a general form alert.&lt;/div>
+	&lt;fieldset>
+		&lt;legend>Legend&lt;/legend>
+		&lt;div class="form-field error">
+			&lt;label for="text1">Label name&lt;/label>
+			&lt;input type="text" id="text1" placeholder="Type something…">
+			&lt;span data-validation-for="text1">Example block-level help in a span.&lt;/span>
+		&lt;/div>
+	&lt;/fieldset>
+&lt;/form>
+</pre>
+
+	<ul class="list-style-none">
+		<li>
+			<a href="~/Error/ThrowError">Throw error on MVC Page</a>
+		</li>
+		<li>
+			<a href="~/SystemError.aspx?intentional=true">Throw error on Web Forms Page</a>
+		</li>
+		<li>
+			<a href="~/ThisUrlDoesNotExist">Throw 404 error</a>
+		</li>
+		<li>
+			<a href="~/api/users/ThrowError" data-event="ajaxRequest">Throw an ajax error</a>
+		</li>
+		<li>
+			<a href="~/ThisUrlDoesNotExist" data-event="ajaxRequest">Throw an ajax 404 error</a>
+		</li>
+	</ul>
+</div>

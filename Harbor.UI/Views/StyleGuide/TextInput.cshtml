@@ -1,0 +1,212 @@
+﻿@section pageheader {
+
+}
+@section scripts {
+	<script>
+
+	</script>
+}
+<div class="page-content">
+
+	<h2>Default Form</h2>
+	<p>
+		The default form uses labels placed on the same row as the input.
+	</p>
+	<div class="outline example">
+		<form>
+			<fieldset>
+				<legend>Legend</legend>
+				<div class="form-field">
+					<label>Label name</label>
+					<input type="text" placeholder="Type something…">
+					<span>Example extra text in a span.</span>
+				</div>
+				<div class="form-field">
+					<label for="password">Password</label>
+					<input id="password" type="password" placeholder="Enter a password..." />
+					<div>Example extra text in a div.</div>
+				</div>
+				<div class="form-field">
+					<label for="select">Select</label>
+					<select id="select">
+						<option>Option 1</option>
+						<option>Option 2</option>
+					</select>
+				</div>
+				<div class="form-field">
+					<input id="checkbox" type="checkbox" />
+					<label for="checkbox">Checkbox label</label>
+				</div>
+				<div class="form-field">
+					<input type="radio" id="rad_1" name="rad" value="1" checked />
+					<label for="rad_1">Option 1</label>
+				</div>
+				<div class="form-field">
+					<input type="radio" id="rad_2" name="rad" value="2" />
+					<label for="rad_2">Option 2</label>
+				</div>
+				<div class="form-field">
+					<label for="textarea">Text2</label>
+					<textarea id="textarea" rows="3" cols="30"></textarea>
+				</div>
+
+				<div class="form-controls">
+					<button type="submit">Submit</button>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+	<pre class="prettyprint linenums">
+&lt;form>
+	&lt;fieldset>
+		&lt;legend>Legend&lt;/legend>
+		&lt;div class="form-field">
+			&lt;label>Label name&lt;/label>
+			&lt;input type="text" placeholder="Type something…">
+			&lt;span>Example extra text in a span.&lt;/span>
+		&lt;/div>
+		&lt;div class="form-field">
+			&lt;label for="password">Password&lt;/label>
+			&lt;input id="password" type="password" placeholder="Enter a password..." />
+			&lt;div>Example extra text in a div.&lt;/div>
+		&lt;/div>
+		&lt;div class="form-field">
+			&lt;label for="select">Select&lt;/label>
+			&lt;select id="select">
+				&lt;option>Option 1&lt;/option>
+				&lt;option>Option 2&lt;/option>
+			&lt;/select>
+		&lt;/div>
+		&lt;div class="form-field">
+			&lt;input id="checkbox" type="checkbox" />
+			&lt;label for="checkbox">Checkbox label&lt;/label>
+		&lt;/div>
+		&lt;div class="form-field">
+			&lt;input type="radio" id="rad_1" name="rad"  value="1" checked />
+			&lt;label for="rad_1">Option 1&lt;/label>
+		&lt;/div>
+		&lt;div class="form-field">
+			&lt;input type="radio" id="rad_2" name="rad" value="2" />
+			&lt;label for="rad_2">Option 2&lt;/label>
+		&lt;/div>
+		&lt;div class="form-field">
+			&lt;label for="textarea">Text2&lt;/label>
+			&lt;textarea id="textarea" rows="3" cols="30">&lt;/textarea>
+		&lt;/div>
+		&lt;div class="form-controls">
+			&lt;button type="submit">Submit&lt;/button>
+		&lt;/div>
+	&lt;/fieldset>
+&lt;/form>
+</pre>
+
+
+	<h2>Stacked Form</h2>
+	<p>
+		A stacked form places most labels to the left of their inputs taking up more horizontal space.
+		This form will collapse to a default form on smaller screens.
+	</p>
+	<div class="outline example">
+		<form class="form-stacked">
+			<fieldset>
+				<legend>Legend</legend>
+				<div class="form-field">
+					<label>Label name</label>
+					<input type="text" placeholder="Type something…">
+					<span>Example extra text in a span.</span>
+					<div>Example extra text in a div.</div>
+				</div>
+				<div class="form-field">
+					<label for="select2">Select</label>
+					<select id="select2">
+						<option>Option 1</option>
+						<option>Option 2</option>
+					</select>
+				</div>
+				<div class="form-field">
+					<input id="checkbox2" type="checkbox" />
+					<label for="checkbox2">Checkbox label</label>
+				</div>
+				<div class="form-field">
+					<input type="radio" id="rad_3" name="rad" value="1" checked />
+					<label for="rad_3">Option 1</label>
+				</div>
+				<div class="form-field">
+					<input type="radio" id="rad_4" name="rad" value="2" />
+					<label for="rad_4">Option 2</label>
+				</div>
+				<div class="form-field">
+					<label for="textarea">Text2</label>
+					<textarea id="textarea" rows="3" cols="30"></textarea>
+				</div>
+				<div class="form-controls">
+					<button type="submit">Submit</button>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+	<pre class="prettyprint linenums">
+&lt;form class="form-stacked">
+...
+&lt;/form>
+</pre>
+
+	<h2>Inline Form</h2>
+	<div class="outline example">
+		<form class="form-inline">
+			<input type="text" placeholder="Email">
+			<input type="password" placeholder="Password">
+			<button type="submit">Sign in</button>
+			<span class="nowrap">
+				<input id="checkbox3" type="checkbox" />
+				<label for="checkbox3">Remember me?</label>
+			</span>
+		</form>
+	</div>
+	<pre class="prettyprint linenums">
+&lt;form class="form-inline">
+	&lt;input type="text" placeholder="Email">
+	&lt;input type="password" placeholder="Password">
+	&lt;button type="submit">Sign in&lt;/button>
+	&lt;span class="nowrap">
+		&lt;input id="checkbox3" type="checkbox" />
+		&lt;label for="checkbox3">Remember me?&lt;/label>
+	&lt;/span>
+&lt;/form>
+</pre>
+
+	<hr />
+
+
+	
+
+
+	<h3>Disabled Fields</h3>
+	<p>Simple use the <code>[disabled]</code> attribute on any item to disable it.</p>
+	<div class="outline example">
+		<label disabled>Disabled label</label>
+		<input type="text" disabled value="This is a disabled field" />
+		<input type="button" disabled valuie="Disabled button" value="Go" />
+	</div>
+	<pre class="prettyprint linenums">
+&lt;label disabled>Disabled label&lt;/label>
+&lt;input type="text" disabled value="This is a disabled field" />
+&lt;input type="button" disabled valuie="Disabled button" />	
+</pre>
+
+
+	<h3>Input Impersonator</h3>
+	<p>The <code>.input</code> class will attempt to make any element look like an input field.</p>
+	<div class="outline example">
+		<input type="text" value="This is a normal text input" />
+		<a href="#" class="input">This is a link that looks like an input</a>
+	</div>
+	<pre class="prettyprint linenums">
+&lt;a href="#" class="input">This is a link that looks like an input&lt;/a>
+</pre>
+
+
+
+</div>
+
+
