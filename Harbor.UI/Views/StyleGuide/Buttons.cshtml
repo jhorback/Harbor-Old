@@ -8,6 +8,7 @@
 	</script>
 }
 <div class="page-content">
+
 	<h2>Buttons</h2>
 	<p>
 		Native button elements will be styled automatically.
@@ -17,29 +18,63 @@
 		There is also the <code>.loud</code> class to indicate importance, and the <code>.attn</code>
 		class to grab the users attention. (The attn class should be limited to one per visual screen.)
 	</p>
-	<div class="outline example">
-		<input type="button" value="Standard button" />
-		<button class="loud">Loud button</button>
-		<a href="#" class="button attn">Attn button</a>
-	</div>
-	<pre class="prettyprint linenums">
+	<p>
+		Use a <code>&lt;span></code> inside a <code>&lt;button></code> element to keep Internet Explorer
+		from shifting the text when pressing the button. Note: this cannot be avoided for input type buttons
+		and does not occur on link buttons.
+	</p>
+	<div class="card">
+
+		<div class="outline example">
+			<input type="button" value="Standard button"/>
+			<button class="loud"><span>Loud button</span></button>
+			<a href="#" class="button attn">Attn button</a>
+		</div>
+		<pre class="prettyprint linenums">
 &lt;input type="button" value="Standard button" />
-&lt;button class="loud">Loud button&lt;/button>
+&lt;button class="loud">&lt;span>Loud button&lt;/span>&lt;/button>
 &lt;a href="#" class="button attn">Attn button&lt;/a>	
 </pre>
+	</div>
+
+	<h3>Flat Buttons</h3>
+	<p>
+		Add a <code>.flat</code> class name for buttons already on a raised content area or an area.
+	</p>
+	<div class="card">
+		<div class="outline example">
+			<input type="button" class="flat" value="Standard button"/>
+			<button class="flat loud"><span>Loud button</span></button>
+			<a href="#" class="flat button attn">Attn button</a>
+		</div>
+		<pre class="prettyprint linenums">
+&lt;input type="button" class="flat" value="Standard button" />
+&lt;button class="flat loud">&lt;span>Loud button&lt;/span>&lt;/button>
+&lt;a href="#" class="flat button attn">Attn button&lt;/a>	
+</pre>
+
+	</div>
+
 	<h3>Disabled Buttons</h3>
 	<p>
 		All buttons will style accordingly when adding the <code>[disabled]</code> attribute.
 	</p>
-	<div class="outline example">
-		<input type="button" value="Standard button" disabled />
-		<button class="loud" disabled>Loud button</button>
-		<a href="#" class="button attn" disabled>Attn button</a>
-	</div>
-	<pre class="prettyprint linenums">
-&lt;input type="button" value="Standard button" disabled />
-&lt;button class="loud" disabled>Loud button&lt;/button>
-&lt;a href="#" class="button attn" disabled>Attn button&lt;/a>	
+	<div class="card">
+		<div class="outline example">
+			<input type="button" value="Standard disabled" disabled/>
+			<button class="loud" disabled><span>Loud disabled</span></button>
+			<a class="button attn" disabled>Attn disabled</a>
+			<input type="button" class="flat" value="Standard disabled" disabled/>
+			<button class="flat loud" disabled><span>Loud disabled</span></button>
+			<a class="flat button attn" disabled>Attn disabled</a>
+		</div>
+		<pre class="prettyprint linenums">
+&lt;input type="button" value="Standard disabled" disabled />
+&lt;button class="loud" disabled>&lt;span>Loud disabled&lt;/span>&lt;/button>
+&lt;a class="button attn" disabled>Attn disabled&lt;/a>
+&lt;input type="button" class="flat" value="Standard disabled" disabled />
+&lt;button class="flat loud" disabled>&lt;span>Loud disabled&lt;/span>&lt;/button>
+&lt;a class="flat button attn" disabled>Attn disabled&lt;/a>
 </pre>
-
+	</div>
 </div>
