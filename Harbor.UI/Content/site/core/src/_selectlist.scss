@@ -16,13 +16,6 @@ $selectlist-selected-background-color: $link-color !default;
 			@include clearfix;
 			@include no-bullets;			
 
-			.height-medium {
-				height: 7em;
-			}
-			.height-small {
-				height: 4em;
-			}
-
 			& > li {
 				float: left;				
 				display: block;
