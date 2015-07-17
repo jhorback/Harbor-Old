@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Harbor.Domain.AppMenu.Menus;
+using Harbor.Domain.Caching;
 using Harbor.Domain.Query;
 
 namespace Harbor.Domain.AppMenu.Queries
@@ -8,28 +10,32 @@ namespace Harbor.Domain.AppMenu.Queries
 	{
 		private readonly MenuItemContext _menuItemContext;
 		private readonly IPathUtility _pathUtility;
+		private readonly IUserCache<List<MenuItemDto>> _menuItemCache;
 		private int _nextOrder = 0;
 
-		public MenuQuery(MenuItemContext menuItemContext, IPathUtility pathUtility)
+		public MenuQuery(
+			MenuItemContext menuItemContext,
+			IPathUtility pathUtility,
+			IUserCache<List<MenuItemDto>> menuItemCache)
 		{
 			_menuItemContext = menuItemContext;
 			_pathUtility = pathUtility;
+			_menuItemCache = menuItemCache;
 		}
 
-		// jch* - will want a user session cache (1 day?) with an event to bust the cache.
 		public override IEnumerable<MenuItemDto> FromCache()
 		{
-			return base.FromCache();
+			return _menuItemCache.Get() ?? Execute();
 		}
 
 		public override IEnumerable<MenuItemDto> Execute()
 		{
+			var items = new List<MenuItemDto>();
 			var menu = new MainMenu();
-			yield return GetDto(null, menu);
-			foreach (var item in GetMenuItems(menu))
-			{
-				yield return item;
-			}
+			items.Add(GetDto(null, menu));
+			items.AddRange(GetMenuItems(menu));
+			_menuItemCache.Set(items, DateTime.Now.AddHours(2));
+			return items;
 		}
 
 		public IEnumerable<MenuItemDto> GetMenuItems(Menu menu)
