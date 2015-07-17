@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppMenu\DynamicMenuItem.cs" />
+    <Compile Include="AppMenu\Events\MenuChangedEvent.cs" />
     <Compile Include="AppMenu\Menu.cs" />
     <Compile Include="AppMenu\MenuItem.cs" />
     <Compile Include="AppMenu\MenuItemContext.cs" />
