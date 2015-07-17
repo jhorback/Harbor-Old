@@ -1,4 +1,7 @@
-﻿.outline {
+﻿@import "../mixins/_border-radius.scss";
+@import "../mixins/_clearfix.scss";
+
+.outline {
 		position: relative;
 		border: 1px solid #DDD;
 		background: #FFF;

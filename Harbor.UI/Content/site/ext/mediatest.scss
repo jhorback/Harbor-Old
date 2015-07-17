@@ -1,0 +1,60 @@
+﻿@import "../core/src/media";
+
+
+.mediatest {
+	
+	background: black;
+	color: white;
+	padding: 1em;
+	margin: 1em;
+	font-size: 2em;
+
+	@include onwidescreen {
+		color : #b94a48;
+		background-color: #f2dede;
+		border: 1px solid darken(adjust-hue(#f2dede, -10), 7%);
+	}
+
+	@include ondesktop {
+		color: #468847;
+		background-color: #dff0d8;
+		border: 1px solid darken(adjust-hue(#dff0d8, -10), 5%);
+	}
+
+	@include ontablet {
+		color: #3a87ad;
+		background-color: #d9edf7;
+		border: 1px solid darken(adjust-hue(#d9edf7, -10), 3%);
+	}
+
+	@include onphone {
+		border: 1px solid darken(adjust-hue(#fcf8e3, -10), 3%);;
+		color: #c09853;
+		background: #fcf8e3;
+	}
+	
+
+	&:after {
+		content: ": No media queries applied";		
+
+		@include onwidescreen {
+			content: ": Widescreen";
+		}
+
+		@include ondesktop {
+			content: ": Desktop";
+		}
+
+		@include ontablet {
+			content: ": Tablet";
+		}
+
+		@include onphone {
+			content: ": Phone";
+		}
+
+	}
+}
+
+
+
