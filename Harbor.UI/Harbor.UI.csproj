@@ -1098,6 +1098,7 @@
       <DebugInfo>False</DebugInfo>
     </None>
     <Content Include="Content\site\ext\styleguide.scss" />
+    <Content Include="Content\site\ext\mediatest.scss" />
     <None Include="Content\site\mixins\_col.scss">
       <Compile>False</Compile>
       <Minify>False</Minify>

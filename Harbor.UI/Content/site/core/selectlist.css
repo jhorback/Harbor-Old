@@ -10,10 +10,6 @@
       list-style-image: none;
       list-style-type: none;
       margin-left: 0px; }
-    .selectlist > ul .height-medium {
-      height: 7em; }
-    .selectlist > ul .height-small {
-      height: 4em; }
     .selectlist > ul > li {
       float: left;
       display: block;
