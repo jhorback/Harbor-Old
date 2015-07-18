@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using Harbor.Domain.AppMenu.Events;
 using Harbor.Domain.AppMenu.Menus;
 using Harbor.Domain.Caching;
+using Harbor.Domain.Event;
 using Harbor.Domain.Query;
 
 namespace Harbor.Domain.AppMenu.Queries
 {
-	public class MenuQuery : CachedQueryBase<IEnumerable<MenuItemDto>>
+	public class MenuQuery : CachedQueryBase<IEnumerable<MenuItemDto>>, IEventSubscriber<MenuChangedEvent>
 	{
 		private readonly MenuItemContext _menuItemContext;
 		private readonly IPathUtility _pathUtility;
@@ -82,6 +84,11 @@ namespace Harbor.Domain.AppMenu.Queries
 			}
 
 			return dto;
+		}
+
+		public void Handle(MenuChangedEvent data)
+		{
+			_menuItemCache.Remove();
 		}
 	}
 }
