@@ -1,0 +1,40 @@
+.mediatest {
+  background: black;
+  color: white;
+  padding: 1em;
+  margin: 1em;
+  font-size: 2em; }
+  @media (min-width: 100em) {
+    .mediatest {
+      color: #b94a48;
+      background-color: #f2dede;
+      border: 1px solid #e8c4ca; } }
+  @media (min-width: 64em) {
+    .mediatest {
+      color: #468847;
+      background-color: #dff0d8;
+      border: 1px solid #d7e9c6; } }
+  @media (max-width: 64em) {
+    .mediatest {
+      color: #3a87ad;
+      background-color: #d9edf7;
+      border: 1px solid #cceef4; } }
+  @media (max-width: 48em) {
+    .mediatest {
+      border: 1px solid #fbeed5;
+      color: #c09853;
+      background: #fcf8e3; } }
+  .mediatest:after {
+    content: ": No media queries applied"; }
+    @media (min-width: 100em) {
+      .mediatest:after {
+        content: ": Widescreen"; } }
+    @media (min-width: 64em) {
+      .mediatest:after {
+        content: ": Desktop"; } }
+    @media (max-width: 64em) {
+      .mediatest:after {
+        content: ": Tablet"; } }
+    @media (max-width: 48em) {
+      .mediatest:after {
+        content: ": Phone"; } }
