@@ -6,7 +6,7 @@
 	<link rel="stylesheet" href="~/content/site/ext/styleguide.css" type="text/css" />
 	<link rel="stylesheet" href="~/content/prettify/prettify.css" type="text/css" />
 }
-<section class="page">
+<section class="page centered noaside">
 	<header class="page-header">
 		@if (ViewBag.Category != null)
 		{
@@ -20,8 +20,6 @@
 		{
 			<h1>@ViewBag.PageTitle</h1>
 		}
-
-
 		@RenderSection("pageheader", required: false)
 	</header>
 	<div class="page-body">

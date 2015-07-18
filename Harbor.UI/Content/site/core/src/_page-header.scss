@@ -47,28 +47,6 @@
 			margin: 0 1em;
 		}
 	}
-
-	.page-nav {
-		display: block;
-		float: left;
-		margin-left: 1em;
-		.ul {			
-			@include no-bullets;			
-			@include clearfix;
-		}
-		li {
-			display: block;
-			float: left;
-			a {
-				font-size: 1.2em;
-				margin: 0 .5em;
-				text-decoration: none;				
-			}
-			&.selected a {
-				font-weight: bold;
-			}
-		}
-	}
 }
 
 @mixin page-header-theme {
