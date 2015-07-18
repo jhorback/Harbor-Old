@@ -22,8 +22,7 @@
     box-sizing: content-box; }
   .menulist h2, .menulist h3 {
     display: block;
-    font-size: 1em;
-    line-height: 3em;
-    padding: 0 1em;
-    font-weight: normal;
+    font-size: 0.875em;
+    line-height: 3.45em;
+    padding: 0 1.143em;
     margin: 0; }

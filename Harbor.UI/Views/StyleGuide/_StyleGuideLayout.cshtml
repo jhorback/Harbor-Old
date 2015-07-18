@@ -6,21 +6,23 @@
 	<link rel="stylesheet" href="~/content/site/ext/styleguide.css" type="text/css" />
 	<link rel="stylesheet" href="~/content/prettify/prettify.css" type="text/css" />
 }
-<section class="page centered noaside">
+<section class="page centered">
 	<header class="page-header">
-		@if (ViewBag.Category != null)
-		{
-			<h1>
-				@ViewBag.Category
-				<i class="icon-next" style="position:relative;top:.25em;"></i>
-				@ViewBag.PageTitle
-			</h1>
-		}
-		else
-		{
-			<h1>@ViewBag.PageTitle</h1>
-		}
-		@RenderSection("pageheader", required: false)
+		<div class="page-header-content">
+			@if (ViewBag.Category != null)
+			{
+				<h1>
+					@ViewBag.Category
+					<i class="icon-next" style="position:relative;top:.25em;"></i>
+					@ViewBag.PageTitle
+				</h1>
+			}
+			else
+			{
+				<h1>@ViewBag.PageTitle</h1>
+			}
+			@RenderSection("pageheader", required: false)
+		</div>
 	</header>
 	<div class="page-body">
 		@RenderBody()

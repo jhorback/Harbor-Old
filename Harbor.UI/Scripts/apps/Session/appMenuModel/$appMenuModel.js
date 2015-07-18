@@ -12,7 +12,8 @@ session.appMenuModel = function (
 
 session.appMenuModel.prototype = {
 	defaults: {
-		"selectedMenuItemId": null
+		"selectedMenuItemId": null,
+		"currentMenuText": "Main Menu"
 	},
 	
 	initialize: function () {
@@ -69,13 +70,16 @@ session.appMenuModel.prototype = {
 	},
 
 	onMenuChange: function (menu) {
+		var currentMenu;
+
 		this.parentItems.each(function (item) {
 			item.set("selected", false);
 		});
-		//this.menuItems.get(this.attributes.selectedMenuItemId).set("selected", true);
+
 		this.parentItems.set(this.getParentItems());
-		this.parentItems.last().set("selected", true);
-		this.childItems.set(this.getChildItems());
+		currentMenu = this.parentItems.pop();
+		this.set("currentMenuText", currentMenu.attributes.text);
+		this.childItems.set(this.getChildItems(currentMenu));
 	},
 
 	getParentItems: function () {
@@ -101,8 +105,8 @@ session.appMenuModel.prototype = {
 		return parents;
 	},
 
-	getChildItems: function () {
-		var lastParent = this.parentItems.last(),
+	getChildItems: function (currentMenu) {
+		var lastParent = currentMenu,
 			parentItemId = lastParent ? lastParent.id : null,
 			children = [];
 

@@ -46,10 +46,9 @@ $menulist-border-style: 1px solid #ccc;
 
 		h2, h3 {			
 			display: block;
-			font-size: 1em;
-            line-height: 3em;
-            padding: 0 1em;
-			font-weight: normal;			
+			font-size: .875em; // 14px
+			line-height: 3.45em; // 48px
+            padding: 0 1.143em; // 16px
             margin:0;
 		}	
 	}
