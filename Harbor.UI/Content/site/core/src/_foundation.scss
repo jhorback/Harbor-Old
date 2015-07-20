@@ -6,10 +6,11 @@
 @import "media";
 @import "foundation-vars";
 @import "$color";
+@import "_$type.scss";
 
 
 @mixin foundation {
-	@include normalize;	
+	@include normalize;
 	@include body;
 	@include headings;
 	@include emphasis;
@@ -29,19 +30,7 @@
 
 
 @mixin body {
-    $opensans-fontpath: "font/opensans/OpenSans-Regular-";
-
-    @font-face {
-        font-family: 'OpenSans';    
-        src: url($opensans-fontpath + 'webfont.eot');
-        src: url($opensans-fontpath + 'webfont.eot?#iefix') format('embedded-opentype'),
-             url($opensans-fontpath + 'webfont.woff') format('woff'),
-             url($opensans-fontpath + 'webfont.ttf') format('truetype'),
-             url($opensans-fontpath + 'webfont.svg#OpenSansRegular') format('svg');
-        font-weight: normal;
-        font-weight: 400;
-        font-style: normal;
-    }
+    @include type-font-face;
 
 	html, body {
 		height: 100%;
@@ -53,13 +42,9 @@
 		margin: 0;
 	}
 
-	p {
-        margin: 0;
-		margin-bottom: 1.5em;
-        &:only-of-type {
-			margin-bottom: 0;
-		}
-	}
+     @include type-classes;
+
+
 
     a, .link {
 		text-decoration: underline;
@@ -73,25 +58,26 @@
 	body {
         @include bg-color;
 		
-        h1, h2 {
+        /*h1, h2 {
             color: $color-primary;
-        }
+        }*/
+
 		font-size: $body-font-size;
-		font-family: $body-font-family;
+		font-family: $type-font-family;
 		line-height: $body-line-height;
 	}
 
     @include color-container;
-    @include color-links;
+    @include color-links;   
 }
 
 
 @mixin headings {
-	h1, h2, h3, h4, h5, h6 {
+	/*h1, h2, h3, h4, h5, h6 {
 		margin: 0; // margin is handled by the line-height
 		clear: left;
 		text-rendering: optimizelegibility; // Fix the character spacing for headings	
-		font-family: $headings-font-family;
+		// font-family: $headings-font-family;
 		.subheading {  margin-left: 1em; font-weight: normal; font-size: $body-font-size * 1.1; } // sub headings
 	}
     // 16px base
@@ -100,21 +86,21 @@
 	h3 { font-size: 1.35em;  } // ~21px
 	h4 { font-size: 1.20em; } // ~19px
 	h5 { font-size: 1em;    } // ~16px
-	h6 { font-size: .85em;  } // ~14px	
+	h6 { font-size: .85em;  } // ~14px*/	
 }
 
 @mixin headings-theme {
-	h1, h2, h3, h4, h5, h6 {
+	/*h1, h2, h3, h4, h5, h6 {
         color: $body-heading-color; 
 		margin-top: ($body-line-height-px / 2);
         margin-bottom: .25em;
-	}
+	}*/
 }
 
 
 @mixin emphasis {
 	// Ex: 16px base font * 85% = about 13px
-	small   { font-size: 80%; }
+	// small   { font-size: 80%; }
 
 	strong  { font-weight: bold; }
 	em      { font-style: italic; }
@@ -216,13 +202,15 @@
 
 
 @mixin lists-theme {
-	ul, ol { 
+	ul, ol {
+        @include type-body1;
 		margin-bottom: ($body-line-height-px / 2);
          &:only-of-type {
             margin-bottom: 0;
         }
 	}
 	dl {
+        @include type-body1;
 		margin-bottom: $body-line-height-px;
         &:only-of-type {
             margin-bottom: 0;
@@ -258,7 +246,7 @@
 
 
 @mixin code {
-	pre, code   { font-family: $pre-font-family; background: #F5F5F5; border: 1px solid #DDD; @include border-radius; }
+	pre, code   { font-family: $type-font-family-mono; background: #F5F5F5; border: 1px solid #DDD; @include border-radius; }
 	pre { padding: .8em; overflow: auto; }
 	code {
 		padding: 2px 4px;

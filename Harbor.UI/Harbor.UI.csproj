@@ -988,6 +988,7 @@
     <Content Include="Content\site\core\src\_%24color.scss" />
     <Content Include="Content\site\core\src\_%24z-depth.scss" />
     <Content Include="Content\site\core\src\_toolbar.scss" />
+    <Content Include="Content\site\core\src\_%24type.scss" />
     <None Include="Content\site\core\src\_tiles.scss">
       <Compile>False</Compile>
       <Minify>False</Minify>

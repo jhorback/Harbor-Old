@@ -25,11 +25,12 @@ appmenu-childlist
 /* begin foundation-theme */
 html, body {
   background-color: #FAFAFA;
+  /*h1, h2 {
+            color: $color-primary;
+        }*/
   font-size: 16px;
-  font-family: "OpenSans", "Segoe UI", "Helvetica Neue", Arial;
+  font-family: "OpenSans", "sans-serif";
   line-height: 1.5; }
-  html h1, html h2, body h1, body h2 {
-    color: #0097a7; }
 
 color: #202020;
 color: rgba(0, 0, 0, 0.87);
@@ -65,18 +66,21 @@ hr {
   .link:visited, .link:focus, .link:hover, .link:active, a:visited, a:focus, a:hover, a:active {
     color: #0097a7; }
 
-h1, h2, h3, h4, h5, h6 {
-  color: #393d40;
-  margin-top: 12px;
-  margin-bottom: 0.25em; }
-
 ul, ol {
+  font-size: 0.875em;
+  line-height: 1.428;
   margin-bottom: 12px; }
+  ul.lead, ol.lead {
+    margin-bottom: 0.286em; }
   ul:only-of-type, ol:only-of-type {
     margin-bottom: 0; }
 
 dl {
+  font-size: 0.875em;
+  line-height: 1.428;
   margin-bottom: 24px; }
+  dl.lead {
+    margin-bottom: 0.286em; }
   dl:only-of-type {
     margin-bottom: 0; }
   dl.list-wide dt {

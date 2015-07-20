@@ -1,12 +1,10 @@
 @import "$color";
 
-$body-font-family:			"OpenSans", "Segoe UI", "Helvetica Neue", Arial	                    !default;
-$headings-font-family:		"OpenSans", "Segoe UI Light", "Segoe UI", "Helvetica Neue", Arial	!default;
-$pre-font-family:			Monaco, Menlo, Consolas, 'Courier New', monospace		            !default;
 
 
-$body-font-size:			16px					!default;
-$body-line-height:			1.5 /*1.4286*/			!default; // @16px font = 23px line-height
+
+$body-font-size:			16px	    !default;
+$body-line-height:			1.5 		!default;
 $body-line-height-px:		$body-line-height * $body-font-size;
 
 
@@ -19,8 +17,6 @@ $dl-inline-dt-width:		11.42em					!default; // ~160px
 
 // readable widths
 $width-readable-content: 77.5em;
-$width-readable-text: 32em;
-$width-readable-text-short: 22em;
 
 
 /////////////////////////// FRAME

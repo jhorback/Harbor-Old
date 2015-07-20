@@ -3,10 +3,8 @@
 @import "../../mixins/_clearfix.scss";
 @import "_$z-depth.scss";
 @import "_$color.scss";
+@import "_$type.scss";
 @import "foundation-vars";
-
-
-$button-font-family:			'Segoe UI Web Semibold', 'Segoe UI Web Regular', 'Segoe UI', 'Segoe UI Symbol', 'Helvetica Neue', Arial !default;
 
 
 // .button.flat, .button.flat.loud, .button.flat.attn
@@ -74,20 +72,16 @@ $button-font-family:			'Segoe UI Web Semibold', 'Segoe UI Web Regular', 'Segoe U
 	button,
 	input[type=button],
 	input[type=submit] {
-        text-transform: uppercase;
 		border: 0;
         outline: 0; 
 	    display: inline-block;	
-	    text-align: center;	
-	    font-weight: 600;
-	    font-family: $button-font-family;
-	    font-size: $body-font-size *.8;
-	    line-height: $body-line-height * 1.3;
+	    text-align: center;		    
 	    cursor: default;
 	    text-decoration: none;
 	    margin: 0 .25em 0 0;
-	    padding: .25em 1.5em;
+	    padding: .5em 1.75em;
         min-width: 5em;
+        @include type-button;
 	    @include border-radius;
 	    @include user-select("none");
         @include z-depth-button;
@@ -117,6 +111,7 @@ $button-font-family:			'Segoe UI Web Semibold', 'Segoe UI Web Regular', 'Segoe U
 
 	a.button {
 		margin-right: 0;
+        outline: 0;
 		*padding-top: 10px;
 		*padding-bottom: 10px;
 	} 
