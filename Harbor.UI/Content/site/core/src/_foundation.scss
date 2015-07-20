@@ -32,8 +32,7 @@
     $opensans-fontpath: "font/opensans/OpenSans-Regular-";
 
     @font-face {
-        font-family: 'OpenSans';
-    
+        font-family: 'OpenSans';    
         src: url($opensans-fontpath + 'webfont.eot');
         src: url($opensans-fontpath + 'webfont.eot?#iefix') format('embedded-opentype'),
              url($opensans-fontpath + 'webfont.woff') format('woff'),
@@ -56,7 +55,7 @@
 
 	p {
         margin: 0;
-		margin-bottom: 1.5em;		
+		margin-bottom: 1.5em;
         &:only-of-type {
 			margin-bottom: 0;
 		}
@@ -73,7 +72,7 @@
 	html,
 	body {
         @include bg-color;
-		@include color-container;
+		
         h1, h2 {
             color: $color-primary;
         }

@@ -1,7 +1,7 @@
 * {
   margin: 0; }
 
-article, aside, details, figcaption, figure, footer, header, nav, section {
+article, aside, details, figcaption, figure, footer, header, main, menu, nav, section, summary {
   display: block; }
 
 audio, canvas, video {
@@ -87,12 +87,6 @@ table {
   * {
     text-shadow: none !important;
     box-shadow: none !important; }
-  a[href]:after {
-    content: " (" attr(href) ")"; }
-  abbr[title]:after {
-    content: " (" attr(title) ")"; }
-  a[href^="javascript:"]:after, a[href^="#"]:after {
-    content: ""; }
   pre, blockquote {
     border: 1px solid #999;
     page-break-inside: avoid; }

@@ -1,3 +1,13 @@
+/*@mixin col-span ($cols: 1, $span: 1, $col-gutter-width: $col-gutter-width) {
+	$colwidth: 100% / $cols;
+	$spancolwidth: $colwidth * $span;
+	// $margin: 2%;
+
+	float: left;
+	width: $spancolwidth;
+    box-sizing: border-box;
+	border-left: $col-gutter-width solid transparent;
+}*/
 /* the row classes are not really used - think about removing them */
 .row, .row-small, .row-medium, .row-large {
   clear: both; }
@@ -7,7 +17,7 @@
     clear: both; }
 
 .row {
-  margin-left: -1%; }
+  margin-left: -1em; }
 
 .row5 {
   height: 5em;
