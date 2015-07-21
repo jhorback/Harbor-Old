@@ -40,7 +40,7 @@ $appmenu-width: 25em;
         .toolbar {
            height: 4.5em;
            //background-color: $color-primary;
-           //@include color-container($theme-ondark-bg)
+           //@include color-box($theme-ondark-bg)
         }
 
         .icon-close {

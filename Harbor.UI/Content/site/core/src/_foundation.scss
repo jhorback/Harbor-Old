@@ -12,7 +12,6 @@
 @mixin foundation {
 	@include normalize;
 	@include body;
-	@include headings;
 	@include emphasis;
 	@include semantic;
 	@include lists;
@@ -22,7 +21,6 @@
 
 @mixin foundation-theme {
 	@include body-theme;
-	@include headings-theme;
 	@include lists-theme;
 	@include code-theme;
 }
@@ -43,7 +41,7 @@
 	}
 
      @include type-classes;
-
+     @include color-classes;
 
 
     a, .link {
@@ -56,6 +54,7 @@
 @mixin body-theme {
 	html,
 	body {
+        @include color($color-theme);
         @include bg-color;
 		
         /*h1, h2 {
@@ -67,35 +66,14 @@
 		line-height: $body-line-height;
 	}
 
-    @include color-container;
-    @include color-links;   
+   
+    @include color-box-classes($color-theme, $color-primary, $color-accent);
+    @include color-links;
+    @include color-scrollbar;
 }
 
 
-@mixin headings {
-	/*h1, h2, h3, h4, h5, h6 {
-		margin: 0; // margin is handled by the line-height
-		clear: left;
-		text-rendering: optimizelegibility; // Fix the character spacing for headings	
-		// font-family: $headings-font-family;
-		.subheading {  margin-left: 1em; font-weight: normal; font-size: $body-font-size * 1.1; } // sub headings
-	}
-    // 16px base
-	h1 { font-size: 2.0em;  } // ~32px
-	h2 { font-size: 1.5em; } // ~24px
-	h3 { font-size: 1.35em;  } // ~21px
-	h4 { font-size: 1.20em; } // ~19px
-	h5 { font-size: 1em;    } // ~16px
-	h6 { font-size: .85em;  } // ~14px*/	
-}
 
-@mixin headings-theme {
-	/*h1, h2, h3, h4, h5, h6 {
-        color: $body-heading-color; 
-		margin-top: ($body-line-height-px / 2);
-        margin-bottom: .25em;
-	}*/
-}
 
 
 @mixin emphasis {
@@ -203,7 +181,7 @@
 
 @mixin lists-theme {
 	ul, ol {
-        @include type-body1;
+        //@include type-body1;
 		margin-bottom: ($body-line-height-px / 2);
          &:only-of-type {
             margin-bottom: 0;

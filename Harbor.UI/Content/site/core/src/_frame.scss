@@ -242,7 +242,7 @@ $frame-logo-use-image: true !default;
         // jch playing
         // color: $framenav-color;
         // background: $framenav-background-color; // don't think i need this
-        @include color-container;
+        @include color-box;
         //background-color: $color-primary;
         [role=button] {
             @include color($theme-ondark-bg);
@@ -294,7 +294,7 @@ $frame-logo-use-image: true !default;
 
     #frame-footer {
         @include bg-color-bar("dark");
-        @include color-container("dark");        
+        @include color-box("dark");        
         color: $frame-footer-color;
         a {
             color: $frame-footer-color;

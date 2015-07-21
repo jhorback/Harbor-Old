@@ -4,10 +4,13 @@
 $type-font-family: "OpenSans", "sans-serif" 	                !default;
 $type-font-family-medium: "OpenSansMedium", "sans-serif" 	    !default;
 $type-font-family-mono: Monaco, Menlo, 'Courier New', monospace	!default;
-$type-width-readable: 32em; // 40?
-$type-width-readable-short: 22em; // 30?
+$type-width-readable: 50em; // 32em; // 40?
+$type-width-readable-short: 30em; // 30?
 
 @mixin type-classes {
+    h1, h2, h3, h4, h5, h6 {
+        font-weight: 400;
+    }
     h1 {
         @include type-display1;
     }
@@ -121,7 +124,10 @@ $type-width-readable-short: 22em; // 30?
     font-size: 2.8125em;
     line-height: 1.07;
     &.lead {
-        margin-bottom: .67em;
+        margin: -.35em 0 .67em 0;
+    }
+    &.follow {
+        margin-top: .67em;
     }
 }
 
@@ -130,7 +136,10 @@ $type-width-readable-short: 22em; // 30?
     font-size: 2.125em;
     line-height: 1.176;
     &.lead {
-        margin-bottom: .706em;
+        margin: -0.35em 0 .706em 0;
+    }
+    &.follow {
+        margin-top: 0.706em;
     }
 }
 
@@ -139,7 +148,10 @@ $type-width-readable-short: 22em; // 30?
     font-size: 1.5em;
     line-height: 1.33em;
     &.lead {
-        margin-bottom: .67em;
+        margin: -0.165em 0 .67em 0;
+    }
+    &.follow {
+        margin-top: 0.67em;
     }
 }
 
@@ -155,7 +167,10 @@ $type-width-readable-short: 22em; // 30?
     font-size: 1em;
     line-height: 1.75;
     &.lead {
-        margin-bottom: .75em;
+        margin: -0.375em 0 .75em 0;
+    }
+    &.follow {
+        margin-top: .75em;
     }
 }
 
@@ -165,7 +180,10 @@ $type-width-readable-short: 22em; // 30?
     font-size: 0.875em;
     line-height: 1.7em;
     &.lead {
-        margin-bottom: .57em;
+        margin: -0.357em 0 .57em 0;
+    }
+    &.follow {
+        margin-top: .57em;
     }
 }
 
@@ -174,8 +192,11 @@ $type-width-readable-short: 22em; // 30?
     font-family: $type-font-family-medium;    
     font-size: 0.875em;
     line-height: 1.7em;
-     &.lead {
-        margin-bottom: .57em;
+    &.lead {
+        margin: -0.357em 0 .57em 0;
+    }
+    &.follow {
+        margin-top: .57em;
     }
 }
 
@@ -184,7 +205,10 @@ $type-width-readable-short: 22em; // 30?
     font-size: 0.875em;
     line-height: 1.428;
     &.lead {
-        margin-bottom: 0.286em;
+        margin: -.214em 0 0.286em 0 !important;
+    }
+    &.follow {
+        margin-top: .286em;
     }
 }
 

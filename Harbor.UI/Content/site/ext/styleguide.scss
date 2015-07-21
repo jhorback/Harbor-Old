@@ -9,6 +9,10 @@
 		overflow: auto; // not sure why this is needed in addition to the clearfix
 		@include border-radius;
 		@include clearfix;
+
+        &.nopad {
+            padding: 0;
+        }
 	}
     
 	.outline + .prettyprint {

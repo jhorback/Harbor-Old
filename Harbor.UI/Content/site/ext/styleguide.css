@@ -12,6 +12,8 @@
     content: "";
     display: table;
     clear: both; }
+  .outline.nopad {
+    padding: 0; }
 
 .outline + .prettyprint {
   margin-top: -0.5em;

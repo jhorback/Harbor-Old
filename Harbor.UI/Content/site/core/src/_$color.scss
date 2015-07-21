@@ -28,17 +28,17 @@ $color-theme:                $theme-onlight-bg     !default;
 
 // primary/accent color swatch
 $color-primary:               #0097a7   !default;
-$color-primary-theme:         "light"   !default;
+$color-primary-theme:         "dark"    !default;
 $color-primary-darker:        #006064   !default;
-$color-primary-darker-theme:  "light"   !default;
+$color-primary-darker-theme:  "dark"    !default;
 $color-primary-lighter:       #B2EBF2   !default;
-$color-primary-lighter-theme: "dark"    !default;
+$color-primary-lighter-theme: "light"   !default;
 $color-accent:                #FF3D00   !default;
-$color-accent-theme:          "light"   !default;
+$color-accent-theme:          "dark"   !default;
 $color-accent-darker:         #DD2C00   !default;
-$color-accent-darker-theme:   "light"   !default;
+$color-accent-darker-theme:   "dark"   !default;
 $color-accent-lighter:        #FF6E40   !default;
-$color-accent-lighter-theme:  "dark"    !default;
+$color-accent-lighter-theme:  "light"    !default;
 
 // button colors
 //$button-bg-color-light:       #FFFFFF   !default;
@@ -143,7 +143,7 @@ $button-bg-color-disabled-dark-hex: #1E1E1E;
 
 @mixin bg-color-outerbar($dark-or-light: $color-theme) {
     // use for contrast against the heading bar as the topmost or bottommost element
-    @if $dark-or-light == "dark" {
+    @if $dark-or-light == "light" {
         background-color: #E0E0E0;
     } @else {
         background-color: #000000;
@@ -200,46 +200,54 @@ $button-bg-color-disabled-dark-hex: #1E1E1E;
 
 
 
-@mixin color-container(
+@mixin color-box( 
     $dark-or-light: $color-theme,
-    $color-primary: $color-primary,
-    $color-accent: $color-accent
+    $color-primary: null,
+    $color-accent: null
 ) {
-
-    // sets text color, .quiet, .loud/primary, .attn/accent, small,
-    //     disabled/hint, a, .link, hr colors for a container
+    // sets the main text colors
+    // if primary and accent colors are given, sets the .loud and .attn classes
 
     @include color($dark-or-light);
-    h1, h2 {
-       @include color($dark-or-light);
-    }
-    
+    @include color-box-classes($dark-or-light, $color-primary, $color-accent);
+}
+
+@mixin color-box-classes (
+    $dark-or-light: $color-theme,
+    $color-primary: null,
+    $color-accent: null
+) {
     .quiet, small {
         @include color-quiet($dark-or-light);
     }
        
     [disabled], .disabled, .hint {
         @include color-disabled($dark-or-light);
-    }        
+    }   
     
-    .loud {
-        color: $color-primary;
+    @if ($color-primary != null) {    
+        .loud {
+            color: $color-primary;
+        }
     }
-
-     .attn {
-         color: $color-accent;
-     }
-
+    @if ($color-accent != null) {
+         .attn {
+             color: $color-accent;
+         }
+    }
     hr {
         @include color-divider-bg;
     }
+}
 
-    ::-webkit-scrollbar-thumb {
-		@include bg-color-bar($dark-or-light);
-		&:hover{
-           @include bg-color-outerbar($dark-or-light);
-		}
-	}
+
+@mixin color-scrollbar($dark-or-light: $color-theme) {
+        ::-webkit-scrollbar-thumb {
+	    @include bg-color-bar($dark-or-light);
+	    &:hover{
+            @include bg-color-outerbar($dark-or-light);
+	    }
+    }
 }
 
 @mixin color-links($color-primary: $color-primary, $color-accent: $color-accent) {
@@ -258,9 +266,99 @@ $button-bg-color-disabled-dark-hex: #1E1E1E;
 @mixin color-selected-item($dark-or-light: $color-theme) {
      @if $dark-or-light == "dark" {
         background-color: $color-primary-darker;
-        @include color-container("dark");
+        @include color-box("dark");
     } @else {
         background-color: $color-primary-lighter;
-        @include color-container("light");
+        @include color-box("light");
+    }
+}
+
+
+@mixin color-classes {
+   
+    .color-primary {
+        color: $color-primary;
+    }
+    .box-primary {
+         background-color: $color-primary;
+        @include color-box($color-primary-theme)
+    }
+    .color-primary-darker {
+        color: $color-primary-darker;
+    }
+    .box-primary-darker {
+        background-color: $color-primary-darker;
+        @include color-box($color-primary-darker-theme);
+    }
+    .color-primary-lighter {
+        color: $color-primary-lighter;
+    }
+    .box-primary-lighter {
+        background-color: $color-primary-lighter;
+        @include color-box($color-primary-lighter-theme);
+    }
+    .color-accent {
+        color: $color-accent;
+    }
+    .box-accent {
+        background-color: $color-accent;
+        @include color-box($color-accent-theme);
+    }
+    .color-accent-darker {
+            color: $color-accent-darker;
+    }
+    .box-accent-darker {
+        background-color: $color-accent-darker;
+        @include color-box($color-accent-darker-theme);
+    }
+    .color-accent-lighter {
+        color: $color-accent-lighter;
+    }
+    .box-accent-lighter {
+        background-color: $color-accent-lighter;
+        @include color-box($color-accent-lighter-theme);
+    }
+
+    .color-light {
+        @include color($theme-onlight-bg);
+    }
+    .color-light-quiet{
+        @include color-quiet($theme-onlight-bg);
+    }
+    .color-light-disabled {
+        @include color-disabled($theme-onlight-bg);
+    }
+    .color-dark {
+        @include color($theme-ondark-bg);
+    }
+    .color-dark-quiet{
+        @include color-quiet($theme-ondark-bg);
+    }
+    .color-dark-disabled {
+        @include color-disabled($theme-ondark-bg);
+    }
+    .bg-color-light-content {
+        @include bg-color-content($theme-onlight-bg);
+    }
+    .bg-color-light {
+        @include bg-color($theme-onlight-bg);
+    }
+    .bg-color-light-bar {
+        @include bg-color-bar($theme-onlight-bg);
+    }
+    .bg-color-light-outerbar {
+        @include bg-color-outerbar($theme-onlight-bg);
+    }
+    .bg-color-dark-content {
+        @include bg-color-content($theme-ondark-bg);
+    }
+    .bg-color-dark {
+        @include bg-color($theme-ondark-bg);
+    }
+    .bg-color-dark-bar {
+        @include bg-color-bar($theme-ondark-bg);
+    }
+    .bg-color-dark-outerbar {
+        @include bg-color-outerbar($theme-ondark-bg);
     }
 }

@@ -17,27 +17,9 @@
     clear: both; }
 
 .row {
-  margin-left: -1em; }
-
-.row5 {
-  height: 5em;
-  overflow: auto; }
-
-.row4 {
-  height: 10em;
-  overflow: auto; }
-
-.row3 {
-  height: 15em;
-  overflow: auto; }
-
-.row2 {
-  height: 20em;
-  overflow: auto; }
-
-.row1 {
-  height: 25em;
-  overflow: auto; }
+  margin-left: -2%; }
+  .row.lead {
+    margin-bottom: 4em; }
 
 @media (min-width: 64em) {
   .row .col5:nth-of-type(5n+1) {

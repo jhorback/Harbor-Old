@@ -31,6 +31,8 @@ $framenav- border-selected: $color-accent-dark;
 $framenav- color-selected: $color-accent-dark;*/
 /* begin foundation-theme */
 html, body {
+  color: #202020;
+  color: rgba(0, 0, 0, 0.87);
   background-color: #FAFAFA;
   /*h1, h2 {
             color: $color-primary;
@@ -38,12 +40,6 @@ html, body {
   font-size: 16px;
   font-family: "OpenSans", "sans-serif";
   line-height: 1.5; }
-
-color: #202020;
-color: rgba(0, 0, 0, 0.87);
-h1, h2 {
-  color: #202020;
-  color: rgba(0, 0, 0, 0.87); }
 
 .quiet, small {
   color: #747474;
@@ -63,22 +59,18 @@ hr {
   background-color: #E0E0E0;
   background-color: rgba(0, 0, 0, 0.12); }
 
-::-webkit-scrollbar-thumb {
-  background-color: #F5F5F5; }
-  ::-webkit-scrollbar-thumb:hover {
-    background-color: #000000; }
-
 .link, a {
   color: #0097a7; }
   .link:visited, .link:focus, .link:hover, .link:active, a:visited, a:focus, a:hover, a:active {
     color: #0097a7; }
 
+::-webkit-scrollbar-thumb {
+  background-color: #F5F5F5; }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #E0E0E0; }
+
 ul, ol {
-  font-size: 0.875em;
-  line-height: 1.428;
   margin-bottom: 12px; }
-  ul.lead, ol.lead {
-    margin-bottom: 0.286em; }
   ul:only-of-type, ol:only-of-type {
     margin-bottom: 0; }
 
@@ -87,7 +79,9 @@ dl {
   line-height: 1.428;
   margin-bottom: 24px; }
   dl.lead {
-    margin-bottom: 0.286em; }
+    margin: -0.214em 0 0.286em 0 !important; }
+  dl.follow {
+    margin-top: 0.286em; }
   dl:only-of-type {
     margin-bottom: 0; }
   dl.list-wide dt {
@@ -125,26 +119,15 @@ dd {
 #frame-header {
   color: #202020;
   color: rgba(0, 0, 0, 0.87); }
-  #frame-header h1, #frame-header h2 {
-    color: #202020;
-    color: rgba(0, 0, 0, 0.87); }
   #frame-header .quiet, #frame-header small {
     color: #747474;
     color: rgba(0, 0, 0, 0.54); }
   #frame-header [disabled], #frame-header .disabled, #frame-header .hint {
     color: #BCBCBC !important;
     color: rgba(0, 0, 0, 0.26) !important; }
-  #frame-header .loud {
-    color: #0097a7; }
-  #frame-header .attn {
-    color: #FF3D00; }
   #frame-header hr {
     background-color: #E0E0E0;
     background-color: rgba(0, 0, 0, 0.12); }
-  #frame-header ::-webkit-scrollbar-thumb {
-    background-color: #F5F5F5; }
-    #frame-header ::-webkit-scrollbar-thumb:hover {
-      background-color: #000000; }
   #frame-header [role=button] {
     color: #FFFFFF;
     color: white; }
@@ -180,26 +163,15 @@ dd {
   color: #FFFFFF;
   color: white;
   color: #a5a6a7; }
-  #frame-footer h1, #frame-footer h2 {
-    color: #FFFFFF;
-    color: white; }
   #frame-footer .quiet, #frame-footer small {
     color: #B3B3B3;
     color: rgba(255, 255, 255, 0.7); }
   #frame-footer [disabled], #frame-footer .disabled, #frame-footer .hint {
     color: #4C4C4C !important;
     color: rgba(255, 255, 255, 0.3) !important; }
-  #frame-footer .loud {
-    color: #0097a7; }
-  #frame-footer .attn {
-    color: #FF3D00; }
   #frame-footer hr {
     background-color: #E0E0E0;
     background-color: rgba(0, 0, 0, 0.12); }
-  #frame-footer ::-webkit-scrollbar-thumb {
-    background-color: #212121; }
-    #frame-footer ::-webkit-scrollbar-thumb:hover {
-      background-color: #E0E0E0; }
   #frame-footer a {
     color: #a5a6a7; }
 
@@ -324,26 +296,15 @@ legend {
     background-color: #B2EBF2;
     color: #202020;
     color: rgba(0, 0, 0, 0.87); }
-    .datatable tr.selected td h1, .datatable tr.selected td h2 {
-      color: #202020;
-      color: rgba(0, 0, 0, 0.87); }
     .datatable tr.selected td .quiet, .datatable tr.selected td small {
       color: #747474;
       color: rgba(0, 0, 0, 0.54); }
     .datatable tr.selected td [disabled], .datatable tr.selected td .disabled, .datatable tr.selected td .hint {
       color: #BCBCBC !important;
       color: rgba(0, 0, 0, 0.26) !important; }
-    .datatable tr.selected td .loud {
-      color: #0097a7; }
-    .datatable tr.selected td .attn {
-      color: #FF3D00; }
     .datatable tr.selected td hr {
       background-color: #E0E0E0;
       background-color: rgba(0, 0, 0, 0.12); }
-    .datatable tr.selected td ::-webkit-scrollbar-thumb {
-      background-color: #F5F5F5; }
-      .datatable tr.selected td ::-webkit-scrollbar-thumb:hover {
-        background-color: #000000; }
   .datatable td {
     border-top: 1px solid rgba(0, 0, 0, 0.12); }
   .datatable.hover tr:hover td {
@@ -370,26 +331,15 @@ legend {
   background-color: #303030;
   color: #FFFFFF;
   color: white; }
-  .alert h1, .alert h2, .alert-error h1, .alert-error h2 {
-    color: #FFFFFF;
-    color: white; }
   .alert .quiet, .alert small, .alert-error .quiet, .alert-error small {
     color: #B3B3B3;
     color: rgba(255, 255, 255, 0.7); }
   .alert [disabled], .alert .disabled, .alert .hint, .alert-error [disabled], .alert-error .disabled, .alert-error .hint {
     color: #4C4C4C !important;
     color: rgba(255, 255, 255, 0.3) !important; }
-  .alert .loud, .alert-error .loud {
-    color: #0097a7; }
-  .alert .attn, .alert-error .attn {
-    color: #FF3D00; }
   .alert hr, .alert-error hr {
     background-color: #E0E0E0;
     background-color: rgba(0, 0, 0, 0.12); }
-  .alert ::-webkit-scrollbar-thumb, .alert-error ::-webkit-scrollbar-thumb {
-    background-color: #212121; }
-    .alert ::-webkit-scrollbar-thumb:hover, .alert-error ::-webkit-scrollbar-thumb:hover {
-      background-color: #E0E0E0; }
 
 /* end alert theme */
 #frame-logo a {
@@ -399,26 +349,15 @@ legend {
   background-color: #0097a7;
   color: #FFFFFF;
   color: white; }
-  .page-header h1, .page-header h2 {
-    color: #FFFFFF;
-    color: white; }
   .page-header .quiet, .page-header small {
     color: #B3B3B3;
     color: rgba(255, 255, 255, 0.7); }
   .page-header [disabled], .page-header .disabled, .page-header .hint {
     color: #4C4C4C !important;
     color: rgba(255, 255, 255, 0.3) !important; }
-  .page-header .loud {
-    color: #0097a7; }
-  .page-header .attn {
-    color: #FF3D00; }
   .page-header hr {
     background-color: #E0E0E0;
     background-color: rgba(0, 0, 0, 0.12); }
-  .page-header ::-webkit-scrollbar-thumb {
-    background-color: #212121; }
-    .page-header ::-webkit-scrollbar-thumb:hover {
-      background-color: #E0E0E0; }
   .page-header .link, .page-header a {
     color: white; }
     .page-header .link:visited, .page-header .link:focus, .page-header .link:hover, .page-header .link:active, .page-header a:visited, .page-header a:focus, .page-header a:hover, .page-header a:active {

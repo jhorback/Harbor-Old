@@ -1,73 +1,186 @@
 ﻿@*
-		Color
-	Add a color page to the style guide
-	show pallets, light/dark themes
-	Test going back and forth between themes.
-
-	COLOR:
-	use class names for container color and container structure:
-	--make class names available for all of the colors
-	.color-toolbar
-	.color-toolbar-light
-	.color-toolbar-dark
-	.color-primary
-	.color-accent
-
-	.color-divider
-	.bgcolor-toolbar
-	.bgcolor-divider
-	---
-
-
-	components define both the structure and an initial color.
-
-
-
+		
 *@
 @section head {
+	<style>
+		.swatch {
+			padding: .5em;
+		}
+		.swatch.lead {
+			margin-bottom: .25em;
+		}
+		.swatch.big {
+			height: 3em;
+		}
+	</style>
 }
 @section scripts {
 	<script>
 	</script>
 }
 <div class="page-content">
-	Color
+	<section class="lead">
+		<h1 class="type-display1 loud lead">Color application</h1>
+		<div class="row lead">
+			<div class="col">
+				<p>
+					Reference: <a href="https://www.google.com/design/spec/style/color.html#color-color-palette">Material Design : Color</a>.
+				</p>
+			</div>
+		</div>
+		<div class="row lead">
+			<div class="col3">
+				<h2 class="type-title">Color palette</h2>
+				<p>
+					The color palette is themable.
+				</p>
+			</div>
+			<div class="col3">
+				<div class="box-primary swatch lead big">Primary <span class="float-right">.box-primary</span></div>
+				<div class="box-primary-lighter swatch">Lighter <span class="float-right">.box-primary-lighter</span></div>
+				<div class="box-primary swatch">Primary <span class="float-right">.box-primary</span></div>
+				<div class="box-primary-darker swatch">Darker <span class="float-right">.box-primary-darker</span></div>
+			</div>
+			<div class="col3">
+				<div class="box-accent swatch lead big">Accent <span class="float-right">.box-accent</span></div>
+				<div class="swatch"><span class="type-subhead1 quiet">Fallback</span></div>
+				<div class="box-accent-lighter swatch">Lighter <span class="float-right">.box-accent-lighter</span></div>
+				<div class="box-accent-darker swatch">Darker <span class="float-right">.box-accent-darker</span></div>
+			</div>
+		</div>
+		<div class="row lead">
+			<div class="col3">
+				<h2 class="type-title lead">Palette classes</h2>
+				<p>
+					These classes give full access to the palettes primary and accent colors if needed.
+				</p>
+				<p>
+					There are also the helper classes and default tag styling that provide additional color support. 
+				</p>
+			</div>
+			<div class="col3-2">
+				<div class="outline">
+					<div class="color-primary">Primary <span class="float-right">(.color-primary)</span></div>
+					<div class="color-primary-darker">Primary - Darker <span class="float-right">(.color-primary-darker)</span></div>
+					<div class="color-primary-lighter">Primary - Lighter <span class="float-right">(.color-primary-lighter)</span></div>
+					<div class="color-accent">Accent <span class="float-right">(.color-accent)</span></div>
+					<div class="color-accent-darker">Accent - Darker <span class="float-right">(.color-accent-darker)</span></div>
+					<div class="color-accent-lighter">Accent - Lighter <span class="float-right">(.color-accent-lighter)</span></div>
+				</div>
+			</div>
+		</div>
+		<div class="row lead">
+			<div class="col3">
+				<h2 class="type-title lead">Helper classes</h2>
+				<h3 class="type-subhead1 lead">And default styling</h3>
+				<p>
+					There is a set of class names and default tag styling that also make use of color.
+				</p>
+				<p>
+					These colors can respond to both light and dark themes.
+				</p>
+			</div>
+			<div class="col3">
+				<div class="outline">
+					<div>
+						<p>
+							<strong>.quiet</strong>
+							<span class="quiet">Use quiet to dampen text such as subeaders and secondary text.</span>
+						</p>
+						<p>
+							<strong>small</strong>
+							<small>Styled exactly like a caption, small reduces the size from quiet. </small>
+						</p>
+					</div>
+					<div>
+						<p>
+							<strong>.disabled</strong>
+							<span class="disabled">Disabled is supported as a class;</span>
+						</p>
+						<p>
+							<strong>[disabled]</strong>
+							<span disabled>And as an attribute.</span>
+						</p>
+						<p>
+							<strong>.hint</strong>
+							<span class="hint">There is also the hint class</span>
+						</p>
+					</div>
+					<div>
+						<p>
+							<strong>.loud</strong>
+							<span class="loud">There is the loud text to stand out, </span>
+							<strong class="loud">(and strong)</strong>
+						</p>
+						<p>
+							<strong>.attn</strong>
+							<span class="attn">And there is ".attn" to grab attention.</span>
+							<strong class="attn">(and strong)</strong>
+						</p>
+					</div>
+					<hr />
+					<div>
+						<strong>a, .link</strong>
+						<a>Links are the primary color by default</a>
+					</div>
+				</div>
+			</div>
+			<div class="col3">
+				<pre class="outline prettyprint linenums">
+&lt;span class="quiet">quiet&lt;/span>
+&lt;small>caption&lt;/small>
+&lt;span class="disabled">&lt;/span>
+&lt;input disabled />
+&lt;span class="hint">&lt;/span>
+&lt;span class="loud">&lt;/span>
+&lt;span class="attn">&lt;/span>
+				</pre>
+			</div>
+		</div>
+		
+		
+		</section>
+	
+	<section class="lead">
+		<h1 class="type-display1 loud lead follow">Themes</h1>
+		<div class="row lead">
+			<div class="col2">
+				<div class="type-title">Light theme</div>
+				<p class="lead">
+					Dark text on a light background.
+				</p>
+				<div class="outline nopad color-light-quiet margin-top">
+					<div class="bg-color-light-outerbar swatch big">Outber bar <span class="float-right">.bg-color-light-outerbar</span></div>
+					<div class="bg-color-light-bar swatch big">Toolbars <span class="float-right">.bg-color-light-bar</span></div>
+					<div class="bg-color-light swatch big">Base background <span class="float-right">.bg-color-light</span></div>
+					<div class="bg-color-light-content swatch big">Content <span class="float-right">.bg-color-light-content</span></div>
+				</div>
+			</div>
+			<div class="col2">
+				<div class="type-title">Dark theme</div>
+				<p class="lead">
+					Light text on a dark background.
+				</p>
+				<div class="outline nopad color-dark-quiet margin-top">
+					<div class="bg-color-dark-outerbar swatch big">Outber bar <span class="float-right">.bg-color-dark-outerbar</span></div>
+					<div class="bg-color-dark-bar swatch big">Toolbars <span class="float-right">.bg-color-dark-bar</span></div>
+					<div class="bg-color-dark swatch big">Base background <span class="float-right">.bg-color-dark</span></div>
+					<div class="bg-color-dark-content swatch big">Content<span class="float-right">.bg-color-dark-content</span></div>
+				</div>
+			</div>
+		</div>
+
+	</section>
+	
 
 
-
-	<h2>Priority and Emphasis</h2>
-	<div class="outline example">
-		<p>
-			<span class="quiet">.quiet - dampen or detract from the text.</span>
-			Similar to <small>the 'small' tag used for fine print</small>.
+	<section>
+		<h2 class="type-display1 loud lead follow">Sass support</h2>
+		<p class="type-width-readable">
+			There are mixins and variables provided to pull color into any other sass mixin or external style sheet.
+			Mixins for the pallete, all colors and themes, to color links and scrollbars.
 		</p>
-		<p>
-			<span class="loud">.loud - make the text stand out.</span>
-			Similar to <strong>the 'strong' tag to bold</strong> or <b>the 'b' tag</b>.
-		</p>
-		<p>
-			<span class="attn">.attn - draw attention to the text.</span>
-			Similar to <em>the 'em emphasis tag for italics</em> or <i>the 'i' tag</i>.
-		</p>
-
-		<p>Combine for desired effects.</p>
-		<p>
-			<small class="quiet">Small and quiet.</small>
-			<strong class="loud">Strong and loud.</strong>
-			<em class="loud">Em and loud.</em>
-			<strong class="attn">Strong and attn.</strong>
-			<em class="attn">Em and attn.</em>
-		</p>
-		<p>Color is meant to draw the eye where the tag is to portray context and meaning.</p>
-	</div>
-<pre class="prettyprint linenums">
-&lt;span class="quiet">.quiet - dampen or detract from the text.&lt;/span>
-Similar to &lt;small>the 'small' tag&lt;/small>.
-&lt;span class="loud">.loud - make the text stand out.&lt;/span>
-Similar to &lt;strong>the 'strong' tag&lt;/strong> or &lt;b>the 'b' tag&lt;/b>.	
-&lt;span class="attn">.attn - draw attention to the text.&lt;/span>
-Similar to &lt;em>the 'em' emphasis tag&lt;/em> or &lt;i>the 'i' tag&lt;/i>.
-</pre>
+	</section>
 
 </div>
 

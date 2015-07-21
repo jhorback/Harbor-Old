@@ -3,7 +3,7 @@
 @import "media";
 
 
-$col-gutter-width: 1em;
+$col-gutter-width: 2%;
 
 
 @mixin cols {
@@ -110,27 +110,30 @@ $col-gutter-width: 1em;
 	}	
 	.row {
 		margin-left: $col-gutter-width * -1;
+        &.lead {
+            margin-bottom: 4em;
+        }
 	}
-	.row5 {
-		height: 5em;
-		overflow: auto;
-	}
-	.row4 {
-		height: 10em;
-		overflow: auto;
-	}
-	.row3 {
-		height: 15em;
-		overflow:auto;
-	}
-	.row2 {
-		height: 20em;
-		overflow:auto;
-	}
-	.row1 {
-		height: 25em;
-		overflow:auto;
-	}
+	//.row5 {
+	//	height: 5em;
+	//	overflow: auto;
+	//}
+	//.row4 {
+	//	height: 10em;
+	//	overflow: auto;
+	//}
+	//.row3 {
+	//	height: 15em;
+	//	overflow:auto;
+	//}
+	//.row2 {
+	//	height: 20em;
+	//	overflow:auto;
+	//}
+	//.row1 {
+	//	height: 25em;
+	//	overflow:auto;
+	//}
 }
 
 
