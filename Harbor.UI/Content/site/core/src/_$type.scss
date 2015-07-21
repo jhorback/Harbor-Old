@@ -17,12 +17,15 @@ $type-width-readable-short: 30em; // 30?
     h2 {
         @include type-title;
     }
-    h3, h4, h5, h6 {
+    h3 {
         @include type-subhead1;
+    }
+    h4, h5, h6 {
+        @include type-subhead2;
     }
     p {
         @include type-body1;
-        margin: 0 0 0.286em 0; // jch! this cannot be right
+        margin: 0 0 1.5em 0; // jch! this cannot be right
         &:last-of-type {
 			margin-bottom: 0;
 		}
@@ -85,7 +88,7 @@ $type-width-readable-short: 30em; // 30?
 
 @mixin type-font-face {
     $opensans-regular-fontpath: "font/opensans/OpenSans-Regular-";
-    $opensans-medium-fontpath: "font/opensans/OpenSans-Bold-";
+    $opensans-medium-fontpath: "font/opensans/OpenSans-Semibold-";
 
     @font-face {
         font-family: 'OpenSans';    
@@ -114,18 +117,21 @@ $type-width-readable-short: 30em; // 30?
 
 @mixin type-display4 {
     // 112px regular font, 118px line height, quiet color, no lead
+    font-family: $type-font-family;
     font-size: 7em;
     line-height: 1.06;
 }
 
 @mixin type-display3 {
     // 56px regular font, 60px line height, quiet color, no lead
+    font-family: $type-font-family;
     font-size: 3.5em;
     line-height: 1.067;
 }
 
 @mixin type-display2 {
     // 45px regular font, 48px line height + lead, quiet color
+    font-family: $type-font-family;
     font-size: 2.8125em;
     line-height: 1.07;
     &.lead {
@@ -135,6 +141,7 @@ $type-width-readable-short: 30em; // 30?
 
 @mixin type-display1 {
     // 34px regular font, 40px line height + lead, quiet color
+    font-family: $type-font-family;
     font-size: 2.125em;
     line-height: 1.176;
     &.lead {
@@ -144,6 +151,7 @@ $type-width-readable-short: 30em; // 30?
 
 @mixin type-headline {
     // 24px regular font, 32px line height + lead, standard color
+    font-family: $type-font-family;
     font-size: 1.5em;
     line-height: 1.33em;
     &.lead {
@@ -160,6 +168,7 @@ $type-width-readable-short: 30em; // 30?
 
 @mixin type-subhead2 {
     // 16px regular font, 28px line height + lead, standard color
+    font-family: $type-font-family-medium;
     font-size: 1em;
     line-height: 1.75;
     &.lead {
@@ -168,12 +177,12 @@ $type-width-readable-short: 30em; // 30?
 }
 
 @mixin type-subhead1 {
-    // 14px medium font, 24px line height + lead, quiet color
-    font-family: $type-font-family-medium;
-    font-size: 0.875em;
-    line-height: 1.7em;
+    // 16px medium font, 24px line height + lead, quiet color
+    font-family: $type-font-family;
+    font-size: 1em;
+    line-height: 1.5em;
     &.lead {
-        margin: -0.357em 0 .57em 0;
+        margin: -0.25em 0 .5em 0;
     }
 }
 
@@ -190,6 +199,7 @@ $type-width-readable-short: 30em; // 30?
 
 @mixin type-body1 {
     // 14px regular font, 20px line height + lead, standard color
+    font-family: $type-font-family;
     font-size: 0.875em;
     line-height: 1.428;
     &.lead {
@@ -200,6 +210,7 @@ $type-width-readable-short: 30em; // 30?
 
 @mixin type-caption {
     // 12px regular font, 17px line height, quiet color, no lead
+    font-family: $type-font-family;
     font-size: .75em;
     line-height: 1.428;
 }
