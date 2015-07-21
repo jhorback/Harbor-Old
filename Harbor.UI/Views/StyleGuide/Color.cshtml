@@ -3,15 +3,7 @@
 *@
 @section head {
 	<style>
-		.swatch {
-			padding: .5em;
-		}
-		.swatch.lead {
-			margin-bottom: .25em;
-		}
-		.swatch.big {
-			height: 3em;
-		}
+		
 	</style>
 }
 @section scripts {
@@ -19,7 +11,7 @@
 	</script>
 }
 <div class="page-content">
-	
+
 	<section class="lead">
 		<div class="clearfix lead">
 			<h1 class="type-display1 lead loud float-left">Color application</h1>
@@ -29,9 +21,10 @@
 				</p>
 			</div>
 		</div>
+
+		<h2 class="type-subhead2 lead">Color palette</h2>
 		<div class="row lead">
 			<div class="col3">
-				<h2 class="type-subhead2">Color palette</h2>
 				<p>
 					The color palette is themable.
 				</p>
@@ -52,12 +45,13 @@
 				<div class="box-accent-darker swatch">Darker <span class="float-right">.box-accent-darker</span></div>
 			</div>
 		</div>
+		
+		<h2 class="type-subhead2 lead">Other palette classes</h2>
 		<div class="row lead">
 			<div class="col3">
-				<h2 class="type-subhead2 lead">Other palette classes</h2>
 				<p>
 					These classes give full access to the palettes primary and accent colors if needed.
-				</p>				
+				</p>
 			</div>
 			<div class="col3-2">
 				<div class="outline">
@@ -70,10 +64,10 @@
 				</div>
 			</div>
 		</div>
+		
+		<h2 class="type-subhead2 lead">Helper classes and default styling</h2>
 		<div class="row lead">
 			<div class="col3">
-				<h2 class="type-subhead2">Helper classes</h2>
-				<h3 class="type-body1 lead quiet">And default styling</h3>
 				<p>
 					There is a set of class names and default tag styling that also make use of color.
 				</p>
@@ -83,75 +77,65 @@
 			</div>
 			<div class="col3-2">
 				<div class="outline">
-					<div>
-						<p>
+					<ul class="list-style-none">
+						<li>
 							<strong class="float-right">.quiet</strong>
 							<span class="quiet">Use quiet to dampen text such as subeaders and secondary text.</span>
-						</p>
-						<p>
+						</li>
+						<li>
 							<strong class="float-right">small</strong>
 							<small>Small is styled exactly like a caption which reduces the size from quiet. </small>
-						</p>
-					</div>
-					<div>
-						<p>
+						</li>
+					</ul>
+					<ul class="list-style-none">
+						<li>
 							<strong class="float-right">.disabled</strong>
 							<span class="disabled">Disabled is supported as a class.</span>
-						</p>
-						<p>
+						</li>
+						<li>
 							<strong class="float-right">[disabled]</strong>
 							<span disabled>Disabled ia also supported as an attribute.</span>
-						</p>
-						<p>
+						</li>
+						<li>
 							<strong class="float-right">.hint</strong>
 							<span class="hint">There is also the hint class.</span>
-						</p>
-					</div>
-					<div>
-						<p>
+						</li>
+					</ul>
+					<ul class="list-style-none">
+						<li>
 							<strong class="float-right">.loud</strong>
 							<span class="loud">
 								There is the loud text
 								<strong>(which can stand out)</strong>.
 							</span>
-						</p>
-						<p>
+						</li>
+						<li>
 							<strong class="float-right">.attn</strong>
 							<span class="attn">
 								And there is ".attn"
 								<strong>(to grab attention)</strong>.
 							</span>
-						</p>
-					</div>
-					<div class="pad-top">
-						<strong class="float-right">hr</strong>
-						<span>The hr element is also styled for the corresponding theme:</span>
+						</li>
+					</ul>
+					<ul class="pad-top list-style-none">
+						<li>
+							<strong class="float-right">hr</strong>
+							<span>The hr element is also styled for the corresponding theme:</span>
+							<hr />
+						</li>
 						
-					</div>
-					<hr />
-					<div>
-						<strong class="float-right">a, .link</strong>
-						<a>Links are the primary color by default</a>
-					</div>
-					
-					
+					</ul>
+					<ul class="list-style-none">
+						<li>
+							<strong class="float-right">a, .link</strong>
+							<a>Links are the primary color by default</a>
+						</li>
+					</ul>
 				</div>
 			</div>
-			@*<div class="col3">
-				<pre class="outline prettyprint linenums">
-&lt;span class="quiet">quiet&lt;/span>
-&lt;small>caption&lt;/small>
-&lt;span class="disabled">&lt;/span>
-&lt;input disabled />
-&lt;span class="hint">&lt;/span>
-&lt;span class="loud">&lt;/span>
-&lt;span class="attn">&lt;/span>
-				</pre>
-			</div>*@
 		</div>
-		
-		
 	</section>
+
 
 	<hr class="margin-h type-display4" />
 

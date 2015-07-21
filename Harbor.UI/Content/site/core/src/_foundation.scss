@@ -41,8 +41,6 @@
 	}
 
      @include type-classes;
-     @include color-classes;
-
 
     a, .link {
 		text-decoration: underline;
@@ -69,11 +67,11 @@
 		line-height: $body-line-height;
 	}
 
-   
+    @include color-classes;   
     @include color-box-classes($color-theme, $color-primary, $color-accent);
     @include color-links;
     @include color-scrollbar;
-    @include color-text-selection;     
+    @include color-text-selection;
 }
 
 
@@ -130,7 +128,7 @@
 @mixin lists {
 	ul, ol {
 	  padding: 0;
-	  margin: 0 0 1em 25px;  // 25px = bullet size
+	  margin: 0 0 1.5em 25px;  // 25px = bullet size
 	}
 	ul ul,
 	ul ol,
@@ -146,6 +144,7 @@
 	ul.list-style-none,
 	ol.list-style-none {
 	  @include no-bullets;
+      margin-left: 0;
 	}
 
 	// Single-line list items
