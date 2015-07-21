@@ -131,7 +131,6 @@ $button-bg-color-disabled-dark-hex: #1E1E1E;
     }
 }
 
-
 @mixin bg-color-bar($dark-or-light: $color-theme) {
     // use for the primary heading bars
     @if $dark-or-light == "dark" {        
@@ -195,11 +194,6 @@ $button-bg-color-disabled-dark-hex: #1E1E1E;
     }
 }
 
-
-
-
-
-
 @mixin color-box( 
     $dark-or-light: $color-theme,
     $color-primary: null,
@@ -240,7 +234,6 @@ $button-bg-color-disabled-dark-hex: #1E1E1E;
     }
 }
 
-
 @mixin color-scrollbar($dark-or-light: $color-theme) {
         ::-webkit-scrollbar-thumb {
 	    @include bg-color-bar($dark-or-light);
@@ -253,15 +246,26 @@ $button-bg-color-disabled-dark-hex: #1E1E1E;
 @mixin color-links($color-primary: $color-primary, $color-accent: $color-accent) {
     .link, a {
         color: $color-primary;
-         &:visited, &:focus, &:hover, &:active {
-			color: $color-primary;
+        &:visited, &:focus, &:hover, &:active {
+			color: $color-primary;            
 		}
         &.attn {
-           // color: $color-accent; // will I ever need this?
+            color: $color-accent;
         }
     } 
 }
 
+@mixin color-text-selection($bg-color: $color-primary, $dark-or-light: $color-primary-theme) {
+    // color the text selection
+    ::selection {
+        background: $bg-color;
+        @include color($dark-or-light);
+    }
+    ::-moz-selection {
+        background: $bg-color;
+        @include color($dark-or-light);
+    }
+}
 
 @mixin color-selected-item($dark-or-light: $color-theme) {
      @if $dark-or-light == "dark" {
@@ -274,6 +278,7 @@ $button-bg-color-disabled-dark-hex: #1E1E1E;
 }
 
 
+// used by the foundation to output the CSS classes
 @mixin color-classes {
    
     .color-primary {

@@ -47,6 +47,9 @@
     a, .link {
 		text-decoration: underline;
 		cursor: pointer;
+        &:focus {
+            outline: 0;
+        }
 	}
 }
 
@@ -70,6 +73,7 @@
     @include color-box-classes($color-theme, $color-primary, $color-accent);
     @include color-links;
     @include color-scrollbar;
+    @include color-text-selection;     
 }
 
 

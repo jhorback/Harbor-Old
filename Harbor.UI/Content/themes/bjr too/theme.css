@@ -63,11 +63,23 @@ hr {
   color: #0097a7; }
   .link:visited, .link:focus, .link:hover, .link:active, a:visited, a:focus, a:hover, a:active {
     color: #0097a7; }
+  .link.attn, a.attn {
+    color: #FF3D00; }
 
 ::-webkit-scrollbar-thumb {
   background-color: #F5F5F5; }
   ::-webkit-scrollbar-thumb:hover {
     background-color: #E0E0E0; }
+
+::selection {
+  background: #0097a7;
+  color: #FFFFFF;
+  color: white; }
+
+::-moz-selection {
+  background: #0097a7;
+  color: #FFFFFF;
+  color: white; }
 
 ul, ol {
   margin-bottom: 12px; }
@@ -79,9 +91,7 @@ dl {
   line-height: 1.428;
   margin-bottom: 24px; }
   dl.lead {
-    margin: -0.214em 0 0.286em 0 !important; }
-  dl.follow {
-    margin-top: 0.286em; }
+    margin: -0.214em 0 1.5em 0 !important; }
   dl:only-of-type {
     margin-bottom: 0; }
   dl.list-wide dt {
@@ -362,6 +372,8 @@ legend {
     color: white; }
     .page-header .link:visited, .page-header .link:focus, .page-header .link:hover, .page-header .link:active, .page-header a:visited, .page-header a:focus, .page-header a:hover, .page-header a:active {
       color: white; }
+    .page-header .link.attn, .page-header a.attn {
+      color: #FF3D00; }
 
 #frame-footer-image {
   background: url(images/footer-signature.png) no-repeat left center !important;

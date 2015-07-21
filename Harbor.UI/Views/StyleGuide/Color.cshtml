@@ -30,9 +30,12 @@
 		</div>
 		<div class="row lead">
 			<div class="col3">
-				<h2 class="type-title">Color palette</h2>
+				<h2 class="type-subhead2">Color palette</h2>
 				<p>
 					The color palette is themable.
+				</p>
+				<p>
+					Each swatch is accompanied with a CSS class which colors the background and appropriate foreground theme.
 				</p>
 			</div>
 			<div class="col3">
@@ -50,13 +53,10 @@
 		</div>
 		<div class="row lead">
 			<div class="col3">
-				<h2 class="type-title lead">Palette classes</h2>
+				<h2 class="type-subhead2 lead">Other palette classes</h2>
 				<p>
 					These classes give full access to the palettes primary and accent colors if needed.
-				</p>
-				<p>
-					There are also the helper classes and default tag styling that provide additional color support. 
-				</p>
+				</p>				
 			</div>
 			<div class="col3-2">
 				<div class="outline">
@@ -71,8 +71,8 @@
 		</div>
 		<div class="row lead">
 			<div class="col3">
-				<h2 class="type-title lead">Helper classes</h2>
-				<h3 class="type-subhead1 lead">And default styling</h3>
+				<h2 class="type-subhead2">Helper classes</h2>
+				<h3 class="type-subhead1 lead quiet">And default styling</h3>
 				<p>
 					There is a set of class names and default tag styling that also make use of color.
 				</p>
@@ -80,52 +80,63 @@
 					These colors can respond to both light and dark themes.
 				</p>
 			</div>
-			<div class="col3">
+			<div class="col3-2">
 				<div class="outline">
 					<div>
 						<p>
-							<strong>.quiet</strong>
+							<strong class="float-right">.quiet</strong>
 							<span class="quiet">Use quiet to dampen text such as subeaders and secondary text.</span>
 						</p>
 						<p>
-							<strong>small</strong>
-							<small>Styled exactly like a caption, small reduces the size from quiet. </small>
+							<strong class="float-right">small</strong>
+							<small>Small is styled exactly like a caption which reduces the size from quiet. </small>
 						</p>
 					</div>
 					<div>
 						<p>
-							<strong>.disabled</strong>
-							<span class="disabled">Disabled is supported as a class;</span>
+							<strong class="float-right">.disabled</strong>
+							<span class="disabled">Disabled is supported as a class.</span>
 						</p>
 						<p>
-							<strong>[disabled]</strong>
-							<span disabled>And as an attribute.</span>
+							<strong class="float-right">[disabled]</strong>
+							<span disabled>Disabled ia also supported as an attribute.</span>
 						</p>
 						<p>
-							<strong>.hint</strong>
-							<span class="hint">There is also the hint class</span>
+							<strong class="float-right">.hint</strong>
+							<span class="hint">There is also the hint class.</span>
 						</p>
 					</div>
 					<div>
 						<p>
-							<strong>.loud</strong>
-							<span class="loud">There is the loud text to stand out, </span>
-							<strong class="loud">(and strong)</strong>
+							<strong class="float-right">.loud</strong>
+							<span class="loud">
+								There is the loud text
+								<strong>(which can stand out)</strong>.
+							</span>
 						</p>
 						<p>
-							<strong>.attn</strong>
-							<span class="attn">And there is ".attn" to grab attention.</span>
-							<strong class="attn">(and strong)</strong>
+							<strong class="float-right">.attn</strong>
+							<span class="attn">
+								And there is ".attn"
+								<strong>(to grab attention)</strong>.
+							</span>
 						</p>
+					</div>
+					<div class="pad-top">
+						<strong class="float-right">hr</strong>
+						<span>The hr element is also styled for the corresponding theme:</span>
+						
 					</div>
 					<hr />
 					<div>
-						<strong>a, .link</strong>
+						<strong class="float-right">a, .link</strong>
 						<a>Links are the primary color by default</a>
 					</div>
+					
+					
 				</div>
 			</div>
-			<div class="col3">
+			@*<div class="col3">
 				<pre class="outline prettyprint linenums">
 &lt;span class="quiet">quiet&lt;/span>
 &lt;small>caption&lt;/small>
@@ -135,17 +146,20 @@
 &lt;span class="loud">&lt;/span>
 &lt;span class="attn">&lt;/span>
 				</pre>
-			</div>
+			</div>*@
 		</div>
 		
 		
-		</section>
-	
-	<section class="lead">
-		<h1 class="type-display1 loud lead follow">Themes</h1>
+	</section>
+
+	<hr class="margin-h type-display4" />
+
+
+	<section>
+		<h1 class="type-display1 loud lead">Themes</h1>
 		<div class="row lead">
 			<div class="col2">
-				<div class="type-title">Light theme</div>
+				<div class="type-subhead2">Light theme</div>
 				<p class="lead">
 					Dark text on a light background.
 				</p>
@@ -157,7 +171,7 @@
 				</div>
 			</div>
 			<div class="col2">
-				<div class="type-title">Dark theme</div>
+				<div class="type-subhead2">Dark theme</div>
 				<p class="lead">
 					Light text on a dark background.
 				</p>
@@ -172,15 +186,45 @@
 
 	</section>
 	
-
+	<hr class="margin-h type-display4"/>
 
 	<section>
-		<h2 class="type-display1 loud lead follow">Sass support</h2>
-		<p class="type-width-readable">
+		<h2 class="type-display1 loud lead">Sass support</h2>
+		<p class="type-width-readable lead">
 			There are mixins and variables provided to pull color into any other sass mixin or external style sheet.
-			Mixins for the pallete, all colors and themes, to color links and scrollbars.
+			Mixins for the pallete, all colors and themes, links, scrollbars, text selection, and item selection.
 		</p>
+
+		<div class="lead">
+			<h3 class="type-subhead1 quiet">Background color mixins</h3>
+			<ul>
+				<li>bg-color-content($theme)</li>
+				<li>bg-color($theme)</li>
+				<li>bg-color-bar($theme)</li>
+				<li>bg-color-outerbar($theme)</li>
+			</ul>
+		</div>
+		<div class="lead">
+			<h3 class="type-subhead1 quiet">Foreground color mixins</h3>
+			<ul>
+				<li>color($theme)</li>
+				<li>color-quiet($theme)</li>
+				<li>color-disabled($theme)</li>
+				<li>color-divider-bg($theme)</li>
+			</ul>
+		</div>
+		<div class="lead">
+			<h3 class="type-subhead1 quiet">Other </h3>
+			<ul>
+				<li>color-box($theme, $primary, $accent)</li>
+				<li>color-box-classes($theme, $primary, $accent)</li>
+				<li>color-scrollbar($theme)</li>
+				<li>color-links($primary, $accent)</li>
+				<li>color-text-selection($bg-color, $theme)</li>
+				<li>color-selected-item($theme)</li>
+			</ul>
+		</div>
 	</section>
-
 </div>
-
+				
+				

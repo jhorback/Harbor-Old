@@ -21,11 +21,15 @@
 .pad-right		{ padding-right: 1em; }
 .pad-top		{ padding-top: 1em; }
 .pad-bottom		{ padding-bottom: 1em; }
-.margin			 { margin: 1em; }
+.pad-h          { padding: 1em 0; }
+.pad-v          { padding: 0 1em; }
+.margin			{ margin: 1em; }
 .margin-left	{ margin-left: 1em; }
 .margin-top		{ margin-top: 1em; }
 .margin-right	{ margin-right: 1em; }
 .margin-bottom	{ margin-bottom: 1em; }
+.margin-h       { margin: 1em 0; }
+.margin-v       { margin: 0 1em; }
 
 [data-templatefor] { display: none !important; }
 
