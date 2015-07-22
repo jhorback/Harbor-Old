@@ -9,7 +9,7 @@
 				</p>
 			</div>
 		</div>
-		<div class="lead">
+		<div class="lead2">
 			<div class="type-width-readable type-subhead1">
 				OpenSans is the current typeface. Currently two font families are in use: the regular and the semi-bold.
 				The medium weight semi-bold font family is used for the title, subhead2, body2, and button styles.
@@ -132,8 +132,13 @@
 		<div class="row lead">
 			<div class="col3">
 				<div class="lead type-width-readable">
-					Typographic lead refers simply to bottom margin. Most type classes support a lead class which will add the appropriate bottom margin.
-					The <strong>.lead</strong> class is also supported on section, divs, and on paragraphs.
+					<p>
+						Typographic lead refers simply to bottom margin. Most type classes support a lead class which will add the appropriate bottom margin
+						based on the font size and line height.
+					</p>
+					<p>
+						The type classes that do not support lead classes should exist on a single line.						
+					</p>
 				</div>
 			</div>
 			<div class="col3">
@@ -185,11 +190,16 @@
 			<div class="col3">&nbsp;</div>
 			<div class="col3-2">
 				<h3 class="type-subtitle1 quiet lead">Divs and sections</h3>
-				<p>
-					Divs and sections also support a <strong>.lead</strong> class for bottom margins.
+				<p class="type-width-readable-short">
+					Divs and sections also support a <strong>.lead</strong> class and a 
+					<strong>.lead2</strong> class for bottom margins.
 				</p>
-				<h3 class="type-subtitle1 quiet">Paragraphs</h3>
-				<p>
+				<p class="type-width-readable-short">
+					Even though these class names are
+					applied to a div or section, their semantic usage is to create space between text.
+				</p>
+				<h3 class="type-subtitle1 quiet lead">Paragraphs</h3>
+				<p class="type-width-readable-short">
 					All paragraphs are styled with default lead. The lead is removed on the "last-of-type" which covers when there is only a single
 					paragraph or the paragraph is the last one in a list of paragraphs.
 				</p>
@@ -224,7 +234,7 @@
 <section class="lead">
 	<h1 class="type-display1 lead loud">Semantic styling</h1>
 
-	<div class="lead">
+	<div class="lead2">
 		<div class="type-width-readable type-subhead1">
 			In addition to the CSS classes provided to control typography, some of the base HTML element styles
 			are also adjusted for browser normalization.
@@ -324,9 +334,31 @@
 			&nbsp;
 		</div>
 		<div class="col3-2">
-			<div class="outline">
-				//
+			<div class="outline example">
+				<ul>
+					<li>Lorem ipsum dolor sit amet</li>
+					<li>Consectetur adipiscing elit</li>
+					<li>Integer molestie lorem at massa</li>
+					<li>Facilisis in pretium nisl aliquet</li>
+					<li>
+						Nulla volutpat aliquam velit
+						<ul>
+							<li>Phasellus iaculis neque</li>
+							<li>Purus sodales ultricies</li>
+							<li>Vestibulum laoreet porttitor sem</li>
+							<li>Ac tristique libero volutpat at</li>
+						</ul>
+					</li>
+					<li>Faucibus porta lacus fringilla vel</li>
+					<li>Aenean sit amet erat nunc</li>
+					<li>Eget porttitor lorem</li>
+				</ul>
 			</div>
+			<pre class="prettyprint linenums">
+&lt;ul>
+	&lt;li>...&lt;/li>
+&lt;/ul>
+</pre>
 		</div>
 	</div>
 
@@ -336,9 +368,31 @@
 			&nbsp;
 		</div>
 		<div class="col3-2">
-			<div class="outline">
-				//
+			<div class="outline example">
+				<ol>
+					<li>Lorem ipsum dolor sit amet</li>
+					<li>Consectetur adipiscing elit</li>
+					<li>Integer molestie lorem at massa</li>
+					<li>Facilisis in pretium nisl aliquet</li>
+					<li>
+						Nulla volutpat aliquam velit
+						<ol>
+							<li>Phasellus iaculis neque</li>
+							<li>Purus sodales ultricies</li>
+							<li>Vestibulum laoreet porttitor sem</li>
+							<li>Ac tristique libero volutpat at</li>
+						</ol>
+					</li>
+					<li>Faucibus porta lacus fringilla vel</li>
+					<li>Aenean sit amet erat nunc</li>
+					<li>Eget porttitor lorem</li>
+				</ol>
 			</div>
+			<pre class="prettyprint linenums">
+&lt;ol>
+	&lt;li>...&lt;/li>
+&lt;/ol>
+</pre>
 		</div>
 	</div>
 
@@ -371,68 +425,9 @@
 
 	@*
 
-		<h3>Blockquotes</h3>
 
 
-
-		<h2>Lists</h2>
-		<h3>Unordered</h3>
-		<p>A list of items in which the order does not matter.</p>
-		<div class="outline example">
-			<ul>
-				<li>Lorem ipsum dolor sit amet</li>
-				<li>Consectetur adipiscing elit</li>
-				<li>Integer molestie lorem at massa</li>
-				<li>Facilisis in pretium nisl aliquet</li>
-				<li>
-					Nulla volutpat aliquam velit
-					<ul>
-						<li>Phasellus iaculis neque</li>
-						<li>Purus sodales ultricies</li>
-						<li>Vestibulum laoreet porttitor sem</li>
-						<li>Ac tristique libero volutpat at</li>
-					</ul>
-				</li>
-				<li>Faucibus porta lacus fringilla vel</li>
-				<li>Aenean sit amet erat nunc</li>
-				<li>Eget porttitor lorem</li>
-			</ul>
-		</div>
-		<pre class="prettyprint linenums">
-		&lt;ul>
-			&lt;li>...&lt;/li>
-		&lt;/ul>
-		</pre>
-
-		<h3>Ordered</h3>
-		<p>A numbered list (where order does matter).</p>
-		<div class="outline example">
-			<ol>
-				<li>Lorem ipsum dolor sit amet</li>
-				<li>Consectetur adipiscing elit</li>
-				<li>Integer molestie lorem at massa</li>
-				<li>Facilisis in pretium nisl aliquet</li>
-				<li>
-					Nulla volutpat aliquam velit
-					<ol>
-						<li>Phasellus iaculis neque</li>
-						<li>Purus sodales ultricies</li>
-						<li>Vestibulum laoreet porttitor sem</li>
-						<li>Ac tristique libero volutpat at</li>
-					</ol>
-				</li>
-				<li>Faucibus porta lacus fringilla vel</li>
-				<li>Aenean sit amet erat nunc</li>
-				<li>Eget porttitor lorem</li>
-			</ol>
-		</div>
-		<pre class="prettyprint linenums">
-		&lt;ol>
-			&lt;li>...&lt;/li>
-		&lt;/ol>
-		</pre>
-
-		<h3>List Style None</h3> ----------------------REMOVE THIS ONE
+		<h3>List Style None</h3> 
 		<p>Remove the <code>list-style</code> on lists.
 		</p>
 		<div class="outline">

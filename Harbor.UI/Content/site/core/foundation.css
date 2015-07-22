@@ -243,6 +243,8 @@ small {
 
 div.lead, section.lead {
   margin-bottom: 1.5em; }
+div.lead2, section.lead2 {
+  margin-bottom: 4em; }
 
 a, .link {
   text-decoration: underline;
