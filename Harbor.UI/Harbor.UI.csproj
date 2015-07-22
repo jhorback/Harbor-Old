@@ -462,6 +462,7 @@
     <Content Include="Content\site\core\tiles.css">
       <DependentUpon>tiles.scss</DependentUpon>
     </Content>
+    <Content Include="Content\site\core\toolbar.css" />
     <Content Include="Content\site\core\usermenu.css">
       <DependentUpon>usermenu.scss</DependentUpon>
     </Content>
@@ -471,6 +472,7 @@
     <Content Include="Content\site\core\webhelpers.min.css">
       <DependentUpon>webhelpers.scss</DependentUpon>
     </Content>
+    <Content Include="Content\site\ext\mediatest.css" />
     <Content Include="Content\site\ext\pageeditor.css">
       <DependentUpon>pageeditor.scss</DependentUpon>
     </Content>
@@ -480,6 +482,8 @@
     <Content Include="Content\site\ext\pager.css">
       <DependentUpon>pager.scss</DependentUpon>
     </Content>
+    <Content Include="Content\site\ext\pager.min.css" />
+    <Content Include="Content\site\ext\styleguide.css" />
     <Content Include="Content\site\mixins\_normalize.scss">
       <Compile>False</Compile>
       <Minify>False</Minify>
@@ -869,6 +873,7 @@
     <Content Include="Views\StyleGuide\TextInput.cshtml" />
     <Content Include="Views\StyleGuide\Toolbars.cshtml" />
     <Content Include="Views\StyleGuide\Typography.cshtml" />
+    <Content Include="Views\StyleGuide\PropertyLists.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\users\" />

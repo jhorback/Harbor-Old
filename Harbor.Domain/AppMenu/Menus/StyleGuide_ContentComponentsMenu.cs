@@ -17,6 +17,7 @@ namespace Harbor.Domain.AppMenu.Menus
 					new StyleGuideDataTablesMenuLink(),
 					new StyleGuideDividersMenuLink(),
 					new StyleGuideMenuListsMenuLink(),
+					new StyleGuidePropertyListsMenuLink(),
 					new StyleGuideSelectionControlsMenuLink(),
 					new StyleGuideTabsMenuLink(),
 					new StyleGuideTextInputMenuLink(),
@@ -159,6 +160,24 @@ namespace Harbor.Domain.AppMenu.Menus
 		public override string Text
 		{
 			get { return "Menu Lists"; }
+		}
+	}
+
+	public class StyleGuidePropertyListsMenuLink : MenuLink
+	{
+		public override string Url
+		{
+			get { return "~/styleguide/propertylists"; }
+		}
+
+		public override string Id
+		{
+			get { return "style-guide-propertylists"; }
+		}
+
+		public override string Text
+		{
+			get { return "Property Lists"; }
 		}
 	}
 

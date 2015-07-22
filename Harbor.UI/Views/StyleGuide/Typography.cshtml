@@ -334,7 +334,7 @@
 			&nbsp;
 		</div>
 		<div class="col3-2">
-			<div class="outline example">
+			<div class="outline">
 				<ul>
 					<li>Lorem ipsum dolor sit amet</li>
 					<li>Consectetur adipiscing elit</li>
@@ -368,7 +368,7 @@
 			&nbsp;
 		</div>
 		<div class="col3-2">
-			<div class="outline example">
+			<div class="outline">
 				<ol>
 					<li>Lorem ipsum dolor sit amet</li>
 					<li>Consectetur adipiscing elit</li>
@@ -403,10 +403,25 @@
 		</div>
 		<div class="col3-2">
 			<div class="outline">
-				//
+				<dl>
+					<dt>Description lists</dt>
+					<dd>A description list is perfect for defining terms.</dd>
+					<dt>Euismod</dt>
+					<dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+					<dd>Donec id elit non mi porta gravida at eget metus.</dd>
+					<dt>Malesuada porta</dt>
+					<dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+				</dl>
 			</div>
+			<pre class="prettyprint linenums">
+&lt;dl>
+	&lt;dt>...&lt;/dt>
+	&lt;dd>...&lt;/dd>
+&lt;/dl>
+</pre>
 		</div>
 	</div>
+
 
 	<h2 class="type-subhead2 lead">Pre and Code</h2>
 	<div class="row lead">
@@ -415,169 +430,45 @@
 		</div>
 		<div class="col3-2">
 			<div class="outline">
-				//
+				<div class="lead">
+					Here is <code>code in a code block</code> and now back outside.
+				</div>
+				<pre>
+&lt;p&gt;This is sample text in a pre block...&lt;/p&gt;
+	Preserving
+		White    ---    space
+</pre>
 			</div>
 		</div>
 	</div>
 </section>
 
 
-
-	@*
-
+<hr class="margin-h type-display4" />
 
 
-		<h3>List Style None</h3> 
-		<p>Remove the <code>list-style</code> on lists.
+	<section>
+		<h2 class="type-display1 loud lead">Sass support</h2>
+		<p class="type-width-readable lead">
+			There are a set of mixins for each type style to be used as needed when defining custom components.
 		</p>
-		<div class="outline">
-			<ul class="list-style-none">
-				<li>Lorem ipsum dolor sit amet</li>
-				<li>Consectetur adipiscing elit</li>
-				<li>Integer molestie lorem at massa</li>
-				<li>Facilisis in pretium nisl aliquet</li>
-				<li>
-					Nulla volutpat aliquam velit
-					<ul>
-						<li>Phasellus iaculis neque</li>
-						<li>Purus sodales ultricies</li>
-						<li>Vestibulum laoreet porttitor sem</li>
-						<li>Ac tristique libero volutpat at</li>
-					</ul>
-				</li>
-				<li>Faucibus porta lacus fringilla vel</li>
-				<li>Aenean sit amet erat nunc</li>
-				<li>Eget porttitor lorem</li>
+
+		<div>
+			<h3 class="type-subhead2 quiet">Type style color mixins</h3>
+			<ul>
+				<li>type-display4</li>
+				<li>type-display3</li>
+				<li>type-display2</li>
+				<li>type-display1</li>
+				<li>type-heading</li>
+				<li>type-title</li>
+				<li>type-subhead2</li>
+				<li>type-subhead1</li>
+				<li>type-body2</li>
+				<li>type-body1</li>
+				<li>type-caption</li>
+				<li>type-button</li>
 			</ul>
-		</div>
-		<pre class="prettyprint linenums">
-		&lt;ul class="list-style-none">
-			&lt;li>...&lt;/li>
-		&lt;/ul>
-		</pre>
-
-
-		<h3>Inline List</h3> ----------------------->REMOVE THIS ONE
-		<p>Place all list items on a single line with <code>.inline-block</code> with some light padding.
-		</p>
-		<div class="outline example">
-			<ul class="inline">
-				<li>Lorem ipsum</li>
-				<li>Phasellus iaculis</li>
-				<li>Nulla volutpat</li>
-			</ul>
-		</div>
-		<pre class="prettyprint linenums">
-		&lt;ul class="inline">
-			&lt;li>...&lt;/li>
-		&lt;/ul>
-		</pre>
-
-		<h3>Definition Lists</h3>
-		<div class="outline example">
-			<dl>
-				<dt>Description lists</dt>
-				<dd>A description list is perfect for defining terms.</dd>
-				<dt>Euismod</dt>
-				<dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
-				<dd>Donec id elit non mi porta gravida at eget metus.</dd>
-				<dt>Malesuada porta</dt>
-				<dd>Etiam porta sem malesuada magna mollis euismod.</dd>
-			</dl>
-		</div>
-		<pre class="prettyprint linenums">
-		&lt;dl>
-		  &lt;dt>...&lt;/dt>
-		  &lt;dd>...&lt;/dd>
-		&lt;/dl>
-		</pre>
-
-		<h4>Inline Definition List</h4> ------------------------> MOVE TO PROPERTY LISTS
-		<div class="outline example">
-			<dl class="inline">
-				<dt>Description lists</dt>
-				<dd>A description list is perfect for defining terms.</dd>
-				<dt>Euismod</dt>
-				<dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
-				<dd>Donec id elit non mi porta gravida at eget metus.</dd>
-				<dt>Malesuada porta</dt>
-				<dd title="Etiam porta sem malesuada magna mollis euismod">Etiam porta sem malesuada magna mollis euismod</dd>
-				<dt>Felis euismod semper eget lacinia</dt>
-				<dd>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</dd>
-			</dl>
-		</div>
-		<pre class="prettyprint linenums">
-		&lt;dl class="inline">
-		  &lt;dt>...&lt;/dt>
-		  &lt;dd>...&lt;/dd>
-		&lt;/dl>
-		</pre>
-
-		<h4>Simple Inline Definition List</h4>
-		<p>
-			Designed for use in small spaces (datatable cells, for example) when you want a label: value format with appropriate styling. Colons
-			are automatically inserted after the definition term, and you can have more than one per line by adding the "no-break" class to any
-			<code>dd</code> tag after which you want no line break.
-		</p>
-		<div class="outline example">
-			<dl class="inline-simple">
-				<dt>Stock Number</dt>
-				<dd>116821354</dd>
-				<dt>Make</dt>
-				<dd class="no-break">RAM</dd>
-				<dt>Model</dt>
-				<dd>CHASSIS</dd>
-				<dt>Color</dt>
-				<dd class="no-break">Blue</dd>
-				<dt>Year</dt>
-				<dd>2014</dd>
-			</dl>
-		</div>
-		<pre class="prettyprint linenums">
-		&lt;dl class="inline-simple">
-			&lt;dt>Stock Number&lt;/dt>&lt;dd>116821354&lt;/dd>
-			&lt;dt>Make&lt;/dt>&lt;dd class="no-break">RAM&lt;/dd>
-			&lt;dt>Model&lt;/dt>&lt;dd>CHASSIS&lt;/dd>
-			&lt;dt>Color&lt;/dt>&lt;dd class="no-break">Blue&lt;/dd>
-			&lt;dt>Year&lt;/dt>&lt;dd>2014&lt;/dd>
-		&lt;/dl></pre>
-		<h2>Code</h2>
-		<h3>Inline</h3>
-		<div class="outline">
-			Here is <code>code in a code block</code> and now back outside.
-		</div>
-		<h3>Pre</h3>
-		<div class="outline">
-			<pre>
-		&lt;p&gt;Sample text here...&lt;/p&gt;
-		</pre>
-		</div>
-	*@
-
-	<hr class="margin-h type-display4" />
-
-
-<section class="lead">
-		<h1 class="type-display1 lead loud">Sass support</h1>
-
-		<div class="lead">
-			<div class="type-width-readable type-subhead1">
-				//
-			</div>
-		</div>
-
-		<h2 class="type-subhead2 lead">//</h2>
-		<div class="row lead">
-			<div class="col3">
-				<p>
-					//
-				</p>
-			</div>
-			<div class="col3-2">
-				<div class="outline">
-					//
-				</div>
-			</div>
 		</div>
 	</section>
 		

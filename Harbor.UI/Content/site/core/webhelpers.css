@@ -77,3 +77,11 @@
 
 [data-templatefor] {
   display: none !important; }
+
+ul.list-style-none, ol.list-style-none {
+  list-style: none;
+  margin-left: 0; }
+  ul.list-style-none li, ol.list-style-none li {
+    list-style-image: none;
+    list-style-type: none;
+    margin-left: 0px; }

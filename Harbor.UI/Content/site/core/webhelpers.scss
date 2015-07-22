@@ -1,4 +1,5 @@
 @import "../mixins/_clearfix.scss";
+@import "../mixins/_no-bullets.scss";
 
 
 // helper classes
@@ -33,3 +34,9 @@
 
 [data-templatefor] { display: none !important; }
 
+ul, ol { 
+    &.list-style-none { 
+        @include no-bullets;
+        margin-left: 0;
+    }
+}

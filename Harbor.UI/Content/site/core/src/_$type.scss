@@ -4,8 +4,9 @@
 $type-font-family: "OpenSans", "sans-serif" 	                !default;
 $type-font-family-medium: "OpenSansMedium", "sans-serif" 	    !default;
 $type-font-family-mono: Monaco, Menlo, 'Courier New', monospace	!default;
-$type-width-readable: 50em; // 32em; // 40?
+$type-width-readable: 50em; // 32em; // 40? // should be relative to font size
 $type-width-readable-short: 30em; // 30?
+
 
 @mixin type-classes {
     h1, h2, h3, h4, h5, h6 {
@@ -88,7 +89,6 @@ $type-width-readable-short: 30em; // 30?
     }
 }
 
-
 @mixin type-font-face {
     $opensans-regular-fontpath: "font/opensans/OpenSans-Regular-";
     $opensans-medium-fontpath: "font/opensans/OpenSans-Semibold-";
@@ -117,6 +117,7 @@ $type-width-readable-short: 30em; // 30?
         font-style: normal;
     }
 }
+
 
 @mixin type-display4 {
     // 112px regular font, 118px line height, quiet color, no lead
