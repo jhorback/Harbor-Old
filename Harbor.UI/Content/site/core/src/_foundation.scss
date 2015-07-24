@@ -3,7 +3,7 @@
 @import "foundation-vars";
 @import "$color";
 @import "_$type.scss";
-
+@import "_$z-depth.scss";
 
 @mixin foundation {
 	@include normalize;
@@ -33,6 +33,7 @@
 	}
 
     @include type-classes;
+    @include z-depth-classes;
 }
 
 
