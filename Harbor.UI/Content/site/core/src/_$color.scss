@@ -113,6 +113,7 @@ $button-bg-color-disabled-dark-hex: #1E1E1E;
 
 
 
+
 @mixin bg-color-content($dark-or-light: $color-theme) {
     // use for dialogs, cards
     @if $dark-or-light == "dark" {
@@ -194,6 +195,16 @@ $button-bg-color-disabled-dark-hex: #1E1E1E;
     }
 }
 
+@mixin color-divider-border ($dark-or-light: $color-theme) {
+    @if $dark-or-light == "dark" {
+        border-color: $color-dark-divider-hex;
+        border-color: $color-dark-divider;
+    } @else {
+        border-color: $color-light-divider-hex;
+        border-color: $color-light-divider;
+    }
+}
+
 @mixin color-box( 
     $dark-or-light: $color-theme,
     $color-primary: null,
@@ -211,7 +222,7 @@ $button-bg-color-disabled-dark-hex: #1E1E1E;
     $color-primary: null,
     $color-accent: null
 ) {
-    .quiet, small {
+    .quiet {
         @include color-quiet($dark-or-light);
     }
        

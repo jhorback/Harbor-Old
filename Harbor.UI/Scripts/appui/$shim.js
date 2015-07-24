@@ -30,7 +30,7 @@ appui.service("shims", ["_", "timer", "globalCache", "context", function (_, tim
 
 	return {
 		parse: function (el) {
-			foreachShim(function (shim) {
+			foreachShim(function (shim) { // jch* have a way to distinguish whether the shim needs rendering or parsing or both!?
 				shim.parse && shim.parse(el);
 			});
 		},

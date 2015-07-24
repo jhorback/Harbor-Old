@@ -17,8 +17,8 @@ function templateRenderer(templateCache, viewRenderer, $, shims, deprecate, cons
 
 	return {
 		render: function (name, options) {
-
-			var templateEl = $("[data-templatefor='" + name + "']"),
+			// var fromServer; // ?
+			var templateEl = $("[data-templatefor='" + name + "']"), // jch* - or templateEl is passed in - flag this: fromServer?
 				childTemplates,
 				view;
 
@@ -29,7 +29,8 @@ function templateRenderer(templateCache, viewRenderer, $, shims, deprecate, cons
 				shims.parse(templateEl);
 
 				// collapse the matches in reverse
-				childTemplates = $(templateEl.find("[data-templatefor]").get().reverse());
+				childTemplates = $(templateEl.find("[data-templatefor]").get().reverse()); // jch* - "c-template" - i.e. <c-template for="unitsView" ...>
+				// jch* - for each shim would may have to register it with the dom - i.e. document.createElement("c-template") ?
 
 				childTemplates.each(function (i, template) {
 					var viewName;

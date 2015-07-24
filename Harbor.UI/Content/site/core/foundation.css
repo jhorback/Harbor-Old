@@ -263,16 +263,20 @@ cite {
   cite:before {
     content: " -"; }
 
+blockquote, address, dl {
+  font-family: "OpenSans", "sans-serif";
+  font-size: 0.875em;
+  line-height: 1.428; }
+  blockquote.lead, address.lead, dl.lead {
+    margin: -0.214em 0 1.5em 0 !important; }
+
 blockquote {
-  padding: 0 0 0 1.1em;
-  margin: 0 0 1.42em;
-  border-left: 5px solid #DDD; }
+  padding: 0 0 0 1.1em; }
   blockquote:before, blockquote:after {
     content: ""; }
 
 address {
   display: block;
-  margin-bottom: 1.42em;
   font-style: normal; }
 
 hr {
@@ -287,42 +291,34 @@ abbr[title] {
 
 ul, ol {
   padding: 0;
-  margin: 0 0 1.5em 25px; }
+  margin-left: 1.5em; }
 
-ul ul, ul ol, ol ol, ol ul {
-  margin-bottom: 0; }
+ul, ol, dl {
+  margin-bottom: 1.5em; }
+  ul:last-of-type, ol:last-of-type, dl:last-of-type {
+    margin-bottom: 0; }
 
 dt {
-  font-weight: bold; }
-
-dl.list-wide:after {
-  content: "";
-  display: table;
-  clear: both; }
-dl.list-wide dt {
-  float: left;
-  clear: left;
-  text-align: right;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap; }
+  font-family: "OpenSansMedium", "sans-serif";
+  font-size: 1em;
+  line-height: 1.75;
+  margin-top: 0.75em; }
+  dt.lead {
+    margin: -0.375em 0 0.75em 0; }
+  dt:first-of-type {
+    margin-top: 0; }
 
 pre, code {
   font-family: Monaco, Menlo, 'Courier New', monospace;
-  background: #F5F5F5;
-  border: 1px solid #DDD;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  -ms-border-radius: 3px;
-  border-radius: 3px; }
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -ms-border-radius: 2px;
+  border-radius: 2px; }
 
 pre {
   padding: 0.8em;
   overflow: auto; }
 
 code {
-  padding: 2px 4px;
-  color: #d14;
-  background-color: #f7f7f9;
-  border: 1px solid #e1e1e8;
+  padding: 0.125em 0.25em;
   white-space: nowrap; }

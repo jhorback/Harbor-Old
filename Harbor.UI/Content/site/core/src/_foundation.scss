@@ -1,9 +1,5 @@
 @import "../../mixins/normalize";
-@import "../../mixins/box-sizing";
-@import "../../mixins/no-bullets";
-@import "../../mixins/clearfix";
 @import "../../mixins/border-radius";
-@import "media";
 @import "foundation-vars";
 @import "$color";
 @import "_$type.scss";
@@ -12,17 +8,13 @@
 @mixin foundation {
 	@include normalize;
 	@include body;
-	@include emphasis;
 	@include semantic;
-	@include lists;
-	@include code;
 }
 
 
 @mixin foundation-theme {
 	@include body-theme;
-	@include lists-theme;
-	@include code-theme;
+    @include semantic-theme;
 }
 
 
@@ -40,15 +32,7 @@
 		margin: 0;
 	}
 
-     @include type-classes;
-
-    a, .link {
-		text-decoration: underline;
-		cursor: pointer;
-        &:focus {
-            outline: 0;
-        }
-	}
+    @include type-classes;
 }
 
 
@@ -58,10 +42,6 @@
         @include color($color-theme);
         @include bg-color;
 		
-        /*h1, h2 {
-            color: $color-primary;
-        }*/
-
 		font-size: $body-font-size;
 		font-family: $type-font-family;
 		line-height: $body-line-height;
@@ -78,26 +58,27 @@
 
 
 
-@mixin emphasis {
-	// Ex: 16px base font * 85% = about 13px
-	// small   { font-size: 80%; }
+@mixin semantic {
+    a, .link {
+		text-decoration: underline;
+		cursor: pointer;
+        &:focus {
+            outline: 0;
+        }
+	}
 
-	strong  { font-weight: bold; }
+    strong  { font-weight: bold; }
 	em      { font-style: italic; }
 	cite    { font-style: italic;
 		&:before { content: " -"; }
 	}
-}
 
-
-
-
-@mixin semantic {
+    blockquote, address, dl {
+        @include type-body1;
+    }
 
 	blockquote {
 	  padding: 0 0 0 1.1em; // ~15px
-	  margin: 0 0 1.42em; // base line height
-	  border-left: 5px solid #DDD;
 	  &:before, &:after {
 		 content: "";
 	  }
@@ -106,7 +87,6 @@
 	// Addresses
 	address {
 	  display: block;
-	  margin-bottom: 1.42em;
 	  font-style: normal;
 	}	
 
@@ -121,103 +101,56 @@
 	  cursor: help;
 	  border-bottom: 1px dotted;
 	}
-}
 
-
-
-@mixin lists {
-	ul, ol {
+    ul, ol {
 	  padding: 0;
-	  margin: 0 0 1.5em 25px;  // 25px = bullet size
+	  margin-left: 1.5em; // 24px = bullet size
 	}
-	ul ul,
-	ul ol,
-	ol ol,
-	ol ul {
-	  margin-bottom: 0;
-	}
-//	li {
-//	  line-height: @baseLineHeight;
-//	}
-	
-	// Definition Lists
-	dt {
-		font-weight: bold;
-	}
-	
-	// Horizontal layout (like forms)
-	dl.list-wide {
-		@include clearfix;
-		
-		dt {
-			float: left;		
-			clear: left;
-			text-align: right;
-			overflow: hidden;
-			text-overflow: ellipsis;
-			white-space: nowrap;
-		}
-	}
-}
 
-
-
-@mixin lists-theme {
-	ul, ol {
-        //@include type-body1;
-		margin-bottom: ($body-line-height-px / 2);
-         &:only-of-type {
+	ul, ol, dl {
+        margin-bottom: 1.5em;
+        &:last-of-type {
             margin-bottom: 0;
         }
 	}
-	dl {
-        @include type-body1;
-		margin-bottom: $body-line-height-px;
-        &:only-of-type {
-            margin-bottom: 0;
+
+    dt {
+        @include type-subhead2;
+        margin-top: .75em;
+        &:first-of-type {
+            margin-top: 0;
         }
-		&.list-wide {
-			dt {
-				width: $dl-inline-dt-width;
-			}
-			dd {
-				margin-left: $dl-inline-dt-width + 1.4em;
-			}
-			@include onphone {
-				dt {
-					float: none;
-					display: block;
-					text-align: left;
-					width: auto;
-				}
-				dd {
-					margin-left: auto;
-				}
-			}
-		}
-	}
-	dt, dd {
-	  line-height: $body-line-height;
-	  margin-bottom: $body-line-height-px / 2;
-	}
-	dd {
-	  margin-left: ($body-line-height-px / 2);
-	}
-}
+    }
 
-
-@mixin code {
-	pre, code   { font-family: $type-font-family-mono; background: #F5F5F5; border: 1px solid #DDD; @include border-radius; }
-	pre { padding: .8em; overflow: auto; }
+    pre, code   {
+        font-family: $type-font-family-mono;
+        @include border-radius(2px);
+	}
+	pre {
+        padding: .8em;
+        overflow: auto;
+	}
 	code {
-		padding: 2px 4px;
-		color: #d14;
-		background-color: #f7f7f9;
-		border: 1px solid #e1e1e8;
+		padding: .125em .25em;
 		white-space: nowrap;
 	}
 }
 
-@mixin code-theme {
-	
+@mixin semantic-theme {
+    blockquote {
+        @if $color-theme == "light" {
+            border-left: 5px solid $color-light-divider;
+        } @else {
+            border-left: 5px solid $color-dark-divider;
+        }
+    }
+
+    pre, code {
+        border: 1px solid;
+        @include color-divider-border;
+        @include bg-color-bar;
+	}
+    code {
+        color: $color-accent;
+    }
 }

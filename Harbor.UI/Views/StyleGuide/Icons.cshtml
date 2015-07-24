@@ -1,16 +1,4 @@
-﻿@*
-	Icons
-	Split out the icons page
-	Icons ->
-		show all icons - blurb about use in typography, toolbars, and wherever else..
-
-	Review / remove the googleWebFonts
-	Did Jeremy Add these ? WHERE?!
-
-
-*@
-@functions {
-
+﻿@functions {
 	IEnumerable<string> icons()
 	{
 		return new[]
@@ -21,33 +9,61 @@
 		};
 	}
 }
+@section pageheader {
+<style>
+	.icondemo {
+		float: left;
+		white-space: nowrap;
+		width: 8em;
+		text-align: center;
+		cursor: default;
+		margin-bottom: 1em;
+	}
+	.icondemo .icon {
+		font-size:3em;
+	}
+	.icondemo:focus {
+		background: #eee;
+		outline: 0;
+	}
+	.iconname {
+		visibility: hidden;
+	}
+	.icondemo:focus .iconname{
+		visibility: visible;
+	}
+	/*.icondemo:hover .icon {
+		font-size: 2em;
+	}*/
+
+	.icon {
+		-webkit-transition: all .2s ease-in-out;
+	}
+</style>
+}
 <div class="page-content">
-    <style>
-        .icondemo {
-            display: inline-block;
-            white-space: nowrap;
-            width: 12em;
-            cursor: pointer;
-        }
-
-            .icondemo:hover .icon {
-                font-size: 2em;
-            }
-
-        .icon {
-            -webkit-transition: all .2s ease-in-out;
-        }
-    </style>
-    <div class="col">
-        <h2>Font Icons</h2>
-        @foreach (var icon in icons())
-        {
-            <span class="icondemo"><span class="icon icon-@icon"></span> .icon-@icon</span>
-        }
-    </div>
+	<h1 class="type-display1 lead color-primary">Font Icons</h1>
+	
+	<div class="row">
+		<div class="col">
+			@foreach (var icon in icons())
+			{
+				<div class="icondemo" tabindex="0">
+					<div class="icon icon-@icon"></div>
+					<small class="type-body1">@icon</small><br />
+					<small class="iconname">.icon-@icon</small>
+				</div>
+			}
+		</div>
+	</div>
+</div>
 
 
- </div>
+@*
+	show all icons - blurb about use in typography, toolbars, and wherever else..
+
+also note how to add new icons
+*@
 @section scripts {
     <script>
     </script>
