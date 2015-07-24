@@ -128,112 +128,116 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
   font-family: "OpenSans", "sans-serif";
   font-size: 2.125em;
-  line-height: 1.176; }
+  line-height: 1.17647; }
   h1.lead {
-    margin: -0.35em 0 0.75em 0; }
+    margin: -0.08824em 0 0.79412em 0 !important; }
 
 h2 {
   font-family: "OpenSansMedium", "sans-serif";
   font-size: 1.25em;
-  line-height: 1.5em; }
+  line-height: 1.5; }
 
 h3 {
   font-family: "OpenSans", "sans-serif";
   font-size: 1em;
-  line-height: 1.5em; }
+  line-height: 1.5; }
   h3.lead {
-    margin: -0.25em 0 0.5em 0; }
+    margin: -0.25em 0 0.75em 0 !important; }
 
 h4, h5, h6 {
   font-family: "OpenSansMedium", "sans-serif";
   font-size: 1em;
   line-height: 1.75; }
   h4.lead, h5.lead, h6.lead {
-    margin: -0.375em 0 0.75em 0; }
+    margin: -0.375em 0 1.125em 0 !important; }
 
 p {
   font-family: "OpenSans", "sans-serif";
   font-size: 0.875em;
-  line-height: 1.428;
+  line-height: 1.42857;
   margin: 0 0 1.5em 0; }
   p.lead {
-    margin: -0.214em 0 1.5em 0 !important; }
+    margin: -0.21429em 0 0.5em 0 !important; }
   p:last-of-type {
     margin-bottom: 0; }
 
 small {
   font-family: "OpenSans", "sans-serif";
   font-size: 0.75em;
-  line-height: 1.428; }
+  line-height: 1.41667; }
+  small.lead {
+    margin: -0.20833em 0 0.29167em 0 !important; }
 
 .type-display4 {
   font-family: "OpenSans", "sans-serif";
   font-size: 7em;
-  line-height: 1.06; }
+  line-height: 1.05357; }
 
 .type-display3 {
   font-family: "OpenSans", "sans-serif";
   font-size: 3.5em;
-  line-height: 1.067; }
+  line-height: 1.07143; }
 
 .type-display2 {
   font-family: "OpenSans", "sans-serif";
   font-size: 2.8125em;
-  line-height: 1.07; }
+  line-height: 1.06667; }
   .type-display2.lead {
-    margin: -0.35em 0 0.67em 0; }
+    margin: -0.03333em 0 0.74444em 0 !important; }
 
 .type-display1 {
   font-family: "OpenSans", "sans-serif";
   font-size: 2.125em;
-  line-height: 1.176; }
+  line-height: 1.17647; }
   .type-display1.lead {
-    margin: -0.35em 0 0.75em 0; }
+    margin: -0.08824em 0 0.79412em 0 !important; }
 
 .type-headline {
   font-family: "OpenSans", "sans-serif";
   font-size: 1.5em;
-  line-height: 1.33em; }
+  line-height: 1.33333; }
   .type-headline.lead {
-    margin: -0.165em 0 0.67em 0; }
+    margin: -0.16667em 0 0.83333em 0 !important; }
 
 .type-title {
   font-family: "OpenSansMedium", "sans-serif";
   font-size: 1.25em;
-  line-height: 1.5em; }
+  line-height: 1.5; }
 
 .type-subhead2 {
   font-family: "OpenSansMedium", "sans-serif";
   font-size: 1em;
   line-height: 1.75; }
   .type-subhead2.lead {
-    margin: -0.375em 0 0.75em 0; }
+    margin: -0.375em 0 1.125em 0 !important; }
 
 .type-subhead1 {
   font-family: "OpenSans", "sans-serif";
   font-size: 1em;
-  line-height: 1.5em; }
+  line-height: 1.5; }
   .type-subhead1.lead {
-    margin: -0.25em 0 0.5em 0; }
+    margin: -0.25em 0 0.75em 0 !important; }
 
 .type-body2 {
   font-family: "OpenSansMedium", "sans-serif";
   font-size: 0.875em;
-  line-height: 1.7em; }
+  line-height: 1.71429; }
   .type-body2.lead {
-    margin: -0.357em 0 1.5em 0; }
+    margin: -0.35714em 0 0.92857em 0 !important; }
 
 .type-body1 {
   font-family: "OpenSans", "sans-serif";
   font-size: 0.875em;
-  line-height: 1.428; }
+  line-height: 1.42857; }
   .type-body1.lead {
-    margin: -0.214em 0 1.5em 0 !important; }
+    margin: -0.21429em 0 0.5em 0 !important; }
 
 .type-caption {
   font-family: "OpenSans", "sans-serif";
   font-size: 0.75em;
-  line-height: 1.428; }
+  line-height: 1.41667; }
+  .type-caption.lead {
+    margin: -0.20833em 0 0.29167em 0 !important; }
 
 .type-width-readable {
   max-width: 50em; }
@@ -306,9 +310,9 @@ cite {
 blockquote, address, dl {
   font-family: "OpenSans", "sans-serif";
   font-size: 0.875em;
-  line-height: 1.428; }
+  line-height: 1.42857; }
   blockquote.lead, address.lead, dl.lead {
-    margin: -0.214em 0 1.5em 0 !important; }
+    margin: -0.21429em 0 0.5em 0 !important; }
 
 blockquote {
   padding: 0 0 0 1.1em; }
@@ -344,7 +348,7 @@ dt {
   line-height: 1.75;
   margin-top: 0.75em; }
   dt.lead {
-    margin: -0.375em 0 0.75em 0; }
+    margin: -0.375em 0 1.125em 0 !important; }
   dt:first-of-type {
     margin-top: 0; }
 

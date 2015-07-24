@@ -9,16 +9,9 @@
   padding: 0.5em 1.75em;
   min-width: 5em;
   font-family: "OpenSansMedium", "sans-serif";
-  font-size: 0.875em;
-  line-height: 1.714;
   text-transform: uppercase;
-  /*
-        text-transform: uppercase;
-        font-weight: 600;
-	    font-family: $button-font-family;
-	    font-size: $body-font-size *.8;
-	    line-height: $body-line-height * 1.3;
-    */
+  font-size: 0.875em;
+  line-height: 1.71429;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   -ms-border-radius: 3px;
