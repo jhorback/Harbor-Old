@@ -863,7 +863,7 @@
     <Content Include="Views\StyleGuide\Elevations.cshtml" />
     <Content Include="Views\StyleGuide\Feedbacks.cshtml" />
     <Content Include="Views\StyleGuide\HandlingErrors.cshtml" />
-    <Content Include="Views\StyleGuide\HelperClasses.cshtml" />
+    <Content Include="Views\StyleGuide\ClassReference.cshtml" />
     <Content Include="Views\StyleGuide\Icons.cshtml" />
     <Content Include="Views\StyleGuide\MenuLists.cshtml" />
     <Content Include="Views\StyleGuide\Menus.cshtml" />

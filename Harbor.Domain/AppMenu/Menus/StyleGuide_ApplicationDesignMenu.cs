@@ -15,7 +15,8 @@ namespace Harbor.Domain.AppMenu.Menus
 					new StyleGuideIconsMenuLink(),
 					new StyleGuideElevationsMenuLink(),
 					new StyleGuideHandlingErrorsMenuLink(),
-					new StyleGuideAnimationsMenuLink()
+					new StyleGuideAnimationsMenuLink(),
+					new StyleGuideClassReferenceMenuLink()
 				};
 			}
 		}
@@ -139,5 +140,21 @@ namespace Harbor.Domain.AppMenu.Menus
 		}
 	}
 
+	public class StyleGuideClassReferenceMenuLink : MenuLink
+	{
+		public override string Url
+		{
+			get { return "~/styleguide/classreference"; }
+		}
 
+		public override string Id
+		{
+			get { return "style-guide-class-reference"; }
+		}
+
+		public override string Text
+		{
+			get { return "Class Reference"; }
+		}
+	}
 }

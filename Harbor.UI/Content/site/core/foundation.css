@@ -241,7 +241,7 @@ small {
 .type-width-readable-short {
   max-width: 30em; }
 
-div.lead, section.lead {
+div.lead1, section.lead1 {
   margin-bottom: 1.5em; }
 div.lead2, section.lead2 {
   margin-bottom: 4em; }
