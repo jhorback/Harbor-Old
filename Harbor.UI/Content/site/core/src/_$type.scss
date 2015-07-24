@@ -4,8 +4,13 @@
 $type-font-family: "OpenSans", "sans-serif" 	                !default;
 $type-font-family-medium: "OpenSansMedium", "sans-serif" 	    !default;
 $type-font-family-mono: Monaco, Menlo, 'Courier New', monospace	!default;
-$type-width-readable: 50em; // 32em; // 40? // should be relative to font size
-$type-width-readable-short: 30em; // 30?
+
+// 40 - 60 words per line 0.625 character width at 16 px
+$type-char-width: 0.75; // 0.625
+$type-width-readable: 60 * $type-char-width * 1em;
+// 30 - 40 worlds per line
+$type-width-readable-short: 40 * $type-char-width * 1em;
+
 
 
 @mixin type-classes {
