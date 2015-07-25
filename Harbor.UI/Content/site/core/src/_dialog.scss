@@ -1,8 +1,8 @@
-@import "../mixins/clearfix";
-@import "../mixins/border-radius";
-@import "../mixins/box-shadow";
-@import "../mixins/opacity";
-@import "../mixins/text-shadow";
+@import "../../mixins/clearfix";
+@import "../../mixins/border-radius";
+@import "../../mixins/box-shadow";
+@import "../../mixins/opacity";
+@import "../../mixins/text-shadow";
 
 $dialog-color: #000;
 // $dialog-title-color: #09c;
@@ -104,4 +104,3 @@ $dialog-box-shadow-color: #555;
 	}
 }
 
-@include dialog;

@@ -20,10 +20,6 @@ $fonticons-sizes-x-large: 48px;
 }
 
 
-@mixin iconbutton {
-    font-size: 1.5em;
-}
-
 @mixin fonticons {
 
     .icon-menu:before          { content: "\E5D2"; }
@@ -105,13 +101,11 @@ $fonticons-sizes-x-large: 48px;
 @mixin fonticons-size ($size: "medium") {
     @if $size == "small" {
         font-size: $fonticons-sizes-small
-    } @else $size == "medium" {
+    } @elseif $size == "medium" {
         font-size: $fonticons-sizes-medium
-    } @else $size == "large" {
+    } @elseif $size == "large" {
         font-size: $fonticons-sizes-large
-    } @else $size == "x-large" {
+    } @elseif $size == "x-large" {
         font-size: $fonticons-sizes-x-large
     }
 }
-
-@include fonticons;

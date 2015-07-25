@@ -1,8 +1,8 @@
-@import "../mixins/clearfix";
-@import "../mixins/border-radius";
-@import "../mixins/box-shadow";
-@import "../mixins/opacity";
-@import "src/_$z-depth.scss";
+@import "../../mixins/clearfix";
+@import "../../mixins/border-radius";
+@import "../../mixins/box-shadow";
+@import "../../mixins/opacity";
+@import "_$z-depth.scss";
 
 $menu-color: #000;
 $menu-title-color: #09c;
@@ -55,4 +55,3 @@ $menu-border-color: rgba(#000, 0.3);
 	}
 }
 
-@include menu;

@@ -375,26 +375,8 @@
     <Content Include="Content\redactor\redactor.css">
       <DependentUpon>redactor.scss</DependentUpon>
     </Content>
-    <Content Include="Content\site\core\alert.css">
-      <DependentUpon>alert.scss</DependentUpon>
-    </Content>
     <Content Include="Content\site\core\button.css">
-      <DependentUpon>button.scss</DependentUpon>
-    </Content>
-    <Content Include="Content\site\core\cols.css">
-      <DependentUpon>cols.scss</DependentUpon>
-    </Content>
-    <Content Include="Content\site\core\datatable.css">
-      <DependentUpon>datatable.scss</DependentUpon>
-    </Content>
-    <Content Include="Content\site\core\dialog.css">
-      <DependentUpon>dialog.scss</DependentUpon>
-    </Content>
-    <Content Include="Content\site\core\errorpage.css">
-      <DependentUpon>errorpage.scss</DependentUpon>
-    </Content>
-    <Content Include="Content\site\core\fonticons.css">
-      <DependentUpon>fonticons.scss</DependentUpon>
+      <DependentUpon>content.scss</DependentUpon>
     </Content>
     <Content Include="Content\site\core\font\fontawesome\fontawesome-webfont.svg" />
     <Content Include="Content\site\core\font\opensans-examples.txt" />
@@ -408,69 +390,23 @@
     <Content Include="Content\site\core\font\opensans\OpenSans-Regular-webfont.svg" />
     <Content Include="Content\site\core\font\opensans\OpenSans-Semibold-webfont.svg" />
     <Content Include="Content\site\core\font\opensans\OpenSans-SemiboldItalic-webfont.svg" />
-    <Content Include="Content\site\core\form.css">
-      <DependentUpon>form.scss</DependentUpon>
-    </Content>
     <Content Include="Content\site\core\foundation.css">
       <DependentUpon>foundation.scss</DependentUpon>
     </Content>
     <Content Include="Content\site\core\frame.css">
-      <DependentUpon>frame.scss</DependentUpon>
-    </Content>
-    <Content Include="Content\site\core\cols.scss">
-      <Compile>True</Compile>
-      <Minify>False</Minify>
-      <CompileStyle>Nested</CompileStyle>
-      <DebugInfo>False</DebugInfo>
+      <DependentUpon>layout.scss</DependentUpon>
     </Content>
     <Content Include="Content\site\core\menu.css">
-      <DependentUpon>menu.scss</DependentUpon>
+      <DependentUpon>material.scss</DependentUpon>
     </Content>
-    <Content Include="Content\site\core\menulist.css">
-      <DependentUpon>menulist.scss</DependentUpon>
-    </Content>
-    <Content Include="Content\site\core\menulist.min.css">
-      <DependentUpon>menulist.scss</DependentUpon>
-    </Content>
-    <Content Include="Content\site\core\message.css">
-      <DependentUpon>message.scss</DependentUpon>
-    </Content>
-    <Content Include="Content\site\core\message.min.css">
-      <DependentUpon>message.scss</DependentUpon>
-    </Content>
-    <Content Include="Content\site\core\page-editor.css">
+    <Content Include="Content\site\ext\page-editor.css">
       <DependentUpon>page-editor.scss</DependentUpon>
     </Content>
-    <Content Include="Content\site\core\page.css">
-      <DependentUpon>page.scss</DependentUpon>
-    </Content>
-    <Content Include="Content\site\core\richtext.css">
-      <DependentUpon>richtext.scss</DependentUpon>
-    </Content>
-    <Content Include="Content\site\core\page-editor.scss">
+    <Content Include="Content\site\ext\page-editor.scss">
       <Compile>True</Compile>
       <Minify>False</Minify>
       <CompileStyle>Nested</CompileStyle>
       <DebugInfo>False</DebugInfo>
-    </Content>
-    <Content Include="Content\site\core\selectlist.css">
-      <DependentUpon>selectlist.scss</DependentUpon>
-    </Content>
-    <Content Include="Content\site\core\selectlist.min.css">
-      <DependentUpon>selectlist.scss</DependentUpon>
-    </Content>
-    <Content Include="Content\site\core\tiles.css">
-      <DependentUpon>tiles.scss</DependentUpon>
-    </Content>
-    <Content Include="Content\site\core\toolbar.css" />
-    <Content Include="Content\site\core\usermenu.css">
-      <DependentUpon>usermenu.scss</DependentUpon>
-    </Content>
-    <Content Include="Content\site\core\webhelpers.css">
-      <DependentUpon>webhelpers.scss</DependentUpon>
-    </Content>
-    <Content Include="Content\site\core\webhelpers.min.css">
-      <DependentUpon>webhelpers.scss</DependentUpon>
     </Content>
     <Content Include="Content\site\ext\mediatest.css" />
     <Content Include="Content\site\ext\pageeditor.css">
@@ -886,19 +822,6 @@
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Content\site\core\alert.scss">
-      <Compile>True</Compile>
-      <Minify>False</Minify>
-      <CompileStyle>Nested</CompileStyle>
-      <DebugInfo>False</DebugInfo>
-    </None>
-    <Content Include="Content\site\core\toolbar.scss" />
-    <None Include="Content\site\core\datatable.scss">
-      <Compile>True</Compile>
-      <Minify>False</Minify>
-      <CompileStyle>Nested</CompileStyle>
-      <DebugInfo>False</DebugInfo>
-    </None>
     <Content Include="Content\site\core\font\fontawesome\fontawesome-webfont.eot" />
     <Content Include="Content\site\core\font\fontawesome\fontawesome-webfont.ttf" />
     <Content Include="Content\site\core\font\fontawesome\fontawesome-webfont.woff" />
@@ -933,49 +856,19 @@
     <Content Include="Content\site\core\font\opensans\OpenSans-SemiboldItalic-webfont.eot" />
     <Content Include="Content\site\core\font\opensans\OpenSans-SemiboldItalic-webfont.ttf" />
     <Content Include="Content\site\core\font\opensans\OpenSans-SemiboldItalic-webfont.woff" />
-    <None Include="Content\site\core\menu.scss">
+    <None Include="Content\site\core\material.scss">
       <Compile>True</Compile>
       <Minify>False</Minify>
       <CompileStyle>Nested</CompileStyle>
       <DebugInfo>False</DebugInfo>
     </None>
-    <None Include="Content\site\core\frame.scss">
+    <None Include="Content\site\core\layout.scss">
       <Compile>True</Compile>
       <Minify>False</Minify>
       <CompileStyle>Nested</CompileStyle>
       <DebugInfo>False</DebugInfo>
     </None>
-    <None Include="Content\site\core\dialog.scss">
-      <Compile>True</Compile>
-      <Minify>False</Minify>
-      <CompileStyle>Nested</CompileStyle>
-      <DebugInfo>False</DebugInfo>
-    </None>
-    <None Include="Content\site\core\form.scss">
-      <Compile>True</Compile>
-      <Minify>False</Minify>
-      <CompileStyle>Nested</CompileStyle>
-      <DebugInfo>False</DebugInfo>
-    </None>
-    <None Include="Content\site\core\button.scss">
-      <Compile>True</Compile>
-      <Minify>False</Minify>
-      <CompileStyle>Nested</CompileStyle>
-      <DebugInfo>False</DebugInfo>
-    </None>
-    <None Include="Content\site\core\page.scss">
-      <Compile>True</Compile>
-      <Minify>False</Minify>
-      <CompileStyle>Nested</CompileStyle>
-      <DebugInfo>False</DebugInfo>
-    </None>
-    <None Include="Content\site\core\errorpage.scss">
-      <Compile>True</Compile>
-      <Minify>False</Minify>
-      <CompileStyle>Nested</CompileStyle>
-      <DebugInfo>False</DebugInfo>
-    </None>
-    <None Include="Content\site\core\richtext.scss">
+    <None Include="Content\site\core\content.scss">
       <Compile>True</Compile>
       <Minify>False</Minify>
       <CompileStyle>Nested</CompileStyle>
@@ -983,10 +876,7 @@
     </None>
     <Content Include="Content\site\core\src\_cols.scss" />
     <Content Include="Content\site\core\src\_menulist.scss" />
-    <Content Include="Content\site\core\menulist.scss" />
-    <Content Include="Content\site\core\webhelpers.scss" />
     <Content Include="Content\site\core\src\_foundation-vars.scss" />
-    <Content Include="Content\site\core\selectlist.scss" />
     <Content Include="Content\site\core\src\_selectlist.scss" />
     <Content Include="Content\site\core\src\_page-header.scss" />
     <Content Include="Content\site\core\src\_page-body.scss" />
@@ -994,19 +884,18 @@
     <Content Include="Content\site\core\src\_%24z-depth.scss" />
     <Content Include="Content\site\core\src\_toolbar.scss" />
     <Content Include="Content\site\core\src\_%24type.scss" />
+    <Content Include="Content\site\core\src\_fonticons.scss" />
+    <Content Include="Content\site\core\src\_dialog.scss" />
+    <Content Include="Content\site\core\src\_menu.scss" />
     <None Include="Content\site\core\src\_tiles.scss">
       <Compile>False</Compile>
       <Minify>False</Minify>
       <CompileStyle>Nested</CompileStyle>
       <DebugInfo>False</DebugInfo>
     </None>
-    <Content Include="Content\site\core\message.scss" />
-    <None Include="Content\site\core\tiles.scss">
-      <Compile>True</Compile>
-      <Minify>False</Minify>
-      <CompileStyle>Nested</CompileStyle>
-      <DebugInfo>False</DebugInfo>
-    </None>
+    <Content Include="Content\site\core\src\_message.scss" />
+    <Content Include="Content\site\core\src\_iconbutton.scss" />
+    <Content Include="Content\site\core\src\_webhelpers.scss" />
     <None Include="Content\site\ext\pager.scss">
       <Compile>True</Compile>
       <Minify>False</Minify>
@@ -1067,12 +956,6 @@
       <CompileStyle>Nested</CompileStyle>
       <DebugInfo>False</DebugInfo>
     </None>
-    <None Include="Content\site\core\usermenu.scss">
-      <Compile>True</Compile>
-      <Minify>False</Minify>
-      <CompileStyle>Nested</CompileStyle>
-      <DebugInfo>False</DebugInfo>
-    </None>
     <None Include="Content\site\core\foundation.scss">
       <Compile>True</Compile>
       <Minify>False</Minify>
@@ -1092,12 +975,6 @@
       <DebugInfo>False</DebugInfo>
     </None>
     <None Include="Content\site\ext\pageeditor.scss">
-      <Compile>True</Compile>
-      <Minify>False</Minify>
-      <CompileStyle>Nested</CompileStyle>
-      <DebugInfo>False</DebugInfo>
-    </None>
-    <None Include="Content\site\core\fonticons.scss">
       <Compile>True</Compile>
       <Minify>False</Minify>
       <CompileStyle>Nested</CompileStyle>

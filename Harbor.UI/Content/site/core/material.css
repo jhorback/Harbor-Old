@@ -1,0 +1,170 @@
+.menu {
+  position: absolute;
+  z-index: 100;
+  color: #000;
+  background-color: #f7f7f7;
+  max-width: 35em;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -ms-border-radius: 3px;
+  border-radius: 3px;
+  z-index: 8;
+  box-shadow: 0 4px 16px 2px rgba(0, 0, 0, 0.3), 0 0 2px 1px rgba(0, 0, 0, 0.12); }
+  .menu .menu-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0 0.23em;
+    font-size: 2.3em;
+    cursor: pointer;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30);
+    opacity: 0.3; }
+    .menu .menu-close:hover {
+      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+      filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+      opacity: 1; }
+  .menu:after {
+    content: "";
+    display: table;
+    clear: both; }
+
+@media screen and (max-width: 600px) {
+  .menu {
+    border: 0;
+    position: fixed;
+    display: block;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important; } }
+
+.dialog-wrapper {
+  position: absolute;
+  z-index: 100;
+  left: 0;
+  right: 0; }
+
+.dialog {
+  color: #000;
+  background-color: #FFF;
+  max-width: 600px;
+  min-width: 400px;
+  margin: auto;
+  padding: 0.5em 1em 0.7em 1em;
+  -moz-box-shadow: 0 0 2em 0.5em #555;
+  -webkit-box-shadow: 0 0 2em 0.5em #555;
+  -ms-box-shadow: 0 0 2em 0.5em #555;
+  box-shadow: 0 0 2em 0.5em #555;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -ms-border-radius: 3px;
+  border-radius: 3px; }
+  .dialog:after {
+    content: "";
+    display: table;
+    clear: both; }
+  .dialog .dialog-header {
+    overflow: hidden;
+    padding: 0.5em 1em; }
+    .dialog .dialog-header h1 {
+      display: inline;
+      float: left;
+      font-size: 1.8em;
+      cursor: default;
+      font-weight: normal;
+      margin: 0; }
+  .dialog .dialog-content {
+    position: relative;
+    padding: 1em; }
+  .dialog .form-controls {
+    clear: both;
+    padding-top: 1em; }
+    .dialog .form-controls .input, .dialog .form-controls input, .dialog .form-controls a, .dialog .form-controls button, .dialog .form-controls .link {
+      float: right;
+      margin-left: 0.5em; }
+
+@media screen and (max-width: 600px) {
+  .dialog, .dialog-wrapper {
+    border: 0;
+    position: fixed;
+    display: block;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    -ms-border-radius: 0;
+    border-radius: 0; } }
+
+.dialog-close {
+  color: #000;
+  font-family: arial;
+  text-decoration: none;
+  display: block;
+  cursor: default;
+  margin: -0.5em -0.3em 0 0;
+  float: right;
+  font-size: 3em;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=10)";
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=10);
+  opacity: 0.1; }
+  .dialog-close:hover {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=40);
+    opacity: 0.4; }
+
+.toolbar {
+  line-height: 2em;
+  height: 2em;
+  font-size: 1.5em;
+  padding: 0 0.667em;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+  .toolbar:after {
+    content: "";
+    display: table;
+    clear: both; }
+  .toolbar .float-left:after, .toolbar .float-right:after {
+    content: "";
+    display: inline-block; }
+  .toolbar.small {
+    font-size: 1em; }
+  .toolbar.large {
+    font-size: 2em; }
+  .toolbar h2, .toolbar h3 {
+    font-size: 1em;
+    margin: 0; }
+  .toolbar [role="button"] {
+    margin: 0;
+    padding: 0.25em;
+    color: rgba(0, 0, 0, 0.54);
+    min-width: 0;
+    -moz-border-radius: 1em;
+    -webkit-border-radius: 1em;
+    -ms-border-radius: 1em;
+    border-radius: 1em; }
+    .toolbar [role="button"]:hover, .toolbar [role="button"]:focus {
+      background-color: rgba(153, 153, 153, 0.2);
+      outline: 0; }
+    .toolbar [role="button"]:active, .toolbar [role="button"].active {
+      background-color: rgba(153, 153, 153, 0.4); }
+
+.iconbutton {
+  margin: 0;
+  padding: 0.25em;
+  color: rgba(0, 0, 0, 0.54);
+  min-width: 0;
+  -moz-border-radius: 1em;
+  -webkit-border-radius: 1em;
+  -ms-border-radius: 1em;
+  border-radius: 1em; }
+  .iconbutton:hover, .iconbutton:focus {
+    background-color: rgba(153, 153, 153, 0.2);
+    outline: 0; }
+  .iconbutton:active, .iconbutton.active {
+    background-color: rgba(153, 153, 153, 0.4); }
