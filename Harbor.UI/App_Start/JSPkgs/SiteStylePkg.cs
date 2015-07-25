@@ -12,7 +12,9 @@ namespace Harbor.UI.JSPkgs
 			Name = PackageName;
 			StyleBundle = new StyleBundle("~/Content/site/core/site.min.css")
 				.Include("~/Content/site/core/foundation.css")
-				.IncludeDirectory("~/Content/site/core", "*.css");
+				.Include("~/Content/site/core/layout.css")
+				.Include("~/Content/site/core/material.css")
+				.Include("~/Content/site/core/content.css");
 			RequiresRegistration = false;
 			Category = Categories.UI;
 		}

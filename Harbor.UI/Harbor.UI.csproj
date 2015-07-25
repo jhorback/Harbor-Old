@@ -375,7 +375,7 @@
     <Content Include="Content\redactor\redactor.css">
       <DependentUpon>redactor.scss</DependentUpon>
     </Content>
-    <Content Include="Content\site\core\button.css">
+    <Content Include="Content\site\core\content.css">
       <DependentUpon>content.scss</DependentUpon>
     </Content>
     <Content Include="Content\site\core\font\fontawesome\fontawesome-webfont.svg" />
@@ -393,10 +393,10 @@
     <Content Include="Content\site\core\foundation.css">
       <DependentUpon>foundation.scss</DependentUpon>
     </Content>
-    <Content Include="Content\site\core\frame.css">
+    <Content Include="Content\site\core\layout.css">
       <DependentUpon>layout.scss</DependentUpon>
     </Content>
-    <Content Include="Content\site\core\menu.css">
+    <Content Include="Content\site\core\material.css">
       <DependentUpon>material.scss</DependentUpon>
     </Content>
     <Content Include="Content\site\ext\page-editor.css">

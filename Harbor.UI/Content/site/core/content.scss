@@ -1,5 +1,6 @@
 @import "src/_webhelpers.scss";
 @import "src/button";
+@import "src/_iconbutton.scss";
 @import "src/datatable";
 @import "src/alert";
 @import "src/form";
@@ -12,6 +13,7 @@
 
 @include webhelpers;
 @include button;
+@include iconbutton;
 @include datatable;
 @include alert;
 @include form;
