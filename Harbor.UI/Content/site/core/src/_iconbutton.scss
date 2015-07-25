@@ -7,31 +7,43 @@
 
 @mixin iconbutton {
 
-   
     .iconbutton {                               
         margin: 0;               
         padding: .25em;
-        color: hsla(0, 0%, 0%, .54); //  need to theme
-        min-width: 0;
-
         @include border-radius(1em);
         
         &:hover, &:focus {
-            background-color: hsla(0, 0%, 60%, .20);
             outline: 0;
-        }
-
-        &:active, &.active {
-            background-color:hsla(0, 0%, 60%, .40);
         }        
     }
-
 }
 
 
 
 @mixin iconbutton-theme {    
-   .iconbutton {
+    @include iconbutton-colors;
+}
 
+
+
+@mixin iconbutton-colors($color-theme: $color-theme) {
+   .iconbutton {
+       @if $color-theme == $theme-onlight-bg {
+           color: $color-light;
+           &:hover, &:focus {
+               background-color: $color-light-disabled;
+           }
+            &:active, &.active {
+                background-color: $color-light-quiet;
+            }
+       } @else {
+           color: $color-dark;
+           &:hover, &:focus {
+               background-color: $color-dark-disabled;
+           }
+            &:active, &.active {
+                background-color: $color-dark-quiet;
+            }
+       }
    }
 }
