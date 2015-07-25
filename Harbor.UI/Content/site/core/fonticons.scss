@@ -2,7 +2,10 @@
 
 
 $materialicons-path: "font/material/MaterialIcons-Regular" !default;
-
+$fonticons-sizes-small: 18px;
+$fonticons-sizes-medium: 24px;
+$fonticons-sizes-large: 36px;
+$fonticons-sizes-x-large: 48px;
 
 
 
@@ -16,6 +19,10 @@ $materialicons-path: "font/material/MaterialIcons-Regular" !default;
        url($materialicons-path + '.ttf') format('truetype');
 }
 
+
+@mixin iconbutton {
+    font-size: 1.5em;
+}
 
 @mixin fonticons {
 
@@ -42,11 +49,11 @@ $materialicons-path: "font/material/MaterialIcons-Regular" !default;
     .icon-previous:before      { content: "\E408"; }
     .icon-up:before            { content: "\E5C7"; }
     .icon-down:before          { content: "\E5C5"; }
-    .icon-lens:before         { content: "\E3FA"; }
+    .icon-lens:before          { content: "\E3FA"; }
 
    
     [class^="icon-"],
-    [class*=" icon-"] {
+    [class*=" icon-"] {      
       font-family: 'Material Icons';
       font-weight: normal;
       font-style: normal;
@@ -63,6 +70,20 @@ $materialicons-path: "font/material/MaterialIcons-Regular" !default;
 
       /* Support for IE. */
       font-feature-settings: 'liga';
+
+        @include fonticons-size;
+        &.small {
+           @include fonticons-size("small");
+        }
+        &.medium {
+           @include fonticons-size("medium");            
+        }
+        &.large {
+            @include fonticons-size("large");
+        }
+        &.x-large {
+           @include fonticons-size("x-large");
+        }
     }
     [class^="icon-"]:before,
     [class*=" icon-"]:before {
@@ -79,6 +100,18 @@ $materialicons-path: "font/material/MaterialIcons-Regular" !default;
       display: inline;
     }   
 
+}
+
+@mixin fonticons-size ($size: "medium") {
+    @if $size == "small" {
+        font-size: $fonticons-sizes-small
+    } @else $size == "medium" {
+        font-size: $fonticons-sizes-medium
+    } @else $size == "large" {
+        font-size: $fonticons-sizes-large
+    } @else $size == "x-large" {
+        font-size: $fonticons-sizes-x-large
+    }
 }
 
 @include fonticons;

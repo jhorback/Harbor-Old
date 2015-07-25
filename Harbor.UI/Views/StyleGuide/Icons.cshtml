@@ -19,9 +19,11 @@
 		cursor: default;
 		margin-bottom: 1em;
 	}
-	.icondemo .icon {
-		font-size:3em;
-	}
+	.small .icondemo { width: 6em; } 
+	.medium .icondemo { width: 7em; } 
+	.large .icondemo { width: 7.5em; } 
+	.x-large .icondemo { width: 8em; } 
+
 	.icondemo:focus {
 		background: #eee;
 		outline: 0;
@@ -32,19 +34,26 @@
 	.icondemo:focus .iconname{
 		visibility: visible;
 	}
-	/*.icondemo:hover .icon {
-		font-size: 2em;
-	}*/
-
 	.icon {
 		-webkit-transition: all .2s ease-in-out;
 	}
+	#iconbox.small .icon { font-size: 18px; }
+	#iconbox.medium .icon { font-size: 24px; }
+	#iconbox.large .icon { font-size: 36px; }
+	#iconbox.x-large .icon { font-size: 48px; }
 </style>
 }
 <div class="page-content">
-	<h1 class="type-display1 lead color-primary">Font Icons</h1>
-	
-	<div class="row">
+	<div class="clearfix lead1">
+		<h2 class="type-display1 loud float-left">Font Icons</h2>
+		<div class="float-right">
+			<p>
+				Reference: <a href="https://www.google.com/design/icons">Material icons</a>.
+			</p>
+		</div>
+	</div>
+
+	<section class="row x-large lead1" id="iconbox">
 		<div class="col">
 			@foreach (var icon in icons())
 			{
@@ -55,16 +64,81 @@
 				</div>
 			}
 		</div>
+	</section>
+
+	<div class="clearfix lead1">
+		<h3 class="type-headline float-left">Icon sizes</h3>
+		<div class="float-right">
+			<label>Icon size:</label>
+			<select id="icon-changer">
+				<option value="small">.small - 18px</option>
+				<option value="medium">.medium - 24px (default)</option>
+				<option value="large">.large - 36px</option>
+				<option value="x-large" selected>.x-large - 48px</option>
+			</select>
+		</div>
 	</div>
+
+	<section class="clearfix">
+		<div class="type-width-readable type-subhead1 lead">
+			The material icons have been designed for specific pixel targets.
+			These are 18px, 24px, 36px, and 48px; the following semantic classes support these sizes:
+		</div>
+
+		<div class="lead1">
+			<ul>
+				<li>.small - 18px</li>
+				<li>.medium - 24px (default)</li>
+				<li>.large - 36px</li>
+				<li>.x-large - 48px</li>
+			</ul>
+		</div>
+
+		<h3 class="type-headline lead">Icon usage</h3>
+		<div class="lead1 clearfix">
+			<div>
+				Icons are supported as text and as icon buttons.
+				They are not supported on buttons.
+			</div>
+		</div>
+	</section>
+
+
+
+	<hr class="margin-h type-display4" />
+
+
+
+	<h2 class="type-display1 lead loud">Adding icons</h2>
+	<section class="lead1 clearfix">
+		<div class="type-subhead1 lead">
+			Adding icons is a three step process:
+		</div>
+		<ol>
+			<li>Select the icon that you want to add from the material icons website.</li>
+			<li>Add the class name to the fonticons.scss file with the corresponding unicode char.</li>
+			<li>Add the reference to the icon in this document.</li>
+		</ol>
+	</section>
 </div>
 
 
 @*
+	
+	iconbutton
+	-> applies states
+	-> still need to put role="button" and classname and tabindex=0
+	
+
 	show all icons - blurb about use in typography, toolbars, and wherever else..
 
 also note how to add new icons
 *@
 @section scripts {
-    <script>
-    </script>
+	<script>
+		$("#icon-changer").change(function (event) {
+			$("#iconbox").attr("class", "row " + $(event.target).val());
+		});
+	</script>
+
 }
