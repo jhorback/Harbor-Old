@@ -139,32 +139,3 @@
   .toolbar h2, .toolbar h3 {
     font-size: 1em;
     margin: 0; }
-  .toolbar [role="button"] {
-    margin: 0;
-    padding: 0.25em;
-    color: rgba(0, 0, 0, 0.54);
-    min-width: 0;
-    -moz-border-radius: 1em;
-    -webkit-border-radius: 1em;
-    -ms-border-radius: 1em;
-    border-radius: 1em; }
-    .toolbar [role="button"]:hover, .toolbar [role="button"]:focus {
-      background-color: rgba(153, 153, 153, 0.2);
-      outline: 0; }
-    .toolbar [role="button"]:active, .toolbar [role="button"].active {
-      background-color: rgba(153, 153, 153, 0.4); }
-
-.iconbutton {
-  margin: 0;
-  padding: 0.25em;
-  color: rgba(0, 0, 0, 0.54);
-  min-width: 0;
-  -moz-border-radius: 1em;
-  -webkit-border-radius: 1em;
-  -ms-border-radius: 1em;
-  border-radius: 1em; }
-  .iconbutton:hover, .iconbutton:focus {
-    background-color: rgba(153, 153, 153, 0.2);
-    outline: 0; }
-  .iconbutton:active, .iconbutton.active {
-    background-color: rgba(153, 153, 153, 0.4); }

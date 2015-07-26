@@ -40,44 +40,7 @@
             font-size: 1em;
             margin: 0;
         }
-
-        [role="button"] {                               
-            margin: 0;               
-            padding: 0.25em;
-            color: hsla(0, 0%, 0%, .54);
-            min-width: 0;
-
-            @include border-radius(1em);
-        
-            &:hover,&:focus {
-                background-color: hsla(0, 0%, 60%, .20);
-                outline: 0;
-            }
-
-            &:active, &.active {
-                background-color:hsla(0, 0%, 60%, .40);
-            }        
-        }
     }
-
-    .iconbutton {                               
-        margin: 0;               
-        padding: .25em;
-        color: hsla(0, 0%, 0%, .54); //  need to theme
-        min-width: 0;
-
-        @include border-radius(1em);
-        
-        &:hover, &:focus {
-            background-color: hsla(0, 0%, 60%, .20);
-            outline: 0;
-        }
-
-        &:active, &.active {
-            background-color:hsla(0, 0%, 60%, .40);
-        }        
-    }
-
 }
 
 

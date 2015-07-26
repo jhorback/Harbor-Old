@@ -368,6 +368,13 @@ code {
 
 /* end button-theme */
 /* begin iconbutton-theme */
+.iconbutton:hover, .iconbutton:focus {
+  background-color: #E0E0E0;
+  background-color: rgba(0, 0, 0, 0.12); }
+.iconbutton:active, .iconbutton.active {
+  background-color: #BCBCBC;
+  background-color: rgba(0, 0, 0, 0.26); }
+
 /* end iconbutton-theme */
 /* begin toolbar-theme */
 /* end toolbar-theme */

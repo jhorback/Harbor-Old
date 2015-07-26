@@ -29,20 +29,22 @@
 @mixin iconbutton-colors($color-theme: $color-theme) {
    .iconbutton {
        @if $color-theme == $theme-onlight-bg {
-           color: $color-light;
            &:hover, &:focus {
-               background-color: $color-light-disabled;
+               background-color: $color-light-divider-hex;
+               background-color: $color-light-divider;
            }
             &:active, &.active {
-                background-color: $color-light-quiet;
+                background-color: $color-light-disabled-hex;
+                background-color: $color-light-disabled;
             }
        } @else {
-           color: $color-dark;
            &:hover, &:focus {
-               background-color: $color-dark-disabled;
+               background-color: $color-dark-divider-hex;
+               background-color: $color-dark-divider;
            }
             &:active, &.active {
-                background-color: $color-dark-quiet;
+                background-color: $color-dark-disabled-hex;
+                background-color: $color-dark-disabled;
             }
        }
    }
