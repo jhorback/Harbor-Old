@@ -8,74 +8,143 @@
 	</script>
 }
 <div class="page-content">
-
-	<h2>Buttons</h2>
-	<p>
-		Native button elements will be styled automatically.
-		If wanting to make a link or span look like a button use the <code>.button</code> class.
-	</p>
-	<p>
-		There is also the <code>.loud</code> class to indicate importance, and the <code>.attn</code>
-		class to grab the users attention. (The attn class should be limited to one per visual screen.)
-	</p>
-	<p>
-		Use a <code>&lt;span></code> inside a <code>&lt;button></code> element to keep Internet Explorer
-		from shifting the text when pressing the button. Note: this cannot be avoided for input type buttons
-		and does not occur on link buttons.
-	</p>
-	<div class="card">
-
-		<div class="outline example">
-			<input type="button" value="button"/>
-			<button class="loud"><span>button</span></button>
-			<a href="#" class="button attn">button
-			</a>
+	<div class="clearfix lead1">
+		<h2 class="type-display1 loud float-left lead">Buttons</h2>
+		<div class="float-right">
+			<p>
+				Reference: <a href="https://www.google.com/design/spec/components/buttons.html">Material Design: Buttons</a>.
+			</p>
 		</div>
-		<pre class="prettyprint linenums">
-&lt;input type="button" value="Standard button" />
-&lt;button class="loud">&lt;span>Loud button&lt;/span>&lt;/button>
-&lt;a href="#" class="button attn">Attn button&lt;/a>	
-</pre>
 	</div>
-
-	<h3>Flat Buttons</h3>
-	<p>
-		Add a <code>.flat</code> class name for buttons already on a raised content area or an area.
-	</p>
-	<div class="card">
-		<div class="outline example">
-			<input type="button" class="flat" value="Standard button"/>
-			<button class="flat loud"><span>Loud button</span></button>
-			<a href="#" class="flat button attn">Attn button</a>
+	<div class="row lead2">
+		<div class="col3">
+			<p>
+				Use the <code>.button</code> class to style a button, input, link, or div as a button.
+			</p>
+			<p>
+				There is also the <code>.loud</code> class to indicate importance, and the <code>.attn</code>
+				class to grab the users attention. (The attn class should be limited to one per visual screen.)
+			</p>
+			<p>
+				Use a <code>&lt;span></code> inside a <code>&lt;button></code> element to keep Internet Explorer
+				from shifting the text when pressing the button. Note: this cannot be avoided for input type buttons
+				and does not occur on link buttons.
+			</p>
 		</div>
-		<pre class="prettyprint linenums">
-&lt;input type="button" class="flat" value="Standard button" />
-&lt;button class="flat loud">&lt;span>Loud button&lt;/span>&lt;/button>
-&lt;a href="#" class="flat button attn">Attn button&lt;/a>	
+		<div class="col3-2">
+			<div class="outline">
+				<input type="button" value="button" class="button"/>
+				<button class="button loud"><span>button</span></button>
+				<a href="#" class="button attn">button</a>
+			</div>
+			<pre class="prettyprint linenums">
+&lt;input type="button" value="button" class="button"/>
+&lt;button class="button loud">&lt;span>button&lt;/span>&lt;/button>
+&lt;a href="#" class="button attn">button&lt;/a>	
 </pre>
-
-	</div>
-
-	<h3>Disabled Buttons</h3>
-	<p>
-		All buttons will style accordingly when adding the <code>[disabled]</code> attribute.
-	</p>
-	<div class="card">
-		<div class="outline example">
-			<input type="button" value="Standard disabled" disabled/>
-			<button class="loud" disabled><span>Loud disabled</span></button>
-			<a class="button attn" disabled>Attn disabled</a>
-			<input type="button" class="flat" value="Standard disabled" disabled/>
-			<button class="flat loud" disabled><span>Loud disabled</span></button>
-			<a class="flat button attn" disabled>Attn disabled</a>
 		</div>
-		<pre class="prettyprint linenums">
-&lt;input type="button" value="Standard disabled" disabled />
-&lt;button class="loud" disabled>&lt;span>Loud disabled&lt;/span>&lt;/button>
-&lt;a class="button attn" disabled>Attn disabled&lt;/a>
-&lt;input type="button" class="flat" value="Standard disabled" disabled />
-&lt;button class="flat loud" disabled>&lt;span>Loud disabled&lt;/span>&lt;/button>
-&lt;a class="flat button attn" disabled>Attn disabled&lt;/a>
-</pre>
 	</div>
+	
+	<h3 class="type-subhead2 lead">Flat buttons</h3>
+	<div class="row lead1">
+		<div class="col3">
+			<p>
+				Add a <code>.flat</code> class name for buttons already on a raised content area or an area.
+			</p>
+		</div>
+		<div class="col3-2">
+			<div class="outline">
+				<input type="button" class="button flat" value="button" />
+				<button class="button flat loud"><span>button</span></button>
+				<a href="#" class="button flat attn">button</a>
+			</div>
+			<pre class="prettyprint linenums">
+&lt;input type="button" class="button flat" value="button" />
+&lt;button class="button flat loud">&lt;span>button&lt;/span>&lt;/button>
+&lt;a href="#" class="button flat attn">button&lt;/a>	
+</pre>
+		</div>
+	</div>
+	
+
+	<h3 class="type-subhead2 lead">Disabled Buttons</h3>
+	<div class="row lead1">
+		<div class="col3">
+			<p>
+				All buttons will style accordingly when adding the <code>[disabled]</code> attribute.
+			</p>
+		</div>
+		<div class="col3-2">
+				<div class="outline">
+					<input type="button" value="button" disabled class="button" />
+					<button class="button loud" disabled><span>button</span></button>
+					<a class="button attn" disabled>button</a>
+					<input type="button" class="button flat" value="button" disabled />
+					<button class="button flat loud" disabled><span>button</span></button>
+					<a class="button flat attn" disabled>button</a>
+				</div>
+				<pre class="prettyprint linenums">
+&lt;input type="button" value="button" disabled class="button" />
+&lt;button class="button loud" disabled>&lt;span>button&lt;/span>&lt;/button>
+&lt;a class="button attn" disabled>button&lt;/a>
+&lt;input type="button" class="button flat" value="button" disabled />
+&lt;button class="button flat loud" disabled>&lt;span>button&lt;/span>&lt;/button>
+&lt;a class="button flat attn" disabled>button&lt;/a>
+</pre>
+		</div>
+	</div>
+		
+	
+
+	
+	
+
+	
+	
+	
+	<hr class="margin-h type-display4" />
+
+
+	<section class="lead">
+		<h1 class="type-display1 loud lead">Icon buttons</h1>
+		<div class="row lead1">
+			<div class="col3">
+				<p>
+					To make an icon a button, add the <code>[role=button]</code> attribute,
+					add a <code>[tabindex=0]</code> attribute for focus, and the <code>.iconbutton</code>
+					class name.
+				</p>
+				<p>
+					Buttons support the <code>.quiet</code>, <code>.loud</code>, <code>.attn</code>,
+					and <code>.disabled</code> modifiers.
+				</p>
+				<p>
+					If using more than one icon button consider putting them in a toolbar.
+				</p>
+			</div>
+			<div class="col3-2">
+					<div class="outline">
+						<i class="iconbutton icon-menu" role="button" tabindex="0"></i>
+						<i class="iconbutton icon-plus" role="button" tabindex="0"></i>
+						<i class="iconbutton icon-cogs" role="button" tabindex="0"></i>
+						<i class="iconbutton icon-menu quiet" role="button" tabindex="0"></i>
+						<i class="iconbutton icon-plus quiet" role="button" tabindex="0"></i>
+						<i class="iconbutton icon-cogs quiet" role="button" tabindex="0"></i>
+						<i class="iconbutton icon-menu loud" role="button" tabindex="0"></i>
+						<i class="iconbutton icon-plus loud" role="button" tabindex="0"></i>
+						<i class="iconbutton icon-cogs loud" role="button" tabindex="0"></i>
+						<i class="iconbutton icon-menu attn" role="button" tabindex="0"></i>
+						<i class="iconbutton icon-plus attn" role="button" tabindex="0"></i>
+						<i class="iconbutton icon-cogs attn" role="button" tabindex="0"></i>
+						<i class="iconbutton icon-menu disabled" role="button" tabindex="0"></i>
+						<i class="iconbutton icon-plus disabled" role="button" tabindex="0"></i>
+						<i class="iconbutton icon-cogs disabled" role="button" tabindex="0"></i>
+					</div>
+					<pre class="prettyprint linenums">
+&lt;i class="iconbutton icon-menu" role="button" tabindex="0">&lt;/i>
+</pre>
+			</div>
+		</div>
+
+	</section>
 </div>
