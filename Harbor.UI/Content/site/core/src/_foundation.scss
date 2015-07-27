@@ -149,7 +149,7 @@
     pre, code {
         border: 1px solid;
         @include color-divider-border;
-        @include bg-color-bar;
+        @include bgcolor-toolbar;
 	}
     code {
         color: $color-accent;

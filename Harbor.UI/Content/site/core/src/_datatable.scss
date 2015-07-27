@@ -82,7 +82,7 @@
 
 @mixin datatable-theme($dark-or-light: $color-theme) {
     .datatable {
-        @include bg-color-content;
+        @include bgcolor-content;
 
         tr.selected td {
             @include color-selected-item;

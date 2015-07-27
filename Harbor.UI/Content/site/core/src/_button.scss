@@ -127,7 +127,7 @@
 	input[type=submit] { 
 
          @if ($color-theme == "dark") {
-            @include button-colors($button-bg-color-dark, $button-effect-dark, $button-color-theme-dark);
+            @include button-colors($button-bgcolor-base-dark, $button-effect-dark, $button-color-theme-dark);
         } @else {
             @include button-colors;
         }

@@ -31,7 +31,7 @@ $tile-caption-color: #777;
 // create a seperate mixin for this?
 @mixin card {
     .card {
-        @include bg-color-content;
+        @include bgcolor-content;
         @include z-depth-card;
         margin-bottom: 1em;
     }

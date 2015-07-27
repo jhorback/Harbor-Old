@@ -1,3 +1,12 @@
+/* https://www.google.com/design/icons */
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url("font/material/MaterialIcons-Regular.eot");
+  /* For IE6-8 */
+  src: url("font/material/MaterialIcons-Regular.woff2") format('woff2'), url("font/material/MaterialIcons-Regular.woff") format('woff'), url("font/material/MaterialIcons-Regular.ttf") format('truetype'); }
+
 .menu {
   position: absolute;
   z-index: 100;
@@ -119,12 +128,12 @@
 .toolbar {
   line-height: 2em;
   height: 2em;
-  font-size: 1.5em;
-  padding: 0 0.667em;
+  padding: 0 0.3125em;
   -moz-user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
-  user-select: none; }
+  user-select: none;
+  font-size: 1.5em; }
   .toolbar:after {
     content: "";
     display: table;
@@ -132,10 +141,20 @@
   .toolbar .float-left:after, .toolbar .float-right:after {
     content: "";
     display: inline-block; }
-  .toolbar.small {
-    font-size: 1em; }
+  .toolbar .iconbutton {
+    font-size: 24px; }
+  .toolbar .type-title, .toolbar .type-subhead1 {
+    float: left; }
+  .toolbar .type-title {
+    font-family: "OpenSans", "sans-serif";
+    font-size: 1em;
+    line-height: 2em; }
+  .toolbar .type-subhead1 {
+    font-size: 0.625em;
+    line-height: 3.235em;
+    padding: 0 0.5em; }
   .toolbar.large {
     font-size: 2em; }
-  .toolbar h2, .toolbar h3 {
-    font-size: 1em;
-    margin: 0; }
+    .toolbar.large .type-title {
+      font-size: 0.75em;
+      line-height: 2.7em; }

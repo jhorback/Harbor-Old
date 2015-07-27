@@ -53,7 +53,7 @@
 	.page-header {
         position: relative;
        // top: $frame-logo-height;
-        @include bg-color-bar;
+        @include bgcolor-toolbar;
 	}
 
     .page-header-overlay {

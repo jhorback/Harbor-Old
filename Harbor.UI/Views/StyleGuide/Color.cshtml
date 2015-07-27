@@ -138,17 +138,17 @@
 
 	<section>
 		<h1 class="type-display1 loud lead">Themes</h1>
-		<div class="row lead1">
+		<div class="row lead2">
 			<div class="col2">
 				<div class="type-subhead2">Light theme</div>
 				<p class="lead">
 					Dark text on a light background.
 				</p>
 				<div class="outline nopad color-light-quiet margin-top">
-					<div class="bg-color-light-outerbar swatch big">Outber bar <span class="float-right">.bg-color-light-outerbar</span></div>
-					<div class="bg-color-light-bar swatch big">Toolbars <span class="float-right">.bg-color-light-bar</span></div>
-					<div class="bg-color-light swatch big">Base background <span class="float-right">.bg-color-light</span></div>
-					<div class="bg-color-light-content swatch big">Content <span class="float-right">.bg-color-light-content</span></div>
+					<div class="bgcolor-statusbar-light swatch big">Outber bar <span class="float-right">.bgcolor-statusbar-light</span></div>
+					<div class="bgcolor-toolbar-light swatch big">Toolbars <span class="float-right">.bgcolor-toolbar-light</span></div>
+					<div class="bgcolor-base-light swatch big">Base background <span class="float-right">.bgcolor-base-light</span></div>
+					<div class="bgcolor-content-light swatch big">Content <span class="float-right">.bgcolor-content-light</span></div>
 				</div>
 			</div>
 			<div class="col2">
@@ -157,14 +157,36 @@
 					Light text on a dark background.
 				</p>
 				<div class="outline nopad color-dark-quiet margin-top">
-					<div class="bg-color-dark-outerbar swatch big">Outber bar <span class="float-right">.bg-color-dark-outerbar</span></div>
-					<div class="bg-color-dark-bar swatch big">Toolbars <span class="float-right">.bg-color-dark-bar</span></div>
-					<div class="bg-color-dark swatch big">Base background <span class="float-right">.bg-color-dark</span></div>
-					<div class="bg-color-dark-content swatch big">Content<span class="float-right">.bg-color-dark-content</span></div>
+					<div class="bgcolor-statusbar-dark swatch big">Outber bar <span class="float-right">.bgcolor-statusbar-dark</span></div>
+					<div class="bgcolor-toolbar-dark swatch big">Toolbars <span class="float-right">.bgcolor-toolbar-dark</span></div>
+					<div class="bgcolor-base-dark swatch big">Base background <span class="float-right">.bgcolor-base-dark</span></div>
+					<div class="bgcolor-content-dark swatch big">Content<span class="float-right">.bgcolor-content-dark</span></div>
 				</div>
 			</div>
 		</div>
-
+		<div class="row lead1">
+			<div class="col2">
+				<div class="type-subhead2">Current theme</div>
+				<p>The current base theme.</p>
+				<div class="outline nopad color-light-quiet margin-top">
+					<div class="bgcolor-statusbar-theme swatch big">Outber bar <span class="float-right">.bgcolor-statusbar-theme</span></div>
+					<div class="bgcolor-toolbar-theme swatch big">Toolbars <span class="float-right">.bgcolor-toolbar-theme</span></div>
+					<div class="bgcolor-base-theme swatch big">Base background <span class="float-right">.bgcolor-base-theme</span></div>
+					<div class="bgcolor-content-theme swatch big">Content <span class="float-right">.bgcolor-content-theme</span></div>
+				</div>
+			</div>
+			<div class="col2">
+				<div class="type-subhead2">Theme box classes</div>
+				<p class="lead">
+					Use the box classes to paint a themed forground.
+				</p>
+				<div class="outline nopad color-dark-quiet margin-top">
+					<div class="bgcolor-content-light box-light swatch big">Light box <span class="float-right">.box-light</span></div>
+					<div class="bgcolor-content-dark box-dark swatch big">Dark box <span class="float-right">.box-dark</span></div>
+					<div class="bgcolor-content-theme box-theme swatch big">Themed box <span class="float-right">.box-theme</span></div>
+				</div>
+			</div>
+		</div>
 	</section>
 	
 	<hr class="margin-h type-display4"/>
@@ -179,10 +201,10 @@
 		<div class="lead1">
 			<h3 class="type-subhead2 quiet">Background color mixins</h3>
 			<ul>
-				<li>bg-color-content($theme)</li>
-				<li>bg-color($theme)</li>
-				<li>bg-color-bar($theme)</li>
-				<li>bg-color-outerbar($theme)</li>
+				<li>bgcolor-content($theme)</li>
+				<li>bgcolor-base($theme)</li>
+				<li>bgcolor-toolbar($theme)</li>
+				<li>bgcolor-statusbar($theme)</li>
 			</ul>
 		</div>
 		<div class="lead1">

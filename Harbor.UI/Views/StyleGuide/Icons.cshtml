@@ -1,12 +1,13 @@
 ﻿@functions {
 	IEnumerable<string> icons()
 	{
-		return new[]
+		var icons = new[]
 		{
-			"remove", "align-left", "align-center", "align-right", "align-justify", "edit", "move", "plus",
-			"cogs", "reorder", "columns", "help", "paypal", "image", "link", "google-plus", "facebook",
-			"previous", "next", "up", "down"
+			"menu", "remove", "align-left", "align-center", "align-right", "align-justify", "edit", "move", "plus",
+			"cogs", "reorder", "columns", "help", "paypal", "image", "link", "previous", "next", "up", "down",
+			"more", "search"
 		};
+		return icons.OrderBy(i => i);
 	}
 }
 @section pageheader {

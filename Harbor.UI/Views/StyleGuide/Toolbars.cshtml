@@ -1,16 +1,4 @@
 ﻿@*
-		Toolbars
-		• Can support multiple heights but only support one line.
-		• Contains icon buttons
-		• Handles title text at the same line height as the buttons but no other text.
-	-> try to use the button element again for these! - do a reset
-	icon colors
-	black
-	-active = 54% // same as .quiet
-	-inactive = 26% disabled
-	white
-	-active = 100% // same as normal color
-	-inactive 30% // disabled
 
 
 *@
@@ -21,18 +9,227 @@
 	</script>
 }
 <div class="page-content">
-	<h2>Icon Button Test</h2>
-	<div style="background: #EEEEEE" class="toolbar">
-		<div class="float-left">
-			<span class="icon-menu" tabindex="0" role="button"></span>
+	<section class="lead1">
+		<div class="clearfix lead1">
+			<h1 class="type-display1 lead loud float-left">Toolbar</h1>
+			<div class="float-right">
+				<p>
+					Reference: <a href="https://www.google.com/design/spec/components/toolbars.html">Material Design : Toolbars</a>,
+					<a href="https://www.google.com/design/spec/layout/structure.html#structure-toolbars">Material Design : Structure</a>.
+				</p>
+			</div>
 		</div>
-		<div class="float-right">
-			<span class="iconbutton icon-image" tabindex="0" role="button"></span>
-			<span class="iconbutton icon-cogs" tabindex="0" role="button"></span>
-			<span class="iconbutton icon-align-left" tabindex="0" role="button"></span>
-			<span class="iconbutton icon-align-center" tabindex="0" role="button"></span>
-			<span class="iconbutton icon-align-right" tabindex="0" role="button"></span>
-			<span class="iconbutton icon-align-justify" tabindex="0" role="button"></span>
+
+
+		<h2 class="type-subhead2 lead">Usage</h2>
+		<div class="row lead">
+			<div class="col3">
+				<p class="lead">
+					Toolbars can be used as app bars, action bars, and generally anywhere more than one icon button
+					is needed.
+				</p>
+			</div>
+			<div class="col3-2">
+				<div class="outline">
+					<div class="toolbar bgcolor-toolbar-theme">
+						<div class="float-left">
+							<span class="iconbutton icon-menu" tabindex="0" role="button"></span>
+						</div>
+						<h1 class="type-title">Title</h1>
+						<div class="float-right">
+							<h2 class="type-subhead1">Other text</h2>
+							<span class="iconbutton icon-image" tabindex="0" role="button"></span>
+							<span class="iconbutton icon-cogs" tabindex="0" role="button"></span>
+							<span class="iconbutton icon-align-left" tabindex="0" role="button"></span>
+							<span class="iconbutton icon-align-center" tabindex="0" role="button"></span>
+							<span class="iconbutton icon-align-right" tabindex="0" role="button"></span>
+							<span class="iconbutton icon-align-justify" tabindex="0" role="button"></span>
+						</div>
+					</div>
+				</div>
+				<pre class="prettyprint linenums">
+&lt;div class="toolbar bgcolor-toolbar-theme">
+	&lt;div class="float-left">
+		&lt;span class="iconbutton icon-menu" tabindex="0" role="button">&lt;/span>
+	&lt;/div>
+	&lt;h1 class="type-title">Title&lt;/h1>
+	&lt;div class="float-right">
+		&lt;h2 class="type-subhead1">Other text&lt;/h2>
+		&lt;span class="iconbutton icon-image" tabindex="0" role="button">&lt;/span>
+		&lt;span class="iconbutton icon-cogs" tabindex="0" role="button">&lt;/span>
+		&lt;span class="iconbutton icon-align-left" tabindex="0" role="button">&lt;/span>
+		&lt;span class="iconbutton icon-align-center" tabindex="0" role="button">&lt;/span>
+		&lt;span class="iconbutton icon-align-right" tabindex="0" role="button">&lt;/span>
+		&lt;span class="iconbutton icon-align-justify" tabindex="0" role="button">&lt;/span>
+	&lt;/div>
+&lt;/div>
+</pre>
+			</div>
 		</div>
-	</div>
+
+		<h2 class="type-subhead2 lead">Supported Classes</h2>
+		<div class="row lead">
+			<div class="col3">
+				<p class="lead">
+					Other than the required <code>.toolbar</code> class, the toolbar supports
+					a number of other supporting classes.
+				</p>
+			</div>
+			<div class="col3-2">
+				<ul class="type-body1">
+					<li>
+						<strong>.large</strong> - increases the height of the toolbar.
+						Add this class to the root toolbar element.
+					</li>
+					<li>
+						<strong>.float-left, .float-right</strong> - Use on direct children to group icon buttons
+						to the left or right. Keep usage to a maximum of two containers: one float-left one float-right.
+					</li>
+					<li>
+						<strong>.iconbutton</strong> - icon buttons are supported.
+						The toolbar ensures the icons are "medium" size. Text modifiers 
+						such as .loud, .quiet, .attn, .disabled are all supported.
+					</li>
+					<li>
+						<strong>.type-title</strong> - use for the toolbar title.
+					</li>
+					<li>
+						<strong>.type-subhead1</strong> - use for other text. Toolbars should be kept simple
+						so usage of other text should be kept to a minimum.
+					</li>
+					<li>
+						<strong>.input </strong> (NOT SUPPORTED) - but eventually a text input field on a
+						toolbar can be a great way to provide for search.
+					</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+
+
+	<hr class="margin-h type-display4" />
+
+
+	<section class="lead1">
+		<h1 class="type-display1 loud lead">Adding color</h1>
+		<div class="lead2">
+			<p class="type-width-readable">
+				By default, toolbars are transparent so they can be styled with whatver color is needed.
+				The color classes can be used to control the background and foreground colors.
+			</p>
+			<p class="type-width-readable">
+				Here are a few classes to help color the backgrond: 
+				<strong>.bgcolor-statusbar-(light|dark|theme),
+					.bgcolor-toolbar-(light|dark|theme),
+					.bgcolor-base-(light|dark|theme)
+				</strong>
+			</p>
+			<p>
+				The <strong>.box-(light|dark|theme)</strong> classes can be used to style the foreground.
+			</p>
+			<p>
+				The primary and accent box styles color both the foreground and background, i.e.
+				<strong>.box-primary, .box-accent</strong>
+			</p>
+		</div>
+
+		<h2 class="type-subhead2 lead">Examples of color</h2>
+		<div class="row lead1">
+			<div class="col3">
+				Primary color toolbar
+			</div>
+			<div class="col3-2">
+				<div class="outline">
+					<div class="toolbar box-primary">
+						<div class="float-left">
+							<span class="iconbutton icon-menu" tabindex="0" role="button"></span>
+						</div>
+						<h1 class="type-title">Title</h1>
+						<div class="float-right">
+							<span class="iconbutton icon-search" tabindex="0" role="button"></span>
+							<span class="iconbutton icon-more" tabindex="0" role="button"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row lead1">
+			<div class="col3">
+				Accent color toolbar
+			</div>
+			<div class="col3-2">
+				<div class="outline">
+					<div class="toolbar box-accent">
+						<div class="float-left">
+							<span class="iconbutton icon-menu" tabindex="0" role="button"></span>
+						</div>
+						<h1 class="type-title">Title</h1>
+						<div class="float-right">
+							<span class="iconbutton icon-search" tabindex="0" role="button"></span>
+							<span class="iconbutton icon-more" tabindex="0" role="button"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row lead1">
+			<div class="col3">
+				Dark toolbar
+			</div>
+			<div class="col3-2">
+				<div class="outline">
+					<div class="toolbar bgcolor-base-dark box-dark">
+						<div class="float-left">
+							<span class="iconbutton icon-menu" tabindex="0" role="button"></span>
+						</div>
+						<h1 class="type-title">Title</h1>
+						<div class="float-right">
+							<span class="iconbutton icon-search" tabindex="0" role="button"></span>
+							<span class="iconbutton icon-more" tabindex="0" role="button"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row lead1">
+			<div class="col3">
+				Light toolbar
+			</div>
+			<div class="col3-2">
+				<div class="outline">
+					<div class="toolbar bgcolor-base-light box-light">
+						<div class="float-left">
+							<span class="iconbutton icon-menu" tabindex="0" role="button"></span>
+						</div>
+						<h1 class="type-title">Title</h1>
+						<div class="float-right">
+							<span class="iconbutton icon-search" tabindex="0" role="button"></span>
+							<span class="iconbutton icon-more" tabindex="0" role="button"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row lead1">
+			<div class="col3">
+				Varying color on icons
+			</div>
+			<div class="col3-2">
+				<div class="outline">
+					<div class="toolbar bgcolor-toolbar-light box-light">
+						<div class="float-left">
+							<span class="iconbutton icon-menu disabled" tabindex="0" role="button"></span>
+						</div>
+						<h1 class="type-title">Title</h1>
+						<div class="float-right">
+							<span class="iconbutton icon-search loud" tabindex="0" role="button"></span>
+							<span class="iconbutton icon-more attn" tabindex="0" role="button"></span>
+							<span class="iconbutton icon-close quiet" tabindex="0" role="button"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
 </div>

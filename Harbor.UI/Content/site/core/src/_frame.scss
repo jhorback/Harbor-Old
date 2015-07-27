@@ -15,7 +15,7 @@ $frame-footer-background: #2d3033;
 $frame-footer-color: #a5a6a7;
 
 $framenav-color:						#aaa	    						!default;
-$framenav-background-color:				$bg-color-light-bar					!default;
+$framenav-background-color:				$bgcolor-toolbar-light					!default;
 $framenav-color-selected:				#000                				!default;
 $framenav-border-selected:          	#000                            	!default;
 $scrollbar-color:						#CCC								!default;
@@ -293,7 +293,7 @@ $frame-logo-use-image: true !default;
 	}
 
     #frame-footer {
-        @include bg-color-bar("dark");
+        @include bgcolor-toolbar("dark");
         @include color-box("dark");        
         color: $frame-footer-color;
         a {

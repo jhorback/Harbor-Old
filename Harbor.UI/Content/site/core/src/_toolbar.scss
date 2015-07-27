@@ -3,21 +3,22 @@
 @import "../../mixins/_clearfix.scss";
 @import "_$z-depth.scss";
 @import "_$color.scss";
+@import "_fonticons.scss";
+@import "_$type.scss";
 
 // .toolbar
 // .toolbar .float-left, .toolbar .float-right
 // .toolbar.large
-// .toolbar.small
-// styles icons as buttons - test this as a button again instead of a span!?!
-//
+// .iconbutton - is set to medium 24px
+// .type-title - use for toolbar title
+// .type-subhead1 - use for other text
 
 @mixin toolbar {
 
     .toolbar {
         line-height: 2em;
         height: 2em;
-        font-size: 1.5em;
-        padding: 0 0.667em;
+        padding: 0 0.3125em;
         @include clearfix;
         @include user-select-none;
 
@@ -26,19 +27,41 @@
                 content: "";
                 display: inline-block;
             }
+        }        
+
+         font-size: 1.5em;
+        .iconbutton {          
+            @include fonticons-size("medium");
         }
 
-        &.small {
+       
+        .type-title, .type-subhead1 {
+            float: left;
+        }
+
+        .type-title {
+            font-family: $type-font-family;
             font-size: 1em;
+            line-height: 2em;
         }
 
-        &.large {
+        .type-subhead1 {
+               font-size: 0.625em;
+                line-height: 3.235em;
+                padding: 0 0.5em;
+        }
+
+         &.large {
             font-size: 2em;
-        }
 
-        h2, h3 {
-            font-size: 1em;
-            margin: 0;
+            .type-title {
+                font-size: 0.75em;
+                line-height: 2.7em;
+            }
+
+            .type-subhead1 {
+                // keep smaller for now
+            }
         }
     }
 }

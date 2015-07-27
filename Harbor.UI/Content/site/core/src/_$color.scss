@@ -12,10 +12,10 @@
 // color-disabled(theme);
 // color-divider-bg(theme);
 // 
-// bg-color-content(theme)
+// bgcolor-content(theme)
 // bg-color(theme)
-// bg-color-bar(theme)
-// bg-color-outerbar(theme)
+// bgcolor-toolbar(theme)
+// bgcolor-statusbar(theme)
 // 
 // Note: color variables using alpha have an accompanying hex variable
 //       that works well with the specified light or dark backgrounds.
@@ -41,10 +41,10 @@ $color-accent-lighter:        #FF6E40   !default;
 $color-accent-lighter-theme:  "light"    !default;
 
 // button colors
-//$button-bg-color-light:       #FFFFFF   !default;
+//$button-bgcolor-base-light:       #FFFFFF   !default;
 //$button-color-theme-light:    "light"   !default;
 //$button-effect-light:         "lighten" !default;
-$button-bg-color-dark:        #2196F3   !default;
+$button-bgcolor-base-dark:        #2196F3   !default;
 $button-color-theme-dark:     "dark"    !default;
 $button-effect-dark:          "lighten" !default;
 $button-bg-color-primary:     $color-primary !default;
@@ -78,17 +78,17 @@ $color-dark-divider-hex:  #1E1E1E;
 
 
 // light color backgrounds
-$bg-color-light-content:  #FFFFFF;
-$bg-color-light:          #FAFAFA;        
-$bg-color-light-bar:      #F5F5F5; 
-$bg-color-light-outerbar: #E0E0E0; 
+$bgcolor-content-light:  #FFFFFF;
+$bgcolor-base-light:          #FAFAFA;        
+$bgcolor-toolbar-light:      #F5F5F5; 
+$bgcolor-statusbar-light: #E0E0E0; 
 
 
 // dark color backgrounds
-$bg-color-dark-content:   #424242;
-$bg-color-dark:           #303030;
-$bg-color-dark-bar:       #212121;
-$bg-color-dark-outerbar:  #000000;
+$bgcolor-content-dark:   #424242;
+$bgcolor-base-dark:           #303030;
+$bgcolor-toolbar-dark:       #212121;
+$bgcolor-statusbar-dark:  #000000;
 
 
 // static light button colors
@@ -114,25 +114,25 @@ $button-bg-color-disabled-dark-hex: #1E1E1E;
 
 
 
-@mixin bg-color-content($dark-or-light: $color-theme) {
+@mixin bgcolor-content($dark-or-light: $color-theme) {
     // use for dialogs, cards
     @if $dark-or-light == "dark" {
-        background-color: $bg-color-dark-content;
+        background-color: $bgcolor-content-dark;
     } @else {
-        background-color: $bg-color-light-content;
+        background-color: $bgcolor-content-light;
     }
 }
 
-@mixin bg-color($dark-or-light: $color-theme) {
+@mixin bgcolor-base($dark-or-light: $color-theme) {
     // use for the base background
     @if $dark-or-light == "dark" {
-        background-color: $bg-color-dark;
+        background-color: $bgcolor-base-dark;
     } @else {
-        background-color: $bg-color-light;        
+        background-color: $bgcolor-base-light;        
     }
 }
 
-@mixin bg-color-bar($dark-or-light: $color-theme) {
+@mixin bgcolor-toolbar($dark-or-light: $color-theme) {
     // use for the primary heading bars
     @if $dark-or-light == "dark" {        
           background-color: #212121;
@@ -141,7 +141,7 @@ $button-bg-color-disabled-dark-hex: #1E1E1E;
     }
 }
 
-@mixin bg-color-outerbar($dark-or-light: $color-theme) {
+@mixin bgcolor-statusbar($dark-or-light: $color-theme) {
     // use for contrast against the heading bar as the topmost or bottommost element
     @if $dark-or-light == "light" {
         background-color: #E0E0E0;
@@ -247,9 +247,9 @@ $button-bg-color-disabled-dark-hex: #1E1E1E;
 
 @mixin color-scrollbar($dark-or-light: $color-theme) {
         ::-webkit-scrollbar-thumb {
-	    @include bg-color-bar($dark-or-light);
+	    @include bgcolor-toolbar($dark-or-light);
 	    &:hover{
-            @include bg-color-outerbar($dark-or-light);
+            @include bgcolor-statusbar($dark-or-light);
 	    }
     }
 }
@@ -335,46 +335,73 @@ $button-bg-color-disabled-dark-hex: #1E1E1E;
         @include color-box($color-accent-lighter-theme);
     }
 
-    .color-light {
-        @include color($theme-onlight-bg);
+
+    .box-theme {
+        @include color-box;
     }
-    .color-light-quiet{
-        @include color-quiet($theme-onlight-bg);
+    .box-light {
+        @include color-box($theme-onlight-bg);
     }
-    .color-light-disabled {
-        @include color-disabled($theme-onlight-bg);
+    .box-dark {
+        @include color-box($theme-ondark-bg);
     }
-    .color-dark {
-        @include color($theme-ondark-bg);
+
+
+
+    //.color-light {
+    //    @include color($theme-onlight-bg);
+    //}
+    //.color-light-quiet{
+    //    @include color-quiet($theme-onlight-bg);
+    //}
+    //.color-light-disabled {
+    //    @include color-disabled($theme-onlight-bg);
+    //}
+    //.color-dark {
+    //    @include color($theme-ondark-bg);
+    //}
+    //.color-dark-quiet{
+    //    @include color-quiet($theme-ondark-bg);
+    //}
+    //.color-dark-disabled {
+    //    @include color-disabled($theme-ondark-bg);
+    //}
+
+
+    .bgcolor-content-light {
+        @include bgcolor-content($theme-onlight-bg);
     }
-    .color-dark-quiet{
-        @include color-quiet($theme-ondark-bg);
+    .bgcolor-base-light {
+        @include bgcolor-base($theme-onlight-bg);
     }
-    .color-dark-disabled {
-        @include color-disabled($theme-ondark-bg);
+    .bgcolor-toolbar-light {
+        @include bgcolor-toolbar($theme-onlight-bg);
     }
-    .bg-color-light-content {
-        @include bg-color-content($theme-onlight-bg);
+    .bgcolor-statusbar-light {
+        @include bgcolor-statusbar($theme-onlight-bg);
     }
-    .bg-color-light {
-        @include bg-color($theme-onlight-bg);
+    .bgcolor-content-dark {
+        @include bgcolor-content($theme-ondark-bg);
     }
-    .bg-color-light-bar {
-        @include bg-color-bar($theme-onlight-bg);
+    .bgcolor-base-dark {
+        @include bgcolor-base($theme-ondark-bg);
     }
-    .bg-color-light-outerbar {
-        @include bg-color-outerbar($theme-onlight-bg);
+    .bgcolor-toolbar-dark {
+        @include bgcolor-toolbar($theme-ondark-bg);
     }
-    .bg-color-dark-content {
-        @include bg-color-content($theme-ondark-bg);
+    .bgcolor-statusbar-dark {
+        @include bgcolor-statusbar($theme-ondark-bg);
     }
-    .bg-color-dark {
-        @include bg-color($theme-ondark-bg);
+    .bgcolor-content-theme {
+        @include bgcolor-content;
     }
-    .bg-color-dark-bar {
-        @include bg-color-bar($theme-ondark-bg);
+    .bgcolor-base-theme {
+        @include bgcolor-base;
     }
-    .bg-color-dark-outerbar {
-        @include bg-color-outerbar($theme-ondark-bg);
+    .bgcolor-toolbar-theme {
+        @include bgcolor-toolbar;
+    }
+    .bgcolor-statusbar-theme {
+        @include bgcolor-statusbar;
     }
 }

@@ -43,11 +43,11 @@ $appmenu-width: 25em;
            //@include color-box($theme-ondark-bg)
         }
 
-        .icon-close {
+        /*.icon-close {
             position: relative;
             top: .25em;
             padding: 0 .25em;
-        }   
+        }*/   
     }
 
     .appmenu-logout {
@@ -110,6 +110,6 @@ appmenu-childlist
 @mixin usermenu-theme {
     // @include color;
     .appmenu {
-        @include bg-color-content;
+        @include bgcolor-content;
     }
 }

@@ -448,6 +448,12 @@ code {
 .icon-lens:before {
   content: "\E3FA"; }
 
+.icon-more:before {
+  content: "\E5D4"; }
+
+.icon-search:before {
+  content: "\E8B6"; }
+
 [class^="icon-"], [class*=" icon-"] {
   font-family: 'Material Icons';
   font-weight: normal;
