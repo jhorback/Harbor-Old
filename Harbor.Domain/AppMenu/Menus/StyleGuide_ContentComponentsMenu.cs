@@ -54,25 +54,7 @@ namespace Harbor.Domain.AppMenu.Menus
 			get { return "Buttons"; }
 		}
 	}
-
-	public class StyleGuideContentBoxesMenuLink : MenuLink
-	{
-		public override string Url
-		{
-			get { return "~/styleguide/contentboxes"; }
-		}
-
-		public override string Id
-		{
-			get { return "style-guide-content-boxes"; }
-		}
-
-		public override string Text
-		{
-			get { return "Content Boxes"; }
-		}
-	}
-
+	
 	public class StyleGuideContentViewersMenuLink : MenuLink
 	{
 		public override string Url

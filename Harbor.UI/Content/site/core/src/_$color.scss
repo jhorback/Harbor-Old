@@ -25,6 +25,8 @@
 $theme-onlight-bg:           "light";
 $theme-ondark-bg:            "dark";
 $color-theme:                $theme-onlight-bg     !default;
+$color-error:                #DD2C00;
+
 
 // primary/accent color swatch
 $color-primary:               #0097a7   !default;
@@ -60,7 +62,7 @@ $color-light:              rgba(0, 0, 0, .87);
 $color-light-hex:          #202020;
 $color-light-quiet:        rgba(0, 0, 0, .54);
 $color-light-quiet-hex:    #747474;
-$color-light-disabled:     rgba(0, 0, 0, .26);
+$color-light-disabled:     rgba(0, 0, 0, .26); // conflict in docs - errors says 38% for hint text.
 $color-light-disabled-hex: #BCBCBC;
 $color-light-divider:      rgba(0, 0, 0, .12);
 $color-light-divider-hex:  #E0E0E0;
