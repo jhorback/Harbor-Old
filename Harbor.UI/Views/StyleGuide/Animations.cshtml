@@ -1,23 +1,6 @@
 ﻿@*
-	Animations (where to put this?)
-	Need a full page for this? Or does it go under another category?
-	Look at the animation js again - make note of this
-	---
+	Animation support to be reviewed:
 	Review the timer.js - try using the events for the close?
-
-
-
-	AMIMATIONS
-	look at the google script support again
-	come up with a strategy
-	- could implement light transitions for the menu now
-	- then do more as the google script is incorporated
-
-	Using element.animate seems to be for ie 11+
-	IE 10 supports transitions
-	https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Using_CSS_transitions
-
-
 *@
 @section head {
 }
@@ -26,5 +9,37 @@
 	</script>
 }
 <div class="page-content">
-	Animations
+	<h1 class="type-display1 loud lead">Current stance on animations</h1>
+	<div class="type-width-readable">
+		<p>
+			Animations will be an evolving target. The current stance is do not use JavaScript animations.
+			Instead use CSS transitions.
+		</p>
+		<h2 class="type-subhead2 lead">
+			CSS Transitions
+		</h2>
+		<p>
+			CSS transitions are supported by all major browsers (and IE 10+). If wanting to add animations, this is the preferred method.
+			Support will not be added for older versions of IE.
+		</p>
+		<p>
+			<a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Using_CSS_transitions">Using CSS transitions</a>
+		</p>
+		<h2 class="type-subhead2 lead">Web Animations API</h2>
+		<p>
+			The holy grail for web animations is element.animate.
+			This will make best use of JavaScript capabilities at runtime combined with the efficiencies of CSS transitions.
+		</p>
+		<p>
+			<a href="https://github.com/web-animations/web-animations-js">web-animations-js</a>
+		</p>
+		<p>
+			Unfortunately, Internet Explorer has no support and the earliest version that can be polyfilled is IE 11.
+		</p>
+		<h2 class="type-subhead2 lead">Animation usage</h2>
+		<p>
+			It is likely that the only time animation will need to be used is on transitions between the primary UI components.
+			For example, going from a list to a dialog; or from an icon to a menu. 
+		</p>
+	</div>
 </div>
