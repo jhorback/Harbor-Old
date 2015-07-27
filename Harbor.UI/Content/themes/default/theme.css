@@ -181,30 +181,6 @@ html, body {
     background-color: #E0E0E0;
     background-color: rgba(0, 0, 0, 0.12); }
 
-.color-light {
-  color: #202020;
-  color: rgba(0, 0, 0, 0.87); }
-
-.color-light-quiet {
-  color: #747474;
-  color: rgba(0, 0, 0, 0.54); }
-
-.color-light-disabled {
-  color: #BCBCBC !important;
-  color: rgba(0, 0, 0, 0.26) !important; }
-
-.color-dark {
-  color: #FFFFFF;
-  color: white; }
-
-.color-dark-quiet {
-  color: #B3B3B3;
-  color: rgba(255, 255, 255, 0.7); }
-
-.color-dark-disabled {
-  color: #4C4C4C !important;
-  color: rgba(255, 255, 255, 0.3) !important; }
-
 .bgcolor-content-light {
   background-color: #FFFFFF; }
 

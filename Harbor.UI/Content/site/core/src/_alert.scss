@@ -38,7 +38,7 @@
     }
 
     .alert, .alert-error {
-        @include bg-color($theme);
+        @include bgcolor-base($theme);
         @include color-box($theme);
     }
 }

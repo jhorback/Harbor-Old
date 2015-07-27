@@ -41,7 +41,7 @@
 	html,
 	body {
         @include color($color-theme);
-        @include bg-color;
+        @include bgcolor-base($color-theme);
 		
 		font-size: $body-font-size;
 		font-family: $type-font-family;
