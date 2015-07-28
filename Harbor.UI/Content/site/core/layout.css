@@ -1,0 +1,439 @@
+/*@mixin col-span ($cols: 1, $span: 1, $col-gutter-width: $col-gutter-width) {
+	$colwidth: 100% / $cols;
+	$spancolwidth: $colwidth * $span;
+	// $margin: 2%;
+
+	float: left;
+	width: $spancolwidth;
+    box-sizing: border-box;
+	border-left: $col-gutter-width solid transparent;
+}*/
+/*
+	.icon-close
+appmenu-user
+appmenu-logout
+appmenu-parentlist
+appmenu-childlist
+
+
+
+
+    	- appmenu-overlay
+	- appmenu - test z-depth (test also on app bar)
+			fixed with max/min width
+	- appmenu-header
+	- appmenu-signout-link
+	- appmenu - menulist
+			parent items need to have a border
+			the current parent should not have a hover effect
+				clicking it does nothing
+				(could try styling the current parent different?)
+			All other siblings have no border
+			The selected item is bold primary color
+
+*/
+#frame {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%; }
+
+#frame-header, #frame-header-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  z-index: 1;
+  height: 4em;
+  transition: all linear 0.2s; }
+
+#frame-header {
+  height: 4em;
+  line-height: 4em;
+  font-size: 1em; }
+  #frame-header a, #frame-header a:visited {
+    text-decoration: none; }
+
+#frame-header-content {
+  max-width: 77.5em;
+  margin: 0 auto; }
+
+#frame-logo {
+  float: left;
+  font-size: 2em;
+  margin: 0 0.5em; }
+
+#frame-nav {
+  line-height: 4em;
+  position: relative;
+  top: -4px;
+  float: right; }
+  #frame-nav ul {
+    margin: 0;
+    padding: 0;
+    border: 0; }
+    #frame-nav ul:after {
+      content: "";
+      display: table;
+      clear: both; }
+    #frame-nav ul li {
+      list-style-image: none;
+      list-style-type: none;
+      margin-left: 0px;
+      display: inline-block;
+      white-space: nowrap; }
+    #frame-nav ul li {
+      cursor: pointer;
+      float: left;
+      margin-right: 0.5em;
+      text-transform: uppercase; }
+      #frame-nav ul li a {
+        display: inline-block;
+        padding: 0 1em;
+        -webkit-transition-property: all;
+        -webkit-transition-duration: 0.4s; }
+      #frame-nav ul li.attn {
+        background: #FF0000 !important; }
+        #frame-nav ul li.attn a {
+          color: white !important; }
+
+#frame-session {
+  position: fixed;
+  top: 0;
+  left: 0;
+  line-height: 4em; }
+  #frame-session a {
+    font-size: 1.5em;
+    padding: 0 0.667em;
+    display: inline-block; }
+
+#frame-body {
+  position: relative; }
+
+.frame-footer-height {
+  height: 12em; }
+
+#frame-footer {
+  position: relative; }
+  #frame-footer .menulist {
+    font-size: 0.75em;
+    line-height: 1.5em; }
+    #frame-footer .menulist a {
+      text-decoration: none; }
+    #frame-footer .menulist h2, #frame-footer .menulist h3 {
+      font-size: 1.5em;
+      font-weight: bold; }
+  #frame-footer .social-links {
+    line-height: 2em;
+    padding-top: 0.5em; }
+    #frame-footer .social-links a {
+      text-decoration: none;
+      display: block; }
+    #frame-footer .social-links span {
+      font-size: 1.5em;
+      position: relative;
+      top: 0.25em;
+      width: 1em;
+      text-align: right;
+      display: block;
+      float: left;
+      clear: left;
+      margin-right: 0.4em; }
+
+#frame-footer-content:after {
+  content: "";
+  display: table;
+  clear: both; }
+
+#frame-footer-copyright {
+  position: absolute;
+  bottom: 1em;
+  left: 50%;
+  position: absolute;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  font-size: 75%;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
+  opacity: 0.7; }
+
+/*
+        <div class="col4">
+	<div class="menulist">
+		<h2><a href="#">Shop</a></h2>
+		<ul>
+			<li><a href="#">Originals</a></li>
+			<li><a href="#">Prints</a></li>
+			<li><a href="#">Jewelry</a></li>
+			<li><a href="#">Gifts</a></li>
+		</ul>
+	</div>
+</div>
+<div id="frame-footer-copyright"></div>
+*/
+#overlay, .overlay {
+  background-color: #000;
+  z-index: 10;
+  display: none;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+  opacity: 0.5;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%; }
+
+.page:after {
+  content: "";
+  display: table;
+  clear: both; }
+
+.has-titlebg .page-header {
+  height: 12em;
+  line-height: 12em; }
+  .has-titlebg .page-header .page-header-overlay {
+    display: block; }
+
+.has-notitle .page-header {
+  visibility: hidden;
+  height: 4em; }
+
+.page-header {
+  padding-top: 4em;
+  height: 8em;
+  line-height: 8em;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-size: cover; }
+  .page-header .page-header-overlay {
+    display: none; }
+  .page-header h1 {
+    margin: 0 0.5em;
+    font-size: 2em;
+    font-weight: normal; }
+    .page-header h1 a {
+      text-decoration: none; }
+  .page-header fieldset {
+    margin: 0 1em; }
+
+.page-body {
+  position: relative; }
+  .page-body:after {
+    content: "";
+    display: table;
+    clear: both; }
+
+.page-aside {
+  display: none; }
+
+.page-aside {
+  padding-top: 2em;
+  padding-bottom: 2em; }
+  .page-aside .menulist {
+    margin-left: 0em;
+    width: 100%;
+    clear: both; }
+    .page-aside .menulist h2, .page-aside .menulist h3 {
+      padding: 0.4em 0.8em !important; }
+    .page-aside .menulist > ul > li > span, .page-aside .menulist > ul > li > a {
+      padding: 0.3em 1em;
+      line-height: 2.2em;
+      color: #555; }
+    .page-aside .menulist h2, .page-aside .menulist h3 {
+      padding: 0 0.5em; }
+    .page-aside .menulist .selected {
+      background: #E8E9E9; }
+    .page-aside .menulist a:hover {
+      background: #E8E9E9; }
+
+.page-content {
+  position: relative;
+  padding: 2em 1%;
+  float: left;
+  width: 98%;
+  /*&:first-child { // if there is no aside
+			width: 98%;
+		}*/ }
+
+.centered .page-header-content, .centered .page-body {
+  max-width: 77.5em;
+  margin-left: auto;
+  margin-right: auto; }
+.centered .page-content {
+  width: 98%;
+  *width: 97.5%; }
+.centered .page-content:first-child {
+  width: 98%; }
+
+@media (max-width: 77.5em) {
+  .page-aside {
+    width: 25%; }
+  .page-content {
+    width: 98%;
+    *width: 97.5%; } }
+
+.hasaside .page-aside-bg {
+  float: left;
+  width: 100%;
+  position: relative; }
+.hasaside .page-body {
+  float: left;
+  width: 100%;
+  background: #F5F6F6;
+  position: relative;
+  right: 80%; }
+.hasaside .page-aside {
+  display: block;
+  float: left;
+  width: 20%;
+  position: relative;
+  left: 80%;
+  overflow: hidden;
+  min-height: 25em; }
+.hasaside .page-content {
+  float: left;
+  width: 78%;
+  left: 80%; }
+
+.page-content-edit .row {
+  outline: 1px dashed #CCC; }
+
+/* the row classes are not really used - think about removing them */
+.row, .row-small, .row-medium, .row-large {
+  clear: both; }
+  .row:after, .row-small:after, .row-medium:after, .row-large:after {
+    content: "";
+    display: table;
+    clear: both; }
+
+.row {
+  margin-left: -2%; }
+  .row.lead {
+    margin-bottom: 4em; }
+
+@media (min-width: 64em) {
+  .row .col5:nth-of-type(5n+1) {
+    clear: left; }
+  .hasaside .row .col5:nth-of-type(5n+1) {
+    clear: none; }
+  .hasaside .row .col5:nth-of-type(4n+1) {
+    clear: left; } }
+
+@media (max-width: 64em) {
+  .row .col5:nth-of-type(3n+1) {
+    clear: left; }
+  .hasaside .row .col5:nth-of-type(3n+1) {
+    clear: none; }
+  .hasaside .row .col5:nth-of-type(2n+1) {
+    clear: left; } }
+
+@media (max-width: 48em) {
+  .hasaside .row .col5:nth-of-type(1n+1) {
+    clear: left; } }
+
+@media (min-width: 64em) {
+  .col, .col1 {
+    float: left;
+    width: 98%;
+    *width: 93%;
+    margin-left: 2%; }
+  .col2 {
+    float: left;
+    width: 48%;
+    *width: 45.5%;
+    margin-left: 2%; }
+  .col3 {
+    float: left;
+    width: 31.33333%;
+    *width: 29.66667%;
+    margin-left: 2%; }
+  .col3-2 {
+    float: left;
+    width: 64.66667%;
+    *width: 61.33333%;
+    margin-left: 2%; }
+  .col4 {
+    float: left;
+    width: 23%;
+    *width: 21.75%;
+    margin-left: 2%; }
+  .col5 {
+    float: left;
+    width: 18%;
+    *width: 17%;
+    margin-left: 2%; }
+  .hasaside .col5 {
+    float: left;
+    width: 23%;
+    *width: 21.75%;
+    margin-left: 2%; } }
+
+@media (max-width: 64em) {
+  .col2 {
+    float: left;
+    width: 48%;
+    *width: 45.5%;
+    margin-left: 2%; }
+  .col3, .col3-2, .col4, .col5 {
+    float: left;
+    width: 31.33333%;
+    *width: 29.66667%;
+    margin-left: 2%; }
+  .hasaside .col3, .hasaside .col3-2, .hasaside .col4, .hasaside .col5 {
+    float: left;
+    width: 48%;
+    *width: 45.5%;
+    margin-left: 2%; } }
+
+@media (max-width: 48em) {
+  * .col, * .col1, * .col2, * .col3, * .col3-2, * .col4, * .col5, .hasaside .col, .hasaside .col1, .hasaside .col2, .hasaside .col3, .hasaside .col3-2, .hasaside .col4, .hasaside .col5 {
+    float: left;
+    width: 98%;
+    *width: 93%;
+    margin-left: 2%; } }
+
+.appmenu {
+  width: 25em;
+  position: fixed;
+  left: -25em;
+  top: 0;
+  bottom: 0;
+  transition: left 0.2s;
+  overflow: auto;
+  overflow: -moz-scrollbars-none;
+  -ms-overflow-style: none;
+  z-index: 16;
+  box-shadow: 0 16px 32px 0 rgba(0, 0, 0, 0.5), 0 0 2px 1px rgba(0, 0, 0, 0.12);
+  /*.icon-close {
+            position: relative;
+            top: .25em;
+            padding: 0 .25em;
+        }*/ }
+  .appmenu h2 {
+    font-size: 0.667em;
+    padding-left: 3.5em; }
+  .appmenu hr {
+    margin: 0 0 3px 0; }
+  .appmenu::-webkit-scrollbar {
+    width: 0 !important; }
+  .appmenu.open {
+    left: 0; }
+  .appmenu .toolbar {
+    height: 4.5em; }
+
+.appmenu-logout {
+  margin: 1em; }
+
+.appmenu-parentlist {
+  font-weight: bold; }
+  .appmenu-parentlist li {
+    border-bottom: 1px solid; }
+    .appmenu-parentlist li.selected span:hover {
+      background-color: transparent; }
+
+.appmenu-childlist .loud {
+  font-weight: bold; }

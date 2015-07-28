@@ -95,8 +95,8 @@ $type-width-readable-short: 40 * $type-char-width * 1em;
 }
 
 @mixin type-font-face {
-    $opensans-regular-fontpath: "font/opensans/OpenSans-Regular-";
-    $opensans-medium-fontpath: "font/opensans/OpenSans-Semibold-";
+    $opensans-regular-fontpath: "../../font/opensans/OpenSans-Regular-";
+    $opensans-medium-fontpath: "../../font/opensans/OpenSans-Semibold-";
 
     @font-face {
         font-family: 'OpenSans';    

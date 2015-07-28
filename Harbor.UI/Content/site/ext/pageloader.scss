@@ -1,7 +1,7 @@
 @import "../mixins/opacity";
 @import "../mixins/_border-radius.scss";
 @import "../mixins/_inline-block-list.scss";
-@import "../core/src/foundation-vars";
+@import "../core/src/$vars";
 
 
 @mixin pageloader {

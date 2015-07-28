@@ -1,7 +1,7 @@
 @import "../../mixins/no-bullets";
 @import "../../mixins/clearfix";
 @import "../../mixins/border-radius";
-@import "foundation-vars";
+@import "$vars";
 
 
 $menulist-item-height: 2.2em;
