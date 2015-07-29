@@ -2,7 +2,7 @@
 /* https://www.google.com/design/icons */
 
 
-$materialicons-path: "font/material/MaterialIcons-Regular" !default;
+$materialicons-path: "../../font/material/MaterialIcons-Regular" !default;
 $fonticons-sizes-small: 18px;
 $fonticons-sizes-medium: 24px;
 $fonticons-sizes-large: 36px;
@@ -10,18 +10,7 @@ $fonticons-sizes-x-large: 48px;
 
 
 
-@font-face {
-  font-family: 'Material Icons';
-  font-style: normal;
-  font-weight: 400;
-  src: url($materialicons-path + '.eot'); /* For IE6-8 */
-  src: url($materialicons-path + '.woff2') format('woff2'),
-       url($materialicons-path + '.woff') format('woff'),
-       url($materialicons-path + '.ttf') format('truetype');
-}
-
-
-@mixin fonticons {
+@mixin fonticons {   
 
     .icon-menu:before          { content: "\E5D2"; }
     .icon-remove:before        { content: "\E14C"; }
@@ -50,6 +39,16 @@ $fonticons-sizes-x-large: 48px;
     .icon-more:before          { content: "\E5D4"; }
     .icon-search:before        { content: "\E8B6"; }
     
+    
+    @font-face {
+      font-family: 'Material Icons';
+      font-style: normal;
+      font-weight: 400;
+      src: url($materialicons-path + '.eot'); /* For IE6-8 */
+      src: url($materialicons-path + '.woff2') format('woff2'),
+           url($materialicons-path + '.woff') format('woff'),
+           url($materialicons-path + '.ttf') format('truetype');
+    }
 
    
     [class^="icon-"],

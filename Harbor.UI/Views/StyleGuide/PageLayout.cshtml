@@ -197,9 +197,9 @@
 
 				updateLayout: function () {
 					if (this.model.hasAside() === false) {
-						this.pageAsideEl = this.pageAsideEl.detach();
-					} else if (this.$el.has(this.pageAsideEl).length === 0) {
-						this.$(".page-body").prepend(this.pageAsideEl);
+						this.pageAsideEl.hide();
+					} else {
+						this.pageAsideEl.show();
 					}
 					this.$el.attr("class", this.model.getPageClassNames());
 					this.showPage();
