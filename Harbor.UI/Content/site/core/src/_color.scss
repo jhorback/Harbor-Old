@@ -1,0 +1,111 @@
+@import "_$color.scss";
+
+
+@mixin color-theme {
+    html, body {
+        @include color-content($color-theme);
+        @include bgcolor-base($color-theme);
+    }
+    @include color-classes;   
+    @include color-box-classes($color-theme, $color-primary, $color-accent);
+    @include color-links;
+    @include color-scrollbar;
+    @include color-text-selection;
+}
+
+
+@mixin color-classes {
+   
+    .color-primary {
+        color: $color-primary;
+    }
+    .box-primary {
+         background-color: $color-primary;
+        @include color-box($color-primary-theme)
+    }
+    .color-primary-darker {
+        color: $color-primary-darker;
+    }
+    .box-primary-darker {
+        background-color: $color-primary-darker;
+        @include color-box($color-primary-darker-theme);
+    }
+    .color-primary-lighter {
+        color: $color-primary-lighter;
+    }
+    .box-primary-lighter {
+        background-color: $color-primary-lighter;
+        @include color-box($color-primary-lighter-theme);
+    }
+    .color-accent {
+        color: $color-accent;
+    }
+    .box-accent {
+        background-color: $color-accent;
+        @include color-box($color-accent-theme);
+    }
+    .color-accent-darker {
+            color: $color-accent-darker;
+    }
+    .box-accent-darker {
+        background-color: $color-accent-darker;
+        @include color-box($color-accent-darker-theme);
+    }
+    .color-accent-lighter {
+        color: $color-accent-lighter;
+    }
+    .box-accent-lighter {
+        background-color: $color-accent-lighter;
+        @include color-box($color-accent-lighter-theme);
+    }
+
+
+    .box-theme {
+        @include color-box;
+    }
+    .box-light {
+        @include color-box($theme-onlight-bg);
+    }
+    .box-dark {
+        @include color-box($theme-ondark-bg);
+    }
+
+
+
+    .bgcolor-content-light {
+        @include bgcolor-content($theme-onlight-bg);
+    }
+    .bgcolor-base-light {
+        @include bgcolor-base($theme-onlight-bg);
+    }
+    .bgcolor-toolbar-light {
+        @include bgcolor-toolbar($theme-onlight-bg);
+    }
+    .bgcolor-statusbar-light {
+        @include bgcolor-statusbar($theme-onlight-bg);
+    }
+    .bgcolor-content-dark {
+        @include bgcolor-content($theme-ondark-bg);
+    }
+    .bgcolor-base-dark {
+        @include bgcolor-base($theme-ondark-bg);
+    }
+    .bgcolor-toolbar-dark {
+        @include bgcolor-toolbar($theme-ondark-bg);
+    }
+    .bgcolor-statusbar-dark {
+        @include bgcolor-statusbar($theme-ondark-bg);
+    }
+    .bgcolor-content-theme {
+        @include bgcolor-content;
+    }
+    .bgcolor-base-theme {
+        @include bgcolor-base;
+    }
+    .bgcolor-toolbar-theme {
+        @include bgcolor-toolbar;
+    }
+    .bgcolor-statusbar-theme {
+        @include bgcolor-statusbar;
+    }
+}

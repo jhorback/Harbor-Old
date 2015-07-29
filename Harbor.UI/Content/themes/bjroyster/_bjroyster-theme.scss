@@ -33,7 +33,7 @@ $framenav- color-selected: $color-accent-dark;*/
     .page-header {
         background-color: $color-primary;
         @include color-box("dark");
-        @include color-links($color-dark);
+        @include color-links($color-dark-content);
     }
 
     #frame-footer-image {

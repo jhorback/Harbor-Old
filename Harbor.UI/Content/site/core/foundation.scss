@@ -1,9 +1,13 @@
 @import "src/foundation";
+@import "src/_type.scss";
+@import "src/_z-depth.scss";
 @import "src/_fonticons.scss";
 @import "src/_webhelpers.scss";
 
 
 @include foundation;
+@include type;
+@include z-depth;
 @include fonticons;
 @include webhelpers;
 

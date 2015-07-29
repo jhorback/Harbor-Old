@@ -1,4 +1,5 @@
 @import "src/foundation";
+@import "src/_color.scss";
 @import "src/frame";
 @import "src/form";
 @import "src/_button.scss";
@@ -15,6 +16,9 @@
     /* begin foundation-theme */
 	@include foundation-theme;
     /* end foundation-theme */
+    /* begin color-theme */
+    @include color-theme;
+    /* end color-theme */
     /* begin frame-theme */
 	@include frame-theme;
     /* end frame-theme */

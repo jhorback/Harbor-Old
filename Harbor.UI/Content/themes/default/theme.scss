@@ -14,5 +14,5 @@ $frame-logo-use-image: false;
 .page-header, #frame-header {
     background-color: $color-primary;
     @include color-box($theme-ondark-bg);
-    @include color-links($color-dark);
+    @include color-links($color-dark-content);
 }

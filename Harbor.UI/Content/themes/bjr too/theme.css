@@ -32,12 +32,28 @@ $framenav- border-selected: $color-accent-dark;
 $framenav- color-selected: $color-accent-dark;*/
 /* begin foundation-theme */
 html, body {
-  color: #202020;
-  color: rgba(0, 0, 0, 0.87);
-  background-color: #FAFAFA;
   font-size: 16px;
   font-family: "OpenSans", "sans-serif";
   line-height: 1.5; }
+
+blockquote {
+  border-left: 5px solid rgba(0, 0, 0, 0.12); }
+
+pre, code {
+  border: 1px solid;
+  border-color: #E0E0E0;
+  border-color: rgba(0, 0, 0, 0.12);
+  background-color: #F5F5F5; }
+
+code {
+  color: #FF3D00; }
+
+/* end foundation-theme */
+/* begin color-theme */
+html, body {
+  color: #202020;
+  color: rgba(0, 0, 0, 0.87);
+  background-color: #FAFAFA; }
 
 .color-primary {
   color: #0097a7; }
@@ -256,19 +272,7 @@ hr {
   color: #FFFFFF;
   color: white; }
 
-blockquote {
-  border-left: 5px solid rgba(0, 0, 0, 0.12); }
-
-pre, code {
-  border: 1px solid;
-  border-color: #E0E0E0;
-  border-color: rgba(0, 0, 0, 0.12);
-  background-color: #F5F5F5; }
-
-code {
-  color: #FF3D00; }
-
-/* end foundation-theme */
+/* end color-theme */
 /* begin frame-theme */
 #frame-header-background {
   background: #0097a7;

@@ -1,0 +1,37 @@
+@import "_$z-depth.scss";
+
+ 
+@mixin z-depth {
+    .z-depth-none {
+        @include z-depth-none;
+    }
+    .z-depth-card {
+        @include z-depth-card;
+    }
+    .z-depth-quick-entry-scrolled {
+        @include z-depth-quick-entry-scrolled;
+    }
+    .z-depth-button {
+        @include z-depth-button;
+    }
+    .z-depth-button-pressed {
+        @include z-depth-button-pressed;
+    }
+    .z-depth-bar {
+        @include z-depth-bar;
+    }
+    .z-depth-fab {
+        @include z-depth-fab;
+    }
+    .z-depth-menu {
+        @include z-depth-menu;
+    }
+    .z-depth-topmenu {
+        @include z-depth-topmenu;
+    }
+    .z-depth-dialog {
+        @include z-depth-dialog;
+    }
+
+}
+

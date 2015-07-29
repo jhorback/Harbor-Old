@@ -21,7 +21,7 @@
 // $effect: "lighten" or "darken" the background color
 @mixin button-colors($background-color: "transparent", $effect: "lighten", $color-theme: $color-theme){
    
-    @include color($color-theme);
+    @include color-content($color-theme);
 	background-color: unquote($background-color);
 
 	&:hover, &:focus { 
@@ -62,7 +62,7 @@
         }         
 	}   
 
-	&:visited { @include color($color-theme); }
+	&:visited { @include color-content($color-theme); }
 }
 
 

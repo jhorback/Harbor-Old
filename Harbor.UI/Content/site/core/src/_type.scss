@@ -1,0 +1,113 @@
+@import "_$type.scss";
+
+
+
+
+@mixin type {
+    @include type-font-face;
+
+    h1, h2, h3, h4, h5, h6 {
+        font-weight: 400;
+    }
+    h1 {
+        @include type-display1;
+    }
+    h2 {
+        @include type-title;
+    }
+    h3 {
+        @include type-subhead1;
+    }
+    h4, h5, h6 {
+        @include type-subhead2;
+    }
+    p {
+        @include type-body1;
+        margin: 0 0 1.5em 0; // jch! this cannot be right
+        &:last-of-type {
+			margin-bottom: 0;
+		}
+    }
+    small {
+        @include type-caption;
+    }
+    .type-display4 {
+        @include type-display4;
+    }
+    .type-display3 {
+        @include type-display3;
+    }
+    .type-display2 {
+        @include type-display2;
+    }
+    .type-display1 {
+        @include type-display1;
+    }
+    .type-headline {
+        @include type-headline;
+    }
+    .type-title {
+        @include type-title;
+    }
+    .type-subhead2 {
+        @include type-subhead2;
+    }
+    .type-subhead1 {
+        @include type-subhead1;
+    }
+    .type-body2 {
+        @include type-body2;
+    }
+    .type-body1 {
+        @include type-body1;
+    }
+    .type-caption {
+        @include type-caption;
+    }
+    .type-width-readable {
+        max-width: $type-width-readable;
+    }
+    .type-width-readable-short {
+        max-width: $type-width-readable-short;
+    }
+    div, section {
+        &.lead1 {
+            margin-bottom: 1.5em;
+        }
+        &.lead2 {
+            margin-bottom: 4em;
+        }
+    }
+}
+
+
+
+@mixin type-font-face {
+    $opensans-regular-fontpath: "../../font/opensans/OpenSans-Regular-";
+    $opensans-medium-fontpath: "../../font/opensans/OpenSans-Semibold-";
+
+    @font-face {
+        font-family: 'OpenSans';    
+        src: url($opensans-regular-fontpath + 'webfont.eot');
+        src: url($opensans-regular-fontpath + 'webfont.eot?#iefix') format('embedded-opentype'),
+             url($opensans-regular-fontpath + 'webfont.woff') format('woff'),
+             url($opensans-regular-fontpath + 'webfont.ttf') format('truetype'),
+             url($opensans-regular-fontpath + 'webfont.svg#OpenSansRegular') format('svg');
+        font-weight: normal;
+        font-weight: 400;
+        font-style: normal;
+    }
+
+     @font-face {
+        font-family: 'OpenSansMedium';    
+        src: url($opensans-medium-fontpath + 'webfont.eot');
+        src: url($opensans-medium-fontpath + 'webfont.eot?#iefix') format('embedded-opentype'),
+             url($opensans-medium-fontpath + 'webfont.woff') format('woff'),
+             url($opensans-medium-fontpath + 'webfont.ttf') format('truetype'),
+             url($opensans-medium-fontpath + 'webfont.svg#OpenSansRegular') format('svg');
+        font-weight: normal;
+        font-weight: 600;
+        font-style: normal;
+    }
+}
+

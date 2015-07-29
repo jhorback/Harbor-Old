@@ -2,8 +2,7 @@
 @import "../../mixins/border-radius";
 @import "$vars";
 @import "$color";
-@import "_$type.scss";
-@import "_$z-depth.scss";
+
 
 @mixin foundation {
 	@include normalize;
@@ -20,8 +19,6 @@
 
 
 @mixin body {
-    @include type-font-face;
-
 	html, body {
 		height: 100%;
 		min-height: 100%;
@@ -31,28 +28,16 @@
 	body {		
 		margin: 0;
 	}
-
-    @include type-classes;
-    @include z-depth-classes;
 }
 
 
 @mixin body-theme {
 	html,
-	body {
-        @include color($color-theme);
-        @include bgcolor-base($color-theme);
-		
+	body {		
 		font-size: $body-font-size;
 		font-family: $type-font-family;
 		line-height: $body-line-height;
 	}
-
-    @include color-classes;   
-    @include color-box-classes($color-theme, $color-primary, $color-accent);
-    @include color-links;
-    @include color-scrollbar;
-    @include color-text-selection;
 }
 
 

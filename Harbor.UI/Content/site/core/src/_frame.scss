@@ -245,7 +245,7 @@ $frame-logo-use-image: true !default;
         @include color-box;
         //background-color: $color-primary;
         [role=button] {
-            @include color($theme-ondark-bg);
+            @include color-content($theme-ondark-bg);
             &:hover {
                 background-color: darken($color-primary, 5%);
             }

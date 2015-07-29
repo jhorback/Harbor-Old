@@ -99,6 +99,91 @@ table {
   h2, h3 {
     page-break-after: avoid; } }
 
+html, body {
+  height: 100%;
+  min-height: 100%;
+  *overflow: hidden; }
+
+body {
+  margin: 0; }
+
+a, .link {
+  text-decoration: underline;
+  cursor: pointer; }
+  a:focus, .link:focus {
+    outline: 0; }
+
+strong {
+  font-weight: bold; }
+
+em {
+  font-style: italic; }
+
+cite {
+  font-style: italic; }
+  cite:before {
+    content: " -"; }
+
+blockquote, address, dl {
+  font-family: "OpenSans", "sans-serif";
+  font-size: 0.875em;
+  line-height: 1.42857; }
+  blockquote.lead, address.lead, dl.lead {
+    margin: -0.21429em 0 0.5em 0 !important; }
+
+blockquote {
+  padding: 0 0 0 1.1em; }
+  blockquote:before, blockquote:after {
+    content: ""; }
+
+address {
+  display: block;
+  font-style: normal; }
+
+hr {
+  margin: 1.5em 0;
+  border: 0;
+  height: 1px;
+  clear: both; }
+
+abbr[title] {
+  cursor: help;
+  border-bottom: 1px dotted; }
+
+ul, ol {
+  padding: 0;
+  margin-left: 1.5em; }
+
+ul, ol, dl {
+  margin-bottom: 1.5em; }
+  ul:last-of-type, ol:last-of-type, dl:last-of-type {
+    margin-bottom: 0; }
+
+dt {
+  font-family: "OpenSansMedium", "sans-serif";
+  font-size: 1em;
+  line-height: 1.75;
+  margin-top: 0.75em; }
+  dt.lead {
+    margin: -0.375em 0 1.125em 0 !important; }
+  dt:first-of-type {
+    margin-top: 0; }
+
+pre, code {
+  font-family: Monaco, Menlo, 'Courier New', monospace;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -ms-border-radius: 2px;
+  border-radius: 2px; }
+
+pre {
+  padding: 0.8em;
+  overflow: auto; }
+
+code {
+  padding: 0.125em 0.25em;
+  white-space: nowrap; }
+
 @font-face {
   font-family: 'OpenSans';
   src: url("../../font/opensans/OpenSans-Regular-webfont.eot");
@@ -114,14 +199,6 @@ table {
   font-weight: normal;
   font-weight: 600;
   font-style: normal; }
-
-html, body {
-  height: 100%;
-  min-height: 100%;
-  *overflow: hidden; }
-
-body {
-  margin: 0; }
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 400; }
@@ -290,83 +367,6 @@ div.lead2, section.lead2 {
 .z-depth-dialog {
   z-index: 24;
   box-shadow: 0 24px 48px 0 rgba(0, 0, 0, 0.16), 0 0 2px 1px rgba(0, 0, 0, 0.12); }
-
-a, .link {
-  text-decoration: underline;
-  cursor: pointer; }
-  a:focus, .link:focus {
-    outline: 0; }
-
-strong {
-  font-weight: bold; }
-
-em {
-  font-style: italic; }
-
-cite {
-  font-style: italic; }
-  cite:before {
-    content: " -"; }
-
-blockquote, address, dl {
-  font-family: "OpenSans", "sans-serif";
-  font-size: 0.875em;
-  line-height: 1.42857; }
-  blockquote.lead, address.lead, dl.lead {
-    margin: -0.21429em 0 0.5em 0 !important; }
-
-blockquote {
-  padding: 0 0 0 1.1em; }
-  blockquote:before, blockquote:after {
-    content: ""; }
-
-address {
-  display: block;
-  font-style: normal; }
-
-hr {
-  margin: 1.5em 0;
-  border: 0;
-  height: 1px;
-  clear: both; }
-
-abbr[title] {
-  cursor: help;
-  border-bottom: 1px dotted; }
-
-ul, ol {
-  padding: 0;
-  margin-left: 1.5em; }
-
-ul, ol, dl {
-  margin-bottom: 1.5em; }
-  ul:last-of-type, ol:last-of-type, dl:last-of-type {
-    margin-bottom: 0; }
-
-dt {
-  font-family: "OpenSansMedium", "sans-serif";
-  font-size: 1em;
-  line-height: 1.75;
-  margin-top: 0.75em; }
-  dt.lead {
-    margin: -0.375em 0 1.125em 0 !important; }
-  dt:first-of-type {
-    margin-top: 0; }
-
-pre, code {
-  font-family: Monaco, Menlo, 'Courier New', monospace;
-  -moz-border-radius: 2px;
-  -webkit-border-radius: 2px;
-  -ms-border-radius: 2px;
-  border-radius: 2px; }
-
-pre {
-  padding: 0.8em;
-  overflow: auto; }
-
-code {
-  padding: 0.125em 0.25em;
-  white-space: nowrap; }
 
 .icon-menu:before {
   content: "\E5D2"; }

@@ -9,40 +9,8 @@
 // 2 - card, raised button
 // 0
 // 
- 
-@mixin z-depth-classes {
-    .z-depth-none {
-        @include z-depth-none;
-    }
-    .z-depth-card {
-        @include z-depth-card;
-    }
-    .z-depth-quick-entry-scrolled {
-        @include z-depth-quick-entry-scrolled;
-    }
-    .z-depth-button {
-        @include z-depth-button;
-    }
-    .z-depth-button-pressed {
-        @include z-depth-button-pressed;
-    }
-    .z-depth-bar {
-        @include z-depth-bar;
-    }
-    .z-depth-fab {
-        @include z-depth-fab;
-    }
-    .z-depth-menu {
-        @include z-depth-menu;
-    }
-    .z-depth-topmenu {
-        @include z-depth-topmenu;
-    }
-    .z-depth-dialog {
-        @include z-depth-dialog;
-    }
 
-}
+
 // adjust these as neccessary
 // based on one box shadow for ambient lighting based on depth
 // and the primary box shadow based on 45 degree lighting also based on depth.

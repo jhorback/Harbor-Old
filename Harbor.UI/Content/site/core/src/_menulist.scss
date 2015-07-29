@@ -68,7 +68,7 @@ $menulist-border-style: 1px solid #ccc;
            }
 
 			& > span, & > a {
-                @include color;
+                @include color-content;
                 &:hover {
                     @if ($color-theme == $theme-onlight-bg) {
                         background-color: $button-bg-color-hover-light-hex;

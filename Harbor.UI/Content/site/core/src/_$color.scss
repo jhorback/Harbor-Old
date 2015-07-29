@@ -3,7 +3,7 @@
 // 
 // theme is either "light" or "dark"
 // 
-// color-container(theme, primary, accent)
+// color-box(theme, primary, accent)
 // color-links(primary, accent)
 // color-selected-item(theme)
 // 
@@ -13,7 +13,7 @@
 // color-divider-bg(theme);
 // 
 // bgcolor-content(theme)
-// bg-color(theme)
+// bgcolor-base(theme)
 // bgcolor-toolbar(theme)
 // bgcolor-statusbar(theme)
 // 
@@ -58,8 +58,8 @@ $button-effect-accent:         "lighten" !default;
 
 
 // light theme colors
-$color-light:              rgba(0, 0, 0, .87);
-$color-light-hex:          #202020;
+$color-light-content:      rgba(0, 0, 0, .87);
+$color-light-content-hex:  #202020;
 $color-light-quiet:        rgba(0, 0, 0, .54);
 $color-light-quiet-hex:    #747474;
 $color-light-disabled:     rgba(0, 0, 0, .26); // conflict in docs - errors says 38% for hint text.
@@ -69,8 +69,8 @@ $color-light-divider-hex:  #E0E0E0;
 
 
 // dark theme colors
-$color-dark:             rgba(255, 255, 255, 1);
-$color-dark-hex:          #FFFFFF;
+$color-dark-content:      rgba(255, 255, 255, 1);
+$color-dark-content-hex:  #FFFFFF;
 $color-dark-quiet:        rgba(255, 255, 255, .70);
 $color-dark-quiet-hex:    #B3B3B3;
 $color-dark-disabled:     rgba(255, 255, 255, .30);
@@ -152,14 +152,14 @@ $button-bg-color-disabled-dark-hex: #1E1E1E;
     }
 }
 
-@mixin color($dark-or-light: $color-theme) { 
+@mixin color-content($dark-or-light: $color-theme) { 
     // use for standard text
     @if $dark-or-light == "dark" {
-        color: $color-dark-hex;
-        color: $color-dark;
+        color: $color-dark-content-hex;
+        color: $color-dark-content;
     } @else {
-        color: $color-light-hex;
-        color: $color-light;
+        color: $color-light-content-hex;
+        color: $color-light-content;
     }
 }
 
@@ -215,7 +215,7 @@ $button-bg-color-disabled-dark-hex: #1E1E1E;
     // sets the main text colors
     // if primary and accent colors are given, sets the .loud and .attn classes
 
-    @include color($dark-or-light);
+    @include color-content($dark-or-light);
     @include color-box-classes($dark-or-light, $color-primary, $color-accent);
 }
 
@@ -272,11 +272,11 @@ $button-bg-color-disabled-dark-hex: #1E1E1E;
     // color the text selection
     ::selection {
         background: $bg-color;
-        @include color($dark-or-light);
+        @include color-content($dark-or-light);
     }
     ::-moz-selection {
         background: $bg-color;
-        @include color($dark-or-light);
+        @include color-content($dark-or-light);
     }
 }
 
@@ -287,123 +287,5 @@ $button-bg-color-disabled-dark-hex: #1E1E1E;
     } @else {
         background-color: $color-primary-lighter;
         @include color-box("light");
-    }
-}
-
-
-// used by the foundation to output the CSS classes
-@mixin color-classes {
-   
-    .color-primary {
-        color: $color-primary;
-    }
-    .box-primary {
-         background-color: $color-primary;
-        @include color-box($color-primary-theme)
-    }
-    .color-primary-darker {
-        color: $color-primary-darker;
-    }
-    .box-primary-darker {
-        background-color: $color-primary-darker;
-        @include color-box($color-primary-darker-theme);
-    }
-    .color-primary-lighter {
-        color: $color-primary-lighter;
-    }
-    .box-primary-lighter {
-        background-color: $color-primary-lighter;
-        @include color-box($color-primary-lighter-theme);
-    }
-    .color-accent {
-        color: $color-accent;
-    }
-    .box-accent {
-        background-color: $color-accent;
-        @include color-box($color-accent-theme);
-    }
-    .color-accent-darker {
-            color: $color-accent-darker;
-    }
-    .box-accent-darker {
-        background-color: $color-accent-darker;
-        @include color-box($color-accent-darker-theme);
-    }
-    .color-accent-lighter {
-        color: $color-accent-lighter;
-    }
-    .box-accent-lighter {
-        background-color: $color-accent-lighter;
-        @include color-box($color-accent-lighter-theme);
-    }
-
-
-    .box-theme {
-        @include color-box;
-    }
-    .box-light {
-        @include color-box($theme-onlight-bg);
-    }
-    .box-dark {
-        @include color-box($theme-ondark-bg);
-    }
-
-
-
-    //.color-light {
-    //    @include color($theme-onlight-bg);
-    //}
-    //.color-light-quiet{
-    //    @include color-quiet($theme-onlight-bg);
-    //}
-    //.color-light-disabled {
-    //    @include color-disabled($theme-onlight-bg);
-    //}
-    //.color-dark {
-    //    @include color($theme-ondark-bg);
-    //}
-    //.color-dark-quiet{
-    //    @include color-quiet($theme-ondark-bg);
-    //}
-    //.color-dark-disabled {
-    //    @include color-disabled($theme-ondark-bg);
-    //}
-
-
-    .bgcolor-content-light {
-        @include bgcolor-content($theme-onlight-bg);
-    }
-    .bgcolor-base-light {
-        @include bgcolor-base($theme-onlight-bg);
-    }
-    .bgcolor-toolbar-light {
-        @include bgcolor-toolbar($theme-onlight-bg);
-    }
-    .bgcolor-statusbar-light {
-        @include bgcolor-statusbar($theme-onlight-bg);
-    }
-    .bgcolor-content-dark {
-        @include bgcolor-content($theme-ondark-bg);
-    }
-    .bgcolor-base-dark {
-        @include bgcolor-base($theme-ondark-bg);
-    }
-    .bgcolor-toolbar-dark {
-        @include bgcolor-toolbar($theme-ondark-bg);
-    }
-    .bgcolor-statusbar-dark {
-        @include bgcolor-statusbar($theme-ondark-bg);
-    }
-    .bgcolor-content-theme {
-        @include bgcolor-content;
-    }
-    .bgcolor-base-theme {
-        @include bgcolor-base;
-    }
-    .bgcolor-toolbar-theme {
-        @include bgcolor-toolbar;
-    }
-    .bgcolor-statusbar-theme {
-        @include bgcolor-statusbar;
     }
 }

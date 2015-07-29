@@ -887,6 +887,9 @@
     <Content Include="Content\site\core\src\_fonticons.scss" />
     <Content Include="Content\site\core\src\_dialog.scss" />
     <Content Include="Content\site\core\src\_menu.scss" />
+    <Content Include="Content\site\core\src\_color.scss" />
+    <Content Include="Content\site\core\src\_type.scss" />
+    <Content Include="Content\site\core\src\_z-depth.scss" />
     <None Include="Content\site\core\src\_tiles.scss">
       <Compile>False</Compile>
       <Minify>False</Minify>
