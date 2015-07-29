@@ -1,7 +1,7 @@
-@import "$color";
+@import "_$color.scss";
 
+// jch* - reduce the number of variables here to just the absolutely neccessary "shared" variables
 
-// rename this to _$vars and reduce the number of variables to just what makes sense
 
 $body-font-size:			16px	    !default;
 $body-line-height:			1.5 		!default;

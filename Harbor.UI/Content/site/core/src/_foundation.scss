@@ -1,7 +1,8 @@
 @import "../../mixins/normalize";
 @import "../../mixins/border-radius";
-@import "$vars";
-@import "$color";
+@import "_$vars.scss";
+@import "_$color.scss";
+@import "_type.scss";
 
 
 @mixin foundation {
