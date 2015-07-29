@@ -1,0 +1,7 @@
+@import "src/_menu.scss";
+@import "src/_dialog.scss";
+@import "src/toolbar";
+
+@include menu;
+@include dialog;
+@include toolbar;
