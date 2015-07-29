@@ -8,13 +8,13 @@
 @mixin foundation {
 	@include normalize;
 	@include body;
-	@include semantic;
+	@include tags;
 }
 
 
 @mixin foundation-theme {
 	@include body-theme;
-    @include semantic-theme;
+    @include tags-theme;
 }
 
 
@@ -45,7 +45,7 @@
 
 
 
-@mixin semantic {
+@mixin tags {
     a, .link {
 		text-decoration: underline;
 		cursor: pointer;
@@ -123,7 +123,7 @@
 	}
 }
 
-@mixin semantic-theme {
+@mixin tags-theme {
     blockquote {
         @if $color-theme == "light" {
             border-left: 5px solid $color-light-divider;
