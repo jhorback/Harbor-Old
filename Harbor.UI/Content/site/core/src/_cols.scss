@@ -1,9 +1,9 @@
 @import "../../mixins/col";
 @import "../../mixins/clearfix";
-@import "media";
+@import "_$vars.scss";
+@import "_$media.scss";
 
 
-$col-gutter-width: 2%;
 
 
 @mixin cols {

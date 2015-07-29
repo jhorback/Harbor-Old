@@ -3,9 +3,8 @@
 @import "../../mixins/box-shadow";
 @import "../../mixins/transition";
 @import "../../mixins/opacity";
-@import "../../core/src/foundation";
-@import "../../core/src/cols";
-@import "../../core/src/media";
+@import "_$vars.scss";
+@import "_$media.scss";
 @import "_$z-depth.scss";
 @import "_$color.scss";
 

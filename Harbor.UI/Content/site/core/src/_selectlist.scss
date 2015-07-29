@@ -2,7 +2,7 @@
 @import "../../mixins/clearfix";
 @import "../../mixins/transition";
 @import "../../mixins/border-radius";
-@import "../../core/src/$vars";
+@import "_$vars.scss";
 
 $selectlist-selected-color: #FFF !default;
 $selectlist-selected-background-color: $link-color !default;

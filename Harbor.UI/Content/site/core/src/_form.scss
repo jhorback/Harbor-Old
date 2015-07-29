@@ -5,8 +5,8 @@
 @import "../../mixins/clearfix";
 @import "../../mixins/transition";
 @import "../../mixins/opacity";
-@import "foundation";
-@import "media";
+@import "_$vars.scss";
+@import "_$media.scss";
 
 
 $form-input-color:						#555						!default;

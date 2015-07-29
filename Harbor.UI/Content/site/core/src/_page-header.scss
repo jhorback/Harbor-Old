@@ -1,5 +1,5 @@
-@import "$vars";
-@import "$color";
+@import "_$vars.scss";
+@import "_$color.scss";
 
 
 @mixin page-header {

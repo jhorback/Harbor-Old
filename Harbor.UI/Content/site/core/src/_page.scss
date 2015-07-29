@@ -1,7 +1,7 @@
 @import "../../mixins/text-shadow";
 @import "../../mixins/clearfix";
 @import "../../mixins/no-bullets";
-@import "$vars";
+@import "_$vars.scss";
 @import "page-header";
 @import "page-body";
 
