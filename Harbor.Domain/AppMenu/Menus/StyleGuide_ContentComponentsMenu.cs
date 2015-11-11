@@ -11,7 +11,6 @@ namespace Harbor.Domain.AppMenu.Menus
 				return new List<MenuItem>()
 				{
 					new StyleGuideButtonsMenuLink(),
-					new StyleGuideContentBoxesMenuLink(),
 					new StyleGuideContentViewersMenuLink(),
 					new StyleGuideDataListsMenuLink(),
 					new StyleGuideDataTablesMenuLink(),
