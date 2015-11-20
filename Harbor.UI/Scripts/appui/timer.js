@@ -14,7 +14,7 @@
  * @param {jquery} $
  * @returns {{wait: function, waitFor: function}}
  */
-function timer($) {
+appui.timer = function ($) {
 
 	return {
         /**
@@ -68,4 +68,4 @@ function timer($) {
 
 }
 
-context.module("bbext").service("timer", ["$", timer]);
+appui.service("timer", ["$", appui.timer]);

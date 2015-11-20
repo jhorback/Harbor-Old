@@ -9,8 +9,9 @@ testing...
 
 Also adds the model and collection factories and methods
 */
-function childViewExt(mixin, modelFactory, collectionFactory) {
-	
+bbext.childViewExt = function () {
+	"use strict";
+
 	function ChildViewContainer(view) {
 		this.view = view;
 		this.children = {};
@@ -43,25 +44,18 @@ function childViewExt(mixin, modelFactory, collectionFactory) {
 	};
 
 
-	mixin("view").register("childViewExt", {
-		
-		beforeInit: function () {
-			this.modelFactory = modelFactory;
-			this.collectionFactory = collectionFactory;
-			this.views = new ChildViewContainer(this);
-			this.on("close", _.bind(this.views.remove, this.views));
-		},
-
-		createModel: modelFactory.create,
-
-		createCollection: collectionFactory.create
-	});
+	return {
+		ctor: {
+			before: function () {
+				this.views = new ChildViewContainer(this);
+				this.on("close", _.bind(this.views.remove, this.views));
+			}
+		}
+	};
 }
 
 
-bbext.config([
-	"mixin",
-	"modelFactory",
-	"collectionFactory",
-	childViewExt
+bbext.mixin("childViewExt", [
+	bbext.childViewExt
 ]);
+

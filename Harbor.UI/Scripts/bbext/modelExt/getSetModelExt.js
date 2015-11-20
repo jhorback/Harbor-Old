@@ -1,31 +1,52 @@
-﻿
-
-function getSetModelExt(mixin, modelPropertyDescriptor) {
+﻿/*
+ * Allows for a model properties to provide getters and setters and  observe
+ * other property changes or associations events.
+ *
+ *     "[someProperty]": {
+ *         get: function (val) {
+ *              return val;
+ *         }
+ *         set: function (val, options) {
+ *              return val;
+ *         },
+ *         observe: ["someOtherProperty"]
+ *      }
+ *
+ * observe can be a string (for one property) an array (for multiple properties)
+ * or an object for listening to associations.
+ *     observe: {
+ *         "someAssociation": ["sync", "request"],
+ *         "this": "sync"
+ *      }
+ *
+ */
+bbext.getSetModelExt = function (modelPropertyDescriptor) {
 
 	var getSetModelExt = {
+		ctor: {
+			after: function () {
+				this._bindings = {};
 
-		afterInit: function () {
-			this._bindings = {};
-			
-			// add a property that let's us know that the model has been synced
-			// useful for lazyloads when saving model on change
-			// (don't want to save on the initial sync)
-			this.synced = false;
-            this.set({ "synced": false }, {silent: true});
-			this.on("sync", function () {
-				this._settingFromServer = false;
-				this.synced = true;
-				this.set("synced", true);
-			}, this);
+				// add a property that let's us know that the model has been synced
+				// useful for lazyloads when saving model on change
+				// (don't want to save on the initial sync)
+				this.synced = false;
+				this.set({ "synced": false }, { silent: true });
+				this.on("sync", function () {
+					this._settingFromServer = false;
+					this.synced = true;
+					this.set("synced", true);
+				}, this);
 
-			
-            this.on("request", function () {
-                this.synced = false;
-				// jch* this was causing loops when listening to just change and saving
-				// this.set("synced", false);
-            }, this);
-			
-			parseBindings.call(this);
+
+				this.on("request", function () {
+					this.synced = false;
+					// jch* this was causing loops when listening to just change and saving
+					// this.set("synced", false);
+				}, this);
+
+				parseBindings.call(this);
+			}
 		},
 
 		parse: function (resp, options) {
@@ -47,7 +68,7 @@ function getSetModelExt(mixin, modelPropertyDescriptor) {
 				currentValue = Backbone.Model.prototype.get.apply(this, arguments);
 
 			if (getFn) {
-				val = getFn.call(this, currentValue);
+				val = getFn.call(this, currentValue, this.attributes);
 				if (val !== undefined && val !== currentValue) {
 					Backbone.Model.prototype.set.call(this, name, val); // keep the attrs in sync
 					// this.attributes[name] = val; // keep the attrs in sync
@@ -61,12 +82,12 @@ function getSetModelExt(mixin, modelPropertyDescriptor) {
 		set: function (name, value, options) {
 			var model = this,
 				valueToSet,
-                multiProps,
-                getValueToSet = _.bind(function (name, value) {
-                	var setFn = modelPropertyDescriptor(this).set[name];
-                	value = setFn ? setFn.call(this, value, options) : value;
-                	return value;
-                }, this);
+				multiProps,
+				getValueToSet = _.bind(function (name, value) {
+					var setFn = modelPropertyDescriptor(this).set[name];
+					value = setFn ? setFn.call(this, value, options, this.attributes) : value;
+					return value;
+				}, this);
 
 			if (_.isObject(name)) {
 				multiProps = {};
@@ -113,18 +134,20 @@ function getSetModelExt(mixin, modelPropertyDescriptor) {
 		}
 	};
 
+	return getSetModelExt;
+
 
 	function parseBindings() {
 		var model = this,
 			descriptor = modelPropertyDescriptor(this);
 
 		if (_.isEmpty(descriptor.boundAttributes) === false) {
-			this.on("all", function(change) {
+			this.on("all", function (change) {
 				var prop = change && change.split(":")[1],
 					bindings = descriptor.boundAttributes[prop];
 
 				if (prop && this.attributes[prop] !== undefined && bindings) {
-					_.each(bindings, function(depPropName) {
+					_.each(bindings, function (depPropName) {
 						this.set(depPropName, this.get(depPropName));
 					}, this);
 				}
@@ -138,17 +161,17 @@ function getSetModelExt(mixin, modelPropertyDescriptor) {
 		}
 	}
 
-	function listenToAssociationFn (attributeName) {
-		return function(events, associationName) {
+	function listenToAssociationFn(attributeName) {
+		return function (events, associationName) {
 			var assoc = associationName === "this" ? this : this[associationName];
 			events = _.isArray(events) ? events.join(" ") : events;
 			this.listenTo(assoc, events, this.refreshFn(attributeName));
 		};
 	}
-
-	mixin("model").register("bbext.getSetModelExt", getSetModelExt);
-
-}
+};
 
 
-bbext.config(["mixin", "modelPropertyDescriptor", getSetModelExt]);
+bbext.mixin("getSetModelExt", [
+	"modelPropertyDescriptor",
+	bbext.getSetModelExt
+]);

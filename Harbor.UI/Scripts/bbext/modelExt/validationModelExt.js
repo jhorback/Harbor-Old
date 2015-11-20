@@ -47,10 +47,8 @@
  *         }
  *      }
  */
-context.module("bbext").service("bbext.validationModelExt", [
-	"_", "validators", "modelPropertyDescriptor",
-function (_, validators, modelPropertyDescriptor) {
-	var onModelChange, validateProperty, valAppExt, validationModelExt;
+bbext.validationModelExt = function (validators, modelPropertyDescriptor) {
+	var onModelChange, validateProperty;
 
 	onModelChange = function (model) {
 		_.each(model.changed, function (hasChanged, propertyName) {
@@ -99,10 +97,15 @@ function (_, validators, modelPropertyDescriptor) {
 		return errors;
 	};
 
-	valAppExt = {
-		getErrors: function () {
-			validationModelExt.setupInstance(this);
+	return {
+		ctor: {
+			after: function () {
+				this._fieldErrors = {};
+				this.on("change", _.bind(onModelChange, this));
+			}
+		},
 
+		getErrors: function () {
 			var model = this,
 			    errors = null,
 			    jsonObj = model.toJSON(),
@@ -124,23 +127,11 @@ function (_, validators, modelPropertyDescriptor) {
 			return errors;
 		}
 	};
+};
 
-	validationModelExt = {
-		setupInstance: function (instance) {
-			if (instance._valinit === true) {
-				return;
-			}
-			instance._fieldErrors = {};
-			instance.on("change", _.bind(onModelChange, instance));
-			instance._valinit = true;
-		},
 
-		extend: function (protoOrInstance) {
-			if (protoOrInstance._valinit !== true) {
-				_.extend(protoOrInstance, valAppExt);
-			}
-		}
-	};
-
-	return validationModelExt;
-}]);
+bbext.mixin("validationModelExt", [
+	"validators",
+	"modelPropertyDescriptor",
+	bbext.validationModelExt
+]);

@@ -9,7 +9,7 @@
 
 	Note: The analytics.js script is in the html document header which provides the global ga sympbol.
 */
-function gaService(console) {
+appui.gaService = function (console) {
 	return {
 		sendEvent: function (options) {
 			options = _.extend(options, {action: "click"});
@@ -18,7 +18,10 @@ function gaService(console) {
 		}
 	};
 }
-module("appui").service("gaService", ["console", gaService]);
+module("appui").service("gaService", [
+	"console",
+	appui.gaService
+]);
 
 
 
@@ -26,28 +29,22 @@ module("appui").service("gaService", ["console", gaService]);
 /*
 	A shim to attach data-track markup to gaService.sendEvent
 */
-function gaSendEventShim (nameValueParser, gaService) {
-	this.nameValueParser = nameValueParser;
-	this.gaService = gaService;
-}
+appui.gaSendEventShim = function (nameValueParser, gaService) {
+	return {
+		selector: "[data-track]",
 
-gaSendEventShim.prototype = {
-	selector: "[data-track]",
-
-	render: function (el, model, matches) {
-		var parser = this.nameValueParser,
-		    gaService = this.gaService;
-
-		$(el).delegate("[data-track]", "click", function (event) {
-			var target = $(event.target),
-			    eventOptions = parser.parse(target.data("track"), "category"); // category is the default
-			gaService.sendEvent(eventOptions);
-		});
-	}
+		render: function (el, model, matches) {
+			$(el).delegate("[data-track]", "click", function (event) {
+				var target = $(event.target),
+					eventOptions = nameValueParser.parse(target.data("track"), "category"); // category is the default
+				gaService.sendEvent(eventOptions);
+			});
+		}
+	};
 };
 
 appui.shim("gaSendEventShim", [
 	"nameValueParser",
 	"gaService",
-	gaSendEventShim
+	appui.gaSendEventShim
 ]);

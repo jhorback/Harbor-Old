@@ -103,7 +103,9 @@
 	Popup.template = '' +
 		'<div class="popup">' +
 		'	<div class="arrow"></div>' +
-		'	<h1 class="popup-title"></h1>' +
+		'	<div class="toolbar bgcolor-toolbar-theme pad-h seam">' +
+		'		<div class="float-left"><h1 class="type-title"></h1></div>' +
+		'	</div>' +
 		'	<div class="popup-content"></div>' +
 		'</div>';
 
@@ -132,9 +134,9 @@
 			this.popupEl = $($.parseHTML(Popup.template));
 			this.popupEl.addClass(this.options.placement);
 			if (this.options.title) {
-				this.popupEl.find(".popup-title").html(this.options.title);
+				this.popupEl.find("h1").html(this.options.title);
 			} else {
-				this.popupEl.find(".popup-title").remove();
+				this.popupEl.find("h1").closest(".toolbar").remove();
 			}
 			this.popupEl.find(".popup-content").append(this.el.detach().show());
 			// console.log(this.options.container);
@@ -152,7 +154,7 @@
 					"bottom": { my: "center top",    at: "center bottom+10" },
 					"left":   { my: "right center",  at: "left-10 center"   },
 					"right":  { my: "left center",   at: "right+10 center"  },
-					"bottomleft": { my: "right+102 top",    at: "center bottom+10" }
+					"bottomleft": { my: "right+20 top",    at: "center bottom+10" }
 				},
 			    position = placement[this.options.placement] || placement;
 			

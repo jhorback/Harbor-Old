@@ -1,4 +1,10 @@
-﻿/*
+﻿/* 
+ * DEPRECATED ******************************
+ * 
+ * ---> Use a Backbone collection for tabs, fitlerlists, menus, etc.
+ *      It's the most flexible and really not hard to do it straight up.
+ * 
+ *  
  *	menuListFactory.createMenuList(el, options) - side menu page
  *	menuListFactory.createTabList(el, options) - standard inline tabs
  *	menuListFactory.createDetailPageNav(el, options) - detail page tabs
@@ -28,7 +34,7 @@
  *		destroy() - removes any created dom elements and event bindings.
  *
  */
-function tabFactory (_, appurl, collectionFactory, modelFactory) {
+function tabFactory (_, appurl, collectionFactory, modelFactory, deprecate) {
 
     /**
      * A simple object that creates and manages a set of tabs using a backbone model to store state.
@@ -37,8 +43,10 @@ function tabFactory (_, appurl, collectionFactory, modelFactory) {
      */
 	var Tabs = function (el, options, listType) {
 		this.listType = listType;
-		this.element = $(el);
+		this.isTabs = listType.indexOf("tablist") > -1;
 		this.options = options;
+        this.parentView = options.parentView;
+		this.element = this.parentView ? this.parentView.$(el) : $(el);
 		this.options.valueAttribute = this.options.valueAttribute || "value";
 		this.items = createItemsModel.call(this, this.options.items);
 
@@ -66,7 +74,11 @@ function tabFactory (_, appurl, collectionFactory, modelFactory) {
 			var item = this.element.find("[data-value='" + value + "']");
 			this.element.find(".selected").removeClass("selected");
 			this.options.model.set(this.options.attr, value);
-			item.addClass("selected");
+			if (this.isTabs) {
+				item.find(".tablist-item").addClass("selected");
+			} else {
+				item.find(".lineitem").addClass("selected");
+			}
 		},
 
         /** Destroys the tab list and stops listening for all model events related to this list */
@@ -89,10 +101,18 @@ function tabFactory (_, appurl, collectionFactory, modelFactory) {
 		this.items.each(function (dataItem) {
 			dataItemEl = $('<li data-value="' + dataItem.attributes[this.options.valueAttribute] + '"></li>');
 			if (dataItem.attributes.href && (dataItem.get("disabled") !== true)) {
-				dataItemEl.append('<a href="' + appurl.get(dataItem.attributes.href) + '">' + dataItem.attributes.text + '</a>');
+				if (this.isTabs) {
+					dataItemEl.append('<a class="tablist-item" href="' + appurl.get(dataItem.attributes.href) + '">' + dataItem.attributes.text + '</a>');
+				} else {
+					dataItemEl.append('<a class="lineitem" href="' + appurl.get(dataItem.attributes.href) + '"><span class="lineitem-content">' + dataItem.attributes.text + '</span></a>');
+				}
 				dataItemEl.find("a").on("click", clickItem(this));
 			} else {
-			    dataItemEl.append('<span tabindex="0">' + dataItem.attributes.text + '</span>');
+				if (this.isTabs) {
+					dataItemEl.append('<span class="tablist-item" tabindex="0">' + dataItem.attributes.text + '</span>');
+				} else {
+					dataItemEl.append('<span class="lineitem" tabindex="0">' + dataItem.attributes.text + '</span>');
+				}
 
 			    if (dataItem.get("disabled") === true) {
 			        dataItemEl.addClass("disabled");
@@ -169,10 +189,10 @@ function tabFactory (_, appurl, collectionFactory, modelFactory) {
 		createTabList: createTabsCurry("tablist"),
 
         /** Another horizontal tab list, but for primary page navigation on the detail pages */
-		createDetailPageNav: createTabsCurry("detailpage-nav"),
+		createDetailPageNav: createTabsCurry("detailpage-tabs tablist"),
 
         /** Creates a vertical simple list for page filters */
-		createFilterList: createTabsCurry("filterlist")
+		createFilterList: createTabsCurry("menulist condensed")
 	};
 }
 
@@ -181,5 +201,6 @@ bbext.service("tabFactory", [
 	"appurl",
 	"collectionFactory",
 	"modelFactory",
+	"deprecate",
 	tabFactory
 ]);

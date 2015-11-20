@@ -20,25 +20,27 @@ groupSource
 
 
 Sorting the grouped collections
-    The models are a collection created as the same type of the 'groupSource' so the comparator 
+    The models are a collection created as the same type of the 'groupSource' so the comparator
     will keep the items sorted.
 
 */
-function groupColExt(mixin, _, collectionFactory) {
-	
+bbext.groupColExt = function (collectionFactory) {
+
 	var groupColExt = {
-		afterInit: function (models, options) {
-			if (options && options.groupSource) {
-				setGroupSource.call(this, options);
+		ctor: {
+			after: function (models, options) {
+				if (options && options.groupSource) {
+					setGroupSource.call(this, options);
+				}
 			}
 		},
 
 		setGroupBy: function (groupBy) {
 			var group;
-			
+
 			if (!this.groupSource) {
 				throw new Error("Cannot group a collection without a groupSource.");
-			}			
+			}
 
 			this.reset();
 			this.groupBy = groupBy;
@@ -47,7 +49,7 @@ function groupColExt(mixin, _, collectionFactory) {
 				add.call(this, name, models);
 			}, this);
 		},
-		
+
 		setGroupSort: function (sort) {
 			this.groupSource.setSort(sort);
 			this.each(function (model) {
@@ -55,16 +57,16 @@ function groupColExt(mixin, _, collectionFactory) {
 			}, this);
 		}
 	};
-	
+
 
 	function setGroupSource(options) {
 		var groupBy;
-		
+
 		this.groupSource = options.groupSource;
-		
+
 		this.listenTo(this.groupSource, "all", function (event, model) {
 			var groupName, group, models;
-			
+
 			if (event === "add" || event === "remove") {
 				groupName = this.groupBy(model);
 				group = this.get(groupName);
@@ -80,7 +82,7 @@ function groupColExt(mixin, _, collectionFactory) {
 			} else if (event === "reset") {
 				this.setGroupBy(this.groupBy);
 			}
-			
+
 		}, this);
 
 		groupBy = options.groupBy || this.groupBy;
@@ -95,9 +97,12 @@ function groupColExt(mixin, _, collectionFactory) {
 		});
 	}
 
-	mixin("collection").register("bbext.groupColExt", groupColExt);
+	return groupColExt;
 
 };
 
 
-bbext.config(["mixin", "_", "collectionFactory", groupColExt]);
+bbext.mixin("groupColExt", [
+	"collectionFactory",
+	bbext.groupColExt
+]);

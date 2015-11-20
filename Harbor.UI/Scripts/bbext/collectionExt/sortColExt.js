@@ -1,18 +1,26 @@
 ﻿
 
-function sortColExt(mixin) {
-	
-	var sortColExt = {
-		setSort: function (fn) {
-			this.comparator = fn;
-			this.sort();
+bbext.sortColExt = function () {
+
+	return {
+
+		/**
+         * Updates the comparator and, unless true is passed as the optional second param, immediately sorts the collection
+         * @this {Backbone.Collection}
+         * @param {function(Backbone.Model,Backbone.Model)|function(Backbone.Model)|string} comparator
+         * @param {bool=} [silent] - if true, .sort will not automatically be called after updating the comparator
+         */
+		setSort: function (comparator, silent) {
+			this.comparator = comparator;
+			if (silent !== true) {
+				this.sort();
+			}
 			// this.trigger("reset");
 		}
 	};
-
-	mixin("collection").register("bbext.sortColExt", sortColExt);
-
 };
 
 
-bbext.config(["mixin", "context", sortColExt]);
+bbext.mixin("sortColExt", [
+	bbext.sortColExt
+]);

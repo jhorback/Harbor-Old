@@ -1,6 +1,10 @@
-﻿
-
-
+﻿/**
+ * A model used by the notify service to manage notifications
+ * @memberof bbext
+ * @constructor
+ * @param {object?} attrs
+ * @param {object?} options
+ */
 bbext.notifyModel = function (attrs, options) {
 
 };
@@ -29,16 +33,27 @@ bbext.notifyModel.prototype = {
 			}
 			if (this.attributes.notificationCount) {
 				classes.push("attn");
+			} else {
+				classes.push("hide");
 			}
 			return classes.join(" ");
 		},
 		observe: ["showMenu", "notificationCount"]
 	},
 
+    /**
+     * Used as a filter to get only visible notifications
+     * @param {bbext.notification} notification
+     * @returns {boolean}
+     */
 	visibleNotificationFilter: function (notification) {
 		return notification.get("visible");
 	},
 
+    /**
+     * Updates the "hasNotifications", "hasMultipleNotifications", and "notificationCount" attributes. Triggered
+     * when notifications are added or removed from the collection
+     */
 	updateHasMultipleAndCount: function () {
 		this.set("hasNotifications", this.visibleNotifications.length > 0);
 		this.set("hasMultipleNotifications", this.visibleNotifications.length > 1);

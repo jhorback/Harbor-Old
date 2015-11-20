@@ -20,8 +20,9 @@ bbext.queryHandler = function (ajaxRequest) {
     return {
         /**
          * Wraps the model.fetch call in an ajaxRequest handler.
-         * @param {Backbone.Model|Backbone.Collection} model - the model or collection to call fetch on
-         * @param {object?} query - the data to pass as the query. If this object has a 'data' property,
+         * @param {Backbone.Model|Backbone.Collection|object} model - the model or collection to call fetch on. Can also be an object with
+         *     properties model/collection (required), params (optional), and any options to pass to fetch (optional)
+         * @param {object?} params - the data to pass as the query. If this object has a 'data' property,
          *     it will be passed directly as the fetch argument to allow defining other parameters.
          * @param {object.<string,function>?} handler - the handler to use for the ajaxRequest
          * @param {object=} [context] - the context to use for the handler callbacks
@@ -32,7 +33,7 @@ bbext.queryHandler = function (ajaxRequest) {
 				toFetch;
 
 			if (model instanceof Backbone.Model || model instanceof Backbone.Collection) {
-				toFetch = model;				
+				toFetch = model;
 				options.data = params;
 				options.handler = handler;
 				options.context = context;
@@ -42,7 +43,7 @@ bbext.queryHandler = function (ajaxRequest) {
 				options.data = options.params;
 				toFetch = options.model || options.collection;
 			}
-			
+
 			return ajaxRequest.handle(toFetch.fetch(options), options.handler, options.context);
 		}
 	};

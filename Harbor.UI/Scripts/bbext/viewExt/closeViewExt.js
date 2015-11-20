@@ -1,16 +1,17 @@
 ﻿/*globals */
 /*
 */
-function closeViewExt(_, Backbone, mixin, console) {
+bbext.closeViewExt = function (console) {
 	"use strict";
-	
 
-	var closeViewExt = {
-		afterInit: function () {
-			var close = _.bind(this.close, this);
-			this.events = this.events || {};
-			this.events.close = close;
-			this.on("close", close);
+	return {
+		ctor: {
+			after: function () {
+				var close = _.bind(this.close, this);
+				this.events = this.events || {};
+				this.events.close = close;
+				this.on("close", close);
+			}
 		},
 
 		close: function (options) {
@@ -53,10 +54,9 @@ function closeViewExt(_, Backbone, mixin, console) {
 			console.log("closeViewExt: removing view", this.name);
 		}
 	};
-	
-
-	mixin("view").register("bbext.closeViewExt", closeViewExt);
-
 };
 
-bbext.config(["_", "Backbone", "mixin", "console", closeViewExt]);
+bbext.mixin("closeViewExt", [
+	"console",
+	bbext.closeViewExt
+]);

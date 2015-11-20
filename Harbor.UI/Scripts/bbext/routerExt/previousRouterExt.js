@@ -8,21 +8,22 @@ The previous method returns false if there is not a url to go to, allowing
 a router to navigate to a default url.
     example: this.previous() || this.default();
 */
-function previousRouterExt(mixin, Backbone) {
-	var routerMixin, extension;
-	
-	extension = {
-		afterInit: function () {
-			this.history = [];
+bbext.previousRouterExt = function () {
+	return {
+		ctor: {
+			after: function () {
+				this.history = [];
+				
+			}
 		},
 
-		navigate: function(fragment, options) {
+		navigate: function (fragment, options) {
 			Backbone.history.navigate(fragment, options);
 			this.history.push(Backbone.history.fragment);
 			if (this.history.length > 10) { // keep the history at 5-10 elements
 				this.history.splice(0, 5);
 			}
-			return this; 
+			return this;
 		},
 
 		previous: function () {
@@ -36,10 +37,9 @@ function previousRouterExt(mixin, Backbone) {
 			}
 		}
 	};
-
-	routerMixin = mixin("router");
-	routerMixin.register("bbext.previousRouterExt", extension);
-}
+};
 
 
-bbext.config(["mixin", "Backbone", previousRouterExt]);
+bbext.mixin("previousRouterExt", [
+	bbext.previousRouterExt
+]);

@@ -3,11 +3,11 @@
   Tests if results are being passed as a property to secure the data.
   Also looks for totalCount and sets it as a property on the collection for paging.
 */
-function parseColExt(mixin) {
+bbext.parseColExt = function () {
 	
 	var parseColExt = {
 		parse: function (resp) {
-			if (resp.results) {
+			if (resp.results && typeof resp.totalCount !== 'undefined') {
 				this.totalCount = resp.totalCount;
 				return resp.results;
 			}
@@ -15,9 +15,10 @@ function parseColExt(mixin) {
 		}
 	};
 
-	mixin("collection").register("bbext.parseColExt", parseColExt);
+	return parseColExt;
+}
 
-};
 
-
-bbext.config(["mixin", parseColExt]);
+bbext.mixin("parseColExt", [
+	bbext.parseColExt
+]);

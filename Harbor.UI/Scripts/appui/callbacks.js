@@ -24,4 +24,4 @@ appui.callbacks = function () {
 	};
 };
 
-appui.service("callbacks", appui.callbacks)
+appui.service("callbacks", appui.callbacks);

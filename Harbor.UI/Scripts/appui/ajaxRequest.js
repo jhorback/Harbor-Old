@@ -24,7 +24,12 @@
 appui.ajaxRequest = function ($, defaultHandler, console) {
 
 	/* Default ajax handling */
-	$.ajaxSetup({ dataType: "json" });
+	$.ajaxSetup({
+		dataType: "json",
+		beforeSend: function (jqxhr, settings) {
+			jqxhr.requestURL = settings.url;
+		}
+	});
 
     /** @name appui.ajaxRequest */
 	return {

@@ -4,12 +4,15 @@
  *     etc. of the child tab view.
  *     Call detailPageTabManager.createTabs(options) "onRender" of the parent view.
  *
+
+ jch! - can i use a bb collection over the tabFactory (which is deprecated?)
+
  * Options
  *     parentView - the parent Backbone view.
  *     tabsEl - the dom node to render the tablist to.
  *     bodyEl - the element to use as the region in the component (you can set this here if not defined by the component).
  *     tabs - the Backbone collection of tab models. The default is parentView.model.tabs.
- *     model - the name of the sub model in the rootModel to use as this.model in the child component.
+ *     model (deprecate? use ddf instead?) - the name of the sub model in the rootModel to use as this.model in the child component.
  *     currentTabAttributeName - the name of the attribute in the parentView model to listen
  *         to for tab changes. The default is "currentTabView".
  *
@@ -21,7 +24,7 @@
  *     text - the text to show for the tab in the tab list
  *     component - the name of the component to show when the tab is selected.
  *     detailPageClassNames - class names to place on the root ".detailpage" div when the tab is visible.
- *         Can be any combination of: has-nav has-actionbar has-filter
+ *         Can be any combination of: has-tabs has-actionbar has-sidebar
  *	   text - The text on the tabs (see the tabFactory for additional details and options).
  */
 bbext.detailPageTabManager = function (tabFactory, context) {
@@ -50,6 +53,7 @@ bbext.detailPageTabManager = function (tabFactory, context) {
 				componentName && tab.set("value", componentName);
 			});
 			tabFactory.createDetailPageNav(options.tabsEl, {
+                parentView: parentView,
 				items: options.tabs,
 				model: parentView.model,
 				attr: options.currentTabAttributeName,
@@ -86,6 +90,7 @@ bbext.detailPageTabManager = function (tabFactory, context) {
             currentTabModel = options.tabs.findWhere({ value: currTab });
 
 			componentRenderOptions = {
+                parentView: parentView,
 				cache: true,
 				model: rootModel[currentTabModel.attributes.model] || rootModel,
 				rootModel: rootModel // added for convenience
@@ -98,7 +103,6 @@ bbext.detailPageTabManager = function (tabFactory, context) {
 			currComponent.render(componentRenderOptions);
 
 			parentView.$el.attr("class", "detailpage " + currentTabModel.get("detailPageClassNames"));
-			// JCH! - change value to component
 		};
 	}
 

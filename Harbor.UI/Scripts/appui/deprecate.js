@@ -2,7 +2,7 @@
 
 module("appui").service("deprecate", ["console", function (console) {
 	return {
-		mute: true, 
+		mute: false, 
 			
 		log: function (msg) {
 			if (!this.mute) {

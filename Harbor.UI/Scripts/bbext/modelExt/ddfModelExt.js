@@ -10,6 +10,8 @@
  *     url - defines the url property for the model/collection.
  *     query - define this to override the query method.
  *     associations - defines sub associations.
+ *     attrs - if a model, this is the initial attributes (or function returning the attributes).
+ *     models - if a collection, this is the initial models (or function returning the models).
  *
  * query curry:
  *      if the model/collection is determined to have an "xhr" source (if the url property is defined) then a 
@@ -24,10 +26,11 @@
  *      A root property is added to those options for reference.
  *
  * Events hash:
+ *      Similar to the view events hash, allows you to handle events triggered on the root model.
+ *      NOT SUPPRTED: Automatic events from successful commands; i.e. "command:addUser".
  *
  */
 bbext.ddfModelExt = function (
-	mixin,
 	modelFactory,
 	collectionFactory,
 	queryHandler,
@@ -36,39 +39,51 @@ bbext.ddfModelExt = function (
 	var ddfModelExt, createAssocationMethods;
 
 	ddfModelExt = {
-		beforeInit: function () {
-			forEachAssociation.call(this, "beforeInit", arguments);
-			setupEvents.apply(this, arguments);
-		},
-
-		afterInit: function() {
-			forEachAssociation.call(this, "afterInit", arguments);
+		ctor: {
+			before:function () {
+				forEachAssociation.call(this, "beforeInit", arguments);
+				setupEvents.apply(this, arguments);
+			},
+			after: function() {
+				forEachAssociation.call(this, "afterInit", arguments);
+			}
 		}
 	};
 
 	createAssocationMethods = {
 		beforeInit: function (name, options, args) {
-			var modelOrCollection, modelOrCollectionOptions;
+			var modelOrCollection,
+				modelOrCollectionOptions,
+				root = this.root ? this.root : this,
+				// the default initial value comes from the attribute of the model with the same name
+				initialValue = args && args[0] && args[0][name]; 
 
-
-			// determine options
-			options.type = options.type || options.model ? "collection" : "model";
+		    // determine options
+            if (!options.type) {
+                options.type = options.model ? "collection" : "model";
+            }
 			options.source = (options.url || options.query) ? "xhr" : "attribute";
-			modelOrCollectionOptions = _.extend({ root: this }, args && args[1]);
-			modelOrCollectionOptions.root = this;
+			modelOrCollectionOptions = _.extend({ root: root }, args && args[1]); // args[1] is the root models options
+			if (options.model) {
+				modelOrCollectionOptions.model = options.model;
+			}
 
-
+			// determine the initial value
+			initialValue = options.type === "model" ?
+				_.result(options, "attrs") || initialValue || {} :
+				_.result(options, "models") || initialValue || [];
+			
 			// create the model/collection
 			if (options.name) {
 				modelOrCollection = options.type === "model" ?
-					modelFactory.create(options.name, {}, modelOrCollectionOptions) :
-					collectionFactory.create(options.name, {}, modelOrCollectionOptions);
+					modelFactory.create(options.name, initialValue, modelOrCollectionOptions) :
+					collectionFactory.create(options.name, initialValue, modelOrCollectionOptions);
 			} else { // generic model
 				modelOrCollection = options.type === "model" ?
-					modelFactory.createGeneric([], modelOrCollectionOptions) :
-					collectionFactory.createGeneric([], modelOrCollectionOptions);	
+					modelFactory.createGeneric(initialValue, modelOrCollectionOptions) :
+					collectionFactory.createGeneric(initialValue, modelOrCollectionOptions);	
 			}
-			modelOrCollection.root = this;
+			modelOrCollection.root = root;
 			this[name] = modelOrCollection;
 			options.model && (modelOrCollection.model = options.model);
 		
@@ -84,7 +99,7 @@ bbext.ddfModelExt = function (
 			}
 
 
-			// parse sub associations
+		    // parse sub associations
 			if (options.type === "model" && options.associations) {
 				modelOrCollection.associations = options.associations;
 				forEachAssociation.call(modelOrCollection, "beforeInit", args);
@@ -93,16 +108,17 @@ bbext.ddfModelExt = function (
 
 
 			// call initialize
-			options.initialize && options.initialize.apply(modelOrCollection, args);
+			options.initialize && options.initialize.apply(modelOrCollection, args); // jch! can i seed with initial attrs/models?
 		},
 
 		// set from root attributes
 		afterInit: function (name, options, args) {
 			var attrsOrModels = this.attributes[name],
 				modelOrCollection = this[name];
-		
+
+			// if (args[0] && args[0].text === "Main") debugger;
 			if (attrsOrModels) {
-				modelOrCollection.set(attrsOrModels);
+				modelOrCollection.add(attrsOrModels);
 
 				this.on("change:" + name, function() {
 					modelOrCollection.set(this.get(name));
@@ -110,6 +126,8 @@ bbext.ddfModelExt = function (
 			}
 		}
 	};
+
+	return ddfModelExt;
 
 	function forEachAssociation(method, args) {
 		if (!this.associations) {
@@ -151,13 +169,10 @@ bbext.ddfModelExt = function (
 			this.trigger.apply(this, "global:" + eventName, args);
 		});
 	}
-
-	mixin("model").register("bbext.ddfModelExt", ddfModelExt);
 };
 
 
-bbext.config([
-	"mixin",
+bbext.mixin("dfdModelExt", [
 	"modelFactory",
 	"collectionFactory",
 	"queryHandler",

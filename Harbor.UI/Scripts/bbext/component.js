@@ -1,32 +1,32 @@
 ﻿/*
  * component Construct
- * 
+ *
  * A component is used to render a root template in a region.
- * 
+ *
  * The region can be defined at component creation.
  * 	   someApp.component("someComponent", {
  * 		   region: "#frame-body"
  * 	   });
- *  
+ *
  *     The name of the component associates the component with a root template.
  *     Above, "someComponentView" will be rendered during a call to render on the component.
- * 
- * 
+ *
+ *
  * Or during rendering.
  * 	   someComponent.render({
  * 	   	   // options for the root view
  * 	   	   region: "#frame-body"
  * 	   });
- * 
+ *
  * Closing the component:
  * 	   someComponent.close();
- * 
- * 
+ *
+ *
  * Managing components
  *     Components can also be managed by using a key.
  *         someComponent.render("someKey", options);
  *         someComponent.close("someKey");
- *  
+ *
  * Caching components:
  * 	   If cache: true is set as an option, a call to close only detaches the component.
  * 	   Then a call to open will reattach if there is a cached component.
@@ -45,12 +45,12 @@
  * Scroll position:
  *      When detaching/showing cached components, scroll positions will be preserved on all
  *      elements that have a [data-rel='scroll'] attribute.
- * 
+ *
  *  Ignoring scrolling
  *       For some parent components, ignoring scroll handling may be desired.
  *       Add a scroll: false option to turn off scroll handling.
  *       This option can be set when defining the component or when calling render.
- */ 
+ */
 var Component = (function () {
 
 	var nextCid = 0,
@@ -75,7 +75,8 @@ var Component = (function () {
 			    key = "",
 			    region,
 			    cached,
-			    o = options;
+			    o = options || {},
+                parentView = o.parentView;
 
 			_.console.group("component.render:", this.name);
 
@@ -92,7 +93,7 @@ var Component = (function () {
 			if (cached && cached.cache && o.cache) {
 				view = cached.view;
 			}
-			
+
 			if (!o.region && this.insertAfterTemplate) {
 				o.insertAfterTemplate = true;
 			}
@@ -109,7 +110,7 @@ var Component = (function () {
 				}
 			}
 
-			region = $(o.region);
+			region = parentView ? parentView.$(o.region) : $(o.region);
 			if (o.region && region.length === 0) {
 				_.console.error("The region does not exist.");
 			}
@@ -125,10 +126,10 @@ var Component = (function () {
 			view.trigger("component:show");
 
 			_.console.groupEnd();
-			
+
 			return view;
 		},
-	
+
 		close: function (key) {
 			var view = null,
 				 _ = privates[this.cid],
@@ -154,7 +155,7 @@ var Component = (function () {
 			this.onClose && this.onClose({
 				view: cached.view
 			});
-			
+
 			_.console.groupEnd();
 		},
 
@@ -217,10 +218,10 @@ var Component = (function () {
 			child = $(child);
 			child.data("wasVisible", child.is(":visible"));
 		});
-				
+
 		elsToKeepContainer = parent.add(currentChildren);
 		// dont remove other root templates that have not been used yet
-		elsToKeep = parent.children("[data-templatefor]"); 
+		elsToKeep = parent.children("[data-templatefor]");
 		// do not detach stylesheet links
 		elsToKeep = elsToKeepContainer.find("link").add(elsToKeep);
 		currentChildren.detach();
@@ -234,8 +235,8 @@ var Component = (function () {
 
 
 
-function componentConstruct(constructCreator, Component) {
-	return constructCreator.createFrom(Component);
+function componentConstruct(mixinConstruct, Component) {
+	return mixinConstruct.createFrom(Component);
 }
 
 
@@ -247,5 +248,5 @@ bbext.register("bbext.Component.construct", bbext.Component, "object");
 
 // register the construct
 bbext.construct("component", [
-	"appui.constructCreator", "bbext.Component.construct",
+	"mixinConstruct", "bbext.Component.construct",
 	bbext.componentConstruct = componentConstruct]);

@@ -92,7 +92,7 @@ $(function () {
 
 		   // implement checkall
 		   this._checkall = this.options.checkAllEl || this.element.find("[data-role=checkall]");
-		   this.row(this._checkall).attr("data-selectable", false);
+			this.row(this._checkall).attr("data-selectable", false);
 		   this._checkall.bind("click.selectlist", $.proxy(this._checkallClick, this));
 	   },
 
@@ -149,8 +149,9 @@ $(function () {
 			   return;
 		   }
 
+
 		   // if we are clicking directly on a link or an input element
-		   if (target.closest("a,:input").length > 0) {
+		   if (target.closest("a,:input,label").length > 0) {
 			   if (target.is(":input")) {
 				   if (target.is(":radio")) {
 					   self._clickRadio(event, target);

@@ -1,6 +1,10 @@
-﻿
-
-
+﻿/**
+ * A backbone collection used as a store for notifications, which are sorted by their timestamps
+ * @memberof bbext
+ * @constructor
+ * @param {Array.<Backbone.Model>?} models
+ * @param {object?} options
+ */
 bbext.notifications = function (models, options) {
 
 };

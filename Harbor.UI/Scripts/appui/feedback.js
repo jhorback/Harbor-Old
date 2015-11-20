@@ -1,21 +1,21 @@
 /*
 Usage:
-	feedback.show("Three devices have been deleted");  jch! - not used directly
-	feedback.hide(); // hides any visible feedback, useful for when switch screens // jch! - used only to clear implied closing
-	var wait = feedback.wait("Saving the user."); // jch! - used in a handlful of places
-	wait.finished(); // jch! - used only by the spelunker
+	feedback.show("Three devices have been deleted");
+	feedback.hide(); // hides any visible feedback, useful for when switch screens
+	var wait = feedback.wait("Saving the user.");
+	wait.finished();
 	     - When calling finished without a message, this will simply close the message.
-	wait.finished("The user was saved successfully."); // jch! - not used
-	wait.finishedMessage("The user was saved successfully."); // jch! - used in a handful of places
+	wait.finished("The user was saved successfully.");
+	wait.finishedMessage("The user was saved successfully.");
 	    - finishedMessage returns a curried function for use with deferreds
 
-	var message = feedback.message(pending, completed, count); // jch! - used in a handful of places
+	var message = feedback.message(pending, completed, count);
         - kicks off the feedback timer and returns a function that can be used with a deferred
 		- Usage: someRepo.getSomeResource().then(message);
 		- If the count is included, pending and completed should be objects with 'singular' and 'plural' properties.
 		    If the string has {{count}} in it, it will be replaced with the count variable.
 
-	feedback.pluralize(res, count) - exposed for convenience // jch! - used rarely
+	feedback.pluralize(res, count) - exposed for convenience
 
 Timer
     The feedback service provides access to the timer service as a convenience
@@ -31,11 +31,8 @@ A feedback message is a DOM singleton with the folling markup.
 </div>
 */
 /**
- * @module appui
- * @name appui.feedback
- * @param {jquery} $
- * @param {bbext.timer} timer
- * @returns {{timer: bbext.timer, show: showMessage, hide: hideMessage, wait: wait, message: message}}
+ * @memberof appui
+ * @class
  */
 function feedback($, timer) {
 
@@ -43,7 +40,7 @@ function feedback($, timer) {
 	    closeEl,
 	    feedbackThreshold = 500,
 	    hideThreshold = 1000 * 60 * 1,
-	    messageTemplate = '<div id="message"><div class="alert alert-message"><div id="message-text"></div><div id="message-close">&times;</div></div></div>';
+	    messageTemplate = '<div id="message"><div class="border-radius pad box-message"><div id="message-text"></div><div id="message-close"><i class="icon-close"></i></div></div></div>';
 
     /**
      * Shows the provided message in a feedback widget
@@ -60,7 +57,7 @@ function feedback($, timer) {
 		return function () {
 			messageEl.find("#message-text").html(message);
 			dontShowClose === true ? closeEl.hide() : closeEl.show();
-			messageEl.fadeIn("fast");
+			messageEl.slideDown(300);
 			messageEl.data("timerId", timerId);
 			setTimeout(hideMessage, hideThreshold);
 		};
@@ -79,8 +76,8 @@ function feedback($, timer) {
 	}
 
     /**
-     * Hides any message shown using the provided timerId
-     * @param {object} timerId
+     * Hides any message shown using the provided timerId. If no timerId is provided, will hide any open message.
+     * @param {string|number=} [timerId]
      * @returns {promise}
      */
 	function hideMessage(timerId) {
@@ -91,7 +88,7 @@ function feedback($, timer) {
 		} else {
 			// messageEl && messageEl.fadeOut(dfd.resolve);
 			if (!timerId || messageEl.data("timerId") === timerId) {
-				messageEl.hide();
+				messageEl.slideUp(300);
 			}
 			dfd.resolve();
 		}
@@ -100,11 +97,21 @@ function feedback($, timer) {
 		return dfd.promise();
 	}
 
+    /**
+     * Generates a string from the provided params, where the result will be a singular form of the word if count === 1, or a plural form
+     * of the word otherwise.
+     * @param {{singular:string,plural:string}} res - An object with `singular` and `plural` properties that should be the singular and plural forms of
+     *   whatever is being counted. If the `plural` string contains {{count}} it will be replaced with the actual count.
+     * @param {number} count - the count of the thing being counted
+     * @returns {string}
+     */
 	function pluralize(res, count) {
 		return count === 1 ? res.singular : res.plural.replace("{{count}}", count);
 	}
 
+    /** @lends appui.feedback.prototype */
 	return {
+
 		timer: timer,
 
 		show: showMessage,
@@ -113,23 +120,33 @@ function feedback($, timer) {
 
 		pluralize: pluralize,
 
-		disable: function (field, message) {
-
+        /**
+         * Disables the specified field while showing an optional message (default to "Saving..."), returns
+         * a function to re-enable the field.
+         * @param {jQuery} $field
+         * @param {string=} [message="Saving..."]
+         * @returns {{enable: Function}}
+         */
+		disable: function ($field, message) {
+            var fieldWidth;
 			message = message || "Saving...";
-			field.data("previousHtml", field.html());
-			field.html(message);
-			field.attr("disabled", true);
+            // Save current width so field doesn't resize when contents change
+            fieldWidth = $field.width();
+            $field.width(fieldWidth);
+			$field.data("previousHtml", $field.html());
+			$field.html(message);
+			$field.attr("disabled", true);
 
 			return {
 				enable: function () {
-					field.html(field.data("previousHtml"));
-					field.removeAttr("disabled");
+					$field.html($field.data("previousHtml"));
+					$field.removeAttr("disabled");
 				}
 			}
 		},
 
         /**
-         * Shows a message that will remain until finished is called on the object returned from wait.
+         * Shows a message that will remain until `finished` is called on the object returned from wait.
          * @param {string} pendingMessage
          * @returns {{finished: finished, finishedMessage: finishedMessage}}
          */

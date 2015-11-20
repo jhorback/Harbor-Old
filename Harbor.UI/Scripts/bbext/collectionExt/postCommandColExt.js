@@ -11,14 +11,15 @@
  * If an "ids" property does not exist on the command,
  *     all ids from the collection will be added.
  *
- * Example url: collection.postCommand("bar");
- *     If the collections url is: /api/foo
- *     The command url will be: post: /api/foo/bar
- *
+ * Example url: collection.postCommand("activate", {});
+ *     If the collections url is: /api/users
+ *     The command url will be: post: /api/users/activate
+ *     Whith the post details including: "ids"
+ * 
  */
-function postCommandColExt(mixin) {
+bbext.postCommandColExt = function () {
 	
-	var extension = {
+	return {
 
 		postCommand: function (commandName, command) {
 			var url = _.result(this, "url") + "/" + commandName;
@@ -39,10 +40,9 @@ function postCommandColExt(mixin) {
 			});
 		}
 	};
-
-	mixin("collection").register("bbext.postCommandColExt", extension);
-
 };
 
 
-bbext.config(["mixin", postCommandColExt]);
+bbext.mixin("postCommandColExt", [
+	bbext.postCommandColExt
+]);

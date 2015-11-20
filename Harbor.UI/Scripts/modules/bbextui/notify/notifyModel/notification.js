@@ -17,6 +17,14 @@
  *     closed - triggered during close after the notification is removed from the collection.
  *     click // jch* implement click?
  */
+/**
+ * @memberof bbext
+ * @constructor
+ * @param {object?} attrs
+ * @param {object?} options
+ * @param {appui.callbacks} callbacks
+ * @extends Backbone.Model
+ */
 bbext.notification = function (attrs, options, callbacks) {
 
 	this.callbacks = callbacks;
@@ -60,6 +68,13 @@ bbext.notification.prototype = {
 		}
 	},
 
+    /**
+     * Shows a "complete" notification with the specified message, and will optionally set allowable provided attributes
+     * at the same time (not allowed: visible, inProgress, iconClassName)
+     * @param {string} message - The message to display
+     * @param {object=} [attrs] - An optional attribute hash to set at the same time, though visible, inProgress, and
+     *   iconClassName will be overridden if supplied
+     */
 	done: function (message, attrs) {
 		this.set(this._getAttrs(arguments, {
 			visible: true,
@@ -68,6 +83,13 @@ bbext.notification.prototype = {
 		}));
 	},
 
+    /**
+     * Shows an "error" notification with the specified message, and will optionally set allowable provided attributes
+     * at the same time (not allowed: visible, inProgress, iconClassName)
+     * @param {string} message - The message to display
+     * @param {object=} [attrs] - An optional attribute hash to set at the same time, though visible, inProgress, and
+     *   iconClassName will be overridden if supplied
+     */
 	error: function (message, attrs) {
 		this.set(this._getAttrs(arguments, {
 			visible: true,
@@ -76,6 +98,13 @@ bbext.notification.prototype = {
 		}));
 	},
 
+    /**
+     * Creates a non-visible "progress" notification with the specified message, and will optionally set allowable provided attributes
+     * at the same time (not allowed: visible, inProgress, iconClassName), then shows it after the notification's delayTimeout
+     * @param {string} message - The message to display
+     * @param {object=} [attrs] - An optional attribute hash to set at the same time, though visible, inProgress, and
+     *   iconClassName will be overridden if supplied
+     */
 	progress: function (message, attrs) {
 		this.set(this._getAttrs(arguments, {
 			visible: false,
@@ -90,11 +119,13 @@ bbext.notification.prototype = {
 
 	order: 0,
 
+    /** Updates the timestamp to the current time */
 	updateTimestamp: function() {
 		var ts = new Date().getTime();
 		this.set("timestamp", ts);
 	},
 
+    /** Closes the notification and removes it from the notifications collection */
 	close: function () {
 		this.collection && this.collection.remove(this);
 		this.trigger("close");

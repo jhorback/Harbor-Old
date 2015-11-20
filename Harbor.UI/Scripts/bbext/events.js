@@ -1,13 +1,32 @@
-﻿
-
+﻿/*
+ * Provides for a global and named event channels.
+ *
+ * Global:
+ *     events.on("eventName", fn);
+ *     events.trigger("eventName", arg);
+ *
+ * Named:
+ *     events("channelName").on("eventName", fn);
+ *     events("channelName").trigger("eventName", arg);
+ */
 bbext.events = function (globalCache) {
+	var events, channels, channel;
 
-	var events = globalCache.get("bbextEvents");
-	if (!events) {
-		events = _.extend({}, Backbone.Events);
-		globalCache.set("bbextEvents", events);
-	}
-	
+	channels = globalCache.track("bbextEventChannels", {});
+
+	channel = function (name) {
+
+		if (!channels[name]) {
+			channels[name] = _.extend({}, Backbone.Events);
+		}
+
+		return channels[name];
+	};
+
+	events = globalCache.track("bbextEvents", function () {
+		return _.extend(channel, Backbone.Events);
+	});
+
 	return events;
 };
 

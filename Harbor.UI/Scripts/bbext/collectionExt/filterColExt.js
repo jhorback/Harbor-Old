@@ -12,12 +12,14 @@
  *     Returns a new collection based on the filter, and listens to the original collection add/remove events to
  * 	   keep in sync
 */
-function filterColExt(mixin, collectionFactory, callbacks) {
+bbext.filterColExt = function (collectionFactory, callbacks) {
 	
 	var filterColExt = {
-		afterInit: function (models, options) {
-			if (options && options.filter) {
-				this.setFilter(options.filter);
+		ctor: {
+			after: function (models, options) {
+				if (options && options.filter) {
+					this.setFilter(options.filter);
+				}
 			}
 		},
 
@@ -124,9 +126,12 @@ function filterColExt(mixin, collectionFactory, callbacks) {
 
 	callbacks.create(filterColExt, "refilter");
 
-	mixin("collection").register("bbext.filterColExt", filterColExt);
-
+	return filterColExt;
 }
 
 
-bbext.config(["mixin", "collectionFactory", "callbacks", filterColExt]);
+bbext.mixin("filterColExt", [
+	"collectionFactory",
+	"callbacks",
+	bbext.filterColExt
+]);

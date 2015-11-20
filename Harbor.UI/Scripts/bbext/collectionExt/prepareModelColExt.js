@@ -5,9 +5,19 @@
  Also provides a getIdAttribute() method.
 */
 
-function prepareModelColExt(Backbone, mixin) {
+bbext.prepareModelColExt = function (context) {
 
 	var prepareModelColExt = {
+		ctor: {
+			before: function (options) {
+				// set the model if defined as a string in options
+				// useful for generic collections with specific models
+				if (options && options.model && !this.model) {
+					this.model = options.model;
+				}
+			}	
+		},
+
 		// replaceing _prepareModel so I can use the modelFactory to create the model.
 		_prepareModel: function (attrs, options) {
 			if (attrs instanceof Backbone.Model) {
@@ -40,12 +50,15 @@ function prepareModelColExt(Backbone, mixin) {
 			return new collection.model(attrs, options);
 		}
 		
-		modelFactory = collection.context.get("modelFactory");
+		modelFactory = context.get("modelFactory");
 		return modelFactory.create(collection.model, attrs, options);
 	};
 	
-	mixin("collection").register("bbext.prepareModelColExt", prepareModelColExt);
+	return prepareModelColExt;
 }
 
 
-bbext.config(["Backbone", "mixin", prepareModelColExt]);
+bbext.mixin("prepareModelColExt", [
+	"context",
+	bbext.prepareModelColExt
+]);

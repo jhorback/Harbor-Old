@@ -3,8 +3,6 @@
  *
  * Description
  *     Implements the render method for Backbone views
- *     Also adds a bindAll method to views which is a util method for _.bindAll
- *         The 'this' arg will be set to the view so it can be called like: this.bindAll(methodNames*);
  *
  * On Rendering
  *     Uses the name property of the view to find the template
@@ -38,16 +36,10 @@
  *          A serverUrl method can be defined to return a url
  *          used to fetch the new dom contents.
  */
-function renderViewExt(_, $, templateCache, collectionRenderer) {
+bbext.renderViewExt = function (templateCache, collectionRenderer, context) {
 	"use strict";
 
 	var extension = {
-		bindAll: function (methodNames) {
-			var args = Array.prototype.slice.apply(arguments);
-			args.unshift(this);
-			_.bindAll.apply(_, args);
-		},
-
 		render: function () {
 			var templateFn,
 			    el,
@@ -65,7 +57,6 @@ function renderViewExt(_, $, templateCache, collectionRenderer) {
                 }, this);
 
             if (this.collection) {
-
 				collectionRenderer.render(this);
 				onResolve();
 			} else {
@@ -73,6 +64,7 @@ function renderViewExt(_, $, templateCache, collectionRenderer) {
 				if (this.fromServer !== true) {
 
 					el = $(templateFn(modelJSON(this.model)));
+					// el = $(templateFn[0].cloneNode(true));
 
 					// set the element since the template contains the root
 					this.$el.replaceWith(el);
@@ -83,8 +75,9 @@ function renderViewExt(_, $, templateCache, collectionRenderer) {
 				this.$el.data("view", this);
 
 				// allow the shims to render
-				shims = this.context.get("shims");
-				shims.render(this.$el, this.model).then(onResolve);
+				shims = context.get("shims");
+				// if fromServer, the templateFn will not exist, so use this.shims (if falsy, all shims will be used).
+				shims.render(this.$el, this.model, templateFn ? templateFn.data.shims : this.shims).then(onResolve);
 			}
 
 			this.trigger("render");
@@ -111,11 +104,8 @@ function renderViewExt(_, $, templateCache, collectionRenderer) {
 		}
 	};
 
-	return {
-		extend: function (proto) {
-			_.extend(proto, extension);
-		}
-	};
+	return extension;
+
 
 	function modelJSON(model) {
 		return model ? (model.toJSON ? model.toJSON() : model) : {};
@@ -125,8 +115,8 @@ function renderViewExt(_, $, templateCache, collectionRenderer) {
 	// try to get the sub model from the parent model using model[name] or model.get(name)
 	function setModel(view, data) {
 		var model = view.model,
-		    modelAttr = data.model || data.collection,
-			retModel,
+			modelAttr = data.model || data.collection,
+			retModel = null,
 			getVal;
 
 		if (!model || !modelAttr) {
@@ -137,9 +127,19 @@ function renderViewExt(_, $, templateCache, collectionRenderer) {
 
 		if (data.model) {
 			view.model = retModel;
-		} else {
+
+		} else if (viewHasTemplateContent(view)) {
 			view.collection = retModel;
 		}
+	}
+
+	// only render the view as a collection if it has
+	// content, otherwise it is a cloned child view
+	// Do this because walkModel can return an unwanted collection
+	//    if the collection name is the same as a property on the model
+	//    seemed to happen with recursive models/collections
+	function viewHasTemplateContent(view) {
+        return view.$el.html() !== "";
 	}
 
 	// walks the "."'s - nested models
@@ -168,6 +168,11 @@ function renderViewExt(_, $, templateCache, collectionRenderer) {
 		}
 		return next;
 	}
-}
+};
 
-bbext.service("bbext.renderViewExt", ["_", "$", "templateCache", "bbext.collectionRenderer", bbext.renderViewExt = renderViewExt]);
+bbext.mixin("renderViewExt", [
+	"templateCache",
+	"bbext.collectionRenderer",
+	"context",
+	bbext.renderViewExt
+]);

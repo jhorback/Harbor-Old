@@ -16,7 +16,7 @@
  *     The command url will be: post: /api/foo/5/bar 
  *
  */
-function postCommandModelExt(mixin) {
+bbext.postCommandModelExt = function (mixin) {
 	
 	var extension = {
 		postCommand: function (commandName, command) {
@@ -57,8 +57,10 @@ function postCommandModelExt(mixin) {
 		}
 	};
 
-	mixin("model").register("bbext.postCommandModelExt", extension);
+	return extension;
 };
 
 
-bbext.config(["mixin", postCommandModelExt]);
+bbext.mixin("postCommandModelExt", [
+	bbext.postCommandModelExt
+]);

@@ -65,7 +65,7 @@
  *     Does not currently support the router.route method (would have to curry that method if desired).
  *     router.route(route, {[name, cache, url], callback});
  */
-function managedRouterExt(mixin, Backbone, _, routerInfo, context) {
+bbext.managedRouterExt = function (routerInfo, context) {
 	var routerMixin, managedRouterExt;
 
     /** @typedef {{
@@ -94,48 +94,45 @@ function managedRouterExt(mixin, Backbone, _, routerInfo, context) {
      */
 	managedRouterExt = {
 
-        /**
-         * Constructs the routecache, parses options, and creates routes if provided
-         * @param {object} options
-         * @this Backbone.Router.prototype
-         */
-		beforeInit: function (options) {
+		ctor: {
+			before: function (options) {
 
-            /** @type RouteCache */
-			this.routeCache = {
-				previousRoute: null,
-				currentRoute: null,
-				currentRouteArgs: [],
-				names: {}, // values point to keys in routes
-				components: {}, // holds the components by name
-                /** @type {Object.<string, RouteObject>} */
-				routes: {/*
-					"pattern": {
-						name:, url:, callback:,
-						component: <name of the component to cache>,
-						cache: <bool>,
-						previousArgs: [],
-						replaceHistory: false
-					}
-				*/}
-			};
+				/** @type RouteCache */
+				this.routeCache = {
+					previousRoute: null,
+					currentRoute: null,
+					currentRouteArgs: [],
+					names: {}, // values point to keys in routes
+					components: {}, // holds the components by name
+					/** @type {Object.<string, RouteObject>} */
+					routes: {/*
+						"pattern": {
+							name:, url:, callback:,
+							component: <name of the component to cache>,
+							cache: <bool>,
+							previousArgs: [],
+							replaceHistory: false
+						}
+					*/}
+				};
 
-			// adapted from Backbone router constructor and _bindRoutes
-			// basically runs through the routes object and records the metadata
-			options || (options = {});
-			if (options.routes) {
-				this.routes = options.routes;
-			}
-			if (!this.routes) {
-				return;
-			}
-
-			this.routes = _.result(this, 'routes');
-			_.each(this.routes, function (callback, pattern) {
-				if (_.isFunction(callback) === false && _.isObject(callback) === true) {
-					addRouteMetaData.call(this, pattern, callback);
+				// adapted from Backbone router constructor and _bindRoutes
+				// basically runs through the routes object and records the metadata
+				options || (options = {});
+				if (options.routes) {
+					this.routes = options.routes;
 				}
-			}, this);
+				if (!this.routes) {
+					return;
+				}
+
+				this.routes = _.result(this, 'routes');
+				_.each(this.routes, function (callback, pattern) {
+					if (_.isFunction(callback) === false && _.isObject(callback) === true) {
+						addRouteMetaData.call(this, pattern, callback);
+					}
+				}, this);
+			}
 		},
 
         /**
@@ -296,16 +293,12 @@ function managedRouterExt(mixin, Backbone, _, routerInfo, context) {
 		}
 	}
 
-	routerMixin = mixin("router");
-	routerMixin.register("bbext.managedRouterExt", managedRouterExt);
+	return managedRouterExt;
 }
 
 
-bbext.config([
-	"mixin",
-	"Backbone",
-	"_",
+bbext.mixin("managedRouterExt", [
 	"routerInfo",
 	"context",
-	managedRouterExt
+	bbext.managedRouterExt
 ]);
