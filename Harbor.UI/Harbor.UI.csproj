@@ -245,7 +245,7 @@
     <Compile Include="App_Start\JSPkgs\jQueryPkg.cs" />
     <Compile Include="App_Start\JSPkgs\UserAdminAppPkg.cs" />
     <Compile Include="App_Start\JSPkgs\UserAccountAppPkg.cs" />
-    <Compile Include="App_Start\JSPkgs\UserModelPkg.cs" />
+    <Compile Include="App_Start\JSPkgs\UserApiModulePkg.cs" />
     <Compile Include="App_Start\PackageConfig.cs" />
     <Compile Include="App_Start\JSPkgs\SettingsAppPkg.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
@@ -675,7 +675,7 @@
     <Content Include="Scripts\apps\Settings\Settings.js" />
     <Content Include="Scripts\modules\fileModel\%24fileModel.js" />
     <Content Include="Scripts\modules\pageModel\page.js" />
-    <Content Include="Scripts\apps\UserModel\UserModel.js" />
+    <Content Include="Scripts\modules\userApi\userModel.js" />
     <Content Include="Scripts\apps\UserAdmin\ListView.js" />
     <Content Include="Scripts\apps\UserAccount\UserAccount.js" />
     <Content Include="Scripts\apps\UserAccount\EditViews.js" />
@@ -718,6 +718,7 @@
     <Content Include="Scripts\modules\payPalButtonModel\%24payPalButtonModel.js" />
     <Content Include="Scripts\modules\payPalButtonModel\payPalButton.js" />
     <Content Include="Scripts\modules\payPalButtonModel\payPalButtonRepo.js" />
+    <Content Include="Scripts\modules\userApi\%24userApi.js" />
     <Content Include="Scripts\paypal-button-minicart.min.js" />
     <Content Include="Scripts\Prettify\prettify.js" />
     <Content Include="Scripts\qunit.js" />

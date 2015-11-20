@@ -63,11 +63,11 @@ if (window.Application) {
 	context.app("Application").use("bbext").start([
 		"jstViewExtension",
 		"modelBinderExtension",
-		"bbext.backupModelExt",
-		"bbext.validationModelExt",
-		"mixin",
+		"backupModelExt",
+		"validationModelExt",
+		// "mixin",
 		"ajaxRequest",
-		"bbext.errorDisplayViewExt",
+		"errorDisplayViewExt",
 		
 	function (
 		jstViewExtension,

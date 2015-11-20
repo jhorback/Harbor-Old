@@ -39,7 +39,7 @@ namespace Harbor.UI
 			packages.Add(new SiteStylePkg());
 			packages.Add(new UserAccountAppPkg());
 			packages.Add(new UserAdminAppPkg());
-			packages.Add(new UserModelPkg());
+			packages.Add(new UserApiModulePkg());
 		}
 	}
 }

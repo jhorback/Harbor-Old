@@ -1,15 +1,17 @@
 ﻿var UserAccount = {
-	start: function () {
-		var username = Session.currentUser.get("username");
-		var user = new UserModel({ userName: username, created: true });
-		
-		user.fetch().then(function () {
-			var mainView = new UserAccount.MainView({
-				el: $(".page"),
-				model: user
-			});
-			mainView.render();
-		});
+    start: function () {
+        var userApi = {} // jch! need to inject this
+        var username = Session.currentUser.get("username");
+        var user = userApi.getUser(username);
+
+
+        user.once("sync", function () {
+            var mainView = new UserAccount.MainView({
+                el: $(".page"),
+                model: user
+            });
+            mainView.render();
+        });
 	}
 };
 

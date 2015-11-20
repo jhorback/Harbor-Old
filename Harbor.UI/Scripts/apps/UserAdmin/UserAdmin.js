@@ -35,9 +35,10 @@
 	},
 
 	addUser: function () {
-		return {
+	    return {
+            // need to inject the userApi
 			view: new UserAdmin.AddView({
-				model: new UserModel()
+			    model: this.userApi.getUser()
 			}),
 			navigate: "add"
 		};

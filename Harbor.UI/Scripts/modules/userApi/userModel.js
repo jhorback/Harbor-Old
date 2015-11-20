@@ -1,6 +1,8 @@
-﻿var UserModel = Application.Model.extend({
-	urlRoot: Session.url("api/users"),
-	idAttribute: "userName",
+﻿
+
+userApi.userModel = {
+    idAttribute: "userName",
+
 	defaults: {
 		id: null,
 		cid: null,
@@ -26,6 +28,10 @@
 		displayPayPalMerchantAccountID: ""
 	},
 
+	initialize: function () {
+	    this.urlRoot = this.appurl.get("api/users");
+	},
+
 	url: function() {
 		return this.isNewUser() ? this.urlRoot : this.urlRoot + "/" + this.attributes.userName;
 	},
@@ -36,8 +42,6 @@
 		}
 		return Backbone.sync(method, model, options);
     },
-	
-	initialize: function () { },
 
 	validate: function (onSave) {
 		var pw, cpw, errors;
@@ -63,13 +67,13 @@
 		return this.get("created") === null;
 	},
 
-	userName: {
+	"[userName]": {
 		validate: {
 			required: true	
 		}
 	},
 	
-	displayName: {
+	"[displayName]": {
 		get: function (currentValue) {
 			var fn = this.get("firstName") || "",
 				mn = this.get("middleName") || "",
@@ -94,31 +98,27 @@
 		bind: ["firstName", "middleName", "lastName"]
 	}, 
 
-	editLink: {
+	"[editLink]": {
 		get: function () {
-			return Session.url("user/admin/edit/") + this.get("userName");
+			return this.appurl.get("user/admin/edit/") + this.get("userName");
 		}
 	},
 	
-	firstName: {
+	"[firstName]": {
 		validate: {
 			required: true
 		}
 	},
 
-	displayEmail: {
+	"[displayEmail]": {
 		get: function (currentValue) {
 			var email = this.get("email");
 			return !email || !$.trim(email) ? "(not set)" : email;
 		},
-//		set: function (value) {
-//			debugger;
-//			return value;
-//		},
 		bind: ["email"]
 	},
 	
-	displayPayPalMerchantAccountID: {
+	"[displayPayPalMerchantAccountID]": {
 		get: function (value) {
 			var id = this.get("payPalMerchantAccountID");
 			return !id || !$.trim(id) ? "(none)" : id;
@@ -126,13 +126,13 @@
 		bind: ["payPalMerchantAccountID"]
 	},
 	
-	email: {
+	"[email]": {
 		validate: {
 			email: true
 		}
 	},
 	
-	disabledText: {
+	"[disabledText]": {
 		get: function (currentValue) {
 			if (this.get("enabled") === false) {
 				return "(disabled)";
@@ -141,4 +141,7 @@
 		},
 		bind: "enabled"
 	}
-});
+};
+
+
+userApi.model("userModel", userApi.userModel);

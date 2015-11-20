@@ -12,7 +12,7 @@ namespace Harbor.UI.JSPkgs
 			Name = PackageName;
 			ScriptBundle = new AppScriptBundle(PackageName);
 			Templates = new JstTemplateAction("UserAdmin/UserAdminTemplates");
-			Dependencies = new[] { UserModelPkg.PackageName };
+			Dependencies = new[] { UserApiModulePkg.PackageName };
 			Category = Categories.Apps;
 		}
 	}
