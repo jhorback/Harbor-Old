@@ -20,16 +20,15 @@ namespace Harbor.UI.JSPkgs
 
 		Bundle getAppBundle()
 		{
-			var appBundle = new ScriptBundle("~/Scripts/app.js")
-				.Include("~/Scripts/underscore.js")
-				.Include("~/Scripts/backbone.js")
-				.Include("~/Scripts/contextjs/context.js")
-				.Include("~/Scripts/contextjs/app.js")
-				.Include("~/Scripts/Apps/appShim.js")
-				.IncludeDirectory("~/Scripts/appui", "*.js", searchSubdirectories: true)
-				.IncludeDirectory("~/Scripts/bbext", "*.js", searchSubdirectories: true)
-				.IncludeDirectory("~/Scripts/bbextv1", "*.js", searchSubdirectories: true)
-				.Include("~/Scripts/apps/AjaxRequestDefaultHandler.js");
+            var appBundle = new ScriptBundle("~/Scripts/app.js");
+            appBundle.Include("~/Scripts/underscore.js");
+            appBundle.Include("~/Scripts/backbone.js");
+            appBundle.Include("~/Scripts/contextjs/context.js");
+            appBundle.Include("~/Scripts/contextjs/app.js");
+            appBundle.Include("~/Scripts/apps/appShim.js");
+            appBundle.IncludeDirectory("~/Scripts/appui", "*.js", searchSubdirectories: true);
+            appBundle.IncludeDirectory("~/Scripts/bbext", "*.js", searchSubdirectories: true);
+            appBundle.Include("~/Scripts/apps/AjaxRequestDefaultHandler.js");
 			return appBundle;
 		}
 	}

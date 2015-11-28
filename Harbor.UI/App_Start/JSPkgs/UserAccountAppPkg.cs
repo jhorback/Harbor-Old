@@ -1,5 +1,4 @@
-﻿using System.Web.Optimization;
-using Harbor.UI.Models.JSPM;
+﻿using Harbor.UI.Models.JSPM;
 
 namespace Harbor.UI.JSPkgs
 {
@@ -11,9 +10,9 @@ namespace Harbor.UI.JSPkgs
 		{
 			Name = PackageName;
 			ScriptBundle = new AppScriptBundle(PackageName);
-			Templates = new JstTemplateAction("User/UserAccountTemplates");
-			Dependencies = new[] { UserApiModulePkg.PackageName };
+			Templates = new JstTemplateAction("UserAccount/Index");
 			Category = Categories.Apps;
+            AddDependency<UserApiModulePkg>();
 		}
 	}
 }
