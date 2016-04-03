@@ -527,6 +527,9 @@
     <Content Include="Scripts\framework\bbext\routerExt\%24routerInfo.js" />
     <Content Include="Scripts\framework\bbext\routerExt\startRouterExt.js" />
     <Content Include="Scripts\framework\bbext\commandHandler.js" />
+    <Content Include="Scripts\framework\bbext\viewExt\%24templateParser.js" />
+    <Content Include="Scripts\framework\bbext\viewExt\rootViewCache.js" />
+    <Content Include="Scripts\framework\bbext\viewExt\templateBootstrap.js" />
     <Content Include="Scripts\framework\bbext\_constructs\router.js" />
     <Content Include="Scripts\framework\bbext\_shims\selectListShim.js" />
     <Content Include="Scripts\framework\bbext\_shims\templateBinderShim.js" />
@@ -539,6 +542,7 @@
     <Content Include="Scripts\dropzone\images\spritemap%402x.png" />
     <Content Include="Scripts\dropzone\images\spritemap.png" />
     <Content Include="Scripts\framework\appui\callbacks.js" />
+    <Content Include="Scripts\framework\contextjs\module.js" />
     <Content Include="Scripts\jquery.delegates.js" />
     <Content Include="Scripts\modules\bbextui\dayDateModel.js" />
     <Content Include="Scripts\modules\bbextui\detailPageTabManager.js" />
@@ -693,7 +697,6 @@
     <Content Include="Scripts\framework\bbext\viewExt\errorDisplayViewExt.js" />
     <Content Include="Scripts\framework\bbext\viewExt\renderViewExt.js" />
     <Content Include="Scripts\framework\bbext\viewExt\%24templateCache.js" />
-    <Content Include="Scripts\framework\bbext\viewExt\%24templateRenderer.js" />
     <Content Include="Scripts\framework\bbext\_constructs\view.js" />
     <Content Include="Scripts\framework\bbext\viewExt\%24viewRenderer.js" />
     <Content Include="Scripts\holder.js" />
@@ -712,7 +715,6 @@
     <Content Include="Scripts\json2.js" />
     <Content Include="Scripts\json2.min.js" />
     <Content Include="Scripts\framework\contextjs\context.js" />
-    <Content Include="Scripts\framework\contextjs\app.js" />
     <Content Include="Scripts\modernizr-2.6.2-custom.js" />
     <Content Include="Scripts\modules\currentUserModel\currentUser.js" />
     <Content Include="Scripts\modules\payPalButtonModel\%24payPalButtonModel.js" />
