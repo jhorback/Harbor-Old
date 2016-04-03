@@ -2,7 +2,7 @@
     ViewBag.Title = "Test App";
 }
 
-    <div data-templatefor="testAppView" class="clear margin-bottom">
+    <div data-view="testAppView" class="clear margin-bottom">
         <h1><span name="firstName"></span> <span name="lastName"></span></h1>
         <h2 data-bind="style: hairColorStyle">Hair color: <span name="hairColor"></span></h2>
         <label>Age</label>
@@ -11,7 +11,7 @@
         <span name="favoriteIceCreamDisplay"></span>
 
         <hr />
-        <div data-templatefor="testAppChildView" data-model="child">
+        <div data-view="testAppChildView" data-model="child">
             Child is: <span name="firstName"></span> <span name="lastName"></span> Age: <span name="age"></span>
             <span name="hairColor" data-bind="style: hairColorStyle"></span>
             Favorite icecream: <span name="favoriteIceCreamDisplay"></span>
@@ -52,7 +52,7 @@
         </div>
 
         <ul>
-            <li xdata-templatefor="allUsersView"
+            <li xdata-view="allUsersView"
                 data-collection="allUsers"
                 data-itemview="allUsersItemView" data-bind="style: hairColorStyle">
                 <span name="firstName"></span> <span name="lastName"></span> Age: <span name="age"></span>
@@ -65,7 +65,7 @@
         </ul>
 
 
-        <div data-templatefor="showIfTestView">
+        <div data-view="showIfTestView">
             <label for="showIt" data-event="mouseenter: showIt, mouseleave: hideIt">Show It</label>
             <input type="checkbox" id="showIt" />
             <button class="attn" data-bind="showif: showIt">
@@ -74,7 +74,7 @@
         </div>
 
         <h2>Group By Favorite</h2>
-        <div data-templatefor="groupedUsersView">
+        <div data-view="groupedUsersView">
             <ul>
                 <li data-collection="groupedUsers">
                     Name: <strong data-bind="text: name"></strong>

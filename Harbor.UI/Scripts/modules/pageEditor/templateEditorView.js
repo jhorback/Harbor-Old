@@ -6,7 +6,7 @@ pageEditor.templateEditorView = function (
 	componentManager,
 	pageUICMenu,
 	addPageComponent,
-	templateRenderer,
+	viewRenderer,
 	contentRowUpdater
 ) {
 	this.fromServer = true;
@@ -16,7 +16,7 @@ pageEditor.templateEditorView = function (
 	this.pageUICMenu = pageUICMenu;
 	this.currentPageRepo = currentPageRepo;
 	this.addPageComponent = addPageComponent;
-	this.templateRenderer = templateRenderer;
+	this.viewRenderer = viewRenderer;
 	this.contentRowUpdater = contentRowUpdater;
 
 	this.pageUICMenuView = null;
@@ -154,7 +154,7 @@ pageEditor.view("templateEditorView", [
 	"componentManager",
 	"pageUICMenu",
 	"addPageComponent",
-	"templateRenderer",
+	"viewRenderer",
 	"contentRowUpdater",
 	pageEditor.templateEditorView
 ]);

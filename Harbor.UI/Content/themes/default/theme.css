@@ -338,7 +338,8 @@ hr {
     background-color: #EAEAEA;
     background-color: rgba(153, 153, 153, 0.2); }
   .button:active, button:active, input[type=button]:active, input[type=submit]:active {
-    color: color("light") !important;
+    color: #202020;
+    color: rgba(0, 0, 0, 0.87);
     background-color: #D5D5D5;
     background-color: rgba(153, 153, 153, 0.4); }
   .button:visited, button:visited, input[type=button]:visited, input[type=submit]:visited {
@@ -351,7 +352,8 @@ hr {
     .button.loud:hover, .button.loud:focus, button.loud:hover, button.loud:focus, input[type=button].loud:hover, input[type=button].loud:focus, input[type=submit].loud:hover, input[type=submit].loud:focus {
       background-color: #00b0c1; }
     .button.loud:active, button.loud:active, input[type=button].loud:active, input[type=submit].loud:active {
-      color: color("dark") !important;
+      color: #FFFFFF;
+      color: white;
       background-color: #00c8da; }
     .button.loud:visited, button.loud:visited, input[type=button].loud:visited, input[type=submit].loud:visited {
       color: #FFFFFF;
@@ -363,7 +365,8 @@ hr {
     .button.attn:hover, .button.attn:focus, button.attn:hover, button.attn:focus, input[type=button].attn:hover, input[type=button].attn:focus, input[type=submit].attn:hover, input[type=submit].attn:focus {
       background-color: #ff4f1a; }
     .button.attn:active, button.attn:active, input[type=button].attn:active, input[type=submit].attn:active {
-      color: color("dark") !important;
+      color: #FFFFFF;
+      color: white;
       background-color: #ff6333; }
     .button.attn:visited, button.attn:visited, input[type=button].attn:visited, input[type=submit].attn:visited {
       color: #FFFFFF;
@@ -376,7 +379,8 @@ hr {
       background-color: #EAEAEA;
       background-color: rgba(153, 153, 153, 0.2); }
     .button.flat:active, button.flat:active, input[type=button].flat:active, input[type=submit].flat:active {
-      color: color("light") !important;
+      color: #202020;
+      color: rgba(0, 0, 0, 0.87);
       background-color: #D5D5D5;
       background-color: rgba(153, 153, 153, 0.4); }
     .button.flat:visited, button.flat:visited, input[type=button].flat:visited, input[type=submit].flat:visited {

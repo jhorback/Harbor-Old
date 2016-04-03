@@ -1,7 +1,7 @@
 ﻿@using Harbor.Domain.Pages
 
 
-<div data-templatefor="pageUICMenuView" class="uic-menu">
+<div data-view="pageUICMenuView" class="uic-menu">
 	<span class="icon-move" title="Move"></span>
 	<span class="icon-previous" data-event="movePrevious" title="Move previous"></span>
 	<span class="icon-next" data-event="moveNext" title="Move next"></span>
@@ -11,7 +11,7 @@
 
 
 
-<div data-templatefor="addPageComponentView">
+<div data-view="addPageComponentView">
 	<h1>Add content</h1>
 	<form data-event="submit: formSubmit">
 		<h2 data-bind="showif: hasOtherComponentTypes">Suggested content</h2>
@@ -46,7 +46,7 @@
 </div>
 
 
-<div data-templatefor="changeLayoutView">
+<div data-view="changeLayoutView">
 	<h1>Change Layout</h1>
 	<form data-event="submit: submitForm">
 		<fieldset>

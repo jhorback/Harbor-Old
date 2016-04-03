@@ -696,7 +696,6 @@
     <Content Include="Scripts\framework\bbext\viewExt\%24collectionRenderer.js" />
     <Content Include="Scripts\framework\bbext\viewExt\errorDisplayViewExt.js" />
     <Content Include="Scripts\framework\bbext\viewExt\renderViewExt.js" />
-    <Content Include="Scripts\framework\bbext\viewExt\%24templateCache.js" />
     <Content Include="Scripts\framework\bbext\_constructs\view.js" />
     <Content Include="Scripts\framework\bbext\viewExt\%24viewRenderer.js" />
     <Content Include="Scripts\holder.js" />

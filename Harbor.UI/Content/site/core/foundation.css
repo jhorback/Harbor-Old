@@ -101,8 +101,7 @@ table {
 
 html, body {
   height: 100%;
-  min-height: 100%;
-  *overflow: hidden; }
+  min-height: 100%; }
 
 body {
   margin: 0; }
@@ -563,7 +562,7 @@ a [class^="icon-"], a [class*=" icon-"], a [class^="icon-"]:before, a [class*=" 
 .margin-v {
   margin: 0 1em; }
 
-[data-templatefor] {
+[data-view], [template], template {
   display: none !important; }
 
 ul.list-style-none, ol.list-style-none {

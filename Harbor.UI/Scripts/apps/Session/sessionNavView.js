@@ -2,12 +2,12 @@
 session.sessionNavView = function (
 	options,
 	currentUserRepo,
-	templateRenderer,
+	viewRenderer,
 	dialogFactory
 ) {
 
 	this.currentUserRepo = currentUserRepo;
-	this.templateRenderer = templateRenderer;
+	this.viewRenderer = viewRenderer;
 	this.dialogFactory = dialogFactory;
 };
 
@@ -21,7 +21,7 @@ session.sessionNavView.prototype = {
 
 	showMainMenu: function (event) {
 		event && event.preventDefault();
-		this.templateRenderer.render("appMenuView", {
+		this.viewRenderer.render("appMenuView", {
 			model: this.appMenuModel
 		});
 	},
@@ -40,7 +40,7 @@ session.sessionNavView.prototype = {
 	},
 
 	renderSignInView: function () {
-		return this.templateRenderer.render("signInView",  {
+	    return this.viewRenderer.render("signInView", {
 			currentUser: this.model
 		});
 	}
@@ -50,7 +50,7 @@ session.sessionNavView.prototype = {
 session.view("sessionNavView", [
 	"options",
 	"currentUserRepo",
-	"templateRenderer",
+	"viewRenderer",
 	"dialogFactory",
 	session.sessionNavView
 ]);

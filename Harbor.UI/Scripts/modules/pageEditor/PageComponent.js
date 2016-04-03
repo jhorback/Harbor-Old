@@ -21,7 +21,7 @@
  *      componentModel - created from componentType + "Model" (by the template)
  *                       the componentModel can have a syncPageProperties array.
  *      model - alias for componentModel
- *      templateRenderer
+ *      viewRenderer
  */
 pageEditor.pageComponent = function (
 	console,
@@ -29,7 +29,7 @@ pageEditor.pageComponent = function (
 	context,
 	modelFactory,
 	currentPageRepo,
-	templateRenderer
+	viewRenderer
 ) {
 	var latestSave;
 	
@@ -67,7 +67,7 @@ pageEditor.pageComponent = function (
 		},
 
 		open: function () {
-			this.view = this.templateRenderer.render(this.componentType + "View", {
+		    this.view = this.viewRenderer.render(this.componentType + "View", {
 				model: this.model,
 				uicid: this.uicid,
 				page: this.page,
@@ -117,7 +117,7 @@ pageEditor.pageComponent = function (
 			this.page = options.page;
 			this.componentModel = options.componentModel;
 			this.initComponentModel();
-			this.templateRenderer = templateRenderer;
+			this.viewRenderer = viewRenderer;
 			context.call(construct, [], this);
 			this.init && this.init();
 		};
@@ -136,7 +136,7 @@ pageEditor.construct("pageComponent", [
 	"context",
 	"modelFactory",
 	"currentPageRepo",
-	"templateRenderer",
+	"viewRenderer",
 	pageEditor.pageComponent
 ]);
 
