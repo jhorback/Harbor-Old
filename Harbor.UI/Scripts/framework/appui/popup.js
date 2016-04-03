@@ -45,7 +45,7 @@
 		show: function (onShow) {
 			// this.position();
 			if (this.options.animate) {
-				this.popupEl.fadeIn(_.bind(function() {
+				this.popupEl.fadeIn(300, _.bind(function() {
 					this.showAndPosition(onShow);
 				}, this));
 			} else { 
@@ -105,6 +105,7 @@
 		'	<div class="arrow"></div>' +
 		'	<div class="toolbar bgcolor-toolbar-theme pad-h seam">' +
 		'		<div class="float-left"><h1 class="type-title"></h1></div>' +
+        '       <div><i class="iconbutton icon-close" role="button" tabindex="0"></i></div>' +
 		'	</div>' +
 		'	<div class="popup-content"></div>' +
 		'</div>';
@@ -117,11 +118,12 @@
 			//	privates.position.call(self);
 			//});
 
+
 			//setTimeout(function () {
 			//	doc.bind("click.popup", function (event) {
 			//		var target = $(event.target);
 			//		if (target.closest(".popup").length === 0 && target[0] !== self.options.anchor[0]) {
-			//			self.hide();
+			//		    self.hide();
 			//		}
 			//	});
 			//}, 0);
@@ -139,6 +141,7 @@
 				this.popupEl.find("h1").closest(".toolbar").remove();
 			}
 			this.popupEl.find(".popup-content").append(this.el.detach().show());
+		    this.popupEl.find(".icon-close").click(_.bind(this.destroy, this));
 			// console.log(this.options.container);
 			if (this.options.container) {
 				$(this.options.container).append(this.popupEl);

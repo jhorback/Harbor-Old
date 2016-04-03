@@ -1,46 +1,124 @@
-﻿
-
+﻿//
 // viewRenderer
-// creates a view with the viewFactory
-// allows for the model on the view to be a promise or contain promises
-//     as properties that are resolved before rendering.
-function viewRenderer(viewFactory, $) {
+//
+//  render(name, options, renderOptions)
+//     uses the templateParser to parse sub views and shims (this is done once).
+//     then calls render on each child view in order using the viewFactory + renderViewExt.
+// 
+// name - the name of the view
+// 
+// options
+//     - all options are passed to the view when creating it
+//     - insertAfterTemplate: If true, the view will be inserted
+//           into the DOM after its source template element.
+// 
+// renderOptions
+//     These options are used internally to help build the template tree.
+//     - sourceTemplate - Used as a cache for child views to get their templates and shims.
+//     - isParsedView - if true, just creates the view and calls render (sub views / shims are already parsed).
+// 
+// rootModel - (deprecated; handled now by the aggregate extension)
+//     a rootModel property is added to the options (if a model is defined)
+//     and after view rendering for child views to reference.
+//
+bbext.viewRenderer = function (
+	rootViewCache,
+	templateParser,
+	viewFactory,
+	console
+ ) {
 
-    return {
-        render: function (name, options) {
-            // create the view
-            var view = viewFactory.create(name, options),
-				render = function () {
-				    view.render();
-				};
+	return {
+		render: function (name, options, renderOptions) {
+		    var sourceTemplate,
+				view;
 
-            // wait for the view to load a model
-            load(view).then(render);
+            renderOptions = renderOptions || {};
+            options = options || {};
 
-            return view;
-        }
-    };
+            // render only pre-parsed views
+            if (renderOptions.isParsedView) {
+		        view = renderView(name, options, renderOptions);
+		        return view;
+		    }
 
-    function load(view) {
-        var dfds = [],
-			model = view.model;
+            // locate the source template
+		    sourceTemplate = renderOptions.sourceTemplate ?
+                renderOptions.sourceTemplate :
+                rootViewCache.get(name);
 
-        if (model) {
-            if (model.then) {
-                dfds.push(model);
-            } else {
-                $.each(model, function (name, prop) {
-                    if (prop && prop.then) {
-                        dfds.push(prop.then(function (val) {
-                            model[name] = val;
-                        }));
-                    }
-                });
-            }
-        }
+            // parse all sub views and shims
+		    templateParser.parseTemplate(sourceTemplate);
+            
+		    // render the root template -> which renders the tree
+		    options.rootModel = options.model;
+		    view = this.render(name, options, {
+		        sourceTemplate: sourceTemplate,
+		        isParsedView: true
+		    });
+            
+            // rootModel is deprecated (handled now by the aggregate extension).
+		    if (view.model) {
+		        view.rootModel = view.model;
+		        view.model.rootModel = view.rootModel;
+		    }
 
-        return $.when.apply($, dfds);
-    }
+		    if (options.insertAfterTemplate === true) {
+		        console.log("viewRenderer: Inserting the root template after the template element.");
+		        sourceTemplate.after(view.$el);
+		    }
+
+		    return view;
+		}
+	};
+	
+
+    // create the view and call render
+	function renderView(name, options, renderOptions) {
+	    // create the view
+	    var view = viewFactory.create(name, options);
+
+	    if (view.model && view.model.waitForViewModelPromises) {	        
+	        waitForViewModelPromises(view).then(function () {
+	            view.render(renderOptions);
+	        });
+	    } else {
+	        view.render(renderOptions);
+	    }	    
+
+	    return view;
+	}
+
+    // deprecated
+	function waitForViewModelPromises(view) {
+	    var dfds = [],
+			model = view.model,
+            warn = "view rendering deferred models are deprecated"; 
+
+	    if (model) {
+	        if (model.then) {
+	            console.warn(warn);
+	            dfds.push(model);
+	        } else {
+	            $.each(model, function (name, prop) {
+	                if (prop && prop.then) {
+	                    console.warn(warn);
+	                    dfds.push(prop.then(function (val) {
+	                        model[name] = val;
+	                    }));
+	                }
+	            });
+	        }
+	    }
+
+	    return $.when.apply($, dfds);
+	}
 }
 
-context.module("bbext").service("viewRenderer", ["viewFactory", "$", bbext.viewRenderer = viewRenderer]);
+bbext.service("viewRenderer", [
+	"rootViewCache",
+	"templateParser",
+	"viewFactory",
+	"console",
+	bbext.viewRenderer
+]);

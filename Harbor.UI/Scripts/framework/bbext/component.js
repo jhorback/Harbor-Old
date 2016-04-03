@@ -56,11 +56,11 @@ var Component = (function () {
 	var nextCid = 0,
 	    privates = {};
 
-	function Component(_, templateRenderer, console) {
+	function Component(_, viewRenderer, console) {
 		this.cid = nextCid++;
 
 		privates[this.cid] = {
-			templateRenderer: templateRenderer,
+			viewRenderer: viewRenderer,
 			console: console,
 			_: _,
 			cache: {} // key: { view:, cache:, detached:, region:}
@@ -99,8 +99,7 @@ var Component = (function () {
 			}
 
 			if (!view) {
-				// if (this.name === "resolutionComponent") alert("component.templateRenderer.render." + this.name);
-				view = _.templateRenderer.render(this.name + "View", o);
+			    view = _.viewRenderer.render(this.name + "View", o);
 				view.on("close", function () {
 					comp.close(key);
 				});
@@ -118,7 +117,7 @@ var Component = (function () {
 			privates[this.cid].cache[key] = {
 				isOpen: true,
 				view: view,
-				cache: o.cache,
+				cache: (cached && cached.cache !== void(0)) ? cached.cache : o.cache,
 				detached: detachChildren(region),
 				region: region
 			};
@@ -199,7 +198,7 @@ var Component = (function () {
 
 
 	function reattachChildren(parent, els) {
-        els.not("[data-templatefor]").hide();
+        els.not("[data-view]").hide();
 		els.each(function (i, el) {
 			el = $(el);
 			if (el.data("wasVisible") === true) {
@@ -221,7 +220,7 @@ var Component = (function () {
 
 		elsToKeepContainer = parent.add(currentChildren);
 		// dont remove other root templates that have not been used yet
-		elsToKeep = parent.children("[data-templatefor]");
+		elsToKeep = parent.children("[data-view]");
 		// do not detach stylesheet links
 		elsToKeep = elsToKeepContainer.find("link").add(elsToKeep);
 		currentChildren.detach();
@@ -241,7 +240,7 @@ function componentConstruct(mixinConstruct, Component) {
 
 
 // register the component as an object also so DI does not instantiate it
-Component.prototype.$inject = ["_", "templateRenderer", "console"];
+Component.prototype.$inject = ["_", "viewRenderer", "console"];
 bbext.register("bbext.Component", bbext.Component = Component);
 bbext.register("bbext.Component.construct", bbext.Component, "object");
 

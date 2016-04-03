@@ -1,7 +1,7 @@
 ﻿/*
     mixins service
 	    mixins.register(name, mixin)
-	    mixins.map(alias, mixins)
+	    mixins.map(alias, mixins) // deprecated
 	    mixins.mixin(proto, mixins)
 
     mixin construct

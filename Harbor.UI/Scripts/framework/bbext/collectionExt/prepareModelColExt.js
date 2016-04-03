@@ -1,64 +1,69 @@
-﻿
-/*
- Provides knowledge of an injected model to the Backbone collection.
+﻿/*
+ *
+ * Enables a Backbone collection to have it's model created using the modelFactory
+ *
+ * Adds if a model or url option exists, moves them to the collection instance.
+ * 
+ * getIdAttribute() - A method which returns the models idAttribute
+ */
+bbext.prepareModelColExt = function (context, modelFactory) {
 
- Also provides a getIdAttribute() method.
-*/
+    var setupModel,
 
-bbext.prepareModelColExt = function (context) {
+        prepareModelColExt = {
 
-	var prepareModelColExt = {
-		ctor: {
-			before: function (options) {
-				// set the model if defined as a string in options
-				// useful for generic collections with specific models
-				if (options && options.model && !this.model) {
-					this.model = options.model;
-				}
-			}	
-		},
+            initialize: {
+                before: function (attrs, options) {
+                    if (options) {
+                        if (options.model && !this.model) {
+                            this.model = options.model;
+                        }
 
-		// replaceing _prepareModel so I can use the modelFactory to create the model.
-		_prepareModel: function (attrs, options) {
-			if (attrs instanceof Backbone.Model) {
-				if (!attrs.collection) attrs.collection = this;
-				return attrs;
-			}
-			options || (options = {});
-			options.collection = this;
+                        if (options.url) {
+                            this.url = options.url;
+                        }
+                    }
 
-			// this is the only change from Backbone.Collection._prepareModel
-			// var model = new this.model(attrs, options);
-			var model = createModel(this, attrs, options);
+                    // do this in initialize as well as modelId
+                    // since backbone collections will call the modelId
+                    // sometimes before this method gets called.
+                    _.isString(this.model) && setupModel(this);
+                }
+            },
 
-			if (!model._validate(attrs, options)) {
-				this.trigger('invalid', this, attrs, options);
-				return false;
-			}
-			return model;
-		},
+            modelId: {
+                before: function () {
+                    _.isString(this.model) && 
+                        setupModel(this);
+                }
+            },
 
-		getIdAttribute: function () {
-			return (this.models[0] && this.models[0].idAttribute) || "id";
-		}
-	};
+            getIdAttribute: function () {
+                return this.model.prototype.idAttribute || 'id';
+            }
+        };
 
-	var createModel = function (collection, attrs, options) {
-		var modelFactory;
+    
+    setupModel = function (collection) {
+        var rawModel;
 
-		if (typeof collection.model !== "string") {
-			return new collection.model(attrs, options);
-		}
-		
-		modelFactory = context.get("modelFactory");
-		return modelFactory.create(collection.model, attrs, options);
-	};
-	
-	return prepareModelColExt;
+        // do this so that calling new collection.model() works
+        collection._model = collection.model;
+        collection.model = function (attrs, options) {
+            return modelFactory.create(collection._model, attrs, options);
+        };
+
+        // do this for the collection modelId(attrs) method: this.model.prototype.idAttribute
+        rawModel = context.get(collection._model, /*raw*/ true);
+        collection.model.prototype = rawModel.prototype;
+    };
+
+    return prepareModelColExt;
 }
 
 
 bbext.mixin("prepareModelColExt", [
 	"context",
+    "modelFactory",
 	bbext.prepareModelColExt
 ]);

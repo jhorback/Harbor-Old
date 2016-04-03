@@ -15,8 +15,9 @@
  *         - type can be object, function, constructor
  *         - object and constructor can be determined dynamically, function cannot.
  *
- *     get(name)
+ *     get(name, [raw])
  *         - retrieves the dependency.
+ *         - raw - if true returns the raw registered object (not the instantiated one).
  *
  *     call(method, args, context)
  *         - a utility method for satisfying the dependencies of a method directly.

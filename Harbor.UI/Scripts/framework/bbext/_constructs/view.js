@@ -1,43 +1,62 @@
 ﻿/*
- * service: bbext.View
- *     An extension of the Backbone.View with all of the view extensions.
- *
  * construct: view
- *     Allows for the creation of a bbext.View which is injected.
+ *    
  */
-bbext.viewConstruct = function (backboneConstruct, mixins, shims) {
+bbext.viewConstruct = function (
+    backboneConstruct,
+    viewConstructService,
+    shims
+ ) {
     "use strict";
 
-    var View = Backbone.View.extend({}),
-		viewMixins = [
-			"commonBackboneObjectExt",
-			"childViewExt",
-			"closeViewExt",
-			"renderViewExt",
-			"errorDisplayViewExt"
-		],
-		viewShims = [
-			"gaSendEventShim",
-			"eventBinderShim",
-			"modelBinderShim",
-			"templateBinderShim"
-		];
+    var View, viewShims;
 
-    mixins.map("defaultViewMixins", viewMixins);
-    View.prototype = mixins.mixin(View.prototype, ["defaultViewMixins"]);
+    View = viewConstructService.getBackboneView();
 
-    return backboneConstruct.createFrom(View, function (name, construct) {
-        shims.addToView(construct, viewShims);
-    });
+	viewShims = [
+		"gaSendEventShim",
+		"eventBinderShim",
+		"modelBinderShim",
+		"templateBinderShim"
+	];	
+
+	return backboneConstruct.createFrom(View, function (name, construct) {
+		shims.addToView(construct, viewShims);
+	});
 
 };
 
 
 bbext.construct("view", [
 	"backboneConstruct",
-	"mixins",
+    "viewConstructService",
 	"shims",
 	bbext.viewConstruct
+]);
+
+
+bbext.viewConstructService = function (mixins) {
+    var View = Backbone.View.extend({}),
+           viewMixins = [
+               "commonBackboneObjectExt",
+               "childViewExt",
+               "closeViewExt",
+               "renderViewExt",
+               "errorDisplayViewExt"
+           ];
+
+    mixins.map("defaultViewMixins", viewMixins);
+    View.prototype = mixins.mixin(View.prototype, ["defaultViewMixins"]);
+
+    return {
+        getBackboneView: function () {
+            return View;
+        }
+    }
+};
+
+bbext.service("viewConstructService", ["mixins",
+    bbext.viewConstructService
 ]);
 
 

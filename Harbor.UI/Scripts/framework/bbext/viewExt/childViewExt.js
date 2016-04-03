@@ -50,6 +50,31 @@ bbext.childViewExt = function () {
 				this.views = new ChildViewContainer(this);
 				this.on("close", _.bind(this.views.remove, this.views));
 			}
+		},
+
+		detachView: function () {
+		    if (this.$el.data("isDetached")) {
+		        return;
+		    }
+
+		    this.$el.data("detachedPlaceholder", $('<span style="display:none;"/>').insertAfter(this.$el));
+		    this.$el.data("isDetached", true);
+		    this.$el = this.$el.detach();
+		},
+
+		reattachView: function () {
+		    var detachedPlaceholder = this.$el.data("detachedPlaceholder");
+		    if (detachedPlaceholder) {
+		        this.$el.insertBefore(detachedPlaceholder);
+		        detachedPlaceholder.remove();
+		        this.$el.removeData("detachedPlaceholder");
+		    }
+		    this.$el.removeData("isDetached");
+		},
+
+		isDetached: function () {
+		    // console.debug("is view:", this.name, "detached:", this.$el.data("isDetached"));
+		    return this.$el.data("isDetached") ? true : false;
 		}
 	};
 }

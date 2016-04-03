@@ -1,16 +1,15 @@
 ﻿/*
- * templateBinder - shim [data-templatefor]
- *     A shim used to find date-template and put
+ * templateBinder - shim [data-view]
+ *     A shim used to find data-view and put
  *    instances of views in their place
  */
 bbext.templateBinderShim = function (viewRenderer) {
 	
 	return {
-		selector: "[data-templatefrom]",
+		selector: "[data-view-from]",
 
-		resolve: function(el, model, matches) {
-			var rootView,
-				shim = this;
+		resolve: function (el, model, matches, sourceTemplate) {
+		    var rootView;
 
 			el = $(el);
 			rootView = el.data("view");
@@ -23,35 +22,29 @@ bbext.templateBinderShim = function (viewRenderer) {
 				templateEl = $(templateEl);
 
 				// restrict rendering to the first level of templates
-				closestTemplate = templateEl.parent().closest("[data-templatefrom]");
+				closestTemplate = templateEl.parent().closest("[data-view-from]");
 				if (closestTemplate[0] !== el[0]) {
 					return;
 				}
 
-				templateFor = templateEl.data("templatefrom");
+				templateFor = templateEl.data("view-from");
+				
 				view = viewRenderer.render(templateFor, {
 					rootModel: model && model.rootModel,
 					model: model,
-					//el: templateEl.data("collection") ? templateEl.parent() : templateEl
-
-					el: templateEl.data("collection") ? shim.getTemplateParent(templateEl) : templateEl
-					// jch* if a collection use the parent so the modelbinder can work on select elements
+					el: templateEl.data("collection") ? templateEl.parent() : templateEl
+				}, {
+				    isParsedView: true,
+				    sourceTemplate: sourceTemplate
 				});
 				view.rootModel = view.model && view.model.rootModel;
 
-				templateEl.remove();
+				// don't need to remove - templateEl.remove();
 
 				if (rootView) {
 					rootView.views.add(view);
 				}
 			});
-		},
-
-		getTemplateParent: function(templateEl) {
-			return templateEl.siblings().length === 0 ?
-				templateEl.parent() :
-				// add content for the viewRenderer to recognize that there is a sub template here
-				$('<div/>').insertAfter(templateEl).html("&#8203;"); 
 		}
 	};
 };

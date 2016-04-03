@@ -12,7 +12,7 @@ shim construct:
 
 
 /* shims service */
-appui.shims = function (timer, console, context) {
+appui.shims = function (console, context) {
 	
 	// selector can be a string, function, or object
 	// if an object - keys are "parse" and "render"
@@ -101,30 +101,35 @@ appui.shims = function (timer, console, context) {
 			return forRender;
 		},
 
-		// returns a deferred resolved when all shims have been resolved
-		render: function (el, model, shimsToRender) {
-			var dfds = [];
+		// returns an array of object { shim:, matches: } to use when resoving
+		render: function (el, model, shimsToRender, sourceTemplate) {
+		    var shimsToResolve = [];
 
-			// console.debug("shimsToRender", shimsToRender, el.data("view").name);
 			_.each(shimsToRender, function (shimName) {
 				var shim = getShim(shimName),
 					matches = getMatches(el, shim, false);
 
-				shim.render && shim.render(el, model, matches);
+				shim.render && shim.render(el, model, matches, sourceTemplate);
 				if (shim.resolve) {
-					dfds.push(timer.wait().then(function () {
-						shim.resolve(el, model, matches);
-					}));
+				    shimsToResolve.push({
+				        shim: shim,
+                        matches: matches
+				    });
 				}
 			});
 
-			return timer.waitFor(dfds);
+			return shimsToResolve;
+		},
+
+		resolve: function (el, model, shimsToResolve, sourceTemplate) {
+		    _.each(shimsToResolve, function (data) {
+		        data.shim.resolve(el, model, data.matches, sourceTemplate);
+		    });
 		}
 	};
 };
 
 appui.service("shims", [
-	"timer",
 	"console",
 	"context",
 	appui.shims

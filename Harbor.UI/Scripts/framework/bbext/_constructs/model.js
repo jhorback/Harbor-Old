@@ -1,38 +1,56 @@
 ﻿/*
- * service: bbext.Model
- *     An extension of the Backbone.Model with all of the model extensions.
  *
  * construct: model
- *     Allows for the creation of a bbext.Model which is injected.
  *
  * model: model
  *     Use for creating simple models
  */
-bbext.modelConstruct = function (backboneConstruct, mixins) {
+bbext.modelConstruct = function (
+    backboneConstruct,
+    modelConstructService
+) {
     "use strict";
 
-    var Model = Backbone.Model.extend({});
+    var Model = modelConstructService.getBackboneModel();
+    return backboneConstruct.createFrom(Model);
 
-    mixins.map("defaultModelMixins", [
-		"commonBackboneObjectExt",
-		"dfdModelExt",
-		"getSetModelExt",
-		"postCommandModelExt",
-		"backupModelExt",
-		"validationModelExt"
-    ]);
-
-    Model.prototype = mixins.mixin(Model.prototype, ["defaultModelMixins"]);
-
-    return backboneConstruct.createFrom(Model, function (name, construct) {
-        mixins.mixin(construct.prototype); // handle .mixins placed on the prototype
-    });
+    // jch* add test for setting mixins on the prototype
+    //, function (name, construct) {
+    //    mixins.mixin(construct.prototype); // handle .mixins placed on the prototype
+    //});
 };
 
 bbext.construct("model", [
 	"backboneConstruct",
-	"mixins",
+	"modelConstructService",
 	bbext.modelConstruct
+]);
+
+
+
+bbext.modelConstructService = function (mixins) {
+    var Model = Backbone.Model.extend({});
+
+    mixins.map("defaultModelMixins", [
+        "commonBackboneObjectExt",
+        "dfdModelExt",
+        "getSetModelExt",
+        "postCommandModelExt",
+        "backupModelExt",
+        "validationModelExt"
+    ]);
+
+    Model.prototype = mixins.mixin(Model.prototype, ["defaultModelMixins"]);
+
+    return {
+        getBackboneModel: function () {
+            return Model;
+        }
+    }
+};
+
+bbext.service("modelConstructService", ["mixins",
+    bbext.modelConstructService
 ]);
 
 

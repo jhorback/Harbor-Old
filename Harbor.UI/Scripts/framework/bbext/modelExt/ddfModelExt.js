@@ -52,7 +52,7 @@ bbext.ddfModelExt = function (
 
 	createAssocationMethods = {
 		beforeInit: function (name, options, args) {
-			var modelOrCollection,
+		    var modelOrCollection,
 				modelOrCollectionOptions,
 				root = this.root ? this.root : this,
 				// the default initial value comes from the attribute of the model with the same name
@@ -68,10 +68,11 @@ bbext.ddfModelExt = function (
 				modelOrCollectionOptions.model = options.model;
 			}
 
-			// determine the initial value
+		    // determine the initial value
+		    options.options = modelOrCollectionOptions;
 			initialValue = options.type === "model" ?
-				_.result(options, "attrs") || initialValue || {} :
-				_.result(options, "models") || initialValue || [];
+				_.result(options, "attrs", initialValue || {}) :
+				_.result(options, "models", initialValue || []);
 			
 			// create the model/collection
 			if (options.name) {

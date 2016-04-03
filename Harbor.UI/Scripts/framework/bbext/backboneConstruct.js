@@ -19,7 +19,7 @@
  *      This enables:
  *      myApp.someCommonView("viewName", ...);
  */
-function backboneConstruct(console, context, mixins) {
+function backboneConstruct(console, mixins) {
 	"use strict";
 
 	return {
@@ -51,7 +51,6 @@ function backboneConstruct(console, context, mixins) {
 
 context.module("bbext").service("backboneConstruct", [
 	"console",
-	"context",
 	"mixins",
 	bbext.backboneConstruct = backboneConstruct
 ]);

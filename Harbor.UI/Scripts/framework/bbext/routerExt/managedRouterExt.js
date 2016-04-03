@@ -158,39 +158,42 @@ bbext.managedRouterExt = function (routerInfo, context) {
          * @returns {bbext.component}
          */
 		showComponent: function (name, options) {
-			var routeCache = this.routeCache,
-				previousRouteInfo = routeCache.routes[routeCache.previousRoute],
-				currentRouteInfo = routeCache.routes[routeCache.currentRoute],
-				component = routeCache.components[name],
-				navigateOptions,
-				url;
+		    var routeCache = this.routeCache,
+		        previousRouteInfo = routeCache.routes[routeCache.previousRoute],
+		        currentRouteInfo = routeCache.routes[routeCache.currentRoute],
+		        component = routeCache.components[name],
+		        argsMatch = routeArgsMatch(routeCache),
+		        navigateOptions,
+		        url;
 
 
-			// if we are switching routes or we are not caching
-			if (routeCache.previousRoute !== routeCache.currentRoute || !currentRouteInfo.cache) {
+		    // if we are switching routes or we are not caching
+		    var sameRoute = routeCache.previousRoute === routeCache.currentRoute && argsMatch;
+		    if (!sameRoute || !currentRouteInfo.cache) {
 
-				// close/cache the previous component
-				if (previousRouteInfo && previousRouteInfo.component) {
-					routeCache.components[previousRouteInfo.component].close(previousRouteInfo.component);
-				}
+			    // close/cache the previous component
+			    if (previousRouteInfo && previousRouteInfo.component) {
+			        routeCache.components[previousRouteInfo.component].close(previousRouteInfo.component);
+			    }
 
+			    // create the component if not yet created
+			    if (!currentRouteInfo.component) {
+			        currentRouteInfo.component = name;
+			        if (!component) {
+			            component = routeCache.components[name] = context.instantiate(name);
+			        }
+			    }
 
-				// create the component if not yet created
-				if (!currentRouteInfo.component) {
-					currentRouteInfo.component = name;
-					if (!component) {
-						component = routeCache.components[name] = context.instantiate(name);
-					}
-				}
+			    // determine the cache setting
+			    // default the cache setting to cache if no arguments
+			    options = options || {};
+			    options.cache = currentRouteInfo.cache = (options.cache === void(0)) ?
+			        argsMatch : options.cache;
 
-				// determine the cache setting
-				// default the cache setting to cache if no arguments
-				options = options || {};
-				options.cache = currentRouteInfo.cache = options.cache === void(0) ?
-					shouldCache(routeCache) : options.cache;
+                routeCache.routes[routeCache.currentRoute].previousArgs = routeCache.currentRouteArgs;
 
-				// render the component
-				component.view = component.render(name, options);
+			    // render the component
+			    component.view = component.render(name, options);
 			}
 
 			url = routerInfo.routeUrl(routeCache.currentRoute, routeCache.currentRouteArgs);
@@ -199,6 +202,9 @@ bbext.managedRouterExt = function (routerInfo, context) {
 			};
 			if (currentRouteInfo.navigateOptions) {
 				navigateOptions = currentRouteInfo.navigateOptions;
+                if (typeof navigateOptions.replaceHistory !== 'undefined') {
+                    navigateOptions.replace = navigateOptions.replaceHistory;
+                }
 				delete currentRouteInfo.navigateOptions;
 			}
 			this.navigate(url, navigateOptions);
@@ -222,21 +228,17 @@ bbext.managedRouterExt = function (routerInfo, context) {
 		}
 	};
 
-
     /**
-     * Checks to see if the route's previous args are the same as the current args - if
-     * they are, or if no previous arguments exist, the route is cached, otherwise it is not.
+     * Checks to see if the route's previous args are the same as the current args.
      * @param {RouteCache} routeCache
      * @returns {boolean}
      */
-	function shouldCache(routeCache) {
-		var currentArgs = routeCache.currentRouteArgs,
+	function routeArgsMatch(routeCache) {
+        var currentArgs = routeCache.currentRouteArgs,
 			prevArgs = routeCache.routes[routeCache.currentRoute].previousArgs,
-			argsOk = prevArgs ? prevArgs.toString() === currentArgs.toString() : true;
-		routeCache.routes[routeCache.currentRoute].previousArgs = currentArgs;
-		return argsOk;
+			argsMatch = prevArgs ? prevArgs.toString() === currentArgs.toString() : true;
+	    return argsMatch;
 	}
-
 
 	function routeCurry(pattern, callback) {
 		var router = this,
@@ -246,7 +248,7 @@ bbext.managedRouterExt = function (routerInfo, context) {
 			var args = Array.prototype.slice.call(arguments);
 			routeCache.previousRoute = routeCache.currentRoute;
 			routeCache.currentRoute = pattern;
-			routeCache.currentRouteArgs = args;
+		    routeCache.currentRouteArgs = _.without(args, null);
 			callback.apply(router, arguments);
 		};
 	}
