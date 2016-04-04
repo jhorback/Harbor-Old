@@ -1,7 +1,9 @@
 ﻿<div data-view="pageLoaderView" id="pageloader">
 	<ul>
-		<li data-collection="tabs" data-bind="class: className" data-event="click:clickPageLoaderTab">
+        <template data-collection="tabs">
+		<li data-bind="class: className" data-event="click:clickPageLoaderTab">
 			<span data-bind="text: text">View</span>
 		</li>
+        </template>
 	</ul>
 </div>

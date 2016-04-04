@@ -2,7 +2,8 @@
 
 	<!-- collection: sections -->
 	<div>
-		<div class="menulist" data-collection="sections" data-itemview="linksSectionView">
+        <template data-collection="sections">
+		<div class="menulist" data-itemview="linksSectionView">
 			<div class="clearfix pad">
 				<span class="icon-reorder float-left margin-right" data-rel="sectionSort" title="Re-order this section"></span>
 				<input type="text" class="float-left" name="title">
@@ -11,19 +12,22 @@
 			<ul>
 
 				<!-- collection: links -->
-				<li data-collection="links" data-itemview="linksSectionLinksView" data-bind="id: cid">
+                <template data-collection="links">
+				<li data-itemview="linksSectionLinksView" data-bind="id: cid">
 					<div class="clearfix clear pad">
 						<span class="icon-reorder float-left margin-right" title="Re-order this link"></span>
 						<span data-bind="text: text" class="float-left"></span>
 						<span class="icon-remove float-right link" title="Remove this link" data-event="removeLink"></span>
 					</div>
 				</li>
+                </template>
 				<!-- -->
 
 			</ul>
 			<button data-event="addLink" class="icon-plus" title="Add a link"></button>
 			<hr />
 		</div>
+        </template>
 	</div>
 	<!-- -->
 

@@ -23,9 +23,9 @@
 					<ul>
 		               
 						<!-- model.files -->
+                        <template data-collection="files">
 						<li data-bind="fileId: id" 
-						    class="tile col5 hover" tabindex="0"
-						    data-collection="files"
+						    class="tile col5 hover" tabindex="0"						    
 						    data-event="click: selectThisAndClose, keypress: selectThisAndCloseOnEnter">
 							<div class="media">
 								<img data-bind="src:thumbUrl" />
@@ -35,6 +35,7 @@
 								<small>{{uploaded}}</small>
 							</div>
 						</li>
+                        </template>
 						<!-- -->
 
 					</ul>

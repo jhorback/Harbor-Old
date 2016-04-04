@@ -35,7 +35,7 @@
                 <span>Favorite icecream:</span>
 
                 <select name="favoriteIceCream" data-bind="style: hairColorStyle">
-                    <option data-collection="iceCream" data-bind="value: id, text: flavor"></option>
+                    <option template data-collection="iceCream" data-bind="value: id, text: flavor"></option>
                 </select>
 
 
@@ -52,15 +52,15 @@
         </div>
 
         <ul>
-            <li xdata-view="allUsersView"
-                data-collection="allUsers"
+            <template data-collection="allUsers">
+            <li xdata-view="allUsersView"                
                 data-itemview="allUsersItemView" data-bind="style: hairColorStyle">
                 <span name="firstName"></span> <span name="lastName"></span> Age: <span name="age"></span>
                 <span name="hairColor"></span>
                 <span name="favoriteIceCreamDisplay"></span>
                 <button data-event="removeThisUser">Remove</button>
             </li>
-
+            </template>
 
         </ul>
 
@@ -76,14 +76,18 @@
         <h2>Group By Favorite</h2>
         <div data-view="groupedUsersView">
             <ul>
-                <li data-collection="groupedUsers">
+                <template data-collection="groupedUsers">
+                <li>
                     Name: <strong data-bind="text: name"></strong>
                     <ul>
-                        <li data-collection="models">
+                        <template data-collection="models">
+                        <li>
                             firstName: <span data-bind="text: firstName"></span>
                         </li>
+                        </template>
                     </ul>
                 </li>
+                </template>
             </ul>
         </div>
 

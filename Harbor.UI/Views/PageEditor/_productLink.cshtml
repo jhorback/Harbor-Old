@@ -6,10 +6,12 @@
         <div class="caption">
 	        <h2><a data-bind="text: title, href: link"></a></h2>
 	        <div>
-		        <p style="margin:0;" data-collection="buttons">
+                <template data-collection="buttons">
+		        <p style="margin:0;">
 			        <strong class="attn" data-bind="text: displayPrice"></strong>
 			        <span data-bind="showif: description"> - <span data-bind="text: description"></span></span>
 		        </p>
+                </template>
 	        </div>
         </div>
     </div>

@@ -11,21 +11,25 @@
 	<hr />
 	<div class="menulist">
 		<ul class="appmenu-parentlist">
-			<li data-collection="parentItems">
+            <template data-collection="parentItems">
+			<li>
 				<span data-event="selectMenu">
 					<strong data-bind="text:text"></strong>
 					<span class="float-right icon-next" data-bind="showif:showMenuIcon"></span>
 				</span>
 			</li>
+            </template>
 		</ul>
 		<h3 data-bind="text: currentMenuText"></h3>
 		<ul class="appmenu-childlist">
-			<li data-collection="childItems" data-bind="class: className">
+            <template data-collection="childItems">
+			<li data-bind="class: className">
 				<a data-bind="href: url" data-event="selectMenuItem" class="clearfix">
 					<span class="float-left" data-bind="text:text"></span>
 					<span class="float-right icon-next" data-bind="showif:showMenuIcon"></span>
 				</a>
 			</li>
+            </template>
 		</ul>
 	</div>
 </div>
