@@ -31,7 +31,8 @@ $framenav- color-hover: #000;
 $framenav- border-selected: $color-accent-dark;
 $framenav- color-selected: $color-accent-dark;*/
 /* begin foundation-theme */
-html, body {
+html,
+body {
   font-size: 16px;
   font-family: "OpenSans", "sans-serif";
   line-height: 1.5; }
@@ -300,9 +301,9 @@ hr {
     color: #FFFFFF;
     color: white; }
     #frame-header [role=button]:hover {
-      background-color: #00828d; }
+      background-color: #00808e; }
     #frame-header [role=button]:active {
-      background-color: #006a74; }
+      background-color: #006974; }
 
 #frame-logo a {
   text-indent: -99999px;
@@ -345,67 +346,139 @@ hr {
 
 /* end frame-theme */
 /* begin button-theme */
-.button, button, input[type=button], input[type=submit] {
+.button,
+button,
+input[type=button],
+input[type=submit] {
   color: #202020;
   color: rgba(0, 0, 0, 0.87);
   background-color: transparent; }
-  .button:hover, .button:focus, button:hover, button:focus, input[type=button]:hover, input[type=button]:focus, input[type=submit]:hover, input[type=submit]:focus {
+  .button:hover, .button:focus,
+  button:hover,
+  button:focus,
+  input[type=button]:hover,
+  input[type=button]:focus,
+  input[type=submit]:hover,
+  input[type=submit]:focus {
     background-color: #EAEAEA;
     background-color: rgba(153, 153, 153, 0.2); }
-  .button:active, button:active, input[type=button]:active, input[type=submit]:active {
+  .button:active,
+  button:active,
+  input[type=button]:active,
+  input[type=submit]:active {
     color: #202020;
     color: rgba(0, 0, 0, 0.87);
     background-color: #D5D5D5;
     background-color: rgba(153, 153, 153, 0.4); }
-  .button:visited, button:visited, input[type=button]:visited, input[type=submit]:visited {
+  .button:visited,
+  button:visited,
+  input[type=button]:visited,
+  input[type=submit]:visited {
     color: #202020;
     color: rgba(0, 0, 0, 0.87); }
-  .button.loud, button.loud, input[type=button].loud, input[type=submit].loud {
+  .button.loud,
+  button.loud,
+  input[type=button].loud,
+  input[type=submit].loud {
     color: #FFFFFF;
     color: white;
     background-color: #0097a7; }
-    .button.loud:hover, .button.loud:focus, button.loud:hover, button.loud:focus, input[type=button].loud:hover, input[type=button].loud:focus, input[type=submit].loud:hover, input[type=submit].loud:focus {
-      background-color: #00b0c1; }
-    .button.loud:active, button.loud:active, input[type=button].loud:active, input[type=submit].loud:active {
+    .button.loud:hover, .button.loud:focus,
+    button.loud:hover,
+    button.loud:focus,
+    input[type=button].loud:hover,
+    input[type=button].loud:focus,
+    input[type=submit].loud:hover,
+    input[type=submit].loud:focus {
+      background-color: #00aec1; }
+    .button.loud:active,
+    button.loud:active,
+    input[type=button].loud:active,
+    input[type=submit].loud:active {
       color: #FFFFFF;
       color: white;
-      background-color: #00c8da; }
-    .button.loud:visited, button.loud:visited, input[type=button].loud:visited, input[type=submit].loud:visited {
+      background-color: #00c5da; }
+    .button.loud:visited,
+    button.loud:visited,
+    input[type=button].loud:visited,
+    input[type=submit].loud:visited {
       color: #FFFFFF;
       color: white; }
-  .button.attn, button.attn, input[type=button].attn, input[type=submit].attn {
+  .button.attn,
+  button.attn,
+  input[type=button].attn,
+  input[type=submit].attn {
     color: #FFFFFF;
     color: white;
     background-color: #FF3D00; }
-    .button.attn:hover, .button.attn:focus, button.attn:hover, button.attn:focus, input[type=button].attn:hover, input[type=button].attn:focus, input[type=submit].attn:hover, input[type=submit].attn:focus {
-      background-color: #ff4f1a; }
-    .button.attn:active, button.attn:active, input[type=button].attn:active, input[type=submit].attn:active {
+    .button.attn:hover, .button.attn:focus,
+    button.attn:hover,
+    button.attn:focus,
+    input[type=button].attn:hover,
+    input[type=button].attn:focus,
+    input[type=submit].attn:hover,
+    input[type=submit].attn:focus {
+      background-color: #ff501a; }
+    .button.attn:active,
+    button.attn:active,
+    input[type=button].attn:active,
+    input[type=submit].attn:active {
       color: #FFFFFF;
       color: white;
-      background-color: #ff6333; }
-    .button.attn:visited, button.attn:visited, input[type=button].attn:visited, input[type=submit].attn:visited {
+      background-color: #ff6433; }
+    .button.attn:visited,
+    button.attn:visited,
+    input[type=button].attn:visited,
+    input[type=submit].attn:visited {
       color: #FFFFFF;
       color: white; }
-  .button.flat, button.flat, input[type=button].flat, input[type=submit].flat {
+  .button.flat,
+  button.flat,
+  input[type=button].flat,
+  input[type=submit].flat {
     color: #202020;
     color: rgba(0, 0, 0, 0.87);
     background-color: transparent; }
-    .button.flat:hover, .button.flat:focus, button.flat:hover, button.flat:focus, input[type=button].flat:hover, input[type=button].flat:focus, input[type=submit].flat:hover, input[type=submit].flat:focus {
+    .button.flat:hover, .button.flat:focus,
+    button.flat:hover,
+    button.flat:focus,
+    input[type=button].flat:hover,
+    input[type=button].flat:focus,
+    input[type=submit].flat:hover,
+    input[type=submit].flat:focus {
       background-color: #EAEAEA;
       background-color: rgba(153, 153, 153, 0.2); }
-    .button.flat:active, button.flat:active, input[type=button].flat:active, input[type=submit].flat:active {
+    .button.flat:active,
+    button.flat:active,
+    input[type=button].flat:active,
+    input[type=submit].flat:active {
       color: #202020;
       color: rgba(0, 0, 0, 0.87);
       background-color: #D5D5D5;
       background-color: rgba(153, 153, 153, 0.4); }
-    .button.flat:visited, button.flat:visited, input[type=button].flat:visited, input[type=submit].flat:visited {
+    .button.flat:visited,
+    button.flat:visited,
+    input[type=button].flat:visited,
+    input[type=submit].flat:visited {
       color: #202020;
       color: rgba(0, 0, 0, 0.87); }
-    .button.flat.loud, button.flat.loud, input[type=button].flat.loud, input[type=submit].flat.loud {
+    .button.flat.loud,
+    button.flat.loud,
+    input[type=button].flat.loud,
+    input[type=submit].flat.loud {
       color: #0097a7; }
-    .button.flat.attn, button.flat.attn, input[type=button].flat.attn, input[type=submit].flat.attn {
+    .button.flat.attn,
+    button.flat.attn,
+    input[type=button].flat.attn,
+    input[type=submit].flat.attn {
       color: #FF3D00; }
-  .button[disabled], .button[disabled]:hover, button[disabled], button[disabled]:hover, input[type=button][disabled], input[type=button][disabled]:hover, input[type=submit][disabled], input[type=submit][disabled]:hover {
+  .button[disabled], .button[disabled]:hover,
+  button[disabled],
+  button[disabled]:hover,
+  input[type=button][disabled],
+  input[type=button][disabled]:hover,
+  input[type=submit][disabled],
+  input[type=submit][disabled]:hover {
     font-weight: 700;
     color: #BCBCBC !important;
     color: rgba(0, 0, 0, 0.26) !important;
@@ -414,7 +487,13 @@ hr {
     opacity: 1;
     background-color: rgba(0, 0, 0, 0.12);
     background-color: #E0E0E0; }
-    .button[disabled].flat, .button[disabled]:hover.flat, button[disabled].flat, button[disabled]:hover.flat, input[type=button][disabled].flat, input[type=button][disabled]:hover.flat, input[type=submit][disabled].flat, input[type=submit][disabled]:hover.flat {
+    .button[disabled].flat, .button[disabled]:hover.flat,
+    button[disabled].flat,
+    button[disabled]:hover.flat,
+    input[type=button][disabled].flat,
+    input[type=button][disabled]:hover.flat,
+    input[type=submit][disabled].flat,
+    input[type=submit][disabled]:hover.flat {
       background-color: transparent; }
 
 /* end button-theme */
@@ -422,6 +501,7 @@ hr {
 .iconbutton:hover, .iconbutton:focus {
   background-color: #E0E0E0;
   background-color: rgba(0, 0, 0, 0.12); }
+
 .iconbutton:active, .iconbutton.active {
   background-color: #BCBCBC;
   background-color: rgba(0, 0, 0, 0.26); }
@@ -441,6 +521,7 @@ legend {
 .menulist h2, .menulist h3 {
   color: #747474;
   color: rgba(0, 0, 0, 0.54); }
+
 .menulist li {
   border-color: rgba(0, 0, 0, 0.12); }
   .menulist li > span, .menulist li > a {
@@ -462,7 +543,7 @@ legend {
 
 .page-header-overlay {
   background: #000;
-  opacity: 0.23;
+  opacity: .23;
   width: 100%;
   height: 100%;
   position: absolute;
@@ -490,7 +571,8 @@ legend {
     border-top: 1px solid rgba(0, 0, 0, 0.12); }
   .datatable.hover tr:hover td {
     background-color: rgba(0, 0, 0, 0.12); }
-  .datatable .striped .striped > td, .datatable .striped > tr:nth-child(odd) > td {
+  .datatable .striped .striped > td,
+  .datatable .striped > tr:nth-child(odd) > td {
     color: rgba(0, 0, 0, 0.12); }
 
 /* end datatable-theme */

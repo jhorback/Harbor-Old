@@ -21,10 +21,10 @@ namespace Harbor.UI
 			packages.Add(new FileAdminAppPkg());
 			packages.Add(new FileModelPkg());
 			packages.Add(new FileSelectorPkg());
-			packages.Add(new Html5UploaderPkg());
+			packages.Add(new DropzonePkg());
 			packages.Add(new JQueryUICorePkg());
 			packages.Add(new JQueryUIInteractionsPkg());
-			packages.Add(new ModernizrShivPkg());
+			packages.Add(new Html5ShivPkg());
 			packages.Add(new PageAdderPkg());
 			packages.Add(new PageEditorPkg());
 			packages.Add(new PageLoaderAppPkg());

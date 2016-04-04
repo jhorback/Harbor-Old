@@ -1,7 +1,7 @@
 {
   "name": "Harbor.UI",
-  "version": "0.0.0",
-  "description": "0.1.0",
+  "version": "0.1.0",
+  "description": "",
   "main": "gulpfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,8 +9,13 @@
   "author": "",
   "license": "ISC",
   "private": true,
- "devDependencies": {
-    "gulp": "^3.6.2",
-    "gulp-sass": "^0.7.1"
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-sass": "^2.0.4",
+    "gulp-bower": "^0.0.10",
+    "gulp-rename": "^1.2.2",
+    "gulp-main-bower-files": "^1.2.5",
+    "main-bower-files": "^2.9.0",
+    "del": "^2.1.0"
   }
 }

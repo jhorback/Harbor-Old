@@ -25,7 +25,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
 		<title>@ViewBag.Title</title>
-		@Html.InstallJavaScriptPackage(ModernizrShivPkg.PackageName)
+		@Html.InstallJavaScriptPackage(Html5ShivPkg.PackageName)
 		@Html.InstallJavaScriptPackage(SiteStylePkg.PackageName)
 		@Html.CurrentTheme()
 		@RenderSection("head", required: false)
@@ -80,11 +80,6 @@
 			window.baseUrl = "@Url.Content("~/")";
 		</script>
 		@Html.InstallJavaScriptPackage(JQueryPkg.PackageName)
-		@if (Request.Browser.Browser == "IE" && Request.Browser.MajorVersion < 9)
-		{
-			@* Add media query support to older versions of IE *@	
-			@Scripts.Render("~/Scripts/respond.js")
-		}
 		@Html.InstallJavaScriptPackage(ApplicationPkg.PackageName)
 		@Html.Action("SessionApp", "User")
 		@Html.InstallJavaScriptPackage(PageAdderPkg.PackageName)

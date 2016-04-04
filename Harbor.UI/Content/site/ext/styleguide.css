@@ -16,12 +16,12 @@
     padding: 0; }
 
 .outline + .prettyprint {
-  margin-top: -0.5em;
+  margin-top: -.5em;
   padding-top: 1em !important;
   margin-bottom: 2em; }
 
 .outline + .outline {
-  margin-top: 0.5em; }
+  margin-top: .5em; }
 
 .example {
   padding-top: 1.8em; }
@@ -48,8 +48,8 @@
   display: block; }
 
 .swatch {
-  padding: 0.5em; }
+  padding: .5em; }
   .swatch.lead {
-    margin-bottom: 0.25em; }
+    margin-bottom: .25em; }
   .swatch.big {
     height: 3em; }

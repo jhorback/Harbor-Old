@@ -191,13 +191,26 @@ body .redactor_box_fullscreen {
   background: #f6f6f6 !important;
   padding: 5px 15px !important; }
 
-.redactor_editor_wym div, .redactor_editor_wym p, .redactor_editor_wym ul, .redactor_editor_wym ol, .redactor_editor_wym table, .redactor_editor_wym dl, .redactor_editor_wym pre, .redactor_editor_wym h1, .redactor_editor_wym h2, .redactor_editor_wym h3, .redactor_editor_wym h4, .redactor_editor_wym h5, .redactor_editor_wym blockquote {
+.redactor_editor_wym div,
+.redactor_editor_wym p,
+.redactor_editor_wym ul,
+.redactor_editor_wym ol,
+.redactor_editor_wym table,
+.redactor_editor_wym dl,
+.redactor_editor_wym pre,
+.redactor_editor_wym h1,
+.redactor_editor_wym h2,
+.redactor_editor_wym h3,
+.redactor_editor_wym h4,
+.redactor_editor_wym h5,
+.redactor_editor_wym blockquote {
   background-color: #fff !important;
   border: 1px solid #e4e4e4 !important;
   padding: 10px !important;
   margin: 10px 0 !important; }
 
-.redactor_editor_wym ul, .redactor_editor_wym ol {
+.redactor_editor_wym ul,
+.redactor_editor_wym ol {
   padding-left: 2em !important; }
 
 /*
@@ -425,7 +438,7 @@ body .redactor_toolbar li a.redactor_btn_alignment {
   z-index: 50000;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
   filter: alpha(opacity=50);
-  opacity: 0.5;
+  opacity: 0.50;
   background-color: #333 !important; }
 
 #redactor_modal {
@@ -535,11 +548,15 @@ body .redactor_toolbar li a.redactor_btn_alignment {
   border-radius: 0 0 3px 3px;
   text-align: right; }
 
-#redactor_modal input[type="radio"], #redactor_modal input[type="checkbox"] {
+#redactor_modal input[type="radio"],
+#redactor_modal input[type="checkbox"] {
   position: relative;
   top: -1px; }
 
-#redactor_modal input[type="text"], #redactor_modal input[type="password"], #redactor_modal input[type="email"], #redactor_modal textarea {
+#redactor_modal input[type="text"],
+#redactor_modal input[type="password"],
+#redactor_modal input[type="email"],
+#redactor_modal textarea {
   position: relative;
   z-index: 2;
   font-family: Helvetica, Arial, Tahoma, sans-serif;
@@ -562,7 +579,8 @@ body .redactor_toolbar li a.redactor_btn_alignment {
 #redactor_modal textarea {
   line-height: 1.4em; }
 
-#redactor_modal input:focus, #redactor_modal textarea:focus {
+#redactor_modal input:focus,
+#redactor_modal textarea:focus {
   outline: none;
   border-color: #5ca9e4;
   box-shadow: 0 0 0 2px rgba(70, 161, 231, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2) inset; }

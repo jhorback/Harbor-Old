@@ -37,7 +37,7 @@
     #pageloader li.selected {
       color: #FF3D00; }
   #pageloader span {
-    font-size: 0.9em;
+    font-size: .9em;
     font-weight: bold;
-    padding: 0.4em 0.4em;
-    margin-bottom: 0.2em; }
+    padding: .4em .4em;
+    margin-bottom: .2em; }

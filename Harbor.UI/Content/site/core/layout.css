@@ -45,7 +45,7 @@ appmenu-childlist
   overflow: hidden;
   z-index: 1;
   height: 4em;
-  transition: all linear 0.2s; }
+  transition: all linear .2s; }
 
 #frame-header {
   height: 4em;
@@ -61,7 +61,7 @@ appmenu-childlist
 #frame-logo {
   float: left;
   font-size: 2em;
-  margin: 0 0.5em; }
+  margin: 0 .5em; }
 
 #frame-nav {
   line-height: 4em;
@@ -85,7 +85,7 @@ appmenu-childlist
     #frame-nav ul li {
       cursor: pointer;
       float: left;
-      margin-right: 0.5em;
+      margin-right: .5em;
       text-transform: uppercase; }
       #frame-nav ul li a {
         display: inline-block;
@@ -104,7 +104,7 @@ appmenu-childlist
   line-height: 4em; }
   #frame-session a {
     font-size: 1.5em;
-    padding: 0 0.667em;
+    padding: 0 .667em;
     display: inline-block; }
 
 #frame-body {
@@ -116,7 +116,7 @@ appmenu-childlist
 #frame-footer {
   position: relative; }
   #frame-footer .menulist {
-    font-size: 0.75em;
+    font-size: .75em;
     line-height: 1.5em; }
     #frame-footer .menulist a {
       text-decoration: none; }
@@ -125,20 +125,20 @@ appmenu-childlist
       font-weight: bold; }
   #frame-footer .social-links {
     line-height: 2em;
-    padding-top: 0.5em; }
+    padding-top: .5em; }
     #frame-footer .social-links a {
       text-decoration: none;
       display: block; }
     #frame-footer .social-links span {
       font-size: 1.5em;
       position: relative;
-      top: 0.25em;
+      top: .25em;
       width: 1em;
       text-align: right;
       display: block;
       float: left;
       clear: left;
-      margin-right: 0.4em; }
+      margin-right: .4em; }
 
 #frame-footer-content:after {
   content: "";
@@ -212,7 +212,7 @@ appmenu-childlist
   .page-header .page-header-overlay {
     display: none; }
   .page-header h1 {
-    margin: 0 0.5em;
+    margin: 0 .5em;
     font-size: 2em;
     font-weight: normal; }
     .page-header h1 a {
@@ -238,13 +238,14 @@ appmenu-childlist
     width: 100%;
     clear: both; }
     .page-aside .menulist h2, .page-aside .menulist h3 {
-      padding: 0.4em 0.8em !important; }
-    .page-aside .menulist > ul > li > span, .page-aside .menulist > ul > li > a {
-      padding: 0.3em 1em;
+      padding: .4em .8em !important; }
+    .page-aside .menulist > ul > li > span,
+    .page-aside .menulist > ul > li > a {
+      padding: .3em 1em;
       line-height: 2.2em;
       color: #555; }
     .page-aside .menulist h2, .page-aside .menulist h3 {
-      padding: 0 0.5em; }
+      padding: 0 .5em; }
     .page-aside .menulist .selected {
       background: #E8E9E9; }
     .page-aside .menulist a:hover {
@@ -263,9 +264,11 @@ appmenu-childlist
   max-width: 77.5em;
   margin-left: auto;
   margin-right: auto; }
+
 .centered .page-content {
   width: 98%;
   *width: 97.5%; }
+
 .centered .page-content:first-child {
   width: 98%; }
 
@@ -280,12 +283,14 @@ appmenu-childlist
   float: left;
   width: 100%;
   position: relative; }
+
 .hasaside .page-body {
   float: left;
   width: 100%;
   background: #F5F6F6;
   position: relative;
   right: 80%; }
+
 .hasaside .page-aside {
   display: block;
   float: left;
@@ -294,6 +299,7 @@ appmenu-childlist
   left: 80%;
   overflow: hidden;
   min-height: 25em; }
+
 .hasaside .page-content {
   float: left;
   width: 78%;
@@ -336,7 +342,8 @@ appmenu-childlist
     clear: left; } }
 
 @media (min-width: 64em) {
-  .col, .col1 {
+  .col,
+  .col1 {
     float: left;
     width: 98%;
     *width: 93%;
@@ -378,19 +385,37 @@ appmenu-childlist
     width: 48%;
     *width: 45.5%;
     margin-left: 2%; }
-  .col3, .col3-2, .col4, .col5 {
+  .col3,
+  .col3-2,
+  .col4,
+  .col5 {
     float: left;
     width: 31.33333%;
     *width: 29.66667%;
     margin-left: 2%; }
-  .hasaside .col3, .hasaside .col3-2, .hasaside .col4, .hasaside .col5 {
+  .hasaside .col3,
+  .hasaside .col3-2,
+  .hasaside .col4,
+  .hasaside .col5 {
     float: left;
     width: 48%;
     *width: 45.5%;
     margin-left: 2%; } }
 
 @media (max-width: 48em) {
-  * .col, * .col1, * .col2, * .col3, * .col3-2, * .col4, * .col5, .hasaside .col, .hasaside .col1, .hasaside .col2, .hasaside .col3, .hasaside .col3-2, .hasaside .col4, .hasaside .col5 {
+  * .col,
+  * .col1,
+  * .col2,
+  * .col3,
+  * .col3-2,
+  * .col4,
+  * .col5, .hasaside .col,
+  .hasaside .col1,
+  .hasaside .col2,
+  .hasaside .col3,
+  .hasaside .col3-2,
+  .hasaside .col4,
+  .hasaside .col5 {
     float: left;
     width: 98%;
     *width: 93%;
@@ -402,7 +427,7 @@ appmenu-childlist
   left: -25em;
   top: 0;
   bottom: 0;
-  transition: left 0.2s;
+  transition: left .2s;
   overflow: auto;
   overflow: -moz-scrollbars-none;
   -ms-overflow-style: none;
@@ -414,7 +439,7 @@ appmenu-childlist
             padding: 0 .25em;
         }*/ }
   .appmenu h2 {
-    font-size: 0.667em;
+    font-size: .667em;
     padding-left: 3.5em; }
   .appmenu hr {
     margin: 0 0 3px 0; }
