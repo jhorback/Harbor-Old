@@ -61,6 +61,7 @@ userAccount.userAccountMainView.prototype = {
 
 
 userAccount.view("userAccountMainView", [
+    "options",
     "viewRenderer",
     userAccount.userAccountMainView
 ]);
