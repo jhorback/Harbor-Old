@@ -711,7 +711,7 @@
     <Content Include="Scripts\modules\userApi\userModel.js" />
     <Content Include="Scripts\apps\UserAdmin\ListView.js" />
     <Content Include="Scripts\apps\UserAccount\%24userAccount.js" />
-    <Content Include="Scripts\apps\UserAccount\userAccountEditViewMixin.js" />
+    <Content Include="Scripts\apps\UserAccount\%24userAccountEditViewMixin.js" />
     <Content Include="Scripts\apps\UserAdmin\AddView.js" />
     <Content Include="Scripts\apps\UserAdmin\ABaseUserView.js" />
     <Content Include="Scripts\apps\UserAdmin\EditView.js" />

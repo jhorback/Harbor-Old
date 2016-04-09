@@ -21,6 +21,8 @@ function pageEditorService($, console, componentManager, viewRenderer) {
 			componentManager.init();
 			templateEditorView = viewRenderer.render("templateEditorView", {
 				el: frameBody[0]
+			}, {
+			    fromServer: true
 			});
 			rendered = true;
 			console.log("pageEditor: render");

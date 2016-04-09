@@ -54,11 +54,6 @@ namespace Harbor.Domain.Pages
 			return null;
 		}
 
-		public virtual int? GetPagePreviewPageID()
-		{
-			return null;
-		}
-
 
 
 		/// <summary>

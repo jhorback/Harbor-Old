@@ -27,7 +27,7 @@ session.signInView.prototype = {
 	
 	signIn: function () {
 		var signInRequest = $.ajax({
-			url: this.appurl.get("user/signin"),
+			url: this.appurl("user/signin"),
 			data: this.model.toJSON(),
 			type: "POST"
 		});

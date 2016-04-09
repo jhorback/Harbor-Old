@@ -4,11 +4,13 @@ userAccount.userAccountEditViewMixin = function (dialogFactory, ajaxRequest) {
     return {
         dialog: null,
 
-        initialize: function () {
-            _.bindAll(this, "saveModel", "close");
-            this.beforeInit && this.beforeInit();
-            this.$el.bind("close", this.close);
-            this.model.store();
+        initialize: {
+            before: function () {
+                _.bindAll(this, "saveModel", "close");
+                this.beforeInit && this.beforeInit();
+                this.$el.bind("close", this.close);
+                this.model.store();
+            }
         },
 
         events: {

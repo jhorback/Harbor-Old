@@ -1,12 +1,16 @@
-﻿
-userAccount.userAccountMainView = {
-	initialize: function () {
+﻿userAccount.userAccountMainView = function (options, viewRenderer) {
+    this.viewRenderer = viewRenderer;
+};
+
+userAccount.userAccountMainView.prototype = {
+    initialize: function () {
 		_.bindAll(this, "editName", "editEmail", "editPayPalID", "changePassword");		
 	},
 
-	render: function () {
+    //modelBinder.create(model, el, matches) {
+	onRender: function () {
 		this.$(".page-content").show();
-		this.bindModelToView();
+		// this.bindModelToView();
 	},
 
 	editName: function (editable) {
@@ -56,6 +60,7 @@ userAccount.userAccountMainView = {
 
 
 
-userAccount.view("userAccountMainView",
+userAccount.view("userAccountMainView", [
+    "viewRenderer",
     userAccount.userAccountMainView
-);
+]);

@@ -12,10 +12,10 @@
 @section scripts {
 	@Html.InstallJavaScriptPackage(UserAccountAppPkg.PackageName)
 	<script>
-		UserAccount.start();
+		userAccount.start();
 	</script>
 }
-<section class="page centered">
+<section class="page centered" id="accountPage">
 	<div class="page-header">
 		<div class="page-header-content">
 			<h1 data-bind="displayName"></h1>

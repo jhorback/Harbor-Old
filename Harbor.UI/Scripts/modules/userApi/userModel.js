@@ -29,7 +29,7 @@ userApi.userModel = {
 	},
 
 	initialize: function () {
-	    this.urlRoot = this.appurl.get("api/users");
+	    this.urlRoot = this.appurl("api/users");
 	},
 
 	url: function() {
@@ -100,7 +100,7 @@ userApi.userModel = {
 
 	"[editLink]": {
 		get: function () {
-			return this.appurl.get("user/admin/edit/") + this.get("userName");
+			return this.appurl("user/admin/edit/") + this.get("userName");
 		}
 	},
 	

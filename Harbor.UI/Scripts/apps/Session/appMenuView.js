@@ -33,7 +33,7 @@ session.appMenuView.prototype = {
 
 		event.preventDefault();
 
-		signOutRequest = $.ajax({ url: this.appurl.get("user/signout") });
+		signOutRequest = $.ajax({ url: this.appurl("user/signout") });
 
 		this.ajaxRequest.handle(signOutRequest).then(function () {
 			window.location.reload();

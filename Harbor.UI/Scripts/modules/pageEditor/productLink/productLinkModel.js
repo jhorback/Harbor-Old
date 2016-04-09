@@ -42,7 +42,7 @@ pageEditor.productLinkModel.prototype = {
 		get: function (value) {
 			var previewImageID = this.get("previewImageID"),
 				src;
-			src = previewImageID ? this.appurl.get("file/" +
+			src = previewImageID ? this.appurl("file/" +
 				this.get("previewImageID") + "/preview.img?res=low") :
 				null;
 			return src;

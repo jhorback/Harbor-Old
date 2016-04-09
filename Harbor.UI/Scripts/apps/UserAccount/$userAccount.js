@@ -1,5 +1,5 @@
 ﻿
-var userAccount = context.app("userAccount", "currentUserModel");
+var userAccount = context.app("userAccount").use("currentUserModel", "userApi");
 
 userAccount.bootstrap = function (userApi, currentUserRepo, viewRenderer) {
     
@@ -10,8 +10,10 @@ userAccount.bootstrap = function (userApi, currentUserRepo, viewRenderer) {
 
     userModel.once("sync", function () {
         var mainView = viewRenderer.render("userAccountMainView", {
-            el: $(".page"),
+            el: $("#accountPage"),
             model: userModel
+        }, {
+            fromServer: true
         });
     });
 };
