@@ -16,6 +16,7 @@
 //     These options are used internally to help build the template tree.
 //     - sourceTemplate - Used as a cache for child views to get their templates and shims.
 //     - isParsedView - if true, just creates the view and calls render (sub views / shims are already parsed).
+//     - fromServer - set to true if the initial markup is from the server
 // 
 // rootModel - (deprecated; handled now by the aggregate extension)
 //     a rootModel property is added to the options (if a model is defined)
@@ -36,7 +37,13 @@ bbext.viewRenderer = function (
             renderOptions = renderOptions || {};
             options = options || {};
 
-            // render only pre-parsed views
+            if (renderOptions.fromServer) {
+                renderOptions.sourceTemplate = options.el;
+                templateParser.parseTemplateFromServer(name, renderOptions.sourceTemplate);
+                renderOptions.isParsedView = true;
+            }
+
+		    // render only pre-parsed views
             if (renderOptions.isParsedView) {
 		        view = renderView(name, options, renderOptions);
 		        return view;
@@ -47,8 +54,8 @@ bbext.viewRenderer = function (
                 renderOptions.sourceTemplate :
                 rootViewCache.get(name);
 
-            // parse all sub views and shims
-		    templateParser.parseTemplate(sourceTemplate);
+		    // parse all sub views and shims
+            sourceTemplate && templateParser.parseTemplate(sourceTemplate);
             
 		    // render the root template -> which renders the tree
 		    options.rootModel = options.model;
@@ -80,6 +87,7 @@ bbext.viewRenderer = function (
 
 	    if (view.model && view.model.waitForViewModelPromises) {	        
 	        waitForViewModelPromises(view).then(function () {
+	            view.fromServer = view.fromServer || renderOptions.fromServer;
 	            view.render(renderOptions);
 	        });
 	    } else {

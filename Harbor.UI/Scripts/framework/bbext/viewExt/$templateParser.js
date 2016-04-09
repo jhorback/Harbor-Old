@@ -62,7 +62,18 @@ bbext.templateParser = function (
         getParsedData: function (name, sourceTemplate) {
             this.parseTemplate(sourceTemplate);
             return sourceTemplate.data("parsed")[name];
-        }       
+        },
+
+        parseTemplateFromServer: function (name, sourceTemplate) {
+            var parsed = {};
+            sourceTemplate.data("parsed", parsed);
+            parseView({
+                viewName: name,
+                template: sourceTemplate,
+                shims: getViewShims(name),
+                parsed: parsed
+            });
+        }
     };
 
 
