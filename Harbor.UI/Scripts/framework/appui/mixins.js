@@ -75,7 +75,7 @@ appui.mixins = function (globalCache, context) {
 		_.each(mixin, function (value, name) {
 			if (name === "ctor") {
 				proto.constructor = wrap(proto.constructor, value.before, value.after);
-			} else if (value.before || value.after) {
+			} else if (value && (value.before || value.after)) {
 				proto[name] = wrap(proto[name], value.before, value.after);
 			} else {
 				proto[name] = value;
