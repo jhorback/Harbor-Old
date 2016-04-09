@@ -13,7 +13,7 @@ bbext.rootViewCache = function (globalCache) {
     return {
         get: function (name) {
             var el = rootViews[name]; 
-            return el ? el : this.cache(name, $("[data-view='" + name + "']"));
+            return el ? el : this.cache(name, $("#" + name + ",[data-view='" + name + "']"));
         },
 
         cache: function (name, el) {
