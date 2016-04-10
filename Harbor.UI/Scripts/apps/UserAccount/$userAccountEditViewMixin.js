@@ -28,6 +28,7 @@ userAccount.userAccountEditViewMixin = function (dialogFactory, ajaxRequest) {
         },
 
         saveModel: function () {
+            // how to set show all here?
             if (!this.isModelValid()) {
                 return;
             }
@@ -40,7 +41,7 @@ userAccount.userAccountEditViewMixin = function (dialogFactory, ajaxRequest) {
                     this.close();
                 },
                 clientError: function (error) {
-                    this.displayErrors(error.errors);
+                    this.displayErrors(error.errors, true);
                 }
             }, this);
         },
@@ -56,53 +57,3 @@ userAccount.mixin("userAccountEditViewMixin", [
     "ajaxRequest",
     userAccount.userAccountEditViewMixin
 ]);
-
-
-/*
-
-
-UserAccount.EditNameView = UserAccount.BaseEditView.extend({
-initialize: function () {
-    _.extend(this.options, {
-        templateName: "UserAccount-EditName",
-        dialogTitle: "Name"
-    });
-    UserAccount.BaseEditView.prototype.initialize.apply(this, arguments);
-}
-});
-
-
-UserAccount.EditEmailView = UserAccount.BaseEditView.extend({
-initialize: function () {
-    _.extend(this.options, {
-        templateName: "UserAccount-EditEmail",
-        dialogTitle: "Email"
-    });
-    UserAccount.BaseEditView.prototype.initialize.apply(this, arguments);
-}
-});
-
-UserAccount.EditPayPalIDView = UserAccount.BaseEditView.extend({
-initialize: function () {
-    _.extend(this.options, {
-        templateName: "UserAccount-EditPayPalID",
-        dialogTitle: "PayPal Merchant Account ID"
-    });
-    UserAccount.BaseEditView.prototype.initialize.apply(this, arguments);
-}
-});
-
-UserAccount.ChangePasswordView = UserAccount.BaseEditView.extend({
-initialize: function () {
-    _.extend(this.options, {
-        templateName: "UserAccount-ChangePassword",
-        dialogTitle: "Change Password",
-        onSuccess: function () {
-            this.model.set("password", null, {silent: true});
-            this.model.set("confirmPassword", null, { silent: true });
-        }
-    });
-    UserAccount.BaseEditView.prototype.initialize.apply(this, arguments);
-}
-});
-*/

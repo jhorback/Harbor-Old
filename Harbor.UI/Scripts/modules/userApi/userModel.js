@@ -50,7 +50,9 @@ userApi.userModel = {
 			return undefined;
 		}
 
-		pw = this.get("password");
+		debugger;
+
+		pw = this.get("newPassword");
 		cpw = this.get("confirmPassword");
 		errors = modelErrors.create();
 		if (pw !== cpw) {
@@ -92,7 +94,9 @@ userApi.userModel = {
 			return value;
 		},
 		validate: {
-			required: true
+			required: {
+			    message: "A display name is required."
+			}
 		},
 		
 		bind: ["firstName", "middleName", "lastName"]

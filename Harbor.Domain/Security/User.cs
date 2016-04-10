@@ -222,7 +222,7 @@ namespace Harbor.Domain.Security
 		private bool passwordsMatch(string inputPassword)
 		{
 			// handles a null password
-			if (Password == null)
+			if (string.IsNullOrEmpty(Password))
 			{
 				if (string.IsNullOrEmpty(inputPassword))
 					return true;

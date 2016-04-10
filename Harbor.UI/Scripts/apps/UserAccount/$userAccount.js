@@ -9,6 +9,7 @@ userAccount.bootstrap = function (userApi, currentUserRepo, viewRenderer) {
 
 
     userModel.once("sync", function () {
+        debugger;
         var mainView = viewRenderer.render("userAccountMainView", {
             el: $("#accountPage"),
             model: userModel
