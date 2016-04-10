@@ -1,16 +1,12 @@
-﻿userAccount.userAccountMainView = function (options, viewRenderer) {
-    this.viewRenderer = viewRenderer;
-};
-
-userAccount.userAccountMainView.prototype = {
+﻿
+userAccount.userAccountMainView = {
     initialize: function () {
-		_.bindAll(this, "editName", "editEmail", "editPayPalID", "changePassword");		
+        _.bindAll(this, "editName", "editEmail", "editPayPalID", "changePassword");
 	},
 
     //modelBinder.create(model, el, matches) {
 	onRender: function () {
 		this.$(".page-content").show();
-		// this.bindModelToView();
 	},
 
 	editName: function (editable) {
