@@ -11,13 +11,19 @@ bbext.commonBackboneObjectExt = function (
 	collectionFactory,
 	appurl
 ) {
+    
 
 	var commonBackboneObjectExt = {
 		ctor: {
 			before: function () {
 				this.modelFactory = modelFactory;
 				this.collectionFactory = collectionFactory;
-				this.options = this.options || arguments[0];
+                this.options = this.options || arguments[0];
+
+                // could move into it's own mixin;
+				if (this.constructor.$inject) {
+				    addInjectedProperties.call(this, arguments);
+				}
 			}
 		},
 
@@ -33,6 +39,19 @@ bbext.commonBackboneObjectExt = function (
 
 		appurl: appurl.get
 	};
+
+	function addInjectedProperties(deps) {
+	    var inject = this.constructor.$inject,
+            namedDependency,
+            i = 0;
+
+	    for (; i < inject.length; i++) {
+	        namedDependency = inject[i];
+	        if (this[namedDependency] === void (0)) {
+	            this[namedDependency] = deps[i];
+	        }
+	    }
+	}
 
 	return commonBackboneObjectExt;
 };

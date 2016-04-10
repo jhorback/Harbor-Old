@@ -86,6 +86,13 @@ var module = (function (context) {
 
                 // set $inject and mixin the proto
 				construct = _.handleInject(construct);
+				if (typeof construct !== "function") {
+                    // allow for self injected constructs; jch* add test
+				    proto = construct;
+				    construct = function () { };
+				    construct.$inject = proto.$inject;
+				    construct.proto = proto;
+				}
 				_.mixin(construct.prototype, proto);
                 	    
 
@@ -98,6 +105,7 @@ var module = (function (context) {
                 };
 
 			    // notify constructs that a new instance is being registered
+                // jch* is there a test for this?
                 creator.onRegisterCallback && creator.onRegisterCallback({
                     context: modvars.context,
                     name: name,
